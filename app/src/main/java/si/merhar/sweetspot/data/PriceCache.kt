@@ -7,7 +7,7 @@ import java.time.LocalDate
 class PriceCache(private val context: Context) {
 
     private val prefs = context.getSharedPreferences("sweetspot_cache", Context.MODE_PRIVATE)
-    private val cacheFile = File(context.filesDir, "prices_cache.json")
+    private val cacheFile = File(context.cacheDir, "prices_cache.json")
 
     private companion object {
         const val KEY_CACHE_DATE = "cache_date"

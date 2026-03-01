@@ -1,36 +1,36 @@
 package si.merhar.sweetspot.data
 
 import si.merhar.sweetspot.model.HourlyPrice
-import si.merhar.sweetspot.util.AMSTERDAM
 import java.time.LocalDate
+import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class PriceRepository(private val cache: PriceCache) {
+class PriceRepository(private val cache: PriceCache, private val zoneId: ZoneId) {
 
     fun getPrices(): List<HourlyPrice> {
-        val todayAmsterdam = LocalDate.now(AMSTERDAM)
+        val today = LocalDate.now(zoneId)
         val allPrices: List<HourlyPrice>
 
-        if (cache.isFresh(todayAmsterdam)) {
+        if (cache.isFresh(today)) {
             val cachedJson = cache.readCachedJson()
             if (cachedJson != null) {
-                allPrices = EnergyZeroApi.parseJson(cachedJson)
+                allPrices = EnergyZeroApi.parseJson(cachedJson, zoneId)
             } else {
-                allPrices = fetchAndCache(todayAmsterdam)
+                allPrices = fetchAndCache(today)
             }
         } else {
-            allPrices = fetchAndCache(todayAmsterdam)
+            allPrices = fetchAndCache(today)
         }
 
         // Filter to next 24h from now
-        val now = ZonedDateTime.now(AMSTERDAM)
+        val now = ZonedDateTime.now(zoneId)
         val end = now.plusHours(24)
         return allPrices.filter { it.time >= now.minusMinutes(30) && it.time < end }
     }
 
-    private fun fetchAndCache(todayAmsterdam: LocalDate): List<HourlyPrice> {
-        val rawJson = EnergyZeroApi.fetchRawJson()
-        cache.write(rawJson, todayAmsterdam)
-        return EnergyZeroApi.parseJson(rawJson)
+    private fun fetchAndCache(today: LocalDate): List<HourlyPrice> {
+        val rawJson = EnergyZeroApi.fetchRawJson(zoneId)
+        cache.write(rawJson, today)
+        return EnergyZeroApi.parseJson(rawJson, zoneId)
     }
 }

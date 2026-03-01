@@ -1,12 +1,9 @@
 package si.merhar.sweetspot.util
 
-import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.Duration
 
-val AMSTERDAM: ZoneId = ZoneId.of("Europe/Amsterdam")
-
-fun formatRelative(target: ZonedDateTime, now: ZonedDateTime = ZonedDateTime.now(AMSTERDAM)): String {
+fun formatRelative(target: ZonedDateTime, now: ZonedDateTime): String {
     val seconds = Duration.between(now, target).seconds
     if (seconds <= 0) return "now"
     val h = seconds / 3600

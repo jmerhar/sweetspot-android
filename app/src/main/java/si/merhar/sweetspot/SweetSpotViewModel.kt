@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceRepository
+import si.merhar.sweetspot.data.SettingsRepository
 import si.merhar.sweetspot.model.BreakdownSlot
 import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.time.ZoneId
 import kotlin.math.floor
 
 data class UiState(
@@ -21,18 +23,51 @@ data class UiState(
     val isLoading: Boolean = false,
     val error: String? = null,
     val result: WindowResult? = null,
-    val allPrices: List<HourlyPrice> = emptyList()
+    val allPrices: List<HourlyPrice> = emptyList(),
+    val showSettings: Boolean = false,
+    val zoneId: ZoneId = ZoneId.systemDefault(),
+    val isUsingDefaultZone: Boolean = true
 )
 
 class SweetSpotViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = PriceRepository(PriceCache(application))
+    private val priceCache = PriceCache(application)
+    private val settingsRepository = SettingsRepository(application)
 
-    private val _uiState = MutableStateFlow(UiState())
+    private val _uiState = MutableStateFlow(
+        UiState(
+            zoneId = settingsRepository.getZoneId(),
+            isUsingDefaultZone = settingsRepository.isUsingDefaultZone()
+        )
+    )
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
     fun onDurationChanged(input: String) {
         _uiState.value = _uiState.value.copy(durationInput = input)
+    }
+
+    fun onShowSettings() {
+        _uiState.value = _uiState.value.copy(showSettings = true)
+    }
+
+    fun onHideSettings() {
+        _uiState.value = _uiState.value.copy(showSettings = false)
+    }
+
+    fun onZoneSelected(zoneId: ZoneId?) {
+        if (zoneId == null) {
+            settingsRepository.clearZoneId()
+            _uiState.value = _uiState.value.copy(
+                zoneId = settingsRepository.getZoneId(),
+                isUsingDefaultZone = true
+            )
+        } else {
+            settingsRepository.setZoneId(zoneId)
+            _uiState.value = _uiState.value.copy(
+                zoneId = zoneId,
+                isUsingDefaultZone = false
+            )
+        }
     }
 
     fun onFindClicked() {
@@ -52,6 +87,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                val repository = PriceRepository(priceCache, _uiState.value.zoneId)
                 val prices = repository.getPrices()
 
                 if (prices.isEmpty()) {

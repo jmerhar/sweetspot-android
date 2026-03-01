@@ -14,16 +14,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.WindowResult
-import si.merhar.sweetspot.util.AMSTERDAM
 import si.merhar.sweetspot.util.formatRelative
+import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
 @Composable
-fun ResultSummary(result: WindowResult, modifier: Modifier = Modifier) {
-    val now = ZonedDateTime.now(AMSTERDAM)
+fun ResultSummary(result: WindowResult, zoneId: ZoneId, modifier: Modifier = Modifier) {
+    val now = ZonedDateTime.now(zoneId)
 
     Column(
         modifier = modifier.fillMaxWidth(),

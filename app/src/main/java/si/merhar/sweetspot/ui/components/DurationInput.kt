@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 
@@ -23,6 +24,8 @@ fun DurationInput(
     isLoading: Boolean,
     modifier: Modifier = Modifier
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Row(
         modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -33,13 +36,19 @@ fun DurationInput(
             placeholder = { Text("e.g. 2h 30m, 4h, 90m, 2.5") },
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-            keyboardActions = KeyboardActions(onSearch = { onFind() }),
+            keyboardActions = KeyboardActions(onSearch = {
+                keyboardController?.hide()
+                onFind()
+            }),
             modifier = Modifier
                 .weight(1f)
                 .padding(end = 8.dp)
         )
         Button(
-            onClick = onFind,
+            onClick = {
+                keyboardController?.hide()
+                onFind()
+            },
             enabled = !isLoading,
             modifier = Modifier.height(56.dp)
         ) {

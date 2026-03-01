@@ -4,20 +4,41 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- Clock circle -->
+    <!-- Clock face circle (centered at 54,54, radius 28 to fit safe zone) -->
     <path
         android:fillColor="#4A90D9"
-        android:pathData="M54,24 C37.43,24 24,37.43 24,54 C24,70.57 37.43,84 54,84 C70.57,84 84,70.57 84,54 C84,37.43 70.57,24 54,24z M54,28 C68.36,28 80,39.64 80,54 C80,68.36 68.36,80 54,80 C39.64,80 28,68.36 28,54 C28,39.64 39.64,28 54,28z" />
-    <!-- Clock hour hand -->
+        android:strokeColor="#357ABD"
+        android:strokeWidth="3"
+        android:pathData="M54,54m-28,0a28,28 0,1 1,56 0a28,28 0,1 1,-56 0" />
+    <!-- Hour tick top (12 o'clock) -->
     <path
-        android:fillColor="#2C3E50"
-        android:pathData="M52.5,54 L52.5,38 L55.5,38 L55.5,54 Z" />
-    <!-- Clock minute hand -->
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,28 L54,33" />
+    <!-- Hour tick right (3 o'clock) -->
     <path
-        android:fillColor="#2C3E50"
-        android:pathData="M54,52.5 L66,52.5 L66,55.5 L54,55.5 Z" />
-    <!-- Bolt -->
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M80,54 L75,54" />
+    <!-- Hour tick bottom (6 o'clock) -->
     <path
-        android:fillColor="#27AE60"
-        android:pathData="M58,34 L48,54 L54,54 L50,74 L66,48 L58,48 Z" />
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,80 L54,75" />
+    <!-- Hour tick left (9 o'clock) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M28,54 L33,54" />
+    <!-- Lightning bolt (yellow with orange stroke) -->
+    <path
+        android:fillColor="#F1C40F"
+        android:strokeColor="#E67E22"
+        android:strokeWidth="1"
+        android:strokeLineJoin="round"
+        android:pathData="M57.75,30 L43.75,54 L51.75,54 L47.75,78 L63.75,42 L55.75,42 Z" />
 </vector>

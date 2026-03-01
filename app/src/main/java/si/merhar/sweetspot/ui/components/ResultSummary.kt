@@ -1,18 +1,19 @@
 package si.merhar.sweetspot.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import si.merhar.sweetspot.model.WindowResult
-import si.merhar.sweetspot.ui.theme.SubtitleGray
 import si.merhar.sweetspot.util.AMSTERDAM
 import si.merhar.sweetspot.util.formatRelative
 import java.time.ZonedDateTime
@@ -24,18 +25,21 @@ private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 fun ResultSummary(result: WindowResult, modifier: Modifier = Modifier) {
     val now = ZonedDateTime.now(AMSTERDAM)
 
-    Column(modifier = modifier.fillMaxWidth()) {
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            SummaryItem(
+            SummaryCard(
                 label = "Start",
                 value = result.startTime.format(timeFormatter),
                 subtitle = formatRelative(result.startTime, now),
                 modifier = Modifier.weight(1f)
             )
-            SummaryItem(
+            SummaryCard(
                 label = "End",
                 value = result.endTime.format(timeFormatter),
                 subtitle = formatRelative(result.endTime, now),
@@ -43,17 +47,15 @@ fun ResultSummary(result: WindowResult, modifier: Modifier = Modifier) {
             )
         }
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 12.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            SummaryItem(
+            SummaryCard(
                 label = "Total cost",
                 value = "\u20AC ${String.format("%.4f", result.totalCost)}",
                 modifier = Modifier.weight(1f)
             )
-            SummaryItem(
+            SummaryCard(
                 label = "Avg price",
                 value = "\u20AC ${String.format("%.4f", result.avgPrice)}/kWh",
                 modifier = Modifier.weight(1f)
@@ -63,30 +65,34 @@ fun ResultSummary(result: WindowResult, modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun SummaryItem(
+private fun SummaryCard(
     label: String,
     value: String,
     subtitle: String? = null,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.padding(4.dp)) {
-        Text(
-            text = label,
-            fontSize = 12.sp,
-            color = SubtitleGray
-        )
-        Row {
+    OutlinedCard(
+        modifier = modifier,
+        colors = CardDefaults.outlinedCardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        ),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
             Text(
                 text = value,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold
+                style = MaterialTheme.typography.titleMedium
             )
             if (subtitle != null) {
                 Text(
-                    text = " ($subtitle)",
-                    fontSize = 12.sp,
-                    color = SubtitleGray,
-                    modifier = Modifier.alignByBaseline()
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }

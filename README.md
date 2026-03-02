@@ -4,7 +4,7 @@ Find the cheapest time to run your appliance, based on dynamic electricity price
 
 SweetSpot fetches hourly electricity prices from the [EnergyZero API](https://api.energyzero.nl) for the next 24 hours and finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
 
-This is the native Android port of the [SweetSpot](https://github.com/jmerhar/sweetspot) web app.
+This is the native Android port of the [SweetSpot PHP web app](https://github.com/jmerhar/sweetspot-php).
 
 ## Requirements
 

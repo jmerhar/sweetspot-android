@@ -17,7 +17,7 @@ The `DataEventBuffer` passed to the listener is never released, leaking shared m
 The `onDismiss` callback is accepted but suppressed as unused (`@Suppress("UNUSED_PARAMETER")`). When the user swipes right, `SwipeDismissableNavHost` pops the back stack but `onClearResult()` is never called. Stale result/error persists in the ViewModel.
 
 **5. Cache poisoning on malformed API response** — `shared/.../PriceRepository.kt`
-`fetchAndCache()` writes raw JSON to cache *before* parsing it. If the JSON is malformed, the cache stores unparseable data that will be served as "fresh" until midnight. Fix: parse first, then cache.
+`fetchAndCache()` writes raw JSON to cache *before* parsing it. If the JSON is malformed, the cache stores unparseable data. Partially mitigated: coverage-based re-fetch triggers within 5 minutes instead of being stuck until midnight. Fix: parse first, then cache.
 
 **6. `formatRelative` returns "in 0m" for 1–29 seconds** — `shared/.../TimeUtils.kt`
 After rounding, targets 1–29 seconds in the future produce `totalMinutes = 0`, which falls through to `"in 0m"`. Should return `"now"` when `totalMinutes <= 0`.
@@ -37,9 +37,6 @@ Called directly on the main thread with no try-catch. If Google Play Services is
 If `local.properties` exists but is missing a key, `getProperty()` returns null, passed to `rootProject.file(null)` → NPE at configuration time, breaking all builds including debug.
 
 ## Thread Safety / Race Conditions
-
-**11. Two separate `now()` calls in PriceRepository** — `shared/.../PriceRepository.kt`
-`LocalDate.now()` on line 30 and `ZonedDateTime.now()` on line 45 can straddle midnight, causing a stale cache to be used or prices filtered incorrectly. Should capture a single clock snapshot.
 
 **12. No fetch cancellation on watch** — `WearViewModel.kt` / `WearActivity.kt`
 Tapping appliances rapidly launches multiple concurrent fetches with no `Job` cancellation. Stale results can overwrite fresh ones. Also, `navController.navigate("result")` stacks duplicate destinations on the back stack.
@@ -66,12 +63,6 @@ Bar width is clamped to `max(0.0, price)`. If all prices are negative, the entir
 
 **19. `isMinifyEnabled = false` for release** — `app/build.gradle.kts`, `wear/build.gradle.kts`
 Material Icons Extended alone adds significant APK size. Especially problematic for Wear OS with limited storage.
-
-**20. Stale test counts in CLAUDE.md**
-CheapestWindowFinderTest: documented as 12, actually 15. TimeUtilsTest: documented as 7, actually 9.
-
-**21. Misleading parameter names** — `shared/.../PriceCache.kt`
-Parameters named `todayAmsterdam` / `dateAmsterdam` but the timezone is configurable — historical artifact.
 
 **22. Unused `Red` color constant** — `app/.../Color.kt:8`
 

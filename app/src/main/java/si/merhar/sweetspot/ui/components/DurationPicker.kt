@@ -22,6 +22,9 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -104,8 +107,15 @@ fun DurationPicker(
             }
     }
 
+    val minutesText = minutes.toString().padStart(2, '0')
+
     Column(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .semantics {
+                contentDescription = "Duration picker"
+                stateDescription = "${hours}h ${minutesText}m"
+            },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -143,6 +153,7 @@ fun DurationPicker(
                     modifier = Modifier
                         .width(60.dp)
                         .height(ITEM_HEIGHT * VISIBLE_ITEMS)
+                        .semantics { contentDescription = "Hours: $hours" }
                 ) {
                     // Top spacer items so first real item can be centered
                     items(spacerCount) {
@@ -177,6 +188,7 @@ fun DurationPicker(
                     modifier = Modifier
                         .width(60.dp)
                         .height(ITEM_HEIGHT * VISIBLE_ITEMS)
+                        .semantics { contentDescription = "Minutes: $minutesText" }
                 ) {
                     // Top spacer
                     items(spacerCount) {

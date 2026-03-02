@@ -59,4 +59,10 @@ class TimeUtilsTest {
         // 2h 15m 20s should round to 2h 15m
         assertEquals("in 2h 15m", formatRelative(time(12, 15, 20), time(10, 0, 0)))
     }
+
+    @Test
+    fun `seconds under 30 returns now`() {
+        // 15 seconds in the future rounds to 0 minutes → "now"
+        assertEquals("now", formatRelative(time(10, 0, 15), time(10, 0, 0)))
+    }
 }

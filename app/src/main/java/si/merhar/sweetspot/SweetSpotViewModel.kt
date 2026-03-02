@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -273,11 +274,13 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
             val prices = repository.getPrices()
 
             if (prices.isEmpty()) {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    error = "No price data available for the next 24 hours.",
-                    allPrices = emptyList()
-                )
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = "No price data available for the next 24 hours.",
+                        allPrices = emptyList()
+                    )
+                }
                 return
             }
 
@@ -285,26 +288,32 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
             val result = findCheapestWindow(prices, durationHours, now)
 
             if (result == null) {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    error = "Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available.",
-                    allPrices = prices
-                )
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = "Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available.",
+                        allPrices = prices
+                    )
+                }
                 return
             }
 
-            _uiState.value = _uiState.value.copy(
-                isLoading = false,
-                result = result,
-                allPrices = prices,
-                error = null
-            )
+            _uiState.update {
+                it.copy(
+                    isLoading = false,
+                    result = result,
+                    allPrices = prices,
+                    error = null
+                )
+            }
         } catch (e: Exception) {
-            _uiState.value = _uiState.value.copy(
-                isLoading = false,
-                error = "Could not fetch prices: ${e.message}",
-                allPrices = emptyList()
-            )
+            _uiState.update {
+                it.copy(
+                    isLoading = false,
+                    error = "Could not fetch prices: ${e.message}",
+                    allPrices = emptyList()
+                )
+            }
         }
     }
 }

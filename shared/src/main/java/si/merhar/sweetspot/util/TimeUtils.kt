@@ -16,6 +16,7 @@ fun formatRelative(target: ZonedDateTime, now: ZonedDateTime): String {
     val seconds = Duration.between(now, target).seconds
     if (seconds <= 0) return "now"
     val totalMinutes = (seconds + 30) / 60
+    if (totalMinutes <= 0) return "now"
     val h = totalMinutes / 60
     val m = totalMinutes % 60
     return when {

@@ -29,12 +29,10 @@ private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
  * longer appliance labels on small watch faces.
  *
  * @param state Current UI state containing the result.
- * @param onDismiss Callback to navigate back (swipe-right is handled by nav host).
  */
 @Composable
 fun ResultScreen(
-    state: WearUiState,
-    @Suppress("UNUSED_PARAMETER") onDismiss: () -> Unit
+    state: WearUiState
 ) {
     if (state.isLoading) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

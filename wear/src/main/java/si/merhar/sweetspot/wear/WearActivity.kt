@@ -3,6 +3,7 @@ package si.merhar.sweetspot.wear
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -41,13 +42,10 @@ class WearActivity : ComponentActivity() {
                         )
                     }
                     composable("result") {
-                        ResultScreen(
-                            state = state,
-                            onDismiss = {
-                                wearViewModel.onClearResult()
-                                navController.popBackStack()
-                            }
-                        )
+                        DisposableEffect(Unit) {
+                            onDispose { wearViewModel.onClearResult() }
+                        }
+                        ResultScreen(state = state)
                     }
                 }
             }

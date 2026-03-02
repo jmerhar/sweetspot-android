@@ -2,26 +2,6 @@
 
 Comprehensive review of the entire project: all three modules, tests, documentation, and build configuration.
 
-## Bugs
-
-**1. OkHttp response body never closed** — `shared/.../EnergyZeroApi.kt`
-The `Response` from `client.newCall(request).execute()` is never closed. On the error path (non-2xx status), the connection leaks entirely. Should use `response.use { }`.
-
-**2. Thread-unsafe state updates from IO dispatchers** — `SweetSpotViewModel.kt` and `WearViewModel.kt`
-Both ViewModels use `_uiState.value = _uiState.value.copy(...)` from `Dispatchers.IO` coroutines. This is a non-atomic read-modify-write that races with main-thread updates. If the user taps back while a fetch is in flight, the IO coroutine overwrites the navigation state. Fix: use `_uiState.update { it.copy(...) }` everywhere.
-
-**3. `DataEventBuffer` never released** — `WearViewModel.kt:onDataChanged()`
-The `DataEventBuffer` passed to the listener is never released, leaking shared memory. Also, `dataItems.release()` in `loadAppliancesFromDataLayer()` is skipped on the exception path — needs a `finally` block.
-
-**4. Swipe-dismiss doesn't clear result state** — `wear/.../ResultScreen.kt`
-The `onDismiss` callback is accepted but suppressed as unused (`@Suppress("UNUSED_PARAMETER")`). When the user swipes right, `SwipeDismissableNavHost` pops the back stack but `onClearResult()` is never called. Stale result/error persists in the ViewModel.
-
-**5. Cache poisoning on malformed API response** — `shared/.../PriceRepository.kt`
-`fetchAndCache()` writes raw JSON to cache *before* parsing it. If the JSON is malformed, the cache stores unparseable data. Partially mitigated: coverage-based re-fetch triggers within 5 minutes instead of being stuck until midnight. Fix: parse first, then cache.
-
-**6. `formatRelative` returns "in 0m" for 1–29 seconds** — `shared/.../TimeUtils.kt`
-After rounding, targets 1–29 seconds in the future produce `totalMinutes = 0`, which falls through to `"in 0m"`. Should return `"now"` when `totalMinutes <= 0`.
-
 ## Security / Robustness
 
 **8. `syncAppliancesToWear` can crash** — `SweetSpotViewModel.kt`

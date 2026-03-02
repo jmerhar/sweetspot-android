@@ -66,14 +66,14 @@ object EnergyZeroApi : PriceFetcher {
             "&interval=4&usageType=1"
 
         val request = Request.Builder().url(url).get().build()
-        val response = client.newCall(request).execute()
+        return client.newCall(request).execute().use { response ->
+            if (!response.isSuccessful) {
+                throw RuntimeException("API returned ${response.code}")
+            }
 
-        if (!response.isSuccessful) {
-            throw RuntimeException("API returned ${response.code}")
+            response.body?.string()
+                ?: throw RuntimeException("Empty response body")
         }
-
-        return response.body?.string()
-            ?: throw RuntimeException("Empty response body")
     }
 
     /**

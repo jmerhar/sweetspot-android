@@ -82,11 +82,14 @@ class PriceRepository(
     /**
      * Fetches fresh prices from the API and writes them to cache.
      *
+     * Parses before caching to avoid storing malformed JSON.
+     *
      * @return Parsed list of all hourly prices (unfiltered).
      */
     private fun fetchAndCache(): List<HourlyPrice> {
         val rawJson = fetcher.fetchRawJson(zoneId)
+        val prices = fetcher.parseJson(rawJson, zoneId)
         cache.write(rawJson)
-        return fetcher.parseJson(rawJson, zoneId)
+        return prices
     }
 }

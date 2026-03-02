@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.serialization.json.Json
@@ -74,15 +75,19 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
      * Called when the phone pushes an appliance list update via the Data Layer.
      */
     override fun onDataChanged(events: DataEventBuffer) {
-        for (event in events) {
-            if (event.type == DataEvent.TYPE_CHANGED &&
-                event.dataItem.uri.path == "/appliances"
-            ) {
-                val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
-                val json = dataMap.getString("json") ?: continue
-                val appliances = parseAppliances(json)
-                _uiState.value = _uiState.value.copy(appliances = appliances)
+        try {
+            for (event in events) {
+                if (event.type == DataEvent.TYPE_CHANGED &&
+                    event.dataItem.uri.path == "/appliances"
+                ) {
+                    val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
+                    val json = dataMap.getString("json") ?: continue
+                    val appliances = parseAppliances(json)
+                    _uiState.value = _uiState.value.copy(appliances = appliances)
+                }
             }
+        } finally {
+            events.release()
         }
     }
 
@@ -91,8 +96,9 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
      */
     private fun loadAppliancesFromDataLayer() {
         viewModelScope.launch(Dispatchers.IO) {
+            var dataItems: com.google.android.gms.wearable.DataItemBuffer? = null
             try {
-                val dataItems = Wearable.getDataClient(getApplication<Application>())
+                dataItems = Wearable.getDataClient(getApplication<Application>())
                     .getDataItems().await()
 
                 for (item in dataItems) {
@@ -100,12 +106,13 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
                         val dataMap = DataMapItem.fromDataItem(item).dataMap
                         val json = dataMap.getString("json") ?: continue
                         val appliances = parseAppliances(json)
-                        _uiState.value = _uiState.value.copy(appliances = appliances)
+                        _uiState.update { it.copy(appliances = appliances) }
                     }
                 }
-                dataItems.release()
             } catch (e: Exception) {
                 Log.w("WearViewModel", "Could not read appliances from Data Layer", e)
+            } finally {
+                dataItems?.release()
             }
         }
     }
@@ -135,10 +142,12 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
                 val prices = repository.getPrices()
 
                 if (prices.isEmpty()) {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = "No price data available."
-                    )
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            error = "No price data available."
+                        )
+                    }
                     return@launch
                 }
 
@@ -146,23 +155,29 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
                 val result = findCheapestWindow(prices, durationHours, now)
 
                 if (result == null) {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = "Not enough data for ${formatDuration(h, m)}."
-                    )
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            error = "Not enough data for ${formatDuration(h, m)}."
+                        )
+                    }
                     return@launch
                 }
 
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    result = result,
-                    error = null
-                )
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        result = result,
+                        error = null
+                    )
+                }
             } catch (e: Exception) {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    error = "Could not fetch prices."
-                )
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = "Could not fetch prices."
+                    )
+                }
             }
         }
     }

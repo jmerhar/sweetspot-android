@@ -1,6 +1,7 @@
 package si.merhar.sweetspot.data
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.ZoneId
 
@@ -101,7 +102,7 @@ class EnergyZeroApiDstTest {
         assertEquals(3, prices[2].time.hour)
 
         // Despite same local hour, they are distinct instants and sort correctly
-        assert(prices[0].time.toEpochSecond() < prices[1].time.toEpochSecond())
+        assertTrue(prices[0].time.toEpochSecond() < prices[1].time.toEpochSecond())
     }
 
     @Test
@@ -124,9 +125,10 @@ class EnergyZeroApiDstTest {
 
         // Verify chronological order
         for (i in 1 until prices.size) {
-            assert(prices[i].time.toEpochSecond() > prices[i - 1].time.toEpochSecond()) {
-                "Price at index $i should be after index ${i - 1}"
-            }
+            assertTrue(
+                "Price at index $i should be after index ${i - 1}",
+                prices[i].time.toEpochSecond() > prices[i - 1].time.toEpochSecond()
+            )
         }
     }
 }

@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 10. `PriceRepository.getPrices()` doesn't fall back to stale cache on re-fetch failure
-
-`shared/src/main/java/si/merhar/sweetspot/data/PriceRepository.kt:48-68` — If cached data exists but coverage is low, and the re-fetch fails (network error), the entire call throws. The user sees an error instead of stale-but-useful cached data. Catch the re-fetch failure and return filtered stale data.
-
 ### 11. `String.format` uses device locale for currency values
 
 `app/.../ResultSummary.kt:56,61`, `BreakdownTable.kt:97`, `PriceBarChart.kt:161` — In locales using comma decimals (Germany, Netherlands — likely primary users), prices display as `€ 0,1234`. This was listed as a feature in v2.2 release notes (locale-aware formatting), so verify this is actually the intended behavior. If you want consistent dot-separated decimals, use `Locale.US`.

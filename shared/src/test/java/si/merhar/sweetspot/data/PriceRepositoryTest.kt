@@ -191,4 +191,46 @@ class PriceRepositoryTest {
         assertEquals(2, fetcher.fetchCount)
         assertEquals(0, result.size)
     }
+
+    @Test
+    fun `re-fetch failure falls back to stale cache data`() {
+        // Cache has low-coverage data (8 hours, below MIN_COVERAGE_HOURS)
+        val staleData = prices(startHour = 16, count = 8)
+        // Fetcher: first call returns stale data (cache parse), second call throws (network error)
+        val fetcher = object : PriceFetcher {
+            var fetchCount = 0
+            override fun fetchRawJson(zoneId: ZoneId): String {
+                fetchCount++
+                throw RuntimeException("Network error")
+            }
+            override fun parseJson(rawJson: String, zoneId: ZoneId) = staleData
+        }
+        val cache = FakeCache(json = cachedJson, cooldownElapsed = true)
+        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+
+        val result = repo.getPrices()
+
+        // Re-fetch was attempted but failed
+        assertEquals(1, fetcher.fetchCount)
+        // Falls back to stale filtered data instead of throwing
+        assertEquals(8, result.size)
+    }
+
+    @Test(expected = RuntimeException::class)
+    fun `re-fetch failure with no stale data propagates error`() {
+        // Cache has all-past data — filtered list will be empty
+        val pastData = prices(startHour = 0, count = 10).map {
+            it.copy(time = it.time.minusDays(1))
+        }
+        val fetcher = object : PriceFetcher {
+            override fun fetchRawJson(zoneId: ZoneId): String {
+                throw RuntimeException("Network error")
+            }
+            override fun parseJson(rawJson: String, zoneId: ZoneId) = pastData
+        }
+        val cache = FakeCache(json = cachedJson, cooldownElapsed = true)
+        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+
+        repo.getPrices() // should throw
+    }
 }

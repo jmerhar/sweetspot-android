@@ -43,7 +43,7 @@ class PriceRepository(
      * data is available.
      *
      * @return Chronologically sorted list of [HourlyPrice] entries.
-     * @throws RuntimeException if the API call fails.
+     * @throws RuntimeException if the initial API call fails and no cache exists.
      */
     fun getPrices(): List<HourlyPrice> {
         val now = ZonedDateTime.now(clock)
@@ -59,9 +59,16 @@ class PriceRepository(
 
         // If coverage is low, try re-fetching in case new data (e.g. tomorrow's prices)
         // has been published since the last fetch. Respects a cooldown to avoid hammering.
+        // On failure, fall back to the stale cached data rather than crashing.
         if (filtered.size < MIN_COVERAGE_HOURS && cache.isCooldownElapsed(COOLDOWN_MS)) {
-            allPrices = fetchAndCache()
-            filtered = filterFuture(allPrices, now)
+            try {
+                allPrices = fetchAndCache()
+                filtered = filterFuture(allPrices, now)
+            } catch (e: Exception) {
+                // If we have some stale data, show it rather than crashing.
+                // If we have nothing, let the error propagate.
+                if (filtered.isEmpty()) throw e
+            }
         }
 
         return filtered

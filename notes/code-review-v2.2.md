@@ -24,16 +24,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ---
 
-## High Priority
-
-### 5. DurationPicker is completely inaccessible to screen readers
-
-`app/src/main/java/si/merhar/sweetspot/ui/components/DurationPicker.kt` — The two `LazyColumn` scroll wheels have no semantic information. A TalkBack user cannot tell what the current duration is or interact meaningfully with the picker. Needs `Modifier.semantics { ... }` with content descriptions.
-
-### 6. DST tests use Kotlin `assert()` instead of JUnit assertions
-
-`shared/src/test/java/si/merhar/sweetspot/data/EnergyZeroApiDstTest.kt:104,127-129` — Kotlin's `assert()` is a no-op when JVM assertions are disabled (the default). These test conditions may never actually execute. Replace with `assertTrue()` from JUnit.
-
 ---
 
 ## Medium Priority — Bugs & Correctness

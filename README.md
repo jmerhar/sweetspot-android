@@ -40,7 +40,17 @@ All costs shown are per 1 kW load. Prices do not include energy tax and supplier
 ```bash
 ./gradlew assembleDebug           # Build debug APK
 ./gradlew installDebug            # Install on connected device/emulator
+./gradlew assembleRelease         # Build signed release APK
 ```
+
+## Releasing
+
+```bash
+./release.sh 1.1                  # Bump version, build, tag, push, create GitHub Release
+./release.sh 1.1 --draft          # Same but creates a draft release
+```
+
+The release script auto-increments `versionCode`, sets `versionName`, builds a signed APK, commits the version bump, creates a git tag, pushes, and creates a GitHub Release with the APK attached. Install the APK on your phone to upgrade.
 
 ## Testing
 

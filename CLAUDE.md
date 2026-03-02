@@ -11,6 +11,24 @@ SweetSpot is an Android app that finds the cheapest contiguous time window for r
 ```bash
 ./gradlew assembleDebug          # Build debug APK
 ./gradlew installDebug           # Build and install on connected device/emulator
+./gradlew assembleRelease        # Build signed release APK
+```
+
+## Releasing
+
+```bash
+./release.sh 1.1                 # Bump version, build, tag, push, create GitHub Release
+./release.sh 1.1 --draft         # Same but creates a draft release
+```
+
+The script auto-increments `versionCode`, sets `versionName`, builds a signed release APK, commits, tags, pushes, and creates a GitHub Release with the APK attached.
+
+Release signing is configured via `local.properties` (gitignored):
+```
+RELEASE_STORE_FILE=release.jks
+RELEASE_STORE_PASSWORD=...
+RELEASE_KEY_ALIAS=sweetspot
+RELEASE_KEY_PASSWORD=...
 ```
 
 ## Testing

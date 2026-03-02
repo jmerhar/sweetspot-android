@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Build & Infrastructure
 
-### 22. No CI/CD pipeline
-
-No `.github/workflows/` or any CI configuration. Tests only run manually. A minimal GitHub Actions workflow (~20 lines) running `./gradlew testDebugUnitTest` on push would catch regressions early.
-
 ### 23. No version catalog
 
 No `gradle/libs.versions.toml`. Version strings are duplicated across 3 modules — `kotlinx-serialization-json:1.7.3` appears 6 times, Compose BOM appears 3 times. A version catalog eliminates duplication.

@@ -17,6 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
@@ -68,17 +70,23 @@ fun PriceBarChart(
         prices.forEach { price ->
             val isOptimal = price.time.toEpochSecond() in optimalTimes
             val rowBackground = if (isOptimal) highlightColor else Color.Transparent
+            val timeText = price.time.format(timeFormatter)
+            val priceText = "\u20AC ${String.format("%.3f", price.price)}"
+            val rowDescription = if (isOptimal) "$timeText, $priceText, cheapest window" else "$timeText, $priceText"
 
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(4.dp))
                     .background(rowBackground)
+                    .semantics(mergeDescendants = true) {
+                        contentDescription = rowDescription
+                    }
                     .padding(horizontal = 4.dp, vertical = 1.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = price.time.format(timeFormatter),
+                    text = timeText,
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.width(40.dp)
@@ -158,7 +166,7 @@ fun PriceBarChart(
                 }
 
                 Text(
-                    text = "\u20AC ${String.format("%.3f", price.price)}",
+                    text = priceText,
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier

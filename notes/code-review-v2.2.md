@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — UI & Accessibility
 
-### 20. Bar chart rows have no content descriptions
-
-`app/.../PriceBarChart.kt:72-168` — Screen reader users can't understand the visual bar representation or whether a slot is in the cheapest window.
-
 ### 21. Missing KDoc on most Composable functions
 
 The CLAUDE.md convention says "always add KDoc when creating new functions or classes." Most composables in the app module lack KDoc: `SweetSpotScreen`, `FormScreen`, `ResultScreen`, `SettingsScreen`, `ApplianceDialog`, `DurationInput`, `DurationPicker`, `ErrorBox`, `ResultSummary`, `BreakdownTable`, `SweetSpotTheme`, `TimezonePickerScreen`, etc. The ViewModel and shared module are well-documented by contrast.

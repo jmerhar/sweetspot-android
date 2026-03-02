@@ -100,7 +100,7 @@ The form view (`DurationInput` card) contains:
 - `ZoneId` is threaded as a parameter through ViewModel → Repository → API — not stored as a global
 - Duration is stored as `durationHours: Int` + `durationMinutes: Int` (no string parsing on the main flow)
 - UI text is hardcoded in Composables (no string resources / i18n)
-- All classes and public methods have KDoc comments
+- All classes and functions have KDoc comments — always add KDoc when creating new functions or classes
 
 ## Commit Messages
 

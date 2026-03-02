@@ -159,7 +159,7 @@ private fun FormScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "SweetSpot finds the cheapest contiguous time window to run your appliance based on dynamic electricity prices. Pick a duration, and it scans the next 24 hours of hourly rates to find when your total cost is lowest.",
+                text = "SweetSpot helps you save money by finding the cheapest time to run your appliances. Just pick how long your appliance needs to run, and it will scan the next 24 hours of dynamic electricity prices to find the best window. You can also save your favourite appliances in settings for quick access.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 4.dp)
@@ -239,7 +239,7 @@ private fun ResultScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "Costs shown are per 1 kW load. Prices do not include energy tax and supplier fee.",
+                text = "Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

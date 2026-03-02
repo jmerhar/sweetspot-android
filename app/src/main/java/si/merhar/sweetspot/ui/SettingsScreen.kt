@@ -137,94 +137,127 @@ fun SettingsScreen(
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
         ) {
-            // Timezone section
-            Text(
-                text = "Timezone",
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+            AppliancesSection(
+                appliances = appliances,
+                onApplianceClick = { editingAppliance = it },
+                onAddClick = { showAddDialog = true }
             )
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { showTimezonePicker = true }
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = if (isUsingDefaultZone) "System default" else currentZoneId.id.replace('_', ' '),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Text(
-                        text = if (isUsingDefaultZone) currentZoneId.id.replace('_', ' ') else "Custom timezone",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
-            // Appliances section
-            Text(
-                text = "Appliances",
-                style = MaterialTheme.typography.labelLarge,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+            TimezoneSection(
+                currentZoneId = currentZoneId,
+                isUsingDefaultZone = isUsingDefaultZone,
+                onClick = { showTimezonePicker = true }
             )
 
-            appliances.forEach { appliance ->
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { editingAppliance = appliance }
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = applianceIconFor(appliance.icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = appliance.name,
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                        Text(
-                            text = formatDuration(appliance.durationHours, appliance.durationMinutes),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            }
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+        }
+    }
+}
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { showAddDialog = true }
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.width(12.dp))
+/** Appliances settings section with description, appliance list, and add button. */
+@Composable
+private fun AppliancesSection(
+    appliances: List<Appliance>,
+    onApplianceClick: (Appliance) -> Unit,
+    onAddClick: () -> Unit
+) {
+    Text(
+        text = "Appliances",
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+    )
+
+    Text(
+        text = "Add your home appliances here for easy access. You can also add specific programmes, e.g. Dishwasher Eco, Dishwasher Quick, Washing Machine Cotton.",
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp)
+    )
+
+    appliances.forEach { appliance ->
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onApplianceClick(appliance) }
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = applianceIconFor(appliance.icon),
+                contentDescription = null,
+                modifier = Modifier.size(24.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Add appliance",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.primary
+                    text = appliance.name,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = formatDuration(appliance.durationHours, appliance.durationMinutes),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+        }
+    }
 
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onAddClick() }
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(
+            text = "Add appliance",
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
+    }
+}
+
+/** Timezone settings section showing the current timezone selection. */
+@Composable
+private fun TimezoneSection(
+    currentZoneId: ZoneId,
+    isUsingDefaultZone: Boolean,
+    onClick: () -> Unit
+) {
+    Text(
+        text = "Timezone",
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+    )
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = if (isUsingDefaultZone) "System default" else currentZoneId.id.replace('_', ' '),
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = if (isUsingDefaultZone) currentZoneId.id.replace('_', ' ') else "Custom timezone",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }

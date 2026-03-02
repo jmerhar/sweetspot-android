@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 37. `@Suppress("UnstableApiUsage")` in settings.gradle.kts
-
-`settings.gradle.kts:8` — No longer needed since Gradle 8.x stabilized `dependencyResolutionManagement`.
-
 ### 38. Signing config code duplicated
 
 `app/build.gradle.kts:23-36` and `wear/build.gradle.kts:22-36` are identical. Extract to shared build logic or convention plugin.

@@ -285,12 +285,12 @@ private fun ApplianceDialog(
             ) {
                 Text(if (appliance == null) "Add appliance" else "Edit appliance")
                 if (onDelete != null) {
-                    Text(
-                        text = "Delete",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.clickable(onClick = onDelete)
-                    )
+                    TextButton(onClick = onDelete) {
+                        Text(
+                            text = "Delete",
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
                 }
             }
         },

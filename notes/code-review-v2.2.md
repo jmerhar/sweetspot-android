@@ -26,15 +26,7 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ---
 
-## Medium Priority — Bugs & Correctness
-
----
-
 ## Medium Priority — UI & Accessibility
-
-### 18. "Delete" text in appliance dialog has no minimum touch target
-
-`app/src/main/java/si/merhar/sweetspot/ui/SettingsScreen.kt:288-293` — Plain `Text` with `.clickable`, touch area is only the text size. Material 3 minimum is 48dp. Replace with `TextButton` or add padding.
 
 ### 19. Appliance rows in settings lack merged semantics
 

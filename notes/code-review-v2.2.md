@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — UI & Accessibility
 
-### 19. Appliance rows in settings lack merged semantics
-
-`app/.../SettingsScreen.kt:180-207` — No `Modifier.semantics(mergeDescendants = true)` on the `Row`. TalkBack announces individual text elements separately instead of as a cohesive list item.
-
 ### 20. Bar chart rows have no content descriptions
 
 `app/.../PriceBarChart.kt:72-168` — Screen reader users can't understand the visual bar representation or whether a slot is in the cheapest window.

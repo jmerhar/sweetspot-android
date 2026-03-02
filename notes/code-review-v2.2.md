@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 15. ProGuard rules duplicated instead of using `consumerProguardFiles`
-
-`app/proguard-rules.pro` and `wear/proguard-rules.pro` duplicate the kotlinx-serialization and OkHttp rules. Since those dependencies come from `:shared`, the rules belong in `shared/consumer-rules.pro`.
-
 ### 16. Missing `testOptions` in wear module
 
 `wear/build.gradle.kts` is missing `testOptions { unitTests.isIncludeAndroidResources = true }` needed for Robolectric tests. The app module has it, wear doesn't.

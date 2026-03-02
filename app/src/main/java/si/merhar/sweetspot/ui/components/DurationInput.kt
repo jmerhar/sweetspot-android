@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,7 +37,7 @@ import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.applianceIconFor
 
-private val quickDurations = listOf("1h", "2h", "3h", "4h", "5h")
+private val quickDurations = listOf("1h", "2h", "3h", "4h", "5h", "6h")
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -67,23 +69,8 @@ fun DurationInput(
                 modifier = Modifier.padding(bottom = 12.dp)
             )
 
-            // Quick duration buttons
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                quickDurations.forEach { duration ->
-                    SuggestionChip(
-                        onClick = { onQuickDuration(duration) },
-                        label = { Text(duration) }
-                    )
-                }
-            }
-
             // Appliance buttons or CTA
             if (appliances.isNotEmpty()) {
-                Spacer(modifier = Modifier.height(4.dp))
                 FlowRow(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -108,6 +95,7 @@ fun DurationInput(
                         )
                     }
                 }
+                Spacer(modifier = Modifier.height(4.dp))
             } else {
                 TextButton(onClick = onAddAppliancesTap) {
                     Icon(
@@ -120,7 +108,21 @@ fun DurationInput(
                 }
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            // Quick duration buttons — equal-width row
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                quickDurations.forEach { duration ->
+                    SuggestionChip(
+                        onClick = { onQuickDuration(duration) },
+                        label = { Text(duration) },
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
 
             OutlinedTextField(
                 value = value,

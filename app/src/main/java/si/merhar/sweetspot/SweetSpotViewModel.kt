@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.util.UUID
 
 /**
@@ -256,7 +257,8 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
                 return
             }
 
-            val result = findCheapestWindow(prices, durationHours)
+            val now = ZonedDateTime.now(_uiState.value.zoneId)
+            val result = findCheapestWindow(prices, durationHours, now)
 
             if (result == null) {
                 _uiState.value = _uiState.value.copy(

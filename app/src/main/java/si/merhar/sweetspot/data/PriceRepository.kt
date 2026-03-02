@@ -4,6 +4,7 @@ import si.merhar.sweetspot.model.HourlyPrice
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 
 /**
  * Repository that provides the next 24 hours of electricity prices.
@@ -40,10 +41,11 @@ class PriceRepository(private val cache: PriceCache, private val zoneId: ZoneId)
             allPrices = fetchAndCache(today)
         }
 
-        // Filter to next 24h from now
+        // Filter to next ~24h, including the current hour's slot (clamping handles partial usage)
         val now = ZonedDateTime.now(zoneId)
+        val currentHour = now.truncatedTo(ChronoUnit.HOURS)
         val end = now.plusHours(24)
-        return allPrices.filter { it.time >= now.minusMinutes(30) && it.time < end }
+        return allPrices.filter { it.time >= currentHour && it.time < end }
     }
 
     /**

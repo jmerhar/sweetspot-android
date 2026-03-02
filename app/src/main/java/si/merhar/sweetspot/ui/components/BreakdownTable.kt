@@ -94,7 +94,7 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                                 )
                                 if (slot.fraction < 1.0) {
                                     Text(
-                                        text = "${(slot.fraction * 100).toInt()}% of hour",
+                                        text = "${Math.round(slot.fraction * 60)} min",
                                         style = MaterialTheme.typography.bodySmall,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )

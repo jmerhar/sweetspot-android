@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -51,20 +52,24 @@ fun PriceBarChart(
     result: WindowResult?,
     modifier: Modifier = Modifier
 ) {
-    val optimalTimes = result?.breakdown?.map { it.time.toEpochSecond() }?.toSet() ?: emptySet()
+    val optimalTimes = remember(result) {
+        result?.breakdown?.map { it.time.toEpochSecond() }?.toSet() ?: emptySet()
+    }
     val barNormalColor = LocalBarNormalColor.current
     val barOptimalColor = LocalBarOptimalColor.current
     val barNegativeColor = LocalBarNegativeColor.current
     val highlightColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f)
     val trackColor = MaterialTheme.colorScheme.surfaceVariant
 
-    val minPrice = prices.minOfOrNull { it.price } ?: 0.0
-    val maxPrice = prices.maxOfOrNull { it.price } ?: 1.0
+    val minPrice = remember(prices) { prices.minOfOrNull { it.price } ?: 0.0 }
+    val maxPrice = remember(prices) { prices.maxOfOrNull { it.price } ?: 1.0 }
     val hasNegative = minPrice < 0
     // Where zero falls within the min–max range (0 = left edge, 1 = right edge)
-    val zeroFraction = if (hasNegative && maxPrice > minPrice) {
-        ((0.0 - minPrice) / (maxPrice - minPrice)).toFloat().coerceIn(0.01f, 0.99f)
-    } else 0f
+    val zeroFraction = remember(minPrice, maxPrice) {
+        if (minPrice < 0 && maxPrice > minPrice) {
+            ((0.0 - minPrice) / (maxPrice - minPrice)).toFloat().coerceIn(0.01f, 0.99f)
+        } else 0f
+    }
 
     Column(modifier = modifier.fillMaxWidth()) {
         prices.forEach { price ->

@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 28. `PriceBarChart` computations not `remember`ed
-
-`app/.../PriceBarChart.kt:52-65` — `optimalTimes` set, `minPrice`, `maxPrice` are recomputed on every recomposition. Wrap in `remember(result, prices)`.
-
 ### 29. Duplicate `timeFormatter` across 3 files
 
 `ResultSummary.kt`, `BreakdownTable.kt`, `PriceBarChart.kt` all declare `private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)`. Extract to shared constant.

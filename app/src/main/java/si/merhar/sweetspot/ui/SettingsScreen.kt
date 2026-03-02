@@ -1,27 +1,40 @@
 package si.merhar.sweetspot.ui
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -32,7 +45,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import si.merhar.sweetspot.model.Appliance
+import si.merhar.sweetspot.model.applianceIconFor
+import si.merhar.sweetspot.model.applianceIcons
 import java.time.ZoneId
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,10 +58,16 @@ fun SettingsScreen(
     currentZoneId: ZoneId,
     isUsingDefaultZone: Boolean,
     onZoneSelected: (ZoneId?) -> Unit,
+    appliances: List<Appliance>,
+    onAddAppliance: (name: String, duration: String, icon: String) -> Unit,
+    onUpdateAppliance: (Appliance) -> Unit,
+    onDeleteAppliance: (id: String) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var showTimezonePicker by rememberSaveable { mutableStateOf(false) }
+    var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
+    var showAddDialog by rememberSaveable { mutableStateOf(false) }
 
     if (showTimezonePicker) {
         TimezonePickerScreen(
@@ -57,6 +80,33 @@ fun SettingsScreen(
             onBack = { showTimezonePicker = false }
         )
         return
+    }
+
+    if (showAddDialog) {
+        ApplianceDialog(
+            appliance = null,
+            onSave = { name, duration, icon ->
+                onAddAppliance(name, duration, icon)
+                showAddDialog = false
+            },
+            onDelete = null,
+            onDismiss = { showAddDialog = false }
+        )
+    }
+
+    editingAppliance?.let { appliance ->
+        ApplianceDialog(
+            appliance = appliance,
+            onSave = { name, duration, icon ->
+                onUpdateAppliance(appliance.copy(name = name, duration = duration, icon = icon))
+                editingAppliance = null
+            },
+            onDelete = {
+                onDeleteAppliance(appliance.id)
+                editingAppliance = null
+            },
+            onDismiss = { editingAppliance = null }
+        )
     }
 
     Scaffold(
@@ -83,6 +133,7 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
         ) {
             // Timezone section
             Text(
@@ -113,8 +164,164 @@ fun SettingsScreen(
             }
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            // Appliances section
+            Text(
+                text = "Appliances",
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+            )
+
+            appliances.forEach { appliance ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { editingAppliance = appliance }
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = applianceIconFor(appliance.icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(24.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = appliance.name,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Text(
+                            text = appliance.duration,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { showAddDialog = true }
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = "Add appliance",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
         }
     }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ApplianceDialog(
+    appliance: Appliance?,
+    onSave: (name: String, duration: String, icon: String) -> Unit,
+    onDelete: (() -> Unit)?,
+    onDismiss: () -> Unit
+) {
+    var name by rememberSaveable { mutableStateOf(appliance?.name ?: "") }
+    var duration by rememberSaveable { mutableStateOf(appliance?.duration ?: "") }
+    var selectedIcon by rememberSaveable { mutableStateOf(appliance?.icon ?: "bolt") }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(if (appliance == null) "Add appliance" else "Edit appliance") },
+        text = {
+            Column {
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Name") },
+                    placeholder = { Text("e.g. Washing machine") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = duration,
+                    onValueChange = { duration = it },
+                    label = { Text("Duration") },
+                    placeholder = { Text("e.g. 2h 30m") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = "Icon",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    applianceIcons.forEach { entry ->
+                        val isSelected = entry.id == selectedIcon
+                        val shape = RoundedCornerShape(8.dp)
+                        Box(
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(shape)
+                                .then(
+                                    if (isSelected) Modifier.border(
+                                        2.dp,
+                                        MaterialTheme.colorScheme.primary,
+                                        shape
+                                    ) else Modifier
+                                )
+                                .clickable { selectedIcon = entry.id },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = entry.icon,
+                                contentDescription = entry.label,
+                                modifier = Modifier.size(22.dp),
+                                tint = if (isSelected) MaterialTheme.colorScheme.primary
+                                       else MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(
+                onClick = { onSave(name.trim(), duration.trim(), selectedIcon) },
+                enabled = name.isNotBlank() && duration.isNotBlank()
+            ) {
+                Text("Save")
+            }
+        },
+        dismissButton = {
+            if (onDelete != null) {
+                TextButton(onClick = onDelete) {
+                    Text("Delete", color = MaterialTheme.colorScheme.error)
+                }
+            } else {
+                TextButton(onClick = onDismiss) {
+                    Text("Cancel")
+                }
+            }
+        }
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -27,6 +27,10 @@ class MainActivity : ComponentActivity() {
                         currentZoneId = state.zoneId,
                         isUsingDefaultZone = state.isUsingDefaultZone,
                         onZoneSelected = vm::onZoneSelected,
+                        appliances = state.appliances,
+                        onAddAppliance = vm::onAddAppliance,
+                        onUpdateAppliance = vm::onUpdateAppliance,
+                        onDeleteAppliance = vm::onDeleteAppliance,
                         onBack = vm::onHideSettings
                     )
                 } else {

@@ -1,8 +1,6 @@
 package si.merhar.sweetspot.ui
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInVertically
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -32,17 +31,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.SweetSpotViewModel
-import si.merhar.sweetspot.model.HourlyPrice
-import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.ui.components.BreakdownTable
 import si.merhar.sweetspot.ui.components.DurationInput
 import si.merhar.sweetspot.ui.components.ErrorBox
@@ -54,8 +49,12 @@ import si.merhar.sweetspot.ui.components.ResultSummary
 fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier) {
     val state by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
+    val hasResults = state.result != null
 
-    // Show API/network errors as Snackbar
+    BackHandler(enabled = hasResults) {
+        viewModel.onClearResult()
+    }
+
     LaunchedEffect(state.error) {
         val error = state.error
         if (error != null && !isValidationError(error)) {
@@ -63,13 +62,33 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
         }
     }
 
-    // Cache last successful result so AnimatedVisibility exit animation has content
-    var cachedResult by remember { mutableStateOf<WindowResult?>(null) }
-    var cachedPrices by remember { mutableStateOf<List<HourlyPrice>>(emptyList()) }
-    if (state.result != null) {
-        cachedResult = state.result
-        cachedPrices = state.allPrices
+    if (hasResults) {
+        ResultScreen(
+            result = state.result!!,
+            allPrices = state.allPrices,
+            resultLabel = state.resultLabel ?: state.durationInput,
+            zoneId = state.zoneId,
+            onBack = viewModel::onClearResult,
+            snackbarHostState = snackbarHostState,
+            modifier = modifier
+        )
+    } else {
+        FormScreen(
+            viewModel = viewModel,
+            snackbarHostState = snackbarHostState,
+            modifier = modifier
+        )
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun FormScreen(
+    viewModel: SweetSpotViewModel,
+    snackbarHostState: SnackbarHostState,
+    modifier: Modifier = Modifier
+) {
+    val state by viewModel.uiState.collectAsState()
 
     Scaffold(
         modifier = modifier,
@@ -113,6 +132,10 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
                 value = state.durationInput,
                 onValueChange = viewModel::onDurationChanged,
                 onFind = viewModel::onFindClicked,
+                onQuickDuration = viewModel::onQuickDuration,
+                appliances = state.appliances,
+                onApplianceTap = viewModel::onApplianceDuration,
+                onAddAppliancesTap = viewModel::onShowSettings,
                 isLoading = state.isLoading
             )
 
@@ -124,61 +147,91 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
                 )
             }
 
-            // Validation errors shown inline
             state.error?.let { error ->
                 if (isValidationError(error)) {
                     Spacer(modifier = Modifier.height(12.dp))
                     ErrorBox(message = error)
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ResultScreen(
+    result: si.merhar.sweetspot.model.WindowResult,
+    allPrices: List<si.merhar.sweetspot.model.HourlyPrice>,
+    resultLabel: String,
+    zoneId: java.time.ZoneId,
+    onBack: () -> Unit,
+    snackbarHostState: SnackbarHostState,
+    modifier: Modifier = Modifier
+) {
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(resultLabel) },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
+                )
+            )
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp)
+        ) {
+            Text(
+                text = "Cheapest Window",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+
+            ResultSummary(result = result, zoneId = zoneId)
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            AnimatedVisibility(
-                visible = state.result != null,
-                enter = fadeIn() + slideInVertically { it / 4 },
-            ) {
-                cachedResult?.let { result ->
-                    Column {
-                        Text(
-                            text = "Cheapest Window",
-                            style = MaterialTheme.typography.titleLarge,
-                            modifier = Modifier.padding(bottom = 12.dp)
-                        )
+            BreakdownTable(breakdown = result.breakdown)
 
-                        ResultSummary(result = result, zoneId = state.zoneId)
+            if (allPrices.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(16.dp))
 
-                        Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Next 24 Hours",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
 
-                        BreakdownTable(breakdown = result.breakdown)
-
-                        if (cachedPrices.isNotEmpty()) {
-                            Spacer(modifier = Modifier.height(16.dp))
-
-                            Text(
-                                text = "Next 24 Hours",
-                                style = MaterialTheme.typography.titleMedium,
-                                modifier = Modifier.padding(bottom = 8.dp)
-                            )
-
-                            PriceBarChart(
-                                prices = cachedPrices,
-                                result = result
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(12.dp))
-
-                        Text(
-                            text = "Costs shown are per 1 kW load. Prices do not include energy tax and supplier fee.",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-
-                        Spacer(modifier = Modifier.height(16.dp))
-                    }
-                }
+                PriceBarChart(
+                    prices = allPrices,
+                    result = result
+                )
             }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Text(
+                text = "Costs shown are per 1 kW load. Prices do not include energy tax and supplier fee.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

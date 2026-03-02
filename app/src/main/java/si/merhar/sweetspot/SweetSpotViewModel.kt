@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.data.SettingsRepository
+import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.BreakdownSlot
 import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.ZoneId
+import java.util.UUID
 import kotlin.math.floor
 
 data class UiState(
@@ -23,10 +25,12 @@ data class UiState(
     val isLoading: Boolean = false,
     val error: String? = null,
     val result: WindowResult? = null,
+    val resultLabel: String? = null,
     val allPrices: List<HourlyPrice> = emptyList(),
     val showSettings: Boolean = false,
     val zoneId: ZoneId = ZoneId.systemDefault(),
-    val isUsingDefaultZone: Boolean = true
+    val isUsingDefaultZone: Boolean = true,
+    val appliances: List<Appliance> = emptyList()
 )
 
 class SweetSpotViewModel(application: Application) : AndroidViewModel(application) {
@@ -37,7 +41,8 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
     private val _uiState = MutableStateFlow(
         UiState(
             zoneId = settingsRepository.getZoneId(),
-            isUsingDefaultZone = settingsRepository.isUsingDefaultZone()
+            isUsingDefaultZone = settingsRepository.isUsingDefaultZone(),
+            appliances = settingsRepository.getAppliances()
         )
     )
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
@@ -51,7 +56,10 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     fun onHideSettings() {
-        _uiState.value = _uiState.value.copy(showSettings = false)
+        _uiState.value = _uiState.value.copy(
+            showSettings = false,
+            appliances = settingsRepository.getAppliances()
+        )
     }
 
     fun onZoneSelected(zoneId: ZoneId?) {
@@ -70,6 +78,54 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    fun onQuickDuration(duration: String) {
+        _uiState.value = _uiState.value.copy(durationInput = duration, resultLabel = duration)
+        onFindClicked()
+    }
+
+    fun onApplianceDuration(appliance: Appliance) {
+        _uiState.value = _uiState.value.copy(
+            durationInput = appliance.duration,
+            resultLabel = "${appliance.name} \u00b7 ${appliance.duration}"
+        )
+        onFindClicked()
+    }
+
+    fun onClearResult() {
+        _uiState.value = _uiState.value.copy(
+            result = null,
+            resultLabel = null,
+            allPrices = emptyList(),
+            error = null
+        )
+    }
+
+    fun onAddAppliance(name: String, duration: String, icon: String) {
+        val appliance = Appliance(
+            id = UUID.randomUUID().toString(),
+            name = name,
+            duration = duration,
+            icon = icon
+        )
+        val updated = _uiState.value.appliances + appliance
+        settingsRepository.setAppliances(updated)
+        _uiState.value = _uiState.value.copy(appliances = updated)
+    }
+
+    fun onUpdateAppliance(appliance: Appliance) {
+        val updated = _uiState.value.appliances.map {
+            if (it.id == appliance.id) appliance else it
+        }
+        settingsRepository.setAppliances(updated)
+        _uiState.value = _uiState.value.copy(appliances = updated)
+    }
+
+    fun onDeleteAppliance(id: String) {
+        val updated = _uiState.value.appliances.filter { it.id != id }
+        settingsRepository.setAppliances(updated)
+        _uiState.value = _uiState.value.copy(appliances = updated)
+    }
+
     fun onFindClicked() {
         val input = _uiState.value.durationInput
         val durationHours = parseDuration(input)
@@ -83,7 +139,12 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
             return
         }
 
-        _uiState.value = _uiState.value.copy(isLoading = true, error = null, result = null)
+        _uiState.value = _uiState.value.copy(
+            isLoading = true,
+            error = null,
+            result = null,
+            resultLabel = _uiState.value.resultLabel ?: input
+        )
 
         viewModelScope.launch(Dispatchers.IO) {
             try {

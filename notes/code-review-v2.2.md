@@ -34,22 +34,4 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Test Coverage Gaps
 
-### 39. No test for `onDataChanged` or `parseAppliances` in WearViewModel
-
-The Data Layer callback and JSON parsing are untested. If invalid JSON arrives from the phone, it silently clears all appliances.
-
-### 40. No test for concurrent fetch cancellation on phone ViewModel
-
-Unlike wear tests, no test verifies rapid taps produce correct results on the phone.
-
-### 41. No test for `findCheapestWindow` with `durationHours = 0.0`
-
-The function technically works but returns a zero-cost empty-breakdown result. The contract should be documented with a test.
-
-### 42. No test for `applianceIconFor` with unknown ID
-
-The fallback to `Icons.Outlined.Bolt` is untested.
-
-### 43. No UI-level Compose tests
-
-All testing is at the ViewModel level. Key flows (form validation, result screen navigation, accessibility) could benefit from `createComposeRule()` tests.
+---

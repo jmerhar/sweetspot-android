@@ -387,4 +387,17 @@ class SweetSpotViewModelTest {
         assertNotNull(state.result)
         assertEquals("Washer \u00b7 2h", state.resultLabel)
     }
+
+    @Test
+    fun `rapid onQuickDuration taps cancel previous fetch and keep last result`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onQuickDuration(1, 0)
+        viewModel.onQuickDuration(3, 0)
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertEquals("3h", state.resultLabel)
+        assertNotNull(state.result)
+    }
 }

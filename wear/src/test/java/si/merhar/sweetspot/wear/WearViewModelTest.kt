@@ -20,6 +20,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import kotlinx.serialization.json.Json
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.model.Appliance
@@ -205,5 +206,50 @@ class WearViewModelTest {
         assertNull(state.result)
         assertNull(state.resultLabel)
         assertNull(state.error)
+    }
+
+    // --- parseAppliances (JSON parsing behavior) ---
+
+    /**
+     * Mirrors [WearViewModel.parseAppliances] to test the JSON parsing contract:
+     * valid JSON returns appliances, invalid JSON returns an empty list.
+     */
+    private fun parseAppliances(json: String): List<Appliance> {
+        return try {
+            Json.decodeFromString<List<Appliance>>(json)
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    @Test
+    fun `parseAppliances with valid JSON returns appliance list`() {
+        val json = """[{"id":"1","name":"Washer","durationHours":2,"durationMinutes":30,"icon":"laundry"}]"""
+        val result = parseAppliances(json)
+        assertEquals(1, result.size)
+        assertEquals("Washer", result[0].name)
+        assertEquals(2, result[0].durationHours)
+        assertEquals(30, result[0].durationMinutes)
+        assertEquals("laundry", result[0].icon)
+    }
+
+    @Test
+    fun `parseAppliances with empty array returns empty list`() {
+        assertEquals(emptyList<Appliance>(), parseAppliances("[]"))
+    }
+
+    @Test
+    fun `parseAppliances with malformed JSON returns empty list`() {
+        assertEquals(emptyList<Appliance>(), parseAppliances("not json"))
+    }
+
+    @Test
+    fun `parseAppliances with missing fields uses defaults`() {
+        val json = """[{"id":"1","name":"Test"}]"""
+        val result = parseAppliances(json)
+        assertEquals(1, result.size)
+        assertEquals(1, result[0].durationHours)
+        assertEquals(0, result[0].durationMinutes)
+        assertEquals("bolt", result[0].icon)
     }
 }

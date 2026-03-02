@@ -3,6 +3,7 @@ package si.merhar.sweetspot.util
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import si.merhar.sweetspot.model.HourlyPrice
 import java.time.ZoneId
@@ -39,6 +40,17 @@ class CheapestWindowFinderTest {
     fun `returns null when not enough data for fractional duration`() {
         val prices = pricesAt(10, 0.10) // 1 hour of data
         assertNull(findCheapestWindow(prices, 1.5, earlyNow)) // needs 2 slots
+    }
+
+    @Test
+    fun `zero duration returns zero-cost result with empty breakdown`() {
+        val prices = pricesAt(10, 0.10, 0.20, 0.30)
+        val result = findCheapestWindow(prices, 0.0, earlyNow)
+
+        assertNotNull(result)
+        assertEquals(0.0, result!!.totalCost, 0.0001)
+        assertEquals(0.0, result.avgPrice, 0.0001)
+        assertTrue(result.breakdown.isEmpty())
     }
 
     // --- Exact whole-hour durations ---

@@ -98,7 +98,7 @@ class WearViewModel @JvmOverloads constructor(
                     val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
                     val json = dataMap.getString("json") ?: continue
                     val appliances = parseAppliances(json)
-                    _uiState.value = _uiState.value.copy(appliances = appliances)
+                    _uiState.update { it.copy(appliances = appliances) }
                 }
             }
         } finally {
@@ -144,12 +144,9 @@ class WearViewModel @JvmOverloads constructor(
         val label = "${appliance.name} \u00b7 ${formatDuration(h, m)}"
 
         fetchJob?.cancel()
-        _uiState.value = _uiState.value.copy(
-            isLoading = true,
-            error = null,
-            result = null,
-            resultLabel = label
-        )
+        _uiState.update {
+            it.copy(isLoading = true, error = null, result = null, resultLabel = label)
+        }
 
         val zoneId = _uiState.value.zoneId
         fetchJob = viewModelScope.launch(ioDispatcher) {
@@ -200,11 +197,7 @@ class WearViewModel @JvmOverloads constructor(
 
     /** Clears the current result to return to the appliance list. */
     fun onClearResult() {
-        _uiState.value = _uiState.value.copy(
-            result = null,
-            resultLabel = null,
-            error = null
-        )
+        _uiState.update { it.copy(result = null, resultLabel = null, error = null) }
     }
 
     /**

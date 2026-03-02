@@ -99,21 +99,18 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param minutes Minutes component (0–55, in 5-minute steps).
      */
     fun onDurationChanged(hours: Int, minutes: Int) {
-        _uiState.value = _uiState.value.copy(durationHours = hours, durationMinutes = minutes)
+        _uiState.update { it.copy(durationHours = hours, durationMinutes = minutes) }
     }
 
     /** Opens the settings screen. */
     fun onShowSettings() {
-        _uiState.value = _uiState.value.copy(showSettings = true)
+        _uiState.update { it.copy(showSettings = true) }
     }
 
     /** Closes the settings screen and refreshes the appliance list from storage. */
     fun onHideSettings() {
         val appliances = settingsRepository.getAppliances()
-        _uiState.value = _uiState.value.copy(
-            showSettings = false,
-            appliances = appliances
-        )
+        _uiState.update { it.copy(showSettings = false, appliances = appliances) }
         syncAppliancesToWear(appliances)
     }
 
@@ -125,16 +122,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onZoneSelected(zoneId: ZoneId?) {
         if (zoneId == null) {
             settingsRepository.clearZoneId()
-            _uiState.value = _uiState.value.copy(
-                zoneId = settingsRepository.getZoneId(),
-                isUsingDefaultZone = true
-            )
+            _uiState.update {
+                it.copy(zoneId = settingsRepository.getZoneId(), isUsingDefaultZone = true)
+            }
         } else {
             settingsRepository.setZoneId(zoneId)
-            _uiState.value = _uiState.value.copy(
-                zoneId = zoneId,
-                isUsingDefaultZone = false
-            )
+            _uiState.update { it.copy(zoneId = zoneId, isUsingDefaultZone = false) }
         }
     }
 
@@ -145,11 +138,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param minutes Minutes component of the quick duration.
      */
     fun onQuickDuration(hours: Int, minutes: Int) {
-        _uiState.value = _uiState.value.copy(
-            durationHours = hours,
-            durationMinutes = minutes,
-            resultLabel = formatDuration(hours, minutes)
-        )
+        _uiState.update {
+            it.copy(
+                durationHours = hours,
+                durationMinutes = minutes,
+                resultLabel = formatDuration(hours, minutes)
+            )
+        }
         onFindClicked()
     }
 
@@ -161,22 +156,21 @@ class SweetSpotViewModel @JvmOverloads constructor(
      */
     fun onApplianceDuration(appliance: Appliance) {
         val label = "${appliance.name} \u00b7 ${formatDuration(appliance.durationHours, appliance.durationMinutes)}"
-        _uiState.value = _uiState.value.copy(
-            durationHours = appliance.durationHours,
-            durationMinutes = appliance.durationMinutes,
-            resultLabel = label
-        )
+        _uiState.update {
+            it.copy(
+                durationHours = appliance.durationHours,
+                durationMinutes = appliance.durationMinutes,
+                resultLabel = label
+            )
+        }
         onFindClicked()
     }
 
     /** Clears the current result and returns to the form screen. */
     fun onClearResult() {
-        _uiState.value = _uiState.value.copy(
-            result = null,
-            resultLabel = null,
-            allPrices = emptyList(),
-            error = null
-        )
+        _uiState.update {
+            it.copy(result = null, resultLabel = null, allPrices = emptyList(), error = null)
+        }
     }
 
     /**
@@ -197,7 +191,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         )
         val updated = _uiState.value.appliances + appliance
         settingsRepository.setAppliances(updated)
-        _uiState.value = _uiState.value.copy(appliances = updated)
+        _uiState.update { it.copy(appliances = updated) }
         syncAppliancesToWear(updated)
     }
 
@@ -211,7 +205,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             if (it.id == appliance.id) appliance else it
         }
         settingsRepository.setAppliances(updated)
-        _uiState.value = _uiState.value.copy(appliances = updated)
+        _uiState.update { it.copy(appliances = updated) }
         syncAppliancesToWear(updated)
     }
 
@@ -223,7 +217,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onDeleteAppliance(id: String) {
         val updated = _uiState.value.appliances.filter { it.id != id }
         settingsRepository.setAppliances(updated)
-        _uiState.value = _uiState.value.copy(appliances = updated)
+        _uiState.update { it.copy(appliances = updated) }
         syncAppliancesToWear(updated)
     }
 
@@ -260,23 +254,27 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val m = _uiState.value.durationMinutes
 
         if (h == 0 && m == 0) {
-            _uiState.value = _uiState.value.copy(
-                error = "Please select a duration greater than zero.",
-                result = null,
-                allPrices = emptyList()
-            )
+            _uiState.update {
+                it.copy(
+                    error = "Please select a duration greater than zero.",
+                    result = null,
+                    allPrices = emptyList()
+                )
+            }
             return
         }
 
         val durationHours = h + m / 60.0
         val durationLabel = formatDuration(h, m)
 
-        _uiState.value = _uiState.value.copy(
-            isLoading = true,
-            error = null,
-            result = null,
-            resultLabel = _uiState.value.resultLabel ?: durationLabel
-        )
+        _uiState.update {
+            it.copy(
+                isLoading = true,
+                error = null,
+                result = null,
+                resultLabel = it.resultLabel ?: durationLabel
+            )
+        }
 
         val zoneId = _uiState.value.zoneId
         fetchJob?.cancel()

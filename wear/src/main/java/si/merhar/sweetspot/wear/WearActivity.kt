@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
@@ -25,7 +25,7 @@ class WearActivity : ComponentActivity() {
         setContent {
             WearTheme {
                 val wearViewModel: WearViewModel = viewModel()
-                val state by wearViewModel.uiState.collectAsState()
+                val state by wearViewModel.uiState.collectAsStateWithLifecycle()
                 val navController = rememberSwipeDismissableNavController()
 
                 SwipeDismissableNavHost(

@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 16. Missing `testOptions` in wear module
-
-`wear/build.gradle.kts` is missing `testOptions { unitTests.isIncludeAndroidResources = true }` needed for Robolectric tests. The app module has it, wear doesn't.
-
 ### 17. `collectAsState()` instead of `collectAsStateWithLifecycle()` on Wear
 
 `wear/src/main/java/si/merhar/sweetspot/wear/WearActivity.kt:28` — On Wear OS, battery is critical. `collectAsState()` keeps collecting even when the activity is stopped. `collectAsStateWithLifecycle()` stops when the lifecycle drops below `STARTED`. Requires adding `lifecycle-runtime-compose` dependency.

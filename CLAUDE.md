@@ -4,15 +4,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices from the EnergyZero API. It's a port of a PHP web app.
+SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices from the EnergyZero API. It's a port of a PHP web app. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
 
 ## Build & Run
 
 ```bash
-./gradlew assembleDebug          # Build debug APK
-./gradlew installDebug           # Build and install on connected device/emulator
-./gradlew assembleRelease        # Build signed release APK
+./gradlew assembleDebug          # Build debug APKs (phone + wear)
+./gradlew app:installDebug       # Install phone app on connected device/emulator
+./gradlew wear:installDebug      # Install wear app on connected watch
+./gradlew assembleRelease        # Build signed release APKs
 ```
+
+### Installing the Wear OS app
+
+The watch app must be installed separately via ADB (auto-install only works via Play Store):
+
+1. Enable Developer Options on the watch (Settings > System > About > tap Build Number 7 times)
+2. Enable Wi-Fi debugging (Settings > Developer options > Debug over Wi-Fi)
+3. Connect: `adb connect <ip>:<port>`
+4. Install: `adb -s <watch-serial> install wear/build/outputs/apk/release/wear-release.apk`
+
+Use `adb devices` to list connected devices when both phone and watch are connected.
 
 ## Releasing
 
@@ -23,7 +35,7 @@ SweetSpot is an Android app that finds the cheapest contiguous time window for r
 
 The `-n` flag points to a Markdown file with release notes. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why.
 
-The script auto-increments `versionCode`, sets `versionName`, builds a signed release APK, commits, tags, pushes, and creates a GitHub Release with the APK attached.
+The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs, commits, tags, pushes, and creates a GitHub Release with both APKs attached.
 
 Release signing is configured via `local.properties` (gitignored):
 ```
@@ -40,30 +52,40 @@ RELEASE_KEY_PASSWORD=...
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
-Tests live in `app/src/test/java/si/merhar/sweetspot/` and cover:
-- `util/CheapestWindowFinderTest` — sliding window algorithm (12 tests)
-- `util/TimeUtilsTest` — relative time formatting (7 tests)
-- `util/FormatUtilsTest` — duration formatting (8 tests)
-- `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone (22 tests, Robolectric)
+Tests live in `shared/src/test/java/si/merhar/sweetspot/` and `app/src/test/java/si/merhar/sweetspot/`:
+- `util/CheapestWindowFinderTest` — sliding window algorithm (12 tests, in shared)
+- `util/TimeUtilsTest` — relative time formatting (7 tests, in shared)
+- `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
+- `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone (22 tests, Robolectric, in app)
 
 ## Stack
 
-- Kotlin 2.1, minSdk 26, targetSdk/compileSdk 35
+- Kotlin 2.1, minSdk 26 (phone) / 30 (wear), targetSdk/compileSdk 35
 - Jetpack Compose with Material 3 (dynamic color on SDK 31+)
-- MVVM: single `SweetSpotViewModel` with `StateFlow<UiState>`
+- Wear Compose with Material for the watch app
+- MVVM: `SweetSpotViewModel` (phone) and `WearViewModel` (watch) with `StateFlow`
 - OkHttp for HTTP, kotlinx-serialization for JSON
+- Wearable Data Layer API for phone-to-watch appliance sync
 - Material Icons Extended for appliance icon picker
 - JUnit 4 + Robolectric for unit tests
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 
 ## Architecture
 
-All source lives under `app/src/main/java/si/merhar/sweetspot/`.
+Three Gradle modules:
 
-**Data flow:** Duration picker (hours + minutes) → `PriceRepository` (cache or API) → `findCheapestWindow()` sliding window → `UiState` update → Compose UI reacts.
+- **`:shared`** — Android Library (`si.merhar.sweetspot.shared`). Data, model, and util layers used by both phone and watch. Source: `shared/src/main/java/si/merhar/sweetspot/`.
+- **`:app`** — Phone app (`si.merhar.sweetspot`). UI, ViewModel, and Data Layer push. Source: `app/src/main/java/si/merhar/sweetspot/`.
+- **`:wear`** — Wear OS app (`si.merhar.sweetspot.wear`). Watch UI, ViewModel, and Data Layer read. Source: `wear/src/main/java/si/merhar/sweetspot/wear/`.
 
-### Key layers
+**Data flow (phone):** Duration picker (hours + minutes) → `PriceRepository` (cache or API) → `findCheapestWindow()` sliding window → `UiState` update → Compose UI reacts.
+
+**Data flow (watch):** Data Layer listener → appliance list → user taps chip → `PriceRepository` → `findCheapestWindow()` → `WearUiState` → Wear Compose UI.
+
+**Appliance sync:** Phone pushes appliance JSON to `/appliances` path via `PutDataMapRequest` after every CRUD operation. Watch reads on init and listens for live updates via `DataClient.OnDataChangedListener`.
+
+### Shared module (`:shared`)
 
 - **`data/EnergyZeroApi`** — Singleton. Fetches hourly prices from `api.energyzero.nl` for today+tomorrow. Takes `ZoneId` to compute date boundaries.
 - **`data/PriceCache`** — Stores raw JSON in `cacheDir/prices_cache.json`. Freshness date in SharedPreferences `sweetspot_cache`.
@@ -74,9 +96,20 @@ All source lives under `app/src/main/java/si/merhar/sweetspot/`.
 - **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Supports fractional hours (e.g. 2h30m = 2.5h with a partial last slot). Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
 - **`util/FormatUtils`** — `formatDuration()` helper shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.
-- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`.
 
-### Navigation
+### Phone app (`:app`)
+
+- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`. Pushes appliances to Wearable Data Layer after every CRUD operation via `syncAppliancesToWear()`.
+
+### Wear app (`:wear`)
+
+- **`WearViewModel`** — Reads appliances from Data Layer on init, listens for live updates. On appliance tap, fetches prices via `PriceRepository` and runs `findCheapestWindow()`. Prices are cached locally on the watch.
+- **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`.
+- **`ui/ApplianceListScreen`** — `ScalingLazyColumn` with `TimeText`, header, appliance `Chip`s (icon + name + duration), empty state, loading overlay.
+- **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display. Scrollable for long labels on round watch faces.
+- **`ui/WearTheme`** — Wear Material theme wrapper.
+
+### Phone navigation
 
 State-based in `MainActivity`, no navigation library:
 - `UiState.showSettings` toggles between `SweetSpotScreen` and `SettingsScreen`

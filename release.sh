@@ -13,7 +13,7 @@ sedi() {
     if sed --version >/dev/null 2>&1; then
         sed -i "$@"
     else
-        sedi "$@"
+        sed -i '' "$@"
     fi
 }
 

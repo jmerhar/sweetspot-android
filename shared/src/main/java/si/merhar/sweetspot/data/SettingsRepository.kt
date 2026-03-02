@@ -24,11 +24,16 @@ class SettingsRepository(context: Context) {
     }
 
     /**
-     * Returns the user's configured timezone, or the system default if none is set.
+     * Returns the user's configured timezone, or the system default if none is set
+     * or if the stored value is invalid.
      */
     fun getZoneId(): ZoneId {
-        val stored = prefs.getString(KEY_ZONE_ID, null)
-        return if (stored != null) ZoneId.of(stored) else ZoneId.systemDefault()
+        val stored = prefs.getString(KEY_ZONE_ID, null) ?: return ZoneId.systemDefault()
+        return try {
+            ZoneId.of(stored)
+        } catch (_: Exception) {
+            ZoneId.systemDefault()
+        }
     }
 
     /**

@@ -2,17 +2,6 @@
 
 Comprehensive review of the entire project: all three modules, tests, documentation, and build configuration.
 
-## Security / Robustness
-
-**8. `syncAppliancesToWear` can crash** — `SweetSpotViewModel.kt`
-Called directly on the main thread with no try-catch. If Google Play Services is unavailable or outdated, it throws synchronously and crashes the app.
-
-**9. `ZoneId.of()` can crash on corrupted prefs** — `shared/.../SettingsRepository.kt`
-`getZoneId()` reads a string from SharedPreferences and passes it to `ZoneId.of()` with no try-catch. A corrupted value crashes the app on startup.
-
-**10. Signing config NPE** — `app/build.gradle.kts`, `wear/build.gradle.kts`
-If `local.properties` exists but is missing a key, `getProperty()` returns null, passed to `rootProject.file(null)` → NPE at configuration time, breaking all builds including debug.
-
 ## Thread Safety / Race Conditions
 
 **12. No fetch cancellation on watch** — `WearViewModel.kt` / `WearActivity.kt`

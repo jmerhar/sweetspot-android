@@ -215,15 +215,22 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
      * Pushes the current appliance list to the Wearable Data Layer so
      * the Wear OS companion app receives it.
      *
+     * Silently ignores failures (e.g. Play Services unavailable) since
+     * watch sync is best-effort and should never crash the phone app.
+     *
      * @param appliances The appliance list to sync.
      */
     private fun syncAppliancesToWear(appliances: List<Appliance>) {
-        val json = Json.encodeToString(appliances)
-        val request = PutDataMapRequest.create("/appliances").apply {
-            dataMap.putString("json", json)
-            dataMap.putLong("ts", System.currentTimeMillis())
-        }.asPutDataRequest().setUrgent()
-        Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
+        try {
+            val json = Json.encodeToString(appliances)
+            val request = PutDataMapRequest.create("/appliances").apply {
+                dataMap.putString("json", json)
+                dataMap.putLong("ts", System.currentTimeMillis())
+            }.asPutDataRequest().setUrgent()
+            Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
+        } catch (_: Exception) {
+            // Best-effort: watch sync should not crash the phone app
+        }
     }
 
     /**

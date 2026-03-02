@@ -25,10 +25,13 @@ android {
             val props = rootProject.file("local.properties")
             if (props.exists()) {
                 val localProps = Properties().apply { load(props.inputStream()) }
-                storeFile = rootProject.file(localProps.getProperty("RELEASE_STORE_FILE"))
-                storePassword = localProps.getProperty("RELEASE_STORE_PASSWORD")
-                keyAlias = localProps.getProperty("RELEASE_KEY_ALIAS")
-                keyPassword = localProps.getProperty("RELEASE_KEY_PASSWORD")
+                val storeFilePath = localProps.getProperty("RELEASE_STORE_FILE")
+                if (storeFilePath != null) {
+                    storeFile = rootProject.file(storeFilePath)
+                    storePassword = localProps.getProperty("RELEASE_STORE_PASSWORD")
+                    keyAlias = localProps.getProperty("RELEASE_KEY_ALIAS")
+                    keyPassword = localProps.getProperty("RELEASE_KEY_PASSWORD")
+                }
             }
         }
     }

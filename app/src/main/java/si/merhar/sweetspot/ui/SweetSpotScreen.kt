@@ -154,6 +154,17 @@ private fun FormScreen(
                     ErrorBox(message = error)
                 }
             }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                text = "SweetSpot finds the cheapest contiguous time window to run your appliance based on dynamic electricity prices. Pick a duration, and it scans the next 24 hours of hourly rates to find when your total cost is lowest.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

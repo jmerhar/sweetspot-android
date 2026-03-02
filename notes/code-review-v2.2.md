@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 13. Missing `enableOnBackInvokedCallback` for predictive back
-
-`app/src/main/AndroidManifest.xml` — For proper predictive back gesture support on Android 13+ (targeting SDK 35), add `android:enableOnBackInvokedCallback="true"`.
-
 ### 14. `release.sh` has no safety guards
 
 No dirty-tree check (`git diff --quiet`) before building, and no branch check to verify you're on `main`. Could accidentally release from a feature branch or with uncommitted changes.

@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 36. Missing `org.gradle.parallel=true`
-
-`gradle.properties` — With 3 modules, parallel builds would be faster. Also consider `org.gradle.caching=true` explicitly.
-
 ### 37. `@Suppress("UnstableApiUsage")` in settings.gradle.kts
 
 `settings.gradle.kts:8` — No longer needed since Gradle 8.x stabilized `dependencyResolutionManagement`.

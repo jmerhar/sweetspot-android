@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 26. `EnergyZeroPriceEntry` and `EnergyZeroResponse` should be `internal`
-
-`shared/.../EnergyZeroApi.kt:21-34` — These are API-internal DTOs that no module consumer should use. Mark them `internal`.
-
 ### 27. `Appliance` has no validation on duration fields
 
 `shared/.../Appliance.kt:17-23` — KDoc says `durationMinutes` should be 0-55 in 5-min steps, but nothing enforces this. Malformed Data Layer or SharedPreferences JSON could produce invalid values.

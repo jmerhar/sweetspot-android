@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
  * @property price Electricity price in EUR/kWh.
  */
 @Serializable
-data class EnergyZeroPriceEntry(
+internal data class EnergyZeroPriceEntry(
     val readingDate: String,
     val price: Double
 )
@@ -29,7 +29,7 @@ data class EnergyZeroPriceEntry(
  * @property Prices List of hourly price entries.
  */
 @Serializable
-data class EnergyZeroResponse(
+internal data class EnergyZeroResponse(
     val Prices: List<EnergyZeroPriceEntry>
 )
 

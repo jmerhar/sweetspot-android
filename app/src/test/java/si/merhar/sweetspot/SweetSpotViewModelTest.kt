@@ -2,7 +2,16 @@ package si.merhar.sweetspot
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -11,24 +20,70 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import si.merhar.sweetspot.data.PriceCache
+import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.model.Appliance
+import si.merhar.sweetspot.model.HourlyPrice
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [33])
 class SweetSpotViewModelTest {
 
-    private lateinit var viewModel: SweetSpotViewModel
+    private val testDispatcher = StandardTestDispatcher()
+    private lateinit var app: Application
+
+    /** In-memory [PriceCache] that never triggers re-fetch. */
+    private class FakeCache : PriceCache {
+        override fun isCooldownElapsed(cooldownMs: Long) = true
+        override fun readCachedJson(): String? = null
+        override fun write(json: String) {}
+    }
+
+    /** [PriceFetcher] that returns configurable prices or throws. */
+    private class FakeFetcher(private val prices: List<HourlyPrice>? = null) : PriceFetcher {
+        override fun fetchRawJson(zoneId: ZoneId): String = """{"Prices":[]}"""
+        override fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
+            return prices ?: throw RuntimeException("Network error")
+        }
+    }
+
+    /** Generates hourly prices starting from the current hour. */
+    private fun fakePrices(count: Int, basePrice: Double = 0.10): List<HourlyPrice> {
+        val base = ZonedDateTime.now().withMinute(0).withSecond(0).withNano(0)
+        return (0 until count).map { i ->
+            HourlyPrice(
+                time = base.plusHours(i.toLong()),
+                price = basePrice + i * 0.01
+            )
+        }
+    }
 
     @Before
     fun setUp() {
-        val app = ApplicationProvider.getApplicationContext<Application>()
-        viewModel = SweetSpotViewModel(app)
+        Dispatchers.setMain(testDispatcher)
+        app = ApplicationProvider.getApplicationContext()
     }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    /** Creates a ViewModel with default (real) dependencies for non-async tests. */
+    private fun defaultViewModel() = SweetSpotViewModel(app)
+
+    /** Creates a ViewModel with injected fakes and the test dispatcher. */
+    private fun testViewModel(fetcher: FakeFetcher) =
+        SweetSpotViewModel(app, fetcher, FakeCache(), testDispatcher)
 
     // --- Initial state ---
 
     @Test
     fun `initial state has default duration of 1h 0m`() {
+        val viewModel = defaultViewModel()
         val state = viewModel.uiState.value
         assertEquals(1, state.durationHours)
         assertEquals(0, state.durationMinutes)
@@ -36,29 +91,29 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `initial state is not loading`() {
-        val state = viewModel.uiState.value
-        assertEquals(false, state.isLoading)
+        assertEquals(false, defaultViewModel().uiState.value.isLoading)
     }
 
     @Test
     fun `initial state has no error`() {
-        assertNull(viewModel.uiState.value.error)
+        assertNull(defaultViewModel().uiState.value.error)
     }
 
     @Test
     fun `initial state has no result`() {
-        assertNull(viewModel.uiState.value.result)
+        assertNull(defaultViewModel().uiState.value.result)
     }
 
     @Test
     fun `initial state has settings hidden`() {
-        assertEquals(false, viewModel.uiState.value.showSettings)
+        assertEquals(false, defaultViewModel().uiState.value.showSettings)
     }
 
     // --- Duration changes ---
 
     @Test
     fun `onDurationChanged updates hours and minutes`() {
+        val viewModel = defaultViewModel()
         viewModel.onDurationChanged(3, 30)
         val state = viewModel.uiState.value
         assertEquals(3, state.durationHours)
@@ -67,6 +122,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onDurationChanged to zero`() {
+        val viewModel = defaultViewModel()
         viewModel.onDurationChanged(0, 0)
         val state = viewModel.uiState.value
         assertEquals(0, state.durationHours)
@@ -77,6 +133,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onQuickDuration sets duration and result label`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onQuickDuration(2, 0)
         val state = viewModel.uiState.value
         assertEquals(2, state.durationHours)
@@ -86,6 +143,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onQuickDuration with minutes sets correct label`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onQuickDuration(1, 30)
         assertEquals("1h 30m", viewModel.uiState.value.resultLabel)
     }
@@ -94,6 +152,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onApplianceDuration sets duration and label`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         val appliance = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 30, icon = "laundry")
         viewModel.onApplianceDuration(appliance)
         val state = viewModel.uiState.value
@@ -106,6 +165,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onFindClicked with zero duration sets error`() {
+        val viewModel = defaultViewModel()
         viewModel.onDurationChanged(0, 0)
         viewModel.onFindClicked()
         val state = viewModel.uiState.value
@@ -118,12 +178,14 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onShowSettings sets showSettings to true`() {
+        val viewModel = defaultViewModel()
         viewModel.onShowSettings()
         assertEquals(true, viewModel.uiState.value.showSettings)
     }
 
     @Test
     fun `onHideSettings sets showSettings to false`() {
+        val viewModel = defaultViewModel()
         viewModel.onShowSettings()
         viewModel.onHideSettings()
         assertEquals(false, viewModel.uiState.value.showSettings)
@@ -133,9 +195,8 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onClearResult clears result and related fields`() {
-        // Set some state first
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onQuickDuration(1, 0)
-        // Now clear
         viewModel.onClearResult()
         val state = viewModel.uiState.value
         assertNull(state.result)
@@ -148,6 +209,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onAddAppliance adds to list`() {
+        val viewModel = defaultViewModel()
         viewModel.onAddAppliance("Dryer", 1, 30, "dryer")
         val appliances = viewModel.uiState.value.appliances
         assertEquals(1, appliances.size)
@@ -159,6 +221,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onAddAppliance generates unique IDs`() {
+        val viewModel = defaultViewModel()
         viewModel.onAddAppliance("A", 1, 0, "bolt")
         viewModel.onAddAppliance("B", 2, 0, "bolt")
         val appliances = viewModel.uiState.value.appliances
@@ -168,6 +231,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onUpdateAppliance replaces matching appliance`() {
+        val viewModel = defaultViewModel()
         viewModel.onAddAppliance("Old", 1, 0, "bolt")
         val added = viewModel.uiState.value.appliances[0]
         val updated = added.copy(name = "New", durationHours = 3)
@@ -180,6 +244,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onDeleteAppliance removes by ID`() {
+        val viewModel = defaultViewModel()
         viewModel.onAddAppliance("A", 1, 0, "bolt")
         viewModel.onAddAppliance("B", 2, 0, "bolt")
         val idToDelete = viewModel.uiState.value.appliances[0].id
@@ -191,6 +256,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onDeleteAppliance with unknown ID does nothing`() {
+        val viewModel = defaultViewModel()
         viewModel.onAddAppliance("A", 1, 0, "bolt")
         viewModel.onDeleteAppliance("nonexistent")
         assertEquals(1, viewModel.uiState.value.appliances.size)
@@ -200,11 +266,12 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `initial state uses default timezone`() {
-        assertTrue(viewModel.uiState.value.isUsingDefaultZone)
+        assertTrue(defaultViewModel().uiState.value.isUsingDefaultZone)
     }
 
     @Test
     fun `onZoneSelected with null reverts to default`() {
+        val viewModel = defaultViewModel()
         viewModel.onZoneSelected(java.time.ZoneId.of("Asia/Tokyo"))
         assertEquals(false, viewModel.uiState.value.isUsingDefaultZone)
         viewModel.onZoneSelected(null)
@@ -213,6 +280,7 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `onZoneSelected sets custom timezone`() {
+        val viewModel = defaultViewModel()
         val tokyo = java.time.ZoneId.of("Asia/Tokyo")
         viewModel.onZoneSelected(tokyo)
         assertEquals(tokyo, viewModel.uiState.value.zoneId)
@@ -222,31 +290,97 @@ class SweetSpotViewModelTest {
     // --- Async fetch (coroutine) ---
 
     @Test
-    fun `onFindClicked sets isLoading immediately`() {
+    fun `onFindClicked with prices produces a result`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNull(state.error)
+        assertNotNull(state.result)
+        assertTrue(state.allPrices.isNotEmpty())
+    }
+
+    @Test
+    fun `onFindClicked with network error sets error message`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(prices = null))
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNotNull(state.error)
+        assertTrue(state.error!!.contains("Could not fetch prices"))
+        assertNull(state.result)
+    }
+
+    @Test
+    fun `onFindClicked with empty prices sets no data error`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(emptyList()))
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNotNull(state.error)
+        assertTrue(state.error!!.contains("No price data"))
+    }
+
+    @Test
+    fun `onFindClicked with insufficient prices sets not enough data error`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(2)))
+        viewModel.onDurationChanged(5, 0)
+        viewModel.onFindClicked()
+        advanceUntilIdle()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNotNull(state.error)
+        assertTrue(state.error!!.contains("Not enough price data"))
+    }
+
+    @Test
+    fun `onFindClicked sets isLoading before coroutine completes`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onDurationChanged(1, 0)
         viewModel.onFindClicked()
 
+        // Before advancing, isLoading should be true
         assertTrue(viewModel.uiState.value.isLoading)
-        assertNull(viewModel.uiState.value.error)
         assertNull(viewModel.uiState.value.result)
+
+        advanceUntilIdle()
+
+        // After advancing, isLoading should be false
+        assertFalse(viewModel.uiState.value.isLoading)
     }
 
     @Test
-    fun `onFindClicked preserves resultLabel during loading`() {
-        viewModel.onQuickDuration(2, 0)
-        viewModel.onFindClicked()
+    fun `onQuickDuration triggers fetch and produces result`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onQuickDuration(1, 0)
+        advanceUntilIdle()
 
-        assertEquals("2h", viewModel.uiState.value.resultLabel)
-        assertTrue(viewModel.uiState.value.isLoading)
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNotNull(state.result)
+        assertEquals("1h", state.resultLabel)
     }
 
     @Test
-    fun `onFindClicked with appliance label preserves appliance label`() {
-        val appliance = Appliance(id = "1", name = "Washer", durationHours = 1, durationMinutes = 30, icon = "laundry")
+    fun `onApplianceDuration triggers fetch and produces result`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        val appliance = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 0, icon = "laundry")
         viewModel.onApplianceDuration(appliance)
-        viewModel.onFindClicked()
+        advanceUntilIdle()
 
-        assertEquals("Washer \u00b7 1h 30m", viewModel.uiState.value.resultLabel)
-        assertTrue(viewModel.uiState.value.isLoading)
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNotNull(state.result)
+        assertEquals("Washer \u00b7 2h", state.resultLabel)
     }
 }

@@ -5,7 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
+import si.merhar.sweetspot.data.EnergyZeroApi
 import si.merhar.sweetspot.data.FilePriceCache
+import si.merhar.sweetspot.data.PriceCache
+import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.data.SettingsRepository
 import si.merhar.sweetspot.model.Appliance
@@ -13,6 +16,7 @@ import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.findCheapestWindow
 import si.merhar.sweetspot.util.formatDuration
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -59,10 +63,19 @@ data class UiState(
  *
  * Owns all UI state via [uiState]. Handles duration selection, price fetching,
  * cheapest-window calculation, timezone configuration, and appliance CRUD.
+ *
+ * @param application Application context.
+ * @param priceFetcher Strategy for fetching and parsing price data.
+ * @param priceCache Cache for raw price JSON.
+ * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
-class SweetSpotViewModel(application: Application) : AndroidViewModel(application) {
+class SweetSpotViewModel @JvmOverloads constructor(
+    application: Application,
+    private val priceFetcher: PriceFetcher = EnergyZeroApi,
+    private val priceCache: PriceCache = FilePriceCache(application),
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+) : AndroidViewModel(application) {
 
-    private val priceCache = FilePriceCache(application)
     private val settingsRepository = SettingsRepository(application)
 
     private val _uiState = MutableStateFlow(
@@ -263,7 +276,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         )
 
         val zoneId = _uiState.value.zoneId
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             fetchAndFind(durationHours, durationLabel, zoneId)
         }
     }
@@ -279,7 +292,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
      */
     private fun fetchAndFind(durationHours: Double, durationLabel: String, zoneId: ZoneId) {
         try {
-            val repository = PriceRepository(priceCache, zoneId)
+            val repository = PriceRepository(priceCache, zoneId, priceFetcher)
             val prices = repository.getPrices()
 
             if (prices.isEmpty()) {

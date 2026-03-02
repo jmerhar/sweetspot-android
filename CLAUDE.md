@@ -60,8 +60,8 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants (21 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, async loading (25 tests, Robolectric, in app)
-- `WearViewModelTest` — Wear ViewModel state, appliance tap, clear result (7 tests, Robolectric, in wear)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, async fetch (29 tests, Robolectric, in app)
+- `WearViewModelTest` — Wear ViewModel state, appliance tap, async fetch, rapid-tap cancellation (11 tests, Robolectric, in wear)
 
 ## Stack
 

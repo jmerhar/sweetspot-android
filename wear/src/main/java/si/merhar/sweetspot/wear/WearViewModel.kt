@@ -9,6 +9,7 @@ import com.google.android.gms.wearable.DataEvent
 import com.google.android.gms.wearable.DataEventBuffer
 import com.google.android.gms.wearable.DataMapItem
 import com.google.android.gms.wearable.Wearable
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +19,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.serialization.json.Json
+import si.merhar.sweetspot.data.EnergyZeroApi
 import si.merhar.sweetspot.data.FilePriceCache
+import si.merhar.sweetspot.data.PriceCache
+import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.WindowResult
@@ -52,11 +56,20 @@ data class WearUiState(
  * Reads appliances from the Wearable Data Layer (pushed by the phone app),
  * fetches electricity prices via [PriceRepository], and runs the cheapest-window
  * algorithm from the shared module.
+ *
+ * @param application Application context.
+ * @param priceFetcher Strategy for fetching and parsing price data.
+ * @param priceCache Cache for raw price JSON.
+ * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
-class WearViewModel(application: Application) : AndroidViewModel(application),
+class WearViewModel @JvmOverloads constructor(
+    application: Application,
+    private val priceFetcher: PriceFetcher = EnergyZeroApi,
+    private val priceCache: PriceCache = FilePriceCache(application),
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+) : AndroidViewModel(application),
     DataClient.OnDataChangedListener {
 
-    private val priceCache = FilePriceCache(application)
     private var fetchJob: Job? = null
 
     private val _uiState = MutableStateFlow(WearUiState())
@@ -97,7 +110,7 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
      * Loads the current appliance list from the Data Layer on startup.
      */
     private fun loadAppliancesFromDataLayer() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             var dataItems: com.google.android.gms.wearable.DataItemBuffer? = null
             try {
                 dataItems = Wearable.getDataClient(getApplication<Application>())
@@ -139,9 +152,9 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
         )
 
         val zoneId = _uiState.value.zoneId
-        fetchJob = viewModelScope.launch(Dispatchers.IO) {
+        fetchJob = viewModelScope.launch(ioDispatcher) {
             try {
-                val repository = PriceRepository(priceCache, zoneId)
+                val repository = PriceRepository(priceCache, zoneId, priceFetcher)
                 val prices = repository.getPrices()
 
                 if (prices.isEmpty()) {

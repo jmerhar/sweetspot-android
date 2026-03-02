@@ -32,6 +32,7 @@ if [[ ! -f "$NOTES_FILE" ]]; then
 fi
 
 GRADLE_FILE="app/build.gradle.kts"
+WEAR_GRADLE_FILE="wear/build.gradle.kts"
 TAG="v${VERSION}"
 
 # --- Bump version ---
@@ -44,6 +45,11 @@ echo "Bumping versionCode $CURRENT_CODE → $NEW_CODE, versionName → $VERSION"
 
 sed -i '' "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$GRADLE_FILE"
 sed -i '' "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$GRADLE_FILE"
+
+# Bump wear module to match
+WEAR_CURRENT_CODE=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' "$WEAR_GRADLE_FILE")
+sed -i '' "s/versionCode = $WEAR_CURRENT_CODE/versionCode = $NEW_CODE/" "$WEAR_GRADLE_FILE"
+sed -i '' "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$WEAR_GRADLE_FILE"
 
 # --- Build release APK ---
 
@@ -71,7 +77,7 @@ cp "$WEAR_APK_PATH" "$NAMED_WEAR_APK"
 
 # --- Commit and tag ---
 
-git add "$GRADLE_FILE"
+git add "$GRADLE_FILE" "$WEAR_GRADLE_FILE"
 git commit -m "chore: release v${VERSION}"
 git tag -a "$TAG" -m "Release ${VERSION}"
 

@@ -15,8 +15,8 @@ android {
         applicationId = "si.merhar.sweetspot"
         minSdk = 30
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 6
+        versionName = "2.1"
     }
 
     signingConfigs {

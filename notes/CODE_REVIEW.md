@@ -22,9 +22,6 @@ The `onDismiss` callback is accepted but suppressed as unused (`@Suppress("UNUSE
 **6. `formatRelative` returns "in 0m" for 1–29 seconds** — `shared/.../TimeUtils.kt`
 After rounding, targets 1–29 seconds in the future produce `totalMinutes = 0`, which falls through to `"in 0m"`. Should return `"now"` when `totalMinutes <= 0`.
 
-**7. Wear APK version never bumped** — `release.sh`
-The script only bumps `app/build.gradle.kts`. The wear module is stuck at `versionCode = 1, versionName = "1.0"` forever. The `git add` also only stages the app gradle file.
-
 ## Security / Robustness
 
 **8. `syncAppliancesToWear` can crash** — `SweetSpotViewModel.kt`

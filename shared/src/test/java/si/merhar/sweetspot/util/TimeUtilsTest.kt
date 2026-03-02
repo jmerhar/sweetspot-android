@@ -9,8 +9,8 @@ class TimeUtilsTest {
 
     private val zone = ZoneId.of("Europe/Amsterdam")
 
-    private fun time(hour: Int, minute: Int = 0): ZonedDateTime =
-        ZonedDateTime.of(2025, 6, 15, hour, minute, 0, 0, zone)
+    private fun time(hour: Int, minute: Int = 0, second: Int = 0): ZonedDateTime =
+        ZonedDateTime.of(2025, 6, 15, hour, minute, second, 0, zone)
 
     @Test
     fun `target in past returns now`() {
@@ -46,5 +46,17 @@ class TimeUtilsTest {
     @Test
     fun `just under one hour`() {
         assertEquals("in 59m", formatRelative(time(10, 59), time(10, 0)))
+    }
+
+    @Test
+    fun `rounds up to nearest minute`() {
+        // 3h 59m 50s should round to 4h 0m, displayed as "in 4h"
+        assertEquals("in 4h", formatRelative(time(14, 0, 0), time(10, 0, 10)))
+    }
+
+    @Test
+    fun `rounds down when under 30 seconds`() {
+        // 2h 15m 20s should round to 2h 15m
+        assertEquals("in 2h 15m", formatRelative(time(12, 15, 20), time(10, 0, 0)))
     }
 }

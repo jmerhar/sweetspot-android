@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Full backup rules for API < 31. Excludes price cache (ephemeral). -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="sweetspot_cache.xml" />
+    <exclude domain="file" path="prices_cache.json" />
+</full-backup-content>

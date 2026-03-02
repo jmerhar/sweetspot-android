@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Full backup rules for API < 31. Backs up settings only, excludes price cache. -->
+<full-backup-content>
+    <include domain="sharedpref" path="sweetspot_settings.xml" />
+    <exclude domain="sharedpref" path="sweetspot_cache.xml" />
+    <exclude domain="file" path="prices_cache.json" />
+</full-backup-content>

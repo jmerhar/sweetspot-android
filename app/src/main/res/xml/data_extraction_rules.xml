@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cloud backup / device transfer rules for API 31+. Backs up settings only. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="sharedpref" path="sweetspot_settings.xml" />
+        <exclude domain="sharedpref" path="sweetspot_cache.xml" />
+        <exclude domain="file" path="prices_cache.json" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="sharedpref" path="sweetspot_settings.xml" />
+        <exclude domain="sharedpref" path="sweetspot_cache.xml" />
+        <exclude domain="file" path="prices_cache.json" />
+    </device-transfer>
+</data-extraction-rules>

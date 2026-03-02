@@ -28,14 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 11. `String.format` uses device locale for currency values
-
-`app/.../ResultSummary.kt:56,61`, `BreakdownTable.kt:97`, `PriceBarChart.kt:161` — In locales using comma decimals (Germany, Netherlands — likely primary users), prices display as `€ 0,1234`. This was listed as a feature in v2.2 release notes (locale-aware formatting), so verify this is actually the intended behavior. If you want consistent dot-separated decimals, use `Locale.US`.
-
-### 12. `allowBackup="true"` without data extraction rules
-
-Both `app/src/main/AndroidManifest.xml:7` and `wear/src/main/AndroidManifest.xml:9`. On Android 12+, should use `android:dataExtractionRules` to control what gets backed up. SharedPreferences containing appliances and cached prices would be backed up uncontrolled otherwise.
-
 ### 13. Missing `enableOnBackInvokedCallback` for predictive back
 
 `app/src/main/AndroidManifest.xml` — For proper predictive back gesture support on Android 13+ (targeting SDK 35), add `android:enableOnBackInvokedCallback="true"`.

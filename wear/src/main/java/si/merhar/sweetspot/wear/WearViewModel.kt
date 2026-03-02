@@ -185,6 +185,7 @@ class WearViewModel @JvmOverloads constructor(
                     )
                 }
             } catch (e: Exception) {
+                Log.w("WearViewModel", "Could not fetch prices", e)
                 _uiState.update {
                     it.copy(
                         isLoading = false,

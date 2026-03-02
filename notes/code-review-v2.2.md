@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 31. Exception not logged in wear `onApplianceTapped`
-
-`wear/.../WearViewModel.kt:190-197` — The catch block updates state but doesn't `Log.w` the exception. Makes debugging harder.
-
 ### 32. Hardcoded error color in wear screens
 
 `ApplianceListScreen.kt:100`, `ResultScreen.kt:49` — Uses `Color(0xFFCF6679)` instead of `MaterialTheme.colors.error`.

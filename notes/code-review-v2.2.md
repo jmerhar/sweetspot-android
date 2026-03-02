@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 29. Duplicate `timeFormatter` across 3 files
-
-`ResultSummary.kt`, `BreakdownTable.kt`, `PriceBarChart.kt` all declare `private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)`. Extract to shared constant.
-
 ### 30. `PriceResponse.Prices` PascalCase property
 
 `shared/.../EnergyZeroApi.kt:33` — `val Prices` matches the API JSON field but violates Kotlin naming. Use `@SerialName("Prices") val prices`.

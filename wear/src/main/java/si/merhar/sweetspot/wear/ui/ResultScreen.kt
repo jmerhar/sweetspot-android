@@ -14,13 +14,9 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import si.merhar.sweetspot.util.formatRelative
+import si.merhar.sweetspot.util.shortTimeFormatter
 import si.merhar.sweetspot.wear.WearUiState
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
-
-/** Time formatter using locale-appropriate short format. */
-private val timeFormat = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
 /**
  * Result screen for the Wear OS app.
@@ -86,7 +82,7 @@ fun ResultScreen(
         }
         item {
             Text(
-                text = result.startTime.format(timeFormat),
+                text = result.startTime.format(shortTimeFormatter),
                 style = MaterialTheme.typography.display3
             )
         }
@@ -120,7 +116,7 @@ fun ResultScreen(
         }
         item {
             Text(
-                text = result.endTime.format(timeFormat),
+                text = result.endTime.format(shortTimeFormatter),
                 style = MaterialTheme.typography.display3
             )
         }

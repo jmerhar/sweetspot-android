@@ -26,13 +26,10 @@ import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.ui.theme.LocalBarNegativeColor
 import si.merhar.sweetspot.ui.theme.LocalBarNormalColor
 import si.merhar.sweetspot.ui.theme.LocalBarOptimalColor
+import si.merhar.sweetspot.util.shortTimeFormatter
 import androidx.compose.ui.tooling.preview.Preview
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import kotlin.math.abs
-
-private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
 /**
  * Horizontal bar chart showing hourly electricity prices.
@@ -75,7 +72,7 @@ fun PriceBarChart(
         prices.forEach { price ->
             val isOptimal = price.time.toEpochSecond() in optimalTimes
             val rowBackground = if (isOptimal) highlightColor else Color.Transparent
-            val timeText = price.time.format(timeFormatter)
+            val timeText = price.time.format(shortTimeFormatter)
             val priceText = "\u20AC ${String.format("%.3f", price.price)}"
             val rowDescription = if (isOptimal) "$timeText, $priceText, cheapest window" else "$timeText, $priceText"
 

@@ -15,12 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.formatRelative
+import si.merhar.sweetspot.util.shortTimeFormatter
 import java.time.ZoneId
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
-
-private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
 /**
  * Summary cards showing the cheapest window's start time, end time, and estimated cost.
@@ -40,13 +37,13 @@ fun ResultSummary(result: WindowResult, zoneId: ZoneId, modifier: Modifier = Mod
         ) {
             SummaryCard(
                 label = "Start",
-                value = result.startTime.format(timeFormatter),
+                value = result.startTime.format(shortTimeFormatter),
                 subtitle = formatRelative(result.startTime, now),
                 modifier = Modifier.weight(1f)
             )
             SummaryCard(
                 label = "End",
-                value = result.endTime.format(timeFormatter),
+                value = result.endTime.format(shortTimeFormatter),
                 subtitle = formatRelative(result.endTime, now),
                 modifier = Modifier.weight(1f)
             )

@@ -30,10 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.BreakdownSlot
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
-
-private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+import si.merhar.sweetspot.util.shortTimeFormatter
 
 /**
  * Expandable table listing each hourly slot in the cheapest window with its time range,
@@ -83,9 +80,9 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                                 modifier = Modifier.padding(vertical = 4.dp)
                             )
                         }
-                        val start = slot.time.format(timeFormatter)
+                        val start = slot.time.format(shortTimeFormatter)
                         val endMinutes = Math.round(slot.fraction * 60)
-                        val end = slot.time.plusMinutes(endMinutes).format(timeFormatter)
+                        val end = slot.time.plusMinutes(endMinutes).format(shortTimeFormatter)
 
                         Row(
                             modifier = Modifier

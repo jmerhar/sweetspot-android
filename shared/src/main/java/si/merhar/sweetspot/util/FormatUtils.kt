@@ -1,5 +1,11 @@
 package si.merhar.sweetspot.util
 
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
+
+/** Locale-appropriate short time formatter (e.g. "14:00" or "2:00 PM"). */
+val shortTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+
 /**
  * Formats a duration as a human-readable string.
  *

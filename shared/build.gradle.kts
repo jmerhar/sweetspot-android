@@ -1,8 +1,8 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -31,20 +31,19 @@ android {
 
 dependencies {
     // Compose BOM (needed for ApplianceIcon which uses Material Icons)
-    val composeBom = platform("androidx.compose:compose-bom:2024.12.01")
-    implementation(composeBom)
+    implementation(platform(libs.compose.bom))
 
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.core.ktx)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material.icons.extended)
 
     // OkHttp
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(libs.okhttp)
 
     // kotlinx-serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation(libs.serialization.json)
 
     // Unit testing
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    testImplementation(libs.junit)
+    testImplementation(libs.serialization.json)
 }

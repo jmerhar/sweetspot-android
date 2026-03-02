@@ -1,10 +1,10 @@
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -74,35 +74,34 @@ dependencies {
     implementation(project(":shared"))
 
     // Compose BOM
-    val composeBom = platform("androidx.compose:compose-bom:2024.12.01")
-    implementation(composeBom)
+    implementation(platform(libs.compose.bom))
 
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation(libs.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.activity.compose)
 
     // Compose
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons.extended)
+    implementation(libs.lifecycle.viewmodel.compose)
 
     // Wearable Data Layer (sync appliances to watch)
-    implementation("com.google.android.gms:play-services-wearable:19.0.0")
+    implementation(libs.play.services.wearable)
 
     // kotlinx-serialization (used by ViewModel for Data Layer sync)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation(libs.serialization.json)
 
     // Unit testing
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    testImplementation("org.robolectric:robolectric:4.14.1")
-    testImplementation("androidx.test:core:1.6.1")
-    testImplementation("androidx.test.ext:junit:1.2.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation(libs.junit)
+    testImplementation(libs.serialization.json)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.test.core)
+    testImplementation(libs.test.ext.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.arch.core.testing)
 
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation(libs.compose.ui.tooling)
 }

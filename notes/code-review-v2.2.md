@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Build & Infrastructure
 
-### 23. No version catalog
-
-No `gradle/libs.versions.toml`. Version strings are duplicated across 3 modules — `kotlinx-serialization-json:1.7.3` appears 6 times, Compose BOM appears 3 times. A version catalog eliminates duplication.
-
 ### 24. Dependencies are aging
 
 Compose BOM `2024.12.01` is ~15 months old. AGP 8.7.3 and Kotlin 2.1.0 are the initial releases of their respective lines — patch versions with bug fixes exist. OkHttp 4.12.0 is the last 4.x release; 5.x is available. Not urgent but should be periodically refreshed.

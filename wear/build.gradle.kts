@@ -1,10 +1,10 @@
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -73,34 +73,33 @@ dependencies {
     implementation(project(":shared"))
 
     // Compose BOM
-    val composeBom = platform("androidx.compose:compose-bom:2024.12.01")
-    implementation(composeBom)
+    implementation(platform(libs.compose.bom))
 
     // Wear Compose
-    implementation("androidx.wear.compose:compose-material:1.4.1")
-    implementation("androidx.wear.compose:compose-foundation:1.4.1")
-    implementation("androidx.wear.compose:compose-navigation:1.4.1")
+    implementation(libs.wear.compose.material)
+    implementation(libs.wear.compose.foundation)
+    implementation(libs.wear.compose.navigation)
 
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.activity:activity-compose:1.9.3")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+    implementation(libs.compose.ui)
+    implementation(libs.activity.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.runtime.compose)
 
     // Wearable Data Layer
-    implementation("com.google.android.gms:play-services-wearable:19.0.0")
+    implementation(libs.play.services.wearable)
 
     // Coroutines + play-services await()
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0")
+    implementation(libs.coroutines.play.services)
 
     // Serialization (for decoding appliance JSON from Data Layer)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation(libs.serialization.json)
 
     // Test dependencies
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-    testImplementation("org.robolectric:robolectric:4.14.1")
-    testImplementation("androidx.test:core:1.6.1")
-    testImplementation("androidx.test.ext:junit:1.2.1")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation(libs.junit)
+    testImplementation(libs.serialization.json)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.test.core)
+    testImplementation(libs.test.ext.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.arch.core.testing)
 }

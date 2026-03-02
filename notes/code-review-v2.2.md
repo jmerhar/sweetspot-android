@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 33. No `PositionIndicator` on wear appliance list
-
-`wear/.../ApplianceListScreen.kt` — Missing scroll indicator for long appliance lists on small round watches.
-
 ### 34. Stale relative times in result screens
 
 Both `app/.../ResultSummary.kt:27` and `wear/.../ResultScreen.kt:69` compute `ZonedDateTime.now()` once at composition time. Relative times ("in 2h 30m") become stale if the screen stays open. Acceptable for a utility app but worth noting.

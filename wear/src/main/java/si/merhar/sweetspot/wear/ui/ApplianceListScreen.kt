@@ -19,6 +19,8 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.ListHeader
 import androidx.wear.compose.material.MaterialTheme
+import androidx.wear.compose.material.PositionIndicator
+import androidx.wear.compose.material.Scaffold
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.compose.material.scrollAway
@@ -43,73 +45,76 @@ fun ApplianceListScreen(
 ) {
     val listState = rememberScalingLazyListState()
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        TimeText(modifier = Modifier.scrollAway(listState))
+    Scaffold(
+        timeText = { TimeText(modifier = Modifier.scrollAway(listState)) },
+        positionIndicator = { PositionIndicator(scalingLazyListState = listState) }
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            ScalingLazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                state = listState
+            ) {
+                item { ListHeader { Text("SweetSpot") } }
 
-        ScalingLazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            state = listState
-        ) {
-            item { ListHeader { Text("SweetSpot") } }
-
-            if (state.appliances.isEmpty()) {
-                item {
-                    Text(
-                        text = "Set up appliances in the phone app.",
-                        style = MaterialTheme.typography.body2,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
-            } else {
-                items(state.appliances, key = { it.id }) { appliance ->
-                    Chip(
-                        modifier = Modifier.fillMaxWidth(),
-                        onClick = { onApplianceTapped(appliance) },
-                        label = {
-                            Text(
-                                text = appliance.name,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                        },
-                        secondaryLabel = {
-                            Text(
-                                text = formatDuration(
-                                    appliance.durationHours,
-                                    appliance.durationMinutes
+                if (state.appliances.isEmpty()) {
+                    item {
+                        Text(
+                            text = "Set up appliances in the phone app.",
+                            style = MaterialTheme.typography.body2,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                } else {
+                    items(state.appliances, key = { it.id }) { appliance ->
+                        Chip(
+                            modifier = Modifier.fillMaxWidth(),
+                            onClick = { onApplianceTapped(appliance) },
+                            label = {
+                                Text(
+                                    text = appliance.name,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
                                 )
-                            )
-                        },
-                        icon = {
-                            Icon(
-                                imageVector = applianceIconFor(appliance.icon),
-                                contentDescription = appliance.name,
-                                modifier = Modifier.size(ChipDefaults.IconSize)
-                            )
-                        },
-                        colors = ChipDefaults.primaryChipColors()
-                    )
+                            },
+                            secondaryLabel = {
+                                Text(
+                                    text = formatDuration(
+                                        appliance.durationHours,
+                                        appliance.durationMinutes
+                                    )
+                                )
+                            },
+                            icon = {
+                                Icon(
+                                    imageVector = applianceIconFor(appliance.icon),
+                                    contentDescription = appliance.name,
+                                    modifier = Modifier.size(ChipDefaults.IconSize)
+                                )
+                            },
+                            colors = ChipDefaults.primaryChipColors()
+                        )
+                    }
+                }
+
+                if (state.error != null) {
+                    item {
+                        Text(
+                            text = state.error,
+                            color = MaterialTheme.colors.error,
+                            style = MaterialTheme.typography.body2,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
                 }
             }
 
-            if (state.error != null) {
-                item {
-                    Text(
-                        text = state.error,
-                        color = MaterialTheme.colors.error,
-                        style = MaterialTheme.typography.body2,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
+            if (state.isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
             }
-        }
-
-        if (state.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
-            )
         }
     }
 }

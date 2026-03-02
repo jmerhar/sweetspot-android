@@ -225,7 +225,7 @@ private fun ResultScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "Next 24 Hours",
+                    text = "Upcoming Prices",
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
@@ -239,7 +239,8 @@ private fun ResultScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee.",
+                text = "Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee." +
+                    " Tomorrow\u2019s prices are usually available after 13:00 CET.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

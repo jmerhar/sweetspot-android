@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 35. Brief white flash on dark-mode launch
-
-`app/src/main/res/values/themes.xml:3` uses `android:Theme.Material.Light.NoActionBar`. On dark-mode devices, there's a flash of white before Compose renders. Use `Theme.Material3.DayNight.NoActionBar` or implement a splash screen.
-
 ### 36. Missing `org.gradle.parallel=true`
 
 `gradle.properties` — With 3 modules, parallel builds would be faster. Also consider `org.gradle.caching=true` explicitly.

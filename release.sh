@@ -56,9 +56,18 @@ if [[ ! -f "$APK_PATH" ]]; then
     exit 1
 fi
 
-# Rename APK to include version
+WEAR_APK_PATH="wear/build/outputs/apk/release/wear-release.apk"
+if [[ ! -f "$WEAR_APK_PATH" ]]; then
+    echo "ERROR: Wear APK not found at $WEAR_APK_PATH"
+    exit 1
+fi
+
+# Rename APKs to include version
 NAMED_APK="app/build/outputs/apk/release/sweetspot-${VERSION}.apk"
 cp "$APK_PATH" "$NAMED_APK"
+
+NAMED_WEAR_APK="wear/build/outputs/apk/release/sweetspot-wear-${VERSION}.apk"
+cp "$WEAR_APK_PATH" "$NAMED_WEAR_APK"
 
 # --- Commit and tag ---
 
@@ -81,11 +90,12 @@ BODY="${NOTES}
 **Full Changelog**: ${REPO_URL}/compare/${PREV_TAG}...${TAG}"
 
 echo "Creating GitHub Release ${TAG}..."
-gh release create "$TAG" "$NAMED_APK" \
+gh release create "$TAG" "$NAMED_APK" "$NAMED_WEAR_APK" \
     --title "SweetSpot ${VERSION}" \
     --notes "$BODY" \
     $DRAFT_FLAG
 
 echo ""
 echo "Done! Release ${TAG} created."
-echo "APK: ${NAMED_APK}"
+echo "Phone APK: ${NAMED_APK}"
+echo "Wear APK:  ${NAMED_WEAR_APK}"

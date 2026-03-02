@@ -1,62 +1,92 @@
 package si.merhar.sweetspot.data
 
 import si.merhar.sweetspot.model.HourlyPrice
-import java.time.LocalDate
+import java.time.Clock
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 
 /**
- * Repository that provides the next 24 hours of electricity prices.
+ * Repository that provides upcoming electricity prices.
  *
- * Uses [PriceCache] to avoid redundant API calls. If the cache is stale or missing,
- * fetches fresh data from [EnergyZeroApi] and updates the cache.
+ * Uses [PriceCache] to avoid redundant API calls. Always tries the cache first,
+ * then checks whether the cached data covers enough upcoming hours. When coverage
+ * is below [MIN_COVERAGE_HOURS] (e.g. tomorrow's prices have been published since
+ * the last fetch), a re-fetch is attempted — subject to a [COOLDOWN_MS] rate limit
+ * to avoid hammering the API.
  *
- * @param cache File cache for raw API JSON.
+ * @param cache Cache for raw API JSON.
  * @param zoneId Timezone for date boundary calculations and time display.
+ * @param fetcher Provider for raw price data and JSON parsing.
+ * @param clock Clock for determining the current time (injectable for testing).
  */
-class PriceRepository(private val cache: PriceCache, private val zoneId: ZoneId) {
+class PriceRepository(
+    private val cache: PriceCache,
+    private val zoneId: ZoneId,
+    private val fetcher: PriceFetcher = EnergyZeroApi,
+    private val clock: Clock = Clock.system(zoneId)
+) {
+
+    private companion object {
+        /** Re-fetch if filtered prices cover fewer than this many hours. */
+        const val MIN_COVERAGE_HOURS = 12
+
+        /** Minimum interval between API requests (5 minutes). */
+        const val COOLDOWN_MS = 5 * 60 * 1000L
+    }
 
     /**
-     * Returns hourly prices for the next 24 hours from now.
+     * Returns all available upcoming hourly prices.
      *
-     * Reads from cache if fresh; otherwise fetches from the API and caches the result.
-     * Filters the full dataset to only include hours within ~24h from now.
+     * Reads from cache first. If coverage is below [MIN_COVERAGE_HOURS] and the
+     * [COOLDOWN_MS] rate limit has elapsed, re-fetches from the API in case newer
+     * data is available.
      *
      * @return Chronologically sorted list of [HourlyPrice] entries.
      * @throws RuntimeException if the API call fails.
      */
     fun getPrices(): List<HourlyPrice> {
-        val today = LocalDate.now(zoneId)
-        val allPrices: List<HourlyPrice>
+        val now = ZonedDateTime.now(clock)
 
-        if (cache.isFresh(today)) {
-            val cachedJson = cache.readCachedJson()
-            if (cachedJson != null) {
-                allPrices = EnergyZeroApi.parseJson(cachedJson, zoneId)
-            } else {
-                allPrices = fetchAndCache(today)
-            }
+        val cachedJson = cache.readCachedJson()
+        var allPrices = if (cachedJson != null) {
+            fetcher.parseJson(cachedJson, zoneId)
         } else {
-            allPrices = fetchAndCache(today)
+            fetchAndCache()
         }
 
-        // Filter to next ~24h, including the current hour's slot (clamping handles partial usage)
-        val now = ZonedDateTime.now(zoneId)
+        var filtered = filterFuture(allPrices, now)
+
+        // If coverage is low, try re-fetching in case new data (e.g. tomorrow's prices)
+        // has been published since the last fetch. Respects a cooldown to avoid hammering.
+        if (filtered.size < MIN_COVERAGE_HOURS && cache.isCooldownElapsed(COOLDOWN_MS)) {
+            allPrices = fetchAndCache()
+            filtered = filterFuture(allPrices, now)
+        }
+
+        return filtered
+    }
+
+    /**
+     * Filters out past prices, keeping only the current hour and beyond.
+     *
+     * @param prices All available prices (unfiltered).
+     * @param now Current time for the filter cutoff.
+     * @return Future prices sorted chronologically.
+     */
+    private fun filterFuture(prices: List<HourlyPrice>, now: ZonedDateTime): List<HourlyPrice> {
         val currentHour = now.truncatedTo(ChronoUnit.HOURS)
-        val end = now.plusHours(24)
-        return allPrices.filter { it.time >= currentHour && it.time < end }
+        return prices.filter { it.time >= currentHour }
     }
 
     /**
      * Fetches fresh prices from the API and writes them to cache.
      *
-     * @param today Today's date for cache freshness tracking.
      * @return Parsed list of all hourly prices (unfiltered).
      */
-    private fun fetchAndCache(today: LocalDate): List<HourlyPrice> {
-        val rawJson = EnergyZeroApi.fetchRawJson(zoneId)
-        cache.write(rawJson, today)
-        return EnergyZeroApi.parseJson(rawJson, zoneId)
+    private fun fetchAndCache(): List<HourlyPrice> {
+        val rawJson = fetcher.fetchRawJson(zoneId)
+        cache.write(rawJson)
+        return fetcher.parseJson(rawJson, zoneId)
     }
 }

@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
-import si.merhar.sweetspot.data.PriceCache
+import si.merhar.sweetspot.data.FilePriceCache
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.data.SettingsRepository
 import si.merhar.sweetspot.model.Appliance
@@ -61,7 +61,7 @@ data class UiState(
  */
 class SweetSpotViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val priceCache = PriceCache(application)
+    private val priceCache = FilePriceCache(application)
     private val settingsRepository = SettingsRepository(application)
 
     private val _uiState = MutableStateFlow(

@@ -1,56 +1,32 @@
 package si.merhar.sweetspot.data
 
-import android.content.Context
-import java.io.File
-import java.time.LocalDate
-
 /**
- * File-based cache for EnergyZero API responses.
+ * Cache for raw API price responses.
  *
- * Stores raw JSON in `cacheDir/prices_cache.json` and tracks freshness by date
- * in SharedPreferences. The cache is considered "fresh" if it was written today
- * (in the configured timezone).
- *
- * @param context Android context for accessing cache directory and SharedPreferences.
+ * Abstracts the storage mechanism so [PriceRepository] can be tested
+ * without Android dependencies.
  */
-class PriceCache(private val context: Context) {
-
-    private val prefs = context.getSharedPreferences("sweetspot_cache", Context.MODE_PRIVATE)
-    private val cacheFile = File(context.cacheDir, "prices_cache.json")
-
-    private companion object {
-        const val KEY_CACHE_DATE = "cache_date"
-    }
+interface PriceCache {
 
     /**
-     * Checks whether the cache is fresh for the given date.
+     * Checks whether enough time has passed since the last API fetch.
      *
-     * @param todayAmsterdam Today's date in the configured timezone.
-     * @return `true` if cached data exists and was fetched today.
+     * @param cooldownMs Minimum interval between fetches in milliseconds.
+     * @return `true` if at least [cooldownMs] have elapsed since the last fetch.
      */
-    fun isFresh(todayAmsterdam: LocalDate): Boolean {
-        val cached = prefs.getString(KEY_CACHE_DATE, null) ?: return false
-        return cached == todayAmsterdam.toString()
-    }
+    fun isCooldownElapsed(cooldownMs: Long): Boolean
 
     /**
-     * Reads the cached JSON, if the cache file exists.
+     * Reads the cached JSON, if available.
      *
-     * @return Raw JSON string, or `null` if no cache file is present.
+     * @return Raw JSON string, or `null` if no cached data exists.
      */
-    fun readCachedJson(): String? {
-        if (!cacheFile.exists()) return null
-        return cacheFile.readText()
-    }
+    fun readCachedJson(): String?
 
     /**
-     * Writes raw JSON to the cache file and records the fetch date.
+     * Writes raw JSON to cache and records the fetch timestamp.
      *
      * @param json Raw JSON string to cache.
-     * @param dateAmsterdam The date this data was fetched for.
      */
-    fun write(json: String, dateAmsterdam: LocalDate) {
-        cacheFile.writeText(json)
-        prefs.edit().putString(KEY_CACHE_DATE, dateAmsterdam.toString()).apply()
-    }
+    fun write(json: String)
 }

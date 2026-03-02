@@ -39,7 +39,7 @@ data class EnergyZeroResponse(
  * Fetches hourly electricity prices for today and tomorrow. The raw JSON
  * can be cached by [PriceCache] to avoid redundant network requests.
  */
-object EnergyZeroApi {
+object EnergyZeroApi : PriceFetcher {
 
     private val client = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS)
@@ -55,7 +55,7 @@ object EnergyZeroApi {
      * @return Raw JSON response body.
      * @throws RuntimeException if the HTTP request fails or the body is empty.
      */
-    fun fetchRawJson(zoneId: ZoneId): String {
+    override fun fetchRawJson(zoneId: ZoneId): String {
         val today = LocalDate.now(zoneId)
         val fromDate = today.atStartOfDay(zoneId).toInstant()
         val tillDate = today.plusDays(2).atStartOfDay(zoneId).toInstant()
@@ -83,7 +83,7 @@ object EnergyZeroApi {
      * @param zoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of hourly prices.
      */
-    fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
+    override fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
         val parsed = json.decodeFromString<EnergyZeroResponse>(rawJson)
         return parsed.Prices.map { entry ->
             val instant = Instant.parse(entry.readingDate)

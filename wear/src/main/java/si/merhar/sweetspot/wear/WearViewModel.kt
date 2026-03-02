@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.serialization.json.Json
-import si.merhar.sweetspot.data.PriceCache
+import si.merhar.sweetspot.data.FilePriceCache
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.WindowResult
@@ -54,7 +54,7 @@ data class WearUiState(
 class WearViewModel(application: Application) : AndroidViewModel(application),
     DataClient.OnDataChangedListener {
 
-    private val priceCache = PriceCache(application)
+    private val priceCache = FilePriceCache(application)
 
     private val _uiState = MutableStateFlow(WearUiState())
     /** Observable UI state. */

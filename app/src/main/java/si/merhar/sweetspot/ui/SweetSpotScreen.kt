@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
+import si.merhar.sweetspot.AppError
 import si.merhar.sweetspot.SweetSpotViewModel
 import si.merhar.sweetspot.ui.components.BreakdownTable
 import si.merhar.sweetspot.ui.components.DurationInput
@@ -63,8 +64,8 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
 
     LaunchedEffect(state.error) {
         val error = state.error
-        if (error != null && !isValidationError(error)) {
-            snackbarHostState.showSnackbar(error)
+        if (error is AppError.Network) {
+            snackbarHostState.showSnackbar(error.message)
         }
     }
 
@@ -155,11 +156,10 @@ private fun FormScreen(
                 )
             }
 
-            state.error?.let { error ->
-                if (isValidationError(error)) {
-                    Spacer(modifier = Modifier.height(12.dp))
-                    ErrorBox(message = error)
-                }
+            val validationError = state.error as? AppError.Validation
+            if (validationError != null) {
+                Spacer(modifier = Modifier.height(12.dp))
+                ErrorBox(message = validationError.message)
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -255,9 +255,4 @@ private fun ResultScreen(
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
-}
-
-/** Returns true if [error] is a user-facing validation message (shown inline, not as a snackbar). */
-private fun isValidationError(error: String): Boolean {
-    return error.startsWith("Please select a duration") || error.startsWith("Not enough price data")
 }

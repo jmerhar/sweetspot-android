@@ -26,19 +26,9 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ---
 
-## Medium Priority — Build & Infrastructure
-
-### 24. Dependencies are aging
-
-Compose BOM `2024.12.01` is ~15 months old. AGP 8.7.3 and Kotlin 2.1.0 are the initial releases of their respective lines — patch versions with bug fixes exist. OkHttp 4.12.0 is the last 4.x release; 5.x is available. Not urgent but should be periodically refreshed.
-
 ---
 
 ## Low Priority
-
-### 25. `isValidationError` uses string prefix matching
-
-`app/.../SweetSpotScreen.kt:253-255` — Distinguishes validation errors from network errors by matching hardcoded string prefixes. A sealed class for error types would be more robust.
 
 ### 26. `EnergyZeroPriceEntry` and `EnergyZeroResponse` should be `internal`
 

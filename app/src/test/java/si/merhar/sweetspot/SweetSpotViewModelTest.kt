@@ -170,7 +170,8 @@ class SweetSpotViewModelTest {
         viewModel.onFindClicked()
         val state = viewModel.uiState.value
         assertNotNull(state.error)
-        assertTrue(state.error!!.contains("duration greater than zero"))
+        assertTrue(state.error is AppError.Validation)
+        assertTrue(state.error!!.message.contains("duration greater than zero"))
         assertNull(state.result)
     }
 
@@ -313,7 +314,8 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.error)
-        assertTrue(state.error!!.contains("Could not fetch prices"))
+        assertTrue(state.error is AppError.Network)
+        assertTrue(state.error!!.message.contains("Could not fetch prices"))
         assertNull(state.result)
     }
 
@@ -327,7 +329,8 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.error)
-        assertTrue(state.error!!.contains("No price data"))
+        assertTrue(state.error is AppError.Validation)
+        assertTrue(state.error!!.message.contains("No price data"))
     }
 
     @Test
@@ -340,7 +343,8 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.error)
-        assertTrue(state.error!!.contains("Not enough price data"))
+        assertTrue(state.error is AppError.Validation)
+        assertTrue(state.error!!.message.contains("Not enough price data"))
     }
 
     @Test

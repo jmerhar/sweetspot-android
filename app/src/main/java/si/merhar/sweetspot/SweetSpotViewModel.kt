@@ -31,12 +31,26 @@ import java.time.ZonedDateTime
 import java.util.UUID
 
 /**
+ * Distinguishes inline validation errors (shown as [ErrorBox]) from
+ * transient network errors (shown as a snackbar).
+ */
+sealed interface AppError {
+    val message: String
+
+    /** Validation or data error shown inline below the form. */
+    data class Validation(override val message: String) : AppError
+
+    /** Network or fetch error shown as a snackbar. */
+    data class Network(override val message: String) : AppError
+}
+
+/**
  * UI state for the main screen.
  *
  * @property durationHours Selected hours component of the duration (0–24).
  * @property durationMinutes Selected minutes component of the duration (0, 5, 10, ..., 55).
  * @property isLoading Whether a price fetch is in progress.
- * @property error Error message to display, or `null` if none.
+ * @property error Error to display, or `null` if none.
  * @property result The cheapest-window result, or `null` if no search has been performed.
  * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
  * @property allPrices All hourly prices for the next 24h, used by the bar chart.
@@ -49,7 +63,7 @@ data class UiState(
     val durationHours: Int = 1,
     val durationMinutes: Int = 0,
     val isLoading: Boolean = false,
-    val error: String? = null,
+    val error: AppError? = null,
     val result: WindowResult? = null,
     val resultLabel: String? = null,
     val allPrices: List<HourlyPrice> = emptyList(),
@@ -256,7 +270,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (h == 0 && m == 0) {
             _uiState.update {
                 it.copy(
-                    error = "Please select a duration greater than zero.",
+                    error = AppError.Validation("Please select a duration greater than zero."),
                     result = null,
                     allPrices = emptyList()
                 )
@@ -301,7 +315,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = "No price data available for the next 24 hours.",
+                        error = AppError.Validation("No price data available for the next 24 hours."),
                         allPrices = emptyList()
                     )
                 }
@@ -315,7 +329,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = "Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available.",
+                        error = AppError.Validation("Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available."),
                         allPrices = prices
                     )
                 }
@@ -334,7 +348,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             _uiState.update {
                 it.copy(
                     isLoading = false,
-                    error = "Could not fetch prices: ${e.message}",
+                    error = AppError.Network("Could not fetch prices: ${e.message}"),
                     allPrices = emptyList()
                 )
             }

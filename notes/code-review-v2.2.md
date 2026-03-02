@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 38. Signing config code duplicated
-
-`app/build.gradle.kts:23-36` and `wear/build.gradle.kts:22-36` are identical. Extract to shared build logic or convention plugin.
-
 ---
 
 ## Test Coverage Gaps

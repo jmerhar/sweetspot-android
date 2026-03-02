@@ -227,4 +227,72 @@ class CheapestWindowFinderTest {
         assertEquals(expectedCost, result.totalCost, 0.0001)
         assertEquals(expectedCost / 2.5, result.avgPrice, 0.0001)
     }
+
+    // --- Breakdown invariants ---
+
+    @Test
+    fun `breakdown fractions sum to duration for whole hours`() {
+        val prices = pricesAt(10, 0.30, 0.10, 0.20, 0.05, 0.15)
+        val duration = 3.0
+        val result = findCheapestWindow(prices, duration, earlyNow)!!
+
+        val fractionSum = result.breakdown.sumOf { it.fraction }
+        assertEquals(duration, fractionSum, 0.0001)
+    }
+
+    @Test
+    fun `breakdown fractions sum to duration for fractional hours`() {
+        val prices = pricesAt(10, 0.40, 0.10, 0.20, 0.06)
+        val duration = 2.5
+        val result = findCheapestWindow(prices, duration, earlyNow)!!
+
+        val fractionSum = result.breakdown.sumOf { it.fraction }
+        assertEquals(duration, fractionSum, 0.0001)
+    }
+
+    @Test
+    fun `breakdown costs sum to totalCost for whole hours`() {
+        val prices = pricesAt(10, 0.30, 0.10, 0.20, 0.05, 0.15)
+        val result = findCheapestWindow(prices, 3.0, earlyNow)!!
+
+        val costSum = result.breakdown.sumOf { it.cost }
+        assertEquals(result.totalCost, costSum, 0.0001)
+    }
+
+    @Test
+    fun `breakdown costs sum to totalCost for fractional hours`() {
+        val prices = pricesAt(10, 0.40, 0.10, 0.20, 0.06)
+        val result = findCheapestWindow(prices, 2.5, earlyNow)!!
+
+        val costSum = result.breakdown.sumOf { it.cost }
+        assertEquals(result.totalCost, costSum, 0.0001)
+    }
+
+    @Test
+    fun `breakdown invariants hold when start is clamped to now`() {
+        val prices = pricesAt(10, 0.05, 0.20, 0.30)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, zone)
+        val duration = 2.0
+        val result = findCheapestWindow(prices, duration, now)!!
+
+        val fractionSum = result.breakdown.sumOf { it.fraction }
+        assertEquals(duration, fractionSum, 0.0001)
+
+        val costSum = result.breakdown.sumOf { it.cost }
+        assertEquals(result.totalCost, costSum, 0.0001)
+    }
+
+    @Test
+    fun `breakdown invariants hold for clamped fractional duration`() {
+        val prices = pricesAt(10, 0.05, 0.05, 0.05, 0.50)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, zone)
+        val duration = 2.5
+        val result = findCheapestWindow(prices, duration, now)!!
+
+        val fractionSum = result.breakdown.sumOf { it.fraction }
+        assertEquals(duration, fractionSum, 0.0001)
+
+        val costSum = result.breakdown.sumOf { it.cost }
+        assertEquals(result.totalCost, costSum, 0.0001)
+    }
 }

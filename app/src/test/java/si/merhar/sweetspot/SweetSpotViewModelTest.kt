@@ -218,4 +218,35 @@ class SweetSpotViewModelTest {
         assertEquals(tokyo, viewModel.uiState.value.zoneId)
         assertEquals(false, viewModel.uiState.value.isUsingDefaultZone)
     }
+
+    // --- Async fetch (coroutine) ---
+
+    @Test
+    fun `onFindClicked sets isLoading immediately`() {
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+
+        assertTrue(viewModel.uiState.value.isLoading)
+        assertNull(viewModel.uiState.value.error)
+        assertNull(viewModel.uiState.value.result)
+    }
+
+    @Test
+    fun `onFindClicked preserves resultLabel during loading`() {
+        viewModel.onQuickDuration(2, 0)
+        viewModel.onFindClicked()
+
+        assertEquals("2h", viewModel.uiState.value.resultLabel)
+        assertTrue(viewModel.uiState.value.isLoading)
+    }
+
+    @Test
+    fun `onFindClicked with appliance label preserves appliance label`() {
+        val appliance = Appliance(id = "1", name = "Washer", durationHours = 1, durationMinutes = 30, icon = "laundry")
+        viewModel.onApplianceDuration(appliance)
+        viewModel.onFindClicked()
+
+        assertEquals("Washer \u00b7 1h 30m", viewModel.uiState.value.resultLabel)
+        assertTrue(viewModel.uiState.value.isLoading)
+    }
 }

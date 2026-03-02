@@ -52,13 +52,16 @@ RELEASE_KEY_PASSWORD=...
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
-Tests live in `shared/src/test/java/si/merhar/sweetspot/` and `app/src/test/java/si/merhar/sweetspot/`:
+Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (8 tests, in shared)
 - `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm (15 tests, in shared)
-- `util/TimeUtilsTest` — relative time formatting (9 tests, in shared)
+- `data/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
+- `data/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants (21 tests, in shared)
+- `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone (22 tests, Robolectric, in app)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, async loading (25 tests, Robolectric, in app)
+- `WearViewModelTest` — Wear ViewModel state, appliance tap, clear result (7 tests, Robolectric, in wear)
 
 ## Stack
 

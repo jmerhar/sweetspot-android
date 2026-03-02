@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 30. `PriceResponse.Prices` PascalCase property
-
-`shared/.../EnergyZeroApi.kt:33` — `val Prices` matches the API JSON field but violates Kotlin naming. Use `@SerialName("Prices") val prices`.
-
 ### 31. Exception not logged in wear `onApplianceTapped`
 
 `wear/.../WearViewModel.kt:190-197` — The catch block updates state but doesn't `Log.w` the exception. Makes debugging harder.

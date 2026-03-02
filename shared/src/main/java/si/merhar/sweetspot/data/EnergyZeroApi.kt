@@ -1,6 +1,7 @@
 package si.merhar.sweetspot.data
 
 import si.merhar.sweetspot.model.HourlyPrice
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
@@ -26,11 +27,11 @@ internal data class EnergyZeroPriceEntry(
 /**
  * Top-level response from the EnergyZero electricity prices endpoint.
  *
- * @property Prices List of hourly price entries.
+ * @property prices List of hourly price entries.
  */
 @Serializable
 internal data class EnergyZeroResponse(
-    val Prices: List<EnergyZeroPriceEntry>
+    @SerialName("Prices") val prices: List<EnergyZeroPriceEntry>
 )
 
 /**
@@ -85,7 +86,7 @@ object EnergyZeroApi : PriceFetcher {
      */
     override fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
         val parsed = json.decodeFromString<EnergyZeroResponse>(rawJson)
-        return parsed.Prices.map { entry ->
+        return parsed.prices.map { entry ->
             val instant = Instant.parse(entry.readingDate)
             val time = instant.atZone(zoneId)
             HourlyPrice(time = time, price = entry.price)

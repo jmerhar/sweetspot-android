@@ -2,14 +2,6 @@
 
 Comprehensive review of the entire project: all three modules, tests, documentation, and build configuration.
 
-## Thread Safety / Race Conditions
-
-**12. No fetch cancellation on watch** — `WearViewModel.kt` / `WearActivity.kt`
-Tapping appliances rapidly launches multiple concurrent fetches with no `Job` cancellation. Stale results can overwrite fresh ones. Also, `navController.navigate("result")` stacks duplicate destinations on the back stack.
-
-**13. `zoneId` read from IO thread without snapshot** — `SweetSpotViewModel.kt`
-`fetchAndFind()` reads `_uiState.value.zoneId` twice from `Dispatchers.IO`. If the user changes timezone mid-fetch, the repository uses one zone while `ZonedDateTime.now()` uses another.
-
 ## Code Smells / Quality
 
 **14. KDoc says "cents" but values are EUR** — `shared/.../CheapestWindowFinder.kt:100`

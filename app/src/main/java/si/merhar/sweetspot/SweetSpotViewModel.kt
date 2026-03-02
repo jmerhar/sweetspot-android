@@ -262,8 +262,9 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
             resultLabel = _uiState.value.resultLabel ?: durationLabel
         )
 
+        val zoneId = _uiState.value.zoneId
         viewModelScope.launch(Dispatchers.IO) {
-            fetchAndFind(durationHours, durationLabel)
+            fetchAndFind(durationHours, durationLabel, zoneId)
         }
     }
 
@@ -274,10 +275,11 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
      *
      * @param durationHours Duration in decimal hours.
      * @param durationLabel Human-readable duration label for error messages.
+     * @param zoneId Timezone snapshot captured before the IO dispatch.
      */
-    private fun fetchAndFind(durationHours: Double, durationLabel: String) {
+    private fun fetchAndFind(durationHours: Double, durationLabel: String, zoneId: ZoneId) {
         try {
-            val repository = PriceRepository(priceCache, _uiState.value.zoneId)
+            val repository = PriceRepository(priceCache, zoneId)
             val prices = repository.getPrices()
 
             if (prices.isEmpty()) {
@@ -291,7 +293,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
                 return
             }
 
-            val now = ZonedDateTime.now(_uiState.value.zoneId)
+            val now = ZonedDateTime.now(zoneId)
             val result = findCheapestWindow(prices, durationHours, now)
 
             if (result == null) {

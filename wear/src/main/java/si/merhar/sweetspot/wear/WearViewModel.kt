@@ -10,6 +10,7 @@ import com.google.android.gms.wearable.DataEventBuffer
 import com.google.android.gms.wearable.DataMapItem
 import com.google.android.gms.wearable.Wearable
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -56,6 +57,7 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
     DataClient.OnDataChangedListener {
 
     private val priceCache = FilePriceCache(application)
+    private var fetchJob: Job? = null
 
     private val _uiState = MutableStateFlow(WearUiState())
     /** Observable UI state. */
@@ -128,6 +130,7 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
         val durationHours = h + m / 60.0
         val label = "${appliance.name} \u00b7 ${formatDuration(h, m)}"
 
+        fetchJob?.cancel()
         _uiState.value = _uiState.value.copy(
             isLoading = true,
             error = null,
@@ -135,9 +138,9 @@ class WearViewModel(application: Application) : AndroidViewModel(application),
             resultLabel = label
         )
 
-        viewModelScope.launch(Dispatchers.IO) {
+        val zoneId = _uiState.value.zoneId
+        fetchJob = viewModelScope.launch(Dispatchers.IO) {
             try {
-                val zoneId = _uiState.value.zoneId
                 val repository = PriceRepository(priceCache, zoneId)
                 val prices = repository.getPrices()
 

@@ -13,7 +13,7 @@ This is the native Android port of the [SweetSpot](https://github.com/jmerhar/sw
 
 ## Usage
 
-Enter an appliance run duration in the search field. Supported formats:
+Tap a quick-duration button (1h–6h) or enter a custom duration in the search field. Supported formats:
 
 | Input | Duration |
 |-------|----------|
@@ -21,6 +21,8 @@ Enter an appliance run duration in the search field. Supported formats:
 | `90m` | 1.5 hours |
 | `2h 30m` | 2.5 hours |
 | `2.5` | 2.5 hours |
+
+You can also create **appliance buttons** (e.g. "Washing machine — 2h 30m") in Settings, each with a configurable icon. Tapping an appliance button fills the duration and searches immediately.
 
 SweetSpot returns:
 
@@ -32,6 +34,9 @@ All costs shown are per 1 kW load. Prices do not include energy tax and supplier
 
 ## Features
 
+- **Quick-duration buttons** — 1h–6h chips for common durations
+- **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
+- **Dedicated results screen** — shows the cheapest window with back navigation to the form
 - Material 3 with dynamic color theming and dark mode
 - Configurable timezone (defaults to phone's system timezone)
 - Offline-capable with daily price caching

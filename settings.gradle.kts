@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "SweetSpot"
 include(":app")
+include(":shared")
+include(":wear")

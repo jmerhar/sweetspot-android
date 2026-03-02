@@ -9,5 +9,7 @@
 .cxx
 local.properties
 /app/build
+/shared/build
+/wear/build
 *.jks
 *.keystore

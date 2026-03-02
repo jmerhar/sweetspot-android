@@ -3,6 +3,8 @@ package si.merhar.sweetspot
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.wearable.PutDataMapRequest
+import com.google.android.gms.wearable.Wearable
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.data.SettingsRepository
@@ -16,6 +18,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.UUID
@@ -88,10 +92,12 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
 
     /** Closes the settings screen and refreshes the appliance list from storage. */
     fun onHideSettings() {
+        val appliances = settingsRepository.getAppliances()
         _uiState.value = _uiState.value.copy(
             showSettings = false,
-            appliances = settingsRepository.getAppliances()
+            appliances = appliances
         )
+        syncAppliancesToWear(appliances)
     }
 
     /**
@@ -175,6 +181,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         val updated = _uiState.value.appliances + appliance
         settingsRepository.setAppliances(updated)
         _uiState.value = _uiState.value.copy(appliances = updated)
+        syncAppliancesToWear(updated)
     }
 
     /**
@@ -188,6 +195,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         }
         settingsRepository.setAppliances(updated)
         _uiState.value = _uiState.value.copy(appliances = updated)
+        syncAppliancesToWear(updated)
     }
 
     /**
@@ -199,6 +207,22 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         val updated = _uiState.value.appliances.filter { it.id != id }
         settingsRepository.setAppliances(updated)
         _uiState.value = _uiState.value.copy(appliances = updated)
+        syncAppliancesToWear(updated)
+    }
+
+    /**
+     * Pushes the current appliance list to the Wearable Data Layer so
+     * the Wear OS companion app receives it.
+     *
+     * @param appliances The appliance list to sync.
+     */
+    private fun syncAppliancesToWear(appliances: List<Appliance>) {
+        val json = Json.encodeToString(appliances)
+        val request = PutDataMapRequest.create("/appliances").apply {
+            dataMap.putString("json", json)
+            dataMap.putLong("ts", System.currentTimeMillis())
+        }.asPutDataRequest().setUrgent()
+        Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
     }
 
     /**

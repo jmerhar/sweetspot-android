@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Clock face circle (centered at 54,54, radius 28 to fit safe zone) -->
+    <path
+        android:fillColor="#4A90D9"
+        android:strokeColor="#357ABD"
+        android:strokeWidth="3"
+        android:pathData="M54,54m-28,0a28,28 0,1 1,56 0a28,28 0,1 1,-56 0" />
+    <!-- Hour tick top (12 o'clock) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,28 L54,33" />
+    <!-- Hour tick right (3 o'clock) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M80,54 L75,54" />
+    <!-- Hour tick bottom (6 o'clock) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,80 L54,75" />
+    <!-- Hour tick left (9 o'clock) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M28,54 L33,54" />
+    <!-- Lightning bolt (yellow with orange stroke) -->
+    <path
+        android:fillColor="#F1C40F"
+        android:strokeColor="#E67E22"
+        android:strokeWidth="1"
+        android:strokeLineJoin="round"
+        android:pathData="M56.8,36 L46.3,54 L52.3,54 L49.3,72 L61.3,45 L55.3,45 Z" />
+</vector>

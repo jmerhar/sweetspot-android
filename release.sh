@@ -3,15 +3,32 @@
 # Build a signed release APK and create a GitHub Release.
 #
 # Usage:
-#   ./release.sh 1.1          # sets versionName=1.1, auto-increments versionCode
-#   ./release.sh 1.1 --draft  # creates a draft release
+#   ./release.sh 1.1 -n notes.md          # release with notes from file
+#   ./release.sh 1.1 -n notes.md --draft   # same but creates a draft release
 #
 set -euo pipefail
 
-VERSION="${1:?Usage: ./release.sh <version> [--draft]}"
+VERSION="${1:?Usage: ./release.sh <version> -n <notes-file> [--draft]}"
+shift
+
+NOTES_FILE=""
 DRAFT_FLAG=""
-if [[ "${2:-}" == "--draft" ]]; then
-    DRAFT_FLAG="--draft"
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -n) NOTES_FILE="${2:?-n requires a file path}"; shift 2 ;;
+        --draft) DRAFT_FLAG="--draft"; shift ;;
+        *) echo "Unknown option: $1"; exit 1 ;;
+    esac
+done
+
+if [[ -z "$NOTES_FILE" ]]; then
+    echo "ERROR: Release notes file is required. Usage: ./release.sh <version> -n <notes-file> [--draft]"
+    exit 1
+fi
+
+if [[ ! -f "$NOTES_FILE" ]]; then
+    echo "ERROR: Notes file not found: $NOTES_FILE"
+    exit 1
 fi
 
 GRADLE_FILE="app/build.gradle.kts"
@@ -55,10 +72,18 @@ git push origin "$TAG"
 
 # --- Create GitHub Release ---
 
+# Build release body: custom notes + full changelog link
+REPO_URL=$(gh repo view --json url -q '.url')
+PREV_TAG=$(git tag --sort=-v:refname | sed -n '2p')
+NOTES=$(cat "$NOTES_FILE")
+BODY="${NOTES}
+
+**Full Changelog**: ${REPO_URL}/compare/${PREV_TAG}...${TAG}"
+
 echo "Creating GitHub Release ${TAG}..."
 gh release create "$TAG" "$NAMED_APK" \
     --title "SweetSpot ${VERSION}" \
-    --generate-notes \
+    --notes "$BODY" \
     $DRAFT_FLAG
 
 echo ""

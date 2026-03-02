@@ -17,9 +17,11 @@ SweetSpot is an Android app that finds the cheapest contiguous time window for r
 ## Releasing
 
 ```bash
-./release.sh 1.1                 # Bump version, build, tag, push, create GitHub Release
-./release.sh 1.1 --draft         # Same but creates a draft release
+./release.sh 1.1 -n notes.md            # Bump version, build, tag, push, create GitHub Release
+./release.sh 1.1 -n notes.md --draft     # Same but creates a draft release
 ```
+
+The `-n` flag points to a Markdown file with release notes. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why.
 
 The script auto-increments `versionCode`, sets `versionName`, builds a signed release APK, commits, tags, pushes, and creates a GitHub Release with the APK attached.
 

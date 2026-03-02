@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 7. Race condition: phone ViewModel doesn't cancel concurrent fetches
-
-`app/src/main/java/si/merhar/sweetspot/SweetSpotViewModel.kt:279` — Each `onFindClicked()` launches a new coroutine but never cancels the previous one. Rapid taps could produce out-of-order results. The wear ViewModel already correctly cancels via `fetchJob?.cancel()` — the phone ViewModel should do the same.
-
 ### 8. Mixed atomic/non-atomic state updates in both ViewModels
 
 Phone `SweetSpotViewModel.kt` mixes `_uiState.value = _uiState.value.copy(...)` (main thread) with `_uiState.update { }` (IO thread). Wear `WearViewModel.kt:101` uses the non-atomic pattern in `onDataChanged`, which runs on an arbitrary background thread from the Data Layer API. Both should use `_uiState.update { }` consistently to prevent lost writes.

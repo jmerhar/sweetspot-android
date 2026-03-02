@@ -18,6 +18,7 @@ import si.merhar.sweetspot.util.findCheapestWindow
 import si.merhar.sweetspot.util.formatDuration
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -77,6 +78,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
 ) : AndroidViewModel(application) {
 
     private val settingsRepository = SettingsRepository(application)
+
+    private var fetchJob: Job? = null
 
     private val _uiState = MutableStateFlow(
         UiState(
@@ -276,7 +279,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
         )
 
         val zoneId = _uiState.value.zoneId
-        viewModelScope.launch(ioDispatcher) {
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch(ioDispatcher) {
             fetchAndFind(durationHours, durationLabel, zoneId)
         }
     }

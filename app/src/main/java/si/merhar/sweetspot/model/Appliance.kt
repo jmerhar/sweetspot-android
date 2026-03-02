@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 data class Appliance(
     val id: String,
     val name: String,
-    val duration: String,
+    val durationHours: Int = 1,
+    val durationMinutes: Int = 0,
     val icon: String = "bolt"
 )

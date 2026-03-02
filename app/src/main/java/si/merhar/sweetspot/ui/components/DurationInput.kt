@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material3.AssistChip
@@ -25,35 +22,40 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.applianceIconFor
 
-private val quickDurations = listOf("1h", "2h", "3h", "4h", "5h", "6h")
+private data class QuickDuration(val hours: Int, val minutes: Int, val label: String)
+
+private val quickDurations = listOf(
+    QuickDuration(1, 0, "1h"),
+    QuickDuration(2, 0, "2h"),
+    QuickDuration(3, 0, "3h"),
+    QuickDuration(4, 0, "4h"),
+    QuickDuration(5, 0, "5h"),
+    QuickDuration(6, 0, "6h")
+)
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DurationInput(
-    value: String,
-    onValueChange: (String) -> Unit,
+    hours: Int,
+    minutes: Int,
+    onDurationChanged: (Int, Int) -> Unit,
     onFind: () -> Unit,
-    onQuickDuration: (String) -> Unit,
+    onQuickDuration: (Int, Int) -> Unit,
     appliances: List<Appliance>,
     onApplianceTap: (Appliance) -> Unit,
     onAddAppliancesTap: () -> Unit,
     isLoading: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val keyboardController = LocalSoftwareKeyboardController.current
-
     ElevatedCard(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -113,40 +115,28 @@ fun DurationInput(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                quickDurations.forEach { duration ->
+                quickDurations.forEach { qd ->
                     SuggestionChip(
-                        onClick = { onQuickDuration(duration) },
-                        label = { Text(duration) },
+                        onClick = { onQuickDuration(qd.hours, qd.minutes) },
+                        label = { Text(qd.label) },
                         modifier = Modifier.weight(1f)
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
-            OutlinedTextField(
-                value = value,
-                onValueChange = onValueChange,
-                label = { Text("Duration") },
-                placeholder = { Text("e.g. 2h 30m, 4h, 90m, 2.5") },
-                singleLine = true,
-                shape = RoundedCornerShape(12.dp),
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                keyboardActions = KeyboardActions(onSearch = {
-                    keyboardController?.hide()
-                    onFind()
-                }),
-                modifier = Modifier.fillMaxWidth()
+            DurationPicker(
+                hours = hours,
+                minutes = minutes,
+                onChanged = onDurationChanged
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             FilledTonalButton(
-                onClick = {
-                    keyboardController?.hide()
-                    onFind()
-                },
-                enabled = !isLoading,
+                onClick = onFind,
+                enabled = !isLoading && (hours > 0 || minutes > 0),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),

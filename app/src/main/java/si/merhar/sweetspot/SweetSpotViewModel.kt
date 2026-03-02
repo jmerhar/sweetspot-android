@@ -10,7 +10,6 @@ import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.BreakdownSlot
 import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
-import si.merhar.sweetspot.util.parseDuration
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +20,8 @@ import java.util.UUID
 import kotlin.math.floor
 
 data class UiState(
-    val durationInput: String = "",
+    val durationHours: Int = 1,
+    val durationMinutes: Int = 0,
     val isLoading: Boolean = false,
     val error: String? = null,
     val result: WindowResult? = null,
@@ -47,8 +47,16 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
     )
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-    fun onDurationChanged(input: String) {
-        _uiState.value = _uiState.value.copy(durationInput = input)
+    fun onDurationChanged(hours: Int, minutes: Int) {
+        _uiState.value = _uiState.value.copy(durationHours = hours, durationMinutes = minutes)
+    }
+
+    fun formatDuration(hours: Int, minutes: Int): String {
+        return when {
+            hours == 0 -> "${minutes}m"
+            minutes == 0 -> "${hours}h"
+            else -> "${hours}h ${minutes}m"
+        }
     }
 
     fun onShowSettings() {
@@ -78,15 +86,21 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun onQuickDuration(duration: String) {
-        _uiState.value = _uiState.value.copy(durationInput = duration, resultLabel = duration)
+    fun onQuickDuration(hours: Int, minutes: Int) {
+        _uiState.value = _uiState.value.copy(
+            durationHours = hours,
+            durationMinutes = minutes,
+            resultLabel = formatDuration(hours, minutes)
+        )
         onFindClicked()
     }
 
     fun onApplianceDuration(appliance: Appliance) {
+        val label = "${appliance.name} \u00b7 ${formatDuration(appliance.durationHours, appliance.durationMinutes)}"
         _uiState.value = _uiState.value.copy(
-            durationInput = appliance.duration,
-            resultLabel = "${appliance.name} \u00b7 ${appliance.duration}"
+            durationHours = appliance.durationHours,
+            durationMinutes = appliance.durationMinutes,
+            resultLabel = label
         )
         onFindClicked()
     }
@@ -100,11 +114,12 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
-    fun onAddAppliance(name: String, duration: String, icon: String) {
+    fun onAddAppliance(name: String, durationHours: Int, durationMinutes: Int, icon: String) {
         val appliance = Appliance(
             id = UUID.randomUUID().toString(),
             name = name,
-            duration = duration,
+            durationHours = durationHours,
+            durationMinutes = durationMinutes,
             icon = icon
         )
         val updated = _uiState.value.appliances + appliance
@@ -127,23 +142,26 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     fun onFindClicked() {
-        val input = _uiState.value.durationInput
-        val durationHours = parseDuration(input)
+        val h = _uiState.value.durationHours
+        val m = _uiState.value.durationMinutes
 
-        if (durationHours == null) {
+        if (h == 0 && m == 0) {
             _uiState.value = _uiState.value.copy(
-                error = "Invalid duration. Try something like \"2h 30m\", \"4h\", \"90m\", or \"2.5\".",
+                error = "Please select a duration greater than zero.",
                 result = null,
                 allPrices = emptyList()
             )
             return
         }
 
+        val durationHours = h + m / 60.0
+        val durationLabel = formatDuration(h, m)
+
         _uiState.value = _uiState.value.copy(
             isLoading = true,
             error = null,
             result = null,
-            resultLabel = _uiState.value.resultLabel ?: input
+            resultLabel = _uiState.value.resultLabel ?: durationLabel
         )
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -165,7 +183,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
                 if (result == null) {
                     _uiState.value = _uiState.value.copy(
                         isLoading = false,
-                        error = "Not enough price data to cover $input. Only ${prices.size} hour(s) of data available.",
+                        error = "Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available.",
                         allPrices = prices
                     )
                     return@launch

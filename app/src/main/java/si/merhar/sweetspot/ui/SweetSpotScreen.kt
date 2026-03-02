@@ -66,7 +66,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
         ResultScreen(
             result = state.result!!,
             allPrices = state.allPrices,
-            resultLabel = state.resultLabel ?: state.durationInput,
+            resultLabel = state.resultLabel ?: viewModel.formatDuration(state.durationHours, state.durationMinutes),
             zoneId = state.zoneId,
             onBack = viewModel::onClearResult,
             snackbarHostState = snackbarHostState,
@@ -129,8 +129,9 @@ private fun FormScreen(
                 .padding(horizontal = 16.dp)
         ) {
             DurationInput(
-                value = state.durationInput,
-                onValueChange = viewModel::onDurationChanged,
+                hours = state.durationHours,
+                minutes = state.durationMinutes,
+                onDurationChanged = viewModel::onDurationChanged,
                 onFind = viewModel::onFindClicked,
                 onQuickDuration = viewModel::onQuickDuration,
                 appliances = state.appliances,
@@ -237,5 +238,5 @@ private fun ResultScreen(
 }
 
 private fun isValidationError(error: String): Boolean {
-    return error.startsWith("Invalid duration") || error.startsWith("Not enough price data")
+    return error.startsWith("Please select a duration") || error.startsWith("Not enough price data")
 }

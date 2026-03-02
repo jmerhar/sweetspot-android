@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.applianceIconFor
 import si.merhar.sweetspot.model.applianceIcons
+import si.merhar.sweetspot.ui.components.DurationPicker
 import java.time.ZoneId
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,7 +60,7 @@ fun SettingsScreen(
     isUsingDefaultZone: Boolean,
     onZoneSelected: (ZoneId?) -> Unit,
     appliances: List<Appliance>,
-    onAddAppliance: (name: String, duration: String, icon: String) -> Unit,
+    onAddAppliance: (name: String, durationHours: Int, durationMinutes: Int, icon: String) -> Unit,
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
     onBack: () -> Unit,
@@ -85,8 +86,8 @@ fun SettingsScreen(
     if (showAddDialog) {
         ApplianceDialog(
             appliance = null,
-            onSave = { name, duration, icon ->
-                onAddAppliance(name, duration, icon)
+            onSave = { name, durationHours, durationMinutes, icon ->
+                onAddAppliance(name, durationHours, durationMinutes, icon)
                 showAddDialog = false
             },
             onDelete = null,
@@ -97,8 +98,8 @@ fun SettingsScreen(
     editingAppliance?.let { appliance ->
         ApplianceDialog(
             appliance = appliance,
-            onSave = { name, duration, icon ->
-                onUpdateAppliance(appliance.copy(name = name, duration = duration, icon = icon))
+            onSave = { name, durationHours, durationMinutes, icon ->
+                onUpdateAppliance(appliance.copy(name = name, durationHours = durationHours, durationMinutes = durationMinutes, icon = icon))
                 editingAppliance = null
             },
             onDelete = {
@@ -194,7 +195,7 @@ fun SettingsScreen(
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Text(
-                            text = appliance.duration,
+                            text = formatApplianceDuration(appliance.durationHours, appliance.durationMinutes),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -227,16 +228,25 @@ fun SettingsScreen(
     }
 }
 
+private fun formatApplianceDuration(hours: Int, minutes: Int): String {
+    return when {
+        hours == 0 -> "${minutes}m"
+        minutes == 0 -> "${hours}h"
+        else -> "${hours}h ${minutes}m"
+    }
+}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ApplianceDialog(
     appliance: Appliance?,
-    onSave: (name: String, duration: String, icon: String) -> Unit,
+    onSave: (name: String, durationHours: Int, durationMinutes: Int, icon: String) -> Unit,
     onDelete: (() -> Unit)?,
     onDismiss: () -> Unit
 ) {
     var name by rememberSaveable { mutableStateOf(appliance?.name ?: "") }
-    var duration by rememberSaveable { mutableStateOf(appliance?.duration ?: "") }
+    var pickerHours by rememberSaveable { mutableStateOf(appliance?.durationHours ?: 1) }
+    var pickerMinutes by rememberSaveable { mutableStateOf(appliance?.durationMinutes ?: 0) }
     var selectedIcon by rememberSaveable { mutableStateOf(appliance?.icon ?: "bolt") }
 
     AlertDialog(
@@ -253,13 +263,10 @@ private fun ApplianceDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                OutlinedTextField(
-                    value = duration,
-                    onValueChange = { duration = it },
-                    label = { Text("Duration") },
-                    placeholder = { Text("e.g. 2h 30m") },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth()
+                DurationPicker(
+                    hours = pickerHours,
+                    minutes = pickerMinutes,
+                    onChanged = { h, m -> pickerHours = h; pickerMinutes = m }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
@@ -304,8 +311,8 @@ private fun ApplianceDialog(
         },
         confirmButton = {
             TextButton(
-                onClick = { onSave(name.trim(), duration.trim(), selectedIcon) },
-                enabled = name.isNotBlank() && duration.isNotBlank()
+                onClick = { onSave(name.trim(), pickerHours, pickerMinutes, selectedIcon) },
+                enabled = name.isNotBlank() && (pickerHours > 0 || pickerMinutes > 0)
             ) {
                 Text("Save")
             }

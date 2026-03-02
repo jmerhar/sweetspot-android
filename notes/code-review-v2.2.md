@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 32. Hardcoded error color in wear screens
-
-`ApplianceListScreen.kt:100`, `ResultScreen.kt:49` — Uses `Color(0xFFCF6679)` instead of `MaterialTheme.colors.error`.
-
 ### 33. No `PositionIndicator` on wear appliance list
 
 `wear/.../ApplianceListScreen.kt` — Missing scroll indicator for long appliance lists on small round watches.

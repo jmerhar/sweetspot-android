@@ -1,5 +1,7 @@
 # SweetSpot for Android
 
+[![Test](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml/badge.svg)](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml)
+
 Find the cheapest time to run your appliance, based on dynamic electricity prices.
 
 SweetSpot fetches hourly electricity prices from the [EnergyZero API](https://api.energyzero.nl) and finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
@@ -79,4 +81,8 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 ./gradlew testDebugUnitTest       # Run debug variant only
 ```
 
-Unit tests cover the sliding window algorithm, duration and time formatting, API JSON parsing, and ViewModel state management (via Robolectric).
+Unit tests (116) cover the sliding window algorithm, duration and time formatting, API JSON parsing, icon resolution, and ViewModel state management (via Robolectric).
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE).

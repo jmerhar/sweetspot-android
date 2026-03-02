@@ -15,6 +15,8 @@ SweetSpot is an Android app that finds the cheapest contiguous time window for r
 ./gradlew assembleRelease        # Build signed release APKs
 ```
 
+A `Makefile` wraps common tasks: `make build`, `make test`, `make install-phone`, `make install-wear`, `make release`, `make clean`.
+
 ### Installing the Wear OS app
 
 The watch app must be installed separately via ADB (auto-install only works via Play Store):
@@ -48,32 +50,36 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests
+./gradlew test                   # Run all unit tests (116 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
-- `data/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (8 tests, in shared)
+- `data/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
 - `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants (21 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case (22 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, async fetch (29 tests, Robolectric, in app)
-- `WearViewModelTest` — Wear ViewModel state, appliance tap, async fetch, rapid-tap cancellation (11 tests, Robolectric, in wear)
+- `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, async fetch, rapid-tap cancellation (30 tests, Robolectric, in app)
+- `WearViewModelTest` — Wear ViewModel state, appliance tap, async fetch, rapid-tap cancellation, JSON parsing (15 tests, Robolectric, in wear)
 
 ## Stack
 
-- Kotlin 2.1, minSdk 26 (phone) / 30 (wear), targetSdk/compileSdk 35
+- Kotlin 2.3, AGP 9, Gradle 9.2 with version catalog (`gradle/libs.versions.toml`)
+- minSdk 26 (phone) / 30 (wear), targetSdk 35, compileSdk 36
 - Jetpack Compose with Material 3 (dynamic color on SDK 31+)
 - Wear Compose with Material for the watch app
 - MVVM: `SweetSpotViewModel` (phone) and `WearViewModel` (watch) with `StateFlow`
-- OkHttp for HTTP, kotlinx-serialization for JSON
+- OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests
+- JUnit 4 + Robolectric for unit tests (116 tests)
+- GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
+- Licensed under GPL v3
 
 ## Architecture
 
@@ -100,19 +106,19 @@ Three Gradle modules:
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 26 curated icons (18 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.
 - **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Supports fractional hours (e.g. 2h30m = 2.5h with a partial last slot). Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
-- **`util/FormatUtils`** — `formatDuration()` helper shared by ViewModel and UI screens.
+- **`util/FormatUtils`** — `formatDuration()` and `shortTimeFormatter` shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.
 
 ### Phone app (`:app`)
 
-- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`. Pushes appliances to Wearable Data Layer after every CRUD operation via `syncAppliancesToWear()`.
+- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`. Pushes appliances to Wearable Data Layer after every CRUD operation via `syncAppliancesToWear()`. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
 
 ### Wear app (`:wear`)
 
 - **`WearViewModel`** — Reads appliances from Data Layer on init, listens for live updates. On appliance tap, fetches prices via `PriceRepository` and runs `findCheapestWindow()`. Prices are cached locally on the watch.
 - **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`.
-- **`ui/ApplianceListScreen`** — `ScalingLazyColumn` with `TimeText`, header, appliance `Chip`s (icon + name + duration), empty state, loading overlay.
-- **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display. Scrollable for long labels on round watch faces.
+- **`ui/ApplianceListScreen`** — `Scaffold` with `PositionIndicator`, `TimeText`, `ScalingLazyColumn` of appliance `Chip`s (icon + name + duration), empty state, loading overlay.
+- **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display that auto-refreshes every 60 seconds. Scrollable for long labels on round watch faces.
 - **`ui/WearTheme`** — Wear Material theme wrapper.
 
 ### Phone navigation

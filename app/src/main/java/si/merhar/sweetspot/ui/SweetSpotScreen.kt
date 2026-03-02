@@ -43,6 +43,7 @@ import si.merhar.sweetspot.ui.components.DurationInput
 import si.merhar.sweetspot.ui.components.ErrorBox
 import si.merhar.sweetspot.ui.components.PriceBarChart
 import si.merhar.sweetspot.ui.components.ResultSummary
+import si.merhar.sweetspot.util.formatDuration
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,7 +67,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
         ResultScreen(
             result = state.result!!,
             allPrices = state.allPrices,
-            resultLabel = state.resultLabel ?: viewModel.formatDuration(state.durationHours, state.durationMinutes),
+            resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
             zoneId = state.zoneId,
             onBack = viewModel::onClearResult,
             snackbarHostState = snackbarHostState,

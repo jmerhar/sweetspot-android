@@ -51,6 +51,7 @@ import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.applianceIconFor
 import si.merhar.sweetspot.model.applianceIcons
 import si.merhar.sweetspot.ui.components.DurationPicker
+import si.merhar.sweetspot.util.formatDuration
 import java.time.ZoneId
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -195,7 +196,7 @@ fun SettingsScreen(
                             style = MaterialTheme.typography.bodyLarge
                         )
                         Text(
-                            text = formatApplianceDuration(appliance.durationHours, appliance.durationMinutes),
+                            text = formatDuration(appliance.durationHours, appliance.durationMinutes),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -225,14 +226,6 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
         }
-    }
-}
-
-private fun formatApplianceDuration(hours: Int, minutes: Int): String {
-    return when {
-        hours == 0 -> "${minutes}m"
-        minutes == 0 -> "${hours}h"
-        else -> "${hours}h ${minutes}m"
     }
 }
 

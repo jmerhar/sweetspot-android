@@ -13,14 +13,7 @@ This is the native Android port of the [SweetSpot](https://github.com/jmerhar/sw
 
 ## Usage
 
-Tap a quick-duration button (1h–6h) or enter a custom duration in the search field. Supported formats:
-
-| Input | Duration |
-|-------|----------|
-| `4h` | 4 hours |
-| `90m` | 1.5 hours |
-| `2h 30m` | 2.5 hours |
-| `2.5` | 2.5 hours |
+Tap a quick-duration button (1h–6h) or use the scroll wheel picker to select hours and minutes. The picker supports hours from 0–24 and minutes in 5-minute intervals.
 
 You can also create **appliance buttons** (e.g. "Washing machine — 2h 30m") in Settings, each with a configurable icon. Tapping an appliance button fills the duration and searches immediately.
 
@@ -34,6 +27,7 @@ All costs shown are per 1 kW load. Prices do not include energy tax and supplier
 
 ## Features
 
+- **Duration scroll picker** — two-column wheel for hours and minutes with snap behavior
 - **Quick-duration buttons** — 1h–6h chips for common durations
 - **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
@@ -43,7 +37,16 @@ All costs shown are per 1 kW load. Prices do not include energy tax and supplier
 
 ## Building
 
+```bash
+./gradlew assembleDebug           # Build debug APK
+./gradlew installDebug            # Install on connected device/emulator
 ```
-./gradlew assembleDebug
-./gradlew installDebug
+
+## Testing
+
+```bash
+./gradlew test                    # Run all unit tests
+./gradlew testDebugUnitTest       # Run debug variant only
 ```
+
+Unit tests cover the sliding window algorithm, duration and time formatting, API JSON parsing, and ViewModel state management (via Robolectric).

@@ -7,9 +7,10 @@ import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.data.SettingsRepository
 import si.merhar.sweetspot.model.Appliance
-import si.merhar.sweetspot.model.BreakdownSlot
 import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
+import si.merhar.sweetspot.util.findCheapestWindow
+import si.merhar.sweetspot.util.formatDuration
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,8 +18,22 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.ZoneId
 import java.util.UUID
-import kotlin.math.floor
 
+/**
+ * UI state for the main screen.
+ *
+ * @property durationHours Selected hours component of the duration (0–24).
+ * @property durationMinutes Selected minutes component of the duration (0, 5, 10, ..., 55).
+ * @property isLoading Whether a price fetch is in progress.
+ * @property error Error message to display, or `null` if none.
+ * @property result The cheapest-window result, or `null` if no search has been performed.
+ * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
+ * @property allPrices All hourly prices for the next 24h, used by the bar chart.
+ * @property showSettings Whether the settings screen is currently visible.
+ * @property zoneId Active timezone for price date boundaries and display.
+ * @property isUsingDefaultZone Whether the timezone is the system default (vs. user-selected).
+ * @property appliances User-configured appliances with preset durations.
+ */
 data class UiState(
     val durationHours: Int = 1,
     val durationMinutes: Int = 0,
@@ -33,6 +48,12 @@ data class UiState(
     val appliances: List<Appliance> = emptyList()
 )
 
+/**
+ * ViewModel for the SweetSpot app.
+ *
+ * Owns all UI state via [uiState]. Handles duration selection, price fetching,
+ * cheapest-window calculation, timezone configuration, and appliance CRUD.
+ */
 class SweetSpotViewModel(application: Application) : AndroidViewModel(application) {
 
     private val priceCache = PriceCache(application)
@@ -45,24 +66,26 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
             appliances = settingsRepository.getAppliances()
         )
     )
+
+    /** Observable UI state. */
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
+    /**
+     * Updates the selected duration from the picker.
+     *
+     * @param hours Hours component (0–24).
+     * @param minutes Minutes component (0–55, in 5-minute steps).
+     */
     fun onDurationChanged(hours: Int, minutes: Int) {
         _uiState.value = _uiState.value.copy(durationHours = hours, durationMinutes = minutes)
     }
 
-    fun formatDuration(hours: Int, minutes: Int): String {
-        return when {
-            hours == 0 -> "${minutes}m"
-            minutes == 0 -> "${hours}h"
-            else -> "${hours}h ${minutes}m"
-        }
-    }
-
+    /** Opens the settings screen. */
     fun onShowSettings() {
         _uiState.value = _uiState.value.copy(showSettings = true)
     }
 
+    /** Closes the settings screen and refreshes the appliance list from storage. */
     fun onHideSettings() {
         _uiState.value = _uiState.value.copy(
             showSettings = false,
@@ -70,6 +93,11 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
+    /**
+     * Updates the timezone selection.
+     *
+     * @param zoneId The chosen timezone, or `null` to revert to system default.
+     */
     fun onZoneSelected(zoneId: ZoneId?) {
         if (zoneId == null) {
             settingsRepository.clearZoneId()
@@ -86,6 +114,12 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
+    /**
+     * Handles a quick-duration button tap. Sets the picker values and immediately triggers a search.
+     *
+     * @param hours Hours component of the quick duration.
+     * @param minutes Minutes component of the quick duration.
+     */
     fun onQuickDuration(hours: Int, minutes: Int) {
         _uiState.value = _uiState.value.copy(
             durationHours = hours,
@@ -95,6 +129,12 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         onFindClicked()
     }
 
+    /**
+     * Handles an appliance chip tap. Sets the picker to the appliance's duration
+     * and immediately triggers a search.
+     *
+     * @param appliance The tapped appliance.
+     */
     fun onApplianceDuration(appliance: Appliance) {
         val label = "${appliance.name} \u00b7 ${formatDuration(appliance.durationHours, appliance.durationMinutes)}"
         _uiState.value = _uiState.value.copy(
@@ -105,6 +145,7 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         onFindClicked()
     }
 
+    /** Clears the current result and returns to the form screen. */
     fun onClearResult() {
         _uiState.value = _uiState.value.copy(
             result = null,
@@ -114,6 +155,14 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
+    /**
+     * Adds a new appliance and persists it.
+     *
+     * @param name Display name.
+     * @param durationHours Hours component of the default duration.
+     * @param durationMinutes Minutes component of the default duration.
+     * @param icon Icon ID from the appliance icon registry.
+     */
     fun onAddAppliance(name: String, durationHours: Int, durationMinutes: Int, icon: String) {
         val appliance = Appliance(
             id = UUID.randomUUID().toString(),
@@ -127,6 +176,11 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         _uiState.value = _uiState.value.copy(appliances = updated)
     }
 
+    /**
+     * Replaces an existing appliance (matched by ID) and persists the change.
+     *
+     * @param appliance The updated appliance.
+     */
     fun onUpdateAppliance(appliance: Appliance) {
         val updated = _uiState.value.appliances.map {
             if (it.id == appliance.id) appliance else it
@@ -135,12 +189,23 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         _uiState.value = _uiState.value.copy(appliances = updated)
     }
 
+    /**
+     * Deletes an appliance by ID and persists the change.
+     *
+     * @param id The appliance ID to remove.
+     */
     fun onDeleteAppliance(id: String) {
         val updated = _uiState.value.appliances.filter { it.id != id }
         settingsRepository.setAppliances(updated)
         _uiState.value = _uiState.value.copy(appliances = updated)
     }
 
+    /**
+     * Validates the current duration, fetches prices, and finds the cheapest window.
+     *
+     * Sets [UiState.isLoading] while working. On success, populates [UiState.result]
+     * and [UiState.allPrices]. On failure, sets [UiState.error].
+     */
     fun onFindClicked() {
         val h = _uiState.value.durationHours
         val m = _uiState.value.durationMinutes
@@ -165,111 +230,55 @@ class SweetSpotViewModel(application: Application) : AndroidViewModel(applicatio
         )
 
         viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val repository = PriceRepository(priceCache, _uiState.value.zoneId)
-                val prices = repository.getPrices()
-
-                if (prices.isEmpty()) {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = "No price data available for the next 24 hours.",
-                        allPrices = emptyList()
-                    )
-                    return@launch
-                }
-
-                val result = findCheapestWindow(prices, durationHours)
-
-                if (result == null) {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = "Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available.",
-                        allPrices = prices
-                    )
-                    return@launch
-                }
-
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    result = result,
-                    allPrices = prices,
-                    error = null
-                )
-            } catch (e: Exception) {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    error = "Could not fetch prices: ${e.message}",
-                    allPrices = emptyList()
-                )
-            }
+            fetchAndFind(durationHours, durationLabel)
         }
     }
 
-    private fun findCheapestWindow(prices: List<HourlyPrice>, durationHours: Double): WindowResult? {
-        val count = prices.size
-        if (count == 0) return null
+    /**
+     * Fetches prices from the repository and runs the cheapest-window algorithm.
+     *
+     * Called on [Dispatchers.IO]. Updates [_uiState] with the result or an error.
+     *
+     * @param durationHours Duration in decimal hours.
+     * @param durationLabel Human-readable duration label for error messages.
+     */
+    private fun fetchAndFind(durationHours: Double, durationLabel: String) {
+        try {
+            val repository = PriceRepository(priceCache, _uiState.value.zoneId)
+            val prices = repository.getPrices()
 
-        val fullHours = floor(durationHours).toInt()
-        val fractional = durationHours - fullHours
-
-        val slotsNeeded = fullHours + if (fractional > 0) 1 else 0
-
-        if (count < slotsNeeded) return null
-
-        var bestCost: Double? = null
-        var bestStart = 0
-
-        for (i in 0..count - slotsNeeded) {
-            var cost = 0.0
-
-            for (j in 0 until fullHours) {
-                cost += prices[i + j].price
-            }
-
-            if (fractional > 0 && (i + fullHours) < count) {
-                cost += fractional * prices[i + fullHours].price
-            }
-
-            if (bestCost == null || cost < bestCost) {
-                bestCost = cost
-                bestStart = i
-            }
-        }
-
-        val breakdown = mutableListOf<BreakdownSlot>()
-        for (j in 0 until fullHours) {
-            val slot = prices[bestStart + j]
-            breakdown.add(
-                BreakdownSlot(
-                    time = slot.time,
-                    price = slot.price,
-                    fraction = 1.0,
-                    cost = slot.price
+            if (prices.isEmpty()) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    error = "No price data available for the next 24 hours.",
+                    allPrices = emptyList()
                 )
+                return
+            }
+
+            val result = findCheapestWindow(prices, durationHours)
+
+            if (result == null) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    error = "Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available.",
+                    allPrices = prices
+                )
+                return
+            }
+
+            _uiState.value = _uiState.value.copy(
+                isLoading = false,
+                result = result,
+                allPrices = prices,
+                error = null
+            )
+        } catch (e: Exception) {
+            _uiState.value = _uiState.value.copy(
+                isLoading = false,
+                error = "Could not fetch prices: ${e.message}",
+                allPrices = emptyList()
             )
         }
-
-        if (fractional > 0) {
-            val slot = prices[bestStart + fullHours]
-            breakdown.add(
-                BreakdownSlot(
-                    time = slot.time,
-                    price = slot.price,
-                    fraction = fractional,
-                    cost = fractional * slot.price
-                )
-            )
-        }
-
-        val startTime = prices[bestStart].time
-        val endTime = startTime.plusSeconds((durationHours * 3600).toLong())
-
-        return WindowResult(
-            startTime = startTime,
-            endTime = endTime,
-            totalCost = bestCost!!,
-            avgPrice = if (durationHours > 0) bestCost / durationHours else 0.0,
-            breakdown = breakdown
-        )
     }
 }

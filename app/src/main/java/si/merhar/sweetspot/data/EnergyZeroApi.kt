@@ -11,17 +11,34 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
+/**
+ * A single price entry from the EnergyZero API response.
+ *
+ * @property readingDate ISO-8601 timestamp string for the start of this hourly slot.
+ * @property price Electricity price in EUR/kWh.
+ */
 @Serializable
 data class EnergyZeroPriceEntry(
     val readingDate: String,
     val price: Double
 )
 
+/**
+ * Top-level response from the EnergyZero electricity prices endpoint.
+ *
+ * @property Prices List of hourly price entries.
+ */
 @Serializable
 data class EnergyZeroResponse(
     val Prices: List<EnergyZeroPriceEntry>
 )
 
+/**
+ * Singleton client for the EnergyZero electricity price API.
+ *
+ * Fetches hourly electricity prices for today and tomorrow. The raw JSON
+ * can be cached by [PriceCache] to avoid redundant network requests.
+ */
 object EnergyZeroApi {
 
     private val client = OkHttpClient.Builder()
@@ -31,6 +48,13 @@ object EnergyZeroApi {
 
     private val json = Json { ignoreUnknownKeys = true }
 
+    /**
+     * Fetches raw JSON from the EnergyZero API for today and tomorrow.
+     *
+     * @param zoneId Timezone used to determine "today" and date boundaries.
+     * @return Raw JSON response body.
+     * @throws RuntimeException if the HTTP request fails or the body is empty.
+     */
     fun fetchRawJson(zoneId: ZoneId): String {
         val today = LocalDate.now(zoneId)
         val fromDate = today.atStartOfDay(zoneId).toInstant()
@@ -52,6 +76,13 @@ object EnergyZeroApi {
             ?: throw RuntimeException("Empty response body")
     }
 
+    /**
+     * Parses raw EnergyZero JSON into a sorted list of [HourlyPrice] entries.
+     *
+     * @param rawJson Raw JSON string from [fetchRawJson] or cache.
+     * @param zoneId Timezone to convert UTC timestamps to local time.
+     * @return Chronologically sorted list of hourly prices.
+     */
     fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
         val parsed = json.decodeFromString<EnergyZeroResponse>(rawJson)
         return parsed.Prices.map { entry ->

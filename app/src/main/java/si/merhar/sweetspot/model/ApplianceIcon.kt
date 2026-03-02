@@ -29,8 +29,16 @@ import androidx.compose.material.icons.outlined.Tv
 import androidx.compose.material.icons.outlined.WaterDrop
 import androidx.compose.ui.graphics.vector.ImageVector
 
+/**
+ * An icon option for appliances, displayed in the icon picker.
+ *
+ * @property id Unique string identifier (e.g. "laundry", "bolt") stored in [Appliance.icon].
+ * @property icon Material Design icon vector.
+ * @property label Human-readable label shown as content description.
+ */
 data class ApplianceIcon(val id: String, val icon: ImageVector, val label: String)
 
+/** All available appliance icons, grouped by household appliances and generic icons. */
 val applianceIcons: List<ApplianceIcon> = listOf(
     // Household appliances
     ApplianceIcon("laundry", Icons.Outlined.LocalLaundryService, "Washing machine"),
@@ -64,4 +72,10 @@ val applianceIcons: List<ApplianceIcon> = listOf(
 
 private val iconMap: Map<String, ImageVector> = applianceIcons.associate { it.id to it.icon }
 
+/**
+ * Resolves an icon ID to its [ImageVector].
+ *
+ * @param id Icon identifier from [applianceIcons].
+ * @return The corresponding icon, or the "bolt" icon if the ID is unknown.
+ */
 fun applianceIconFor(id: String): ImageVector = iconMap[id] ?: Icons.Outlined.Bolt

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Cloud backup / device transfer rules for API 31+. Excludes price cache. -->
+<!-- Cloud backup / device transfer rules for API 31+. Exclude ephemeral price cache. -->
 <data-extraction-rules>
     <cloud-backup>
         <exclude domain="sharedpref" path="sweetspot_cache.xml" />
-        <exclude domain="file" path="prices_cache.json" />
     </cloud-backup>
     <device-transfer>
         <exclude domain="sharedpref" path="sweetspot_cache.xml" />
-        <exclude domain="file" path="prices_cache.json" />
     </device-transfer>
 </data-extraction-rules>

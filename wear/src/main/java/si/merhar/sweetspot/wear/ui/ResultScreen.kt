@@ -17,9 +17,10 @@ import si.merhar.sweetspot.util.formatRelative
 import si.merhar.sweetspot.wear.WearUiState
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
-/** Time formatter for HH:mm display. */
-private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
+/** Time formatter using locale-appropriate short format. */
+private val timeFormat = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
 /**
  * Result screen for the Wear OS app.

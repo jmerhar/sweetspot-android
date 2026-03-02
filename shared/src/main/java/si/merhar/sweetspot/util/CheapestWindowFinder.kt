@@ -97,7 +97,7 @@ private fun findBestStartIndex(
  * @param startIndex Index of the first slot in the window.
  * @param fullHours Number of complete hour slots.
  * @param fractional Fraction of the last partial hour (0.0 if none).
- * @return Total cost in cents.
+ * @return Total cost in EUR (per 1 kW load).
  */
 private fun computeWindowCost(
     prices: List<HourlyPrice>,

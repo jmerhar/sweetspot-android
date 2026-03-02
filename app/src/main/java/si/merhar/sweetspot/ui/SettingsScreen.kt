@@ -277,7 +277,23 @@ private fun ApplianceDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(if (appliance == null) "Add appliance" else "Edit appliance") },
+        title = {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(if (appliance == null) "Add appliance" else "Edit appliance")
+                if (onDelete != null) {
+                    Text(
+                        text = "Delete",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.clickable(onClick = onDelete)
+                    )
+                }
+            }
+        },
         text = {
             Column {
                 OutlinedTextField(
@@ -344,14 +360,8 @@ private fun ApplianceDialog(
             }
         },
         dismissButton = {
-            if (onDelete != null) {
-                TextButton(onClick = onDelete) {
-                    Text("Delete", color = MaterialTheme.colorScheme.error)
-                }
-            } else {
-                TextButton(onClick = onDismiss) {
-                    Text("Cancel")
-                }
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
             }
         }
     )

@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,13 +20,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.HourlyPrice
 import si.merhar.sweetspot.model.WindowResult
+import si.merhar.sweetspot.ui.theme.LocalBarNegativeColor
 import si.merhar.sweetspot.ui.theme.LocalBarNormalColor
 import si.merhar.sweetspot.ui.theme.LocalBarOptimalColor
+import androidx.compose.ui.tooling.preview.Preview
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import kotlin.math.max
+import java.time.format.FormatStyle
+import kotlin.math.abs
 
-private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
+/**
+ * Horizontal bar chart showing hourly electricity prices.
+ *
+ * When all prices are non-negative, bars grow left-to-right from zero.
+ * When negative prices exist, the zero axis shifts right proportionally
+ * so that negative bars grow leftward and positive bars grow rightward.
+ * Negative bars use a distinct color to highlight that the price is below zero.
+ *
+ * @param prices Hourly prices to display.
+ * @param result Optional cheapest-window result whose slots are highlighted.
+ * @param modifier Modifier for the outer column.
+ */
 @Composable
 fun PriceBarChart(
     prices: List<HourlyPrice>,
@@ -35,16 +52,21 @@ fun PriceBarChart(
     val optimalTimes = result?.breakdown?.map { it.time.toEpochSecond() }?.toSet() ?: emptySet()
     val barNormalColor = LocalBarNormalColor.current
     val barOptimalColor = LocalBarOptimalColor.current
+    val barNegativeColor = LocalBarNegativeColor.current
     val highlightColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f)
+    val trackColor = MaterialTheme.colorScheme.surfaceVariant
 
-    val maxPrice = prices.maxOfOrNull { max(0.0, it.price) } ?: 1.0
-    val scaleFactor = if (maxPrice > 0) maxPrice else 1.0
+    val minPrice = prices.minOfOrNull { it.price } ?: 0.0
+    val maxPrice = prices.maxOfOrNull { it.price } ?: 1.0
+    val hasNegative = minPrice < 0
+    // Where zero falls within the min–max range (0 = left edge, 1 = right edge)
+    val zeroFraction = if (hasNegative && maxPrice > minPrice) {
+        ((0.0 - minPrice) / (maxPrice - minPrice)).toFloat().coerceIn(0.01f, 0.99f)
+    } else 0f
 
     Column(modifier = modifier.fillMaxWidth()) {
         prices.forEach { price ->
             val isOptimal = price.time.toEpochSecond() in optimalTimes
-            val barColor = if (isOptimal) barOptimalColor else barNormalColor
-            val barFraction = (max(0.0, price.price) / scaleFactor).toFloat().coerceIn(0f, 1f)
             val rowBackground = if (isOptimal) highlightColor else Color.Transparent
 
             Row(
@@ -61,21 +83,80 @@ fun PriceBarChart(
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.width(40.dp)
                 )
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(20.dp)
-                        .clip(RoundedCornerShape(6.dp))
-                        .background(MaterialTheme.colorScheme.surfaceVariant)
-                ) {
-                    Box(
+
+                if (hasNegative) {
+                    // Diverging layout: negative portion | positive portion
+                    Row(
                         modifier = Modifier
-                            .fillMaxWidth(barFraction)
+                            .weight(1f)
                             .height(20.dp)
                             .clip(RoundedCornerShape(6.dp))
-                            .background(barColor)
-                    )
+                            .background(trackColor)
+                    ) {
+                        // Left half (negative area)
+                        Box(
+                            modifier = Modifier
+                                .weight(zeroFraction)
+                                .fillMaxHeight(),
+                            contentAlignment = Alignment.CenterEnd
+                        ) {
+                            if (price.price < 0) {
+                                val negFraction = (abs(price.price) / abs(minPrice)).toFloat().coerceIn(0f, 1f)
+                                val barColor = if (isOptimal) barOptimalColor else barNegativeColor
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth(negFraction)
+                                        .fillMaxHeight()
+                                        .clip(RoundedCornerShape(6.dp))
+                                        .background(barColor)
+                                )
+                            }
+                        }
+                        // Right half (positive area)
+                        Box(
+                            modifier = Modifier
+                                .weight(1f - zeroFraction)
+                                .fillMaxHeight(),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            if (price.price >= 0) {
+                                val posFraction = if (maxPrice > 0) {
+                                    (price.price / maxPrice).toFloat().coerceIn(0f, 1f)
+                                } else 0f
+                                val barColor = if (isOptimal) barOptimalColor else barNormalColor
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth(posFraction)
+                                        .fillMaxHeight()
+                                        .clip(RoundedCornerShape(6.dp))
+                                        .background(barColor)
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    // Simple layout: all bars grow left-to-right from zero
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(20.dp)
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(trackColor)
+                    ) {
+                        val barFraction = if (maxPrice > 0) {
+                            (price.price / maxPrice).toFloat().coerceIn(0f, 1f)
+                        } else 0f
+                        val barColor = if (isOptimal) barOptimalColor else barNormalColor
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth(barFraction)
+                                .height(20.dp)
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(barColor)
+                        )
+                    }
                 }
+
                 Text(
                     text = "\u20AC ${String.format("%.3f", price.price)}",
                     style = MaterialTheme.typography.labelSmall,
@@ -86,5 +167,43 @@ fun PriceBarChart(
                 )
             }
         }
+    }
+}
+
+@Preview(showBackground = true, name = "Mixed positive and negative prices")
+@Composable
+private fun PriceBarChartNegativePreview() {
+    val base = ZonedDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0)
+    val prices = listOf(
+        HourlyPrice(base, 0.12),
+        HourlyPrice(base.plusHours(1), 0.08),
+        HourlyPrice(base.plusHours(2), 0.02),
+        HourlyPrice(base.plusHours(3), -0.01),
+        HourlyPrice(base.plusHours(4), -0.03),
+        HourlyPrice(base.plusHours(5), -0.02),
+        HourlyPrice(base.plusHours(6), 0.01),
+        HourlyPrice(base.plusHours(7), 0.06),
+        HourlyPrice(base.plusHours(8), 0.10),
+    )
+    si.merhar.sweetspot.ui.theme.SweetSpotTheme {
+        PriceBarChart(prices = prices, result = null)
+    }
+}
+
+@Preview(showBackground = true, name = "All positive prices")
+@Composable
+private fun PriceBarChartPositivePreview() {
+    val base = ZonedDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0)
+    val prices = listOf(
+        HourlyPrice(base, 0.12),
+        HourlyPrice(base.plusHours(1), 0.08),
+        HourlyPrice(base.plusHours(2), 0.04),
+        HourlyPrice(base.plusHours(3), 0.02),
+        HourlyPrice(base.plusHours(4), 0.05),
+        HourlyPrice(base.plusHours(5), 0.09),
+        HourlyPrice(base.plusHours(6), 0.11),
+    )
+    si.merhar.sweetspot.ui.theme.SweetSpotTheme {
+        PriceBarChart(prices = prices, result = null)
     }
 }

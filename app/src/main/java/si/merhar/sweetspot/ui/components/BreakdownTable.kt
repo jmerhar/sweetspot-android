@@ -31,8 +31,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.BreakdownSlot
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
-private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
 @Composable
 fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier) {
@@ -79,7 +80,8 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                             )
                         }
                         val start = slot.time.format(timeFormatter)
-                        val end = slot.time.plusHours(1).format(timeFormatter)
+                        val endMinutes = Math.round(slot.fraction * 60)
+                        val end = slot.time.plusMinutes(endMinutes).format(timeFormatter)
 
                         Row(
                             modifier = Modifier
@@ -87,19 +89,10 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                                 .padding(vertical = 4.dp),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Column {
-                                Text(
-                                    text = "$start\u2013$end",
-                                    style = MaterialTheme.typography.bodyMedium
-                                )
-                                if (slot.fraction < 1.0) {
-                                    Text(
-                                        text = "${Math.round(slot.fraction * 60)} min",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                            }
+                            Text(
+                                text = "$start\u2013$end",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
                             Text(
                                 text = "\u20AC ${String.format("%.4f", slot.cost)}",
                                 style = MaterialTheme.typography.bodyMedium

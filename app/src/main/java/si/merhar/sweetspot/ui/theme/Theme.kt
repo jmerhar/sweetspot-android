@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 
 val LocalBarNormalColor = staticCompositionLocalOf { Blue }
 val LocalBarOptimalColor = staticCompositionLocalOf { Green }
+val LocalBarNegativeColor = staticCompositionLocalOf { Purple }
 
 private val LightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
@@ -127,6 +128,7 @@ fun SweetSpotTheme(
     CompositionLocalProvider(
         LocalBarNormalColor provides Blue,
         LocalBarOptimalColor provides Green,
+        LocalBarNegativeColor provides Purple,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,

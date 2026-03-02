@@ -8,6 +8,15 @@
 #
 set -euo pipefail
 
+# Portable in-place sed (macOS needs '' after -i, GNU sed does not)
+sedi() {
+    if sed --version >/dev/null 2>&1; then
+        sed -i "$@"
+    else
+        sedi "$@"
+    fi
+}
+
 VERSION="${1:?Usage: ./release.sh <version> -n <notes-file> [--draft]}"
 shift
 
@@ -43,13 +52,13 @@ NEW_CODE=$((CURRENT_CODE + 1))
 
 echo "Bumping versionCode $CURRENT_CODE → $NEW_CODE, versionName → $VERSION"
 
-sed -i '' "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$GRADLE_FILE"
-sed -i '' "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$GRADLE_FILE"
+sedi "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$GRADLE_FILE"
+sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$GRADLE_FILE"
 
 # Bump wear module to match
 WEAR_CURRENT_CODE=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' "$WEAR_GRADLE_FILE")
-sed -i '' "s/versionCode = $WEAR_CURRENT_CODE/versionCode = $NEW_CODE/" "$WEAR_GRADLE_FILE"
-sed -i '' "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$WEAR_GRADLE_FILE"
+sedi "s/versionCode = $WEAR_CURRENT_CODE/versionCode = $NEW_CODE/" "$WEAR_GRADLE_FILE"
+sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$WEAR_GRADLE_FILE"
 
 # --- Build release APK ---
 

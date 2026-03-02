@@ -18,8 +18,9 @@ import si.merhar.sweetspot.util.formatRelative
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
-private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
 @Composable
 fun ResultSummary(result: WindowResult, zoneId: ZoneId, modifier: Modifier = Modifier) {

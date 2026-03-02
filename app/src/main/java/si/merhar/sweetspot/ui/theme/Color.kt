@@ -2,10 +2,10 @@ package si.merhar.sweetspot.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Bar chart colors — always Blue/Green regardless of dynamic color
+// Bar chart colors — always fixed regardless of dynamic color
 val Blue = Color(0xFF4A90D9)
 val Green = Color(0xFF27AE60)
-val Red = Color(0xFFE74C3C)
+val Purple = Color(0xFF9B59B6)
 
 // Light palette
 val md_theme_light_primary = Color(0xFF2C5F9B)

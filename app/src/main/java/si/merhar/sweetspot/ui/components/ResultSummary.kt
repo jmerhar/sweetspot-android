@@ -22,6 +22,10 @@ import java.time.format.FormatStyle
 
 private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
+/**
+ * Summary cards showing the cheapest window's start time, end time, and estimated cost.
+ * Times include a relative label (e.g. "now" or "in 2h 30m") computed against the current time.
+ */
 @Composable
 fun ResultSummary(result: WindowResult, zoneId: ZoneId, modifier: Modifier = Modifier) {
     val now = ZonedDateTime.now(zoneId)

@@ -45,6 +45,11 @@ import si.merhar.sweetspot.ui.components.PriceBarChart
 import si.merhar.sweetspot.ui.components.ResultSummary
 import si.merhar.sweetspot.util.formatDuration
 
+/**
+ * Top-level screen that delegates to [FormScreen] or [ResultScreen] based on whether
+ * a cheapest-window result is available. Also handles system back to clear results
+ * and shows network errors as snackbar messages.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier) {
@@ -82,6 +87,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
     }
 }
 
+/** Main form view with duration picker, appliance chips, and quick-duration buttons. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FormScreen(
@@ -170,6 +176,7 @@ private fun FormScreen(
     }
 }
 
+/** Result view showing the cheapest window summary, hourly breakdown, and price bar chart. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ResultScreen(
@@ -250,6 +257,7 @@ private fun ResultScreen(
     }
 }
 
+/** Returns true if [error] is a user-facing validation message (shown inline, not as a snackbar). */
 private fun isValidationError(error: String): Boolean {
     return error.startsWith("Please select a duration") || error.startsWith("Not enough price data")
 }

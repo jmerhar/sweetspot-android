@@ -12,6 +12,12 @@ import si.merhar.sweetspot.ui.SettingsScreen
 import si.merhar.sweetspot.ui.SweetSpotScreen
 import si.merhar.sweetspot.ui.theme.SweetSpotTheme
 
+/**
+ * Entry point for the phone app.
+ *
+ * Hosts the [SweetSpotTheme] and switches between [SweetSpotScreen] and [SettingsScreen]
+ * based on [SweetSpotViewModel] state.
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

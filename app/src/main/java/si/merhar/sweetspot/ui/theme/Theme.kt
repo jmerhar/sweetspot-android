@@ -111,6 +111,11 @@ private val AppTypography = Typography(
     ),
 )
 
+/**
+ * App theme wrapping Material 3 with dynamic color on Android 12+.
+ * Provides fixed bar-chart colors via [CompositionLocalProvider] so they remain
+ * consistent regardless of the device's dynamic color palette.
+ */
 @Composable
 fun SweetSpotTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

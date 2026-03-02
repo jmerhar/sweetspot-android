@@ -55,6 +55,11 @@ import si.merhar.sweetspot.ui.components.DurationPicker
 import si.merhar.sweetspot.util.formatDuration
 import java.time.ZoneId
 
+/**
+ * Settings screen with appliance management and timezone selection.
+ * Manages its own sub-navigation: tapping the timezone row opens [TimezonePickerScreen],
+ * tapping an appliance or the add button opens [ApplianceDialog].
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
@@ -264,6 +269,7 @@ private fun TimezoneSection(
     }
 }
 
+/** Dialog for creating or editing an appliance with name, duration, and icon fields. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ApplianceDialog(
@@ -369,6 +375,7 @@ private fun ApplianceDialog(
     )
 }
 
+/** Full-screen picker listing all available timezones with a search field and system-default option. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TimezonePickerScreen(
@@ -458,6 +465,7 @@ private fun TimezonePickerScreen(
     }
 }
 
+/** Single row in the timezone picker showing a label, optional subtitle, and a check icon when selected. */
 @Composable
 private fun TimezoneRow(
     label: String,

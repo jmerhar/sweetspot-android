@@ -36,6 +36,10 @@ private const val VISIBLE_ITEMS = 5
 private val hourValues = (0..24).toList()
 private val minuteValues = (0..55 step 5).toList()
 
+/**
+ * Two-column scroll wheel for selecting a duration in hours (0–24) and minutes (0–55, 5-min steps).
+ * Snaps to the nearest value on fling and emits changes via [onChanged] when scrolling settles.
+ */
 @Composable
 fun DurationPicker(
     hours: Int,

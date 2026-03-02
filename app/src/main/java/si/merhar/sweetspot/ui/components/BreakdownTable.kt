@@ -35,6 +35,10 @@ import java.time.format.FormatStyle
 
 private val timeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
 
+/**
+ * Expandable table listing each hourly slot in the cheapest window with its time range,
+ * price per kWh, and fractional usage. Collapsed by default to keep the result screen compact.
+ */
 @Composable
 fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier) {
     var expanded by remember { mutableStateOf(false) }

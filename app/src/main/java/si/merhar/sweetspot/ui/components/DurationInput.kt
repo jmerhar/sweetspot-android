@@ -42,6 +42,10 @@ private val quickDurations = listOf(
     QuickDuration(6, 0, "6h")
 )
 
+/**
+ * Card containing the full duration-selection UI: appliance chips (or a CTA to add them),
+ * quick-duration buttons, a scroll-wheel [DurationPicker], and a "Find cheapest time" button.
+ */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun DurationInput(

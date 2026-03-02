@@ -40,5 +40,5 @@
         android:strokeColor="#E67E22"
         android:strokeWidth="1"
         android:strokeLineJoin="round"
-        android:pathData="M57.75,30 L43.75,54 L51.75,54 L47.75,78 L63.75,42 L55.75,42 Z" />
+        android:pathData="M56.8,36 L46.3,54 L52.3,54 L49.3,72 L61.3,45 L55.3,45 Z" />
 </vector>

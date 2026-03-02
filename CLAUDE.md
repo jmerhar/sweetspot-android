@@ -53,10 +53,11 @@ RELEASE_KEY_PASSWORD=...
 ```
 
 Tests live in `shared/src/test/java/si/merhar/sweetspot/` and `app/src/test/java/si/merhar/sweetspot/`:
-- `util/CheapestWindowFinderTest` — sliding window algorithm (12 tests, in shared)
-- `util/TimeUtilsTest` — relative time formatting (7 tests, in shared)
-- `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
+- `data/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (8 tests, in shared)
 - `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm (15 tests, in shared)
+- `util/TimeUtilsTest` — relative time formatting (9 tests, in shared)
+- `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
 - `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone (22 tests, Robolectric, in app)
 
 ## Stack
@@ -87,9 +88,11 @@ Three Gradle modules:
 
 ### Shared module (`:shared`)
 
-- **`data/EnergyZeroApi`** — Singleton. Fetches hourly prices from `api.energyzero.nl` for today+tomorrow. Takes `ZoneId` to compute date boundaries.
-- **`data/PriceCache`** — Stores raw JSON in `cacheDir/prices_cache.json`. Freshness date in SharedPreferences `sweetspot_cache`.
-- **`data/PriceRepository`** — Created per-call with current `ZoneId`. Checks cache freshness, filters to next 24h.
+- **`data/PriceFetcher`** — Interface for fetching and parsing prices. Decouples `PriceRepository` from a specific API provider.
+- **`data/EnergyZeroApi`** — `PriceFetcher` singleton. Fetches hourly prices from `api.energyzero.nl` for today+tomorrow. Takes `ZoneId` to compute date boundaries.
+- **`data/PriceCache`** — Interface for caching raw API JSON. Abstracts storage so `PriceRepository` can be tested without Android.
+- **`data/FilePriceCache`** — `PriceCache` implementation backed by `cacheDir/prices_cache.json` and SharedPreferences `sweetspot_cache`. Tracks last fetch timestamp for cooldown.
+- **`data/PriceRepository`** — Created per-call with current `ZoneId`. Reads cache first, filters to future prices, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
 - **`data/SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores timezone and appliances (JSON-serialized list).
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 26 curated icons (18 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.

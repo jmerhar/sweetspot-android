@@ -2,7 +2,7 @@
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices.
 
-SweetSpot fetches hourly electricity prices from the [EnergyZero API](https://api.energyzero.nl) for the next 24 hours and finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
+SweetSpot fetches hourly electricity prices from the [EnergyZero API](https://api.energyzero.nl) and finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
 
 This is the native Android port of the [SweetSpot PHP web app](https://github.com/jmerhar/sweetspot-php).
 
@@ -42,7 +42,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Automatic appliance sync** — appliances sync from phone to watch via Wearable Data Layer
 - Material 3 with dynamic color theming and dark mode
 - Configurable timezone (defaults to phone's system timezone)
-- Offline-capable with daily price caching (both phone and watch)
+- Offline-capable with smart price caching (both phone and watch)
 
 ## Building
 

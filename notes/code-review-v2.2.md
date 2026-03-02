@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 14. `release.sh` has no safety guards
-
-No dirty-tree check (`git diff --quiet`) before building, and no branch check to verify you're on `main`. Could accidentally release from a feature branch or with uncommitted changes.
-
 ### 15. ProGuard rules duplicated instead of using `consumerProguardFiles`
 
 `app/proguard-rules.pro` and `wear/proguard-rules.pro` duplicate the kotlinx-serialization and OkHttp rules. Since those dependencies come from `:shared`, the rules belong in `shared/consumer-rules.pro`.

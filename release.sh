@@ -8,6 +8,19 @@
 #
 set -euo pipefail
 
+# --- Pre-flight checks ---
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$BRANCH" != "main" ]]; then
+    echo "ERROR: Must be on the main branch to release (currently on '$BRANCH')."
+    exit 1
+fi
+
+if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "ERROR: Working tree has uncommitted changes. Commit or stash them first."
+    exit 1
+fi
+
 # Portable in-place sed (macOS needs '' after -i, GNU sed does not)
 sedi() {
     if sed --version >/dev/null 2>&1; then

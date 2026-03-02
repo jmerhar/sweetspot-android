@@ -21,6 +21,9 @@ class SettingsRepository(context: Context) {
     private companion object {
         const val KEY_ZONE_ID = "zone_id"
         const val KEY_APPLIANCES = "appliances"
+
+        /** Lenient parser that ignores unknown fields for forward compatibility. */
+        val json = Json { ignoreUnknownKeys = true }
     }
 
     /**
@@ -61,9 +64,9 @@ class SettingsRepository(context: Context) {
      * @return List of appliances, or empty list if none saved or on parse error.
      */
     fun getAppliances(): List<Appliance> {
-        val json = prefs.getString(KEY_APPLIANCES, null) ?: return emptyList()
+        val stored = prefs.getString(KEY_APPLIANCES, null) ?: return emptyList()
         return try {
-            Json.decodeFromString<List<Appliance>>(json)
+            json.decodeFromString<List<Appliance>>(stored)
         } catch (_: Exception) {
             emptyList()
         }
@@ -75,6 +78,6 @@ class SettingsRepository(context: Context) {
      * @param appliances The appliances to store.
      */
     fun setAppliances(appliances: List<Appliance>) {
-        prefs.edit().putString(KEY_APPLIANCES, Json.encodeToString(appliances)).apply()
+        prefs.edit().putString(KEY_APPLIANCES, json.encodeToString(appliances)).apply()
     }
 }

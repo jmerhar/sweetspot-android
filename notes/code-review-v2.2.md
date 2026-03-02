@@ -28,10 +28,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Medium Priority — Bugs & Correctness
 
-### 9. `SettingsRepository` uses default `Json` without `ignoreUnknownKeys = true`
-
-`shared/src/main/java/si/merhar/sweetspot/data/SettingsRepository.kt` — If a future version of `Appliance` removes a field, deserializing old stored JSON will throw and silently return `emptyList()`, losing all saved appliances. Use `Json { ignoreUnknownKeys = true }` for forward compatibility.
-
 ### 10. `PriceRepository.getPrices()` doesn't fall back to stale cache on re-fetch failure
 
 `shared/src/main/java/si/merhar/sweetspot/data/PriceRepository.kt:48-68` — If cached data exists but coverage is low, and the re-fetch fails (network error), the entire call throws. The user sees an error instead of stale-but-useful cached data. Catch the re-fetch failure and return filtered stale data.

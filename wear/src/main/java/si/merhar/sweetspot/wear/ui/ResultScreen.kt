@@ -3,8 +3,14 @@ package si.merhar.sweetspot.wear.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.delay
 import androidx.compose.ui.text.style.TextAlign
 import androidx.wear.compose.foundation.lazy.AutoCenteringParams
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
@@ -21,8 +27,8 @@ import java.time.ZonedDateTime
  * Result screen for the Wear OS app.
  *
  * Shows the cheapest start and end times for the selected appliance, along with
- * relative time indicators (e.g. "now", "in 2h 30m"). Scrollable to accommodate
- * longer appliance labels on small watch faces.
+ * relative time indicators (e.g. "now", "in 2h 30m") that update every 60 seconds.
+ * Scrollable to accommodate longer appliance labels on small watch faces.
  *
  * @param state Current UI state containing the result.
  */
@@ -61,7 +67,13 @@ fun ResultScreen(
         return
     }
 
-    val now = ZonedDateTime.now(state.zoneId)
+    var now by remember { mutableStateOf(ZonedDateTime.now(state.zoneId)) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(60_000)
+            now = ZonedDateTime.now(state.zoneId)
+        }
+    }
     // Center on the label item (index 3: Start caption, time, relative, then label)
     val listState = rememberScalingLazyListState(initialCenterItemIndex = 3)
 

@@ -30,10 +30,6 @@ Missing 512x512 hi-res icon, 1024x500 feature graphic, and screenshots. These ar
 
 ## Low Priority
 
-### 34. Stale relative times in result screens
-
-Both `app/.../ResultSummary.kt:27` and `wear/.../ResultScreen.kt:69` compute `ZonedDateTime.now()` once at composition time. Relative times ("in 2h 30m") become stale if the screen stays open. Acceptable for a utility app but worth noting.
-
 ### 35. Brief white flash on dark-mode launch
 
 `app/src/main/res/values/themes.xml:3` uses `android:Theme.Material.Light.NoActionBar`. On dark-mode devices, there's a flash of white before Compose renders. Use `Theme.Material3.DayNight.NoActionBar` or implement a splash screen.

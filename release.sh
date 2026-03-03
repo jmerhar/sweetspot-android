@@ -53,25 +53,19 @@ if [[ ! -f "$NOTES_FILE" ]]; then
     exit 1
 fi
 
-GRADLE_FILE="app/build.gradle.kts"
-WEAR_GRADLE_FILE="wear/build.gradle.kts"
+CONVENTION_FILE="buildSrc/src/main/kotlin/sweetspot-app.gradle.kts"
 TAG="v${VERSION}"
 
 # --- Bump version ---
 
 # Read current versionCode and increment
-CURRENT_CODE=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' "$GRADLE_FILE")
+CURRENT_CODE=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' "$CONVENTION_FILE")
 NEW_CODE=$((CURRENT_CODE + 1))
 
 echo "Bumping versionCode $CURRENT_CODE → $NEW_CODE, versionName → $VERSION"
 
-sedi "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$GRADLE_FILE"
-sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$GRADLE_FILE"
-
-# Bump wear module to match
-WEAR_CURRENT_CODE=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' "$WEAR_GRADLE_FILE")
-sedi "s/versionCode = $WEAR_CURRENT_CODE/versionCode = $NEW_CODE/" "$WEAR_GRADLE_FILE"
-sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$WEAR_GRADLE_FILE"
+sedi "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$CONVENTION_FILE"
+sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$CONVENTION_FILE"
 
 # --- Build release APK ---
 
@@ -99,7 +93,7 @@ cp "$WEAR_APK_PATH" "$NAMED_WEAR_APK"
 
 # --- Commit and tag ---
 
-git add "$GRADLE_FILE" "$WEAR_GRADLE_FILE"
+git add "$CONVENTION_FILE"
 git commit -m "chore: release v${VERSION}"
 git tag -a "$TAG" -m "Release ${VERSION}"
 

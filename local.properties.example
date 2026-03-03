@@ -1,0 +1,16 @@
+# local.properties.example
+#
+# Copy this file to local.properties and fill in the values.
+# local.properties is gitignored and must NOT be checked in.
+
+sdk.dir=/path/to/Android/sdk
+
+# Release signing
+RELEASE_STORE_FILE=release.jks
+RELEASE_STORE_PASSWORD=
+RELEASE_KEY_ALIAS=sweetspot
+RELEASE_KEY_PASSWORD=
+
+# ENTSO-E Transparency Platform API
+# Register at https://transparency.entsoe.eu/ and request a token.
+ENTSOE_API_TOKEN=

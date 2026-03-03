@@ -140,6 +140,11 @@ The form view (`DurationInput` card) contains:
 
 `SweetSpotTheme` wraps Material 3 with dynamic color. Bar chart colors (blue normal, green optimal) use `CompositionLocal` to stay fixed regardless of dynamic color.
 
+## External APIs
+
+- **EnergyZero** (current) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`
+- **ENTSO-E Transparency Platform** (planned) — all European bidding zones, 15-min resolution. API docs: https://transparencyplatform.zendesk.com/hc/en-us/articles/15692855254548-Sitemap-for-Restful-API-Integration. Token stored in `local.properties` as `ENTSOE_API_TOKEN`.
+
 ## Key Conventions
 
 - Prices are **EUR per kWh** (Double)

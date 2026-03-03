@@ -86,10 +86,15 @@ fun SettingsScreen(
     var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
 
+    val defaultTimeZoneId = remember(priceZone) {
+        priceZone?.timeZoneId?.let { ZoneId.of(it) } ?: ZoneId.systemDefault()
+    }
+
     if (showTimezonePicker) {
         BackHandler { showTimezonePicker = false }
         TimezonePickerScreen(
             currentTimeZoneId = currentTimeZoneId,
+            defaultTimeZoneId = defaultTimeZoneId,
             isUsingDefaultTimezone = isUsingDefaultTimezone,
             onTimezoneSelected = { timeZoneId ->
                 onTimezoneSelected(timeZoneId)
@@ -497,6 +502,7 @@ private fun ApplianceDialog(
 @Composable
 private fun TimezonePickerScreen(
     currentTimeZoneId: ZoneId,
+    defaultTimeZoneId: ZoneId,
     isUsingDefaultTimezone: Boolean,
     onTimezoneSelected: (ZoneId?) -> Unit,
     onBack: () -> Unit
@@ -560,7 +566,7 @@ private fun TimezonePickerScreen(
                 item {
                     PickerRow(
                         label = "Auto (from country)",
-                        subtitle = currentTimeZoneId.id.replace('_', ' '),
+                        subtitle = defaultTimeZoneId.id.replace('_', ' '),
                         isSelected = isUsingDefaultTimezone,
                         onClick = { onTimezoneSelected(null) }
                     )

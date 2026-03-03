@@ -1,4 +1,4 @@
-.PHONY: build test install-phone install-wear release clean
+.PHONY: build test install-phone install-wear install-wear-release release clean
 
 ## Build debug APKs (phone + wear)
 build:
@@ -15,6 +15,10 @@ install-phone:
 ## Install wear app on connected watch
 install-wear:
 	./gradlew wear:installDebug
+
+## Install release wear APK on connected watch via ADB
+install-wear-release:
+	./bin/install-wear.sh
 
 ## Build signed release APKs
 release:

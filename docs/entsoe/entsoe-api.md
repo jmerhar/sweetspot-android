@@ -46,7 +46,6 @@ GET https://web-api.tp.entsoe.eu/api
 | AT | `10YAT-APG------L` |
 | CH | `10YCH-SWISSGRIDZ` |
 | PL | `10YPL-AREA-----S` |
-| GB | `10YGB----------A` |
 | DK1 | `10YDK-1--------W` |
 | DK2 | `10YDK-2--------M` |
 | NO1 | `10YNO-1--------2` |

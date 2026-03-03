@@ -29,7 +29,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -49,6 +48,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.model.Appliance
+import si.merhar.sweetspot.model.Countries
+import si.merhar.sweetspot.model.Country
+import si.merhar.sweetspot.model.PriceZone
 import si.merhar.sweetspot.model.applianceIconFor
 import si.merhar.sweetspot.model.applianceIcons
 import si.merhar.sweetspot.ui.components.DurationPicker
@@ -56,38 +58,75 @@ import si.merhar.sweetspot.util.formatDuration
 import java.time.ZoneId
 
 /**
- * Settings screen with appliance management and timezone selection.
- * Manages its own sub-navigation: tapping the timezone row opens [TimezonePickerScreen],
- * tapping an appliance or the add button opens [ApplianceDialog].
+ * Settings screen with appliance management, country/zone selection, and timezone selection.
+ * Manages its own sub-navigation: tapping rows opens picker screens for country, zone, or timezone.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
-    currentZoneId: ZoneId,
-    isUsingDefaultZone: Boolean,
-    onZoneSelected: (ZoneId?) -> Unit,
+    currentTimeZoneId: ZoneId,
+    isUsingDefaultTimezone: Boolean,
+    onTimezoneSelected: (ZoneId?) -> Unit,
     appliances: List<Appliance>,
     onAddAppliance: (name: String, durationHours: Int, durationMinutes: Int, icon: String) -> Unit,
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
+    countryCode: String,
+    priceZone: PriceZone,
+    countries: List<Country>,
+    onCountrySelected: (String) -> Unit,
+    onPriceZoneSelected: (String) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var showTimezonePicker by rememberSaveable { mutableStateOf(false) }
+    var showCountryPicker by rememberSaveable { mutableStateOf(false) }
+    var showZonePicker by rememberSaveable { mutableStateOf(false) }
     var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
 
     if (showTimezonePicker) {
         TimezonePickerScreen(
-            currentZoneId = currentZoneId,
-            isUsingDefaultZone = isUsingDefaultZone,
-            onZoneSelected = { zoneId ->
-                onZoneSelected(zoneId)
+            currentTimeZoneId = currentTimeZoneId,
+            isUsingDefaultTimezone = isUsingDefaultTimezone,
+            onTimezoneSelected = { timeZoneId ->
+                onTimezoneSelected(timeZoneId)
                 showTimezonePicker = false
             },
             onBack = { showTimezonePicker = false }
         )
         return
+    }
+
+    if (showCountryPicker) {
+        CountryPickerScreen(
+            countries = countries,
+            currentCountryCode = countryCode,
+            onCountrySelected = { code ->
+                onCountrySelected(code)
+                showCountryPicker = false
+            },
+            onBack = { showCountryPicker = false }
+        )
+        return
+    }
+
+    if (showZonePicker) {
+        val country = Countries.findByCode(countryCode)
+        if (country != null && country.zones.size > 1) {
+            PriceZonePickerScreen(
+                zones = country.zones,
+                currentPriceZoneId = priceZone.id,
+                onPriceZoneSelected = { priceZoneId ->
+                    onPriceZoneSelected(priceZoneId)
+                    showZonePicker = false
+                },
+                onBack = { showZonePicker = false }
+            )
+            return
+        } else {
+            showZonePicker = false
+        }
     }
 
     if (showAddDialog) {
@@ -116,6 +155,9 @@ fun SettingsScreen(
             onDismiss = { editingAppliance = null }
         )
     }
+
+    val currentCountry = remember(countryCode) { Countries.findByCode(countryCode) }
+    val isMultiZone = (currentCountry?.zones?.size ?: 0) > 1
 
     Scaffold(
         modifier = modifier,
@@ -151,13 +193,79 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
+            CountrySection(
+                countryName = currentCountry?.name ?: "Unknown",
+                onClick = { showCountryPicker = true }
+            )
+
+            if (isMultiZone) {
+                PriceZoneSection(
+                    zoneLabel = priceZone.label,
+                    onClick = { showZonePicker = true }
+                )
+            }
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
             TimezoneSection(
-                currentZoneId = currentZoneId,
-                isUsingDefaultZone = isUsingDefaultZone,
+                currentTimeZoneId = currentTimeZoneId,
+                isUsingDefaultTimezone = isUsingDefaultTimezone,
                 onClick = { showTimezonePicker = true }
             )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+        }
+    }
+}
+
+/** Country settings section showing the current country selection. */
+@Composable
+private fun CountrySection(
+    countryName: String,
+    onClick: () -> Unit
+) {
+    Text(
+        text = "Country",
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+    )
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = countryName,
+                style = MaterialTheme.typography.bodyLarge
+            )
+        }
+    }
+}
+
+/** Price zone sub-section for multi-zone countries, showing the current zone. */
+@Composable
+private fun PriceZoneSection(
+    zoneLabel: String,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = zoneLabel,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
@@ -237,8 +345,8 @@ private fun AppliancesSection(
 /** Timezone settings section showing the current timezone selection. */
 @Composable
 private fun TimezoneSection(
-    currentZoneId: ZoneId,
-    isUsingDefaultZone: Boolean,
+    currentTimeZoneId: ZoneId,
+    isUsingDefaultTimezone: Boolean,
     onClick: () -> Unit
 ) {
     Text(
@@ -257,11 +365,11 @@ private fun TimezoneSection(
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = if (isUsingDefaultZone) "System default" else currentZoneId.id.replace('_', ' '),
+                text = if (isUsingDefaultTimezone) "Auto (from country)" else currentTimeZoneId.id.replace('_', ' '),
                 style = MaterialTheme.typography.bodyLarge
             )
             Text(
-                text = if (isUsingDefaultZone) currentZoneId.id.replace('_', ' ') else "Custom timezone",
+                text = if (isUsingDefaultTimezone) currentTimeZoneId.id.replace('_', ' ') else "Custom timezone",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -379,9 +487,9 @@ private fun ApplianceDialog(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TimezonePickerScreen(
-    currentZoneId: ZoneId,
-    isUsingDefaultZone: Boolean,
-    onZoneSelected: (ZoneId?) -> Unit,
+    currentTimeZoneId: ZoneId,
+    isUsingDefaultTimezone: Boolean,
+    onTimezoneSelected: (ZoneId?) -> Unit,
     onBack: () -> Unit
 ) {
     var searchQuery by rememberSaveable { mutableStateOf("") }
@@ -439,25 +547,24 @@ private fun TimezonePickerScreen(
             )
 
             LazyColumn(modifier = Modifier.fillMaxSize()) {
-                // System default option
+                // Auto (from country) option
                 item {
-                    val systemZone = ZoneId.systemDefault()
-                    TimezoneRow(
-                        label = "System default",
-                        subtitle = systemZone.id.replace('_', ' '),
-                        isSelected = isUsingDefaultZone,
-                        onClick = { onZoneSelected(null) }
+                    PickerRow(
+                        label = "Auto (from country)",
+                        subtitle = currentTimeZoneId.id.replace('_', ' '),
+                        isSelected = isUsingDefaultTimezone,
+                        onClick = { onTimezoneSelected(null) }
                     )
                     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                 }
 
                 items(filteredZones) { zoneIdStr ->
-                    val isSelected = !isUsingDefaultZone && currentZoneId.id == zoneIdStr
-                    TimezoneRow(
+                    val isSelected = !isUsingDefaultTimezone && currentTimeZoneId.id == zoneIdStr
+                    PickerRow(
                         label = zoneIdStr.replace('_', ' '),
                         subtitle = null,
                         isSelected = isSelected,
-                        onClick = { onZoneSelected(ZoneId.of(zoneIdStr)) }
+                        onClick = { onTimezoneSelected(ZoneId.of(zoneIdStr)) }
                     )
                 }
             }
@@ -465,9 +572,123 @@ private fun TimezonePickerScreen(
     }
 }
 
-/** Single row in the timezone picker showing a label, optional subtitle, and a check icon when selected. */
+/** Full-screen country picker with search. */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TimezoneRow(
+private fun CountryPickerScreen(
+    countries: List<Country>,
+    currentCountryCode: String,
+    onCountrySelected: (String) -> Unit,
+    onBack: () -> Unit
+) {
+    var searchQuery by rememberSaveable { mutableStateOf("") }
+
+    val filteredCountries = remember(searchQuery) {
+        if (searchQuery.isBlank()) {
+            countries
+        } else {
+            val query = searchQuery.lowercase()
+            countries.filter { it.name.lowercase().contains(query) || it.code.lowercase().contains(query) }
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Country") },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
+                )
+            )
+        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                placeholder = { Text("Search countries") },
+                singleLine = true,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(filteredCountries) { country ->
+                    val zoneCount = country.zones.size
+                    PickerRow(
+                        label = country.name,
+                        subtitle = if (zoneCount > 1) "$zoneCount zones" else null,
+                        isSelected = country.code == currentCountryCode,
+                        onClick = { onCountrySelected(country.code) }
+                    )
+                }
+            }
+        }
+    }
+}
+
+/** Price zone picker for multi-zone countries. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun PriceZonePickerScreen(
+    zones: List<PriceZone>,
+    currentPriceZoneId: String,
+    onPriceZoneSelected: (String) -> Unit,
+    onBack: () -> Unit
+) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Zone") },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
+                )
+            )
+        }
+    ) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            items(zones) { zone ->
+                PickerRow(
+                    label = zone.label,
+                    subtitle = null,
+                    isSelected = zone.id == currentPriceZoneId,
+                    onClick = { onPriceZoneSelected(zone.id) }
+                )
+            }
+        }
+    }
+}
+
+/** Single row in a picker showing a label, optional subtitle, and a check icon when selected. */
+@Composable
+private fun PickerRow(
     label: String,
     subtitle: String?,
     isSelected: Boolean,

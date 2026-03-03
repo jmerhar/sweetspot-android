@@ -1,16 +1,19 @@
-*.iml
-.gradle
-/local.properties
-/.idea
-.DS_Store
-/build
+# Build outputs
+build
 /captures
 .externalNativeBuild
 .cxx
+
+# IDE
+*.iml
+/.idea
+.gradle
+
+# OS
+.DS_Store
+
+# Secrets
 local.properties
-/app/build
-/shared/build
-/wear/build
 *.jks
 *.keystore
 .env

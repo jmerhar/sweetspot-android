@@ -10,11 +10,11 @@ import java.time.ZonedDateTime
 
 class PriceRepositoryTest {
 
-    private val zone = ZoneId.of("Europe/Amsterdam")
+    private val timeZone = ZoneId.of("Europe/Amsterdam")
 
     /** Fixed "now" at 2025-06-15 16:30 CEST. */
-    private val now = ZonedDateTime.of(2025, 6, 15, 16, 30, 0, 0, zone)
-    private val fixedClock = Clock.fixed(now.toInstant(), zone)
+    private val now = ZonedDateTime.of(2025, 6, 15, 16, 30, 0, 0, timeZone)
+    private val fixedClock = Clock.fixed(now.toInstant(), timeZone)
 
     // --- Helpers ---
 
@@ -22,7 +22,7 @@ class PriceRepositoryTest {
     private fun prices(startHour: Int, count: Int, basePrice: Double = 0.10): List<HourlyPrice> =
         (0 until count).map { i ->
             HourlyPrice(
-                time = ZonedDateTime.of(2025, 6, 15, startHour, 0, 0, 0, zone).plusHours(i.toLong()),
+                time = ZonedDateTime.of(2025, 6, 15, startHour, 0, 0, 0, timeZone).plusHours(i.toLong()),
                 price = basePrice + i * 0.01
             )
         }
@@ -66,7 +66,7 @@ class PriceRepositoryTest {
         var fetchCount = 0
             private set
 
-        override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
             fetchCount++
             return fetchResults.removeFirstOrNull() ?: emptyList()
         }
@@ -78,7 +78,7 @@ class PriceRepositoryTest {
     fun `no cache fetches from API`() {
         val fetcher = FakeFetcher(prices(startHour = 14, count = 20))
         val cache = FakeCache(initialPrices = null)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -93,7 +93,7 @@ class PriceRepositoryTest {
         val cached = prices(startHour = 14, count = 20).toCached()
         val fetcher = FakeFetcher()
         val cache = FakeCache(initialPrices = cached)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -111,7 +111,7 @@ class PriceRepositoryTest {
         val withTomorrow = prices(startHour = 14, count = 30)
         val fetcher = FakeFetcher(withTomorrow)
         val cache = FakeCache(initialPrices = cached, cooldownElapsed = true)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -126,7 +126,7 @@ class PriceRepositoryTest {
         val cached = prices(startHour = 16, count = 8).toCached()
         val fetcher = FakeFetcher()
         val cache = FakeCache(initialPrices = cached, cooldownElapsed = false)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -142,7 +142,7 @@ class PriceRepositoryTest {
         val cached = prices(startHour = 10, count = 13).toCached()
         val fetcher = FakeFetcher()
         val cache = FakeCache(initialPrices = cached, cooldownElapsed = false)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -157,7 +157,7 @@ class PriceRepositoryTest {
         val cached = prices(startHour = 15, count = 20).toCached()
         val fetcher = FakeFetcher()
         val cache = FakeCache(initialPrices = cached)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -174,7 +174,7 @@ class PriceRepositoryTest {
         val todayPrices = prices(startHour = 16, count = 20)
         val fetcher = FakeFetcher(todayPrices)
         val cache = FakeCache(initialPrices = yesterday)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -187,7 +187,7 @@ class PriceRepositoryTest {
     fun `empty cache and empty API returns empty list`() {
         val fetcher = FakeFetcher(emptyList(), emptyList())
         val cache = FakeCache(initialPrices = null)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -204,13 +204,13 @@ class PriceRepositoryTest {
         // Fetcher throws on any call (network error)
         val fetcher = object : PriceFetcher {
             var fetchCount = 0
-            override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
                 fetchCount++
                 throw RuntimeException("Network error")
             }
         }
         val cache = FakeCache(initialPrices = cached, cooldownElapsed = true)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
@@ -227,12 +227,12 @@ class PriceRepositoryTest {
             it.copy(time = it.time.minusDays(1))
         }.toCached()
         val fetcher = object : PriceFetcher {
-            override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
                 throw RuntimeException("Network error")
             }
         }
         val cache = FakeCache(initialPrices = pastData, cooldownElapsed = true)
-        val repo = PriceRepository(cache, zone, fetcher, fixedClock)
+        val repo = PriceRepository(cache, timeZone, fetcher, fixedClock)
 
         repo.getPrices() // should throw
     }

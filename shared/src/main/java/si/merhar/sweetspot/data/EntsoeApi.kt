@@ -55,12 +55,12 @@ class EntsoeApi(
      *
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
-     * @param zoneId Timezone to convert UTC timestamps to local time.
+     * @param timeZoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of [HourlyPrice] entries in EUR/kWh.
      * @throws RuntimeException if the HTTP request fails or the response is an error document.
      */
-    override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
-        return parse(fetchRaw(from, to), zoneId)
+    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+        return parse(fetchRaw(from, to), timeZoneId)
     }
 
     /**
@@ -107,11 +107,11 @@ class EntsoeApi(
      * where positions may be skipped (price carries forward from the last point).
      *
      * @param raw Raw XML string from [fetchRaw].
-     * @param zoneId Timezone to convert UTC timestamps to local time.
+     * @param timeZoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of hourly prices.
      * @throws RuntimeException if the XML is an error document.
      */
-    fun parse(raw: String, zoneId: ZoneId): List<HourlyPrice> {
+    fun parse(raw: String, timeZoneId: ZoneId): List<HourlyPrice> {
         if (raw.contains("Acknowledgement_MarketDocument")) {
             val reason = extractErrorReason(raw)
             throw RuntimeException("ENTSO-E API error: $reason")
@@ -200,7 +200,7 @@ class EntsoeApi(
             eventType = parser.next()
         }
 
-        return aggregateToHourly(subHourlyPrices, zoneId)
+        return aggregateToHourly(subHourlyPrices, timeZoneId)
     }
 
     /**
@@ -253,19 +253,19 @@ class EntsoeApi(
      * Converts EUR/MWh to EUR/kWh by dividing by 1000.
      *
      * @param prices List of (timestamp, price_in_EUR_MWh) pairs.
-     * @param zoneId Timezone for the resulting [HourlyPrice] entries.
+     * @param timeZoneId Timezone for the resulting [HourlyPrice] entries.
      * @return Sorted list of hourly prices in EUR/kWh.
      */
     private fun aggregateToHourly(
         prices: List<Pair<Instant, Double>>,
-        zoneId: ZoneId
+        timeZoneId: ZoneId
     ): List<HourlyPrice> {
         return prices
             .groupBy { (ts, _) -> ts.truncatedTo(ChronoUnit.HOURS) }
             .map { (hour, entries) ->
                 val avgMwh = entries.map { it.second }.average()
                 HourlyPrice(
-                    time = hour.atZone(zoneId),
+                    time = hour.atZone(timeZoneId),
                     price = avgMwh / 1000.0
                 )
             }

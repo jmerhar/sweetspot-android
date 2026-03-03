@@ -19,12 +19,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.serialization.json.Json
-import si.merhar.sweetspot.data.EnergyZeroApi
 import si.merhar.sweetspot.data.FilePriceCache
 import si.merhar.sweetspot.data.PriceCache
-import si.merhar.sweetspot.data.PriceFetcher
+import si.merhar.sweetspot.data.PriceFetcherFactory
 import si.merhar.sweetspot.data.PriceRepository
+import si.merhar.sweetspot.data.defaultPriceFetcherFactory
 import si.merhar.sweetspot.model.Appliance
+import si.merhar.sweetspot.model.Countries
+import si.merhar.sweetspot.model.PriceZone
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.findCheapestWindow
 import si.merhar.sweetspot.util.formatDuration
@@ -39,7 +41,7 @@ import java.time.ZonedDateTime
  * @property error Error message to display, or `null` if none.
  * @property result The cheapest-window result, or `null` if no search has been performed.
  * @property resultLabel Label shown on the result screen (e.g. "Washer · 2h 30m").
- * @property zoneId Active timezone for price date boundaries and display.
+ * @property priceZone The resolved price zone synced from the phone.
  */
 data class WearUiState(
     val appliances: List<Appliance> = emptyList(),
@@ -47,24 +49,24 @@ data class WearUiState(
     val error: String? = null,
     val result: WindowResult? = null,
     val resultLabel: String? = null,
-    val zoneId: ZoneId = ZoneId.systemDefault()
+    val priceZone: PriceZone = Countries.defaultCountry().zones.first()
 )
 
 /**
  * ViewModel for the Wear OS SweetSpot app.
  *
- * Reads appliances from the Wearable Data Layer (pushed by the phone app),
+ * Reads appliances and zone settings from the Wearable Data Layer (pushed by the phone app),
  * fetches electricity prices via [PriceRepository], and runs the cheapest-window
  * algorithm from the shared module.
  *
  * @param application Application context.
- * @param priceFetcher Strategy for fetching and parsing price data.
+ * @param priceFetcherFactory Factory for creating price fetchers per zone.
  * @param priceCache Cache for raw price JSON.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
 class WearViewModel @JvmOverloads constructor(
     application: Application,
-    private val priceFetcher: PriceFetcher = EnergyZeroApi,
+    private val priceFetcherFactory: PriceFetcherFactory = defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN),
     private val priceCache: PriceCache = FilePriceCache(application),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AndroidViewModel(application),
@@ -78,7 +80,7 @@ class WearViewModel @JvmOverloads constructor(
 
     init {
         Wearable.getDataClient(application).addListener(this)
-        loadAppliancesFromDataLayer()
+        loadFromDataLayer()
     }
 
     override fun onCleared() {
@@ -87,18 +89,28 @@ class WearViewModel @JvmOverloads constructor(
     }
 
     /**
-     * Called when the phone pushes an appliance list update via the Data Layer.
+     * Called when the phone pushes data updates via the Data Layer.
+     * Handles both `/appliances` and `/settings` paths.
      */
     override fun onDataChanged(events: DataEventBuffer) {
         try {
             for (event in events) {
-                if (event.type == DataEvent.TYPE_CHANGED &&
-                    event.dataItem.uri.path == "/appliances"
-                ) {
-                    val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
-                    val json = dataMap.getString("json") ?: continue
-                    val appliances = parseAppliances(json)
-                    _uiState.update { it.copy(appliances = appliances) }
+                if (event.type != DataEvent.TYPE_CHANGED) continue
+                val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
+
+                when (event.dataItem.uri.path) {
+                    "/appliances" -> {
+                        val json = dataMap.getString("json") ?: continue
+                        val appliances = parseAppliances(json)
+                        _uiState.update { it.copy(appliances = appliances) }
+                    }
+                    "/settings" -> {
+                        val zone = resolveZone(
+                            dataMap.getString("country_code"),
+                            dataMap.getString("price_zone_id")
+                        )
+                        _uiState.update { it.copy(priceZone = zone) }
+                    }
                 }
             }
         } finally {
@@ -107,9 +119,9 @@ class WearViewModel @JvmOverloads constructor(
     }
 
     /**
-     * Loads the current appliance list from the Data Layer on startup.
+     * Loads the current appliance list and zone settings from the Data Layer on startup.
      */
-    private fun loadAppliancesFromDataLayer() {
+    private fun loadFromDataLayer() {
         viewModelScope.launch(ioDispatcher) {
             var dataItems: com.google.android.gms.wearable.DataItemBuffer? = null
             try {
@@ -117,15 +129,25 @@ class WearViewModel @JvmOverloads constructor(
                     .getDataItems().await()
 
                 for (item in dataItems) {
-                    if (item.uri.path == "/appliances") {
-                        val dataMap = DataMapItem.fromDataItem(item).dataMap
-                        val json = dataMap.getString("json") ?: continue
-                        val appliances = parseAppliances(json)
-                        _uiState.update { it.copy(appliances = appliances) }
+                    val dataMap = DataMapItem.fromDataItem(item).dataMap
+
+                    when (item.uri.path) {
+                        "/appliances" -> {
+                            val json = dataMap.getString("json") ?: continue
+                            val appliances = parseAppliances(json)
+                            _uiState.update { it.copy(appliances = appliances) }
+                        }
+                        "/settings" -> {
+                            val zone = resolveZone(
+                                dataMap.getString("country_code"),
+                                dataMap.getString("price_zone_id")
+                            )
+                            _uiState.update { it.copy(priceZone = zone) }
+                        }
                     }
                 }
             } catch (e: Exception) {
-                Log.w("WearViewModel", "Could not read appliances from Data Layer", e)
+                Log.w("WearViewModel", "Could not read from Data Layer", e)
             } finally {
                 dataItems?.release()
             }
@@ -148,10 +170,12 @@ class WearViewModel @JvmOverloads constructor(
             it.copy(isLoading = true, error = null, result = null, resultLabel = label)
         }
 
-        val zoneId = _uiState.value.zoneId
+        val priceZone = _uiState.value.priceZone
+        val timeZoneId = ZoneId.of(priceZone.timeZoneId)
         fetchJob = viewModelScope.launch(ioDispatcher) {
             try {
-                val repository = PriceRepository(priceCache, zoneId, priceFetcher)
+                val fetcher = priceFetcherFactory.create(priceZone)
+                val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
                 val prices = repository.getPrices()
 
                 if (prices.isEmpty()) {
@@ -164,7 +188,7 @@ class WearViewModel @JvmOverloads constructor(
                     return@launch
                 }
 
-                val now = ZonedDateTime.now(zoneId)
+                val now = ZonedDateTime.now(timeZoneId)
                 val result = findCheapestWindow(prices, durationHours, now)
 
                 if (result == null) {
@@ -199,6 +223,23 @@ class WearViewModel @JvmOverloads constructor(
     /** Clears the current result to return to the appliance list. */
     fun onClearResult() {
         _uiState.update { it.copy(result = null, resultLabel = null, error = null) }
+    }
+
+    /**
+     * Resolves country code and zone ID from the Data Layer into a [PriceZone].
+     *
+     * @param countryCode ISO country code from the phone, or `null`.
+     * @param priceZoneId Zone ID from the phone, or `null`.
+     * @return The resolved [PriceZone], falling back to NL.
+     */
+    private fun resolveZone(countryCode: String?, priceZoneId: String?): PriceZone {
+        if (priceZoneId != null) {
+            Countries.findPriceZoneById(priceZoneId)?.let { return it }
+        }
+        if (countryCode != null) {
+            Countries.findByCode(countryCode)?.zones?.firstOrNull()?.let { return it }
+        }
+        return Countries.defaultCountry().zones.first()
     }
 
     /**

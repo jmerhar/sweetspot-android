@@ -17,9 +17,9 @@ interface PriceFetcher {
      *
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
-     * @param zoneId Timezone to convert timestamps to local time.
+     * @param timeZoneId Timezone to convert timestamps to local time.
      * @return Chronologically sorted list of [HourlyPrice] entries.
      * @throws RuntimeException if the request fails.
      */
-    fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice>
+    fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice>
 }

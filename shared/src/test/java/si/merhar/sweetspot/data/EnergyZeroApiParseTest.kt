@@ -7,7 +7,7 @@ import java.time.ZoneId
 
 class EnergyZeroApiParseTest {
 
-    private val zone = ZoneId.of("Europe/Amsterdam")
+    private val timeZone = ZoneId.of("Europe/Amsterdam")
 
     @Test
     fun `parses valid JSON into sorted HourlyPrice list`() {
@@ -21,7 +21,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
 
         assertEquals(3, prices.size)
         // Should be sorted chronologically
@@ -29,13 +29,13 @@ class EnergyZeroApiParseTest {
         assertEquals(0.20, prices[1].price, 0.0001)
         assertEquals(0.25, prices[2].price, 0.0001)
         // Verify timezone conversion
-        assertEquals(zone, prices[0].time.zone)
+        assertEquals(timeZone, prices[0].time.zone)
     }
 
     @Test
     fun `parses empty price list`() {
         val json = """{"Prices": []}"""
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertTrue(prices.isEmpty())
     }
 
@@ -50,7 +50,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(1, prices.size)
         assertEquals(0.15, prices[0].price, 0.0001)
     }
@@ -65,7 +65,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(-0.05, prices[0].price, 0.0001)
     }
 
@@ -79,7 +79,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         // UTC 10:00 = Amsterdam (CEST, UTC+2) 12:00
         assertEquals(12, prices[0].time.hour)
     }

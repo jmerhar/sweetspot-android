@@ -24,6 +24,7 @@ import kotlinx.serialization.json.Json
 import si.merhar.sweetspot.data.CachedPrice
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcher
+import si.merhar.sweetspot.data.PriceFetcherFactory
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.HourlyPrice
 import java.time.Instant
@@ -53,7 +54,7 @@ class WearViewModelTest {
 
     /** [PriceFetcher] that returns configurable prices or throws. */
     private class FakeFetcher(private val prices: List<HourlyPrice>? = null) : PriceFetcher {
-        override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
             return prices ?: throw RuntimeException("Network error")
         }
     }
@@ -82,7 +83,7 @@ class WearViewModelTest {
 
     /** Creates a WearViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(fetcher: FakeFetcher) =
-        WearViewModel(app, fetcher, FakeCache(), testDispatcher).also {
+        WearViewModel(app, PriceFetcherFactory { _ -> fetcher }, FakeCache(), testDispatcher).also {
             // Advance past the init block's loadAppliancesFromDataLayer coroutine
             testDispatcher.scheduler.advanceUntilIdle()
         }

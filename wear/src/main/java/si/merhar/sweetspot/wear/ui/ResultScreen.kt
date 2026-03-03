@@ -21,6 +21,7 @@ import androidx.wear.compose.material.Text
 import si.merhar.sweetspot.util.formatRelative
 import si.merhar.sweetspot.util.shortTimeFormatter
 import si.merhar.sweetspot.wear.WearUiState
+import java.time.ZoneId
 import java.time.ZonedDateTime
 
 /**
@@ -67,11 +68,12 @@ fun ResultScreen(
         return
     }
 
-    var now by remember { mutableStateOf(ZonedDateTime.now(state.zoneId)) }
+    val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone.timeZoneId) }
+    var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
     LaunchedEffect(Unit) {
         while (true) {
             delay(60_000)
-            now = ZonedDateTime.now(state.zoneId)
+            now = ZonedDateTime.now(timeZoneId)
         }
     }
     // Center on the label item (index 3: Start caption, time, relative, then label)

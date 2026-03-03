@@ -1,72 +1,13 @@
-import java.util.Properties
-
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
+    id("sweetspot-app")
 }
 
 android {
     namespace = "si.merhar.sweetspot"
-    compileSdk = 36
 
     defaultConfig {
-        applicationId = "si.merhar.sweetspot"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 8
-        versionName = "2.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    signingConfigs {
-        create("release") {
-            val props = rootProject.file("local.properties")
-            if (props.exists()) {
-                val localProps = Properties().apply { load(props.inputStream()) }
-                val storeFilePath = localProps.getProperty("RELEASE_STORE_FILE")
-                if (storeFilePath != null) {
-                    storeFile = rootProject.file(storeFilePath)
-                    storePassword = localProps.getProperty("RELEASE_STORE_PASSWORD")
-                    keyAlias = localProps.getProperty("RELEASE_KEY_ALIAS")
-                    keyPassword = localProps.getProperty("RELEASE_KEY_PASSWORD")
-                }
-            }
-        }
-    }
-
-    buildTypes {
-        debug {
-            applicationIdSuffix = ".debug"
-        }
-        release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-        }
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    testOptions {
-        unitTests.isIncludeAndroidResources = true
     }
 }
 

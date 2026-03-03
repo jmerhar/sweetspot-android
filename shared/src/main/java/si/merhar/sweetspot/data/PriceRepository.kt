@@ -18,16 +18,16 @@ import java.time.temporal.ChronoUnit
  * to avoid hammering the API.
  *
  * @param cache Cache for parsed price data, keyed by zone.
- * @param zoneId Timezone for date boundary calculations and time display.
+ * @param timeZoneId Timezone for date boundary calculations and time display.
  * @param fetcher Provider for fetching prices from the upstream API.
  * @param clock Clock for determining the current time (injectable for testing).
  * @param cacheKey Zone identifier used as the cache key (e.g. `"NL"`, `"DE_LU"`).
  */
 class PriceRepository(
     private val cache: PriceCache,
-    private val zoneId: ZoneId,
+    private val timeZoneId: ZoneId,
     private val fetcher: PriceFetcher = EnergyZeroApi,
-    private val clock: Clock = Clock.system(zoneId),
+    private val clock: Clock = Clock.system(timeZoneId),
     private val cacheKey: String = "default"
 ) {
 
@@ -56,7 +56,7 @@ class PriceRepository(
         var allPrices = if (cached != null) {
             cached.map { entry ->
                 HourlyPrice(
-                    time = Instant.ofEpochSecond(entry.epochSecond).atZone(zoneId),
+                    time = Instant.ofEpochSecond(entry.epochSecond).atZone(timeZoneId),
                     price = entry.price
                 )
             }
@@ -101,7 +101,7 @@ class PriceRepository(
      * @return Pair of (from, to) instants in UTC.
      */
     private fun dateRange(): Pair<java.time.Instant, java.time.Instant> {
-        val today = LocalDate.now(clock).atStartOfDay(zoneId)
+        val today = LocalDate.now(clock).atStartOfDay(timeZoneId)
         val from = today.toInstant()
         val to = today.plusDays(2).toInstant()
         return from to to
@@ -114,7 +114,7 @@ class PriceRepository(
      */
     private fun fetchAndCache(): List<HourlyPrice> {
         val (from, to) = dateRange()
-        val prices = fetcher.fetchPrices(from, to, zoneId)
+        val prices = fetcher.fetchPrices(from, to, timeZoneId)
         cache.write(cacheKey, prices.map { CachedPrice(it.time.toInstant().epochSecond, it.price) })
         return prices
     }

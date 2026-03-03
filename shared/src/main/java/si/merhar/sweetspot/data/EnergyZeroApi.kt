@@ -53,12 +53,12 @@ object EnergyZeroApi : PriceFetcher {
      *
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
-     * @param zoneId Timezone to convert UTC timestamps to local time.
+     * @param timeZoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of [HourlyPrice] entries.
      * @throws RuntimeException if the HTTP request fails.
      */
-    override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
-        return parse(fetchRaw(from, to), zoneId)
+    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+        return parse(fetchRaw(from, to), timeZoneId)
     }
 
     /**
@@ -90,14 +90,14 @@ object EnergyZeroApi : PriceFetcher {
      * Parses raw EnergyZero JSON into a sorted list of [HourlyPrice] entries.
      *
      * @param raw Raw JSON string from [fetchRaw].
-     * @param zoneId Timezone to convert UTC timestamps to local time.
+     * @param timeZoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of hourly prices.
      */
-    fun parse(raw: String, zoneId: ZoneId): List<HourlyPrice> {
+    fun parse(raw: String, timeZoneId: ZoneId): List<HourlyPrice> {
         val parsed = json.decodeFromString<EnergyZeroResponse>(raw)
         return parsed.prices.map { entry ->
             val instant = Instant.parse(entry.readingDate)
-            val time = instant.atZone(zoneId)
+            val time = instant.atZone(timeZoneId)
             HourlyPrice(time = time, price = entry.price)
         }.sortedBy { it.time }
     }

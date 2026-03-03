@@ -5,14 +5,17 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
-import si.merhar.sweetspot.data.EnergyZeroApi
 import si.merhar.sweetspot.data.FilePriceCache
 import si.merhar.sweetspot.data.PriceCache
-import si.merhar.sweetspot.data.PriceFetcher
+import si.merhar.sweetspot.data.PriceFetcherFactory
 import si.merhar.sweetspot.data.PriceRepository
 import si.merhar.sweetspot.data.SettingsRepository
+import si.merhar.sweetspot.data.defaultPriceFetcherFactory
 import si.merhar.sweetspot.model.Appliance
+import si.merhar.sweetspot.model.Countries
+import si.merhar.sweetspot.model.Country
 import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceZone
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.findCheapestWindow
 import si.merhar.sweetspot.util.formatDuration
@@ -55,9 +58,12 @@ sealed interface AppError {
  * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
  * @property allPrices All hourly prices for the next 24h, used by the bar chart.
  * @property showSettings Whether the settings screen is currently visible.
- * @property zoneId Active timezone for price date boundaries and display.
- * @property isUsingDefaultZone Whether the timezone is the system default (vs. user-selected).
+ * @property timeZoneId Active timezone for price date boundaries and display.
+ * @property isUsingDefaultTimezone Whether the timezone is the zone-derived default (vs. user-selected).
  * @property appliances User-configured appliances with preset durations.
+ * @property countryCode ISO code of the selected country.
+ * @property priceZone The resolved price zone for fetching prices.
+ * @property countries All supported countries for the country picker.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -68,25 +74,29 @@ data class UiState(
     val resultLabel: String? = null,
     val allPrices: List<HourlyPrice> = emptyList(),
     val showSettings: Boolean = false,
-    val zoneId: ZoneId = ZoneId.systemDefault(),
-    val isUsingDefaultZone: Boolean = true,
-    val appliances: List<Appliance> = emptyList()
+    val timeZoneId: ZoneId = ZoneId.systemDefault(),
+    val isUsingDefaultTimezone: Boolean = true,
+    val appliances: List<Appliance> = emptyList(),
+    val countryCode: String = Countries.defaultCountry().code,
+    val priceZone: PriceZone = Countries.defaultCountry().zones.first(),
+    val countries: List<Country> = Countries.all
 )
 
 /**
  * ViewModel for the SweetSpot app.
  *
  * Owns all UI state via [uiState]. Handles duration selection, price fetching,
- * cheapest-window calculation, timezone configuration, and appliance CRUD.
+ * cheapest-window calculation, timezone configuration, country/zone selection,
+ * and appliance CRUD.
  *
  * @param application Application context.
- * @param priceFetcher Strategy for fetching and parsing price data.
+ * @param priceFetcherFactory Factory for creating price fetchers per zone.
  * @param priceCache Cache for raw price JSON.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
-    private val priceFetcher: PriceFetcher = EnergyZeroApi,
+    private val priceFetcherFactory: PriceFetcherFactory = defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN),
     private val priceCache: PriceCache = FilePriceCache(application),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AndroidViewModel(application) {
@@ -97,9 +107,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     private val _uiState = MutableStateFlow(
         UiState(
-            zoneId = settingsRepository.getZoneId(),
-            isUsingDefaultZone = settingsRepository.isUsingDefaultZone(),
-            appliances = settingsRepository.getAppliances()
+            timeZoneId = settingsRepository.getTimeZoneId(),
+            isUsingDefaultTimezone = settingsRepository.isUsingDefaultTimezone(),
+            appliances = settingsRepository.getAppliances(),
+            countryCode = settingsRepository.getCountryCode(),
+            priceZone = settingsRepository.getResolvedPriceZone()
         )
     )
 
@@ -131,18 +143,63 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /**
      * Updates the timezone selection.
      *
-     * @param zoneId The chosen timezone, or `null` to revert to system default.
+     * @param timeZoneId The chosen timezone, or `null` to revert to zone-derived default.
      */
-    fun onZoneSelected(zoneId: ZoneId?) {
-        if (zoneId == null) {
-            settingsRepository.clearZoneId()
+    fun onTimezoneSelected(timeZoneId: ZoneId?) {
+        if (timeZoneId == null) {
+            settingsRepository.clearTimeZoneId()
             _uiState.update {
-                it.copy(zoneId = settingsRepository.getZoneId(), isUsingDefaultZone = true)
+                it.copy(timeZoneId = settingsRepository.getTimeZoneId(), isUsingDefaultTimezone = true)
             }
         } else {
-            settingsRepository.setZoneId(zoneId)
-            _uiState.update { it.copy(zoneId = zoneId, isUsingDefaultZone = false) }
+            settingsRepository.setTimeZoneId(timeZoneId)
+            _uiState.update { it.copy(timeZoneId = timeZoneId, isUsingDefaultTimezone = false) }
         }
+    }
+
+    /**
+     * Handles country selection from the settings picker.
+     *
+     * Saves the country code, resolves the first zone for that country,
+     * updates timezone to the zone's timezone (unless manually overridden),
+     * and syncs settings to the watch.
+     *
+     * @param code ISO 3166-1 alpha-2 country code.
+     */
+    fun onCountrySelected(code: String) {
+        settingsRepository.setCountryCode(code)
+        settingsRepository.setPriceZoneId(null)
+        val zone = settingsRepository.getResolvedPriceZone()
+        val timeZoneId = settingsRepository.getTimeZoneId()
+        _uiState.update {
+            it.copy(
+                countryCode = code,
+                priceZone = zone,
+                timeZoneId = timeZoneId
+            )
+        }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Handles price zone selection within the current country.
+     *
+     * Saves the zone ID, updates timezone to the zone's timezone (unless manually overridden),
+     * and syncs settings to the watch.
+     *
+     * @param priceZoneId The [PriceZone.id] selected.
+     */
+    fun onPriceZoneSelected(priceZoneId: String) {
+        settingsRepository.setPriceZoneId(priceZoneId)
+        val zone = settingsRepository.getResolvedPriceZone()
+        val timeZoneId = settingsRepository.getTimeZoneId()
+        _uiState.update {
+            it.copy(
+                priceZone = zone,
+                timeZoneId = timeZoneId
+            )
+        }
+        syncSettingsToWear()
     }
 
     /**
@@ -258,6 +315,26 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     /**
+     * Pushes country and zone settings to the Wearable Data Layer so the
+     * watch can use the same price zone as the phone.
+     *
+     * Silently ignores failures since watch sync is best-effort.
+     */
+    private fun syncSettingsToWear() {
+        try {
+            val state = _uiState.value
+            val request = PutDataMapRequest.create("/settings").apply {
+                dataMap.putString("country_code", state.countryCode)
+                dataMap.putString("price_zone_id", state.priceZone.id)
+                dataMap.putLong("ts", System.currentTimeMillis())
+            }.asPutDataRequest().setUrgent()
+            Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
+        } catch (_: Exception) {
+            // Best-effort: watch sync should not crash the phone app
+        }
+    }
+
+    /**
      * Validates the current duration, fetches prices, and finds the cheapest window.
      *
      * Sets [UiState.isLoading] while working. On success, populates [UiState.result]
@@ -290,10 +367,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
             )
         }
 
-        val zoneId = _uiState.value.zoneId
+        val timeZoneId = _uiState.value.timeZoneId
+        val priceZone = _uiState.value.priceZone
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(ioDispatcher) {
-            fetchAndFind(durationHours, durationLabel, zoneId)
+            fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)
         }
     }
 
@@ -304,11 +382,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
      *
      * @param durationHours Duration in decimal hours.
      * @param durationLabel Human-readable duration label for error messages.
-     * @param zoneId Timezone snapshot captured before the IO dispatch.
+     * @param timeZoneId Timezone snapshot captured before the IO dispatch.
+     * @param priceZone The price zone to fetch data for.
      */
-    private fun fetchAndFind(durationHours: Double, durationLabel: String, zoneId: ZoneId) {
+    private fun fetchAndFind(durationHours: Double, durationLabel: String, timeZoneId: ZoneId, priceZone: PriceZone) {
         try {
-            val repository = PriceRepository(priceCache, zoneId, priceFetcher)
+            val fetcher = priceFetcherFactory.create(priceZone)
+            val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
             val prices = repository.getPrices()
 
             if (prices.isEmpty()) {
@@ -322,7 +402,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 return
             }
 
-            val now = ZonedDateTime.now(zoneId)
+            val now = ZonedDateTime.now(timeZoneId)
             val result = findCheapestWindow(prices, durationHours, now)
 
             if (result == null) {

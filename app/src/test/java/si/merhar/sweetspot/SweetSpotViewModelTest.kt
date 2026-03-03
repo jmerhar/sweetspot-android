@@ -23,6 +23,7 @@ import org.robolectric.annotation.Config
 import si.merhar.sweetspot.data.CachedPrice
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcher
+import si.merhar.sweetspot.data.PriceFetcherFactory
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.HourlyPrice
 import java.time.Instant
@@ -46,7 +47,7 @@ class SweetSpotViewModelTest {
 
     /** [PriceFetcher] that returns configurable prices or throws. */
     private class FakeFetcher(private val prices: List<HourlyPrice>? = null) : PriceFetcher {
-        override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
             return prices ?: throw RuntimeException("Network error")
         }
     }
@@ -78,7 +79,7 @@ class SweetSpotViewModelTest {
 
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(fetcher: FakeFetcher) =
-        SweetSpotViewModel(app, fetcher, FakeCache(), testDispatcher)
+        SweetSpotViewModel(app, PriceFetcherFactory { _ -> fetcher }, FakeCache(), testDispatcher)
 
     // --- Initial state ---
 
@@ -268,25 +269,25 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `initial state uses default timezone`() {
-        assertTrue(defaultViewModel().uiState.value.isUsingDefaultZone)
+        assertTrue(defaultViewModel().uiState.value.isUsingDefaultTimezone)
     }
 
     @Test
-    fun `onZoneSelected with null reverts to default`() {
+    fun `onTimezoneSelected with null reverts to default`() {
         val viewModel = defaultViewModel()
-        viewModel.onZoneSelected(java.time.ZoneId.of("Asia/Tokyo"))
-        assertEquals(false, viewModel.uiState.value.isUsingDefaultZone)
-        viewModel.onZoneSelected(null)
-        assertTrue(viewModel.uiState.value.isUsingDefaultZone)
+        viewModel.onTimezoneSelected(java.time.ZoneId.of("Asia/Tokyo"))
+        assertEquals(false, viewModel.uiState.value.isUsingDefaultTimezone)
+        viewModel.onTimezoneSelected(null)
+        assertTrue(viewModel.uiState.value.isUsingDefaultTimezone)
     }
 
     @Test
-    fun `onZoneSelected sets custom timezone`() {
+    fun `onTimezoneSelected sets custom timezone`() {
         val viewModel = defaultViewModel()
         val tokyo = java.time.ZoneId.of("Asia/Tokyo")
-        viewModel.onZoneSelected(tokyo)
-        assertEquals(tokyo, viewModel.uiState.value.zoneId)
-        assertEquals(false, viewModel.uiState.value.isUsingDefaultZone)
+        viewModel.onTimezoneSelected(tokyo)
+        assertEquals(tokyo, viewModel.uiState.value.timeZoneId)
+        assertEquals(false, viewModel.uiState.value.isUsingDefaultTimezone)
     }
 
     // --- Async fetch (coroutine) ---

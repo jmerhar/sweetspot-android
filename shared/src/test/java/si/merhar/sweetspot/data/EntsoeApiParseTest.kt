@@ -13,7 +13,7 @@ import java.time.ZoneId
  */
 class EntsoeApiParseTest {
 
-    private val zone = ZoneId.of("Europe/Amsterdam")
+    private val timeZone = ZoneId.of("Europe/Amsterdam")
     private val api = EntsoeApi(token = "test", biddingZone = BiddingZone.NL)
 
     @Test
@@ -40,7 +40,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(3, prices.size)
         // EUR/MWh -> EUR/kWh (÷ 1000)
@@ -51,7 +51,7 @@ class EntsoeApiParseTest {
         assertEquals(0, prices[0].time.hour)
         assertEquals(1, prices[1].time.hour)
         assertEquals(2, prices[2].time.hour)
-        assertEquals(zone, prices[0].time.zone)
+        assertEquals(timeZone, prices[0].time.zone)
     }
 
     @Test
@@ -81,7 +81,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(2, prices.size)
         // Hour 1: avg(100, 200, 300, 400) = 250 MWh = 0.250 kWh
@@ -113,7 +113,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(4, prices.size)
         assertEquals(0.050, prices[0].price, 0.0001)
@@ -157,7 +157,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(4, prices.size)
         // Day 1 starts 2026-03-02T23:00Z = 2026-03-03T00:00 CET
@@ -185,7 +185,7 @@ class EntsoeApiParseTest {
         </Acknowledgement_MarketDocument>
         """.trimIndent()
 
-        api.parse(xml, zone)
+        api.parse(xml, timeZone)
     }
 
     @Test
@@ -202,7 +202,7 @@ class EntsoeApiParseTest {
         """.trimIndent()
 
         try {
-            api.parse(xml, zone)
+            api.parse(xml, timeZone)
         } catch (e: RuntimeException) {
             assertTrue(e.message!!.contains("No matching data found"))
             return
@@ -220,7 +220,7 @@ class EntsoeApiParseTest {
         }
         val xml = buildDayXml("2026-03-28T23:00Z", "2026-03-29T22:00Z", "PT60M", points)
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(23, prices.size)
         // First hour: CET 00:00
@@ -249,7 +249,7 @@ class EntsoeApiParseTest {
         }
         val xml = buildDayXml("2026-10-24T22:00Z", "2026-10-25T23:00Z", "PT60M", points)
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(25, prices.size)
         // First: CEST 00:00
@@ -295,7 +295,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(1, prices.size)
         assertEquals(0.225, prices[0].price, 0.0001)
@@ -320,7 +320,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
         assertTrue(prices.isEmpty())
     }
 
@@ -345,7 +345,7 @@ class EntsoeApiParseTest {
         </Publication_MarketDocument>
         """.trimIndent()
 
-        val prices = api.parse(xml, zone)
+        val prices = api.parse(xml, timeZone)
 
         assertEquals(2, prices.size)
         assertEquals(-0.01050, prices[0].price, 0.00001)

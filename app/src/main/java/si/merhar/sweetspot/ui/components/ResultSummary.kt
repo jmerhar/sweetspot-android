@@ -30,12 +30,12 @@ import java.time.ZonedDateTime
  * Times include a relative label (e.g. "now" or "in 2h 30m") that updates every 60 seconds.
  */
 @Composable
-fun ResultSummary(result: WindowResult, zoneId: ZoneId, modifier: Modifier = Modifier) {
-    var now by remember { mutableStateOf(ZonedDateTime.now(zoneId)) }
+fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier = Modifier) {
+    var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
     LaunchedEffect(Unit) {
         while (true) {
             delay(60_000)
-            now = ZonedDateTime.now(zoneId)
+            now = ZonedDateTime.now(timeZoneId)
         }
     }
 

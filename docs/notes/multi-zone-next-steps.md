@@ -2,23 +2,18 @@
 
 Now that `EntsoeApi` implements `PriceFetcher` for all ENTSO-E bidding zones, here's what's needed to ship multi-zone support in the app.
 
-## 1. Zone Selection UI
+## 1. Zone Selection UI ✅
 
-The app needs a bidding zone picker in Settings. There are 20 EPEX-coupled zones in `BiddingZone`, but more zones could be added later:
+Done. Settings screen has a country picker (12 countries) and a zone picker for multi-zone
+countries (DK, NO, SE). `CountryDetector` auto-detects the user's country on first launch
+from SIM → network → timezone → locale → NL fallback (zero permissions required).
+GB is excluded — ENTSO-E doesn't publish GB day-ahead prices post-Brexit.
 
-- EE (Estonia), LV (Latvia), LT (Lithuania) — Baltic states
-- HU (Hungary)
-- ME (Montenegro)
-- IE (Ireland), NIR (Northern Ireland) — SEM market
+## 2. ENTSO-E Token Wiring ✅
 
-A dropdown or searchable list grouped by country, showing "NL — Netherlands", "DE-LU — Germany/Luxembourg", etc.
-
-## 2. ENTSO-E Token Wiring
-
-The API token needs to get from `local.properties` into `EntsoeApi`:
-
-- Inject `ENTSOE_API_TOKEN` from `local.properties` via `BuildConfig` (like the release keystore)
-- A single baked-in token supports ~115K DAUs (see `docs/entsoe/entsoe-api.md` rate limit analysis)
+Done. `ENTSOE_API_TOKEN` is injected from `local.properties` via `BuildConfig` (configured
+in the `sweetspot-app` convention plugin in `buildSrc/`). Both phone and wear modules
+receive the token.
 
 ## 3. Sub-Hourly Interval Support
 
@@ -29,14 +24,12 @@ Since October 2025, all ENTSO-E zones return PT15M (15-minute) resolution. `Ents
 - Update the bar chart and time display to handle sub-hourly granularity
 - This is a significant change — do it as a separate feature
 
-## 4. PriceFetcherFactory / Zone-Based Fetcher Selection
+## 4. PriceFetcherFactory / Zone-Based Fetcher Selection ✅
 
-Currently `PriceRepository` defaults to `EnergyZeroApi`. To support multiple zones:
-
-- Create a `PriceFetcherFactory` that returns the right `PriceFetcher` for a given zone
-- NL could keep using EnergyZero (no auth needed) or switch to ENTSO-E
-- All other zones use `EntsoeApi` with the appropriate bidding zone code
-- The factory could also handle fallback chains (see below)
+Done. `PriceFetcherFactory` is a `fun interface` that returns the right `PriceFetcher`
+for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes NL → EnergyZero
+(no auth), all other zones → `EntsoeApi`. Both ViewModels take an injectable factory
+for testing.
 
 ## 5. Fallback API Chain
 
@@ -47,7 +40,6 @@ Several alternative APIs exist per zone. If the primary source fails, fall back 
 | NL | EnergyZero | ENTSO-E, Energy-Charts |
 | DE-LU | ENTSO-E | Energy-Charts, SMARD, aWATTar |
 | AT | ENTSO-E | aWATTar, Energy-Charts |
-| GB | ENTSO-E | Elexon BMRS (30-min intervals) |
 | CH | ENTSO-E | Swiss Energy Dashboard |
 | PL | ENTSO-E | PSE |
 | IE, NIR | ENTSO-E | SEMOpx |

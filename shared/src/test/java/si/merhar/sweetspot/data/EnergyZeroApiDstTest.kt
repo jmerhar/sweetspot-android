@@ -14,7 +14,7 @@ import java.time.ZoneId
  */
 class EnergyZeroApiDstTest {
 
-    private val zone = ZoneId.of("Europe/Amsterdam")
+    private val timeZone = ZoneId.of("Europe/Amsterdam")
 
     @Test
     fun `winter time CET converts UTC correctly`() {
@@ -27,7 +27,7 @@ class EnergyZeroApiDstTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(11, prices[0].time.hour)
         assertEquals("+01:00", prices[0].time.offset.toString())
     }
@@ -43,7 +43,7 @@ class EnergyZeroApiDstTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(12, prices[0].time.hour)
         assertEquals("+02:00", prices[0].time.offset.toString())
     }
@@ -64,7 +64,7 @@ class EnergyZeroApiDstTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(3, prices.size)
         assertEquals(1, prices[0].time.hour)   // CET 01:00
         assertEquals(3, prices[1].time.hour)   // CEST 03:00 (02:00 skipped)
@@ -91,7 +91,7 @@ class EnergyZeroApiDstTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(3, prices.size)
 
         // Both show 02:00 local but with different offsets
@@ -120,7 +120,7 @@ class EnergyZeroApiDstTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parse(json, zone)
+        val prices = EnergyZeroApi.parse(json, timeZone)
         assertEquals(5, prices.size)
 
         // Verify chronological order

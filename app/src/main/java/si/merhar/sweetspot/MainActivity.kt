@@ -30,13 +30,18 @@ class MainActivity : ComponentActivity() {
                 if (state.showSettings) {
                     BackHandler { vm.onHideSettings() }
                     SettingsScreen(
-                        currentZoneId = state.zoneId,
-                        isUsingDefaultZone = state.isUsingDefaultZone,
-                        onZoneSelected = vm::onZoneSelected,
+                        currentTimeZoneId = state.timeZoneId,
+                        isUsingDefaultTimezone = state.isUsingDefaultTimezone,
+                        onTimezoneSelected = vm::onTimezoneSelected,
                         appliances = state.appliances,
                         onAddAppliance = vm::onAddAppliance,
                         onUpdateAppliance = vm::onUpdateAppliance,
                         onDeleteAppliance = vm::onDeleteAppliance,
+                        countryCode = state.countryCode,
+                        priceZone = state.priceZone,
+                        countries = state.countries,
+                        onCountrySelected = vm::onCountrySelected,
+                        onPriceZoneSelected = vm::onPriceZoneSelected,
                         onBack = vm::onHideSettings
                     )
                 } else {

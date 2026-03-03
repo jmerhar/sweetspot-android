@@ -80,7 +80,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             result = state.result!!,
             allPrices = state.allPrices,
             resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
-            zoneId = state.zoneId,
+            timeZoneId = state.timeZoneId,
             onBack = viewModel::onClearResult,
             snackbarHostState = snackbarHostState,
             modifier = modifier
@@ -197,7 +197,7 @@ private fun ResultScreen(
     result: si.merhar.sweetspot.model.WindowResult,
     allPrices: List<si.merhar.sweetspot.model.HourlyPrice>,
     resultLabel: String,
-    zoneId: java.time.ZoneId,
+    timeZoneId: java.time.ZoneId,
     onBack: () -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier
@@ -236,7 +236,7 @@ private fun ResultScreen(
                 modifier = Modifier.padding(bottom = 12.dp)
             )
 
-            ResultSummary(result = result, zoneId = zoneId)
+            ResultSummary(result = result, timeZoneId = timeZoneId)
 
             Spacer(modifier = Modifier.height(16.dp))
 

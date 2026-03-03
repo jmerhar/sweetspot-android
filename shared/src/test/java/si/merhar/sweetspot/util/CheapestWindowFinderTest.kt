@@ -11,13 +11,13 @@ import java.time.ZonedDateTime
 
 class CheapestWindowFinderTest {
 
-    private val zone = ZoneId.of("Europe/Amsterdam")
+    private val timeZone = ZoneId.of("Europe/Amsterdam")
 
     /** A time well before any price slot, so no clamping occurs. */
-    private val earlyNow = ZonedDateTime.of(2025, 6, 15, 0, 0, 0, 0, zone)
+    private val earlyNow = ZonedDateTime.of(2025, 6, 15, 0, 0, 0, 0, timeZone)
 
     private fun pricesAt(hour: Int, vararg prices: Double): List<HourlyPrice> {
-        val base = ZonedDateTime.of(2025, 6, 15, hour, 0, 0, 0, zone)
+        val base = ZonedDateTime.of(2025, 6, 15, hour, 0, 0, 0, timeZone)
         return prices.mapIndexed { i, price ->
             HourlyPrice(time = base.plusHours(i.toLong()), price = price)
         }
@@ -179,7 +179,7 @@ class CheapestWindowFinderTest {
         // Cheapest slot is 10:00, but "now" is 10:07 — start should be clamped to 10:07
         // Appliance runs 10:07–11:07: 53 min at €0.05 + 7 min at €0.20
         val prices = pricesAt(10, 0.05, 0.20, 0.30)
-        val now = ZonedDateTime.of(2025, 6, 15, 10, 7, 0, 0, zone)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 7, 0, 0, timeZone)
 
         val result = findCheapestWindow(prices, 1.0, now)!!
 
@@ -202,7 +202,7 @@ class CheapestWindowFinderTest {
     fun `does not clamp when cheapest slot starts after now`() {
         // Cheapest slot is 11:00, "now" is 10:07 — no clamping
         val prices = pricesAt(10, 0.30, 0.05, 0.20)
-        val now = ZonedDateTime.of(2025, 6, 15, 10, 7, 0, 0, zone)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 7, 0, 0, timeZone)
 
         val result = findCheapestWindow(prices, 1.0, now)!!
 
@@ -221,7 +221,7 @@ class CheapestWindowFinderTest {
         // 2.5h window, cheapest starts at 10:00, now is 10:15
         // Appliance runs 10:15–12:45: 45 min at €0.05 + 60 min at €0.05 + 45 min at €0.05
         val prices = pricesAt(10, 0.05, 0.05, 0.05, 0.50)
-        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, zone)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, timeZone)
 
         val result = findCheapestWindow(prices, 2.5, now)!!
 
@@ -283,7 +283,7 @@ class CheapestWindowFinderTest {
     @Test
     fun `breakdown invariants hold when start is clamped to now`() {
         val prices = pricesAt(10, 0.05, 0.20, 0.30)
-        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, zone)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, timeZone)
         val duration = 2.0
         val result = findCheapestWindow(prices, duration, now)!!
 
@@ -297,7 +297,7 @@ class CheapestWindowFinderTest {
     @Test
     fun `breakdown invariants hold for clamped fractional duration`() {
         val prices = pricesAt(10, 0.05, 0.05, 0.05, 0.50)
-        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, zone)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 15, 0, 0, timeZone)
         val duration = 2.5
         val result = findCheapestWindow(prices, duration, now)!!
 

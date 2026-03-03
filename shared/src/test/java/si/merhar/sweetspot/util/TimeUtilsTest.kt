@@ -7,10 +7,10 @@ import java.time.ZonedDateTime
 
 class TimeUtilsTest {
 
-    private val zone = ZoneId.of("Europe/Amsterdam")
+    private val timeZone = ZoneId.of("Europe/Amsterdam")
 
     private fun time(hour: Int, minute: Int = 0, second: Int = 0): ZonedDateTime =
-        ZonedDateTime.of(2025, 6, 15, hour, minute, second, 0, zone)
+        ZonedDateTime.of(2025, 6, 15, hour, minute, second, 0, timeZone)
 
     @Test
     fun `target in past returns now`() {

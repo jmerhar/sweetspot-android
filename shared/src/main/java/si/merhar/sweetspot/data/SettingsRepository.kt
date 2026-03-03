@@ -80,18 +80,19 @@ class SettingsRepository(private val context: Context) {
     /**
      * Resolves the current country and zone settings to a concrete [PriceZone].
      *
-     * For single-zone countries, returns the only zone. For multi-zone countries,
-     * returns the stored zone or the first one if none is stored.
+     * For single-zone countries, returns the only zone automatically.
+     * For multi-zone countries, returns the stored zone or `null` if the user
+     * hasn't made a selection yet (zone selection is mandatory).
      *
-     * @return The resolved [PriceZone].
+     * @return The resolved [PriceZone], or `null` if a multi-zone country has no selection.
      */
-    fun getResolvedPriceZone(): PriceZone {
+    fun getResolvedPriceZone(): PriceZone? {
         val country = Countries.findByCode(getCountryCode()) ?: Countries.defaultCountry()
         val storedPriceZoneId = getPriceZoneId()
         if (storedPriceZoneId != null) {
             country.zones.find { it.id == storedPriceZoneId }?.let { return it }
         }
-        return country.zones.first()
+        return if (country.zones.size == 1) country.zones.first() else null
     }
 
     // --- Timezone ---
@@ -102,6 +103,7 @@ class SettingsRepository(private val context: Context) {
      * Priority:
      * 1. User's manually set timezone (if any)
      * 2. Timezone derived from the selected price zone
+     * 3. System default (if no price zone is selected yet)
      */
     fun getTimeZoneId(): ZoneId {
         val stored = prefs.getString(KEY_TIMEZONE_ID, null)
@@ -109,10 +111,10 @@ class SettingsRepository(private val context: Context) {
             return try {
                 ZoneId.of(stored)
             } catch (_: Exception) {
-                ZoneId.of(getResolvedPriceZone().timeZoneId)
+                getResolvedPriceZone()?.let { ZoneId.of(it.timeZoneId) } ?: ZoneId.systemDefault()
             }
         }
-        return ZoneId.of(getResolvedPriceZone().timeZoneId)
+        return getResolvedPriceZone()?.let { ZoneId.of(it.timeZoneId) } ?: ZoneId.systemDefault()
     }
 
     /**

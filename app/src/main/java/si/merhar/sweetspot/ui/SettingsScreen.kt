@@ -73,7 +73,7 @@ fun SettingsScreen(
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
     countryCode: String,
-    priceZone: PriceZone,
+    priceZone: PriceZone?,
     countries: List<Country>,
     onCountrySelected: (String) -> Unit,
     onPriceZoneSelected: (String) -> Unit,
@@ -108,6 +108,10 @@ fun SettingsScreen(
             onCountrySelected = { code ->
                 onCountrySelected(code)
                 showCountryPicker = false
+                val selected = Countries.findByCode(code)
+                if (selected != null && selected.zones.size > 1) {
+                    showZonePicker = true
+                }
             },
             onBack = { showCountryPicker = false }
         )
@@ -120,7 +124,7 @@ fun SettingsScreen(
         if (country != null && country.zones.size > 1) {
             PriceZonePickerScreen(
                 zones = country.zones,
-                currentPriceZoneId = priceZone.id,
+                currentPriceZoneId = priceZone?.id ?: "",
                 onPriceZoneSelected = { priceZoneId ->
                     onPriceZoneSelected(priceZoneId)
                     showZonePicker = false
@@ -204,7 +208,7 @@ fun SettingsScreen(
 
             if (isMultiZone) {
                 PriceZoneSection(
-                    zoneLabel = priceZone.label,
+                    zoneLabel = priceZone?.label,
                     onClick = { showZonePicker = true }
                 )
             }
@@ -251,10 +255,10 @@ private fun CountrySection(
     }
 }
 
-/** Price zone sub-section for multi-zone countries, showing the current zone. */
+/** Price zone sub-section for multi-zone countries, showing the current zone or a prompt to select one. */
 @Composable
 private fun PriceZoneSection(
-    zoneLabel: String,
+    zoneLabel: String?,
     onClick: () -> Unit
 ) {
     Row(
@@ -266,9 +270,10 @@ private fun PriceZoneSection(
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = zoneLabel,
+                text = zoneLabel ?: "Select a zone",
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = if (zoneLabel != null) MaterialTheme.colorScheme.onSurfaceVariant
+                        else MaterialTheme.colorScheme.error
             )
         }
     }

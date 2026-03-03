@@ -41,7 +41,7 @@ import java.time.ZonedDateTime
  * @property error Error message to display, or `null` if none.
  * @property result The cheapest-window result, or `null` if no search has been performed.
  * @property resultLabel Label shown on the result screen (e.g. "Washer · 2h 30m").
- * @property priceZone The resolved price zone synced from the phone.
+ * @property priceZone The resolved price zone synced from the phone, or `null` if not yet configured.
  */
 data class WearUiState(
     val appliances: List<Appliance> = emptyList(),
@@ -49,7 +49,7 @@ data class WearUiState(
     val error: String? = null,
     val result: WindowResult? = null,
     val resultLabel: String? = null,
-    val priceZone: PriceZone = Countries.defaultCountry().zones.first()
+    val priceZone: PriceZone? = Countries.defaultCountry().zones.first()
 )
 
 /**
@@ -165,12 +165,19 @@ class WearViewModel @JvmOverloads constructor(
         val durationHours = h + m / 60.0
         val label = "${appliance.name} \u00b7 ${formatDuration(h, m)}"
 
+        val priceZone = _uiState.value.priceZone
+        if (priceZone == null) {
+            _uiState.update {
+                it.copy(error = "Please configure your zone on the phone.")
+            }
+            return
+        }
+
         fetchJob?.cancel()
         _uiState.update {
             it.copy(isLoading = true, error = null, result = null, resultLabel = label)
         }
 
-        val priceZone = _uiState.value.priceZone
         val timeZoneId = ZoneId.of(priceZone.timeZoneId)
         fetchJob = viewModelScope.launch(ioDispatcher) {
             try {
@@ -230,14 +237,15 @@ class WearViewModel @JvmOverloads constructor(
      *
      * @param countryCode ISO country code from the phone, or `null`.
      * @param priceZoneId Zone ID from the phone, or `null`.
-     * @return The resolved [PriceZone], falling back to NL.
+     * @return The resolved [PriceZone], or `null` for multi-zone countries without a selection.
      */
-    private fun resolveZone(countryCode: String?, priceZoneId: String?): PriceZone {
+    private fun resolveZone(countryCode: String?, priceZoneId: String?): PriceZone? {
         if (priceZoneId != null) {
             Countries.findPriceZoneById(priceZoneId)?.let { return it }
         }
         if (countryCode != null) {
-            Countries.findByCode(countryCode)?.zones?.firstOrNull()?.let { return it }
+            val country = Countries.findByCode(countryCode) ?: return null
+            return if (country.zones.size == 1) country.zones.first() else null
         }
         return Countries.defaultCountry().zones.first()
     }

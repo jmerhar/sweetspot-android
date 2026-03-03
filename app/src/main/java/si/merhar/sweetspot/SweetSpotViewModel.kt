@@ -62,7 +62,7 @@ sealed interface AppError {
  * @property isUsingDefaultTimezone Whether the timezone is the zone-derived default (vs. user-selected).
  * @property appliances User-configured appliances with preset durations.
  * @property countryCode ISO code of the selected country.
- * @property priceZone The resolved price zone for fetching prices.
+ * @property priceZone The resolved price zone for fetching prices, or `null` if a multi-zone country has no selection yet.
  * @property countries All supported countries for the country picker.
  */
 data class UiState(
@@ -78,7 +78,7 @@ data class UiState(
     val isUsingDefaultTimezone: Boolean = true,
     val appliances: List<Appliance> = emptyList(),
     val countryCode: String = Countries.defaultCountry().code,
-    val priceZone: PriceZone = Countries.defaultCountry().zones.first(),
+    val priceZone: PriceZone? = Countries.defaultCountry().zones.first(),
     val countries: List<Country> = Countries.all
 )
 
@@ -323,9 +323,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private fun syncSettingsToWear() {
         try {
             val state = _uiState.value
+            val priceZone = state.priceZone ?: return
             val request = PutDataMapRequest.create("/settings").apply {
                 dataMap.putString("country_code", state.countryCode)
-                dataMap.putString("price_zone_id", state.priceZone.id)
+                dataMap.putString("price_zone_id", priceZone.id)
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
             Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
@@ -355,6 +356,18 @@ class SweetSpotViewModel @JvmOverloads constructor(
             return
         }
 
+        val priceZone = _uiState.value.priceZone
+        if (priceZone == null) {
+            _uiState.update {
+                it.copy(
+                    error = AppError.Validation("Please select a zone in Settings."),
+                    result = null,
+                    allPrices = emptyList()
+                )
+            }
+            return
+        }
+
         val durationHours = h + m / 60.0
         val durationLabel = formatDuration(h, m)
 
@@ -368,7 +381,6 @@ class SweetSpotViewModel @JvmOverloads constructor(
         }
 
         val timeZoneId = _uiState.value.timeZoneId
-        val priceZone = _uiState.value.priceZone
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(ioDispatcher) {
             fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)

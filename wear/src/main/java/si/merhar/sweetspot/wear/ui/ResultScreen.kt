@@ -68,7 +68,7 @@ fun ResultScreen(
         return
     }
 
-    val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone.timeZoneId) }
+    val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone!!.timeZoneId) }
     var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
     LaunchedEffect(Unit) {
         while (true) {

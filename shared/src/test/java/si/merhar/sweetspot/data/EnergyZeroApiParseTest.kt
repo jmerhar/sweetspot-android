@@ -21,7 +21,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parseJson(json, zone)
+        val prices = EnergyZeroApi.parse(json, zone)
 
         assertEquals(3, prices.size)
         // Should be sorted chronologically
@@ -35,7 +35,7 @@ class EnergyZeroApiParseTest {
     @Test
     fun `parses empty price list`() {
         val json = """{"Prices": []}"""
-        val prices = EnergyZeroApi.parseJson(json, zone)
+        val prices = EnergyZeroApi.parse(json, zone)
         assertTrue(prices.isEmpty())
     }
 
@@ -50,7 +50,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parseJson(json, zone)
+        val prices = EnergyZeroApi.parse(json, zone)
         assertEquals(1, prices.size)
         assertEquals(0.15, prices[0].price, 0.0001)
     }
@@ -65,7 +65,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parseJson(json, zone)
+        val prices = EnergyZeroApi.parse(json, zone)
         assertEquals(-0.05, prices[0].price, 0.0001)
     }
 
@@ -79,7 +79,7 @@ class EnergyZeroApiParseTest {
         }
         """.trimIndent()
 
-        val prices = EnergyZeroApi.parseJson(json, zone)
+        val prices = EnergyZeroApi.parse(json, zone)
         // UTC 10:00 = Amsterdam (CEST, UTC+2) 12:00
         assertEquals(12, prices[0].time.hour)
     }

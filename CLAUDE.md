@@ -50,7 +50,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (116 tests)
+./gradlew test                   # Run all unit tests (127 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -59,6 +59,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
+- `data/EntsoeApiParseTest` — ENTSO-E XML parsing: PT60M, PT15M aggregation, A03 gaps, multi-TimeSeries, errors, DST (11 tests, in shared)
 - `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case (22 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
@@ -76,7 +77,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (116 tests)
+- JUnit 4 + Robolectric for unit tests (127 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -97,11 +98,13 @@ Three Gradle modules:
 
 ### Shared module (`:shared`)
 
-- **`data/PriceFetcher`** — Interface for fetching and parsing prices. Decouples `PriceRepository` from a specific API provider.
-- **`data/EnergyZeroApi`** — `PriceFetcher` singleton. Fetches hourly prices from `api.energyzero.nl` for today+tomorrow. Takes `ZoneId` to compute date boundaries.
-- **`data/PriceCache`** — Interface for caching raw API JSON. Abstracts storage so `PriceRepository` can be tested without Android.
+- **`data/PriceFetcher`** — Interface for fetching and parsing prices. `fetchRaw(from, to)` takes an `Instant` date range; `parse(raw, zoneId)` returns `List<HourlyPrice>`. Decouples `PriceRepository` from a specific API provider.
+- **`data/EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization.
+- **`data/EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, aggregates PT15M to hourly averages, converts EUR/MWh to EUR/kWh.
+- **`data/BiddingZone`** — Object with EIC code constants for 20 EPEX-coupled bidding zones.
+- **`data/PriceCache`** — Interface for caching raw API responses. Abstracts storage so `PriceRepository` can be tested without Android.
 - **`data/FilePriceCache`** — `PriceCache` implementation backed by `cacheDir/prices_cache.json` and SharedPreferences `sweetspot_cache`. Tracks last fetch timestamp for cooldown.
-- **`data/PriceRepository`** — Created per-call with current `ZoneId`. Reads cache first, filters to future prices, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
+- **`data/PriceRepository`** — Created per-call with current `ZoneId`. Computes date range (today → day-after-tomorrow), reads cache first, filters to future prices, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
 - **`data/SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores timezone and appliances (JSON-serialized list).
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 26 curated icons (18 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.

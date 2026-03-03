@@ -7,7 +7,6 @@ import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.time.Instant
-import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
@@ -50,20 +49,30 @@ object EnergyZeroApi : PriceFetcher {
     private val json = Json { ignoreUnknownKeys = true }
 
     /**
-     * Fetches raw JSON from the EnergyZero API for today and tomorrow.
+     * Fetches and parses electricity prices from the EnergyZero API.
      *
-     * @param zoneId Timezone used to determine "today" and date boundaries.
+     * @param from Start of the requested period (inclusive).
+     * @param to End of the requested period (exclusive).
+     * @param zoneId Timezone to convert UTC timestamps to local time.
+     * @return Chronologically sorted list of [HourlyPrice] entries.
+     * @throws RuntimeException if the HTTP request fails.
+     */
+    override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
+        return parse(fetchRaw(from, to), zoneId)
+    }
+
+    /**
+     * Fetches raw JSON from the EnergyZero API for the given date range.
+     *
+     * @param from Start of the requested period (inclusive).
+     * @param to End of the requested period (exclusive).
      * @return Raw JSON response body.
      * @throws RuntimeException if the HTTP request fails or the body is empty.
      */
-    override fun fetchRawJson(zoneId: ZoneId): String {
-        val today = LocalDate.now(zoneId)
-        val fromDate = today.atStartOfDay(zoneId).toInstant()
-        val tillDate = today.plusDays(2).atStartOfDay(zoneId).toInstant()
-
+    fun fetchRaw(from: Instant, to: Instant): String {
         val url = "https://api.energyzero.nl/v1/energyprices" +
-            "?fromDate=${DateTimeFormatter.ISO_INSTANT.format(fromDate)}" +
-            "&tillDate=${DateTimeFormatter.ISO_INSTANT.format(tillDate)}" +
+            "?fromDate=${DateTimeFormatter.ISO_INSTANT.format(from)}" +
+            "&tillDate=${DateTimeFormatter.ISO_INSTANT.format(to)}" +
             "&interval=4&usageType=1"
 
         val request = Request.Builder().url(url).get().build()
@@ -80,12 +89,12 @@ object EnergyZeroApi : PriceFetcher {
     /**
      * Parses raw EnergyZero JSON into a sorted list of [HourlyPrice] entries.
      *
-     * @param rawJson Raw JSON string from [fetchRawJson] or cache.
+     * @param raw Raw JSON string from [fetchRaw].
      * @param zoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of hourly prices.
      */
-    override fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
-        val parsed = json.decodeFromString<EnergyZeroResponse>(rawJson)
+    fun parse(raw: String, zoneId: ZoneId): List<HourlyPrice> {
+        val parsed = json.decodeFromString<EnergyZeroResponse>(raw)
         return parsed.prices.map { entry ->
             val instant = Instant.parse(entry.readingDate)
             val time = instant.atZone(zoneId)

@@ -21,10 +21,12 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import kotlinx.serialization.json.Json
+import si.merhar.sweetspot.data.CachedPrice
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.HourlyPrice
+import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -45,14 +47,13 @@ class WearViewModelTest {
     /** In-memory [PriceCache] that never triggers re-fetch. */
     private class FakeCache : PriceCache {
         override fun isCooldownElapsed(cooldownMs: Long) = true
-        override fun readCachedJson(): String? = null
-        override fun write(json: String) {}
+        override fun readCached(key: String): List<CachedPrice>? = null
+        override fun write(key: String, prices: List<CachedPrice>) {}
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */
     private class FakeFetcher(private val prices: List<HourlyPrice>? = null) : PriceFetcher {
-        override fun fetchRawJson(zoneId: ZoneId): String = """{"Prices":[]}"""
-        override fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
+        override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
             return prices ?: throw RuntimeException("Network error")
         }
     }

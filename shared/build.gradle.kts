@@ -47,4 +47,5 @@ dependencies {
     // Unit testing
     testImplementation(libs.junit)
     testImplementation(libs.serialization.json)
+    testImplementation(libs.kxml2)
 }

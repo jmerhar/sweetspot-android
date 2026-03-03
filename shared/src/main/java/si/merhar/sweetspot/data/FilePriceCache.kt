@@ -1,39 +1,72 @@
 package si.merhar.sweetspot.data
 
 import android.content.Context
+import java.io.DataInputStream
+import java.io.DataOutputStream
 import java.io.File
 
 /**
  * File-based [PriceCache] implementation backed by the Android cache directory
  * and SharedPreferences.
  *
- * Stores raw JSON in `cacheDir/prices_cache.json` and tracks the last fetch
- * timestamp in SharedPreferences to enforce a minimum interval between API
- * requests (cooldown).
+ * Stores parsed prices in per-zone binary files (`cacheDir/prices_<key>.bin`)
+ * and tracks the last fetch timestamp in SharedPreferences to enforce a minimum
+ * interval between API requests (cooldown).
+ *
+ * Binary format per file:
+ * - `version: Byte` (currently 1)
+ * - `count: Int` (number of entries)
+ * - N × (`epochSecond: Long` | `price: Double`) — 16 bytes per entry
  *
  * @param context Android context for accessing cache directory and SharedPreferences.
  */
 class FilePriceCache(private val context: Context) : PriceCache {
 
     private val prefs = context.getSharedPreferences("sweetspot_cache", Context.MODE_PRIVATE)
-    private val cacheFile = File(context.cacheDir, "prices_cache.json")
 
     private companion object {
         const val KEY_LAST_FETCH_MS = "last_fetch_ms"
+        const val FORMAT_VERSION: Byte = 1
     }
+
+    /** Returns the per-zone cache file for the given key. */
+    private fun cacheFile(key: String): File = File(context.cacheDir, "prices_$key.bin")
 
     override fun isCooldownElapsed(cooldownMs: Long): Boolean {
         val lastFetch = prefs.getLong(KEY_LAST_FETCH_MS, 0L)
         return System.currentTimeMillis() - lastFetch >= cooldownMs
     }
 
-    override fun readCachedJson(): String? {
-        if (!cacheFile.exists()) return null
-        return cacheFile.readText()
+    override fun readCached(key: String): List<CachedPrice>? {
+        val file = cacheFile(key)
+        if (!file.exists()) return null
+        return try {
+            DataInputStream(file.inputStream().buffered()).use { input ->
+                val version = input.readByte()
+                if (version != FORMAT_VERSION) return null
+                val count = input.readInt()
+                List(count) {
+                    CachedPrice(
+                        epochSecond = input.readLong(),
+                        price = input.readDouble()
+                    )
+                }
+            }
+        } catch (_: Exception) {
+            // Graceful migration: any I/O or format error returns null
+            null
+        }
     }
 
-    override fun write(json: String) {
-        cacheFile.writeText(json)
+    override fun write(key: String, prices: List<CachedPrice>) {
+        DataOutputStream(cacheFile(key).outputStream().buffered()).use { output ->
+            output.writeByte(FORMAT_VERSION.toInt())
+            output.writeInt(prices.size)
+            for (entry in prices) {
+                output.writeLong(entry.epochSecond)
+                output.writeDouble(entry.price)
+            }
+        }
         prefs.edit()
             .putLong(KEY_LAST_FETCH_MS, System.currentTimeMillis())
             .apply()

@@ -4,6 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import si.merhar.sweetspot.model.HourlyPrice
 import java.time.Clock
+import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -14,9 +15,6 @@ class PriceRepositoryTest {
     /** Fixed "now" at 2025-06-15 16:30 CEST. */
     private val now = ZonedDateTime.of(2025, 6, 15, 16, 30, 0, 0, zone)
     private val fixedClock = Clock.fixed(now.toInstant(), zone)
-
-    /** A dummy JSON string used as cache content. */
-    private val cachedJson = """{"cached":true}"""
 
     // --- Helpers ---
 
@@ -29,20 +27,31 @@ class PriceRepositoryTest {
             )
         }
 
+    /** Converts a list of [HourlyPrice] to [CachedPrice] for pre-populating [FakeCache]. */
+    private fun List<HourlyPrice>.toCached() = map {
+        CachedPrice(it.time.toInstant().epochSecond, it.price)
+    }
+
     // --- Fakes ---
 
-    /** In-memory [PriceCache] with configurable cooldown behavior. */
+    /** In-memory [PriceCache] with configurable cooldown behavior and per-key storage. */
     private class FakeCache(
-        private var json: String? = null,
-        private var cooldownElapsed: Boolean = true
+        initialPrices: List<CachedPrice>? = null,
+        private var cooldownElapsed: Boolean = true,
+        private val key: String = "default"
     ) : PriceCache {
+        private val store = mutableMapOf<String, List<CachedPrice>>()
         var writeCount = 0
             private set
 
+        init {
+            if (initialPrices != null) store[key] = initialPrices
+        }
+
         override fun isCooldownElapsed(cooldownMs: Long) = cooldownElapsed
-        override fun readCachedJson() = json
-        override fun write(json: String) {
-            this.json = json
+        override fun readCached(key: String) = store[key]
+        override fun write(key: String, prices: List<CachedPrice>) {
+            store[key] = prices
             writeCount++
         }
     }
@@ -50,22 +59,16 @@ class PriceRepositoryTest {
     /**
      * Fake [PriceFetcher] that returns results from a queue.
      *
-     * Each call to [parseJson] (whether parsing cache or fresh data) consumes
-     * the next result from the queue. This lets tests control what the cache
-     * parse returns vs. what a re-fetch returns.
+     * Each call to [fetchPrices] consumes the next result from the queue.
      */
     private class FakeFetcher(vararg results: List<HourlyPrice>) : PriceFetcher {
-        private val parseResults = ArrayDeque(results.toList())
+        private val fetchResults = ArrayDeque(results.toList())
         var fetchCount = 0
             private set
 
-        override fun fetchRawJson(zoneId: ZoneId): String {
+        override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
             fetchCount++
-            return """{"fetch":$fetchCount}"""
-        }
-
-        override fun parseJson(rawJson: String, zoneId: ZoneId): List<HourlyPrice> {
-            return parseResults.removeFirstOrNull() ?: emptyList()
+            return fetchResults.removeFirstOrNull() ?: emptyList()
         }
     }
 
@@ -74,7 +77,7 @@ class PriceRepositoryTest {
     @Test
     fun `no cache fetches from API`() {
         val fetcher = FakeFetcher(prices(startHour = 14, count = 20))
-        val cache = FakeCache(json = null)
+        val cache = FakeCache(initialPrices = null)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -87,8 +90,9 @@ class PriceRepositoryTest {
 
     @Test
     fun `cache hit with good coverage skips API call`() {
-        val fetcher = FakeFetcher(prices(startHour = 14, count = 20))
-        val cache = FakeCache(json = cachedJson)
+        val cached = prices(startHour = 14, count = 20).toCached()
+        val fetcher = FakeFetcher()
+        val cache = FakeCache(initialPrices = cached)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -101,12 +105,12 @@ class PriceRepositoryTest {
 
     @Test
     fun `cache hit with low coverage triggers re-fetch`() {
-        // First parse (cache): only today's prices (16:00–23:00 = 8 hours < 12)
-        val todayOnly = prices(startHour = 16, count = 8)
-        // Second parse (re-fetch): today + tomorrow
+        // Cache: only today's prices (16:00–23:00 = 8 hours < 12)
+        val cached = prices(startHour = 16, count = 8).toCached()
+        // Re-fetch: today + tomorrow
         val withTomorrow = prices(startHour = 14, count = 30)
-        val fetcher = FakeFetcher(todayOnly, withTomorrow)
-        val cache = FakeCache(json = cachedJson, cooldownElapsed = true)
+        val fetcher = FakeFetcher(withTomorrow)
+        val cache = FakeCache(initialPrices = cached, cooldownElapsed = true)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -119,9 +123,9 @@ class PriceRepositoryTest {
 
     @Test
     fun `low coverage but cooldown not elapsed skips re-fetch`() {
-        val todayOnly = prices(startHour = 16, count = 8)
-        val fetcher = FakeFetcher(todayOnly)
-        val cache = FakeCache(json = cachedJson, cooldownElapsed = false)
+        val cached = prices(startHour = 16, count = 8).toCached()
+        val fetcher = FakeFetcher()
+        val cache = FakeCache(initialPrices = cached, cooldownElapsed = false)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -135,9 +139,9 @@ class PriceRepositoryTest {
     @Test
     fun `filters out past prices`() {
         // Prices from 10:00 to 22:00 — only 16:00+ should remain
-        val allPrices = prices(startHour = 10, count = 13)
-        val fetcher = FakeFetcher(allPrices)
-        val cache = FakeCache(json = cachedJson, cooldownElapsed = false)
+        val cached = prices(startHour = 10, count = 13).toCached()
+        val fetcher = FakeFetcher()
+        val cache = FakeCache(initialPrices = cached, cooldownElapsed = false)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -150,9 +154,9 @@ class PriceRepositoryTest {
     @Test
     fun `includes current hour even when now is mid-hour`() {
         // now is 16:30, so the 16:00 slot should be included
-        val allPrices = prices(startHour = 15, count = 20)
-        val fetcher = FakeFetcher(allPrices)
-        val cache = FakeCache(json = cachedJson)
+        val cached = prices(startHour = 15, count = 20).toCached()
+        val fetcher = FakeFetcher()
+        val cache = FakeCache(initialPrices = cached)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -165,16 +169,16 @@ class PriceRepositoryTest {
         // Cache has yesterday's prices — all in the past
         val yesterday = prices(startHour = 0, count = 24).map {
             it.copy(time = it.time.minusDays(1))
-        }
+        }.toCached()
         // Re-fetch returns today's prices
         val todayPrices = prices(startHour = 16, count = 20)
-        val fetcher = FakeFetcher(yesterday, todayPrices)
-        val cache = FakeCache(json = cachedJson)
+        val fetcher = FakeFetcher(todayPrices)
+        val cache = FakeCache(initialPrices = yesterday)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
 
-        // Cache parse: 0 future prices (< 12) → re-fetch
+        // Cache read: 0 future prices (< 12) → re-fetch
         assertEquals(1, fetcher.fetchCount)
         assertEquals(20, result.size)
     }
@@ -182,7 +186,7 @@ class PriceRepositoryTest {
     @Test
     fun `empty cache and empty API returns empty list`() {
         val fetcher = FakeFetcher(emptyList(), emptyList())
-        val cache = FakeCache(json = null)
+        val cache = FakeCache(initialPrices = null)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -196,16 +200,16 @@ class PriceRepositoryTest {
     fun `re-fetch failure falls back to stale cache data`() {
         // Cache has low-coverage data (8 hours, below MIN_COVERAGE_HOURS)
         val staleData = prices(startHour = 16, count = 8)
-        // Fetcher: first call returns stale data (cache parse), second call throws (network error)
+        val cached = staleData.toCached()
+        // Fetcher throws on any call (network error)
         val fetcher = object : PriceFetcher {
             var fetchCount = 0
-            override fun fetchRawJson(zoneId: ZoneId): String {
+            override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
                 fetchCount++
                 throw RuntimeException("Network error")
             }
-            override fun parseJson(rawJson: String, zoneId: ZoneId) = staleData
         }
-        val cache = FakeCache(json = cachedJson, cooldownElapsed = true)
+        val cache = FakeCache(initialPrices = cached, cooldownElapsed = true)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         val result = repo.getPrices()
@@ -221,14 +225,13 @@ class PriceRepositoryTest {
         // Cache has all-past data — filtered list will be empty
         val pastData = prices(startHour = 0, count = 10).map {
             it.copy(time = it.time.minusDays(1))
-        }
+        }.toCached()
         val fetcher = object : PriceFetcher {
-            override fun fetchRawJson(zoneId: ZoneId): String {
+            override fun fetchPrices(from: Instant, to: Instant, zoneId: ZoneId): List<HourlyPrice> {
                 throw RuntimeException("Network error")
             }
-            override fun parseJson(rawJson: String, zoneId: ZoneId) = pastData
         }
-        val cache = FakeCache(json = cachedJson, cooldownElapsed = true)
+        val cache = FakeCache(initialPrices = pastData, cooldownElapsed = true)
         val repo = PriceRepository(cache, zone, fetcher, fixedClock)
 
         repo.getPrices() // should throw

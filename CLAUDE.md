@@ -35,7 +35,7 @@ Use `adb devices` to list connected devices when both phone and watch are connec
 ./release.sh 1.1 -n notes.md --draft     # Same but creates a draft release
 ```
 
-The `-n` flag points to a Markdown file with release notes. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why. Keep the current release notes in `notes/release.md` (overwritten each release).
+The `-n` flag points to a Markdown file with release notes. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why. Keep the current release notes in `docs/notes/release.md` (overwritten each release).
 
 The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs, commits, tags, pushes, and creates a GitHub Release with both APKs attached.
 

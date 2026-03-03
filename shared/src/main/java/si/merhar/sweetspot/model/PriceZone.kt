@@ -36,7 +36,7 @@ data class Country(
 /**
  * Registry of all supported countries and their bidding zones.
  *
- * Contains 36 countries covering 53 European bidding zones on the ENTSO-E
+ * Contains 30 countries covering 43 European bidding zones on the ENTSO-E
  * Transparency Platform. DE and LU share the same bidding zone (`DE_LU`).
  * IE uses the all-island Single Electricity Market (SEM).
  */
@@ -44,10 +44,6 @@ object Countries {
 
     /** All supported countries, sorted alphabetically by name. */
     val all: List<Country> = listOf(
-        Country(
-            code = "AL", name = "Albania",
-            zones = listOf(PriceZone("AL", "Albania", BiddingZone.AL, "Europe/Tirane"))
-        ),
         Country(
             code = "AT", name = "Austria",
             zones = listOf(PriceZone("AT", "Austria", BiddingZone.AT, "Europe/Vienna"))
@@ -57,20 +53,12 @@ object Countries {
             zones = listOf(PriceZone("BE", "Belgium", BiddingZone.BE, "Europe/Brussels"))
         ),
         Country(
-            code = "BA", name = "Bosnia and Herzegovina",
-            zones = listOf(PriceZone("BA", "Bosnia and Herzegovina", BiddingZone.BA, "Europe/Sarajevo"))
-        ),
-        Country(
             code = "BG", name = "Bulgaria",
             zones = listOf(PriceZone("BG", "Bulgaria", BiddingZone.BG, "Europe/Sofia"))
         ),
         Country(
             code = "HR", name = "Croatia",
             zones = listOf(PriceZone("HR", "Croatia", BiddingZone.HR, "Europe/Zagreb"))
-        ),
-        Country(
-            code = "CY", name = "Cyprus",
-            zones = listOf(PriceZone("CY", "Cyprus", BiddingZone.CY, "Asia/Nicosia"))
         ),
         Country(
             code = "CZ", name = "Czechia",
@@ -120,16 +108,8 @@ object Countries {
                 PriceZone("IT_SUD", "South", BiddingZone.IT_SUD, "Europe/Rome"),
                 PriceZone("IT_CALA", "Calabria", BiddingZone.IT_CALA, "Europe/Rome"),
                 PriceZone("IT_SICI", "Sicily", BiddingZone.IT_SICI, "Europe/Rome"),
-                PriceZone("IT_SARD", "Sardinia", BiddingZone.IT_SARD, "Europe/Rome"),
-                PriceZone("IT_FOGN", "Foggia", BiddingZone.IT_FOGN, "Europe/Rome"),
-                PriceZone("IT_BRNN", "Brindisi", BiddingZone.IT_BRNN, "Europe/Rome"),
-                PriceZone("IT_PRGP", "Priolo", BiddingZone.IT_PRGP, "Europe/Rome"),
-                PriceZone("IT_ROSN", "Rossano", BiddingZone.IT_ROSN, "Europe/Rome")
+                PriceZone("IT_SARD", "Sardinia", BiddingZone.IT_SARD, "Europe/Rome")
             )
-        ),
-        Country(
-            code = "XK", name = "Kosovo",
-            zones = listOf(PriceZone("XK", "Kosovo", BiddingZone.XK, "Europe/Belgrade"))
         ),
         Country(
             code = "LV", name = "Latvia",
@@ -142,10 +122,6 @@ object Countries {
         Country(
             code = "LU", name = "Luxembourg",
             zones = listOf(PriceZone("DE_LU", "Germany / Luxembourg", BiddingZone.DE_LU, "Europe/Luxembourg"))
-        ),
-        Country(
-            code = "MT", name = "Malta",
-            zones = listOf(PriceZone("MT", "Malta", BiddingZone.MT, "Europe/Malta"))
         ),
         Country(
             code = "ME", name = "Montenegro",
@@ -209,10 +185,6 @@ object Countries {
         Country(
             code = "CH", name = "Switzerland",
             zones = listOf(PriceZone("CH", "Switzerland", BiddingZone.CH, "Europe/Zurich"))
-        ),
-        Country(
-            code = "TR", name = "Turkey",
-            zones = listOf(PriceZone("TR", "Turkey", BiddingZone.TR, "Europe/Istanbul"))
         )
     )
 

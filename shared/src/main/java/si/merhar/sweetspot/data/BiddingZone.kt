@@ -52,11 +52,8 @@ object BiddingZone {
     const val RO = "10YRO-TEL------P"
     const val SI = "10YSI-ELES-----O"
     const val RS = "10YCS-SERBIATSOV"
-    const val BA = "10YBA-JPCC-----D"
     const val ME = "10YCS-CG-TSO---S"
     const val MK = "10YMK-MEPSO----8"
-    const val AL = "10YAL-KESH-----5"
-    const val XK = "10Y1001C--00100H"
 
     // Italy
     const val IT_NORD = "10Y1001A1001A73I"
@@ -66,18 +63,6 @@ object BiddingZone {
     const val IT_CALA = "10Y1001C--00096J"
     const val IT_SICI = "10Y1001A1001A75E"
     const val IT_SARD = "10Y1001A1001A74G"
-    const val IT_FOGN = "10Y1001A1001A72K"
-    const val IT_BRNN = "10Y1001A1001A699"
-    const val IT_PRGP = "10Y1001A1001A76C"
-    const val IT_ROSN = "10Y1001A1001A77A"
-
-    // Islands
-    const val CY = "10YCY-1001A0003J"
-    const val MT = "10Y1001A1001A93C"
-
     // Ireland (all-island Single Electricity Market)
     const val IE_SEM = "10Y1001A1001A59C"
-
-    // Turkey
-    const val TR = "10YTR-TEIAS----W"
 }

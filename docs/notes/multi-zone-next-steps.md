@@ -4,12 +4,13 @@ Now that `EntsoeApi` implements `PriceFetcher` for all ENTSO-E bidding zones, he
 
 ## 1. Zone Selection UI ✅
 
-Done. Settings screen has a country picker (36 countries) and a zone picker for multi-zone
+Done. Settings screen has a country picker (30 countries) and a zone picker for multi-zone
 countries (DK, IT, NO, SE). `CountryDetector` auto-detects the user's country on first launch
 from SIM → network → timezone → locale → NL fallback (zero permissions required).
-53 bidding zones across all ENTSO-E member/observer states. Italy has 11 zones (7 geographic
-regions + 4 limited production zones). GB is excluded — ENTSO-E doesn't publish GB day-ahead
-prices post-Brexit.
+43 bidding zones across all ENTSO-E member states with published day-ahead prices. Italy has
+7 zones (main geographic regions). GB is excluded — ENTSO-E doesn't publish GB day-ahead
+prices post-Brexit. Zones without data (AL, BA, CY, MT, TR, XK, 4 Italian limited production
+zones) are documented in `entsoe-api.md` for future re-evaluation.
 
 ## 2. ENTSO-E Token Wiring ✅
 

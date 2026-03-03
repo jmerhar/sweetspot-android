@@ -53,19 +53,12 @@ object CountryDetector {
         "Europe/Bucharest" to "RO",
         "Europe/Ljubljana" to "SI",
         "Europe/Belgrade" to "RS",
-        "Europe/Sarajevo" to "BA",
         "Europe/Podgorica" to "ME",
         "Europe/Skopje" to "MK",
-        "Europe/Tirane" to "AL",
         // Italy
         "Europe/Rome" to "IT",
-        // Islands
-        "Asia/Nicosia" to "CY",
-        "Europe/Malta" to "MT",
         // Ireland
-        "Europe/Dublin" to "IE",
-        // Turkey
-        "Europe/Istanbul" to "TR"
+        "Europe/Dublin" to "IE"
     )
 
     /**

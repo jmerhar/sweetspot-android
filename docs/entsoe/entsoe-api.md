@@ -37,17 +37,14 @@ GET https://web-api.tp.entsoe.eu/api
 
 ## Bidding Zone EIC Codes
 
-53 zones across 36 countries. See `BiddingZone.kt` for constants.
+43 zones across 30 countries. See `BiddingZone.kt` for constants.
 
 | Zone | EIC Code |
 |------|----------|
-| AL | `10YAL-KESH-----5` |
 | AT | `10YAT-APG------L` |
-| BA | `10YBA-JPCC-----D` |
 | BE | `10YBE----------2` |
 | BG | `10YCA-BULGARIA-R` |
 | CH | `10YCH-SWISSGRIDZ` |
-| CY | `10YCY-1001A0003J` |
 | CZ | `10YCZ-CEPS-----N` |
 | DE-LU | `10Y1001A1001A82H` |
 | DK1 | `10YDK-1--------W` |
@@ -60,14 +57,10 @@ GET https://web-api.tp.entsoe.eu/api
 | HR | `10YHR-HEP------M` |
 | HU | `10YHU-MAVIR----U` |
 | IE (SEM) | `10Y1001A1001A59C` |
-| IT-Brindisi | `10Y1001A1001A699` |
 | IT-Calabria | `10Y1001C--00096J` |
 | IT-Centre-North | `10Y1001A1001A70O` |
 | IT-Centre-South | `10Y1001A1001A71M` |
-| IT-Foggia | `10Y1001A1001A72K` |
 | IT-North | `10Y1001A1001A73I` |
-| IT-Priolo | `10Y1001A1001A76C` |
-| IT-Rossano | `10Y1001A1001A77A` |
 | IT-Sardinia | `10Y1001A1001A74G` |
 | IT-Sicily | `10Y1001A1001A75E` |
 | IT-South | `10Y1001A1001A788` |
@@ -75,7 +68,6 @@ GET https://web-api.tp.entsoe.eu/api
 | LV | `10YLV-1001A00074` |
 | ME | `10YCS-CG-TSO---S` |
 | MK | `10YMK-MEPSO----8` |
-| MT | `10Y1001A1001A93C` |
 | NL | `10YNL----------L` |
 | NO1 | `10YNO-1--------2` |
 | NO2 | `10YNO-2--------T` |
@@ -92,8 +84,25 @@ GET https://web-api.tp.entsoe.eu/api
 | SE4 | `10Y1001A1001A47J` |
 | SI | `10YSI-ELES-----O` |
 | SK | `10YSK-SEPS-----K` |
-| TR | `10YTR-TEIAS----W` |
-| XK | `10Y1001C--00100H` |
+
+### Zones without day-ahead data (as of March 2026)
+
+ENTSO-E does not publish A44 day-ahead prices for these zones. Re-check periodically
+or consider alternative APIs.
+
+| Zone | EIC Code | Notes |
+|------|----------|-------|
+| AL | `10YAL-KESH-----5` | Albania |
+| BA | `10YBA-JPCC-----D` | Bosnia and Herzegovina |
+| CY | `10YCY-1001A0003J` | Cyprus |
+| GB | `10YGB----------A` | UK — left EU Internal Energy Market |
+| IT-Brindisi | `10Y1001A1001A699` | Italian limited production zone |
+| IT-Foggia | `10Y1001A1001A72K` | Italian limited production zone |
+| IT-Priolo | `10Y1001A1001A76C` | Italian limited production zone |
+| IT-Rossano | `10Y1001A1001A77A` | Italian limited production zone |
+| MT | `10Y1001A1001A93C` | Malta |
+| TR | `10YTR-TEIAS----W` | Turkey |
+| XK | `10Y1001C--00100H` | Kosovo |
 
 ## Response Format
 

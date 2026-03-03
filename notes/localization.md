@@ -52,7 +52,8 @@ All UI text is hardcoded in English in Composables (no string resources / i18n).
 
 ## Next steps
 
-1. Research free multi-zone EPEX spot price APIs (or per-zone APIs) — this determines which zones we can serve
-2. Decide priority languages based on zones we can support
-3. Extract all UI strings to `strings.xml`
-4. Add translations
+1. ~~Research free multi-zone EPEX spot price APIs~~ — done, see `multi-zone-api.md`
+2. Implement multi-zone support (ENTSO-E is the primary candidate, covers all 20 EPEX zones)
+3. Decide priority languages based on zones we ship
+4. Extract all UI strings to `strings.xml`
+5. Add translations

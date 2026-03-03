@@ -136,6 +136,26 @@ Common cases:
 
 400 requests per minute per token. HTTP 409 when exceeded.
 
+### Capacity Estimate for SweetSpot
+
+Each "find cheapest window" tap costs at most 1 API request (cache handles the rest).
+With a 5-minute cooldown and today+tomorrow coverage, realistic usage is ~2–5 requests/day
+per active user.
+
+| Metric | Value |
+|--------|-------|
+| Rate limit | 400 req/min = 576,000 req/day |
+| At 5 req/day per user | ~115,000 DAUs |
+| At 10 req/day per user (worst case) | ~57,000 DAUs |
+
+The bottleneck is burst traffic around **13:00–14:00 CET** when next-day prices publish
+and caches expire simultaneously. At 400 req/min over a 30-minute burst window, that's
+12,000 requests — enough for thousands of concurrent users, but tight for tens of thousands.
+
+A single baked-in token is fine for a small/medium app. At scale, a caching proxy server
+would batch zone requests and serve all users from shared cache. We will also implement a
+fallback API chain (e.g. Energy-Charts) to handle peak-time overload or ENTSO-E downtime.
+
 ## Sample Files
 
 - `entsoe-sample-response.xml` — real NL response (2026-03-03, PT15M, 95 points with A03 gaps)

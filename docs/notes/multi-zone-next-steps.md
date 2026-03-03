@@ -15,11 +15,10 @@ A dropdown or searchable list grouped by country, showing "NL — Netherlands", 
 
 ## 2. ENTSO-E Token Wiring
 
-The API token needs to get from `local.properties` (or user settings) into `EntsoeApi`:
+The API token needs to get from `local.properties` into `EntsoeApi`:
 
-- **Build-time:** Inject `ENTSOE_API_TOKEN` from `local.properties` via `BuildConfig` (like the release keystore)
-- **Run-time:** Let users enter their own token in Settings (ENTSO-E tokens are free but require registration)
-- Consider a default token baked in for convenience, with an option to override
+- Inject `ENTSOE_API_TOKEN` from `local.properties` via `BuildConfig` (like the release keystore)
+- A single baked-in token supports ~115K DAUs (see `docs/entsoe/entsoe-api.md` rate limit analysis)
 
 ## 3. Sub-Hourly Interval Support
 
@@ -65,6 +64,17 @@ Notable alternative APIs:
 - **Sourceful** — ENTSO-E data served as JSON (unofficial)
 - **Elering/Estfeed** — EE/LV/LT, may require contract (not a simple public API)
 
+### Peak-Time Fallback
+
+The ENTSO-E rate limit is 400 req/min per token (~115K DAUs at 5 req/day). The real
+risk is burst traffic around **13:00–14:00 CET** when next-day prices publish and caches
+expire simultaneously across all users. At that point a single token could be overwhelmed.
+
+Mitigation plan:
+- **Short term:** Implement fallback to Energy-Charts (no auth, JSON) when ENTSO-E returns HTTP 409 (rate limited) or 5xx. The cache refactoring already decoupled the cache from a specific API format, so fallback is transparent.
+- **Medium term:** Add jitter to the cache cooldown (e.g. 5min ± random 0–2min) to spread burst requests.
+- **Long term:** If user base grows beyond ~50K DAU, stand up a caching proxy that fetches once per zone and serves all users.
+
 ## 6. Historical Price Fetching
 
 Currently the app only fetches today+tomorrow. Historical data could be useful for:
@@ -72,9 +82,8 @@ Currently the app only fetches today+tomorrow. Historical data could be useful f
 - Letting users compare current prices to historical ranges
 - The ENTSO-E API supports arbitrary date ranges (subject to rate limits)
 
-## 7. Per-Zone Cache Separation
+## 7. Per-Zone Cache Separation ✅
 
-When supporting multiple zones, `FilePriceCache` should cache per zone:
-- Use zone-specific cache files (e.g., `prices_cache_NL.json`)
-- Separate cooldown tracking per zone
-- Clean up stale cache files when the user switches zones
+Done. `PriceCache` now stores parsed `CachedPrice` entries per zone key in binary files
+(`prices_<key>.bin`). `PriceRepository` takes a `cacheKey` parameter. Cooldown is global
+(shared across zones to respect upstream rate limits).

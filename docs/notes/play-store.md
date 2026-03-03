@@ -16,6 +16,10 @@ Build an AAB instead of APK:
 
 This produces `app/build/outputs/bundle/release/app-release.aab`.
 
+### Monochrome icon layer
+
+Both `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` and `wear/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` are missing a `<monochrome>` layer. On Android 13+ with themed icons enabled, the app shows a blank circle instead of its icon. Since `targetSdk = 35`, this should be fixed before publishing.
+
 ## Store listing requirements
 
 - **Privacy policy** — a URL to a privacy policy page (required even if you collect nothing)

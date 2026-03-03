@@ -1,5 +1,6 @@
 package si.merhar.sweetspot.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -86,6 +87,7 @@ fun SettingsScreen(
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
 
     if (showTimezonePicker) {
+        BackHandler { showTimezonePicker = false }
         TimezonePickerScreen(
             currentTimeZoneId = currentTimeZoneId,
             isUsingDefaultTimezone = isUsingDefaultTimezone,
@@ -99,6 +101,7 @@ fun SettingsScreen(
     }
 
     if (showCountryPicker) {
+        BackHandler { showCountryPicker = false }
         CountryPickerScreen(
             countries = countries,
             currentCountryCode = countryCode,
@@ -112,6 +115,7 @@ fun SettingsScreen(
     }
 
     if (showZonePicker) {
+        BackHandler { showZonePicker = false }
         val country = Countries.findByCode(countryCode)
         if (country != null && country.zones.size > 1) {
             PriceZonePickerScreen(

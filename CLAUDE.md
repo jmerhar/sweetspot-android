@@ -98,13 +98,14 @@ Three Gradle modules:
 
 ### Shared module (`:shared`)
 
-- **`data/PriceFetcher`** — Interface for fetching and parsing prices. `fetchRaw(from, to)` takes an `Instant` date range; `parse(raw, zoneId)` returns `List<HourlyPrice>`. Decouples `PriceRepository` from a specific API provider.
-- **`data/EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization.
-- **`data/EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, aggregates PT15M to hourly averages, converts EUR/MWh to EUR/kWh.
-- **`data/BiddingZone`** — Object with EIC code constants for 20 EPEX-coupled bidding zones.
-- **`data/PriceCache`** — Interface for caching raw API responses. Abstracts storage so `PriceRepository` can be tested without Android.
-- **`data/FilePriceCache`** — `PriceCache` implementation backed by `cacheDir/prices_cache.json` and SharedPreferences `sweetspot_cache`. Tracks last fetch timestamp for cooldown.
-- **`data/PriceRepository`** — Created per-call with current `ZoneId`. Computes date range (today → day-after-tomorrow), reads cache first, filters to future prices, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
+- **`data/PriceFetcher`** — Interface with a single `fetchPrices(from, to, zoneId)` method returning `List<HourlyPrice>`. Decouples `PriceRepository` from a specific API provider.
+- **`data/EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
+- **`data/EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, aggregates PT15M to hourly averages, converts EUR/MWh to EUR/kWh. Also exposes `fetchRaw()` and `parse()` directly for tests.
+- **`data/BiddingZone`** — Object with EIC code constants for 20 EPEX-coupled European bidding zones. EIC codes are a European-wide standard used across ENTSO-E, EPEX SPOT, Nord Pool, etc.
+- **`data/CachedPrice`** — Data class with `epochSecond` (UTC) and `price` (EUR/kWh). Timezone-agnostic cache format shared across all fetchers.
+- **`data/PriceCache`** — Interface for caching parsed prices, keyed by zone. `readCached(key)` / `write(key, prices)` with global cooldown. Abstracts storage so `PriceRepository` can be tested without Android.
+- **`data/FilePriceCache`** — `PriceCache` implementation using per-zone binary files (`cacheDir/prices_<key>.bin`). Format: version byte + count int + N × (epochSecond long + price double). SharedPreferences `sweetspot_cache` tracks global cooldown. Returns `null` on any format error for graceful migration.
+- **`data/PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `HourlyPrice` with zone applied), filters to future prices, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
 - **`data/SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores timezone and appliances (JSON-serialized list).
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 26 curated icons (18 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.
@@ -145,8 +146,8 @@ The form view (`DurationInput` card) contains:
 
 ## External APIs
 
-- **EnergyZero** (current) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`
-- **ENTSO-E Transparency Platform** (planned) — all European bidding zones, 15-min resolution. API docs: https://transparencyplatform.zendesk.com/hc/en-us/articles/15692855254548-Sitemap-for-Restful-API-Integration. Token stored in `local.properties` as `ENTSOE_API_TOKEN`.
+- **EnergyZero** (current default) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`
+- **ENTSO-E Transparency Platform** (implemented) — all European bidding zones, 15-min resolution. API docs: https://transparencyplatform.zendesk.com/hc/en-us/articles/15692855254548-Sitemap-for-Restful-API-Integration. Token stored in `local.properties` as `ENTSOE_API_TOKEN`.
 
 ## Key Conventions
 

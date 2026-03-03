@@ -21,6 +21,7 @@ object CountryDetector {
      * More reliable than locale (which reflects language preference, not location).
      */
     private val timezoneToCountry = mapOf(
+        // Western Europe
         "Europe/Amsterdam" to "NL",
         "Europe/Brussels" to "BE",
         "Europe/Paris" to "FR",
@@ -28,11 +29,43 @@ object CountryDetector {
         "Europe/Luxembourg" to "LU",
         "Europe/Vienna" to "AT",
         "Europe/Zurich" to "CH",
+        // Iberian Peninsula
+        "Europe/Madrid" to "ES",
+        "Europe/Lisbon" to "PT",
+        // Central Europe
         "Europe/Warsaw" to "PL",
+        "Europe/Prague" to "CZ",
+        "Europe/Bratislava" to "SK",
+        "Europe/Budapest" to "HU",
+        // Nordic
         "Europe/Copenhagen" to "DK",
         "Europe/Oslo" to "NO",
         "Europe/Stockholm" to "SE",
-        "Europe/Helsinki" to "FI"
+        "Europe/Helsinki" to "FI",
+        // Baltic
+        "Europe/Tallinn" to "EE",
+        "Europe/Riga" to "LV",
+        "Europe/Vilnius" to "LT",
+        // Southeastern Europe
+        "Europe/Sofia" to "BG",
+        "Europe/Athens" to "GR",
+        "Europe/Zagreb" to "HR",
+        "Europe/Bucharest" to "RO",
+        "Europe/Ljubljana" to "SI",
+        "Europe/Belgrade" to "RS",
+        "Europe/Sarajevo" to "BA",
+        "Europe/Podgorica" to "ME",
+        "Europe/Skopje" to "MK",
+        "Europe/Tirane" to "AL",
+        // Italy
+        "Europe/Rome" to "IT",
+        // Islands
+        "Asia/Nicosia" to "CY",
+        "Europe/Malta" to "MT",
+        // Ireland
+        "Europe/Dublin" to "IE",
+        // Turkey
+        "Europe/Istanbul" to "TR"
     )
 
     /**

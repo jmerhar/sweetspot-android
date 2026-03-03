@@ -5,10 +5,10 @@ import si.merhar.sweetspot.data.BiddingZone
 /**
  * A specific electricity pricing zone within a country.
  *
- * Most countries have a single zone, but some (DK, NO, SE) are split into
- * multiple bidding zones with independent day-ahead prices.
+ * Most countries have a single zone, but some (DK, IT, NO, SE) are split
+ * into multiple bidding zones with independent day-ahead prices.
  *
- * @property id Short identifier, e.g. `"NL"`, `"DK1"`, `"NO2"`.
+ * @property id Short identifier, e.g. `"NL"`, `"DK1"`, `"IT_NORD"`.
  * @property label Human-readable label, e.g. `"Netherlands"`, `"DK1 — West Denmark"`.
  * @property eicCode EIC code for the ENTSO-E API (see [BiddingZone]).
  * @property timeZoneId IANA timezone, e.g. `"Europe/Amsterdam"`.
@@ -21,11 +21,11 @@ data class PriceZone(
 )
 
 /**
- * A country that participates in EPEX-coupled European electricity markets.
+ * A country that participates in European electricity markets.
  *
  * @property code ISO 3166-1 alpha-2 code, e.g. `"NL"`, `"DK"`.
  * @property name Display name, e.g. `"Netherlands"`, `"Denmark"`.
- * @property zones Bidding zones within this country (1 for most, 2–5 for DK/NO/SE).
+ * @property zones Bidding zones within this country (1 for most, multiple for DK/IT/NO/SE).
  */
 data class Country(
     val code: String,
@@ -36,15 +36,18 @@ data class Country(
 /**
  * Registry of all supported countries and their bidding zones.
  *
- * Contains 12 countries covering 19 EPEX-coupled European bidding zones.
- * DE and LU share the same bidding zone (`DE_LU`).
- * GB is excluded — UK left the EU Internal Energy Market and ENTSO-E does not
- * publish day-ahead prices for the GB bidding zone.
+ * Contains 36 countries covering 53 European bidding zones on the ENTSO-E
+ * Transparency Platform. DE and LU share the same bidding zone (`DE_LU`).
+ * IE uses the all-island Single Electricity Market (SEM).
  */
 object Countries {
 
     /** All supported countries, sorted alphabetically by name. */
     val all: List<Country> = listOf(
+        Country(
+            code = "AL", name = "Albania",
+            zones = listOf(PriceZone("AL", "Albania", BiddingZone.AL, "Europe/Tirane"))
+        ),
         Country(
             code = "AT", name = "Austria",
             zones = listOf(PriceZone("AT", "Austria", BiddingZone.AT, "Europe/Vienna"))
@@ -54,11 +57,35 @@ object Countries {
             zones = listOf(PriceZone("BE", "Belgium", BiddingZone.BE, "Europe/Brussels"))
         ),
         Country(
+            code = "BA", name = "Bosnia and Herzegovina",
+            zones = listOf(PriceZone("BA", "Bosnia and Herzegovina", BiddingZone.BA, "Europe/Sarajevo"))
+        ),
+        Country(
+            code = "BG", name = "Bulgaria",
+            zones = listOf(PriceZone("BG", "Bulgaria", BiddingZone.BG, "Europe/Sofia"))
+        ),
+        Country(
+            code = "HR", name = "Croatia",
+            zones = listOf(PriceZone("HR", "Croatia", BiddingZone.HR, "Europe/Zagreb"))
+        ),
+        Country(
+            code = "CY", name = "Cyprus",
+            zones = listOf(PriceZone("CY", "Cyprus", BiddingZone.CY, "Asia/Nicosia"))
+        ),
+        Country(
+            code = "CZ", name = "Czechia",
+            zones = listOf(PriceZone("CZ", "Czechia", BiddingZone.CZ, "Europe/Prague"))
+        ),
+        Country(
             code = "DK", name = "Denmark",
             zones = listOf(
                 PriceZone("DK1", "DK1 \u2014 West Denmark", BiddingZone.DK1, "Europe/Copenhagen"),
                 PriceZone("DK2", "DK2 \u2014 East Denmark", BiddingZone.DK2, "Europe/Copenhagen")
             )
+        ),
+        Country(
+            code = "EE", name = "Estonia",
+            zones = listOf(PriceZone("EE", "Estonia", BiddingZone.EE, "Europe/Tallinn"))
         ),
         Country(
             code = "FI", name = "Finland",
@@ -73,12 +100,64 @@ object Countries {
             zones = listOf(PriceZone("DE_LU", "Germany / Luxembourg", BiddingZone.DE_LU, "Europe/Berlin"))
         ),
         Country(
+            code = "GR", name = "Greece",
+            zones = listOf(PriceZone("GR", "Greece", BiddingZone.GR, "Europe/Athens"))
+        ),
+        Country(
+            code = "HU", name = "Hungary",
+            zones = listOf(PriceZone("HU", "Hungary", BiddingZone.HU, "Europe/Budapest"))
+        ),
+        Country(
+            code = "IE", name = "Ireland",
+            zones = listOf(PriceZone("IE_SEM", "Ireland (SEM)", BiddingZone.IE_SEM, "Europe/Dublin"))
+        ),
+        Country(
+            code = "IT", name = "Italy",
+            zones = listOf(
+                PriceZone("IT_NORD", "North", BiddingZone.IT_NORD, "Europe/Rome"),
+                PriceZone("IT_CNOR", "Centre-North", BiddingZone.IT_CNOR, "Europe/Rome"),
+                PriceZone("IT_CSUD", "Centre-South", BiddingZone.IT_CSUD, "Europe/Rome"),
+                PriceZone("IT_SUD", "South", BiddingZone.IT_SUD, "Europe/Rome"),
+                PriceZone("IT_CALA", "Calabria", BiddingZone.IT_CALA, "Europe/Rome"),
+                PriceZone("IT_SICI", "Sicily", BiddingZone.IT_SICI, "Europe/Rome"),
+                PriceZone("IT_SARD", "Sardinia", BiddingZone.IT_SARD, "Europe/Rome"),
+                PriceZone("IT_FOGN", "Foggia", BiddingZone.IT_FOGN, "Europe/Rome"),
+                PriceZone("IT_BRNN", "Brindisi", BiddingZone.IT_BRNN, "Europe/Rome"),
+                PriceZone("IT_PRGP", "Priolo", BiddingZone.IT_PRGP, "Europe/Rome"),
+                PriceZone("IT_ROSN", "Rossano", BiddingZone.IT_ROSN, "Europe/Rome")
+            )
+        ),
+        Country(
+            code = "XK", name = "Kosovo",
+            zones = listOf(PriceZone("XK", "Kosovo", BiddingZone.XK, "Europe/Belgrade"))
+        ),
+        Country(
+            code = "LV", name = "Latvia",
+            zones = listOf(PriceZone("LV", "Latvia", BiddingZone.LV, "Europe/Riga"))
+        ),
+        Country(
+            code = "LT", name = "Lithuania",
+            zones = listOf(PriceZone("LT", "Lithuania", BiddingZone.LT, "Europe/Vilnius"))
+        ),
+        Country(
             code = "LU", name = "Luxembourg",
             zones = listOf(PriceZone("DE_LU", "Germany / Luxembourg", BiddingZone.DE_LU, "Europe/Luxembourg"))
         ),
         Country(
+            code = "MT", name = "Malta",
+            zones = listOf(PriceZone("MT", "Malta", BiddingZone.MT, "Europe/Malta"))
+        ),
+        Country(
+            code = "ME", name = "Montenegro",
+            zones = listOf(PriceZone("ME", "Montenegro", BiddingZone.ME, "Europe/Podgorica"))
+        ),
+        Country(
             code = "NL", name = "Netherlands",
             zones = listOf(PriceZone("NL", "Netherlands", BiddingZone.NL, "Europe/Amsterdam"))
+        ),
+        Country(
+            code = "MK", name = "North Macedonia",
+            zones = listOf(PriceZone("MK", "North Macedonia", BiddingZone.MK, "Europe/Skopje"))
         ),
         Country(
             code = "NO", name = "Norway",
@@ -95,6 +174,30 @@ object Countries {
             zones = listOf(PriceZone("PL", "Poland", BiddingZone.PL, "Europe/Warsaw"))
         ),
         Country(
+            code = "PT", name = "Portugal",
+            zones = listOf(PriceZone("PT", "Portugal", BiddingZone.PT, "Europe/Lisbon"))
+        ),
+        Country(
+            code = "RO", name = "Romania",
+            zones = listOf(PriceZone("RO", "Romania", BiddingZone.RO, "Europe/Bucharest"))
+        ),
+        Country(
+            code = "RS", name = "Serbia",
+            zones = listOf(PriceZone("RS", "Serbia", BiddingZone.RS, "Europe/Belgrade"))
+        ),
+        Country(
+            code = "SK", name = "Slovakia",
+            zones = listOf(PriceZone("SK", "Slovakia", BiddingZone.SK, "Europe/Bratislava"))
+        ),
+        Country(
+            code = "SI", name = "Slovenia",
+            zones = listOf(PriceZone("SI", "Slovenia", BiddingZone.SI, "Europe/Ljubljana"))
+        ),
+        Country(
+            code = "ES", name = "Spain",
+            zones = listOf(PriceZone("ES", "Spain", BiddingZone.ES, "Europe/Madrid"))
+        ),
+        Country(
             code = "SE", name = "Sweden",
             zones = listOf(
                 PriceZone("SE1", "SE1 \u2014 North Sweden", BiddingZone.SE1, "Europe/Stockholm"),
@@ -106,6 +209,10 @@ object Countries {
         Country(
             code = "CH", name = "Switzerland",
             zones = listOf(PriceZone("CH", "Switzerland", BiddingZone.CH, "Europe/Zurich"))
+        ),
+        Country(
+            code = "TR", name = "Turkey",
+            zones = listOf(PriceZone("TR", "Turkey", BiddingZone.TR, "Europe/Istanbul"))
         )
     )
 
@@ -126,7 +233,7 @@ object Countries {
     /**
      * Finds a price zone by its zone ID.
      *
-     * @param id Zone identifier (e.g. `"NL"`, `"DE_LU"`, `"NO2"`).
+     * @param id Zone identifier (e.g. `"NL"`, `"DE_LU"`, `"IT_NORD"`).
      * @return The matching [PriceZone], or `null` if not found.
      */
     fun findPriceZoneById(id: String): PriceZone? = priceZoneById[id]

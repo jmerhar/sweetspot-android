@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
+import si.merhar.sweetspot.data.CountryDetector
 import si.merhar.sweetspot.data.FilePriceCache
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcherFactory
@@ -111,7 +112,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             isUsingDefaultTimezone = settingsRepository.isUsingDefaultTimezone(),
             appliances = settingsRepository.getAppliances(),
             countryCode = settingsRepository.getCountryCode(),
-            priceZone = settingsRepository.getResolvedPriceZone()
+            priceZone = settingsRepository.getResolvedPriceZone(),
+            countries = countriesWithDetectedFirst(application)
         )
     )
 
@@ -446,4 +448,16 @@ class SweetSpotViewModel @JvmOverloads constructor(
             }
         }
     }
+}
+
+/**
+ * Returns the country list with the auto-detected country moved to the top.
+ *
+ * @param application Application context for [CountryDetector].
+ * @return [Countries.all] with the detected country first, rest in alphabetical order.
+ */
+private fun countriesWithDetectedFirst(application: Application): List<Country> {
+    val detectedCode = CountryDetector.detect(application).code
+    val (detected, rest) = Countries.all.partition { it.code == detectedCode }
+    return detected + rest
 }

@@ -9,13 +9,19 @@ SweetSpot is an Android app that finds the cheapest contiguous time window for r
 ## Build & Run
 
 ```bash
-./gradlew assembleDebug          # Build debug APKs (phone + wear)
-./gradlew app:installDebug       # Install phone app on connected device/emulator
-./gradlew wear:installDebug      # Install wear app on connected watch
-./gradlew assembleRelease        # Build signed release APKs
+make build                        # Build debug APKs (phone + watch)
+make build-release                # Build signed release APKs
+make debug-phone                  # Install debug app on connected phone
+make debug-watch                  # Install debug app on connected watch
+make install-phone                # Install release APK on connected phone
+make install-watch                # Install release APK on connected watch
+make test                         # Run all unit tests
+make clean                        # Remove all build outputs
 ```
 
-A `Makefile` wraps common tasks: `make build`, `make test`, `make install-phone`, `make install-wear`, `make release`, `make clean`.
+A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
+- **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
+- **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 
 ### Installing the Wear OS app
 
@@ -24,18 +30,18 @@ The watch app must be installed separately via ADB (auto-install only works via 
 1. Enable Developer Options on the watch (Settings > System > About > tap Build Number 7 times)
 2. Enable Wi-Fi debugging (Settings > Developer options > Debug over Wi-Fi)
 3. Connect: `adb connect <ip>:<port>`
-4. Install: `adb -s <watch-serial> install wear/build/outputs/apk/release/wear-release.apk`
+4. Install: `make install-watch` (or manually: `adb -s <watch-serial> install wear/build/outputs/apk/release/wear-release.apk`)
 
 Use `adb devices` to list connected devices when both phone and watch are connected.
 
 ## Releasing
 
 ```bash
-./release.sh 1.1 -n notes.md            # Bump version, build, tag, push, create GitHub Release
-./release.sh 1.1 -n notes.md --draft     # Same but creates a draft release
+make release VERSION=3.0            # Bump version, build, tag, push, create GitHub Release
+make release VERSION=3.0 DRAFT=1    # Same but creates a draft release
 ```
 
-The `-n` flag points to a Markdown file with release notes. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why. Keep the current release notes in `docs/notes/release.md` (overwritten each release).
+The release notes file is always `docs/notes/release.md`. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why — overwrite `docs/notes/release.md` each release.
 
 The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs, commits, tags, pushes, and creates a GitHub Release with both APKs attached.
 

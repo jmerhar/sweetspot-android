@@ -81,7 +81,7 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                             )
                         }
                         val start = slot.time.format(shortTimeFormatter)
-                        val endMinutes = Math.round(slot.fraction * 60)
+                        val endMinutes = Math.round(slot.fraction * slot.durationMinutes)
                         val end = slot.time.plusMinutes(endMinutes).format(shortTimeFormatter)
 
                         Row(

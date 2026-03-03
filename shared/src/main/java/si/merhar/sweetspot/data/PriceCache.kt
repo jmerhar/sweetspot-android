@@ -4,13 +4,15 @@ package si.merhar.sweetspot.data
  * A single cached price entry, stored in a timezone-agnostic format.
  *
  * The epoch second is UTC so the cache is independent of any particular timezone.
- * The zone is applied when converting back to [si.merhar.sweetspot.model.HourlyPrice].
+ * The zone is applied when converting back to [si.merhar.sweetspot.model.PriceSlot].
  *
- * @property epochSecond UTC epoch second for the start of this hourly slot.
+ * @property epochSecond UTC epoch second for the start of this slot.
+ * @property durationMinutes Length of this slot in minutes (e.g. 60 for hourly, 15 for quarter-hourly).
  * @property price Price in EUR per kWh.
  */
 data class CachedPrice(
     val epochSecond: Long,
+    val durationMinutes: Int,
     val price: Double
 )
 

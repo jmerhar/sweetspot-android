@@ -1,6 +1,6 @@
 package si.merhar.sweetspot.data
 
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -54,10 +54,10 @@ object EnergyZeroApi : PriceFetcher {
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
-     * @return Chronologically sorted list of [HourlyPrice] entries.
+     * @return Chronologically sorted list of [PriceSlot] entries (60-minute slots).
      * @throws RuntimeException if the HTTP request fails.
      */
-    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
         return parse(fetchRaw(from, to), timeZoneId)
     }
 
@@ -87,18 +87,18 @@ object EnergyZeroApi : PriceFetcher {
     }
 
     /**
-     * Parses raw EnergyZero JSON into a sorted list of [HourlyPrice] entries.
+     * Parses raw EnergyZero JSON into a sorted list of [PriceSlot] entries.
      *
      * @param raw Raw JSON string from [fetchRaw].
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
-     * @return Chronologically sorted list of hourly prices.
+     * @return Chronologically sorted list of hourly price slots (60-minute duration).
      */
-    fun parse(raw: String, timeZoneId: ZoneId): List<HourlyPrice> {
+    fun parse(raw: String, timeZoneId: ZoneId): List<PriceSlot> {
         val parsed = json.decodeFromString<EnergyZeroResponse>(raw)
         return parsed.prices.map { entry ->
             val instant = Instant.parse(entry.readingDate)
             val time = instant.atZone(timeZoneId)
-            HourlyPrice(time = time, price = entry.price)
+            PriceSlot(time = time, price = entry.price, durationMinutes = 60)
         }.sortedBy { it.time }
     }
 }

@@ -10,7 +10,7 @@ class EnergyZeroApiParseTest {
     private val timeZone = ZoneId.of("Europe/Amsterdam")
 
     @Test
-    fun `parses valid JSON into sorted HourlyPrice list`() {
+    fun `parses valid JSON into sorted PriceSlot list`() {
         val json = """
         {
             "Prices": [

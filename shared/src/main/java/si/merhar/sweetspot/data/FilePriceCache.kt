@@ -13,10 +13,12 @@ import java.io.File
  * and tracks the last fetch timestamp in SharedPreferences to enforce a minimum
  * interval between API requests (cooldown).
  *
- * Binary format per file:
- * - `version: Byte` (currently 1)
+ * Binary format per file (v2):
+ * - `version: Byte` (currently 2)
  * - `count: Int` (number of entries)
- * - N × (`epochSecond: Long` | `price: Double`) — 16 bytes per entry
+ * - N × (`epochSecond: Long` | `durationMinutes: Short` | `price: Double`) — 18 bytes per entry
+ *
+ * V1 caches are gracefully migrated by returning `null` (triggers a re-fetch).
  *
  * @param context Android context for accessing cache directory and SharedPreferences.
  */
@@ -26,7 +28,7 @@ class FilePriceCache(private val context: Context) : PriceCache {
 
     private companion object {
         const val KEY_LAST_FETCH_MS = "last_fetch_ms"
-        const val FORMAT_VERSION: Byte = 1
+        const val FORMAT_VERSION: Byte = 2
     }
 
     /** Returns the per-zone cache file for the given key. */
@@ -48,6 +50,7 @@ class FilePriceCache(private val context: Context) : PriceCache {
                 List(count) {
                     CachedPrice(
                         epochSecond = input.readLong(),
+                        durationMinutes = input.readShort().toInt(),
                         price = input.readDouble()
                     )
                 }
@@ -64,6 +67,7 @@ class FilePriceCache(private val context: Context) : PriceCache {
             output.writeInt(prices.size)
             for (entry in prices) {
                 output.writeLong(entry.epochSecond)
+                output.writeShort(entry.durationMinutes)
                 output.writeDouble(entry.price)
             }
         }

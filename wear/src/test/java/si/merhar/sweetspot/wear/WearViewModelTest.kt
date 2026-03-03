@@ -26,7 +26,7 @@ import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.data.PriceFetcherFactory
 import si.merhar.sweetspot.model.Appliance
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -53,19 +53,20 @@ class WearViewModelTest {
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */
-    private class FakeFetcher(private val prices: List<HourlyPrice>? = null) : PriceFetcher {
-        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+    private class FakeFetcher(private val prices: List<PriceSlot>? = null) : PriceFetcher {
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
             return prices ?: throw RuntimeException("Network error")
         }
     }
 
-    /** Generates hourly prices starting from the current hour. */
-    private fun fakePrices(count: Int, basePrice: Double = 0.10): List<HourlyPrice> {
+    /** Generates hourly price slots starting from the current hour. */
+    private fun fakePrices(count: Int, basePrice: Double = 0.10): List<PriceSlot> {
         val base = ZonedDateTime.now().withMinute(0).withSecond(0).withNano(0)
         return (0 until count).map { i ->
-            HourlyPrice(
+            PriceSlot(
                 time = base.plusHours(i.toLong()),
-                price = basePrice + i * 0.01
+                price = basePrice + i * 0.01,
+                durationMinutes = 60
             )
         }
     }

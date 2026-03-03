@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import java.io.StringReader
 import java.time.Duration
 import java.time.Instant
@@ -13,7 +13,6 @@ import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
-import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 
 /**
@@ -23,8 +22,8 @@ import java.util.concurrent.TimeUnit
  * The response is XML containing one or more `TimeSeries > Period > Point` blocks.
  * Prices are in EUR/MWh and converted to EUR/kWh (÷ 1000).
  *
- * Sub-hourly (PT15M) data is aggregated to hourly averages so the rest of the app
- * (CheapestWindowFinder, UI) can remain unchanged. Sub-hourly support is a follow-up.
+ * Returns prices at the API's native resolution (PT15M or PT60M) — no aggregation
+ * is performed, so the rest of the pipeline sees the original slot duration.
  *
  * @param token ENTSO-E API security token.
  * @param biddingZone EIC code for the bidding zone (see [BiddingZone]).
@@ -56,10 +55,10 @@ class EntsoeApi(
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
-     * @return Chronologically sorted list of [HourlyPrice] entries in EUR/kWh.
+     * @return Chronologically sorted list of [PriceSlot] entries in EUR/kWh at native resolution.
      * @throws RuntimeException if the HTTP request fails or the response is an error document.
      */
-    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
         return parse(fetchRaw(from, to), timeZoneId)
     }
 
@@ -100,24 +99,24 @@ class EntsoeApi(
     }
 
     /**
-     * Parses ENTSO-E XML into a sorted list of [HourlyPrice] entries.
+     * Parses ENTSO-E XML into a sorted list of [PriceSlot] entries at native resolution.
      *
      * Handles both PT60M (hourly) and PT15M (quarter-hourly) resolutions.
-     * PT15M data is aggregated to hourly averages. Supports A03 curve type
-     * where positions may be skipped (price carries forward from the last point).
+     * Supports A03 curve type where positions may be skipped (price carries forward
+     * from the last point).
      *
      * @param raw Raw XML string from [fetchRaw].
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
-     * @return Chronologically sorted list of hourly prices.
+     * @return Chronologically sorted list of price slots at native resolution.
      * @throws RuntimeException if the XML is an error document.
      */
-    fun parse(raw: String, timeZoneId: ZoneId): List<HourlyPrice> {
+    fun parse(raw: String, timeZoneId: ZoneId): List<PriceSlot> {
         if (raw.contains("Acknowledgement_MarketDocument")) {
             val reason = extractErrorReason(raw)
             throw RuntimeException("ENTSO-E API error: $reason")
         }
 
-        val subHourlyPrices = mutableListOf<Pair<Instant, Double>>()
+        val rawPrices = mutableListOf<Triple<Instant, Double, Int>>()
         val parser = XmlPullParserFactory.newInstance().newPullParser()
         parser.setInput(StringReader(raw))
 
@@ -177,17 +176,18 @@ class EntsoeApi(
                             if (inPoint && currentPosition != null && currentPrice != null) {
                                 val start = periodStart!!
                                 val res = resolution!!
+                                val resMinutes = res.toMinutes().toInt()
                                 val timestamp = start.plus(
                                     res.multipliedBy((currentPosition - 1).toLong())
                                 )
-                                subHourlyPrices.add(timestamp to currentPrice)
+                                rawPrices.add(Triple(timestamp, currentPrice, resMinutes))
                             }
                             inPoint = false
                         }
 
                         "Period" -> {
                             if (inPeriod && periodStart != null && resolution != null) {
-                                fillA03Gaps(subHourlyPrices, periodStart, resolution)
+                                fillA03Gaps(rawPrices, periodStart, resolution)
                             }
                             inPeriod = false
                             periodStart = null
@@ -200,7 +200,7 @@ class EntsoeApi(
             eventType = parser.next()
         }
 
-        return aggregateToHourly(subHourlyPrices, timeZoneId)
+        return buildPriceSlots(rawPrices, timeZoneId)
     }
 
     /**
@@ -210,24 +210,26 @@ class EntsoeApi(
      * the price from the preceding point. This method detects gaps in the already-parsed
      * points for the current period and fills them.
      *
-     * @param prices Mutable list of (timestamp, price) pairs to fill in-place.
+     * @param prices Mutable list of (timestamp, price, resolutionMinutes) triples to fill in-place.
      * @param periodStart Start instant of the current period.
      * @param resolution Duration of each position slot.
      */
     private fun fillA03Gaps(
-        prices: MutableList<Pair<Instant, Double>>,
+        prices: MutableList<Triple<Instant, Double, Int>>,
         periodStart: Instant,
         resolution: Duration
     ) {
         if (prices.isEmpty()) return
 
+        val resMinutes = resolution.toMinutes().toInt()
+
         // Find the points that belong to this period
-        val periodPrices = prices.filter { (ts, _) -> !ts.isBefore(periodStart) }
+        val periodPrices = prices.filter { (ts, _, _) -> !ts.isBefore(periodStart) }
         if (periodPrices.size < 2) return
 
         // Build a map of position → price for existing points
         val positionMap = mutableMapOf<Int, Double>()
-        for ((ts, price) in periodPrices) {
+        for ((ts, price, _) in periodPrices) {
             val pos = ((Duration.between(periodStart, ts).toMinutes()) / resolution.toMinutes()).toInt() + 1
             positionMap[pos] = price
         }
@@ -240,33 +242,28 @@ class EntsoeApi(
                 lastPrice = positionMap[pos]!!
             } else {
                 val ts = periodStart.plus(resolution.multipliedBy((pos - 1).toLong()))
-                prices.add(ts to lastPrice)
+                prices.add(Triple(ts, lastPrice, resMinutes))
             }
         }
     }
 
     /**
-     * Aggregates sub-hourly price data to hourly averages.
+     * Converts raw price triples to [PriceSlot] entries, applying EUR/MWh → EUR/kWh conversion.
      *
-     * Groups prices by their truncated hour (in UTC) and averages the values
-     * within each hour. If data is already hourly, this is a no-op pass-through.
-     * Converts EUR/MWh to EUR/kWh by dividing by 1000.
-     *
-     * @param prices List of (timestamp, price_in_EUR_MWh) pairs.
-     * @param timeZoneId Timezone for the resulting [HourlyPrice] entries.
-     * @return Sorted list of hourly prices in EUR/kWh.
+     * @param prices List of (timestamp, price_in_EUR_MWh, resolutionMinutes) triples.
+     * @param timeZoneId Timezone for the resulting [PriceSlot] entries.
+     * @return Sorted list of price slots in EUR/kWh at native resolution.
      */
-    private fun aggregateToHourly(
-        prices: List<Pair<Instant, Double>>,
+    private fun buildPriceSlots(
+        prices: List<Triple<Instant, Double, Int>>,
         timeZoneId: ZoneId
-    ): List<HourlyPrice> {
+    ): List<PriceSlot> {
         return prices
-            .groupBy { (ts, _) -> ts.truncatedTo(ChronoUnit.HOURS) }
-            .map { (hour, entries) ->
-                val avgMwh = entries.map { it.second }.average()
-                HourlyPrice(
-                    time = hour.atZone(timeZoneId),
-                    price = avgMwh / 1000.0
+            .map { (ts, priceMwh, resMinutes) ->
+                PriceSlot(
+                    time = ts.atZone(timeZoneId),
+                    price = priceMwh / 1000.0,
+                    durationMinutes = resMinutes
                 )
             }
             .sortedBy { it.time }

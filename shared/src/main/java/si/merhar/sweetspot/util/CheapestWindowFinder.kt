@@ -1,7 +1,7 @@
 package si.merhar.sweetspot.util
 
 import si.merhar.sweetspot.model.BreakdownSlot
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import si.merhar.sweetspot.model.WindowResult
 import java.time.Duration
 import java.time.ZonedDateTime
@@ -10,31 +10,38 @@ import kotlin.math.floor
 /**
  * Finds the cheapest contiguous time window of [durationHours] length within the given [prices].
  *
- * Uses a sliding window over hourly price slots. Supports fractional hours — e.g. 2.5 hours
- * uses two full-hour slots plus 50% of a third slot.
+ * Works with any slot duration (15min, 30min, 60min, etc.). Uses a sliding window over price
+ * slots, converting the requested duration to "slot units" internally. Supports fractional
+ * slots — e.g. a 2h 30m duration with 60-min slots uses two full slots plus 50% of a third,
+ * while with 15-min slots it uses exactly 10 full slots.
  *
  * If the cheapest window's first slot starts before [now], the start time is clamped to [now]
  * and the end time is computed as [now] + [durationHours], reflecting that the appliance would
- * start immediately rather than at the hour boundary.
+ * start immediately rather than at the slot boundary.
  *
- * @param prices Hourly price data, sorted chronologically. Each entry represents one hour.
+ * @param prices Price data sorted chronologically. Each entry represents one slot at the API's
+ *               native resolution (all slots must have the same [PriceSlot.durationMinutes]).
  * @param durationHours Desired window length in decimal hours (e.g. 2.5 for 2h 30m).
  * @param now The current time, used to clamp the start when the cheapest window begins in the
- *            current hour.
+ *            current slot.
  * @return The cheapest window with start/end times, total cost, average price, and per-slot
  *         breakdown, or `null` if there isn't enough price data to cover the duration.
  */
-fun findCheapestWindow(prices: List<HourlyPrice>, durationHours: Double, now: ZonedDateTime): WindowResult? {
+fun findCheapestWindow(prices: List<PriceSlot>, durationHours: Double, now: ZonedDateTime): WindowResult? {
     val count = prices.size
     if (count == 0) return null
 
-    val fullHours = floor(durationHours).toInt()
-    val fractional = durationHours - fullHours
-    val slotsNeeded = fullHours + if (fractional > 0) 1 else 0
+    val slotMinutes = prices.first().durationMinutes
+    val slotHours = slotMinutes / 60.0
+
+    val durationInSlots = durationHours / slotHours
+    val fullSlots = floor(durationInSlots).toInt()
+    val fractionalSlot = durationInSlots - fullSlots
+    val slotsNeeded = fullSlots + if (fractionalSlot > 0) 1 else 0
 
     if (count < slotsNeeded) return null
 
-    val bestStart = findBestStartIndex(prices, fullHours, fractional, count, slotsNeeded)
+    val bestStart = findBestStartIndex(prices, fullSlots, fractionalSlot, count, slotsNeeded, slotHours)
 
     val slotStart = prices[bestStart].time
     val clamped = slotStart.isBefore(now)
@@ -42,10 +49,10 @@ fun findCheapestWindow(prices: List<HourlyPrice>, durationHours: Double, now: Zo
     val endTime = startTime.plusSeconds((durationHours * 3600).toLong())
 
     val breakdown = if (clamped) {
-        val firstSlotRemaining = 1.0 - Duration.between(slotStart, now).seconds / 3600.0
-        buildClampedBreakdown(prices, bestStart, durationHours, firstSlotRemaining)
+        val firstSlotRemaining = 1.0 - Duration.between(slotStart, now).seconds / (slotMinutes * 60.0)
+        buildClampedBreakdown(prices, bestStart, durationInSlots, firstSlotRemaining, slotHours, slotMinutes)
     } else {
-        buildBreakdown(prices, bestStart, fullHours, fractional)
+        buildBreakdown(prices, bestStart, fullSlots, fractionalSlot, slotHours, slotMinutes)
     }
 
     val totalCost = breakdown.sumOf { it.cost }
@@ -62,25 +69,27 @@ fun findCheapestWindow(prices: List<HourlyPrice>, durationHours: Double, now: Zo
 /**
  * Scans all possible window positions and returns the start index with the lowest total cost.
  *
- * @param prices Hourly price data.
- * @param fullHours Number of complete hour slots in the window.
- * @param fractional Fractional part of the last hour (0.0–1.0).
+ * @param prices Price data.
+ * @param fullSlots Number of complete slots in the window.
+ * @param fractionalSlot Fractional part of the last slot (0.0–1.0 in slot units).
  * @param count Total number of price entries.
- * @param slotsNeeded Total slots required (fullHours + 1 if fractional > 0).
+ * @param slotsNeeded Total slots required (fullSlots + 1 if fractionalSlot > 0).
+ * @param slotHours Duration of one slot in hours.
  * @return Index into [prices] where the cheapest window starts.
  */
 private fun findBestStartIndex(
-    prices: List<HourlyPrice>,
-    fullHours: Int,
-    fractional: Double,
+    prices: List<PriceSlot>,
+    fullSlots: Int,
+    fractionalSlot: Double,
     count: Int,
-    slotsNeeded: Int
+    slotsNeeded: Int,
+    slotHours: Double
 ): Int {
     var bestCost: Double? = null
     var bestStart = 0
 
     for (i in 0..count - slotsNeeded) {
-        val cost = computeWindowCost(prices, i, fullHours, fractional)
+        val cost = computeWindowCost(prices, i, fullSlots, fractionalSlot, slotHours)
         if (bestCost == null || cost < bestCost) {
             bestCost = cost
             bestStart = i
@@ -93,24 +102,26 @@ private fun findBestStartIndex(
 /**
  * Computes the total cost of a window starting at [startIndex].
  *
- * @param prices Hourly price data.
+ * @param prices Price data.
  * @param startIndex Index of the first slot in the window.
- * @param fullHours Number of complete hour slots.
- * @param fractional Fraction of the last partial hour (0.0 if none).
+ * @param fullSlots Number of complete slots.
+ * @param fractionalSlot Fraction of the last partial slot (0.0 if none), in slot units.
+ * @param slotHours Duration of one slot in hours.
  * @return Total cost in EUR (per 1 kW load).
  */
 private fun computeWindowCost(
-    prices: List<HourlyPrice>,
+    prices: List<PriceSlot>,
     startIndex: Int,
-    fullHours: Int,
-    fractional: Double
+    fullSlots: Int,
+    fractionalSlot: Double,
+    slotHours: Double
 ): Double {
     var cost = 0.0
-    for (j in 0 until fullHours) {
-        cost += prices[startIndex + j].price
+    for (j in 0 until fullSlots) {
+        cost += prices[startIndex + j].price * slotHours
     }
-    if (fractional > 0 && (startIndex + fullHours) < prices.size) {
-        cost += fractional * prices[startIndex + fullHours].price
+    if (fractionalSlot > 0 && (startIndex + fullSlots) < prices.size) {
+        cost += fractionalSlot * prices[startIndex + fullSlots].price * slotHours
     }
     return cost
 }
@@ -118,40 +129,46 @@ private fun computeWindowCost(
 /**
  * Builds the per-slot cost breakdown for a window starting at [startIndex].
  *
- * @param prices Hourly price data.
+ * @param prices Price data.
  * @param startIndex Index of the first slot in the window.
- * @param fullHours Number of complete hour slots.
- * @param fractional Fraction of the last partial hour (0.0 if none).
- * @return List of [BreakdownSlot] entries, one per hour slot used.
+ * @param fullSlots Number of complete slots.
+ * @param fractionalSlot Fraction of the last partial slot (0.0 if none), in slot units.
+ * @param slotHours Duration of one slot in hours.
+ * @param slotMinutes Duration of one slot in minutes.
+ * @return List of [BreakdownSlot] entries, one per slot used.
  */
 private fun buildBreakdown(
-    prices: List<HourlyPrice>,
+    prices: List<PriceSlot>,
     startIndex: Int,
-    fullHours: Int,
-    fractional: Double
+    fullSlots: Int,
+    fractionalSlot: Double,
+    slotHours: Double,
+    slotMinutes: Int
 ): List<BreakdownSlot> {
     val breakdown = mutableListOf<BreakdownSlot>()
 
-    for (j in 0 until fullHours) {
+    for (j in 0 until fullSlots) {
         val slot = prices[startIndex + j]
         breakdown.add(
             BreakdownSlot(
                 time = slot.time,
                 price = slot.price,
                 fraction = 1.0,
-                cost = slot.price
+                cost = slot.price * slotHours,
+                durationMinutes = slotMinutes
             )
         )
     }
 
-    if (fractional > 0) {
-        val slot = prices[startIndex + fullHours]
+    if (fractionalSlot > 0) {
+        val slot = prices[startIndex + fullSlots]
         breakdown.add(
             BreakdownSlot(
                 time = slot.time,
                 price = slot.price,
-                fraction = fractional,
-                cost = fractional * slot.price
+                fraction = fractionalSlot,
+                cost = fractionalSlot * slot.price * slotHours,
+                durationMinutes = slotMinutes
             )
         )
     }
@@ -162,23 +179,27 @@ private fun buildBreakdown(
 /**
  * Builds the per-slot cost breakdown when the window start is clamped to "now".
  *
- * Because the appliance starts mid-hour, the first slot is only partially used and the
+ * Because the appliance starts mid-slot, the first slot is only partially used and the
  * window extends into an additional slot at the end compared to the unclamped case.
  *
- * @param prices Hourly price data.
+ * @param prices Price data.
  * @param startIndex Index of the first slot in the window.
- * @param durationHours Total duration in decimal hours.
- * @param firstSlotRemaining Fraction of the first hour remaining after "now" (0.0–1.0).
+ * @param durationInSlots Total duration in slot units.
+ * @param firstSlotRemaining Fraction of the first slot remaining after "now" (0.0–1.0).
+ * @param slotHours Duration of one slot in hours.
+ * @param slotMinutes Duration of one slot in minutes.
  * @return List of [BreakdownSlot] entries with adjusted fractions.
  */
 private fun buildClampedBreakdown(
-    prices: List<HourlyPrice>,
+    prices: List<PriceSlot>,
     startIndex: Int,
-    durationHours: Double,
-    firstSlotRemaining: Double
+    durationInSlots: Double,
+    firstSlotRemaining: Double,
+    slotHours: Double,
+    slotMinutes: Int
 ): List<BreakdownSlot> {
     val breakdown = mutableListOf<BreakdownSlot>()
-    var remaining = durationHours
+    var remaining = durationInSlots
     var idx = startIndex
 
     // First (partial) slot
@@ -188,7 +209,8 @@ private fun buildClampedBreakdown(
             time = prices[idx].time,
             price = prices[idx].price,
             fraction = firstFraction,
-            cost = firstFraction * prices[idx].price
+            cost = firstFraction * prices[idx].price * slotHours,
+            durationMinutes = slotMinutes
         )
     )
     remaining -= firstFraction
@@ -201,7 +223,8 @@ private fun buildClampedBreakdown(
                 time = prices[idx].time,
                 price = prices[idx].price,
                 fraction = 1.0,
-                cost = prices[idx].price
+                cost = prices[idx].price * slotHours,
+                durationMinutes = slotMinutes
             )
         )
         remaining -= 1.0
@@ -215,7 +238,8 @@ private fun buildClampedBreakdown(
                 time = prices[idx].time,
                 price = prices[idx].price,
                 fraction = remaining,
-                cost = remaining * prices[idx].price
+                cost = remaining * prices[idx].price * slotHours,
+                durationMinutes = slotMinutes
             )
         )
     }

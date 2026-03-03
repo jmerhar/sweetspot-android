@@ -5,7 +5,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -16,10 +16,18 @@ class CheapestWindowFinderTest {
     /** A time well before any price slot, so no clamping occurs. */
     private val earlyNow = ZonedDateTime.of(2025, 6, 15, 0, 0, 0, 0, timeZone)
 
-    private fun pricesAt(hour: Int, vararg prices: Double): List<HourlyPrice> {
+    private fun pricesAt(hour: Int, vararg prices: Double): List<PriceSlot> {
         val base = ZonedDateTime.of(2025, 6, 15, hour, 0, 0, 0, timeZone)
         return prices.mapIndexed { i, price ->
-            HourlyPrice(time = base.plusHours(i.toLong()), price = price)
+            PriceSlot(time = base.plusHours(i.toLong()), price = price, durationMinutes = 60)
+        }
+    }
+
+    /** Creates 15-minute price slots starting at [hour]:[minute]. */
+    private fun prices15mAt(hour: Int, minute: Int = 0, vararg prices: Double): List<PriceSlot> {
+        val base = ZonedDateTime.of(2025, 6, 15, hour, minute, 0, 0, timeZone)
+        return prices.mapIndexed { i, price ->
+            PriceSlot(time = base.plusMinutes(i * 15L), price = price, durationMinutes = 15)
         }
     }
 
@@ -306,5 +314,127 @@ class CheapestWindowFinderTest {
 
         val costSum = result.breakdown.sumOf { it.cost }
         assertEquals(result.totalCost, costSum, 0.0001)
+    }
+
+    // --- 15-minute slot tests ---
+
+    @Test
+    fun `15m slots finds cheapest 1-hour window across 4 slots`() {
+        // 4 × 15-min slots covering 1 hour: cheapest starts at index 4
+        val prices = prices15mAt(10, 0,
+            0.30, 0.30, 0.30, 0.30,   // 10:00–11:00 avg 0.30
+            0.10, 0.10, 0.10, 0.10    // 11:00–12:00 avg 0.10
+        )
+        val result = findCheapestWindow(prices, 1.0, earlyNow)!!
+
+        assertEquals(11, result.startTime.hour)
+        assertEquals(0, result.startTime.minute)
+        // Cost: 4 × 0.10 × 0.25 = 0.10
+        assertEquals(0.10, result.totalCost, 0.0001)
+        assertEquals(4, result.breakdown.size)
+        // Each slot is 15 minutes
+        assertTrue(result.breakdown.all { it.durationMinutes == 15 })
+    }
+
+    @Test
+    fun `15m slots cost is one-quarter of hourly cost per slot`() {
+        // A single 15-min slot at €0.20/kWh costs €0.05 (0.25h × €0.20)
+        val prices = prices15mAt(10, 0, 0.20)
+        val result = findCheapestWindow(prices, 0.25, earlyNow)!!
+
+        assertEquals(0.05, result.totalCost, 0.0001)
+        assertEquals(1, result.breakdown.size)
+        assertEquals(1.0, result.breakdown[0].fraction, 0.0001)
+    }
+
+    @Test
+    fun `15m slots returns correct slot count for 2h 30m duration`() {
+        // 2.5h / 0.25h = 10 slots needed
+        val prices = prices15mAt(10, 0,
+            0.10, 0.10, 0.10, 0.10,  // 10:00
+            0.10, 0.10, 0.10, 0.10,  // 11:00
+            0.10, 0.10, 0.10, 0.10   // 12:00
+        )
+        val result = findCheapestWindow(prices, 2.5, earlyNow)!!
+
+        assertEquals(10, result.breakdown.size) // 10 full 15-min slots
+        assertTrue(result.breakdown.all { it.fraction == 1.0 })
+        // Cost: 10 × 0.10 × 0.25 = 0.25
+        assertEquals(0.25, result.totalCost, 0.0001)
+    }
+
+    @Test
+    fun `15m slots handles fractional slot duration`() {
+        // 20 minutes = 1.333... 15-min slots = 1 full + 0.333... partial
+        val prices = prices15mAt(10, 0, 0.20, 0.40)
+        val durationHours = 20.0 / 60.0 // 0.3333...
+
+        val result = findCheapestWindow(prices, durationHours, earlyNow)!!
+
+        assertEquals(2, result.breakdown.size)
+        assertEquals(1.0, result.breakdown[0].fraction, 0.0001)
+        assertEquals(1.0 / 3.0, result.breakdown[1].fraction, 0.001)
+
+        // Cost: 1 × 0.20 × 0.25 + (1/3) × 0.40 × 0.25
+        val expectedCost = 0.20 * 0.25 + (1.0 / 3.0) * 0.40 * 0.25
+        assertEquals(expectedCost, result.totalCost, 0.0001)
+    }
+
+    @Test
+    fun `15m slots finds cheapest window across mixed-price slots`() {
+        // 8 slots: find cheapest 30-min (2 slots) window
+        val prices = prices15mAt(10, 0,
+            0.30, 0.20, 0.10, 0.05,  // cheapest pair: [0.10, 0.05] at slots 2-3
+            0.15, 0.25, 0.35, 0.40
+        )
+        val result = findCheapestWindow(prices, 0.5, earlyNow)!! // 30 min
+
+        assertEquals(10, result.startTime.hour)
+        assertEquals(30, result.startTime.minute) // slot 2: 10:30
+        // Cost: 0.10 × 0.25 + 0.05 × 0.25 = 0.025 + 0.0125 = 0.0375
+        assertEquals(0.0375, result.totalCost, 0.0001)
+        assertEquals(2, result.breakdown.size)
+    }
+
+    @Test
+    fun `15m slots clamping works correctly`() {
+        // Cheapest slot at 10:00, now at 10:05 (5 min into first 15-min slot)
+        val prices = prices15mAt(10, 0, 0.04, 0.08, 0.12, 0.40)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 5, 0, 0, timeZone)
+
+        val result = findCheapestWindow(prices, 0.25, now)!!
+
+        assertEquals(now, result.startTime)
+        assertEquals(now.plusMinutes(15), result.endTime)
+
+        // First slot: 10/15 remaining, second slot: 5/15 used
+        assertEquals(2, result.breakdown.size)
+        assertEquals(10.0 / 15.0, result.breakdown[0].fraction, 0.0001)
+        assertEquals(5.0 / 15.0, result.breakdown[1].fraction, 0.0001)
+    }
+
+    @Test
+    fun `15m slots breakdown invariants hold`() {
+        val prices = prices15mAt(10, 0,
+            0.10, 0.20, 0.30, 0.05,
+            0.15, 0.25, 0.35, 0.08
+        )
+        val duration = 1.5 // 6 slots
+        val result = findCheapestWindow(prices, duration, earlyNow)!!
+
+        // Fractions sum to duration in slot units (6.0)
+        val fractionSum = result.breakdown.sumOf { it.fraction }
+        assertEquals(duration / 0.25, fractionSum, 0.0001)
+
+        // Costs sum to totalCost
+        val costSum = result.breakdown.sumOf { it.cost }
+        assertEquals(result.totalCost, costSum, 0.0001)
+    }
+
+    @Test
+    fun `15m slots returns null when not enough slots for duration`() {
+        // 3 slots = 45 min, but need 1h (4 slots)
+        val prices = prices15mAt(10, 0, 0.10, 0.20, 0.30)
+        assertNull(findCheapestWindow(prices, 1.0, earlyNow))
     }
 }

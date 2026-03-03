@@ -195,7 +195,7 @@ private fun FormScreen(
 @Composable
 private fun ResultScreen(
     result: si.merhar.sweetspot.model.WindowResult,
-    allPrices: List<si.merhar.sweetspot.model.HourlyPrice>,
+    allPrices: List<si.merhar.sweetspot.model.PriceSlot>,
     resultLabel: String,
     timeZoneId: java.time.ZoneId,
     onBack: () -> Unit,

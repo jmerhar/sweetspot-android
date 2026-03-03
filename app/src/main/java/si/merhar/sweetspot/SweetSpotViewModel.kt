@@ -15,7 +15,7 @@ import si.merhar.sweetspot.data.defaultPriceFetcherFactory
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.Countries
 import si.merhar.sweetspot.model.Country
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import si.merhar.sweetspot.model.PriceZone
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.findCheapestWindow
@@ -57,7 +57,7 @@ sealed interface AppError {
  * @property error Error to display, or `null` if none.
  * @property result The cheapest-window result, or `null` if no search has been performed.
  * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
- * @property allPrices All hourly prices for the next 24h, used by the bar chart.
+ * @property allPrices All price slots for the next 24h, used by the bar chart.
  * @property showSettings Whether the settings screen is currently visible.
  * @property timeZoneId Active timezone for price date boundaries and display.
  * @property isUsingDefaultTimezone Whether the timezone is the zone-derived default (vs. user-selected).
@@ -73,7 +73,7 @@ data class UiState(
     val error: AppError? = null,
     val result: WindowResult? = null,
     val resultLabel: String? = null,
-    val allPrices: List<HourlyPrice> = emptyList(),
+    val allPrices: List<PriceSlot> = emptyList(),
     val showSettings: Boolean = false,
     val timeZoneId: ZoneId = ZoneId.systemDefault(),
     val isUsingDefaultTimezone: Boolean = true,
@@ -420,10 +420,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
             val result = findCheapestWindow(prices, durationHours, now)
 
             if (result == null) {
+                val coverageHours = prices.sumOf { it.durationMinutes.toLong() } / 60
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = AppError.Validation("Not enough price data to cover $durationLabel. Only ${prices.size} hour(s) of data available."),
+                        error = AppError.Validation("Not enough price data to cover $durationLabel. Only $coverageHours hour(s) of data available."),
                         allPrices = prices
                     )
                 }

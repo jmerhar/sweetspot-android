@@ -1,13 +1,14 @@
 # 15-Minute Price Resolution
 
-## Status
+## Status: Done ✅
 
-Partially addressed by the multi-zone API research (see `multi-zone-api.md`).
+Since October 2025, all ENTSO-E zones return PT15M (15-minute) resolution. The entire
+pipeline is now resolution-aware:
 
-The ENTSO-E Transparency Platform API provides 15-minute resolution for DE-LU and AT zones. Energy-Charts also provides 15-minute resolution for DE. Other zones are hourly only.
-
-## TODO
-
-If 15-minute resolution matters beyond DE/AT, we would need to find zone-specific sources. For now, ENTSO-E covers the most important case (Germany is the largest EPEX market).
-
-The `CheapestWindowFinder` already supports fractional hours (e.g., 2h30m = 2.5h with a partial last slot), so the algorithm would work with 15-minute data. The main change would be in the data layer — `HourlyPrice` would need generalizing to support sub-hourly intervals.
+- `HourlyPrice` renamed to `PriceSlot` with a `durationMinutes` field (60 for EnergyZero, 15 for ENTSO-E)
+- `EntsoeApi` returns prices at native resolution — no more hourly aggregation
+- `CheapestWindowFinder` works in "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs
+- `CachedPrice` and `FilePriceCache` carry `durationMinutes` (binary format v2, 18 bytes per entry)
+- `PriceRepository` uses slot-aware coverage checks and future filtering
+- The bar chart groups sub-hourly slots by hour: labels show hourly timestamps and average prices, with individual bars stacked within each hourly row
+- Incomplete first/last hours are padded with empty spacers to maintain consistent row heights

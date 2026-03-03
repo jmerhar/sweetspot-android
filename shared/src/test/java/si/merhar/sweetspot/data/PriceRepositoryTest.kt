@@ -2,7 +2,7 @@ package si.merhar.sweetspot.data
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import java.time.Clock
 import java.time.Instant
 import java.time.ZoneId
@@ -18,18 +18,19 @@ class PriceRepositoryTest {
 
     // --- Helpers ---
 
-    /** Generates hourly prices starting at [startHour] on the same day as [now]. */
-    private fun prices(startHour: Int, count: Int, basePrice: Double = 0.10): List<HourlyPrice> =
+    /** Generates hourly price slots starting at [startHour] on the same day as [now]. */
+    private fun prices(startHour: Int, count: Int, basePrice: Double = 0.10): List<PriceSlot> =
         (0 until count).map { i ->
-            HourlyPrice(
+            PriceSlot(
                 time = ZonedDateTime.of(2025, 6, 15, startHour, 0, 0, 0, timeZone).plusHours(i.toLong()),
-                price = basePrice + i * 0.01
+                price = basePrice + i * 0.01,
+                durationMinutes = 60
             )
         }
 
-    /** Converts a list of [HourlyPrice] to [CachedPrice] for pre-populating [FakeCache]. */
-    private fun List<HourlyPrice>.toCached() = map {
-        CachedPrice(it.time.toInstant().epochSecond, it.price)
+    /** Converts a list of [PriceSlot] to [CachedPrice] for pre-populating [FakeCache]. */
+    private fun List<PriceSlot>.toCached() = map {
+        CachedPrice(it.time.toInstant().epochSecond, it.durationMinutes, it.price)
     }
 
     // --- Fakes ---
@@ -61,12 +62,12 @@ class PriceRepositoryTest {
      *
      * Each call to [fetchPrices] consumes the next result from the queue.
      */
-    private class FakeFetcher(vararg results: List<HourlyPrice>) : PriceFetcher {
+    private class FakeFetcher(vararg results: List<PriceSlot>) : PriceFetcher {
         private val fetchResults = ArrayDeque(results.toList())
         var fetchCount = 0
             private set
 
-        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
             fetchCount++
             return fetchResults.removeFirstOrNull() ?: emptyList()
         }
@@ -97,7 +98,7 @@ class PriceRepositoryTest {
 
         val result = repo.getPrices()
 
-        // 18 future hours >= 12, no re-fetch needed
+        // 18 future hours (1080 min) >= 12h (720 min), no re-fetch needed
         assertEquals(0, fetcher.fetchCount)
         assertEquals(0, cache.writeCount)
         assertEquals(18, result.size)
@@ -130,7 +131,7 @@ class PriceRepositoryTest {
 
         val result = repo.getPrices()
 
-        // Coverage is low (8 hours) but cooldown hasn't elapsed
+        // Coverage is low (8 hours = 480 min) but cooldown hasn't elapsed
         assertEquals(0, fetcher.fetchCount)
         assertEquals(0, cache.writeCount)
         assertEquals(8, result.size)
@@ -139,6 +140,7 @@ class PriceRepositoryTest {
     @Test
     fun `filters out past prices`() {
         // Prices from 10:00 to 22:00 — only 16:00+ should remain
+        // (now is 16:30, slot ending at 17:00 is included since its end is after now)
         val cached = prices(startHour = 10, count = 13).toCached()
         val fetcher = FakeFetcher()
         val cache = FakeCache(initialPrices = cached, cooldownElapsed = false)
@@ -153,7 +155,7 @@ class PriceRepositoryTest {
 
     @Test
     fun `includes current hour even when now is mid-hour`() {
-        // now is 16:30, so the 16:00 slot should be included
+        // now is 16:30, so the 16:00 slot should be included (ends at 17:00 which is after now)
         val cached = prices(startHour = 15, count = 20).toCached()
         val fetcher = FakeFetcher()
         val cache = FakeCache(initialPrices = cached)
@@ -178,7 +180,7 @@ class PriceRepositoryTest {
 
         val result = repo.getPrices()
 
-        // Cache read: 0 future prices (< 12) → re-fetch
+        // Cache read: 0 future prices (< 12h) → re-fetch
         assertEquals(1, fetcher.fetchCount)
         assertEquals(20, result.size)
     }
@@ -191,7 +193,7 @@ class PriceRepositoryTest {
 
         val result = repo.getPrices()
 
-        // Fetches once (empty), coverage 0 < 12, re-fetches (still empty)
+        // Fetches once (empty), coverage 0 < 12h, re-fetches (still empty)
         assertEquals(2, fetcher.fetchCount)
         assertEquals(0, result.size)
     }
@@ -204,7 +206,7 @@ class PriceRepositoryTest {
         // Fetcher throws on any call (network error)
         val fetcher = object : PriceFetcher {
             var fetchCount = 0
-            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
                 fetchCount++
                 throw RuntimeException("Network error")
             }
@@ -227,7 +229,7 @@ class PriceRepositoryTest {
             it.copy(time = it.time.minusDays(1))
         }.toCached()
         val fetcher = object : PriceFetcher {
-            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<HourlyPrice> {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
                 throw RuntimeException("Network error")
             }
         }

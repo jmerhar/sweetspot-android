@@ -1,9 +1,11 @@
 package si.merhar.sweetspot.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.ui.theme.LocalBarNegativeColor
 import si.merhar.sweetspot.ui.theme.LocalBarNormalColor
@@ -29,23 +31,28 @@ import si.merhar.sweetspot.ui.theme.LocalBarOptimalColor
 import si.merhar.sweetspot.util.shortTimeFormatter
 import androidx.compose.ui.tooling.preview.Preview
 import java.time.ZonedDateTime
+import java.time.temporal.ChronoUnit
 import kotlin.math.abs
 
 /**
- * Horizontal bar chart showing hourly electricity prices.
+ * Horizontal bar chart showing electricity prices grouped by hour.
+ *
+ * Sub-hourly slots (e.g. 15-minute) are stacked vertically within each hourly row,
+ * with the time label and average price shown once per hour. For hourly data this
+ * renders identically to one bar per row.
  *
  * When all prices are non-negative, bars grow left-to-right from zero.
  * When negative prices exist, the zero axis shifts right proportionally
  * so that negative bars grow leftward and positive bars grow rightward.
  * Negative bars use a distinct color to highlight that the price is below zero.
  *
- * @param prices Hourly prices to display.
+ * @param prices Price slots to display (any resolution, sorted chronologically).
  * @param result Optional cheapest-window result whose slots are highlighted.
  * @param modifier Modifier for the outer column.
  */
 @Composable
 fun PriceBarChart(
-    prices: List<HourlyPrice>,
+    prices: List<PriceSlot>,
     result: WindowResult?,
     modifier: Modifier = Modifier
 ) {
@@ -68,13 +75,34 @@ fun PriceBarChart(
         } else 0f
     }
 
+    // Group slots by hour (using epoch second of truncated hour for correct DST handling)
+    val slotsPerHour = remember(prices) {
+        if (prices.isEmpty()) 1 else 60 / prices.first().durationMinutes
+    }
+    val hourlyGroups = remember(prices) {
+        prices.groupBy { it.time.truncatedTo(ChronoUnit.HOURS).toEpochSecond() }
+            .toSortedMap()
+            .values
+            .toList()
+    }
+
     Column(modifier = modifier.fillMaxWidth()) {
-        prices.forEach { price ->
-            val isOptimal = price.time.toEpochSecond() in optimalTimes
-            val rowBackground = if (isOptimal) highlightColor else Color.Transparent
-            val timeText = price.time.format(shortTimeFormatter)
-            val priceText = "\u20AC ${String.format("%.3f", price.price)}"
-            val rowDescription = if (isOptimal) "$timeText, $priceText, cheapest window" else "$timeText, $priceText"
+        hourlyGroups.forEach { slots ->
+            val hourTime = slots.first().time.truncatedTo(ChronoUnit.HOURS)
+            val avgPrice = slots.map { it.price }.average()
+            val anyOptimal = slots.any { it.time.toEpochSecond() in optimalTimes }
+            val rowBackground = if (anyOptimal) highlightColor else Color.Transparent
+            val timeText = hourTime.format(shortTimeFormatter)
+            val priceText = "\u20AC ${String.format("%.3f", avgPrice)}"
+            val rowDescription = if (anyOptimal) "$timeText, $priceText, cheapest window" else "$timeText, $priceText"
+
+            // Build a fixed-size list of slots for this hour, with nulls for missing sub-slots.
+            // This ensures incomplete hours (first/last) always render the same height.
+            val slotByMinute = slots.associateBy { it.time.minute }
+            val durationMinutes = slots.first().durationMinutes
+            val paddedSlots = (0 until slotsPerHour).map { i ->
+                slotByMinute[i * durationMinutes]
+            }
 
             Row(
                 modifier = Modifier
@@ -94,76 +122,91 @@ fun PriceBarChart(
                     modifier = Modifier.width(40.dp)
                 )
 
-                if (hasNegative) {
-                    // Diverging layout: negative portion | positive portion
-                    Row(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(20.dp)
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(trackColor)
-                    ) {
-                        // Left half (negative area)
-                        Box(
-                            modifier = Modifier
-                                .weight(zeroFraction)
-                                .fillMaxHeight(),
-                            contentAlignment = Alignment.CenterEnd
-                        ) {
-                            if (price.price < 0) {
-                                val negFraction = (abs(price.price) / abs(minPrice)).toFloat().coerceIn(0f, 1f)
-                                val barColor = if (isOptimal) barOptimalColor else barNegativeColor
+                // Stack sub-hourly bars vertically within the hourly row height.
+                // Each bar gets its own rounded track background and spacing.
+                // Missing sub-slots (incomplete first/last hour) render as empty spacers.
+                val barShape = RoundedCornerShape(6.dp)
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(1.dp)
+                ) {
+                    paddedSlots.forEach { slot ->
+                        if (slot == null) {
+                            Spacer(modifier = Modifier.fillMaxWidth().weight(1f))
+                        } else {
+                            val isOptimal = slot.time.toEpochSecond() in optimalTimes
+
+                            if (hasNegative) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .weight(1f)
+                                        .clip(barShape)
+                                        .background(trackColor)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .weight(zeroFraction)
+                                            .fillMaxHeight(),
+                                        contentAlignment = Alignment.CenterEnd
+                                    ) {
+                                        if (slot.price < 0) {
+                                            val negFraction = (abs(slot.price) / abs(minPrice)).toFloat().coerceIn(0f, 1f)
+                                            val barColor = if (isOptimal) barOptimalColor else barNegativeColor
+                                            Box(
+                                                modifier = Modifier
+                                                    .fillMaxWidth(negFraction)
+                                                    .fillMaxHeight()
+                                                    .clip(barShape)
+                                                    .background(barColor)
+                                            )
+                                        }
+                                    }
+                                    Box(
+                                        modifier = Modifier
+                                            .weight(1f - zeroFraction)
+                                            .fillMaxHeight(),
+                                        contentAlignment = Alignment.CenterStart
+                                    ) {
+                                        if (slot.price >= 0) {
+                                            val posFraction = if (maxPrice > 0) {
+                                                (slot.price / maxPrice).toFloat().coerceIn(0f, 1f)
+                                            } else 0f
+                                            val barColor = if (isOptimal) barOptimalColor else barNormalColor
+                                            Box(
+                                                modifier = Modifier
+                                                    .fillMaxWidth(posFraction)
+                                                    .fillMaxHeight()
+                                                    .clip(barShape)
+                                                    .background(barColor)
+                                            )
+                                        }
+                                    }
+                                }
+                            } else {
                                 Box(
                                     modifier = Modifier
-                                        .fillMaxWidth(negFraction)
-                                        .fillMaxHeight()
-                                        .clip(RoundedCornerShape(6.dp))
-                                        .background(barColor)
-                                )
+                                        .fillMaxWidth()
+                                        .weight(1f)
+                                        .clip(barShape)
+                                        .background(trackColor)
+                                ) {
+                                    val barFraction = if (maxPrice > 0) {
+                                        (slot.price / maxPrice).toFloat().coerceIn(0f, 1f)
+                                    } else 0f
+                                    val barColor = if (isOptimal) barOptimalColor else barNormalColor
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxWidth(barFraction)
+                                            .fillMaxHeight()
+                                            .clip(barShape)
+                                            .background(barColor)
+                                    )
+                                }
                             }
                         }
-                        // Right half (positive area)
-                        Box(
-                            modifier = Modifier
-                                .weight(1f - zeroFraction)
-                                .fillMaxHeight(),
-                            contentAlignment = Alignment.CenterStart
-                        ) {
-                            if (price.price >= 0) {
-                                val posFraction = if (maxPrice > 0) {
-                                    (price.price / maxPrice).toFloat().coerceIn(0f, 1f)
-                                } else 0f
-                                val barColor = if (isOptimal) barOptimalColor else barNormalColor
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth(posFraction)
-                                        .fillMaxHeight()
-                                        .clip(RoundedCornerShape(6.dp))
-                                        .background(barColor)
-                                )
-                            }
-                        }
-                    }
-                } else {
-                    // Simple layout: all bars grow left-to-right from zero
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(20.dp)
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(trackColor)
-                    ) {
-                        val barFraction = if (maxPrice > 0) {
-                            (price.price / maxPrice).toFloat().coerceIn(0f, 1f)
-                        } else 0f
-                        val barColor = if (isOptimal) barOptimalColor else barNormalColor
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth(barFraction)
-                                .height(20.dp)
-                                .clip(RoundedCornerShape(6.dp))
-                                .background(barColor)
-                        )
                     }
                 }
 
@@ -185,15 +228,15 @@ fun PriceBarChart(
 private fun PriceBarChartNegativePreview() {
     val base = ZonedDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0)
     val prices = listOf(
-        HourlyPrice(base, 0.12),
-        HourlyPrice(base.plusHours(1), 0.08),
-        HourlyPrice(base.plusHours(2), 0.02),
-        HourlyPrice(base.plusHours(3), -0.01),
-        HourlyPrice(base.plusHours(4), -0.03),
-        HourlyPrice(base.plusHours(5), -0.02),
-        HourlyPrice(base.plusHours(6), 0.01),
-        HourlyPrice(base.plusHours(7), 0.06),
-        HourlyPrice(base.plusHours(8), 0.10),
+        PriceSlot(base, 0.12, 60),
+        PriceSlot(base.plusHours(1), 0.08, 60),
+        PriceSlot(base.plusHours(2), 0.02, 60),
+        PriceSlot(base.plusHours(3), -0.01, 60),
+        PriceSlot(base.plusHours(4), -0.03, 60),
+        PriceSlot(base.plusHours(5), -0.02, 60),
+        PriceSlot(base.plusHours(6), 0.01, 60),
+        PriceSlot(base.plusHours(7), 0.06, 60),
+        PriceSlot(base.plusHours(8), 0.10, 60),
     )
     si.merhar.sweetspot.ui.theme.SweetSpotTheme {
         PriceBarChart(prices = prices, result = null)
@@ -205,13 +248,36 @@ private fun PriceBarChartNegativePreview() {
 private fun PriceBarChartPositivePreview() {
     val base = ZonedDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0)
     val prices = listOf(
-        HourlyPrice(base, 0.12),
-        HourlyPrice(base.plusHours(1), 0.08),
-        HourlyPrice(base.plusHours(2), 0.04),
-        HourlyPrice(base.plusHours(3), 0.02),
-        HourlyPrice(base.plusHours(4), 0.05),
-        HourlyPrice(base.plusHours(5), 0.09),
-        HourlyPrice(base.plusHours(6), 0.11),
+        PriceSlot(base, 0.12, 60),
+        PriceSlot(base.plusHours(1), 0.08, 60),
+        PriceSlot(base.plusHours(2), 0.04, 60),
+        PriceSlot(base.plusHours(3), 0.02, 60),
+        PriceSlot(base.plusHours(4), 0.05, 60),
+        PriceSlot(base.plusHours(5), 0.09, 60),
+        PriceSlot(base.plusHours(6), 0.11, 60),
+    )
+    si.merhar.sweetspot.ui.theme.SweetSpotTheme {
+        PriceBarChart(prices = prices, result = null)
+    }
+}
+
+@Preview(showBackground = true, name = "15-minute slots")
+@Composable
+private fun PriceBarChart15MinPreview() {
+    val base = ZonedDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0)
+    val prices = listOf(
+        PriceSlot(base, 0.10, 15),
+        PriceSlot(base.plusMinutes(15), 0.12, 15),
+        PriceSlot(base.plusMinutes(30), 0.08, 15),
+        PriceSlot(base.plusMinutes(45), 0.11, 15),
+        PriceSlot(base.plusHours(1), 0.06, 15),
+        PriceSlot(base.plusHours(1).plusMinutes(15), 0.04, 15),
+        PriceSlot(base.plusHours(1).plusMinutes(30), 0.05, 15),
+        PriceSlot(base.plusHours(1).plusMinutes(45), 0.03, 15),
+        PriceSlot(base.plusHours(2), 0.09, 15),
+        PriceSlot(base.plusHours(2).plusMinutes(15), 0.14, 15),
+        PriceSlot(base.plusHours(2).plusMinutes(30), 0.11, 15),
+        PriceSlot(base.plusHours(2).plusMinutes(45), 0.13, 15),
     )
     si.merhar.sweetspot.ui.theme.SweetSpotTheme {
         PriceBarChart(prices = prices, result = null)

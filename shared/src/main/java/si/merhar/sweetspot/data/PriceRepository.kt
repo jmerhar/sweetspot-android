@@ -1,18 +1,17 @@
 package si.merhar.sweetspot.data
 
-import si.merhar.sweetspot.model.HourlyPrice
+import si.merhar.sweetspot.model.PriceSlot
 import java.time.Clock
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
-import java.time.temporal.ChronoUnit
 
 /**
  * Repository that provides upcoming electricity prices.
  *
  * Uses [PriceCache] to avoid redundant API calls. Always tries the cache first,
- * then checks whether the cached data covers enough upcoming hours. When coverage
+ * then checks whether the cached data covers enough upcoming time. When coverage
  * is below [MIN_COVERAGE_HOURS] (e.g. tomorrow's prices have been published since
  * the last fetch), a re-fetch is attempted — subject to a [COOLDOWN_MS] rate limit
  * to avoid hammering the API.
@@ -40,24 +39,25 @@ class PriceRepository(
     }
 
     /**
-     * Returns all available upcoming hourly prices.
+     * Returns all available upcoming price slots.
      *
      * Reads from cache first. If coverage is below [MIN_COVERAGE_HOURS] and the
      * [COOLDOWN_MS] rate limit has elapsed, re-fetches from the API in case newer
      * data is available.
      *
-     * @return Chronologically sorted list of [HourlyPrice] entries.
+     * @return Chronologically sorted list of [PriceSlot] entries.
      * @throws RuntimeException if the initial API call fails and no cache exists.
      */
-    fun getPrices(): List<HourlyPrice> {
+    fun getPrices(): List<PriceSlot> {
         val now = ZonedDateTime.now(clock)
 
         val cached = cache.readCached(cacheKey)
         var allPrices = if (cached != null) {
             cached.map { entry ->
-                HourlyPrice(
+                PriceSlot(
                     time = Instant.ofEpochSecond(entry.epochSecond).atZone(timeZoneId),
-                    price = entry.price
+                    price = entry.price,
+                    durationMinutes = entry.durationMinutes
                 )
             }
         } else {
@@ -69,7 +69,8 @@ class PriceRepository(
         // If coverage is low, try re-fetching in case new data (e.g. tomorrow's prices)
         // has been published since the last fetch. Respects a cooldown to avoid hammering.
         // On failure, fall back to the stale cached data rather than crashing.
-        if (filtered.size < MIN_COVERAGE_HOURS && cache.isCooldownElapsed(COOLDOWN_MS)) {
+        val coverageMinutes = filtered.sumOf { it.durationMinutes.toLong() }
+        if (coverageMinutes < MIN_COVERAGE_HOURS * 60 && cache.isCooldownElapsed(COOLDOWN_MS)) {
             try {
                 allPrices = fetchAndCache()
                 filtered = filterFuture(allPrices, now)
@@ -84,15 +85,17 @@ class PriceRepository(
     }
 
     /**
-     * Filters out past prices, keeping only the current hour and beyond.
+     * Filters out past slots, keeping only those whose end time is after [now].
+     *
+     * A slot is kept if its end time (`time + durationMinutes`) is after [now],
+     * which correctly retains the current slot regardless of its duration.
      *
      * @param prices All available prices (unfiltered).
      * @param now Current time for the filter cutoff.
      * @return Future prices sorted chronologically.
      */
-    private fun filterFuture(prices: List<HourlyPrice>, now: ZonedDateTime): List<HourlyPrice> {
-        val currentHour = now.truncatedTo(ChronoUnit.HOURS)
-        return prices.filter { it.time >= currentHour }
+    private fun filterFuture(prices: List<PriceSlot>, now: ZonedDateTime): List<PriceSlot> {
+        return prices.filter { it.time.plusMinutes(it.durationMinutes.toLong()).isAfter(now) }
     }
 
     /**
@@ -110,12 +113,15 @@ class PriceRepository(
     /**
      * Fetches fresh prices from the API and writes them to cache.
      *
-     * @return Parsed list of all hourly prices (unfiltered).
+     * @return Parsed list of all price slots (unfiltered).
      */
-    private fun fetchAndCache(): List<HourlyPrice> {
+    private fun fetchAndCache(): List<PriceSlot> {
         val (from, to) = dateRange()
         val prices = fetcher.fetchPrices(from, to, timeZoneId)
-        cache.write(cacheKey, prices.map { CachedPrice(it.time.toInstant().epochSecond, it.price) })
+        cache.write(
+            cacheKey,
+            prices.map { CachedPrice(it.time.toInstant().epochSecond, it.durationMinutes, it.price) }
+        )
         return prices
     }
 }

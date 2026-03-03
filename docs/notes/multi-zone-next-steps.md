@@ -18,14 +18,15 @@ Done. `ENTSOE_API_TOKEN` is injected from `local.properties` via `BuildConfig` (
 in the `sweetspot-app` convention plugin in `buildSrc/`). Both phone and wear modules
 receive the token.
 
-## 3. Sub-Hourly Interval Support
+## 3. Sub-Hourly Interval Support ✅
 
-Since October 2025, all ENTSO-E zones return PT15M (15-minute) resolution. `EntsoeApi` currently aggregates these to hourly averages to keep `CheapestWindowFinder` and the UI unchanged. For better accuracy:
-
-- Update `CheapestWindowFinder` to work with variable-length slots (15min, 30min, 60min)
-- Update `HourlyPrice` model (rename to `PriceSlot`?) to carry slot duration
-- Update the bar chart and time display to handle sub-hourly granularity
-- This is a significant change — do it as a separate feature
+Done. `EntsoeApi` returns prices at native resolution (PT15M or PT60M) — no more
+hourly aggregation. `HourlyPrice` renamed to `PriceSlot` with a `durationMinutes` field.
+`CheapestWindowFinder` works in "slot units" and multiplies by `slotMinutes / 60.0`
+for EUR costs. `CachedPrice` and `FilePriceCache` carry `durationMinutes` (format v2).
+`PriceRepository` uses slot-aware coverage checks and filtering. The bar chart groups
+sub-hourly slots by hour with labels showing hourly averages and individual bars stacked
+within each row.
 
 ## 4. PriceFetcherFactory / Zone-Based Fetcher Selection ✅
 

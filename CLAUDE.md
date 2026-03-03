@@ -56,7 +56,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (127 tests)
+./gradlew test                   # Run all unit tests (135 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -65,8 +65,8 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `data/EntsoeApiParseTest` — ENTSO-E XML parsing: PT60M, PT15M aggregation, A03 gaps, multi-TimeSeries, errors, DST (11 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case (22 tests, in shared)
+- `data/EntsoeApiParseTest` — ENTSO-E XML parsing: PT60M, PT15M native resolution, A03 gaps, multi-TimeSeries, errors, DST (11 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests (30 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
@@ -84,7 +84,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (127 tests)
+- JUnit 4 + Robolectric for unit tests (135 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -105,21 +105,21 @@ Three Gradle modules:
 
 ### Shared module (`:shared`)
 
-- **`data/PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `List<HourlyPrice>`. Decouples `PriceRepository` from a specific API provider.
+- **`data/PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `List<PriceSlot>`. Decouples `PriceRepository` from a specific API provider.
 - **`data/PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes NL → EnergyZero, all others → EntsoeApi.
 - **`data/EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
-- **`data/EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, aggregates PT15M to hourly averages, converts EUR/MWh to EUR/kWh. Also exposes `fetchRaw()` and `parse()` directly for tests.
+- **`data/EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, returns prices at native resolution (PT15M or PT60M), converts EUR/MWh to EUR/kWh. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`data/BiddingZone`** — Object with EIC code constants for 43 European bidding zones. EIC codes are a European-wide standard used across ENTSO-E, EPEX SPOT, Nord Pool, etc.
 - **`data/CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
-- **`data/CachedPrice`** — Data class with `epochSecond` (UTC) and `price` (EUR/kWh). Timezone-agnostic cache format shared across all fetchers.
+- **`data/CachedPrice`** — Data class with `epochSecond` (UTC), `durationMinutes`, and `price` (EUR/kWh). Timezone-agnostic cache format shared across all fetchers.
 - **`data/PriceCache`** — Interface for caching parsed prices, keyed by zone. `readCached(key)` / `write(key, prices)` with global cooldown. Abstracts storage so `PriceRepository` can be tested without Android.
-- **`data/FilePriceCache`** — `PriceCache` implementation using per-zone binary files (`cacheDir/prices_<key>.bin`). Format: version byte + count int + N × (epochSecond long + price double). SharedPreferences `sweetspot_cache` tracks global cooldown. Returns `null` on any format error for graceful migration.
-- **`data/PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `HourlyPrice` with zone applied), filters to future prices, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
+- **`data/FilePriceCache`** — `PriceCache` implementation using per-zone binary files (`cacheDir/prices_<key>.bin`). Format v2: version byte + count int + N × (epochSecond long + durationMinutes short + price double) = 18 bytes per entry. SharedPreferences `sweetspot_cache` tracks global cooldown. Returns `null` on any format error for graceful migration (including v1 caches).
+- **`data/PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
 - **`data/SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, and appliances (JSON-serialized list). Auto-detects country on first access via `CountryDetector`.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 26 curated icons (18 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.
-- **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Supports fractional hours (e.g. 2h30m = 2.5h with a partial last slot). Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
+- **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
 - **`util/FormatUtils`** — `formatDuration()` and `shortTimeFormatter` shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.
 
@@ -162,6 +162,7 @@ The form view (`DurationInput` card) contains:
 ## Key Conventions
 
 - Prices are **EUR per kWh** (Double)
+- Price data uses `PriceSlot` with a `durationMinutes` field (e.g. 60 for hourly EnergyZero, 15 for quarter-hourly ENTSO-E). The entire pipeline is resolution-aware — no hardcoded 60-minute assumptions.
 - All times use configurable `ZoneId` (defaults to the selected price zone's timezone, overridable in settings)
 - `ZoneId` is threaded as a parameter through ViewModel → Repository → API — not stored as a global
 - **Naming:** `timeZoneId` for `java.time.ZoneId` / timezone concepts, `priceZone` / `priceZoneId` for `PriceZone` / bidding zone concepts — never bare `zoneId`

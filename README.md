@@ -4,7 +4,7 @@
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries.
 
-SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones) and [EnergyZero](https://api.energyzero.nl) (Netherlands), then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
+SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones, 15-minute resolution) and [EnergyZero](https://api.energyzero.nl) (Netherlands, hourly), then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
 
 This is the native Android port of the [SweetSpot PHP web app](https://github.com/jmerhar/sweetspot-php).
 
@@ -24,7 +24,7 @@ SweetSpot returns:
 
 - **Cheapest window** — optimal start and end time with countdown
 - **Cost breakdown** — per-hour price, fraction used, and cost
-- **24h bar chart** — all prices with the optimal window highlighted in green
+- **24h bar chart** — all prices with the optimal window highlighted in green; sub-hourly slots are grouped by hour with individual bars stacked within each row
 
 All costs shown are per 1 kW load. Prices do not include energy tax and supplier fee.
 
@@ -36,7 +36,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 
 ## Features
 
-- **30 European countries** — 43 bidding zones via ENTSO-E, with EnergyZero as a primary source for the Netherlands
+- **30 European countries** — 43 bidding zones via ENTSO-E (15-minute resolution), with EnergyZero as a primary source for the Netherlands (hourly)
 - **Country auto-detection** — detects your country on first launch from SIM, network, or timezone (no permissions required)
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behavior
 - **Quick-duration buttons** — 1h–6h chips for common durations
@@ -86,7 +86,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-127 unit tests cover the sliding window algorithm, duration and time formatting, API parsing (JSON and XML), icon resolution, and ViewModel state management (via Robolectric).
+135 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, API parsing (JSON and XML), icon resolution, and ViewModel state management (via Robolectric).
 
 ## License
 

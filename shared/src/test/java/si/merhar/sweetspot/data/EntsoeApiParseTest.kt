@@ -52,10 +52,12 @@ class EntsoeApiParseTest {
         assertEquals(1, prices[1].time.hour)
         assertEquals(2, prices[2].time.hour)
         assertEquals(timeZone, prices[0].time.zone)
+        // All slots are 60-minute
+        assertTrue(prices.all { it.durationMinutes == 60 })
     }
 
     @Test
-    fun `parses PT15M response and aggregates to hourly averages`() {
+    fun `parses PT15M response at native resolution`() {
         val xml = """
         <?xml version="1.0" encoding="UTF-8"?>
         <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
@@ -83,11 +85,22 @@ class EntsoeApiParseTest {
 
         val prices = api.parse(xml, timeZone)
 
-        assertEquals(2, prices.size)
-        // Hour 1: avg(100, 200, 300, 400) = 250 MWh = 0.250 kWh
-        assertEquals(0.250, prices[0].price, 0.0001)
-        // Hour 2: avg(120, 120, 120, 120) = 120 MWh = 0.120 kWh
-        assertEquals(0.120, prices[1].price, 0.0001)
+        // 8 native 15-min slots (no aggregation)
+        assertEquals(8, prices.size)
+        // All slots are 15-minute
+        assertTrue(prices.all { it.durationMinutes == 15 })
+        // EUR/MWh -> EUR/kWh
+        assertEquals(0.100, prices[0].price, 0.0001)
+        assertEquals(0.200, prices[1].price, 0.0001)
+        assertEquals(0.300, prices[2].price, 0.0001)
+        assertEquals(0.400, prices[3].price, 0.0001)
+        assertEquals(0.120, prices[4].price, 0.0001)
+        // First slot: 2026-03-02T23:00Z = 2026-03-03T00:00 CET
+        assertEquals(0, prices[0].time.hour)
+        assertEquals(0, prices[0].time.minute)
+        // Second slot: 00:15
+        assertEquals(0, prices[1].time.hour)
+        assertEquals(15, prices[1].time.minute)
     }
 
     @Test
@@ -271,10 +284,9 @@ class EntsoeApiParseTest {
     }
 
     @Test
-    fun `A03 with PT15M gaps fills and aggregates correctly`() {
+    fun `A03 with PT15M gaps fills correctly at native resolution`() {
         // 4 quarter-hours in one hour. Position 3 is missing (A03 gap).
         // Positions: 1=100, 2=200, (3=200 filled), 4=400
-        // Hourly avg: (100+200+200+400)/4 = 225 MWh = 0.225 kWh
         val xml = """
         <?xml version="1.0" encoding="UTF-8"?>
         <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
@@ -297,8 +309,14 @@ class EntsoeApiParseTest {
 
         val prices = api.parse(xml, timeZone)
 
-        assertEquals(1, prices.size)
-        assertEquals(0.225, prices[0].price, 0.0001)
+        // 4 native 15-min slots (no aggregation)
+        assertEquals(4, prices.size)
+        assertTrue(prices.all { it.durationMinutes == 15 })
+        assertEquals(0.100, prices[0].price, 0.0001)
+        assertEquals(0.200, prices[1].price, 0.0001)
+        // Position 3 filled from position 2's price
+        assertEquals(0.200, prices[2].price, 0.0001)
+        assertEquals(0.400, prices[3].price, 0.0001)
     }
 
     @Test

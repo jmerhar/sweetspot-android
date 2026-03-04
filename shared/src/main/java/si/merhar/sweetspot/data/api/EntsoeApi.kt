@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.api
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.api
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail

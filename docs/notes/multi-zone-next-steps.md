@@ -160,21 +160,21 @@ After implementing all viable fallback APIs, this is the coverage per zone:
 
 ### Implementation Plan
 
-Each phase adds one `PriceFetcher` implementation and wires it into `PriceFetcherFactory`.
+Each phase adds one `PriceFetcher` implementation in `data/api/` and wires it into `PriceFetcherFactory`.
 The existing `FallbackPriceFetcher` handles the chain — no new infrastructure needed.
 
-#### Phase 1: Spot-Hinta.fi (15 zones)
+#### Phase 1: Spot-Hinta.fi (15 zones) ✅
 
 Biggest impact. Covers all Nordic/Baltic zones with 15-min resolution.
 Already returns EUR/kWh — no unit conversion needed.
 
-- Create `SpotHintaApi` implementing `PriceFetcher`
-- Parse JSON array: `DateTime` (ISO 8601) → epoch, `PriceNoTax` → price
-- Use `/TodayAndDayForward?region={zone}` endpoint
-- Zone mapping: our zone IDs match their region codes exactly (FI, SE1, DK1, NO1, EE, etc.)
-- Wire into `PriceFetcherFactory`: wrap ENTSO-E + SpotHintaApi in `FallbackPriceFetcher`
+- ✅ Created `SpotHintaApi` implementing `PriceFetcher` in `data/api/`
+- ✅ Parses JSON array: `DateTime` (ISO 8601) → epoch, `PriceNoTax` → price
+- ✅ Uses `/TodayAndDayForward?region={zone}` endpoint
+- ✅ Zone mapping: our zone IDs match their region codes exactly (FI, SE1, DK1, NO1, EE, etc.)
+- ✅ Wired into `PriceFetcherFactory`: ENTSO-E + SpotHintaApi in `FallbackPriceFetcher`
   for FI, SE1–4, DK1–2, NO1–5, EE, LV, LT
-- Add unit tests with sample JSON responses
+- ✅ Unit tests: parse (7), malformed (7), DST (5) — 19 tests total
 
 #### Phase 2: Energy-Charts (11 additional zones)
 

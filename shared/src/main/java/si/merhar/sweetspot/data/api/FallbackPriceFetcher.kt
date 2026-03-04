@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.api
 
 import java.time.Instant
 import java.time.ZoneId

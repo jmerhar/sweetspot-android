@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.api
 
 /**
  * EIC codes for European bidding zones on the ENTSO-E Transparency Platform.

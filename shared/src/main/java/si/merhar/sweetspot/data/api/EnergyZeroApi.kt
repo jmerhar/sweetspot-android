@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.api
 
 import si.merhar.sweetspot.model.PriceSlot
 import kotlinx.serialization.SerialName

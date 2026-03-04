@@ -1,6 +1,6 @@
 package si.merhar.sweetspot.model
 
-import si.merhar.sweetspot.data.BiddingZone
+import si.merhar.sweetspot.data.api.BiddingZone
 
 /**
  * A specific electricity pricing zone within a country.

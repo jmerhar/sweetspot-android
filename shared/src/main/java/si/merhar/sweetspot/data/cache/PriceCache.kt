@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.cache
 
 /**
  * A single cached price entry, stored in a timezone-agnostic format.

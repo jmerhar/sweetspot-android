@@ -21,11 +21,11 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import kotlinx.serialization.json.Json
-import si.merhar.sweetspot.data.CachedPriceData
-import si.merhar.sweetspot.data.FetchResult
-import si.merhar.sweetspot.data.PriceCache
-import si.merhar.sweetspot.data.PriceFetcher
-import si.merhar.sweetspot.data.PriceFetcherFactory
+import si.merhar.sweetspot.data.api.FetchResult
+import si.merhar.sweetspot.data.api.PriceFetcher
+import si.merhar.sweetspot.data.api.PriceFetcherFactory
+import si.merhar.sweetspot.data.cache.CachedPriceData
+import si.merhar.sweetspot.data.cache.PriceCache
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.PriceSlot
 import java.time.Instant

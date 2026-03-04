@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.repository
 
 import android.content.Context
 import android.telephony.TelephonyManager

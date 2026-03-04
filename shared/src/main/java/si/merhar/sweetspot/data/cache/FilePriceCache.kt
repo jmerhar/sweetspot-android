@@ -1,4 +1,4 @@
-package si.merhar.sweetspot.data
+package si.merhar.sweetspot.data.cache
 
 import android.content.Context
 import java.io.DataInputStream

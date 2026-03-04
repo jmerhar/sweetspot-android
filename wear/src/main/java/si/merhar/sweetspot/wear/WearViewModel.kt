@@ -19,11 +19,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.serialization.json.Json
-import si.merhar.sweetspot.data.FilePriceCache
-import si.merhar.sweetspot.data.PriceCache
-import si.merhar.sweetspot.data.PriceFetcherFactory
-import si.merhar.sweetspot.data.PriceRepository
-import si.merhar.sweetspot.data.defaultPriceFetcherFactory
+import si.merhar.sweetspot.data.api.PriceFetcherFactory
+import si.merhar.sweetspot.data.api.defaultPriceFetcherFactory
+import si.merhar.sweetspot.data.cache.FilePriceCache
+import si.merhar.sweetspot.data.cache.PriceCache
+import si.merhar.sweetspot.data.repository.PriceRepository
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.Countries
 import si.merhar.sweetspot.model.PriceZone

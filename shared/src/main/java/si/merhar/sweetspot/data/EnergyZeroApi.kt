@@ -54,11 +54,11 @@ object EnergyZeroApi : PriceFetcher {
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
-     * @return Chronologically sorted list of [PriceSlot] entries (60-minute slots).
+     * @return A [FetchResult] with sorted hourly price slots and source "EnergyZero".
      * @throws RuntimeException if the HTTP request fails.
      */
-    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
-        return parse(fetchRaw(from, to), timeZoneId)
+    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
+        return FetchResult(parse(fetchRaw(from, to), timeZoneId), "EnergyZero")
     }
 
     /**

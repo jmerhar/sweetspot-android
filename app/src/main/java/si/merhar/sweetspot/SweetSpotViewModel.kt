@@ -58,6 +58,7 @@ sealed interface AppError {
  * @property result The cheapest-window result, or `null` if no search has been performed.
  * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
  * @property allPrices All price slots for the next 24h, used by the bar chart.
+ * @property priceSource Name of the data source (e.g. "ENTSO-E", "EnergyZero"), or `null` if no result.
  * @property showSettings Whether the settings screen is currently visible.
  * @property timeZoneId Active timezone for price date boundaries and display.
  * @property isUsingDefaultTimezone Whether the timezone is the zone-derived default (vs. user-selected).
@@ -74,6 +75,7 @@ data class UiState(
     val result: WindowResult? = null,
     val resultLabel: String? = null,
     val allPrices: List<PriceSlot> = emptyList(),
+    val priceSource: String? = null,
     val showSettings: Boolean = false,
     val timeZoneId: ZoneId = ZoneId.systemDefault(),
     val isUsingDefaultTimezone: Boolean = true,
@@ -242,7 +244,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /** Clears the current result and returns to the form screen. */
     fun onClearResult() {
         _uiState.update {
-            it.copy(result = null, resultLabel = null, allPrices = emptyList(), error = null)
+            it.copy(result = null, resultLabel = null, allPrices = emptyList(), priceSource = null, error = null)
         }
     }
 
@@ -403,14 +405,16 @@ class SweetSpotViewModel @JvmOverloads constructor(
         try {
             val fetcher = priceFetcherFactory.create(priceZone)
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
-            val prices = repository.getPrices()
+            val priceResult = repository.getPrices()
+            val prices = priceResult.prices
 
             if (prices.isEmpty()) {
                 _uiState.update {
                     it.copy(
                         isLoading = false,
                         error = AppError.Validation("No price data available for the next 24 hours."),
-                        allPrices = emptyList()
+                        allPrices = emptyList(),
+                        priceSource = null
                     )
                 }
                 return
@@ -436,6 +440,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     isLoading = false,
                     result = result,
                     allPrices = prices,
+                    priceSource = priceResult.source,
                     error = null
                 )
             }
@@ -444,7 +449,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 it.copy(
                     isLoading = false,
                     error = AppError.Network("Could not fetch prices: ${e.message}"),
-                    allPrices = emptyList()
+                    allPrices = emptyList(),
+                    priceSource = null
                 )
             }
         }

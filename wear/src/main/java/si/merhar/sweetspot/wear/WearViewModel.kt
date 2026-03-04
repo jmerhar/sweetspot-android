@@ -183,7 +183,7 @@ class WearViewModel @JvmOverloads constructor(
             try {
                 val fetcher = priceFetcherFactory.create(priceZone)
                 val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
-                val prices = repository.getPrices()
+                val prices = repository.getPrices().prices
 
                 if (prices.isEmpty()) {
                     _uiState.update {

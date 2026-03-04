@@ -81,6 +81,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             allPrices = state.allPrices,
             resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
             timeZoneId = state.timeZoneId,
+            priceSource = state.priceSource,
             onBack = viewModel::onClearResult,
             snackbarHostState = snackbarHostState,
             modifier = modifier
@@ -198,6 +199,7 @@ private fun ResultScreen(
     allPrices: List<si.merhar.sweetspot.model.PriceSlot>,
     resultLabel: String,
     timeZoneId: java.time.ZoneId,
+    priceSource: String?,
     onBack: () -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier
@@ -261,7 +263,8 @@ private fun ResultScreen(
 
             Text(
                 text = "Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee." +
-                    " Tomorrow\u2019s prices are usually available after 13:00 CET.",
+                    " Tomorrow\u2019s prices are usually available after 13:00 CET." +
+                    (if (priceSource != null) "\nData source: $priceSource" else ""),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

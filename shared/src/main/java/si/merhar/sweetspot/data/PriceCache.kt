@@ -17,6 +17,17 @@ data class CachedPrice(
 )
 
 /**
+ * Wrapper for cached price data that includes the data source name.
+ *
+ * @property source Human-readable name of the data source (e.g. "ENTSO-E", "EnergyZero").
+ * @property prices Cached price entries.
+ */
+data class CachedPriceData(
+    val source: String,
+    val prices: List<CachedPrice>
+)
+
+/**
  * Cache for parsed electricity prices, keyed by zone.
  *
  * Abstracts the storage mechanism so [PriceRepository] can be tested
@@ -39,15 +50,15 @@ interface PriceCache {
      * Reads cached prices for the given zone key, if available.
      *
      * @param key Zone identifier (e.g. `"NL"`, `"DE_LU"`).
-     * @return Cached price list, or `null` if no cached data exists or on any error.
+     * @return Cached price data including source name, or `null` if no cached data exists or on any error.
      */
-    fun readCached(key: String): List<CachedPrice>?
+    fun readCached(key: String): CachedPriceData?
 
     /**
      * Writes parsed prices to cache and records the fetch timestamp.
      *
      * @param key Zone identifier (e.g. `"NL"`, `"DE_LU"`).
-     * @param prices Parsed price entries to cache.
+     * @param data Cached price data including source name and price entries.
      */
-    fun write(key: String, prices: List<CachedPrice>)
+    fun write(key: String, data: CachedPriceData)
 }

@@ -19,13 +19,15 @@ fun interface PriceFetcherFactory {
 }
 
 /**
- * Default factory: NL uses EnergyZero (no auth required), all other zones use ENTSO-E.
+ * Default factory: all zones use ENTSO-E as the primary source. NL additionally
+ * has EnergyZero as a fallback via [FallbackPriceFetcher].
  *
  * @param entsoeToken ENTSO-E API security token (from BuildConfig).
  * @return A [PriceFetcherFactory] that routes to the correct API per zone.
  */
 fun defaultPriceFetcherFactory(entsoeToken: String): PriceFetcherFactory =
     PriceFetcherFactory { zone ->
-        if (zone.id == "NL") EnergyZeroApi
-        else EntsoeApi(entsoeToken, zone.eicCode)
+        val entsoe = EntsoeApi(entsoeToken, zone.eicCode)
+        if (zone.id == "NL") FallbackPriceFetcher(listOf(entsoe, EnergyZeroApi))
+        else entsoe
     }

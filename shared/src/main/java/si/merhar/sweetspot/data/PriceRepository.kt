@@ -8,6 +8,17 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 /**
+ * Result from [PriceRepository.getPrices], pairing price slots with the data source name.
+ *
+ * @property prices Chronologically sorted list of future [PriceSlot] entries.
+ * @property source Human-readable name of the data source (e.g. "ENTSO-E", "EnergyZero").
+ */
+data class PriceResult(
+    val prices: List<PriceSlot>,
+    val source: String
+)
+
+/**
  * Repository that provides upcoming electricity prices.
  *
  * Uses [PriceCache] to avoid redundant API calls. Always tries the cache first,
@@ -39,21 +50,22 @@ class PriceRepository(
     }
 
     /**
-     * Returns all available upcoming price slots.
+     * Returns all available upcoming price slots with the data source name.
      *
      * Reads from cache first. If coverage is below [MIN_COVERAGE_HOURS] and the
      * [COOLDOWN_MS] rate limit has elapsed, re-fetches from the API in case newer
      * data is available.
      *
-     * @return Chronologically sorted list of [PriceSlot] entries.
+     * @return A [PriceResult] with sorted future prices and the source name.
      * @throws RuntimeException if the initial API call fails and no cache exists.
      */
-    fun getPrices(): List<PriceSlot> {
+    fun getPrices(): PriceResult {
         val now = ZonedDateTime.now(clock)
 
         val cached = cache.readCached(cacheKey)
+        var source = cached?.source ?: "Unknown"
         var allPrices = if (cached != null) {
-            cached.map { entry ->
+            cached.prices.map { entry ->
                 PriceSlot(
                     time = Instant.ofEpochSecond(entry.epochSecond).atZone(timeZoneId),
                     price = entry.price,
@@ -61,7 +73,9 @@ class PriceRepository(
                 )
             }
         } else {
-            fetchAndCache()
+            val result = fetchAndCache()
+            source = result.source
+            result.prices
         }
 
         var filtered = filterFuture(allPrices, now)
@@ -72,7 +86,9 @@ class PriceRepository(
         val coverageMinutes = filtered.sumOf { it.durationMinutes.toLong() }
         if (coverageMinutes < MIN_COVERAGE_HOURS * 60 && cache.isCooldownElapsed(COOLDOWN_MS)) {
             try {
-                allPrices = fetchAndCache()
+                val result = fetchAndCache()
+                source = result.source
+                allPrices = result.prices
                 filtered = filterFuture(allPrices, now)
             } catch (e: Exception) {
                 // If we have some stale data, show it rather than crashing.
@@ -81,7 +97,7 @@ class PriceRepository(
             }
         }
 
-        return filtered
+        return PriceResult(filtered, source)
     }
 
     /**
@@ -113,15 +129,20 @@ class PriceRepository(
     /**
      * Fetches fresh prices from the API and writes them to cache.
      *
-     * @return Parsed list of all price slots (unfiltered).
+     * @return A [PriceResult] with all price slots (unfiltered) and the source name.
      */
-    private fun fetchAndCache(): List<PriceSlot> {
+    private fun fetchAndCache(): PriceResult {
         val (from, to) = dateRange()
-        val prices = fetcher.fetchPrices(from, to, timeZoneId)
+        val fetchResult = fetcher.fetchPrices(from, to, timeZoneId)
         cache.write(
             cacheKey,
-            prices.map { CachedPrice(it.time.toInstant().epochSecond, it.durationMinutes, it.price) }
+            CachedPriceData(
+                source = fetchResult.source,
+                prices = fetchResult.prices.map {
+                    CachedPrice(it.time.toInstant().epochSecond, it.durationMinutes, it.price)
+                }
+            )
         )
-        return prices
+        return PriceResult(fetchResult.prices, fetchResult.source)
     }
 }

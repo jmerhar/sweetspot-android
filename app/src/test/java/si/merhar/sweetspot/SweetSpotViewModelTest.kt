@@ -20,7 +20,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
-import si.merhar.sweetspot.data.CachedPrice
+import si.merhar.sweetspot.data.CachedPriceData
+import si.merhar.sweetspot.data.FetchResult
 import si.merhar.sweetspot.data.PriceCache
 import si.merhar.sweetspot.data.PriceFetcher
 import si.merhar.sweetspot.data.PriceFetcherFactory
@@ -41,14 +42,14 @@ class SweetSpotViewModelTest {
     /** In-memory [PriceCache] that never triggers re-fetch. */
     private class FakeCache : PriceCache {
         override fun isCooldownElapsed(cooldownMs: Long) = true
-        override fun readCached(key: String): List<CachedPrice>? = null
-        override fun write(key: String, prices: List<CachedPrice>) {}
+        override fun readCached(key: String): CachedPriceData? = null
+        override fun write(key: String, data: CachedPriceData) {}
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */
     private class FakeFetcher(private val prices: List<PriceSlot>? = null) : PriceFetcher {
-        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
-            return prices ?: throw RuntimeException("Network error")
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
+            return FetchResult(prices ?: throw RuntimeException("Network error"), "Test")
         }
     }
 

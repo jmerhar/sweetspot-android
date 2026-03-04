@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with the Netherlands also served by EnergyZero. It's a port of a PHP web app. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
+SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with EnergyZero as a fallback for the Netherlands. It's a port of a PHP web app. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
 
 ## Build & Run
 
@@ -56,12 +56,13 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (135 tests)
+./gradlew test                   # Run all unit tests (140 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
+- `data/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
 - `data/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
@@ -84,7 +85,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (135 tests)
+- JUnit 4 + Robolectric for unit tests (140 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -105,16 +106,17 @@ Three Gradle modules:
 
 ### Shared module (`:shared`)
 
-- **`data/PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `List<PriceSlot>`. Decouples `PriceRepository` from a specific API provider.
-- **`data/PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes NL → EnergyZero, all others → EntsoeApi.
+- **`data/PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `FetchResult` (prices + source name). `FetchResult` pairs a `List<PriceSlot>` with the data source name (e.g. "ENTSO-E", "EnergyZero"). Decouples `PriceRepository` from a specific API provider.
+- **`data/FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Used for NL (ENTSO-E primary, EnergyZero fallback).
+- **`data/PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes all zones → EntsoeApi, with NL wrapped in `FallbackPriceFetcher` adding EnergyZero as fallback.
 - **`data/EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`data/EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, returns prices at native resolution (PT15M or PT60M), converts EUR/MWh to EUR/kWh. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`data/BiddingZone`** — Object with EIC code constants for 43 European bidding zones. EIC codes are a European-wide standard used across ENTSO-E, EPEX SPOT, Nord Pool, etc.
 - **`data/CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
-- **`data/CachedPrice`** — Data class with `epochSecond` (UTC), `durationMinutes`, and `price` (EUR/kWh). Timezone-agnostic cache format shared across all fetchers.
-- **`data/PriceCache`** — Interface for caching parsed prices, keyed by zone. `readCached(key)` / `write(key, prices)` with global cooldown. Abstracts storage so `PriceRepository` can be tested without Android.
-- **`data/FilePriceCache`** — `PriceCache` implementation using per-zone binary files (`cacheDir/prices_<key>.bin`). Format v2: version byte + count int + N × (epochSecond long + durationMinutes short + price double) = 18 bytes per entry. SharedPreferences `sweetspot_cache` tracks global cooldown. Returns `null` on any format error for graceful migration (including v1 caches).
-- **`data/PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Takes injectable `PriceFetcher` and `Clock` for testing.
+- **`data/CachedPrice`** — Data class with `epochSecond` (UTC), `durationMinutes`, and `price` (EUR/kWh). Timezone-agnostic cache format shared across all fetchers. `CachedPriceData` wraps a list of `CachedPrice` with the data source name.
+- **`data/PriceCache`** — Interface for caching parsed prices, keyed by zone. `readCached(key)` / `write(key, data)` with global cooldown. Returns `CachedPriceData` (prices + source). Abstracts storage so `PriceRepository` can be tested without Android.
+- **`data/FilePriceCache`** — `PriceCache` implementation using per-zone binary files (`cacheDir/prices_<key>.bin`). Format v3: version byte + source UTF + count int + N × (epochSecond long + durationMinutes short + price double) = 18 bytes per entry. SharedPreferences `sweetspot_cache` tracks global cooldown. Returns `null` on any format error for graceful migration (including v1/v2 caches).
+- **`data/PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Returns `PriceResult` (prices + source name). Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Threads the data source name from `FetchResult`/cache through to `PriceResult`. Takes injectable `PriceFetcher` and `Clock` for testing.
 - **`data/SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, and appliances (JSON-serialized list). Auto-detects country on first access via `CountryDetector`.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
@@ -125,7 +127,7 @@ Three Gradle modules:
 
 ### Phone app (`:app`)
 
-- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances and zone settings to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
+- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances and zone settings to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
 
 ### Wear app (`:wear`)
 
@@ -156,8 +158,8 @@ The form view (`DurationInput` card) contains:
 
 ## External APIs
 
-- **EnergyZero** (NL default) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`. No auth required.
-- **ENTSO-E Transparency Platform** (all other zones) — 43 European bidding zones, 15-min resolution. API docs: https://transparencyplatform.zendesk.com/hc/en-us/articles/15692855254548-Sitemap-for-Restful-API-Integration. Token stored in `local.properties` as `ENTSOE_API_TOKEN`, injected via `BuildConfig`.
+- **ENTSO-E Transparency Platform** (primary for all zones) — 43 European bidding zones, 15-min resolution. API docs: https://transparencyplatform.zendesk.com/hc/en-us/articles/15692855254548-Sitemap-for-Restful-API-Integration. Token stored in `local.properties` as `ENTSOE_API_TOKEN`, injected via `BuildConfig`.
+- **EnergyZero** (NL fallback) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`. No auth required. Used as fallback when ENTSO-E fails for NL.
 
 ## Key Conventions
 

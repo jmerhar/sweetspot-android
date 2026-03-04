@@ -31,17 +31,25 @@ within each row.
 ## 4. PriceFetcherFactory / Zone-Based Fetcher Selection ✅
 
 Done. `PriceFetcherFactory` is a `fun interface` that returns the right `PriceFetcher`
-for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes NL → EnergyZero
-(no auth), all other zones → `EntsoeApi`. Both ViewModels take an injectable factory
-for testing.
+for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes all zones →
+`EntsoeApi`, with NL wrapped in `FallbackPriceFetcher` adding EnergyZero as fallback.
+Both ViewModels take an injectable factory for testing.
 
-## 5. Fallback API Chain
+## 5. Fallback API Chain (NL done)
 
-Several alternative APIs exist per zone. If the primary source fails, fall back to another:
+NL now uses ENTSO-E as primary (15-min resolution) with EnergyZero as fallback via
+`FallbackPriceFetcher`. The data source name flows through the entire pipeline:
+`FetchResult` → `CachedPriceData` (cache v3) → `PriceResult` → `UiState.priceSource`
+→ displayed in the results screen disclaimer ("Data source: ENTSO-E").
+
+Other zones use ENTSO-E only (no fallback yet — easy to wrap in `FallbackPriceFetcher`
+later with additional API implementations).
+
+Several alternative APIs exist per zone for future fallback chains:
 
 | Zone | Primary | Fallback(s) |
 |------|---------|-------------|
-| NL | EnergyZero | ENTSO-E, Energy-Charts |
+| NL | ENTSO-E | EnergyZero ✅, Energy-Charts |
 | DE-LU | ENTSO-E | Energy-Charts, SMARD, aWATTar |
 | AT | ENTSO-E | aWATTar, Energy-Charts |
 | CH | ENTSO-E | Swiss Energy Dashboard |

@@ -55,11 +55,11 @@ class EntsoeApi(
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
-     * @return Chronologically sorted list of [PriceSlot] entries in EUR/kWh at native resolution.
+     * @return A [FetchResult] with sorted price slots in EUR/kWh at native resolution and source "ENTSO-E".
      * @throws RuntimeException if the HTTP request fails or the response is an error document.
      */
-    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): List<PriceSlot> {
-        return parse(fetchRaw(from, to), timeZoneId)
+    override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
+        return FetchResult(parse(fetchRaw(from, to), timeZoneId), "ENTSO-E")
     }
 
     /**

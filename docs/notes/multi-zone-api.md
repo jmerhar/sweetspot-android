@@ -156,7 +156,7 @@ Already implemented. Keep as-is.
 **Primary: ENTSO-E Transparency Platform.** It's the only API covering all 20 bidding zones from a single endpoint. The XML parsing trade-off is worth it for complete coverage. Android has built-in XML parsers (`javax.xml.parsers`, `XmlPullParser`). An `EntsoePriceFetcher` implementation would be ~150–200 lines.
 
 **Fallback chain per zone:**
-1. NL → EnergyZero (already built) → ENTSO-E
+1. NL → ENTSO-E → EnergyZero (already built)
 2. AT, DE → aWATTar → Energy-Charts → ENTSO-E
 3. All other zones → Energy-Charts (if verified) → ENTSO-E
 

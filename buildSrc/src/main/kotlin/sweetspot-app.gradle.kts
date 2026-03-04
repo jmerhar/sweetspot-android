@@ -22,8 +22,8 @@ android {
     defaultConfig {
         applicationId = "si.merhar.sweetspot"
         targetSdk = 36
-        versionCode = 9
-        versionName = "3.0"
+        versionCode = 10
+        versionName = "3.1"
 
         val props = rootProject.file("local.properties")
         val entsoeToken = if (props.exists()) {

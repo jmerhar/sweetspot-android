@@ -4,7 +4,7 @@ Research date: 2026-03-03
 
 ## Background
 
-SweetSpot currently uses the EnergyZero API (`api.energyzero.nl`) for NL-only hourly day-ahead prices. Goal: support all 13 EPEX countries. The existing `PriceFetcher` interface already abstracts the API layer.
+Research conducted before implementing multi-zone support. SweetSpot originally used only the EnergyZero API for NL hourly prices. The goal was to find APIs covering all EPEX countries. ENTSO-E was chosen as primary; this research is retained as a reference for fallback API options.
 
 ## Do prices differ between EPEX zones?
 

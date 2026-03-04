@@ -18,7 +18,7 @@ This produces `app/build/outputs/bundle/release/app-release.aab`.
 
 ### Monochrome icon layer
 
-Both `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` and `wear/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` are missing a `<monochrome>` layer. On Android 13+ with themed icons enabled, the app shows a blank circle instead of its icon. Since `targetSdk = 35`, this should be fixed before publishing.
+Both `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` and `wear/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` are missing a `<monochrome>` layer. On Android 13+ with themed icons enabled, the app shows a blank circle instead of its icon. Since `targetSdk = 36`, this should be fixed before publishing.
 
 ## Store listing requirements
 
@@ -28,7 +28,7 @@ Both `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` and `wear/src/main/res
 - **Feature graphic** — 1024x500 banner image
 - **App icon** — 512x512 high-res icon
 - **Content rating** — complete the IARC questionnaire in Play Console
-- **Data safety form** — declare what data the app collects (network requests to EnergyZero API, no personal data)
+- **Data safety form** — declare what data the app collects (network requests to ENTSO-E and EnergyZero APIs, no personal data)
 
 ## Release process
 

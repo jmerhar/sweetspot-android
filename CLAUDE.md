@@ -53,6 +53,17 @@ RELEASE_KEY_ALIAS=sweetspot
 RELEASE_KEY_PASSWORD=...
 ```
 
+## Notes
+
+`docs/notes/` contains design notes, research, and feature ideas:
+
+- **`release.md`** — Current release notes (used by the release script)
+- **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
+- **`ideas/`** — Feature ideas: car charging, low price alerts, all-in pricing, localization
+- **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide
+
+`docs/entsoe/` contains ENTSO-E API documentation and sample XML responses.
+
 ## Testing
 
 ```bash

@@ -59,7 +59,7 @@ RELEASE_KEY_PASSWORD=...
 
 - **`release.md`** — Current release notes (used by the release script)
 - **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
-- **`ideas/`** — Feature ideas: car charging, low price alerts, all-in pricing, localization
+- **`ideas/`** — Feature ideas: car charging, low price alerts, all-in pricing, localization, cache management
 - **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide
 
 `docs/entsoe/` contains ENTSO-E API documentation and sample XML responses.

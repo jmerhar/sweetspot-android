@@ -88,3 +88,14 @@ For a niche utility app targeting Dutch/EU electricity users, **freemium** or **
 2. Run `./gradlew bundleRelease`
 3. Upload the new `.aab` to Play Console
 4. Roll out to internal testing or production
+
+## Marketing
+
+After publishing, promote the app through:
+
+- Social media presence (Reddit r/thenetherlands, r/energiedelen, Twitter/X)
+- Dutch energy forums and communities
+- Blog post about dynamic electricity pricing and how SweetSpot helps
+- App Store Optimization (ASO): keywords, description, screenshots
+- Cross-promotion with the web app
+- Reach out to Dutch energy bloggers / reviewers

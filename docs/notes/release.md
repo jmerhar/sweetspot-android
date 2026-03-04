@@ -1,11 +1,8 @@
-## European electricity prices
+## Higher resolution, better reliability
 
-SweetSpot is no longer Netherlands-only. The app now supports **30 European countries** across **43 bidding zones** via the ENTSO-E Transparency Platform, covering Western, Central, Nordic, Baltic, and Southeastern Europe.
+SweetSpot now shows electricity prices in **15-minute intervals** instead of hourly, giving you a more precise cheapest window. For the Netherlands, the app now uses ENTSO-E as the primary data source with EnergyZero as an automatic fallback.
 
 ### What's new
 
-- **Country and zone selection** — pick your country in settings. Multi-zone countries (Denmark, Italy, Norway, Sweden) let you choose your specific bidding zone.
-- **Country auto-detection** — your country is automatically detected on first launch (from SIM, network, or timezone) and shown at the top of the country picker. No permissions required.
-- **ENTSO-E API** — all zones use the official ENTSO-E Transparency Platform for day-ahead prices, including the Netherlands (with EnergyZero as fallback).
-- **Smarter caching** — the cache now stores parsed prices per zone in a compact binary format, replacing the old raw-response cache. Zone switches don't trigger unnecessary re-fetches.
-
+- **15-minute price resolution** — all zones now return quarter-hourly prices via ENTSO-E (previously hourly). The sliding window algorithm, chart, cache, and cost breakdown all work at native resolution. This means more accurate start times and cost estimates.
+- **ENTSO-E primary for NL** — the Netherlands now uses ENTSO-E (15-min) as primary source, with EnergyZero as automatic fallback. The active data source is shown in the results screen.

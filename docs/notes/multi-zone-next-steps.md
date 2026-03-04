@@ -1,96 +1,239 @@
 # Multi-Zone Next Steps
 
-Now that `EntsoeApi` implements `PriceFetcher` for all ENTSO-E bidding zones, here's what's needed to ship multi-zone support in the app.
+Remaining work for multi-zone support. Items 1–4 and 7 from the original list are done
+(zone selection UI, ENTSO-E token wiring, sub-hourly intervals, PriceFetcherFactory,
+per-zone cache separation).
 
-## 1. Zone Selection UI ✅
+## 1. Fallback API Chain
 
-Done. Settings screen has a country picker (30 countries) and a zone picker for multi-zone
-countries (DK, IT, NO, SE). `CountryDetector` auto-detects the user's country on first launch
-from SIM → network → timezone → locale → NL fallback (zero permissions required).
-43 bidding zones across all ENTSO-E member states with published day-ahead prices. Italy has
-7 zones (main geographic regions). GB is excluded — ENTSO-E doesn't publish GB day-ahead
-prices post-Brexit. Zones without data (AL, BA, CY, MT, TR, XK, 4 Italian limited production
-zones) are documented in `entsoe-api.md` for future re-evaluation.
+ENTSO-E is the only API covering all 43 zones, but it's unreliable (frequent 503s,
+rate limits around peak auction time ~13:00 CET). Every zone needs at least one fallback.
 
-## 2. ENTSO-E Token Wiring ✅
+NL already has ENTSO-E → EnergyZero via `FallbackPriceFetcher`. The data source name
+flows through the entire pipeline to the UI ("Data source: ENTSO-E" / "Data source: EnergyZero").
 
-Done. `ENTSOE_API_TOKEN` is injected from `local.properties` via `BuildConfig` (configured
-in the `sweetspot-app` convention plugin in `buildSrc/`). Both phone and wear modules
-receive the token.
+### Available Fallback APIs (research: 2026-03-04)
 
-## 3. Sub-Hourly Interval Support ✅
+#### Tier 1 — Ready to integrate (no auth, clean JSON, verified working)
 
-Done. Since October 2025, all ENTSO-E zones return PT15M (15-minute) resolution.
-The entire pipeline is now resolution-aware:
+**Spot-Hinta.fi** — Best single fallback for Nordic/Baltic region
+- URL: `https://api.spot-hinta.fi/TodayAndDayForward?region={ZONE}`
+- Coverage: FI, SE1–SE4, DK1–DK2, NO1–NO5, EE, LV, LT (15 zones)
+- Resolution: 15 min (96 slots/day)
+- Prices: **EUR/kWh** (matches our internal unit — no conversion needed)
+- Auth: None
+- Format: JSON array, each entry has `DateTime` (ISO 8601 with tz offset), `PriceNoTax`
+- Endpoints: `/Today`, `/TodayAndDayForward`, `/DayForward`
+- Notes: `PriceNoTax` is the raw day-ahead market price. Also has `PriceWithTax` (Finnish VAT).
 
-- `HourlyPrice` renamed to `PriceSlot` with a `durationMinutes` field (60 for EnergyZero, 15 for ENTSO-E)
-- `EntsoeApi` returns prices at native resolution — no more hourly aggregation
-- `CheapestWindowFinder` works in "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs
-- `CachedPrice` and `FilePriceCache` carry `durationMinutes` (binary format v3, with source name + 18 bytes per entry)
-- `PriceRepository` uses slot-aware coverage checks and future filtering
-- The bar chart groups sub-hourly slots by hour: labels show hourly timestamps and average prices, with individual bars stacked within each hourly row
-- Incomplete first/last hours are padded with empty spacers to maintain consistent row heights
+**Elering Dashboard** — Baltic + Finland
+- URL: `https://dashboard.elering.ee/api/nps/price?start={ISO_UTC}&end={ISO_UTC}`
+- Coverage: EE, FI, LV, LT (4 zones, all returned in a single response)
+- Resolution: 15 min
+- Prices: EUR/MWh (÷ 1000)
+- Auth: None
+- Format: JSON `{"success": true, "data": {"ee": [...], "fi": [...], ...}}`, each entry has
+  `timestamp` (Unix seconds) and `price`
 
-## 4. PriceFetcherFactory / Zone-Based Fetcher Selection ✅
+**Hva Koster Strommen** — Norwegian zones
+- URL: `https://www.hvakosterstrommen.no/api/v1/prices/{YYYY}/{MM}-{DD}_{ZONE}.json`
+- Coverage: NO1–NO5 (5 zones)
+- Resolution: 60 min (hourly)
+- Prices: **EUR/kWh** (no conversion)
+- Auth: None. Static JSON files per day per zone.
+- Format: JSON array, each entry has `EUR_per_kWh`, `time_start`, `time_end` (ISO 8601 with tz)
+- Attribution: "Strompriser levert av hvakosterstrommen.no"
 
-Done. `PriceFetcherFactory` is a `fun interface` that returns the right `PriceFetcher`
-for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes all zones →
-`EntsoeApi`, with NL wrapped in `FallbackPriceFetcher` adding EnergyZero as fallback.
-Both ViewModels take an injectable factory for testing.
+**aWATTar** — Austria and Germany
+- URL: `https://api.awattar.at/v1/marketdata` (AT), `https://api.awattar.de/v1/marketdata` (DE)
+- Coverage: AT, DE-LU (2 zones)
+- Resolution: 60 min (hourly)
+- Prices: EUR/MWh (÷ 1000)
+- Auth: None
+- Format: JSON `{"data": [{"start_timestamp": ms, "end_timestamp": ms, "marketprice": float}]}`
+- Parameters: `start`/`end` in milliseconds epoch
 
-## 5. Fallback API Chain (NL done)
+#### Tier 2 — Usable with custom parsing
 
-NL now uses ENTSO-E as primary (15-min resolution) with EnergyZero as fallback via
-`FallbackPriceFetcher`. The data source name flows through the entire pipeline:
-`FetchResult` → `CachedPriceData` (cache v3) → `PriceResult` → `UiState.priceSource`
-→ displayed in the results screen disclaimer ("Data source: ENTSO-E").
+**OMIE** — Iberian Peninsula
+- URL: `https://www.omie.es/sites/default/files/dados/NUEVA_SECCION/INT_PBC_EV_H_ACUM.TXT`
+- Coverage: ES, PT (2 zones)
+- Resolution: 60 min (hourly file) or 15 min (quarterly file available)
+- Prices: EUR/MWh (÷ 1000)
+- Auth: None. Public static file download.
+- Format: Semicolon-delimited CSV. European decimal format (comma = decimal point).
+  Latin-1 encoding. Predictable daily file URLs.
+- Notes: Hourly accumulated file is simpler. Per-day files also available at
+  `/dados/AGNO_{YYYY}/MES_{MM}/TXT/INT_PBC_EV_H_1_{DD}_{MM}_{YYYY}_{DD}_{MM}_{YYYY}.TXT`
 
-Other zones use ENTSO-E only (no fallback yet — easy to wrap in `FallbackPriceFetcher`
-later with additional API implementations).
+**OTE** — Czech Republic
+- URL: `https://www.ote-cr.cz/en/short-term-markets/electricity/day-ahead-market/@@chart-data?report_date={YYYY-MM-DD}`
+- Coverage: CZ (1 zone)
+- Resolution: 15 min (96 data points as index 1–96)
+- Prices: EUR/MWh (÷ 1000)
+- Auth: None
+- Format: JSON chart data. `dataLine[1]` has 15-min prices. Timestamps computed from
+  report_date + index.
 
-Several alternative APIs exist per zone for future fallback chains:
+#### Tier 3 — Partial coverage, licensing concerns
 
-| Zone | Primary | Fallback(s) |
-|------|---------|-------------|
-| NL | ENTSO-E | EnergyZero ✅, Energy-Charts |
-| DE-LU | ENTSO-E | Energy-Charts, SMARD, aWATTar |
-| AT | ENTSO-E | aWATTar, Energy-Charts |
-| CH | ENTSO-E | Swiss Energy Dashboard |
-| PL | ENTSO-E | PSE |
-| IE, NIR | ENTSO-E | SEMOpx |
-| Nordic/Baltic | ENTSO-E | Energy-Charts |
+**Energy-Charts** (Fraunhofer ISE)
+- URL: `https://api.energy-charts.info/price?bzn={ZONE}&start={ISO}&end={ISO}`
+- Coverage: 41/43 zones (missing IE_SEM, MK). 15-min resolution (CH hourly).
+- Auth: None. Rate limit undocumented, ~30 rapid requests triggers 429.
+- Prices: EUR/MWh (÷ 1000). JSON format.
+- **License split:** Only 15 zones are CC BY 4.0 (free for any use with attribution to
+  "Bundesnetzagentur | SMARD.de"). The remaining 26 zones are restricted to
+  "private and internal use only" — not usable in a distributed app.
+- CC BY 4.0 zones: AT, BE, CH, CZ, DE-LU, DK1, DK2, FR, HU, IT-North, NL, NO2, PL, SE4, SI
+- Private-only zones: all others (BG, HR, EE, ES, FI, GR, IT (6 non-North zones), LT, LV,
+  ME, NO1/3/4/5, PT, RO, RS, SE1/2/3, SK)
 
-Notable alternative APIs:
-- **Energy-Charts** (energy-charts.info) — No auth, JSON, covers many European zones. Good universal fallback.
-- **aWATTar** — AT/DE only, no auth, JSON, hourly
-- **SMARD** (smard.de) — DE only, no auth, JSON
-- **Elexon BMRS** — GB, 30-minute intervals, requires API key
-- **Swiss Energy Dashboard** — CH only
-- **PSE** — PL only
-- **SEMOpx** — IE/NIR
-- **Sourceful** — ENTSO-E data served as JSON (unofficial)
-- **Elering/Estfeed** — EE/LV/LT, may require contract (not a simple public API)
+#### Not viable
 
-### Peak-Time Fallback
+| API | Reason |
+|-----|--------|
+| Nord Pool | No free public API, commercial agreement required |
+| GME (Italy) | Requires formal registration with identity verification |
+| BSP SouthPool (SI) | Paid subscription |
+| HUPX (HU) | No public API |
+| OPCOM (RO) | No public API |
+| SEEPEX (RS) | No public API |
+| Energi Data Service (DK) | Dataset appears stale since Sept 2025 |
+| Tibber | Account-bound, not zone-selectable |
+| Frank Energie | NL only, requires account JWT |
 
-The ENTSO-E rate limit is 400 req/min per token (~115K DAUs at 5 req/day). The real
-risk is burst traffic around **13:00–14:00 CET** when next-day prices publish and caches
-expire simultaneously across all users. At that point a single token could be overwhelmed.
+### Zone Coverage Matrix
 
-Mitigation plan:
-- **Short term:** Implement fallback to Energy-Charts (no auth, JSON) when ENTSO-E returns HTTP 409 (rate limited) or 5xx. The cache refactoring already decoupled the cache from a specific API format, so fallback is transparent.
-- **Medium term:** Add jitter to the cache cooldown (e.g. 5min ± random 0–2min) to spread burst requests.
-- **Long term:** If user base grows beyond ~50K DAU, stand up a caching proxy that fetches once per zone and serves all users.
+After implementing all viable fallback APIs, this is the coverage per zone:
 
-## 6. Historical Price Fetching
+| Zone | Primary | Fallback 1 | Fallback 2 | Fallback 3 |
+|------|---------|------------|------------|------------|
+| **AT** | ENTSO-E | Energy-Charts ¹ | aWATTar | |
+| **BE** | ENTSO-E | Energy-Charts ¹ | | |
+| **BG** | ENTSO-E | _(none)_ | | |
+| **CH** | ENTSO-E | Energy-Charts ¹ | | |
+| **CZ** | ENTSO-E | Energy-Charts ¹ | OTE | |
+| **DE_LU** | ENTSO-E | Energy-Charts ¹ | aWATTar | |
+| **DK1** | ENTSO-E | Spot-Hinta.fi | Energy-Charts ¹ | |
+| **DK2** | ENTSO-E | Spot-Hinta.fi | Energy-Charts ¹ | |
+| **EE** | ENTSO-E | Spot-Hinta.fi | Elering | |
+| **ES** | ENTSO-E | OMIE | | |
+| **FI** | ENTSO-E | Spot-Hinta.fi | Elering | |
+| **FR** | ENTSO-E | Energy-Charts ¹ | | |
+| **GR** | ENTSO-E | _(none)_ | | |
+| **HR** | ENTSO-E | _(none)_ | | |
+| **HU** | ENTSO-E | Energy-Charts ¹ | | |
+| **IE_SEM** | ENTSO-E | _(none)_ | | |
+| **IT_NORD** | ENTSO-E | Energy-Charts ¹ | | |
+| **IT_CNOR** | ENTSO-E | _(none)_ | | |
+| **IT_CSUD** | ENTSO-E | _(none)_ | | |
+| **IT_SUD** | ENTSO-E | _(none)_ | | |
+| **IT_CALA** | ENTSO-E | _(none)_ | | |
+| **IT_SICI** | ENTSO-E | _(none)_ | | |
+| **IT_SARD** | ENTSO-E | _(none)_ | | |
+| **LT** | ENTSO-E | Spot-Hinta.fi | Elering | |
+| **LV** | ENTSO-E | Spot-Hinta.fi | Elering | |
+| **ME** | ENTSO-E | _(none)_ | | |
+| **MK** | ENTSO-E | _(none)_ | | |
+| **NL** | ENTSO-E | EnergyZero ✅ | Energy-Charts ¹ | |
+| **NO1** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
+| **NO2** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | Energy-Charts ¹ |
+| **NO3** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
+| **NO4** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
+| **NO5** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
+| **PL** | ENTSO-E | Energy-Charts ¹ | | |
+| **PT** | ENTSO-E | OMIE | | |
+| **RO** | ENTSO-E | _(none)_ | | |
+| **RS** | ENTSO-E | _(none)_ | | |
+| **SE1** | ENTSO-E | Spot-Hinta.fi | | |
+| **SE2** | ENTSO-E | Spot-Hinta.fi | | |
+| **SE3** | ENTSO-E | Spot-Hinta.fi | | |
+| **SE4** | ENTSO-E | Spot-Hinta.fi | Energy-Charts ¹ | |
+| **SI** | ENTSO-E | Energy-Charts ¹ | | |
+| **SK** | ENTSO-E | _(none)_ | | |
+
+¹ Energy-Charts CC BY 4.0 zones only (licensed for app distribution).
+
+**Summary:** 30/43 zones get at least one fallback. 13 zones remain ENTSO-E only
+(BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK).
+
+### Implementation Plan
+
+Each phase adds one `PriceFetcher` implementation and wires it into `PriceFetcherFactory`.
+The existing `FallbackPriceFetcher` handles the chain — no new infrastructure needed.
+
+#### Phase 1: Spot-Hinta.fi (15 zones)
+
+Biggest impact. Covers all Nordic/Baltic zones with 15-min resolution.
+Already returns EUR/kWh — no unit conversion needed.
+
+- Create `SpotHintaApi` implementing `PriceFetcher`
+- Parse JSON array: `DateTime` (ISO 8601) → epoch, `PriceNoTax` → price
+- Use `/TodayAndDayForward?region={zone}` endpoint
+- Zone mapping: our zone IDs match their region codes exactly (FI, SE1, DK1, NO1, EE, etc.)
+- Wire into `PriceFetcherFactory`: wrap ENTSO-E + SpotHintaApi in `FallbackPriceFetcher`
+  for FI, SE1–4, DK1–2, NO1–5, EE, LV, LT
+- Add unit tests with sample JSON responses
+
+#### Phase 2: Energy-Charts (11 additional zones)
+
+Covers central/western Europe. Only use CC BY 4.0 zones.
+
+- Create `EnergyChartsApi` implementing `PriceFetcher`
+- Parse JSON: parallel `unix_seconds` + `price` arrays, EUR/MWh → EUR/kWh
+- Handle `null` price entries (gaps)
+- Zone mapping: our IDs → their `bzn` codes (e.g. `DE_LU` → `DE-LU`, `IT_NORD` → `IT-North`)
+- Add attribution string: "Bundesnetzagentur | SMARD.de"
+- Wire into `PriceFetcherFactory` for: AT, BE, CH, CZ, DE-LU, FR, HU, IT-North, PL, SE4, SI
+  (NL already has EnergyZero; DK1, DK2, NO2 already have Spot-Hinta.fi)
+- Add unit tests
+
+#### Phase 3: aWATTar (AT, DE-LU — adds depth)
+
+Simple redundant fallback for two high-traffic zones. Very easy to implement.
+
+- Create `AwattarApi` implementing `PriceFetcher`
+- Parse JSON: `start_timestamp` (ms) → epoch, `marketprice` EUR/MWh → EUR/kWh
+- Two base URLs: `api.awattar.at` (AT) and `api.awattar.de` (DE-LU)
+- Wire as third-in-chain after Energy-Charts for AT and DE-LU
+- Add unit tests
+
+#### Phase 4: OMIE (ES, PT)
+
+Only free option for Iberian zones. Requires CSV parsing.
+
+- Create `OmieApi` implementing `PriceFetcher`
+- Parse semicolon-delimited CSV: handle European decimal format (`,` = decimal point),
+  Latin-1 encoding, extract ES/PT rows
+- Use the accumulated hourly file (simpler than per-day files)
+- Wire as fallback for ES and PT
+- Add unit tests
+
+#### Phase 5 (optional): Elering, HvaKosterStrommen, OTE
+
+Additional depth for zones already covered by Spot-Hinta.fi / Energy-Charts.
+Lower priority — only implement if the primary fallbacks prove unreliable.
+
+- `EleringApi` for EE, FI, LV, LT (redundant with Spot-Hinta.fi)
+- `HvaKosterStrommenApi` for NO1–NO5 (redundant with Spot-Hinta.fi, hourly only)
+- `OteApi` for CZ (redundant with Energy-Charts)
+
+### Peak-Time Mitigation
+
+The real risk is burst traffic around **13:00–14:00 CET** when next-day prices publish
+and caches expire simultaneously across all users.
+
+- **Short term:** Implement fallback APIs (this plan). When ENTSO-E returns 409 or 5xx,
+  `FallbackPriceFetcher` automatically tries the next source.
+- **Medium term:** Add jitter to cache cooldown (e.g. 5 min ± random 0–2 min) to spread
+  burst requests across the window.
+- **Long term:** If user base exceeds ~50K DAU, stand up a caching proxy that fetches once
+  per zone and serves all users.
+
+## 2. Historical Price Fetching
 
 Currently the app only fetches today+tomorrow. Historical data could be useful for:
 - Showing price trends and averages
 - Letting users compare current prices to historical ranges
 - The ENTSO-E API supports arbitrary date ranges (subject to rate limits)
-
-## 7. Per-Zone Cache Separation ✅
-
-Done. `PriceCache` now stores parsed `CachedPrice` entries per zone key in binary files
-(`prices_<key>.bin`). `PriceRepository` takes a `cacheKey` parameter. Cooldown is global
-(shared across zones to respect upstream rate limits).

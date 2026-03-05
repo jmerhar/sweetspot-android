@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import si.merhar.sweetspot.data.api.DataSources
-import si.merhar.sweetspot.ui.SettingsScreen
+import si.merhar.sweetspot.ui.settings.SettingsScreen
 import si.merhar.sweetspot.ui.SweetSpotScreen
 import si.merhar.sweetspot.ui.theme.SweetSpotTheme
 

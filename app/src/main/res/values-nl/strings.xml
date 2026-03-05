@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Instellingen</string>
+    <string name="cd_back">Terug</string>
+    <string name="main_description">SweetSpot helpt je geld besparen door het goedkoopste moment te vinden om je apparaten te gebruiken. Kies hoe lang je apparaat moet draaien en het scant de komende 24 uur aan dynamische stroomprijzen om het beste tijdvenster te vinden. Je kunt ook je favoriete apparaten opslaan in de instellingen.</string>
+    <string name="main_find_button">Zoek goedkoopste periode</string>
+    <string name="main_searching">Zoeken\u2026</string>
+    <string name="main_add_appliances">Voeg je apparaten toe</string>
+    <string name="main_card_description">Vind het goedkoopste moment om je apparaat te gebruiken</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Goedkoopste periode</string>
+    <string name="result_start">Start</string>
+    <string name="result_end">Einde</string>
+    <string name="result_total_cost">Totale kosten</string>
+    <string name="result_avg_price">Gem. prijs</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Kostenoverzicht</string>
+    <string name="cd_collapse">Inklappen</string>
+    <string name="cd_expand">Uitklappen</string>
+    <string name="result_upcoming_prices">Komende prijzen</string>
+    <string name="result_disclaimer">Kosten zijn per 1 kW vermogen. Prijzen zijn exclusief btw, energiebelasting en leverancierskosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
+    <string name="result_data_source">\nGegevensbron: %s</string>
+    <string name="cd_cheapest_window">goedkoopste periode</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Duur</string>
+    <string name="cd_duration_picker">Duurkiezer</string>
+    <string name="picker_hour_suffix">u</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Uren: %d</string>
+    <string name="cd_minutes">Minuten: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_language">Taal</string>
+    <string name="settings_language_system_default">Systeemstandaard</string>
+    <string name="settings_country">Land</string>
+    <string name="settings_select_zone">Selecteer een zone</string>
+    <string name="settings_data_sources">Gegevensbronnen</string>
+    <string name="settings_data_sources_description">Prijzen worden in deze volgorde opgehaald. Als er een faalt, wordt de volgende geprobeerd.</string>
+    <string name="cd_move_up">Omhoog</string>
+    <string name="cd_move_down">Omlaag</string>
+    <string name="settings_reset_defaults">Standaard herstellen</string>
+    <string name="settings_appliances">Apparaten</string>
+    <string name="settings_appliances_description">Voeg hier je huishoudelijke apparaten toe voor snelle toegang. Je kunt ook specifieke programma\'s toevoegen, bijv. Vaatwasser Eco, Vaatwasser Snel, Wasmachine Katoen.</string>
+    <string name="settings_add_appliance">Apparaat toevoegen</string>
+    <string name="settings_timezone">Tijdzone</string>
+    <string name="settings_auto_timezone">Automatisch (van land)</string>
+    <string name="settings_custom_timezone">Aangepaste tijdzone</string>
+    <string name="settings_unknown_country">Onbekend</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Apparaat toevoegen</string>
+    <string name="dialog_edit_appliance">Apparaat bewerken</string>
+    <string name="dialog_name">Naam</string>
+    <string name="dialog_name_placeholder">bijv. Wasmachine</string>
+    <string name="dialog_icon">Icoon</string>
+    <string name="action_delete">Verwijderen</string>
+    <string name="action_save">Opslaan</string>
+    <string name="action_cancel">Annuleren</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Tijdzone</string>
+    <string name="picker_timezone_search">Zoek tijdzones</string>
+    <string name="picker_country_title">Land</string>
+    <string name="picker_country_search">Zoek landen</string>
+    <string name="picker_zones_count">%d zones</string>
+    <string name="picker_zone_title">Zone</string>
+    <string name="cd_selected">Geselecteerd</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Selecteer een duur groter dan nul.</string>
+    <string name="error_no_zone">Selecteer een zone in Instellingen.</string>
+    <string name="error_no_data">Geen prijsgegevens beschikbaar voor de komende 24 uur.</string>
+    <string name="error_not_enough_data">Niet genoeg prijsgegevens voor %1$s. Slechts %2$d uur aan gegevens beschikbaar.</string>
+    <string name="error_network">Kan prijzen niet ophalen: %s</string>
+</resources>

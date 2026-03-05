@@ -10,6 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.delay
 import androidx.compose.ui.text.style.TextAlign
 import androidx.wear.compose.foundation.lazy.AutoCenteringParams
@@ -20,6 +22,7 @@ import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import si.merhar.sweetspot.util.formatRelative
 import si.merhar.sweetspot.util.shortTimeFormatter
+import si.merhar.sweetspot.wear.R
 import si.merhar.sweetspot.wear.WearUiState
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -60,7 +63,7 @@ fun ResultScreen(
     if (result == null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(
-                text = "No result",
+                text = stringResource(R.string.wear_no_result),
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center
             )
@@ -68,6 +71,7 @@ fun ResultScreen(
         return
     }
 
+    val resources = LocalContext.current.resources
     val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone!!.timeZoneId) }
     var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
     LaunchedEffect(Unit) {
@@ -88,7 +92,7 @@ fun ResultScreen(
         // Start time
         item {
             Text(
-                text = "Start",
+                text = stringResource(R.string.wear_start),
                 style = MaterialTheme.typography.caption2,
                 color = MaterialTheme.colors.onSurfaceVariant
             )
@@ -101,7 +105,7 @@ fun ResultScreen(
         }
         item {
             Text(
-                text = formatRelative(result.startTime, now),
+                text = formatRelative(result.startTime, now, resources),
                 style = MaterialTheme.typography.caption2,
                 color = MaterialTheme.colors.primary
             )
@@ -122,7 +126,7 @@ fun ResultScreen(
         // End time
         item {
             Text(
-                text = "End",
+                text = stringResource(R.string.wear_end),
                 style = MaterialTheme.typography.caption2,
                 color = MaterialTheme.colors.onSurfaceVariant
             )
@@ -135,7 +139,7 @@ fun ResultScreen(
         }
         item {
             Text(
-                text = formatRelative(result.endTime, now),
+                text = formatRelative(result.endTime, now, resources),
                 style = MaterialTheme.typography.caption2,
                 color = MaterialTheme.colors.primary
             )

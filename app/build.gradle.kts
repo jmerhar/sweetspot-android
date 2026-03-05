@@ -19,6 +19,7 @@ dependencies {
     implementation(platform(libs.compose.bom))
 
     implementation(libs.core.ktx)
+    implementation(libs.appcompat)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
 

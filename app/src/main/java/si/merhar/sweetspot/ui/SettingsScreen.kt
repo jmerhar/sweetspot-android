@@ -1,6 +1,7 @@
 package si.merhar.sweetspot.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -49,8 +50,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.core.os.LocaleListCompat
+import si.merhar.sweetspot.R
 import si.merhar.sweetspot.data.api.DataSource
 import si.merhar.sweetspot.data.api.DataSources
 import si.merhar.sweetspot.model.Appliance
@@ -64,9 +69,25 @@ import si.merhar.sweetspot.util.formatDuration
 import java.time.ZoneId
 
 /**
- * Settings screen with appliance management, country/zone selection, data source preferences,
- * and timezone selection. Manages its own sub-navigation: tapping rows opens picker screens
- * for country, zone, or timezone.
+ * Available language options for the language picker.
+ *
+ * @property tag BCP 47 language tag (empty string = system default).
+ * @property displayName Human-readable language name shown in the picker.
+ */
+private data class LanguageOption(val tag: String, val displayName: String)
+
+private val languageOptions = listOf(
+    LanguageOption("", ""),    // System default — label resolved from string resource
+    LanguageOption("en", "English"),
+    LanguageOption("nl", "Nederlands"),
+    LanguageOption("de", "Deutsch"),
+    LanguageOption("fr", "Français")
+)
+
+/**
+ * Settings screen with appliance management, language selection, country/zone selection,
+ * data source preferences, and timezone selection. Manages its own sub-navigation: tapping rows
+ * opens picker screens for country, zone, or timezone.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,6 +110,7 @@ fun SettingsScreen(
     onSourceOrderChanged: (List<String>) -> Unit,
     onDisabledSourcesChanged: (Set<String>) -> Unit,
     onResetSourceOrder: () -> Unit,
+    onLanguageChanged: (String) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -188,12 +210,12 @@ fun SettingsScreen(
         modifier = modifier,
         topBar = {
             TopAppBar(
-                title = { Text("Settings") },
+                title = { Text(stringResource(R.string.settings_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.cd_back)
                         )
                     }
                 },
@@ -218,14 +240,19 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
+            LanguageSection(onLanguageChanged = onLanguageChanged)
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
             CountrySection(
-                countryName = currentCountry?.name ?: "Unknown",
+                countryName = currentCountry?.let { stringResource(it.nameRes) }
+                    ?: stringResource(R.string.settings_unknown_country),
                 onClick = { showCountryPicker = true }
             )
 
             if (isMultiZone) {
                 PriceZoneSection(
-                    zoneLabel = priceZone?.label,
+                    zoneLabel = priceZone?.let { stringResource(it.labelRes) },
                     onClick = { showZonePicker = true }
                 )
             }
@@ -256,6 +283,59 @@ fun SettingsScreen(
     }
 }
 
+/**
+ * Language settings section with a selectable list of supported languages.
+ *
+ * Uses [AppCompatDelegate.setApplicationLocales] for per-app locale switching.
+ * The activity automatically recreates when the locale changes.
+ *
+ * @param onLanguageChanged Callback to sync the new language tag to the watch.
+ */
+@Composable
+private fun LanguageSection(onLanguageChanged: (String) -> Unit) {
+    val systemDefaultLabel = stringResource(R.string.settings_language_system_default)
+    val currentLocales = AppCompatDelegate.getApplicationLocales()
+    val currentTag = if (currentLocales.isEmpty) "" else currentLocales.toLanguageTags()
+
+    Text(
+        text = stringResource(R.string.settings_language),
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+    )
+
+    languageOptions.forEach { option ->
+        val displayName = if (option.tag.isEmpty()) systemDefaultLabel else option.displayName
+        val isSelected = option.tag == currentTag
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    onLanguageChanged(option.tag)
+                    AppCompatDelegate.setApplicationLocales(
+                        LocaleListCompat.forLanguageTags(option.tag)
+                    )
+                }
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = displayName,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.weight(1f)
+            )
+            if (isSelected) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = stringResource(R.string.cd_selected),
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
+        }
+    }
+}
+
 /** Country settings section showing the current country selection. */
 @Composable
 private fun CountrySection(
@@ -263,7 +343,7 @@ private fun CountrySection(
     onClick: () -> Unit
 ) {
     Text(
-        text = "Country",
+        text = stringResource(R.string.settings_country),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
@@ -300,7 +380,7 @@ private fun PriceZoneSection(
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = zoneLabel ?: "Select a zone",
+                text = zoneLabel ?: stringResource(R.string.settings_select_zone),
                 style = MaterialTheme.typography.bodyMedium,
                 color = if (zoneLabel != null) MaterialTheme.colorScheme.onSurfaceVariant
                         else MaterialTheme.colorScheme.error
@@ -331,14 +411,14 @@ private fun DataSourcesSection(
     val enabledIds = displayOrder.filter { it !in disabledSources }
 
     Text(
-        text = "Data sources",
+        text = stringResource(R.string.settings_data_sources),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
     )
 
     Text(
-        text = "Prices are fetched in this order. If one fails, the next is tried.",
+        text = stringResource(R.string.settings_data_sources_description),
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp)
@@ -387,7 +467,7 @@ private fun DataSourcesSection(
             ) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowUp,
-                    contentDescription = "Move up"
+                    contentDescription = stringResource(R.string.cd_move_up)
                 )
             }
             IconButton(
@@ -403,7 +483,7 @@ private fun DataSourcesSection(
             ) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Move down"
+                    contentDescription = stringResource(R.string.cd_move_down)
                 )
             }
         }
@@ -416,7 +496,7 @@ private fun DataSourcesSection(
                 onClick = onResetSourceOrder,
                 modifier = Modifier.padding(horizontal = 16.dp)
             ) {
-                Text("Reset to defaults")
+                Text(stringResource(R.string.settings_reset_defaults))
             }
         }
     }
@@ -429,15 +509,17 @@ private fun AppliancesSection(
     onApplianceClick: (Appliance) -> Unit,
     onAddClick: () -> Unit
 ) {
+    val resources = LocalContext.current.resources
+
     Text(
-        text = "Appliances",
+        text = stringResource(R.string.settings_appliances),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
     )
 
     Text(
-        text = "Add your home appliances here for easy access. You can also add specific programmes, e.g. Dishwasher Eco, Dishwasher Quick, Washing Machine Cotton.",
+        text = stringResource(R.string.settings_appliances_description),
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp)
@@ -465,7 +547,7 @@ private fun AppliancesSection(
                     style = MaterialTheme.typography.bodyLarge
                 )
                 Text(
-                    text = formatDuration(appliance.durationHours, appliance.durationMinutes),
+                    text = formatDuration(appliance.durationHours, appliance.durationMinutes, resources),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -487,7 +569,7 @@ private fun AppliancesSection(
         )
         Spacer(modifier = Modifier.width(12.dp))
         Text(
-            text = "Add appliance",
+            text = stringResource(R.string.settings_add_appliance),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.primary
         )
@@ -502,7 +584,7 @@ private fun TimezoneSection(
     onClick: () -> Unit
 ) {
     Text(
-        text = "Timezone",
+        text = stringResource(R.string.settings_timezone),
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
@@ -517,11 +599,11 @@ private fun TimezoneSection(
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = if (isUsingDefaultTimezone) "Auto (from country)" else currentTimeZoneId.id.replace('_', ' '),
+                text = if (isUsingDefaultTimezone) stringResource(R.string.settings_auto_timezone) else currentTimeZoneId.id.replace('_', ' '),
                 style = MaterialTheme.typography.bodyLarge
             )
             Text(
-                text = if (isUsingDefaultTimezone) currentTimeZoneId.id.replace('_', ' ') else "Custom timezone",
+                text = if (isUsingDefaultTimezone) currentTimeZoneId.id.replace('_', ' ') else stringResource(R.string.settings_custom_timezone),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -551,11 +633,11 @@ private fun ApplianceDialog(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(if (appliance == null) "Add appliance" else "Edit appliance")
+                Text(if (appliance == null) stringResource(R.string.dialog_add_appliance) else stringResource(R.string.dialog_edit_appliance))
                 if (onDelete != null) {
                     TextButton(onClick = onDelete) {
                         Text(
-                            text = "Delete",
+                            text = stringResource(R.string.action_delete),
                             color = MaterialTheme.colorScheme.error
                         )
                     }
@@ -567,8 +649,8 @@ private fun ApplianceDialog(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Name") },
-                    placeholder = { Text("e.g. Washing machine") },
+                    label = { Text(stringResource(R.string.dialog_name)) },
+                    placeholder = { Text(stringResource(R.string.dialog_name_placeholder)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -580,7 +662,7 @@ private fun ApplianceDialog(
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = "Icon",
+                    text = stringResource(R.string.dialog_icon),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -624,12 +706,12 @@ private fun ApplianceDialog(
                 onClick = { onSave(name.trim(), pickerHours, pickerMinutes, selectedIcon) },
                 enabled = name.isNotBlank() && (pickerHours > 0 || pickerMinutes > 0)
             ) {
-                Text("Save")
+                Text(stringResource(R.string.action_save))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text(stringResource(R.string.action_cancel))
             }
         }
     )
@@ -668,12 +750,12 @@ private fun TimezonePickerScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Timezone") },
+                title = { Text(stringResource(R.string.picker_timezone_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.cd_back)
                         )
                     }
                 },
@@ -692,7 +774,7 @@ private fun TimezonePickerScreen(
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                placeholder = { Text("Search timezones") },
+                placeholder = { Text(stringResource(R.string.picker_timezone_search)) },
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -703,7 +785,7 @@ private fun TimezonePickerScreen(
                 // Auto (from country) option
                 item {
                     PickerRow(
-                        label = "Auto (from country)",
+                        label = stringResource(R.string.settings_auto_timezone),
                         subtitle = defaultTimeZoneId.id.replace('_', ' '),
                         isSelected = isUsingDefaultTimezone,
                         onClick = { onTimezoneSelected(null) }
@@ -735,25 +817,32 @@ private fun CountryPickerScreen(
     onBack: () -> Unit
 ) {
     var searchQuery by rememberSaveable { mutableStateOf("") }
+    val context = LocalContext.current
 
-    val filteredCountries = remember(searchQuery) {
+    val sortedCountries = remember(countries) {
+        countries.sortedBy { context.getString(it.nameRes).lowercase() }
+    }
+
+    val filteredCountries = remember(searchQuery, sortedCountries) {
         if (searchQuery.isBlank()) {
-            countries
+            sortedCountries
         } else {
             val query = searchQuery.lowercase()
-            countries.filter { it.name.lowercase().contains(query) || it.code.lowercase().contains(query) }
+            sortedCountries.filter {
+                context.getString(it.nameRes).lowercase().contains(query) || it.code.lowercase().contains(query)
+            }
         }
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Country") },
+                title = { Text(stringResource(R.string.picker_country_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.cd_back)
                         )
                     }
                 },
@@ -772,7 +861,7 @@ private fun CountryPickerScreen(
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                placeholder = { Text("Search countries") },
+                placeholder = { Text(stringResource(R.string.picker_country_search)) },
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -783,8 +872,8 @@ private fun CountryPickerScreen(
                 items(filteredCountries) { country ->
                     val zoneCount = country.zones.size
                     PickerRow(
-                        label = country.name,
-                        subtitle = if (zoneCount > 1) "$zoneCount zones" else null,
+                        label = stringResource(country.nameRes),
+                        subtitle = if (zoneCount > 1) stringResource(R.string.picker_zones_count, zoneCount) else null,
                         isSelected = country.code == currentCountryCode,
                         onClick = { onCountrySelected(country.code) }
                     )
@@ -806,12 +895,12 @@ private fun PriceZonePickerScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Zone") },
+                title = { Text(stringResource(R.string.picker_zone_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.cd_back)
                         )
                     }
                 },
@@ -829,7 +918,7 @@ private fun PriceZonePickerScreen(
         ) {
             items(zones) { zone ->
                 PickerRow(
-                    label = zone.label,
+                    label = stringResource(zone.labelRes),
                     subtitle = null,
                     isSelected = zone.id == currentPriceZoneId,
                     onClick = { onPriceZoneSelected(zone.id) }
@@ -871,7 +960,7 @@ private fun PickerRow(
             Spacer(modifier = Modifier.width(8.dp))
             Icon(
                 imageVector = Icons.Default.Check,
-                contentDescription = "Selected",
+                contentDescription = stringResource(R.string.cd_selected),
                 tint = MaterialTheme.colorScheme.primary
             )
         }

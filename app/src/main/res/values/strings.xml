@@ -1,4 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Settings</string>
+    <string name="cd_back">Back</string>
+    <string name="main_description">SweetSpot helps you save money by finding the cheapest time to run your appliances. Just pick how long your appliance needs to run, and it will scan the next 24 hours of dynamic electricity prices to find the best window. You can also save your favourite appliances in settings for quick access.</string>
+    <string name="main_find_button">Find Cheapest Window</string>
+    <string name="main_searching">Searching\u2026</string>
+    <string name="main_add_appliances">Add your appliances</string>
+    <string name="main_card_description">Find the cheapest time to run your appliance</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Cheapest Window</string>
+    <string name="result_start">Start</string>
+    <string name="result_end">End</string>
+    <string name="result_total_cost">Total cost</string>
+    <string name="result_avg_price">Avg price</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Cost Breakdown</string>
+    <string name="cd_collapse">Collapse</string>
+    <string name="cd_expand">Expand</string>
+    <string name="result_upcoming_prices">Upcoming Prices</string>
+    <string name="result_disclaimer">Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow\u2019s prices are usually available after 13:00 CET.</string>
+    <string name="result_data_source">\nData source: %s</string>
+    <string name="cd_cheapest_window">cheapest window</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Duration</string>
+    <string name="cd_duration_picker">Duration picker</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Hours: %d</string>
+    <string name="cd_minutes">Minutes: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_system_default">System default</string>
+    <string name="settings_country">Country</string>
+    <string name="settings_select_zone">Select a zone</string>
+    <string name="settings_data_sources">Data sources</string>
+    <string name="settings_data_sources_description">Prices are fetched in this order. If one fails, the next is tried.</string>
+    <string name="cd_move_up">Move up</string>
+    <string name="cd_move_down">Move down</string>
+    <string name="settings_reset_defaults">Reset to defaults</string>
+    <string name="settings_appliances">Appliances</string>
+    <string name="settings_appliances_description">Add your home appliances here for easy access. You can also add specific programmes, e.g. Dishwasher Eco, Dishwasher Quick, Washing Machine Cotton.</string>
+    <string name="settings_add_appliance">Add appliance</string>
+    <string name="settings_timezone">Timezone</string>
+    <string name="settings_auto_timezone">Auto (from country)</string>
+    <string name="settings_custom_timezone">Custom timezone</string>
+    <string name="settings_unknown_country">Unknown</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Add appliance</string>
+    <string name="dialog_edit_appliance">Edit appliance</string>
+    <string name="dialog_name">Name</string>
+    <string name="dialog_name_placeholder">e.g. Washing machine</string>
+    <string name="dialog_icon">Icon</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Timezone</string>
+    <string name="picker_timezone_search">Search timezones</string>
+    <string name="picker_country_title">Country</string>
+    <string name="picker_country_search">Search countries</string>
+    <string name="picker_zones_count">%d zones</string>
+    <string name="picker_zone_title">Zone</string>
+    <string name="cd_selected">Selected</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Please select a duration greater than zero.</string>
+    <string name="error_no_zone">Please select a zone in Settings.</string>
+    <string name="error_no_data">No price data available for the next 24 hours.</string>
+    <string name="error_not_enough_data">Not enough price data to cover %1$s. Only %2$d hour(s) of data available.</string>
+    <string name="error_network">Could not fetch prices: %s</string>
 </resources>

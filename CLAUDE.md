@@ -194,7 +194,7 @@ The form view (`DurationInput` card) contains:
 - **Naming:** `timeZoneId` for `java.time.ZoneId` / timezone concepts, `priceZone` / `priceZoneId` for `PriceZone` / bidding zone concepts — never bare `zoneId`
 - Default country (NL) is defined in one place only: `Countries.defaultCountry()`
 - Duration is stored as `durationHours: Int` + `durationMinutes: Int` (no string parsing on the main flow)
-- UI text is hardcoded in Composables (no string resources / i18n)
+- UI text is localized via Android string resources (`strings.xml`), with Dutch (NL), German (DE), and French (FR) translations. Per-app language setting via AppCompat. Defaults to system locale.
 - All classes and functions have KDoc comments — always add KDoc when creating new functions or classes
 
 ## Commit Messages

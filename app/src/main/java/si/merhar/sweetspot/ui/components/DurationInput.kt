@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,19 +26,23 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.applianceIconFor
+import si.merhar.sweetspot.util.formatDuration
 
-private data class QuickDuration(val hours: Int, val minutes: Int, val label: String)
+private data class QuickDuration(val hours: Int, val minutes: Int)
 
 private val quickDurations = listOf(
-    QuickDuration(1, 0, "1h"),
-    QuickDuration(2, 0, "2h"),
-    QuickDuration(3, 0, "3h"),
-    QuickDuration(4, 0, "4h"),
-    QuickDuration(5, 0, "5h"),
-    QuickDuration(6, 0, "6h")
+    QuickDuration(1, 0),
+    QuickDuration(2, 0),
+    QuickDuration(3, 0),
+    QuickDuration(4, 0),
+    QuickDuration(5, 0),
+    QuickDuration(6, 0)
 )
 
 /**
@@ -60,6 +63,8 @@ fun DurationInput(
     isLoading: Boolean,
     modifier: Modifier = Modifier
 ) {
+    val resources = LocalContext.current.resources
+
     ElevatedCard(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -69,7 +74,7 @@ fun DurationInput(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Find the cheapest time to run your appliance",
+                text = stringResource(R.string.main_card_description),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 12.dp)
@@ -110,20 +115,22 @@ fun DurationInput(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Add your appliances")
+                    Text(stringResource(R.string.main_add_appliances))
                 }
             }
 
-            // Quick duration buttons — equal-width row
-            Row(
+            // Quick duration buttons — wrap to multiple rows for longer translations
+            FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 quickDurations.forEach { qd ->
                     SuggestionChip(
                         onClick = { onQuickDuration(qd.hours, qd.minutes) },
-                        label = { Text(qd.label) },
-                        modifier = Modifier.weight(1f)
+                        label = {
+                            Text(text = formatDuration(qd.hours, qd.minutes, resources))
+                        }
                     )
                 }
             }
@@ -153,9 +160,9 @@ fun DurationInput(
                         color = MaterialTheme.colorScheme.onSecondaryContainer
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Searching\u2026")
+                    Text(stringResource(R.string.main_searching))
                 } else {
-                    Text("Find Cheapest Window")
+                    Text(stringResource(R.string.main_find_button))
                 }
             }
         }

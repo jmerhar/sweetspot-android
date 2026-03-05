@@ -1,6 +1,8 @@
 package si.merhar.sweetspot
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
@@ -254,11 +256,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param minutes Minutes component of the quick duration.
      */
     fun onQuickDuration(hours: Int, minutes: Int) {
+        val res = getApplication<Application>().resources
         _uiState.update {
             it.copy(
                 durationHours = hours,
                 durationMinutes = minutes,
-                resultLabel = formatDuration(hours, minutes)
+                resultLabel = formatDuration(hours, minutes, res)
             )
         }
         onFindClicked()
@@ -271,7 +274,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param appliance The tapped appliance.
      */
     fun onApplianceDuration(appliance: Appliance) {
-        val label = "${appliance.name} \u00b7 ${formatDuration(appliance.durationHours, appliance.durationMinutes)}"
+        val res = getApplication<Application>().resources
+        val label = "${appliance.name} \u00b7 ${formatDuration(appliance.durationHours, appliance.durationMinutes, res)}"
         _uiState.update {
             it.copy(
                 durationHours = appliance.durationHours,
@@ -360,20 +364,39 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     /**
+     * Called before the user changes the per-app language in Settings.
+     *
+     * Accepts the new [languageTag] explicitly because [AppCompatDelegate.getApplicationLocales]
+     * still returns the old value at this point. Syncs the tag to the watch via the Data Layer.
+     * The actual locale switch is handled by [AppCompatDelegate.setApplicationLocales] in the UI.
+     */
+    fun onLanguageChanged(languageTag: String) {
+        syncSettingsToWear(languageTag = languageTag)
+    }
+
+    /**
      * Pushes country and zone settings to the Wearable Data Layer so the
      * watch can use the same price zone as the phone.
      *
+     * @param languageTag Explicit language tag override. When `null`, reads from
+     *   [AppCompatDelegate.getApplicationLocales] (correct for non-language syncs).
+     *
      * Silently ignores failures since watch sync is best-effort.
      */
-    private fun syncSettingsToWear() {
+    private fun syncSettingsToWear(languageTag: String? = null) {
         try {
             val state = _uiState.value
             val priceZone = state.priceZone ?: return
+            val resolvedTag = languageTag ?: run {
+                val locales = AppCompatDelegate.getApplicationLocales()
+                if (locales.isEmpty) "" else locales.toLanguageTags()
+            }
             val request = PutDataMapRequest.create("/settings").apply {
                 dataMap.putString("country_code", state.countryCode)
                 dataMap.putString("price_zone_id", priceZone.id)
                 dataMap.putString("source_order", state.sourceOrder?.let { Json.encodeToString(it) } ?: "")
                 dataMap.putString("disabled_sources", state.disabledSources.takeIf { it.isNotEmpty() }?.let { Json.encodeToString(it) } ?: "")
+                dataMap.putString("language", resolvedTag)
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
             Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
@@ -395,7 +418,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (h == 0 && m == 0) {
             _uiState.update {
                 it.copy(
-                    error = AppError.Validation("Please select a duration greater than zero."),
+                    error = AppError.Validation(getApplication<Application>().getString(R.string.error_zero_duration)),
                     result = null,
                     allPrices = emptyList()
                 )
@@ -407,7 +430,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (priceZone == null) {
             _uiState.update {
                 it.copy(
-                    error = AppError.Validation("Please select a zone in Settings."),
+                    error = AppError.Validation(getApplication<Application>().getString(R.string.error_no_zone)),
                     result = null,
                     allPrices = emptyList()
                 )
@@ -416,7 +439,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         }
 
         val durationHours = h + m / 60.0
-        val durationLabel = formatDuration(h, m)
+        val durationLabel = formatDuration(h, m, getApplication<Application>().resources)
 
         _uiState.update {
             it.copy(
@@ -459,7 +482,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = AppError.Validation("No price data available for the next 24 hours."),
+                        error = AppError.Validation(getApplication<Application>().getString(R.string.error_no_data)),
                         allPrices = emptyList(),
                         priceSource = null
                     )
@@ -475,7 +498,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = AppError.Validation("Not enough price data to cover $durationLabel. Only $coverageHours hour(s) of data available."),
+                        error = AppError.Validation(getApplication<Application>().getString(R.string.error_not_enough_data, durationLabel, coverageHours)),
                         allPrices = prices
                     )
                 }
@@ -495,7 +518,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             _uiState.update {
                 it.copy(
                     isLoading = false,
-                    error = AppError.Network("Could not fetch prices: ${e.message}"),
+                    error = AppError.Network(getApplication<Application>().getString(R.string.error_network, e.message ?: "")),
                     allPrices = emptyList(),
                     priceSource = null
                 )

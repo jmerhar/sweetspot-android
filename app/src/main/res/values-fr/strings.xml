@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Paramètres</string>
+    <string name="cd_back">Retour</string>
+    <string name="main_description">SweetSpot vous aide à économiser de l\'argent en trouvant le meilleur moment pour faire fonctionner vos appareils. Choisissez simplement la durée de fonctionnement de votre appareil, et il analysera les 24 prochaines heures de prix d\'électricité dynamiques pour trouver la meilleure période. Vous pouvez aussi enregistrer vos appareils favoris dans les paramètres.</string>
+    <string name="main_find_button">Trouver la période la moins chère</string>
+    <string name="main_searching">Recherche\u2026</string>
+    <string name="main_add_appliances">Ajoutez vos appareils</string>
+    <string name="main_card_description">Trouvez le meilleur moment pour faire fonctionner votre appareil</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Période la moins chère</string>
+    <string name="result_start">Début</string>
+    <string name="result_end">Fin</string>
+    <string name="result_total_cost">Coût total</string>
+    <string name="result_avg_price">Prix moyen</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Détail des coûts</string>
+    <string name="cd_collapse">Réduire</string>
+    <string name="cd_expand">Développer</string>
+    <string name="result_upcoming_prices">Prochains prix</string>
+    <string name="result_disclaimer">Les coûts sont indiqués pour une charge de 1 kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
+    <string name="result_data_source">\nSource des données : %s</string>
+    <string name="cd_cheapest_window">période la moins chère</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Durée</string>
+    <string name="cd_duration_picker">Sélecteur de durée</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">min</string>
+    <string name="cd_hours">Heures : %d</string>
+    <string name="cd_minutes">Minutes : %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_language">Langue</string>
+    <string name="settings_language_system_default">Par défaut du système</string>
+    <string name="settings_country">Pays</string>
+    <string name="settings_select_zone">Sélectionner une zone</string>
+    <string name="settings_data_sources">Sources de données</string>
+    <string name="settings_data_sources_description">Les prix sont récupérés dans cet ordre. Si l\'une échoue, la suivante est essayée.</string>
+    <string name="cd_move_up">Monter</string>
+    <string name="cd_move_down">Descendre</string>
+    <string name="settings_reset_defaults">Rétablir les valeurs par défaut</string>
+    <string name="settings_appliances">Appareils</string>
+    <string name="settings_appliances_description">Ajoutez ici vos appareils électroménagers pour un accès rapide. Vous pouvez aussi ajouter des programmes spécifiques, par ex. Lave-vaisselle Eco, Lave-vaisselle Rapide, Lave-linge Coton.</string>
+    <string name="settings_add_appliance">Ajouter un appareil</string>
+    <string name="settings_timezone">Fuseau horaire</string>
+    <string name="settings_auto_timezone">Automatique (du pays)</string>
+    <string name="settings_custom_timezone">Fuseau horaire personnalisé</string>
+    <string name="settings_unknown_country">Inconnu</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Ajouter un appareil</string>
+    <string name="dialog_edit_appliance">Modifier l\'appareil</string>
+    <string name="dialog_name">Nom</string>
+    <string name="dialog_name_placeholder">par ex. Lave-linge</string>
+    <string name="dialog_icon">Icône</string>
+    <string name="action_delete">Supprimer</string>
+    <string name="action_save">Enregistrer</string>
+    <string name="action_cancel">Annuler</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Fuseau horaire</string>
+    <string name="picker_timezone_search">Rechercher des fuseaux horaires</string>
+    <string name="picker_country_title">Pays</string>
+    <string name="picker_country_search">Rechercher des pays</string>
+    <string name="picker_zones_count">%d zones</string>
+    <string name="picker_zone_title">Zone</string>
+    <string name="cd_selected">Sélectionné</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Veuillez sélectionner une durée supérieure à zéro.</string>
+    <string name="error_no_zone">Veuillez sélectionner une zone dans les paramètres.</string>
+    <string name="error_no_data">Aucune donnée de prix disponible pour les prochaines 24 heures.</string>
+    <string name="error_not_enough_data">Pas assez de données de prix pour %1$s. Seulement %2$d heure(s) de données disponibles.</string>
+    <string name="error_network">Impossible de récupérer les prix : %s</string>
+</resources>

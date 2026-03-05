@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -27,6 +29,7 @@ import androidx.wear.compose.material.scrollAway
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.applianceIconFor
 import si.merhar.sweetspot.util.formatDuration
+import si.merhar.sweetspot.wear.R
 import si.merhar.sweetspot.wear.WearUiState
 
 /**
@@ -44,6 +47,7 @@ fun ApplianceListScreen(
     onApplianceTapped: (Appliance) -> Unit
 ) {
     val listState = rememberScalingLazyListState()
+    val resources = LocalContext.current.resources
 
     Scaffold(
         timeText = { TimeText(modifier = Modifier.scrollAway(listState)) },
@@ -59,7 +63,7 @@ fun ApplianceListScreen(
                 if (state.appliances.isEmpty()) {
                     item {
                         Text(
-                            text = "Set up appliances in the phone app.",
+                            text = stringResource(R.string.wear_empty_state),
                             style = MaterialTheme.typography.body2,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
@@ -81,7 +85,8 @@ fun ApplianceListScreen(
                                 Text(
                                     text = formatDuration(
                                         appliance.durationHours,
-                                        appliance.durationMinutes
+                                        appliance.durationMinutes,
+                                        resources
                                     )
                                 )
                             },

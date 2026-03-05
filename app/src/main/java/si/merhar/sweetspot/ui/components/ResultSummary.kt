@@ -17,8 +17,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import kotlinx.coroutines.delay
 import androidx.compose.ui.unit.dp
+import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.formatRelative
 import si.merhar.sweetspot.util.shortTimeFormatter
@@ -31,6 +34,7 @@ import java.time.ZonedDateTime
  */
 @Composable
 fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier = Modifier) {
+    val resources = LocalContext.current.resources
     var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
     LaunchedEffect(Unit) {
         while (true) {
@@ -48,15 +52,15 @@ fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier =
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SummaryCard(
-                label = "Start",
+                label = stringResource(R.string.result_start),
                 value = result.startTime.format(shortTimeFormatter),
-                subtitle = formatRelative(result.startTime, now),
+                subtitle = formatRelative(result.startTime, now, resources),
                 modifier = Modifier.weight(1f)
             )
             SummaryCard(
-                label = "End",
+                label = stringResource(R.string.result_end),
                 value = result.endTime.format(shortTimeFormatter),
-                subtitle = formatRelative(result.endTime, now),
+                subtitle = formatRelative(result.endTime, now, resources),
                 modifier = Modifier.weight(1f)
             )
         }
@@ -65,13 +69,13 @@ fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier =
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SummaryCard(
-                label = "Total cost",
+                label = stringResource(R.string.result_total_cost),
                 value = "\u20AC ${String.format("%.4f", result.totalCost)}",
                 modifier = Modifier.weight(1f)
             )
             SummaryCard(
-                label = "Avg price",
-                value = "\u20AC ${String.format("%.4f", result.avgPrice)}/kWh",
+                label = stringResource(R.string.result_avg_price),
+                value = "\u20AC ${String.format("%.4f", result.avgPrice)}${stringResource(R.string.result_per_kwh)}",
                 modifier = Modifier.weight(1f)
             )
         }

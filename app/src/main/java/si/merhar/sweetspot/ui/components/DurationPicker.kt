@@ -22,6 +22,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -29,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import si.merhar.sweetspot.R
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 private val ITEM_HEIGHT = 40.dp
@@ -112,18 +114,21 @@ fun DurationPicker(
     }
 
     val minutesText = minutes.toString().padStart(2, '0')
+    val durationPickerCd = stringResource(R.string.cd_duration_picker)
+    val hoursCd = stringResource(R.string.cd_hours, hours)
+    val minutesCd = stringResource(R.string.cd_minutes, minutesText)
 
     Column(
         modifier = modifier
             .fillMaxWidth()
             .semantics {
-                contentDescription = "Duration picker"
+                contentDescription = durationPickerCd
                 stateDescription = "${hours}h ${minutesText}m"
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Duration",
+            text = stringResource(R.string.picker_duration),
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(bottom = 4.dp)
@@ -157,7 +162,7 @@ fun DurationPicker(
                     modifier = Modifier
                         .width(60.dp)
                         .height(ITEM_HEIGHT * VISIBLE_ITEMS)
-                        .semantics { contentDescription = "Hours: $hours" }
+                        .semantics { contentDescription = hoursCd }
                 ) {
                     // Top spacer items so first real item can be centered
                     items(spacerCount) {
@@ -178,7 +183,7 @@ fun DurationPicker(
                 }
 
                 Text(
-                    text = "h",
+                    text = stringResource(R.string.picker_hour_suffix),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(horizontal = 2.dp)
@@ -192,7 +197,7 @@ fun DurationPicker(
                     modifier = Modifier
                         .width(60.dp)
                         .height(ITEM_HEIGHT * VISIBLE_ITEMS)
-                        .semantics { contentDescription = "Minutes: $minutesText" }
+                        .semantics { contentDescription = minutesCd }
                 ) {
                     // Top spacer
                     items(spacerCount) {
@@ -213,7 +218,7 @@ fun DurationPicker(
                 }
 
                 Text(
-                    text = "m",
+                    text = stringResource(R.string.picker_minute_suffix),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(horizontal = 2.dp)

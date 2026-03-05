@@ -28,7 +28,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.BreakdownSlot
 import si.merhar.sweetspot.util.shortTimeFormatter
 
@@ -50,13 +52,13 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Cost Breakdown",
+                text = stringResource(R.string.result_cost_breakdown),
                 style = MaterialTheme.typography.titleMedium
             )
             Icon(
                 imageVector = if (expanded) Icons.Default.KeyboardArrowUp
                     else Icons.Default.KeyboardArrowDown,
-                contentDescription = if (expanded) "Collapse" else "Expand",
+                contentDescription = if (expanded) stringResource(R.string.cd_collapse) else stringResource(R.string.cd_expand),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }

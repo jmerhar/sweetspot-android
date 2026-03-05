@@ -1,8 +1,8 @@
 package si.merhar.sweetspot.wear
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -19,7 +19,7 @@ import si.merhar.sweetspot.wear.ui.WearTheme
  *
  * Hosts a [SwipeDismissableNavHost] with two routes: the appliance list and the result screen.
  */
-class WearActivity : ComponentActivity() {
+class WearActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

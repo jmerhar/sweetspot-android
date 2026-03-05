@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Stel apparaten in via de telefoon-app.</string>
+    <string name="wear_start">Start</string>
+    <string name="wear_end">Einde</string>
+    <string name="wear_no_result">Geen resultaat</string>
+    <string name="wear_error_no_zone">Configureer je zone op de telefoon.</string>
+    <string name="wear_error_no_data">Geen prijsgegevens beschikbaar.</string>
+    <string name="wear_error_not_enough_data">Niet genoeg gegevens voor %s.</string>
+    <string name="wear_error_network">Kan prijzen niet ophalen.</string>
+</resources>

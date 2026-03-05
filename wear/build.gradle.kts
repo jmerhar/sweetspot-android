@@ -23,6 +23,7 @@ dependencies {
     implementation(libs.wear.compose.navigation)
 
     implementation(libs.compose.ui)
+    implementation(libs.appcompat)
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)

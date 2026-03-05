@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Set up appliances in the phone app.</string>
+    <string name="wear_start">Start</string>
+    <string name="wear_end">End</string>
+    <string name="wear_no_result">No result</string>
+    <string name="wear_error_no_zone">Please configure your zone on the phone.</string>
+    <string name="wear_error_no_data">No price data available.</string>
+    <string name="wear_error_not_enough_data">Not enough data for %s.</string>
+    <string name="wear_error_network">Could not fetch prices.</string>
 </resources>

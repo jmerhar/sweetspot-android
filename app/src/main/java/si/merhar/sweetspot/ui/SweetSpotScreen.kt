@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.AppError
@@ -132,7 +133,7 @@ private fun FormScreen(
                     IconButton(onClick = viewModel::onShowSettings) {
                         Icon(
                             imageVector = Icons.Default.Settings,
-                            contentDescription = "Settings"
+                            contentDescription = stringResource(R.string.cd_settings)
                         )
                     }
                 },
@@ -180,7 +181,7 @@ private fun FormScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "SweetSpot helps you save money by finding the cheapest time to run your appliances. Just pick how long your appliance needs to run, and it will scan the next 24 hours of dynamic electricity prices to find the best window. You can also save your favourite appliances in settings for quick access.",
+                text = stringResource(R.string.main_description),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 4.dp)
@@ -213,7 +214,7 @@ private fun ResultScreen(
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
+                            contentDescription = stringResource(R.string.cd_back)
                         )
                     }
                 },
@@ -233,7 +234,7 @@ private fun ResultScreen(
                 .padding(horizontal = 16.dp)
         ) {
             Text(
-                text = "Cheapest Window",
+                text = stringResource(R.string.result_cheapest_window),
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
@@ -248,7 +249,7 @@ private fun ResultScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "Upcoming Prices",
+                    text = stringResource(R.string.result_upcoming_prices),
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
@@ -262,9 +263,8 @@ private fun ResultScreen(
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
-                text = "Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee." +
-                    " Tomorrow\u2019s prices are usually available after 13:00 CET." +
-                    (if (priceSource != null) "\nData source: $priceSource" else ""),
+                text = stringResource(R.string.result_disclaimer) +
+                    (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else ""),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

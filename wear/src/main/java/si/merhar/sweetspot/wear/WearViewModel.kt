@@ -2,6 +2,8 @@ package si.merhar.sweetspot.wear
 
 import android.app.Application
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.DataClient
@@ -116,6 +118,7 @@ class WearViewModel @JvmOverloads constructor(
                         )
                         val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
                         val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
+                        applyLanguage(dataMap.getString("language"))
                         _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
                     }
                 }
@@ -151,6 +154,7 @@ class WearViewModel @JvmOverloads constructor(
                             )
                             val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
                             val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
+                            applyLanguage(dataMap.getString("language"))
                             _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
                         }
                     }
@@ -172,12 +176,13 @@ class WearViewModel @JvmOverloads constructor(
         val h = appliance.durationHours
         val m = appliance.durationMinutes
         val durationHours = h + m / 60.0
-        val label = "${appliance.name} \u00b7 ${formatDuration(h, m)}"
+        val res = getApplication<Application>().resources
+        val label = "${appliance.name} \u00b7 ${formatDuration(h, m, res)}"
 
         val priceZone = _uiState.value.priceZone
         if (priceZone == null) {
             _uiState.update {
-                it.copy(error = "Please configure your zone on the phone.")
+                it.copy(error = getApplication<Application>().getString(R.string.wear_error_no_zone))
             }
             return
         }
@@ -202,7 +207,7 @@ class WearViewModel @JvmOverloads constructor(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = "No price data available."
+                            error = getApplication<Application>().getString(R.string.wear_error_no_data)
                         )
                     }
                     return@launch
@@ -215,7 +220,7 @@ class WearViewModel @JvmOverloads constructor(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = "Not enough data for ${formatDuration(h, m)}."
+                            error = getApplication<Application>().getString(R.string.wear_error_not_enough_data, formatDuration(h, m, res))
                         )
                     }
                     return@launch
@@ -233,7 +238,7 @@ class WearViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = "Could not fetch prices."
+                        error = getApplication<Application>().getString(R.string.wear_error_network)
                     )
                 }
             }
@@ -243,6 +248,18 @@ class WearViewModel @JvmOverloads constructor(
     /** Clears the current result to return to the appliance list. */
     fun onClearResult() {
         _uiState.update { it.copy(result = null, resultLabel = null, error = null) }
+    }
+
+    /**
+     * Applies the language tag received from the phone via the Data Layer.
+     *
+     * An empty or null tag means "system default".
+     *
+     * @param languageTag BCP 47 language tag, or empty/null for system default.
+     */
+    private fun applyLanguage(languageTag: String?) {
+        val tag = languageTag ?: ""
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
     }
 
     /**

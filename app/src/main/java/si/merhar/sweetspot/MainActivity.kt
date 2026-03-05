@@ -1,10 +1,10 @@
 package si.merhar.sweetspot
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -19,7 +19,7 @@ import si.merhar.sweetspot.ui.theme.SweetSpotTheme
  * Hosts the [SweetSpotTheme] and switches between [SweetSpotScreen] and [SettingsScreen]
  * based on [SweetSpotViewModel] state.
  */
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -49,6 +49,7 @@ class MainActivity : ComponentActivity() {
                         onSourceOrderChanged = vm::onSourceOrderChanged,
                         onDisabledSourcesChanged = vm::onDisabledSourcesChanged,
                         onResetSourceOrder = vm::onResetSourceOrder,
+                        onLanguageChanged = vm::onLanguageChanged,
                         onBack = vm::onHideSettings
                     )
                 } else {

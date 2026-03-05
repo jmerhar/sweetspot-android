@@ -20,9 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.PriceSlot
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.ui.theme.LocalBarNegativeColor
@@ -65,6 +67,8 @@ fun PriceBarChart(
     val highlightColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f)
     val trackColor = MaterialTheme.colorScheme.surfaceVariant
 
+    val cheapestWindowCd = stringResource(R.string.cd_cheapest_window)
+
     val minPrice = remember(prices) { prices.minOfOrNull { it.price } ?: 0.0 }
     val maxPrice = remember(prices) { prices.maxOfOrNull { it.price } ?: 1.0 }
     val hasNegative = minPrice < 0
@@ -94,7 +98,7 @@ fun PriceBarChart(
             val rowBackground = if (anyOptimal) highlightColor else Color.Transparent
             val timeText = hourTime.format(shortTimeFormatter)
             val priceText = "\u20AC ${String.format("%.3f", avgPrice)}"
-            val rowDescription = if (anyOptimal) "$timeText, $priceText, cheapest window" else "$timeText, $priceText"
+            val rowDescription = if (anyOptimal) "$timeText, $priceText, $cheapestWindowCd" else "$timeText, $priceText"
 
             // Build a fixed-size list of slots for this hour, with nulls for missing sub-slots.
             // This ensures incomplete hours (first/last) always render the same height.

@@ -256,4 +256,11 @@ class WearViewModelTest {
         assertEquals(0, result[0].durationMinutes)
         assertEquals("bolt", result[0].icon)
     }
+
+    // --- Source order ---
+
+    @Test
+    fun `initial state has null source order`() {
+        assertNull(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.sourceOrder)
+    }
 }

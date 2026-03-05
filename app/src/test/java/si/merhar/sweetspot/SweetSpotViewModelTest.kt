@@ -404,4 +404,50 @@ class SweetSpotViewModelTest {
         assertEquals("3h", state.resultLabel)
         assertNotNull(state.result)
     }
+
+    // --- Source order ---
+
+    @Test
+    fun `initial state has null source order`() {
+        assertNull(defaultViewModel().uiState.value.sourceOrder)
+    }
+
+    @Test
+    fun `initial state has empty disabled sources`() {
+        assertTrue(defaultViewModel().uiState.value.disabledSources.isEmpty())
+    }
+
+    @Test
+    fun `onSourceOrderChanged updates source order in state`() {
+        val viewModel = defaultViewModel()
+        viewModel.onSourceOrderChanged(listOf("energyzero", "entsoe"))
+        assertEquals(listOf("energyzero", "entsoe"), viewModel.uiState.value.sourceOrder)
+    }
+
+    @Test
+    fun `onDisabledSourcesChanged updates disabled sources in state`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDisabledSourcesChanged(setOf("entsoe"))
+        assertEquals(setOf("entsoe"), viewModel.uiState.value.disabledSources)
+    }
+
+    @Test
+    fun `onResetSourceOrder clears source order and disabled sources`() {
+        val viewModel = defaultViewModel()
+        viewModel.onSourceOrderChanged(listOf("energyzero", "entsoe"))
+        viewModel.onDisabledSourcesChanged(setOf("entsoe"))
+        viewModel.onResetSourceOrder()
+        assertNull(viewModel.uiState.value.sourceOrder)
+        assertTrue(viewModel.uiState.value.disabledSources.isEmpty())
+    }
+
+    @Test
+    fun `onCountrySelected resets source order and disabled sources`() {
+        val viewModel = defaultViewModel()
+        viewModel.onSourceOrderChanged(listOf("energyzero", "entsoe"))
+        viewModel.onDisabledSourcesChanged(setOf("entsoe"))
+        viewModel.onCountrySelected("DE")
+        assertNull(viewModel.uiState.value.sourceOrder)
+        assertTrue(viewModel.uiState.value.disabledSources.isEmpty())
+    }
 }

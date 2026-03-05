@@ -42,6 +42,8 @@ import java.time.ZonedDateTime
  * @property result The cheapest-window result, or `null` if no search has been performed.
  * @property resultLabel Label shown on the result screen (e.g. "Washer · 2h 30m").
  * @property priceZone The resolved price zone synced from the phone, or `null` if not yet configured.
+ * @property sourceOrder Ordered list of all source IDs synced from the phone, or `null` for zone defaults.
+ * @property disabledSources Set of disabled source IDs synced from the phone.
  */
 data class WearUiState(
     val appliances: List<Appliance> = emptyList(),
@@ -49,7 +51,9 @@ data class WearUiState(
     val error: String? = null,
     val result: WindowResult? = null,
     val resultLabel: String? = null,
-    val priceZone: PriceZone? = Countries.defaultCountry().zones.first()
+    val priceZone: PriceZone? = Countries.defaultCountry().zones.first(),
+    val sourceOrder: List<String>? = null,
+    val disabledSources: Set<String> = emptySet()
 )
 
 /**
@@ -60,13 +64,14 @@ data class WearUiState(
  * algorithm from the shared module.
  *
  * @param application Application context.
- * @param priceFetcherFactory Factory for creating price fetchers per zone.
+ * @param priceFetcherFactory Optional factory override for testing. When `null` (production),
+ *   the factory is created dynamically from the current source order.
  * @param priceCache Cache for raw price JSON.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
 class WearViewModel @JvmOverloads constructor(
     application: Application,
-    private val priceFetcherFactory: PriceFetcherFactory = defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN),
+    private val priceFetcherFactory: PriceFetcherFactory? = null,
     private val priceCache: PriceCache = FilePriceCache(application),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AndroidViewModel(application),
@@ -109,7 +114,9 @@ class WearViewModel @JvmOverloads constructor(
                             dataMap.getString("country_code"),
                             dataMap.getString("price_zone_id")
                         )
-                        _uiState.update { it.copy(priceZone = zone) }
+                        val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
+                        val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
+                        _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
                     }
                 }
             }
@@ -142,7 +149,9 @@ class WearViewModel @JvmOverloads constructor(
                                 dataMap.getString("country_code"),
                                 dataMap.getString("price_zone_id")
                             )
-                            _uiState.update { it.copy(priceZone = zone) }
+                            val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
+                            val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
+                            _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
                         }
                     }
                 }
@@ -181,7 +190,11 @@ class WearViewModel @JvmOverloads constructor(
         val timeZoneId = ZoneId.of(priceZone.timeZoneId)
         fetchJob = viewModelScope.launch(ioDispatcher) {
             try {
-                val fetcher = priceFetcherFactory.create(priceZone)
+                val state = _uiState.value
+                val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
+                val factory = priceFetcherFactory
+                    ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder)
+                val fetcher = factory.create(priceZone)
                 val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
                 val prices = repository.getPrices().prices
 
@@ -262,6 +275,42 @@ class WearViewModel @JvmOverloads constructor(
         } catch (e: Exception) {
             Log.w("WearViewModel", "Failed to parse appliances JSON", e)
             emptyList()
+        }
+    }
+
+    /**
+     * Parses a source order string from the Data Layer into a list of source IDs.
+     *
+     * An empty or blank string means "use defaults" (returns `null`).
+     *
+     * @param raw JSON-encoded source order string, or `null`/empty for defaults.
+     * @return Ordered list of source IDs, or `null` for defaults.
+     */
+    private fun parseSourceOrder(raw: String?): List<String>? {
+        if (raw.isNullOrBlank()) return null
+        return try {
+            Json.decodeFromString<List<String>>(raw)
+        } catch (e: Exception) {
+            Log.w("WearViewModel", "Failed to parse source order JSON", e)
+            null
+        }
+    }
+
+    /**
+     * Parses a disabled sources string from the Data Layer into a set of source IDs.
+     *
+     * An empty or blank string means "none disabled" (returns empty set).
+     *
+     * @param raw JSON-encoded disabled sources string, or `null`/empty for none.
+     * @return Set of disabled source IDs.
+     */
+    private fun parseDisabledSources(raw: String?): Set<String> {
+        if (raw.isNullOrBlank()) return emptySet()
+        return try {
+            Json.decodeFromString<Set<String>>(raw)
+        } catch (e: Exception) {
+            Log.w("WearViewModel", "Failed to parse disabled sources JSON", e)
+            emptySet()
         }
     }
 }

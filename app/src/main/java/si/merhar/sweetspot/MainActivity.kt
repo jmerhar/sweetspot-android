@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import si.merhar.sweetspot.data.api.DataSources
 import si.merhar.sweetspot.ui.SettingsScreen
 import si.merhar.sweetspot.ui.SweetSpotScreen
 import si.merhar.sweetspot.ui.theme.SweetSpotTheme
@@ -42,6 +43,12 @@ class MainActivity : ComponentActivity() {
                         countries = state.countries,
                         onCountrySelected = vm::onCountrySelected,
                         onPriceZoneSelected = vm::onPriceZoneSelected,
+                        sourceOrder = state.sourceOrder,
+                        disabledSources = state.disabledSources,
+                        availableSources = DataSources.defaultsForZone(state.priceZone?.id ?: ""),
+                        onSourceOrderChanged = vm::onSourceOrderChanged,
+                        onDisabledSourcesChanged = vm::onDisabledSourcesChanged,
+                        onResetSourceOrder = vm::onResetSourceOrder,
                         onBack = vm::onHideSettings
                     )
                 } else {

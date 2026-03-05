@@ -65,6 +65,8 @@ sealed interface AppError {
  * @property appliances User-configured appliances with preset durations.
  * @property countryCode ISO code of the selected country.
  * @property priceZone The resolved price zone for fetching prices, or `null` if a multi-zone country has no selection yet.
+ * @property sourceOrder Ordered list of all source IDs for display/priority, or `null` for zone defaults.
+ * @property disabledSources Set of source IDs that are disabled, or empty if all enabled.
  * @property countries All supported countries for the country picker.
  */
 data class UiState(
@@ -82,6 +84,8 @@ data class UiState(
     val appliances: List<Appliance> = emptyList(),
     val countryCode: String = Countries.defaultCountry().code,
     val priceZone: PriceZone? = Countries.defaultCountry().zones.first(),
+    val sourceOrder: List<String>? = null,
+    val disabledSources: Set<String> = emptySet(),
     val countries: List<Country> = Countries.all
 )
 
@@ -93,13 +97,14 @@ data class UiState(
  * and appliance CRUD.
  *
  * @param application Application context.
- * @param priceFetcherFactory Factory for creating price fetchers per zone.
+ * @param priceFetcherFactory Optional factory override for testing. When `null` (production),
+ *   the factory is created dynamically from the current source order.
  * @param priceCache Cache for raw price JSON.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
-    private val priceFetcherFactory: PriceFetcherFactory = defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN),
+    private val priceFetcherFactory: PriceFetcherFactory? = null,
     private val priceCache: PriceCache = FilePriceCache(application),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AndroidViewModel(application) {
@@ -115,6 +120,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             appliances = settingsRepository.getAppliances(),
             countryCode = settingsRepository.getCountryCode(),
             priceZone = settingsRepository.getResolvedPriceZone(),
+            sourceOrder = settingsRepository.getSourceOrder(),
+            disabledSources = settingsRepository.getDisabledSources(),
             countries = countriesWithDetectedFirst(application)
         )
     )
@@ -179,7 +186,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             it.copy(
                 countryCode = code,
                 priceZone = zone,
-                timeZoneId = timeZoneId
+                timeZoneId = timeZoneId,
+                sourceOrder = null,
+                disabledSources = emptySet()
             )
         }
         syncSettingsToWear()
@@ -203,6 +212,38 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 timeZoneId = timeZoneId
             )
         }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Updates the data source display/priority order.
+     *
+     * Saves the ordered list of all source IDs and syncs to the watch.
+     *
+     * @param order Ordered list of all source IDs (enabled and disabled).
+     */
+    fun onSourceOrderChanged(order: List<String>) {
+        settingsRepository.setSourceOrder(order)
+        _uiState.update { it.copy(sourceOrder = order) }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Updates which data sources are disabled.
+     *
+     * @param disabled Set of source IDs to disable.
+     */
+    fun onDisabledSourcesChanged(disabled: Set<String>) {
+        settingsRepository.setDisabledSources(disabled)
+        _uiState.update { it.copy(disabledSources = disabled) }
+        syncSettingsToWear()
+    }
+
+    /** Resets the data source order and disabled set to zone defaults and syncs to the watch. */
+    fun onResetSourceOrder() {
+        settingsRepository.clearSourceOrder()
+        settingsRepository.clearDisabledSources()
+        _uiState.update { it.copy(sourceOrder = null, disabledSources = emptySet()) }
         syncSettingsToWear()
     }
 
@@ -331,6 +372,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             val request = PutDataMapRequest.create("/settings").apply {
                 dataMap.putString("country_code", state.countryCode)
                 dataMap.putString("price_zone_id", priceZone.id)
+                dataMap.putString("source_order", state.sourceOrder?.let { Json.encodeToString(it) } ?: "")
+                dataMap.putString("disabled_sources", state.disabledSources.takeIf { it.isNotEmpty() }?.let { Json.encodeToString(it) } ?: "")
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
             Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
@@ -403,7 +446,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
      */
     private fun fetchAndFind(durationHours: Double, durationLabel: String, timeZoneId: ZoneId, priceZone: PriceZone) {
         try {
-            val fetcher = priceFetcherFactory.create(priceZone)
+            val state = _uiState.value
+            val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
+            val factory = priceFetcherFactory
+                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder)
+            val fetcher = factory.create(priceZone)
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
             val prices = priceResult.prices

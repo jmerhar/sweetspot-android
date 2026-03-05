@@ -59,7 +59,7 @@ RELEASE_KEY_PASSWORD=...
 
 - **`release.md`** — Current release notes (used by the release script)
 - **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
-- **`ideas/`** — Feature ideas: car charging, low price alerts, all-in pricing, localization, cache management
+- **`ideas/`** — Feature ideas and implemented features: car charging, low price alerts, all-in pricing, localization, cache management, data source preferences (implemented)
 - **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide
 
 `docs/entsoe/` contains ENTSO-E API documentation and sample XML responses.
@@ -67,13 +67,14 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (159 tests)
+./gradlew test                   # Run all unit tests (172 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
 - `data/api/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
+- `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone count (8 tests, in shared)
 - `data/api/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/api/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/api/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
@@ -85,8 +86,8 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, async fetch, rapid-tap cancellation (30 tests, Robolectric, in app)
-- `WearViewModelTest` — Wear ViewModel state, appliance tap, async fetch, rapid-tap cancellation, JSON parsing (15 tests, Robolectric, in wear)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation (34 tests, Robolectric, in app)
+- `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing (16 tests, Robolectric, in wear)
 
 ## Stack
 
@@ -99,7 +100,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (159 tests)
+- JUnit 4 + Robolectric for unit tests (172 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -116,16 +117,17 @@ Three Gradle modules:
 
 **Data flow (watch):** Data Layer listener → appliance list → user taps chip → `PriceRepository` → `findCheapestWindow()` → `WearUiState` → Wear Compose UI.
 
-**Appliance sync:** Phone pushes appliance JSON to `/appliances` path via `PutDataMapRequest` after every CRUD operation. Zone settings are pushed to `/settings` path (country code + price zone ID). Watch reads on init and listens for live updates via `DataClient.OnDataChangedListener`.
+**Appliance sync:** Phone pushes appliance JSON to `/appliances` path via `PutDataMapRequest` after every CRUD operation. Zone settings (country code, price zone ID, source order) are pushed to `/settings` path. Watch reads on init and listens for live updates via `DataClient.OnDataChangedListener`.
 
 ### Shared module (`:shared`)
 
 The data layer is organized into three subpackages under `data/`:
 
 **`data/api/`** — API implementations and fetcher infrastructure:
+- **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone. Also contains `SPOT_HINTA_ZONES` set.
 - **`PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `FetchResult` (prices + source name). `FetchResult` pairs a `List<PriceSlot>` with the data source name (e.g. "ENTSO-E", "EnergyZero"). Decouples `PriceRepository` from a specific API provider.
 - **`FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Used for NL (ENTSO-E primary, EnergyZero fallback) and Nordic/Baltic zones (ENTSO-E primary, Spot-Hinta.fi fallback).
-- **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken)` routes all zones → EntsoeApi, with NL wrapped in `FallbackPriceFetcher` adding EnergyZero as fallback, and 15 Nordic/Baltic zones wrapped with Spot-Hinta.fi as fallback.
+- **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken, sourceOrder)` builds the fetcher chain dynamically from the user's source order preference (or zone defaults when `null`). Always wraps in `FallbackPriceFetcher`.
 - **`EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`SpotHintaApi`** — `PriceFetcher` for the Spot-Hinta.fi API (15 Nordic/Baltic zones). Returns JSON (top-level array), parses with kotlinx-serialization. Prices are already EUR/kWh, 15-minute resolution. Region parameter maps directly to zone IDs. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, returns prices at native resolution (PT15M or PT60M), converts EUR/MWh to EUR/kWh. Also exposes `fetchRaw()` and `parse()` directly for tests.
@@ -137,7 +139,7 @@ The data layer is organized into three subpackages under `data/`:
 
 **`data/repository/`** — Business logic:
 - **`PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Returns `PriceResult` (prices + source name). Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Threads the data source name from `FetchResult`/cache through to `PriceResult`. Takes injectable `PriceFetcher` and `Clock` for testing.
-- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, and appliances (JSON-serialized list). Auto-detects country on first access via `CountryDetector`.
+- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), and appliances (JSON-serialized list). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order.
 - **`CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
@@ -148,11 +150,11 @@ The data layer is organized into three subpackages under `data/`:
 
 ### Phone app (`:app`)
 
-- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances and zone settings to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
+- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, and source order to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
 
 ### Wear app (`:wear`)
 
-- **`WearViewModel`** — Reads appliances and zone settings from Data Layer on init, listens for live updates. On appliance tap, fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch.
+- **`WearViewModel`** — Reads appliances, zone settings, and source order from Data Layer on init, listens for live updates. On appliance tap, creates `PriceFetcherFactory` dynamically from source order, fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch.
 - **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`.
 - **`ui/ApplianceListScreen`** — `Scaffold` with `PositionIndicator`, `TimeText`, `ScalingLazyColumn` of appliance `Chip`s (icon + name + duration), empty state, loading overlay.
 - **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display that auto-refreshes every 60 seconds. Scrollable for long labels on round watch faces.

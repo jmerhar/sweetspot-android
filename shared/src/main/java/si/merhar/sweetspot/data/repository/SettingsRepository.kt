@@ -26,6 +26,8 @@ class SettingsRepository(private val context: Context) {
         const val KEY_APPLIANCES = "appliances"
         const val KEY_COUNTRY_CODE = "country_code"
         const val KEY_PRICE_ZONE_ID = "price_zone_id"
+        const val KEY_SOURCE_ORDER = "source_order"
+        const val KEY_DISABLED_SOURCES = "disabled_sources"
 
         /** Lenient parser that ignores unknown fields for forward compatibility. */
         val json = Json { ignoreUnknownKeys = true }
@@ -51,10 +53,14 @@ class SettingsRepository(private val context: Context) {
     /**
      * Persists the selected country code.
      *
+     * Also clears any custom source order, since available sources differ per country.
+     *
      * @param code ISO 3166-1 alpha-2 country code.
      */
     fun setCountryCode(code: String) {
         prefs.edit().putString(KEY_COUNTRY_CODE, code).apply()
+        clearSourceOrder()
+        clearDisabledSources()
     }
 
     /**
@@ -134,6 +140,68 @@ class SettingsRepository(private val context: Context) {
     /** Returns `true` if no custom timezone has been set (using zone-derived default). */
     fun isUsingDefaultTimezone(): Boolean {
         return prefs.getString(KEY_TIMEZONE_ID, null) == null
+    }
+
+    // --- Data Source Order ---
+
+    /**
+     * Returns the user's preferred source display order, or `null` if using defaults.
+     *
+     * The list contains all source IDs in display/priority order (both enabled and disabled).
+     */
+    fun getSourceOrder(): List<String>? {
+        val stored = prefs.getString(KEY_SOURCE_ORDER, null) ?: return null
+        return try {
+            json.decodeFromString<List<String>>(stored)
+        } catch (_: Exception) {
+            null
+        }
+    }
+
+    /**
+     * Persists the user's preferred source display order.
+     *
+     * @param order Ordered list of all source IDs (enabled and disabled).
+     */
+    fun setSourceOrder(order: List<String>) {
+        prefs.edit().putString(KEY_SOURCE_ORDER, json.encodeToString(order)).apply()
+    }
+
+    /** Removes the custom source order, reverting to zone-specific defaults. */
+    fun clearSourceOrder() {
+        prefs.edit().remove(KEY_SOURCE_ORDER).apply()
+    }
+
+    /**
+     * Returns the set of disabled source IDs.
+     *
+     * @return Set of disabled source IDs, or empty set if all enabled.
+     */
+    fun getDisabledSources(): Set<String> {
+        val stored = prefs.getString(KEY_DISABLED_SOURCES, null) ?: return emptySet()
+        return try {
+            json.decodeFromString<Set<String>>(stored)
+        } catch (_: Exception) {
+            emptySet()
+        }
+    }
+
+    /**
+     * Persists the set of disabled source IDs.
+     *
+     * @param disabled Set of source IDs to disable.
+     */
+    fun setDisabledSources(disabled: Set<String>) {
+        if (disabled.isEmpty()) {
+            prefs.edit().remove(KEY_DISABLED_SOURCES).apply()
+        } else {
+            prefs.edit().putString(KEY_DISABLED_SOURCES, json.encodeToString(disabled)).apply()
+        }
+    }
+
+    /** Removes all disabled sources, re-enabling everything. */
+    fun clearDisabledSources() {
+        prefs.edit().remove(KEY_DISABLED_SOURCES).apply()
     }
 
     // --- Appliances ---

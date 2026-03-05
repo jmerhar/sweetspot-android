@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dh</string>
+    <string name="duration_minutes_only">%dm</string>
+    <string name="duration_hours_minutes">%1$dh %2$dm</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">acum</string>
+    <string name="relative_in_hours_minutes">peste %1$dh %2$dm</string>
+    <string name="relative_in_hours">peste %1$dh</string>
+    <string name="relative_in_minutes">peste %1$dm</string>
+
+    <!-- Country names -->
+    <string name="country_at">Austria</string>
+    <string name="country_be">Belgia</string>
+    <string name="country_bg">Bulgaria</string>
+    <string name="country_hr">Croația</string>
+    <string name="country_cz">Cehia</string>
+    <string name="country_dk">Danemarca</string>
+    <string name="country_ee">Estonia</string>
+    <string name="country_fi">Finlanda</string>
+    <string name="country_fr">Franța</string>
+    <string name="country_de">Germania</string>
+    <string name="country_gr">Grecia</string>
+    <string name="country_hu">Ungaria</string>
+    <string name="country_ie">Irlanda</string>
+    <string name="country_it">Italia</string>
+    <string name="country_lv">Letonia</string>
+    <string name="country_lt">Lituania</string>
+    <string name="country_lu">Luxemburg</string>
+    <string name="country_me">Muntenegru</string>
+    <string name="country_nl">Țările de Jos</string>
+    <string name="country_mk">Macedonia de Nord</string>
+    <string name="country_no">Norvegia</string>
+    <string name="country_pl">Polonia</string>
+    <string name="country_pt">Portugalia</string>
+    <string name="country_ro">România</string>
+    <string name="country_rs">Serbia</string>
+    <string name="country_sk">Slovacia</string>
+    <string name="country_si">Slovenia</string>
+    <string name="country_es">Spania</string>
+    <string name="country_se">Suedia</string>
+    <string name="country_ch">Elveția</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Austria</string>
+    <string name="zone_be">Belgia</string>
+    <string name="zone_bg">Bulgaria</string>
+    <string name="zone_hr">Croația</string>
+    <string name="zone_cz">Cehia</string>
+    <string name="zone_dk1">DK1 — Danemarca de Vest</string>
+    <string name="zone_dk2">DK2 — Danemarca de Est</string>
+    <string name="zone_ee">Estonia</string>
+    <string name="zone_fi">Finlanda</string>
+    <string name="zone_fr">Franța</string>
+    <string name="zone_de_lu">Germania / Luxemburg</string>
+    <string name="zone_gr">Grecia</string>
+    <string name="zone_hu">Ungaria</string>
+    <string name="zone_ie_sem">Irlanda (SEM)</string>
+    <string name="zone_it_nord">Nord</string>
+    <string name="zone_it_cnor">Centru-Nord</string>
+    <string name="zone_it_csud">Centru-Sud</string>
+    <string name="zone_it_sud">Sud</string>
+    <string name="zone_it_cala">Calabria</string>
+    <string name="zone_it_sici">Sicilia</string>
+    <string name="zone_it_sard">Sardinia</string>
+    <string name="zone_lv">Letonia</string>
+    <string name="zone_lt">Lituania</string>
+    <string name="zone_me">Muntenegru</string>
+    <string name="zone_nl">Țările de Jos</string>
+    <string name="zone_mk">Macedonia de Nord</string>
+    <string name="zone_no1">NO1 — Sud-Estul Norvegiei</string>
+    <string name="zone_no2">NO2 — Sud-Vestul Norvegiei</string>
+    <string name="zone_no3">NO3 — Norvegia Centrală</string>
+    <string name="zone_no4">NO4 — Nordul Norvegiei</string>
+    <string name="zone_no5">NO5 — Vestul Norvegiei</string>
+    <string name="zone_pl">Polonia</string>
+    <string name="zone_pt">Portugalia</string>
+    <string name="zone_ro">România</string>
+    <string name="zone_rs">Serbia</string>
+    <string name="zone_sk">Slovacia</string>
+    <string name="zone_si">Slovenia</string>
+    <string name="zone_es">Spania</string>
+    <string name="zone_se1">SE1 — Nordul Suediei</string>
+    <string name="zone_se2">SE2 — Centru-Nordul Suediei</string>
+    <string name="zone_se3">SE3 — Centru-Sudul Suediei</string>
+    <string name="zone_se4">SE4 — Sudul Suediei</string>
+    <string name="zone_ch">Elveția</string>
+</resources>

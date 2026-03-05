@@ -41,6 +41,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behavior
 - **Quick-duration buttons** — 1h–6h chips for common durations
 - **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
+- **25 languages** — localized UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
 - **Wear OS companion** — tap an appliance on your watch to see cheapest start/end times
 - **Automatic appliance sync** — appliances and zone settings sync from phone to watch via Wearable Data Layer
@@ -86,7 +87,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-140 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, and ViewModel state management (via Robolectric).
+174 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, and ViewModel state management (via Robolectric).
 
 ## License
 

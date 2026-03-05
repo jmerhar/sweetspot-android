@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Määritä laitteet puhelinsovelluksessa.</string>
+    <string name="wear_start">Alku</string>
+    <string name="wear_end">Loppu</string>
+    <string name="wear_no_result">Ei tulosta</string>
+    <string name="wear_error_no_zone">Määritä alue puhelimessa.</string>
+    <string name="wear_error_no_data">Hintatietoja ei ole saatavilla.</string>
+    <string name="wear_error_not_enough_data">Tiedot eivät riitä jaksolle %s.</string>
+    <string name="wear_error_network">Hintoja ei voitu hakea.</string>
+</resources>

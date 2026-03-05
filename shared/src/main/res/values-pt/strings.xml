@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dh</string>
+    <string name="duration_minutes_only">%dm</string>
+    <string name="duration_hours_minutes">%1$dh %2$dm</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">agora</string>
+    <string name="relative_in_hours_minutes">em %1$dh %2$dm</string>
+    <string name="relative_in_hours">em %1$dh</string>
+    <string name="relative_in_minutes">em %1$dm</string>
+
+    <!-- Country names -->
+    <string name="country_at">Áustria</string>
+    <string name="country_be">Bélgica</string>
+    <string name="country_bg">Bulgária</string>
+    <string name="country_hr">Croácia</string>
+    <string name="country_cz">Chéquia</string>
+    <string name="country_dk">Dinamarca</string>
+    <string name="country_ee">Estónia</string>
+    <string name="country_fi">Finlândia</string>
+    <string name="country_fr">França</string>
+    <string name="country_de">Alemanha</string>
+    <string name="country_gr">Grécia</string>
+    <string name="country_hu">Hungria</string>
+    <string name="country_ie">Irlanda</string>
+    <string name="country_it">Itália</string>
+    <string name="country_lv">Letónia</string>
+    <string name="country_lt">Lituânia</string>
+    <string name="country_lu">Luxemburgo</string>
+    <string name="country_me">Montenegro</string>
+    <string name="country_nl">Países Baixos</string>
+    <string name="country_mk">Macedónia do Norte</string>
+    <string name="country_no">Noruega</string>
+    <string name="country_pl">Polónia</string>
+    <string name="country_pt">Portugal</string>
+    <string name="country_ro">Roménia</string>
+    <string name="country_rs">Sérvia</string>
+    <string name="country_sk">Eslováquia</string>
+    <string name="country_si">Eslovénia</string>
+    <string name="country_es">Espanha</string>
+    <string name="country_se">Suécia</string>
+    <string name="country_ch">Suíça</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Áustria</string>
+    <string name="zone_be">Bélgica</string>
+    <string name="zone_bg">Bulgária</string>
+    <string name="zone_hr">Croácia</string>
+    <string name="zone_cz">Chéquia</string>
+    <string name="zone_dk1">DK1 — Dinamarca Ocidental</string>
+    <string name="zone_dk2">DK2 — Dinamarca Oriental</string>
+    <string name="zone_ee">Estónia</string>
+    <string name="zone_fi">Finlândia</string>
+    <string name="zone_fr">França</string>
+    <string name="zone_de_lu">Alemanha / Luxemburgo</string>
+    <string name="zone_gr">Grécia</string>
+    <string name="zone_hu">Hungria</string>
+    <string name="zone_ie_sem">Irlanda (SEM)</string>
+    <string name="zone_it_nord">Norte</string>
+    <string name="zone_it_cnor">Centro-Norte</string>
+    <string name="zone_it_csud">Centro-Sul</string>
+    <string name="zone_it_sud">Sul</string>
+    <string name="zone_it_cala">Calábria</string>
+    <string name="zone_it_sici">Sicília</string>
+    <string name="zone_it_sard">Sardenha</string>
+    <string name="zone_lv">Letónia</string>
+    <string name="zone_lt">Lituânia</string>
+    <string name="zone_me">Montenegro</string>
+    <string name="zone_nl">Países Baixos</string>
+    <string name="zone_mk">Macedónia do Norte</string>
+    <string name="zone_no1">NO1 — Sudeste da Noruega</string>
+    <string name="zone_no2">NO2 — Sudoeste da Noruega</string>
+    <string name="zone_no3">NO3 — Noruega Central</string>
+    <string name="zone_no4">NO4 — Norte da Noruega</string>
+    <string name="zone_no5">NO5 — Oeste da Noruega</string>
+    <string name="zone_pl">Polónia</string>
+    <string name="zone_pt">Portugal</string>
+    <string name="zone_ro">Roménia</string>
+    <string name="zone_rs">Sérvia</string>
+    <string name="zone_sk">Eslováquia</string>
+    <string name="zone_si">Eslovénia</string>
+    <string name="zone_es">Espanha</string>
+    <string name="zone_se1">SE1 — Norte da Suécia</string>
+    <string name="zone_se2">SE2 — Centro-Norte da Suécia</string>
+    <string name="zone_se3">SE3 — Centro-Sul da Suécia</string>
+    <string name="zone_se4">SE4 — Sul da Suécia</string>
+    <string name="zone_ch">Suíça</string>
+</resources>

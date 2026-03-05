@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Indstillinger</string>
+    <string name="cd_back">Tilbage</string>
+    <string name="main_description">SweetSpot hjælper dig med at spare penge ved at finde det billigste tidspunkt til at køre dine apparater. Vælg bare hvor længe dit apparat skal køre, og appen scanner de næste 24 timers dynamiske elpriser for at finde det bedste vindue. Du kan også gemme dine yndlingsapparater i indstillingerne for hurtig adgang.</string>
+    <string name="main_find_button">Find billigste vindue</string>
+    <string name="main_searching">Søger\u2026</string>
+    <string name="main_add_appliances">Tilføj dine apparater</string>
+    <string name="main_card_description">Find det billigste tidspunkt til at køre dit apparat</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Billigste vindue</string>
+    <string name="result_start">Start</string>
+    <string name="result_end">Slut</string>
+    <string name="result_total_cost">Samlet pris</string>
+    <string name="result_avg_price">Gns. pris</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Prisfordeling</string>
+    <string name="cd_collapse">Skjul</string>
+    <string name="cd_expand">Vis</string>
+    <string name="result_upcoming_prices">Kommende priser</string>
+    <string name="result_disclaimer">Omkostningerne er pr. 1 kW belastning. Priserne inkluderer ikke moms, energiafgift og leverandørgebyr. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
+    <string name="result_data_source">\nDatakilde: %s</string>
+    <string name="cd_cheapest_window">billigste vindue</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Varighed</string>
+    <string name="cd_duration_picker">Varighedsvælger</string>
+    <string name="picker_hour_suffix">t</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Timer: %d</string>
+    <string name="cd_minutes">Minutter: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Indstillinger</string>
+    <string name="settings_language">Sprog</string>
+    <string name="settings_language_system_default">Systemstandard</string>
+    <string name="settings_country">Land</string>
+    <string name="settings_select_zone">Vælg en zone</string>
+    <string name="settings_data_sources">Datakilder</string>
+    <string name="settings_data_sources_description">Priser hentes i denne rækkefølge. Hvis en fejler, prøves den næste.</string>
+    <string name="cd_move_up">Flyt op</string>
+    <string name="cd_move_down">Flyt ned</string>
+    <string name="settings_reset_defaults">Nulstil til standard</string>
+    <string name="settings_appliances">Apparater</string>
+    <string name="settings_appliances_description">Tilføj dine husholdningsapparater her for hurtig adgang. Du kan også tilføje specifikke programmer, f.eks. Opvaskemaskine Eco, Opvaskemaskine Hurtig, Vaskemaskine Bomuld.</string>
+    <string name="settings_add_appliance">Tilføj apparat</string>
+    <string name="settings_timezone">Tidszone</string>
+    <string name="settings_auto_timezone">Automatisk (fra land)</string>
+    <string name="settings_custom_timezone">Brugerdefineret tidszone</string>
+    <string name="settings_unknown_country">Ukendt</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Tilføj apparat</string>
+    <string name="dialog_edit_appliance">Rediger apparat</string>
+    <string name="dialog_name">Navn</string>
+    <string name="dialog_name_placeholder">f.eks. Vaskemaskine</string>
+    <string name="dialog_icon">Ikon</string>
+    <string name="action_delete">Slet</string>
+    <string name="action_save">Gem</string>
+    <string name="action_cancel">Annuller</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Tidszone</string>
+    <string name="picker_timezone_search">Søg tidszoner</string>
+    <string name="picker_country_title">Land</string>
+    <string name="picker_country_search">Søg lande</string>
+    <string name="picker_zones_count">%d zoner</string>
+    <string name="picker_zone_title">Zone</string>
+    <string name="picker_language_title">Sprog</string>
+    <string name="picker_language_search">Søg sprog</string>
+    <string name="cd_selected">Valgt</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Vælg venligst en varighed større end nul.</string>
+    <string name="error_no_zone">Vælg venligst en zone i Indstillinger.</string>
+    <string name="error_no_data">Ingen prisdata tilgængelige for de næste 24 timer.</string>
+    <string name="error_not_enough_data">Ikke nok prisdata til %1$s. Kun %2$d time(r) data tilgængelige.</string>
+    <string name="error_network">Kunne ikke hente priser: %s</string>
+</resources>

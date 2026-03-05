@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Ajustes</string>
+    <string name="cd_back">Atrás</string>
+    <string name="main_description">SweetSpot te ayuda a ahorrar dinero encontrando el momento más barato para usar tus electrodomésticos. Solo elige cuánto tiempo necesita funcionar tu aparato y escaneará las próximas 24 horas de precios dinámicos de electricidad para encontrar la mejor franja. También puedes guardar tus electrodomésticos favoritos en los ajustes para un acceso rápido.</string>
+    <string name="main_find_button">Buscar franja más barata</string>
+    <string name="main_searching">Buscando\u2026</string>
+    <string name="main_add_appliances">Añade tus electrodomésticos</string>
+    <string name="main_card_description">Encuentra el momento más barato para usar tu electrodoméstico</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Franja más barata</string>
+    <string name="result_start">Inicio</string>
+    <string name="result_end">Fin</string>
+    <string name="result_total_cost">Coste total</string>
+    <string name="result_avg_price">Precio medio</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Desglose de costes</string>
+    <string name="cd_collapse">Contraer</string>
+    <string name="cd_expand">Expandir</string>
+    <string name="result_upcoming_prices">Próximos precios</string>
+    <string name="result_disclaimer">Los costes se calculan para una carga de 1 kW. Los precios no incluyen IVA, impuesto energético ni tarifa del proveedor. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
+    <string name="result_data_source">\nFuente de datos: %s</string>
+    <string name="cd_cheapest_window">franja más barata</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Duración</string>
+    <string name="cd_duration_picker">Selector de duración</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Horas: %d</string>
+    <string name="cd_minutes">Minutos: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_system_default">Predeterminado del sistema</string>
+    <string name="settings_country">País</string>
+    <string name="settings_select_zone">Selecciona una zona</string>
+    <string name="settings_data_sources">Fuentes de datos</string>
+    <string name="settings_data_sources_description">Los precios se obtienen en este orden. Si una fuente falla, se intenta la siguiente.</string>
+    <string name="cd_move_up">Subir</string>
+    <string name="cd_move_down">Bajar</string>
+    <string name="settings_reset_defaults">Restablecer valores predeterminados</string>
+    <string name="settings_appliances">Electrodomésticos</string>
+    <string name="settings_appliances_description">Añade aquí tus electrodomésticos para un acceso rápido. También puedes añadir programas específicos, p. ej. Lavavajillas Eco, Lavavajillas Rápido, Lavadora Algodón.</string>
+    <string name="settings_add_appliance">Añadir electrodoméstico</string>
+    <string name="settings_timezone">Zona horaria</string>
+    <string name="settings_auto_timezone">Automática (del país)</string>
+    <string name="settings_custom_timezone">Zona horaria personalizada</string>
+    <string name="settings_unknown_country">Desconocido</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Añadir electrodoméstico</string>
+    <string name="dialog_edit_appliance">Editar electrodoméstico</string>
+    <string name="dialog_name">Nombre</string>
+    <string name="dialog_name_placeholder">p. ej. Lavadora</string>
+    <string name="dialog_icon">Icono</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_cancel">Cancelar</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Zona horaria</string>
+    <string name="picker_timezone_search">Buscar zonas horarias</string>
+    <string name="picker_country_title">País</string>
+    <string name="picker_country_search">Buscar países</string>
+    <string name="picker_zones_count">%d zonas</string>
+    <string name="picker_zone_title">Zona</string>
+    <string name="picker_language_title">Idioma</string>
+    <string name="picker_language_search">Buscar idiomas</string>
+    <string name="cd_selected">Seleccionado</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Selecciona una duración mayor que cero.</string>
+    <string name="error_no_zone">Selecciona una zona en Ajustes.</string>
+    <string name="error_no_data">No hay datos de precios disponibles para las próximas 24 horas.</string>
+    <string name="error_not_enough_data">No hay suficientes datos de precios para %1$s. Solo %2$d hora(s) de datos disponibles.</string>
+    <string name="error_network">No se pudieron obtener los precios: %s</string>
+</resources>

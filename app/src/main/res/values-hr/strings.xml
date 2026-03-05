@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Postavke</string>
+    <string name="cd_back">Natrag</string>
+    <string name="main_description">SweetSpot vam pomaže uštedjeti novac pronalaženjem najjeftinijeg vremena za pokretanje vaših uređaja. Samo odaberite koliko dugo vaš uređaj treba raditi, a aplikacija će pregledati sljedećih 24 sata dinamičnih cijena struje i pronaći najbolji period. Svoje omiljene uređaje možete spremiti u postavkama za brzi pristup.</string>
+    <string name="main_find_button">Pronađi najjeftiniji period</string>
+    <string name="main_searching">Traženje\u2026</string>
+    <string name="main_add_appliances">Dodajte svoje uređaje</string>
+    <string name="main_card_description">Pronađite najjeftinije vrijeme za pokretanje uređaja</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Najjeftiniji period</string>
+    <string name="result_start">Početak</string>
+    <string name="result_end">Kraj</string>
+    <string name="result_total_cost">Ukupni trošak</string>
+    <string name="result_avg_price">Prosj. cijena</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Pregled troškova</string>
+    <string name="cd_collapse">Sažmi</string>
+    <string name="cd_expand">Proširi</string>
+    <string name="result_upcoming_prices">Nadolazeće cijene</string>
+    <string name="result_disclaimer">Troškovi su prikazani za opterećenje od 1 kW. Cijene ne uključuju PDV, porez na energiju i naknadu dobavljača. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
+    <string name="result_data_source">\nIzvor podataka: %s</string>
+    <string name="cd_cheapest_window">najjeftiniji period</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Trajanje</string>
+    <string name="cd_duration_picker">Odabir trajanja</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Sati: %d</string>
+    <string name="cd_minutes">Minute: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Postavke</string>
+    <string name="settings_language">Jezik</string>
+    <string name="settings_language_system_default">Zadano sustava</string>
+    <string name="settings_country">Država</string>
+    <string name="settings_select_zone">Odaberite zonu</string>
+    <string name="settings_data_sources">Izvori podataka</string>
+    <string name="settings_data_sources_description">Cijene se dohvaćaju ovim redoslijedom. Ako jedan izvor ne uspije, pokušava se sljedeći.</string>
+    <string name="cd_move_up">Pomakni gore</string>
+    <string name="cd_move_down">Pomakni dolje</string>
+    <string name="settings_reset_defaults">Vrati na zadano</string>
+    <string name="settings_appliances">Uređaji</string>
+    <string name="settings_appliances_description">Ovdje dodajte svoje kućanske uređaje za brzi pristup. Možete dodati i određene programe, npr. Perilica posuđa Eco, Perilica posuđa Brzi, Perilica rublja Pamuk.</string>
+    <string name="settings_add_appliance">Dodaj uređaj</string>
+    <string name="settings_timezone">Vremenska zona</string>
+    <string name="settings_auto_timezone">Automatski (prema državi)</string>
+    <string name="settings_custom_timezone">Prilagođena vremenska zona</string>
+    <string name="settings_unknown_country">Nepoznato</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Dodaj uređaj</string>
+    <string name="dialog_edit_appliance">Uredi uređaj</string>
+    <string name="dialog_name">Naziv</string>
+    <string name="dialog_name_placeholder">npr. Perilica rublja</string>
+    <string name="dialog_icon">Ikona</string>
+    <string name="action_delete">Obriši</string>
+    <string name="action_save">Spremi</string>
+    <string name="action_cancel">Odustani</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Vremenska zona</string>
+    <string name="picker_timezone_search">Pretraži vremenske zone</string>
+    <string name="picker_country_title">Država</string>
+    <string name="picker_country_search">Pretraži države</string>
+    <string name="picker_zones_count">%d zona</string>
+    <string name="picker_zone_title">Zona</string>
+    <string name="picker_language_title">Jezik</string>
+    <string name="picker_language_search">Pretraži jezike</string>
+    <string name="cd_selected">Odabrano</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Odaberite trajanje veće od nule.</string>
+    <string name="error_no_zone">Odaberite zonu u postavkama.</string>
+    <string name="error_no_data">Nema dostupnih podataka o cijenama za sljedećih 24 sata.</string>
+    <string name="error_not_enough_data">Nema dovoljno podataka za %1$s. Dostupno je samo %2$d sat(i) podataka.</string>
+    <string name="error_network">Nije moguće dohvatiti cijene: %s</string>
+</resources>

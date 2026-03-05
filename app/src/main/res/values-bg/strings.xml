@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Настройки</string>
+    <string name="cd_back">Назад</string>
+    <string name="main_description">SweetSpot ви помага да спестите пари, като намира най-евтиното време за работа на вашите уреди. Просто изберете колко дълго трябва да работи уредът ви и приложението ще сканира следващите 24 часа динамични цени на електричеството, за да намери най-добрия прозорец. Можете също да запазите любимите си уреди в настройките за бърз достъп.</string>
+    <string name="main_find_button">Намери най-евтиния период</string>
+    <string name="main_searching">Търсене\u2026</string>
+    <string name="main_add_appliances">Добавете вашите уреди</string>
+    <string name="main_card_description">Намерете най-евтиното време за работа на вашия уред</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Най-евтин период</string>
+    <string name="result_start">Начало</string>
+    <string name="result_end">Край</string>
+    <string name="result_total_cost">Обща цена</string>
+    <string name="result_avg_price">Средна цена</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Разбивка на разходите</string>
+    <string name="cd_collapse">Свиване</string>
+    <string name="cd_expand">Разгъване</string>
+    <string name="result_upcoming_prices">Предстоящи цени</string>
+    <string name="result_disclaimer">Разходите са за 1 kW натоварване. Цените не включват ДДС, данък върху енергията и такса на доставчика. Цените за утре обикновено са налични след 13:00 CET.</string>
+    <string name="result_data_source">\nИзточник на данни: %s</string>
+    <string name="cd_cheapest_window">най-евтин период</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Продължителност</string>
+    <string name="cd_duration_picker">Избор на продължителност</string>
+    <string name="picker_hour_suffix">ч</string>
+    <string name="picker_minute_suffix">м</string>
+    <string name="cd_hours">Часове: %d</string>
+    <string name="cd_minutes">Минути: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_language">Език</string>
+    <string name="settings_language_system_default">Системен по подразбиране</string>
+    <string name="settings_country">Държава</string>
+    <string name="settings_select_zone">Изберете зона</string>
+    <string name="settings_data_sources">Източници на данни</string>
+    <string name="settings_data_sources_description">Цените се извличат в този ред. Ако един източник се провали, се опитва следващият.</string>
+    <string name="cd_move_up">Преместване нагоре</string>
+    <string name="cd_move_down">Преместване надолу</string>
+    <string name="settings_reset_defaults">Възстановяване по подразбиране</string>
+    <string name="settings_appliances">Уреди</string>
+    <string name="settings_appliances_description">Добавете домашните си уреди тук за бърз достъп. Можете също да добавите конкретни програми, напр. Съдомиялна Еко, Съдомиялна Бърза, Пералня Памук.</string>
+    <string name="settings_add_appliance">Добавяне на уред</string>
+    <string name="settings_timezone">Часова зона</string>
+    <string name="settings_auto_timezone">Автоматично (от държавата)</string>
+    <string name="settings_custom_timezone">Персонализирана часова зона</string>
+    <string name="settings_unknown_country">Неизвестна</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Добавяне на уред</string>
+    <string name="dialog_edit_appliance">Редактиране на уред</string>
+    <string name="dialog_name">Име</string>
+    <string name="dialog_name_placeholder">напр. Пералня</string>
+    <string name="dialog_icon">Икона</string>
+    <string name="action_delete">Изтриване</string>
+    <string name="action_save">Запазване</string>
+    <string name="action_cancel">Отказ</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Часова зона</string>
+    <string name="picker_timezone_search">Търсене на часови зони</string>
+    <string name="picker_country_title">Държава</string>
+    <string name="picker_country_search">Търсене на държави</string>
+    <string name="picker_zones_count">%d зони</string>
+    <string name="picker_zone_title">Зона</string>
+    <string name="picker_language_title">Език</string>
+    <string name="picker_language_search">Търсене на езици</string>
+    <string name="cd_selected">Избрано</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Моля, изберете продължителност по-голяма от нула.</string>
+    <string name="error_no_zone">Моля, изберете зона в Настройки.</string>
+    <string name="error_no_data">Няма налични ценови данни за следващите 24 часа.</string>
+    <string name="error_not_enough_data">Недостатъчно ценови данни за %1$s. Налични са само %2$d час(а) данни.</string>
+    <string name="error_network">Неуспешно извличане на цени: %s</string>
+</resources>

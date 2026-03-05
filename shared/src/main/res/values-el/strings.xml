@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dω</string>
+    <string name="duration_minutes_only">%dλ</string>
+    <string name="duration_hours_minutes">%1$dω %2$dλ</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">τώρα</string>
+    <string name="relative_in_hours_minutes">σε %1$dω %2$dλ</string>
+    <string name="relative_in_hours">σε %1$dω</string>
+    <string name="relative_in_minutes">σε %1$dλ</string>
+
+    <!-- Country names -->
+    <string name="country_at">Αυστρία</string>
+    <string name="country_be">Βέλγιο</string>
+    <string name="country_bg">Βουλγαρία</string>
+    <string name="country_hr">Κροατία</string>
+    <string name="country_cz">Τσεχία</string>
+    <string name="country_dk">Δανία</string>
+    <string name="country_ee">Εσθονία</string>
+    <string name="country_fi">Φινλανδία</string>
+    <string name="country_fr">Γαλλία</string>
+    <string name="country_de">Γερμανία</string>
+    <string name="country_gr">Ελλάδα</string>
+    <string name="country_hu">Ουγγαρία</string>
+    <string name="country_ie">Ιρλανδία</string>
+    <string name="country_it">Ιταλία</string>
+    <string name="country_lv">Λετονία</string>
+    <string name="country_lt">Λιθουανία</string>
+    <string name="country_lu">Λουξεμβούργο</string>
+    <string name="country_me">Μαυροβούνιο</string>
+    <string name="country_nl">Ολλανδία</string>
+    <string name="country_mk">Βόρεια Μακεδονία</string>
+    <string name="country_no">Νορβηγία</string>
+    <string name="country_pl">Πολωνία</string>
+    <string name="country_pt">Πορτογαλία</string>
+    <string name="country_ro">Ρουμανία</string>
+    <string name="country_rs">Σερβία</string>
+    <string name="country_sk">Σλοβακία</string>
+    <string name="country_si">Σλοβενία</string>
+    <string name="country_es">Ισπανία</string>
+    <string name="country_se">Σουηδία</string>
+    <string name="country_ch">Ελβετία</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Αυστρία</string>
+    <string name="zone_be">Βέλγιο</string>
+    <string name="zone_bg">Βουλγαρία</string>
+    <string name="zone_hr">Κροατία</string>
+    <string name="zone_cz">Τσεχία</string>
+    <string name="zone_dk1">DK1 — Δυτική Δανία</string>
+    <string name="zone_dk2">DK2 — Ανατολική Δανία</string>
+    <string name="zone_ee">Εσθονία</string>
+    <string name="zone_fi">Φινλανδία</string>
+    <string name="zone_fr">Γαλλία</string>
+    <string name="zone_de_lu">Γερμανία / Λουξεμβούργο</string>
+    <string name="zone_gr">Ελλάδα</string>
+    <string name="zone_hu">Ουγγαρία</string>
+    <string name="zone_ie_sem">Ιρλανδία (SEM)</string>
+    <string name="zone_it_nord">Βόρεια</string>
+    <string name="zone_it_cnor">Κεντροβόρεια</string>
+    <string name="zone_it_csud">Κεντρονότια</string>
+    <string name="zone_it_sud">Νότια</string>
+    <string name="zone_it_cala">Καλαβρία</string>
+    <string name="zone_it_sici">Σικελία</string>
+    <string name="zone_it_sard">Σαρδηνία</string>
+    <string name="zone_lv">Λετονία</string>
+    <string name="zone_lt">Λιθουανία</string>
+    <string name="zone_me">Μαυροβούνιο</string>
+    <string name="zone_nl">Ολλανδία</string>
+    <string name="zone_mk">Βόρεια Μακεδονία</string>
+    <string name="zone_no1">NO1 — Νοτιοανατολική Νορβηγία</string>
+    <string name="zone_no2">NO2 — Νοτιοδυτική Νορβηγία</string>
+    <string name="zone_no3">NO3 — Κεντρική Νορβηγία</string>
+    <string name="zone_no4">NO4 — Βόρεια Νορβηγία</string>
+    <string name="zone_no5">NO5 — Δυτική Νορβηγία</string>
+    <string name="zone_pl">Πολωνία</string>
+    <string name="zone_pt">Πορτογαλία</string>
+    <string name="zone_ro">Ρουμανία</string>
+    <string name="zone_rs">Σερβία</string>
+    <string name="zone_sk">Σλοβακία</string>
+    <string name="zone_si">Σλοβενία</string>
+    <string name="zone_es">Ισπανία</string>
+    <string name="zone_se1">SE1 — Βόρεια Σουηδία</string>
+    <string name="zone_se2">SE2 — Βορειοκεντρική Σουηδία</string>
+    <string name="zone_se3">SE3 — Νοτιοκεντρική Σουηδία</string>
+    <string name="zone_se4">SE4 — Νότια Σουηδία</string>
+    <string name="zone_ch">Ελβετία</string>
+</resources>

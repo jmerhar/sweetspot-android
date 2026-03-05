@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Ρυθμίσεις</string>
+    <string name="cd_back">Πίσω</string>
+    <string name="main_description">Το SweetSpot σας βοηθά να εξοικονομήσετε χρήματα βρίσκοντας την πιο φθηνή ώρα για να λειτουργήσετε τις συσκευές σας. Απλά επιλέξτε πόση ώρα χρειάζεται η συσκευή σας και θα σαρώσει τις επόμενες 24 ώρες δυναμικών τιμών ρεύματος για να βρει το καλύτερο χρονικό παράθυρο. Μπορείτε επίσης να αποθηκεύσετε τις αγαπημένες σας συσκευές στις ρυθμίσεις για γρήγορη πρόσβαση.</string>
+    <string name="main_find_button">Εύρεση φθηνότερου παραθύρου</string>
+    <string name="main_searching">Αναζήτηση\u2026</string>
+    <string name="main_add_appliances">Προσθέστε τις συσκευές σας</string>
+    <string name="main_card_description">Βρείτε την πιο φθηνή ώρα για τη λειτουργία της συσκευής σας</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Φθηνότερο παράθυρο</string>
+    <string name="result_start">Έναρξη</string>
+    <string name="result_end">Λήξη</string>
+    <string name="result_total_cost">Συνολικό κόστος</string>
+    <string name="result_avg_price">Μέση τιμή</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Ανάλυση κόστους</string>
+    <string name="cd_collapse">Σύμπτυξη</string>
+    <string name="cd_expand">Ανάπτυξη</string>
+    <string name="result_upcoming_prices">Επερχόμενες τιμές</string>
+    <string name="result_disclaimer">Το κόστος υπολογίζεται για φορτίο 1 kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο και τέλη προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
+    <string name="result_data_source">\nΠηγή δεδομένων: %s</string>
+    <string name="cd_cheapest_window">φθηνότερο παράθυρο</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Διάρκεια</string>
+    <string name="cd_duration_picker">Επιλογέας διάρκειας</string>
+    <string name="picker_hour_suffix">ω</string>
+    <string name="picker_minute_suffix">λ</string>
+    <string name="cd_hours">Ώρες: %d</string>
+    <string name="cd_minutes">Λεπτά: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_language">Γλώσσα</string>
+    <string name="settings_language_system_default">Προεπιλογή συστήματος</string>
+    <string name="settings_country">Χώρα</string>
+    <string name="settings_select_zone">Επιλέξτε ζώνη</string>
+    <string name="settings_data_sources">Πηγές δεδομένων</string>
+    <string name="settings_data_sources_description">Οι τιμές ανακτώνται με αυτή τη σειρά. Αν μία αποτύχει, δοκιμάζεται η επόμενη.</string>
+    <string name="cd_move_up">Μετακίνηση πάνω</string>
+    <string name="cd_move_down">Μετακίνηση κάτω</string>
+    <string name="settings_reset_defaults">Επαναφορά προεπιλογών</string>
+    <string name="settings_appliances">Συσκευές</string>
+    <string name="settings_appliances_description">Προσθέστε εδώ τις οικιακές σας συσκευές για γρήγορη πρόσβαση. Μπορείτε επίσης να προσθέσετε συγκεκριμένα προγράμματα, π.χ. Πλυντήριο πιάτων Eco, Πλυντήριο πιάτων Γρήγορο, Πλυντήριο ρούχων Βαμβακερά.</string>
+    <string name="settings_add_appliance">Προσθήκη συσκευής</string>
+    <string name="settings_timezone">Ζώνη ώρας</string>
+    <string name="settings_auto_timezone">Αυτόματη (από τη χώρα)</string>
+    <string name="settings_custom_timezone">Προσαρμοσμένη ζώνη ώρας</string>
+    <string name="settings_unknown_country">Άγνωστη</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Προσθήκη συσκευής</string>
+    <string name="dialog_edit_appliance">Επεξεργασία συσκευής</string>
+    <string name="dialog_name">Όνομα</string>
+    <string name="dialog_name_placeholder">π.χ. Πλυντήριο ρούχων</string>
+    <string name="dialog_icon">Εικονίδιο</string>
+    <string name="action_delete">Διαγραφή</string>
+    <string name="action_save">Αποθήκευση</string>
+    <string name="action_cancel">Ακύρωση</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Ζώνη ώρας</string>
+    <string name="picker_timezone_search">Αναζήτηση ζωνών ώρας</string>
+    <string name="picker_country_title">Χώρα</string>
+    <string name="picker_country_search">Αναζήτηση χωρών</string>
+    <string name="picker_zones_count">%d ζώνες</string>
+    <string name="picker_zone_title">Ζώνη</string>
+    <string name="picker_language_title">Γλώσσα</string>
+    <string name="picker_language_search">Αναζήτηση γλωσσών</string>
+    <string name="cd_selected">Επιλεγμένο</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Επιλέξτε διάρκεια μεγαλύτερη από μηδέν.</string>
+    <string name="error_no_zone">Επιλέξτε μια ζώνη στις Ρυθμίσεις.</string>
+    <string name="error_no_data">Δεν υπάρχουν διαθέσιμα δεδομένα τιμών για τις επόμενες 24 ώρες.</string>
+    <string name="error_not_enough_data">Ανεπαρκή δεδομένα τιμών για %1$s. Μόνο %2$d ώρα(-ες) δεδομένων διαθέσιμα.</string>
+    <string name="error_network">Αδυναμία ανάκτησης τιμών: %s</string>
+</resources>

@@ -64,6 +64,7 @@ fun SettingsScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var showLanguagePicker by rememberSaveable { mutableStateOf(false) }
     var showTimezonePicker by rememberSaveable { mutableStateOf(false) }
     var showCountryPicker by rememberSaveable { mutableStateOf(false) }
     var showZonePicker by rememberSaveable { mutableStateOf(false) }
@@ -72,6 +73,18 @@ fun SettingsScreen(
 
     val defaultTimeZoneId = remember(priceZone) {
         priceZone?.timeZoneId?.let { ZoneId.of(it) } ?: ZoneId.systemDefault()
+    }
+
+    if (showLanguagePicker) {
+        BackHandler { showLanguagePicker = false }
+        LanguagePickerScreen(
+            onLanguageChanged = { tag ->
+                onLanguageChanged(tag)
+                showLanguagePicker = false
+            },
+            onBack = { showLanguagePicker = false }
+        )
+        return
     }
 
     if (showTimezonePicker) {
@@ -190,7 +203,7 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
-            LanguageSection(onLanguageChanged = onLanguageChanged)
+            LanguageSection(onClick = { showLanguagePicker = true })
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 

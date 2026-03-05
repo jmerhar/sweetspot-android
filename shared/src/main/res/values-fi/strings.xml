@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dt</string>
+    <string name="duration_minutes_only">%dm</string>
+    <string name="duration_hours_minutes">%1$dt %2$dm</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">nyt</string>
+    <string name="relative_in_hours_minutes">%1$dt %2$dm kuluttua</string>
+    <string name="relative_in_hours">%1$dt kuluttua</string>
+    <string name="relative_in_minutes">%1$dm kuluttua</string>
+
+    <!-- Country names -->
+    <string name="country_at">Itävalta</string>
+    <string name="country_be">Belgia</string>
+    <string name="country_bg">Bulgaria</string>
+    <string name="country_hr">Kroatia</string>
+    <string name="country_cz">Tšekki</string>
+    <string name="country_dk">Tanska</string>
+    <string name="country_ee">Viro</string>
+    <string name="country_fi">Suomi</string>
+    <string name="country_fr">Ranska</string>
+    <string name="country_de">Saksa</string>
+    <string name="country_gr">Kreikka</string>
+    <string name="country_hu">Unkari</string>
+    <string name="country_ie">Irlanti</string>
+    <string name="country_it">Italia</string>
+    <string name="country_lv">Latvia</string>
+    <string name="country_lt">Liettua</string>
+    <string name="country_lu">Luxemburg</string>
+    <string name="country_me">Montenegro</string>
+    <string name="country_nl">Alankomaat</string>
+    <string name="country_mk">Pohjois-Makedonia</string>
+    <string name="country_no">Norja</string>
+    <string name="country_pl">Puola</string>
+    <string name="country_pt">Portugali</string>
+    <string name="country_ro">Romania</string>
+    <string name="country_rs">Serbia</string>
+    <string name="country_sk">Slovakia</string>
+    <string name="country_si">Slovenia</string>
+    <string name="country_es">Espanja</string>
+    <string name="country_se">Ruotsi</string>
+    <string name="country_ch">Sveitsi</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Itävalta</string>
+    <string name="zone_be">Belgia</string>
+    <string name="zone_bg">Bulgaria</string>
+    <string name="zone_hr">Kroatia</string>
+    <string name="zone_cz">Tšekki</string>
+    <string name="zone_dk1">DK1 — Länsi-Tanska</string>
+    <string name="zone_dk2">DK2 — Itä-Tanska</string>
+    <string name="zone_ee">Viro</string>
+    <string name="zone_fi">Suomi</string>
+    <string name="zone_fr">Ranska</string>
+    <string name="zone_de_lu">Saksa / Luxemburg</string>
+    <string name="zone_gr">Kreikka</string>
+    <string name="zone_hu">Unkari</string>
+    <string name="zone_ie_sem">Irlanti (SEM)</string>
+    <string name="zone_it_nord">Pohjoinen</string>
+    <string name="zone_it_cnor">Keski-pohjoinen</string>
+    <string name="zone_it_csud">Keski-eteläinen</string>
+    <string name="zone_it_sud">Eteläinen</string>
+    <string name="zone_it_cala">Calabria</string>
+    <string name="zone_it_sici">Sisilia</string>
+    <string name="zone_it_sard">Sardinia</string>
+    <string name="zone_lv">Latvia</string>
+    <string name="zone_lt">Liettua</string>
+    <string name="zone_me">Montenegro</string>
+    <string name="zone_nl">Alankomaat</string>
+    <string name="zone_mk">Pohjois-Makedonia</string>
+    <string name="zone_no1">NO1 — Kaakkois-Norja</string>
+    <string name="zone_no2">NO2 — Lounais-Norja</string>
+    <string name="zone_no3">NO3 — Keski-Norja</string>
+    <string name="zone_no4">NO4 — Pohjois-Norja</string>
+    <string name="zone_no5">NO5 — Länsi-Norja</string>
+    <string name="zone_pl">Puola</string>
+    <string name="zone_pt">Portugali</string>
+    <string name="zone_ro">Romania</string>
+    <string name="zone_rs">Serbia</string>
+    <string name="zone_sk">Slovakia</string>
+    <string name="zone_si">Slovenia</string>
+    <string name="zone_es">Espanja</string>
+    <string name="zone_se1">SE1 — Pohjois-Ruotsi</string>
+    <string name="zone_se2">SE2 — Pohjoiskeski-Ruotsi</string>
+    <string name="zone_se3">SE3 — Eteläkeski-Ruotsi</string>
+    <string name="zone_se4">SE4 — Etelä-Ruotsi</string>
+    <string name="zone_ch">Sveitsi</string>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Setări</string>
+    <string name="cd_back">Înapoi</string>
+    <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin moment pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul și aplicația va analiza prețurile dinamice ale electricității din următoarele 24 de ore pentru a găsi cea mai bună fereastră. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
+    <string name="main_find_button">Găsește cea mai ieftină perioadă</string>
+    <string name="main_searching">Se caută\u2026</string>
+    <string name="main_add_appliances">Adaugă aparatele tale</string>
+    <string name="main_card_description">Găsește cel mai ieftin moment pentru a porni aparatul</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Cea mai ieftină perioadă</string>
+    <string name="result_start">Început</string>
+    <string name="result_end">Sfârșit</string>
+    <string name="result_total_cost">Cost total</string>
+    <string name="result_avg_price">Preț mediu</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Detalii costuri</string>
+    <string name="cd_collapse">Restrânge</string>
+    <string name="cd_expand">Extinde</string>
+    <string name="result_upcoming_prices">Prețuri următoare</string>
+    <string name="result_disclaimer">Costurile sunt calculate pentru o sarcină de 1 kW. Prețurile nu includ TVA, taxa pe energie și taxa furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
+    <string name="result_data_source">\nSursă de date: %s</string>
+    <string name="cd_cheapest_window">cea mai ieftină perioadă</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Durată</string>
+    <string name="cd_duration_picker">Selector de durată</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Ore: %d</string>
+    <string name="cd_minutes">Minute: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Setări</string>
+    <string name="settings_language">Limbă</string>
+    <string name="settings_language_system_default">Implicit sistem</string>
+    <string name="settings_country">Țară</string>
+    <string name="settings_select_zone">Selectează o zonă</string>
+    <string name="settings_data_sources">Surse de date</string>
+    <string name="settings_data_sources_description">Prețurile sunt preluate în această ordine. Dacă una eșuează, se încearcă următoarea.</string>
+    <string name="cd_move_up">Mută sus</string>
+    <string name="cd_move_down">Mută jos</string>
+    <string name="settings_reset_defaults">Resetează la valorile implicite</string>
+    <string name="settings_appliances">Aparate electrocasnice</string>
+    <string name="settings_appliances_description">Adaugă aici aparatele electrocasnice pentru acces rapid. Poți adăuga și programe specifice, de ex. Mașină de spălat vase Eco, Mașină de spălat vase Rapid, Mașină de spălat rufe Bumbac.</string>
+    <string name="settings_add_appliance">Adaugă aparat</string>
+    <string name="settings_timezone">Fus orar</string>
+    <string name="settings_auto_timezone">Automat (din țară)</string>
+    <string name="settings_custom_timezone">Fus orar personalizat</string>
+    <string name="settings_unknown_country">Necunoscut</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Adaugă aparat</string>
+    <string name="dialog_edit_appliance">Editează aparat</string>
+    <string name="dialog_name">Nume</string>
+    <string name="dialog_name_placeholder">de ex. Mașină de spălat</string>
+    <string name="dialog_icon">Pictogramă</string>
+    <string name="action_delete">Șterge</string>
+    <string name="action_save">Salvează</string>
+    <string name="action_cancel">Anulează</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Fus orar</string>
+    <string name="picker_timezone_search">Caută fusuri orare</string>
+    <string name="picker_country_title">Țară</string>
+    <string name="picker_country_search">Caută țări</string>
+    <string name="picker_zones_count">%d zone</string>
+    <string name="picker_zone_title">Zonă</string>
+    <string name="picker_language_title">Limbă</string>
+    <string name="picker_language_search">Caută limbi</string>
+    <string name="cd_selected">Selectat</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Selectează o durată mai mare decât zero.</string>
+    <string name="error_no_zone">Selectează o zonă în Setări.</string>
+    <string name="error_no_data">Nu sunt disponibile date de preț pentru următoarele 24 de ore.</string>
+    <string name="error_not_enough_data">Date de preț insuficiente pentru %1$s. Doar %2$d oră(ore) de date disponibile.</string>
+    <string name="error_network">Nu s-au putut prelua prețurile: %s</string>
+</resources>

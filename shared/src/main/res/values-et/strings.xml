@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dt</string>
+    <string name="duration_minutes_only">%dm</string>
+    <string name="duration_hours_minutes">%1$dt %2$dm</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">praegu</string>
+    <string name="relative_in_hours_minutes">%1$dt %2$dm pärast</string>
+    <string name="relative_in_hours">%1$dt pärast</string>
+    <string name="relative_in_minutes">%1$dm pärast</string>
+
+    <!-- Country names -->
+    <string name="country_at">Austria</string>
+    <string name="country_be">Belgia</string>
+    <string name="country_bg">Bulgaaria</string>
+    <string name="country_hr">Horvaatia</string>
+    <string name="country_cz">Tšehhi</string>
+    <string name="country_dk">Taani</string>
+    <string name="country_ee">Eesti</string>
+    <string name="country_fi">Soome</string>
+    <string name="country_fr">Prantsusmaa</string>
+    <string name="country_de">Saksamaa</string>
+    <string name="country_gr">Kreeka</string>
+    <string name="country_hu">Ungari</string>
+    <string name="country_ie">Iirimaa</string>
+    <string name="country_it">Itaalia</string>
+    <string name="country_lv">Läti</string>
+    <string name="country_lt">Leedu</string>
+    <string name="country_lu">Luksemburg</string>
+    <string name="country_me">Montenegro</string>
+    <string name="country_nl">Holland</string>
+    <string name="country_mk">Põhja-Makedoonia</string>
+    <string name="country_no">Norra</string>
+    <string name="country_pl">Poola</string>
+    <string name="country_pt">Portugal</string>
+    <string name="country_ro">Rumeenia</string>
+    <string name="country_rs">Serbia</string>
+    <string name="country_sk">Slovakkia</string>
+    <string name="country_si">Sloveenia</string>
+    <string name="country_es">Hispaania</string>
+    <string name="country_se">Rootsi</string>
+    <string name="country_ch">Šveits</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Austria</string>
+    <string name="zone_be">Belgia</string>
+    <string name="zone_bg">Bulgaaria</string>
+    <string name="zone_hr">Horvaatia</string>
+    <string name="zone_cz">Tšehhi</string>
+    <string name="zone_dk1">DK1 — Lääne-Taani</string>
+    <string name="zone_dk2">DK2 — Ida-Taani</string>
+    <string name="zone_ee">Eesti</string>
+    <string name="zone_fi">Soome</string>
+    <string name="zone_fr">Prantsusmaa</string>
+    <string name="zone_de_lu">Saksamaa / Luksemburg</string>
+    <string name="zone_gr">Kreeka</string>
+    <string name="zone_hu">Ungari</string>
+    <string name="zone_ie_sem">Iirimaa (SEM)</string>
+    <string name="zone_it_nord">Põhja</string>
+    <string name="zone_it_cnor">Kesk-Põhja</string>
+    <string name="zone_it_csud">Kesk-Lõuna</string>
+    <string name="zone_it_sud">Lõuna</string>
+    <string name="zone_it_cala">Calabria</string>
+    <string name="zone_it_sici">Sitsiilia</string>
+    <string name="zone_it_sard">Sardiinia</string>
+    <string name="zone_lv">Läti</string>
+    <string name="zone_lt">Leedu</string>
+    <string name="zone_me">Montenegro</string>
+    <string name="zone_nl">Holland</string>
+    <string name="zone_mk">Põhja-Makedoonia</string>
+    <string name="zone_no1">NO1 — Kagu-Norra</string>
+    <string name="zone_no2">NO2 — Edela-Norra</string>
+    <string name="zone_no3">NO3 — Kesk-Norra</string>
+    <string name="zone_no4">NO4 — Põhja-Norra</string>
+    <string name="zone_no5">NO5 — Lääne-Norra</string>
+    <string name="zone_pl">Poola</string>
+    <string name="zone_pt">Portugal</string>
+    <string name="zone_ro">Rumeenia</string>
+    <string name="zone_rs">Serbia</string>
+    <string name="zone_sk">Slovakkia</string>
+    <string name="zone_si">Sloveenia</string>
+    <string name="zone_es">Hispaania</string>
+    <string name="zone_se1">SE1 — Põhja-Rootsi</string>
+    <string name="zone_se2">SE2 — Kesk-Põhja-Rootsi</string>
+    <string name="zone_se3">SE3 — Kesk-Lõuna-Rootsi</string>
+    <string name="zone_se4">SE4 — Lõuna-Rootsi</string>
+    <string name="zone_ch">Šveits</string>
+</resources>

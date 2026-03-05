@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Nastavení</string>
+    <string name="cd_back">Zpět</string>
+    <string name="main_description">SweetSpot vám pomáhá šetřit peníze tím, že najde nejlevnější čas pro spuštění vašich spotřebičů. Stačí zvolit, jak dlouho má spotřebič běžet, a aplikace prohledá dalších 24 hodin dynamických cen elektřiny a najde nejlepší časové okno. Své oblíbené spotřebiče si můžete uložit v nastavení pro rychlý přístup.</string>
+    <string name="main_find_button">Najít nejlevnější okno</string>
+    <string name="main_searching">Hledání\u2026</string>
+    <string name="main_add_appliances">Přidejte své spotřebiče</string>
+    <string name="main_card_description">Najděte nejlevnější čas pro spuštění vašeho spotřebiče</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Nejlevnější okno</string>
+    <string name="result_start">Začátek</string>
+    <string name="result_end">Konec</string>
+    <string name="result_total_cost">Celková cena</string>
+    <string name="result_avg_price">Prům. cena</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Rozpis nákladů</string>
+    <string name="cd_collapse">Sbalit</string>
+    <string name="cd_expand">Rozbalit</string>
+    <string name="result_upcoming_prices">Nadcházející ceny</string>
+    <string name="result_disclaimer">Náklady jsou uvedeny pro zátěž 1 kW. Ceny nezahrnují DPH, daň z energie a poplatek dodavatele. Ceny na zítřek jsou obvykle k dispozici po 13:00 SEČ.</string>
+    <string name="result_data_source">\nZdroj dat: %s</string>
+    <string name="cd_cheapest_window">nejlevnější okno</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Doba trvání</string>
+    <string name="cd_duration_picker">Výběr doby trvání</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Hodiny: %d</string>
+    <string name="cd_minutes">Minuty: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Nastavení</string>
+    <string name="settings_language">Jazyk</string>
+    <string name="settings_language_system_default">Výchozí systému</string>
+    <string name="settings_country">Země</string>
+    <string name="settings_select_zone">Vyberte zónu</string>
+    <string name="settings_data_sources">Zdroje dat</string>
+    <string name="settings_data_sources_description">Ceny se stahují v tomto pořadí. Pokud jeden selže, zkusí se další.</string>
+    <string name="cd_move_up">Přesunout nahoru</string>
+    <string name="cd_move_down">Přesunout dolů</string>
+    <string name="settings_reset_defaults">Obnovit výchozí</string>
+    <string name="settings_appliances">Spotřebiče</string>
+    <string name="settings_appliances_description">Přidejte si zde své domácí spotřebiče pro rychlý přístup. Můžete přidat i konkrétní programy, např. Myčka Eko, Myčka Rychlá, Pračka Bavlna.</string>
+    <string name="settings_add_appliance">Přidat spotřebič</string>
+    <string name="settings_timezone">Časová zóna</string>
+    <string name="settings_auto_timezone">Automaticky (ze země)</string>
+    <string name="settings_custom_timezone">Vlastní časová zóna</string>
+    <string name="settings_unknown_country">Neznámá</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Přidat spotřebič</string>
+    <string name="dialog_edit_appliance">Upravit spotřebič</string>
+    <string name="dialog_name">Název</string>
+    <string name="dialog_name_placeholder">např. Pračka</string>
+    <string name="dialog_icon">Ikona</string>
+    <string name="action_delete">Smazat</string>
+    <string name="action_save">Uložit</string>
+    <string name="action_cancel">Zrušit</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Časová zóna</string>
+    <string name="picker_timezone_search">Hledat časové zóny</string>
+    <string name="picker_country_title">Země</string>
+    <string name="picker_country_search">Hledat země</string>
+    <string name="picker_zones_count">%d zón</string>
+    <string name="picker_zone_title">Zóna</string>
+    <string name="picker_language_title">Jazyk</string>
+    <string name="picker_language_search">Hledat jazyky</string>
+    <string name="cd_selected">Vybrané</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Zvolte prosím dobu trvání větší než nula.</string>
+    <string name="error_no_zone">Vyberte prosím zónu v Nastavení.</string>
+    <string name="error_no_data">Pro dalších 24 hodin nejsou k dispozici žádná cenová data.</string>
+    <string name="error_not_enough_data">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodin(a) dat.</string>
+    <string name="error_network">Nepodařilo se stáhnout ceny: %s</string>
+</resources>

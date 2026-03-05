@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Iestatiet ier\u012bces t\u0101lru\u0146a lietotn\u0113.</string>
+    <string name="wear_start">S\u0101kums</string>
+    <string name="wear_end">Beigas</string>
+    <string name="wear_no_result">Nav rezult\u0101tu</string>
+    <string name="wear_error_no_zone">L\u016bdzu, konfigur\u0113jiet zonu t\u0101lrun\u012b.</string>
+    <string name="wear_error_no_data">Nav pieejamu cenu datu.</string>
+    <string name="wear_error_not_enough_data">Nepietiek datu %s.</string>
+    <string name="wear_error_network">Neizdev\u0101s ieg\u016bt cenas.</string>
+</resources>

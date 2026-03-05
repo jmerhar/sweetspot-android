@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dg</string>
+    <string name="duration_minutes_only">%dm</string>
+    <string name="duration_hours_minutes">%1$dg %2$dm</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">teraz</string>
+    <string name="relative_in_hours_minutes">za %1$dg %2$dm</string>
+    <string name="relative_in_hours">za %1$dg</string>
+    <string name="relative_in_minutes">za %1$dm</string>
+
+    <!-- Country names -->
+    <string name="country_at">Austria</string>
+    <string name="country_be">Belgia</string>
+    <string name="country_bg">Bu\u0142garia</string>
+    <string name="country_hr">Chorwacja</string>
+    <string name="country_cz">Czechy</string>
+    <string name="country_dk">Dania</string>
+    <string name="country_ee">Estonia</string>
+    <string name="country_fi">Finlandia</string>
+    <string name="country_fr">Francja</string>
+    <string name="country_de">Niemcy</string>
+    <string name="country_gr">Grecja</string>
+    <string name="country_hu">W\u0119gry</string>
+    <string name="country_ie">Irlandia</string>
+    <string name="country_it">W\u0142ochy</string>
+    <string name="country_lv">\u0141otwa</string>
+    <string name="country_lt">Litwa</string>
+    <string name="country_lu">Luksemburg</string>
+    <string name="country_me">Czarnog\u00f3ra</string>
+    <string name="country_nl">Holandia</string>
+    <string name="country_mk">Macedonia P\u00f3\u0142nocna</string>
+    <string name="country_no">Norwegia</string>
+    <string name="country_pl">Polska</string>
+    <string name="country_pt">Portugalia</string>
+    <string name="country_ro">Rumunia</string>
+    <string name="country_rs">Serbia</string>
+    <string name="country_sk">S\u0142owacja</string>
+    <string name="country_si">S\u0142owenia</string>
+    <string name="country_es">Hiszpania</string>
+    <string name="country_se">Szwecja</string>
+    <string name="country_ch">Szwajcaria</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Austria</string>
+    <string name="zone_be">Belgia</string>
+    <string name="zone_bg">Bu\u0142garia</string>
+    <string name="zone_hr">Chorwacja</string>
+    <string name="zone_cz">Czechy</string>
+    <string name="zone_dk1">DK1 — Zachodnia Dania</string>
+    <string name="zone_dk2">DK2 — Wschodnia Dania</string>
+    <string name="zone_ee">Estonia</string>
+    <string name="zone_fi">Finlandia</string>
+    <string name="zone_fr">Francja</string>
+    <string name="zone_de_lu">Niemcy / Luksemburg</string>
+    <string name="zone_gr">Grecja</string>
+    <string name="zone_hu">W\u0119gry</string>
+    <string name="zone_ie_sem">Irlandia (SEM)</string>
+    <string name="zone_it_nord">P\u00f3\u0142noc</string>
+    <string name="zone_it_cnor">\u015arodkowo-p\u00f3\u0142nocne</string>
+    <string name="zone_it_csud">\u015arodkowo-po\u0142udniowe</string>
+    <string name="zone_it_sud">Po\u0142udnie</string>
+    <string name="zone_it_cala">Kalabria</string>
+    <string name="zone_it_sici">Sycylia</string>
+    <string name="zone_it_sard">Sardynia</string>
+    <string name="zone_lv">\u0141otwa</string>
+    <string name="zone_lt">Litwa</string>
+    <string name="zone_me">Czarnog\u00f3ra</string>
+    <string name="zone_nl">Holandia</string>
+    <string name="zone_mk">Macedonia P\u00f3\u0142nocna</string>
+    <string name="zone_no1">NO1 — Po\u0142udniowo-wschodnia Norwegia</string>
+    <string name="zone_no2">NO2 — Po\u0142udniowo-zachodnia Norwegia</string>
+    <string name="zone_no3">NO3 — Norwegia centralna</string>
+    <string name="zone_no4">NO4 — P\u00f3\u0142nocna Norwegia</string>
+    <string name="zone_no5">NO5 — Zachodnia Norwegia</string>
+    <string name="zone_pl">Polska</string>
+    <string name="zone_pt">Portugalia</string>
+    <string name="zone_ro">Rumunia</string>
+    <string name="zone_rs">Serbia</string>
+    <string name="zone_sk">S\u0142owacja</string>
+    <string name="zone_si">S\u0142owenia</string>
+    <string name="zone_es">Hiszpania</string>
+    <string name="zone_se1">SE1 — P\u00f3\u0142nocna Szwecja</string>
+    <string name="zone_se2">SE2 — P\u00f3\u0142nocno-centralna Szwecja</string>
+    <string name="zone_se3">SE3 — Po\u0142udniowo-centralna Szwecja</string>
+    <string name="zone_se4">SE4 — Po\u0142udniowa Szwecja</string>
+    <string name="zone_ch">Szwajcaria</string>
+</resources>

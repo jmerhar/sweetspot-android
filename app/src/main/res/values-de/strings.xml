@@ -70,6 +70,8 @@
     <string name="picker_country_search">Länder suchen</string>
     <string name="picker_zones_count">%d Zonen</string>
     <string name="picker_zone_title">Zone</string>
+    <string name="picker_language_title">Sprache</string>
+    <string name="picker_language_search">Sprachen suchen</string>
     <string name="cd_selected">Ausgewählt</string>
 
     <!-- Errors -->

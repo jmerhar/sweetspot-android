@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Skonfiguruj urz\u0105dzenia w aplikacji na telefonie.</string>
+    <string name="wear_start">Pocz\u0105tek</string>
+    <string name="wear_end">Koniec</string>
+    <string name="wear_no_result">Brak wyniku</string>
+    <string name="wear_error_no_zone">Prosz\u0119 skonfigurowa\u0107 stref\u0119 na telefonie.</string>
+    <string name="wear_error_no_data">Brak danych cenowych.</string>
+    <string name="wear_error_not_enough_data">Za ma\u0142o danych na %s.</string>
+    <string name="wear_error_network">Nie uda\u0142o si\u0119 pobra\u0107 cen.</string>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dó</string>
+    <string name="duration_minutes_only">%dp</string>
+    <string name="duration_hours_minutes">%1$dó %2$dp</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">most</string>
+    <string name="relative_in_hours_minutes">%1$dó %2$dp múlva</string>
+    <string name="relative_in_hours">%1$dó múlva</string>
+    <string name="relative_in_minutes">%1$dp múlva</string>
+
+    <!-- Country names -->
+    <string name="country_at">Ausztria</string>
+    <string name="country_be">Belgium</string>
+    <string name="country_bg">Bulgária</string>
+    <string name="country_hr">Horvátország</string>
+    <string name="country_cz">Csehország</string>
+    <string name="country_dk">Dánia</string>
+    <string name="country_ee">Észtország</string>
+    <string name="country_fi">Finnország</string>
+    <string name="country_fr">Franciaország</string>
+    <string name="country_de">Németország</string>
+    <string name="country_gr">Görögország</string>
+    <string name="country_hu">Magyarország</string>
+    <string name="country_ie">Írország</string>
+    <string name="country_it">Olaszország</string>
+    <string name="country_lv">Lettország</string>
+    <string name="country_lt">Litvánia</string>
+    <string name="country_lu">Luxemburg</string>
+    <string name="country_me">Montenegró</string>
+    <string name="country_nl">Hollandia</string>
+    <string name="country_mk">Észak-Macedónia</string>
+    <string name="country_no">Norvégia</string>
+    <string name="country_pl">Lengyelország</string>
+    <string name="country_pt">Portugália</string>
+    <string name="country_ro">Románia</string>
+    <string name="country_rs">Szerbia</string>
+    <string name="country_sk">Szlovákia</string>
+    <string name="country_si">Szlovénia</string>
+    <string name="country_es">Spanyolország</string>
+    <string name="country_se">Svédország</string>
+    <string name="country_ch">Svájc</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Ausztria</string>
+    <string name="zone_be">Belgium</string>
+    <string name="zone_bg">Bulgária</string>
+    <string name="zone_hr">Horvátország</string>
+    <string name="zone_cz">Csehország</string>
+    <string name="zone_dk1">DK1 — Nyugat-Dánia</string>
+    <string name="zone_dk2">DK2 — Kelet-Dánia</string>
+    <string name="zone_ee">Észtország</string>
+    <string name="zone_fi">Finnország</string>
+    <string name="zone_fr">Franciaország</string>
+    <string name="zone_de_lu">Németország / Luxemburg</string>
+    <string name="zone_gr">Görögország</string>
+    <string name="zone_hu">Magyarország</string>
+    <string name="zone_ie_sem">Írország (SEM)</string>
+    <string name="zone_it_nord">Észak</string>
+    <string name="zone_it_cnor">Közép-észak</string>
+    <string name="zone_it_csud">Közép-dél</string>
+    <string name="zone_it_sud">Dél</string>
+    <string name="zone_it_cala">Calabria</string>
+    <string name="zone_it_sici">Szicília</string>
+    <string name="zone_it_sard">Szardínia</string>
+    <string name="zone_lv">Lettország</string>
+    <string name="zone_lt">Litvánia</string>
+    <string name="zone_me">Montenegró</string>
+    <string name="zone_nl">Hollandia</string>
+    <string name="zone_mk">Észak-Macedónia</string>
+    <string name="zone_no1">NO1 — Délkelet-Norvégia</string>
+    <string name="zone_no2">NO2 — Délnyugat-Norvégia</string>
+    <string name="zone_no3">NO3 — Közép-Norvégia</string>
+    <string name="zone_no4">NO4 — Észak-Norvégia</string>
+    <string name="zone_no5">NO5 — Nyugat-Norvégia</string>
+    <string name="zone_pl">Lengyelország</string>
+    <string name="zone_pt">Portugália</string>
+    <string name="zone_ro">Románia</string>
+    <string name="zone_rs">Szerbia</string>
+    <string name="zone_sk">Szlovákia</string>
+    <string name="zone_si">Szlovénia</string>
+    <string name="zone_es">Spanyolország</string>
+    <string name="zone_se1">SE1 — Észak-Svédország</string>
+    <string name="zone_se2">SE2 — Észak-közép Svédország</string>
+    <string name="zone_se3">SE3 — Dél-közép Svédország</string>
+    <string name="zone_se4">SE4 — Dél-Svédország</string>
+    <string name="zone_ch">Svájc</string>
+</resources>

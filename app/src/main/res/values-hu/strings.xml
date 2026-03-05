@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Beállítások</string>
+    <string name="cd_back">Vissza</string>
+    <string name="main_description">A SweetSpot segít pénzt megtakarítani azzal, hogy megkeresi a legolcsóbb időpontot háztartási készülékeid futtatásához. Csak válaszd ki, mennyi ideig kell működnie a készülékednek, és az alkalmazás átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legjobb időablakot. Kedvenc készülékeidet a beállításokban is elmentheted a gyors elérés érdekében.</string>
+    <string name="main_find_button">Legolcsóbb időablak keresése</string>
+    <string name="main_searching">Keresés\u2026</string>
+    <string name="main_add_appliances">Add hozzá készülékeidet</string>
+    <string name="main_card_description">Keresd meg a legolcsóbb időpontot a készüléked futtatásához</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Legolcsóbb időablak</string>
+    <string name="result_start">Kezdés</string>
+    <string name="result_end">Befejezés</string>
+    <string name="result_total_cost">Összes költség</string>
+    <string name="result_avg_price">Átl. ár</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Költségbontás</string>
+    <string name="cd_collapse">Összecsukás</string>
+    <string name="cd_expand">Kibontás</string>
+    <string name="result_upcoming_prices">Közelgő árak</string>
+    <string name="result_disclaimer">A költségek 1 kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói díjat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
+    <string name="result_data_source">\nAdatforrás: %s</string>
+    <string name="cd_cheapest_window">legolcsóbb időablak</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Időtartam</string>
+    <string name="cd_duration_picker">Időtartam-választó</string>
+    <string name="picker_hour_suffix">ó</string>
+    <string name="picker_minute_suffix">p</string>
+    <string name="cd_hours">Órák: %d</string>
+    <string name="cd_minutes">Percek: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Beállítások</string>
+    <string name="settings_language">Nyelv</string>
+    <string name="settings_language_system_default">Rendszer alapértelmezett</string>
+    <string name="settings_country">Ország</string>
+    <string name="settings_select_zone">Válassz zónát</string>
+    <string name="settings_data_sources">Adatforrások</string>
+    <string name="settings_data_sources_description">Az árak ebben a sorrendben kerülnek lekérésre. Ha az egyik nem sikerül, a következő kerül sorra.</string>
+    <string name="cd_move_up">Mozgatás felfelé</string>
+    <string name="cd_move_down">Mozgatás lefelé</string>
+    <string name="settings_reset_defaults">Alapértékek visszaállítása</string>
+    <string name="settings_appliances">Készülékek</string>
+    <string name="settings_appliances_description">Add hozzá háztartási készülékeidet a gyors elérés érdekében. Konkrét programokat is hozzáadhatsz, pl. Mosogatógép Eco, Mosogatógép Gyors, Mosógép Pamut.</string>
+    <string name="settings_add_appliance">Készülék hozzáadása</string>
+    <string name="settings_timezone">Időzóna</string>
+    <string name="settings_auto_timezone">Automatikus (ország alapján)</string>
+    <string name="settings_custom_timezone">Egyéni időzóna</string>
+    <string name="settings_unknown_country">Ismeretlen</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Készülék hozzáadása</string>
+    <string name="dialog_edit_appliance">Készülék szerkesztése</string>
+    <string name="dialog_name">Név</string>
+    <string name="dialog_name_placeholder">pl. Mosógép</string>
+    <string name="dialog_icon">Ikon</string>
+    <string name="action_delete">Törlés</string>
+    <string name="action_save">Mentés</string>
+    <string name="action_cancel">Mégse</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Időzóna</string>
+    <string name="picker_timezone_search">Időzónák keresése</string>
+    <string name="picker_country_title">Ország</string>
+    <string name="picker_country_search">Országok keresése</string>
+    <string name="picker_zones_count">%d zóna</string>
+    <string name="picker_zone_title">Zóna</string>
+    <string name="picker_language_title">Nyelv</string>
+    <string name="picker_language_search">Nyelvek keresése</string>
+    <string name="cd_selected">Kiválasztva</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Kérjük, válassz nullánál nagyobb időtartamot.</string>
+    <string name="error_no_zone">Kérjük, válassz zónát a beállításokban.</string>
+    <string name="error_no_data">Nem állnak rendelkezésre áradatok a következő 24 órára.</string>
+    <string name="error_not_enough_data">Nincs elég áradat a(z) %1$s lefedéséhez. Csak %2$d órányi adat áll rendelkezésre.</string>
+    <string name="error_network">Az árak lekérése nem sikerült: %s</string>
+</resources>

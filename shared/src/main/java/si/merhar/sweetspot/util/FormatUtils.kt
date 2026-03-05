@@ -3,10 +3,9 @@ package si.merhar.sweetspot.util
 import android.content.res.Resources
 import si.merhar.sweetspot.shared.R
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
-/** Locale-appropriate short time formatter (e.g. "14:00" or "2:00 PM"). */
-val shortTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+/** 24-hour short time formatter (e.g. "14:00"). All 30 supported countries use 24h format. */
+val shortTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
 /**
  * Formats a duration as a human-readable string.

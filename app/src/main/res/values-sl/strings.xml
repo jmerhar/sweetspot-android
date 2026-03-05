@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Nastavitve</string>
+    <string name="cd_back">Nazaj</string>
+    <string name="main_description">SweetSpot vam pomaga prihraniti denar tako, da poišče najcenejši čas za zagon vaših aparatov. Izberite, koliko časa mora aparat delovati, in aplikacija bo pregledala dinamične cene električne energije za naslednjih 24 ur ter poiskala najboljše časovno okno. Svoje najljubše aparate lahko shranite v nastavitvah za hiter dostop.</string>
+    <string name="main_find_button">Poišči najcenejše okno</string>
+    <string name="main_searching">Iskanje\u2026</string>
+    <string name="main_add_appliances">Dodajte svoje aparate</string>
+    <string name="main_card_description">Poiščite najcenejši čas za zagon aparata</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Najcenejše okno</string>
+    <string name="result_start">Začetek</string>
+    <string name="result_end">Konec</string>
+    <string name="result_total_cost">Skupni stroški</string>
+    <string name="result_avg_price">Povp. cena</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Razčlenitev stroškov</string>
+    <string name="cd_collapse">Strni</string>
+    <string name="cd_expand">Razširi</string>
+    <string name="result_upcoming_prices">Prihajajoče cene</string>
+    <string name="result_disclaimer">Stroški so prikazani za 1 kW obremenitev. Cene ne vključujejo DDV, davka na energijo in dobaviteljske pristojbine. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_data_source">\nVir podatkov: %s</string>
+    <string name="cd_cheapest_window">najcenejše okno</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Trajanje</string>
+    <string name="cd_duration_picker">Izbirnik trajanja</string>
+    <string name="picker_hour_suffix">u</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Ure: %d</string>
+    <string name="cd_minutes">Minute: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Nastavitve</string>
+    <string name="settings_language">Jezik</string>
+    <string name="settings_language_system_default">Sistemska privzeta</string>
+    <string name="settings_country">Država</string>
+    <string name="settings_select_zone">Izberite cono</string>
+    <string name="settings_data_sources">Viri podatkov</string>
+    <string name="settings_data_sources_description">Cene se pridobivajo v tem vrstnem redu. Če eden ne uspe, se poskusi naslednji.</string>
+    <string name="cd_move_up">Premakni gor</string>
+    <string name="cd_move_down">Premakni dol</string>
+    <string name="settings_reset_defaults">Ponastavi na privzeto</string>
+    <string name="settings_appliances">Aparati</string>
+    <string name="settings_appliances_description">Tukaj dodajte svoje gospodinjske aparate za hiter dostop. Dodate lahko tudi določene programe, npr. Pomivalni stroj Eco, Pomivalni stroj Hitri, Pralni stroj Bombaž.</string>
+    <string name="settings_add_appliance">Dodaj aparat</string>
+    <string name="settings_timezone">Časovni pas</string>
+    <string name="settings_auto_timezone">Samodejno (iz države)</string>
+    <string name="settings_custom_timezone">Časovni pas po meri</string>
+    <string name="settings_unknown_country">Neznano</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Dodaj aparat</string>
+    <string name="dialog_edit_appliance">Uredi aparat</string>
+    <string name="dialog_name">Ime</string>
+    <string name="dialog_name_placeholder">npr. Pralni stroj</string>
+    <string name="dialog_icon">Ikona</string>
+    <string name="action_delete">Izbriši</string>
+    <string name="action_save">Shrani</string>
+    <string name="action_cancel">Prekliči</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Časovni pas</string>
+    <string name="picker_timezone_search">Išči časovne pasove</string>
+    <string name="picker_country_title">Država</string>
+    <string name="picker_country_search">Išči države</string>
+    <string name="picker_zones_count">%d con</string>
+    <string name="picker_zone_title">Cona</string>
+    <string name="picker_language_title">Jezik</string>
+    <string name="picker_language_search">Išči jezike</string>
+    <string name="cd_selected">Izbrano</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Izberite trajanje, večje od nič.</string>
+    <string name="error_no_zone">Izberite cono v nastavitvah.</string>
+    <string name="error_no_data">Za naslednjih 24 ur ni na voljo podatkov o cenah.</string>
+    <string name="error_not_enough_data">Ni dovolj podatkov o cenah za %1$s. Na voljo je samo %2$d ur podatkov.</string>
+    <string name="error_network">Cen ni bilo mogoče pridobiti: %s</string>
+</resources>

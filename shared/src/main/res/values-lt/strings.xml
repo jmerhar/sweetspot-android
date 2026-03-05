@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%d val.</string>
+    <string name="duration_minutes_only">%d min.</string>
+    <string name="duration_hours_minutes">%1$d val. %2$d min.</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">dabar</string>
+    <string name="relative_in_hours_minutes">po %1$d val. %2$d min.</string>
+    <string name="relative_in_hours">po %1$d val.</string>
+    <string name="relative_in_minutes">po %1$d min.</string>
+
+    <!-- Country names (30 countries) -->
+    <string name="country_at">Austrija</string>
+    <string name="country_be">Belgija</string>
+    <string name="country_bg">Bulgarija</string>
+    <string name="country_hr">Kroatija</string>
+    <string name="country_cz">\u010cekija</string>
+    <string name="country_dk">Danija</string>
+    <string name="country_ee">Estija</string>
+    <string name="country_fi">Suomija</string>
+    <string name="country_fr">Pranc\u016bzija</string>
+    <string name="country_de">Vokietija</string>
+    <string name="country_gr">Graikija</string>
+    <string name="country_hu">Vengrija</string>
+    <string name="country_ie">Airija</string>
+    <string name="country_it">Italija</string>
+    <string name="country_lv">Latvija</string>
+    <string name="country_lt">Lietuva</string>
+    <string name="country_lu">Liuksemburgas</string>
+    <string name="country_me">Juodkalnija</string>
+    <string name="country_nl">Nyderlandai</string>
+    <string name="country_mk">\u0160iaur\u0117s Makedonija</string>
+    <string name="country_no">Norvegija</string>
+    <string name="country_pl">Lenkija</string>
+    <string name="country_pt">Portugalija</string>
+    <string name="country_ro">Rumunija</string>
+    <string name="country_rs">Serbija</string>
+    <string name="country_sk">Slovakija</string>
+    <string name="country_si">Slov\u0117nija</string>
+    <string name="country_es">Ispanija</string>
+    <string name="country_se">\u0160vedija</string>
+    <string name="country_ch">\u0160veicarija</string>
+
+    <!-- Zone labels (43 zones) -->
+    <string name="zone_at">Austrija</string>
+    <string name="zone_be">Belgija</string>
+    <string name="zone_bg">Bulgarija</string>
+    <string name="zone_hr">Kroatija</string>
+    <string name="zone_cz">\u010cekija</string>
+    <string name="zone_dk1">DK1 — Vakar\u0173 Danija</string>
+    <string name="zone_dk2">DK2 — Ryt\u0173 Danija</string>
+    <string name="zone_ee">Estija</string>
+    <string name="zone_fi">Suomija</string>
+    <string name="zone_fr">Pranc\u016bzija</string>
+    <string name="zone_de_lu">Vokietija / Liuksemburgas</string>
+    <string name="zone_gr">Graikija</string>
+    <string name="zone_hu">Vengrija</string>
+    <string name="zone_ie_sem">Airija (SEM)</string>
+    <string name="zone_it_nord">\u0160iaur\u0117</string>
+    <string name="zone_it_cnor">Centro \u0161iaur\u0117</string>
+    <string name="zone_it_csud">Centro piet\u016bs</string>
+    <string name="zone_it_sud">Piet\u016bs</string>
+    <string name="zone_it_cala">Kalabrija</string>
+    <string name="zone_it_sici">Sicilija</string>
+    <string name="zone_it_sard">Sardinija</string>
+    <string name="zone_lv">Latvija</string>
+    <string name="zone_lt">Lietuva</string>
+    <string name="zone_me">Juodkalnija</string>
+    <string name="zone_nl">Nyderlandai</string>
+    <string name="zone_mk">\u0160iaur\u0117s Makedonija</string>
+    <string name="zone_no1">NO1 — Pietry\u010di\u0173 Norvegija</string>
+    <string name="zone_no2">NO2 — Pietvakari\u0173 Norvegija</string>
+    <string name="zone_no3">NO3 — Centrin\u0117 Norvegija</string>
+    <string name="zone_no4">NO4 — \u0160iaur\u0117s Norvegija</string>
+    <string name="zone_no5">NO5 — Vakar\u0173 Norvegija</string>
+    <string name="zone_pl">Lenkija</string>
+    <string name="zone_pt">Portugalija</string>
+    <string name="zone_ro">Rumunija</string>
+    <string name="zone_rs">Serbija</string>
+    <string name="zone_sk">Slovakija</string>
+    <string name="zone_si">Slov\u0117nija</string>
+    <string name="zone_es">Ispanija</string>
+    <string name="zone_se1">SE1 — \u0160iaur\u0117s \u0160vedija</string>
+    <string name="zone_se2">SE2 — \u0160iaur\u0117s centro \u0160vedija</string>
+    <string name="zone_se3">SE3 — Piet\u0173 centro \u0160vedija</string>
+    <string name="zone_se4">SE4 — Piet\u0173 \u0160vedija</string>
+    <string name="zone_ch">\u0160veicarija</string>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Поставки</string>
+    <string name="cd_back">Назад</string>
+    <string name="main_description">SweetSpot ви помага да заштедите пари со наоѓање на најевтиното време за користење на вашите апарати. Само изберете колку долго треба да работи вашиот апарат и апликацијата ќе ги скенира следните 24 часа динамични цени на струја за да го најде најдоброто време. Можете и да ги зачувате вашите омилени апарати во поставките за брз пристап.</string>
+    <string name="main_find_button">Најди најевтин период</string>
+    <string name="main_searching">Пребарување\u2026</string>
+    <string name="main_add_appliances">Додајте ги вашите апарати</string>
+    <string name="main_card_description">Најдете го најевтиното време за користење на вашиот апарат</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Најевтин период</string>
+    <string name="result_start">Почеток</string>
+    <string name="result_end">Крај</string>
+    <string name="result_total_cost">Вкупна цена</string>
+    <string name="result_avg_price">Просечна цена</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Преглед на трошоци</string>
+    <string name="cd_collapse">Собери</string>
+    <string name="cd_expand">Прошири</string>
+    <string name="result_upcoming_prices">Претстојни цени</string>
+    <string name="result_disclaimer">Трошоците се прикажани за оптоварување од 1 kW. Цените не вклучуваат ДДВ, данок на енергија и провизија на добавувачот. Цените за утре обично се достапни по 13:00 CET.</string>
+    <string name="result_data_source">\nИзвор на податоци: %s</string>
+    <string name="cd_cheapest_window">најевтин период</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Траење</string>
+    <string name="cd_duration_picker">Избирач на траење</string>
+    <string name="picker_hour_suffix">ч</string>
+    <string name="picker_minute_suffix">м</string>
+    <string name="cd_hours">Часови: %d</string>
+    <string name="cd_minutes">Минути: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Поставки</string>
+    <string name="settings_language">Јазик</string>
+    <string name="settings_language_system_default">Системски стандард</string>
+    <string name="settings_country">Земја</string>
+    <string name="settings_select_zone">Изберете зона</string>
+    <string name="settings_data_sources">Извори на податоци</string>
+    <string name="settings_data_sources_description">Цените се преземаат по овој редослед. Ако еден не успее, се обидува следниот.</string>
+    <string name="cd_move_up">Премести нагоре</string>
+    <string name="cd_move_down">Премести надолу</string>
+    <string name="settings_reset_defaults">Врати на стандардни</string>
+    <string name="settings_appliances">Апарати</string>
+    <string name="settings_appliances_description">Додајте ги вашите домашни апарати тука за брз пристап. Можете и да додадете конкретни програми, на пр. Машина за садови Еко, Машина за садови Брза, Машина за перење Памук.</string>
+    <string name="settings_add_appliance">Додај апарат</string>
+    <string name="settings_timezone">Временска зона</string>
+    <string name="settings_auto_timezone">Автоматски (од земјата)</string>
+    <string name="settings_custom_timezone">Прилагодена временска зона</string>
+    <string name="settings_unknown_country">Непознато</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Додај апарат</string>
+    <string name="dialog_edit_appliance">Уреди апарат</string>
+    <string name="dialog_name">Име</string>
+    <string name="dialog_name_placeholder">на пр. Машина за перење</string>
+    <string name="dialog_icon">Икона</string>
+    <string name="action_delete">Избриши</string>
+    <string name="action_save">Зачувај</string>
+    <string name="action_cancel">Откажи</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Временска зона</string>
+    <string name="picker_timezone_search">Пребарај временски зони</string>
+    <string name="picker_country_title">Земја</string>
+    <string name="picker_country_search">Пребарај земји</string>
+    <string name="picker_zones_count">%d зони</string>
+    <string name="picker_zone_title">Зона</string>
+    <string name="picker_language_title">Јазик</string>
+    <string name="picker_language_search">Пребарај јазици</string>
+    <string name="cd_selected">Избрано</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Ве молиме изберете траење поголемо од нула.</string>
+    <string name="error_no_zone">Ве молиме изберете зона во Поставки.</string>
+    <string name="error_no_data">Нема достапни податоци за цени за следните 24 часа.</string>
+    <string name="error_not_enough_data">Нема доволно податоци за цени за %1$s. Достапни се само %2$d час(а) податоци.</string>
+    <string name="error_network">Не можеше да се преземат цените: %s</string>
+</resources>

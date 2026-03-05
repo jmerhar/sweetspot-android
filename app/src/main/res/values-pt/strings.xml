@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Definições</string>
+    <string name="cd_back">Voltar</string>
+    <string name="main_description">O SweetSpot ajuda-o a poupar dinheiro ao encontrar o horário mais barato para utilizar os seus eletrodomésticos. Basta escolher a duração de funcionamento do aparelho e ele analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar a melhor janela. Também pode guardar os seus eletrodomésticos favoritos nas definições para acesso rápido.</string>
+    <string name="main_find_button">Encontrar período mais barato</string>
+    <string name="main_searching">A procurar\u2026</string>
+    <string name="main_add_appliances">Adicione os seus eletrodomésticos</string>
+    <string name="main_card_description">Encontre o horário mais barato para utilizar o seu eletrodoméstico</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Período mais barato</string>
+    <string name="result_start">Início</string>
+    <string name="result_end">Fim</string>
+    <string name="result_total_cost">Custo total</string>
+    <string name="result_avg_price">Preço médio</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Detalhe dos custos</string>
+    <string name="cd_collapse">Recolher</string>
+    <string name="cd_expand">Expandir</string>
+    <string name="result_upcoming_prices">Próximos preços</string>
+    <string name="result_disclaimer">Os custos apresentados referem-se a uma carga de 1 kW. Os preços não incluem IVA, imposto sobre energia e taxa do fornecedor. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
+    <string name="result_data_source">\nFonte de dados: %s</string>
+    <string name="cd_cheapest_window">período mais barato</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Duração</string>
+    <string name="cd_duration_picker">Seletor de duração</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Horas: %d</string>
+    <string name="cd_minutes">Minutos: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Definições</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_system_default">Predefinição do sistema</string>
+    <string name="settings_country">País</string>
+    <string name="settings_select_zone">Selecione uma zona</string>
+    <string name="settings_data_sources">Fontes de dados</string>
+    <string name="settings_data_sources_description">Os preços são obtidos por esta ordem. Se uma fonte falhar, é tentada a seguinte.</string>
+    <string name="cd_move_up">Mover para cima</string>
+    <string name="cd_move_down">Mover para baixo</string>
+    <string name="settings_reset_defaults">Repor predefinições</string>
+    <string name="settings_appliances">Eletrodomésticos</string>
+    <string name="settings_appliances_description">Adicione aqui os seus eletrodomésticos para acesso rápido. Também pode adicionar programas específicos, por ex. Máquina de lavar loiça Eco, Máquina de lavar loiça Rápido, Máquina de lavar roupa Algodão.</string>
+    <string name="settings_add_appliance">Adicionar eletrodoméstico</string>
+    <string name="settings_timezone">Fuso horário</string>
+    <string name="settings_auto_timezone">Automático (do país)</string>
+    <string name="settings_custom_timezone">Fuso horário personalizado</string>
+    <string name="settings_unknown_country">Desconhecido</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Adicionar eletrodoméstico</string>
+    <string name="dialog_edit_appliance">Editar eletrodoméstico</string>
+    <string name="dialog_name">Nome</string>
+    <string name="dialog_name_placeholder">por ex. Máquina de lavar</string>
+    <string name="dialog_icon">Ícone</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_cancel">Cancelar</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Fuso horário</string>
+    <string name="picker_timezone_search">Pesquisar fusos horários</string>
+    <string name="picker_country_title">País</string>
+    <string name="picker_country_search">Pesquisar países</string>
+    <string name="picker_zones_count">%d zonas</string>
+    <string name="picker_zone_title">Zona</string>
+    <string name="picker_language_title">Idioma</string>
+    <string name="picker_language_search">Pesquisar idiomas</string>
+    <string name="cd_selected">Selecionado</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Selecione uma duração superior a zero.</string>
+    <string name="error_no_zone">Selecione uma zona nas Definições.</string>
+    <string name="error_no_data">Não há dados de preços disponíveis para as próximas 24 horas.</string>
+    <string name="error_not_enough_data">Dados de preços insuficientes para %1$s. Apenas %2$d hora(s) de dados disponíveis.</string>
+    <string name="error_network">Não foi possível obter os preços: %s</string>
+</resources>

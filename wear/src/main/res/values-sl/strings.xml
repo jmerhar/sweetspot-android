@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Nastavite aparate v aplikaciji na telefonu.</string>
+    <string name="wear_start">Začetek</string>
+    <string name="wear_end">Konec</string>
+    <string name="wear_no_result">Ni rezultata</string>
+    <string name="wear_error_no_zone">Nastavite cono na telefonu.</string>
+    <string name="wear_error_no_data">Podatki o cenah niso na voljo.</string>
+    <string name="wear_error_not_enough_data">Ni dovolj podatkov za %s.</string>
+    <string name="wear_error_network">Cen ni bilo mogoče pridobiti.</string>
+</resources>

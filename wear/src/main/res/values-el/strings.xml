@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Ρυθμίστε τις συσκευές στην εφαρμογή του τηλεφώνου.</string>
+    <string name="wear_start">Έναρξη</string>
+    <string name="wear_end">Λήξη</string>
+    <string name="wear_no_result">Κανένα αποτέλεσμα</string>
+    <string name="wear_error_no_zone">Ρυθμίστε τη ζώνη σας στο τηλέφωνο.</string>
+    <string name="wear_error_no_data">Δεν υπάρχουν διαθέσιμα δεδομένα τιμών.</string>
+    <string name="wear_error_not_enough_data">Ανεπαρκή δεδομένα για %s.</string>
+    <string name="wear_error_network">Αδυναμία ανάκτησης τιμών.</string>
+</resources>

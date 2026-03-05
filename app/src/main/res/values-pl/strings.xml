@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Ustawienia</string>
+    <string name="cd_back">Wstecz</string>
+    <string name="main_description">SweetSpot pomaga oszcz\u0119dza\u0107 pieni\u0105dze, znajduj\u0105c najtańszy czas na uruchomienie urz\u0105dzeń. Wystarczy wybra\u0107, jak d\u0142ugo ma dzia\u0142a\u0107 urz\u0105dzenie, a aplikacja przeskanuje ceny pr\u0105du z najbli\u017cszych 24 godzin, aby znale\u017a\u0107 najlepsze okno. Mo\u017cesz te\u017c zapisa\u0107 ulubione urz\u0105dzenia w ustawieniach dla szybkiego dost\u0119pu.</string>
+    <string name="main_find_button">Znajd\u017a najtańszy okres</string>
+    <string name="main_searching">Wyszukiwanie\u2026</string>
+    <string name="main_add_appliances">Dodaj swoje urz\u0105dzenia</string>
+    <string name="main_card_description">Znajd\u017a najtańszy czas na uruchomienie urz\u0105dzenia</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Najtańszy okres</string>
+    <string name="result_start">Pocz\u0105tek</string>
+    <string name="result_end">Koniec</string>
+    <string name="result_total_cost">Koszt ca\u0142kowity</string>
+    <string name="result_avg_price">\u015ar. cena</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Podzia\u0142 koszt\u00f3w</string>
+    <string name="cd_collapse">Zwiń</string>
+    <string name="cd_expand">Rozwiń</string>
+    <string name="result_upcoming_prices">Nadchodz\u0105ce ceny</string>
+    <string name="result_disclaimer">Koszty s\u0105 podane dla obci\u0105\u017cenia 1 kW. Ceny nie zawieraj\u0105 VAT, podatku energetycznego i op\u0142aty dostawcy. Ceny na jutro s\u0105 zwykle dost\u0119pne po godz. 13:00 CET.</string>
+    <string name="result_data_source">\n\u0179r\u00f3d\u0142o danych: %s</string>
+    <string name="cd_cheapest_window">najtańszy okres</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Czas trwania</string>
+    <string name="cd_duration_picker">Wyb\u00f3r czasu trwania</string>
+    <string name="picker_hour_suffix">g</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Godziny: %d</string>
+    <string name="cd_minutes">Minuty: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_language">J\u0119zyk</string>
+    <string name="settings_language_system_default">Domy\u015blny systemowy</string>
+    <string name="settings_country">Kraj</string>
+    <string name="settings_select_zone">Wybierz stref\u0119</string>
+    <string name="settings_data_sources">\u0179r\u00f3d\u0142a danych</string>
+    <string name="settings_data_sources_description">Ceny s\u0105 pobierane w tej kolejno\u015bci. Je\u015bli jedno \u017ar\u00f3d\u0142o zawiedzie, pr\u00f3bowane jest nast\u0119pne.</string>
+    <string name="cd_move_up">Przesuń w g\u00f3r\u0119</string>
+    <string name="cd_move_down">Przesuń w d\u00f3\u0142</string>
+    <string name="settings_reset_defaults">Przywr\u00f3\u0107 domy\u015blne</string>
+    <string name="settings_appliances">Urz\u0105dzenia</string>
+    <string name="settings_appliances_description">Dodaj tutaj swoje urz\u0105dzenia domowe dla szybkiego dost\u0119pu. Mo\u017cesz te\u017c doda\u0107 konkretne programy, np. Zmywarka Eco, Zmywarka Szybki, Pralka Bawe\u0142na.</string>
+    <string name="settings_add_appliance">Dodaj urz\u0105dzenie</string>
+    <string name="settings_timezone">Strefa czasowa</string>
+    <string name="settings_auto_timezone">Automatyczna (z kraju)</string>
+    <string name="settings_custom_timezone">W\u0142asna strefa czasowa</string>
+    <string name="settings_unknown_country">Nieznany</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Dodaj urz\u0105dzenie</string>
+    <string name="dialog_edit_appliance">Edytuj urz\u0105dzenie</string>
+    <string name="dialog_name">Nazwa</string>
+    <string name="dialog_name_placeholder">np. Pralka</string>
+    <string name="dialog_icon">Ikona</string>
+    <string name="action_delete">Usuń</string>
+    <string name="action_save">Zapisz</string>
+    <string name="action_cancel">Anuluj</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Strefa czasowa</string>
+    <string name="picker_timezone_search">Szukaj stref czasowych</string>
+    <string name="picker_country_title">Kraj</string>
+    <string name="picker_country_search">Szukaj kraj\u00f3w</string>
+    <string name="picker_zones_count">%d stref</string>
+    <string name="picker_zone_title">Strefa</string>
+    <string name="picker_language_title">J\u0119zyk</string>
+    <string name="picker_language_search">Szukaj j\u0119zyk\u00f3w</string>
+    <string name="cd_selected">Wybrano</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Prosz\u0119 wybra\u0107 czas trwania wi\u0119kszy od zera.</string>
+    <string name="error_no_zone">Prosz\u0119 wybra\u0107 stref\u0119 w Ustawieniach.</string>
+    <string name="error_no_data">Brak danych cenowych na najbli\u017csze 24 godziny.</string>
+    <string name="error_not_enough_data">Za ma\u0142o danych cenowych na %1$s. Dost\u0119pne tylko %2$d godzin(y) danych.</string>
+    <string name="error_network">Nie uda\u0142o si\u0119 pobra\u0107 cen: %s</string>
+</resources>

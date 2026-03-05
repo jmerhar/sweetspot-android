@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dч</string>
+    <string name="duration_minutes_only">%dм</string>
+    <string name="duration_hours_minutes">%1$dч %2$dм</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">сега</string>
+    <string name="relative_in_hours_minutes">след %1$dч %2$dм</string>
+    <string name="relative_in_hours">след %1$dч</string>
+    <string name="relative_in_minutes">след %1$dм</string>
+
+    <!-- Country names (30 countries) -->
+    <string name="country_at">Австрия</string>
+    <string name="country_be">Белгия</string>
+    <string name="country_bg">България</string>
+    <string name="country_hr">Хърватия</string>
+    <string name="country_cz">Чехия</string>
+    <string name="country_dk">Дания</string>
+    <string name="country_ee">Естония</string>
+    <string name="country_fi">Финландия</string>
+    <string name="country_fr">Франция</string>
+    <string name="country_de">Германия</string>
+    <string name="country_gr">Гърция</string>
+    <string name="country_hu">Унгария</string>
+    <string name="country_ie">Ирландия</string>
+    <string name="country_it">Италия</string>
+    <string name="country_lv">Латвия</string>
+    <string name="country_lt">Литва</string>
+    <string name="country_lu">Люксембург</string>
+    <string name="country_me">Черна гора</string>
+    <string name="country_nl">Нидерландия</string>
+    <string name="country_mk">Северна Македония</string>
+    <string name="country_no">Норвегия</string>
+    <string name="country_pl">Полша</string>
+    <string name="country_pt">Португалия</string>
+    <string name="country_ro">Румъния</string>
+    <string name="country_rs">Сърбия</string>
+    <string name="country_sk">Словакия</string>
+    <string name="country_si">Словения</string>
+    <string name="country_es">Испания</string>
+    <string name="country_se">Швеция</string>
+    <string name="country_ch">Швейцария</string>
+
+    <!-- Zone labels (43 zones) -->
+    <string name="zone_at">Австрия</string>
+    <string name="zone_be">Белгия</string>
+    <string name="zone_bg">България</string>
+    <string name="zone_hr">Хърватия</string>
+    <string name="zone_cz">Чехия</string>
+    <string name="zone_dk1">DK1 — Западна Дания</string>
+    <string name="zone_dk2">DK2 — Източна Дания</string>
+    <string name="zone_ee">Естония</string>
+    <string name="zone_fi">Финландия</string>
+    <string name="zone_fr">Франция</string>
+    <string name="zone_de_lu">Германия / Люксембург</string>
+    <string name="zone_gr">Гърция</string>
+    <string name="zone_hu">Унгария</string>
+    <string name="zone_ie_sem">Ирландия (SEM)</string>
+    <string name="zone_it_nord">Север</string>
+    <string name="zone_it_cnor">Централен север</string>
+    <string name="zone_it_csud">Централен юг</string>
+    <string name="zone_it_sud">Юг</string>
+    <string name="zone_it_cala">Калабрия</string>
+    <string name="zone_it_sici">Сицилия</string>
+    <string name="zone_it_sard">Сардиния</string>
+    <string name="zone_lv">Латвия</string>
+    <string name="zone_lt">Литва</string>
+    <string name="zone_me">Черна гора</string>
+    <string name="zone_nl">Нидерландия</string>
+    <string name="zone_mk">Северна Македония</string>
+    <string name="zone_no1">NO1 — Югоизточна Норвегия</string>
+    <string name="zone_no2">NO2 — Югозападна Норвегия</string>
+    <string name="zone_no3">NO3 — Централна Норвегия</string>
+    <string name="zone_no4">NO4 — Северна Норвегия</string>
+    <string name="zone_no5">NO5 — Западна Норвегия</string>
+    <string name="zone_pl">Полша</string>
+    <string name="zone_pt">Португалия</string>
+    <string name="zone_ro">Румъния</string>
+    <string name="zone_rs">Сърбия</string>
+    <string name="zone_sk">Словакия</string>
+    <string name="zone_si">Словения</string>
+    <string name="zone_es">Испания</string>
+    <string name="zone_se1">SE1 — Северна Швеция</string>
+    <string name="zone_se2">SE2 — Северноцентрална Швеция</string>
+    <string name="zone_se3">SE3 — Южноцентрална Швеция</string>
+    <string name="zone_se4">SE4 — Южна Швеция</string>
+    <string name="zone_ch">Швейцария</string>
+</resources>

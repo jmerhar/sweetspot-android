@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Inställningar</string>
+    <string name="cd_back">Tillbaka</string>
+    <string name="main_description">SweetSpot hjälper dig att spara pengar genom att hitta den billigaste tiden att köra dina apparater. Välj hur länge din apparat behöver köras, så skannar den de kommande 24 timmarnas dynamiska elpriser för att hitta det bästa tidsfönstret. Du kan också spara dina favoritapparater i inställningarna för snabb åtkomst.</string>
+    <string name="main_find_button">Hitta billigaste fönstret</string>
+    <string name="main_searching">Söker\u2026</string>
+    <string name="main_add_appliances">Lägg till dina apparater</string>
+    <string name="main_card_description">Hitta den billigaste tiden att köra din apparat</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">Billigaste fönstret</string>
+    <string name="result_start">Start</string>
+    <string name="result_end">Slut</string>
+    <string name="result_total_cost">Total kostnad</string>
+    <string name="result_avg_price">Snittpris</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Kostnadsfördelning</string>
+    <string name="cd_collapse">Fäll ihop</string>
+    <string name="cd_expand">Expandera</string>
+    <string name="result_upcoming_prices">Kommande priser</string>
+    <string name="result_disclaimer">Kostnader visas per 1 kW last. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="result_data_source">\nDatakälla: %s</string>
+    <string name="cd_cheapest_window">billigaste fönstret</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Varaktighet</string>
+    <string name="cd_duration_picker">Varaktighetsväljare</string>
+    <string name="picker_hour_suffix">t</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Timmar: %d</string>
+    <string name="cd_minutes">Minuter: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_language">Språk</string>
+    <string name="settings_language_system_default">Systemstandard</string>
+    <string name="settings_country">Land</string>
+    <string name="settings_select_zone">Välj en zon</string>
+    <string name="settings_data_sources">Datakällor</string>
+    <string name="settings_data_sources_description">Priser hämtas i denna ordning. Om en källa misslyckas prövas nästa.</string>
+    <string name="cd_move_up">Flytta upp</string>
+    <string name="cd_move_down">Flytta ner</string>
+    <string name="settings_reset_defaults">Återställ till standard</string>
+    <string name="settings_appliances">Apparater</string>
+    <string name="settings_appliances_description">Lägg till dina hushållsapparater här för snabb åtkomst. Du kan också lägga till specifika program, t.ex. Diskmaskin Eco, Diskmaskin Snabb, Tvättmaskin Bomull.</string>
+    <string name="settings_add_appliance">Lägg till apparat</string>
+    <string name="settings_timezone">Tidszon</string>
+    <string name="settings_auto_timezone">Automatisk (från land)</string>
+    <string name="settings_custom_timezone">Anpassad tidszon</string>
+    <string name="settings_unknown_country">Okänt</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Lägg till apparat</string>
+    <string name="dialog_edit_appliance">Redigera apparat</string>
+    <string name="dialog_name">Namn</string>
+    <string name="dialog_name_placeholder">t.ex. Tvättmaskin</string>
+    <string name="dialog_icon">Ikon</string>
+    <string name="action_delete">Ta bort</string>
+    <string name="action_save">Spara</string>
+    <string name="action_cancel">Avbryt</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Tidszon</string>
+    <string name="picker_timezone_search">Sök tidszoner</string>
+    <string name="picker_country_title">Land</string>
+    <string name="picker_country_search">Sök länder</string>
+    <string name="picker_zones_count">%d zoner</string>
+    <string name="picker_zone_title">Zon</string>
+    <string name="picker_language_title">Språk</string>
+    <string name="picker_language_search">Sök språk</string>
+    <string name="cd_selected">Valt</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">Välj en varaktighet som är längre än noll.</string>
+    <string name="error_no_zone">Välj en zon i inställningarna.</string>
+    <string name="error_no_data">Inga prisuppgifter tillgängliga för de kommande 24 timmarna.</string>
+    <string name="error_not_enough_data">Inte tillräckligt med prisdata för %1$s. Endast %2$d timme/timmar med data tillgängligt.</string>
+    <string name="error_network">Kunde inte hämta priser: %s</string>
+</resources>

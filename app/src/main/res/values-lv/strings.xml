@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+
+    <!-- Main screen -->
+    <string name="cd_settings">Iestat\u012bjumi</string>
+    <string name="cd_back">Atpaka\u013c</string>
+    <string name="main_description">SweetSpot pal\u012bdz taup\u012bt naudu, atrodot l\u0113t\u0101ko laiku j\u016bsu ier\u012b\u010du darbin\u0101\u0161anai. Vi\u0113nk\u0101r\u0161i nor\u0101diet, cik ilgi j\u016bsu ier\u012bcei j\u0101darbojas, un lietotne p\u0101rskat\u012bs n\u0101kamo 24 stundu dinamisk\u0101s elektr\u012bbas cenas, lai atrastu lab\u0101ko logu. Varat ar\u012b saglab\u0101t iecien\u012bt\u0101k\u0101s ier\u012bces iestat\u012bjumos \u0101trai piek\u013cuvei.</string>
+    <string name="main_find_button">Atrast l\u0113t\u0101ko logu</string>
+    <string name="main_searching">Mekl\u0113\u2026</string>
+    <string name="main_add_appliances">Pievienojiet savas ier\u012bces</string>
+    <string name="main_card_description">Atrodiet l\u0113t\u0101ko laiku savai ier\u012bcei</string>
+
+    <!-- Result screen -->
+    <string name="result_cheapest_window">L\u0113t\u0101kais logs</string>
+    <string name="result_start">S\u0101kums</string>
+    <string name="result_end">Beigas</string>
+    <string name="result_total_cost">Kop\u0113j\u0101s izmaksas</string>
+    <string name="result_avg_price">Vid. cena</string>
+    <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_breakdown">Izmaksu sadal\u012bjums</string>
+    <string name="cd_collapse">Sav\u0113rt</string>
+    <string name="cd_expand">Izv\u0113rst</string>
+    <string name="result_upcoming_prices">Tuvo\u0161\u0101s cenas</string>
+    <string name="result_disclaimer">Izmaksas ir nor\u0101d\u012btas 1 kW slodzei. Cenas neietver PVN, ener\u0123ijas nodokli un pieg\u0101d\u0101t\u0101ja maksu. R\u012btdienas cenas parasti ir pieejamas p\u0113c 13:00 CET.</string>
+    <string name="result_data_source">\nDatu avots: %s</string>
+    <string name="cd_cheapest_window">l\u0113t\u0101kais logs</string>
+
+    <!-- Duration picker -->
+    <string name="picker_duration">Ilgums</string>
+    <string name="cd_duration_picker">Ilguma izv\u0113le</string>
+    <string name="picker_hour_suffix">h</string>
+    <string name="picker_minute_suffix">m</string>
+    <string name="cd_hours">Stundas: %d</string>
+    <string name="cd_minutes">Min\u016btes: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Iestat\u012bjumi</string>
+    <string name="settings_language">Valoda</string>
+    <string name="settings_language_system_default">Sist\u0113mas noklus\u0113jums</string>
+    <string name="settings_country">Valsts</string>
+    <string name="settings_select_zone">Izv\u0113lieties zonu</string>
+    <string name="settings_data_sources">Datu avoti</string>
+    <string name="settings_data_sources_description">Cenas tiek ieg\u016btas \u0161\u0101d\u0101 sec\u012bb\u0101. Ja viens avots nedarbojas, tiek m\u0113\u0123in\u0101ts n\u0101kamais.</string>
+    <string name="cd_move_up">P\u0101rvietot aug\u0161up</string>
+    <string name="cd_move_down">P\u0101rvietot lejup</string>
+    <string name="settings_reset_defaults">Atjaunot noklus\u0113jumus</string>
+    <string name="settings_appliances">Ier\u012bces</string>
+    <string name="settings_appliances_description">Pievienojiet savas m\u0101jas ier\u012bces \u0101trai piek\u013cuvei. Varat pievienot ar\u012b konkr\u0113tas programmas, piem. Trauku mazg\u0101jam\u0101 ma\u0161\u012bna Eco, Trauku mazg\u0101jam\u0101 ma\u0161\u012bna \u0100tr\u0101, Ve\u013cas ma\u0161\u012bna Kokvilna.</string>
+    <string name="settings_add_appliance">Pievienot ier\u012bci</string>
+    <string name="settings_timezone">Laika josla</string>
+    <string name="settings_auto_timezone">Autom\u0101tiski (no valsts)</string>
+    <string name="settings_custom_timezone">Piel\u0101gota laika josla</string>
+    <string name="settings_unknown_country">Nezin\u0101ma</string>
+
+    <!-- Appliance dialog -->
+    <string name="dialog_add_appliance">Pievienot ier\u012bci</string>
+    <string name="dialog_edit_appliance">Redi\u0123\u0113t ier\u012bci</string>
+    <string name="dialog_name">Nosaukums</string>
+    <string name="dialog_name_placeholder">piem. Ve\u013cas ma\u0161\u012bna</string>
+    <string name="dialog_icon">Ikona</string>
+    <string name="action_delete">Dz\u0113st</string>
+    <string name="action_save">Saglab\u0101t</string>
+    <string name="action_cancel">Atcelt</string>
+
+    <!-- Picker screens -->
+    <string name="picker_timezone_title">Laika josla</string>
+    <string name="picker_timezone_search">Mekl\u0113t laika joslas</string>
+    <string name="picker_country_title">Valsts</string>
+    <string name="picker_country_search">Mekl\u0113t valstis</string>
+    <string name="picker_zones_count">%d zonas</string>
+    <string name="picker_zone_title">Zona</string>
+    <string name="picker_language_title">Valoda</string>
+    <string name="picker_language_search">Mekl\u0113t valodas</string>
+    <string name="cd_selected">Izv\u0113l\u0113ts</string>
+
+    <!-- Errors -->
+    <string name="error_zero_duration">L\u016bdzu, izv\u0113lieties ilgumu, kas liel\u0101ks par nulli.</string>
+    <string name="error_no_zone">L\u016bdzu, izv\u0113lieties zonu iestat\u012bjumos.</string>
+    <string name="error_no_data">Nav pieejamu cenu datu n\u0101kamaj\u0101m 24 stund\u0101m.</string>
+    <string name="error_not_enough_data">Nepietiek cenu datu, lai segtu %1$s. Pieejami tikai %2$d stundu dati.</string>
+    <string name="error_network">Neizdev\u0101s ieg\u016bt cenas: %s</string>
+</resources>

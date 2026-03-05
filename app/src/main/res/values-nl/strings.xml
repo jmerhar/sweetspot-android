@@ -70,6 +70,8 @@
     <string name="picker_country_search">Zoek landen</string>
     <string name="picker_zones_count">%d zones</string>
     <string name="picker_zone_title">Zone</string>
+    <string name="picker_language_title">Taal</string>
+    <string name="picker_language_search">Zoek talen</string>
     <string name="cd_selected">Geselecteerd</string>
 
     <!-- Errors -->

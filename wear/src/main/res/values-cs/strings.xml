@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Nastavte spotřebiče v aplikaci na telefonu.</string>
+    <string name="wear_start">Začátek</string>
+    <string name="wear_end">Konec</string>
+    <string name="wear_no_result">Žádný výsledek</string>
+    <string name="wear_error_no_zone">Nastavte prosím zónu na telefonu.</string>
+    <string name="wear_error_no_data">Žádná cenová data nejsou k dispozici.</string>
+    <string name="wear_error_not_enough_data">Nedostatek dat pro %s.</string>
+    <string name="wear_error_network">Nepodařilo se stáhnout ceny.</string>
+</resources>

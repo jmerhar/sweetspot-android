@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Állítsd be a készülékeket a telefonos alkalmazásban.</string>
+    <string name="wear_start">Kezdés</string>
+    <string name="wear_end">Befejezés</string>
+    <string name="wear_no_result">Nincs eredmény</string>
+    <string name="wear_error_no_zone">Kérjük, állítsd be a zónát a telefonon.</string>
+    <string name="wear_error_no_data">Nem állnak rendelkezésre áradatok.</string>
+    <string name="wear_error_not_enough_data">Nincs elég adat a(z) %s lefedéséhez.</string>
+    <string name="wear_error_network">Az árak lekérése nem sikerült.</string>
+</resources>

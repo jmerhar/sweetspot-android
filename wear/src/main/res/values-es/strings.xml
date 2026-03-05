@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Configura los electrodomésticos en la app del teléfono.</string>
+    <string name="wear_start">Inicio</string>
+    <string name="wear_end">Fin</string>
+    <string name="wear_no_result">Sin resultado</string>
+    <string name="wear_error_no_zone">Configura tu zona en el teléfono.</string>
+    <string name="wear_error_no_data">No hay datos de precios disponibles.</string>
+    <string name="wear_error_not_enough_data">No hay suficientes datos para %s.</string>
+    <string name="wear_error_network">No se pudieron obtener los precios.</string>
+</resources>

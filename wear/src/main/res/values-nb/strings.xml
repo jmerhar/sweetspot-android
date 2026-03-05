@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Sett opp apparater i telefonappen.</string>
+    <string name="wear_start">Start</string>
+    <string name="wear_end">Slutt</string>
+    <string name="wear_no_result">Ingen resultat</string>
+    <string name="wear_error_no_zone">Vennligst konfigurer sonen din på telefonen.</string>
+    <string name="wear_error_no_data">Ingen prisdata tilgjengelig.</string>
+    <string name="wear_error_not_enough_data">Ikke nok data for %s.</string>
+    <string name="wear_error_network">Kunne ikke hente priser.</string>
+</resources>

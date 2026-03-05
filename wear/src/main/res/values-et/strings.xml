@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Seadistage seadmed telefonirakenduses.</string>
+    <string name="wear_start">Algus</string>
+    <string name="wear_end">Lõpp</string>
+    <string name="wear_no_result">Tulemust pole</string>
+    <string name="wear_error_no_zone">Seadistage oma tsoon telefonis.</string>
+    <string name="wear_error_no_data">Hinnaandmed pole saadaval.</string>
+    <string name="wear_error_not_enough_data">Ebapiisavad andmed %s jaoks.</string>
+    <string name="wear_error_network">Hindade toomine ebaõnnestus.</string>
+</resources>

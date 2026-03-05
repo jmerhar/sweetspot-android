@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SweetSpot</string>
+    <string name="wear_empty_state">Nustatykite prietaisus telefono programėlėje.</string>
+    <string name="wear_start">Pradžia</string>
+    <string name="wear_end">Pabaiga</string>
+    <string name="wear_no_result">Nėra rezultato</string>
+    <string name="wear_error_no_zone">Sukonfigūruokite zoną telefone.</string>
+    <string name="wear_error_no_data">Nėra kainų duomenų.</string>
+    <string name="wear_error_not_enough_data">Nepakanka duomenų %s.</string>
+    <string name="wear_error_network">Nepavyko gauti kainų.</string>
+</resources>

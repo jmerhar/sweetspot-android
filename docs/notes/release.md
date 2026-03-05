@@ -1,8 +1,10 @@
-## Higher resolution, better reliability
+## 25 languages, data source preferences
 
-SweetSpot now shows electricity prices in **15-minute intervals** instead of hourly, giving you a more precise cheapest window. For the Netherlands, the app now uses ENTSO-E as the primary data source with EnergyZero as an automatic fallback.
+SweetSpot now speaks your language — with **25 European languages** covering every supported country. You can also choose your preferred data source order for price fetching.
 
 ### What's new
 
-- **15-minute price resolution** — all zones now return quarter-hourly prices via ENTSO-E (previously hourly). The sliding window algorithm, chart, cache, and cost breakdown all work at native resolution. This means more accurate start times and cost estimates.
-- **ENTSO-E primary for NL** — the Netherlands now uses ENTSO-E (15-min) as primary source, with EnergyZero as automatic fallback. The active data source is shown in the results screen.
+- **25 languages** — the app is now fully localized in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish. Pick your language in Settings, or leave it on "System default".
+- **Full-screen language picker** — search across all 25 languages by native or English name, with the system default language shown at the top.
+- **Data source preferences** — choose the order in which price sources (ENTSO-E, EnergyZero, Spot-Hinta.fi) are tried, or disable sources you don't want.
+- **24-hour time format** — times are now always shown in HH:mm format, consistent across all languages.

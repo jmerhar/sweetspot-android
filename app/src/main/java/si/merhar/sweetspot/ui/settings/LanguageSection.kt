@@ -104,12 +104,15 @@ internal fun LanguageSection(onClick: () -> Unit) {
     val currentLocales = AppCompatDelegate.getApplicationLocales()
     val currentTag = if (currentLocales.isEmpty) "" else currentLocales.toLanguageTags()
     val systemDefaultLabel = stringResource(R.string.settings_language_system_default)
+    val context = LocalContext.current
 
     val displayName = if (currentTag.isEmpty()) {
         systemDefaultLabel
     } else {
         languageOptions.find { it.tag == currentTag }?.nativeName ?: currentTag
     }
+
+    val subtitle = if (currentTag.isEmpty()) systemLanguageName(context) else null
 
     Text(
         text = stringResource(R.string.settings_language),
@@ -130,6 +133,13 @@ internal fun LanguageSection(onClick: () -> Unit) {
                 text = displayName,
                 style = MaterialTheme.typography.bodyLarge
             )
+            if (subtitle != null) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }

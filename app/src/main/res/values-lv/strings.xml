@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Tuvošās cenas</string>
     <string name="result_disclaimer">Izmaksas ir norādītas 1 kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="result_data_source">\nDatu avots: %s</string>
+    <string name="result_price_zone">\nCenu zona: %s</string>
     <string name="cd_cheapest_window">lētākais logs</string>
 
     <!-- Duration picker -->

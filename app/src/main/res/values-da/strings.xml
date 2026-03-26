@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Kommende priser</string>
     <string name="result_disclaimer">Omkostningerne er pr. 1 kW belastning. Priserne inkluderer ikke moms, energiafgift og leverandørgebyr. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
     <string name="result_data_source">\nDatakilde: %s</string>
+    <string name="result_price_zone">\nPrisområde: %s</string>
     <string name="cd_cheapest_window">billigste vindue</string>
 
     <!-- Duration picker -->

@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Kommende Preise</string>
     <string name="result_disclaimer">Kosten gelten für 1 kW Leistung. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantengebühr. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
     <string name="result_data_source">\nDatenquelle: %s</string>
+    <string name="result_price_zone">\nPreiszone: %s</string>
     <string name="cd_cheapest_window">günstigstes Zeitfenster</string>
 
     <!-- Duration picker -->

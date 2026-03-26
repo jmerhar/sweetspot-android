@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Nadchodzące ceny</string>
     <string name="result_disclaimer">Koszty są podane dla obciążenia 1 kW. Ceny nie zawierają VAT, podatku energetycznego i opłaty dostawcy. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
     <string name="result_data_source">\nŹródło danych: %s</string>
+    <string name="result_price_zone">\nStrefa cenowa: %s</string>
     <string name="cd_cheapest_window">najtańszy okres</string>
 
     <!-- Duration picker -->

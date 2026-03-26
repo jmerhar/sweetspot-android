@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Kommande priser</string>
     <string name="result_disclaimer">Kostnader visas per 1 kW last. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="result_data_source">\nDatakälla: %s</string>
+    <string name="result_price_zone">\nPrisområde: %s</string>
     <string name="cd_cheapest_window">billigaste fönstret</string>
 
     <!-- Duration picker -->

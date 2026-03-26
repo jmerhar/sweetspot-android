@@ -78,12 +78,23 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
     }
 
     if (hasResults) {
+        val priceZoneName = state.priceZone?.let { zone ->
+            val zoneName = stringResource(zone.labelRes)
+            val country = state.countries.find { it.code == state.countryCode }
+            if (country != null && country.zones.size > 1) {
+                "${stringResource(country.nameRes)} — $zoneName"
+            } else {
+                zoneName
+            }
+        }
+
         ResultScreen(
             result = state.result!!,
             allPrices = state.allPrices,
             resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
             timeZoneId = state.timeZoneId,
             priceSource = state.priceSource,
+            priceZoneName = priceZoneName,
             isLoading = state.isLoading,
             onRefresh = viewModel::onRefreshResults,
             onBack = viewModel::onClearResult,
@@ -204,6 +215,7 @@ private fun ResultScreen(
     resultLabel: String,
     timeZoneId: java.time.ZoneId,
     priceSource: String?,
+    priceZoneName: String?,
     isLoading: Boolean,
     onRefresh: () -> Unit,
     onBack: () -> Unit,
@@ -285,7 +297,8 @@ private fun ResultScreen(
 
                 Text(
                     text = stringResource(R.string.result_disclaimer) +
-                        (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else ""),
+                        (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else "") +
+                        (if (priceZoneName != null) stringResource(R.string.result_price_zone, priceZoneName) else ""),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

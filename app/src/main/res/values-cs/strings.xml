@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Nadcházející ceny</string>
     <string name="result_disclaimer">Náklady jsou uvedeny pro zátěž 1 kW. Ceny nezahrnují DPH, daň z energie a poplatek dodavatele. Ceny na zítřek jsou obvykle k dispozici po 13:00 SEČ.</string>
     <string name="result_data_source">\nZdroj dat: %s</string>
+    <string name="result_price_zone">\nCenová zóna: %s</string>
     <string name="cd_cheapest_window">nejlevnější okno</string>
 
     <!-- Duration picker -->

@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Tulevased hinnad</string>
     <string name="result_disclaimer">Kulud on arvutatud 1 kW koormuse kohta. Hinnad ei sisalda käibemaksu, energiamaksu ega tarnija tasu. Homse hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="result_data_source">\nAndmeallikas: %s</string>
+    <string name="result_price_zone">\nHinnatsoon: %s</string>
     <string name="cd_cheapest_window">odavaim ajavahemik</string>
 
     <!-- Duration picker -->

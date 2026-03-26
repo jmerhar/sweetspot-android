@@ -24,6 +24,7 @@
     <string name="result_upcoming_prices">Prochains prix</string>
     <string name="result_disclaimer">Les coûts sont indiqués pour une charge de 1 kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
     <string name="result_data_source">\nSource des données : %s</string>
+    <string name="result_price_zone">\nZone tarifaire : %s</string>
     <string name="cd_cheapest_window">période la moins chère</string>
 
     <!-- Duration picker -->

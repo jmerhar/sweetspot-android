@@ -14,6 +14,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -21,11 +23,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.data.api.DataSource
 import si.merhar.sweetspot.model.Appliance
@@ -61,6 +65,7 @@ fun SettingsScreen(
     onDisabledSourcesChanged: (Set<String>) -> Unit,
     onResetSourceOrder: () -> Unit,
     onLanguageChanged: (String) -> Unit,
+    onClearCache: () -> String,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -70,6 +75,8 @@ fun SettingsScreen(
     var showZonePicker by rememberSaveable { mutableStateOf(false) }
     var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
 
     val defaultTimeZoneId = remember(priceZone) {
         priceZone?.timeZoneId?.let { ZoneId.of(it) } ?: ZoneId.systemDefault()
@@ -187,7 +194,8 @@ fun SettingsScreen(
                     titleContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -240,6 +248,13 @@ fun SettingsScreen(
                 isUsingDefaultTimezone = isUsingDefaultTimezone,
                 onClick = { showTimezonePicker = true }
             )
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            AdvancedSection(onClearCache = {
+                val message = onClearCache()
+                coroutineScope.launch { snackbarHostState.showSnackbar(message) }
+            })
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
         }

@@ -7,7 +7,7 @@
     <string name="cd_back">Tagasi</string>
     <string name="main_description">SweetSpot aitab teil raha säästa, leides kõige odavama aja oma seadmete kasutamiseks. Valige lihtsalt, kui kaua teie seade peab töötama, ja rakendus otsib järgmise 24 tunni dünaamilistest elektrihindadest parima ajavahemiku. Samuti saate salvestada oma lemmikseadmed seadetesse kiireks ligipääsuks.</string>
     <string name="main_find_button">Otsi odavaimat ajavahemikku</string>
-    <string name="main_searching">Otsimine\u2026</string>
+    <string name="main_searching">Otsimine…</string>
     <string name="main_add_appliances">Lisage oma seadmed</string>
     <string name="main_card_description">Leidke odavaim aeg oma seadme kasutamiseks</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Järgmise 24 tunni hinnaandmed pole saadaval.</string>
     <string name="error_not_enough_data">Ebapiisavad hinnaandmed %1$s jaoks. Saadaval on ainult %2$d tund(i) andmeid.</string>
     <string name="error_network">Hindade toomine ebaõnnestus: %s</string>
+    <string name="error_cooldown">Hinnad laaditi hiljuti. Proovi uuesti %d minuti pärast.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Täpsemalt</string>
+    <string name="settings_clear_cache">Tühjenda hinnapuhver</string>
+    <string name="settings_clear_cache_description">Sunnib järgmisel otsingul laadima uued hinnad. Kasulik, kui hinnad tunduvad valed või aegunud.</string>
+    <string name="snackbar_cache_cleared">Puhver tühjendatud</string>
+    <string name="cd_refresh">Värskenda</string>
 </resources>

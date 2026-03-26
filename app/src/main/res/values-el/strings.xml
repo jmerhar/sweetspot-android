@@ -7,7 +7,7 @@
     <string name="cd_back">Πίσω</string>
     <string name="main_description">Το SweetSpot σας βοηθά να εξοικονομήσετε χρήματα βρίσκοντας την πιο φθηνή ώρα για να λειτουργήσετε τις συσκευές σας. Απλά επιλέξτε πόση ώρα χρειάζεται η συσκευή σας και θα σαρώσει τις επόμενες 24 ώρες δυναμικών τιμών ρεύματος για να βρει το καλύτερο χρονικό παράθυρο. Μπορείτε επίσης να αποθηκεύσετε τις αγαπημένες σας συσκευές στις ρυθμίσεις για γρήγορη πρόσβαση.</string>
     <string name="main_find_button">Εύρεση φθηνότερου παραθύρου</string>
-    <string name="main_searching">Αναζήτηση\u2026</string>
+    <string name="main_searching">Αναζήτηση…</string>
     <string name="main_add_appliances">Προσθέστε τις συσκευές σας</string>
     <string name="main_card_description">Βρείτε την πιο φθηνή ώρα για τη λειτουργία της συσκευής σας</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Δεν υπάρχουν διαθέσιμα δεδομένα τιμών για τις επόμενες 24 ώρες.</string>
     <string name="error_not_enough_data">Ανεπαρκή δεδομένα τιμών για %1$s. Μόνο %2$d ώρα(-ες) δεδομένων διαθέσιμα.</string>
     <string name="error_network">Αδυναμία ανάκτησης τιμών: %s</string>
+    <string name="error_cooldown">Οι τιμές ανακτήθηκαν πρόσφατα. Δοκιμάστε ξανά σε %d λεπτά.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Για προχωρημένους</string>
+    <string name="settings_clear_cache">Εκκαθάριση cache τιμών</string>
+    <string name="settings_clear_cache_description">Αναγκάζει τη λήψη νέων τιμών στην επόμενη αναζήτηση. Χρήσιμο αν οι τιμές φαίνονται λάθος ή παλιές.</string>
+    <string name="snackbar_cache_cleared">Η cache εκκαθαρίστηκε</string>
+    <string name="cd_refresh">Ανανέωση</string>
 </resources>

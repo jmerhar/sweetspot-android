@@ -7,7 +7,7 @@
     <string name="cd_back">Înapoi</string>
     <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin moment pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul și aplicația va analiza prețurile dinamice ale electricității din următoarele 24 de ore pentru a găsi cea mai bună fereastră. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
     <string name="main_find_button">Găsește cea mai ieftină perioadă</string>
-    <string name="main_searching">Se caută\u2026</string>
+    <string name="main_searching">Se caută…</string>
     <string name="main_add_appliances">Adaugă aparatele tale</string>
     <string name="main_card_description">Găsește cel mai ieftin moment pentru a porni aparatul</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Nu sunt disponibile date de preț pentru următoarele 24 de ore.</string>
     <string name="error_not_enough_data">Date de preț insuficiente pentru %1$s. Doar %2$d oră(ore) de date disponibile.</string>
     <string name="error_network">Nu s-au putut prelua prețurile: %s</string>
+    <string name="error_cooldown">Prețurile au fost obținute recent. Încearcă din nou în %d minute.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Avansat</string>
+    <string name="settings_clear_cache">Șterge cache-ul de prețuri</string>
+    <string name="settings_clear_cache_description">Forțează încărcarea prețurilor noi la următoarea căutare. Util dacă prețurile par greșite sau depășite.</string>
+    <string name="snackbar_cache_cleared">Cache-ul a fost șters</string>
+    <string name="cd_refresh">Actualizează</string>
 </resources>

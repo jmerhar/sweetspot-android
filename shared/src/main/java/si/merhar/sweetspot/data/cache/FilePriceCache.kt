@@ -79,4 +79,18 @@ class FilePriceCache(private val context: Context) : PriceCache {
             .putLong(KEY_LAST_FETCH_MS, System.currentTimeMillis())
             .apply()
     }
+
+    override fun clear() {
+        context.cacheDir.listFiles()?.filter { it.name.startsWith("prices_") && it.name.endsWith(".bin") }?.forEach { it.delete() }
+    }
+
+    override fun clearForZone(key: String) {
+        cacheFile(key).delete()
+    }
+
+    override fun cooldownRemainingMs(cooldownMs: Long): Long {
+        val lastFetch = prefs.getLong(KEY_LAST_FETCH_MS, 0L)
+        val elapsed = System.currentTimeMillis() - lastFetch
+        return maxOf(0L, cooldownMs - elapsed)
+    }
 }

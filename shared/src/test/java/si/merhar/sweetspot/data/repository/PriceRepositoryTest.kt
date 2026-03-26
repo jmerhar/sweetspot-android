@@ -61,6 +61,9 @@ class PriceRepositoryTest {
             store[key] = data
             writeCount++
         }
+        override fun clear() { store.clear() }
+        override fun clearForZone(key: String) { store.remove(key) }
+        override fun cooldownRemainingMs(cooldownMs: Long) = if (cooldownElapsed) 0L else cooldownMs
     }
 
     /**

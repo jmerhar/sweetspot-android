@@ -47,9 +47,9 @@ class PriceRepository(
     private val cacheKey: String = "default"
 ) {
 
-    private companion object {
+    companion object {
         /** Re-fetch if filtered prices cover fewer than this many hours. */
-        const val MIN_COVERAGE_HOURS = 12
+        internal const val MIN_COVERAGE_HOURS = 12
 
         /** Minimum interval between API requests (5 minutes). */
         const val COOLDOWN_MS = 5 * 60 * 1000L

@@ -7,7 +7,7 @@
     <string name="cd_back">Atrás</string>
     <string name="main_description">SweetSpot te ayuda a ahorrar dinero encontrando el momento más barato para usar tus electrodomésticos. Solo elige cuánto tiempo necesita funcionar tu aparato y escaneará las próximas 24 horas de precios dinámicos de electricidad para encontrar la mejor franja. También puedes guardar tus electrodomésticos favoritos en los ajustes para un acceso rápido.</string>
     <string name="main_find_button">Buscar franja más barata</string>
-    <string name="main_searching">Buscando\u2026</string>
+    <string name="main_searching">Buscando…</string>
     <string name="main_add_appliances">Añade tus electrodomésticos</string>
     <string name="main_card_description">Encuentra el momento más barato para usar tu electrodoméstico</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">No hay datos de precios disponibles para las próximas 24 horas.</string>
     <string name="error_not_enough_data">No hay suficientes datos de precios para %1$s. Solo %2$d hora(s) de datos disponibles.</string>
     <string name="error_network">No se pudieron obtener los precios: %s</string>
+    <string name="error_cooldown">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minutos.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Avanzado</string>
+    <string name="settings_clear_cache">Borrar caché de precios</string>
+    <string name="settings_clear_cache_description">Fuerza la obtención de precios nuevos en la próxima búsqueda. Útil si los precios parecen incorrectos o desactualizados.</string>
+    <string name="snackbar_cache_cleared">Caché borrada</string>
+    <string name="cd_refresh">Actualizar</string>
 </resources>

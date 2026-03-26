@@ -19,6 +19,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -83,6 +84,8 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
             timeZoneId = state.timeZoneId,
             priceSource = state.priceSource,
+            isLoading = state.isLoading,
+            onRefresh = viewModel::onRefreshResults,
             onBack = viewModel::onClearResult,
             snackbarHostState = snackbarHostState,
             modifier = modifier
@@ -201,6 +204,8 @@ private fun ResultScreen(
     resultLabel: String,
     timeZoneId: java.time.ZoneId,
     priceSource: String?,
+    isLoading: Boolean,
+    onRefresh: () -> Unit,
     onBack: () -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier
@@ -218,6 +223,14 @@ private fun ResultScreen(
                         )
                     }
                 },
+                actions = {
+                    IconButton(onClick = onRefresh, enabled = !isLoading) {
+                        Icon(
+                            imageVector = Icons.Default.Refresh,
+                            contentDescription = stringResource(R.string.cd_refresh)
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface,
                     titleContentColor = MaterialTheme.colorScheme.onSurface
@@ -230,46 +243,55 @@ private fun ResultScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp)
         ) {
-            Text(
-                text = stringResource(R.string.result_cheapest_window),
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(bottom = 12.dp)
-            )
-
-            ResultSummary(result = result, timeZoneId = timeZoneId)
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            BreakdownTable(breakdown = result.breakdown)
-
-            if (allPrices.isNotEmpty()) {
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Text(
-                    text = stringResource(R.string.result_upcoming_prices),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                PriceBarChart(
-                    prices = allPrices,
-                    result = result
-                )
+            if (isLoading) {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 16.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.result_cheapest_window),
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.padding(bottom = 12.dp)
+                )
 
-            Text(
-                text = stringResource(R.string.result_disclaimer) +
-                    (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else ""),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+                ResultSummary(result = result, timeZoneId = timeZoneId)
 
-            Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
+
+                BreakdownTable(breakdown = result.breakdown)
+
+                if (allPrices.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = stringResource(R.string.result_upcoming_prices),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+
+                    PriceBarChart(
+                        prices = allPrices,
+                        result = result
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = stringResource(R.string.result_disclaimer) +
+                        (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else ""),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
     <string name="cd_back">Zurück</string>
     <string name="main_description">SweetSpot hilft dir Geld zu sparen, indem es den günstigsten Zeitpunkt zum Betrieb deiner Geräte findet. Wähle einfach, wie lange dein Gerät laufen soll, und es durchsucht die nächsten 24 Stunden dynamischer Strompreise nach dem besten Zeitfenster. Du kannst auch deine Lieblingsgeräte in den Einstellungen speichern.</string>
     <string name="main_find_button">Günstigstes Zeitfenster finden</string>
-    <string name="main_searching">Suche\u2026</string>
+    <string name="main_searching">Suche…</string>
     <string name="main_add_appliances">Geräte hinzufügen</string>
     <string name="main_card_description">Finde den günstigsten Zeitpunkt für dein Gerät</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Keine Preisdaten für die nächsten 24 Stunden verfügbar.</string>
     <string name="error_not_enough_data">Nicht genug Preisdaten für %1$s. Nur %2$d Stunde(n) an Daten verfügbar.</string>
     <string name="error_network">Preise konnten nicht abgerufen werden: %s</string>
+    <string name="error_cooldown">Preise wurden kürzlich abgerufen. Erneut versuchen in %d Minuten.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Erweitert</string>
+    <string name="settings_clear_cache">Preiscache leeren</string>
+    <string name="settings_clear_cache_description">Erzwingt beim nächsten Suchen das Laden aktueller Preise. Nützlich, wenn Preise falsch oder veraltet erscheinen.</string>
+    <string name="snackbar_cache_cleared">Cache geleert</string>
+    <string name="cd_refresh">Aktualisieren</string>
 </resources>

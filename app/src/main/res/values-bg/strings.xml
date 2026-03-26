@@ -7,7 +7,7 @@
     <string name="cd_back">Назад</string>
     <string name="main_description">SweetSpot ви помага да спестите пари, като намира най-евтиното време за работа на вашите уреди. Просто изберете колко дълго трябва да работи уредът ви и приложението ще сканира следващите 24 часа динамични цени на електричеството, за да намери най-добрия прозорец. Можете също да запазите любимите си уреди в настройките за бърз достъп.</string>
     <string name="main_find_button">Намери най-евтиния период</string>
-    <string name="main_searching">Търсене\u2026</string>
+    <string name="main_searching">Търсене…</string>
     <string name="main_add_appliances">Добавете вашите уреди</string>
     <string name="main_card_description">Намерете най-евтиното време за работа на вашия уред</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Няма налични ценови данни за следващите 24 часа.</string>
     <string name="error_not_enough_data">Недостатъчно ценови данни за %1$s. Налични са само %2$d час(а) данни.</string>
     <string name="error_network">Неуспешно извличане на цени: %s</string>
+    <string name="error_cooldown">Цените бяха извлечени наскоро. Опитайте отново след %d минути.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Разширени</string>
+    <string name="settings_clear_cache">Изчисти кеша с цени</string>
+    <string name="settings_clear_cache_description">Принуждава зареждане на нови цени при следващо търсене. Полезно, ако цените изглеждат грешни или остарели.</string>
+    <string name="snackbar_cache_cleared">Кешът е изчистен</string>
+    <string name="cd_refresh">Обнови</string>
 </resources>

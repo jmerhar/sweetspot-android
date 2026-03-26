@@ -61,4 +61,28 @@ interface PriceCache {
      * @param data Cached price data including source name and price entries.
      */
     fun write(key: String, data: CachedPriceData)
+
+    /**
+     * Deletes all cached price data across all zones.
+     *
+     * Does not reset the fetch timestamp (cooldown remains in effect).
+     */
+    fun clear()
+
+    /**
+     * Deletes cached price data for a specific zone.
+     *
+     * Does not reset the fetch timestamp (cooldown remains in effect).
+     *
+     * @param key Zone identifier (e.g. `"NL"`, `"DE_LU"`).
+     */
+    fun clearForZone(key: String)
+
+    /**
+     * Returns the remaining cooldown time in milliseconds before the next API fetch is allowed.
+     *
+     * @param cooldownMs Minimum interval between fetches in milliseconds.
+     * @return Remaining time in milliseconds, or 0 if the cooldown has elapsed.
+     */
+    fun cooldownRemainingMs(cooldownMs: Long): Long
 }

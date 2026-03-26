@@ -40,10 +40,18 @@ class SweetSpotViewModelTest {
     private lateinit var app: Application
 
     /** In-memory [PriceCache] that never triggers re-fetch. */
-    private class FakeCache : PriceCache {
+    private class FakeCache(private val cooldownRemaining: Long = 0L) : PriceCache {
+        var clearCount = 0
+            private set
+        var clearedZones = mutableListOf<String>()
+            private set
+
         override fun isCooldownElapsed(cooldownMs: Long) = true
         override fun readCached(key: String): CachedPriceData? = null
         override fun write(key: String, data: CachedPriceData) {}
+        override fun clear() { clearCount++ }
+        override fun clearForZone(key: String) { clearedZones += key }
+        override fun cooldownRemainingMs(cooldownMs: Long) = cooldownRemaining
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */
@@ -80,8 +88,8 @@ class SweetSpotViewModelTest {
     private fun defaultViewModel() = SweetSpotViewModel(app)
 
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
-    private fun testViewModel(fetcher: FakeFetcher) =
-        SweetSpotViewModel(app, PriceFetcherFactory { _ -> fetcher }, FakeCache(), testDispatcher)
+    private fun testViewModel(fetcher: FakeFetcher, cache: FakeCache = FakeCache()) =
+        SweetSpotViewModel(app, PriceFetcherFactory { _ -> fetcher }, cache, testDispatcher)
 
     // --- Initial state ---
 
@@ -449,5 +457,81 @@ class SweetSpotViewModelTest {
         viewModel.onCountrySelected("DE")
         assertNull(viewModel.uiState.value.sourceOrder)
         assertTrue(viewModel.uiState.value.disabledSources.isEmpty())
+    }
+
+    // --- Clear cache ---
+
+    @Test
+    fun `onClearCache with cooldown elapsed clears cache and returns confirmation`() {
+        val cache = FakeCache(cooldownRemaining = 0L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+        val message = viewModel.onClearCache()
+        assertEquals(1, cache.clearCount)
+        assertTrue(message.contains("cleared", ignoreCase = true))
+    }
+
+    @Test
+    fun `onClearCache with cooldown active does not clear and returns warning`() {
+        val cache = FakeCache(cooldownRemaining = 120_000L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+        val message = viewModel.onClearCache()
+        assertEquals(0, cache.clearCount)
+        assertTrue(message.contains("minutes", ignoreCase = true))
+    }
+
+    // --- Refresh results ---
+
+    @Test
+    fun `onRefreshResults with cooldown active sets error without loading`() {
+        val cache = FakeCache(cooldownRemaining = 180_000L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+
+        viewModel.onRefreshResults()
+
+        val state = viewModel.uiState.value
+        assertFalse(state.isLoading)
+        assertNotNull(state.error)
+        assertTrue(state.error is AppError.Network)
+        assertTrue(state.error!!.message.contains("minutes", ignoreCase = true))
+    }
+
+    @Test
+    fun `onRefreshResults with cooldown elapsed clears zone cache and starts loading`() = runTest {
+        val cache = FakeCache(cooldownRemaining = 0L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+
+        // First perform a search so there's a result to refresh
+        viewModel.onQuickDuration(1, 0)
+        advanceUntilIdle()
+        assertNotNull(viewModel.uiState.value.result)
+
+        viewModel.onRefreshResults()
+
+        // Should be loading and zone cache should be cleared
+        assertTrue(viewModel.uiState.value.isLoading)
+        assertTrue(cache.clearedZones.isNotEmpty())
+
+        advanceUntilIdle()
+
+        // After completion, should have a result and not be loading
+        assertFalse(viewModel.uiState.value.isLoading)
+        assertNotNull(viewModel.uiState.value.result)
+    }
+
+    @Test
+    fun `onRefreshResults consecutive cooldown errors have different ids`() {
+        val cache = FakeCache(cooldownRemaining = 60_000L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+
+        viewModel.onRefreshResults()
+        val firstError = viewModel.uiState.value.error
+
+        viewModel.onRefreshResults()
+        val secondError = viewModel.uiState.value.error
+
+        // Both are Network errors but should be different objects (unique id)
+        assertTrue(firstError is AppError.Network)
+        assertTrue(secondError is AppError.Network)
+        assertFalse(firstError == secondError)
     }
 }

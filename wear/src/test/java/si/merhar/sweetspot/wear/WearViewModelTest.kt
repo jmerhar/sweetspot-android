@@ -51,6 +51,9 @@ class WearViewModelTest {
         override fun isCooldownElapsed(cooldownMs: Long) = true
         override fun readCached(key: String): CachedPriceData? = null
         override fun write(key: String, data: CachedPriceData) {}
+        override fun clear() {}
+        override fun clearForZone(key: String) {}
+        override fun cooldownRemainingMs(cooldownMs: Long) = 0L
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */

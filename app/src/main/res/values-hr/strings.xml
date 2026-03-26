@@ -7,7 +7,7 @@
     <string name="cd_back">Natrag</string>
     <string name="main_description">SweetSpot vam pomaže uštedjeti novac pronalaženjem najjeftinijeg vremena za pokretanje vaših uređaja. Samo odaberite koliko dugo vaš uređaj treba raditi, a aplikacija će pregledati sljedećih 24 sata dinamičnih cijena struje i pronaći najbolji period. Svoje omiljene uređaje možete spremiti u postavkama za brzi pristup.</string>
     <string name="main_find_button">Pronađi najjeftiniji period</string>
-    <string name="main_searching">Traženje\u2026</string>
+    <string name="main_searching">Traženje…</string>
     <string name="main_add_appliances">Dodajte svoje uređaje</string>
     <string name="main_card_description">Pronađite najjeftinije vrijeme za pokretanje uređaja</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Nema dostupnih podataka o cijenama za sljedećih 24 sata.</string>
     <string name="error_not_enough_data">Nema dovoljno podataka za %1$s. Dostupno je samo %2$d sat(i) podataka.</string>
     <string name="error_network">Nije moguće dohvatiti cijene: %s</string>
+    <string name="error_cooldown">Cijene su nedavno dohvaćene. Pokušajte ponovno za %d minuta.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Napredno</string>
+    <string name="settings_clear_cache">Obriši predmemoriju cijena</string>
+    <string name="settings_clear_cache_description">Prisiljava dohvaćanje novih cijena pri sljedećem pretraživanju. Korisno ako se cijene čine netočnima ili zastarjelima.</string>
+    <string name="snackbar_cache_cleared">Predmemorija obrisana</string>
+    <string name="cd_refresh">Osvježi</string>
 </resources>

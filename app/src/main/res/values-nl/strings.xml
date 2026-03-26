@@ -7,7 +7,7 @@
     <string name="cd_back">Terug</string>
     <string name="main_description">SweetSpot helpt je geld besparen door het goedkoopste moment te vinden om je apparaten te gebruiken. Kies hoe lang je apparaat moet draaien en het scant de komende 24 uur aan dynamische stroomprijzen om het beste tijdvenster te vinden. Je kunt ook je favoriete apparaten opslaan in de instellingen.</string>
     <string name="main_find_button">Zoek goedkoopste periode</string>
-    <string name="main_searching">Zoeken\u2026</string>
+    <string name="main_searching">Zoeken…</string>
     <string name="main_add_appliances">Voeg je apparaten toe</string>
     <string name="main_card_description">Vind het goedkoopste moment om je apparaat te gebruiken</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Geen prijsgegevens beschikbaar voor de komende 24 uur.</string>
     <string name="error_not_enough_data">Niet genoeg prijsgegevens voor %1$s. Slechts %2$d uur aan gegevens beschikbaar.</string>
     <string name="error_network">Kan prijzen niet ophalen: %s</string>
+    <string name="error_cooldown">Prijzen zijn recent opgehaald. Probeer het opnieuw over %d minuten.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Geavanceerd</string>
+    <string name="settings_clear_cache">Prijscache wissen</string>
+    <string name="settings_clear_cache_description">Forceert het ophalen van nieuwe prijzen bij de volgende zoekopdracht. Handig als prijzen onjuist of verouderd lijken.</string>
+    <string name="snackbar_cache_cleared">Cache gewist</string>
+    <string name="cd_refresh">Vernieuwen</string>
 </resources>

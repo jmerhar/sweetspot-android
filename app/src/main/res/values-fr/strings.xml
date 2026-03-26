@@ -7,7 +7,7 @@
     <string name="cd_back">Retour</string>
     <string name="main_description">SweetSpot vous aide à économiser de l\'argent en trouvant le meilleur moment pour faire fonctionner vos appareils. Choisissez simplement la durée de fonctionnement de votre appareil, et il analysera les 24 prochaines heures de prix d\'électricité dynamiques pour trouver la meilleure période. Vous pouvez aussi enregistrer vos appareils favoris dans les paramètres.</string>
     <string name="main_find_button">Trouver la période la moins chère</string>
-    <string name="main_searching">Recherche\u2026</string>
+    <string name="main_searching">Recherche…</string>
     <string name="main_add_appliances">Ajoutez vos appareils</string>
     <string name="main_card_description">Trouvez le meilleur moment pour faire fonctionner votre appareil</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Aucune donnée de prix disponible pour les prochaines 24 heures.</string>
     <string name="error_not_enough_data">Pas assez de données de prix pour %1$s. Seulement %2$d heure(s) de données disponibles.</string>
     <string name="error_network">Impossible de récupérer les prix : %s</string>
+    <string name="error_cooldown">Les prix ont été récupérés récemment. Réessayez dans %d minutes.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Avancé</string>
+    <string name="settings_clear_cache">Vider le cache des prix</string>
+    <string name="settings_clear_cache_description">Force le chargement de nouveaux prix lors de la prochaine recherche. Utile si les prix semblent erronés ou obsolètes.</string>
+    <string name="snackbar_cache_cleared">Cache vidé</string>
+    <string name="cd_refresh">Actualiser</string>
 </resources>

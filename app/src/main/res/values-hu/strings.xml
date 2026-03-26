@@ -7,7 +7,7 @@
     <string name="cd_back">Vissza</string>
     <string name="main_description">A SweetSpot segít pénzt megtakarítani azzal, hogy megkeresi a legolcsóbb időpontot háztartási készülékeid futtatásához. Csak válaszd ki, mennyi ideig kell működnie a készülékednek, és az alkalmazás átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legjobb időablakot. Kedvenc készülékeidet a beállításokban is elmentheted a gyors elérés érdekében.</string>
     <string name="main_find_button">Legolcsóbb időablak keresése</string>
-    <string name="main_searching">Keresés\u2026</string>
+    <string name="main_searching">Keresés…</string>
     <string name="main_add_appliances">Add hozzá készülékeidet</string>
     <string name="main_card_description">Keresd meg a legolcsóbb időpontot a készüléked futtatásához</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Nem állnak rendelkezésre áradatok a következő 24 órára.</string>
     <string name="error_not_enough_data">Nincs elég áradat a(z) %1$s lefedéséhez. Csak %2$d órányi adat áll rendelkezésre.</string>
     <string name="error_network">Az árak lekérése nem sikerült: %s</string>
+    <string name="error_cooldown">Az árak nemrég lettek lekérve. Próbáld újra %d perc múlva.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Haladó</string>
+    <string name="settings_clear_cache">Árgyorsítótár törlése</string>
+    <string name="settings_clear_cache_description">Kényszeríti az új árak betöltését a következő keresésnél. Hasznos, ha az árak hibásnak vagy elavultnak tűnnek.</string>
+    <string name="snackbar_cache_cleared">Gyorsítótár törölve</string>
+    <string name="cd_refresh">Frissítés</string>
 </resources>

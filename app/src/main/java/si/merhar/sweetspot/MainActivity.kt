@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                         onDisabledSourcesChanged = vm::onDisabledSourcesChanged,
                         onResetSourceOrder = vm::onResetSourceOrder,
                         onLanguageChanged = vm::onLanguageChanged,
+                        onClearCache = vm::onClearCache,
                         onBack = vm::onHideSettings
                     )
                 } else {

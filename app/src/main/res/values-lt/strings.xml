@@ -7,7 +7,7 @@
     <string name="cd_back">Atgal</string>
     <string name="main_description">SweetSpot padeda taupyti pinigus, suranda pigiausią laiką jūsų prietaisams veikti. Tiesiog pasirinkite, kiek laiko turi veikti prietaisas, ir programa peržiūrės artimiausių 24 valandų dinamines elektros kainas, kad rastų geriausią langą. Taip pat galite išsaugoti mėgstamus prietaisus nustatymuose greitai prieigai.</string>
     <string name="main_find_button">Rasti pigiausią langą</string>
-    <string name="main_searching">Ieškoma\u2026</string>
+    <string name="main_searching">Ieškoma…</string>
     <string name="main_add_appliances">Pridėkite savo prietaisus</string>
     <string name="main_card_description">Raskite pigiausią laiką savo prietaisui</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Nėra kainų duomenų artimiausioms 24 valandoms.</string>
     <string name="error_not_enough_data">Nepakanka kainų duomenų, kad padengtų %1$s. Turima tik %2$d val. duomenų.</string>
     <string name="error_network">Nepavyko gauti kainų: %s</string>
+    <string name="error_cooldown">Kainos buvo gautos neseniai. Bandykite dar kartą po %d minučių.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Išplėstiniai</string>
+    <string name="settings_clear_cache">Išvalyti kainų talpyklą</string>
+    <string name="settings_clear_cache_description">Priverčia gauti naujas kainas kitą kartą ieškant. Naudinga, jei kainos atrodo neteisingos arba pasenusios.</string>
+    <string name="snackbar_cache_cleared">Talpykla išvalyta</string>
+    <string name="cd_refresh">Atnaujinti</string>
 </resources>

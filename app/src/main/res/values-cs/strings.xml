@@ -7,7 +7,7 @@
     <string name="cd_back">Zpět</string>
     <string name="main_description">SweetSpot vám pomáhá šetřit peníze tím, že najde nejlevnější čas pro spuštění vašich spotřebičů. Stačí zvolit, jak dlouho má spotřebič běžet, a aplikace prohledá dalších 24 hodin dynamických cen elektřiny a najde nejlepší časové okno. Své oblíbené spotřebiče si můžete uložit v nastavení pro rychlý přístup.</string>
     <string name="main_find_button">Najít nejlevnější okno</string>
-    <string name="main_searching">Hledání\u2026</string>
+    <string name="main_searching">Hledání…</string>
     <string name="main_add_appliances">Přidejte své spotřebiče</string>
     <string name="main_card_description">Najděte nejlevnější čas pro spuštění vašeho spotřebiče</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Pro dalších 24 hodin nejsou k dispozici žádná cenová data.</string>
     <string name="error_not_enough_data">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodin(a) dat.</string>
     <string name="error_network">Nepodařilo se stáhnout ceny: %s</string>
+    <string name="error_cooldown">Ceny byly nedávno načteny. Zkuste to znovu za %d minut.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Pokročilé</string>
+    <string name="settings_clear_cache">Vymazat mezipaměť cen</string>
+    <string name="settings_clear_cache_description">Vynutí načtení nových cen při příštím hledání. Užitečné, pokud se ceny zdají nesprávné nebo zastaralé.</string>
+    <string name="snackbar_cache_cleared">Mezipaměť vymazána</string>
+    <string name="cd_refresh">Obnovit</string>
 </resources>

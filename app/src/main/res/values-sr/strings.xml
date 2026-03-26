@@ -7,7 +7,7 @@
     <string name="cd_back">Назад</string>
     <string name="main_description">SweetSpot вам помаже да уштедите новац тако што проналази најјефтиније време за покретање ваших апарата. Изаберите колико дуго ваш апарат треба да ради, а апликација ће прегледати динамичне цене електричне енергије за наредних 24 сата и пронаћи најбољи временски период. Омиљене апарате можете сачувати у подешавањима за брз приступ.</string>
     <string name="main_find_button">Пронађи најјефтинији период</string>
-    <string name="main_searching">Претрага\u2026</string>
+    <string name="main_searching">Претрага…</string>
     <string name="main_add_appliances">Додајте своје апарате</string>
     <string name="main_card_description">Пронађите најјефтиније време за покретање апарата</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Нема доступних података о ценама за наредних 24 сата.</string>
     <string name="error_not_enough_data">Нема довољно података о ценама за %1$s. Доступно је само %2$d сат(и) података.</string>
     <string name="error_network">Преузимање цена није успело: %s</string>
+    <string name="error_cooldown">Цене су недавно преузете. Покушајте поново за %d минута.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Напредно</string>
+    <string name="settings_clear_cache">Обриши кеш цена</string>
+    <string name="settings_clear_cache_description">Приморава учитавање нових цена при следећем претраживању. Корисно ако цене делују погрешно или застарело.</string>
+    <string name="snackbar_cache_cleared">Кеш је обрисан</string>
+    <string name="cd_refresh">Освежи</string>
 </resources>

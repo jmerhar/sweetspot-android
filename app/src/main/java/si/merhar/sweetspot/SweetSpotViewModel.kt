@@ -46,8 +46,8 @@ sealed interface AppError {
     /** Validation or data error shown inline below the form. */
     data class Validation(override val message: String) : AppError
 
-    /** Network or fetch error shown as a snackbar. */
-    data class Network(override val message: String) : AppError
+    /** Network or fetch error shown as a snackbar. Unique [id] ensures consecutive identical messages still trigger the snackbar. */
+    data class Network(override val message: String, val id: Long = System.nanoTime()) : AppError
 }
 
 /**
@@ -290,6 +290,57 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onClearResult() {
         _uiState.update {
             it.copy(result = null, resultLabel = null, allPrices = emptyList(), priceSource = null, error = null)
+        }
+    }
+
+    /**
+     * Clears all cached price data if the API cooldown has elapsed.
+     *
+     * @return A user-facing message: confirmation if cleared, or cooldown warning.
+     */
+    fun onClearCache(): String {
+        val remaining = priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
+        val app = getApplication<Application>()
+        return if (remaining > 0) {
+            val minutes = (remaining / 60_000).toInt() + 1
+            app.getString(R.string.error_cooldown, minutes)
+        } else {
+            priceCache.clear()
+            app.getString(R.string.snackbar_cache_cleared)
+        }
+    }
+
+    /**
+     * Re-fetches prices and recalculates the cheapest window from the results screen.
+     *
+     * If the API cooldown is still active, shows a "try again in X minutes" snackbar.
+     * Otherwise clears the zone cache, preserves the existing result, and re-runs
+     * the fetch-and-find flow.
+     */
+    fun onRefreshResults() {
+        val remaining = priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
+        val app = getApplication<Application>()
+        if (remaining > 0) {
+            val minutes = (remaining / 60_000).toInt() + 1
+            _uiState.update { it.copy(error = AppError.Network(app.getString(R.string.error_cooldown, minutes))) }
+            return
+        }
+
+        val state = _uiState.value
+        val priceZone = state.priceZone ?: return
+        priceCache.clearForZone(priceZone.id)
+
+        val h = state.durationHours
+        val m = state.durationMinutes
+        val durationHours = h + m / 60.0
+        val durationLabel = formatDuration(h, m, app.resources)
+
+        _uiState.update { it.copy(isLoading = true, error = null) }
+
+        val timeZoneId = state.timeZoneId
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch(ioDispatcher) {
+            fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)
         }
     }
 

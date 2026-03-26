@@ -7,7 +7,7 @@
     <string name="cd_back">Tillbaka</string>
     <string name="main_description">SweetSpot hjälper dig att spara pengar genom att hitta den billigaste tiden att köra dina apparater. Välj hur länge din apparat behöver köras, så skannar den de kommande 24 timmarnas dynamiska elpriser för att hitta det bästa tidsfönstret. Du kan också spara dina favoritapparater i inställningarna för snabb åtkomst.</string>
     <string name="main_find_button">Hitta billigaste fönstret</string>
-    <string name="main_searching">Söker\u2026</string>
+    <string name="main_searching">Söker…</string>
     <string name="main_add_appliances">Lägg till dina apparater</string>
     <string name="main_card_description">Hitta den billigaste tiden att köra din apparat</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Inga prisuppgifter tillgängliga för de kommande 24 timmarna.</string>
     <string name="error_not_enough_data">Inte tillräckligt med prisdata för %1$s. Endast %2$d timme/timmar med data tillgängligt.</string>
     <string name="error_network">Kunde inte hämta priser: %s</string>
+    <string name="error_cooldown">Priserna hämtades nyligen. Försök igen om %d minuter.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Avancerat</string>
+    <string name="settings_clear_cache">Rensa priscache</string>
+    <string name="settings_clear_cache_description">Tvingar hämtning av nya priser vid nästa sökning. Användbart om priserna verkar felaktiga eller inaktuella.</string>
+    <string name="snackbar_cache_cleared">Cache rensad</string>
+    <string name="cd_refresh">Uppdatera</string>
 </resources>

@@ -7,7 +7,7 @@
     <string name="cd_back">Nazaj</string>
     <string name="main_description">SweetSpot vam pomaga prihraniti denar tako, da poišče najcenejši čas za zagon vaših aparatov. Izberite, koliko časa mora aparat delovati, in aplikacija bo pregledala dinamične cene električne energije za naslednjih 24 ur ter poiskala najboljše časovno okno. Svoje najljubše aparate lahko shranite v nastavitvah za hiter dostop.</string>
     <string name="main_find_button">Poišči najcenejše okno</string>
-    <string name="main_searching">Iskanje\u2026</string>
+    <string name="main_searching">Iskanje…</string>
     <string name="main_add_appliances">Dodajte svoje aparate</string>
     <string name="main_card_description">Poiščite najcenejši čas za zagon aparata</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Za naslednjih 24 ur ni na voljo podatkov o cenah.</string>
     <string name="error_not_enough_data">Ni dovolj podatkov o cenah za %1$s. Na voljo je samo %2$d ur podatkov.</string>
     <string name="error_network">Cen ni bilo mogoče pridobiti: %s</string>
+    <string name="error_cooldown">Cene so bile nedavno pridobljene. Poskusite znova čez %d minut.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Napredno</string>
+    <string name="settings_clear_cache">Počisti predpomnilnik cen</string>
+    <string name="settings_clear_cache_description">Prisili nalaganje novih cen ob naslednjem iskanju. Uporabno, če se cene zdijo napačne ali zastarele.</string>
+    <string name="snackbar_cache_cleared">Predpomnilnik počiščen</string>
+    <string name="cd_refresh">Osveži</string>
 </resources>

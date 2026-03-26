@@ -7,7 +7,7 @@
     <string name="cd_back">Back</string>
     <string name="main_description">SweetSpot helps you save money by finding the cheapest time to run your appliances. Just pick how long your appliance needs to run, and it will scan the next 24 hours of dynamic electricity prices to find the best window. You can also save your favourite appliances in settings for quick access.</string>
     <string name="main_find_button">Find Cheapest Window</string>
-    <string name="main_searching">Searching\u2026</string>
+    <string name="main_searching">Searching…</string>
     <string name="main_add_appliances">Add your appliances</string>
     <string name="main_card_description">Find the cheapest time to run your appliance</string>
 
@@ -22,7 +22,7 @@
     <string name="cd_collapse">Collapse</string>
     <string name="cd_expand">Expand</string>
     <string name="result_upcoming_prices">Upcoming Prices</string>
-    <string name="result_disclaimer">Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow\u2019s prices are usually available after 13:00 CET.</string>
+    <string name="result_disclaimer">Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow’s prices are usually available after 13:00 CET.</string>
     <string name="result_data_source">\nData source: %s</string>
     <string name="cd_cheapest_window">cheapest window</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">No price data available for the next 24 hours.</string>
     <string name="error_not_enough_data">Not enough price data to cover %1$s. Only %2$d hour(s) of data available.</string>
     <string name="error_network">Could not fetch prices: %s</string>
+    <string name="error_cooldown">Prices were fetched recently. Try again in %d minutes.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Advanced</string>
+    <string name="settings_clear_cache">Clear price cache</string>
+    <string name="settings_clear_cache_description">Forces fresh prices to be fetched next time you search. Useful if prices seem wrong or outdated.</string>
+    <string name="snackbar_cache_cleared">Cache cleared</string>
+    <string name="cd_refresh">Refresh</string>
 </resources>

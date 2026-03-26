@@ -7,7 +7,7 @@
     <string name="cd_back">Takaisin</string>
     <string name="main_description">SweetSpot auttaa sinua säästämään rahaa etsimällä halvimman ajankohdan kodinkoneidesi käyttöön. Valitse kuinka kauan laitteesi tarvitsee toimia, ja se etsii seuraavan 24 tunnin dynaamisista sähköhinnoista parhaan ajanjakson. Voit myös tallentaa suosikkilaitteesi asetuksiin nopeaa käyttöä varten.</string>
     <string name="main_find_button">Etsi halvin ajanjakso</string>
-    <string name="main_searching">Etsitään\u2026</string>
+    <string name="main_searching">Etsitään…</string>
     <string name="main_add_appliances">Lisää laitteesi</string>
     <string name="main_card_description">Etsi halvin ajankohta laitteesi käyttöön</string>
 
@@ -80,4 +80,12 @@
     <string name="error_no_data">Hintatietoja ei ole saatavilla seuraaville 24 tunnille.</string>
     <string name="error_not_enough_data">Hintatiedot eivät riitä jaksolle %1$s. Vain %2$d tunti(a) tietoja saatavilla.</string>
     <string name="error_network">Hintoja ei voitu hakea: %s</string>
+    <string name="error_cooldown">Hinnat haettiin äskettäin. Yritä uudelleen %d minuutin kuluttua.</string>
+
+    <!-- Cache management -->
+    <string name="settings_advanced">Lisäasetukset</string>
+    <string name="settings_clear_cache">Tyhjennä hintavälimuisti</string>
+    <string name="settings_clear_cache_description">Pakottaa uusien hintojen hakemisen seuraavalla kerralla. Hyödyllinen, jos hinnat vaikuttavat vääriltä tai vanhentuneilta.</string>
+    <string name="snackbar_cache_cleared">Välimuisti tyhjennetty</string>
+    <string name="cd_refresh">Päivitä</string>
 </resources>

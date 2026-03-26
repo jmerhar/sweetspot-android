@@ -67,7 +67,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (172 tests)
+./gradlew test                   # Run all unit tests (179 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -86,7 +86,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation (34 tests, Robolectric, in app)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management (41 tests, Robolectric, in app)
 - `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing (16 tests, Robolectric, in wear)
 
 ## Stack
@@ -100,7 +100,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (172 tests)
+- JUnit 4 + Robolectric for unit tests (179 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3

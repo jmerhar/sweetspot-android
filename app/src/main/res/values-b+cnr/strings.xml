@@ -69,7 +69,11 @@
     <string name="picker_timezone_search">Pretraži vremenske zone</string>
     <string name="picker_country_title">Država</string>
     <string name="picker_country_search">Pretraži države</string>
-    <string name="picker_zones_count">%d zona</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zona</item>
+        <item quantity="few">%d zone</item>
+        <item quantity="other">%d zona</item>
+    </plurals>
     <string name="picker_zone_title">Zona</string>
     <string name="picker_language_title">Jezik</string>
     <string name="picker_language_search">Pretraži jezike</string>
@@ -79,9 +83,17 @@
     <string name="error_zero_duration">Izaberite trajanje veće od nule.</string>
     <string name="error_no_zone">Izaberite zonu u podešavanjima.</string>
     <string name="error_no_data">Nema dostupnih podataka o cijenama za narednih 24 sata.</string>
-    <string name="error_not_enough_data">Nema dovoljno podataka o cijenama za %1$s. Dostupno je samo %2$d sat(i) podataka.</string>
     <string name="error_network">Preuzimanje cijena nije uspjelo: %s</string>
-    <string name="error_cooldown">Cijene su nedavno preuzete. Pokušajte ponovo za %d minuta.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Nema dovoljno podataka o cijenama za %1$s. Dostupan je samo %2$d sat podataka.</item>
+        <item quantity="few">Nema dovoljno podataka o cijenama za %1$s. Dostupna su samo %2$d sata podataka.</item>
+        <item quantity="other">Nema dovoljno podataka o cijenama za %1$s. Dostupno je samo %2$d sati podataka.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Cijene su nedavno preuzete. Pokušajte ponovo za %d minutu.</item>
+        <item quantity="few">Cijene su nedavno preuzete. Pokušajte ponovo za %d minute.</item>
+        <item quantity="other">Cijene su nedavno preuzete. Pokušajte ponovo za %d minuta.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>

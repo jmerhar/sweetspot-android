@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Otsi ajavööndeid</string>
     <string name="picker_country_title">Riik</string>
     <string name="picker_country_search">Otsi riike</string>
-    <string name="picker_zones_count">%d tsooni</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d tsoon</item>
+        <item quantity="other">%d tsooni</item>
+    </plurals>
     <string name="picker_zone_title">Tsoon</string>
     <string name="picker_language_title">Keel</string>
     <string name="picker_language_search">Otsi keeli</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Valige kestus, mis on suurem kui null.</string>
     <string name="error_no_zone">Valige tsoon seadetes.</string>
     <string name="error_no_data">Järgmise 24 tunni hinnaandmed pole saadaval.</string>
-    <string name="error_not_enough_data">Ebapiisavad hinnaandmed %1$s jaoks. Saadaval on ainult %2$d tund(i) andmeid.</string>
     <string name="error_network">Hindade toomine ebaõnnestus: %s</string>
-    <string name="error_cooldown">Hinnad laaditi hiljuti. Proovi uuesti %d minuti pärast.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Ebapiisavad hinnaandmed %1$s jaoks. Saadaval on ainult %2$d tund andmeid.</item>
+        <item quantity="other">Ebapiisavad hinnaandmed %1$s jaoks. Saadaval on ainult %2$d tundi andmeid.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Hinnad laaditi hiljuti. Proovi uuesti %d minuti pärast.</item>
+        <item quantity="other">Hinnad laaditi hiljuti. Proovi uuesti %d minuti pärast.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Täpsemalt</string>

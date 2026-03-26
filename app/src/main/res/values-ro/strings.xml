@@ -69,7 +69,11 @@
     <string name="picker_timezone_search">Caută fusuri orare</string>
     <string name="picker_country_title">Țară</string>
     <string name="picker_country_search">Caută țări</string>
-    <string name="picker_zones_count">%d zone</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zonă</item>
+        <item quantity="few">%d zone</item>
+        <item quantity="other">%d de zone</item>
+    </plurals>
     <string name="picker_zone_title">Zonă</string>
     <string name="picker_language_title">Limbă</string>
     <string name="picker_language_search">Caută limbi</string>
@@ -79,9 +83,17 @@
     <string name="error_zero_duration">Selectează o durată mai mare decât zero.</string>
     <string name="error_no_zone">Selectează o zonă în Setări.</string>
     <string name="error_no_data">Nu sunt disponibile date de preț pentru următoarele 24 de ore.</string>
-    <string name="error_not_enough_data">Date de preț insuficiente pentru %1$s. Doar %2$d oră(ore) de date disponibile.</string>
     <string name="error_network">Nu s-au putut prelua prețurile: %s</string>
-    <string name="error_cooldown">Prețurile au fost obținute recent. Încearcă din nou în %d minute.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Date de preț insuficiente pentru %1$s. Doar %2$d oră de date disponibilă.</item>
+        <item quantity="few">Date de preț insuficiente pentru %1$s. Doar %2$d ore de date disponibile.</item>
+        <item quantity="other">Date de preț insuficiente pentru %1$s. Doar %2$d de ore de date disponibile.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Prețurile au fost obținute recent. Încearcă din nou în %d minut.</item>
+        <item quantity="few">Prețurile au fost obținute recent. Încearcă din nou în %d minute.</item>
+        <item quantity="other">Prețurile au fost obținute recent. Încearcă din nou în %d de minute.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Avansat</string>

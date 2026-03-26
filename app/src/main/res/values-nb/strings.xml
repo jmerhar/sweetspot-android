@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Søk etter tidssoner</string>
     <string name="picker_country_title">Land</string>
     <string name="picker_country_search">Søk etter land</string>
-    <string name="picker_zones_count">%d soner</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d sone</item>
+        <item quantity="other">%d soner</item>
+    </plurals>
     <string name="picker_zone_title">Sone</string>
     <string name="picker_language_title">Språk</string>
     <string name="picker_language_search">Søk etter språk</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Vennligst velg en varighet større enn null.</string>
     <string name="error_no_zone">Vennligst velg en sone i Innstillinger.</string>
     <string name="error_no_data">Ingen prisdata tilgjengelig for de neste 24 timene.</string>
-    <string name="error_not_enough_data">Ikke nok prisdata til å dekke %1$s. Bare %2$d time(r) med data tilgjengelig.</string>
     <string name="error_network">Kunne ikke hente priser: %s</string>
-    <string name="error_cooldown">Prisene ble hentet nylig. Prøv igjen om %d minutter.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Ikke nok prisdata til å dekke %1$s. Bare %2$d time med data tilgjengelig.</item>
+        <item quantity="other">Ikke nok prisdata til å dekke %1$s. Bare %2$d timer med data tilgjengelig.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Prisene ble hentet nylig. Prøv igjen om %d minutt.</item>
+        <item quantity="other">Prisene ble hentet nylig. Prøv igjen om %d minutter.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Avansert</string>

@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Търсене на часови зони</string>
     <string name="picker_country_title">Държава</string>
     <string name="picker_country_search">Търсене на държави</string>
-    <string name="picker_zones_count">%d зони</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d зона</item>
+        <item quantity="other">%d зони</item>
+    </plurals>
     <string name="picker_zone_title">Зона</string>
     <string name="picker_language_title">Език</string>
     <string name="picker_language_search">Търсене на езици</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Моля, изберете продължителност по-голяма от нула.</string>
     <string name="error_no_zone">Моля, изберете зона в Настройки.</string>
     <string name="error_no_data">Няма налични ценови данни за следващите 24 часа.</string>
-    <string name="error_not_enough_data">Недостатъчно ценови данни за %1$s. Налични са само %2$d час(а) данни.</string>
     <string name="error_network">Неуспешно извличане на цени: %s</string>
-    <string name="error_cooldown">Цените бяха извлечени наскоро. Опитайте отново след %d минути.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Недостатъчно ценови данни за %1$s. Наличен е само %2$d час данни.</item>
+        <item quantity="other">Недостатъчно ценови данни за %1$s. Налични са само %2$d часа данни.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Цените бяха извлечени наскоро. Опитайте отново след %d минута.</item>
+        <item quantity="other">Цените бяха извлечени наскоро. Опитайте отново след %d минути.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Разширени</string>

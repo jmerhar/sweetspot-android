@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Időzónák keresése</string>
     <string name="picker_country_title">Ország</string>
     <string name="picker_country_search">Országok keresése</string>
-    <string name="picker_zones_count">%d zóna</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zóna</item>
+        <item quantity="other">%d zóna</item>
+    </plurals>
     <string name="picker_zone_title">Zóna</string>
     <string name="picker_language_title">Nyelv</string>
     <string name="picker_language_search">Nyelvek keresése</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Kérjük, válassz nullánál nagyobb időtartamot.</string>
     <string name="error_no_zone">Kérjük, válassz zónát a beállításokban.</string>
     <string name="error_no_data">Nem állnak rendelkezésre áradatok a következő 24 órára.</string>
-    <string name="error_not_enough_data">Nincs elég áradat a(z) %1$s lefedéséhez. Csak %2$d órányi adat áll rendelkezésre.</string>
     <string name="error_network">Az árak lekérése nem sikerült: %s</string>
-    <string name="error_cooldown">Az árak nemrég lettek lekérve. Próbáld újra %d perc múlva.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Nincs elég áradat a(z) %1$s lefedéséhez. Csak %2$d órányi adat áll rendelkezésre.</item>
+        <item quantity="other">Nincs elég áradat a(z) %1$s lefedéséhez. Csak %2$d órányi adat áll rendelkezésre.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Az árak nemrég lettek lekérve. Próbáld újra %d perc múlva.</item>
+        <item quantity="other">Az árak nemrég lettek lekérve. Próbáld újra %d perc múlva.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Haladó</string>

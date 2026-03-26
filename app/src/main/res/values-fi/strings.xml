@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Hae aikavyöhykkeitä</string>
     <string name="picker_country_title">Maa</string>
     <string name="picker_country_search">Hae maita</string>
-    <string name="picker_zones_count">%d aluetta</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d alue</item>
+        <item quantity="other">%d aluetta</item>
+    </plurals>
     <string name="picker_zone_title">Alue</string>
     <string name="picker_language_title">Kieli</string>
     <string name="picker_language_search">Hae kieliä</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Valitse kesto, joka on suurempi kuin nolla.</string>
     <string name="error_no_zone">Valitse alue asetuksissa.</string>
     <string name="error_no_data">Hintatietoja ei ole saatavilla seuraaville 24 tunnille.</string>
-    <string name="error_not_enough_data">Hintatiedot eivät riitä jaksolle %1$s. Vain %2$d tunti(a) tietoja saatavilla.</string>
     <string name="error_network">Hintoja ei voitu hakea: %s</string>
-    <string name="error_cooldown">Hinnat haettiin äskettäin. Yritä uudelleen %d minuutin kuluttua.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Hintatiedot eivät riitä jaksolle %1$s. Vain %2$d tunti tietoja saatavilla.</item>
+        <item quantity="other">Hintatiedot eivät riitä jaksolle %1$s. Vain %2$d tuntia tietoja saatavilla.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Hinnat haettiin äskettäin. Yritä uudelleen %d minuutin kuluttua.</item>
+        <item quantity="other">Hinnat haettiin äskettäin. Yritä uudelleen %d minuutin kuluttua.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Lisäasetukset</string>

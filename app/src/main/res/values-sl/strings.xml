@@ -69,7 +69,12 @@
     <string name="picker_timezone_search">Išči časovne pasove</string>
     <string name="picker_country_title">Država</string>
     <string name="picker_country_search">Išči države</string>
-    <string name="picker_zones_count">%d con</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d cona</item>
+        <item quantity="two">%d coni</item>
+        <item quantity="few">%d cone</item>
+        <item quantity="other">%d con</item>
+    </plurals>
     <string name="picker_zone_title">Cona</string>
     <string name="picker_language_title">Jezik</string>
     <string name="picker_language_search">Išči jezike</string>
@@ -79,9 +84,19 @@
     <string name="error_zero_duration">Izberite trajanje, večje od nič.</string>
     <string name="error_no_zone">Izberite cono v nastavitvah.</string>
     <string name="error_no_data">Za naslednjih 24 ur ni na voljo podatkov o cenah.</string>
-    <string name="error_not_enough_data">Ni dovolj podatkov o cenah za %1$s. Na voljo je samo %2$d ur podatkov.</string>
     <string name="error_network">Cen ni bilo mogoče pridobiti: %s</string>
-    <string name="error_cooldown">Cene so bile nedavno pridobljene. Poskusite znova čez %d minut.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Ni dovolj podatkov o cenah za %1$s. Na voljo je samo %2$d ura podatkov.</item>
+        <item quantity="two">Ni dovolj podatkov o cenah za %1$s. Na voljo sta samo %2$d uri podatkov.</item>
+        <item quantity="few">Ni dovolj podatkov o cenah za %1$s. Na voljo so samo %2$d ure podatkov.</item>
+        <item quantity="other">Ni dovolj podatkov o cenah za %1$s. Na voljo je samo %2$d ur podatkov.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Cene so bile nedavno pridobljene. Poskusite znova čez %d minuto.</item>
+        <item quantity="two">Cene so bile nedavno pridobljene. Poskusite znova čez %d minuti.</item>
+        <item quantity="few">Cene so bile nedavno pridobljene. Poskusite znova čez %d minute.</item>
+        <item quantity="other">Cene so bile nedavno pridobljene. Poskusite znova čez %d minut.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>

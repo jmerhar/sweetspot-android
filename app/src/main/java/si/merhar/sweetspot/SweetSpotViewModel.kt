@@ -303,7 +303,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val app = getApplication<Application>()
         return if (remaining > 0) {
             val minutes = (remaining / 60_000).toInt() + 1
-            app.getString(R.string.error_cooldown, minutes)
+            app.resources.getQuantityString(R.plurals.error_cooldown, minutes, minutes)
         } else {
             priceCache.clear()
             app.getString(R.string.snackbar_cache_cleared)
@@ -322,7 +322,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val app = getApplication<Application>()
         if (remaining > 0) {
             val minutes = (remaining / 60_000).toInt() + 1
-            _uiState.update { it.copy(error = AppError.Network(app.getString(R.string.error_cooldown, minutes))) }
+            _uiState.update { it.copy(error = AppError.Network(app.resources.getQuantityString(R.plurals.error_cooldown, minutes, minutes))) }
             return
         }
 
@@ -549,7 +549,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = AppError.Validation(getApplication<Application>().getString(R.string.error_not_enough_data, durationLabel, coverageHours)),
+                        error = AppError.Validation(getApplication<Application>().resources.getQuantityString(R.plurals.error_not_enough_data, coverageHours.toInt(), durationLabel, coverageHours)),
                         allPrices = prices
                     )
                 }

@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Zoek tijdzones</string>
     <string name="picker_country_title">Land</string>
     <string name="picker_country_search">Zoek landen</string>
-    <string name="picker_zones_count">%d zones</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zone</item>
+        <item quantity="other">%d zones</item>
+    </plurals>
     <string name="picker_zone_title">Zone</string>
     <string name="picker_language_title">Taal</string>
     <string name="picker_language_search">Zoek talen</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Selecteer een duur groter dan nul.</string>
     <string name="error_no_zone">Selecteer een zone in Instellingen.</string>
     <string name="error_no_data">Geen prijsgegevens beschikbaar voor de komende 24 uur.</string>
-    <string name="error_not_enough_data">Niet genoeg prijsgegevens voor %1$s. Slechts %2$d uur aan gegevens beschikbaar.</string>
     <string name="error_network">Kan prijzen niet ophalen: %s</string>
-    <string name="error_cooldown">Prijzen zijn recent opgehaald. Probeer het opnieuw over %d minuten.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Niet genoeg prijsgegevens voor %1$s. Slechts %2$d uur aan gegevens beschikbaar.</item>
+        <item quantity="other">Niet genoeg prijsgegevens voor %1$s. Slechts %2$d uur aan gegevens beschikbaar.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Prijzen zijn recent opgehaald. Probeer het opnieuw over %d minuut.</item>
+        <item quantity="other">Prijzen zijn recent opgehaald. Probeer het opnieuw over %d minuten.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Geavanceerd</string>

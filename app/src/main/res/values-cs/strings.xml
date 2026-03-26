@@ -69,7 +69,11 @@
     <string name="picker_timezone_search">Hledat časové zóny</string>
     <string name="picker_country_title">Země</string>
     <string name="picker_country_search">Hledat země</string>
-    <string name="picker_zones_count">%d zón</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zóna</item>
+        <item quantity="few">%d zóny</item>
+        <item quantity="other">%d zón</item>
+    </plurals>
     <string name="picker_zone_title">Zóna</string>
     <string name="picker_language_title">Jazyk</string>
     <string name="picker_language_search">Hledat jazyky</string>
@@ -79,9 +83,17 @@
     <string name="error_zero_duration">Zvolte prosím dobu trvání větší než nula.</string>
     <string name="error_no_zone">Vyberte prosím zónu v Nastavení.</string>
     <string name="error_no_data">Pro dalších 24 hodin nejsou k dispozici žádná cenová data.</string>
-    <string name="error_not_enough_data">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodin(a) dat.</string>
     <string name="error_network">Nepodařilo se stáhnout ceny: %s</string>
-    <string name="error_cooldown">Ceny byly nedávno načteny. Zkuste to znovu za %d minut.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodina dat.</item>
+        <item quantity="few">Nedostatek cenových dat pro %1$s. K dispozici jsou pouze %2$d hodiny dat.</item>
+        <item quantity="other">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodin dat.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Ceny byly nedávno načteny. Zkuste to znovu za %d minutu.</item>
+        <item quantity="few">Ceny byly nedávno načteny. Zkuste to znovu za %d minuty.</item>
+        <item quantity="other">Ceny byly nedávno načteny. Zkuste to znovu za %d minut.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Pokročilé</string>

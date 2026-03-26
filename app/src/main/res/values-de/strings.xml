@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Zeitzonen suchen</string>
     <string name="picker_country_title">Land</string>
     <string name="picker_country_search">Länder suchen</string>
-    <string name="picker_zones_count">%d Zonen</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d Zone</item>
+        <item quantity="other">%d Zonen</item>
+    </plurals>
     <string name="picker_zone_title">Zone</string>
     <string name="picker_language_title">Sprache</string>
     <string name="picker_language_search">Sprachen suchen</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Bitte wähle eine Dauer größer als null.</string>
     <string name="error_no_zone">Bitte wähle eine Zone in den Einstellungen.</string>
     <string name="error_no_data">Keine Preisdaten für die nächsten 24 Stunden verfügbar.</string>
-    <string name="error_not_enough_data">Nicht genug Preisdaten für %1$s. Nur %2$d Stunde(n) an Daten verfügbar.</string>
     <string name="error_network">Preise konnten nicht abgerufen werden: %s</string>
-    <string name="error_cooldown">Preise wurden kürzlich abgerufen. Erneut versuchen in %d Minuten.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Nicht genug Preisdaten für %1$s. Nur %2$d Stunde an Daten verfügbar.</item>
+        <item quantity="other">Nicht genug Preisdaten für %1$s. Nur %2$d Stunden an Daten verfügbar.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Preise wurden kürzlich abgerufen. Erneut versuchen in %d Minute.</item>
+        <item quantity="other">Preise wurden kürzlich abgerufen. Erneut versuchen in %d Minuten.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Erweitert</string>

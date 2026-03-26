@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
@@ -128,7 +129,7 @@ internal fun CountryPickerScreen(
                     val zoneCount = country.zones.size
                     PickerRow(
                         label = stringResource(country.nameRes),
-                        subtitle = if (zoneCount > 1) stringResource(R.string.picker_zones_count, zoneCount) else null,
+                        subtitle = if (zoneCount > 1) pluralStringResource(R.plurals.picker_zones_count, zoneCount, zoneCount) else null,
                         isSelected = country.code == currentCountryCode,
                         onClick = { onCountrySelected(country.code) }
                     )

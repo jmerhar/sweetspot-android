@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Sök tidszoner</string>
     <string name="picker_country_title">Land</string>
     <string name="picker_country_search">Sök länder</string>
-    <string name="picker_zones_count">%d zoner</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zon</item>
+        <item quantity="other">%d zoner</item>
+    </plurals>
     <string name="picker_zone_title">Zon</string>
     <string name="picker_language_title">Språk</string>
     <string name="picker_language_search">Sök språk</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Välj en varaktighet som är längre än noll.</string>
     <string name="error_no_zone">Välj en zon i inställningarna.</string>
     <string name="error_no_data">Inga prisuppgifter tillgängliga för de kommande 24 timmarna.</string>
-    <string name="error_not_enough_data">Inte tillräckligt med prisdata för %1$s. Endast %2$d timme/timmar med data tillgängligt.</string>
     <string name="error_network">Kunde inte hämta priser: %s</string>
-    <string name="error_cooldown">Priserna hämtades nyligen. Försök igen om %d minuter.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Inte tillräckligt med prisdata för %1$s. Endast %2$d timme med data tillgängligt.</item>
+        <item quantity="other">Inte tillräckligt med prisdata för %1$s. Endast %2$d timmar med data tillgängligt.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Priserna hämtades nyligen. Försök igen om %d minut.</item>
+        <item quantity="other">Priserna hämtades nyligen. Försök igen om %d minuter.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Avancerat</string>

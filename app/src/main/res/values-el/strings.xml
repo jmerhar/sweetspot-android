@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Αναζήτηση ζωνών ώρας</string>
     <string name="picker_country_title">Χώρα</string>
     <string name="picker_country_search">Αναζήτηση χωρών</string>
-    <string name="picker_zones_count">%d ζώνες</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d ζώνη</item>
+        <item quantity="other">%d ζώνες</item>
+    </plurals>
     <string name="picker_zone_title">Ζώνη</string>
     <string name="picker_language_title">Γλώσσα</string>
     <string name="picker_language_search">Αναζήτηση γλωσσών</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Επιλέξτε διάρκεια μεγαλύτερη από μηδέν.</string>
     <string name="error_no_zone">Επιλέξτε μια ζώνη στις Ρυθμίσεις.</string>
     <string name="error_no_data">Δεν υπάρχουν διαθέσιμα δεδομένα τιμών για τις επόμενες 24 ώρες.</string>
-    <string name="error_not_enough_data">Ανεπαρκή δεδομένα τιμών για %1$s. Μόνο %2$d ώρα(-ες) δεδομένων διαθέσιμα.</string>
     <string name="error_network">Αδυναμία ανάκτησης τιμών: %s</string>
-    <string name="error_cooldown">Οι τιμές ανακτήθηκαν πρόσφατα. Δοκιμάστε ξανά σε %d λεπτά.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Ανεπαρκή δεδομένα τιμών για %1$s. Μόνο %2$d ώρα δεδομένων διαθέσιμη.</item>
+        <item quantity="other">Ανεπαρκή δεδομένα τιμών για %1$s. Μόνο %2$d ώρες δεδομένων διαθέσιμα.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Οι τιμές ανακτήθηκαν πρόσφατα. Δοκιμάστε ξανά σε %d λεπτό.</item>
+        <item quantity="other">Οι τιμές ανακτήθηκαν πρόσφατα. Δοκιμάστε ξανά σε %d λεπτά.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Για προχωρημένους</string>

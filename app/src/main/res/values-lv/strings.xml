@@ -69,7 +69,11 @@
     <string name="picker_timezone_search">Meklēt laika joslas</string>
     <string name="picker_country_title">Valsts</string>
     <string name="picker_country_search">Meklēt valstis</string>
-    <string name="picker_zones_count">%d zonas</string>
+    <plurals name="picker_zones_count">
+        <item quantity="zero">%d zonu</item>
+        <item quantity="one">%d zona</item>
+        <item quantity="other">%d zonas</item>
+    </plurals>
     <string name="picker_zone_title">Zona</string>
     <string name="picker_language_title">Valoda</string>
     <string name="picker_language_search">Meklēt valodas</string>
@@ -79,9 +83,17 @@
     <string name="error_zero_duration">Lūdzu, izvēlieties ilgumu, kas lielāks par nulli.</string>
     <string name="error_no_zone">Lūdzu, izvēlieties zonu iestatījumos.</string>
     <string name="error_no_data">Nav pieejamu cenu datu nākamajām 24 stundām.</string>
-    <string name="error_not_enough_data">Nepietiek cenu datu, lai segtu %1$s. Pieejami tikai %2$d stundu dati.</string>
     <string name="error_network">Neizdevās iegūt cenas: %s</string>
-    <string name="error_cooldown">Cenas tika iegūtas nesen. Mēģiniet vēlreiz pēc %d minūtēm.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="zero">Nepietiek cenu datu, lai segtu %1$s. Pieejamas tikai %2$d stundu dati.</item>
+        <item quantity="one">Nepietiek cenu datu, lai segtu %1$s. Pieejama tikai %2$d stunda datu.</item>
+        <item quantity="other">Nepietiek cenu datu, lai segtu %1$s. Pieejamas tikai %2$d stundas datu.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="zero">Cenas tika iegūtas nesen. Mēģiniet vēlreiz pēc %d minūtēm.</item>
+        <item quantity="one">Cenas tika iegūtas nesen. Mēģiniet vēlreiz pēc %d minūtes.</item>
+        <item quantity="other">Cenas tika iegūtas nesen. Mēģiniet vēlreiz pēc %d minūtēm.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Papildu</string>

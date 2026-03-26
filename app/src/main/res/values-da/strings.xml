@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Søg tidszoner</string>
     <string name="picker_country_title">Land</string>
     <string name="picker_country_search">Søg lande</string>
-    <string name="picker_zones_count">%d zoner</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zone</item>
+        <item quantity="other">%d zoner</item>
+    </plurals>
     <string name="picker_zone_title">Zone</string>
     <string name="picker_language_title">Sprog</string>
     <string name="picker_language_search">Søg sprog</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Vælg venligst en varighed større end nul.</string>
     <string name="error_no_zone">Vælg venligst en zone i Indstillinger.</string>
     <string name="error_no_data">Ingen prisdata tilgængelige for de næste 24 timer.</string>
-    <string name="error_not_enough_data">Ikke nok prisdata til %1$s. Kun %2$d time(r) data tilgængelige.</string>
     <string name="error_network">Kunne ikke hente priser: %s</string>
-    <string name="error_cooldown">Priserne blev hentet for nylig. Prøv igen om %d minutter.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Ikke nok prisdata til %1$s. Kun %2$d times data tilgængelige.</item>
+        <item quantity="other">Ikke nok prisdata til %1$s. Kun %2$d timers data tilgængelige.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Priserne blev hentet for nylig. Prøv igen om %d minut.</item>
+        <item quantity="other">Priserne blev hentet for nylig. Prøv igen om %d minutter.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Avanceret</string>

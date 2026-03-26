@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Search timezones</string>
     <string name="picker_country_title">Country</string>
     <string name="picker_country_search">Search countries</string>
-    <string name="picker_zones_count">%d zones</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zone</item>
+        <item quantity="other">%d zones</item>
+    </plurals>
     <string name="picker_zone_title">Zone</string>
     <string name="picker_language_title">Language</string>
     <string name="picker_language_search">Search languages</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Please select a duration greater than zero.</string>
     <string name="error_no_zone">Please select a zone in Settings.</string>
     <string name="error_no_data">No price data available for the next 24 hours.</string>
-    <string name="error_not_enough_data">Not enough price data to cover %1$s. Only %2$d hour(s) of data available.</string>
     <string name="error_network">Could not fetch prices: %s</string>
-    <string name="error_cooldown">Prices were fetched recently. Try again in %d minutes.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Not enough price data to cover %1$s. Only %2$d hour of data available.</item>
+        <item quantity="other">Not enough price data to cover %1$s. Only %2$d hours of data available.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Prices were fetched recently. Try again in %d minute.</item>
+        <item quantity="other">Prices were fetched recently. Try again in %d minutes.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Advanced</string>

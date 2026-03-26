@@ -69,7 +69,12 @@
     <string name="picker_timezone_search">Szukaj stref czasowych</string>
     <string name="picker_country_title">Kraj</string>
     <string name="picker_country_search">Szukaj krajów</string>
-    <string name="picker_zones_count">%d stref</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d strefa</item>
+        <item quantity="few">%d strefy</item>
+        <item quantity="many">%d stref</item>
+        <item quantity="other">%d stref</item>
+    </plurals>
     <string name="picker_zone_title">Strefa</string>
     <string name="picker_language_title">Język</string>
     <string name="picker_language_search">Szukaj języków</string>
@@ -79,9 +84,19 @@
     <string name="error_zero_duration">Proszę wybrać czas trwania większy od zera.</string>
     <string name="error_no_zone">Proszę wybrać strefę w Ustawieniach.</string>
     <string name="error_no_data">Brak danych cenowych na najbliższe 24 godziny.</string>
-    <string name="error_not_enough_data">Za mało danych cenowych na %1$s. Dostępne tylko %2$d godzin(y) danych.</string>
     <string name="error_network">Nie udało się pobrać cen: %s</string>
-    <string name="error_cooldown">Ceny zostały pobrane niedawno. Spróbuj ponownie za %d minut.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Za mało danych cenowych na %1$s. Dostępna tylko %2$d godzina danych.</item>
+        <item quantity="few">Za mało danych cenowych na %1$s. Dostępne tylko %2$d godziny danych.</item>
+        <item quantity="many">Za mało danych cenowych na %1$s. Dostępnych tylko %2$d godzin danych.</item>
+        <item quantity="other">Za mało danych cenowych na %1$s. Dostępnych tylko %2$d godzin danych.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Ceny zostały pobrane niedawno. Spróbuj ponownie za %d minutę.</item>
+        <item quantity="few">Ceny zostały pobrane niedawno. Spróbuj ponownie za %d minuty.</item>
+        <item quantity="many">Ceny zostały pobrane niedawno. Spróbuj ponownie za %d minut.</item>
+        <item quantity="other">Ceny zostały pobrane niedawno. Spróbuj ponownie za %d minut.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Zaawansowane</string>

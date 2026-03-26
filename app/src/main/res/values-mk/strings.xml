@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Пребарај временски зони</string>
     <string name="picker_country_title">Земја</string>
     <string name="picker_country_search">Пребарај земји</string>
-    <string name="picker_zones_count">%d зони</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d зона</item>
+        <item quantity="other">%d зони</item>
+    </plurals>
     <string name="picker_zone_title">Зона</string>
     <string name="picker_language_title">Јазик</string>
     <string name="picker_language_search">Пребарај јазици</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Ве молиме изберете траење поголемо од нула.</string>
     <string name="error_no_zone">Ве молиме изберете зона во Поставки.</string>
     <string name="error_no_data">Нема достапни податоци за цени за следните 24 часа.</string>
-    <string name="error_not_enough_data">Нема доволно податоци за цени за %1$s. Достапни се само %2$d час(а) податоци.</string>
     <string name="error_network">Не можеше да се преземат цените: %s</string>
-    <string name="error_cooldown">Цените беа преземени неодамна. Обидете се повторно за %d минути.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Нема доволно податоци за цени за %1$s. Достапен е само %2$d час податоци.</item>
+        <item quantity="other">Нема доволно податоци за цени за %1$s. Достапни се само %2$d часа податоци.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Цените беа преземени неодамна. Обидете се повторно за %d минута.</item>
+        <item quantity="other">Цените беа преземени неодамна. Обидете се повторно за %d минути.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Напредно</string>

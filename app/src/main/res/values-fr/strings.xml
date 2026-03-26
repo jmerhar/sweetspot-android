@@ -69,7 +69,10 @@
     <string name="picker_timezone_search">Rechercher des fuseaux horaires</string>
     <string name="picker_country_title">Pays</string>
     <string name="picker_country_search">Rechercher des pays</string>
-    <string name="picker_zones_count">%d zones</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zone</item>
+        <item quantity="other">%d zones</item>
+    </plurals>
     <string name="picker_zone_title">Zone</string>
     <string name="picker_language_title">Langue</string>
     <string name="picker_language_search">Rechercher des langues</string>
@@ -79,9 +82,15 @@
     <string name="error_zero_duration">Veuillez sélectionner une durée supérieure à zéro.</string>
     <string name="error_no_zone">Veuillez sélectionner une zone dans les paramètres.</string>
     <string name="error_no_data">Aucune donnée de prix disponible pour les prochaines 24 heures.</string>
-    <string name="error_not_enough_data">Pas assez de données de prix pour %1$s. Seulement %2$d heure(s) de données disponibles.</string>
     <string name="error_network">Impossible de récupérer les prix : %s</string>
-    <string name="error_cooldown">Les prix ont été récupérés récemment. Réessayez dans %d minutes.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Pas assez de données de prix pour %1$s. Seulement %2$d heure de données disponible.</item>
+        <item quantity="other">Pas assez de données de prix pour %1$s. Seulement %2$d heures de données disponibles.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Les prix ont été récupérés récemment. Réessayez dans %d minute.</item>
+        <item quantity="other">Les prix ont été récupérés récemment. Réessayez dans %d minutes.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Avancé</string>

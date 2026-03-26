@@ -69,7 +69,11 @@
     <string name="picker_timezone_search">Претражи временске зоне</string>
     <string name="picker_country_title">Држава</string>
     <string name="picker_country_search">Претражи државе</string>
-    <string name="picker_zones_count">%d зона</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d зона</item>
+        <item quantity="few">%d зоне</item>
+        <item quantity="other">%d зона</item>
+    </plurals>
     <string name="picker_zone_title">Зона</string>
     <string name="picker_language_title">Језик</string>
     <string name="picker_language_search">Претражи језике</string>
@@ -79,9 +83,17 @@
     <string name="error_zero_duration">Изаберите трајање веће од нуле.</string>
     <string name="error_no_zone">Изаберите зону у подешавањима.</string>
     <string name="error_no_data">Нема доступних података о ценама за наредних 24 сата.</string>
-    <string name="error_not_enough_data">Нема довољно података о ценама за %1$s. Доступно је само %2$d сат(и) података.</string>
     <string name="error_network">Преузимање цена није успело: %s</string>
-    <string name="error_cooldown">Цене су недавно преузете. Покушајте поново за %d минута.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Нема довољно података о ценама за %1$s. Доступан је само %2$d сат података.</item>
+        <item quantity="few">Нема довољно података о ценама за %1$s. Доступна су само %2$d сата података.</item>
+        <item quantity="other">Нема довољно података о ценама за %1$s. Доступно је само %2$d сати података.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Цене су недавно преузете. Покушајте поново за %d минут.</item>
+        <item quantity="few">Цене су недавно преузете. Покушајте поново за %d минута.</item>
+        <item quantity="other">Цене су недавно преузете. Покушајте поново за %d минута.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Напредно</string>

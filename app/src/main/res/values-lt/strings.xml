@@ -69,7 +69,12 @@
     <string name="picker_timezone_search">Ieškoti laiko juostų</string>
     <string name="picker_country_title">Šalis</string>
     <string name="picker_country_search">Ieškoti šalių</string>
-    <string name="picker_zones_count">%d zonos</string>
+    <plurals name="picker_zones_count">
+        <item quantity="one">%d zona</item>
+        <item quantity="few">%d zonos</item>
+        <item quantity="many">%d zonos</item>
+        <item quantity="other">%d zonų</item>
+    </plurals>
     <string name="picker_zone_title">Zona</string>
     <string name="picker_language_title">Kalba</string>
     <string name="picker_language_search">Ieškoti kalbų</string>
@@ -79,9 +84,19 @@
     <string name="error_zero_duration">Pasirinkite trukmę, didesnę nei nulis.</string>
     <string name="error_no_zone">Pasirinkite zoną Nustatymuose.</string>
     <string name="error_no_data">Nėra kainų duomenų artimiausioms 24 valandoms.</string>
-    <string name="error_not_enough_data">Nepakanka kainų duomenų, kad padengtų %1$s. Turima tik %2$d val. duomenų.</string>
     <string name="error_network">Nepavyko gauti kainų: %s</string>
-    <string name="error_cooldown">Kainos buvo gautos neseniai. Bandykite dar kartą po %d minučių.</string>
+    <plurals name="error_not_enough_data">
+        <item quantity="one">Nepakanka kainų duomenų, kad padengtų %1$s. Turima tik %2$d valanda duomenų.</item>
+        <item quantity="few">Nepakanka kainų duomenų, kad padengtų %1$s. Turimos tik %2$d valandos duomenų.</item>
+        <item quantity="many">Nepakanka kainų duomenų, kad padengtų %1$s. Turima tik %2$d valandos duomenų.</item>
+        <item quantity="other">Nepakanka kainų duomenų, kad padengtų %1$s. Turima tik %2$d valandų duomenų.</item>
+    </plurals>
+    <plurals name="error_cooldown">
+        <item quantity="one">Kainos buvo gautos neseniai. Bandykite dar kartą po %d minutės.</item>
+        <item quantity="few">Kainos buvo gautos neseniai. Bandykite dar kartą po %d minučių.</item>
+        <item quantity="many">Kainos buvo gautos neseniai. Bandykite dar kartą po %d minutės.</item>
+        <item quantity="other">Kainos buvo gautos neseniai. Bandykite dar kartą po %d minučių.</item>
+    </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Išplėstiniai</string>

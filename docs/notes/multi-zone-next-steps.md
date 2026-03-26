@@ -240,12 +240,12 @@ Lower priority — only implement if the primary fallbacks prove unreliable.
 The real risk is burst traffic around **13:00–14:00 CET** when next-day prices publish
 and caches expire simultaneously across all users.
 
-- ✅ **Short term:** Fallback APIs absorb ENTSO-E failures. `FallbackPriceFetcher`
-  automatically tries the next source when ENTSO-E returns 409 or 5xx. Currently
-  covers 16/43 zones (NL + 15 Nordic/Baltic).
-- ⬜ **Medium term:** Add jitter to cache cooldown (e.g. 5 min ± random 0–2 min) to
-  spread burst requests across the window. Not yet implemented — all users currently
-  hit the same 5-minute cooldown boundary.
+- ✅ **Fallback APIs** absorb ENTSO-E failures. `FallbackPriceFetcher` automatically
+  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 16/43
+  zones (NL + 15 Nordic/Baltic). Expanding fallback coverage (Phases 2–5) is the
+  main mitigation.
+- **Cache cooldown** (5 min) is per-user, starting from each user's tap — naturally
+  staggered, no artificial jitter needed.
 - ⬜ **Long term:** If user base exceeds ~50K DAU, stand up a caching proxy that
   fetches once per zone and serves all users.
 

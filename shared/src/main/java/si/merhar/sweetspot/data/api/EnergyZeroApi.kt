@@ -4,12 +4,10 @@ import si.merhar.sweetspot.model.PriceSlot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.concurrent.TimeUnit
 
 /**
  * A single price entry from the EnergyZero API response.
@@ -34,17 +32,12 @@ internal data class EnergyZeroResponse(
 )
 
 /**
- * Singleton client for the EnergyZero electricity price API.
+ * Client for the EnergyZero electricity price API (NL-only).
  *
  * Fetches hourly electricity prices for today and tomorrow. The raw JSON
  * can be cached by [PriceCache] to avoid redundant network requests.
  */
-object EnergyZeroApi : PriceFetcher {
-
-    private val client = OkHttpClient.Builder()
-        .connectTimeout(10, TimeUnit.SECONDS)
-        .readTimeout(10, TimeUnit.SECONDS)
-        .build()
+class EnergyZeroApi : PriceFetcher {
 
     private val json = Json { ignoreUnknownKeys = true }
 
@@ -76,13 +69,12 @@ object EnergyZeroApi : PriceFetcher {
             "&interval=4&usageType=1"
 
         val request = Request.Builder().url(url).get().build()
-        return client.newCall(request).execute().use { response ->
+        return sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw RuntimeException("API returned ${response.code}")
             }
 
-            response.body?.string()
-                ?: throw RuntimeException("Empty response body")
+            response.body.string()
         }
     }
 

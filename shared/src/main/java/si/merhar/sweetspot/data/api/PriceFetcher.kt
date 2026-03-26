@@ -1,8 +1,21 @@
 package si.merhar.sweetspot.data.api
 
+import okhttp3.OkHttpClient
 import si.merhar.sweetspot.model.PriceSlot
 import java.time.Instant
 import java.time.ZoneId
+import java.util.concurrent.TimeUnit
+
+/**
+ * Shared [OkHttpClient] used by all API implementations.
+ *
+ * A single client shares one connection pool and thread pool across all APIs,
+ * which is more efficient than creating separate clients per API.
+ */
+internal val sharedHttpClient: OkHttpClient = OkHttpClient.Builder()
+    .connectTimeout(10, TimeUnit.SECONDS)
+    .readTimeout(10, TimeUnit.SECONDS)
+    .build()
 
 /**
  * Result of a price fetch, pairing the price data with the name of the data source.

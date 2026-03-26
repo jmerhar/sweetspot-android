@@ -2,13 +2,11 @@ package si.merhar.sweetspot.data.api
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import okhttp3.OkHttpClient
 import okhttp3.Request
 import si.merhar.sweetspot.model.PriceSlot
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.concurrent.TimeUnit
 
 /**
  * JSON response from the Energy-Charts day-ahead price API.
@@ -43,11 +41,6 @@ class EnergyChartsApi(zoneId: String) : PriceFetcher {
     private val bzn = ZONE_TO_BZN[zoneId]
         ?: error("No Energy-Charts mapping for zone: $zoneId")
 
-    private val client = OkHttpClient.Builder()
-        .connectTimeout(10, TimeUnit.SECONDS)
-        .readTimeout(10, TimeUnit.SECONDS)
-        .build()
-
     private val json = Json { ignoreUnknownKeys = true }
 
     /**
@@ -78,7 +71,7 @@ class EnergyChartsApi(zoneId: String) : PriceFetcher {
             "&end=${DateTimeFormatter.ISO_INSTANT.format(to)}"
 
         val request = Request.Builder().url(url).get().build()
-        return client.newCall(request).execute().use { response ->
+        return sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw RuntimeException("Energy-Charts API returned ${response.code}")
             }

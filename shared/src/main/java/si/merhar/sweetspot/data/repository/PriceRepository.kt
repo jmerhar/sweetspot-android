@@ -42,7 +42,7 @@ data class PriceResult(
 class PriceRepository(
     private val cache: PriceCache,
     private val timeZoneId: ZoneId,
-    private val fetcher: PriceFetcher = EnergyZeroApi,
+    private val fetcher: PriceFetcher = EnergyZeroApi(),
     private val clock: Clock = Clock.system(timeZoneId),
     private val cacheKey: String = "default"
 ) {

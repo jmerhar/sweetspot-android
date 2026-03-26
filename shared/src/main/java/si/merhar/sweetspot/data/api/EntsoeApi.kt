@@ -1,6 +1,5 @@
 package si.merhar.sweetspot.data.api
 
-import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
@@ -13,7 +12,6 @@ import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
-import java.util.concurrent.TimeUnit
 
 /**
  * Client for the ENTSO-E Transparency Platform day-ahead price API.
@@ -32,11 +30,6 @@ class EntsoeApi(
     private val token: String,
     private val biddingZone: String
 ) : PriceFetcher {
-
-    private val client = OkHttpClient.Builder()
-        .connectTimeout(10, TimeUnit.SECONDS)
-        .readTimeout(10, TimeUnit.SECONDS)
-        .build()
 
     /**
      * Parses ENTSO-E timestamps that may omit seconds (e.g. `2026-03-02T23:00Z`).
@@ -82,12 +75,11 @@ class EntsoeApi(
             "&periodEnd=${fmt.format(to)}"
 
         val request = Request.Builder().url(url).get().build()
-        val body = client.newCall(request).execute().use { response ->
+        val body = sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw RuntimeException("ENTSO-E API returned ${response.code}")
             }
-            response.body?.string()
-                ?: throw RuntimeException("Empty response body")
+            response.body.string()
         }
 
         if (body.contains("Acknowledgement_MarketDocument")) {

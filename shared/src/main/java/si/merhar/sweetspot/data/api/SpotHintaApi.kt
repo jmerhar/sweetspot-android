@@ -3,13 +3,11 @@ package si.merhar.sweetspot.data.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import okhttp3.OkHttpClient
 import okhttp3.Request
 import si.merhar.sweetspot.model.PriceSlot
 import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.ZoneId
-import java.util.concurrent.TimeUnit
 
 /**
  * A single price entry from the Spot-Hinta.fi API response.
@@ -47,11 +45,6 @@ class SpotHintaApi(private val region: String) : PriceFetcher {
         )
     }
 
-    private val client = OkHttpClient.Builder()
-        .connectTimeout(10, TimeUnit.SECONDS)
-        .readTimeout(10, TimeUnit.SECONDS)
-        .build()
-
     private val json = Json { ignoreUnknownKeys = true }
 
     /**
@@ -77,7 +70,7 @@ class SpotHintaApi(private val region: String) : PriceFetcher {
         val url = "https://api.spot-hinta.fi/TodayAndDayForward?region=$region"
 
         val request = Request.Builder().url(url).get().build()
-        return client.newCall(request).execute().use { response ->
+        return sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw RuntimeException("Spot-Hinta.fi API returned ${response.code}")
             }

@@ -49,7 +49,7 @@ fun defaultPriceFetcherFactory(
         val fetchers = ordered.map { source ->
             when (source.id) {
                 DataSources.ENTSOE.id -> EntsoeApi(entsoeToken, zone.eicCode)
-                DataSources.ENERGY_ZERO.id -> EnergyZeroApi
+                DataSources.ENERGY_ZERO.id -> EnergyZeroApi()
                 DataSources.SPOT_HINTA.id -> SpotHintaApi(zone.id)
                 DataSources.ENERGY_CHARTS.id -> EnergyChartsApi(zone.id)
                 DataSources.AWATTAR.id -> AwattarApi(zone.id)

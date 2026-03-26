@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Setări</string>
     <string name="cd_back">Înapoi</string>
-    <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin moment pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul și aplicația va analiza prețurile dinamice ale electricității din următoarele 24 de ore pentru a găsi cea mai bună fereastră. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
+    <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin moment pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul și aplicația va analiza prețurile dinamice ale electricității din următoarele 24 de ore pentru a găsi cea mai bună perioadă. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
     <string name="main_find_button">Găsește cea mai ieftină perioadă</string>
     <string name="main_searching">Se caută…</string>
     <string name="main_add_appliances">Adaugă aparatele tale</string>
@@ -31,7 +31,7 @@
     <string name="picker_duration">Durată</string>
     <string name="cd_duration_picker">Selector de durată</string>
     <string name="picker_hour_suffix">h</string>
-    <string name="picker_minute_suffix">m</string>
+    <string name="picker_minute_suffix">min</string>
     <string name="cd_hours">Ore: %d</string>
     <string name="cd_minutes">Minute: %s</string>
 

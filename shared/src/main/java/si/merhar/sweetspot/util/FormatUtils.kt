@@ -22,7 +22,7 @@ val shortTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 fun formatDuration(hours: Int, minutes: Int, resources: Resources? = null): String {
     return when {
         hours == 0 -> resources?.getString(R.string.duration_minutes_only, minutes) ?: "${minutes}m"
-        minutes == 0 -> resources?.getString(R.string.duration_hours_only, hours) ?: "${hours}h"
-        else -> resources?.getString(R.string.duration_hours_minutes, hours, minutes) ?: "${hours}h ${minutes}m"
+        minutes == 0 -> resources?.getQuantityString(R.plurals.duration_hours_only, hours, hours) ?: "${hours}h"
+        else -> resources?.getQuantityString(R.plurals.duration_hours_minutes, hours, hours, minutes) ?: "${hours}h ${minutes}m"
     }
 }

@@ -25,8 +25,8 @@ fun formatRelative(target: ZonedDateTime, now: ZonedDateTime, resources: Resourc
     val h = totalMinutes / 60
     val m = totalMinutes % 60
     return when {
-        h > 0 && m > 0 -> resources?.getString(R.string.relative_in_hours_minutes, h.toInt(), m.toInt()) ?: "in ${h}h ${m}m"
-        h > 0 -> resources?.getString(R.string.relative_in_hours, h.toInt()) ?: "in ${h}h"
+        h > 0 && m > 0 -> resources?.getQuantityString(R.plurals.relative_in_hours_minutes, h.toInt(), h.toInt(), m.toInt()) ?: "in ${h}h ${m}m"
+        h > 0 -> resources?.getQuantityString(R.plurals.relative_in_hours, h.toInt(), h.toInt()) ?: "in ${h}h"
         else -> resources?.getString(R.string.relative_in_minutes, m.toInt()) ?: "in ${m}m"
     }
 }

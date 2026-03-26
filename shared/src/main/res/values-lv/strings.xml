@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dh</string>
-    <string name="duration_minutes_only">%dm</string>
-    <string name="duration_hours_minutes">%1$dh %2$dm</string>
+    <plurals name="duration_hours_only">
+        <item quantity="zero">%d st.</item>
+        <item quantity="one">%d st.</item>
+        <item quantity="other">%d st.</item>
+    </plurals>
+    <string name="duration_minutes_only">%d min.</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$d st. %2$d min.</item>
+        <item quantity="other">%1$d st. %2$d min.</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">tagad</string>
-    <string name="relative_in_hours_minutes">p\u0113c %1$dh %2$dm</string>
-    <string name="relative_in_hours">p\u0113c %1$dh</string>
-    <string name="relative_in_minutes">p\u0113c %1$dm</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">p\u0113c %1$d st. %2$d min.</item>
+        <item quantity="other">p\u0113c %1$d st. %2$d min.</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">p\u0113c %1$d st.</item>
+        <item quantity="other">p\u0113c %1$d st.</item>
+    </plurals>
+    <string name="relative_in_minutes">p\u0113c %1$d min.</string>
 
     <!-- Country names (30 countries) -->
     <string name="country_at">Austrija</string>

@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Ρυθμίσεις</string>
     <string name="cd_back">Πίσω</string>
-    <string name="main_description">Το SweetSpot σας βοηθά να εξοικονομήσετε χρήματα βρίσκοντας την πιο φθηνή ώρα για να λειτουργήσετε τις συσκευές σας. Απλά επιλέξτε πόση ώρα χρειάζεται η συσκευή σας και θα σαρώσει τις επόμενες 24 ώρες δυναμικών τιμών ρεύματος για να βρει το καλύτερο χρονικό παράθυρο. Μπορείτε επίσης να αποθηκεύσετε τις αγαπημένες σας συσκευές στις ρυθμίσεις για γρήγορη πρόσβαση.</string>
-    <string name="main_find_button">Εύρεση φθηνότερου παραθύρου</string>
+    <string name="main_description">Το SweetSpot σας βοηθά να εξοικονομήσετε χρήματα βρίσκοντας την πιο φθηνή ώρα για να λειτουργήσετε τις συσκευές σας. Απλά επιλέξτε πόση ώρα χρειάζεται η συσκευή σας και θα σαρώσει τις επόμενες 24 ώρες δυναμικών τιμών ρεύματος για να βρει την καλύτερη χρονική περίοδο. Μπορείτε επίσης να αποθηκεύσετε τις αγαπημένες σας συσκευές στις ρυθμίσεις για γρήγορη πρόσβαση.</string>
+    <string name="main_find_button">Εύρεση φθηνότερης περιόδου</string>
     <string name="main_searching">Αναζήτηση…</string>
     <string name="main_add_appliances">Προσθέστε τις συσκευές σας</string>
     <string name="main_card_description">Βρείτε την πιο φθηνή ώρα για τη λειτουργία της συσκευής σας</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Φθηνότερο παράθυρο</string>
+    <string name="result_cheapest_window">Φθηνότερη περίοδος</string>
     <string name="result_start">Έναρξη</string>
     <string name="result_end">Λήξη</string>
     <string name="result_total_cost">Συνολικό κόστος</string>
@@ -25,13 +25,13 @@
     <string name="result_disclaimer">Το κόστος υπολογίζεται για φορτίο 1 kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο και τέλη προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
     <string name="result_data_source">\nΠηγή δεδομένων: %s</string>
     <string name="result_price_zone">\nΖώνη τιμών: %s</string>
-    <string name="cd_cheapest_window">φθηνότερο παράθυρο</string>
+    <string name="cd_cheapest_window">φθηνότερη περίοδος</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Διάρκεια</string>
     <string name="cd_duration_picker">Επιλογέας διάρκειας</string>
-    <string name="picker_hour_suffix">ω</string>
-    <string name="picker_minute_suffix">λ</string>
+    <string name="picker_hour_suffix">ω.</string>
+    <string name="picker_minute_suffix">λ.</string>
     <string name="cd_hours">Ώρες: %d</string>
     <string name="cd_minutes">Λεπτά: %s</string>
 

@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Indstillinger</string>
     <string name="cd_back">Tilbage</string>
-    <string name="main_description">SweetSpot hjælper dig med at spare penge ved at finde det billigste tidspunkt til at køre dine apparater. Vælg bare hvor længe dit apparat skal køre, og appen scanner de næste 24 timers dynamiske elpriser for at finde det bedste vindue. Du kan også gemme dine yndlingsapparater i indstillingerne for hurtig adgang.</string>
-    <string name="main_find_button">Find billigste vindue</string>
+    <string name="main_description">SweetSpot hjælper dig med at spare penge ved at finde det billigste tidspunkt til at køre dine apparater. Vælg bare hvor længe dit apparat skal køre, og appen scanner de næste 24 timers dynamiske elpriser for at finde det bedste tidsrum. Du kan også gemme dine yndlingsapparater i indstillingerne for hurtig adgang.</string>
+    <string name="main_find_button">Find billigste tidsrum</string>
     <string name="main_searching">Søger…</string>
     <string name="main_add_appliances">Tilføj dine apparater</string>
     <string name="main_card_description">Find det billigste tidspunkt til at køre dit apparat</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Billigste vindue</string>
+    <string name="result_cheapest_window">Billigste tidsrum</string>
     <string name="result_start">Start</string>
     <string name="result_end">Slut</string>
     <string name="result_total_cost">Samlet pris</string>
@@ -25,7 +25,7 @@
     <string name="result_disclaimer">Omkostningerne er pr. 1 kW belastning. Priserne inkluderer ikke moms, energiafgift og leverandørgebyr. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
     <string name="result_data_source">\nDatakilde: %s</string>
     <string name="result_price_zone">\nPrisområde: %s</string>
-    <string name="cd_cheapest_window">billigste vindue</string>
+    <string name="cd_cheapest_window">billigste tidsrum</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Varighed</string>

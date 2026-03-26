@@ -30,8 +30,8 @@
     <!-- Duration picker -->
     <string name="picker_duration">Trajanje</string>
     <string name="cd_duration_picker">Birač trajanja</string>
-    <string name="picker_hour_suffix">č</string>
-    <string name="picker_minute_suffix">m</string>
+    <string name="picker_hour_suffix">sat</string>
+    <string name="picker_minute_suffix">min</string>
     <string name="cd_hours">Sati: %d</string>
     <string name="cd_minutes">Minuti: %s</string>
 

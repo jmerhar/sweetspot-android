@@ -30,8 +30,8 @@
     <!-- Duration picker -->
     <string name="picker_duration">Трајање</string>
     <string name="cd_duration_picker">Бирач трајања</string>
-    <string name="picker_hour_suffix">ч</string>
-    <string name="picker_minute_suffix">м</string>
+    <string name="picker_hour_suffix">сат</string>
+    <string name="picker_minute_suffix">мин</string>
     <string name="cd_hours">Сати: %d</string>
     <string name="cd_minutes">Минути: %s</string>
 

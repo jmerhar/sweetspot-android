@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%d val.</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%d val.</item>
+        <item quantity="other">%d val.</item>
+    </plurals>
     <string name="duration_minutes_only">%d min.</string>
-    <string name="duration_hours_minutes">%1$d val. %2$d min.</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$d val. %2$d min.</item>
+        <item quantity="other">%1$d val. %2$d min.</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">dabar</string>
-    <string name="relative_in_hours_minutes">po %1$d val. %2$d min.</string>
-    <string name="relative_in_hours">po %1$d val.</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">po %1$d val. %2$d min.</item>
+        <item quantity="other">po %1$d val. %2$d min.</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">po %1$d val.</item>
+        <item quantity="other">po %1$d val.</item>
+    </plurals>
     <string name="relative_in_minutes">po %1$d min.</string>
 
     <!-- Country names (30 countries) -->

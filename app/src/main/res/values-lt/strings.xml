@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Nustatymai</string>
     <string name="cd_back">Atgal</string>
-    <string name="main_description">SweetSpot padeda taupyti pinigus, suranda pigiausią laiką jūsų prietaisams veikti. Tiesiog pasirinkite, kiek laiko turi veikti prietaisas, ir programa peržiūrės artimiausių 24 valandų dinamines elektros kainas, kad rastų geriausią langą. Taip pat galite išsaugoti mėgstamus prietaisus nustatymuose greitai prieigai.</string>
-    <string name="main_find_button">Rasti pigiausią langą</string>
+    <string name="main_description">SweetSpot padeda taupyti pinigus, suranda pigiausią laiką jūsų prietaisams veikti. Tiesiog pasirinkite, kiek laiko turi veikti prietaisas, ir programa peržiūrės artimiausių 24 valandų dinamines elektros kainas, kad rastų geriausią laikotarpį. Taip pat galite išsaugoti mėgstamus prietaisus nustatymuose greitai prieigai.</string>
+    <string name="main_find_button">Rasti pigiausią laikotarpį</string>
     <string name="main_searching">Ieškoma…</string>
     <string name="main_add_appliances">Pridėkite savo prietaisus</string>
     <string name="main_card_description">Raskite pigiausią laiką savo prietaisui</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Pigiausias langas</string>
+    <string name="result_cheapest_window">Pigiausias laikotarpis</string>
     <string name="result_start">Pradžia</string>
     <string name="result_end">Pabaiga</string>
     <string name="result_total_cost">Bendra kaina</string>
@@ -25,7 +25,7 @@
     <string name="result_disclaimer">Kainos nurodytos 1 kW apkrovai. Kainos neapima PVM, energijos mokesčio ir tiekėjo mokesčio. Rytojaus kainos paprastai skelbiamos po 13:00 CET.</string>
     <string name="result_data_source">\nDuomenų šaltinis: %s</string>
     <string name="result_price_zone">\nKainų zona: %s</string>
-    <string name="cd_cheapest_window">pigiausias langas</string>
+    <string name="cd_cheapest_window">pigiausias laikotarpis</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Trukmė</string>

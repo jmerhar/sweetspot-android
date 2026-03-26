@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Iestatījumi</string>
     <string name="cd_back">Atpakaļ</string>
-    <string name="main_description">SweetSpot palīdz taupīt naudu, atrodot lētāko laiku jūsu ierīču darbināšanai. Viēnkārši norādiet, cik ilgi jūsu ierīcei jādarbojas, un lietotne pārskatīs nākamo 24 stundu dinamiskās elektrības cenas, lai atrastu labāko logu. Varat arī saglabāt iecienītākās ierīces iestatījumos ātrai piekļuvei.</string>
-    <string name="main_find_button">Atrast lētāko logu</string>
+    <string name="main_description">SweetSpot palīdz taupīt naudu, atrodot lētāko laiku jūsu ierīču darbināšanai. Viēnkārši norādiet, cik ilgi jūsu ierīcei jādarbojas, un lietotne pārskatīs nākamo 24 stundu dinamiskās elektrības cenas, lai atrastu labāko periodu. Varat arī saglabāt iecienītākās ierīces iestatījumos ātrai piekļuvei.</string>
+    <string name="main_find_button">Atrast lētāko periodu</string>
     <string name="main_searching">Meklē…</string>
     <string name="main_add_appliances">Pievienojiet savas ierīces</string>
     <string name="main_card_description">Atrodiet lētāko laiku savai ierīcei</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Lētākais logs</string>
+    <string name="result_cheapest_window">Lētākais periods</string>
     <string name="result_start">Sākums</string>
     <string name="result_end">Beigas</string>
     <string name="result_total_cost">Kopējās izmaksas</string>
@@ -25,13 +25,13 @@
     <string name="result_disclaimer">Izmaksas ir norādītas 1 kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="result_data_source">\nDatu avots: %s</string>
     <string name="result_price_zone">\nCenu zona: %s</string>
-    <string name="cd_cheapest_window">lētākais logs</string>
+    <string name="cd_cheapest_window">lētākais periods</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Ilgums</string>
     <string name="cd_duration_picker">Ilguma izvēle</string>
-    <string name="picker_hour_suffix">h</string>
-    <string name="picker_minute_suffix">m</string>
+    <string name="picker_hour_suffix">st.</string>
+    <string name="picker_minute_suffix">min.</string>
     <string name="cd_hours">Stundas: %d</string>
     <string name="cd_minutes">Minūtes: %s</string>
 

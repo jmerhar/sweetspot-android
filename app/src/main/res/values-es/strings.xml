@@ -31,7 +31,7 @@
     <string name="picker_duration">Duración</string>
     <string name="cd_duration_picker">Selector de duración</string>
     <string name="picker_hour_suffix">h</string>
-    <string name="picker_minute_suffix">m</string>
+    <string name="picker_minute_suffix">min</string>
     <string name="cd_hours">Horas: %d</string>
     <string name="cd_minutes">Minutos: %s</string>
 

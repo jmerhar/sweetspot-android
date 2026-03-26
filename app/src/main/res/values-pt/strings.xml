@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Definições</string>
     <string name="cd_back">Voltar</string>
-    <string name="main_description">O SweetSpot ajuda-o a poupar dinheiro ao encontrar o horário mais barato para utilizar os seus eletrodomésticos. Basta escolher a duração de funcionamento do aparelho e ele analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar a melhor janela. Também pode guardar os seus eletrodomésticos favoritos nas definições para acesso rápido.</string>
+    <string name="main_description">O SweetSpot ajuda-o a poupar dinheiro ao encontrar o horário mais barato para utilizar os seus eletrodomésticos. Basta escolher a duração de funcionamento do aparelho e ele analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar o melhor período. Também pode guardar os seus eletrodomésticos favoritos nas definições para acesso rápido.</string>
     <string name="main_find_button">Encontrar período mais barato</string>
     <string name="main_searching">A procurar…</string>
     <string name="main_add_appliances">Adicione os seus eletrodomésticos</string>
@@ -31,7 +31,7 @@
     <string name="picker_duration">Duração</string>
     <string name="cd_duration_picker">Seletor de duração</string>
     <string name="picker_hour_suffix">h</string>
-    <string name="picker_minute_suffix">m</string>
+    <string name="picker_minute_suffix">min</string>
     <string name="cd_hours">Horas: %d</string>
     <string name="cd_minutes">Minutos: %s</string>
 

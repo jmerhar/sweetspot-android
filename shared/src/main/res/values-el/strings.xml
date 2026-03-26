@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dω</string>
-    <string name="duration_minutes_only">%dλ</string>
-    <string name="duration_hours_minutes">%1$dω %2$dλ</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%d ω.</item>
+        <item quantity="other">%d ω.</item>
+    </plurals>
+    <string name="duration_minutes_only">%d λ.</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$d ω. %2$d λ.</item>
+        <item quantity="other">%1$d ω. %2$d λ.</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">τώρα</string>
-    <string name="relative_in_hours_minutes">σε %1$dω %2$dλ</string>
-    <string name="relative_in_hours">σε %1$dω</string>
-    <string name="relative_in_minutes">σε %1$dλ</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">σε %1$d ω. %2$d λ.</item>
+        <item quantity="other">σε %1$d ω. %2$d λ.</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">σε %1$d ω.</item>
+        <item quantity="other">σε %1$d ω.</item>
+    </plurals>
+    <string name="relative_in_minutes">σε %1$d λ.</string>
 
     <!-- Country names -->
     <string name="country_at">Αυστρία</string>
@@ -30,7 +42,7 @@
     <string name="country_lt">Λιθουανία</string>
     <string name="country_lu">Λουξεμβούργο</string>
     <string name="country_me">Μαυροβούνιο</string>
-    <string name="country_nl">Ολλανδία</string>
+    <string name="country_nl">Κάτω Χώρες</string>
     <string name="country_mk">Βόρεια Μακεδονία</string>
     <string name="country_no">Νορβηγία</string>
     <string name="country_pl">Πολωνία</string>
@@ -68,7 +80,7 @@
     <string name="zone_lv">Λετονία</string>
     <string name="zone_lt">Λιθουανία</string>
     <string name="zone_me">Μαυροβούνιο</string>
-    <string name="zone_nl">Ολλανδία</string>
+    <string name="zone_nl">Κάτω Χώρες</string>
     <string name="zone_mk">Βόρεια Μακεδονία</string>
     <string name="zone_no1">NO1 — Νοτιοανατολική Νορβηγία</string>
     <string name="zone_no2">NO2 — Νοτιοδυτική Νορβηγία</string>

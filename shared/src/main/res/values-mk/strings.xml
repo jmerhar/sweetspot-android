@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dч</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%dч</item>
+        <item quantity="other">%dч</item>
+    </plurals>
     <string name="duration_minutes_only">%dм</string>
-    <string name="duration_hours_minutes">%1$dч %2$dм</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$dч %2$dм</item>
+        <item quantity="other">%1$dч %2$dм</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">сега</string>
-    <string name="relative_in_hours_minutes">за %1$dч %2$dм</string>
-    <string name="relative_in_hours">за %1$dч</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">за %1$dч %2$dм</item>
+        <item quantity="other">за %1$dч %2$dм</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">за %1$dч</item>
+        <item quantity="other">за %1$dч</item>
+    </plurals>
     <string name="relative_in_minutes">за %1$dм</string>
 
     <!-- Country names -->
@@ -30,7 +42,7 @@
     <string name="country_lt">Литванија</string>
     <string name="country_lu">Луксембург</string>
     <string name="country_me">Црна Гора</string>
-    <string name="country_nl">Холандија</string>
+    <string name="country_nl">Низоземска</string>
     <string name="country_mk">Северна Македонија</string>
     <string name="country_no">Норвешка</string>
     <string name="country_pl">Полска</string>
@@ -68,7 +80,7 @@
     <string name="zone_lv">Латвија</string>
     <string name="zone_lt">Литванија</string>
     <string name="zone_me">Црна Гора</string>
-    <string name="zone_nl">Холандија</string>
+    <string name="zone_nl">Низоземска</string>
     <string name="zone_mk">Северна Македонија</string>
     <string name="zone_no1">NO1 — Југоисточна Норвешка</string>
     <string name="zone_no2">NO2 — Југозападна Норвешка</string>

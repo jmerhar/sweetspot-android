@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Nastavenia</string>
     <string name="cd_back">Späť</string>
-    <string name="main_description">SweetSpot vám pomáha šetriť peniaze tým, že nájde najlacnejší čas na spustenie vašich spotrebičov. Stačí zvoliť, ako dlho má spotrebič bežať, a aplikácia prehľadá nasledujúcich 24 hodín dynamických cien elektriny a nájde najlepšie okno. Svoje obľúbené spotrebiče si môžete uložiť v nastaveniach pre rýchly prístup.</string>
+    <string name="main_description">SweetSpot vám pomáha šetriť peniaze tým, že nájde najlacnejší čas na spustenie vašich spotrebičov. Stačí zvoliť, ako dlho má spotrebič bežať, a aplikácia prehľadá nasledujúcich 24 hodín dynamických cien elektriny a nájde najlepšie obdobie. Svoje obľúbené spotrebiče si môžete uložiť v nastaveniach pre rýchly prístup.</string>
     <string name="main_find_button">Nájsť najlacnejšie obdobie</string>
     <string name="main_searching">Hľadanie…</string>
     <string name="main_add_appliances">Pridajte svoje spotrebiče</string>

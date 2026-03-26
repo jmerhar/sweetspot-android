@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Ustawienia</string>
     <string name="cd_back">Wstecz</string>
-    <string name="main_description">SweetSpot pomaga oszczędzać pieniądze, znajdując najtańszy czas na uruchomienie urządzeń. Wystarczy wybrać, jak długo ma działać urządzenie, a aplikacja przeskanuje ceny prądu z najbliższych 24 godzin, aby znaleźć najlepsze okno. Możesz też zapisać ulubione urządzenia w ustawieniach dla szybkiego dostępu.</string>
+    <string name="main_description">SweetSpot pomaga oszczędzać pieniądze, znajdując najtańszy czas na uruchomienie urządzeń. Wystarczy wybrać, jak długo ma działać urządzenie, a aplikacja przeskanuje ceny prądu z najbliższych 24 godzin, aby znaleźć najlepszy okres. Możesz też zapisać ulubione urządzenia w ustawieniach dla szybkiego dostępu.</string>
     <string name="main_find_button">Znajdź najtańszy okres</string>
     <string name="main_searching">Wyszukiwanie…</string>
     <string name="main_add_appliances">Dodaj swoje urządzenia</string>

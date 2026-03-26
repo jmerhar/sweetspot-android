@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dt</string>
-    <string name="duration_minutes_only">%dm</string>
-    <string name="duration_hours_minutes">%1$dt %2$dm</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%dt</item>
+        <item quantity="other">%dt</item>
+    </plurals>
+    <string name="duration_minutes_only">%d min</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$dt %2$d min</item>
+        <item quantity="other">%1$dt %2$d min</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">nyt</string>
-    <string name="relative_in_hours_minutes">%1$dt %2$dm kuluttua</string>
-    <string name="relative_in_hours">%1$dt kuluttua</string>
-    <string name="relative_in_minutes">%1$dm kuluttua</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">%1$dt %2$d min kuluttua</item>
+        <item quantity="other">%1$dt %2$d min kuluttua</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">%1$dt kuluttua</item>
+        <item quantity="other">%1$dt kuluttua</item>
+    </plurals>
+    <string name="relative_in_minutes">%1$d min kuluttua</string>
 
     <!-- Country names -->
     <string name="country_at">Itävalta</string>

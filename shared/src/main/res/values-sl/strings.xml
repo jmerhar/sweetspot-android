@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%du</string>
-    <string name="duration_minutes_only">%dm</string>
-    <string name="duration_hours_minutes">%1$du %2$dm</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%d ura</item>
+        <item quantity="two">%d uri</item>
+        <item quantity="few">%d ure</item>
+        <item quantity="other">%d ur</item>
+    </plurals>
+    <string name="duration_minutes_only">%d min.</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$d ura in %2$d min.</item>
+        <item quantity="two">%1$d uri in %2$d min.</item>
+        <item quantity="few">%1$d ure in %2$d min.</item>
+        <item quantity="other">%1$d ur in %2$d min.</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">zdaj</string>
-    <string name="relative_in_hours_minutes">čez %1$du %2$dm</string>
-    <string name="relative_in_hours">čez %1$du</string>
-    <string name="relative_in_minutes">čez %1$dm</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">čez %1$d uro in %2$d min.</item>
+        <item quantity="two">čez %1$d uri in %2$d min.</item>
+        <item quantity="few">čez %1$d ure in %2$d min.</item>
+        <item quantity="other">čez %1$d ur in %2$d min.</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">čez %1$d uro</item>
+        <item quantity="two">čez %1$d uri</item>
+        <item quantity="few">čez %1$d ure</item>
+        <item quantity="other">čez %1$d ur</item>
+    </plurals>
+    <string name="relative_in_minutes">čez %1$d min.</string>
 
     <!-- Country names -->
     <string name="country_at">Avstrija</string>

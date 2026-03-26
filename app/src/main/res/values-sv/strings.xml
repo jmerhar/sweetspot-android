@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Inställningar</string>
     <string name="cd_back">Tillbaka</string>
-    <string name="main_description">SweetSpot hjälper dig att spara pengar genom att hitta den billigaste tiden att köra dina apparater. Välj hur länge din apparat behöver köras, så skannar den de kommande 24 timmarnas dynamiska elpriser för att hitta det bästa tidsfönstret. Du kan också spara dina favoritapparater i inställningarna för snabb åtkomst.</string>
-    <string name="main_find_button">Hitta billigaste fönstret</string>
+    <string name="main_description">SweetSpot hjälper dig att spara pengar genom att hitta den billigaste tiden att köra dina apparater. Välj hur länge din apparat behöver köras, så skannar den de kommande 24 timmarnas dynamiska elpriser för att hitta den bästa tidsperioden. Du kan också spara dina favoritapparater i inställningarna för snabb åtkomst.</string>
+    <string name="main_find_button">Hitta billigaste tidsperioden</string>
     <string name="main_searching">Söker…</string>
     <string name="main_add_appliances">Lägg till dina apparater</string>
     <string name="main_card_description">Hitta den billigaste tiden att köra din apparat</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Billigaste fönstret</string>
+    <string name="result_cheapest_window">Billigaste tidsperioden</string>
     <string name="result_start">Start</string>
     <string name="result_end">Slut</string>
     <string name="result_total_cost">Total kostnad</string>
@@ -25,7 +25,7 @@
     <string name="result_disclaimer">Kostnader visas per 1 kW last. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="result_data_source">\nDatakälla: %s</string>
     <string name="result_price_zone">\nPrisområde: %s</string>
-    <string name="cd_cheapest_window">billigaste fönstret</string>
+    <string name="cd_cheapest_window">billigaste tidsperioden</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Varaktighet</string>

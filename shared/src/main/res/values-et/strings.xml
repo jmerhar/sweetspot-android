@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dt</string>
-    <string name="duration_minutes_only">%dm</string>
-    <string name="duration_hours_minutes">%1$dt %2$dm</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%dt</item>
+        <item quantity="other">%dt</item>
+    </plurals>
+    <string name="duration_minutes_only">%d min</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$dt %2$d min</item>
+        <item quantity="other">%1$dt %2$d min</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">praegu</string>
-    <string name="relative_in_hours_minutes">%1$dt %2$dm pärast</string>
-    <string name="relative_in_hours">%1$dt pärast</string>
-    <string name="relative_in_minutes">%1$dm pärast</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">%1$dt %2$d min pärast</item>
+        <item quantity="other">%1$dt %2$d min pärast</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">%1$dt pärast</item>
+        <item quantity="other">%1$dt pärast</item>
+    </plurals>
+    <string name="relative_in_minutes">%1$d min pärast</string>
 
     <!-- Country names -->
     <string name="country_at">Austria</string>
@@ -30,7 +42,7 @@
     <string name="country_lt">Leedu</string>
     <string name="country_lu">Luksemburg</string>
     <string name="country_me">Montenegro</string>
-    <string name="country_nl">Holland</string>
+    <string name="country_nl">Madalmaad</string>
     <string name="country_mk">Põhja-Makedoonia</string>
     <string name="country_no">Norra</string>
     <string name="country_pl">Poola</string>
@@ -68,7 +80,7 @@
     <string name="zone_lv">Läti</string>
     <string name="zone_lt">Leedu</string>
     <string name="zone_me">Montenegro</string>
-    <string name="zone_nl">Holland</string>
+    <string name="zone_nl">Madalmaad</string>
     <string name="zone_mk">Põhja-Makedoonia</string>
     <string name="zone_no1">NO1 — Kagu-Norra</string>
     <string name="zone_no2">NO2 — Edela-Norra</string>

@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dh</string>
-    <string name="duration_minutes_only">%dm</string>
-    <string name="duration_hours_minutes">%1$dh %2$dm</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%dh</item>
+        <item quantity="other">%dh</item>
+    </plurals>
+    <string name="duration_minutes_only">%d min</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$dh și %2$d min</item>
+        <item quantity="other">%1$dh și %2$d min</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">acum</string>
-    <string name="relative_in_hours_minutes">peste %1$dh %2$dm</string>
-    <string name="relative_in_hours">peste %1$dh</string>
-    <string name="relative_in_minutes">peste %1$dm</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">peste %1$dh și %2$d min</item>
+        <item quantity="other">peste %1$dh și %2$d min</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">peste %1$dh</item>
+        <item quantity="other">peste %1$dh</item>
+    </plurals>
+    <string name="relative_in_minutes">peste %1$d min</string>
 
     <!-- Country names -->
     <string name="country_at">Austria</string>

@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Instellingen</string>
     <string name="cd_back">Terug</string>
-    <string name="main_description">SweetSpot helpt je geld besparen door het goedkoopste moment te vinden om je apparaten te gebruiken. Kies hoe lang je apparaat moet draaien en het scant de komende 24 uur aan dynamische stroomprijzen om het beste tijdvenster te vinden. Je kunt ook je favoriete apparaten opslaan in de instellingen.</string>
+    <string name="main_description">SweetSpot helpt je geld besparen door het goedkoopste moment te vinden om je apparaten te gebruiken. Kies hoe lang je apparaat moet draaien en het scant de komende 24 uur aan dynamische stroomprijzen om de beste periode te vinden. Je kunt ook je favoriete apparaten opslaan in de instellingen.</string>
     <string name="main_find_button">Zoek goedkoopste periode</string>
     <string name="main_searching">Zoeken…</string>
     <string name="main_add_appliances">Voeg je apparaten toe</string>
@@ -31,7 +31,7 @@
     <string name="picker_duration">Duur</string>
     <string name="cd_duration_picker">Duurkiezer</string>
     <string name="picker_hour_suffix">u</string>
-    <string name="picker_minute_suffix">m</string>
+    <string name="picker_minute_suffix">min</string>
     <string name="cd_hours">Uren: %d</string>
     <string name="cd_minutes">Minuten: %s</string>
 

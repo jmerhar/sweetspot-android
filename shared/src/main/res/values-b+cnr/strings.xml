@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Duration format strings -->
-    <string name="duration_hours_only">%dč</string>
-    <string name="duration_minutes_only">%dm</string>
-    <string name="duration_hours_minutes">%1$dč %2$dm</string>
+    <plurals name="duration_hours_only">
+        <item quantity="one">%d sat</item>
+        <item quantity="few">%d sata</item>
+        <item quantity="other">%d sati</item>
+    </plurals>
+    <string name="duration_minutes_only">%d min</string>
+    <plurals name="duration_hours_minutes">
+        <item quantity="one">%1$d sat i %2$d min</item>
+        <item quantity="few">%1$d sata i %2$d min</item>
+        <item quantity="other">%1$d sati i %2$d min</item>
+    </plurals>
 
     <!-- Relative time format strings -->
     <string name="relative_now">sada</string>
-    <string name="relative_in_hours_minutes">za %1$dč %2$dm</string>
-    <string name="relative_in_hours">za %1$dč</string>
-    <string name="relative_in_minutes">za %1$dm</string>
+    <plurals name="relative_in_hours_minutes">
+        <item quantity="one">za %1$d sat i %2$d min</item>
+        <item quantity="few">za %1$d sata i %2$d min</item>
+        <item quantity="other">za %1$d sati i %2$d min</item>
+    </plurals>
+    <plurals name="relative_in_hours">
+        <item quantity="one">za %1$d sat</item>
+        <item quantity="few">za %1$d sata</item>
+        <item quantity="other">za %1$d sati</item>
+    </plurals>
+    <string name="relative_in_minutes">za %1$d min</string>
 
     <!-- Country names -->
     <string name="country_at">Austrija</string>
@@ -30,7 +46,7 @@
     <string name="country_lt">Litvanija</string>
     <string name="country_lu">Luksemburg</string>
     <string name="country_me">Crna Gora</string>
-    <string name="country_nl">Holandija</string>
+    <string name="country_nl">Nizozemska</string>
     <string name="country_mk">Sjeverna Makedonija</string>
     <string name="country_no">Norveška</string>
     <string name="country_pl">Poljska</string>
@@ -68,7 +84,7 @@
     <string name="zone_lv">Letonija</string>
     <string name="zone_lt">Litvanija</string>
     <string name="zone_me">Crna Gora</string>
-    <string name="zone_nl">Holandija</string>
+    <string name="zone_nl">Nizozemska</string>
     <string name="zone_mk">Sjeverna Makedonija</string>
     <string name="zone_no1">NO1 — Jugoistočna Norveška</string>
     <string name="zone_no2">NO2 — Jugozapadna Norveška</string>

@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Innstillinger</string>
     <string name="cd_back">Tilbake</string>
-    <string name="main_description">SweetSpot hjelper deg å spare penger ved å finne det billigste tidspunktet for å kjøre apparatene dine. Bare velg hvor lenge apparatet ditt trenger å kjøre, og appen skanner de neste 24 timene med dynamiske strømpriser for å finne det beste vinduet. Du kan også lagre favorittapparatene dine i innstillingene for rask tilgang.</string>
+    <string name="main_description">SweetSpot hjelper deg å spare penger ved å finne det billigste tidspunktet for å kjøre apparatene dine. Bare velg hvor lenge apparatet ditt trenger å kjøre, og appen skanner de neste 24 timene med dynamiske strømpriser for å finne den beste perioden. Du kan også lagre favorittapparatene dine i innstillingene for rask tilgang.</string>
     <string name="main_find_button">Finn billigste periode</string>
     <string name="main_searching">Søker…</string>
     <string name="main_add_appliances">Legg til apparatene dine</string>

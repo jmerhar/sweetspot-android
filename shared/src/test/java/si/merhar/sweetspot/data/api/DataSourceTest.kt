@@ -74,16 +74,6 @@ class DataSourceTest {
     }
 
     @Test
-    fun `SPOT_HINTA_ZONES contains exactly 15 zones`() {
-        assertEquals(15, DataSources.SPOT_HINTA_ZONES.size)
-    }
-
-    @Test
-    fun `ENERGY_CHARTS_ZONES contains exactly 15 zones`() {
-        assertEquals(15, DataSources.ENERGY_CHARTS_ZONES.size)
-    }
-
-    @Test
     fun `defaultsForZone AT returns ENTSOE, ENERGY_CHARTS, and AWATTAR`() {
         val sources = DataSources.defaultsForZone("AT")
         assertEquals(3, sources.size)
@@ -109,28 +99,23 @@ class DataSourceTest {
     }
 
     @Test
-    fun `SPOT_HINTA_ZONES all exist in Countries registry`() {
-        for (zoneId in DataSources.SPOT_HINTA_ZONES) {
-            assertTrue("SPOT_HINTA_ZONES contains unknown zone: $zoneId", zoneId in allZoneIds)
+    fun `all source zone IDs exist in Countries registry`() {
+        val apiZoneSets = mapOf(
+            "SpotHintaApi.ZONES" to SpotHintaApi.ZONES,
+            "EnergyChartsApi.ZONE_TO_BZN" to EnergyChartsApi.ZONE_TO_BZN.keys,
+            "AwattarApi.ZONE_TO_BASE_URL" to AwattarApi.ZONE_TO_BASE_URL.keys,
+        )
+        for ((label, zones) in apiZoneSets) {
+            for (zoneId in zones) {
+                assertTrue("$label contains unknown zone: $zoneId", zoneId in allZoneIds)
+            }
         }
     }
 
     @Test
-    fun `ENERGY_CHARTS_ZONES all exist in Countries registry`() {
-        for (zoneId in DataSources.ENERGY_CHARTS_ZONES) {
-            assertTrue("ENERGY_CHARTS_ZONES contains unknown zone: $zoneId", zoneId in allZoneIds)
-        }
-    }
-
-    @Test
-    fun `AWATTAR_ZONES contains exactly 2 zones`() {
-        assertEquals(2, DataSources.AWATTAR_ZONES.size)
-    }
-
-    @Test
-    fun `AWATTAR_ZONES all exist in Countries registry`() {
-        for (zoneId in DataSources.AWATTAR_ZONES) {
-            assertTrue("AWATTAR_ZONES contains unknown zone: $zoneId", zoneId in allZoneIds)
-        }
+    fun `source zone counts match expected values`() {
+        assertEquals(15, SpotHintaApi.ZONES.size)
+        assertEquals(15, EnergyChartsApi.ZONE_TO_BZN.size)
+        assertEquals(2, AwattarApi.ZONE_TO_BASE_URL.size)
     }
 }

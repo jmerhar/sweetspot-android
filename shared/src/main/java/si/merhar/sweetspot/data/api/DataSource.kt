@@ -11,10 +11,8 @@ data class DataSource(val id: String, val displayName: String)
 /**
  * Registry of all supported price data sources.
  *
- * Defines the available sources and provides default source ordering per zone.
- * Zone IDs that map to Spot-Hinta.fi are listed in [SPOT_HINTA_ZONES].
- * Zone IDs that map to Energy-Charts are listed in [ENERGY_CHARTS_ZONES].
- * Zone IDs that map to aWATTar are listed in [AWATTAR_ZONES].
+ * Each source declares which zones it covers. [defaultsForZone] filters and
+ * returns sources in registry order (which defines the default priority).
  */
 object DataSources {
 
@@ -36,41 +34,41 @@ object DataSources {
     /** All known data sources. */
     val all = listOf(ENTSOE, ENERGY_ZERO, SPOT_HINTA, ENERGY_CHARTS, AWATTAR)
 
-    /** Zone IDs that map directly to Spot-Hinta.fi region codes. */
-    val SPOT_HINTA_ZONES = setOf(
-        "FI", "SE1", "SE2", "SE3", "SE4",
-        "DK1", "DK2",
-        "NO1", "NO2", "NO3", "NO4", "NO5",
-        "EE", "LV", "LT"
+    /**
+     * A data source paired with the set of zones it covers.
+     *
+     * @property source The data source.
+     * @property zones Zone IDs this source covers, or `null` for all zones.
+     */
+    private data class SourceEntry(val source: DataSource, val zones: Set<String>?)
+
+    /**
+     * Declarative registry of data sources and their zone coverage.
+     *
+     * List order defines the default fallback priority: ENTSO-E first (covers all
+     * zones), then specialized sources (EnergyZero for NL, Spot-Hinta for Nordic/Baltic),
+     * then broader fallbacks (Energy-Charts, aWATTar). Adding a new source is a single
+     * line — no intersection logic required.
+     */
+    private val registry = listOf(
+        SourceEntry(ENTSOE, null),
+        SourceEntry(ENERGY_ZERO, setOf("NL")),
+        SourceEntry(SPOT_HINTA, SpotHintaApi.ZONES),
+        SourceEntry(ENERGY_CHARTS, EnergyChartsApi.ZONE_TO_BZN.keys),
+        SourceEntry(AWATTAR, AwattarApi.ZONE_TO_BASE_URL.keys),
     )
-
-    /** Zone IDs covered by the Energy-Charts API. */
-    val ENERGY_CHARTS_ZONES = EnergyChartsApi.ZONE_TO_BZN.keys
-
-    /** Zone IDs covered by the aWATTar API. */
-    val AWATTAR_ZONES = AwattarApi.ZONE_TO_BASE_URL.keys
 
     /**
      * Returns available sources for a zone in default priority order.
      *
-     * - NL → ENTSO-E, EnergyZero, Energy-Charts
-     * - Spot-Hinta ∩ Energy-Charts zones → ENTSO-E, Spot-Hinta.fi, Energy-Charts
-     * - Spot-Hinta only zones → ENTSO-E, Spot-Hinta.fi
-     * - Energy-Charts ∩ aWATTar zones → ENTSO-E, Energy-Charts, aWATTar
-     * - Energy-Charts only zones → ENTSO-E, Energy-Charts
-     * - All others → ENTSO-E only
+     * Filters the [registry] to sources that cover the given zone, preserving
+     * insertion order as the fallback priority.
      *
      * @param zoneId The [PriceZone.id][si.merhar.sweetspot.model.PriceZone.id] to look up.
      * @return Ordered list of available data sources for this zone.
      */
-    fun defaultsForZone(zoneId: String): List<DataSource> = when {
-        zoneId == "NL" -> listOf(ENTSOE, ENERGY_ZERO, ENERGY_CHARTS)
-        zoneId in SPOT_HINTA_ZONES && zoneId in ENERGY_CHARTS_ZONES ->
-            listOf(ENTSOE, SPOT_HINTA, ENERGY_CHARTS)
-        zoneId in SPOT_HINTA_ZONES -> listOf(ENTSOE, SPOT_HINTA)
-        zoneId in ENERGY_CHARTS_ZONES && zoneId in AWATTAR_ZONES ->
-            listOf(ENTSOE, ENERGY_CHARTS, AWATTAR)
-        zoneId in ENERGY_CHARTS_ZONES -> listOf(ENTSOE, ENERGY_CHARTS)
-        else -> listOf(ENTSOE)
-    }
+    fun defaultsForZone(zoneId: String): List<DataSource> =
+        registry
+            .filter { it.zones == null || zoneId in it.zones }
+            .map { it.source }
 }

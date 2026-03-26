@@ -37,6 +37,16 @@ internal data class SpotHintaPriceEntry(
  */
 class SpotHintaApi(private val region: String) : PriceFetcher {
 
+    companion object {
+        /** Zone IDs covered by the Spot-Hinta.fi API (region codes match zone IDs directly). */
+        val ZONES: Set<String> = setOf(
+            "FI", "SE1", "SE2", "SE3", "SE4",
+            "DK1", "DK2",
+            "NO1", "NO2", "NO3", "NO4", "NO5",
+            "EE", "LV", "LT"
+        )
+    }
+
     private val client = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(10, TimeUnit.SECONDS)

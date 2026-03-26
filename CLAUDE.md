@@ -67,14 +67,14 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (229 tests)
+./gradlew test                   # Run all unit tests (225 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
 - `data/api/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
-- `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone count, zone ID validation against Countries registry (16 tests, in shared)
+- `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone ID validation against Countries registry (12 tests, in shared)
 - `data/api/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/api/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/api/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
@@ -106,7 +106,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (229 tests)
+- JUnit 4 + Robolectric for unit tests (225 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -130,7 +130,7 @@ Three Gradle modules:
 The data layer is organized into three subpackages under `data/`:
 
 **`data/api/`** — API implementations and fetcher infrastructure:
-- **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi, Energy-Charts, aWATTar). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone. Also contains `SPOT_HINTA_ZONES`, `ENERGY_CHARTS_ZONES`, and `AWATTAR_ZONES` sets.
+- **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi, Energy-Charts, aWATTar). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone using a declarative registry — list order defines fallback priority, each entry declares which zones it covers.
 - **`PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `FetchResult` (prices + source name). `FetchResult` pairs a `List<PriceSlot>` with the data source name (e.g. "ENTSO-E", "EnergyZero"). Decouples `PriceRepository` from a specific API provider.
 - **`FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Used for NL (ENTSO-E primary, EnergyZero fallback) and Nordic/Baltic zones (ENTSO-E primary, Spot-Hinta.fi fallback).
 - **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken, sourceOrder)` builds the fetcher chain dynamically from the user's source order preference (or zone defaults when `null`). Always wraps in `FallbackPriceFetcher`.
@@ -194,6 +194,15 @@ The form view (`DurationInput` card) contains:
 - **EnergyZero** (NL fallback) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`. No auth required. Used as fallback when ENTSO-E fails for NL.
 - **Energy-Charts** (European fallback) — 15 zones (AT, BE, CH, CZ, DE-LU, DK1, DK2, FR, HU, IT-North, NL, NO2, PL, SE4, SI), 15-min or 60-min resolution, prices in EUR/MWh. Endpoint: `https://api.energy-charts.info/price?bzn={bzn}&start={ISO}&end={ISO}`. No auth required. CC BY 4.0 licensed. Used as fallback when other sources fail.
 - **aWATTar** (AT/DE-LU fallback) — 2 zones (AT, DE-LU), hourly resolution, prices in EUR/MWh. Endpoints: `https://api.awattar.at/v1/marketdata` (AT) and `https://api.awattar.de/v1/marketdata` (DE-LU). Parameters: `start`/`end` in milliseconds epoch. No auth required. Used as tertiary fallback after Energy-Charts for AT and DE-LU.
+
+### Adding a New Data Source
+
+1. **Create `XxxApi.kt`** in `data/api/` implementing `PriceFetcher`. Follow the three-layer pattern: `fetchPrices()` → `fetchRaw()` + `parse()` → `FetchResult("Source Name")`. Expose `fetchRaw()` and `parse()` as public for tests. Add a companion object with a zone mapping (e.g., `ZONES`, `ZONE_TO_BZN`, `ZONE_TO_BASE_URL`) — this is the single source of truth for which zones the API covers.
+2. **Register in `DataSources`**: add a `DataSource` constant, add it to the `all` list, and add a `SourceEntry` to the `registry` list. List position in `registry` defines fallback priority — specialized sources (fewer zones) go before broader ones.
+3. **Add a `when` branch** in `PriceFetcherFactory.kt` to instantiate the new API class.
+4. **Write tests** (3 files, following existing patterns): `XxxApiParseTest` (valid parsing, edge cases), `XxxApiMalformedTest` (invalid JSON/XML handling), `XxxApiDstTest` (5 DST tests with a representative timezone: winter, summer, spring-forward, fall-back, cross-DST).
+5. **Update `DataSourceTest`**: update zone count expectations in the `source zone counts match expected values` test.
+6. **Update docs**: `CLAUDE.md` (External APIs, test list, test count) and `README.md` (data sources description, test count).
 
 ## Key Conventions
 

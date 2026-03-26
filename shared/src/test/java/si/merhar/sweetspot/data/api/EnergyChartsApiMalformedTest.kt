@@ -10,7 +10,7 @@ import java.time.ZoneId
  */
 class EnergyChartsApiMalformedTest {
 
-    private val api = EnergyChartsApi("DE-LU")
+    private val api = EnergyChartsApi("DE_LU")
     private val timeZone = ZoneId.of("Europe/Berlin")
 
     @Test(expected = Exception::class)

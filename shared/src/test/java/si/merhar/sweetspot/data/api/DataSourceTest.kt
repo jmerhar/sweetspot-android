@@ -84,11 +84,21 @@ class DataSourceTest {
     }
 
     @Test
-    fun `defaultsForZone AT returns ENTSOE and ENERGY_CHARTS`() {
+    fun `defaultsForZone AT returns ENTSOE, ENERGY_CHARTS, and AWATTAR`() {
         val sources = DataSources.defaultsForZone("AT")
-        assertEquals(2, sources.size)
+        assertEquals(3, sources.size)
         assertEquals(DataSources.ENTSOE, sources[0])
         assertEquals(DataSources.ENERGY_CHARTS, sources[1])
+        assertEquals(DataSources.AWATTAR, sources[2])
+    }
+
+    @Test
+    fun `defaultsForZone DE_LU returns ENTSOE, ENERGY_CHARTS, and AWATTAR`() {
+        val sources = DataSources.defaultsForZone("DE_LU")
+        assertEquals(3, sources.size)
+        assertEquals(DataSources.ENTSOE, sources[0])
+        assertEquals(DataSources.ENERGY_CHARTS, sources[1])
+        assertEquals(DataSources.AWATTAR, sources[2])
     }
 
     @Test
@@ -109,6 +119,18 @@ class DataSourceTest {
     fun `ENERGY_CHARTS_ZONES all exist in Countries registry`() {
         for (zoneId in DataSources.ENERGY_CHARTS_ZONES) {
             assertTrue("ENERGY_CHARTS_ZONES contains unknown zone: $zoneId", zoneId in allZoneIds)
+        }
+    }
+
+    @Test
+    fun `AWATTAR_ZONES contains exactly 2 zones`() {
+        assertEquals(2, DataSources.AWATTAR_ZONES.size)
+    }
+
+    @Test
+    fun `AWATTAR_ZONES all exist in Countries registry`() {
+        for (zoneId in DataSources.AWATTAR_ZONES) {
+            assertTrue("AWATTAR_ZONES contains unknown zone: $zoneId", zoneId in allZoneIds)
         }
     }
 }

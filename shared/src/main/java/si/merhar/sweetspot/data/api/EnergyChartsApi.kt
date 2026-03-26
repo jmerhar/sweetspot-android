@@ -36,9 +36,12 @@ internal data class EnergyChartsResponse(
  * Resolution is auto-detected from the gap between the first two timestamps:
  * 900 seconds → 15-minute slots, 3600 seconds → 60-minute slots.
  *
- * @param bzn Energy-Charts zone code (e.g. `"DE-LU"`, `"AT"`, `"IT-North"`).
+ * @param zoneId SweetSpot zone ID (e.g. `"DE_LU"`, `"AT"`, `"IT_NORD"`).
  */
-class EnergyChartsApi(private val bzn: String) : PriceFetcher {
+class EnergyChartsApi(zoneId: String) : PriceFetcher {
+
+    private val bzn = ZONE_TO_BZN[zoneId]
+        ?: error("No Energy-Charts mapping for zone: $zoneId")
 
     private val client = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS)

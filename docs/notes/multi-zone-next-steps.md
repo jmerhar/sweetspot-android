@@ -18,7 +18,8 @@ All core multi-zone infrastructure is complete:
 
 **Current fallback coverage:** 27/43 zones have at least one fallback (NL via EnergyZero +
 Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi, 15 European via Energy-Charts — with
-overlap on DK1, DK2, NO2, SE4, NL). The remaining 16 zones are ENTSO-E only.
+overlap on DK1, DK2, NO2, SE4, NL). AT and DE_LU have triple redundancy (ENTSO-E,
+Energy-Charts, aWATTar). The remaining 16 zones are ENTSO-E only.
 
 ## Remaining Work
 
@@ -124,12 +125,12 @@ Current state and target after implementing all viable fallback APIs:
 
 | Zone | Primary | Current Fallback | Planned Additional Fallbacks |
 |------|---------|-----------------|------------------------------|
-| **AT** | ENTSO-E | Energy-Charts ✅ | aWATTar |
+| **AT** | ENTSO-E | Energy-Charts ✅ | aWATTar ✅ |
 | **BE** | ENTSO-E | Energy-Charts ✅ | |
 | **BG** | ENTSO-E | _(none)_ | _(none known)_ |
 | **CH** | ENTSO-E | Energy-Charts ✅ | |
 | **CZ** | ENTSO-E | Energy-Charts ✅ | OTE |
-| **DE_LU** | ENTSO-E | Energy-Charts ✅ | aWATTar |
+| **DE_LU** | ENTSO-E | Energy-Charts ✅ | aWATTar ✅ |
 | **DK1** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
 | **DK2** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
 | **EE** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
@@ -171,7 +172,8 @@ Current state and target after implementing all viable fallback APIs:
 ¹ Energy-Charts CC BY 4.0 zones only (licensed for app distribution).
 
 **Current:** 27/43 zones have at least one fallback (NL + 15 Nordic/Baltic + 11 via Energy-Charts,
-with 4 zones having both Spot-Hinta.fi and Energy-Charts).
+with 4 zones having both Spot-Hinta.fi and Energy-Charts, and AT + DE_LU having triple
+redundancy via Energy-Charts + aWATTar).
 
 **After all phases:** 30/43 zones get at least one fallback. 13 zones remain ENTSO-E
 only (BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK) — no free public
@@ -211,15 +213,17 @@ Covers central/western Europe. Only CC BY 4.0 zones (15 zones, 11 previously unc
 - ✅ Unit tests: parse (9), malformed (8), DST (5) — 22 tests total
 - ✅ Zone ID validation tests in `DataSourceTest` verify all zone sets against `Countries` registry
 
-#### Phase 3: aWATTar (AT, DE-LU — adds depth) — Next up
+#### Phase 3: aWATTar (AT, DE-LU — adds depth) ✅ Done
 
-Simple redundant fallback for two high-traffic zones. Very easy to implement.
+Redundant fallback for two high-traffic zones. Simple no-auth JSON API with hourly resolution.
 
-- Create `AwattarApi` implementing `PriceFetcher`
-- Parse JSON: `start_timestamp` (ms) → epoch, `marketprice` EUR/MWh → EUR/kWh
-- Two base URLs: `api.awattar.at` (AT) and `api.awattar.de` (DE-LU)
-- Wire as third-in-chain after Energy-Charts for AT and DE-LU
-- Add unit tests
+- ✅ Created `AwattarApi` implementing `PriceFetcher`
+- ✅ Parses JSON: `start_timestamp` (ms) → epoch, `marketprice` EUR/MWh → EUR/kWh (÷ 1000)
+- ✅ Two base URLs via `ZONE_TO_BASE_URL` companion map: `api.awattar.at` (AT) and `api.awattar.de` (DE-LU)
+- ✅ Computes `durationMinutes` from `end_timestamp - start_timestamp` (should be 60)
+- ✅ Wired as third-in-chain after Energy-Charts for AT and DE-LU
+- ✅ Registered in `DataSources` with `AWATTAR_ZONES` zone set
+- ✅ Unit tests: parse (9), malformed (6), DST (5) — 20 tests total
 
 #### Phase 4: OMIE (ES, PT)
 
@@ -249,8 +253,9 @@ and caches expire simultaneously across all users.
 - ✅ **Fallback APIs** absorb ENTSO-E failures. `FallbackPriceFetcher` automatically
   tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 27/43
   zones (NL via EnergyZero + Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi,
-  15 European via Energy-Charts). Expanding fallback coverage (Phases 3–5) adds
-  depth to already-covered zones and covers ES/PT.
+  15 European via Energy-Charts, AT + DE_LU with aWATTar as additional depth).
+  Expanding fallback coverage (Phases 4–5) covers ES/PT and adds depth to
+  already-covered zones.
 - **Cache cooldown** (5 min) is per-user, starting from each user's tap — naturally
   staggered, no artificial jitter needed.
 - ⬜ **Long term:** If user base exceeds ~50K DAU, stand up a caching proxy that

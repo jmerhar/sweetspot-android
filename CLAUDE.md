@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, and Energy-Charts as a fallback for 15 European zones. It's a port of a PHP web app. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
+SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, and aWATTar as a fallback for Austria and Germany. It's a port of a PHP web app. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
 
 ## Build & Run
 
@@ -67,14 +67,14 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (206 tests)
+./gradlew test                   # Run all unit tests (229 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
 - `data/api/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
-- `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone count, zone ID validation against Countries registry (13 tests, in shared)
+- `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone count, zone ID validation against Countries registry (16 tests, in shared)
 - `data/api/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/api/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/api/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
@@ -85,6 +85,9 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/api/EnergyChartsApiParseTest` — Energy-Charts JSON parsing, EUR/MWh→kWh conversion, resolution detection, timezone conversion (9 tests, in shared)
 - `data/api/EnergyChartsApiMalformedTest` — malformed/invalid JSON handling for Energy-Charts (8 tests, in shared)
 - `data/api/EnergyChartsApiDstTest` — DST transition parsing with Europe/Berlin: winter, summer, spring-forward, fall-back (5 tests, in shared)
+- `data/api/AwattarApiParseTest` — aWATTar JSON parsing, EUR/MWh→kWh conversion, timestamp conversion, duration computation (9 tests, in shared)
+- `data/api/AwattarApiMalformedTest` — malformed/invalid JSON handling for aWATTar (6 tests, in shared)
+- `data/api/AwattarApiDstTest` — DST transition parsing with Europe/Vienna: winter, summer, spring-forward, fall-back (5 tests, in shared)
 - `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests (30 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting (8 tests, in shared)
@@ -103,7 +106,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (206 tests)
+- JUnit 4 + Robolectric for unit tests (229 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -127,13 +130,14 @@ Three Gradle modules:
 The data layer is organized into three subpackages under `data/`:
 
 **`data/api/`** — API implementations and fetcher infrastructure:
-- **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi, Energy-Charts). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone. Also contains `SPOT_HINTA_ZONES` and `ENERGY_CHARTS_ZONES` sets.
+- **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi, Energy-Charts, aWATTar). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone. Also contains `SPOT_HINTA_ZONES`, `ENERGY_CHARTS_ZONES`, and `AWATTAR_ZONES` sets.
 - **`PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `FetchResult` (prices + source name). `FetchResult` pairs a `List<PriceSlot>` with the data source name (e.g. "ENTSO-E", "EnergyZero"). Decouples `PriceRepository` from a specific API provider.
 - **`FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Used for NL (ENTSO-E primary, EnergyZero fallback) and Nordic/Baltic zones (ENTSO-E primary, Spot-Hinta.fi fallback).
 - **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken, sourceOrder)` builds the fetcher chain dynamically from the user's source order preference (or zone defaults when `null`). Always wraps in `FallbackPriceFetcher`.
 - **`EnergyZeroApi`** — `PriceFetcher` singleton for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`SpotHintaApi`** — `PriceFetcher` for the Spot-Hinta.fi API (15 Nordic/Baltic zones). Returns JSON (top-level array), parses with kotlinx-serialization. Prices are already EUR/kWh, 15-minute resolution. Region parameter maps directly to zone IDs. Also exposes `fetchRaw()` and `parse()` directly for tests.
-- **`EnergyChartsApi`** — `PriceFetcher` for the Energy-Charts API (15 European zones). Returns JSON with parallel `unix_seconds` and `price` arrays in EUR/MWh. Converts to EUR/kWh during parsing. Auto-detects resolution (15-min or 60-min) from timestamp gaps. `ZONE_TO_BZN` companion map translates zone IDs to API `bzn` parameter. Also exposes `fetchRaw()` and `parse()` directly for tests.
+- **`EnergyChartsApi`** — `PriceFetcher` for the Energy-Charts API (15 European zones). Takes a zone ID and resolves it internally via `ZONE_TO_BZN` companion map. Returns JSON with parallel `unix_seconds` and `price` arrays in EUR/MWh. Converts to EUR/kWh during parsing. Auto-detects resolution (15-min or 60-min) from timestamp gaps. Also exposes `fetchRaw()` and `parse()` directly for tests.
+- **`AwattarApi`** — `PriceFetcher` for the aWATTar API (AT and DE-LU). Takes a zone ID and resolves it internally via `ZONE_TO_BASE_URL` companion map. Returns JSON with hourly entries containing `start_timestamp`/`end_timestamp` (milliseconds) and `marketprice` in EUR/MWh. Converts to EUR/kWh during parsing. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`EntsoeApi`** — `PriceFetcher` for the ENTSO-E Transparency Platform (all European bidding zones). Parses XML with `XmlPullParser`, handles A03 curve type gaps, returns prices at native resolution (PT15M or PT60M), converts EUR/MWh to EUR/kWh. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`BiddingZone`** — Object with EIC code constants for 43 European bidding zones. EIC codes are a European-wide standard used across ENTSO-E, EPEX SPOT, Nord Pool, etc.
 
@@ -189,6 +193,7 @@ The form view (`DurationInput` card) contains:
 - **Spot-Hinta.fi** (Nordic/Baltic fallback) — 15 zones (FI, SE1–SE4, DK1–DK2, NO1–NO5, EE, LV, LT), 15-min resolution, prices in EUR/kWh. Endpoint: `https://api.spot-hinta.fi/TodayAndDayForward?region={region}`. No auth required. Used as fallback when ENTSO-E fails for Nordic/Baltic zones.
 - **EnergyZero** (NL fallback) — NL-only day-ahead prices: `https://api.energyzero.nl/v1/energyprices`. No auth required. Used as fallback when ENTSO-E fails for NL.
 - **Energy-Charts** (European fallback) — 15 zones (AT, BE, CH, CZ, DE-LU, DK1, DK2, FR, HU, IT-North, NL, NO2, PL, SE4, SI), 15-min or 60-min resolution, prices in EUR/MWh. Endpoint: `https://api.energy-charts.info/price?bzn={bzn}&start={ISO}&end={ISO}`. No auth required. CC BY 4.0 licensed. Used as fallback when other sources fail.
+- **aWATTar** (AT/DE-LU fallback) — 2 zones (AT, DE-LU), hourly resolution, prices in EUR/MWh. Endpoints: `https://api.awattar.at/v1/marketdata` (AT) and `https://api.awattar.de/v1/marketdata` (DE-LU). Parameters: `start`/`end` in milliseconds epoch. No auth required. Used as tertiary fallback after Energy-Charts for AT and DE-LU.
 
 ## Key Conventions
 

@@ -6,21 +6,27 @@ import org.junit.Test
 import java.time.ZoneId
 
 /**
- * Tests for [EnergyChartsApi.parse] around DST transition boundaries.
+ * Tests for [AwattarApi.parse] around DST transition boundaries.
  *
- * Europe/Berlin transitions:
+ * Europe/Vienna follows the same rules as Europe/Berlin (CET/CEST):
  * - Spring forward: last Sunday of March, 02:00 → 03:00 (CET → CEST)
  * - Fall back: last Sunday of October, 03:00 → 02:00 (CEST → CET)
  */
-class EnergyChartsApiDstTest {
+class AwattarApiDstTest {
 
-    private val api = EnergyChartsApi("DE_LU")
-    private val timeZone = ZoneId.of("Europe/Berlin")
+    private val api = AwattarApi("AT")
+    private val timeZone = ZoneId.of("Europe/Vienna")
 
     @Test
     fun `winter time CET converts correctly`() {
         // 2025-01-15T10:00:00Z = CET 11:00 (UTC+1)
-        val json = """{"unix_seconds": [1736935200], "price": [50.0]}"""
+        val json = """
+        {
+            "data": [
+                {"start_timestamp": 1736935200000, "end_timestamp": 1736938800000, "marketprice": 50.0}
+            ]
+        }
+        """.trimIndent()
 
         val prices = api.parse(json, timeZone)
         assertEquals(11, prices[0].time.hour)
@@ -30,7 +36,13 @@ class EnergyChartsApiDstTest {
     @Test
     fun `summer time CEST converts correctly`() {
         // 2025-07-15T10:00:00Z = CEST 12:00 (UTC+2)
-        val json = """{"unix_seconds": [1752573600], "price": [50.0]}"""
+        val json = """
+        {
+            "data": [
+                {"start_timestamp": 1752573600000, "end_timestamp": 1752577200000, "marketprice": 50.0}
+            ]
+        }
+        """.trimIndent()
 
         val prices = api.parse(json, timeZone)
         assertEquals(12, prices[0].time.hour)
@@ -45,8 +57,11 @@ class EnergyChartsApiDstTest {
         // UTC 02:00 = CEST 04:00
         val json = """
         {
-            "unix_seconds": [1743292800, 1743296400, 1743300000],
-            "price": [50.0, 60.0, 70.0]
+            "data": [
+                {"start_timestamp": 1743292800000, "end_timestamp": 1743296400000, "marketprice": 50.0},
+                {"start_timestamp": 1743296400000, "end_timestamp": 1743300000000, "marketprice": 60.0},
+                {"start_timestamp": 1743300000000, "end_timestamp": 1743303600000, "marketprice": 70.0}
+            ]
         }
         """.trimIndent()
 
@@ -69,8 +84,11 @@ class EnergyChartsApiDstTest {
         // UTC 02:00 = CET 03:00
         val json = """
         {
-            "unix_seconds": [1761436800, 1761440400, 1761444000],
-            "price": [50.0, 60.0, 70.0]
+            "data": [
+                {"start_timestamp": 1761436800000, "end_timestamp": 1761440400000, "marketprice": 50.0},
+                {"start_timestamp": 1761440400000, "end_timestamp": 1761444000000, "marketprice": 60.0},
+                {"start_timestamp": 1761444000000, "end_timestamp": 1761447600000, "marketprice": 70.0}
+            ]
         }
         """.trimIndent()
 
@@ -93,8 +111,12 @@ class EnergyChartsApiDstTest {
         // Prices crossing spring forward boundary
         val json = """
         {
-            "unix_seconds": [1743289200, 1743292800, 1743296400, 1743300000],
-            "price": [40.0, 50.0, 60.0, 70.0]
+            "data": [
+                {"start_timestamp": 1743289200000, "end_timestamp": 1743292800000, "marketprice": 40.0},
+                {"start_timestamp": 1743292800000, "end_timestamp": 1743296400000, "marketprice": 50.0},
+                {"start_timestamp": 1743296400000, "end_timestamp": 1743300000000, "marketprice": 60.0},
+                {"start_timestamp": 1743300000000, "end_timestamp": 1743303600000, "marketprice": 70.0}
+            ]
         }
         """.trimIndent()
 

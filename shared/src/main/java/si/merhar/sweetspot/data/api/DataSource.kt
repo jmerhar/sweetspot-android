@@ -14,6 +14,7 @@ data class DataSource(val id: String, val displayName: String)
  * Defines the available sources and provides default source ordering per zone.
  * Zone IDs that map to Spot-Hinta.fi are listed in [SPOT_HINTA_ZONES].
  * Zone IDs that map to Energy-Charts are listed in [ENERGY_CHARTS_ZONES].
+ * Zone IDs that map to aWATTar are listed in [AWATTAR_ZONES].
  */
 object DataSources {
 
@@ -29,8 +30,11 @@ object DataSources {
     /** Energy-Charts API — fallback for 15 European zones (CC BY 4.0). */
     val ENERGY_CHARTS = DataSource("energycharts", "Energy-Charts")
 
+    /** aWATTar API — fallback for AT and DE-LU zones. */
+    val AWATTAR = DataSource("awattar", "aWATTar")
+
     /** All known data sources. */
-    val all = listOf(ENTSOE, ENERGY_ZERO, SPOT_HINTA, ENERGY_CHARTS)
+    val all = listOf(ENTSOE, ENERGY_ZERO, SPOT_HINTA, ENERGY_CHARTS, AWATTAR)
 
     /** Zone IDs that map directly to Spot-Hinta.fi region codes. */
     val SPOT_HINTA_ZONES = setOf(
@@ -43,12 +47,16 @@ object DataSources {
     /** Zone IDs covered by the Energy-Charts API. */
     val ENERGY_CHARTS_ZONES = EnergyChartsApi.ZONE_TO_BZN.keys
 
+    /** Zone IDs covered by the aWATTar API. */
+    val AWATTAR_ZONES = AwattarApi.ZONE_TO_BASE_URL.keys
+
     /**
      * Returns available sources for a zone in default priority order.
      *
      * - NL → ENTSO-E, EnergyZero, Energy-Charts
      * - Spot-Hinta ∩ Energy-Charts zones → ENTSO-E, Spot-Hinta.fi, Energy-Charts
      * - Spot-Hinta only zones → ENTSO-E, Spot-Hinta.fi
+     * - Energy-Charts ∩ aWATTar zones → ENTSO-E, Energy-Charts, aWATTar
      * - Energy-Charts only zones → ENTSO-E, Energy-Charts
      * - All others → ENTSO-E only
      *
@@ -60,6 +68,8 @@ object DataSources {
         zoneId in SPOT_HINTA_ZONES && zoneId in ENERGY_CHARTS_ZONES ->
             listOf(ENTSOE, SPOT_HINTA, ENERGY_CHARTS)
         zoneId in SPOT_HINTA_ZONES -> listOf(ENTSOE, SPOT_HINTA)
+        zoneId in ENERGY_CHARTS_ZONES && zoneId in AWATTAR_ZONES ->
+            listOf(ENTSOE, ENERGY_CHARTS, AWATTAR)
         zoneId in ENERGY_CHARTS_ZONES -> listOf(ENTSOE, ENERGY_CHARTS)
         else -> listOf(ENTSOE)
     }

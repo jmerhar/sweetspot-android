@@ -1,16 +1,29 @@
 # Multi-Zone Next Steps
 
-Remaining work for multi-zone support. Items 1–4 and 7 from the original list are done
-(zone selection UI, ENTSO-E token wiring, sub-hourly intervals, PriceFetcherFactory,
-per-zone cache separation).
+## What's Done
 
-## 1. Fallback API Chain
+All core multi-zone infrastructure is complete:
+
+- ✅ Zone selection UI (30 countries, 43 bidding zones)
+- ✅ ENTSO-E token wiring via `BuildConfig`
+- ✅ Sub-hourly intervals (15-min resolution support throughout pipeline)
+- ✅ `PriceFetcherFactory` with dynamic fallback chain construction
+- ✅ Per-zone cache separation (`FilePriceCache` keyed by zone)
+- ✅ User-configurable data source order (per zone, persisted in `SettingsRepository`)
+- ✅ Data source name flows through entire pipeline to UI ("Data source: ENTSO-E" etc.)
+- ✅ Wearable Data Layer sync for zone settings and source order
+- ✅ Phase 1 fallback: Spot-Hinta.fi (15 Nordic/Baltic zones, 19 unit tests)
+- ✅ EnergyZero fallback for NL
+
+**Current fallback coverage:** 16/43 zones have at least one fallback (NL via EnergyZero,
+15 Nordic/Baltic via Spot-Hinta.fi). The remaining 27 zones are ENTSO-E only.
+
+## Remaining Work
+
+### 1. Fallback API Chain
 
 ENTSO-E is the only API covering all 43 zones, but it's unreliable (frequent 503s,
 rate limits around peak auction time ~13:00 CET). Every zone needs at least one fallback.
-
-NL already has ENTSO-E → EnergyZero via `FallbackPriceFetcher`. The data source name
-flows through the entire pipeline to the UI ("Data source: ENTSO-E" / "Data source: EnergyZero").
 
 ### Available Fallback APIs (research: 2026-03-04)
 
@@ -105,65 +118,68 @@ flows through the entire pipeline to the UI ("Data source: ENTSO-E" / "Data sour
 
 ### Zone Coverage Matrix
 
-After implementing all viable fallback APIs, this is the coverage per zone:
+Current state and target after implementing all viable fallback APIs:
 
-| Zone | Primary | Fallback 1 | Fallback 2 | Fallback 3 |
-|------|---------|------------|------------|------------|
-| **AT** | ENTSO-E | Energy-Charts ¹ | aWATTar | |
-| **BE** | ENTSO-E | Energy-Charts ¹ | | |
-| **BG** | ENTSO-E | _(none)_ | | |
-| **CH** | ENTSO-E | Energy-Charts ¹ | | |
-| **CZ** | ENTSO-E | Energy-Charts ¹ | OTE | |
-| **DE_LU** | ENTSO-E | Energy-Charts ¹ | aWATTar | |
-| **DK1** | ENTSO-E | Spot-Hinta.fi | Energy-Charts ¹ | |
-| **DK2** | ENTSO-E | Spot-Hinta.fi | Energy-Charts ¹ | |
-| **EE** | ENTSO-E | Spot-Hinta.fi | Elering | |
-| **ES** | ENTSO-E | OMIE | | |
-| **FI** | ENTSO-E | Spot-Hinta.fi | Elering | |
-| **FR** | ENTSO-E | Energy-Charts ¹ | | |
-| **GR** | ENTSO-E | _(none)_ | | |
-| **HR** | ENTSO-E | _(none)_ | | |
-| **HU** | ENTSO-E | Energy-Charts ¹ | | |
-| **IE_SEM** | ENTSO-E | _(none)_ | | |
-| **IT_NORD** | ENTSO-E | Energy-Charts ¹ | | |
-| **IT_CNOR** | ENTSO-E | _(none)_ | | |
-| **IT_CSUD** | ENTSO-E | _(none)_ | | |
-| **IT_SUD** | ENTSO-E | _(none)_ | | |
-| **IT_CALA** | ENTSO-E | _(none)_ | | |
-| **IT_SICI** | ENTSO-E | _(none)_ | | |
-| **IT_SARD** | ENTSO-E | _(none)_ | | |
-| **LT** | ENTSO-E | Spot-Hinta.fi | Elering | |
-| **LV** | ENTSO-E | Spot-Hinta.fi | Elering | |
-| **ME** | ENTSO-E | _(none)_ | | |
-| **MK** | ENTSO-E | _(none)_ | | |
-| **NL** | ENTSO-E | EnergyZero ✅ | Energy-Charts ¹ | |
-| **NO1** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
-| **NO2** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | Energy-Charts ¹ |
-| **NO3** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
-| **NO4** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
-| **NO5** | ENTSO-E | Spot-Hinta.fi | HvaKosterStrommen | |
-| **PL** | ENTSO-E | Energy-Charts ¹ | | |
-| **PT** | ENTSO-E | OMIE | | |
-| **RO** | ENTSO-E | _(none)_ | | |
-| **RS** | ENTSO-E | _(none)_ | | |
-| **SE1** | ENTSO-E | Spot-Hinta.fi | | |
-| **SE2** | ENTSO-E | Spot-Hinta.fi | | |
-| **SE3** | ENTSO-E | Spot-Hinta.fi | | |
-| **SE4** | ENTSO-E | Spot-Hinta.fi | Energy-Charts ¹ | |
-| **SI** | ENTSO-E | Energy-Charts ¹ | | |
-| **SK** | ENTSO-E | _(none)_ | | |
+| Zone | Primary | Current Fallback | Planned Additional Fallbacks |
+|------|---------|-----------------|------------------------------|
+| **AT** | ENTSO-E | _(none)_ | Energy-Charts ¹, aWATTar |
+| **BE** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **BG** | ENTSO-E | _(none)_ | _(none known)_ |
+| **CH** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **CZ** | ENTSO-E | _(none)_ | Energy-Charts ¹, OTE |
+| **DE_LU** | ENTSO-E | _(none)_ | Energy-Charts ¹, aWATTar |
+| **DK1** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ¹ |
+| **DK2** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ¹ |
+| **EE** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
+| **ES** | ENTSO-E | _(none)_ | OMIE |
+| **FI** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
+| **FR** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **GR** | ENTSO-E | _(none)_ | _(none known)_ |
+| **HR** | ENTSO-E | _(none)_ | _(none known)_ |
+| **HU** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **IE_SEM** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_NORD** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **IT_CNOR** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_CSUD** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_SUD** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_CALA** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_SICI** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_SARD** | ENTSO-E | _(none)_ | _(none known)_ |
+| **LT** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
+| **LV** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
+| **ME** | ENTSO-E | _(none)_ | _(none known)_ |
+| **MK** | ENTSO-E | _(none)_ | _(none known)_ |
+| **NL** | ENTSO-E | EnergyZero ✅ | Energy-Charts ¹ |
+| **NO1** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
+| **NO2** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen, Energy-Charts ¹ |
+| **NO3** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
+| **NO4** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
+| **NO5** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
+| **PL** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **PT** | ENTSO-E | _(none)_ | OMIE |
+| **RO** | ENTSO-E | _(none)_ | _(none known)_ |
+| **RS** | ENTSO-E | _(none)_ | _(none known)_ |
+| **SE1** | ENTSO-E | Spot-Hinta.fi ✅ | |
+| **SE2** | ENTSO-E | Spot-Hinta.fi ✅ | |
+| **SE3** | ENTSO-E | Spot-Hinta.fi ✅ | |
+| **SE4** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ¹ |
+| **SI** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **SK** | ENTSO-E | _(none)_ | _(none known)_ |
 
 ¹ Energy-Charts CC BY 4.0 zones only (licensed for app distribution).
 
-**Summary:** 30/43 zones get at least one fallback. 13 zones remain ENTSO-E only
-(BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK).
+**Current:** 16/43 zones have at least one fallback (NL + 15 Nordic/Baltic).
+
+**After all phases:** 30/43 zones get at least one fallback. 13 zones remain ENTSO-E
+only (BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK) — no free public
+APIs are known for these zones.
 
 ### Implementation Plan
 
 Each phase adds one `PriceFetcher` implementation in `data/api/` and wires it into `PriceFetcherFactory`.
 The existing `FallbackPriceFetcher` handles the chain — no new infrastructure needed.
 
-#### Phase 1: Spot-Hinta.fi (15 zones) ✅
+#### Phase 1: Spot-Hinta.fi (15 zones) ✅ Done
 
 Biggest impact. Covers all Nordic/Baltic zones with 15-min resolution.
 Already returns EUR/kWh — no unit conversion needed.
@@ -176,7 +192,7 @@ Already returns EUR/kWh — no unit conversion needed.
   for FI, SE1–4, DK1–2, NO1–5, EE, LV, LT
 - ✅ Unit tests: parse (7), malformed (7), DST (5) — 19 tests total
 
-#### Phase 2: Energy-Charts (11 additional zones)
+#### Phase 2: Energy-Charts (11 additional zones) — Next up
 
 Covers central/western Europe. Only use CC BY 4.0 zones.
 
@@ -224,12 +240,14 @@ Lower priority — only implement if the primary fallbacks prove unreliable.
 The real risk is burst traffic around **13:00–14:00 CET** when next-day prices publish
 and caches expire simultaneously across all users.
 
-- **Short term:** Implement fallback APIs (this plan). When ENTSO-E returns 409 or 5xx,
-  `FallbackPriceFetcher` automatically tries the next source.
-- **Medium term:** Add jitter to cache cooldown (e.g. 5 min ± random 0–2 min) to spread
-  burst requests across the window.
-- **Long term:** If user base exceeds ~50K DAU, stand up a caching proxy that fetches once
-  per zone and serves all users.
+- ✅ **Short term:** Fallback APIs absorb ENTSO-E failures. `FallbackPriceFetcher`
+  automatically tries the next source when ENTSO-E returns 409 or 5xx. Currently
+  covers 16/43 zones (NL + 15 Nordic/Baltic).
+- ⬜ **Medium term:** Add jitter to cache cooldown (e.g. 5 min ± random 0–2 min) to
+  spread burst requests across the window. Not yet implemented — all users currently
+  hit the same 5-minute cooldown boundary.
+- ⬜ **Long term:** If user base exceeds ~50K DAU, stand up a caching proxy that
+  fetches once per zone and serves all users.
 
 ## 2. Historical Price Fetching
 

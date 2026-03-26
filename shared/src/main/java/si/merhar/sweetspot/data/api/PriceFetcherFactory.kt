@@ -51,6 +51,10 @@ fun defaultPriceFetcherFactory(
                 DataSources.ENTSOE.id -> EntsoeApi(entsoeToken, zone.eicCode)
                 DataSources.ENERGY_ZERO.id -> EnergyZeroApi
                 DataSources.SPOT_HINTA.id -> SpotHintaApi(zone.id)
+                DataSources.ENERGY_CHARTS.id -> EnergyChartsApi(
+                    EnergyChartsApi.ZONE_TO_BZN[zone.id]
+                        ?: error("No Energy-Charts mapping for zone: ${zone.id}")
+                )
                 else -> error("Unknown data source: ${source.id}")
             }
         }

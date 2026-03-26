@@ -4,7 +4,7 @@
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries.
 
-SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones, 15-minute resolution) with [EnergyZero](https://api.energyzero.nl) as a fallback for the Netherlands, then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
+SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones, 15-minute resolution) with [EnergyZero](https://api.energyzero.nl) as a fallback for the Netherlands, [Spot-Hinta.fi](https://spot-hinta.fi/) for 15 Nordic/Baltic zones, and [Energy-Charts](https://api.energy-charts.info/) for 15 European zones, then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
 
 This is the native Android port of the [SweetSpot PHP web app](https://github.com/jmerhar/sweetspot-php).
 
@@ -36,7 +36,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 
 ## Features
 
-- **30 European countries** — 43 bidding zones via ENTSO-E (15-minute resolution), with EnergyZero as a fallback for the Netherlands
+- **30 European countries** — 43 bidding zones via ENTSO-E (15-minute resolution), with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi for Nordic/Baltic zones, and Energy-Charts for 15 European zones
 - **Country auto-detection** — detects your country on first launch from SIM, network, or timezone (no permissions required)
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behavior
 - **Quick-duration buttons** — 1h–6h chips for common durations
@@ -87,7 +87,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-174 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, and ViewModel state management (via Robolectric).
+206 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, and ViewModel state management (via Robolectric).
 
 ## License
 

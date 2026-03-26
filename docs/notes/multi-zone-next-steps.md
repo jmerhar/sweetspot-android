@@ -14,9 +14,11 @@ All core multi-zone infrastructure is complete:
 - ✅ Wearable Data Layer sync for zone settings and source order
 - ✅ Phase 1 fallback: Spot-Hinta.fi (15 Nordic/Baltic zones, 19 unit tests)
 - ✅ EnergyZero fallback for NL
+- ✅ Phase 2 fallback: Energy-Charts (15 CC BY 4.0 zones, 22 unit tests)
 
-**Current fallback coverage:** 16/43 zones have at least one fallback (NL via EnergyZero,
-15 Nordic/Baltic via Spot-Hinta.fi). The remaining 27 zones are ENTSO-E only.
+**Current fallback coverage:** 27/43 zones have at least one fallback (NL via EnergyZero +
+Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi, 15 European via Energy-Charts — with
+overlap on DK1, DK2, NO2, SE4, NL). The remaining 16 zones are ENTSO-E only.
 
 ## Remaining Work
 
@@ -122,23 +124,23 @@ Current state and target after implementing all viable fallback APIs:
 
 | Zone | Primary | Current Fallback | Planned Additional Fallbacks |
 |------|---------|-----------------|------------------------------|
-| **AT** | ENTSO-E | _(none)_ | Energy-Charts ¹, aWATTar |
-| **BE** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **AT** | ENTSO-E | Energy-Charts ✅ | aWATTar |
+| **BE** | ENTSO-E | Energy-Charts ✅ | |
 | **BG** | ENTSO-E | _(none)_ | _(none known)_ |
-| **CH** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
-| **CZ** | ENTSO-E | _(none)_ | Energy-Charts ¹, OTE |
-| **DE_LU** | ENTSO-E | _(none)_ | Energy-Charts ¹, aWATTar |
-| **DK1** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ¹ |
-| **DK2** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ¹ |
+| **CH** | ENTSO-E | Energy-Charts ✅ | |
+| **CZ** | ENTSO-E | Energy-Charts ✅ | OTE |
+| **DE_LU** | ENTSO-E | Energy-Charts ✅ | aWATTar |
+| **DK1** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
+| **DK2** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
 | **EE** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
 | **ES** | ENTSO-E | _(none)_ | OMIE |
 | **FI** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
-| **FR** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **FR** | ENTSO-E | Energy-Charts ✅ | |
 | **GR** | ENTSO-E | _(none)_ | _(none known)_ |
 | **HR** | ENTSO-E | _(none)_ | _(none known)_ |
-| **HU** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **HU** | ENTSO-E | Energy-Charts ✅ | |
 | **IE_SEM** | ENTSO-E | _(none)_ | _(none known)_ |
-| **IT_NORD** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **IT_NORD** | ENTSO-E | Energy-Charts ✅ | |
 | **IT_CNOR** | ENTSO-E | _(none)_ | _(none known)_ |
 | **IT_CSUD** | ENTSO-E | _(none)_ | _(none known)_ |
 | **IT_SUD** | ENTSO-E | _(none)_ | _(none known)_ |
@@ -149,26 +151,27 @@ Current state and target after implementing all viable fallback APIs:
 | **LV** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
 | **ME** | ENTSO-E | _(none)_ | _(none known)_ |
 | **MK** | ENTSO-E | _(none)_ | _(none known)_ |
-| **NL** | ENTSO-E | EnergyZero ✅ | Energy-Charts ¹ |
+| **NL** | ENTSO-E | EnergyZero ✅ | Energy-Charts ✅ |
 | **NO1** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
-| **NO2** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen, Energy-Charts ¹ |
+| **NO2** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅, HvaKosterStrommen |
 | **NO3** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
 | **NO4** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
 | **NO5** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
-| **PL** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **PL** | ENTSO-E | Energy-Charts ✅ | |
 | **PT** | ENTSO-E | _(none)_ | OMIE |
 | **RO** | ENTSO-E | _(none)_ | _(none known)_ |
 | **RS** | ENTSO-E | _(none)_ | _(none known)_ |
 | **SE1** | ENTSO-E | Spot-Hinta.fi ✅ | |
 | **SE2** | ENTSO-E | Spot-Hinta.fi ✅ | |
 | **SE3** | ENTSO-E | Spot-Hinta.fi ✅ | |
-| **SE4** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ¹ |
-| **SI** | ENTSO-E | _(none)_ | Energy-Charts ¹ |
+| **SE4** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
+| **SI** | ENTSO-E | Energy-Charts ✅ | |
 | **SK** | ENTSO-E | _(none)_ | _(none known)_ |
 
 ¹ Energy-Charts CC BY 4.0 zones only (licensed for app distribution).
 
-**Current:** 16/43 zones have at least one fallback (NL + 15 Nordic/Baltic).
+**Current:** 27/43 zones have at least one fallback (NL + 15 Nordic/Baltic + 11 via Energy-Charts,
+with 4 zones having both Spot-Hinta.fi and Energy-Charts).
 
 **After all phases:** 30/43 zones get at least one fallback. 13 zones remain ENTSO-E
 only (BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK) — no free public
@@ -192,20 +195,23 @@ Already returns EUR/kWh — no unit conversion needed.
   for FI, SE1–4, DK1–2, NO1–5, EE, LV, LT
 - ✅ Unit tests: parse (7), malformed (7), DST (5) — 19 tests total
 
-#### Phase 2: Energy-Charts (11 additional zones) — Next up
+#### Phase 2: Energy-Charts (11 additional zones) ✅ Done
 
-Covers central/western Europe. Only use CC BY 4.0 zones.
+Covers central/western Europe. Only CC BY 4.0 zones (15 zones, 11 previously uncovered).
 
-- Create `EnergyChartsApi` implementing `PriceFetcher`
-- Parse JSON: parallel `unix_seconds` + `price` arrays, EUR/MWh → EUR/kWh
-- Handle `null` price entries (gaps)
-- Zone mapping: our IDs → their `bzn` codes (e.g. `DE_LU` → `DE-LU`, `IT_NORD` → `IT-North`)
-- Add attribution string: "Bundesnetzagentur | SMARD.de"
-- Wire into `PriceFetcherFactory` for: AT, BE, CH, CZ, DE-LU, FR, HU, IT-North, PL, SE4, SI
-  (NL already has EnergyZero; DK1, DK2, NO2 already have Spot-Hinta.fi)
-- Add unit tests
+- ✅ Created `EnergyChartsApi` implementing `PriceFetcher`
+- ✅ Parses JSON: parallel `unix_seconds` + `price` arrays, EUR/MWh → EUR/kWh (÷ 1000)
+- ✅ Handles `null` price entries (gaps filtered out)
+- ✅ Auto-detects resolution from timestamp gaps (15-min or 60-min for CH)
+- ✅ Zone mapping via `ZONE_TO_BZN` companion map (e.g. `DE_LU` → `DE-LU`, `IT_NORD` → `IT-North`)
+- ✅ Wired into `PriceFetcherFactory` and `DataSources.defaultsForZone()`:
+  - NL → ENTSO-E, EnergyZero, Energy-Charts (tertiary)
+  - DK1, DK2, NO2, SE4 → ENTSO-E, Spot-Hinta.fi, Energy-Charts (tertiary)
+  - AT, BE, CH, CZ, DE_LU, FR, HU, IT_NORD, PL, SI → ENTSO-E, Energy-Charts
+- ✅ Unit tests: parse (9), malformed (8), DST (5) — 22 tests total
+- ✅ Zone ID validation tests in `DataSourceTest` verify all zone sets against `Countries` registry
 
-#### Phase 3: aWATTar (AT, DE-LU — adds depth)
+#### Phase 3: aWATTar (AT, DE-LU — adds depth) — Next up
 
 Simple redundant fallback for two high-traffic zones. Very easy to implement.
 
@@ -241,9 +247,10 @@ The real risk is burst traffic around **13:00–14:00 CET** when next-day prices
 and caches expire simultaneously across all users.
 
 - ✅ **Fallback APIs** absorb ENTSO-E failures. `FallbackPriceFetcher` automatically
-  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 16/43
-  zones (NL + 15 Nordic/Baltic). Expanding fallback coverage (Phases 2–5) is the
-  main mitigation.
+  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 27/43
+  zones (NL via EnergyZero + Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi,
+  15 European via Energy-Charts). Expanding fallback coverage (Phases 3–5) adds
+  depth to already-covered zones and covers ES/PT.
 - **Cache cooldown** (5 min) is per-user, starting from each user's tap — naturally
   staggered, no artificial jitter needed.
 - ⬜ **Long term:** If user base exceeds ~50K DAU, stand up a caching proxy that

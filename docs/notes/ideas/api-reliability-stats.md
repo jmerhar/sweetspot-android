@@ -85,32 +85,74 @@ for) infrastructure:
 - **Cons:** low participation rate. Self-selected sample (only engaged users share).
   Manual process doesn't scale.
 
-### Option F: Aggregate in Play Store vitals / Android vitals
+### Option F: Self-hosted home server
+
+A dedicated Ubuntu server already running 24/7 at home, with Apache, Docker, MySQL,
+and Grafana + InfluxDB 3 Core already in place.
+
+**Best stack for this:** A thin PHP script behind Apache as the ingestion endpoint,
+writing to InfluxDB 3 Core for storage, with Grafana for visualization. This reuses the
+entire existing stack with zero new software:
+
+- **PHP on Apache** — a single `stats.php` endpoint that accepts a JSON payload from the
+  app, validates it (reject malformed data, enforce rate limits), and writes to InfluxDB
+  via its HTTP write API (line protocol). PHP is familiar, Apache is already configured,
+  and the script is trivial (~50 lines).
+- **InfluxDB 3 Core** — purpose-built for time-series metrics. Each fetch attempt becomes
+  a point: measurement `api_fetch`, tags `zone`, `source`, `outcome`, `error_type`,
+  `app_version`. Handles aggregation queries natively (success rate by zone per day, etc.).
+  Already running in Docker.
+- **Grafana** — already connected to InfluxDB. Build dashboards for failure rates by zone,
+  error type breakdowns, outage detection. No setup beyond creating the dashboards.
+
+**Alternative:** PHP + MySQL instead of InfluxDB. Simpler schema (one table), familiar
+SQL queries, and Grafana also supports MySQL as a data source. Slightly worse at
+time-series aggregation but perfectly fine for this volume. Good choice if you'd rather
+keep it simple and avoid learning InfluxDB's query language.
+
+- **Pros:** zero cost (hardware already running), full control, uses existing familiar
+  stack, InfluxDB + Grafana is ideal for metrics, no vendor lock-in, can iterate quickly
+  on schema changes, no terms of service or free-tier limits to worry about.
+- **Cons:** need to expose a port to the internet (security surface — reverse proxy,
+  firewall rules, fail2ban). Need a domain or dynamic DNS for a stable endpoint, plus
+  TLS via Let's Encrypt. Home server reliability depends on power and ISP uptime — but
+  the app can batch stats locally and retry, so brief outages aren't a real problem.
+  Maintenance burden (OS updates, backups), though minimal for a single endpoint.
+
+### Option G: Aggregate in Play Store vitals / Android vitals
 
 - Not really feasible — Play vitals tracks crashes and ANRs, not custom business metrics.
 
 ### Recommendation
 
-**Option D (cloud function)** is the cleanest solution if we accept minimal infrastructure.
-Cloudflare Workers + D1 is truly free for this scale, takes an afternoon to set up, and
-gives full control over the schema and analysis.
+**Option F (self-hosted)** is the most natural fit given the existing infrastructure.
+InfluxDB + Grafana is exactly the right tool for this kind of metrics collection, and
+it's already running. The only real work is writing a small PHP ingestion script and
+opening a port — no new services, no vendor dependencies, no cost. The home server
+doesn't need to be highly reliable: the app can batch stats locally and retry on next
+launch, so short outages don't cause data loss.
+
+**Option D (cloud function)** is the cleanest solution if the home server feels like
+too much maintenance, or if you want something reachable from anywhere without dynamic
+DNS hassles. Cloudflare Workers + D1 is truly free for this scale, takes an afternoon
+to set up, and gives full control over the schema and analysis.
 
 **Option C (Firebase)** is the pragmatic choice if we're willing to add the dependency.
 It's zero infrastructure and the analytics dashboard is excellent. But it's a philosophical
 shift for an app that currently has zero Google service dependencies beyond the platform.
 
-**Option E (local + manual export)** is a good starting point that requires no
-infrastructure at all. Collect the data locally from day one, and decide later how to
-aggregate it. Even without centralized collection, users could share their stats in
-GitHub issues when reporting API problems.
+**Option E (local + manual export)** is still a good starting point regardless of the
+backend choice. Collect the data locally from day one, and decide later how to aggregate
+it. Even without centralized collection, users could share their stats in GitHub issues
+when reporting API problems.
 
 A phased approach might work best:
 1. **Phase 1:** Instrument fetch attempts locally (counters in SharedPreferences).
    Surface them in a "debug info" or "about" screen. Zero infrastructure.
 2. **Phase 2:** Add a voluntary export mechanism (copy to clipboard, share intent).
    Users can paste stats into GitHub issues.
-3. **Phase 3:** If the app grows enough to justify it, add a lightweight cloud endpoint
-   and opt-in automatic reporting.
+3. **Phase 3:** Stand up the PHP + InfluxDB endpoint on the home server (or a cloud
+   function) and add opt-in automatic reporting from the app.
 
 ## Data schema (local collection)
 

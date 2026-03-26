@@ -50,6 +50,7 @@ private data class LanguageOption(val tag: String, val nativeName: String, val e
 private val languageOptions = listOf(
     LanguageOption("bg", "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438", "Bulgarian"),
     LanguageOption("hr", "Hrvatski", "Croatian"),
+    LanguageOption("cnr", "Crnogorski", "Montenegrin"),
     LanguageOption("cs", "\u010ce\u0161tina", "Czech"),
     LanguageOption("da", "Dansk", "Danish"),
     LanguageOption("nl", "Nederlands", "Dutch"),
@@ -136,7 +137,7 @@ internal fun LanguageSection(onClick: () -> Unit) {
 /**
  * Full-screen language picker with search.
  *
- * Shows "System default" at the top with a divider, then all 25 languages sorted alphabetically
+ * Shows "System default" at the top with a divider, then all 26 languages sorted alphabetically
  * by native name. Each row shows the native name as the label and the English name as a subtitle
  * (except for English itself, which has no subtitle). Search matches against both native and
  * English names.

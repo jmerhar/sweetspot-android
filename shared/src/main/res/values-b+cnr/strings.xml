@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Duration format strings -->
+    <string name="duration_hours_only">%dč</string>
+    <string name="duration_minutes_only">%dm</string>
+    <string name="duration_hours_minutes">%1$dč %2$dm</string>
+
+    <!-- Relative time format strings -->
+    <string name="relative_now">sada</string>
+    <string name="relative_in_hours_minutes">za %1$dč %2$dm</string>
+    <string name="relative_in_hours">za %1$dč</string>
+    <string name="relative_in_minutes">za %1$dm</string>
+
+    <!-- Country names -->
+    <string name="country_at">Austrija</string>
+    <string name="country_be">Belgija</string>
+    <string name="country_bg">Bugarska</string>
+    <string name="country_hr">Hrvatska</string>
+    <string name="country_cz">Češka</string>
+    <string name="country_dk">Danska</string>
+    <string name="country_ee">Estonija</string>
+    <string name="country_fi">Finska</string>
+    <string name="country_fr">Francuska</string>
+    <string name="country_de">Njemačka</string>
+    <string name="country_gr">Grčka</string>
+    <string name="country_hu">Mađarska</string>
+    <string name="country_ie">Irska</string>
+    <string name="country_it">Italija</string>
+    <string name="country_lv">Letonija</string>
+    <string name="country_lt">Litvanija</string>
+    <string name="country_lu">Luksemburg</string>
+    <string name="country_me">Crna Gora</string>
+    <string name="country_nl">Holandija</string>
+    <string name="country_mk">Sjeverna Makedonija</string>
+    <string name="country_no">Norveška</string>
+    <string name="country_pl">Poljska</string>
+    <string name="country_pt">Portugalija</string>
+    <string name="country_ro">Rumunija</string>
+    <string name="country_rs">Srbija</string>
+    <string name="country_sk">Slovačka</string>
+    <string name="country_si">Slovenija</string>
+    <string name="country_es">Španija</string>
+    <string name="country_se">Švedska</string>
+    <string name="country_ch">Švajcarska</string>
+
+    <!-- Zone labels -->
+    <string name="zone_at">Austrija</string>
+    <string name="zone_be">Belgija</string>
+    <string name="zone_bg">Bugarska</string>
+    <string name="zone_hr">Hrvatska</string>
+    <string name="zone_cz">Češka</string>
+    <string name="zone_dk1">DK1 — Zapadna Danska</string>
+    <string name="zone_dk2">DK2 — Istočna Danska</string>
+    <string name="zone_ee">Estonija</string>
+    <string name="zone_fi">Finska</string>
+    <string name="zone_fr">Francuska</string>
+    <string name="zone_de_lu">Njemačka / Luksemburg</string>
+    <string name="zone_gr">Grčka</string>
+    <string name="zone_hu">Mađarska</string>
+    <string name="zone_ie_sem">Irska (SEM)</string>
+    <string name="zone_it_nord">Sjever</string>
+    <string name="zone_it_cnor">Središnji sjever</string>
+    <string name="zone_it_csud">Središnji jug</string>
+    <string name="zone_it_sud">Jug</string>
+    <string name="zone_it_cala">Kalabrija</string>
+    <string name="zone_it_sici">Sicilija</string>
+    <string name="zone_it_sard">Sardinija</string>
+    <string name="zone_lv">Letonija</string>
+    <string name="zone_lt">Litvanija</string>
+    <string name="zone_me">Crna Gora</string>
+    <string name="zone_nl">Holandija</string>
+    <string name="zone_mk">Sjeverna Makedonija</string>
+    <string name="zone_no1">NO1 — Jugoistočna Norveška</string>
+    <string name="zone_no2">NO2 — Jugozapadna Norveška</string>
+    <string name="zone_no3">NO3 — Srednja Norveška</string>
+    <string name="zone_no4">NO4 — Sjeverna Norveška</string>
+    <string name="zone_no5">NO5 — Zapadna Norveška</string>
+    <string name="zone_pl">Poljska</string>
+    <string name="zone_pt">Portugalija</string>
+    <string name="zone_ro">Rumunija</string>
+    <string name="zone_rs">Srbija</string>
+    <string name="zone_sk">Slovačka</string>
+    <string name="zone_si">Slovenija</string>
+    <string name="zone_es">Španija</string>
+    <string name="zone_se1">SE1 — Sjeverna Švedska</string>
+    <string name="zone_se2">SE2 — Srednje-sjeverna Švedska</string>
+    <string name="zone_se3">SE3 — Srednje-južna Švedska</string>
+    <string name="zone_se4">SE4 — Južna Švedska</string>
+    <string name="zone_ch">Švajcarska</string>
+</resources>

@@ -1,60 +1,54 @@
 # Localization
 
-## Status: Partially Done
+## Status: Done
 
-String extraction and first three translations are shipped. Per-app language picker is available in Settings.
+All 26 target languages are shipped across all three modules (shared, phone, wear). Per-app language picker is available in Settings with full-screen search.
 
 ## What's done
 
 - All UI strings extracted to `strings.xml` (shared, phone, wear modules)
 - Country and zone names localized (30 countries, 43 zones)
 - `formatDuration()` and `formatRelative()` accept optional `Resources` parameter for localized output
-- Dutch (NL) translation — complete
-- German (DE) translation — complete
-- French (FR) translation — complete
-- Per-app language picker in Settings (System default, English, Nederlands, Deutsch, Français)
+- 26 translations — all complete (see table below)
+- Per-app language picker in Settings (full-screen list with search)
 - Language synced to watch via Data Layer
 - `locales_config.xml` for Android 13+ per-app language system settings
 - `AppCompatActivity` for backward-compatible locale switching
 
-## Languages to support
+## Languages
 
-Target languages based on the 30 supported countries:
+| Language | Code | Countries |
+|---|---|---|
+| **English** | en | Ireland (default) |
+| **Bulgarian** | bg | Bulgaria |
+| **Czech** | cs | Czechia |
+| **Danish** | da | Denmark |
+| **Dutch** | nl | Netherlands, Belgium (Flanders) |
+| **Estonian** | et | Estonia |
+| **Finnish** | fi | Finland |
+| **French** | fr | France, Belgium (Wallonia), Luxembourg, Switzerland |
+| **German** | de | Germany, Austria, Luxembourg, Switzerland |
+| **Greek** | el | Greece |
+| **Croatian** | hr | Croatia |
+| **Hungarian** | hu | Hungary |
+| **Italian** | it | Italy |
+| **Latvian** | lv | Latvia |
+| **Lithuanian** | lt | Lithuania |
+| **Macedonian** | mk | North Macedonia |
+| **Montenegrin** | cnr | Montenegro |
+| **Norwegian** | nb | Norway |
+| **Polish** | pl | Poland |
+| **Portuguese** | pt | Portugal |
+| **Romanian** | ro | Romania |
+| **Serbian** | sr | Serbia |
+| **Slovak** | sk | Slovakia |
+| **Slovenian** | sl | Slovenia |
+| **Spanish** | es | Spain |
+| **Swedish** | sv | Sweden |
 
-| Language | Countries |
-|---|---|
-| **English** | Ireland (already done — current default) |
-| **Dutch** | Netherlands, Belgium (Flanders) |
-| **German** | Germany, Austria, Luxembourg, Switzerland |
-| **French** | France, Belgium (Wallonia), Luxembourg, Switzerland |
-| **Spanish** | Spain |
-| **Portuguese** | Portugal |
-| **Italian** | Italy |
-| **Polish** | Poland |
-| **Czech** | Czechia |
-| **Slovak** | Slovakia |
-| **Hungarian** | Hungary |
-| **Romanian** | Romania |
-| **Bulgarian** | Bulgaria |
-| **Greek** | Greece |
-| **Croatian** | Croatia |
-| **Slovenian** | Slovenia |
-| **Serbian** | Serbia |
-| **Montenegrin** | Montenegro |
-| **Macedonian** | North Macedonia |
-| **Danish** | Denmark |
-| **Norwegian** | Norway |
-| **Swedish** | Sweden |
-| **Finnish** | Finland |
-| **Estonian** | Estonia |
-| **Latvian** | Latvia |
-| **Lithuanian** | Lithuania |
+### Montenegrin
 
-### Suggested next priority
-
-1. **Norwegian, Swedish, Danish, Finnish** — mature dynamic tariff markets in the Nordics
-2. **Spanish, Portuguese, Italian** — large populations, growing dynamic tariff adoption
-3. Remaining languages based on demand
+Montenegro has its own translation (`cnr`) in Latin script, stored in `values-b+cnr` resource directories. The BCP 47 tag `cnr` (ISO 639-3) is used since Montenegrin has no ISO 639-1 code. While mutually intelligible with Serbian, the Montenegrin translation uses Latin script (the predominant everyday script in Montenegro) and Ijekavian pronunciation, compared to Serbian's Cyrillic script and Ekavian pronunciation.
 
 ## Considerations
 

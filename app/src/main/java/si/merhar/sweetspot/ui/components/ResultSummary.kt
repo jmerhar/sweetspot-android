@@ -75,8 +75,8 @@ fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier =
 private fun SummaryCard(
     label: String,
     value: String,
-    subtitle: String? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    subtitle: String? = null
 ) {
     OutlinedCard(
         modifier = modifier,

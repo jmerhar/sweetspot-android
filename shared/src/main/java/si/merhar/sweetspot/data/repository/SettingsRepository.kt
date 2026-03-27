@@ -1,11 +1,12 @@
 package si.merhar.sweetspot.data.repository
 
 import android.content.Context
-import kotlinx.serialization.encodeToString
+import androidx.core.content.edit
+
 import kotlinx.serialization.json.Json
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.Countries
-import si.merhar.sweetspot.model.Country
+
 import si.merhar.sweetspot.model.PriceZone
 import java.time.ZoneId
 
@@ -46,7 +47,7 @@ class SettingsRepository(private val context: Context) {
         if (stored != null) return stored
 
         val detected = CountryDetector.detect(context)
-        prefs.edit().putString(KEY_COUNTRY_CODE, detected.code).apply()
+        prefs.edit { putString(KEY_COUNTRY_CODE, detected.code) }
         return detected.code
     }
 
@@ -58,7 +59,7 @@ class SettingsRepository(private val context: Context) {
      * @param code ISO 3166-1 alpha-2 country code.
      */
     fun setCountryCode(code: String) {
-        prefs.edit().putString(KEY_COUNTRY_CODE, code).apply()
+        prefs.edit { putString(KEY_COUNTRY_CODE, code) }
         clearSourceOrder()
         clearDisabledSources()
     }
@@ -77,9 +78,9 @@ class SettingsRepository(private val context: Context) {
      */
     fun setPriceZoneId(id: String?) {
         if (id == null) {
-            prefs.edit().remove(KEY_PRICE_ZONE_ID).apply()
+            prefs.edit { remove(KEY_PRICE_ZONE_ID) }
         } else {
-            prefs.edit().putString(KEY_PRICE_ZONE_ID, id).apply()
+            prefs.edit { putString(KEY_PRICE_ZONE_ID, id) }
         }
     }
 
@@ -129,12 +130,12 @@ class SettingsRepository(private val context: Context) {
      * @param timeZoneId The timezone to store.
      */
     fun setTimeZoneId(timeZoneId: ZoneId) {
-        prefs.edit().putString(KEY_TIMEZONE_ID, timeZoneId.id).apply()
+        prefs.edit { putString(KEY_TIMEZONE_ID, timeZoneId.id) }
     }
 
     /** Removes the custom timezone, reverting to zone-derived default. */
     fun clearTimeZoneId() {
-        prefs.edit().remove(KEY_TIMEZONE_ID).apply()
+        prefs.edit { remove(KEY_TIMEZONE_ID) }
     }
 
     /** Returns `true` if no custom timezone has been set (using zone-derived default). */
@@ -164,12 +165,12 @@ class SettingsRepository(private val context: Context) {
      * @param order Ordered list of all source IDs (enabled and disabled).
      */
     fun setSourceOrder(order: List<String>) {
-        prefs.edit().putString(KEY_SOURCE_ORDER, json.encodeToString(order)).apply()
+        prefs.edit { putString(KEY_SOURCE_ORDER, json.encodeToString(order)) }
     }
 
     /** Removes the custom source order, reverting to zone-specific defaults. */
     fun clearSourceOrder() {
-        prefs.edit().remove(KEY_SOURCE_ORDER).apply()
+        prefs.edit { remove(KEY_SOURCE_ORDER) }
     }
 
     /**
@@ -193,15 +194,15 @@ class SettingsRepository(private val context: Context) {
      */
     fun setDisabledSources(disabled: Set<String>) {
         if (disabled.isEmpty()) {
-            prefs.edit().remove(KEY_DISABLED_SOURCES).apply()
+            prefs.edit { remove(KEY_DISABLED_SOURCES) }
         } else {
-            prefs.edit().putString(KEY_DISABLED_SOURCES, json.encodeToString(disabled)).apply()
+            prefs.edit { putString(KEY_DISABLED_SOURCES, json.encodeToString(disabled)) }
         }
     }
 
     /** Removes all disabled sources, re-enabling everything. */
     fun clearDisabledSources() {
-        prefs.edit().remove(KEY_DISABLED_SOURCES).apply()
+        prefs.edit { remove(KEY_DISABLED_SOURCES) }
     }
 
     // --- Appliances ---
@@ -226,6 +227,6 @@ class SettingsRepository(private val context: Context) {
      * @param appliances The appliances to store.
      */
     fun setAppliances(appliances: List<Appliance>) {
-        prefs.edit().putString(KEY_APPLIANCES, json.encodeToString(appliances)).apply()
+        prefs.edit { putString(KEY_APPLIANCES, json.encodeToString(appliances)) }
     }
 }

@@ -1,7 +1,7 @@
 package si.merhar.sweetspot.data.repository
 
 import si.merhar.sweetspot.data.api.EnergyZeroApi
-import si.merhar.sweetspot.data.api.FetchResult
+
 import si.merhar.sweetspot.data.api.PriceFetcher
 import si.merhar.sweetspot.data.cache.CachedPrice
 import si.merhar.sweetspot.data.cache.CachedPriceData
@@ -125,7 +125,7 @@ class PriceRepository(
      *
      * @return Pair of (from, to) instants in UTC.
      */
-    private fun dateRange(): Pair<java.time.Instant, java.time.Instant> {
+    private fun dateRange(): Pair<Instant, Instant> {
         val today = LocalDate.now(clock).atStartOfDay(timeZoneId)
         val from = today.toInstant()
         val to = today.plusDays(2).toInstant()

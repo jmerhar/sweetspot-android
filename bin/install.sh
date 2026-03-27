@@ -60,6 +60,7 @@ if [[ -z "$SERIAL" ]]; then
 fi
 
 # Find the APK
+# shellcheck disable=SC2086
 APK=$(ls -t $APK_PATTERN 2>/dev/null | head -1)
 if [[ -z "$APK" ]]; then
     echo "ERROR: No APK found matching $APK_PATTERN. Build first."

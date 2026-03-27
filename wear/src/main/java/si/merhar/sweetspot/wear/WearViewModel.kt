@@ -105,7 +105,7 @@ class WearViewModel @JvmOverloads constructor(
     override fun onCleared() {
         super.onCleared()
         stopResultRefresh()
-        Wearable.getDataClient(getApplication<Application>()).removeListener(this)
+        Wearable.getDataClient(getApplication()).removeListener(this)
     }
 
     /**
@@ -148,8 +148,8 @@ class WearViewModel @JvmOverloads constructor(
         viewModelScope.launch(ioDispatcher) {
             var dataItems: com.google.android.gms.wearable.DataItemBuffer? = null
             try {
-                dataItems = Wearable.getDataClient(getApplication<Application>())
-                    .getDataItems().await()
+                dataItems = Wearable.getDataClient(getApplication())
+                    .dataItems.await()
 
                 for (item in dataItems) {
                     val dataMap = DataMapItem.fromDataItem(item).dataMap

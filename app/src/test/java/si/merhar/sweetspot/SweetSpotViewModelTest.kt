@@ -22,7 +22,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import si.merhar.sweetspot.data.api.FetchResult
 import si.merhar.sweetspot.data.api.PriceFetcher
-import si.merhar.sweetspot.data.api.PriceFetcherFactory
+
 import si.merhar.sweetspot.data.cache.CachedPriceData
 import si.merhar.sweetspot.data.cache.PriceCache
 import si.merhar.sweetspot.model.Appliance
@@ -89,7 +89,7 @@ class SweetSpotViewModelTest {
 
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(fetcher: FakeFetcher, cache: FakeCache = FakeCache()) =
-        SweetSpotViewModel(app, PriceFetcherFactory { _ -> fetcher }, cache, testDispatcher)
+        SweetSpotViewModel(app, { _ -> fetcher }, cache, testDispatcher)
 
     // --- Initial state ---
 
@@ -285,7 +285,7 @@ class SweetSpotViewModelTest {
     @Test
     fun `onTimezoneSelected with null reverts to default`() {
         val viewModel = defaultViewModel()
-        viewModel.onTimezoneSelected(java.time.ZoneId.of("Asia/Tokyo"))
+        viewModel.onTimezoneSelected(ZoneId.of("Asia/Tokyo"))
         assertEquals(false, viewModel.uiState.value.isUsingDefaultTimezone)
         viewModel.onTimezoneSelected(null)
         assertTrue(viewModel.uiState.value.isUsingDefaultTimezone)
@@ -294,7 +294,7 @@ class SweetSpotViewModelTest {
     @Test
     fun `onTimezoneSelected sets custom timezone`() {
         val viewModel = defaultViewModel()
-        val tokyo = java.time.ZoneId.of("Asia/Tokyo")
+        val tokyo = ZoneId.of("Asia/Tokyo")
         viewModel.onTimezoneSelected(tokyo)
         assertEquals(tokyo, viewModel.uiState.value.timeZoneId)
         assertEquals(false, viewModel.uiState.value.isUsingDefaultTimezone)

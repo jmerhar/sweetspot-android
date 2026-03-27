@@ -2,7 +2,7 @@ package si.merhar.sweetspot
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
+
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
@@ -31,7 +31,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.serialization.encodeToString
+
 import kotlinx.serialization.json.Json
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -466,7 +466,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 dataMap.putString("json", json)
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
-            Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
+            Wearable.getDataClient(getApplication()).putDataItem(request)
         } catch (_: Exception) {
             // Best-effort: watch sync should not crash the phone app
         }
@@ -508,7 +508,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 dataMap.putString("language", resolvedTag)
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
-            Wearable.getDataClient(getApplication<Application>()).putDataItem(request)
+            Wearable.getDataClient(getApplication()).putDataItem(request)
         } catch (_: Exception) {
             // Best-effort: watch sync should not crash the phone app
         }

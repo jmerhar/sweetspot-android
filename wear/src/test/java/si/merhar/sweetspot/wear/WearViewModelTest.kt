@@ -23,7 +23,7 @@ import org.robolectric.annotation.Config
 import kotlinx.serialization.json.Json
 import si.merhar.sweetspot.data.api.FetchResult
 import si.merhar.sweetspot.data.api.PriceFetcher
-import si.merhar.sweetspot.data.api.PriceFetcherFactory
+
 import si.merhar.sweetspot.data.cache.CachedPriceData
 import si.merhar.sweetspot.data.cache.PriceCache
 import si.merhar.sweetspot.model.Appliance
@@ -88,7 +88,7 @@ class WearViewModelTest {
 
     /** Creates a WearViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(fetcher: FakeFetcher) =
-        WearViewModel(app, PriceFetcherFactory { _ -> fetcher }, FakeCache(), testDispatcher).also {
+        WearViewModel(app, { _ -> fetcher }, FakeCache(), testDispatcher).also {
             // Advance past the init block's loadAppliancesFromDataLayer coroutine
             testDispatcher.scheduler.advanceUntilIdle()
         }

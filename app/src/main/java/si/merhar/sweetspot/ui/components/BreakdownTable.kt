@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.BreakdownSlot
 import si.merhar.sweetspot.util.shortTimeFormatter
+import kotlin.math.roundToLong
 
 /**
  * Expandable table listing each hourly slot in the cheapest window with its time range,
@@ -83,7 +84,7 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                             )
                         }
                         val start = slot.time.format(shortTimeFormatter)
-                        val endMinutes = Math.round(slot.fraction * slot.durationMinutes)
+                        val endMinutes = (slot.fraction * slot.durationMinutes).roundToLong()
                         val end = slot.time.plusMinutes(endMinutes).format(shortTimeFormatter)
 
                         Row(

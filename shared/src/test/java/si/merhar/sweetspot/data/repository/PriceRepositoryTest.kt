@@ -45,7 +45,7 @@ class PriceRepositoryTest {
     private class FakeCache(
         initialData: CachedPriceData? = null,
         private var cooldownElapsed: Boolean = true,
-        private val key: String = "default"
+        key: String = "default"
     ) : PriceCache {
         private val store = mutableMapOf<String, CachedPriceData>()
         var writeCount = 0

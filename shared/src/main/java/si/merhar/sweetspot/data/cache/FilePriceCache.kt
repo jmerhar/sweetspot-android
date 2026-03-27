@@ -1,6 +1,7 @@
 package si.merhar.sweetspot.data.cache
 
 import android.content.Context
+import androidx.core.content.edit
 import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.File
@@ -75,9 +76,7 @@ class FilePriceCache(private val context: Context) : PriceCache {
                 output.writeDouble(entry.price)
             }
         }
-        prefs.edit()
-            .putLong(KEY_LAST_FETCH_MS, System.currentTimeMillis())
-            .apply()
+        prefs.edit { putLong(KEY_LAST_FETCH_MS, System.currentTimeMillis()) }
     }
 
     override fun clear() {

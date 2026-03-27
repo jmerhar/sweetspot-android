@@ -25,6 +25,7 @@ import si.merhar.sweetspot.util.formatDuration
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -114,6 +115,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private val settingsRepository = SettingsRepository(application)
 
     private var fetchJob: Job? = null
+    private var refreshJob: Job? = null
 
     private val _uiState = MutableStateFlow(
         UiState(
@@ -130,6 +132,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     /** Observable UI state. */
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+
+    override fun onCleared() {
+        super.onCleared()
+        stopResultRefresh()
+    }
 
     /**
      * Updates the selected duration from the picker.
@@ -288,9 +295,59 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     /** Clears the current result and returns to the form screen. */
     fun onClearResult() {
+        stopResultRefresh()
         _uiState.update {
             it.copy(result = null, resultLabel = null, allPrices = emptyList(), priceSource = null, error = null)
         }
+    }
+
+    /**
+     * Starts a periodic refresh that recalculates the cheapest window every 60 seconds.
+     *
+     * Filters out elapsed price slots and re-runs [findCheapestWindow] with the current time,
+     * keeping the result screen up-to-date as time passes.
+     */
+    private fun startResultRefresh() {
+        refreshJob?.cancel()
+        refreshJob = viewModelScope.launch {
+            while (true) {
+                delay(60_000)
+                recalculateResult()
+            }
+        }
+    }
+
+    /**
+     * Stops the periodic result refresh.
+     */
+    private fun stopResultRefresh() {
+        refreshJob?.cancel()
+        refreshJob = null
+    }
+
+    /**
+     * Recalculates the cheapest window using already-fetched prices and the current time.
+     *
+     * Filters [UiState.allPrices] to exclude elapsed slots, then re-runs [findCheapestWindow].
+     * Updates both [UiState.result] and [UiState.allPrices] so the chart and summary stay current.
+     */
+    private fun recalculateResult() {
+        val state = _uiState.value
+        val prices = state.allPrices
+        if (prices.isEmpty() || state.result == null) return
+
+        val timeZoneId = state.timeZoneId
+        val now = ZonedDateTime.now(timeZoneId)
+        val futurePrices = prices.filter {
+            it.time.plusMinutes(it.durationMinutes.toLong()).isAfter(now)
+        }
+
+        val durationHours = state.durationHours + state.durationMinutes / 60.0
+        val result = if (futurePrices.isNotEmpty()) {
+            findCheapestWindow(futurePrices, durationHours, now)
+        } else null
+
+        _uiState.update { it.copy(result = result, allPrices = futurePrices) }
     }
 
     /**
@@ -338,6 +395,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         _uiState.update { it.copy(isLoading = true, error = null) }
 
         val timeZoneId = state.timeZoneId
+        stopResultRefresh()
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(ioDispatcher) {
             fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)
@@ -502,6 +560,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         }
 
         val timeZoneId = _uiState.value.timeZoneId
+        stopResultRefresh()
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(ioDispatcher) {
             fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)
@@ -512,6 +571,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * Fetches prices from the repository and runs the cheapest-window algorithm.
      *
      * Called on [Dispatchers.IO]. Updates [_uiState] with the result or an error.
+     * On success, starts the periodic refresh via [startResultRefresh].
      *
      * @param durationHours Duration in decimal hours.
      * @param durationLabel Human-readable duration label for error messages.
@@ -565,6 +625,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     error = null
                 )
             }
+            startResultRefresh()
         } catch (e: Exception) {
             _uiState.update {
                 it.copy(

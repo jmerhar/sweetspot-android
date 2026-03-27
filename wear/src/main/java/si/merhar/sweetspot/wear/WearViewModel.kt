@@ -14,6 +14,7 @@ import com.google.android.gms.wearable.Wearable
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,6 +29,7 @@ import si.merhar.sweetspot.data.cache.PriceCache
 import si.merhar.sweetspot.data.repository.PriceRepository
 import si.merhar.sweetspot.model.Appliance
 import si.merhar.sweetspot.model.Countries
+import si.merhar.sweetspot.model.PriceSlot
 import si.merhar.sweetspot.model.PriceZone
 import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.util.findCheapestWindow
@@ -80,6 +82,16 @@ class WearViewModel @JvmOverloads constructor(
     DataClient.OnDataChangedListener {
 
     private var fetchJob: Job? = null
+    private var refreshJob: Job? = null
+
+    /** Prices from the last successful fetch, used for periodic recalculation. */
+    private var lastPrices: List<PriceSlot> = emptyList()
+
+    /** Duration from the last appliance tap, used for periodic recalculation. */
+    private var lastDurationHours: Double = 0.0
+
+    /** Timezone from the last fetch, used for periodic recalculation. */
+    private var lastTimeZoneId: ZoneId? = null
 
     private val _uiState = MutableStateFlow(WearUiState())
     /** Observable UI state. */
@@ -92,6 +104,7 @@ class WearViewModel @JvmOverloads constructor(
 
     override fun onCleared() {
         super.onCleared()
+        stopResultRefresh()
         Wearable.getDataClient(getApplication<Application>()).removeListener(this)
     }
 
@@ -187,6 +200,7 @@ class WearViewModel @JvmOverloads constructor(
             return
         }
 
+        stopResultRefresh()
         fetchJob?.cancel()
         _uiState.update {
             it.copy(isLoading = true, error = null, result = null, resultLabel = label)
@@ -226,6 +240,10 @@ class WearViewModel @JvmOverloads constructor(
                     return@launch
                 }
 
+                lastPrices = prices
+                lastDurationHours = durationHours
+                lastTimeZoneId = timeZoneId
+
                 _uiState.update {
                     it.copy(
                         isLoading = false,
@@ -233,6 +251,7 @@ class WearViewModel @JvmOverloads constructor(
                         error = null
                     )
                 }
+                startResultRefresh()
             } catch (e: Exception) {
                 Log.w("WearViewModel", "Could not fetch prices", e)
                 _uiState.update {
@@ -247,7 +266,56 @@ class WearViewModel @JvmOverloads constructor(
 
     /** Clears the current result to return to the appliance list. */
     fun onClearResult() {
+        stopResultRefresh()
         _uiState.update { it.copy(result = null, resultLabel = null, error = null) }
+    }
+
+    /**
+     * Starts a periodic refresh that recalculates the cheapest window every 60 seconds.
+     *
+     * Filters out elapsed price slots and re-runs [findCheapestWindow] with the current time,
+     * keeping the result screen up-to-date as time passes.
+     */
+    private fun startResultRefresh() {
+        refreshJob?.cancel()
+        refreshJob = viewModelScope.launch {
+            while (true) {
+                delay(60_000)
+                recalculateResult()
+            }
+        }
+    }
+
+    /**
+     * Stops the periodic result refresh.
+     */
+    private fun stopResultRefresh() {
+        refreshJob?.cancel()
+        refreshJob = null
+    }
+
+    /**
+     * Recalculates the cheapest window using previously fetched prices and the current time.
+     *
+     * Filters [lastPrices] to exclude elapsed slots, then re-runs [findCheapestWindow].
+     * Updates [WearUiState.result] so the result screen stays current.
+     */
+    private fun recalculateResult() {
+        val prices = lastPrices
+        if (prices.isEmpty() || _uiState.value.result == null) return
+        val timeZoneId = lastTimeZoneId ?: return
+
+        val now = ZonedDateTime.now(timeZoneId)
+        val futurePrices = prices.filter {
+            it.time.plusMinutes(it.durationMinutes.toLong()).isAfter(now)
+        }
+        lastPrices = futurePrices
+
+        val result = if (futurePrices.isNotEmpty()) {
+            findCheapestWindow(futurePrices, lastDurationHours, now)
+        } else null
+
+        _uiState.update { it.copy(result = result) }
     }
 
     /**

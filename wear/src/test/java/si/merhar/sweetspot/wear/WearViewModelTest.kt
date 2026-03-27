@@ -5,8 +5,8 @@ import androidx.test.core.app.ApplicationProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -36,7 +36,7 @@ import java.time.ZonedDateTime
  * Tests for [WearViewModel] state management and async price fetching.
  *
  * Uses injected fakes for [PriceFetcher] and [PriceCache], and a test dispatcher
- * so coroutines complete deterministically via [advanceUntilIdle].
+ * so coroutines complete deterministically via [runCurrent].
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -135,12 +135,13 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         val appliance = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 0, icon = "laundry")
         viewModel.onApplianceTapped(appliance)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNull(state.error)
         assertNotNull(state.result)
+        viewModel.onClearResult()
     }
 
     @Test
@@ -148,7 +149,7 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(prices = null))
         val appliance = Appliance(id = "1", name = "Dryer", durationHours = 1, durationMinutes = 0, icon = "dryer")
         viewModel.onApplianceTapped(appliance)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
@@ -161,7 +162,7 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(emptyList()))
         val appliance = Appliance(id = "1", name = "Dryer", durationHours = 1, durationMinutes = 0, icon = "dryer")
         viewModel.onApplianceTapped(appliance)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
@@ -174,7 +175,7 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(2)))
         val appliance = Appliance(id = "1", name = "Dryer", durationHours = 5, durationMinutes = 0, icon = "dryer")
         viewModel.onApplianceTapped(appliance)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
@@ -190,12 +191,13 @@ class WearViewModelTest {
 
         viewModel.onApplianceTapped(first)
         viewModel.onApplianceTapped(second)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertEquals("Second \u00b7 2h", state.resultLabel)
         assertNotNull(state.result)
+        viewModel.onClearResult()
     }
 
     // --- onClearResult ---
@@ -205,7 +207,7 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         val appliance = Appliance(id = "1", name = "Washer", durationHours = 1, durationMinutes = 0, icon = "laundry")
         viewModel.onApplianceTapped(appliance)
-        advanceUntilIdle()
+        runCurrent()
 
         viewModel.onClearResult()
 

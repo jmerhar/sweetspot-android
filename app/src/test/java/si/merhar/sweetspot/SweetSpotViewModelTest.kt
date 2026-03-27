@@ -5,8 +5,8 @@ import androidx.test.core.app.ApplicationProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -307,13 +307,14 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onDurationChanged(2, 0)
         viewModel.onFindClicked()
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNull(state.error)
         assertNotNull(state.result)
         assertTrue(state.allPrices.isNotEmpty())
+        viewModel.onClearResult()
     }
 
     @Test
@@ -321,7 +322,7 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(prices = null))
         viewModel.onDurationChanged(1, 0)
         viewModel.onFindClicked()
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
@@ -336,7 +337,7 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(emptyList()))
         viewModel.onDurationChanged(1, 0)
         viewModel.onFindClicked()
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
@@ -350,7 +351,7 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(2)))
         viewModel.onDurationChanged(5, 0)
         viewModel.onFindClicked()
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
@@ -369,22 +370,24 @@ class SweetSpotViewModelTest {
         assertTrue(viewModel.uiState.value.isLoading)
         assertNull(viewModel.uiState.value.result)
 
-        advanceUntilIdle()
+        runCurrent()
 
         // After advancing, isLoading should be false
         assertFalse(viewModel.uiState.value.isLoading)
+        viewModel.onClearResult()
     }
 
     @Test
     fun `onQuickDuration triggers fetch and produces result`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onQuickDuration(1, 0)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.result)
         assertEquals("1h", state.resultLabel)
+        viewModel.onClearResult()
     }
 
     @Test
@@ -392,12 +395,13 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         val appliance = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 0, icon = "laundry")
         viewModel.onApplianceDuration(appliance)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.result)
         assertEquals("Washer \u00b7 2h", state.resultLabel)
+        viewModel.onClearResult()
     }
 
     @Test
@@ -405,12 +409,13 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onQuickDuration(1, 0)
         viewModel.onQuickDuration(3, 0)
-        advanceUntilIdle()
+        runCurrent()
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertEquals("3h", state.resultLabel)
         assertNotNull(state.result)
+        viewModel.onClearResult()
     }
 
     // --- Source order ---
@@ -502,7 +507,7 @@ class SweetSpotViewModelTest {
 
         // First perform a search so there's a result to refresh
         viewModel.onQuickDuration(1, 0)
-        advanceUntilIdle()
+        runCurrent()
         assertNotNull(viewModel.uiState.value.result)
 
         viewModel.onRefreshResults()
@@ -511,11 +516,12 @@ class SweetSpotViewModelTest {
         assertTrue(viewModel.uiState.value.isLoading)
         assertTrue(cache.clearedZones.isNotEmpty())
 
-        advanceUntilIdle()
+        runCurrent()
 
         // After completion, should have a result and not be loading
         assertFalse(viewModel.uiState.value.isLoading)
         assertNotNull(viewModel.uiState.value.result)
+        viewModel.onClearResult()
     }
 
     @Test

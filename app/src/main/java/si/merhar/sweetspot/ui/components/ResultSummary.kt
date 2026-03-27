@@ -11,15 +11,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import kotlinx.coroutines.delay
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.WindowResult
@@ -30,18 +24,13 @@ import java.time.ZonedDateTime
 
 /**
  * Summary cards showing the cheapest window's start time, end time, and estimated cost.
- * Times include a relative label (e.g. "now" or "in 2h 30m") that updates every 60 seconds.
+ * Times include a relative label (e.g. "now" or "in 2h 30m") that stays current because
+ * the ViewModel periodically recalculates the result.
  */
 @Composable
 fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier = Modifier) {
     val resources = LocalContext.current.resources
-    var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(60_000)
-            now = ZonedDateTime.now(timeZoneId)
-        }
-    }
+    val now = ZonedDateTime.now(timeZoneId)
 
     Column(
         modifier = modifier.fillMaxWidth(),

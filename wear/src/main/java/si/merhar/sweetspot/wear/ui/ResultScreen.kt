@@ -3,16 +3,11 @@ package si.merhar.sweetspot.wear.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import kotlinx.coroutines.delay
 import androidx.compose.ui.text.style.TextAlign
 import androidx.wear.compose.foundation.lazy.AutoCenteringParams
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
@@ -73,13 +68,7 @@ fun ResultScreen(
 
     val resources = LocalContext.current.resources
     val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone!!.timeZoneId) }
-    var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(60_000)
-            now = ZonedDateTime.now(timeZoneId)
-        }
-    }
+    val now = ZonedDateTime.now(timeZoneId)
     // Center on the label item (index 3: Start caption, time, relative, then label)
     val listState = rememberScalingLazyListState(initialCenterItemIndex = 3)
 

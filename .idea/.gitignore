@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Machine-specific files
+/caches/
+/.name
+/deploymentTargetSelector.xml
+/modules/

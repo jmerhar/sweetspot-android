@@ -3,11 +3,15 @@
     <!-- Duration format strings -->
     <plurals name="duration_hours_only">
         <item quantity="one">%dg</item>
+        <item quantity="few">%dg</item>
+        <item quantity="many">%dg</item>
         <item quantity="other">%dg</item>
     </plurals>
     <string name="duration_minutes_only">%dm</string>
     <plurals name="duration_hours_minutes">
         <item quantity="one">%1$dg %2$dm</item>
+        <item quantity="few">%1$dg %2$dm</item>
+        <item quantity="many">%1$dg %2$dm</item>
         <item quantity="other">%1$dg %2$dm</item>
     </plurals>
 
@@ -15,10 +19,14 @@
     <string name="relative_now">teraz</string>
     <plurals name="relative_in_hours_minutes">
         <item quantity="one">za %1$dg %2$dm</item>
+        <item quantity="few">za %1$dg %2$dm</item>
+        <item quantity="many">za %1$dg %2$dm</item>
         <item quantity="other">za %1$dg %2$dm</item>
     </plurals>
     <plurals name="relative_in_hours">
         <item quantity="one">za %1$dg</item>
+        <item quantity="few">za %1$dg</item>
+        <item quantity="many">za %1$dg</item>
         <item quantity="other">za %1$dg</item>
     </plurals>
     <string name="relative_in_minutes">za %1$dm</string>

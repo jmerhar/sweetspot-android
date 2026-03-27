@@ -72,6 +72,7 @@
     <plurals name="picker_zones_count">
         <item quantity="one">%d zóna</item>
         <item quantity="few">%d zóny</item>
+        <item quantity="many">%d zón</item>
         <item quantity="other">%d zón</item>
     </plurals>
     <string name="picker_zone_title">Zóna</string>
@@ -87,11 +88,13 @@
     <plurals name="error_not_enough_data">
         <item quantity="one">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodina dat.</item>
         <item quantity="few">Nedostatek cenových dat pro %1$s. K dispozici jsou pouze %2$d hodiny dat.</item>
+        <item quantity="many">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodin dat.</item>
         <item quantity="other">Nedostatek cenových dat pro %1$s. K dispozici je pouze %2$d hodin dat.</item>
     </plurals>
     <plurals name="error_cooldown">
         <item quantity="one">Ceny byly nedávno načteny. Zkuste to znovu za %d minutu.</item>
         <item quantity="few">Ceny byly nedávno načteny. Zkuste to znovu za %d minuty.</item>
+        <item quantity="many">Ceny byly nedávno načteny. Zkuste to znovu za %d minut.</item>
         <item quantity="other">Ceny byly nedávno načteny. Zkuste to znovu za %d minut.</item>
     </plurals>
 

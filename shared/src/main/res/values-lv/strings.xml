@@ -8,6 +8,7 @@
     </plurals>
     <string name="duration_minutes_only">%d min.</string>
     <plurals name="duration_hours_minutes">
+        <item quantity="zero">%1$d st. %2$d min.</item>
         <item quantity="one">%1$d st. %2$d min.</item>
         <item quantity="other">%1$d st. %2$d min.</item>
     </plurals>
@@ -15,10 +16,12 @@
     <!-- Relative time format strings -->
     <string name="relative_now">tagad</string>
     <plurals name="relative_in_hours_minutes">
+        <item quantity="zero">p\u0113c %1$d st. %2$d min.</item>
         <item quantity="one">p\u0113c %1$d st. %2$d min.</item>
         <item quantity="other">p\u0113c %1$d st. %2$d min.</item>
     </plurals>
     <plurals name="relative_in_hours">
+        <item quantity="zero">p\u0113c %1$d st.</item>
         <item quantity="one">p\u0113c %1$d st.</item>
         <item quantity="other">p\u0113c %1$d st.</item>
     </plurals>

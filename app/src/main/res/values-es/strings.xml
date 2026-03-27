@@ -71,6 +71,7 @@
     <string name="picker_country_search">Buscar países</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d zona</item>
+        <item quantity="many">%d zonas</item>
         <item quantity="other">%d zonas</item>
     </plurals>
     <string name="picker_zone_title">Zona</string>
@@ -85,10 +86,12 @@
     <string name="error_network">No se pudieron obtener los precios: %s</string>
     <plurals name="error_not_enough_data">
         <item quantity="one">No hay suficientes datos de precios para %1$s. Solo %2$d hora de datos disponible.</item>
+        <item quantity="many">No hay suficientes datos de precios para %1$s. Solo %2$d horas de datos disponibles.</item>
         <item quantity="other">No hay suficientes datos de precios para %1$s. Solo %2$d horas de datos disponibles.</item>
     </plurals>
     <plurals name="error_cooldown">
         <item quantity="one">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minuto.</item>
+        <item quantity="many">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minutos.</item>
         <item quantity="other">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minutos.</item>
     </plurals>
 

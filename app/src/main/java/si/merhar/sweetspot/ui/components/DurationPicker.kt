@@ -17,6 +17,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -169,8 +172,12 @@ fun DurationPicker(
                         Box(modifier = Modifier.height(ITEM_HEIGHT))
                     }
                     items(hourValues.size) { index ->
-                        val centerIndex = hoursListState.firstVisibleItemIndex
-                        val isCenter = index == centerIndex && !hoursListState.isScrollInProgress
+                        val isCenter by remember {
+                            derivedStateOf {
+                                index == hoursListState.firstVisibleItemIndex &&
+                                    !hoursListState.isScrollInProgress
+                            }
+                        }
                         PickerItem(
                             text = hourValues[index].toString(),
                             isCenter = isCenter
@@ -204,8 +211,12 @@ fun DurationPicker(
                         Box(modifier = Modifier.height(ITEM_HEIGHT))
                     }
                     items(minuteValues.size) { index ->
-                        val centerIndex = minutesListState.firstVisibleItemIndex
-                        val isCenter = index == centerIndex && !minutesListState.isScrollInProgress
+                        val isCenter by remember {
+                            derivedStateOf {
+                                index == minutesListState.firstVisibleItemIndex &&
+                                    !minutesListState.isScrollInProgress
+                            }
+                        }
                         PickerItem(
                             text = minuteValues[index].toString().padStart(2, '0'),
                             isCenter = isCenter

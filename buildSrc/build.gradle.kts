@@ -1,5 +1,18 @@
 plugins {
     `kotlin-dsl`
+    idea
+}
+
+idea {
+    module {
+        // Mark Kotlin DSL generated sources so IntelliJ treats them as generated
+        // code and skips them in most inspections
+        generatedSourceDirs.addAll(files(
+            "build/generated-sources/kotlin-dsl-accessors/kotlin",
+            "build/generated-sources/kotlin-dsl-plugins/kotlin",
+            "build/generated-sources/kotlin-dsl-external-plugin-spec-builders/kotlin"
+        ))
+    }
 }
 
 repositories {

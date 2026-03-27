@@ -14,38 +14,12 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 XML_DIR="$PROJECT_DIR/inspect/xml"
 
-# Files to remove before counting (basenames without .xml).
-IGNORED=".descriptions"
-
-# Paths to filter out of exported XML (generated code, docs, etc.).
-# Each entry is matched against the <file> element inside <problem> blocks.
-FILTERED_PATHS=(
-    'buildSrc/build/'
-)
-
 if [[ ! -d "$XML_DIR" ]]; then
     mkdir -p "$XML_DIR"
 fi
 
-# --- Remove ignored files ---
-for name in $IGNORED; do
-    rm -f "$XML_DIR/$name.xml"
-done
-
-# --- Filter generated-code problems from XML ---
-# Removes entire <problem>…</problem> blocks whose <file> matches a filtered path.
-# Files that become empty (no remaining problems) are deleted.
-for f in "$XML_DIR"/*.xml; do
-    [[ -e "$f" ]] || continue
-    for path in "${FILTERED_PATHS[@]}"; do
-        # Use perl to remove <problem> blocks containing the filtered path in <file>
-        perl -0777 -i -pe "s|<problem>\s*\n\s*<file>[^<]*\Q$path\E[^<]*</file>.*?</problem>\s*\n?||gs" "$f"
-    done
-    # Delete the file if no <problem> blocks remain
-    if ! grep -q '<problem>' "$f"; then
-        rm -f "$f"
-    fi
-done
+# Remove metadata files that aren't inspection results.
+rm -f "$XML_DIR/.descriptions.xml"
 
 # --- Check for exported results ---
 ISSUE_FILES=("$XML_DIR"/*.xml)

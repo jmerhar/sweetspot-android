@@ -25,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -126,8 +127,8 @@ internal fun ApplianceDialog(
     onDismiss: () -> Unit
 ) {
     var name by rememberSaveable { mutableStateOf(appliance?.name ?: "") }
-    var pickerHours by rememberSaveable { mutableStateOf(appliance?.durationHours ?: 1) }
-    var pickerMinutes by rememberSaveable { mutableStateOf(appliance?.durationMinutes ?: 0) }
+    var pickerHours by rememberSaveable { mutableIntStateOf(appliance?.durationHours ?: 1) }
+    var pickerMinutes by rememberSaveable { mutableIntStateOf(appliance?.durationMinutes ?: 0) }
     var selectedIcon by rememberSaveable { mutableStateOf(appliance?.icon ?: "bolt") }
 
     AlertDialog(

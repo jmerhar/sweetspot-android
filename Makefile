@@ -1,4 +1,4 @@
-.PHONY: build build-release test debug debug-phone debug-watch install install-phone install-watch release clean
+.PHONY: build build-release test inspect debug debug-phone debug-watch install install-phone install-watch release clean
 
 ## Build debug APKs (phone + watch)
 build:
@@ -11,6 +11,10 @@ build-release:
 ## Run all unit tests
 test:
 	./gradlew test
+
+## Run Android Studio offline inspections
+inspect:
+	./bin/inspect.sh
 
 ## Build and install debug app on connected phone and watch
 debug: debug-phone debug-watch

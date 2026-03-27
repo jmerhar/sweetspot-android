@@ -4,10 +4,12 @@ build
 .externalNativeBuild
 .cxx
 
-# IDE
+# IDE (tracked selectively — see .idea/.gitignore for inner ignores)
 *.iml
-/.idea
 .gradle
+
+# Inspections
+/inspect
 
 # OS
 .DS_Store

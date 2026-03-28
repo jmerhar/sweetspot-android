@@ -371,7 +371,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * Re-fetches prices and recalculates the cheapest window from the results screen.
      *
      * If the API cooldown is still active, shows a "try again in X minutes" snackbar.
-     * Otherwise clears the zone cache, preserves the existing result, and re-runs
+     * Otherwise, clears the zone cache, preserves the existing result, and re-runs
      * the fetch-and-find flow.
      */
     fun onRefreshResults() {

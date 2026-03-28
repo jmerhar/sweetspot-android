@@ -22,12 +22,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -73,20 +71,20 @@ internal fun CountryPickerScreen(
     onBack: () -> Unit
 ) {
     var searchQuery by rememberSaveable { mutableStateOf("") }
-    val context = LocalContext.current
 
-    val sortedCountries = remember(countries) {
-        countries.sortedBy { context.getString(it.nameRes).lowercase() }
+    val countryNames = HashMap<String, String>(countries.size)
+    for (country in countries) {
+        countryNames[country.code] = stringResource(country.nameRes)
     }
 
-    val filteredCountries = remember(searchQuery, sortedCountries) {
-        if (searchQuery.isBlank()) {
-            sortedCountries
-        } else {
-            val query = searchQuery.lowercase()
-            sortedCountries.filter {
-                context.getString(it.nameRes).lowercase().contains(query) || it.code.lowercase().contains(query)
-            }
+    val sortedCountries = countries.sortedBy { countryNames[it.code]?.lowercase() }
+
+    val filteredCountries = if (searchQuery.isBlank()) {
+        sortedCountries
+    } else {
+        val query = searchQuery.lowercase()
+        sortedCountries.filter {
+            countryNames[it.code]?.lowercase()?.contains(query) == true || it.code.lowercase().contains(query)
         }
     }
 

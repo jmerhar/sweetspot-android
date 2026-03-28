@@ -67,7 +67,7 @@ for lang in $LANGUAGES; do
 done
 
 # Shared assets
-ASSETS="css/style.css js/main.js images/icon.svg robots.txt sitemap.xml CNAME"
+ASSETS="css/style.css js/main.js images/icon.svg favicon.svg robots.txt sitemap.xml CNAME"
 for asset in $ASSETS; do
     if [[ ! -f "$PUBLIC_DIR/$asset" ]]; then
         fail "Missing asset: $asset"

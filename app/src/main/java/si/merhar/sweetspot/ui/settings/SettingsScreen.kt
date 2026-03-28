@@ -1,3 +1,5 @@
+@file:Suppress("AssignedValueIsNeverRead")
+
 package si.merhar.sweetspot.ui.settings
 
 import androidx.activity.compose.BackHandler

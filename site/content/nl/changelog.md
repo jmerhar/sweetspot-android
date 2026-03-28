@@ -3,6 +3,11 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="4.0" date="28 maart 2026" >}}
+- Nieuwe applicatie-ID: `today.sweetspot` (voorheen `si.merhar.sweetspot`)
+- Websiteverbeteringen en sitevalidatie
+{{< /changelog >}}
+
 {{< changelog version="3.5" date="28 maart 2026" >}}
 - aWATTar toegevoegd als terugvalbron voor Oostenrijk en Duitsland
 - Valutanotatie aangepast aan regionale instellingen

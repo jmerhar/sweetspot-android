@@ -3,6 +3,11 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="4.0" date="28. marec 2026" >}}
+- Nov identifikator aplikacije: `today.sweetspot` (prej `si.merhar.sweetspot`)
+- Izboljšave spletne strani in validacija strani
+{{< /changelog >}}
+
 {{< changelog version="3.5" date="28. marec 2026" >}}
 - Dodan aWATTar kot rezervni vir podatkov za Avstrijo in Nemčijo
 - Prikaz cen v EUR prilagojen regionalnemu zapisu

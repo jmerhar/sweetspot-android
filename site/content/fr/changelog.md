@@ -3,6 +3,11 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="4.0" date="28 mars 2026" >}}
+- Nouvel identifiant d'application : `today.sweetspot` (auparavant `si.merhar.sweetspot`)
+- Améliorations du site web et validation du site
+{{< /changelog >}}
+
 {{< changelog version="3.5" date="28 mars 2026" >}}
 - Ajout d'aWATTar comme source de repli pour l'Autriche et l'Allemagne
 - Affichage des prix en euros adapté aux conventions locales

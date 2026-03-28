@@ -3,6 +3,11 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="4.0" date="28. März 2026" >}}
+- Neue Anwendungs-ID: `today.sweetspot` (zuvor `si.merhar.sweetspot`)
+- Websiteverbesserungen und Seitenvalidierung
+{{< /changelog >}}
+
 {{< changelog version="3.5" date="28. März 2026" >}}
 - aWATTar als Fallback-Datenquelle für Österreich und Deutschland hinzugefügt
 - Ländergerechte Währungsformatierung für EUR-Preise

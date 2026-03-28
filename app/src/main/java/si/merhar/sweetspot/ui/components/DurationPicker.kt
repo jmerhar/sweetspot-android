@@ -25,6 +25,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import si.merhar.sweetspot.R
+import si.merhar.sweetspot.util.formatDuration
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 private val ITEM_HEIGHT = 40.dp
@@ -117,16 +119,18 @@ fun DurationPicker(
     }
 
     val minutesText = minutes.toString().padStart(2, '0')
+    val resources = LocalContext.current.resources
     val durationPickerCd = stringResource(R.string.cd_duration_picker)
     val hoursCd = stringResource(R.string.cd_hours, hours)
     val minutesCd = stringResource(R.string.cd_minutes, minutesText)
+    val durationStateDesc = formatDuration(hours, minutes, resources)
 
     Column(
         modifier = modifier
             .fillMaxWidth()
             .semantics {
                 contentDescription = durationPickerCd
-                stateDescription = "${hours}h ${minutesText}m"
+                stateDescription = durationStateDesc
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

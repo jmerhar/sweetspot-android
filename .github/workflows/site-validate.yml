@@ -1,0 +1,24 @@
+name: Validate Site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'bin/site-validate.sh'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'bin/site-validate.sh'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+      - run: ./bin/site-validate.sh

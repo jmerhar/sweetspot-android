@@ -22,3 +22,7 @@ local.properties
 .env.*
 google-services.json
 credentials.json
+
+# Hugo
+site/public
+site/resources

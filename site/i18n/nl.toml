@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Ga naar inhoud"
+
+[nav_home]
+other = "Home"
+
+[nav_menu]
+other = "Menu"
+
+[nav_features]
+other = "Functies"
+
+[nav_faq]
+other = "FAQ"
+
+[nav_changelog]
+other = "Changelog"
+
+[nav_privacy]
+other = "Privacy"
+
+[lang_switch]
+other = "Taal wisselen"
+
+[hero_title]
+other = "Vind het goedkoopste moment om je apparaten te gebruiken"
+
+[hero_subtitle]
+other = "SweetSpot scant dynamische stroomprijzen in 30 Europese landen en vindt de optimale periode om geld te besparen. Open source en privacyvriendelijk."
+
+[download]
+other = "Ontdek het op Google Play"
+
+[learn_more]
+other = "Meer informatie"
+
+[features_title]
+other = "Functies"
+
+[feature_countries_title]
+other = "30 Europese landen"
+
+[feature_countries_desc]
+other = "Dekt 43 biedingszones in Europa, van Portugal tot Finland en van Noorwegen tot Griekenland."
+
+[feature_prices_title]
+other = "Actuele prijzen"
+
+[feature_prices_desc]
+other = "Day-ahead stroomprijzen van het ENTSO-E Transparency Platform, dagelijks bijgewerkt."
+
+[feature_algorithm_title]
+other = "Slim algoritme"
+
+[feature_algorithm_desc]
+other = "Een schuifvenster-algoritme vindt de goedkoopste aaneengesloten periode voor elke duur die je kiest."
+
+[feature_fallback_title]
+other = "Betrouwbare gegevens"
+
+[feature_fallback_desc]
+other = "Vijf gegevensbronnen met automatische terugval zorgen ervoor dat prijzen altijd beschikbaar zijn."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Horloge-app voor Pixel Watch en andere Wear OS 3+ apparaten. Bekijk prijzen op je pols."
+
+[feature_appliances_title]
+other = "Eigen apparaten"
+
+[feature_appliances_desc]
+other = "Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang met één tik."
+
+[feature_languages_title]
+other = "26 talen"
+
+[feature_languages_desc]
+other = "Beschikbaar in 26 Europese talen, van Bulgaars tot Zweeds."
+
+[feature_privacy_title]
+other = "Privacy voorop"
+
+[feature_privacy_desc]
+other = "Geen accounts, geen analytics, geen tracking. Prijzen worden lokaal op je apparaat opgeslagen."
+
+[feature_opensource_title]
+other = "Open source"
+
+[feature_opensource_desc]
+other = "De volledige broncode is beschikbaar op GitHub onder de GPL v3-licentie."
+
+[how_title]
+other = "Hoe het werkt"
+
+[step1_title]
+other = "Kies je apparaat"
+
+[step1_desc]
+other = "Kies een opgeslagen apparaat of stel een aangepaste duur in."
+
+[step2_title]
+other = "Prijzen scannen"
+
+[step2_desc]
+other = "SweetSpot haalt de nieuwste day-ahead stroomprijzen op voor jouw regio."
+
+[step3_title]
+other = "Bekijk het resultaat"
+
+[step3_desc]
+other = "Zie precies wanneer je moet starten, met een volledig kostenoverzicht per tijdslot."
+
+[cta_title]
+other = "Begin met besparen op stroom"
+
+[cta_desc]
+other = "Download SweetSpot via Google Play en vind het goedkoopste moment om je apparaten te gebruiken."
+
+[footer_tagline]
+other = "Vind het goedkoopste moment om je apparaten te gebruiken."
+
+[footer_app]
+other = "App"
+
+[footer_legal]
+other = "Juridisch"
+
+[footer_license]
+other = "Beschikbaar onder de GPL v3-licentie."
+
+[error_404]
+other = "De pagina die je zoekt bestaat niet."
+
+[back_home]
+other = "Terug naar home"

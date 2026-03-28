@@ -1,0 +1,101 @@
+{{ define "main" }}
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <img src="/images/icon.svg" alt="SweetSpot" class="hero-icon" width="96" height="96">
+    <h1>{{ i18n "hero_title" }}</h1>
+    <p class="hero-subtitle">{{ i18n "hero_subtitle" }}</p>
+    <div class="hero-cta">
+      <a href="https://play.google.com/store/apps/details?id=si.merhar.sweetspot" class="play-badge" rel="noopener"><img src="/images/badges/{{ .Lang }}.png" alt="{{ i18n "download" }}" height="40"></a>
+      <a href="#features" class="btn btn-secondary">{{ i18n "learn_more" }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="features">
+  <div class="section-inner">
+    <h2>{{ i18n "features_title" }}</h2>
+    <div class="features-grid">
+      <div class="card">
+        <div class="card-icon">&#127758;</div>
+        <h3>{{ i18n "feature_countries_title" }}</h3>
+        <p>{{ i18n "feature_countries_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9889;</div>
+        <h3>{{ i18n "feature_prices_title" }}</h3>
+        <p>{{ i18n "feature_prices_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128200;</div>
+        <h3>{{ i18n "feature_algorithm_title" }}</h3>
+        <p>{{ i18n "feature_algorithm_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128259;</div>
+        <h3>{{ i18n "feature_fallback_title" }}</h3>
+        <p>{{ i18n "feature_fallback_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#8986;</div>
+        <h3>{{ i18n "feature_wear_title" }}</h3>
+        <p>{{ i18n "feature_wear_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#127968;</div>
+        <h3>{{ i18n "feature_appliances_title" }}</h3>
+        <p>{{ i18n "feature_appliances_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#127760;</div>
+        <h3>{{ i18n "feature_languages_title" }}</h3>
+        <p>{{ i18n "feature_languages_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128274;</div>
+        <h3>{{ i18n "feature_privacy_title" }}</h3>
+        <p>{{ i18n "feature_privacy_desc" }}</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128187;</div>
+        <h3>{{ i18n "feature_opensource_title" }}</h3>
+        <p>{{ i18n "feature_opensource_desc" }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <div class="section-inner">
+    <h2>{{ i18n "how_title" }}</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>{{ i18n "step1_title" }}</h3>
+        <p>{{ i18n "step1_desc" }}</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>{{ i18n "step2_title" }}</h3>
+        <p>{{ i18n "step2_desc" }}</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>{{ i18n "step3_title" }}</h3>
+        <p>{{ i18n "step3_desc" }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Download CTA -->
+<section class="cta">
+  <div class="section-inner">
+    <h2>{{ i18n "cta_title" }}</h2>
+    <p>{{ i18n "cta_desc" }}</p>
+    <a href="https://play.google.com/store/apps/details?id=si.merhar.sweetspot" class="play-badge" rel="noopener"><img src="/images/badges/{{ .Lang }}.png" alt="{{ i18n "download" }}" height="40"></a>
+  </div>
+</section>
+{{ end }}

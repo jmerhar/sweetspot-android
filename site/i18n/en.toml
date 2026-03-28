@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Skip to content"
+
+[nav_home]
+other = "Home"
+
+[nav_menu]
+other = "Menu"
+
+[nav_features]
+other = "Features"
+
+[nav_faq]
+other = "FAQ"
+
+[nav_changelog]
+other = "Changelog"
+
+[nav_privacy]
+other = "Privacy"
+
+[lang_switch]
+other = "Switch language"
+
+[hero_title]
+other = "Find the cheapest time to run your appliances"
+
+[hero_subtitle]
+other = "SweetSpot scans dynamic electricity prices across 30 European countries and finds the optimal window to save you money. Open source and private."
+
+[download]
+other = "Get it on Google Play"
+
+[learn_more]
+other = "Learn more"
+
+[features_title]
+other = "Features"
+
+[feature_countries_title]
+other = "30 European Countries"
+
+[feature_countries_desc]
+other = "Covers 43 bidding zones across Europe, from Portugal to Finland and from Norway to Greece."
+
+[feature_prices_title]
+other = "Real-Time Prices"
+
+[feature_prices_desc]
+other = "Day-ahead electricity prices from the ENTSO-E Transparency Platform, updated daily."
+
+[feature_algorithm_title]
+other = "Smart Algorithm"
+
+[feature_algorithm_desc]
+other = "A sliding window algorithm finds the cheapest contiguous period for any duration you choose."
+
+[feature_fallback_title]
+other = "Reliable Data"
+
+[feature_fallback_desc]
+other = "Five data sources with automatic fallback ensure prices are always available."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Companion app for Pixel Watch and other Wear OS 3+ devices. Check prices from your wrist."
+
+[feature_appliances_title]
+other = "Custom Appliances"
+
+[feature_appliances_desc]
+other = "Save your appliances with custom names, icons, and durations for one-tap access."
+
+[feature_languages_title]
+other = "26 Languages"
+
+[feature_languages_desc]
+other = "Available in 26 European languages, from Bulgarian to Swedish."
+
+[feature_privacy_title]
+other = "Privacy First"
+
+[feature_privacy_desc]
+other = "No accounts, no analytics, no tracking. Prices are cached locally on your device."
+
+[feature_opensource_title]
+other = "Open Source"
+
+[feature_opensource_desc]
+other = "The full source code is available on GitHub under the GPL v3 license."
+
+[how_title]
+other = "How It Works"
+
+[step1_title]
+other = "Choose Your Appliance"
+
+[step1_desc]
+other = "Pick a saved appliance or set a custom duration for how long it needs to run."
+
+[step2_title]
+other = "Scan Prices"
+
+[step2_desc]
+other = "SweetSpot fetches the latest day-ahead electricity prices for your region."
+
+[step3_title]
+other = "Get the Best Time"
+
+[step3_desc]
+other = "See exactly when to start, with a full cost breakdown per time slot."
+
+[cta_title]
+other = "Start saving on electricity"
+
+[cta_desc]
+other = "Get SweetSpot on Google Play and find the cheapest time to run your appliances."
+
+[footer_tagline]
+other = "Find the cheapest time to run your appliances."
+
+[footer_app]
+other = "App"
+
+[footer_legal]
+other = "Legal"
+
+[footer_license]
+other = "Licensed under GPL v3."
+
+[error_404]
+other = "The page you're looking for doesn't exist."
+
+[back_home]
+other = "Back to home"

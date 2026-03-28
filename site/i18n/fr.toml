@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Aller au contenu"
+
+[nav_home]
+other = "Accueil"
+
+[nav_menu]
+other = "Menu"
+
+[nav_features]
+other = "Fonctionnalités"
+
+[nav_faq]
+other = "FAQ"
+
+[nav_changelog]
+other = "Historique"
+
+[nav_privacy]
+other = "Confidentialité"
+
+[lang_switch]
+other = "Changer de langue"
+
+[hero_title]
+other = "Trouvez le meilleur moment pour faire fonctionner vos appareils"
+
+[hero_subtitle]
+other = "SweetSpot analyse les prix dynamiques de l'électricité dans 30 pays européens et trouve le créneau optimal pour économiser. Open source et respectueux de la vie privée."
+
+[download]
+other = "Disponible sur Google Play"
+
+[learn_more]
+other = "En savoir plus"
+
+[features_title]
+other = "Fonctionnalités"
+
+[feature_countries_title]
+other = "30 pays européens"
+
+[feature_countries_desc]
+other = "Couvre 43 zones de prix en Europe, du Portugal à la Finlande et de la Norvège à la Grèce."
+
+[feature_prices_title]
+other = "Prix en temps réel"
+
+[feature_prices_desc]
+other = "Prix de l'électricité day-ahead de la plateforme de transparence ENTSO-E, mis à jour quotidiennement."
+
+[feature_algorithm_title]
+other = "Algorithme intelligent"
+
+[feature_algorithm_desc]
+other = "Un algorithme intelligent trouve la période contiguë la moins chère pour toute durée choisie."
+
+[feature_fallback_title]
+other = "Données fiables"
+
+[feature_fallback_desc]
+other = "Cinq sources de données avec basculement automatique garantissent que les prix sont toujours disponibles."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Application compagnon pour Pixel Watch et autres appareils Wear OS 3+. Consultez les prix depuis votre poignet."
+
+[feature_appliances_title]
+other = "Appareils personnalisés"
+
+[feature_appliances_desc]
+other = "Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide."
+
+[feature_languages_title]
+other = "26 langues"
+
+[feature_languages_desc]
+other = "Disponible en 26 langues européennes, du bulgare au suédois."
+
+[feature_privacy_title]
+other = "Respect de la vie privée"
+
+[feature_privacy_desc]
+other = "Pas de comptes, aucune collecte de données, aucun suivi. Les prix sont mis en cache localement sur votre appareil."
+
+[feature_opensource_title]
+other = "Open source"
+
+[feature_opensource_desc]
+other = "Le code source complet est disponible sur GitHub sous licence GPL v3."
+
+[how_title]
+other = "Comment ça marche"
+
+[step1_title]
+other = "Choisissez votre appareil"
+
+[step1_desc]
+other = "Sélectionnez un appareil enregistré ou définissez une durée personnalisée."
+
+[step2_title]
+other = "Analysez les prix"
+
+[step2_desc]
+other = "SweetSpot récupère les derniers prix day-ahead de l'électricité pour votre région."
+
+[step3_title]
+other = "Obtenez le meilleur créneau"
+
+[step3_desc]
+other = "Voyez exactement quand démarrer, avec un détail complet des coûts par créneau horaire."
+
+[cta_title]
+other = "Commencez à économiser sur l'électricité"
+
+[cta_desc]
+other = "Téléchargez SweetSpot sur Google Play et trouvez le meilleur moment pour faire fonctionner vos appareils."
+
+[footer_tagline]
+other = "Trouvez le meilleur moment pour faire fonctionner vos appareils."
+
+[footer_app]
+other = "Application"
+
+[footer_legal]
+other = "Mentions légales"
+
+[footer_license]
+other = "Sous licence GPL v3."
+
+[error_404]
+other = "La page que vous recherchez n'existe pas."
+
+[back_home]
+other = "Retour à l'accueil"

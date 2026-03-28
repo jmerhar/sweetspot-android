@@ -17,6 +17,7 @@ make install-phone                # Install release APK on connected phone
 make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
 make inspect                      # Run Android Studio offline inspections
+make site-validate                # Validate Hugo site (build, pages, links, i18n)
 make clean                        # Remove all build outputs
 ```
 
@@ -24,6 +25,7 @@ A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 - **`bin/inspect.sh`** — Runs Android Studio offline code inspections. Results are written as XML files to `inspect/xml/` (one file per inspection category). Called by `make inspect`.
+- **`bin/site-validate.sh`** — Validates the Hugo site: builds, checks expected pages/assets exist, verifies internal links resolve, checks page sizes, and ensures i18n key parity across languages. Called by `make site-validate`.
 
 ### Installing the Wear OS app
 
@@ -221,6 +223,117 @@ The form view (`DurationInput` card) contains:
 ## Post-Change Checklist
 
 - After any feature, refactor, or other significant change, check if `README.md` needs updating (features list, test count, usage instructions, etc.)
+- After any changes to the website (`site/`), run `make site-validate` to check for broken pages, links, and missing translations
+- After adding a new app language, add it to the website too (see "Adding a Website Language" below)
+
+## Website (sweetspot.today)
+
+The `site/` directory contains a Hugo static site deployed to GitHub Pages at `sweetspot.today`. It deploys automatically via `.github/workflows/deploy-site.yml` on pushes to `main` that change `site/**`.
+
+```bash
+make site                         # Start local Hugo server and open in browser
+hugo --source site --minify       # Build for production into site/public/
+```
+
+### Structure
+
+```
+site/
+  hugo.toml                        # Hugo config: languages, base URL, params
+  static/
+    CNAME                          # Custom domain: sweetspot.today
+    css/style.css                  # All styles (single file)
+    js/main.js                     # Nav toggle, language switcher
+    images/
+      icon.svg                     # App icon (converted from Android vector)
+      badges/                      # Official Google Play badges (per language)
+        en.png, nl.png, de.png, fr.png, sl.png
+  layouts/
+    _default/
+      baseof.html                  # Base template: <html>, <head>, nav, footer
+      single.html                  # Single page layout (privacy, faq, changelog)
+      list.html                    # List layout (unused but required)
+    index.html                     # Landing page template
+    404.html                       # Custom 404
+    partials/
+      head.html                    # <head> with SEO meta, OG tags, hreflang
+      nav.html                     # Sticky navigation bar
+      footer.html                  # Dark footer
+      language-switcher.html       # Dropdown using .AllTranslations
+  i18n/
+    en.toml, nl.toml, de.toml, fr.toml, sl.toml  # UI strings per language
+  content/
+    en/                            # English content (served at root /)
+    nl/                            # Dutch content (served at /nl/)
+    de/                            # German content (served at /de/)
+    fr/                            # French content (served at /fr/)
+    sl/                            # Slovenian content (served at /sl/)
+```
+
+Each content directory contains: `_index.md` (landing page), `privacy.md`, `changelog.md`, `faq.md`.
+
+### i18n Approach
+
+Two layers of translation:
+
+1. **`i18n/*.toml`** — UI strings shared across templates (nav labels, button text, section headings, feature descriptions). Used via `{{ i18n "key" }}`.
+2. **`content/<lang>/*.md`** — Page-specific prose (FAQ answers, privacy policy, changelog entries). Each language gets its own content directory configured in `hugo.toml` via `contentDir`.
+
+English is the default language served at the root (`/`, `/privacy/`, `/faq/`). Other languages are under their prefix (`/nl/`, `/de/privacy/`, etc.).
+
+### Google Play Badges
+
+The landing page uses official Google Play badge images from Google, stored locally in `site/static/images/badges/`. The template selects the correct badge per language via `{{ .Lang }}`:
+
+```html
+<img src="/images/badges/{{ .Lang }}.png" alt="{{ i18n "download" }}" height="40">
+```
+
+Badge images are downloaded from Google's official URL:
+```
+https://play.google.com/intl/en_us/badges/static/images/badges/{lang}_badge_web_generic.png
+```
+
+Where `{lang}` is the two-letter language code (en, nl, de, fr, sl, etc.).
+
+### Adding a Website Language
+
+When adding a new language to the website:
+
+1. **Add language to `site/hugo.toml`**: add a `[languages.xx]` block with `weight`, `languageName`, and `contentDir = "content/xx"`.
+2. **Create `site/i18n/xx.toml`**: translate all UI strings (copy `en.toml` as template, ~40 keys).
+3. **Create `site/content/xx/`**: translate all 4 content pages (`_index.md`, `privacy.md`, `changelog.md`, `faq.md`). Changelog versions and dates stay the same, only descriptions are translated.
+4. **Download Google Play badge**: `curl -sL "https://play.google.com/intl/en_us/badges/static/images/badges/xx_badge_web_generic.png" -o site/static/images/badges/xx.png`. The badge includes localized "Get it on Google Play" text from Google.
+5. **Verify**: run `make site` and check the new language appears in the language switcher and all pages render correctly.
+
+### Design
+
+- **Colours**: primary blue `#4A90D9`, green `#27AE60`, purple `#9B59B6`, yellow `#F1C40F`
+- **Light palette**: bg `#F8F9FF`, surface `#FFFFFF`, text `#191C20`, muted `#44474E`
+- **Footer**: dark bg `#111318`, text `#E1E2E9`
+- **Layout**: max-width 1100px, CSS Grid, responsive at 768px and 1024px
+- **Typography**: system font stack, line-height 1.6
+
+### Deployment
+
+GitHub Actions (`.github/workflows/deploy-site.yml`) triggers on pushes to `main` that change `site/**`. Builds with Hugo extended + `--minify`, deploys to GitHub Pages. Custom domain via `CNAME` file + DNS A records pointing to GitHub Pages IPs (185.199.108–111.153).
+
+### Updating the Changelog
+
+When releasing a new app version, add a new entry at the **top** of `site/content/<lang>/changelog.md` for each language:
+
+```html
+<div class="changelog-entry">
+
+## <span class="version-badge">vX.Y</span> <span class="version-date">DD. month YYYY</span>
+
+- Change description
+- Another change
+
+</div>
+```
+
+Date format varies by language (e.g., "March 28, 2026" in English, "28. marec 2026" in Slovenian).
 
 ## Commit Messages
 

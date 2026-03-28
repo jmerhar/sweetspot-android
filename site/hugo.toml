@@ -1,0 +1,32 @@
+baseURL = "https://sweetspot.today/"
+title = "SweetSpot"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+
+[languages]
+  [languages.en]
+    weight = 1
+    languageName = "English"
+    contentDir = "content/en"
+  [languages.nl]
+    weight = 2
+    languageName = "Nederlands"
+    contentDir = "content/nl"
+  [languages.de]
+    weight = 3
+    languageName = "Deutsch"
+    contentDir = "content/de"
+  [languages.fr]
+    weight = 4
+    languageName = "Français"
+    contentDir = "content/fr"
+  [languages.sl]
+    weight = 5
+    languageName = "Slovenščina"
+    contentDir = "content/sl"
+
+[params]
+  description = "Find the cheapest time to run your appliances"
+
+[taxonomies]

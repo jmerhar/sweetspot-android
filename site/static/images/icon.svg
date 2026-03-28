@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108">
+  <!-- Background -->
+  <rect width="108" height="108" rx="24" fill="#F5F7FA"/>
+  <!-- Clock face circle -->
+  <circle cx="54" cy="54" r="28" fill="#4A90D9" stroke="#357ABD" stroke-width="3"/>
+  <!-- Hour tick marks -->
+  <line x1="54" y1="28" x2="54" y2="33" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <line x1="80" y1="54" x2="75" y2="54" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <line x1="54" y1="80" x2="54" y2="75" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <line x1="28" y1="54" x2="33" y2="54" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <!-- Lightning bolt -->
+  <path d="M56.8,36 L46.3,54 L52.3,54 L49.3,72 L61.3,45 L55.3,45 Z" fill="#F1C40F" stroke="#E67E22" stroke-width="1" stroke-linejoin="round"/>
+</svg>

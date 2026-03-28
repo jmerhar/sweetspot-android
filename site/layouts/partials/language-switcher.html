@@ -1,0 +1,15 @@
+<div class="lang-switcher">
+  <button class="lang-btn" aria-label="{{ i18n "lang_switch" }}" aria-expanded="false">
+    {{ .Lang | upper }}
+    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <ul class="lang-dropdown" role="menu">
+    {{ range .AllTranslations }}
+    <li role="menuitem">
+      <a href="{{ .RelPermalink }}"{{ if eq $.Lang .Lang }} aria-current="true"{{ end }}>
+        {{ .Language.LanguageName }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</div>

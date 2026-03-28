@@ -45,3 +45,5 @@ Domain registered on Namecheap. Hosted on GitHub Pages from `site/` folder in th
 - [ ] Static site generator vs plain HTML/CSS
 - [ ] GitHub Pages from `site/` folder via Actions workflow
 - [ ] Custom domain DNS setup (CNAME record pointing to GitHub Pages)
+- [ ] Add Google Analytics
+- [ ] Consider enabling Cloudflare protection — pros and cons?

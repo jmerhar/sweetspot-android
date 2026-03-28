@@ -1,0 +1,29 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/images/icon.svg" alt="" width="28" height="28">
+        <span>SweetSpot</span>
+      </div>
+      <p>{{ i18n "footer_tagline" }}</p>
+    </div>
+    <div class="footer-col">
+      <h4>{{ i18n "footer_app" }}</h4>
+      <ul>
+        <li><a href="{{ .Site.Home.RelPermalink }}#features">{{ i18n "nav_features" }}</a></li>
+        <li><a href="{{ relLangURL "changelog/" }}">{{ i18n "nav_changelog" }}</a></li>
+        <li><a href="{{ relLangURL "faq/" }}">{{ i18n "nav_faq" }}</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>{{ i18n "footer_legal" }}</h4>
+      <ul>
+        <li><a href="{{ relLangURL "privacy/" }}">{{ i18n "nav_privacy" }}</a></li>
+        <li><a href="https://github.com/jmerhar/sweetspot-android" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {{ now.Year }} SweetSpot. {{ i18n "footer_license" }}</p>
+  </div>
+</footer>

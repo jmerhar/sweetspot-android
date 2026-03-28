@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Zum Inhalt springen"
+
+[nav_home]
+other = "Startseite"
+
+[nav_menu]
+other = "Menü"
+
+[nav_features]
+other = "Funktionen"
+
+[nav_faq]
+other = "FAQ"
+
+[nav_changelog]
+other = "Änderungsprotokoll"
+
+[nav_privacy]
+other = "Datenschutz"
+
+[lang_switch]
+other = "Sprache wechseln"
+
+[hero_title]
+other = "Finde den günstigsten Zeitpunkt für deine Geräte"
+
+[hero_subtitle]
+other = "SweetSpot scannt dynamische Strompreise in 30 europäischen Ländern und findet das optimale Zeitfenster, um Geld zu sparen. Open Source und datenschutzfreundlich."
+
+[download]
+other = "Jetzt bei Google Play"
+
+[learn_more]
+other = "Mehr erfahren"
+
+[features_title]
+other = "Funktionen"
+
+[feature_countries_title]
+other = "30 europäische Länder"
+
+[feature_countries_desc]
+other = "Deckt 43 Gebotszonen in Europa ab, von Portugal bis Finnland und von Norwegen bis Griechenland."
+
+[feature_prices_title]
+other = "Aktuelle Preise"
+
+[feature_prices_desc]
+other = "Day-Ahead-Strompreise von der ENTSO-E Transparency Platform, täglich aktualisiert."
+
+[feature_algorithm_title]
+other = "Cleverer Algorithmus"
+
+[feature_algorithm_desc]
+other = "Ein intelligenter Algorithmus findet die günstigste zusammenhängende Zeitspanne für jede gewählte Dauer."
+
+[feature_fallback_title]
+other = "Zuverlässige Daten"
+
+[feature_fallback_desc]
+other = "Fünf Datenquellen mit automatischem Fallback stellen sicher, dass Preise immer verfügbar sind."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Begleit-App für Pixel Watch und andere Wear OS 3+ Geräte. Preise direkt am Handgelenk."
+
+[feature_appliances_title]
+other = "Eigene Geräte"
+
+[feature_appliances_desc]
+other = "Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff."
+
+[feature_languages_title]
+other = "26 Sprachen"
+
+[feature_languages_desc]
+other = "Verfügbar in 26 europäischen Sprachen, von Bulgarisch bis Schwedisch."
+
+[feature_privacy_title]
+other = "Deine Daten bleiben privat"
+
+[feature_privacy_desc]
+other = "Keine Konten, keine Nutzeranalyse, kein Tracking. Preise werden lokal auf dem Gerät gespeichert."
+
+[feature_opensource_title]
+other = "Open Source"
+
+[feature_opensource_desc]
+other = "Der vollständige Quellcode ist auf GitHub unter der GPL v3-Lizenz verfügbar."
+
+[how_title]
+other = "So funktioniert es"
+
+[step1_title]
+other = "Wähle dein Gerät"
+
+[step1_desc]
+other = "Wähle ein gespeichertes Gerät oder stelle eine individuelle Laufzeit ein."
+
+[step2_title]
+other = "Preise scannen"
+
+[step2_desc]
+other = "SweetSpot ruft die aktuellen Day-Ahead-Strompreise für deine Region ab."
+
+[step3_title]
+other = "Beste Zeit erfahren"
+
+[step3_desc]
+other = "Sieh genau, wann du starten solltest, mit einer vollständigen Kostenaufschlüsselung pro Zeitslot."
+
+[cta_title]
+other = "Jetzt Stromkosten sparen"
+
+[cta_desc]
+other = "Lade SweetSpot bei Google Play herunter und finde den günstigsten Zeitpunkt für deine Geräte."
+
+[footer_tagline]
+other = "Finde den günstigsten Zeitpunkt für deine Geräte."
+
+[footer_app]
+other = "App"
+
+[footer_legal]
+other = "Rechtliches"
+
+[footer_license]
+other = "Lizenziert unter GPL v3."
+
+[error_404]
+other = "Die Seite, die du suchst, existiert nicht."
+
+[back_home]
+other = "Zurück zur Startseite"

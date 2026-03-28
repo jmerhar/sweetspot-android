@@ -1,4 +1,4 @@
-.PHONY: help build build-release test inspect debug debug-phone debug-watch install install-phone install-watch release clean
+.PHONY: help build build-release test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -39,3 +39,9 @@ release: ## Bump version, build, tag, push, and create GitHub Release
 
 clean: ## Remove all build outputs
 	./gradlew clean
+
+site: ## Start local Hugo server and open website in browser
+	open http://localhost:1313/ && hugo server --source site --baseURL http://localhost:1313/
+
+site-validate: ## Validate Hugo site: build, check pages, links, and assets
+	./bin/site-validate.sh

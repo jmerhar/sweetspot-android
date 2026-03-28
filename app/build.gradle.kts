@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "si.merhar.sweetspot"
+    namespace = "today.sweetspot"
 
     defaultConfig {
         minSdk = 26

@@ -119,9 +119,9 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 
 Three Gradle modules:
 
-- **`:shared`** — Android Library (`si.merhar.sweetspot.shared`). Data, model, and util layers used by both phone and watch. Source: `shared/src/main/java/si/merhar/sweetspot/`.
-- **`:app`** — Phone app (`si.merhar.sweetspot`). UI, ViewModel, and Data Layer push. Source: `app/src/main/java/si/merhar/sweetspot/`.
-- **`:wear`** — Wear OS app (`si.merhar.sweetspot.wear`). Watch UI, ViewModel, and Data Layer read. Source: `wear/src/main/java/si/merhar/sweetspot/wear/`.
+- **`:shared`** — Android Library (`today.sweetspot.shared`). Data, model, and util layers used by both phone and watch. Source: `shared/src/main/java/today/sweetspot/`.
+- **`:app`** — Phone app (`today.sweetspot`). UI, ViewModel, and Data Layer push. Source: `app/src/main/java/today/sweetspot/`.
+- **`:wear`** — Wear OS app (`today.sweetspot.wear`). Watch UI, ViewModel, and Data Layer read. Source: `wear/src/main/java/today/sweetspot/wear/`.
 
 **Data flow (phone):** Duration picker (hours + minutes) → `PriceRepository` (cache or API) → `findCheapestWindow()` sliding window → `UiState` update → Compose UI reacts.
 

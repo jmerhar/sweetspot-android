@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "si.merhar.sweetspot.shared"
+    namespace = "today.sweetspot.shared"
     compileSdk = 36
 
     defaultConfig {

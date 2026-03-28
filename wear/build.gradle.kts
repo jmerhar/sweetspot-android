@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "si.merhar.sweetspot.wear"
+    namespace = "today.sweetspot.wear"
 
     defaultConfig {
         minSdk = 30

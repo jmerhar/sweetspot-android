@@ -4,11 +4,11 @@
 -keepclasseswithmembers class kotlinx.serialization.json.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
--keep,includedescriptorclasses class si.merhar.sweetspot.**$$serializer { *; }
--keepclassmembers class si.merhar.sweetspot.** {
+-keep,includedescriptorclasses class today.sweetspot.**$$serializer { *; }
+-keepclassmembers class today.sweetspot.** {
     *** Companion;
 }
--keepclasseswithmembers class si.merhar.sweetspot.** {
+-keepclasseswithmembers class today.sweetspot.** {
     kotlinx.serialization.KSerializer serializer(...);
 }
 

@@ -37,7 +37,7 @@ Aplikacija za uro zahteva Wear OS 3 ali novejši (Pixel Watch, Samsung Galaxy Wa
 {{< /faq >}}
 
 {{< faq question="Koliko stane SweetSpot?" >}}
-SweetSpot je na voljo na [Google Play](https://play.google.com/store/apps/details?id=si.merhar.sweetspot). Izvorna koda je na voljo na [GitHubu](https://github.com/jmerhar/sweetspot-android) pod licenco GPL v3.
+SweetSpot je na voljo na [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Izvorna koda je na voljo na [GitHubu](https://github.com/jmerhar/sweetspot-android) pod licenco GPL v3.
 {{< /faq >}}
 
 {{< faq question="Kateri jeziki so podprti?" >}}

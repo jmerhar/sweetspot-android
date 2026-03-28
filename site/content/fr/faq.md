@@ -37,7 +37,7 @@ L'application montre nécessite Wear OS 3 ou ultérieur (Pixel Watch, Samsung Ga
 {{< /faq >}}
 
 {{< faq question="Combien coûte SweetSpot ?" >}}
-SweetSpot est disponible sur [Google Play](https://play.google.com/store/apps/details?id=si.merhar.sweetspot). Le code source est disponible sur [GitHub](https://github.com/jmerhar/sweetspot-android) sous licence GPL v3.
+SweetSpot est disponible sur [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Le code source est disponible sur [GitHub](https://github.com/jmerhar/sweetspot-android) sous licence GPL v3.
 {{< /faq >}}
 
 {{< faq question="Quelles langues sont prises en charge ?" >}}

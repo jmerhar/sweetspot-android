@@ -20,7 +20,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "si.merhar.sweetspot"
+        applicationId = "today.sweetspot"
         targetSdk = 36
         versionCode = 14
         versionName = "3.5"

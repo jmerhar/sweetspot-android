@@ -32,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.BreakdownSlot
+import si.merhar.sweetspot.util.formatPrice
 import si.merhar.sweetspot.util.shortTimeFormatter
 import kotlin.math.roundToLong
 
@@ -98,7 +99,7 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                                 style = MaterialTheme.typography.bodyMedium
                             )
                             Text(
-                                text = "\u20AC ${String.format("%.4f", slot.cost)}",
+                                text = formatPrice(slot.cost, 4),
                                 style = MaterialTheme.typography.bodyMedium
                             )
                         }

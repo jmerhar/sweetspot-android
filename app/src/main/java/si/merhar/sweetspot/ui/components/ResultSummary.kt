@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.WindowResult
+import si.merhar.sweetspot.util.formatPrice
 import si.merhar.sweetspot.util.formatRelative
 import si.merhar.sweetspot.util.shortTimeFormatter
 import java.time.ZoneId
@@ -59,12 +60,12 @@ fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier =
         ) {
             SummaryCard(
                 label = stringResource(R.string.result_total_cost),
-                value = "\u20AC ${String.format("%.4f", result.totalCost)}",
+                value = formatPrice(result.totalCost, 4),
                 modifier = Modifier.weight(1f)
             )
             SummaryCard(
                 label = stringResource(R.string.result_avg_price),
-                value = "\u20AC ${String.format("%.4f", result.avgPrice)}${stringResource(R.string.result_per_kwh)}",
+                value = "${formatPrice(result.avgPrice, 4)}${stringResource(R.string.result_per_kwh)}",
                 modifier = Modifier.weight(1f)
             )
         }

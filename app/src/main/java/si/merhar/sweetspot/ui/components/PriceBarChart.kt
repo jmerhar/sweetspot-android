@@ -30,6 +30,7 @@ import si.merhar.sweetspot.model.WindowResult
 import si.merhar.sweetspot.ui.theme.LocalBarNegativeColor
 import si.merhar.sweetspot.ui.theme.LocalBarNormalColor
 import si.merhar.sweetspot.ui.theme.LocalBarOptimalColor
+import si.merhar.sweetspot.util.formatPrice
 import si.merhar.sweetspot.util.shortTimeFormatter
 import androidx.compose.ui.tooling.preview.Preview
 import java.time.ZonedDateTime
@@ -97,7 +98,7 @@ fun PriceBarChart(
             val anyOptimal = slots.any { it.time.toEpochSecond() in optimalTimes }
             val rowBackground = if (anyOptimal) highlightColor else Color.Transparent
             val timeText = hourTime.format(shortTimeFormatter)
-            val priceText = "\u20AC ${String.format("%.3f", avgPrice)}"
+            val priceText = formatPrice(avgPrice, 3)
             val rowDescription = if (anyOptimal) "$timeText, $priceText, $cheapestWindowCd" else "$timeText, $priceText"
 
             // Build a fixed-size list of slots for this hour, with nulls for missing sub-slots.

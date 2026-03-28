@@ -39,7 +39,7 @@ interface PriceCache {
      * Checks whether enough time has passed since the last API fetch.
      *
      * Cooldown is global (not per-key) since multiple zones may share the
-     * same upstream API and we want to respect its rate limits.
+     * same upstream API, and we want to respect its rate limits.
      *
      * @param cooldownMs Minimum interval between fetches in milliseconds.
      * @return `true` if at least [cooldownMs] have elapsed since the last fetch.

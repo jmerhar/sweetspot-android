@@ -3,7 +3,7 @@ package si.merhar.sweetspot.util
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import java.util.Locale
+
 
 class FormatUtilsTest {
 

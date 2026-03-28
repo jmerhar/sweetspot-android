@@ -1,5 +1,6 @@
 package si.merhar.sweetspot.data.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.Request
@@ -18,14 +19,14 @@ internal data class AwattarResponse(val data: List<AwattarEntry>)
 /**
  * A single price entry from the aWATTar API.
  *
- * @property start_timestamp Start of the slot as milliseconds since epoch.
- * @property end_timestamp End of the slot as milliseconds since epoch.
+ * @property startTimestamp Start of the slot as milliseconds since epoch.
+ * @property endTimestamp End of the slot as milliseconds since epoch.
  * @property marketprice Day-ahead price in EUR/MWh.
  */
 @Serializable
 internal data class AwattarEntry(
-    val start_timestamp: Long,
-    val end_timestamp: Long,
+    @SerialName("start_timestamp") val startTimestamp: Long,
+    @SerialName("end_timestamp") val endTimestamp: Long,
     val marketprice: Double
 )
 
@@ -96,8 +97,8 @@ class AwattarApi(zoneId: String) : PriceFetcher {
         val parsed = json.decodeFromString<AwattarResponse>(raw)
 
         return parsed.data.map { entry ->
-            val time = Instant.ofEpochMilli(entry.start_timestamp).atZone(timeZoneId)
-            val durationMinutes = ((entry.end_timestamp - entry.start_timestamp) / 60_000).toInt()
+            val time = Instant.ofEpochMilli(entry.startTimestamp).atZone(timeZoneId)
+            val durationMinutes = ((entry.endTimestamp - entry.startTimestamp) / 60_000).toInt()
             PriceSlot(time = time, price = entry.marketprice / 1000.0, durationMinutes = durationMinutes)
         }.sortedBy { it.time }
     }

@@ -1,5 +1,6 @@
 package si.merhar.sweetspot.data.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.Request
@@ -11,16 +12,16 @@ import java.time.format.DateTimeFormatter
 /**
  * JSON response from the Energy-Charts day-ahead price API.
  *
- * Prices are in EUR/MWh. The [unix_seconds] and [price] arrays are parallel —
+ * Prices are in EUR/MWh. The [unixSeconds] and [price] arrays are parallel —
  * index `i` in both arrays represents the same time slot. Null entries in [price]
  * indicate gaps (no auction result) and are filtered out during parsing.
  *
- * @property unix_seconds Unix timestamps (seconds) for the start of each slot.
+ * @property unixSeconds Unix timestamps (seconds) for the start of each slot.
  * @property price Day-ahead prices in EUR/MWh, with `null` for gaps.
  */
 @Serializable
 internal data class EnergyChartsResponse(
-    val unix_seconds: List<Long>,
+    @SerialName("unix_seconds") val unixSeconds: List<Long>,
     val price: List<Double?>
 )
 
@@ -95,19 +96,19 @@ class EnergyChartsApi(zoneId: String) : PriceFetcher {
     fun parse(raw: String, timeZoneId: ZoneId): List<PriceSlot> {
         val parsed = json.decodeFromString<EnergyChartsResponse>(raw)
 
-        require(parsed.unix_seconds.size == parsed.price.size) {
-            "Mismatched array lengths: ${parsed.unix_seconds.size} timestamps vs ${parsed.price.size} prices"
+        require(parsed.unixSeconds.size == parsed.price.size) {
+            "Mismatched array lengths: ${parsed.unixSeconds.size} timestamps vs ${parsed.price.size} prices"
         }
 
-        if (parsed.unix_seconds.isEmpty()) return emptyList()
+        if (parsed.unixSeconds.isEmpty()) return emptyList()
 
-        val durationMinutes = if (parsed.unix_seconds.size >= 2) {
-            ((parsed.unix_seconds[1] - parsed.unix_seconds[0]) / 60).toInt()
+        val durationMinutes = if (parsed.unixSeconds.size >= 2) {
+            ((parsed.unixSeconds[1] - parsed.unixSeconds[0]) / 60).toInt()
         } else {
             60 // Default to hourly for single-entry responses
         }
 
-        return parsed.unix_seconds.zip(parsed.price)
+        return parsed.unixSeconds.zip(parsed.price)
             .filter { (_, price) -> price != null }
             .map { (epochSecond, price) ->
                 val time = Instant.ofEpochSecond(epochSecond).atZone(timeZoneId)

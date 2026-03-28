@@ -16,12 +16,14 @@ make debug-watch                  # Install debug app on connected watch
 make install-phone                # Install release APK on connected phone
 make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
+make inspect                      # Run Android Studio offline inspections
 make clean                        # Remove all build outputs
 ```
 
 A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
+- **`bin/inspect.sh`** — Runs Android Studio offline code inspections. Results are written as XML files to `inspect/xml/` (one file per inspection category). Called by `make inspect`.
 
 ### Installing the Wear OS app
 

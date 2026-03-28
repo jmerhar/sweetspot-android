@@ -46,7 +46,7 @@ object DataSources {
      * Declarative registry of data sources and their zone coverage.
      *
      * List order defines the default fallback priority: ENTSO-E first (covers all
-     * zones), then specialized sources (EnergyZero for NL, Spot-Hinta for Nordic/Baltic),
+     * zones), then specialised sources (EnergyZero for NL, Spot-Hinta for Nordic/Baltic),
      * then broader fallbacks (Energy-Charts, aWATTar). Adding a new source is a single
      * line — no intersection logic required.
      */

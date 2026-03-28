@@ -23,8 +23,12 @@ repositories {
 
 dependencies {
     // Keep these versions in sync with gradle/libs.versions.toml
+    //noinspection UseTomlInstead
     implementation("com.android.tools.build:gradle:9.0.1")
+    //noinspection UseTomlInstead
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.20")
+    //noinspection UseTomlInstead
     implementation("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.3.20")
+    //noinspection UseTomlInstead
     implementation("org.jetbrains.kotlin:kotlin-serialization:2.3.20")
 }

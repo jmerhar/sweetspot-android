@@ -47,7 +47,7 @@ import kotlin.math.abs
  * When all prices are non-negative, bars grow left-to-right from zero.
  * When negative prices exist, the zero axis shifts right proportionally
  * so that negative bars grow leftward and positive bars grow rightward.
- * Negative bars use a distinct color to highlight that the price is below zero.
+ * Negative bars use a distinct colour to highlight that the price is below zero.
  *
  * @param prices Price slots to display (any resolution, sorted chronologically).
  * @param result Optional cheapest-window result whose slots are highlighted.

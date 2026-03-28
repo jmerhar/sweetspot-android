@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-/** Rounded card displaying an error [message] using the theme's error container colors. */
+/** Rounded card displaying an error [message] using the theme's error container colours. */
 @Composable
 fun ErrorBox(message: String, modifier: Modifier = Modifier) {
     Card(

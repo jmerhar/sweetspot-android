@@ -24,6 +24,7 @@ class CheapestWindowFinderTest {
     }
 
     /** Creates 15-minute price slots starting at [hour]:[minute]. */
+    @Suppress("SameParameterValue")
     private fun prices15mAt(hour: Int, minute: Int = 0, vararg prices: Double): List<PriceSlot> {
         val base = ZonedDateTime.of(2025, 6, 15, hour, minute, 0, 0, timeZone)
         return prices.mapIndexed { i, price ->

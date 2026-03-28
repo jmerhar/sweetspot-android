@@ -38,14 +38,14 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 
 - **30 European countries** — 43 bidding zones via ENTSO-E (15-minute resolution), with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi for Nordic/Baltic zones, Energy-Charts for 15 European zones, and aWATTar for Austria and Germany
 - **Country auto-detection** — detects your country on first launch from SIM, network, or timezone (no permissions required)
-- **Duration scroll picker** — two-column wheel for hours and minutes with snap behavior
+- **Duration scroll picker** — two-column wheel for hours and minutes with snap behaviour
 - **Quick-duration buttons** — 1h–6h chips for common durations
 - **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
-- **26 languages** — localized UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Montenegrin, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
+- **26 languages** — localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Montenegrin, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
 - **Wear OS companion** — tap an appliance on your watch to see cheapest start/end times
 - **Automatic appliance sync** — appliances and zone settings sync from phone to watch via Wearable Data Layer
-- Material 3 with dynamic color theming and dark mode
+- Material 3 with dynamic colour theming and dark mode
 - Configurable timezone (defaults to the selected zone's timezone)
 - Offline-capable with smart price caching (both phone and watch)
 

@@ -145,7 +145,7 @@ fun DurationPicker(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
-            // Highlight indicator behind center selection
+            // Highlight indicator behind centre selection
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.7f)
@@ -171,7 +171,7 @@ fun DurationPicker(
                         .height(ITEM_HEIGHT * VISIBLE_ITEMS)
                         .semantics { contentDescription = hoursCd }
                 ) {
-                    // Top spacer items so first real item can be centered
+                    // Top spacer items so first real item can be centred
                     items(spacerCount) {
                         Box(modifier = Modifier.height(ITEM_HEIGHT))
                     }

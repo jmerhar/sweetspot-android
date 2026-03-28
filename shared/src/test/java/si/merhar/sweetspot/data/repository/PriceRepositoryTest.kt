@@ -41,7 +41,7 @@ class PriceRepositoryTest {
 
     // --- Fakes ---
 
-    /** In-memory [PriceCache] with configurable cooldown behavior and per-key storage. */
+    /** In-memory [PriceCache] with configurable cooldown behaviour and per-key storage. */
     private class FakeCache(
         initialData: CachedPriceData? = null,
         private var cooldownElapsed: Boolean = true,

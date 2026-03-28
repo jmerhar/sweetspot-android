@@ -217,7 +217,7 @@ class WearViewModelTest {
         assertNull(state.error)
     }
 
-    // --- parseAppliances (JSON parsing behavior) ---
+    // --- parseAppliances (JSON parsing behaviour) ---
 
     /**
      * Mirrors [WearViewModel.parseAppliances] to test the JSON parsing contract:

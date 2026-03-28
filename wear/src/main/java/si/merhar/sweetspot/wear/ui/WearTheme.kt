@@ -6,7 +6,7 @@ import androidx.wear.compose.material.MaterialTheme
 /**
  * Wear OS Material theme wrapper for SweetSpot.
  *
- * Uses the default Wear Material theme colors and typography.
+ * Uses the default Wear Material theme colours and typography.
  */
 @Composable
 fun WearTheme(content: @Composable () -> Unit) {

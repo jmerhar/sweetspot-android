@@ -9,12 +9,12 @@ import java.time.Duration
  * Formats the time difference between [now] and [target] as a human-readable relative string.
  *
  * Rounds to the nearest minute to avoid misleading truncation (e.g. 3h 59m 50s → "in 4h").
- * When [resources] is provided, uses localized string resources. When `null`, falls back
+ * When [resources] is provided, uses localised string resources. When `null`, falls back
  * to English formatting so existing tests work without an Android context.
  *
  * @param target The future point in time.
  * @param now The reference "current" time.
- * @param resources Optional Android resources for localized formatting.
+ * @param resources Optional Android resources for localised formatting.
  * @return A string like "in 2h 30m", "in 45m", or "now" if the target is in the past.
  */
 fun formatRelative(target: ZonedDateTime, now: ZonedDateTime, resources: Resources? = null): String {

@@ -61,7 +61,7 @@ RELEASE_KEY_PASSWORD=...
 
 - **`release.md`** — Current release notes (used by the release script)
 - **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
-- **`ideas/`** — Feature ideas and implemented features: car charging, low price alerts, all-in pricing, localization, cache management, data source preferences (implemented), appliance power rating (kW)
+- **`ideas/`** — Feature ideas and implemented features: car charging, low price alerts, all-in pricing, localisation, cache management, data source preferences (implemented), appliance power rating (kW)
 - **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide
 
 `docs/entsoe/` contains ENTSO-E API documentation and sample XML responses.
@@ -102,7 +102,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - Kotlin 2.3, AGP 9, Gradle 9.4 with version catalog (`gradle/libs.versions.toml`)
 - minSdk 26 (phone) / 30 (wear), targetSdk 36, compileSdk 36
 - `buildSrc` convention plugin (`sweetspot-app.gradle.kts`) for shared build config across `:app` and `:wear`
-- Jetpack Compose with Material 3 (dynamic color on SDK 31+)
+- Jetpack Compose with Material 3 (dynamic colour on SDK 31+)
 - Wear Compose with Material for the watch app
 - MVVM: `SweetSpotViewModel` (phone) and `WearViewModel` (watch) with `StateFlow`
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
@@ -129,7 +129,7 @@ Three Gradle modules:
 
 ### Shared module (`:shared`)
 
-The data layer is organized into three subpackages under `data/`:
+The data layer is organised into three subpackages under `data/`:
 
 **`data/api/`** — API implementations and fetcher infrastructure:
 - **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi, Energy-Charts, aWATTar). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone using a declarative registry — list order defines fallback priority, each entry declares which zones it covers.
@@ -182,12 +182,12 @@ State-based in `MainActivity`, no navigation library:
 The form view (`DurationInput` card) contains:
 - **Appliance chips** (top) — `AssistChip` buttons with configurable icons for user-defined appliances; tapping fills duration and triggers search. If no appliances exist, a CTA links to settings.
 - **Quick-duration row** (below) — 6 equal-width `SuggestionChip` buttons (1h–6h) using `Row` with `weight(1f)` so they fill the row on any screen width.
-- **Duration picker** — two-column scroll wheel (`DurationPicker`) for hours (0–24) and minutes (0–55 in 5-min steps) with snap-to-item behavior.
+- **Duration picker** — two-column scroll wheel (`DurationPicker`) for hours (0–24) and minutes (0–55 in 5-min steps) with snap-to-item behaviour.
 - **Find button** — disabled when duration is 0h 0m.
 
 ### Theme
 
-`SweetSpotTheme` wraps Material 3 with dynamic color. Bar chart colors (blue normal, green optimal) use `CompositionLocal` to stay fixed regardless of dynamic color.
+`SweetSpotTheme` wraps Material 3 with dynamic colour. Bar chart colours (blue normal, green optimal) use `CompositionLocal` to stay fixed regardless of dynamic colour.
 
 ## External APIs
 
@@ -200,7 +200,7 @@ The form view (`DurationInput` card) contains:
 ### Adding a New Data Source
 
 1. **Create `XxxApi.kt`** in `data/api/` implementing `PriceFetcher`. Follow the three-layer pattern: `fetchPrices()` → `fetchRaw()` + `parse()` → `FetchResult("Source Name")`. Expose `fetchRaw()` and `parse()` as public for tests. Add a companion object with a zone mapping (e.g., `ZONES`, `ZONE_TO_BZN`, `ZONE_TO_BASE_URL`) — this is the single source of truth for which zones the API covers.
-2. **Register in `DataSources`**: add a `DataSource` constant, add it to the `all` list, and add a `SourceEntry` to the `registry` list. List position in `registry` defines fallback priority — specialized sources (fewer zones) go before broader ones.
+2. **Register in `DataSources`**: add a `DataSource` constant, add it to the `all` list, and add a `SourceEntry` to the `registry` list. List position in `registry` defines fallback priority — specialised sources (fewer zones) go before broader ones.
 3. **Add a `when` branch** in `PriceFetcherFactory.kt` to instantiate the new API class.
 4. **Write tests** (3 files, following existing patterns): `XxxApiParseTest` (valid parsing, edge cases), `XxxApiMalformedTest` (invalid JSON/XML handling), `XxxApiDstTest` (5 DST tests with a representative timezone: winter, summer, spring-forward, fall-back, cross-DST).
 5. **Update `DataSourceTest`**: update zone count expectations in the `source zone counts match expected values` test.
@@ -215,7 +215,7 @@ The form view (`DurationInput` card) contains:
 - **Naming:** `timeZoneId` for `java.time.ZoneId` / timezone concepts, `priceZone` / `priceZoneId` for `PriceZone` / bidding zone concepts — never bare `zoneId`
 - Default country (NL) is defined in one place only: `Countries.defaultCountry()`
 - Duration is stored as `durationHours: Int` + `durationMinutes: Int` (no string parsing on the main flow)
-- UI text is localized via Android string resources (`strings.xml`) in 26 European languages (bg, cnr, cs, da, de, el, es, et, fi, fr, hr, hu, it, lt, lv, mk, nb, nl, pl, pt, ro, sk, sl, sr, sv + English). Per-app language setting via AppCompat. Defaults to system locale. Strings containing numbers that affect grammar (e.g. "%d minutes") must use `<plurals>` with the correct CLDR plural categories for each language — use `getQuantityString()` / `pluralStringResource()` instead of `getString()` / `stringResource()`.
+- UI text is localised via Android string resources (`strings.xml`) in 26 European languages (bg, cnr, cs, da, de, el, es, et, fi, fr, hr, hu, it, lt, lv, mk, nb, nl, pl, pt, ro, sk, sl, sr, sv + English). Per-app language setting via AppCompat. Defaults to system locale. Strings containing numbers that affect grammar (e.g. "%d minutes") must use `<plurals>` with the correct CLDR plural categories for each language — use `getQuantityString()` / `pluralStringResource()` instead of `getString()` / `stringResource()`.
 - All classes and functions have KDoc comments — always add KDoc when creating new functions or classes
 
 ## Post-Change Checklist

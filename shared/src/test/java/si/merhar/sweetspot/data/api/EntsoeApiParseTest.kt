@@ -374,6 +374,7 @@ class EntsoeApiParseTest {
      * Builds a minimal ENTSO-E Publication_MarketDocument XML string.
      * Avoids trimIndent issues when points are generated dynamically.
      */
+    @Suppress("SameParameterValue")
     private fun buildDayXml(start: String, end: String, resolution: String, points: String): String {
         return """<Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
 <TimeSeries><mRID>1</mRID><curveType>A01</curveType>

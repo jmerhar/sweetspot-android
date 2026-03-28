@@ -69,7 +69,7 @@ fun ResultScreen(
     val resources = LocalContext.current.resources
     val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone!!.timeZoneId) }
     val now = ZonedDateTime.now(timeZoneId)
-    // Center on the label item (index 3: Start caption, time, relative, then label)
+    // Centre on the label item (index 3: Start caption, time, relative, then label)
     val listState = rememberScalingLazyListState(initialCenterItemIndex = 3)
 
     ScalingLazyColumn(
@@ -100,7 +100,7 @@ fun ResultScreen(
             )
         }
 
-        // Appliance label (centered between start/end for max horizontal space)
+        // Appliance label (centred between start/end for max horizontal space)
         if (state.resultLabel != null) {
             item {
                 Text(

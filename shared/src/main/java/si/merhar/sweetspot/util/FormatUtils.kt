@@ -33,12 +33,12 @@ fun formatPrice(price: Double, decimals: Int): String {
 /**
  * Formats a duration as a human-readable string.
  *
- * When [resources] is provided, uses localized string resources. When `null`, falls back
+ * When [resources] is provided, uses localised string resources. When `null`, falls back
  * to English formatting so existing tests work without an Android context.
  *
  * @param hours Hours component (0–24).
  * @param minutes Minutes component (0–55).
- * @param resources Optional Android resources for localized formatting.
+ * @param resources Optional Android resources for localised formatting.
  * @return Formatted string like "2h", "30m", or "2h 30m".
  *         Returns "0m" when both hours and minutes are zero.
  */

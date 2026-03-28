@@ -1,8 +1,16 @@
-## Energy-Charts fallback, price zone display, and plural forms
+## aWATTar fallback, locale-aware pricing, and code quality
 
 ### What's new
 
-- **Energy-Charts fallback** — 15 European zones (AT, BE, CH, CZ, DE-LU, DK1, DK2, FR, HU, IT-North, NL, NO2, PL, SE4, SI) now have Energy-Charts as an additional fallback data source. This gives 11 previously single-source zones their first fallback when ENTSO-E is unavailable.
-- **Price zone on results screen** — the results disclaimer now shows which price zone was used, so you can confirm the correct zone at a glance. Multi-zone countries show "Country — Zone".
-- **Cache management** — new "Clear price cache" option in Settings (under Advanced) and a refresh button on the results screen. Useful when prices seem wrong or outdated.
-- **Proper plural forms** — numbers in error messages and zone counts now use grammatically correct plural forms for all 26 languages (e.g. "1 minuto" vs "2 minuti" vs "5 minut" in Slovenian).
+- **aWATTar fallback for Austria and Germany** — AT and DE-LU zones now have aWATTar as an additional fallback data source (after ENTSO-E and Energy-Charts), giving these zones triple redundancy for price data.
+- **Locale-aware currency formatting** — EUR prices now respect your device locale for symbol placement, decimal separator, and spacing (e.g. "€ 0,0877" in Dutch vs "0,0877 €" in German).
+- **Improved translations** — comprehensive quality pass across all 26 languages with corrected grammar, natural phrasing, and proper plural forms for 10 additional locales.
+- **Shared HTTP client** — all API providers now share a single OkHttpClient, reducing connection overhead.
+
+### Bug fixes
+
+- Fixed DurationPicker accessibility descriptions not being localised
+- Fixed result screen only refreshing relative time instead of the entire result every 60 seconds
+- Fixed missing CLDR plural categories across 10 locales
+- Fixed scroll performance in DurationPicker with derivedStateOf
+- Fixed unquoted glob pattern in install script

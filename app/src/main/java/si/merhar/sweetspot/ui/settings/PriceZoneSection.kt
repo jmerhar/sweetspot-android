@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import si.merhar.sweetspot.R
 import si.merhar.sweetspot.model.PriceZone
 
-/** Price zone sub-section for multi-zone countries, showing the current zone or a prompt to select one. */
+/** Price zone subsection for multi-zone countries, showing the current zone or a prompt to select one. */
 @Composable
 internal fun PriceZoneSection(
     zoneLabel: String?,

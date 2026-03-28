@@ -99,7 +99,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 
 ## Stack
 
-- Kotlin 2.3, AGP 9, Gradle 9.2 with version catalog (`gradle/libs.versions.toml`)
+- Kotlin 2.3, AGP 9, Gradle 9.4 with version catalog (`gradle/libs.versions.toml`)
 - minSdk 26 (phone) / 30 (wear), targetSdk 36, compileSdk 36
 - `buildSrc` convention plugin (`sweetspot-app.gradle.kts`) for shared build config across `:app` and `:wear`
 - Jetpack Compose with Material 3 (dynamic color on SDK 31+)

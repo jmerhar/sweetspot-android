@@ -16,10 +16,10 @@ All core multi-zone infrastructure is complete:
 - ✅ EnergyZero fallback for NL
 - ✅ Phase 2 fallback: Energy-Charts (15 CC BY 4.0 zones, 22 unit tests)
 
-**Current fallback coverage:** 27/43 zones have at least one fallback (NL via EnergyZero +
+**Current fallback coverage:** 26/43 zones have at least one fallback (NL via EnergyZero +
 Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi, 15 European via Energy-Charts — with
 overlap on DK1, DK2, NO2, SE4, NL). AT and DE_LU have triple redundancy (ENTSO-E,
-Energy-Charts, aWATTar). The remaining 16 zones are ENTSO-E only.
+Energy-Charts, aWATTar). The remaining 17 zones are ENTSO-E only.
 
 ## Remaining Work
 
@@ -171,11 +171,11 @@ Current state and target after implementing all viable fallback APIs:
 
 ¹ Energy-Charts CC BY 4.0 zones only (licensed for app distribution).
 
-**Current:** 27/43 zones have at least one fallback (NL + 15 Nordic/Baltic + 11 via Energy-Charts,
+**Current:** 26/43 zones have at least one fallback (NL + 15 Nordic/Baltic + 15 via Energy-Charts,
 with 4 zones having both Spot-Hinta.fi and Energy-Charts, and AT + DE_LU having triple
 redundancy via Energy-Charts + aWATTar).
 
-**After all phases:** 30/43 zones get at least one fallback. 13 zones remain ENTSO-E
+**After all phases:** 28/43 zones get at least one fallback. 15 zones remain ENTSO-E
 only (BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK) — no free public
 APIs are known for these zones.
 
@@ -251,7 +251,7 @@ The real risk is burst traffic around **13:00–14:00 CET** when next-day prices
 and caches expire simultaneously across all users.
 
 - ✅ **Fallback APIs** absorb ENTSO-E failures. `FallbackPriceFetcher` automatically
-  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 27/43
+  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 26/43
   zones (NL via EnergyZero + Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi,
   15 European via Energy-Charts, AT + DE_LU with aWATTar as additional depth).
   Expanding fallback coverage (Phases 4–5) covers ES/PT and adds depth to

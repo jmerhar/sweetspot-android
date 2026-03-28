@@ -59,9 +59,10 @@ if [[ -z "$SERIAL" ]]; then
     exit 1
 fi
 
-# Find the APK
-# shellcheck disable=SC2086
-APK=$(ls -t $APK_PATTERN 2>/dev/null | head -1)
+# Find the APK (newest by modification time)
+APK_DIR=$(dirname "$APK_PATTERN")
+APK_NAME=$(basename "$APK_PATTERN")
+APK=$(find "$APK_DIR" -maxdepth 1 -name "$APK_NAME" -exec stat -f '%m %N' {} + 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
 if [[ -z "$APK" ]]; then
     echo "ERROR: No APK found matching $APK_PATTERN. Build first."
     exit 1

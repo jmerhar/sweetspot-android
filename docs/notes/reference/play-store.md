@@ -139,136 +139,260 @@ crashes or UI issues on devices you don't own.
 
 ## Monetization strategy
 
-### Recommendation: freemium with one-time unlock
+### Recommendation: free trial + one-time unlock
 
-A one-time in-app purchase is the best fit for SweetSpot:
+Every user gets the full app — all features, no restrictions. After a trial period
+(7 or 14 days), a paywall appears requiring a one-time purchase to continue using
+the app.
 
-- **No ongoing server costs** — the app uses free public APIs, so there's nothing to
-  fund monthly. Users will (rightly) question a subscription.
-- **User expectations** — utility apps with subscriptions get hammered in reviews.
-  A one-time unlock feels fair and avoids subscription fatigue.
-- **Simplicity** — one-time IAP lifecycle is much simpler than subscriptions (no
-  grace periods, account holds, renewals, or cancellation flows).
-- **GPL compatibility** — the source is freely available. A reasonable one-time price
-  for convenience is easier to justify than a recurring charge.
+**Why this model works for SweetSpot:**
 
-### Free tier vs. premium
+- **Single tier** — no awkward decisions about which features are free and which are
+  premium. The app does one thing well; splitting it into tiers feels artificial.
+- **The app sells itself** — users experience full value during the trial. If it's
+  useful, the purchase is an easy decision. No "imagine how good it could be if you
+  paid" — they already know.
+- **No subscription fatigue** — one payment, done forever. Users don't resent it.
+- **Simple code** — one `isUnlocked` boolean instead of per-feature gating logic.
+- **Fair to users** — they can evaluate before committing. Better than paid-only
+  (where you buy blind) and less annoying than freemium (where you're constantly
+  reminded of what you can't do).
 
-| Feature | Free | Premium (one-time €2.99–€4.99) |
-|---|---|---|
-| Find cheapest window | Yes | Yes |
-| Quick-duration chips (1–6h) | Yes | Yes |
-| Custom appliances | 3 max | Unlimited |
-| Wear OS companion | Yes | Yes |
-| All 30 countries / 43 zones | Yes | Yes |
-| Data source order customisation | No | Yes |
-| Home screen widget | No | Yes |
-| Price notifications / alerts | No | Yes |
-| Price history chart | No | Yes |
+### Trial length
 
-The free tier should be genuinely useful — not crippled. The premium features are
-things that power users want and that require additional development effort (widget,
-notifications, history). This way the app earns good reviews from free users and
-revenue from engaged users.
+**14 days** is probably the right length:
 
-### Why not subscriptions
+- Long enough to experience the full value across different price days (electricity
+  prices vary by day of week and weather).
+- Long enough that users don't feel rushed.
+- Short enough that it creates urgency — "I've been using this daily, I should just
+  buy it."
+- 7 days works too but might not be enough for users who only run appliances a few
+  times a week.
 
-- **Subscription fatigue** — the #1 complaint in reviews for utility apps that charge
-  monthly. "Why does this need a subscription?"
-- **High churn** — small utility apps see 70-80% subscription churn within 3 months.
-  Revenue is unstable and the effort to re-acquire users is high.
-- **No recurring cost** — there's no backend, no accounts, no ongoing API cost.
-  A subscription feels unjustified when the marginal cost of serving a user is zero.
-- **Open source tension** — anyone can build from source. A subscription on freely
-  available code invites forks and negative sentiment.
-- **Billing complexity** — subscription lifecycle (grace periods, account holds,
-  pauses, cancellation, pro-rating, family sharing) requires significantly more code
-  than a one-time purchase.
+### Price point
 
-### Why not ads
+**€2.99** is the sweet spot (pun intended):
 
-- **Small audience** — niche EU utility app won't generate meaningful ad revenue.
-  Typical eCPM for utility apps is €0.50–€2.00 per 1,000 impressions.
-- **UX degradation** — ads on a screen the user checks for 10 seconds feels hostile.
-- **Privacy contradiction** — the app's selling point is "no tracking." AdMob requires
-  the Google Mobile Ads SDK which collects device identifiers and uses tracking.
+- Low enough for an impulse buy — less than a coffee.
+- High enough to generate meaningful revenue at scale.
+- Use Play Console's regional pricing to set lower prices for lower-income EU
+  countries (e.g. Baltic states, Balkans).
+- Can always increase later — harder to decrease without upsetting early buyers.
 
-### Why not paid-only
+### User experience
 
-- **Discovery barrier** — paid apps get 10-50x fewer downloads. Users can't try before
-  buying, which matters for a niche app they've never heard of.
-- **No growth** — without free users, there's no word-of-mouth, no reviews, no organic
-  growth.
+#### During trial
 
-### Implementation: Google Play Billing
+- App works normally with no restrictions.
+- Subtle indicator: "Trial: 12 days remaining" in settings or as a small banner.
+  Not intrusive — the user should enjoy the app, not feel pressured.
+- On the last 3 days, the indicator becomes slightly more prominent (e.g. a chip
+  on the main screen: "3 days left — unlock SweetSpot").
 
-#### Dependencies
+#### When trial expires
+
+- App opens to a paywall screen instead of the main screen.
+- Clean, friendly design — not aggressive. Show what they've been using:
+  "You've found the cheapest window 23 times. Keep saving with SweetSpot."
+- Single "Unlock for €2.99" button that launches the Google Play purchase flow.
+- "Restore purchase" link for reinstalls or device switches.
+- No way to dismiss — the app is locked until purchase (or uninstall).
+
+#### After purchase
+
+- Paywall disappears permanently. App works exactly as before.
+- "Thank you" toast or brief confirmation, then straight to the main screen.
+
+#### Watch behaviour
+
+- Trial state syncs to watch via existing Data Layer `/settings` path.
+- When trial expires, watch shows a message: "Trial expired — open SweetSpot on
+  your phone to unlock."
+
+### Other monetization options
+
+#### Subscriptions
+
+Monthly or yearly recurring payment (e.g. €0.99/month or €4.99/year) that unlocks
+the app. Google Play supports subscription trials natively, with automatic billing
+after the trial ends.
+
+- **Pros:** Predictable recurring revenue. Google handles trial-to-paid conversion.
+  Play Console has built-in subscription analytics (MRR, churn, LTV).
+- **Cons:** Subscription fatigue — the #1 complaint in reviews for utility apps that
+  charge monthly. High churn (70-80% within 3 months for small utility apps). No
+  recurring server cost to justify it. Billing complexity (grace periods, account
+  holds, pauses, cancellation, pro-rating). Open source tension — anyone can build
+  from source, making a subscription feel exploitative.
+
+#### Ads (free with ads)
+
+Show a banner ad on the main screen or an interstitial after each search result.
+Requires integrating the Google Mobile Ads SDK (AdMob):
+
+- Add `com.google.android.gms:play-services-ads` dependency
+- Initialize `MobileAds` in `MainActivity`
+- Place a `BannerAd` composable at the bottom of the screen
+- Typical revenue: €0.50–€2.00 per 1,000 impressions (eCPM) for utility apps
+
+- **Pros:** No barrier to entry — app is completely free. Revenue scales with usage.
+- **Cons:** Small niche audience means minimal revenue. UX degradation on a screen
+  users check for 10 seconds. Privacy contradiction — the app's selling point is "no
+  tracking", but AdMob collects device identifiers. Adds a heavy SDK dependency.
+
+#### Paid app (no trial)
+
+Set a one-time price (€1.99–€2.99) in Play Console. No code changes needed. Google
+takes a 15% cut on the first $1M/year (30% after that).
+
+- **Pros:** Zero complexity — no billing code, no IAPs, no feature gating. Clean UX.
+- **Cons:** Paid apps get 10-50x fewer downloads. Users can't try before buying, which
+  matters for a niche app they've never heard of. No word-of-mouth or organic growth
+  from free users. No reviews from casual users.
+
+#### Freemium (feature gating)
+
+Core functionality free, premium features behind a one-time in-app purchase
+(€2.99–€4.99). Possible premium features: unlimited appliances (free tier: 2-3),
+widget, notifications, price history, data source customisation.
+
+- **Pros:** Free tier drives downloads and reviews. Premium features can target power
+  users willing to pay. No time pressure — users upgrade when ready.
+- **Cons:** Artificial split for a focused utility — either the free version is too
+  crippled (bad reviews) or too generous (nobody pays). Per-feature gating throughout
+  the app. Upgrade prompts in multiple places. Two user experiences to design and test.
+
+#### Donations / tip jar
+
+"Buy me a coffee" style in-app purchase or link to an external service (Ko-fi, GitHub
+Sponsors). Can be a non-consumable IAP or just an external link in settings.
+
+- **Pros:** App stays fully free and clean. No complexity. Goodwill from users.
+- **Cons:** Very low conversion rate (typically <1% of active users). Not a viable
+  primary revenue source. Better as a supplement to another model.
+
+### Why trial + one-time unlock is the best fit
+
+Compared to the alternatives above:
+
+- **vs. subscriptions** — avoids subscription fatigue and churn. Same simplicity of
+  a single unlock, but users pay once instead of forever.
+- **vs. ads** — preserves the privacy-first brand and clean UX. No tracking SDK.
+- **vs. paid-only** — the trial removes the discovery barrier. Users try first, then
+  decide. Reviews come from actual users, not blind buyers.
+- **vs. freemium** — no artificial feature split. Single tier, single experience,
+  single code path. Much simpler to build and maintain.
+- **vs. donations** — realistic revenue. Trial creates a natural purchase moment
+  instead of relying on goodwill.
+
+### Implementation
+
+#### Trial tracking
+
+Store trial state in SharedPreferences (`sweetspot_settings`):
+
+```kotlin
+// On first launch (if not already set)
+if (!prefs.contains("trial_start")) {
+    prefs.edit().putLong("trial_start", System.currentTimeMillis()).apply()
+}
+
+// Check trial status
+fun isTrialExpired(): Boolean {
+    val start = prefs.getLong("trial_start", System.currentTimeMillis())
+    val elapsed = System.currentTimeMillis() - start
+    val trialDays = 14
+    return elapsed > trialDays * 24 * 60 * 60 * 1000L
+}
+
+fun trialDaysRemaining(): Int {
+    val start = prefs.getLong("trial_start", System.currentTimeMillis())
+    val elapsed = System.currentTimeMillis() - start
+    val trialDays = 14
+    val remaining = trialDays - (elapsed / (24 * 60 * 60 * 1000L)).toInt()
+    return remaining.coerceAtLeast(0)
+}
+```
+
+This is intentionally simple. Yes, users can reset it by clearing app data. That's
+fine — anyone determined enough to do that every 14 days wasn't going to pay anyway.
+Don't add server-side verification or device fingerprinting to prevent this; it adds
+complexity and hostility for negligible revenue protection.
+
+#### Google Play Billing
+
+**Dependencies:**
 
 ```kotlin
 // libs.versions.toml
 billing = "7.1.1"
 
-// shared/build.gradle.kts or app/build.gradle.kts
+// app/build.gradle.kts
 implementation(libs.billing.ktx)
 ```
 
 `com.android.billingclient:billing-ktx` is the Kotlin-friendly wrapper around Google
 Play Billing Library.
 
-#### Architecture
+**Architecture:**
 
 ```
-BillingRepository (new, in :shared or :app)
-├── Connects to Google Play BillingClient
-├── Queries available products (one-time IAP: "premium_unlock")
-├── Launches purchase flow
-├── Verifies purchases
-├── Exposes isPremium: StateFlow<Boolean>
-└── Persists purchase state locally (SharedPreferences)
-    with server-side verification fallback (optional)
+BillingRepository (new, in :app)
+├── Connects to Google Play BillingClient on app start
+├── Queries existing purchases → sets isUnlocked = true if found
+├── Exposes isUnlocked: StateFlow<Boolean>
+├── launchPurchaseFlow(activity) → triggers Google Play purchase UI
+├── onPurchasesUpdated callback → verifies + acknowledges + updates state
+└── Persists unlock state in SharedPreferences (cache for offline)
 ```
 
-#### Product setup in Play Console
+**Product setup in Play Console:**
 
-- **Product ID:** `premium_unlock`
+- **Product ID:** `full_unlock`
 - **Product type:** One-time (non-consumable)
-- **Price:** €2.99–€4.99 (experiment with pricing per country)
+- **Price:** €2.99 (with regional pricing adjustments)
 - **Grace:** Google handles refund window (48 hours by default in EU)
 
-#### Key implementation steps
+**Key implementation steps:**
 
 1. **`BillingRepository`** — wraps `BillingClient`. Connects on app start, queries
-   purchases, exposes `isPremium` state. Handles `onPurchasesUpdated` callback.
+   purchases, exposes `isUnlocked: StateFlow<Boolean>`. Handles
+   `onPurchasesUpdated` callback.
 
 2. **Purchase verification** — for a small app without a backend, local verification
    (checking the purchase token signature) is sufficient. If revenue grows, add
-   server-side verification via Google Play Developer API.
+   server-side verification via Google Play Developer API later.
 
-3. **Feature gating** — `ViewModel` reads `isPremium` from `BillingRepository` and
-   conditionally enables premium features. UI shows an upgrade prompt (bottom sheet
-   or dialog) when the user hits a premium-only feature.
+3. **App lock logic** — `ViewModel` checks `isUnlocked` and `isTrialExpired()`. If
+   trial expired and not unlocked, navigate to the paywall screen. Otherwise, show
+   the normal app. Single check point in the ViewModel, not scattered throughout.
 
-4. **Restore purchases** — on first launch or reinstall, query `BillingClient` for
-   existing purchases. Users shouldn't have to re-purchase.
+4. **Restore purchases** — on first launch or reinstall, `BillingClient` queries
+   existing purchases. If found, set `isUnlocked = true`. Users never have to
+   re-purchase.
 
 5. **Testing** — Play Console supports license testing. Add test accounts that can
-   "purchase" without being charged. Test: purchase flow, restore, refund handling.
+   "purchase" without being charged. Test: purchase flow, restore, trial expiry,
+   paywall display, refund handling.
 
 #### Considerations
 
-- **Offline access** — purchases should work offline once verified. Cache the premium
-  state in SharedPreferences; re-verify on next connection.
-- **Family sharing** — Google Play supports family library for paid apps but not for
-  in-app purchases. If this matters, consider making it a paid app variant instead.
+- **Offline access** — cache unlock state in SharedPreferences. The app should never
+  lock a paying user out because they're offline.
+- **Clock manipulation** — users could set their clock back to extend the trial. Not
+  worth defending against — same argument as clearing app data. Don't add complexity
+  for edge cases.
 - **Regional pricing** — Play Console lets you set per-country prices. Set lower
-  prices for lower-income EU countries (e.g. Baltic states, Balkans).
-- **Free trial period** — not applicable for one-time purchases, but you could offer
-  a time-limited premium preview (e.g. "Premium features free for 7 days") using
-  local state. This is simpler than a subscription trial and doesn't require billing
-  integration for the trial itself.
-- **Wear OS** — premium state should sync to watch via the existing Data Layer path
-  (add `isPremium` to the `/settings` sync). Gate watch-only premium features (if
-  any) on the synced state.
+  prices for lower-income EU countries (e.g. €1.99 for Baltic states, €2.99 for
+  Western Europe).
+- **Wear OS** — sync `isUnlocked` and `trialDaysRemaining` to the watch via the
+  existing Data Layer `/settings` path. Watch shows a "trial expired" message when
+  locked, directing the user to unlock on the phone.
+- **GPL consideration** — the app is open source. Anyone can build from source without
+  the trial. The purchase is for the convenience of Play Store distribution, updates,
+  and supporting development. This is a well-established model (e.g. Syncthing,
+  K-9 Mail). Consider noting this in the FAQ.
 
 ## Marketing
 
@@ -306,24 +430,31 @@ BillingRepository (new, in :shared or :app)
 
 ### Before first submission
 
-- [ ] Google Play Developer account created and verified
-- [ ] Monochrome icon layer added (phone + watch)
-- [ ] AAB builds successfully (`./gradlew bundleRelease`)
-- [ ] Privacy policy live at sweetspot.today/privacy
-- [ ] Store listing text written (all priority languages)
-- [ ] Screenshots captured (phone, optionally tablet and watch)
-- [ ] Feature graphic designed (1024×500)
-- [ ] High-res icon exported (512×512)
-- [ ] Content rating questionnaire completed
-- [ ] Data safety form completed
-- [ ] Billing integration implemented and tested (if launching with freemium)
-- [ ] Wear OS manifest metadata added for paired distribution
-- [ ] Internal testing verified
+- ⬜ Google Play Developer account created and verified
+- ✅ Monochrome icon layer added (phone + watch)
+- ⬜ AAB builds successfully (`./gradlew bundleRelease`)
+- ⬜ Release script updated to also build AABs (or add `make bundle` target)
+- ✅ Privacy policy live at sweetspot.today/privacy
+- ✅ Website live at sweetspot.today (with Play Store badges)
+- ⬜ Store listing text written (short + full description, all priority languages)
+- ⬜ Screenshots captured (phone, optionally tablet and watch)
+- ⬜ Feature graphic designed (1024×500)
+- ⬜ High-res icon exported (512×512)
+- ⬜ Content rating questionnaire completed in Play Console
+- ⬜ Data safety form completed in Play Console
+- ⬜ Trial logic implemented (first launch date tracking, trial expiry check)
+- ⬜ Paywall screen designed and implemented
+- ⬜ Google Play Billing integration (BillingRepository, purchase flow, restore)
+- ⬜ Billing tested with Play Console license test accounts
+- ⬜ Trial + unlock state synced to watch via Data Layer
+- ⬜ Wear OS manifest metadata added for paired distribution
+- ⬜ Internal testing track verified on real devices
+- ⬜ Store listing localised for priority languages (EN, NL, DE, FR, SL)
 
 ### Before each release
 
-- [ ] Version bumped
-- [ ] AAB built and signed
-- [ ] Release notes written
-- [ ] Pre-launch report reviewed (after upload)
-- [ ] Staged rollout configured
+- ⬜ Version bumped
+- ⬜ AAB built and signed
+- ⬜ Release notes written (Play Console + website changelog)
+- ⬜ Pre-launch report reviewed (after upload)
+- ⬜ Staged rollout configured (10% → 50% → 100%)

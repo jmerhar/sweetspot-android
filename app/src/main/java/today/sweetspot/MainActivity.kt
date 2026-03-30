@@ -84,6 +84,10 @@ class MainActivity : AppCompatActivity() {
                             onClearCache = vm::onClearCache,
                             isStatsEnabled = state.isStatsEnabled,
                             onStatsEnabledChanged = vm::onStatsEnabledChanged,
+                            isUnlocked = state.isUnlocked,
+                            trialDaysRemaining = state.trialDaysRemaining,
+                            productPrice = state.productPrice,
+                            onPurchaseClicked = { vm.onPurchaseClicked(this@MainActivity) },
                             onBack = vm::onHideSettings
                         )
                     }

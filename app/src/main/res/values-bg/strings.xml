@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Включи</string>
     <string name="stats_prompt_dismiss">Не, благодаря</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Отключи SweetSpot</string>
+    <string name="settings_unlock_description">Премахнете пробния период и отключете приложението завинаги.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Пробният период приключи</string>
     <string name="paywall_description">SweetSpot намира най-евтиното време за работа на вашите уреди, като използва цени на електроенергия в реално време в 30 европейски държави. Отключете веднъж, използвайте завинаги.</string>

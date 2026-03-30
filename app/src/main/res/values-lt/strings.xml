@@ -113,6 +113,10 @@
     <string name="stats_prompt_enable">Įjungti</string>
     <string name="stats_prompt_dismiss">Ne, ačiū</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Atrakinti SweetSpot</string>
+    <string name="settings_unlock_description">Pašalinkite bandomąjį laikotarpį ir atrakinkite programėlę visam laikui.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Jūsų bandomasis laikotarpis baigėsi</string>
     <string name="paywall_description">SweetSpot randa pigiausią laiką jūsų prietaisams naudojant realaus laiko elektros kainas 30 Europos šalių. Atrakinkite vieną kartą, naudokite amžinai.</string>

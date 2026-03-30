@@ -110,6 +110,10 @@
     <string name="stats_prompt_enable">Activează</string>
     <string name="stats_prompt_dismiss">Nu, mulțumesc</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Deblochează SweetSpot</string>
+    <string name="settings_unlock_description">Elimină perioada de probă și deblochează aplicația permanent.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Perioada de probă s-a încheiat</string>
     <string name="paywall_description">SweetSpot găsește cel mai ieftin moment pentru a folosi aparatele tale folosind prețurile energiei electrice în timp real din 30 de țări europene. Deblochează o dată, folosește pentru totdeauna.</string>

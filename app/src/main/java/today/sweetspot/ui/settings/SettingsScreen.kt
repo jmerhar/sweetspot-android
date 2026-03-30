@@ -73,6 +73,10 @@ fun SettingsScreen(
     onClearCache: () -> String,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
+    isUnlocked: Boolean,
+    trialDaysRemaining: Int,
+    productPrice: String?,
+    onPurchaseClicked: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -210,6 +214,16 @@ fun SettingsScreen(
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
         ) {
+            if (!isUnlocked) {
+                UnlockSection(
+                    trialDaysRemaining = trialDaysRemaining,
+                    productPrice = productPrice,
+                    onPurchaseClicked = onPurchaseClicked
+                )
+
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+            }
+
             AppliancesSection(
                 appliances = appliances,
                 onApplianceClick = { editingAppliance = it },

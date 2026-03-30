@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Ενεργοποίηση</string>
     <string name="stats_prompt_dismiss">Όχι, ευχαριστώ</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Ξεκλείδωμα SweetSpot</string>
+    <string name="settings_unlock_description">Αφαιρέστε τη δοκιμαστική περίοδο και ξεκλειδώστε την εφαρμογή μόνιμα.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Η δοκιμαστική σας περίοδος έληξε</string>
     <string name="paywall_description">Το SweetSpot βρίσκει τη φθηνότερη ώρα για τη λειτουργία των συσκευών σας χρησιμοποιώντας τιμές ηλεκτρικής ενέργειας σε πραγματικό χρόνο σε 30 ευρωπαϊκές χώρες. Ξεκλειδώστε μία φορά, χρησιμοποιήστε για πάντα.</string>

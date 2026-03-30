@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Inschakelen</string>
     <string name="stats_prompt_dismiss">Nee, bedankt</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">SweetSpot ontgrendelen</string>
+    <string name="settings_unlock_description">Verwijder de proefperiode en ontgrendel de app permanent.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Je proefperiode is verlopen</string>
     <string name="paywall_description">SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken op basis van realtime elektriciteitsprijzen in 30 Europese landen. Ontgrendel eenmalig, gebruik voor altijd.</string>

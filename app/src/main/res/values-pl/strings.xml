@@ -113,6 +113,10 @@
     <string name="stats_prompt_enable">Włącz</string>
     <string name="stats_prompt_dismiss">Nie, dziękuję</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Odblokuj SweetSpot</string>
+    <string name="settings_unlock_description">Usuń okres próbny i odblokuj aplikację na stałe.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Okres próbny dobiegł końca</string>
     <string name="paywall_description">SweetSpot znajduje najtańszy czas na uruchomienie urządzeń, korzystając z cen energii elektrycznej w czasie rzeczywistym w 30 krajach europejskich. Odblokuj raz, korzystaj na zawsze.</string>

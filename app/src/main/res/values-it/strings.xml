@@ -110,6 +110,10 @@
     <string name="stats_prompt_enable">Attiva</string>
     <string name="stats_prompt_dismiss">No grazie</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Sblocca SweetSpot</string>
+    <string name="settings_unlock_description">Rimuovi il periodo di prova e sblocca l\'app in modo permanente.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Il tuo periodo di prova è terminato</string>
     <string name="paywall_description">SweetSpot trova il momento più economico per utilizzare i tuoi elettrodomestici usando i prezzi dell\'elettricità in tempo reale in 30 paesi europei. Sblocca una volta, usa per sempre.</string>

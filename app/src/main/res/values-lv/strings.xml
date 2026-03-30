@@ -110,6 +110,10 @@
     <string name="stats_prompt_enable">Ieslēgt</string>
     <string name="stats_prompt_dismiss">Nē, paldies</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Atbloķēt SweetSpot</string>
+    <string name="settings_unlock_description">Noņemiet izmēģinājuma periodu un atbloķējiet lietotni neatgriezeniski.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Jūsu izmēģinājuma periods ir beidzies</string>
     <string name="paywall_description">SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai, izmantojot reāllaika elektrības cenas 30 Eiropas valstīs. Atbloķējiet vienreiz, lietojiet mūžīgi.</string>

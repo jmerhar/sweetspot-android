@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Aktivieren</string>
     <string name="stats_prompt_dismiss">Nein danke</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">SweetSpot freischalten</string>
+    <string name="settings_unlock_description">Entferne den Testzeitraum und schalte die App dauerhaft frei.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Dein Testzeitraum ist abgelaufen</string>
     <string name="paywall_description">SweetSpot findet die günstigste Zeit für den Betrieb deiner Geräte anhand von Echtzeit-Strompreisen in 30 europäischen Ländern. Einmal freischalten, für immer nutzen.</string>

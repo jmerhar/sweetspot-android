@@ -110,6 +110,10 @@
     <string name="stats_prompt_enable">Activer</string>
     <string name="stats_prompt_dismiss">Non merci</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Déverrouiller SweetSpot</string>
+    <string name="settings_unlock_description">Supprimez la période d\'essai et déverrouillez l\'application définitivement.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Votre période d\'essai est terminée</string>
     <string name="paywall_description">SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils en utilisant les prix de l\'électricité en temps réel dans 30 pays européens. Déverrouillez une fois, utilisez pour toujours.</string>

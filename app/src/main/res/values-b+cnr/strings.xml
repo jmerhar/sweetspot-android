@@ -110,6 +110,10 @@
     <string name="stats_prompt_enable">Uključi</string>
     <string name="stats_prompt_dismiss">Ne, hvala</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Otključaj SweetSpot</string>
+    <string name="settings_unlock_description">Uklonite probni period i trajno otključajte aplikaciju.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Probni period je završen</string>
     <string name="paywall_description">SweetSpot pronalazi najjeftinije vrijeme za pokretanje vaših uređaja koristeći cijene električne energije u realnom vremenu u 30 evropskih zemalja. Otključajte jednom, koristite zauvijek.</string>

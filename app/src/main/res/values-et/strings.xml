@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Luba</string>
     <string name="stats_prompt_dismiss">Ei, aitäh</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Ava SweetSpot</string>
+    <string name="settings_unlock_description">Eemalda prooviperiood ja ava rakendus jäädavalt.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Proovperiood on lõppenud</string>
     <string name="paywall_description">SweetSpot leiab soodsaima aja teie seadmete kasutamiseks, kasutades reaalajas elektrihindu 30 Euroopa riigis. Avage ühe korra, kasutage igavesti.</string>

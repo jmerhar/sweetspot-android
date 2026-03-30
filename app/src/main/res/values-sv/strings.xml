@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Aktivera</string>
     <string name="stats_prompt_dismiss">Nej tack</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Lås upp SweetSpot</string>
+    <string name="settings_unlock_description">Ta bort provperioden och lås upp appen permanent.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Din provperiod har gått ut</string>
     <string name="paywall_description">SweetSpot hittar den billigaste tiden att köra dina apparater med hjälp av elpriser i realtid i 30 europeiska länder. Lås upp en gång, använd för alltid.</string>

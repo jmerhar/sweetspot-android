@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Engedélyezés</string>
     <string name="stats_prompt_dismiss">Nem, köszönöm</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">SweetSpot feloldása</string>
+    <string name="settings_unlock_description">Távolítsa el a próbaidőszakot és oldja fel az alkalmazást véglegesen.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">A próbaidőszak lejárt</string>
     <string name="paywall_description">A SweetSpot megtalálja a legolcsóbb időpontot a készülékei futtatásához valós idejű villamosenergia-árak alapján 30 európai országban. Oldja fel egyszer, használja örökké.</string>

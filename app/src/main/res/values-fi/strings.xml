@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Ota käyttöön</string>
     <string name="stats_prompt_dismiss">Ei kiitos</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Avaa SweetSpot</string>
+    <string name="settings_unlock_description">Poista kokeilujakso ja avaa sovellus pysyvästi.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Kokeilujaksosi on päättynyt</string>
     <string name="paywall_description">SweetSpot löytää halvimman ajan laitteidesi käytölle reaaliaikaisten sähköhintojen perusteella 30 Euroopan maassa. Avaa kerran, käytä ikuisesti.</string>

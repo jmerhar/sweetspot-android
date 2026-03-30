@@ -107,6 +107,10 @@
     <string name="stats_prompt_enable">Enable</string>
     <string name="stats_prompt_dismiss">No thanks</string>
 
+    <!-- Unlock -->
+    <string name="settings_unlock">Unlock SweetSpot</string>
+    <string name="settings_unlock_description">Remove the trial and unlock the app permanently.</string>
+
     <!-- Paywall -->
     <string name="paywall_title">Your trial has ended</string>
     <string name="paywall_description">SweetSpot finds the cheapest time to run your appliances using real-time electricity prices across 30 European countries. Unlock once, use forever.</string>

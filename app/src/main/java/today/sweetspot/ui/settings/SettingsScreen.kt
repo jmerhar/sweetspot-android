@@ -5,6 +5,7 @@ package today.sweetspot.ui.settings
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -30,7 +31,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import today.sweetspot.BuildConfig
 import kotlinx.coroutines.launch
 import today.sweetspot.R
 import today.sweetspot.data.api.DataSource
@@ -265,6 +268,16 @@ fun SettingsScreen(
             )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            Text(
+                text = "SweetSpot v${BuildConfig.VERSION_NAME}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp),
+                textAlign = TextAlign.Center
+            )
         }
     }
 }

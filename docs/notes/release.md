@@ -1,6 +1,4 @@
-## New package name: today.sweetspot
-
 ### What's new
 
-- **New application ID** — the app package has been renamed from `si.merhar.sweetspot` to `today.sweetspot` to match the project domain sweetspot.today.
-- **Website improvements** — added site validation, fixed favicon for browser tabs.
+- **API reliability statistics (opt-in)** — you can now help improve SweetSpot by sharing anonymous API success/failure data. After a few days of use, a one-time prompt asks if you'd like to opt in. You can also toggle it any time in Settings > Advanced. Only data source names, bidding zones, and success/failure counts are shared — no personal data.
+- **Better error handling** — improved error classification across all five data sources for more reliable fallback behaviour.

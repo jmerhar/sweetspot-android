@@ -106,4 +106,16 @@
     <string name="stats_prompt_message">Μοιραστείτε ανώνυμα στατιστικά API για να βοηθήσετε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων. Μοιράζονται μόνο τα πλήθη επιτυχιών/αποτυχιών ανά πηγή — χωρίς προσωπικά δεδομένα. Μπορείτε να το αλλάξετε ανά πάσα στιγμή στις Ρυθμίσεις.</string>
     <string name="stats_prompt_enable">Ενεργοποίηση</string>
     <string name="stats_prompt_dismiss">Όχι, ευχαριστώ</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Η δοκιμαστική σας περίοδος έληξε</string>
+    <string name="paywall_description">Το SweetSpot βρίσκει τη φθηνότερη ώρα για τη λειτουργία των συσκευών σας χρησιμοποιώντας τιμές ηλεκτρικής ενέργειας σε πραγματικό χρόνο σε 30 ευρωπαϊκές χώρες. Ξεκλειδώστε μία φορά, χρησιμοποιήστε για πάντα.</string>
+    <string name="paywall_unlock">Ξεκλείδωμα SweetSpot</string>
+    <string name="paywall_unlock_price">Ξεκλείδωμα για %s</string>
+    <string name="paywall_restore">Επαναφορά αγοράς</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Δοκιμαστική περίοδος: %d ημέρα απομένει</item>
+        <item quantity="other">Δοκιμαστική περίοδος: %d ημέρες απομένουν</item>
+    </plurals>
 </resources>

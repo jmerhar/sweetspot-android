@@ -9,4 +9,5 @@
     <string name="wear_error_no_data">Ingen prisdata tilgjengelig.</string>
     <string name="wear_error_not_enough_data">Ikke nok data for %s.</string>
     <string name="wear_error_network">Kunne ikke hente priser.</string>
+    <string name="wear_trial_expired">Prøveperioden er utløpt\n\nÅpne SweetSpot på telefonen din for å låse opp.</string>
 </resources>

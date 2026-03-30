@@ -9,4 +9,5 @@
     <string name="wear_error_no_data">Nu sunt disponibile date de preț.</string>
     <string name="wear_error_not_enough_data">Date insuficiente pentru %s.</string>
     <string name="wear_error_network">Nu s-au putut prelua prețurile.</string>
+    <string name="wear_trial_expired">Perioada de probă a expirat\n\nDeschideți SweetSpot pe telefon pentru deblocare.</string>
 </resources>

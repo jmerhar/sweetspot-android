@@ -11,7 +11,7 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< changelog version="3.5" date="28. März 2026" >}}
 - aWATTar als Fallback-Datenquelle für Österreich und Deutschland hinzugefügt
 - Ländergerechte Währungsformatierung für EUR-Preise
-- Verbesserte Übersetzungsqualität in 26 Sprachen
+- Verbesserte Übersetzungsqualität in 25 Sprachen
 - Ergebnisbildschirm wird jetzt alle 60 Sekunden vollständig aktualisiert
 - Abhängigkeiten auf neueste stabile Versionen aktualisiert
 {{< /changelog >}}
@@ -24,13 +24,12 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="26. März 2026" >}}
-- Montenegrinisch hinzugefügt
 - Systemsprachname jetzt in Einstellungen sichtbar
-- 26 Sprachen nun unterstützt
+- 25 Sprachen nun unterstützt
 {{< /changelog >}}
 
 {{< changelog version="3.2" date="5. März 2026" >}}
-- 21 europäische Sprachen hinzugefügt, darunter Niederländisch, Deutsch und Französisch (26 insgesamt)
+- 21 europäische Sprachen hinzugefügt, darunter Niederländisch, Deutsch und Französisch (25 insgesamt)
 - Vollbild-Sprachauswahl
 - Datenquellen-Reihenfolge per Drag-and-Drop einstellbar
 - Einstellungen übersichtlicher angeordnet

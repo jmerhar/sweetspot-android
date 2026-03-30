@@ -11,7 +11,7 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 {{< changelog version="3.5" date="28 maart 2026" >}}
 - aWATTar toegevoegd als terugvalbron voor Oostenrijk en Duitsland
 - Valutanotatie aangepast aan regionale instellingen
-- Verbeterde vertaalkwaliteit in 26 talen
+- Verbeterde vertaalkwaliteit in 25 talen
 - Resultaatscherm ververst nu volledig elke 60 seconden
 - Afhankelijkheden bijgewerkt naar nieuwste stabiele versies
 {{< /changelog >}}
@@ -24,13 +24,12 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="26 maart 2026" >}}
-- Montenegrijns toegevoegd
 - Systeemtaalnaam nu zichtbaar in instellingen
-- 26 talen nu ondersteund
+- 25 talen nu ondersteund
 {{< /changelog >}}
 
 {{< changelog version="3.2" date="5 maart 2026" >}}
-- 21 Europese talen toegevoegd waaronder Nederlands, Duits en Frans (26 totaal)
+- 21 Europese talen toegevoegd waaronder Nederlands, Duits en Frans (25 totaal)
 - Volledig scherm taalkiezer
 - Voorkeursvolgorde van databronnen instelbaar via slepen
 - Instellingenscherm overzichtelijker ingedeeld

@@ -12,6 +12,7 @@ import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import today.sweetspot.wear.ui.ApplianceListScreen
 import today.sweetspot.wear.ui.ResultScreen
+import today.sweetspot.wear.ui.WearLockedScreen
 import today.sweetspot.wear.ui.WearTheme
 
 /**
@@ -33,13 +34,17 @@ class WearActivity : AppCompatActivity() {
                     startDestination = "appliances"
                 ) {
                     composable("appliances") {
-                        ApplianceListScreen(
-                            state = state,
-                            onApplianceTapped = { appliance ->
-                                wearViewModel.onApplianceTapped(appliance)
-                                navController.navigate("result")
-                            }
-                        )
+                        if (state.isLocked) {
+                            WearLockedScreen()
+                        } else {
+                            ApplianceListScreen(
+                                state = state,
+                                onApplianceTapped = { appliance ->
+                                    wearViewModel.onApplianceTapped(appliance)
+                                    navController.navigate("result")
+                                }
+                            )
+                        }
                     }
                     composable("result") {
                         DisposableEffect(Unit) {

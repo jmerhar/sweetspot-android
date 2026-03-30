@@ -51,6 +51,7 @@ import java.time.ZonedDateTime
  * @property priceZone The resolved price zone synced from the phone, or `null` if not yet configured.
  * @property sourceOrder Ordered list of all source IDs synced from the phone, or `null` for zone defaults.
  * @property disabledSources Set of disabled source IDs synced from the phone.
+ * @property isLocked Whether the watch app is locked (phone trial expired and not unlocked).
  */
 data class WearUiState(
     val appliances: List<Appliance> = emptyList(),
@@ -60,7 +61,8 @@ data class WearUiState(
     val resultLabel: String? = null,
     val priceZone: PriceZone? = Countries.defaultCountry().zones.first(),
     val sourceOrder: List<String>? = null,
-    val disabledSources: Set<String> = emptySet()
+    val disabledSources: Set<String> = emptySet(),
+    val isLocked: Boolean = false
 )
 
 /**
@@ -141,8 +143,10 @@ class WearViewModel @JvmOverloads constructor(
                         val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
                         val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
                         statsEnabled = dataMap.getBoolean("stats_enabled", false)
+                        val isTrialExpired = dataMap.getBoolean("is_trial_expired", false)
+                        val isUnlocked = dataMap.getBoolean("is_unlocked", false)
                         applyLanguage(dataMap.getString("language"))
-                        _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
+                        _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources, isLocked = isTrialExpired && !isUnlocked) }
                     }
                 }
             }
@@ -178,8 +182,10 @@ class WearViewModel @JvmOverloads constructor(
                             val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
                             val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
                             statsEnabled = dataMap.getBoolean("stats_enabled", false)
+                            val isTrialExpired = dataMap.getBoolean("is_trial_expired", false)
+                            val isUnlocked = dataMap.getBoolean("is_unlocked", false)
                             applyLanguage(dataMap.getString("language"))
-                            _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
+                            _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources, isLocked = isTrialExpired && !isUnlocked) }
                         }
                     }
                 }

@@ -2,14 +2,14 @@
 
 ## Status: Done
 
-All 26 target languages are shipped across all three modules (shared, phone, wear). Per-app language picker is available in Settings with full-screen search.
+All 25 target languages are shipped across all three modules (shared, phone, wear). Per-app language picker is available in Settings with full-screen search.
 
 ## What's done
 
 - All UI strings extracted to `strings.xml` (shared, phone, wear modules)
 - Country and zone names localized (30 countries, 43 zones)
 - `formatDuration()` and `formatRelative()` accept optional `Resources` parameter for localized output
-- 26 translations — all complete (see table below)
+- 25 translations — all complete (see table below)
 - Per-app language picker in Settings (full-screen list with search)
 - Language synced to watch via Data Layer
 - `locales_config.xml` for Android 13+ per-app language system settings
@@ -35,7 +35,7 @@ All 26 target languages are shipped across all three modules (shared, phone, wea
 | **Latvian** | lv | Latvia |
 | **Lithuanian** | lt | Lithuania |
 | **Macedonian** | mk | North Macedonia |
-| **Montenegrin** | cnr | Montenegro |
+| **Montenegrin** | cnr | Montenegro (excluded from Play Store bundles — `cnr` rejected by Play Console; speakers fall back to Serbian or Croatian) |
 | **Norwegian** | nb | Norway |
 | **Polish** | pl | Poland |
 | **Portuguese** | pt | Portugal |
@@ -49,6 +49,8 @@ All 26 target languages are shipped across all three modules (shared, phone, wea
 ### Montenegrin
 
 Montenegro has its own translation (`cnr`) in Latin script, stored in `values-b+cnr` resource directories. The BCP 47 tag `cnr` (ISO 639-3) is used since Montenegrin has no ISO 639-1 code. While mutually intelligible with Serbian, the Montenegrin translation uses Latin script (the predominant everyday script in Montenegro) and Ijekavian pronunciation, compared to Serbian's Cyrillic script and Ekavian pronunciation.
+
+**Note:** The Montenegrin translations exist in the source tree but are excluded from Play Store bundles because the Play Console rejects the `cnr` language code. Montenegrin speakers fall back to Serbian (sr) or Croatian (hr) on devices that install via the Play Store.
 
 ## Considerations
 

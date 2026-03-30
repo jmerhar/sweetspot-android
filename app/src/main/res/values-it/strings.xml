@@ -109,4 +109,17 @@
     <string name="stats_prompt_message">Condividi statistiche API anonime per migliorare l\'affidabilità delle fonti dati. Vengono condivisi solo i conteggi di successo/errore per fonte — nessun dato personale. Puoi modificare questa scelta in qualsiasi momento nelle Impostazioni.</string>
     <string name="stats_prompt_enable">Attiva</string>
     <string name="stats_prompt_dismiss">No grazie</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Il tuo periodo di prova è terminato</string>
+    <string name="paywall_description">SweetSpot trova il momento più economico per utilizzare i tuoi elettrodomestici usando i prezzi dell\'elettricità in tempo reale in 30 paesi europei. Sblocca una volta, usa per sempre.</string>
+    <string name="paywall_unlock">Sblocca SweetSpot</string>
+    <string name="paywall_unlock_price">Sblocca per %s</string>
+    <string name="paywall_restore">Ripristina acquisto</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Prova: %d giorno rimanente</item>
+        <item quantity="many">Prova: %d giorni rimanenti</item>
+        <item quantity="other">Prova: %d giorni rimanenti</item>
+    </plurals>
 </resources>

@@ -55,7 +55,7 @@ Watch App                    Phone App                       Home Server
 
 ### Strings and privacy
 
-- Stats strings added to all 26 app languages.
+- Stats strings added to all 25 app languages.
 - Privacy policies updated in all 5 website languages (en, nl, de, fr, sl) with "Optional API Statistics" section.
 - Meta descriptions and overview paragraphs updated to accurately reflect the optional stats feature.
 

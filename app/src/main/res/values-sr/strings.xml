@@ -109,4 +109,17 @@
     <string name="stats_prompt_message">Поделите анонимне API статистике да бисте помогли побољшању поузданости извора података. Деле се само бројеви успешних/неуспешних захтева по извору — без личних података. Ово можете да промените у било ком тренутку у Подешавањима.</string>
     <string name="stats_prompt_enable">Укључи</string>
     <string name="stats_prompt_dismiss">Не, хвала</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Ваш пробни период је завршен</string>
+    <string name="paywall_description">SweetSpot проналази најјефтиније време за покретање ваших уређаја користећи цене електричне енергије у реалном времену у 30 европских земаља. Откључајте једном, користите заувек.</string>
+    <string name="paywall_unlock">Откључај SweetSpot</string>
+    <string name="paywall_unlock_price">Откључај за %s</string>
+    <string name="paywall_restore">Врати куповину</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Пробни период: %d дан преостаје</item>
+        <item quantity="few">Пробни период: %d дана преостају</item>
+        <item quantity="other">Пробни период: %d дана преостаје</item>
+    </plurals>
 </resources>

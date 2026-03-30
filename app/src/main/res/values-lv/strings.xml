@@ -109,4 +109,17 @@
     <string name="stats_prompt_message">Kopīgojiet anonīmu API statistiku, lai palīdzētu uzlabot datu avotu uzticamību. Tiek kopīgoti tikai veiksmes/kļūdu skaiti pa avotiem — bez personas datiem. To var mainīt jebkurā laikā iestatījumos.</string>
     <string name="stats_prompt_enable">Ieslēgt</string>
     <string name="stats_prompt_dismiss">Nē, paldies</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Jūsu izmēģinājuma periods ir beidzies</string>
+    <string name="paywall_description">SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai, izmantojot reāllaika elektrības cenas 30 Eiropas valstīs. Atbloķējiet vienreiz, lietojiet mūžīgi.</string>
+    <string name="paywall_unlock">Atbloķēt SweetSpot</string>
+    <string name="paywall_unlock_price">Atbloķēt par %s</string>
+    <string name="paywall_restore">Atjaunot pirkumu</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="zero">Izmēģinājuma periods: %d dienu atlicis</item>
+        <item quantity="one">Izmēģinājuma periods: %d diena atlikusi</item>
+        <item quantity="other">Izmēģinājuma periods: %d dienas atlikušas</item>
+    </plurals>
 </resources>

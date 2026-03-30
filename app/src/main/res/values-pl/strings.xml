@@ -112,4 +112,18 @@
     <string name="stats_prompt_message">Udostępniaj anonimowe statystyki API, aby pomóc poprawić niezawodność źródeł danych. Udostępniane są tylko liczby sukcesów/błędów na źródło — bez danych osobowych. Możesz to zmienić w dowolnym momencie w Ustawieniach.</string>
     <string name="stats_prompt_enable">Włącz</string>
     <string name="stats_prompt_dismiss">Nie, dziękuję</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Okres próbny dobiegł końca</string>
+    <string name="paywall_description">SweetSpot znajduje najtańszy czas na uruchomienie urządzeń, korzystając z cen energii elektrycznej w czasie rzeczywistym w 30 krajach europejskich. Odblokuj raz, korzystaj na zawsze.</string>
+    <string name="paywall_unlock">Odblokuj SweetSpot</string>
+    <string name="paywall_unlock_price">Odblokuj za %s</string>
+    <string name="paywall_restore">Przywróć zakup</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Okres próbny: %d dzień pozostał</item>
+        <item quantity="few">Okres próbny: %d dni pozostało</item>
+        <item quantity="many">Okres próbny: %d dni pozostało</item>
+        <item quantity="other">Okres próbny: %d dni pozostało</item>
+    </plurals>
 </resources>

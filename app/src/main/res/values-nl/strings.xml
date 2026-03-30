@@ -106,4 +106,16 @@
     <string name="stats_prompt_message">Deel anonieme API-statistieken om de betrouwbaarheid van databronnen te helpen verbeteren. Alleen aantallen geslaagde/mislukte verzoeken per bron worden gedeeld — geen persoonlijke gegevens. Je kunt dit op elk moment wijzigen in Instellingen.</string>
     <string name="stats_prompt_enable">Inschakelen</string>
     <string name="stats_prompt_dismiss">Nee, bedankt</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Je proefperiode is verlopen</string>
+    <string name="paywall_description">SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken op basis van realtime elektriciteitsprijzen in 30 Europese landen. Ontgrendel eenmalig, gebruik voor altijd.</string>
+    <string name="paywall_unlock">Ontgrendel SweetSpot</string>
+    <string name="paywall_unlock_price">Ontgrendel voor %s</string>
+    <string name="paywall_restore">Aankoop herstellen</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Proefperiode: %d dag resterend</item>
+        <item quantity="other">Proefperiode: %d dagen resterend</item>
+    </plurals>
 </resources>

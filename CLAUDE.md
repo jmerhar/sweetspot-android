@@ -11,6 +11,7 @@ SweetSpot is an Android app that finds the cheapest contiguous time window for r
 ```bash
 make build                        # Build debug APKs (phone + watch)
 make build-release                # Build signed release APKs
+make bundle                       # Build signed release AABs for Play Store
 make debug-phone                  # Install debug app on connected phone
 make debug-watch                  # Install debug app on connected watch
 make install-phone                # Install release APK on connected phone
@@ -47,7 +48,7 @@ make release VERSION=3.0 DRAFT=1    # Same but creates a draft release
 
 The release notes file is always `docs/notes/release.md`. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why — overwrite `docs/notes/release.md` each release. **Important:** The release script requires a clean working tree, so commit the release notes before running `make release`.
 
-The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs, commits, tags, pushes, and creates a GitHub Release with both APKs attached.
+The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs and AABs, commits, tags, pushes, and creates a GitHub Release with APKs attached. AABs are built but not uploaded to GitHub — use them for Play Store submission.
 
 Release signing is configured via `local.properties` (gitignored):
 ```
@@ -72,7 +73,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (284 tests)
+./gradlew test                   # Run all unit tests (291 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -98,8 +99,8 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (12 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
 - `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt (53 tests, Robolectric, in app)
-- `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing (16 tests, Robolectric, in wear)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing (58 tests, Robolectric, in app)
+- `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing, locked state (18 tests, Robolectric, in wear)
 - `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
 - `data/stats/FileStatsCollectorTest` — record, read, clear, append, persistence, corruption (8 tests, in shared)
@@ -116,7 +117,8 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (284 tests)
+- Play Billing Library (`billing-ktx` 8.3.0) for one-time in-app purchase (phone only)
+- JUnit 4 + Robolectric for unit tests (291 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -169,7 +171,7 @@ The data layer is organised into four subpackages under `data/`:
 
 **`data/repository/`** — Business logic:
 - **`PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Returns `PriceResult` (prices + source name). Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Threads the data source name from `FetchResult`/cache through to `PriceResult`. Takes injectable `PriceFetcher` and `Clock` for testing.
-- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), appliances (JSON-serialized list), and stats preferences (enabled, prompt shown, first launch time). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order.
+- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), appliances (JSON-serialized list), stats preferences (enabled, prompt shown, first launch time), and trial/unlock state (`unlocked` boolean). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order. Trial methods: `isTrialExpired()` checks if 14 days have elapsed since first launch and app is not unlocked, `trialDaysRemaining()` returns 0–14, `isUnlocked()`/`setUnlocked()` cache the purchase state locally for offline access.
 - **`CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
@@ -180,14 +182,17 @@ The data layer is organised into four subpackages under `data/`:
 
 ### Phone app (`:app`)
 
-- **`SweetSpotViewModel`** — Owns all UI state. Implements `DataClient.OnDataChangedListener` to receive watch stats. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference, optionally with `InstrumentedPriceFetcher` wrapping when stats are enabled. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, source order, and stats opt-in to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Shows one-time stats opt-in prompt after 3 days. Reports stats via `StatsReporter` after successful fetches. Receives watch stats via `/stats` Data Layer path. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
+- **`SweetSpotViewModel`** — Owns all UI state. Implements `DataClient.OnDataChangedListener` to receive watch stats. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference, optionally with `InstrumentedPriceFetcher` wrapping when stats are enabled. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, source order, stats opt-in, and trial/unlock state to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Shows one-time stats opt-in prompt after 3 days. Reports stats via `StatsReporter` after successful fetches. Receives watch stats via `/stats` Data Layer path. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors). Manages billing via `BillingRepository`: connects on init, collects unlock state, shows paywall when trial expired and not unlocked. Debug builds always skip the paywall.
+- **`BillingRepository`** (interface in `data/billing/`) — Abstraction over Play Billing with `isUnlocked: StateFlow<Boolean>`, `productPrice: StateFlow<String?>`, `connect()`, `disconnect()`, `launchPurchaseFlow(activity)`, `queryPurchases()`. Enables injecting a fake in tests.
+- **`PlayBillingRepository`** (in `data/billing/`) — Real implementation wrapping `BillingClient` (billing-ktx 8.3.0). Product ID: `full_unlock` (non-consumable). On connect, queries existing purchases to restore state and fetches product details for the price display. Uses `enableAutoServiceReconnection()` for automatic reconnection. Caches unlock in `SettingsRepository` for offline. Acknowledges purchases to prevent auto-refund.
 
 ### Wear app (`:wear`)
 
-- **`WearViewModel`** — Reads appliances, zone settings, source order, and stats opt-in from Data Layer on init, listens for live updates. On appliance tap, creates `PriceFetcherFactory` dynamically from source order (with stats instrumentation when enabled), fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch. After each fetch, syncs accumulated stats to phone via `/stats` Data Layer path (awaits delivery before clearing local stats).
-- **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`.
+- **`WearViewModel`** — Reads appliances, zone settings, source order, stats opt-in, and trial/unlock state from Data Layer on init, listens for live updates. Computes `isLocked` from `is_trial_expired && !is_unlocked`. On appliance tap, creates `PriceFetcherFactory` dynamically from source order (with stats instrumentation when enabled), fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch. After each fetch, syncs accumulated stats to phone via `/stats` Data Layer path (awaits delivery before clearing local stats).
+- **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`. When `state.isLocked`, shows `WearLockedScreen` instead of the appliance list.
 - **`ui/ApplianceListScreen`** — `Scaffold` with `PositionIndicator`, `TimeText`, `ScalingLazyColumn` of appliance `Chip`s (icon + name + duration), empty state, loading overlay.
 - **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display that auto-refreshes every 60 seconds. Scrollable for long labels on round watch faces.
+- **`ui/WearLockedScreen`** — Centered text informing the user that the trial has expired and they need to open the phone app to unlock.
 - **`ui/WearTheme`** — Wear Material theme wrapper.
 
 ### Phone navigation
@@ -235,7 +240,7 @@ The form view (`DurationInput` card) contains:
 - **Naming:** `timeZoneId` for `java.time.ZoneId` / timezone concepts, `priceZone` / `priceZoneId` for `PriceZone` / bidding zone concepts — never bare `zoneId`
 - Default country (NL) is defined in one place only: `Countries.defaultCountry()`
 - Duration is stored as `durationHours: Int` + `durationMinutes: Int` (no string parsing on the main flow)
-- UI text is localised via Android string resources (`strings.xml`) in 26 European languages (bg, cnr, cs, da, de, el, es, et, fi, fr, hr, hu, it, lt, lv, mk, nb, nl, pl, pt, ro, sk, sl, sr, sv + English). Per-app language setting via AppCompat. Defaults to system locale. Strings containing numbers that affect grammar (e.g. "%d minutes") must use `<plurals>` with the correct CLDR plural categories for each language — use `getQuantityString()` / `pluralStringResource()` instead of `getString()` / `stringResource()`.
+- UI text is localised via Android string resources (`strings.xml`) in 25 European languages (bg, cs, da, de, el, es, et, fi, fr, hr, hu, it, lt, lv, mk, nb, nl, pl, pt, ro, sk, sl, sr, sv + English). Montenegrin (cnr) translations exist in the source but are excluded from bundles via `localeFilters` because the Play Console rejects the `cnr` language code. Per-app language setting via AppCompat. Defaults to system locale. Strings containing numbers that affect grammar (e.g. "%d minutes") must use `<plurals>` with the correct CLDR plural categories for each language — use `getQuantityString()` / `pluralStringResource()` instead of `getString()` / `stringResource()`.
 - All classes and functions have KDoc comments — always add KDoc when creating new functions or classes
 
 ## Post-Change Checklist

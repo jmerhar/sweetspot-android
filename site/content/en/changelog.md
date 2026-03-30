@@ -11,7 +11,7 @@ description: "SweetSpot version history and release notes."
 {{< changelog version="3.5" date="March 28, 2026" >}}
 - Added aWATTar as a fallback data source for Austria and Germany
 - Locale-aware currency formatting for EUR prices
-- Improved translation quality across 26 languages
+- Improved translation quality across 25 languages
 - Fixed result screen to fully refresh every 60 seconds
 - Bumped dependencies to latest stable versions
 {{< /changelog >}}
@@ -24,13 +24,12 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="March 26, 2026" >}}
-- Added Montenegrin language
 - Settings now displays the name of your system language
-- 26 languages now supported
+- 25 languages now supported
 {{< /changelog >}}
 
 {{< changelog version="3.2" date="March 5, 2026" >}}
-- Added 21 European languages including Dutch, German, and French (26 total)
+- Added 21 European languages including Dutch, German, and French (25 total)
 - Full-screen language picker
 - Configurable data source preferences with drag-to-reorder
 - Reorganised settings screen layout

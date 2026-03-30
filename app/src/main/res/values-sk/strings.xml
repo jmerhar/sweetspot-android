@@ -112,4 +112,18 @@
     <string name="stats_prompt_message">Zdieľajte anonymné štatistiky API na zlepšenie spoľahlivosti zdrojov dát. Zdieľajú sa len počty úspešných/neúspešných požiadaviek na zdroj — žiadne osobné údaje. Toto môžete kedykoľvek zmeniť v Nastaveniach.</string>
     <string name="stats_prompt_enable">Povoliť</string>
     <string name="stats_prompt_dismiss">Nie, ďakujem</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Skúšobné obdobie sa skončilo</string>
+    <string name="paywall_description">SweetSpot nájde najlacnejší čas na spustenie vašich spotrebičov pomocou cien elektrickej energie v reálnom čase v 30 európskych krajinách. Odomknite raz, používajte navždy.</string>
+    <string name="paywall_unlock">Odomknúť SweetSpot</string>
+    <string name="paywall_unlock_price">Odomknúť za %s</string>
+    <string name="paywall_restore">Obnoviť nákup</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Skúšobné obdobie: %d deň zostáva</item>
+        <item quantity="few">Skúšobné obdobie: %d dni zostávajú</item>
+        <item quantity="many">Skúšobné obdobie: %d dňa zostáva</item>
+        <item quantity="other">Skúšobné obdobie: %d dní zostáva</item>
+    </plurals>
 </resources>

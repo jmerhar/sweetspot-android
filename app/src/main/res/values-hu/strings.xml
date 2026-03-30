@@ -106,4 +106,16 @@
     <string name="stats_prompt_message">Ossz meg névtelen API-statisztikákat az adatforrások megbízhatóságának javítása érdekében. Csak a sikeres/sikertelen kérések száma kerül megosztásra forrásonként — személyes adatok nélkül. Ezt bármikor megváltoztathatod a Beállításokban.</string>
     <string name="stats_prompt_enable">Engedélyezés</string>
     <string name="stats_prompt_dismiss">Nem, köszönöm</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">A próbaidőszak lejárt</string>
+    <string name="paywall_description">A SweetSpot megtalálja a legolcsóbb időpontot a készülékei futtatásához valós idejű villamosenergia-árak alapján 30 európai országban. Oldja fel egyszer, használja örökké.</string>
+    <string name="paywall_unlock">SweetSpot feloldása</string>
+    <string name="paywall_unlock_price">Feloldás: %s</string>
+    <string name="paywall_restore">Vásárlás visszaállítása</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Próbaidőszak: %d nap van hátra</item>
+        <item quantity="other">Próbaidőszak: %d nap van hátra</item>
+    </plurals>
 </resources>

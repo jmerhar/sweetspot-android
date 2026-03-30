@@ -40,7 +40,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Quick-duration buttons** — 1h–6h chips for common durations
 - **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
 - **Data source preferences** — reorder, enable, or disable price data sources per zone in Settings
-- **26 languages** — per-app language setting with localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Montenegrin, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
+- **25 languages** — per-app language setting with localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
 - **Wear OS companion** — tap an appliance on your watch to see cheapest start/end times
 - **Automatic appliance sync** — appliances and zone settings sync from phone to watch via Wearable Data Layer
@@ -48,12 +48,14 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - Configurable timezone (defaults to the selected zone's timezone)
 - Offline-capable with smart price caching (both phone and watch)
 - Optional anonymous API reliability stats (opt-in via Settings > Advanced)
+- **14-day free trial** with a one-time in-app purchase to unlock permanently
 
 ## Building
 
 ```bash
 make build                        # Build debug APKs (phone + watch)
 make build-release                # Build signed release APKs
+make bundle                       # Build signed release AABs for Play Store
 make debug                        # Build and install debug app on phone + watch
 make debug-phone                  # Build and install debug app on connected phone
 make debug-watch                  # Build and install debug app on connected watch
@@ -80,7 +82,7 @@ make release VERSION=3.0            # Bump version, build, tag, push, create Git
 make release VERSION=3.0 DRAFT=1    # Same but creates a draft release
 ```
 
-The release script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs, commits the version bump, creates a git tag, pushes, and creates a GitHub Release with both APKs attached.
+The release script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs and AABs, commits the version bump, creates a git tag, pushes, and creates a GitHub Release with APKs attached. AABs are built locally for Play Store upload but not published to GitHub.
 
 ## Testing
 
@@ -88,7 +90,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-273 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, and ViewModel state management (via Robolectric).
+280 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/unlock logic, and ViewModel state management (via Robolectric).
 
 ## License
 

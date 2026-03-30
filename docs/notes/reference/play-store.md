@@ -82,7 +82,7 @@ tool (Figma, screenshots.pro) to add device frames and captions.
 
 ### Store listing localisation
 
-The app supports 26 languages. Translate the store listing (app name, short
+The app supports 25 languages. Translate the store listing (app name, short
 description, full description) for at least the major markets:
 - **Priority:** English, Dutch, German, French, Slovenian (matches website)
 - **Secondary:** Swedish, Norwegian, Danish, Finnish, Spanish, Italian, Polish
@@ -394,6 +394,121 @@ BillingRepository (new, in :app)
   and supporting development. This is a well-established model (e.g. Syncthing,
   K-9 Mail). Consider noting this in the FAQ.
 
+## Testing the billing integration
+
+### Prerequisites
+
+- A Google Play Console developer account
+- The app uploaded to Play Console (even as internal testing track — doesn't need to
+  be published publicly)
+- The `full_unlock` in-app product created in Play Console
+- At least one license tester configured
+
+### Play Console setup
+
+1. **Create the app** in Play Console. Choose **Free** (not Paid) — the monetization
+   happens through in-app purchase, which requires a free listing.
+2. **Upload an AAB** to any track (internal testing is fine). Play Billing only works
+   with apps that have been uploaded at least once. Build with `make bundle`.
+3. **Create the in-app product:**
+   - Go to Monetize > In-app products
+   - Product ID: `full_unlock`
+   - Type: one-time (not subscription)
+   - Price: €2.99 (adjust regional pricing as needed)
+   - Activate it
+4. **Add license testers:**
+   - Go to Settings > License testing
+   - Add your Google account email(s)
+   - License testers can make purchases without being charged
+
+### Debug builds skip the paywall
+
+The ViewModel checks `BuildConfig.DEBUG` and always skips the paywall in debug
+builds. This means `make debug-phone` will never show the paywall, regardless of
+trial state. To test the full billing flow, you need a **release build**.
+
+### Testing the trial (no billing needed)
+
+```bash
+# Fresh install — verify trial starts, paywall not shown
+make install-phone
+```
+
+To simulate an expired trial without waiting 14 days, temporarily patch
+`SettingsRepository.kt`:
+
+```kotlin
+const val TRIAL_DAYS = 0  // was 14 — forces immediate expiry
+```
+
+Then build and install the release APK. The paywall should appear immediately.
+
+Alternatively, use `adb` to manipulate the SharedPreferences timestamp:
+
+```bash
+# Check current prefs (release app has no .debug suffix)
+adb shell "run-as today.sweetspot cat /data/data/today.sweetspot/shared_prefs/sweetspot_settings.xml"
+```
+
+### Testing the purchase flow
+
+1. Build and install the release APK: `make install-phone`
+2. If needed, set `TRIAL_DAYS = 0` to trigger the paywall immediately
+3. The paywall should show "Unlock for €2.99" (or the localized price)
+4. Tap "Unlock" — the Google Play purchase dialog appears
+5. As a license tester, the purchase completes without charging
+6. The paywall should disappear and the app should work normally
+
+### Testing restore
+
+1. After purchasing, uninstall: `adb uninstall today.sweetspot`
+2. Reinstall: `make install-phone`
+3. The paywall appears (trial expired, no local cache of purchase)
+4. Tap "Restore purchase"
+5. BillingClient queries Play and finds the existing purchase
+6. The paywall should disappear
+
+### Testing offline behaviour
+
+1. Purchase the unlock while online
+2. Turn off Wi-Fi and mobile data
+3. Force-stop and reopen the app
+4. The app should remain unlocked (cached in SharedPreferences)
+
+### Testing the watch
+
+```bash
+# Install on both devices
+make install-phone
+make install-watch
+```
+
+The watch reads `is_trial_expired` and `is_unlocked` from the Data Layer:
+
+- **Phone trial active:** Watch shows the normal appliance list
+- **Phone trial expired + not unlocked:** Watch shows "Trial expired — Open
+  SweetSpot on your phone to unlock."
+- **Phone unlocked:** Watch shows the normal appliance list
+
+To test, set `TRIAL_DAYS = 0` on the phone, install the release build on both
+devices, and verify the watch shows the locked screen. Then purchase on the phone
+and verify the watch unlocks.
+
+### Test checklist
+
+| Test | How | Expected |
+|---|---|---|
+| Fresh install, trial active | Install, open app | App works normally, no paywall |
+| Trial days remaining | Check via Settings or UiState | Correct countdown (0–14) |
+| Trial expired, not unlocked | Set `TRIAL_DAYS=0` + release build | Paywall blocks app |
+| Purchase flow | Tap "Unlock" (license tester) | Play dialog → app unlocks |
+| Restore purchase | Uninstall → reinstall → "Restore" | Unlock restored from Play |
+| Offline after purchase | Purchase → airplane mode → reopen | App stays unlocked |
+| Refund | Refund in Play Console → reopen app | Paywall reappears |
+| Watch locked | Phone trial expired + watch connected | Watch shows locked screen |
+| Watch unlocked | Phone unlocked + watch connected | Watch shows appliance list |
+| Debug build | `make debug-phone` | Paywall always skipped |
+
 ## Marketing
 
 ### Pre-launch
@@ -432,8 +547,8 @@ BillingRepository (new, in :app)
 
 - ⬜ Google Play Developer account created and verified
 - ✅ Monochrome icon layer added (phone + watch)
-- ⬜ AAB builds successfully (`./gradlew bundleRelease`)
-- ⬜ Release script updated to also build AABs (or add `make bundle` target)
+- ✅ AAB builds successfully (`./gradlew bundleRelease` / `make bundle`)
+- ✅ Release script builds AABs alongside APKs
 - ✅ Privacy policy live at sweetspot.today/privacy
 - ✅ Website live at sweetspot.today (with Play Store badges)
 - ⬜ Store listing text written (short + full description, all priority languages)
@@ -442,11 +557,11 @@ BillingRepository (new, in :app)
 - ⬜ High-res icon exported (512×512)
 - ⬜ Content rating questionnaire completed in Play Console
 - ⬜ Data safety form completed in Play Console
-- ⬜ Trial logic implemented (first launch date tracking, trial expiry check)
-- ⬜ Paywall screen designed and implemented
-- ⬜ Google Play Billing integration (BillingRepository, purchase flow, restore)
+- ✅ Trial logic implemented (first launch date tracking, trial expiry check)
+- ✅ Paywall screen designed and implemented
+- ✅ Google Play Billing integration (BillingRepository, purchase flow, restore)
 - ⬜ Billing tested with Play Console license test accounts
-- ⬜ Trial + unlock state synced to watch via Data Layer
+- ✅ Trial + unlock state synced to watch via Data Layer
 - ⬜ Wear OS manifest metadata added for paired distribution
 - ⬜ Internal testing track verified on real devices
 - ⬜ Store listing localised for priority languages (EN, NL, DE, FR, SL)

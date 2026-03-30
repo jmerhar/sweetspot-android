@@ -11,7 +11,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< changelog version="3.5" date="28. marec 2026" >}}
 - Dodan aWATTar kot rezervni vir podatkov za Avstrijo in Nemčijo
 - Prikaz cen v EUR prilagojen regionalnemu zapisu
-- Izboljšana kakovost prevodov v 26 jezikih
+- Izboljšana kakovost prevodov v 25 jezikih
 - Zaslon z rezultati se zdaj v celoti osveži vsakih 60 sekund
 - Odvisnosti posodobljene na najnovejše stabilne različice
 {{< /changelog >}}
@@ -24,13 +24,12 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="26. marec 2026" >}}
-- Dodana črnogorščina
 - Ime sistemskega jezika je zdaj prikazano v nastavitvah
-- Skupno podprtih jezikov: 26
+- Skupno podprtih jezikov: 25
 {{< /changelog >}}
 
 {{< changelog version="3.2" date="5. marec 2026" >}}
-- Dodanih 21 evropskih jezikov, vključno z nizozemščino, nemščino in francoščino (skupaj 26)
+- Dodanih 21 evropskih jezikov, vključno z nizozemščino, nemščino in francoščino (skupaj 25)
 - Celozaslonski izbirnik jezika
 - Nastavitev prednostnega vrstnega reda virov podatkov z vlečenjem
 - Nastavitve pregledneje razporejene

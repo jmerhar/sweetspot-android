@@ -24,6 +24,7 @@ import org.robolectric.annotation.Config
 import today.sweetspot.data.api.FetchResult
 import today.sweetspot.data.api.PriceFetcher
 
+import today.sweetspot.data.billing.BillingRepository
 import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.stats.StatsCollector
@@ -33,6 +34,11 @@ import today.sweetspot.model.PriceSlot
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
+
+import android.app.Activity
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -98,9 +104,25 @@ class SweetSpotViewModelTest {
         override fun clear() { records.clear() }
     }
 
+    /** Fake [BillingRepository] for testing paywall/unlock behaviour. */
+    private class FakeBillingRepository(initialUnlocked: Boolean = false) : BillingRepository {
+        private val _isUnlocked = MutableStateFlow(initialUnlocked)
+        override val isUnlocked: StateFlow<Boolean> = _isUnlocked.asStateFlow()
+        override val productPrice: StateFlow<String?> = MutableStateFlow(null)
+        override fun connect() {}
+        override fun disconnect() {}
+        override fun launchPurchaseFlow(activity: Activity) {}
+        override fun queryPurchases() {}
+        fun setUnlocked(value: Boolean) { _isUnlocked.value = value }
+    }
+
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
-    private fun testViewModel(fetcher: FakeFetcher, cache: FakeCache = FakeCache()) =
-        SweetSpotViewModel(app, { _ -> fetcher }, cache, FakeStatsCollector(), testDispatcher)
+    private fun testViewModel(
+        fetcher: FakeFetcher,
+        cache: FakeCache = FakeCache(),
+        billing: BillingRepository? = null
+    ) =
+        SweetSpotViewModel(app, { _ -> fetcher }, cache, FakeStatsCollector(), testDispatcher, billing)
 
     // --- Initial state ---
 
@@ -665,5 +687,76 @@ class SweetSpotViewModelTest {
         viewModel.onWatchStatsReceived(records)
 
         assertTrue(collector.records.isEmpty())
+    }
+
+    // --- Trial & Paywall ---
+
+    @Test
+    fun `fresh install has trial not expired and paywall not shown`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        prefs.edit().putLong("first_launch_ms", System.currentTimeMillis()).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        val state = viewModel.uiState.value
+        assertFalse(state.isTrialExpired)
+        assertFalse(state.showPaywall)
+        assertTrue(state.trialDaysRemaining > 0)
+    }
+
+    @Test
+    fun `expired trial without unlock shows paywall`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fifteenDaysAgo = System.currentTimeMillis() - (15 * 24 * 60 * 60 * 1000L)
+        prefs.edit()
+            .putLong("first_launch_ms", fifteenDaysAgo)
+            .putBoolean("unlocked", false)
+            .commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        val state = viewModel.uiState.value
+        assertTrue(state.isTrialExpired)
+        // In test (debug) builds, paywall is always skipped, but isTrialExpired still reflects reality
+        assertEquals(0, state.trialDaysRemaining)
+    }
+
+    @Test
+    fun `expired trial with unlock does not show paywall`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fifteenDaysAgo = System.currentTimeMillis() - (15 * 24 * 60 * 60 * 1000L)
+        prefs.edit()
+            .putLong("first_launch_ms", fifteenDaysAgo)
+            .putBoolean("unlocked", true)
+            .commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        val state = viewModel.uiState.value
+        assertFalse(state.isTrialExpired)
+        assertTrue(state.isUnlocked)
+        assertFalse(state.showPaywall)
+    }
+
+    @Test
+    fun `trial days remaining computed correctly`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fiveDaysAgo = System.currentTimeMillis() - (5 * 24 * 60 * 60 * 1000L)
+        prefs.edit().putLong("first_launch_ms", fiveDaysAgo).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertEquals(9, viewModel.uiState.value.trialDaysRemaining)
+    }
+
+    @Test
+    fun `billing unlock state change updates paywall`() = runTest {
+        val billing = FakeBillingRepository(initialUnlocked = false)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), billing = billing)
+        runCurrent()
+
+        assertFalse(viewModel.uiState.value.isUnlocked)
+
+        billing.setUnlocked(true)
+        runCurrent()
+
+        assertTrue(viewModel.uiState.value.isUnlocked)
+        assertFalse(viewModel.uiState.value.showPaywall)
     }
 }

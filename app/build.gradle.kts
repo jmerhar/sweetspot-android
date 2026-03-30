@@ -34,6 +34,9 @@ dependencies {
     // Wearable Data Layer (sync appliances to watch)
     implementation(libs.play.services.wearable)
 
+    // Play Billing (one-time in-app purchase for full unlock)
+    implementation(libs.billing)
+
     // kotlinx-serialization (used by ViewModel for Data Layer sync)
     implementation(libs.serialization.json)
 

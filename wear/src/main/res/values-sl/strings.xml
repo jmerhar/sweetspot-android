@@ -9,4 +9,5 @@
     <string name="wear_error_no_data">Podatki o cenah niso na voljo.</string>
     <string name="wear_error_not_enough_data">Ni dovolj podatkov za %s.</string>
     <string name="wear_error_network">Cen ni bilo mogoče pridobiti.</string>
+    <string name="wear_trial_expired">Preizkusno obdobje je poteklo\n\nOdprite SweetSpot na telefonu za odklepanje.</string>
 </resources>

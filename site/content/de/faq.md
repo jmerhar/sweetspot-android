@@ -41,7 +41,7 @@ SweetSpot ist bei [Google Play](https://play.google.com/store/apps/details?id=to
 {{< /faq >}}
 
 {{< faq question="Welche Sprachen werden unterstützt?" >}}
-SweetSpot ist in 26 europäischen Sprachen verfügbar: Bulgarisch, Montenegrinisch, Tschechisch, Dänisch, Deutsch, Griechisch, Englisch, Spanisch, Estnisch, Finnisch, Französisch, Kroatisch, Ungarisch, Italienisch, Litauisch, Lettisch, Mazedonisch, Norwegisch (Bokmål), Niederländisch, Polnisch, Portugiesisch, Rumänisch, Slowakisch, Slowenisch, Serbisch und Schwedisch.
+SweetSpot ist in 25 europäischen Sprachen verfügbar: Bulgarisch, Tschechisch, Dänisch, Deutsch, Griechisch, Englisch, Spanisch, Estnisch, Finnisch, Französisch, Kroatisch, Ungarisch, Italienisch, Litauisch, Lettisch, Mazedonisch, Norwegisch (Bokmål), Niederländisch, Polnisch, Portugiesisch, Rumänisch, Slowakisch, Slowenisch, Serbisch und Schwedisch.
 
 Die App verwendet standardmäßig deine Systemsprache. Du kannst die Sprache auch manuell in den Einstellungen festlegen.
 {{< /faq >}}

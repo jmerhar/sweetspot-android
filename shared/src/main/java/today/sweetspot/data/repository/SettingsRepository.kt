@@ -32,6 +32,10 @@ class SettingsRepository(private val context: Context) {
         const val KEY_STATS_ENABLED = "stats_enabled"
         const val KEY_STATS_PROMPT_SHOWN = "stats_prompt_shown"
         const val KEY_FIRST_LAUNCH_MS = "first_launch_ms"
+        const val KEY_UNLOCKED = "unlocked"
+
+        /** Trial duration in days. */
+        const val TRIAL_DAYS = 14
 
         /** Lenient parser that ignores unknown fields for forward compatibility. */
         val json = Json { ignoreUnknownKeys = true }
@@ -268,5 +272,44 @@ class SettingsRepository(private val context: Context) {
         val now = System.currentTimeMillis()
         prefs.edit { putLong(KEY_FIRST_LAUNCH_MS, now) }
         return now
+    }
+
+    // --- Trial & Unlock ---
+
+    /**
+     * Returns the number of full trial days remaining (0–14).
+     *
+     * Based on the elapsed time since [getFirstLaunchMs]. If the app has been unlocked,
+     * returns 0 (the caller should check [isUnlocked] separately).
+     */
+    fun trialDaysRemaining(): Int {
+        val elapsed = System.currentTimeMillis() - getFirstLaunchMs()
+        val elapsedDays = (elapsed / (24 * 60 * 60 * 1000L)).toInt()
+        return (TRIAL_DAYS - elapsedDays).coerceIn(0, TRIAL_DAYS)
+    }
+
+    /**
+     * Returns `true` if the free trial has expired and the app has not been unlocked.
+     *
+     * The trial lasts [TRIAL_DAYS] days from first launch.
+     */
+    fun isTrialExpired(): Boolean {
+        return trialDaysRemaining() <= 0 && !isUnlocked()
+    }
+
+    /**
+     * Returns `true` if the user has purchased the full unlock.
+     *
+     * This is cached locally in SharedPreferences so the unlock state works offline.
+     */
+    fun isUnlocked(): Boolean = prefs.getBoolean(KEY_UNLOCKED, false)
+
+    /**
+     * Caches the unlock purchase state for offline access.
+     *
+     * @param unlocked `true` if the user has a valid purchase, `false` if revoked (e.g. refund).
+     */
+    fun setUnlocked(unlocked: Boolean) {
+        prefs.edit { putBoolean(KEY_UNLOCKED, unlocked) }
     }
 }

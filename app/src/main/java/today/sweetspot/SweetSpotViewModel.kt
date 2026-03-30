@@ -1,5 +1,6 @@
 package today.sweetspot
 
+import android.app.Activity
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 
@@ -13,6 +14,8 @@ import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
 import today.sweetspot.data.api.PriceFetcherFactory
 import today.sweetspot.data.api.defaultPriceFetcherFactory
+import today.sweetspot.data.billing.BillingRepository
+import today.sweetspot.data.billing.PlayBillingRepository
 import today.sweetspot.data.cache.FilePriceCache
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.repository.CountryDetector
@@ -81,6 +84,11 @@ sealed interface AppError {
  * @property countries All supported countries for the country picker.
  * @property showStatsPrompt Whether the stats opt-in prompt dialog should be shown.
  * @property isStatsEnabled Whether API stats collection is enabled.
+ * @property isTrialExpired Whether the 14-day free trial has expired.
+ * @property isUnlocked Whether the app has been unlocked via in-app purchase.
+ * @property trialDaysRemaining Number of trial days remaining (0–14).
+ * @property showPaywall Whether the paywall screen should block the app.
+ * @property productPrice Localized price string for the unlock purchase (e.g. "€2.99"), or `null` if not loaded.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -101,7 +109,12 @@ data class UiState(
     val disabledSources: Set<String> = emptySet(),
     val countries: List<Country> = Countries.all,
     val showStatsPrompt: Boolean = false,
-    val isStatsEnabled: Boolean = false
+    val isStatsEnabled: Boolean = false,
+    val isTrialExpired: Boolean = false,
+    val isUnlocked: Boolean = false,
+    val trialDaysRemaining: Int = 14,
+    val showPaywall: Boolean = false,
+    val productPrice: String? = null
 )
 
 /**
@@ -117,13 +130,16 @@ data class UiState(
  * @param priceCache Cache for raw price JSON.
  * @param statsCollector Optional stats collector override for testing.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
+ * @param billingRepository Optional billing repository override. When `null` (production),
+ *   creates a [PlayBillingRepository]. Pass a fake for tests.
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
     private val priceFetcherFactory: PriceFetcherFactory? = null,
     private val priceCache: PriceCache = FilePriceCache(application),
     private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val billingRepository: BillingRepository? = null
 ) : AndroidViewModel(application),
     DataClient.OnDataChangedListener {
 
@@ -147,17 +163,48 @@ class SweetSpotViewModel @JvmOverloads constructor(
             sourceOrder = settingsRepository.getSourceOrder(),
             disabledSources = settingsRepository.getDisabledSources(),
             countries = countriesWithDetectedFirst(application),
-            isStatsEnabled = settingsRepository.isStatsEnabled()
+            isStatsEnabled = settingsRepository.isStatsEnabled(),
+            isTrialExpired = settingsRepository.isTrialExpired(),
+            isUnlocked = settingsRepository.isUnlocked(),
+            trialDaysRemaining = settingsRepository.trialDaysRemaining(),
+            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired()
         )
     )
 
     /** Observable UI state. */
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
+    /** Active billing repository: injected fake, production PlayBillingRepository, or null for debug builds. */
+    private val activeBilling: BillingRepository? = when {
+        billingRepository != null -> billingRepository
+        BuildConfig.DEBUG -> null
+        else -> PlayBillingRepository(application, settingsRepository, viewModelScope)
+    }
+
     init {
         // Record first launch time for stats prompt delay
         settingsRepository.getFirstLaunchMs()
         checkStatsPrompt()
+        // Connect billing and observe unlock state
+        activeBilling?.let { billing ->
+            billing.connect()
+            viewModelScope.launch {
+                billing.isUnlocked.collect { unlocked ->
+                    _uiState.update {
+                        it.copy(
+                            isUnlocked = unlocked,
+                            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !unlocked
+                        )
+                    }
+                    syncSettingsToWear()
+                }
+            }
+            viewModelScope.launch {
+                billing.productPrice.collect { price ->
+                    _uiState.update { it.copy(productPrice = price) }
+                }
+            }
+        }
         // Listen for watch stats via Data Layer
         try {
             Wearable.getDataClient(application).addListener(this)
@@ -169,6 +216,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     override fun onCleared() {
         super.onCleared()
         stopResultRefresh()
+        activeBilling?.disconnect()
         try {
             Wearable.getDataClient(getApplication()).removeListener(this)
         } catch (_: Exception) {
@@ -545,6 +593,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 dataMap.putString("disabled_sources", state.disabledSources.takeIf { it.isNotEmpty() }?.let { Json.encodeToString(it) } ?: "")
                 dataMap.putString("language", resolvedTag)
                 dataMap.putBoolean("stats_enabled", settingsRepository.isStatsEnabled())
+                dataMap.putBoolean("is_trial_expired", settingsRepository.isTrialExpired())
+                dataMap.putBoolean("is_unlocked", settingsRepository.isUnlocked())
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
             Wearable.getDataClient(getApplication()).putDataItem(request)
@@ -755,6 +805,26 @@ class SweetSpotViewModel @JvmOverloads constructor(
         for (record in records) {
             statsCollector.record(record)
         }
+    }
+
+    // --- Purchase ---
+
+    /**
+     * Launches the in-app purchase flow for the full unlock.
+     *
+     * @param activity The activity to host the purchase UI.
+     */
+    fun onPurchaseClicked(activity: Activity) {
+        activeBilling?.launchPurchaseFlow(activity)
+    }
+
+    /**
+     * Re-queries existing purchases to restore unlock state.
+     *
+     * Useful for users who previously purchased on another device or after reinstalling.
+     */
+    fun onRestorePurchases() {
+        activeBilling?.queryPurchases()
     }
 
     /**

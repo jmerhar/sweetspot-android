@@ -69,8 +69,8 @@ sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$CONVENTION_FILE"
 
 # --- Build release APK ---
 
-echo "Building release APK..."
-./gradlew assembleRelease
+echo "Building release APK and AAB..."
+./gradlew assembleRelease bundleRelease
 
 APK_PATH="app/build/outputs/apk/release/app-release.apk"
 if [[ ! -f "$APK_PATH" ]]; then
@@ -121,3 +121,5 @@ echo ""
 echo "Done! Release ${TAG} created."
 echo "Phone APK: ${NAMED_APK}"
 echo "Wear APK:  ${NAMED_WEAR_APK}"
+echo "Phone AAB: app/build/outputs/bundle/release/app-release.aab"
+echo "Wear AAB:  wear/build/outputs/bundle/release/wear-release.aab"

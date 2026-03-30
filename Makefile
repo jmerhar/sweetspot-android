@@ -1,4 +1,4 @@
-.PHONY: help build build-release test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate
+.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -9,6 +9,15 @@ build: ## Build debug APKs (phone + watch)
 
 build-release: ## Build signed release APKs
 	./gradlew assembleRelease
+
+bundle: ## Build signed release AABs for Play Store
+	./gradlew bundleRelease
+	@mkdir -p build
+	@cp app/build/outputs/bundle/release/app-release.aab build/sweetspot-phone.aab
+	@cp wear/build/outputs/bundle/release/wear-release.aab build/sweetspot-wear.aab
+	@echo "AABs ready in build/"
+	@echo "  build/sweetspot-phone.aab"
+	@echo "  build/sweetspot-wear.aab"
 
 test: ## Run all unit tests
 	./gradlew test

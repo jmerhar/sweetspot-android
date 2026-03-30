@@ -278,4 +278,18 @@ class WearViewModelTest {
     fun `initial state has null source order`() {
         assertNull(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.sourceOrder)
     }
+
+    // --- isLocked ---
+
+    @Test
+    fun `initial state has isLocked false`() {
+        assertFalse(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.isLocked)
+    }
+
+    @Test
+    fun `isLocked remains false when isTrialExpired and isUnlocked both false`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        // Default Data Layer values: isTrialExpired=false, isUnlocked=false
+        assertFalse(viewModel.uiState.value.isLocked)
+    }
 }

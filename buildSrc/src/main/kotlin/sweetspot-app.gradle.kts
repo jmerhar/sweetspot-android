@@ -25,6 +25,15 @@ android {
         versionCode = 16
         versionName = "4.1"
 
+        // Include only IANA-recognised language codes in bundles.
+        // Montenegrin (cnr) is excluded because the Play Console rejects it;
+        // Montenegrin speakers fall back to Serbian (sr) or Croatian (hr).
+        androidResources.localeFilters += listOf(
+            "bg", "cs", "da", "de", "el", "en", "es", "et", "fi", "fr",
+            "hr", "hu", "it", "lt", "lv", "mk", "nb", "nl", "pl", "pt",
+            "ro", "sk", "sl", "sr", "sv"
+        )
+
         val props = rootProject.file("local.properties")
         val entsoeToken = if (props.exists()) {
             Properties().apply { load(props.inputStream()) }

@@ -9,4 +9,5 @@
     <string name="wear_error_no_data">Нема доступних података о ценама.</string>
     <string name="wear_error_not_enough_data">Нема довољно података за %s.</string>
     <string name="wear_error_network">Преузимање цена није успело.</string>
+    <string name="wear_trial_expired">Пробни период је истекао\n\nОтворите SweetSpot на телефону за откључавање.</string>
 </resources>

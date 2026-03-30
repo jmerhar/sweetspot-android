@@ -11,7 +11,7 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< changelog version="3.5" date="28 mars 2026" >}}
 - Ajout d'aWATTar comme source de repli pour l'Autriche et l'Allemagne
 - Affichage des prix en euros adapté aux conventions locales
-- Amélioration de la qualité des traductions dans 26 langues
+- Amélioration de la qualité des traductions dans 25 langues
 - L'écran de résultats se rafraîchit maintenant entièrement toutes les 60 secondes
 - Mise à jour des dépendances vers les dernières versions stables
 {{< /changelog >}}
@@ -24,13 +24,12 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="26 mars 2026" >}}
-- Ajout du monténégrin
 - La langue du système est désormais affichée dans les paramètres
-- 26 langues désormais prises en charge
+- 25 langues désormais prises en charge
 {{< /changelog >}}
 
 {{< changelog version="3.2" date="5 mars 2026" >}}
-- 21 langues européennes ajoutées dont le néerlandais, l'allemand et le français (26 au total)
+- 21 langues européennes ajoutées dont le néerlandais, l'allemand et le français (25 au total)
 - Sélecteur de langue en plein écran
 - Ordre de priorité des sources de données configurable par glisser-déposer
 - Paramètres regroupés par catégorie

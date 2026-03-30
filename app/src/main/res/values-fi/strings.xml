@@ -106,4 +106,16 @@
     <string name="stats_prompt_message">Jaa anonyymiä API-tilastoa tietolähteiden luotettavuuden parantamiseksi. Vain onnistumis-/virhemäärät tietolähteittäin jaetaan — ei henkilötietoja. Voit muuttaa tämän milloin tahansa asetuksissa.</string>
     <string name="stats_prompt_enable">Ota käyttöön</string>
     <string name="stats_prompt_dismiss">Ei kiitos</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Kokeilujaksosi on päättynyt</string>
+    <string name="paywall_description">SweetSpot löytää halvimman ajan laitteidesi käytölle reaaliaikaisten sähköhintojen perusteella 30 Euroopan maassa. Avaa kerran, käytä ikuisesti.</string>
+    <string name="paywall_unlock">Avaa SweetSpot</string>
+    <string name="paywall_unlock_price">Avaa hintaan %s</string>
+    <string name="paywall_restore">Palauta ostos</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Kokeilujakso: %d päivä jäljellä</item>
+        <item quantity="other">Kokeilujakso: %d päivää jäljellä</item>
+    </plurals>
 </resources>

@@ -112,4 +112,18 @@
     <string name="stats_prompt_message">Dalinkitės anonimine API statistika, kad padėtumėte pagerinti duomenų šaltinių patikimumą. Dalijamasi tik sėkmių/nesėkmių skaičiais pagal šaltinį — jokių asmeninių duomenų. Tai galite bet kada pakeisti nustatymuose.</string>
     <string name="stats_prompt_enable">Įjungti</string>
     <string name="stats_prompt_dismiss">Ne, ačiū</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Jūsų bandomasis laikotarpis baigėsi</string>
+    <string name="paywall_description">SweetSpot randa pigiausią laiką jūsų prietaisams naudojant realaus laiko elektros kainas 30 Europos šalių. Atrakinkite vieną kartą, naudokite amžinai.</string>
+    <string name="paywall_unlock">Atrakinti SweetSpot</string>
+    <string name="paywall_unlock_price">Atrakinti už %s</string>
+    <string name="paywall_restore">Atkurti pirkinį</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Bandomasis laikotarpis: liko %d diena</item>
+        <item quantity="few">Bandomasis laikotarpis: liko %d dienos</item>
+        <item quantity="many">Bandomasis laikotarpis: liko %d dienos</item>
+        <item quantity="other">Bandomasis laikotarpis: liko %d dienų</item>
+    </plurals>
 </resources>

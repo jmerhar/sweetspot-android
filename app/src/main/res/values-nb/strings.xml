@@ -106,4 +106,16 @@
     <string name="stats_prompt_message">Del anonym API-statistikk for å bidra til å forbedre datakildenes pålitelighet. Bare antall vellykkede/mislykkede forespørsler per datakilde deles — ingen personlige data. Du kan endre dette når som helst i Innstillinger.</string>
     <string name="stats_prompt_enable">Aktiver</string>
     <string name="stats_prompt_dismiss">Nei takk</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Prøveperioden din er utløpt</string>
+    <string name="paywall_description">SweetSpot finner det billigste tidspunktet for å kjøre apparatene dine ved hjelp av sanntids strømpriser i 30 europeiske land. Lås opp én gang, bruk for alltid.</string>
+    <string name="paywall_unlock">Lås opp SweetSpot</string>
+    <string name="paywall_unlock_price">Lås opp for %s</string>
+    <string name="paywall_restore">Gjenopprett kjøp</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Prøveperiode: %d dag gjenstår</item>
+        <item quantity="other">Prøveperiode: %d dager gjenstår</item>
+    </plurals>
 </resources>

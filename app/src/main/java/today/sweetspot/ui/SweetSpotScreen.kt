@@ -42,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
@@ -200,6 +201,17 @@ private fun FormScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = 4.dp)
             )
+
+            if (state.trialDaysRemaining in 1..14 && !state.isUnlocked) {
+                val days = state.trialDaysRemaining
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = pluralStringResource(R.plurals.trial_days_remaining, days, days),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
         }

@@ -4,7 +4,7 @@ Audit date: 2026-03-26
 
 ## Current State
 
-**30 countries, 43 bidding zones, 26 languages** (25 + English default).
+**30 countries, 43 bidding zones, 25 languages** (24 + English default).
 
 All 43 ENTSO-E bidding zones that publish A44 day-ahead prices are supported.
 Every supported country has its primary language(s) covered. Every supported
@@ -36,7 +36,7 @@ All accounted for:
 | Latvia | LV | Latvian (lv) | Yes |
 | Lithuania | LT | Lithuanian (lt) | Yes |
 | Luxembourg | LU | French (fr), German (de) | Yes, both |
-| Montenegro | ME | Montenegrin (cnr) | Yes |
+| Montenegro | ME | Montenegrin (cnr) | No (excluded from bundles) |
 | Netherlands | NL | Dutch (nl) | Yes |
 | North Macedonia | MK | Macedonian (mk) | Yes |
 | Norway | NO | Norwegian Bokmål (nb) | Yes |
@@ -88,8 +88,11 @@ electricity market coupling. These are the most likely future additions.
 - Kosovo's TSO (KOSTT) is an ENTSO-E observer. Market coupling depends on regional
   political progress.
 - Bosnian (bs) is mutually intelligible with Croatian (hr), Serbian (sr), and
-  Montenegrin (cnr). A dedicated translation may still be worthwhile for user
-  experience, since the languages use different vocabulary preferences.
+  Montenegrin (cnr). Montenegrin is excluded from Play Store bundles because the
+  Play Console rejects the `cnr` language code; Montenegrin speakers fall back to
+  Serbian (sr) or Croatian (hr). A dedicated Bosnian translation may still be
+  worthwhile for user experience, since the languages use different vocabulary
+  preferences.
 
 ### Island/isolated grids
 

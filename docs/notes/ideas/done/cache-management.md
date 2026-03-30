@@ -26,4 +26,4 @@ appears below the top bar during loading.
 - `SweetSpotViewModel.onClearCache()` returns a snackbar message string; `onRefreshResults()` sets `AppError.Network` for the snackbar via `LaunchedEffect`.
 - `AdvancedSection` composable in a new file, wired through `SettingsScreen` → `MainActivity`.
 - `AppError.Network` includes a unique `id` (nanoTime) so consecutive identical messages always re-trigger the snackbar.
-- All 6 new strings translated into 26 languages.
+- All 6 new strings translated into 25 languages.

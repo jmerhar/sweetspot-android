@@ -106,4 +106,16 @@
     <string name="stats_prompt_message">Jagage anonüümset API statistikat, et aidata parandada andmeallikate töökindlust. Jagatakse ainult õnnestumiste/tõrgete arvu andmeallika kohta — isikuandmeid ei jagata. Saate seda igal ajal muuta seadetes.</string>
     <string name="stats_prompt_enable">Luba</string>
     <string name="stats_prompt_dismiss">Ei, aitäh</string>
+
+    <!-- Paywall -->
+    <string name="paywall_title">Proovperiood on lõppenud</string>
+    <string name="paywall_description">SweetSpot leiab soodsaima aja teie seadmete kasutamiseks, kasutades reaalajas elektrihindu 30 Euroopa riigis. Avage ühe korra, kasutage igavesti.</string>
+    <string name="paywall_unlock">Ava SweetSpot</string>
+    <string name="paywall_unlock_price">Ava hinnaga %s</string>
+    <string name="paywall_restore">Taasta ost</string>
+
+    <plurals name="trial_days_remaining">
+        <item quantity="one">Proovperiood: %d päev jäänud</item>
+        <item quantity="other">Proovperiood: %d päeva jäänud</item>
+    </plurals>
 </resources>

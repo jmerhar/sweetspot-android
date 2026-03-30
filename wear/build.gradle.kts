@@ -7,6 +7,9 @@ android {
 
     defaultConfig {
         minSdk = 30
+        // Offset wear versionCode so Play Console can distinguish phone and wear bundles.
+        // Without this, uploading both AABs causes one to replace the other.
+        versionCode = (versionCode ?: 0) + 1_000_000
     }
 }
 

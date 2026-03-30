@@ -2,11 +2,9 @@
 
 [![Test](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml/badge.svg)](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml)
 
-Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries.
+Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries. Website: [sweetspot.today](https://sweetspot.today)
 
 SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones, 15-minute resolution) with [EnergyZero](https://api.energyzero.nl) as a fallback for the Netherlands, [Spot-Hinta.fi](https://spot-hinta.fi/) for 15 Nordic/Baltic zones, [Energy-Charts](https://api.energy-charts.info/) for 15 European zones, and [aWATTar](https://www.awattar.com/) for Austria and Germany, then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
-
-This is the native Android port of the [SweetSpot PHP web app](https://github.com/jmerhar/sweetspot-php).
 
 ## Requirements
 
@@ -41,13 +39,15 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behaviour
 - **Quick-duration buttons** — 1h–6h chips for common durations
 - **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
-- **26 languages** — localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Montenegrin, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
+- **Data source preferences** — reorder, enable, or disable price data sources per zone in Settings
+- **26 languages** — per-app language setting with localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Montenegrin, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
 - **Wear OS companion** — tap an appliance on your watch to see cheapest start/end times
 - **Automatic appliance sync** — appliances and zone settings sync from phone to watch via Wearable Data Layer
 - Material 3 with dynamic colour theming and dark mode
 - Configurable timezone (defaults to the selected zone's timezone)
 - Offline-capable with smart price caching (both phone and watch)
+- Optional anonymous API reliability stats (opt-in via Settings > Advanced)
 
 ## Building
 
@@ -68,9 +68,10 @@ make clean                        # Remove all build outputs
 
 The watch app must be installed separately (auto-install only works via Play Store).
 
-1. Connect the watch via Wi-Fi debugging (Settings > Developer options > Debug over Wi-Fi)
-2. Pair with `adb connect <ip>:<port>`
-3. Install: `make install-watch`
+1. Enable Developer Options on the watch (Settings > System > About > tap Build Number 7 times)
+2. Enable Wi-Fi debugging (Settings > Developer options > Debug over Wi-Fi)
+3. Connect: `adb connect <ip>:<port>`
+4. Install: `make install-watch`
 
 ## Releasing
 
@@ -87,7 +88,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-229 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, and ViewModel state management (via Robolectric).
+273 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, and ViewModel state management (via Robolectric).
 
 ## License
 

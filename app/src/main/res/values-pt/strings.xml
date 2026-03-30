@@ -101,4 +101,12 @@
     <string name="settings_clear_cache_description">Força o carregamento de novos preços na próxima pesquisa. Útil se os preços parecerem incorretos ou desatualizados.</string>
     <string name="snackbar_cache_cleared">Cache limpa</string>
     <string name="cd_refresh">Atualizar</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Partilhar estatísticas API</string>
+    <string name="settings_stats_description">Ajude a melhorar a fiabilidade das fontes de dados partilhando estatísticas anónimas de sucesso/falha API. Não são recolhidos dados pessoais.</string>
+    <string name="stats_prompt_title">Ajudar a melhorar o SweetSpot?</string>
+    <string name="stats_prompt_message">Partilhe estatísticas de API anónimas para ajudar a melhorar a fiabilidade das fontes de dados. Apenas contagens de sucesso/falha por fonte são partilhadas — sem dados pessoais. Pode alterar isto a qualquer momento nas Definições.</string>
+    <string name="stats_prompt_enable">Ativar</string>
+    <string name="stats_prompt_dismiss">Não, obrigado</string>
 </resources>

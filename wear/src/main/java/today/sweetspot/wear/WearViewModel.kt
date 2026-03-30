@@ -27,6 +27,9 @@ import today.sweetspot.data.api.defaultPriceFetcherFactory
 import today.sweetspot.data.cache.FilePriceCache
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.repository.PriceRepository
+import today.sweetspot.data.stats.FileStatsCollector
+import today.sweetspot.data.stats.StatsCollector
+import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.Countries
 import today.sweetspot.model.PriceSlot
@@ -71,18 +74,24 @@ data class WearUiState(
  * @param priceFetcherFactory Optional factory override for testing. When `null` (production),
  *   the factory is created dynamically from the current source order.
  * @param priceCache Cache for raw price JSON.
+ * @param statsCollector Optional stats collector override for testing.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
 class WearViewModel @JvmOverloads constructor(
     application: Application,
     private val priceFetcherFactory: PriceFetcherFactory? = null,
     private val priceCache: PriceCache = FilePriceCache(application),
+    private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : AndroidViewModel(application),
     DataClient.OnDataChangedListener {
 
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
+
+    /** Whether API stats collection is enabled (synced from phone). */
+    @Volatile
+    private var statsEnabled: Boolean = false
 
     /** Prices from the last successful fetch, used for periodic recalculation. */
     private var lastPrices: List<PriceSlot> = emptyList()
@@ -131,6 +140,7 @@ class WearViewModel @JvmOverloads constructor(
                         )
                         val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
                         val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
+                        statsEnabled = dataMap.getBoolean("stats_enabled", false)
                         applyLanguage(dataMap.getString("language"))
                         _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
                     }
@@ -167,6 +177,7 @@ class WearViewModel @JvmOverloads constructor(
                             )
                             val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
                             val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
+                            statsEnabled = dataMap.getBoolean("stats_enabled", false)
                             applyLanguage(dataMap.getString("language"))
                             _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources) }
                         }
@@ -211,8 +222,9 @@ class WearViewModel @JvmOverloads constructor(
             try {
                 val state = _uiState.value
                 val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
+                val activeCollector = if (statsEnabled) statsCollector else null
                 val factory = priceFetcherFactory
-                    ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder)
+                    ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder, activeCollector, "watch")
                 val fetcher = factory.create(priceZone)
                 val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
                 val prices = repository.getPrices().prices
@@ -252,6 +264,7 @@ class WearViewModel @JvmOverloads constructor(
                     )
                 }
                 startResultRefresh()
+                syncStatsToPhone()
             } catch (e: Exception) {
                 Log.w("WearViewModel", "Could not fetch prices", e)
                 _uiState.update {
@@ -260,6 +273,7 @@ class WearViewModel @JvmOverloads constructor(
                         error = getApplication<Application>().getString(R.string.wear_error_network)
                     )
                 }
+                syncStatsToPhone()
             }
         }
     }
@@ -398,4 +412,34 @@ class WearViewModel @JvmOverloads constructor(
             emptySet()
         }
     }
+
+    /**
+     * Pushes accumulated stats to the phone via the Wearable Data Layer.
+     *
+     * Encodes stats records to the same binary format used by [FileStatsCollector] and
+     * sends them to the `/stats` path. The phone merges these into its local stats file
+     * and includes them in the next report.
+     *
+     * Only runs when stats collection is enabled. Awaits the Data Layer put before
+     * clearing local stats to prevent data loss on failed transfers.
+     *
+     * Silently ignores failures since stats sync is best-effort.
+     */
+    private suspend fun syncStatsToPhone() {
+        if (!statsEnabled) return
+        try {
+            val records = statsCollector.readAll()
+            if (records.isEmpty()) return
+            val bytes = StatsRecord.encodeToBytes(records)
+            val request = com.google.android.gms.wearable.PutDataMapRequest.create("/stats").apply {
+                dataMap.putByteArray("data", bytes)
+                dataMap.putLong("ts", System.currentTimeMillis())
+            }.asPutDataRequest().setUrgent()
+            Wearable.getDataClient(getApplication()).putDataItem(request).await()
+            statsCollector.clear()
+        } catch (_: Exception) {
+            // Best-effort: stats sync should not crash the watch app
+        }
+    }
+
 }

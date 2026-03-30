@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Pakottaa uusien hintojen hakemisen seuraavalla kerralla. Hyödyllinen, jos hinnat vaikuttavat vääriltä tai vanhentuneilta.</string>
     <string name="snackbar_cache_cleared">Välimuisti tyhjennetty</string>
     <string name="cd_refresh">Päivitä</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Jaa API-tilastoja</string>
+    <string name="settings_stats_description">Auta parantamaan tietolähteiden luotettavuutta jakamalla nimettömiä API-onnistumis-/virhetilastoja. Henkilötietoja ei kerätä.</string>
+    <string name="stats_prompt_title">Auta parantamaan SweetSpotia?</string>
+    <string name="stats_prompt_message">Jaa anonyymiä API-tilastoa tietolähteiden luotettavuuden parantamiseksi. Vain onnistumis-/virhemäärät tietolähteittäin jaetaan — ei henkilötietoja. Voit muuttaa tämän milloin tahansa asetuksissa.</string>
+    <string name="stats_prompt_enable">Ota käyttöön</string>
+    <string name="stats_prompt_dismiss">Ei kiitos</string>
 </resources>

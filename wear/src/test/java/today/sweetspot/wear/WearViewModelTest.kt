@@ -26,6 +26,8 @@ import today.sweetspot.data.api.PriceFetcher
 
 import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
+import today.sweetspot.data.stats.StatsCollector
+import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.PriceSlot
 import java.time.Instant
@@ -86,9 +88,17 @@ class WearViewModelTest {
         Dispatchers.resetMain()
     }
 
+    /** In-memory [StatsCollector] for testing. */
+    private class FakeStatsCollector : StatsCollector {
+        val records = mutableListOf<StatsRecord>()
+        override fun record(record: StatsRecord) { records.add(record) }
+        override fun readAll(): List<StatsRecord> = records.toList()
+        override fun clear() { records.clear() }
+    }
+
     /** Creates a WearViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(fetcher: FakeFetcher) =
-        WearViewModel(app, { _ -> fetcher }, FakeCache(), testDispatcher).also {
+        WearViewModel(app, { _ -> fetcher }, FakeCache(), FakeStatsCollector(), testDispatcher).also {
             // Advance past the init block's loadAppliancesFromDataLayer coroutine
             testDispatcher.scheduler.advanceUntilIdle()
         }

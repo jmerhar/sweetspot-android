@@ -101,4 +101,12 @@
     <string name="settings_clear_cache_description">Forțează încărcarea prețurilor noi la următoarea căutare. Util dacă prețurile par greșite sau depășite.</string>
     <string name="snackbar_cache_cleared">Cache-ul a fost șters</string>
     <string name="cd_refresh">Actualizează</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Partajează statistici API</string>
+    <string name="settings_stats_description">Ajută la îmbunătățirea fiabilității surselor de date prin partajarea statisticilor anonime de succes/eșec API. Nu se colectează date personale.</string>
+    <string name="stats_prompt_title">Ajută la îmbunătățirea SweetSpot?</string>
+    <string name="stats_prompt_message">Partajează statistici API anonime pentru a ajuta la îmbunătățirea fiabilității surselor de date. Se partajează doar numărul de reușite/eșecuri per sursă — fără date personale. Poți modifica această opțiune oricând din Setări.</string>
+    <string name="stats_prompt_enable">Activează</string>
+    <string name="stats_prompt_dismiss">Nu, mulțumesc</string>
 </resources>

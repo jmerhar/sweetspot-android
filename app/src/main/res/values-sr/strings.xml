@@ -101,4 +101,12 @@
     <string name="settings_clear_cache_description">Приморава учитавање нових цена при следећем претраживању. Корисно ако цене делују погрешно или застарело.</string>
     <string name="snackbar_cache_cleared">Кеш је обрисан</string>
     <string name="cd_refresh">Освежи</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Дели API статистике</string>
+    <string name="settings_stats_description">Помозите побољшању поузданости извора података дељењем анонимних статистика успеха/неуспеха API-ја. Не прикупљају се лични подаци.</string>
+    <string name="stats_prompt_title">Помозите да побољшамо SweetSpot?</string>
+    <string name="stats_prompt_message">Поделите анонимне API статистике да бисте помогли побољшању поузданости извора података. Деле се само бројеви успешних/неуспешних захтева по извору — без личних података. Ово можете да промените у било ком тренутку у Подешавањима.</string>
+    <string name="stats_prompt_enable">Укључи</string>
+    <string name="stats_prompt_dismiss">Не, хвала</string>
 </resources>

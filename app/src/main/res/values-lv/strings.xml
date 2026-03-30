@@ -101,4 +101,12 @@
     <string name="settings_clear_cache_description">Piespiež ielādēt jaunas cenas nākamajā meklēšanā. Noderīgi, ja cenas šķiet nepareizas vai novecojušas.</string>
     <string name="snackbar_cache_cleared">Kešatmiņa notīrīta</string>
     <string name="cd_refresh">Atjaunināt</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Kopīgot API statistiku</string>
+    <string name="settings_stats_description">Palīdziet uzlabot datu avotu uzticamību, kopīgojot anonīmu API veiksmes/kļūdu statistiku. Personiskie dati netiek vākti.</string>
+    <string name="stats_prompt_title">Palīdzēt uzlabot SweetSpot?</string>
+    <string name="stats_prompt_message">Kopīgojiet anonīmu API statistiku, lai palīdzētu uzlabot datu avotu uzticamību. Tiek kopīgoti tikai veiksmes/kļūdu skaiti pa avotiem — bez personas datiem. To var mainīt jebkurā laikā iestatījumos.</string>
+    <string name="stats_prompt_enable">Ieslēgt</string>
+    <string name="stats_prompt_dismiss">Nē, paldies</string>
 </resources>

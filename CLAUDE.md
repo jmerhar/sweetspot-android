@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, and aWATTar as a fallback for Austria and Germany. It's a port of a PHP web app. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
+SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, and aWATTar as a fallback for Austria and Germany. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
 
 ## Build & Run
 
@@ -72,7 +72,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (229 tests)
+./gradlew test                   # Run all unit tests (273 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -97,8 +97,12 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (12 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management (41 tests, Robolectric, in app)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt (53 tests, Robolectric, in app)
 - `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing (16 tests, Robolectric, in wear)
+- `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
+- `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
+- `data/stats/FileStatsCollectorTest` — record, read, clear, append, persistence, corruption (8 tests, in shared)
+- `data/stats/StatsReporterTest` — JSON format, grouping, version field, error field presence (5 tests, in app)
 
 ## Stack
 
@@ -111,7 +115,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Icons Extended for appliance icon picker
-- JUnit 4 + Robolectric for unit tests (229 tests)
+- JUnit 4 + Robolectric for unit tests (273 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
@@ -130,15 +134,19 @@ Three Gradle modules:
 
 **Appliance sync:** Phone pushes appliance JSON to `/appliances` path via `PutDataMapRequest` after every CRUD operation. Zone settings (country code, price zone ID, source order) are pushed to `/settings` path. Watch reads on init and listens for live updates via `DataClient.OnDataChangedListener`.
 
+**Stats sync:** Watch pushes accumulated stats records to `/stats` path after each fetch. Phone receives via `DataClient.OnDataChangedListener`, appends to its local stats file, and includes them in the next report.
+
 ### Shared module (`:shared`)
 
-The data layer is organised into three subpackages under `data/`:
+The data layer is organised into four subpackages under `data/`:
 
 **`data/api/`** — API implementations and fetcher infrastructure:
 - **`DataSource` / `DataSources`** — Registry of all supported price data sources (ENTSO-E, EnergyZero, Spot-Hinta.fi, Energy-Charts, aWATTar). `DataSources.defaultsForZone(zoneId)` returns available sources in default priority order per zone using a declarative registry — list order defines fallback priority, each entry declares which zones it covers.
 - **`PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `FetchResult` (prices + source name). `FetchResult` pairs a `List<PriceSlot>` with the data source name (e.g. "ENTSO-E", "EnergyZero"). Decouples `PriceRepository` from a specific API provider. Also defines `sharedHttpClient`, a single `OkHttpClient` (10s connect + 10s read timeout) shared by all API implementations.
+- **`HttpException`** — Typed exception for non-200 HTTP responses. Carries the HTTP `code` for reliable error categorisation.
+- **`EntsoeException`** — Typed exception for ENTSO-E Acknowledgement_MarketDocument errors (HTTP 200 but error body). Carries the `reason` text. Categorised as `ENTSOE_ERROR` in stats.
 - **`FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Used for NL (ENTSO-E primary, EnergyZero fallback) and Nordic/Baltic zones (ENTSO-E primary, Spot-Hinta.fi fallback).
-- **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken, sourceOrder)` builds the fetcher chain dynamically from the user's source order preference (or zone defaults when `null`). Always wraps in `FallbackPriceFetcher`.
+- **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken, sourceOrder, statsCollector, device)` builds the fetcher chain dynamically from the user's source order preference (or zone defaults when `null`). Optionally wraps each fetcher in `InstrumentedPriceFetcher` when `statsCollector` is provided. Always wraps in `FallbackPriceFetcher`.
 - **`EnergyZeroApi`** — `PriceFetcher` for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`SpotHintaApi`** — `PriceFetcher` for the Spot-Hinta.fi API (15 Nordic/Baltic zones). Returns JSON (top-level array), parses with kotlinx-serialization. Prices are already EUR/kWh, 15-minute resolution. Region parameter maps directly to zone IDs. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`EnergyChartsApi`** — `PriceFetcher` for the Energy-Charts API (15 European zones). Takes a zone ID and resolves it internally via `ZONE_TO_BZN` companion map. Returns JSON with parallel `unix_seconds` and `price` arrays in EUR/MWh. Converts to EUR/kWh during parsing. Auto-detects resolution (15-min or 60-min) from timestamp gaps. Also exposes `fetchRaw()` and `parse()` directly for tests.
@@ -150,9 +158,17 @@ The data layer is organised into three subpackages under `data/`:
 - **`PriceCache`** — Interface for caching parsed prices, keyed by zone. `readCached(key)` / `write(key, data)` with global cooldown. Returns `CachedPriceData` (prices + source). Abstracts storage so `PriceRepository` can be tested without Android. Also contains `CachedPrice` (data class with `epochSecond`, `durationMinutes`, `price`) and `CachedPriceData` (wrapper with source name).
 - **`FilePriceCache`** — `PriceCache` implementation using per-zone binary files (`cacheDir/prices_<key>.bin`). Format v3: version byte + source UTF + count int + N × (epochSecond long + durationMinutes short + price double) = 18 bytes per entry. SharedPreferences `sweetspot_cache` tracks global cooldown. Returns `null` on any format error for graceful migration (including v1/v2 caches).
 
+**`data/stats/`** — API reliability stats collection (opt-in):
+- **`StatsRecord`** — Data class representing a single API request outcome (timestamp, zone, source, device, success, errorCategory). Companion methods `writeTo`/`readFrom` handle single-record binary I/O, `encodeToBytes`/`decodeFromBytes` handle list-level conversion for Data Layer transfer and file storage.
+- **`StatsCollector`** — Interface for recording, reading, and clearing stats records. Android-free so it can be faked in pure JUnit tests.
+- **`FileStatsCollector`** — Append-only binary file implementation (`cacheDir/api_stats.bin`). Thread-safe via synchronized block. Records are written individually, read until EOF.
+- **`InstrumentedPriceFetcher`** — `PriceFetcher` decorator that records the outcome of every API call. Captures successes, empty results ("EMPTY"), and failures (categorised via `categorise()`). Wraps individual fetchers inside the fallback chain so intermediate failures are visible.
+- **`ErrorCategory`** — `categorise(exception)` function mapping exceptions to stable category strings: `HttpException` → "HTTP_503", `EntsoeException` → "ENTSOE_ERROR", `SocketTimeoutException` → "TIMEOUT", `UnknownHostException` → "DNS", etc.
+- **`StatsReporter`** (in `:app`) — Reads local stats, encodes to grouped JSON, POSTs to `stats.sweetspot.today/report`. Rate-limited to once per 24 hours. Clears local file on successful submission.
+
 **`data/repository/`** — Business logic:
 - **`PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Returns `PriceResult` (prices + source name). Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Threads the data source name from `FetchResult`/cache through to `PriceResult`. Takes injectable `PriceFetcher` and `Clock` for testing.
-- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), and appliances (JSON-serialized list). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order.
+- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), appliances (JSON-serialized list), and stats preferences (enabled, prompt shown, first launch time). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order.
 - **`CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
@@ -163,11 +179,11 @@ The data layer is organised into three subpackages under `data/`:
 
 ### Phone app (`:app`)
 
-- **`SweetSpotViewModel`** — Owns all UI state. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, and source order to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
+- **`SweetSpotViewModel`** — Owns all UI state. Implements `DataClient.OnDataChangedListener` to receive watch stats. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference, optionally with `InstrumentedPriceFetcher` wrapping when stats are enabled. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, source order, and stats opt-in to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Shows one-time stats opt-in prompt after 3 days. Reports stats via `StatsReporter` after successful fetches. Receives watch stats via `/stats` Data Layer path. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors).
 
 ### Wear app (`:wear`)
 
-- **`WearViewModel`** — Reads appliances, zone settings, and source order from Data Layer on init, listens for live updates. On appliance tap, creates `PriceFetcherFactory` dynamically from source order, fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch.
+- **`WearViewModel`** — Reads appliances, zone settings, source order, and stats opt-in from Data Layer on init, listens for live updates. On appliance tap, creates `PriceFetcherFactory` dynamically from source order (with stats instrumentation when enabled), fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch. After each fetch, syncs accumulated stats to phone via `/stats` Data Layer path (awaits delivery before clearing local stats).
 - **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`.
 - **`ui/ApplianceListScreen`** — `Scaffold` with `PositionIndicator`, `TimeText`, `ScalingLazyColumn` of appliance `Chip`s (icon + name + duration), empty state, loading overlay.
 - **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display that auto-refreshes every 60 seconds. Scrollable for long labels on round watch faces.

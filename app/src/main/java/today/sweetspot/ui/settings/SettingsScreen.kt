@@ -68,6 +68,8 @@ fun SettingsScreen(
     onResetSourceOrder: () -> Unit,
     onLanguageChanged: (String) -> Unit,
     onClearCache: () -> String,
+    isStatsEnabled: Boolean,
+    onStatsEnabledChanged: (Boolean) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -253,10 +255,14 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
-            AdvancedSection(onClearCache = {
-                val message = onClearCache()
-                coroutineScope.launch { snackbarHostState.showSnackbar(message) }
-            })
+            AdvancedSection(
+                isStatsEnabled = isStatsEnabled,
+                onStatsEnabledChanged = onStatsEnabledChanged,
+                onClearCache = {
+                    val message = onClearCache()
+                    coroutineScope.launch { snackbarHostState.showSnackbar(message) }
+                }
+            )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
         }

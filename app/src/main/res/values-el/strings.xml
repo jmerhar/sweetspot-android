@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Αναγκάζει τη λήψη νέων τιμών στην επόμενη αναζήτηση. Χρήσιμο αν οι τιμές φαίνονται λάθος ή παλιές.</string>
     <string name="snackbar_cache_cleared">Η cache εκκαθαρίστηκε</string>
     <string name="cd_refresh">Ανανέωση</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Κοινοποίηση στατιστικών API</string>
+    <string name="settings_stats_description">Βοηθήστε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων μοιράζοντας ανώνυμα στατιστικά επιτυχίας/αποτυχίας API. Δεν συλλέγονται προσωπικά δεδομένα.</string>
+    <string name="stats_prompt_title">Βοηθήστε να βελτιωθεί το SweetSpot;</string>
+    <string name="stats_prompt_message">Μοιραστείτε ανώνυμα στατιστικά API για να βοηθήσετε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων. Μοιράζονται μόνο τα πλήθη επιτυχιών/αποτυχιών ανά πηγή — χωρίς προσωπικά δεδομένα. Μπορείτε να το αλλάξετε ανά πάσα στιγμή στις Ρυθμίσεις.</string>
+    <string name="stats_prompt_enable">Ενεργοποίηση</string>
+    <string name="stats_prompt_dismiss">Όχι, ευχαριστώ</string>
 </resources>

@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Sunnib järgmisel otsingul laadima uued hinnad. Kasulik, kui hinnad tunduvad valed või aegunud.</string>
     <string name="snackbar_cache_cleared">Puhver tühjendatud</string>
     <string name="cd_refresh">Värskenda</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Jaga API statistikat</string>
+    <string name="settings_stats_description">Aidake parandada andmeallikate töökindlust, jagades anonüümset API õnnestumiste/tõrgete statistikat. Isikuandmeid ei koguta.</string>
+    <string name="stats_prompt_title">Aidake SweetSpoti parandada?</string>
+    <string name="stats_prompt_message">Jagage anonüümset API statistikat, et aidata parandada andmeallikate töökindlust. Jagatakse ainult õnnestumiste/tõrgete arvu andmeallika kohta — isikuandmeid ei jagata. Saate seda igal ajal muuta seadetes.</string>
+    <string name="stats_prompt_enable">Luba</string>
+    <string name="stats_prompt_dismiss">Ei, aitäh</string>
 </resources>

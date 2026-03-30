@@ -1,11 +1,11 @@
 ---
 title: "Privacy Policy"
-description: "SweetSpot privacy policy — no data collected, no accounts, no analytics."
+description: "SweetSpot privacy policy — privacy-first, no accounts, no analytics."
 ---
 
 ## Overview
 
-SweetSpot is designed with privacy in mind. The app does not collect, store, or transmit any personal data. There are no user accounts, no analytics, and no tracking of any kind.
+SweetSpot is designed with privacy in mind. The app does not collect or store any personal data. There are no user accounts, no analytics, and no usage tracking. An optional feature lets you share anonymous API statistics — see details below.
 
 ## Data Processing
 
@@ -27,7 +27,23 @@ On Wear OS, appliance data and settings are synced between phone and watch using
 
 ## No Analytics
 
-SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above.
+SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above (and optional stats reporting if enabled).
+
+## Optional API Statistics
+
+You can opt in to sharing anonymous API reliability statistics. When enabled, the app periodically sends individual request records for each data source and bidding zone to our server. This data contains:
+
+- Timestamp of the API request
+- Bidding zone identifier (e.g. "NL", "DE-LU")
+- Data source name (e.g. "ENTSO-E", "EnergyZero")
+- Device type (phone or watch)
+- Whether the request succeeded or failed
+- Error category on failure (e.g. "timeout", "server error")
+- App version number
+
+This data does **not** contain device identifiers, location, price data, or any other personal information. It is used solely to improve data source reliability and default ordering.
+
+This feature is disabled by default. You can enable or disable it at any time in Settings > Advanced.
 
 ## Open Source
 

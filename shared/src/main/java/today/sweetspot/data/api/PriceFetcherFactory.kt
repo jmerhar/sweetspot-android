@@ -1,5 +1,7 @@
 package today.sweetspot.data.api
 
+import today.sweetspot.data.stats.InstrumentedPriceFetcher
+import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.model.PriceZone
 
 /**
@@ -26,16 +28,24 @@ fun interface PriceFetcherFactory {
  * the user's preference. Falls back to defaults if the filtered list is empty
  * (e.g. user's stored sources don't apply to the current zone).
  *
+ * When [statsCollector] is provided, wraps each individual fetcher in an
+ * [InstrumentedPriceFetcher] that records success/failure outcomes. When `null`
+ * (tests or stats disabled), no wrapping occurs — zero overhead.
+ *
  * Always wraps the result in [FallbackPriceFetcher], which handles single-item
  * lists correctly — keeping one code path for all cases.
  *
  * @param entsoeToken ENTSO-E API security token (from BuildConfig).
  * @param sourceOrder Ordered list of enabled source IDs, or `null` for defaults.
+ * @param statsCollector Optional collector for API reliability stats.
+ * @param device Device type for stats: "phone" or "watch". Ignored when [statsCollector] is `null`.
  * @return A [PriceFetcherFactory] that routes to the correct API(s) per zone.
  */
 fun defaultPriceFetcherFactory(
     entsoeToken: String,
-    sourceOrder: List<String>? = null
+    sourceOrder: List<String>? = null,
+    statsCollector: StatsCollector? = null,
+    device: String = "phone"
 ): PriceFetcherFactory =
     PriceFetcherFactory { zone ->
         val available = DataSources.defaultsForZone(zone.id)
@@ -47,13 +57,18 @@ fun defaultPriceFetcherFactory(
         }
 
         val fetchers = ordered.map { source ->
-            when (source.id) {
+            val base: PriceFetcher = when (source.id) {
                 DataSources.ENTSOE.id -> EntsoeApi(entsoeToken, zone.eicCode)
                 DataSources.ENERGY_ZERO.id -> EnergyZeroApi()
                 DataSources.SPOT_HINTA.id -> SpotHintaApi(zone.id)
                 DataSources.ENERGY_CHARTS.id -> EnergyChartsApi(zone.id)
                 DataSources.AWATTAR.id -> AwattarApi(zone.id)
                 else -> error("Unknown data source: ${source.id}")
+            }
+            if (statsCollector != null) {
+                InstrumentedPriceFetcher(base, source.id, zone.id, device, statsCollector)
+            } else {
+                base
             }
         }
 

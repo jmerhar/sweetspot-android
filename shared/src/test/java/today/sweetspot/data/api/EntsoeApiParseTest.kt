@@ -185,7 +185,7 @@ class EntsoeApiParseTest {
         }
     }
 
-    @Test(expected = RuntimeException::class)
+    @Test(expected = EntsoeException::class)
     fun `error response throws with reason text`() {
         val xml = """
         <?xml version="1.0" encoding="UTF-8"?>
@@ -216,11 +216,11 @@ class EntsoeApiParseTest {
 
         try {
             api.parse(xml, timeZone)
-        } catch (e: RuntimeException) {
-            assertTrue(e.message!!.contains("No matching data found"))
+        } catch (e: EntsoeException) {
+            assertTrue(e.reason.contains("No matching data found"))
             return
         }
-        throw AssertionError("Expected RuntimeException")
+        throw AssertionError("Expected EntsoeException")
     }
 
     @Test

@@ -29,6 +29,9 @@ class SettingsRepository(private val context: Context) {
         const val KEY_PRICE_ZONE_ID = "price_zone_id"
         const val KEY_SOURCE_ORDER = "source_order"
         const val KEY_DISABLED_SOURCES = "disabled_sources"
+        const val KEY_STATS_ENABLED = "stats_enabled"
+        const val KEY_STATS_PROMPT_SHOWN = "stats_prompt_shown"
+        const val KEY_FIRST_LAUNCH_MS = "first_launch_ms"
 
         /** Lenient parser that ignores unknown fields for forward compatibility. */
         val json = Json { ignoreUnknownKeys = true }
@@ -228,5 +231,42 @@ class SettingsRepository(private val context: Context) {
      */
     fun setAppliances(appliances: List<Appliance>) {
         prefs.edit { putString(KEY_APPLIANCES, json.encodeToString(appliances)) }
+    }
+
+    // --- Stats ---
+
+    /** Returns whether API stats collection is enabled. Defaults to `false`. */
+    fun isStatsEnabled(): Boolean = prefs.getBoolean(KEY_STATS_ENABLED, false)
+
+    /**
+     * Enables or disables API stats collection.
+     *
+     * @param enabled `true` to enable stats collection.
+     */
+    fun setStatsEnabled(enabled: Boolean) {
+        prefs.edit { putBoolean(KEY_STATS_ENABLED, enabled) }
+    }
+
+    /** Returns whether the one-time stats opt-in prompt has been shown. */
+    fun isStatsPromptShown(): Boolean = prefs.getBoolean(KEY_STATS_PROMPT_SHOWN, false)
+
+    /** Marks the stats opt-in prompt as shown so it is never displayed again. */
+    fun setStatsPromptShown() {
+        prefs.edit { putBoolean(KEY_STATS_PROMPT_SHOWN, true) }
+    }
+
+    /**
+     * Returns the timestamp of the app's first launch, recording it if not yet set.
+     *
+     * Used to delay the stats opt-in prompt until the user has been active for a few days.
+     *
+     * @return Milliseconds since epoch of the first launch.
+     */
+    fun getFirstLaunchMs(): Long {
+        val stored = prefs.getLong(KEY_FIRST_LAUNCH_MS, 0L)
+        if (stored != 0L) return stored
+        val now = System.currentTimeMillis()
+        prefs.edit { putLong(KEY_FIRST_LAUNCH_MS, now) }
+        return now
     }
 }

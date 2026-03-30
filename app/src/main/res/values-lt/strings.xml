@@ -104,4 +104,12 @@
     <string name="settings_clear_cache_description">Priverčia gauti naujas kainas kitą kartą ieškant. Naudinga, jei kainos atrodo neteisingos arba pasenusios.</string>
     <string name="snackbar_cache_cleared">Talpykla išvalyta</string>
     <string name="cd_refresh">Atnaujinti</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Dalintis API statistika</string>
+    <string name="settings_stats_description">Padėkite pagerinti duomenų šaltinių patikimumą dalindamiesi anonimine API sėkmės/nesėkmės statistika. Jokie asmeniniai duomenys nerenkami.</string>
+    <string name="stats_prompt_title">Padėkite pagerinti SweetSpot?</string>
+    <string name="stats_prompt_message">Dalinkitės anonimine API statistika, kad padėtumėte pagerinti duomenų šaltinių patikimumą. Dalijamasi tik sėkmių/nesėkmių skaičiais pagal šaltinį — jokių asmeninių duomenų. Tai galite bet kada pakeisti nustatymuose.</string>
+    <string name="stats_prompt_enable">Įjungti</string>
+    <string name="stats_prompt_dismiss">Ne, ačiū</string>
 </resources>

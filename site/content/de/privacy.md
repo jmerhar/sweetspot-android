@@ -1,11 +1,11 @@
 ---
 title: "Datenschutzerklärung"
-description: "SweetSpot Datenschutzerklärung — keine Daten erhoben, keine Konten, keine Nutzeranalyse."
+description: "SweetSpot Datenschutzerklärung — Datenschutz an erster Stelle, keine Konten, keine Nutzeranalyse."
 ---
 
 ## Überblick
 
-SweetSpot wurde mit Datenschutz im Fokus entwickelt. Die App erhebt, speichert oder übermittelt keine persönlichen Daten. Es gibt keine Benutzerkonten, keine Nutzeranalyse und kein Tracking jeglicher Art.
+SweetSpot wurde mit Datenschutz im Fokus entwickelt. Die App erhebt und speichert keine persönlichen Daten. Es gibt keine Benutzerkonten, keine Nutzeranalyse und keine Nutzungsverfolgung. Eine optionale Funktion ermöglicht das Teilen anonymer API-Statistiken — siehe Details unten.
 
 ## Datenverarbeitung
 
@@ -27,7 +27,23 @@ Auf Wear OS werden Gerätedaten und Einstellungen zwischen Telefon und Uhr über
 
 ## Keine Nutzeranalyse
 
-SweetSpot enthält keine Analytics-SDKs, Absturzberichte oder Nutzungsverfolgung. Die App stellt keine Netzwerkanfragen außer zum Abruf von Strompreisen von den oben genannten öffentlichen APIs.
+SweetSpot enthält keine Analytics-SDKs, Absturzberichte oder Nutzungsverfolgung. Die App stellt keine Netzwerkanfragen außer zum Abruf von Strompreisen von den oben genannten öffentlichen APIs (und optionalen Statistikberichten, wenn aktiviert).
+
+## Optionale API-Statistiken
+
+Du kannst dich dafür entscheiden, anonyme API-Zuverlässigkeitsstatistiken zu teilen. Wenn aktiviert, sendet die App in regelmäßigen Abständen individuelle Anfrage-Datensätze für jede Datenquelle und Gebotszone an unseren Server. Diese Daten enthalten:
+
+- Zeitstempel der API-Anfrage
+- Gebotszonen-Kennung (z.B. „NL", „DE-LU")
+- Name der Datenquelle (z.B. „ENTSO-E", „EnergyZero")
+- Gerätetyp (Telefon oder Uhr)
+- Ob die Anfrage erfolgreich war oder fehlgeschlagen ist
+- Fehlerkategorie bei Fehlschlag (z.B. „Timeout", „Serverfehler")
+- App-Versionsnummer
+
+Diese Daten enthalten **keine** Gerätekennungen, Standort, Preisdaten oder andere persönliche Informationen. Sie werden ausschließlich zur Verbesserung der Zuverlässigkeit der Datenquellen und der Standardreihenfolge verwendet.
+
+Diese Funktion ist standardmäßig deaktiviert. Du kannst sie jederzeit unter Einstellungen > Erweitert aktivieren oder deaktivieren.
 
 ## Open Source
 

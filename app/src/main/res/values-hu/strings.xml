@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Kényszeríti az új árak betöltését a következő keresésnél. Hasznos, ha az árak hibásnak vagy elavultnak tűnnek.</string>
     <string name="snackbar_cache_cleared">Gyorsítótár törölve</string>
     <string name="cd_refresh">Frissítés</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">API statisztikák megosztása</string>
+    <string name="settings_stats_description">Segíts javítani az adatforrások megbízhatóságát anonim API sikerességi/hibaszámok megosztásával. Személyes adatokat nem gyűjtünk.</string>
+    <string name="stats_prompt_title">Segíts javítani a SweetSpotot?</string>
+    <string name="stats_prompt_message">Ossz meg névtelen API-statisztikákat az adatforrások megbízhatóságának javítása érdekében. Csak a sikeres/sikertelen kérések száma kerül megosztásra forrásonként — személyes adatok nélkül. Ezt bármikor megváltoztathatod a Beállításokban.</string>
+    <string name="stats_prompt_enable">Engedélyezés</string>
+    <string name="stats_prompt_dismiss">Nem, köszönöm</string>
 </resources>

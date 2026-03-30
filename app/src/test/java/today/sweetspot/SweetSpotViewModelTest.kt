@@ -1,6 +1,7 @@
 package today.sweetspot
 
 import android.app.Application
+import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,6 +26,8 @@ import today.sweetspot.data.api.PriceFetcher
 
 import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
+import today.sweetspot.data.stats.StatsCollector
+import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.PriceSlot
 import java.time.Instant
@@ -87,9 +90,17 @@ class SweetSpotViewModelTest {
     /** Creates a ViewModel with default (real) dependencies for non-async tests. */
     private fun defaultViewModel() = SweetSpotViewModel(app)
 
+    /** In-memory [StatsCollector] for testing. */
+    private class FakeStatsCollector : StatsCollector {
+        val records = mutableListOf<StatsRecord>()
+        override fun record(record: StatsRecord) { records.add(record) }
+        override fun readAll(): List<StatsRecord> = records.toList()
+        override fun clear() { records.clear() }
+    }
+
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(fetcher: FakeFetcher, cache: FakeCache = FakeCache()) =
-        SweetSpotViewModel(app, { _ -> fetcher }, cache, testDispatcher)
+        SweetSpotViewModel(app, { _ -> fetcher }, cache, FakeStatsCollector(), testDispatcher)
 
     // --- Initial state ---
 
@@ -539,5 +550,120 @@ class SweetSpotViewModelTest {
         assertTrue(firstError is AppError.Network)
         assertTrue(secondError is AppError.Network)
         assertFalse(firstError == secondError)
+    }
+
+    // --- Stats ---
+
+    @Test
+    fun `initial state has stats disabled`() {
+        assertFalse(defaultViewModel().uiState.value.isStatsEnabled)
+    }
+
+    @Test
+    fun `initial state does not show stats prompt`() {
+        assertFalse(defaultViewModel().uiState.value.showStatsPrompt)
+    }
+
+    @Test
+    fun `onStatsEnabledChanged true enables stats`() {
+        val viewModel = defaultViewModel()
+        viewModel.onStatsEnabledChanged(true)
+        assertTrue(viewModel.uiState.value.isStatsEnabled)
+    }
+
+    @Test
+    fun `onStatsEnabledChanged false disables stats`() {
+        val viewModel = defaultViewModel()
+        viewModel.onStatsEnabledChanged(true)
+        viewModel.onStatsEnabledChanged(false)
+        assertFalse(viewModel.uiState.value.isStatsEnabled)
+    }
+
+    @Test
+    fun `onStatsPromptEnabled sets enabled and hides prompt`() {
+        val viewModel = defaultViewModel()
+        viewModel.onStatsPromptEnabled()
+        val state = viewModel.uiState.value
+        assertTrue(state.isStatsEnabled)
+        assertFalse(state.showStatsPrompt)
+    }
+
+    @Test
+    fun `onStatsPromptDismissed hides prompt without enabling stats`() {
+        val viewModel = defaultViewModel()
+        viewModel.onStatsPromptDismissed()
+        val state = viewModel.uiState.value
+        assertFalse(state.isStatsEnabled)
+        assertFalse(state.showStatsPrompt)
+    }
+
+    @Test
+    fun `stats prompt shown after 3 days of use`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fourDaysAgo = System.currentTimeMillis() - (4 * 24 * 60 * 60 * 1000L)
+        prefs.edit().putLong("first_launch_ms", fourDaysAgo).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertTrue(viewModel.uiState.value.showStatsPrompt)
+    }
+
+    @Test
+    fun `stats prompt not shown within 3 days`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val oneDayAgo = System.currentTimeMillis() - (1 * 24 * 60 * 60 * 1000L)
+        prefs.edit().putLong("first_launch_ms", oneDayAgo).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertFalse(viewModel.uiState.value.showStatsPrompt)
+    }
+
+    @Test
+    fun `stats prompt not shown when already enabled`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fourDaysAgo = System.currentTimeMillis() - (4 * 24 * 60 * 60 * 1000L)
+        prefs.edit().putLong("first_launch_ms", fourDaysAgo).putBoolean("stats_enabled", true).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertFalse(viewModel.uiState.value.showStatsPrompt)
+    }
+
+    @Test
+    fun `stats prompt not shown after being dismissed`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fourDaysAgo = System.currentTimeMillis() - (4 * 24 * 60 * 60 * 1000L)
+        prefs.edit().putLong("first_launch_ms", fourDaysAgo).putBoolean("stats_prompt_shown", true).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertFalse(viewModel.uiState.value.showStatsPrompt)
+    }
+
+    @Test
+    fun `onWatchStatsReceived appends records when stats enabled`() {
+        val collector = FakeStatsCollector()
+        val viewModel = SweetSpotViewModel(app, { _ -> FakeFetcher(fakePrices(24)) }, FakeCache(), collector, testDispatcher)
+        viewModel.onStatsEnabledChanged(true)
+
+        val records = listOf(
+            StatsRecord(1000L, "NL", "entsoe", "watch", true, ""),
+            StatsRecord(2000L, "NL", "entsoe", "watch", false, "TIMEOUT")
+        )
+        viewModel.onWatchStatsReceived(records)
+
+        assertEquals(2, collector.records.size)
+        assertTrue(collector.records[0].success)
+        assertFalse(collector.records[1].success)
+        assertEquals("TIMEOUT", collector.records[1].errorCategory)
+    }
+
+    @Test
+    fun `onWatchStatsReceived ignores records when stats disabled`() {
+        val collector = FakeStatsCollector()
+        val viewModel = SweetSpotViewModel(app, { _ -> FakeFetcher(fakePrices(24)) }, FakeCache(), collector, testDispatcher)
+        // Stats are disabled by default
+
+        val records = listOf(StatsRecord(1000L, "NL", "entsoe", "watch", true, ""))
+        viewModel.onWatchStatsReceived(records)
+
+        assertTrue(collector.records.isEmpty())
     }
 }

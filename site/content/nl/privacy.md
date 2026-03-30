@@ -1,11 +1,11 @@
 ---
 title: "Privacybeleid"
-description: "SweetSpot privacybeleid — geen gegevens verzameld, geen accounts, geen analytics."
+description: "SweetSpot privacybeleid — privacy-eerst, geen accounts, geen analytics."
 ---
 
 ## Overzicht
 
-SweetSpot is ontworpen met privacy in gedachten. De app verzamelt, slaat op of verzendt geen persoonlijke gegevens. Er zijn geen gebruikersaccounts, geen analytics en geen tracking van welke aard dan ook.
+SweetSpot is ontworpen met privacy in gedachten. De app verzamelt en slaat geen persoonlijke gegevens op. Er zijn geen gebruikersaccounts, geen analytics en geen gebruiksregistratie. Een optionele functie laat je anonieme API-statistieken delen — zie hieronder voor details.
 
 ## Gegevensverwerking
 
@@ -27,7 +27,23 @@ Op Wear OS worden apparaatgegevens en instellingen gesynchroniseerd tussen telef
 
 ## Geen analytics
 
-SweetSpot bevat geen analytics-SDK's, crashrapportage of gebruiksregistratie. De app doet geen netwerkverzoeken buiten het ophalen van stroomprijzen van de hierboven genoemde openbare API's.
+SweetSpot bevat geen analytics-SDK's, crashrapportage of gebruiksregistratie. De app doet geen netwerkverzoeken buiten het ophalen van stroomprijzen van de hierboven genoemde openbare API's (en optionele statistieken als ingeschakeld).
+
+## Optionele API-statistieken
+
+Je kunt ervoor kiezen om anonieme API-betrouwbaarheidsstatistieken te delen. Wanneer ingeschakeld, stuurt de app periodiek individuele verzoekrecords voor elke databron en biedingszone naar onze server. Deze gegevens bevatten:
+
+- Tijdstip van het API-verzoek
+- Biedingszone (bijv. "NL", "DE-LU")
+- Naam van de databron (bijv. "ENTSO-E", "EnergyZero")
+- Apparaattype (telefoon of horloge)
+- Of het verzoek is geslaagd of mislukt
+- Foutcategorie bij mislukking (bijv. "timeout", "serverfout")
+- App-versienummer
+
+Deze gegevens bevatten **geen** apparaat-ID's, locatie, prijsgegevens of andere persoonlijke informatie. Ze worden uitsluitend gebruikt om de betrouwbaarheid van databronnen en de standaardvolgorde te verbeteren.
+
+Deze functie is standaard uitgeschakeld. Je kunt het op elk moment in- of uitschakelen via Instellingen > Geavanceerd.
 
 ## Open source
 

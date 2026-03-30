@@ -1,0 +1,131 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "description": "SweetSpot API reliability statistics",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "title": "Success Rate by Source",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 1
+        }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT date_bin('1 hour', time) AS time, source, CAST(SUM(CASE WHEN outcome = 'ok' THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(*) AS success_rate FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY 1, source ORDER BY 1",
+          "refId": "A",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "title": "Failures by Error Category",
+      "type": "barchart",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "options": {
+        "stacking": { "mode": "normal" }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT date_bin('1 hour', time) AS time, error, COUNT(*) AS count FROM api_fetch WHERE outcome = 'fail' AND time >= $__timeFrom AND time <= $__timeTo GROUP BY 1, error ORDER BY 1",
+          "refId": "A",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "title": "Requests by Zone",
+      "type": "piechart",
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 8 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "targets": [
+        {
+          "rawSql": "SELECT zone, COUNT(*) AS count FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY zone ORDER BY count DESC",
+          "refId": "A",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "title": "Failure Heatmap by Hour",
+      "type": "heatmap",
+      "gridPos": { "h": 8, "w": 16, "x": 8, "y": 8 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "targets": [
+        {
+          "rawSql": "SELECT date_bin('1 hour', time) AS time, COUNT(*) AS count FROM api_fetch WHERE outcome = 'fail' AND time >= $__timeFrom AND time <= $__timeTo GROUP BY 1 ORDER BY 1",
+          "refId": "A",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "title": "Source Reliability Table",
+      "type": "table",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "targets": [
+        {
+          "rawSql": "SELECT source, COUNT(*) AS total, SUM(CASE WHEN outcome = 'ok' THEN 1 ELSE 0 END) AS ok, SUM(CASE WHEN outcome = 'fail' THEN 1 ELSE 0 END) AS fail, ROUND(CAST(SUM(CASE WHEN outcome = 'ok' THEN 1 ELSE 0 END) AS DOUBLE) / COUNT(*) * 100, 1) AS success_pct FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY source ORDER BY total DESC",
+          "refId": "A",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "title": "Phone vs Watch",
+      "type": "barchart",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "options": {
+        "stacking": { "mode": "normal" }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT date_bin('1 hour', time) AS time, device, outcome, COUNT(*) AS count FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY 1, device, outcome ORDER BY 1",
+          "refId": "A",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "title": "Active App Versions",
+      "type": "barchart",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "targets": [
+        {
+          "rawSql": "SELECT app, COUNT(*) AS count FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY app ORDER BY count DESC",
+          "refId": "A",
+          "format": "table"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["sweetspot", "api", "reliability"],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "SweetSpot API Reliability",
+  "uid": "sweetspot-api-stats",
+  "version": 2
+}

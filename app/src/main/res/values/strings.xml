@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Forces fresh prices to be fetched next time you search. Useful if prices seem wrong or outdated.</string>
     <string name="snackbar_cache_cleared">Cache cleared</string>
     <string name="cd_refresh">Refresh</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Share API statistics</string>
+    <string name="settings_stats_description">Help improve data source reliability by sharing anonymous API success/failure counts. No personal data is collected.</string>
+    <string name="stats_prompt_title">Help improve SweetSpot?</string>
+    <string name="stats_prompt_message">Share anonymous API statistics to help improve data source reliability. Only success/failure counts per data source are shared — no personal data. You can change this at any time in Settings.</string>
+    <string name="stats_prompt_enable">Enable</string>
+    <string name="stats_prompt_dismiss">No thanks</string>
 </resources>

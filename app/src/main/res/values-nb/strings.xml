@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Tvinger henting av nye priser ved neste søk. Nyttig hvis prisene virker feil eller utdaterte.</string>
     <string name="snackbar_cache_cleared">Buffer tømt</string>
     <string name="cd_refresh">Oppdater</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Del API-statistikk</string>
+    <string name="settings_stats_description">Hjelp med å forbedre datakildenes pålitelighet ved å dele anonyme API-suksess/feil-statistikker. Ingen personlige data samles inn.</string>
+    <string name="stats_prompt_title">Hjelp med å forbedre SweetSpot?</string>
+    <string name="stats_prompt_message">Del anonym API-statistikk for å bidra til å forbedre datakildenes pålitelighet. Bare antall vellykkede/mislykkede forespørsler per datakilde deles — ingen personlige data. Du kan endre dette når som helst i Innstillinger.</string>
+    <string name="stats_prompt_enable">Aktiver</string>
+    <string name="stats_prompt_dismiss">Nei takk</string>
 </resources>

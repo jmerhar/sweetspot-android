@@ -72,7 +72,7 @@ class SpotHintaApi(private val region: String) : PriceFetcher {
         val request = Request.Builder().url(url).get().build()
         return sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
-                throw RuntimeException("Spot-Hinta.fi API returned ${response.code}")
+                throw HttpException(response.code, "Spot-Hinta.fi API returned ${response.code}")
             }
 
             response.body.string()

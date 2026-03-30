@@ -1,11 +1,11 @@
 ---
 title: "Politika zasebnosti"
-description: "Politika zasebnosti SweetSpot — brez zbiranja podatkov, brez računov, brez analitike."
+description: "Politika zasebnosti SweetSpot — zasebnost na prvem mestu, brez računov, brez analitike."
 ---
 
 ## Pregled
 
-SweetSpot je zasnovan z mislijo na zasebnost. Aplikacija ne zbira, ne shranjuje in ne prenaša nikakršnih osebnih podatkov. Ni uporabniških računov, ni analitike in ni sledenja kakršne koli vrste.
+SweetSpot je zasnovan z mislijo na zasebnost. Aplikacija ne zbira in ne shranjuje nikakršnih osebnih podatkov. Ni uporabniških računov, ni analitike in ni sledenja uporabi. Neobvezna funkcija omogoča deljenje anonimnih API-statistik — podrobnosti spodaj.
 
 ## Obdelava podatkov
 
@@ -27,7 +27,23 @@ Na Wear OS se podatki o aparatih in nastavitve sinhronizirajo med telefonom in u
 
 ## Brez analitike
 
-SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev.
+SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev (in neobveznega poročanja statistik, če je omogočeno).
+
+## Neobvezne API statistike
+
+Lahko se odločite za deljenje anonimnih statistik zanesljivosti API-jev. Ko je omogočeno, aplikacija občasno pošlje posamezne zapise zahtevkov za vsak podatkovni vir in cenovno območje na naš strežnik. Ti podatki vsebujejo:
+
+- Časovni žig zahtevka API
+- Identifikator cenovnega območja (npr. »NL«, »DE-LU«)
+- Ime podatkovnega vira (npr. »ENTSO-E«, »EnergyZero«)
+- Tip naprave (telefon ali ura)
+- Ali je bil zahtevek uspešen ali neuspešen
+- Kategorijo napake pri neuspehu (npr. »timeout«, »napaka strežnika«)
+- Številko različice aplikacije
+
+Ti podatki **ne** vsebujejo identifikatorjev naprave, lokacije, cenovnih podatkov ali drugih osebnih informacij. Uporabljajo se izključno za izboljšanje zanesljivosti podatkovnih virov in privzetega vrstnega reda.
+
+Ta funkcija je privzeto onemogočena. Kadarkoli jo lahko omogočite ali onemogočite v Nastavitve > Napredno.
 
 ## Odprta koda
 

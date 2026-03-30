@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatDelegate
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.gms.wearable.DataClient
+import com.google.android.gms.wearable.DataEvent
+import com.google.android.gms.wearable.DataEventBuffer
+import com.google.android.gms.wearable.DataMapItem
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
 import today.sweetspot.data.api.PriceFetcherFactory
@@ -14,6 +18,10 @@ import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.repository.CountryDetector
 import today.sweetspot.data.repository.PriceRepository
 import today.sweetspot.data.repository.SettingsRepository
+import today.sweetspot.data.stats.FileStatsCollector
+import today.sweetspot.data.stats.StatsCollector
+import today.sweetspot.data.stats.StatsRecord
+import today.sweetspot.data.stats.StatsReporter
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.Countries
 import today.sweetspot.model.Country
@@ -71,6 +79,8 @@ sealed interface AppError {
  * @property sourceOrder Ordered list of all source IDs for display/priority, or `null` for zone defaults.
  * @property disabledSources Set of source IDs that are disabled, or empty if all enabled.
  * @property countries All supported countries for the country picker.
+ * @property showStatsPrompt Whether the stats opt-in prompt dialog should be shown.
+ * @property isStatsEnabled Whether API stats collection is enabled.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -89,7 +99,9 @@ data class UiState(
     val priceZone: PriceZone? = Countries.defaultCountry().zones.first(),
     val sourceOrder: List<String>? = null,
     val disabledSources: Set<String> = emptySet(),
-    val countries: List<Country> = Countries.all
+    val countries: List<Country> = Countries.all,
+    val showStatsPrompt: Boolean = false,
+    val isStatsEnabled: Boolean = false
 )
 
 /**
@@ -103,16 +115,24 @@ data class UiState(
  * @param priceFetcherFactory Optional factory override for testing. When `null` (production),
  *   the factory is created dynamically from the current source order.
  * @param priceCache Cache for raw price JSON.
+ * @param statsCollector Optional stats collector override for testing.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
     private val priceFetcherFactory: PriceFetcherFactory? = null,
     private val priceCache: PriceCache = FilePriceCache(application),
+    private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : AndroidViewModel(application) {
+) : AndroidViewModel(application),
+    DataClient.OnDataChangedListener {
 
     private val settingsRepository = SettingsRepository(application)
+    private val statsReporter = StatsReporter(
+        statsCollector,
+        application.getSharedPreferences("sweetspot_stats", android.content.Context.MODE_PRIVATE),
+        BuildConfig.VERSION_NAME
+    )
 
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
@@ -126,16 +146,34 @@ class SweetSpotViewModel @JvmOverloads constructor(
             priceZone = settingsRepository.getResolvedPriceZone(),
             sourceOrder = settingsRepository.getSourceOrder(),
             disabledSources = settingsRepository.getDisabledSources(),
-            countries = countriesWithDetectedFirst(application)
+            countries = countriesWithDetectedFirst(application),
+            isStatsEnabled = settingsRepository.isStatsEnabled()
         )
     )
 
     /** Observable UI state. */
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
+    init {
+        // Record first launch time for stats prompt delay
+        settingsRepository.getFirstLaunchMs()
+        checkStatsPrompt()
+        // Listen for watch stats via Data Layer
+        try {
+            Wearable.getDataClient(application).addListener(this)
+        } catch (_: Exception) {
+            // Play Services unavailable — watch sync not supported
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         stopResultRefresh()
+        try {
+            Wearable.getDataClient(getApplication()).removeListener(this)
+        } catch (_: Exception) {
+            // Play Services unavailable
+        }
     }
 
     /**
@@ -506,6 +544,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 dataMap.putString("source_order", state.sourceOrder?.let { Json.encodeToString(it) } ?: "")
                 dataMap.putString("disabled_sources", state.disabledSources.takeIf { it.isNotEmpty() }?.let { Json.encodeToString(it) } ?: "")
                 dataMap.putString("language", resolvedTag)
+                dataMap.putBoolean("stats_enabled", settingsRepository.isStatsEnabled())
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
             Wearable.getDataClient(getApplication()).putDataItem(request)
@@ -582,8 +621,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
         try {
             val state = _uiState.value
             val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
+            val activeCollector = if (settingsRepository.isStatsEnabled()) statsCollector else null
             val factory = priceFetcherFactory
-                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder)
+                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder, activeCollector, "phone")
             val fetcher = factory.create(priceZone)
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
@@ -626,6 +666,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 )
             }
             startResultRefresh()
+            tryReportStats()
         } catch (e: Exception) {
             _uiState.update {
                 it.copy(
@@ -635,6 +676,104 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     priceSource = null
                 )
             }
+        }
+    }
+
+    /**
+     * Checks whether the stats opt-in prompt should be shown.
+     *
+     * Shows the prompt once, after the user has been using the app for at least 3 days,
+     * unless stats are already enabled (e.g. the user enabled them manually in settings).
+     */
+    private fun checkStatsPrompt() {
+        if (settingsRepository.isStatsPromptShown()) return
+        if (settingsRepository.isStatsEnabled()) return
+        val firstLaunch = settingsRepository.getFirstLaunchMs()
+        val daysSinceFirst = (System.currentTimeMillis() - firstLaunch) / (24 * 60 * 60 * 1000L)
+        if (daysSinceFirst >= 3) {
+            _uiState.update { it.copy(showStatsPrompt = true) }
+        }
+    }
+
+    /**
+     * Handles the user enabling stats from the opt-in prompt.
+     *
+     * Sets stats as enabled and marks the prompt as shown.
+     */
+    fun onStatsPromptEnabled() {
+        settingsRepository.setStatsEnabled(true)
+        settingsRepository.setStatsPromptShown()
+        _uiState.update { it.copy(showStatsPrompt = false, isStatsEnabled = true) }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Handles the user dismissing the stats opt-in prompt.
+     *
+     * Marks the prompt as shown so it is never displayed again.
+     */
+    fun onStatsPromptDismissed() {
+        settingsRepository.setStatsPromptShown()
+        _uiState.update { it.copy(showStatsPrompt = false) }
+    }
+
+    /**
+     * Toggles API stats collection from the settings screen.
+     *
+     * @param enabled Whether stats collection should be enabled.
+     */
+    fun onStatsEnabledChanged(enabled: Boolean) {
+        settingsRepository.setStatsEnabled(enabled)
+        _uiState.update { it.copy(isStatsEnabled = enabled) }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Attempts to report stats to the server if opt-in is enabled and the interval has elapsed.
+     *
+     * Called after a successful price fetch. Runs on the IO dispatcher.
+     */
+    private fun tryReportStats() {
+        if (!settingsRepository.isStatsEnabled()) return
+        try {
+            statsReporter.reportIfDue()
+        } catch (_: Exception) {
+            // Best-effort: stats reporting should never affect the main flow
+        }
+    }
+
+    /**
+     * Receives stats records from the watch via the Wearable Data Layer.
+     *
+     * Appends each watch record to the phone's local stats file so they
+     * are included in the next report.
+     *
+     * @param records Stats records from the watch.
+     */
+    fun onWatchStatsReceived(records: List<StatsRecord>) {
+        if (!settingsRepository.isStatsEnabled()) return
+        for (record in records) {
+            statsCollector.record(record)
+        }
+    }
+
+    /**
+     * Called when the watch pushes data updates via the Data Layer.
+     *
+     * Handles the `/stats` path to receive watch API reliability stats.
+     */
+    override fun onDataChanged(events: DataEventBuffer) {
+        try {
+            for (event in events) {
+                if (event.type != DataEvent.TYPE_CHANGED) continue
+                if (event.dataItem.uri.path != "/stats") continue
+                val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
+                val bytes = dataMap.getByteArray("data") ?: continue
+                val records = StatsRecord.decodeFromBytes(bytes)
+                onWatchStatsReceived(records)
+            }
+        } finally {
+            events.release()
         }
     }
 }

@@ -76,7 +76,7 @@ class AwattarApi(zoneId: String) : PriceFetcher {
         val request = Request.Builder().url(url).get().build()
         return sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
-                throw RuntimeException("aWATTar API returned ${response.code}")
+                throw HttpException(response.code, "aWATTar API returned ${response.code}")
             }
 
             response.body.string()

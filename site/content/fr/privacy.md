@@ -1,11 +1,11 @@
 ---
 title: "Politique de confidentialité"
-description: "Politique de confidentialité SweetSpot — aucune donnée collectée, pas de comptes, aucune collecte de données."
+description: "Politique de confidentialité SweetSpot — respect de la vie privée, pas de comptes, pas de suivi."
 ---
 
 ## Aperçu
 
-SweetSpot est conçu dans le respect de la vie privée. L'application ne collecte, ne stocke et ne transmet aucune donnée personnelle. Il n'y a pas de comptes utilisateur, aucune collecte de données et aucun suivi d'aucune sorte.
+SweetSpot est conçu dans le respect de la vie privée. L'application ne collecte ni ne stocke aucune donnée personnelle. Il n'y a pas de comptes utilisateur, pas d'analyse d'utilisation et pas de suivi. Une fonctionnalité optionnelle permet de partager des statistiques API anonymes — voir les détails ci-dessous.
 
 ## Traitement des données
 
@@ -25,9 +25,25 @@ Les données de prix sont mises en cache localement sur votre appareil pour réd
 
 Sur Wear OS, les données des appareils et les paramètres sont synchronisés entre le téléphone et la montre via l'API Wearable Data Layer. Cette communication reste sur vos appareils locaux et ne passe par aucun serveur externe.
 
-## Aucune collecte de données
+## Pas d'analyse d'utilisation
 
-SweetSpot n'inclut aucun SDK d'analyse, rapport de plantage ou suivi d'utilisation. L'application ne fait aucune requête réseau en dehors de la récupération des prix d'électricité depuis les API publiques mentionnées ci-dessus.
+SweetSpot n'inclut aucun SDK d'analyse, rapport de plantage ou suivi d'utilisation. L'application ne fait aucune requête réseau en dehors de la récupération des prix d'électricité depuis les API publiques mentionnées ci-dessus (et les rapports statistiques optionnels si activés).
+
+## Statistiques API optionnelles
+
+Vous pouvez choisir de partager des statistiques anonymes sur la fiabilité des API. Lorsque cette option est activée, l'application envoie périodiquement des enregistrements individuels de requêtes pour chaque source de données et zone de prix à notre serveur. Ces données contiennent :
+
+- L'horodatage de la requête API
+- L'identifiant de la zone de prix (par ex. « NL », « DE-LU »)
+- Le nom de la source de données (par ex. « ENTSO-E », « EnergyZero »)
+- Le type d'appareil (téléphone ou montre)
+- Si la requête a réussi ou échoué
+- La catégorie d'erreur en cas d'échec (par ex. « timeout », « erreur serveur »)
+- Le numéro de version de l'application
+
+Ces données ne contiennent **aucun** identifiant d'appareil, localisation, données de prix ou autre information personnelle. Elles sont utilisées uniquement pour améliorer la fiabilité des sources de données et l'ordre par défaut.
+
+Cette fonctionnalité est désactivée par défaut. Vous pouvez l'activer ou la désactiver à tout moment dans Paramètres > Avancé.
 
 ## Open source
 

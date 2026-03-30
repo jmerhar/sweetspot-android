@@ -104,4 +104,12 @@
     <string name="settings_clear_cache_description">Prisili nalaganje novih cen ob naslednjem iskanju. Uporabno, če se cene zdijo napačne ali zastarele.</string>
     <string name="snackbar_cache_cleared">Predpomnilnik počiščen</string>
     <string name="cd_refresh">Osveži</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Deli API statistike</string>
+    <string name="settings_stats_description">Pomagajte izboljšati zanesljivost podatkovnih virov z deljenjem anonimnih statistik uspehov/napak API. Osebni podatki se ne zbirajo.</string>
+    <string name="stats_prompt_title">Pomagajte izboljšati SweetSpot?</string>
+    <string name="stats_prompt_message">Delite anonimno API statistiko za izboljšanje zanesljivosti virov podatkov. Deljeni so samo števci uspešnih/neuspešnih zahtevkov po viru — brez osebnih podatkov. To lahko kadar koli spremenite v nastavitvah.</string>
+    <string name="stats_prompt_enable">Vklopi</string>
+    <string name="stats_prompt_dismiss">Ne, hvala</string>
 </resources>

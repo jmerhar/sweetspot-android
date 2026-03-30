@@ -5,8 +5,12 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import today.sweetspot.data.api.DataSources
 import today.sweetspot.ui.settings.SettingsScreen
@@ -17,7 +21,7 @@ import today.sweetspot.ui.theme.SweetSpotTheme
  * Entry point for the phone app.
  *
  * Hosts the [SweetSpotTheme] and switches between [SweetSpotScreen] and [SettingsScreen]
- * based on [SweetSpotViewModel] state.
+ * based on [SweetSpotViewModel] state. Also shows a one-time stats opt-in dialog.
  */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +31,24 @@ class MainActivity : AppCompatActivity() {
             SweetSpotTheme {
                 val vm: SweetSpotViewModel = viewModel()
                 val state by vm.uiState.collectAsState()
+
+                if (state.showStatsPrompt) {
+                    AlertDialog(
+                        onDismissRequest = vm::onStatsPromptDismissed,
+                        title = { Text(stringResource(R.string.stats_prompt_title)) },
+                        text = { Text(stringResource(R.string.stats_prompt_message)) },
+                        confirmButton = {
+                            TextButton(onClick = vm::onStatsPromptEnabled) {
+                                Text(stringResource(R.string.stats_prompt_enable))
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = vm::onStatsPromptDismissed) {
+                                Text(stringResource(R.string.stats_prompt_dismiss))
+                            }
+                        }
+                    )
+                }
 
                 if (state.showSettings) {
                     BackHandler { vm.onHideSettings() }
@@ -51,6 +73,8 @@ class MainActivity : AppCompatActivity() {
                         onResetSourceOrder = vm::onResetSourceOrder,
                         onLanguageChanged = vm::onLanguageChanged,
                         onClearCache = vm::onClearCache,
+                        isStatsEnabled = state.isStatsEnabled,
+                        onStatsEnabledChanged = vm::onStatsEnabledChanged,
                         onBack = vm::onHideSettings
                     )
                 } else {

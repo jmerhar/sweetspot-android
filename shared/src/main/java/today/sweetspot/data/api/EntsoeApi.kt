@@ -49,7 +49,8 @@ class EntsoeApi(
      * @param to End of the requested period (exclusive).
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
      * @return A [FetchResult] with sorted price slots in EUR/kWh at native resolution and source "ENTSO-E".
-     * @throws RuntimeException if the HTTP request fails or the response is an error document.
+     * @throws HttpException if the HTTP request returns a non-200 status code.
+     * @throws EntsoeException if the response is an Acknowledgement error document.
      */
     override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
         return FetchResult(parse(fetchRaw(from, to), timeZoneId), "ENTSO-E")
@@ -61,8 +62,8 @@ class EntsoeApi(
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
      * @return Raw XML response body.
-     * @throws RuntimeException if the HTTP request fails, the body is empty,
-     *         or the response is an Acknowledgement error document.
+     * @throws HttpException if the HTTP request returns a non-200 status code.
+     * @throws EntsoeException if the response is an Acknowledgement error document.
      */
     fun fetchRaw(from: Instant, to: Instant): String {
         val fmt = DateTimeFormatter.ofPattern("yyyyMMddHHmm").withZone(ZoneOffset.UTC)
@@ -77,14 +78,14 @@ class EntsoeApi(
         val request = Request.Builder().url(url).get().build()
         val body = sharedHttpClient.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
-                throw RuntimeException("ENTSO-E API returned ${response.code}")
+                throw HttpException(response.code, "ENTSO-E API returned ${response.code}")
             }
             response.body.string()
         }
 
         if (body.contains("Acknowledgement_MarketDocument")) {
             val reason = extractErrorReason(body)
-            throw RuntimeException("ENTSO-E API error: $reason")
+            throw EntsoeException(reason)
         }
 
         return body
@@ -100,12 +101,12 @@ class EntsoeApi(
      * @param raw Raw XML string from [fetchRaw].
      * @param timeZoneId Timezone to convert UTC timestamps to local time.
      * @return Chronologically sorted list of price slots at native resolution.
-     * @throws RuntimeException if the XML is an error document.
+     * @throws EntsoeException if the XML is an Acknowledgement error document.
      */
     fun parse(raw: String, timeZoneId: ZoneId): List<PriceSlot> {
         if (raw.contains("Acknowledgement_MarketDocument")) {
             val reason = extractErrorReason(raw)
-            throw RuntimeException("ENTSO-E API error: $reason")
+            throw EntsoeException(reason)
         }
 
         val rawPrices = mutableListOf<Triple<Instant, Double, Int>>()

@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Forceert het ophalen van nieuwe prijzen bij de volgende zoekopdracht. Handig als prijzen onjuist of verouderd lijken.</string>
     <string name="snackbar_cache_cleared">Cache gewist</string>
     <string name="cd_refresh">Vernieuwen</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">API-statistieken delen</string>
+    <string name="settings_stats_description">Help de betrouwbaarheid van databronnen te verbeteren door anonieme API-succes/fout-statistieken te delen. Er worden geen persoonlijke gegevens verzameld.</string>
+    <string name="stats_prompt_title">SweetSpot helpen verbeteren?</string>
+    <string name="stats_prompt_message">Deel anonieme API-statistieken om de betrouwbaarheid van databronnen te helpen verbeteren. Alleen aantallen geslaagde/mislukte verzoeken per bron worden gedeeld — geen persoonlijke gegevens. Je kunt dit op elk moment wijzigen in Instellingen.</string>
+    <string name="stats_prompt_enable">Inschakelen</string>
+    <string name="stats_prompt_dismiss">Nee, bedankt</string>
 </resources>

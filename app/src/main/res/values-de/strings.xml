@@ -98,4 +98,12 @@
     <string name="settings_clear_cache_description">Erzwingt beim nächsten Suchen das Laden aktueller Preise. Nützlich, wenn Preise falsch oder veraltet erscheinen.</string>
     <string name="snackbar_cache_cleared">Cache geleert</string>
     <string name="cd_refresh">Aktualisieren</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">API-Statistiken teilen</string>
+    <string name="settings_stats_description">Hilf, die Zuverlässigkeit der Datenquellen zu verbessern, indem du anonyme API-Erfolgs-/Fehlerstatistiken teilst. Es werden keine persönlichen Daten erfasst.</string>
+    <string name="stats_prompt_title">SweetSpot verbessern helfen?</string>
+    <string name="stats_prompt_message">Teile anonyme API-Statistiken, um die Zuverlässigkeit der Datenquellen zu verbessern. Es werden nur Erfolgs-/Fehleranzahlen pro Datenquelle geteilt — keine persönlichen Daten. Du kannst dies jederzeit in den Einstellungen ändern.</string>
+    <string name="stats_prompt_enable">Aktivieren</string>
+    <string name="stats_prompt_dismiss">Nein danke</string>
 </resources>

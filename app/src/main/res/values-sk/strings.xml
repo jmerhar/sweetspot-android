@@ -104,4 +104,12 @@
     <string name="settings_clear_cache_description">Vynúti načítanie nových cien pri ďalšom vyhľadávaní. Užitočné, ak sa ceny zdajú nesprávne alebo zastarané.</string>
     <string name="snackbar_cache_cleared">Vyrovnávacia pamäť vymazaná</string>
     <string name="cd_refresh">Obnoviť</string>
+
+    <!-- Stats -->
+    <string name="settings_stats_title">Zdieľať štatistiky API</string>
+    <string name="settings_stats_description">Pomôžte zlepšiť spoľahlivosť zdrojov dát zdieľaním anonymných štatistík úspechov/zlyhaní API. Žiadne osobné údaje sa nezhromažďujú.</string>
+    <string name="stats_prompt_title">Pomôcť vylepšiť SweetSpot?</string>
+    <string name="stats_prompt_message">Zdieľajte anonymné štatistiky API na zlepšenie spoľahlivosti zdrojov dát. Zdieľajú sa len počty úspešných/neúspešných požiadaviek na zdroj — žiadne osobné údaje. Toto môžete kedykoľvek zmeniť v Nastaveniach.</string>
+    <string name="stats_prompt_enable">Povoliť</string>
+    <string name="stats_prompt_dismiss">Nie, ďakujem</string>
 </resources>

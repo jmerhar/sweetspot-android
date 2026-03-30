@@ -22,8 +22,8 @@ android {
     defaultConfig {
         applicationId = "today.sweetspot"
         targetSdk = 36
-        versionCode = 15
-        versionName = "4.0"
+        versionCode = 16
+        versionName = "4.1"
 
         val props = rootProject.file("local.properties")
         val entsoeToken = if (props.exists()) {

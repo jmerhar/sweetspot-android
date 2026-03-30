@@ -185,6 +185,163 @@ class EntsoeApiParseTest {
         }
     }
 
+    @Test
+    fun `deduplicates overlapping TimeSeries keeping last value`() {
+        // Two TimeSeries covering the same period — simulates corrected publication.
+        // The parser should keep only one entry per timestamp (the last one encountered).
+        val xml = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+          <TimeSeries>
+            <mRID>1</mRID>
+            <curveType>A01</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-02T23:00Z</start>
+                <end>2026-03-03T02:00Z</end>
+              </timeInterval>
+              <resolution>PT60M</resolution>
+              <Point><position>1</position><price.amount>50.00</price.amount></Point>
+              <Point><position>2</position><price.amount>60.00</price.amount></Point>
+              <Point><position>3</position><price.amount>70.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+          <TimeSeries>
+            <mRID>2</mRID>
+            <curveType>A01</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-02T23:00Z</start>
+                <end>2026-03-03T02:00Z</end>
+              </timeInterval>
+              <resolution>PT60M</resolution>
+              <Point><position>1</position><price.amount>55.00</price.amount></Point>
+              <Point><position>2</position><price.amount>65.00</price.amount></Point>
+              <Point><position>3</position><price.amount>75.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+        </Publication_MarketDocument>
+        """.trimIndent()
+
+        val prices = api.parse(xml, timeZone)
+
+        // Should have 3 entries (deduplicated), not 6
+        assertEquals(3, prices.size)
+        // Last TimeSeries values win (corrected publication)
+        assertEquals(0.055, prices[0].price, 0.0001)
+        assertEquals(0.065, prices[1].price, 0.0001)
+        assertEquals(0.075, prices[2].price, 0.0001)
+    }
+
+    @Test
+    fun `deduplicates overlapping PT15M TimeSeries`() {
+        // Same overlap scenario at 15-minute resolution (matches the resolution
+        // where the bug was originally observed).
+        val xml = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+          <TimeSeries>
+            <mRID>1</mRID>
+            <curveType>A01</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-02T23:00Z</start>
+                <end>2026-03-03T00:00Z</end>
+              </timeInterval>
+              <resolution>PT15M</resolution>
+              <Point><position>1</position><price.amount>100.00</price.amount></Point>
+              <Point><position>2</position><price.amount>110.00</price.amount></Point>
+              <Point><position>3</position><price.amount>120.00</price.amount></Point>
+              <Point><position>4</position><price.amount>130.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+          <TimeSeries>
+            <mRID>2</mRID>
+            <curveType>A01</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-02T23:00Z</start>
+                <end>2026-03-03T00:00Z</end>
+              </timeInterval>
+              <resolution>PT15M</resolution>
+              <Point><position>1</position><price.amount>105.00</price.amount></Point>
+              <Point><position>2</position><price.amount>115.00</price.amount></Point>
+              <Point><position>3</position><price.amount>125.00</price.amount></Point>
+              <Point><position>4</position><price.amount>135.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+        </Publication_MarketDocument>
+        """.trimIndent()
+
+        val prices = api.parse(xml, timeZone)
+
+        // 4 unique 15-min slots, not 8
+        assertEquals(4, prices.size)
+        assertTrue(prices.all { it.durationMinutes == 15 })
+        // Last TimeSeries values win
+        assertEquals(0.105, prices[0].price, 0.0001)
+        assertEquals(0.115, prices[1].price, 0.0001)
+        assertEquals(0.125, prices[2].price, 0.0001)
+        assertEquals(0.135, prices[3].price, 0.0001)
+    }
+
+    @Test
+    fun `deduplicates partially overlapping TimeSeries`() {
+        // Two TimeSeries that overlap in the middle: first covers hours 0–2,
+        // second covers hours 1–3. The overlapping hour (1) should be deduplicated,
+        // while unique hours on each side are preserved.
+        val xml = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+          <TimeSeries>
+            <mRID>1</mRID>
+            <curveType>A01</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-02T23:00Z</start>
+                <end>2026-03-03T02:00Z</end>
+              </timeInterval>
+              <resolution>PT60M</resolution>
+              <Point><position>1</position><price.amount>50.00</price.amount></Point>
+              <Point><position>2</position><price.amount>60.00</price.amount></Point>
+              <Point><position>3</position><price.amount>70.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+          <TimeSeries>
+            <mRID>2</mRID>
+            <curveType>A01</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-03T00:00Z</start>
+                <end>2026-03-03T03:00Z</end>
+              </timeInterval>
+              <resolution>PT60M</resolution>
+              <Point><position>1</position><price.amount>65.00</price.amount></Point>
+              <Point><position>2</position><price.amount>75.00</price.amount></Point>
+              <Point><position>3</position><price.amount>80.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+        </Publication_MarketDocument>
+        """.trimIndent()
+
+        val prices = api.parse(xml, timeZone)
+
+        // 4 unique hours (00:00–03:00), not 6
+        // Hour 0 (00:00 CET): only in TS1 → 50.00
+        // Hour 1 (01:00 CET): in both → TS2 wins → 65.00
+        // Hour 2 (02:00 CET): in both → TS2 wins → 75.00
+        // Hour 3 (03:00 CET): only in TS2 → 80.00
+        assertEquals(4, prices.size)
+        assertEquals(0.050, prices[0].price, 0.0001)  // 00:00 from TS1 only
+        assertEquals(0.065, prices[1].price, 0.0001)  // 01:00 overlap, TS2 wins
+        assertEquals(0.075, prices[2].price, 0.0001)  // 02:00 overlap, TS2 wins
+        assertEquals(0.080, prices[3].price, 0.0001)  // 03:00 from TS2 only
+        // Sorted chronologically
+        for (i in 1 until prices.size) {
+            assertTrue(prices[i].time > prices[i - 1].time)
+        }
+    }
+
     @Test(expected = EntsoeException::class)
     fun `error response throws with reason text`() {
         val xml = """

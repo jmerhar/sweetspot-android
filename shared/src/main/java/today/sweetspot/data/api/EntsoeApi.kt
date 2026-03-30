@@ -243,22 +243,27 @@ class EntsoeApi(
     /**
      * Converts raw price triples to [PriceSlot] entries, applying EUR/MWh → EUR/kWh conversion.
      *
+     * Deduplicates by timestamp: ENTSO-E responses may contain multiple overlapping TimeSeries
+     * (e.g. original and corrected publications). When duplicates exist, the last entry is kept
+     * (typically the most recent/corrected value).
+     *
      * @param prices List of (timestamp, price_in_EUR_MWh, resolutionMinutes) triples.
      * @param timeZoneId Timezone for the resulting [PriceSlot] entries.
-     * @return Sorted list of price slots in EUR/kWh at native resolution.
+     * @return Sorted, deduplicated list of price slots in EUR/kWh at native resolution.
      */
     private fun buildPriceSlots(
         prices: List<Triple<Instant, Double, Int>>,
         timeZoneId: ZoneId
     ): List<PriceSlot> {
         return prices
-            .map { (ts, priceMwh, resMinutes) ->
-                PriceSlot(
+            .associate { (ts, priceMwh, resMinutes) ->
+                ts to PriceSlot(
                     time = ts.atZone(timeZoneId),
                     price = priceMwh / 1000.0,
                     durationMinutes = resMinutes
                 )
             }
+            .values
             .sortedBy { it.time }
     }
 

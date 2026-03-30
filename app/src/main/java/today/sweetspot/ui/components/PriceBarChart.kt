@@ -59,9 +59,8 @@ fun PriceBarChart(
     result: WindowResult?,
     modifier: Modifier = Modifier
 ) {
-    val optimalTimes = remember(result) {
-        result?.breakdown?.map { it.time.toEpochSecond() }?.toSet() ?: emptySet()
-    }
+    val optimalStart = remember(result) { result?.startTime?.toEpochSecond() }
+    val optimalEnd = remember(result) { result?.endTime?.toEpochSecond() }
     val barNormalColor = LocalBarNormalColor.current
     val barOptimalColor = LocalBarOptimalColor.current
     val barNegativeColor = LocalBarNegativeColor.current
@@ -95,7 +94,8 @@ fun PriceBarChart(
         hourlyGroups.forEach { slots ->
             val hourTime = slots.first().time.truncatedTo(ChronoUnit.HOURS)
             val avgPrice = slots.map { it.price }.average()
-            val anyOptimal = slots.any { it.time.toEpochSecond() in optimalTimes }
+            val anyOptimal = optimalStart != null && optimalEnd != null &&
+                slots.any { it.overlapsWindow(optimalStart, optimalEnd) }
             val rowBackground = if (anyOptimal) highlightColor else Color.Transparent
             val timeText = hourTime.format(shortTimeFormatter)
             val priceText = formatPrice(avgPrice, 3)
@@ -141,7 +141,8 @@ fun PriceBarChart(
                         if (slot == null) {
                             Spacer(modifier = Modifier.fillMaxWidth().weight(1f))
                         } else {
-                            val isOptimal = slot.time.toEpochSecond() in optimalTimes
+                            val isOptimal = optimalStart != null && optimalEnd != null &&
+                                slot.overlapsWindow(optimalStart, optimalEnd)
 
                             if (hasNegative) {
                                 Row(

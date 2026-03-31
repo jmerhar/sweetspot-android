@@ -52,7 +52,7 @@
     <string name="settings_timezone">Временска зона</string>
     <string name="settings_auto_timezone">Автоматски (од земјата)</string>
     <string name="settings_custom_timezone">Прилагодена временска зона</string>
-    <string name="settings_unknown_country">Непознато</string>
+    <string name="settings_unknown_country">Непозната</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Додај апарат</string>
@@ -119,7 +119,7 @@
     <string name="paywall_restore">Врати ја купувањето</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="one">Пробен период: %d ден преостанува</item>
-        <item quantity="other">Пробен период: %d дена преостануваат</item>
+        <item quantity="one">Пробен период: уште %d ден</item>
+        <item quantity="other">Пробен период: уште %d дена</item>
     </plurals>
 </resources>

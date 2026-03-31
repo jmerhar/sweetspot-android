@@ -38,7 +38,7 @@
     <!-- Settings -->
     <string name="settings_title">Nastavitve</string>
     <string name="settings_language">Jezik</string>
-    <string name="settings_language_system_default">Sistemska privzeta</string>
+    <string name="settings_language_system_default">Sistemski privzet</string>
     <string name="settings_country">Država</string>
     <string name="settings_select_zone">Izberite cono</string>
     <string name="settings_data_sources">Viri podatkov</string>
@@ -52,7 +52,7 @@
     <string name="settings_timezone">Časovni pas</string>
     <string name="settings_auto_timezone">Samodejno (iz države)</string>
     <string name="settings_custom_timezone">Časovni pas po meri</string>
-    <string name="settings_unknown_country">Neznano</string>
+    <string name="settings_unknown_country">Neznana</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj aparat</string>
@@ -125,9 +125,9 @@
     <string name="paywall_restore">Obnovi nakup</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="one">Preizkusno obdobje: %d dan preostane</item>
-        <item quantity="two">Preizkusno obdobje: %d dneva preostaneta</item>
-        <item quantity="few">Preizkusno obdobje: %d dnevi preostanejo</item>
-        <item quantity="other">Preizkusno obdobje: %d dni preostane</item>
+        <item quantity="one">Preizkusno obdobje: še %d dan</item>
+        <item quantity="two">Preizkusno obdobje: še %d dneva</item>
+        <item quantity="few">Preizkusno obdobje: še %d dni</item>
+        <item quantity="other">Preizkusno obdobje: še %d dni</item>
     </plurals>
 </resources>

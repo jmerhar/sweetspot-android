@@ -125,9 +125,9 @@
     <string name="paywall_restore">Obnovit nákup</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="one">Zkušební období: %d den zbývá</item>
-        <item quantity="few">Zkušební období: %d dny zbývají</item>
-        <item quantity="many">Zkušební období: %d dne zbývá</item>
-        <item quantity="other">Zkušební období: %d dní zbývá</item>
+        <item quantity="one">Zkušební období: ještě %d den</item>
+        <item quantity="few">Zkušební období: ještě %d dny</item>
+        <item quantity="many">Zkušební období: ještě %d dne</item>
+        <item quantity="other">Zkušební období: ještě %d dní</item>
     </plurals>
 </resources>

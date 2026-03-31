@@ -119,7 +119,7 @@
     <string name="paywall_restore">Kauf wiederherstellen</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="one">Testzeitraum: %d Tag verbleibend</item>
-        <item quantity="other">Testzeitraum: %d Tage verbleibend</item>
+        <item quantity="one">Testzeitraum: noch %d Tag</item>
+        <item quantity="other">Testzeitraum: noch %d Tage</item>
     </plurals>
 </resources>

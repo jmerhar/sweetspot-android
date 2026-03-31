@@ -119,7 +119,7 @@
     <string name="paywall_restore">Възстановяване на покупка</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="one">Пробен период: %d ден остава</item>
-        <item quantity="other">Пробен период: %d дни остават</item>
+        <item quantity="one">Пробен период: още %d ден</item>
+        <item quantity="other">Пробен период: още %d дни</item>
     </plurals>
 </resources>

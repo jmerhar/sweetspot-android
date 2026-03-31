@@ -38,7 +38,7 @@
     <!-- Settings -->
     <string name="settings_title">Podešavanja</string>
     <string name="settings_language">Jezik</string>
-    <string name="settings_language_system_default">Podrazumijevano sistemsko</string>
+    <string name="settings_language_system_default">Podrazumijevani sistemski</string>
     <string name="settings_country">Država</string>
     <string name="settings_select_zone">Izaberite zonu</string>
     <string name="settings_data_sources">Izvori podataka</string>
@@ -52,7 +52,7 @@
     <string name="settings_timezone">Vremenska zona</string>
     <string name="settings_auto_timezone">Automatski (iz države)</string>
     <string name="settings_custom_timezone">Prilagođena vremenska zona</string>
-    <string name="settings_unknown_country">Nepoznato</string>
+    <string name="settings_unknown_country">Nepoznata</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj aparat</string>
@@ -122,8 +122,8 @@
     <string name="paywall_restore">Vrati kupovinu</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="one">Probni period: %d dan preostaje</item>
-        <item quantity="few">Probni period: %d dana preostaju</item>
-        <item quantity="other">Probni period: %d dana preostaje</item>
+        <item quantity="one">Probni period: još %d dan</item>
+        <item quantity="few">Probni period: još %d dana</item>
+        <item quantity="other">Probni period: još %d dana</item>
     </plurals>
 </resources>

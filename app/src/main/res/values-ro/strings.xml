@@ -52,7 +52,7 @@
     <string name="settings_timezone">Fus orar</string>
     <string name="settings_auto_timezone">Automat (din țară)</string>
     <string name="settings_custom_timezone">Fus orar personalizat</string>
-    <string name="settings_unknown_country">Necunoscut</string>
+    <string name="settings_unknown_country">Necunoscută</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Adaugă aparat</string>

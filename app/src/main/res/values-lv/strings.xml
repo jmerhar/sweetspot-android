@@ -122,8 +122,8 @@
     <string name="paywall_restore">Atjaunot pirkumu</string>
 
     <plurals name="trial_days_remaining">
-        <item quantity="zero">Izmēģinājuma periods: %d dienu atlicis</item>
-        <item quantity="one">Izmēģinājuma periods: %d diena atlikusi</item>
-        <item quantity="other">Izmēģinājuma periods: %d dienas atlikušas</item>
+        <item quantity="zero">Izmēģinājuma periods: vēl %d dienu</item>
+        <item quantity="one">Izmēģinājuma periods: vēl %d diena</item>
+        <item quantity="other">Izmēģinājuma periods: vēl %d dienas</item>
     </plurals>
 </resources>

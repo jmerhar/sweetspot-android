@@ -50,6 +50,13 @@
       "type": "piechart",
       "gridPos": { "h": 8, "w": 8, "x": 0, "y": 8 },
       "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "options": {
+        "reduceOptions": {
+          "values": true,
+          "calcs": [],
+          "fields": "/^count$/"
+        }
+      },
       "targets": [
         {
           "rawSql": "SELECT zone, COUNT(*) AS count FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY zone ORDER BY count DESC",
@@ -103,13 +110,91 @@
     {
       "title": "Active App Versions",
       "type": "barchart",
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 24 },
       "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
       "targets": [
         {
           "rawSql": "SELECT app, COUNT(*) AS count FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo GROUP BY app ORDER BY count DESC",
           "refId": "A",
           "format": "table"
+        }
+      ]
+    },
+    {
+      "title": "Users by Language",
+      "type": "piechart",
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 24 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "options": {
+        "reduceOptions": {
+          "values": true,
+          "calcs": [],
+          "fields": "/^days$/"
+        }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT CASE WHEN lang = '' THEN 'system' ELSE lang END AS language, COUNT(DISTINCT date_bin('1 day', time)) AS days FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo AND lang IS NOT NULL GROUP BY lang ORDER BY days DESC",
+          "refId": "A",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "title": "Users by Payment Status",
+      "type": "piechart",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 24 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "options": {
+        "reduceOptions": {
+          "values": true,
+          "calcs": [],
+          "fields": "/^days$/"
+        }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT status, COUNT(DISTINCT date_bin('1 day', time)) AS days FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo AND status IS NOT NULL GROUP BY status ORDER BY days DESC",
+          "refId": "A",
+          "format": "table"
+        }
+      ]
+    },
+    {
+      "title": "Response Time by Source (p50 / p95)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 32 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "min": 0
+        }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT date_bin('1 hour', time) AS time, source, APPROX_PERCENTILE_CONT(duration_ms, 0.5) AS p50, APPROX_PERCENTILE_CONT(duration_ms, 0.95) AS p95 FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo AND duration_ms > 0 GROUP BY 1, source ORDER BY 1",
+          "refId": "A",
+          "format": "time_series"
+        }
+      ]
+    },
+    {
+      "title": "Response Time by Outcome",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 32 },
+      "datasource": { "type": "grafana-influxdb3-flightsql", "uid": "sweetspot" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "min": 0
+        }
+      },
+      "targets": [
+        {
+          "rawSql": "SELECT date_bin('1 hour', time) AS time, outcome, APPROX_PERCENTILE_CONT(duration_ms, 0.5) AS p50, APPROX_PERCENTILE_CONT(duration_ms, 0.95) AS p95 FROM api_fetch WHERE time >= $__timeFrom AND time <= $__timeTo AND duration_ms > 0 GROUP BY 1, outcome ORDER BY 1",
+          "refId": "A",
+          "format": "time_series"
         }
       ]
     }
@@ -127,5 +212,5 @@
   "timezone": "browser",
   "title": "SweetSpot API Reliability",
   "uid": "sweetspot-api-stats",
-  "version": 2
+  "version": 3
 }

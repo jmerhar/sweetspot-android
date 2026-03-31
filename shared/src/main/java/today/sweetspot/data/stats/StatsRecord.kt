@@ -9,7 +9,8 @@ import java.io.EOFException
  * A single API request outcome for stats collection.
  *
  * Records the result of one price-fetching attempt, including which zone and source
- * were used, whether it succeeded, and what category of error occurred on failure.
+ * were used, whether it succeeded, what category of error occurred on failure,
+ * and how long the request took.
  *
  * @property epochSecond UTC timestamp of when the request was made.
  * @property zone Bidding zone identifier (e.g. "NL", "DE_LU").
@@ -17,6 +18,7 @@ import java.io.EOFException
  * @property device Device type: "phone" or "watch".
  * @property success Whether the request returned usable price data.
  * @property errorCategory Empty string for success, or a category like "TIMEOUT", "HTTP_503", etc.
+ * @property durationMs Wall-clock time of the request in milliseconds.
  */
 data class StatsRecord(
     val epochSecond: Long,
@@ -24,14 +26,15 @@ data class StatsRecord(
     val source: String,
     val device: String,
     val success: Boolean,
-    val errorCategory: String
+    val errorCategory: String,
+    val durationMs: Long = 0
 ) {
     companion object {
         /**
          * Writes a single [StatsRecord] to a [DataOutputStream].
          *
          * Binary format: epochSecond (Long) + zone (UTF) + source (UTF) +
-         * device (UTF) + success (Boolean) + errorCategory (UTF).
+         * device (UTF) + success (Boolean) + errorCategory (UTF) + durationMs (Long).
          *
          * @param record The record to write.
          * @param out The output stream to write to.
@@ -43,6 +46,7 @@ data class StatsRecord(
             out.writeUTF(record.device)
             out.writeBoolean(record.success)
             out.writeUTF(record.errorCategory)
+            out.writeLong(record.durationMs)
         }
 
         /**
@@ -58,7 +62,8 @@ data class StatsRecord(
             source = input.readUTF(),
             device = input.readUTF(),
             success = input.readBoolean(),
-            errorCategory = input.readUTF()
+            errorCategory = input.readUTF(),
+            durationMs = input.readLong()
         )
 
         /**

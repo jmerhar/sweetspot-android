@@ -31,7 +31,7 @@ class FileStatsCollectorTest {
 
     @Test
     fun `record and readAll round-trip single record`() {
-        val record = StatsRecord(1700000000L, "NL", "entsoe", "phone", true, "")
+        val record = StatsRecord(1700000000L, "NL", "entsoe", "phone", true, "", 450)
         collector.record(record)
 
         val result = collector.readAll()
@@ -41,9 +41,9 @@ class FileStatsCollectorTest {
 
     @Test
     fun `multiple records are appended and read back in order`() {
-        val r1 = StatsRecord(1700000000L, "NL", "entsoe", "phone", true, "")
-        val r2 = StatsRecord(1700003600L, "NL", "energyzero", "phone", false, "TIMEOUT")
-        val r3 = StatsRecord(1700007200L, "DE_LU", "entsoe", "watch", false, "HTTP_503")
+        val r1 = StatsRecord(1700000000L, "NL", "entsoe", "phone", true, "", 200)
+        val r2 = StatsRecord(1700003600L, "NL", "energyzero", "phone", false, "TIMEOUT", 10000)
+        val r3 = StatsRecord(1700007200L, "DE_LU", "entsoe", "watch", false, "HTTP_503", 5000)
 
         collector.record(r1)
         collector.record(r2)
@@ -58,7 +58,7 @@ class FileStatsCollectorTest {
 
     @Test
     fun `clear deletes file`() {
-        collector.record(StatsRecord(1700000000L, "NL", "entsoe", "phone", true, ""))
+        collector.record(StatsRecord(1700000000L, "NL", "entsoe", "phone", true, "", 300))
         assertTrue(collector.readAll().isNotEmpty())
 
         collector.clear()
@@ -73,7 +73,7 @@ class FileStatsCollectorTest {
 
     @Test
     fun `records survive across collector instances`() {
-        val record = StatsRecord(1700000000L, "FI", "spothinta", "watch", false, "DNS")
+        val record = StatsRecord(1700000000L, "FI", "spothinta", "watch", false, "DNS", 8000)
         collector.record(record)
 
         val collector2 = FileStatsCollector(tempDir)
@@ -84,18 +84,19 @@ class FileStatsCollectorTest {
 
     @Test
     fun `record after clear starts fresh`() {
-        collector.record(StatsRecord(1700000000L, "NL", "entsoe", "phone", true, ""))
+        collector.record(StatsRecord(1700000000L, "NL", "entsoe", "phone", true, "", 100))
         collector.clear()
-        collector.record(StatsRecord(1700003600L, "AT", "awattar", "phone", false, "CONNECTION"))
+        collector.record(StatsRecord(1700003600L, "AT", "awattar", "phone", false, "CONNECTION", 15000))
 
         val result = collector.readAll()
         assertEquals(1, result.size)
         assertEquals("AT", result[0].zone)
+        assertEquals(15000L, result[0].durationMs)
     }
 
     @Test
     fun `corrupted file returns empty list`() {
-        val file = File(tempDir, "api_stats.bin")
+        val file = File(tempDir, "api_stats_v2.bin")
         file.writeBytes(byteArrayOf(0, 1, 2, 3))
 
         assertTrue(collector.readAll().isEmpty())

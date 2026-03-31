@@ -11,8 +11,10 @@
  *
  * Expected payload (POST, Content-Type: application/json):
  * {
- *   "v": 1,
- *   "app": "4.0",
+ *   "v": 2,
+ *   "app": "5.1.2",
+ *   "lang": "nl",
+ *   "status": "trial",
  *   "records": [
  *     {
  *       "z": "NL",
@@ -37,10 +39,16 @@ define('MAX_RECORDS', 500);
 
 // --- Helpers ---
 
+/** Raw request body, captured once for error logging. */
+$_rawBody = null;
+
 /**
- * Sends a JSON error response and exits.
+ * Sends a JSON error response, logs the reason and payload, then exits.
  */
 function error_response(int $code, string $message): void {
+    global $_rawBody;
+    $truncated = $_rawBody !== null ? substr($_rawBody, 0, 4096) : '(not read yet)';
+    error_log("SweetSpot stats $code: $message | payload: $truncated");
     http_response_code($code);
     header('Content-Type: application/json');
     echo json_encode(['error' => $message]);
@@ -88,13 +96,15 @@ function check_rate_limit(): void {
  * Converts validated stats records to InfluxDB line protocol.
  *
  * Measurement: api_fetch
- * Tags: zone, source, device, app, outcome, error
- * Field: count=1i
+ * Tags: zone, source, device, app, outcome, error, lang, status
+ * Fields: count=1i, duration_ms=<ms>i
  * Timestamp: epoch seconds (precision=second is set in the URL)
  */
 function to_line_protocol(array $data): string {
     $lines = [];
     $app = $data['app'];
+    $lang = $data['lang'] ?? '';
+    $status = $data['status'] ?? 'unknown';
 
     foreach ($data['records'] as $group) {
         $zone = $group['z'];
@@ -108,13 +118,26 @@ function to_line_protocol(array $data): string {
             $error = $ok ? 'none' : ($record['e'] ?? 'unknown');
 
             // Escape tag values (commas, spaces, equals)
-            $escapedZone = str_replace([',', ' ', '='], ['\\,', '\\ ', '\\='], $zone);
-            $escapedSource = str_replace([',', ' ', '='], ['\\,', '\\ ', '\\='], $source);
-            $escapedDevice = str_replace([',', ' ', '='], ['\\,', '\\ ', '\\='], $device);
-            $escapedApp = str_replace([',', ' ', '='], ['\\,', '\\ ', '\\='], $app);
-            $escapedError = str_replace([',', ' ', '='], ['\\,', '\\ ', '\\='], $error);
+            $escape = function($v) { return str_replace([',', ' ', '='], ['\\,', '\\ ', '\\='], $v); };
 
-            $lines[] = "api_fetch,zone={$escapedZone},source={$escapedSource},device={$escapedDevice},app={$escapedApp},outcome={$outcome},error={$escapedError} count=1i {$timestamp}";
+            $tagParts = [
+                "zone={$escape($zone)}",
+                "source={$escape($source)}",
+                "device={$escape($device)}",
+                "app={$escape($app)}",
+                "outcome={$outcome}",
+                "error={$escape($error)}",
+            ];
+            if ($lang !== '') {
+                $tagParts[] = "lang={$escape($lang)}";
+            }
+            if ($status !== 'unknown') {
+                $tagParts[] = "status={$escape($status)}";
+            }
+
+            $tags = implode(',', $tagParts);
+            $durationMs = $record['ms'] ?? 0;
+            $lines[] = "api_fetch,{$tags} count=1i,duration_ms={$durationMs}i {$timestamp}";
         }
     }
 
@@ -166,6 +189,7 @@ if (strpos($ua, 'SweetSpot/') !== 0) {
 
 // Read and validate body
 $body = file_get_contents('php://input');
+$_rawBody = $body;
 if (strlen($body) > MAX_BODY_SIZE) {
     error_response(413, 'Payload too large');
 }
@@ -176,12 +200,23 @@ if ($data === null) {
 }
 
 // Validate structure
-if (!isset($data['v']) || $data['v'] !== 1) {
+if (!isset($data['v']) || !in_array($data['v'], [1, 2], true)) {
     error_response(400, 'Unsupported version');
 }
 
 if (!isset($data['app']) || !validate_string($data['app'], '/^[\d.]+$/', 16)) {
     error_response(400, 'Invalid app version');
+}
+
+// v2 fields: lang and status (optional for v1 backwards compatibility)
+$lang = $data['lang'] ?? '';
+$status = $data['status'] ?? 'unknown';
+
+if ($lang !== '' && !validate_string($lang, '/^[a-z]{2,3}(-[A-Za-z]{2,8})?$/', 16)) {
+    error_response(400, 'Invalid language');
+}
+if (!in_array($status, ['trial', 'unlocked', 'expired', 'unknown'], true)) {
+    error_response(400, 'Invalid status');
 }
 
 if (!isset($data['records']) || !is_array($data['records'])) {
@@ -215,6 +250,10 @@ foreach ($data['records'] as $group) {
             if (!isset($record['e']) || !validate_string($record['e'], '/^[A-Z][A-Z0-9_]{0,31}$/')) {
                 error_response(400, 'Invalid error category');
             }
+        }
+        // Duration is optional (v2+), default 0
+        if (isset($record['ms']) && (!is_int($record['ms']) || $record['ms'] < 0 || $record['ms'] > 300000)) {
+            error_response(400, 'Invalid duration');
         }
         $totalRecords++;
     }

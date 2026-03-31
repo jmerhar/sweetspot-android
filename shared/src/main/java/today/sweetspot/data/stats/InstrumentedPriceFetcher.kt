@@ -43,16 +43,19 @@ class InstrumentedPriceFetcher(
      */
     override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
         val timestamp = Instant.now(clock).epochSecond
+        val startNanos = System.nanoTime()
         return try {
             val result = delegate.fetchPrices(from, to, timeZoneId)
+            val durationMs = (System.nanoTime() - startNanos) / 1_000_000
             if (result.prices.isEmpty()) {
-                collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, false, "EMPTY"))
+                collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, false, "EMPTY", durationMs))
             } else {
-                collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, true, ""))
+                collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, true, "", durationMs))
             }
             result
         } catch (e: Exception) {
-            collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, false, categorise(e)))
+            val durationMs = (System.nanoTime() - startNanos) / 1_000_000
+            collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, false, categorise(e), durationMs))
             throw e
         }
     }

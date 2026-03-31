@@ -10,7 +10,7 @@ import java.io.FileOutputStream
  * File-backed [StatsCollector] using an append-only binary format.
  *
  * Each record is appended individually to avoid reading and rewriting the entire file.
- * The file is stored in [cacheDir] as `api_stats.bin` — using cache storage is intentional
+ * The file is stored in [cacheDir] as `api_stats_v2.bin` — using cache storage is intentional
  * since the data is transient (meant to be sent and deleted). If the system clears it,
  * only unreported stats are lost, which is acceptable.
  *
@@ -20,8 +20,14 @@ import java.io.FileOutputStream
  */
 class FileStatsCollector(private val cacheDir: File) : StatsCollector {
 
-    private val file = File(cacheDir, "api_stats.bin")
+    private val file = File(cacheDir, "api_stats_v2.bin")
+    private val legacyFile = File(cacheDir, "api_stats.bin")
     private val lock = Any()
+
+    init {
+        // Delete incompatible v1 stats file (no durationMs field).
+        if (legacyFile.exists()) legacyFile.delete()
+    }
 
     override fun record(record: StatsRecord) {
         synchronized(lock) {

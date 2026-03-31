@@ -147,7 +147,18 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private val statsReporter = StatsReporter(
         statsCollector,
         application.getSharedPreferences("sweetspot_stats", android.content.Context.MODE_PRIVATE),
-        BuildConfig.VERSION_NAME
+        BuildConfig.VERSION_NAME,
+        languageProvider = {
+            val locales = AppCompatDelegate.getApplicationLocales()
+            if (locales.isEmpty) "" else locales.toLanguageTags()
+        },
+        statusProvider = {
+            when {
+                settingsRepository.isUnlocked() -> "unlocked"
+                settingsRepository.isTrialExpired() -> "expired"
+                else -> "trial"
+            }
+        }
     )
 
     private var fetchJob: Job? = null

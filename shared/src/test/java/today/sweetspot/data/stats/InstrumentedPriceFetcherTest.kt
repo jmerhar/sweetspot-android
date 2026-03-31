@@ -62,6 +62,7 @@ class InstrumentedPriceFetcherTest {
         assertTrue(record.success)
         assertEquals("", record.errorCategory)
         assertEquals(fixedClock.instant().epochSecond, record.epochSecond)
+        assertTrue("Duration should be non-negative", record.durationMs >= 0)
     }
 
     @Test

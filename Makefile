@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate
+.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -54,3 +54,6 @@ site: ## Start local Hugo server and open website in browser
 
 site-validate: ## Validate Hugo site: build, check pages, links, and assets
 	./bin/site-validate.sh
+
+deploy-stats: ## Deploy stats.php to the stats server
+	./bin/deploy-stats.sh

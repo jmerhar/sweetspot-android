@@ -31,6 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.model.Country
+import java.text.Collator
 
 /** Country settings section showing the current country selection. */
 @Composable
@@ -77,7 +78,9 @@ internal fun CountryPickerScreen(
         countryNames[country.code] = stringResource(country.nameRes)
     }
 
-    val sortedCountries = countries.sortedBy { countryNames[it.code]?.lowercase() }
+    val sortedCountries = countries.sortedWith(
+        compareBy(Collator.getInstance()) { countryNames[it.code] ?: "" }
+    )
 
     val filteredCountries = if (searchQuery.isBlank()) {
         sortedCountries

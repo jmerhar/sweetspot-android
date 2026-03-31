@@ -101,7 +101,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Pokročilé</string>
     <string name="settings_clear_cache">Vymazať vyrovnávaciu pamäť cien</string>
-    <string name="settings_clear_cache_description">Vynúti načítanie nových cien pri ďalšom vyhľadávaní. Užitočné, ak sa ceny zdajú nesprávne alebo zastarané.</string>
+    <string name="settings_clear_cache_description">Ceny budú pri ďalšom vyhľadávaní znovu načítané.</string>
     <string name="snackbar_cache_cleared">Vyrovnávacia pamäť vymazaná</string>
     <string name="cd_refresh">Obnoviť</string>
 

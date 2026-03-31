@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Advanced</string>
     <string name="settings_clear_cache">Clear price cache</string>
-    <string name="settings_clear_cache_description">Forces fresh prices to be fetched next time you search. Useful if prices seem wrong or outdated.</string>
+    <string name="settings_clear_cache_description">Prices will be reloaded on the next search.</string>
     <string name="snackbar_cache_cleared">Cache cleared</string>
     <string name="cd_refresh">Refresh</string>
 

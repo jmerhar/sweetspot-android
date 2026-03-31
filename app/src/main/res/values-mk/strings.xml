@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Напредно</string>
     <string name="settings_clear_cache">Исчисти кеш на цени</string>
-    <string name="settings_clear_cache_description">Принудува вчитување нови цени при следното пребарување. Корисно ако цените изгледаат погрешни или застарени.</string>
+    <string name="settings_clear_cache_description">Цените ќе бидат повторно преземени при следното пребарување.</string>
     <string name="snackbar_cache_cleared">Кешот е исчистен</string>
     <string name="cd_refresh">Освежи</string>
 

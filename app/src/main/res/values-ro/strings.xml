@@ -98,7 +98,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Avansat</string>
     <string name="settings_clear_cache">Șterge cache-ul de prețuri</string>
-    <string name="settings_clear_cache_description">Forțează încărcarea prețurilor noi la următoarea căutare. Util dacă prețurile par greșite sau depășite.</string>
+    <string name="settings_clear_cache_description">Prețurile vor fi încărcate din nou la următoarea căutare.</string>
     <string name="snackbar_cache_cleared">Cache-ul a fost șters</string>
     <string name="cd_refresh">Actualizează</string>
 

@@ -101,7 +101,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Zaawansowane</string>
     <string name="settings_clear_cache">Wyczyść pamięć podręczną cen</string>
-    <string name="settings_clear_cache_description">Wymusza pobranie nowych cen przy następnym wyszukiwaniu. Przydatne, jeśli ceny wydają się błędne lub nieaktualne.</string>
+    <string name="settings_clear_cache_description">Ceny zostaną ponownie pobrane przy następnym wyszukiwaniu.</string>
     <string name="snackbar_cache_cleared">Pamięć podręczna wyczyszczona</string>
     <string name="cd_refresh">Odśwież</string>
 

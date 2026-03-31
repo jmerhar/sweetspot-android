@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Erweitert</string>
     <string name="settings_clear_cache">Preiscache leeren</string>
-    <string name="settings_clear_cache_description">Erzwingt beim nächsten Suchen das Laden aktueller Preise. Nützlich, wenn Preise falsch oder veraltet erscheinen.</string>
+    <string name="settings_clear_cache_description">Die Preise werden bei der nächsten Suche neu geladen.</string>
     <string name="snackbar_cache_cleared">Cache geleert</string>
     <string name="cd_refresh">Aktualisieren</string>
 

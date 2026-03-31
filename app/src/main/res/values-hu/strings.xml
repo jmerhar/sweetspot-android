@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Haladó</string>
     <string name="settings_clear_cache">Árgyorsítótár törlése</string>
-    <string name="settings_clear_cache_description">Kényszeríti az új árak betöltését a következő keresésnél. Hasznos, ha az árak hibásnak vagy elavultnak tűnnek.</string>
+    <string name="settings_clear_cache_description">Az árak a következő keresésnél újra betöltődnek.</string>
     <string name="snackbar_cache_cleared">Gyorsítótár törölve</string>
     <string name="cd_refresh">Frissítés</string>
 

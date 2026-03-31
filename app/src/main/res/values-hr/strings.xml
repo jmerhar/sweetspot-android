@@ -98,7 +98,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>
     <string name="settings_clear_cache">Obriši predmemoriju cijena</string>
-    <string name="settings_clear_cache_description">Prisiljava dohvaćanje novih cijena pri sljedećem pretraživanju. Korisno ako se cijene čine netočnima ili zastarjelima.</string>
+    <string name="settings_clear_cache_description">Cijene će se ponovno učitati pri sljedećem pretraživanju.</string>
     <string name="snackbar_cache_cleared">Predmemorija obrisana</string>
     <string name="cd_refresh">Osvježi</string>
 

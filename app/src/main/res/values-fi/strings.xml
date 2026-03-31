@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Lisäasetukset</string>
     <string name="settings_clear_cache">Tyhjennä hintavälimuisti</string>
-    <string name="settings_clear_cache_description">Pakottaa uusien hintojen hakemisen seuraavalla kerralla. Hyödyllinen, jos hinnat vaikuttavat vääriltä tai vanhentuneilta.</string>
+    <string name="settings_clear_cache_description">Hinnat ladataan uudelleen seuraavalla haulla.</string>
     <string name="snackbar_cache_cleared">Välimuisti tyhjennetty</string>
     <string name="cd_refresh">Päivitä</string>
 

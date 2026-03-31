@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Avancerat</string>
     <string name="settings_clear_cache">Rensa priscache</string>
-    <string name="settings_clear_cache_description">Tvingar hämtning av nya priser vid nästa sökning. Användbart om priserna verkar felaktiga eller inaktuella.</string>
+    <string name="settings_clear_cache_description">Priserna laddas om vid nästa sökning.</string>
     <string name="snackbar_cache_cleared">Cache rensad</string>
     <string name="cd_refresh">Uppdatera</string>
 

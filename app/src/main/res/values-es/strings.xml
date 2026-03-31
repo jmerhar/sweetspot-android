@@ -98,7 +98,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Avanzado</string>
     <string name="settings_clear_cache">Borrar caché de precios</string>
-    <string name="settings_clear_cache_description">Fuerza la obtención de precios nuevos en la próxima búsqueda. Útil si los precios parecen incorrectos o desactualizados.</string>
+    <string name="settings_clear_cache_description">Los precios se volverán a cargar en la próxima búsqueda.</string>
     <string name="snackbar_cache_cleared">Caché borrada</string>
     <string name="cd_refresh">Actualizar</string>
 

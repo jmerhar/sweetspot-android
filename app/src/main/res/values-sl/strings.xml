@@ -101,7 +101,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>
     <string name="settings_clear_cache">Počisti predpomnilnik cen</string>
-    <string name="settings_clear_cache_description">Prisili nalaganje novih cen ob naslednjem iskanju. Uporabno, če se cene zdijo napačne ali zastarele.</string>
+    <string name="settings_clear_cache_description">Cene se bodo ob naslednjem iskanju ponovno naložile.</string>
     <string name="snackbar_cache_cleared">Predpomnilnik počiščen</string>
     <string name="cd_refresh">Osveži</string>
 

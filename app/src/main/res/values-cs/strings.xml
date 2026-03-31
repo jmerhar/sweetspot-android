@@ -101,7 +101,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Pokročilé</string>
     <string name="settings_clear_cache">Vymazat mezipaměť cen</string>
-    <string name="settings_clear_cache_description">Vynutí načtení nových cen při příštím hledání. Užitečné, pokud se ceny zdají nesprávné nebo zastaralé.</string>
+    <string name="settings_clear_cache_description">Ceny budou při příštím hledání znovu načteny.</string>
     <string name="snackbar_cache_cleared">Mezipaměť vymazána</string>
     <string name="cd_refresh">Obnovit</string>
 

@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Geavanceerd</string>
     <string name="settings_clear_cache">Prijscache wissen</string>
-    <string name="settings_clear_cache_description">Forceert het ophalen van nieuwe prijzen bij de volgende zoekopdracht. Handig als prijzen onjuist of verouderd lijken.</string>
+    <string name="settings_clear_cache_description">Prijzen worden bij de volgende zoekopdracht opnieuw geladen.</string>
     <string name="snackbar_cache_cleared">Cache gewist</string>
     <string name="cd_refresh">Vernieuwen</string>
 

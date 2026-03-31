@@ -101,7 +101,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Išplėstiniai</string>
     <string name="settings_clear_cache">Išvalyti kainų talpyklą</string>
-    <string name="settings_clear_cache_description">Priverčia gauti naujas kainas kitą kartą ieškant. Naudinga, jei kainos atrodo neteisingos arba pasenusios.</string>
+    <string name="settings_clear_cache_description">Kainos bus iš naujo įkeltos kitos paieškos metu.</string>
     <string name="snackbar_cache_cleared">Talpykla išvalyta</string>
     <string name="cd_refresh">Atnaujinti</string>
 

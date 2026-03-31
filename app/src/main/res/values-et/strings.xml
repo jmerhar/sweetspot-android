@@ -95,7 +95,7 @@
     <!-- Cache management -->
     <string name="settings_advanced">Täpsemalt</string>
     <string name="settings_clear_cache">Tühjenda hinnapuhver</string>
-    <string name="settings_clear_cache_description">Sunnib järgmisel otsingul laadima uued hinnad. Kasulik, kui hinnad tunduvad valed või aegunud.</string>
+    <string name="settings_clear_cache_description">Hinnad laetakse järgmisel otsingul uuesti.</string>
     <string name="snackbar_cache_cleared">Puhver tühjendatud</string>
     <string name="cd_refresh">Värskenda</string>
 

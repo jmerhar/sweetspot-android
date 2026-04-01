@@ -1,3 +1,5 @@
 ### What's new
 
-- **Early unlock** — you can now unlock SweetSpot from Settings at any time during the trial, without waiting for it to expire.
+- **Cleaner settings** — reorganised the settings screen. Rarely-used options (data sources, cache) are now behind an "Advanced" row, keeping the main screen focused.
+- **Better country sorting** — the country list now sorts correctly for all languages, including those with accented characters.
+- **Translation polish** — improved naturalness and grammar across multiple languages.

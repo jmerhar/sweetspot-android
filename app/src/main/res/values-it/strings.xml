@@ -122,6 +122,10 @@
     <string name="paywall_unlock_price">Sblocca per %s</string>
     <string name="paywall_restore">Ripristina acquisto</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Grazie!</string>
+    <string name="thank_you_message">SweetSpot è ora completamente sbloccato. Divertiti a trovare il momento più economico per i tuoi elettrodomestici!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Prova: %d giorno rimanente</item>
         <item quantity="many">Prova: %d giorni rimanenti</item>

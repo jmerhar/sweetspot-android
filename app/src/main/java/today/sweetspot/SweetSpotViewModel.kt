@@ -89,6 +89,7 @@ sealed interface AppError {
  * @property trialDaysRemaining Number of trial days remaining (0–14).
  * @property showPaywall Whether the paywall screen should block the app.
  * @property productPrice Localized price string for the unlock purchase (e.g. "€2.99"), or `null` if not loaded.
+ * @property showThankYou Whether the thank-you dialog should be shown after a successful purchase.
  * @property devOptionsEnabled Whether hidden developer options are visible.
  * @property isCooldownDisabled Whether the API fetch cooldown is bypassed (developer option).
  */
@@ -117,6 +118,7 @@ data class UiState(
     val trialDaysRemaining: Int = 14,
     val showPaywall: Boolean = false,
     val productPrice: String? = null,
+    val showThankYou: Boolean = false,
     val devOptionsEnabled: Boolean = false,
     val isCooldownDisabled: Boolean = false
 )
@@ -210,7 +212,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     _uiState.update {
                         it.copy(
                             isUnlocked = unlocked,
-                            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !unlocked
+                            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !unlocked,
+                            showThankYou = it.showThankYou || (unlocked && !it.isUnlocked)
                         )
                     }
                     syncSettingsToWear()
@@ -848,6 +851,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
      */
     fun onRestorePurchases() {
         activeBilling?.queryPurchases()
+    }
+
+    /** Dismisses the thank-you dialog shown after a successful purchase. */
+    fun onThankYouDismissed() {
+        _uiState.update { it.copy(showThankYou = false) }
     }
 
     // --- Developer options ---

@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Ξεκλείδωμα για %s</string>
     <string name="paywall_restore">Επαναφορά αγοράς</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Ευχαριστούμε!</string>
+    <string name="thank_you_message">Το SweetSpot είναι πλέον πλήρως ξεκλειδωμένο. Απολαύστε την εύρεση της φθηνότερης ώρας για τις συσκευές σας!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Δοκιμαστική περίοδος: %d ημέρα απομένει</item>
         <item quantity="other">Δοκιμαστική περίοδος: %d ημέρες απομένουν</item>

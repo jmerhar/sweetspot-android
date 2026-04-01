@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Ontgrendel voor %s</string>
     <string name="paywall_restore">Aankoop herstellen</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Bedankt!</string>
+    <string name="thank_you_message">SweetSpot is nu volledig ontgrendeld. Veel plezier met het vinden van het goedkoopste tijdstip voor je apparaten!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Proefperiode: nog %d dag</item>
         <item quantity="other">Proefperiode: nog %d dagen</item>

@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Ava hinnaga %s</string>
     <string name="paywall_restore">Taasta ost</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Täname!</string>
+    <string name="thank_you_message">SweetSpot on nüüd täielikult avatud. Nautige oma seadmetele soodsaima aja leidmist!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Proovperiood: %d päev jäänud</item>
         <item quantity="other">Proovperiood: %d päeva jäänud</item>

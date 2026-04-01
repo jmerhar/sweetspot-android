@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Feloldás: %s</string>
     <string name="paywall_restore">Vásárlás visszaállítása</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Köszönjük!</string>
+    <string name="thank_you_message">A SweetSpot most már teljesen fel van oldva. Élvezze a legolcsóbb időpont megtalálását a készülékeihez!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Próbaidőszak: %d nap van hátra</item>
         <item quantity="other">Próbaidőszak: %d nap van hátra</item>

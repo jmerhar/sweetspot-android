@@ -759,6 +759,7 @@ class SweetSpotViewModelTest {
 
         assertTrue(viewModel.uiState.value.isUnlocked)
         assertFalse(viewModel.uiState.value.showPaywall)
+        assertTrue(viewModel.uiState.value.showThankYou)
     }
 
     // --- Developer options ---
@@ -856,5 +857,37 @@ class SweetSpotViewModelTest {
         runCurrent()
         assertFalse(viewModel.uiState.value.isLoading)
         viewModel.onClearResult()
+    }
+
+    // --- Thank-you dialog ---
+
+    @Test
+    fun `showThankYou becomes true when billing transitions to unlocked`() = runTest {
+        val billing = FakeBillingRepository(initialUnlocked = false)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), billing = billing)
+        runCurrent()
+
+        assertFalse(viewModel.uiState.value.showThankYou)
+
+        billing.setUnlocked(true)
+        runCurrent()
+
+        assertTrue(viewModel.uiState.value.showThankYou)
+        assertTrue(viewModel.uiState.value.isUnlocked)
+        assertFalse(viewModel.uiState.value.showPaywall)
+    }
+
+    @Test
+    fun `onThankYouDismissed clears showThankYou`() = runTest {
+        val billing = FakeBillingRepository(initialUnlocked = false)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), billing = billing)
+        runCurrent()
+
+        billing.setUnlocked(true)
+        runCurrent()
+        assertTrue(viewModel.uiState.value.showThankYou)
+
+        viewModel.onThankYouDismissed()
+        assertFalse(viewModel.uiState.value.showThankYou)
     }
 }

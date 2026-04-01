@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Freischalten für %s</string>
     <string name="paywall_restore">Kauf wiederherstellen</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Vielen Dank!</string>
+    <string name="thank_you_message">SweetSpot ist jetzt vollständig freigeschaltet. Viel Spaß beim Finden der günstigsten Zeit für Ihre Geräte!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Testzeitraum: noch %d Tag</item>
         <item quantity="other">Testzeitraum: noch %d Tage</item>

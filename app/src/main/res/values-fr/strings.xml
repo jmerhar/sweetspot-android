@@ -122,6 +122,10 @@
     <string name="paywall_unlock_price">Déverrouiller pour %s</string>
     <string name="paywall_restore">Restaurer l\'achat</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Merci !</string>
+    <string name="thank_you_message">SweetSpot est maintenant entièrement déverrouillé. Profitez-en pour trouver le meilleur créneau pour vos appareils !</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Essai : %d jour restant</item>
         <item quantity="many">Essai : %d jours restants</item>

@@ -122,6 +122,10 @@
     <string name="paywall_unlock_price">Откључај за %s</string>
     <string name="paywall_restore">Врати куповину</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Хвала!</string>
+    <string name="thank_you_message">SweetSpot је сада потпуно откључан. Уживајте у проналажењу најјефтинијег времена за ваше уређаје!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Пробни период: још %d дан</item>
         <item quantity="few">Пробни период: још %d дана</item>

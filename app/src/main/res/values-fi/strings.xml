@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Avaa hintaan %s</string>
     <string name="paywall_restore">Palauta ostos</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Kiitos!</string>
+    <string name="thank_you_message">SweetSpot on nyt täysin avattu. Nauti edullisimman käyttöajan löytämisestä laitteillesi!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Kokeilujakso: %d päivä jäljellä</item>
         <item quantity="other">Kokeilujakso: %d päivää jäljellä</item>

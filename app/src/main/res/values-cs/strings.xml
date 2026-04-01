@@ -125,6 +125,10 @@
     <string name="paywall_unlock_price">Odemknout za %s</string>
     <string name="paywall_restore">Obnovit nákup</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Děkujeme!</string>
+    <string name="thank_you_message">SweetSpot je nyní plně odemčen. Užijte si hledání nejlevnějšího času pro vaše spotřebiče!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Zkušební období: ještě %d den</item>
         <item quantity="few">Zkušební období: ještě %d dny</item>

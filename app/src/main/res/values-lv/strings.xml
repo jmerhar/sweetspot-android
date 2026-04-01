@@ -122,6 +122,10 @@
     <string name="paywall_unlock_price">Atbloķēt par %s</string>
     <string name="paywall_restore">Atjaunot pirkumu</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Paldies!</string>
+    <string name="thank_you_message">SweetSpot tagad ir pilnībā atbloķēts. Izbaudiet lētākā laika meklēšanu savām ierīcēm!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="zero">Izmēģinājuma periods: vēl %d dienu</item>
         <item quantity="one">Izmēģinājuma periods: vēl %d diena</item>

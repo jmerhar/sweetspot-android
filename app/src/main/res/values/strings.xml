@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Unlock for %s</string>
     <string name="paywall_restore">Restore purchase</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Thank you!</string>
+    <string name="thank_you_message">SweetSpot is now fully unlocked. Enjoy finding the cheapest time for your appliances!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Trial: %d day remaining</item>
         <item quantity="other">Trial: %d days remaining</item>

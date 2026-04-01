@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import today.sweetspot.data.api.DataSources
@@ -42,24 +43,6 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
                     state.showSettings -> {
-                        if (state.showStatsPrompt) {
-                            AlertDialog(
-                                onDismissRequest = vm::onStatsPromptDismissed,
-                                title = { Text(stringResource(R.string.stats_prompt_title)) },
-                                text = { Text(stringResource(R.string.stats_prompt_message)) },
-                                confirmButton = {
-                                    TextButton(onClick = vm::onStatsPromptEnabled) {
-                                        Text(stringResource(R.string.stats_prompt_enable))
-                                    }
-                                },
-                                dismissButton = {
-                                    TextButton(onClick = vm::onStatsPromptDismissed) {
-                                        Text(stringResource(R.string.stats_prompt_dismiss))
-                                    }
-                                }
-                            )
-                        }
-
                         BackHandler { vm.onHideSettings() }
                         SettingsScreen(
                             currentTimeZoneId = state.timeZoneId,
@@ -98,28 +81,53 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
                     else -> {
-                        if (state.showStatsPrompt) {
-                            AlertDialog(
-                                onDismissRequest = vm::onStatsPromptDismissed,
-                                title = { Text(stringResource(R.string.stats_prompt_title)) },
-                                text = { Text(stringResource(R.string.stats_prompt_message)) },
-                                confirmButton = {
-                                    TextButton(onClick = vm::onStatsPromptEnabled) {
-                                        Text(stringResource(R.string.stats_prompt_enable))
-                                    }
-                                },
-                                dismissButton = {
-                                    TextButton(onClick = vm::onStatsPromptDismissed) {
-                                        Text(stringResource(R.string.stats_prompt_dismiss))
-                                    }
-                                }
-                            )
-                        }
-
                         SweetSpotScreen(viewModel = vm)
                     }
+                }
+
+                // Overlay dialogs shown on any screen (except the paywall)
+                if (!state.showPaywall) {
+                    ThankYouDialog(state, vm)
+                    StatsPromptDialog(state, vm)
                 }
             }
         }
     }
+}
+
+/** Shows a thank-you dialog after a successful in-app purchase. */
+@Composable
+private fun ThankYouDialog(state: UiState, vm: SweetSpotViewModel) {
+    if (!state.showThankYou) return
+    AlertDialog(
+        onDismissRequest = vm::onThankYouDismissed,
+        title = { Text(stringResource(R.string.thank_you_title)) },
+        text = { Text(stringResource(R.string.thank_you_message)) },
+        confirmButton = {
+            TextButton(onClick = vm::onThankYouDismissed) {
+                Text(stringResource(android.R.string.ok))
+            }
+        }
+    )
+}
+
+/** Shows a one-time opt-in prompt for anonymous API statistics. */
+@Composable
+private fun StatsPromptDialog(state: UiState, vm: SweetSpotViewModel) {
+    if (!state.showStatsPrompt) return
+    AlertDialog(
+        onDismissRequest = vm::onStatsPromptDismissed,
+        title = { Text(stringResource(R.string.stats_prompt_title)) },
+        text = { Text(stringResource(R.string.stats_prompt_message)) },
+        confirmButton = {
+            TextButton(onClick = vm::onStatsPromptEnabled) {
+                Text(stringResource(R.string.stats_prompt_enable))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = vm::onStatsPromptDismissed) {
+                Text(stringResource(R.string.stats_prompt_dismiss))
+            }
+        }
+    )
 }

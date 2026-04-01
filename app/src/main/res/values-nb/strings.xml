@@ -119,6 +119,10 @@
     <string name="paywall_unlock_price">Lås opp for %s</string>
     <string name="paywall_restore">Gjenopprett kjøp</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Takk!</string>
+    <string name="thank_you_message">SweetSpot er nå fullt opplåst. Nyt å finne det billigste tidspunktet for apparatene dine!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Prøveperiode: %d dag gjenstår</item>
         <item quantity="other">Prøveperiode: %d dager gjenstår</item>

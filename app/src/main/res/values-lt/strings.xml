@@ -125,6 +125,10 @@
     <string name="paywall_unlock_price">Atrakinti už %s</string>
     <string name="paywall_restore">Atkurti pirkinį</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Ačiū!</string>
+    <string name="thank_you_message">SweetSpot dabar visiškai atrakintas. Mėgaukitės pigiausio laiko paieška savo prietaisams!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Bandomasis laikotarpis: liko %d diena</item>
         <item quantity="few">Bandomasis laikotarpis: liko %d dienos</item>

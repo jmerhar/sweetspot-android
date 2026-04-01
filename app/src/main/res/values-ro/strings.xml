@@ -122,6 +122,10 @@
     <string name="paywall_unlock_price">Deblochează pentru %s</string>
     <string name="paywall_restore">Restaurează achiziția</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Mulțumim!</string>
+    <string name="thank_you_message">SweetSpot este acum complet deblocat. Bucurați-vă de găsirea celui mai ieftin moment pentru aparatele dvs.!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Perioadă de probă: %d zi rămasă</item>
         <item quantity="few">Perioadă de probă: %d zile rămase</item>

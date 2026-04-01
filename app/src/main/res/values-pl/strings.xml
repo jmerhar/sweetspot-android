@@ -125,6 +125,10 @@
     <string name="paywall_unlock_price">Odblokuj za %s</string>
     <string name="paywall_restore">Przywróć zakup</string>
 
+    <!-- Thank you -->
+    <string name="thank_you_title">Dziękujemy!</string>
+    <string name="thank_you_message">SweetSpot jest teraz w pełni odblokowany. Ciesz się znajdowaniem najkorzystniejszego momentu dla Twoich urządzeń!</string>
+
     <plurals name="trial_days_remaining">
         <item quantity="one">Okres próbny: %d dzień pozostał</item>
         <item quantity="few">Okres próbny: %d dni pozostało</item>

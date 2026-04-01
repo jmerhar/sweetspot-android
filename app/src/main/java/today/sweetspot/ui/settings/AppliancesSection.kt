@@ -129,7 +129,7 @@ internal fun ApplianceDialog(
     var name by rememberSaveable { mutableStateOf(appliance?.name ?: "") }
     var pickerHours by rememberSaveable { mutableIntStateOf(appliance?.durationHours ?: 1) }
     var pickerMinutes by rememberSaveable { mutableIntStateOf(appliance?.durationMinutes ?: 0) }
-    var selectedIcon by rememberSaveable { mutableStateOf(appliance?.icon ?: "bolt") }
+    var selectedIcon by rememberSaveable { mutableStateOf(appliance?.icon ?: "electricity") }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -167,8 +167,10 @@ internal fun ApplianceDialog(
                     onChanged = { h, m -> pickerHours = h; pickerMinutes = m }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
+                val selectedLabel = applianceIcons.firstOrNull { it.id == selectedIcon }?.label ?: ""
                 Text(
-                    text = stringResource(R.string.dialog_icon),
+                    text = if (selectedLabel.isNotEmpty()) "${stringResource(R.string.dialog_icon)} - $selectedLabel"
+                           else stringResource(R.string.dialog_icon),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

@@ -175,7 +175,7 @@ The data layer is organised into four subpackages under `data/`:
 - **`CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
-- **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 26 curated icons (18 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.
+- **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 31 curated icons (23 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.
 - **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
 - **`util/FormatUtils`** — `formatDuration()` and `shortTimeFormatter` shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.

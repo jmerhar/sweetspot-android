@@ -197,8 +197,8 @@ class WearViewModelTest {
     @Test
     fun `rapid taps cancel previous fetch and keep last result`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        val first = Appliance(id = "1", name = "First", durationHours = 1, durationMinutes = 0, icon = "bolt")
-        val second = Appliance(id = "2", name = "Second", durationHours = 2, durationMinutes = 0, icon = "bolt")
+        val first = Appliance(id = "1", name = "First", durationHours = 1, durationMinutes = 0, icon = "electricity")
+        val second = Appliance(id = "2", name = "Second", durationHours = 2, durationMinutes = 0, icon = "electricity")
 
         viewModel.onApplianceTapped(first)
         viewModel.onApplianceTapped(second)
@@ -270,7 +270,7 @@ class WearViewModelTest {
         assertEquals(1, result.size)
         assertEquals(1, result[0].durationHours)
         assertEquals(0, result[0].durationMinutes)
-        assertEquals("bolt", result[0].icon)
+        assertEquals("electricity", result[0].icon)
     }
 
     // --- Source order ---

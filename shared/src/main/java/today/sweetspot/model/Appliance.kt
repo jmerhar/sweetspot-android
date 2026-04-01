@@ -19,5 +19,5 @@ data class Appliance(
     val name: String,
     val durationHours: Int = 1,
     val durationMinutes: Int = 0,
-    val icon: String = "bolt"
+    val icon: String = "electricity"
 )

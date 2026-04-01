@@ -269,8 +269,8 @@ class SweetSpotViewModelTest {
     @Test
     fun `onAddAppliance generates unique IDs`() {
         val viewModel = defaultViewModel()
-        viewModel.onAddAppliance("A", 1, 0, "bolt")
-        viewModel.onAddAppliance("B", 2, 0, "bolt")
+        viewModel.onAddAppliance("A", 1, 0, "electricity")
+        viewModel.onAddAppliance("B", 2, 0, "electricity")
         val appliances = viewModel.uiState.value.appliances
         assertEquals(2, appliances.size)
         assertTrue(appliances[0].id != appliances[1].id)
@@ -279,7 +279,7 @@ class SweetSpotViewModelTest {
     @Test
     fun `onUpdateAppliance replaces matching appliance`() {
         val viewModel = defaultViewModel()
-        viewModel.onAddAppliance("Old", 1, 0, "bolt")
+        viewModel.onAddAppliance("Old", 1, 0, "electricity")
         val added = viewModel.uiState.value.appliances[0]
         val updated = added.copy(name = "New", durationHours = 3)
         viewModel.onUpdateAppliance(updated)
@@ -292,8 +292,8 @@ class SweetSpotViewModelTest {
     @Test
     fun `onDeleteAppliance removes by ID`() {
         val viewModel = defaultViewModel()
-        viewModel.onAddAppliance("A", 1, 0, "bolt")
-        viewModel.onAddAppliance("B", 2, 0, "bolt")
+        viewModel.onAddAppliance("A", 1, 0, "electricity")
+        viewModel.onAddAppliance("B", 2, 0, "electricity")
         val idToDelete = viewModel.uiState.value.appliances[0].id
         viewModel.onDeleteAppliance(idToDelete)
         val appliances = viewModel.uiState.value.appliances
@@ -304,7 +304,7 @@ class SweetSpotViewModelTest {
     @Test
     fun `onDeleteAppliance with unknown ID does nothing`() {
         val viewModel = defaultViewModel()
-        viewModel.onAddAppliance("A", 1, 0, "bolt")
+        viewModel.onAddAppliance("A", 1, 0, "electricity")
         viewModel.onDeleteAppliance("nonexistent")
         assertEquals(1, viewModel.uiState.value.appliances.size)
     }

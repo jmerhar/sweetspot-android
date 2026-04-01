@@ -17,12 +17,12 @@ class ApplianceIconTest {
     }
 
     @Test
-    fun `unknown ID returns bolt fallback icon`() {
+    fun `unknown ID returns electricity fallback icon`() {
         assertEquals(Icons.Outlined.Bolt, applianceIconFor("nonexistent"))
     }
 
     @Test
-    fun `empty ID returns bolt fallback icon`() {
+    fun `empty ID returns electricity fallback icon`() {
         assertEquals(Icons.Outlined.Bolt, applianceIconFor(""))
     }
 }

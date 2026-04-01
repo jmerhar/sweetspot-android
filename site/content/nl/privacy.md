@@ -40,10 +40,13 @@ Je kunt ervoor kiezen om anonieme API-betrouwbaarheidsstatistieken te delen. Wan
 - Of het verzoek is geslaagd of mislukt
 - Foutcategorie bij mislukking (bijv. "timeout", "serverfout")
 - App-versienummer
+- App-taal (bijv. "en", "nl")
+- Betalingsstatus (proefperiode, ontgrendeld of verlopen)
+- Verzoekduur in milliseconden
 
 Deze gegevens bevatten **geen** apparaat-ID's, locatie, prijsgegevens of andere persoonlijke informatie. Ze worden uitsluitend gebruikt om de betrouwbaarheid van databronnen en de standaardvolgorde te verbeteren.
 
-Deze functie is standaard uitgeschakeld. Je kunt het op elk moment in- of uitschakelen via Instellingen > Geavanceerd.
+Deze functie is standaard uitgeschakeld. Je kunt het op elk moment in- of uitschakelen via Instellingen.
 
 ## Open source
 
@@ -53,4 +56,4 @@ SweetSpot is open source en beschikbaar onder de GPL v3-licentie. Je kunt de vol
 
 Als je vragen hebt over dit privacybeleid, kun je een issue openen op [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Laatst bijgewerkt: maart 2026*
+*Laatst bijgewerkt: april 2026*

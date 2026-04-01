@@ -40,10 +40,13 @@ You can opt in to sharing anonymous API reliability statistics. When enabled, th
 - Whether the request succeeded or failed
 - Error category on failure (e.g. "timeout", "server error")
 - App version number
+- App language (e.g. "en", "nl")
+- Payment status (trial, unlocked, or expired)
+- Request duration in milliseconds
 
 This data does **not** contain device identifiers, location, price data, or any other personal information. It is used solely to improve data source reliability and default ordering.
 
-This feature is disabled by default. You can enable or disable it at any time in Settings > Advanced.
+This feature is disabled by default. You can enable or disable it at any time in Settings.
 
 ## Open Source
 
@@ -53,4 +56,4 @@ SweetSpot is open source and licensed under GPL v3. You can review the complete 
 
 If you have questions about this privacy policy, you can open an issue on [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Last updated: March 2026*
+*Last updated: April 2026*

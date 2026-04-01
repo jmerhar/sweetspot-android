@@ -3,8 +3,36 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.1.3" date="1. April 2026" >}}
+- Einstellungen neu organisiert: Datenquellen, Cache und Entwickleroptionen befinden sich jetzt im Bereich Erweitert
+- Länderliste sortiert nun korrekt für alle Sprachen, einschließlich Buchstaben mit Akzenten
+- Verbesserte Natürlichkeit und Grammatik in mehreren Sprachen
+{{< /changelog >}}
+
+{{< changelog version="5.1.2" date="30. März 2026" >}}
+- Option zum vorzeitigen Freischalten in den Einstellungen während des Testzeitraums hinzugefügt
+{{< /changelog >}}
+
+{{< changelog version="5.1.1" date="30. März 2026" >}}
+- Telefon- und Uhr-Builds haben jetzt separate Versionscodes für den Play Console-Upload
+{{< /changelog >}}
+
+{{< changelog version="5.0" date="30. März 2026" >}}
+- 14 Tage kostenlos testen mit einmaligem Kauf zum dauerhaften Freischalten
+- Bezahlbildschirm nach Ablauf des Testzeitraums mit Option zur Wiederherstellung früherer Käufe
+- Countdown des Testzeitraums auf dem Hauptbildschirm
+- Wear OS-Uhr zeigt eine Nachricht zum Freischalten über das Telefon, wenn der Testzeitraum abläuft
+- Überlappende ENTSO-E TimeSeries-Deduplizierung behoben
+- App-Version am unteren Rand des Einstellungsbildschirms angezeigt
+{{< /changelog >}}
+
+{{< changelog version="4.1" date="30. März 2026" >}}
+- Optionale anonyme API-Zuverlässigkeitsstatistiken zur Verbesserung der Datenquellenqualität
+- Verbesserte Fehlerbehandlung für alle fünf Datenquellen
+{{< /changelog >}}
+
 {{< changelog version="4.0" date="28. März 2026" >}}
-- Neue Anwendungs-ID: `today.sweetspot` (zuvor `si.merhar.sweetspot`)
+- Neue Anwendungs-ID: `today.sweetspot`
 - Websiteverbesserungen und Seitenvalidierung
 {{< /changelog >}}
 

@@ -3,8 +3,36 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="5.1.3" date="1er avril 2026" >}}
+- Paramètres réorganisés : les sources de données, le cache et les options développeur sont désormais dans une section Avancé
+- La liste des pays se trie correctement pour toutes les langues, y compris les caractères accentués
+- Amélioration du naturel et de la grammaire dans plusieurs langues
+{{< /changelog >}}
+
+{{< changelog version="5.1.2" date="30 mars 2026" >}}
+- Possibilité de déverrouiller SweetSpot depuis les paramètres pendant la période d'essai
+{{< /changelog >}}
+
+{{< changelog version="5.1.1" date="30 mars 2026" >}}
+- Les builds téléphone et montre ont désormais des codes de version distincts pour l'upload sur Play Console
+{{< /changelog >}}
+
+{{< changelog version="5.0" date="30 mars 2026" >}}
+- 14 jours d'essai gratuit avec un achat unique pour déverrouiller définitivement
+- Écran de paiement après la fin de la période d'essai avec option pour restaurer les achats précédents
+- Compte à rebours de la période d'essai sur l'écran principal
+- La montre Wear OS affiche un message pour déverrouiller depuis le téléphone lorsque la période d'essai expire
+- Correction de la déduplication des TimeSeries ENTSO-E chevauchantes
+- Version de l'application affichée en bas de l'écran des paramètres
+{{< /changelog >}}
+
+{{< changelog version="4.1" date="30 mars 2026" >}}
+- Statistiques anonymes optionnelles de fiabilité des API pour améliorer la qualité des sources de données
+- Amélioration de la gestion des erreurs pour les cinq sources de données
+{{< /changelog >}}
+
 {{< changelog version="4.0" date="28 mars 2026" >}}
-- Nouvel identifiant d'application : `today.sweetspot` (auparavant `si.merhar.sweetspot`)
+- Nouvel identifiant d'application : `today.sweetspot`
 - Améliorations du site web et validation du site
 {{< /changelog >}}
 

@@ -3,8 +3,36 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.1.3" date="1 april 2026" >}}
+- Instellingen gereorganiseerd: databronnen, cache en ontwikkelaaropties staan nu in een sectie Geavanceerd
+- Landenlijst sorteert nu correct voor alle talen, inclusief letters met accenten
+- Verbeterde natuurlijkheid en grammatica in meerdere talen
+{{< /changelog >}}
+
+{{< changelog version="5.1.2" date="30 maart 2026" >}}
+- Optie toegevoegd om SweetSpot al tijdens de proefperiode te ontgrendelen via Instellingen
+{{< /changelog >}}
+
+{{< changelog version="5.1.1" date="30 maart 2026" >}}
+- Telefoon- en horlogebuild hebben nu aparte versiecodes voor upload naar Play Console
+{{< /changelog >}}
+
+{{< changelog version="5.0" date="30 maart 2026" >}}
+- 14 dagen gratis uitproberen met een eenmalige aankoop om permanent te ontgrendelen
+- Betaalscherm na afloop van de proefperiode met optie om eerdere aankopen te herstellen
+- Aftelling van de proefperiode op het hoofdscherm
+- Wear OS-horloge toont een melding om te ontgrendelen via de telefoon wanneer de proefperiode verloopt
+- Overlappende ENTSO-E TimeSeries-deduplicatie opgelost
+- App-versie onderaan het instellingenscherm weergegeven
+{{< /changelog >}}
+
+{{< changelog version="4.1" date="30 maart 2026" >}}
+- Optionele anonieme API-betrouwbaarheidsstatistieken om de kwaliteit van databronnen te verbeteren
+- Verbeterde foutafhandeling voor alle vijf databronnen
+{{< /changelog >}}
+
 {{< changelog version="4.0" date="28 maart 2026" >}}
-- Nieuwe applicatie-ID: `today.sweetspot` (voorheen `si.merhar.sweetspot`)
+- Nieuwe applicatie-ID: `today.sweetspot`
 - Websiteverbeteringen en sitevalidatie
 {{< /changelog >}}
 

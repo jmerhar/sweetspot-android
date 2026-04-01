@@ -3,8 +3,36 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.1.3" date="1. april 2026" >}}
+- Nastavitve pregledneje razporejene: viri podatkov, predpomnilnik in razvojne možnosti so zdaj v razdelku Napredno
+- Seznam držav se zdaj pravilno razvrsti za vse jezike, vključno s črkami z naglasnimi znamenji
+- Izboljšana naravnost in slovnica v več jezikih
+{{< /changelog >}}
+
+{{< changelog version="5.1.2" date="30. marec 2026" >}}
+- Možnost zgodnjega odklepanja v nastavitvah med preizkusnim obdobjem
+{{< /changelog >}}
+
+{{< changelog version="5.1.1" date="30. marec 2026" >}}
+- Različici za telefon in uro imata zdaj ločeni kodi različic za nalaganje v Play Console
+{{< /changelog >}}
+
+{{< changelog version="5.0" date="30. marec 2026" >}}
+- 14-dnevni brezplačni preizkus z enkratnim nakupom za trajno odklepanje
+- Zaslon za plačilo po koncu preizkusnega obdobja z možnostjo obnovitve prejšnjih nakupov
+- Odštevalnik preizkusnega obdobja na glavnem zaslonu
+- Ura Wear OS prikaže sporočilo za odklepanje prek telefona, ko se preizkusno obdobje izteče
+- Odpravljena podvajanja prekrivajočih se ENTSO-E TimeSeries
+- Različica aplikacije prikazana na dnu zaslona z nastavitvami
+{{< /changelog >}}
+
+{{< changelog version="4.1" date="30. marec 2026" >}}
+- Neobvezna anonimna statistika zanesljivosti API-jev za izboljšanje kakovosti virov podatkov
+- Izboljšano upravljanje napak za vseh pet virov podatkov
+{{< /changelog >}}
+
 {{< changelog version="4.0" date="28. marec 2026" >}}
-- Nov identifikator aplikacije: `today.sweetspot` (prej `si.merhar.sweetspot`)
+- Nov identifikator aplikacije: `today.sweetspot`
 - Izboljšave spletne strani in validacija strani
 {{< /changelog >}}
 

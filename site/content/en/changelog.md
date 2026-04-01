@@ -3,8 +3,36 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.1.3" date="April 1, 2026" >}}
+- Reorganised settings: data sources, cache, and developer options are now in an Advanced section
+- Country list sorts correctly for all languages, including accented characters
+- Improved naturalness and grammar across multiple languages
+{{< /changelog >}}
+
+{{< changelog version="5.1.2" date="March 30, 2026" >}}
+- Added early unlock option in Settings during the trial period
+{{< /changelog >}}
+
+{{< changelog version="5.1.1" date="March 30, 2026" >}}
+- Fixed phone and watch builds to have distinct version codes for Play Console upload
+{{< /changelog >}}
+
+{{< changelog version="5.0" date="March 30, 2026" >}}
+- 14-day free trial with a one-time purchase to unlock permanently
+- Paywall screen after the trial ends with option to restore previous purchases
+- Trial countdown shown on the main screen
+- Wear OS watch shows a message to unlock from the phone when the trial expires
+- Fixed overlapping ENTSO-E TimeSeries deduplication
+- App version shown at the bottom of the settings screen
+{{< /changelog >}}
+
+{{< changelog version="4.1" date="March 30, 2026" >}}
+- Opt-in anonymous API reliability statistics to help improve data source quality
+- Improved error handling across all five data sources
+{{< /changelog >}}
+
 {{< changelog version="4.0" date="March 28, 2026" >}}
-- New application ID: `today.sweetspot` (previously `si.merhar.sweetspot`)
+- New application ID: `today.sweetspot`
 - Website improvements and site validation
 {{< /changelog >}}
 

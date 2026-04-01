@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.1.5" date="2026. április 1." >}}
+- Natív hibakeresési szimbólumok hozzáadása a kiadási csomagokhoz a jobb Play Store összeomlás-jelentésekért
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="2026. április 1." >}}
 - Köszönő megerősítés a SweetSpot feloldása után
 - Javítva a régi nyelv felvillanása az alkalmazás nyelvének módosításakor a beállításokban

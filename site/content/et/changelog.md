@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.1.5" date="1. aprill 2026" >}}
+- Lisatud natiivsed silumissümbolid väljalaskepakettidesse Play Store'i parema tõrkeraportluse jaoks
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. aprill 2026" >}}
 - Tänukinnitus pärast SweetSpoti avamist
 - Parandatud vana keele vilkumine rakenduse keele vahetamisel seadetes

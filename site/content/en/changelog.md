@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.1.5" date="April 1, 2026" >}}
+- Included native debug symbols in release bundles for better Play Store crash reporting
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="April 1, 2026" >}}
 - Thank-you confirmation dialog after unlocking SweetSpot
 - Fixed a flash of the old language when changing the app language in settings

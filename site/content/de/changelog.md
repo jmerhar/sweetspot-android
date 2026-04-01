@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.1.5" date="1. April 2026" >}}
+- Native Debug-Symbole in Release-Bundles für bessere Absturzberichte im Play Store integriert
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. April 2026" >}}
 - Dankesbestätigung nach dem Freischalten von SweetSpot
 - Kurzes Aufblitzen der alten Sprache beim Ändern der App-Sprache in den Einstellungen behoben

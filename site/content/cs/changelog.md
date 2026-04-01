@@ -3,6 +3,10 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1. dubna 2026" >}}
+- Přidány nativní ladicí symboly do release balíčků pro lepší hlášení pádů v Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. dubna 2026" >}}
 - Potvrzení s poděkováním po odemčení SweetSpot
 - Opraveno probliknutí starého jazyka při změně jazyka aplikace v nastavení

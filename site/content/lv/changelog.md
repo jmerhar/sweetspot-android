@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="5.1.5" date="2026. gada 1. aprīlis" >}}
+- Izlaiduma pakotnēs iekļauti vietējie atkļūdošanas simboli labākai avāriju ziņošanai Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="2026. gada 1. aprīlis" >}}
 - Pateicības apstiprinājums pēc SweetSpot atbloķēšanas
 - Novērsta vecās valodas uzmirgšana, mainot lietotnes valodu iestatījumos

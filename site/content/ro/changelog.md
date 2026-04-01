@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1 aprilie 2026" >}}
+- Simboluri native de depanare incluse în pachetele de lansare pentru raportarea mai bună a erorilor fatale în Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1 aprilie 2026" >}}
 - Confirmare de mulțumire după deblocarea SweetSpot
 - Remediat un flash al limbii vechi la schimbarea limbii aplicației din setări

@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1. april 2026" >}}
+- Vključeni nativni simboli za razhroščevanje v pakete izdaj za boljše poročanje o sesutjih v Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. april 2026" >}}
 - Potrditveno okno z zahvalo po odklenitvi SweetSpot
 - Odpravljen blic stare jezike ob spremembi jezika aplikacije v nastavitvah

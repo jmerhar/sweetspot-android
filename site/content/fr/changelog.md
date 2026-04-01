@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1er avril 2026" >}}
+- Inclusion des symboles de débogage natifs dans les bundles de publication pour de meilleurs rapports de plantage sur le Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1er avril 2026" >}}
 - Confirmation de remerciement après le déverrouillage de SweetSpot
 - Correction d'un flash de l'ancienne langue lors du changement de langue dans les paramètres

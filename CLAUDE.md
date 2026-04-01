@@ -46,7 +46,7 @@ make release VERSION=3.0            # Bump version, build, tag, push, create Git
 make release VERSION=3.0 DRAFT=1    # Same but creates a draft release
 ```
 
-The release notes file is always `docs/notes/release.md`. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why — overwrite `docs/notes/release.md` each release. **Important:** The release script requires a clean working tree, so commit the release notes before running `make release`.
+The release notes file is always `docs/notes/release.md`. The script appends a "Full Changelog" link automatically. Always write meaningful, user-facing release notes describing what changed and why — overwrite `docs/notes/release.md` each release. **Important:** The release script requires a clean working tree, so commit the release notes before running `make release`. **Also:** Update the website changelog (`site/content/<lang>/changelog.md`) for all 25 languages before releasing — see "Updating the Changelog" below.
 
 The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs and AABs, commits, tags, pushes, and creates a GitHub Release with APKs attached. AABs are built but not uploaded to GitHub — use them for Play Store submission.
 

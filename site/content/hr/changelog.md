@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1. travnja 2026." >}}
+- Uključeni nativni simboli za otklanjanje pogrešaka u pakete izdanja za bolje izvješćivanje o rušenjima na Play Storeu
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. travnja 2026." >}}
 - Potvrda zahvale nakon otključavanja SweetSpota
 - Ispravljen bljesak starog jezika pri promjeni jezika aplikacije u postavkama

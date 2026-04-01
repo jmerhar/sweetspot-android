@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.1.5" date="1. huhtikuuta 2026" >}}
+- Natiivit virheenkorjaussymbolit sisällytetty julkaisupaketteihin parempaa Play Storen kaatumisraportointia varten
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. huhtikuuta 2026" >}}
 - Kiitosvahvistus SweetSpotin avaamisen jälkeen
 - Korjattu vanhan kielen välähdys sovelluksen kielen vaihdon yhteydessä asetuksissa

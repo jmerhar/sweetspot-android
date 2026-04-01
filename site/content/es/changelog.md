@@ -3,6 +3,10 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1 de abril de 2026" >}}
+- Símbolos de depuración nativos incluidos en los paquetes de lanzamiento para mejorar los informes de fallos en Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1 de abril de 2026" >}}
 - Diálogo de agradecimiento tras desbloquear SweetSpot
 - Corregido un destello del idioma anterior al cambiar el idioma de la app en ajustes

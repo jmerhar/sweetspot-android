@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.1.5" date="2026 m. balandžio 1 d." >}}
+- Į leidimo paketus įtraukti vietiniai derinimo simboliai geresniam strigčių ataskaitų teikimui Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="2026 m. balandžio 1 d." >}}
 - Padėkos patvirtinimas atrakinant SweetSpot
 - Ištaisytas senos kalbos blyksnis keičiant programėlės kalbą nustatymuose

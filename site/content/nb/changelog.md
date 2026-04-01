@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="5.1.5" date="1. april 2026" >}}
+- Inkludert native feilsøkingssymboler i utgivelsespakker for bedre krasjrapportering i Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1. april 2026" >}}
 - Takkebekreftelse etter opplåsing av SweetSpot
 - Rettet et glimt av det gamle språket ved endring av appspråket i innstillinger

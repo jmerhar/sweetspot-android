@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="5.1.5" date="1 aprile 2026" >}}
+- Inclusi simboli di debug nativi nei bundle di rilascio per una migliore segnalazione degli arresti anomali sul Play Store
+{{< /changelog >}}
+
 {{< changelog version="5.1.4" date="1 aprile 2026" >}}
 - Conferma di ringraziamento dopo lo sblocco di SweetSpot
 - Corretto un flash della vecchia lingua quando si cambia la lingua dell'app nelle impostazioni

@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Přeskočit na obsah"
+
+[nav_home]
+other = "Úvod"
+
+[nav_menu]
+other = "Menu"
+
+[nav_features]
+other = "Funkce"
+
+[nav_faq]
+other = "Časté dotazy"
+
+[nav_changelog]
+other = "Historie verzí"
+
+[nav_privacy]
+other = "Ochrana soukromí"
+
+[lang_switch]
+other = "Změnit jazyk"
+
+[hero_title]
+other = "Najděte nejlevnější čas pro vaše spotřebiče"
+
+[hero_subtitle]
+other = "SweetSpot prohledává dynamické ceny elektřiny ve 30 evropských zemích a najde optimální okno pro úsporu peněz. Open source a bez sběru dat."
+
+[download]
+other = "Stáhnout na Google Play"
+
+[learn_more]
+other = "Zjistit více"
+
+[features_title]
+other = "Funkce"
+
+[feature_countries_title]
+other = "30 evropských zemí"
+
+[feature_countries_desc]
+other = "Pokrývá 43 obchodních zón napříč Evropou, od Portugalska po Finsko a od Norska po Řecko."
+
+[feature_prices_title]
+other = "Aktuální ceny"
+
+[feature_prices_desc]
+other = "Denní ceny elektřiny z platformy ENTSO-E Transparency Platform, aktualizované každý den."
+
+[feature_algorithm_title]
+other = "Chytrý algoritmus"
+
+[feature_algorithm_desc]
+other = "Algoritmus s posuvným oknem najde nejlevnější souvislé období pro libovolnou dobu trvání."
+
+[feature_fallback_title]
+other = "Spolehlivá data"
+
+[feature_fallback_desc]
+other = "Pět zdrojů dat s automatickým přepínáním zajišťuje, že ceny jsou vždy k dispozici."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Doprovodná aplikace pro Pixel Watch a další zařízení s Wear OS 3+. Sledujte ceny přímo z hodinek."
+
+[feature_appliances_title]
+other = "Vlastní spotřebiče"
+
+[feature_appliances_desc]
+other = "Uložte si spotřebiče s vlastními názvy, ikonami a dobami běhu pro přístup jedním klepnutím."
+
+[feature_languages_title]
+other = "25 jazyků"
+
+[feature_languages_desc]
+other = "K dispozici ve 25 evropských jazycích, od bulharštiny po švédštinu."
+
+[feature_privacy_title]
+other = "Soukromí na prvním místě"
+
+[feature_privacy_desc]
+other = "Žádné účty, žádná analytika, žádné sledování. Ceny se ukládají lokálně ve vašem zařízení."
+
+[feature_opensource_title]
+other = "Open source"
+
+[feature_opensource_desc]
+other = "Kompletní zdrojový kód je dostupný na GitHubu pod licencí GPL v3."
+
+[how_title]
+other = "Jak to funguje"
+
+[step1_title]
+other = "Vyberte spotřebič"
+
+[step1_desc]
+other = "Vyberte uložený spotřebič nebo nastavte vlastní dobu běhu."
+
+[step2_title]
+other = "Prohledat ceny"
+
+[step2_desc]
+other = "SweetSpot získá nejnovější denní ceny elektřiny pro váš region."
+
+[step3_title]
+other = "Zjistěte nejlepší čas"
+
+[step3_desc]
+other = "Podívejte se přesně, kdy spustit spotřebič, s úplným rozpisem nákladů po časových úsecích."
+
+[cta_title]
+other = "Začněte šetřit za elektřinu"
+
+[cta_desc]
+other = "Stáhněte si SweetSpot z Google Play a najděte nejlevnější čas pro vaše spotřebiče."
+
+[footer_tagline]
+other = "Najděte nejlevnější čas pro vaše spotřebiče."
+
+[footer_app]
+other = "Aplikace"
+
+[footer_legal]
+other = "Právní informace"
+
+[footer_license]
+other = "Licencováno pod GPL v3."
+
+[error_404]
+other = "Stránka, kterou hledáte, neexistuje."
+
+[back_home]
+other = "Zpět na úvod"

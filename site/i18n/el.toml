@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Μετάβαση στο περιεχόμενο"
+
+[nav_home]
+other = "Αρχική"
+
+[nav_menu]
+other = "Μενού"
+
+[nav_features]
+other = "Δυνατότητες"
+
+[nav_faq]
+other = "Συχνές ερωτήσεις"
+
+[nav_changelog]
+other = "Ιστορικό αλλαγών"
+
+[nav_privacy]
+other = "Απόρρητο"
+
+[lang_switch]
+other = "Αλλαγή γλώσσας"
+
+[hero_title]
+other = "Βρείτε την πιο φθηνή ώρα για τις συσκευές σας"
+
+[hero_subtitle]
+other = "Το SweetSpot αναζητά δυναμικές τιμές ηλεκτρικής ενέργειας σε 30 ευρωπαϊκές χώρες και βρίσκει το βέλτιστο χρονικό παράθυρο για εξοικονόμηση. Ανοιχτού κώδικα και με σεβασμό στην ιδιωτικότητα."
+
+[download]
+other = "Αποκτήστε το στο Google Play"
+
+[learn_more]
+other = "Μάθετε περισσότερα"
+
+[features_title]
+other = "Δυνατότητες"
+
+[feature_countries_title]
+other = "30 ευρωπαϊκές χώρες"
+
+[feature_countries_desc]
+other = "Καλύπτει 43 ζώνες προσφοράς σε όλη την Ευρώπη, από την Πορτογαλία ως τη Φινλανδία και από τη Νορβηγία ως την Ελλάδα."
+
+[feature_prices_title]
+other = "Τιμές σε πραγματικό χρόνο"
+
+[feature_prices_desc]
+other = "Τιμές ηλεκτρικής ενέργειας επόμενης ημέρας από το ENTSO-E Transparency Platform, με καθημερινή ενημέρωση."
+
+[feature_algorithm_title]
+other = "Έξυπνος αλγόριθμος"
+
+[feature_algorithm_desc]
+other = "Ένας αλγόριθμος συρόμενου παραθύρου βρίσκει την πιο οικονομική συνεχόμενη περίοδο για οποιαδήποτε διάρκεια."
+
+[feature_fallback_title]
+other = "Αξιόπιστα δεδομένα"
+
+[feature_fallback_desc]
+other = "Πέντε πηγές δεδομένων με αυτόματη εναλλακτική πηγή εξασφαλίζουν ότι οι τιμές είναι πάντα διαθέσιμες."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Συνοδευτική εφαρμογή για Pixel Watch και άλλες συσκευές Wear OS 3+. Ελέγξτε τις τιμές από τον καρπό σας."
+
+[feature_appliances_title]
+other = "Προσαρμοσμένες συσκευές"
+
+[feature_appliances_desc]
+other = "Αποθηκεύστε τις συσκευές σας με προσαρμοσμένα ονόματα, εικονίδια και διάρκειες για άμεση πρόσβαση με ένα πάτημα."
+
+[feature_languages_title]
+other = "25 γλώσσες"
+
+[feature_languages_desc]
+other = "Διαθέσιμο σε 25 ευρωπαϊκές γλώσσες, από τα βουλγαρικά ως τα σουηδικά."
+
+[feature_privacy_title]
+other = "Προτεραιότητα στην ιδιωτικότητα"
+
+[feature_privacy_desc]
+other = "Χωρίς λογαριασμούς, χωρίς αναλυτικά, χωρίς παρακολούθηση. Οι τιμές αποθηκεύονται τοπικά στη συσκευή σας."
+
+[feature_opensource_title]
+other = "Ανοιχτού κώδικα"
+
+[feature_opensource_desc]
+other = "Ο πλήρης πηγαίος κώδικας είναι διαθέσιμος στο GitHub με άδεια GPL v3."
+
+[how_title]
+other = "Πώς λειτουργεί"
+
+[step1_title]
+other = "Επιλέξτε τη συσκευή σας"
+
+[step1_desc]
+other = "Επιλέξτε μια αποθηκευμένη συσκευή ή ορίστε προσαρμοσμένη διάρκεια λειτουργίας."
+
+[step2_title]
+other = "Αναζήτηση τιμών"
+
+[step2_desc]
+other = "Το SweetSpot ανακτά τις τελευταίες τιμές ηλεκτρικής ενέργειας επόμενης ημέρας για την περιοχή σας."
+
+[step3_title]
+other = "Δείτε την καλύτερη ώρα"
+
+[step3_desc]
+other = "Δείτε ακριβώς πότε να ξεκινήσετε, με αναλυτική ανάλυση κόστους ανά χρονική περίοδο."
+
+[cta_title]
+other = "Αρχίστε να εξοικονομείτε στο ρεύμα"
+
+[cta_desc]
+other = "Αποκτήστε το SweetSpot από το Google Play και βρείτε την πιο φθηνή ώρα για τις συσκευές σας."
+
+[footer_tagline]
+other = "Βρείτε την πιο φθηνή ώρα για τις συσκευές σας."
+
+[footer_app]
+other = "Εφαρμογή"
+
+[footer_legal]
+other = "Νομικά"
+
+[footer_license]
+other = "Αδειοδοτημένο με GPL v3."
+
+[error_404]
+other = "Η σελίδα που αναζητάτε δεν υπάρχει."
+
+[back_home]
+other = "Επιστροφή στην αρχική"

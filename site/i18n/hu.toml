@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Ugrás a tartalomhoz"
+
+[nav_home]
+other = "Főoldal"
+
+[nav_menu]
+other = "Menü"
+
+[nav_features]
+other = "Funkciók"
+
+[nav_faq]
+other = "GYIK"
+
+[nav_changelog]
+other = "Változásnapló"
+
+[nav_privacy]
+other = "Adatvédelem"
+
+[lang_switch]
+other = "Nyelvváltás"
+
+[hero_title]
+other = "Találja meg a legolcsóbb időpontot készülékei használatához"
+
+[hero_subtitle]
+other = "A SweetSpot összeveti a dinamikus áramárakat 30 európai országban, és megkeresi az optimális időszakot a spóroláshoz. Nyílt forráskódú és az adatvédelmet szem előtt tartó."
+
+[download]
+other = "Letöltés a Google Playről"
+
+[learn_more]
+other = "Bővebben"
+
+[features_title]
+other = "Funkciók"
+
+[feature_countries_title]
+other = "30 európai ország"
+
+[feature_countries_desc]
+other = "43 ajánlattételi zóna Európa-szerte, Portugáliától Finnországig és Norvégiától Görögországig."
+
+[feature_prices_title]
+other = "Valós idejű árak"
+
+[feature_prices_desc]
+other = "Másnapi villamosenergia-árak az ENTSO-E Transparency Platformról, naponta frissítve."
+
+[feature_algorithm_title]
+other = "Okos algoritmus"
+
+[feature_algorithm_desc]
+other = "Egy csúszó ablak algoritmus megtalálja a legolcsóbb összefüggő időszakot bármelyik választott időtartamhoz."
+
+[feature_fallback_title]
+other = "Megbízható adatok"
+
+[feature_fallback_desc]
+other = "Öt adatforrás automatikus tartalékkal biztosítja, hogy az árak mindig elérhetők legyenek."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Társalkalmazás Pixel Watchhoz és más Wear OS 3+ készülékekhez. Nézze meg az árakat a csuklóján."
+
+[feature_appliances_title]
+other = "Egyéni készülékek"
+
+[feature_appliances_desc]
+other = "Mentse el készülékeit egyéni nevekkel, ikonokkal és időtartamokkal az egyérintéses hozzáféréshez."
+
+[feature_languages_title]
+other = "25 nyelv"
+
+[feature_languages_desc]
+other = "Elérhető 25 európai nyelven, a bolgártól a svédig."
+
+[feature_privacy_title]
+other = "Adatvédelem az első helyen"
+
+[feature_privacy_desc]
+other = "Nincs felhasználói fiók, nincs analitika, nincs követés. Az árak helyben, az Ön készülékén tárolódnak."
+
+[feature_opensource_title]
+other = "Nyílt forráskód"
+
+[feature_opensource_desc]
+other = "A teljes forráskód elérhető a GitHubon GPL v3 licenc alatt."
+
+[how_title]
+other = "Hogyan működik"
+
+[step1_title]
+other = "Válassza ki a készüléket"
+
+[step1_desc]
+other = "Válasszon egy mentett készüléket, vagy állítson be egyéni időtartamot."
+
+[step2_title]
+other = "Árak lekérdezése"
+
+[step2_desc]
+other = "A SweetSpot lekéri a legfrissebb másnapi villamosenergia-árakat az Ön régiójára."
+
+[step3_title]
+other = "A legjobb időpont"
+
+[step3_desc]
+other = "Lássa pontosan, mikor érdemes indítani, részletes költségbontással idősávonként."
+
+[cta_title]
+other = "Kezdjen el spórolni az áramon"
+
+[cta_desc]
+other = "Töltse le a SweetSpotot a Google Playről, és találja meg a legolcsóbb időpontot készülékei használatához."
+
+[footer_tagline]
+other = "Találja meg a legolcsóbb időpontot készülékei használatához."
+
+[footer_app]
+other = "Alkalmazás"
+
+[footer_legal]
+other = "Jogi információk"
+
+[footer_license]
+other = "GPL v3 licenc alatt."
+
+[error_404]
+other = "A keresett oldal nem létezik."
+
+[back_home]
+other = "Vissza a főoldalra"

@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Siirry sisältöön"
+
+[nav_home]
+other = "Etusivu"
+
+[nav_menu]
+other = "Valikko"
+
+[nav_features]
+other = "Ominaisuudet"
+
+[nav_faq]
+other = "UKK"
+
+[nav_changelog]
+other = "Muutosloki"
+
+[nav_privacy]
+other = "Tietosuoja"
+
+[lang_switch]
+other = "Vaihda kieltä"
+
+[hero_title]
+other = "Löydä edullisin aika laitteidesi käyttöön"
+
+[hero_subtitle]
+other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajanjakson. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
+
+[download]
+other = "Lataa Google Playsta"
+
+[learn_more]
+other = "Lue lisää"
+
+[features_title]
+other = "Ominaisuudet"
+
+[feature_countries_title]
+other = "30 Euroopan maata"
+
+[feature_countries_desc]
+other = "Kattaa 43 tarjousaluetta ympäri Eurooppaa Portugalista Suomeen ja Norjasta Kreikkaan."
+
+[feature_prices_title]
+other = "Reaaliaikaiset hinnat"
+
+[feature_prices_desc]
+other = "Seuraavan päivän sähköhinnat ENTSO-E Transparency Platformilta, päivitetään päivittäin."
+
+[feature_algorithm_title]
+other = "Älykäs algoritmi"
+
+[feature_algorithm_desc]
+other = "Liukuvan ikkunan algoritmi löytää edullisimman yhtenäisen jakson mille tahansa valitsemallesi kestolle."
+
+[feature_fallback_title]
+other = "Luotettavaa dataa"
+
+[feature_fallback_desc]
+other = "Viisi tietolähdettä automaattisella varayhteydellä takaa, että hinnat ovat aina saatavilla."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Kumppanisovellus Pixel Watchille ja muille Wear OS 3+ -laitteille. Tarkista hinnat ranteestasi."
+
+[feature_appliances_title]
+other = "Omat laitteet"
+
+[feature_appliances_desc]
+other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten."
+
+[feature_languages_title]
+other = "25 kieltä"
+
+[feature_languages_desc]
+other = "Saatavilla 25 eurooppalaisella kielellä bulgariasta ruotsiin."
+
+[feature_privacy_title]
+other = "Yksityisyys ensin"
+
+[feature_privacy_desc]
+other = "Ei tilejä, ei analytiikkaa, ei seurantaa. Hinnat tallennetaan paikallisesti laitteeseesi."
+
+[feature_opensource_title]
+other = "Avoin lähdekoodi"
+
+[feature_opensource_desc]
+other = "Koko lähdekoodi on saatavilla GitHubissa GPL v3 -lisenssillä."
+
+[how_title]
+other = "Näin se toimii"
+
+[step1_title]
+other = "Valitse laite"
+
+[step1_desc]
+other = "Valitse tallennettu laite tai aseta mukautettu kesto laitteen käytölle."
+
+[step2_title]
+other = "Hae hinnat"
+
+[step2_desc]
+other = "SweetSpot hakee uusimmat seuraavan päivän sähköhinnat alueellesi."
+
+[step3_title]
+other = "Selvitä paras ajankohta"
+
+[step3_desc]
+other = "Näe tarkalleen milloin aloittaa, yksityiskohtaisella kustannuserittelyllä aikajaksoittain."
+
+[cta_title]
+other = "Ala säästää sähkössä"
+
+[cta_desc]
+other = "Lataa SweetSpot Google Playsta ja löydä edullisin aika laitteidesi käyttöön."
+
+[footer_tagline]
+other = "Löydä edullisin aika laitteidesi käyttöön."
+
+[footer_app]
+other = "Sovellus"
+
+[footer_legal]
+other = "Oikeudelliset tiedot"
+
+[footer_license]
+other = "Lisensoitu GPL v3 -lisenssillä."
+
+[error_404]
+other = "Etsimääsi sivua ei löydy."
+
+[back_home]
+other = "Takaisin etusivulle"

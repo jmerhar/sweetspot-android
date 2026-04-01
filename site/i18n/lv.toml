@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Pariet uz saturu"
+
+[nav_home]
+other = "Sakums"
+
+[nav_menu]
+other = "Izvēlne"
+
+[nav_features]
+other = "Iespējas"
+
+[nav_faq]
+other = "BUJ"
+
+[nav_changelog]
+other = "Izmaiņu žurnāls"
+
+[nav_privacy]
+other = "Privātums"
+
+[lang_switch]
+other = "Mainīt valodu"
+
+[hero_title]
+other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai"
+
+[hero_subtitle]
+other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod optimālo laika logu, lai ietaupītu naudu. Atvērtā koda un privātumu respektējoša lietotne."
+
+[download]
+other = "Iegūt pakalpojumā Google Play"
+
+[learn_more]
+other = "Uzzināt vairāk"
+
+[features_title]
+other = "Iespējas"
+
+[feature_countries_title]
+other = "30 Eiropas valstis"
+
+[feature_countries_desc]
+other = "Aptver 43 tirdzniecības zonas visā Eiropā — no Portugāles līdz Somijai un no Norvēģijas līdz Grieķijai."
+
+[feature_prices_title]
+other = "Reāllaika cenas"
+
+[feature_prices_desc]
+other = "Nākamās dienas elektrības cenas no ENTSO-E Transparency Platform, atjauninātas katru dienu."
+
+[feature_algorithm_title]
+other = "Viedais algoritms"
+
+[feature_algorithm_desc]
+other = "Slīdošā loga algoritms atrod lētāko nepārtraukto periodu jebkuram izvēlētajam ilgumam."
+
+[feature_fallback_title]
+other = "Uzticami dati"
+
+[feature_fallback_desc]
+other = "Pieci datu avoti ar automātisku pārslēgšanos nodrošina, ka cenas vienmēr ir pieejamas."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Pavadošā lietotne Pixel Watch un citām Wear OS 3+ ierīcēm. Pārbaudi cenas tieši no rokas."
+
+[feature_appliances_title]
+other = "Pielāgotas ierīces"
+
+[feature_appliances_desc]
+other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei ar vienu pieskārienu."
+
+[feature_languages_title]
+other = "25 valodas"
+
+[feature_languages_desc]
+other = "Pieejama 25 Eiropas valodās — no bulgāru līdz zviedru valodai."
+
+[feature_privacy_title]
+other = "Privātums pirmajā vietā"
+
+[feature_privacy_desc]
+other = "Bez kontiem, bez analītikas, bez izsekošanas. Cenas tiek saglabātas lokāli tavā ierīcē."
+
+[feature_opensource_title]
+other = "Atvērtā koda"
+
+[feature_opensource_desc]
+other = "Pilns pirmkods ir pieejams GitHub ar GPL v3 licenci."
+
+[how_title]
+other = "Kā tas darbojas"
+
+[step1_title]
+other = "Izvēlies savu ierīci"
+
+[step1_desc]
+other = "Izvēlies saglabātu ierīci vai iestati pielāgotu darbības ilgumu."
+
+[step2_title]
+other = "Analizē cenas"
+
+[step2_desc]
+other = "SweetSpot iegūst jaunākās nākamās dienas elektrības cenas tavam reģionam."
+
+[step3_title]
+other = "Uzzini labāko laiku"
+
+[step3_desc]
+other = "Redzi precīzi, kad sākt, ar pilnu izmaksu sadalījumu pa laika intervāliem."
+
+[cta_title]
+other = "Sāc taupīt elektrību"
+
+[cta_desc]
+other = "Iegūsti SweetSpot no Google Play un atrodi izdevīgāko laiku savu ierīču darbināšanai."
+
+[footer_tagline]
+other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai."
+
+[footer_app]
+other = "Lietotne"
+
+[footer_legal]
+other = "Juridiskā informācija"
+
+[footer_license]
+other = "Licencēts ar GPL v3 licenci."
+
+[error_404]
+other = "Lapa, kuru meklējat, neeksistē."
+
+[back_home]
+other = "Atpakaļ uz sākumu"

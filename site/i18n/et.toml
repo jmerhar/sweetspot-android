@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Liigu sisuni"
+
+[nav_home]
+other = "Avaleht"
+
+[nav_menu]
+other = "Menüü"
+
+[nav_features]
+other = "Funktsioonid"
+
+[nav_faq]
+other = "KKK"
+
+[nav_changelog]
+other = "Muudatused"
+
+[nav_privacy]
+other = "Privaatsus"
+
+[lang_switch]
+other = "Vaheta keelt"
+
+[hero_title]
+other = "Leia soodsaim aeg oma seadmete kasutamiseks"
+
+[hero_subtitle]
+other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab optimaalse ajavahemiku raha säästmiseks. Avatud lähtekoodiga ja privaatne."
+
+[download]
+other = "Laadi alla Google Playst"
+
+[learn_more]
+other = "Loe lähemalt"
+
+[features_title]
+other = "Funktsioonid"
+
+[feature_countries_title]
+other = "30 Euroopa riiki"
+
+[feature_countries_desc]
+other = "Katab 43 pakkumistsooni üle Euroopa, Portugalist Soomeni ja Norrast Kreekani."
+
+[feature_prices_title]
+other = "Reaalajas hinnad"
+
+[feature_prices_desc]
+other = "Järgmise päeva elektrihinnad ENTSO-E Transparency Platformilt, igapäevase värskendusega."
+
+[feature_algorithm_title]
+other = "Nutikas algoritm"
+
+[feature_algorithm_desc]
+other = "Libiseva akna algoritm leiab soodsaima järjestikuse perioodi mis tahes valitud kestuse jaoks."
+
+[feature_fallback_title]
+other = "Usaldusväärsed andmed"
+
+[feature_fallback_desc]
+other = "Viis andmeallikat automaatse varuallikaga tagavad, et hinnad on alati kättesaadavad."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Kaasrakendus Pixel Watchile ja teistele Wear OS 3+ seadmetele. Vaata hindu otse randmelt."
+
+[feature_appliances_title]
+other = "Kohandatud seadmed"
+
+[feature_appliances_desc]
+other = "Salvesta oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks ühe puutega ligipääsuks."
+
+[feature_languages_title]
+other = "25 keelt"
+
+[feature_languages_desc]
+other = "Saadaval 25 Euroopa keeles, bulgaaria keelest rootsi keeleni."
+
+[feature_privacy_title]
+other = "Privaatsus ennekõike"
+
+[feature_privacy_desc]
+other = "Kontosid, analüütikat ega jälgimist ei ole. Hinnad salvestatakse kohalikult sinu seadmesse."
+
+[feature_opensource_title]
+other = "Avatud lähtekood"
+
+[feature_opensource_desc]
+other = "Kogu lähtekood on saadaval GitHubis GPL v3 litsentsi all."
+
+[how_title]
+other = "Kuidas see töötab"
+
+[step1_title]
+other = "Vali oma seade"
+
+[step1_desc]
+other = "Vali salvestatud seade või määra kohandatud kestus, kui kaua seade peab töötama."
+
+[step2_title]
+other = "Otsi hindu"
+
+[step2_desc]
+other = "SweetSpot laeb alla värskeimad järgmise päeva elektrihinnad sinu piirkonna jaoks."
+
+[step3_title]
+other = "Saa parim aeg"
+
+[step3_desc]
+other = "Vaata täpselt, millal alustada, koos täieliku kulujaotusega ajavahemike kaupa."
+
+[cta_title]
+other = "Hakka elektri pealt säästma"
+
+[cta_desc]
+other = "Laadi SweetSpot alla Google Playst ja leia soodsaim aeg oma seadmete kasutamiseks."
+
+[footer_tagline]
+other = "Leia soodsaim aeg oma seadmete kasutamiseks."
+
+[footer_app]
+other = "Rakendus"
+
+[footer_legal]
+other = "Õiguslik teave"
+
+[footer_license]
+other = "Litsentseeritud GPL v3 all."
+
+[error_404]
+other = "Otsitavat lehte ei ole olemas."
+
+[back_home]
+other = "Tagasi avalehele"

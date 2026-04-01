@@ -9,22 +9,102 @@ enableRobotsTXT = true
     weight = 1
     languageName = "English"
     contentDir = "content/en"
-  [languages.nl]
+  [languages.bg]
     weight = 2
-    languageName = "Nederlands"
-    contentDir = "content/nl"
-  [languages.de]
+    languageName = "Български"
+    contentDir = "content/bg"
+  [languages.cs]
     weight = 3
+    languageName = "Čeština"
+    contentDir = "content/cs"
+  [languages.da]
+    weight = 4
+    languageName = "Dansk"
+    contentDir = "content/da"
+  [languages.de]
+    weight = 5
     languageName = "Deutsch"
     contentDir = "content/de"
+  [languages.el]
+    weight = 6
+    languageName = "Ελληνικά"
+    contentDir = "content/el"
+  [languages.es]
+    weight = 7
+    languageName = "Español"
+    contentDir = "content/es"
+  [languages.et]
+    weight = 8
+    languageName = "Eesti"
+    contentDir = "content/et"
+  [languages.fi]
+    weight = 9
+    languageName = "Suomi"
+    contentDir = "content/fi"
   [languages.fr]
-    weight = 4
+    weight = 10
     languageName = "Français"
     contentDir = "content/fr"
+  [languages.hr]
+    weight = 11
+    languageName = "Hrvatski"
+    contentDir = "content/hr"
+  [languages.hu]
+    weight = 12
+    languageName = "Magyar"
+    contentDir = "content/hu"
+  [languages.it]
+    weight = 13
+    languageName = "Italiano"
+    contentDir = "content/it"
+  [languages.lt]
+    weight = 14
+    languageName = "Lietuvių"
+    contentDir = "content/lt"
+  [languages.lv]
+    weight = 15
+    languageName = "Latviešu"
+    contentDir = "content/lv"
+  [languages.mk]
+    weight = 16
+    languageName = "Македонски"
+    contentDir = "content/mk"
+  [languages.nb]
+    weight = 17
+    languageName = "Norsk bokmål"
+    contentDir = "content/nb"
+  [languages.nl]
+    weight = 18
+    languageName = "Nederlands"
+    contentDir = "content/nl"
+  [languages.pl]
+    weight = 19
+    languageName = "Polski"
+    contentDir = "content/pl"
+  [languages.pt]
+    weight = 20
+    languageName = "Português"
+    contentDir = "content/pt"
+  [languages.ro]
+    weight = 21
+    languageName = "Română"
+    contentDir = "content/ro"
+  [languages.sk]
+    weight = 22
+    languageName = "Slovenčina"
+    contentDir = "content/sk"
   [languages.sl]
-    weight = 5
+    weight = 23
     languageName = "Slovenščina"
     contentDir = "content/sl"
+  [languages.sr]
+    weight = 24
+    languageName = "Српски"
+    contentDir = "content/sr"
+  [languages.sv]
+    weight = 25
+    languageName = "Svenska"
+    contentDir = "content/sv"
 
 [params]
   description = "Find the cheapest time to run your appliances"

@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Pereiti prie turinio"
+
+[nav_home]
+other = "Pradžia"
+
+[nav_menu]
+other = "Meniu"
+
+[nav_features]
+other = "Funkcijos"
+
+[nav_faq]
+other = "DUK"
+
+[nav_changelog]
+other = "Pakeitimų žurnalas"
+
+[nav_privacy]
+other = "Privatumas"
+
+[lang_switch]
+other = "Pakeisti kalbą"
+
+[hero_title]
+other = "Raskite pigiausią laiką savo prietaisams paleisti"
+
+[hero_subtitle]
+other = "SweetSpot analizuoja dinamines elektros kainas 30 Europos šalių ir suranda optimaliausią laiką, kad sutaupytumėte. Atviro kodo ir privatumą gerbianti programėlė."
+
+[download]
+other = "Gauti iš Google Play"
+
+[learn_more]
+other = "Sužinoti daugiau"
+
+[features_title]
+other = "Funkcijos"
+
+[feature_countries_title]
+other = "30 Europos šalių"
+
+[feature_countries_desc]
+other = "Apima 43 prekybos zonas visoje Europoje — nuo Portugalijos iki Suomijos ir nuo Norvegijos iki Graikijos."
+
+[feature_prices_title]
+other = "Kainos realiuoju laiku"
+
+[feature_prices_desc]
+other = "Elektros kainos kitai dienai iš ENTSO-E Transparency Platform, atnaujinamos kasdien."
+
+[feature_algorithm_title]
+other = "Išmanusis algoritmas"
+
+[feature_algorithm_desc]
+other = "Slenkančio lango algoritmas suranda pigiausią nepertraukiamą laikotarpį bet kokiai pasirinktai trukmei."
+
+[feature_fallback_title]
+other = "Patikimi duomenys"
+
+[feature_fallback_desc]
+other = "Penki duomenų šaltiniai su automatiniu perjungimu užtikrina, kad kainos visada būtų prieinamos."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Papildoma programėlė Pixel Watch ir kitiems Wear OS 3+ įrenginiams. Tikrinkite kainas tiesiai nuo riešo."
+
+[feature_appliances_title]
+other = "Tinkinami prietaisai"
+
+[feature_appliances_desc]
+other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai vienu palietimu."
+
+[feature_languages_title]
+other = "25 kalbos"
+
+[feature_languages_desc]
+other = "Prieinama 25 Europos kalbomis — nuo bulgarų iki švedų."
+
+[feature_privacy_title]
+other = "Privatumas visų pirma"
+
+[feature_privacy_desc]
+other = "Jokių paskyrų, jokios analitikos, jokio sekimo. Kainos saugomos tik vietiniame jūsų įrenginyje."
+
+[feature_opensource_title]
+other = "Atviras kodas"
+
+[feature_opensource_desc]
+other = "Visas šaltinio kodas prieinamas GitHub pagal GPL v3 licenciją."
+
+[how_title]
+other = "Kaip tai veikia"
+
+[step1_title]
+other = "Pasirinkite savo prietaisą"
+
+[step1_desc]
+other = "Pasirinkite išsaugotą prietaisą arba nustatykite norimą veikimo trukmę."
+
+[step2_title]
+other = "Nuskaitykite kainas"
+
+[step2_desc]
+other = "SweetSpot gauna naujausias elektros kainas kitai dienai jūsų regionui."
+
+[step3_title]
+other = "Sužinokite geriausią laiką"
+
+[step3_desc]
+other = "Sužinokite tiksliai, kada pradėti, su pilnu išlaidų pasiskirstymu pagal laiko intervalus."
+
+[cta_title]
+other = "Pradėkite taupyti elektrą"
+
+[cta_desc]
+other = "Atsisiųskite SweetSpot iš Google Play ir raskite pigiausią laiką savo prietaisams paleisti."
+
+[footer_tagline]
+other = "Raskite pigiausią laiką savo prietaisams paleisti."
+
+[footer_app]
+other = "Programėlė"
+
+[footer_legal]
+other = "Teisinė informacija"
+
+[footer_license]
+other = "Licencijuota pagal GPL v3."
+
+[error_404]
+other = "Puslapis, kurio ieškote, neegzistuoja."
+
+[back_home]
+other = "Grįžti į pradžią"

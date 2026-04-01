@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Saltar para o conteúdo"
+
+[nav_home]
+other = "Início"
+
+[nav_menu]
+other = "Menu"
+
+[nav_features]
+other = "Funcionalidades"
+
+[nav_faq]
+other = "Perguntas frequentes"
+
+[nav_changelog]
+other = "Histórico de versões"
+
+[nav_privacy]
+other = "Privacidade"
+
+[lang_switch]
+other = "Mudar idioma"
+
+[hero_title]
+other = "Encontre a hora mais barata para ligar os seus eletrodomésticos"
+
+[hero_subtitle]
+other = "O SweetSpot analisa os preços dinâmicos da eletricidade em 30 países europeus e encontra o período ideal para poupar dinheiro. Código aberto e privado."
+
+[download]
+other = "Obter no Google Play"
+
+[learn_more]
+other = "Saber mais"
+
+[features_title]
+other = "Funcionalidades"
+
+[feature_countries_title]
+other = "30 países europeus"
+
+[feature_countries_desc]
+other = "Abrange 43 zonas de licitação na Europa, de Portugal à Finlândia e da Noruega à Grécia."
+
+[feature_prices_title]
+other = "Preços atualizados"
+
+[feature_prices_desc]
+other = "Preços de eletricidade do dia seguinte da plataforma ENTSO-E Transparency Platform, atualizados diariamente."
+
+[feature_algorithm_title]
+other = "Algoritmo inteligente"
+
+[feature_algorithm_desc]
+other = "Um algoritmo de janela deslizante encontra o período contíguo mais barato para qualquer duração que escolher."
+
+[feature_fallback_title]
+other = "Dados fiáveis"
+
+[feature_fallback_desc]
+other = "Cinco fontes de dados com recurso automático garantem que os preços estão sempre disponíveis."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Aplicação complementar para Pixel Watch e outros dispositivos Wear OS 3+. Consulte os preços no seu pulso."
+
+[feature_appliances_title]
+other = "Eletrodomésticos personalizados"
+
+[feature_appliances_desc]
+other = "Guarde os seus eletrodomésticos com nomes, ícones e durações personalizados para acesso rápido com um toque."
+
+[feature_languages_title]
+other = "25 idiomas"
+
+[feature_languages_desc]
+other = "Disponível em 25 idiomas europeus, do búlgaro ao sueco."
+
+[feature_privacy_title]
+other = "Privacidade em primeiro lugar"
+
+[feature_privacy_desc]
+other = "Sem contas, sem análises, sem rastreamento. Os preços são guardados localmente no seu dispositivo."
+
+[feature_opensource_title]
+other = "Código aberto"
+
+[feature_opensource_desc]
+other = "O código-fonte completo está disponível no GitHub sob a licença GPL v3."
+
+[how_title]
+other = "Como funciona"
+
+[step1_title]
+other = "Escolha o seu eletrodoméstico"
+
+[step1_desc]
+other = "Escolha um eletrodoméstico guardado ou defina uma duração personalizada."
+
+[step2_title]
+other = "Analisar preços"
+
+[step2_desc]
+other = "O SweetSpot obtém os preços de eletricidade mais recentes para a sua região."
+
+[step3_title]
+other = "Descubra a melhor hora"
+
+[step3_desc]
+other = "Veja exatamente quando começar, com uma discriminação completa dos custos por intervalo de tempo."
+
+[cta_title]
+other = "Comece a poupar na eletricidade"
+
+[cta_desc]
+other = "Obtenha o SweetSpot no Google Play e encontre a hora mais barata para ligar os seus eletrodomésticos."
+
+[footer_tagline]
+other = "Encontre a hora mais barata para ligar os seus eletrodomésticos."
+
+[footer_app]
+other = "Aplicação"
+
+[footer_legal]
+other = "Legal"
+
+[footer_license]
+other = "Licenciado sob GPL v3."
+
+[error_404]
+other = "A página que procura não existe."
+
+[back_home]
+other = "Voltar ao início"

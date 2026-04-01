@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Hoppa till innehåll"
+
+[nav_home]
+other = "Hem"
+
+[nav_menu]
+other = "Meny"
+
+[nav_features]
+other = "Funktioner"
+
+[nav_faq]
+other = "Vanliga frågor"
+
+[nav_changelog]
+other = "Ändringslogg"
+
+[nav_privacy]
+other = "Integritet"
+
+[lang_switch]
+other = "Byt språk"
+
+[hero_title]
+other = "Hitta den billigaste tiden att köra dina apparater"
+
+[hero_subtitle]
+other = "SweetSpot analyserar dynamiska elpriser i 30 europeiska länder och hittar det optimala tidsfönstret för att spara pengar. Öppen källkod och privat."
+
+[download]
+other = "Ladda ned på Google Play"
+
+[learn_more]
+other = "Läs mer"
+
+[features_title]
+other = "Funktioner"
+
+[feature_countries_title]
+other = "30 europeiska länder"
+
+[feature_countries_desc]
+other = "Täcker 43 elområden i hela Europa, från Portugal till Finland och från Norge till Grekland."
+
+[feature_prices_title]
+other = "Aktuella priser"
+
+[feature_prices_desc]
+other = "Dagliga elpriser från ENTSO-E Transparency Platform, uppdaterade dagligen."
+
+[feature_algorithm_title]
+other = "Smart algoritm"
+
+[feature_algorithm_desc]
+other = "En glidande fönsteralgoritm hittar den billigaste sammanhängande perioden för valfri längd."
+
+[feature_fallback_title]
+other = "Tillförlitliga data"
+
+[feature_fallback_desc]
+other = "Fem datakällor med automatisk reserv säkerställer att priser alltid är tillgängliga."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Kompletterande app för Pixel Watch och andra Wear OS 3+-enheter. Kolla priser direkt på handleden."
+
+[feature_appliances_title]
+other = "Egna apparater"
+
+[feature_appliances_desc]
+other = "Spara dina apparater med egna namn, ikoner och körtider för snabb åtkomst med ett tryck."
+
+[feature_languages_title]
+other = "25 språk"
+
+[feature_languages_desc]
+other = "Tillgänglig på 25 europeiska språk, från bulgariska till svenska."
+
+[feature_privacy_title]
+other = "Integritet först"
+
+[feature_privacy_desc]
+other = "Inga konton, ingen analys, ingen spårning. Priserna lagras lokalt på din enhet."
+
+[feature_opensource_title]
+other = "Öppen källkod"
+
+[feature_opensource_desc]
+other = "Den fullständiga källkoden finns tillgänglig på GitHub under GPL v3-licensen."
+
+[how_title]
+other = "Så fungerar det"
+
+[step1_title]
+other = "Välj din apparat"
+
+[step1_desc]
+other = "Välj en sparad apparat eller ställ in en egen körtid."
+
+[step2_title]
+other = "Hämta priser"
+
+[step2_desc]
+other = "SweetSpot hämtar de senaste dagliga elpriserna för din region."
+
+[step3_title]
+other = "Se bästa tiden"
+
+[step3_desc]
+other = "Se exakt när du ska starta, med en fullständig kostnadsuppdelning per tidslucka."
+
+[cta_title]
+other = "Börja spara på elen"
+
+[cta_desc]
+other = "Ladda ned SweetSpot på Google Play och hitta den billigaste tiden att köra dina apparater."
+
+[footer_tagline]
+other = "Hitta den billigaste tiden att köra dina apparater."
+
+[footer_app]
+other = "App"
+
+[footer_legal]
+other = "Juridik"
+
+[footer_license]
+other = "Licensierad under GPL v3."
+
+[error_404]
+other = "Sidan du letar efter finns inte."
+
+[back_home]
+other = "Tillbaka till startsidan"

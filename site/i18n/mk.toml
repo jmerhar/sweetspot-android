@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Премини на содржина"
+
+[nav_home]
+other = "Почетна"
+
+[nav_menu]
+other = "Мени"
+
+[nav_features]
+other = "Можности"
+
+[nav_faq]
+other = "ЧПП"
+
+[nav_changelog]
+other = "Дневник на промени"
+
+[nav_privacy]
+other = "Приватност"
+
+[lang_switch]
+other = "Промени јазик"
+
+[hero_title]
+other = "Најдете го најевтиното време за работа на вашите апарати"
+
+[hero_subtitle]
+other = "SweetSpot ги анализира динамичните цени на електрична енергија во 30 европски земји и го наоѓа оптималното време за заштеда. Со отворен код и со почитување на приватноста."
+
+[download]
+other = "Преземете на Google Play"
+
+[learn_more]
+other = "Дознајте повеќе"
+
+[features_title]
+other = "Можности"
+
+[feature_countries_title]
+other = "30 европски земји"
+
+[feature_countries_desc]
+other = "Покрива 43 трговски зони низ Европа — од Португалија до Финска и од Норвешка до Грција."
+
+[feature_prices_title]
+other = "Цени во реално време"
+
+[feature_prices_desc]
+other = "Цени на електрична енергија за наредниот ден од ENTSO-E Transparency Platform, ажурирани секојдневно."
+
+[feature_algorithm_title]
+other = "Паметен алгоритам"
+
+[feature_algorithm_desc]
+other = "Алгоритам со лизгачки прозорец го наоѓа најевтиниот непрекинат период за било кое избрано траење."
+
+[feature_fallback_title]
+other = "Сигурни податоци"
+
+[feature_fallback_desc]
+other = "Пет извори на податоци со автоматско префрлање обезбедуваат цените секогаш да бидат достапни."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Придружна апликација за Pixel Watch и други Wear OS 3+ уреди. Проверете ги цените директно од рака."
+
+[feature_appliances_title]
+other = "Прилагодени апарати"
+
+[feature_appliances_desc]
+other = "Зачувајте ги вашите апарати со сопствени имиња, икони и траења за брз пристап со еден допир."
+
+[feature_languages_title]
+other = "25 јазици"
+
+[feature_languages_desc]
+other = "Достапна на 25 европски јазици — од бугарски до шведски."
+
+[feature_privacy_title]
+other = "Приватност на прво место"
+
+[feature_privacy_desc]
+other = "Без корисничка сметка, без аналитика, без следење. Цените се чуваат локално на вашиот уред."
+
+[feature_opensource_title]
+other = "Отворен код"
+
+[feature_opensource_desc]
+other = "Целосниот изворен код е достапен на GitHub под лиценцата GPL v3."
+
+[how_title]
+other = "Како функционира"
+
+[step1_title]
+other = "Изберете го вашиот апарат"
+
+[step1_desc]
+other = "Изберете зачуван апарат или поставете сопствено траење на работа."
+
+[step2_title]
+other = "Скенирајте ги цените"
+
+[step2_desc]
+other = "SweetSpot ги презема најновите цени на електрична енергија за наредниот ден за вашиот регион."
+
+[step3_title]
+other = "Дознајте го најдоброто време"
+
+[step3_desc]
+other = "Видете точно кога да започнете, со целосна разбивка на трошоците по временски интервал."
+
+[cta_title]
+other = "Започнете да заштедувате на струја"
+
+[cta_desc]
+other = "Преземете SweetSpot од Google Play и најдете го најевтиното време за работа на вашите апарати."
+
+[footer_tagline]
+other = "Најдете го најевтиното време за работа на вашите апарати."
+
+[footer_app]
+other = "Апликација"
+
+[footer_legal]
+other = "Правни информации"
+
+[footer_license]
+other = "Лиценцирано под GPL v3."
+
+[error_404]
+other = "Страницата што ја барате не постои."
+
+[back_home]
+other = "Назад на почетна"

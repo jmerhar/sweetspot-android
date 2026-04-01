@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Salt la conținut"
+
+[nav_home]
+other = "Acasă"
+
+[nav_menu]
+other = "Meniu"
+
+[nav_features]
+other = "Funcționalități"
+
+[nav_faq]
+other = "Întrebări frecvente"
+
+[nav_changelog]
+other = "Jurnal de modificări"
+
+[nav_privacy]
+other = "Confidențialitate"
+
+[lang_switch]
+other = "Schimbă limba"
+
+[hero_title]
+other = "Găsește cel mai ieftin moment pentru a porni electrocasnicele"
+
+[hero_subtitle]
+other = "SweetSpot analizează prețurile dinamice ale electricității din 30 de țări europene și găsește intervalul optim pentru a economisi bani. Cu cod deschis și fără colectare de date."
+
+[download]
+other = "Disponibil pe Google Play"
+
+[learn_more]
+other = "Află mai multe"
+
+[features_title]
+other = "Funcționalități"
+
+[feature_countries_title]
+other = "30 de țări europene"
+
+[feature_countries_desc]
+other = "Acoperă 43 de zone de licitație din Europa, din Portugalia până în Finlanda și din Norvegia până în Grecia."
+
+[feature_prices_title]
+other = "Prețuri actualizate"
+
+[feature_prices_desc]
+other = "Prețuri de electricitate pentru ziua următoare de pe platforma ENTSO-E Transparency Platform, actualizate zilnic."
+
+[feature_algorithm_title]
+other = "Algoritm inteligent"
+
+[feature_algorithm_desc]
+other = "Un algoritm cu fereastră glisantă găsește cea mai ieftină perioadă continuă pentru orice durată alegi."
+
+[feature_fallback_title]
+other = "Date fiabile"
+
+[feature_fallback_desc]
+other = "Cinci surse de date cu comutare automată asigură disponibilitatea permanentă a prețurilor."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Aplicație complementară pentru Pixel Watch și alte dispozitive Wear OS 3+. Verifică prețurile direct de la încheietură."
+
+[feature_appliances_title]
+other = "Electrocasnice personalizate"
+
+[feature_appliances_desc]
+other = "Salvează electrocasnicele cu nume, pictograme și durate personalizate pentru acces rapid dintr-o singură atingere."
+
+[feature_languages_title]
+other = "25 de limbi"
+
+[feature_languages_desc]
+other = "Disponibilă în 25 de limbi europene, de la bulgară la suedeză."
+
+[feature_privacy_title]
+other = "Confidențialitate pe primul loc"
+
+[feature_privacy_desc]
+other = "Fără conturi, fără analize, fără urmărire. Prețurile sunt stocate local pe dispozitivul tău."
+
+[feature_opensource_title]
+other = "Cod deschis"
+
+[feature_opensource_desc]
+other = "Codul sursă complet este disponibil pe GitHub sub licența GPL v3."
+
+[how_title]
+other = "Cum funcționează"
+
+[step1_title]
+other = "Alege electrocasnicul"
+
+[step1_desc]
+other = "Alege un electrocasnic salvat sau setează o durată personalizată."
+
+[step2_title]
+other = "Analizează prețurile"
+
+[step2_desc]
+other = "SweetSpot obține cele mai recente prețuri de electricitate pentru regiunea ta."
+
+[step3_title]
+other = "Află cel mai bun moment"
+
+[step3_desc]
+other = "Vezi exact când să pornești, cu o defalcare completă a costurilor pentru fiecare interval orar."
+
+[cta_title]
+other = "Începe să economisești la electricitate"
+
+[cta_desc]
+other = "Descarcă SweetSpot de pe Google Play și găsește cel mai ieftin moment pentru a porni electrocasnicele."
+
+[footer_tagline]
+other = "Găsește cel mai ieftin moment pentru a porni electrocasnicele."
+
+[footer_app]
+other = "Aplicație"
+
+[footer_legal]
+other = "Juridic"
+
+[footer_license]
+other = "Licențiat sub GPL v3."
+
+[error_404]
+other = "Pagina pe care o cauți nu există."
+
+[back_home]
+other = "Înapoi la pagina principală"

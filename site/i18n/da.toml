@@ -1,0 +1,137 @@
+[skip_to_content]
+other = "Spring til indhold"
+
+[nav_home]
+other = "Forside"
+
+[nav_menu]
+other = "Menu"
+
+[nav_features]
+other = "Funktioner"
+
+[nav_faq]
+other = "Ofte stillede spørgsmål"
+
+[nav_changelog]
+other = "Versionshistorik"
+
+[nav_privacy]
+other = "Privatlivspolitik"
+
+[lang_switch]
+other = "Skift sprog"
+
+[hero_title]
+other = "Find det billigste tidspunkt for dine apparater"
+
+[hero_subtitle]
+other = "SweetSpot scanner dynamiske elpriser i 30 europæiske lande og finder det optimale tidsvindue for at spare penge. Open source og uden dataindsamling."
+
+[download]
+other = "Hent den på Google Play"
+
+[learn_more]
+other = "Læs mere"
+
+[features_title]
+other = "Funktioner"
+
+[feature_countries_title]
+other = "30 europæiske lande"
+
+[feature_countries_desc]
+other = "Dækker 43 budområder i Europa, fra Portugal til Finland og fra Norge til Grækenland."
+
+[feature_prices_title]
+other = "Aktuelle priser"
+
+[feature_prices_desc]
+other = "Day-ahead-elpriser fra ENTSO-E Transparency Platform, opdateret dagligt."
+
+[feature_algorithm_title]
+other = "Smart algoritme"
+
+[feature_algorithm_desc]
+other = "En glidende vinduesalgoritme finder den billigste sammenhængende periode for enhver varighed."
+
+[feature_fallback_title]
+other = "Pålidelige data"
+
+[feature_fallback_desc]
+other = "Fem datakilder med automatisk skift sikrer, at priserne altid er tilgængelige."
+
+[feature_wear_title]
+other = "Wear OS"
+
+[feature_wear_desc]
+other = "Ledsagerapp til Pixel Watch og andre Wear OS 3+-enheder. Tjek priserne direkte fra håndleddet."
+
+[feature_appliances_title]
+other = "Brugerdefinerede apparater"
+
+[feature_appliances_desc]
+other = "Gem dine apparater med navne, ikoner og varigheder for hurtig adgang med ét tryk."
+
+[feature_languages_title]
+other = "25 sprog"
+
+[feature_languages_desc]
+other = "Tilgængelig på 25 europæiske sprog, fra bulgarsk til svensk."
+
+[feature_privacy_title]
+other = "Privatlivet i fokus"
+
+[feature_privacy_desc]
+other = "Ingen konti, ingen analyse, ingen sporing. Priserne gemmes lokalt på din enhed."
+
+[feature_opensource_title]
+other = "Open source"
+
+[feature_opensource_desc]
+other = "Den fulde kildekode er tilgængelig på GitHub under GPL v3-licensen."
+
+[how_title]
+other = "Sådan virker det"
+
+[step1_title]
+other = "Vælg dit apparat"
+
+[step1_desc]
+other = "Vælg et gemt apparat, eller indstil en brugerdefineret varighed."
+
+[step2_title]
+other = "Scan priser"
+
+[step2_desc]
+other = "SweetSpot henter de nyeste day-ahead-elpriser for din region."
+
+[step3_title]
+other = "Få det bedste tidspunkt"
+
+[step3_desc]
+other = "Se præcis, hvornår du skal starte, med en fuld omkostningsopdeling pr. tidsinterval."
+
+[cta_title]
+other = "Begynd at spare på strømmen"
+
+[cta_desc]
+other = "Hent SweetSpot på Google Play og find det billigste tidspunkt for dine apparater."
+
+[footer_tagline]
+other = "Find det billigste tidspunkt for dine apparater."
+
+[footer_app]
+other = "App"
+
+[footer_legal]
+other = "Juridisk"
+
+[footer_license]
+other = "Licenseret under GPL v3."
+
+[error_404]
+other = "Siden, du leder efter, findes ikke."
+
+[back_home]
+other = "Tilbage til forsiden"

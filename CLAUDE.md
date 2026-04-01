@@ -363,3 +363,5 @@ Date format varies by language (e.g., "March 28, 2026" in English, "28. marec 20
 [Conventional Commits](https://www.conventionalcommits.org/): `<type>: <description>` describing the **what** and **why**.
 
 Types: `feat`, `fix`, `refactor`, `style`, `docs`, `chore`.
+
+If `git commit` fails with `user.signingKey needs to be set for ssh signing`, stop and inform the user — they need to refresh the GPG key manually. Do not bypass signing.

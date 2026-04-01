@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Για προχωρημένους</string>
+    <string name="settings_advanced_description">Πηγές δεδομένων, cache</string>
     <string name="settings_clear_cache">Εκκαθάριση cache τιμών</string>
     <string name="settings_clear_cache_description">Οι τιμές θα φορτωθούν εκ νέου στην επόμενη αναζήτηση.</string>
     <string name="snackbar_cache_cleared">Η cache εκκαθαρίστηκε</string>

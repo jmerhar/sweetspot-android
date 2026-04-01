@@ -5,6 +5,7 @@ package today.sweetspot.ui.settings
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -31,6 +33,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -88,6 +91,7 @@ fun SettingsScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var showAdvancedSettings by rememberSaveable { mutableStateOf(false) }
     var showLanguagePicker by rememberSaveable { mutableStateOf(false) }
     var showTimezonePicker by rememberSaveable { mutableStateOf(false) }
     var showCountryPicker by rememberSaveable { mutableStateOf(false) }
@@ -99,6 +103,26 @@ fun SettingsScreen(
 
     val defaultTimeZoneId = remember(priceZone) {
         priceZone?.timeZoneId?.let { ZoneId.of(it) } ?: ZoneId.systemDefault()
+    }
+
+    if (showAdvancedSettings) {
+        BackHandler { showAdvancedSettings = false }
+        AdvancedSettingsScreen(
+            sourceOrder = sourceOrder,
+            disabledSources = disabledSources,
+            availableSources = availableSources,
+            onSourceOrderChanged = onSourceOrderChanged,
+            onDisabledSourcesChanged = onDisabledSourcesChanged,
+            onResetSourceOrder = onResetSourceOrder,
+            onClearCache = onClearCache,
+            devOptionsEnabled = devOptionsEnabled,
+            isCooldownDisabled = isCooldownDisabled,
+            onDevCooldownDisabledChanged = onDevCooldownDisabledChanged,
+            onDevResetUnlock = onDevResetUnlock,
+            onDevResetStatsTimer = onDevResetStatsTimer,
+            onBack = { showAdvancedSettings = false }
+        )
+        return
     }
 
     if (showLanguagePicker) {
@@ -257,19 +281,6 @@ fun SettingsScreen(
                 )
             }
 
-            if (availableSources.size >= 2) {
-                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-                DataSourcesSection(
-                    sourceOrder = sourceOrder,
-                    disabledSources = disabledSources,
-                    availableSources = availableSources,
-                    onSourceOrderChanged = onSourceOrderChanged,
-                    onDisabledSourcesChanged = onDisabledSourcesChanged,
-                    onResetSourceOrder = onResetSourceOrder
-                )
-            }
-
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
             TimezoneSection(
@@ -280,30 +291,50 @@ fun SettingsScreen(
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
-            AdvancedSection(
-                isStatsEnabled = isStatsEnabled,
-                onStatsEnabledChanged = onStatsEnabledChanged,
-                onClearCache = {
-                    val message = onClearCache()
-                    coroutineScope.launch { snackbarHostState.showSnackbar(message) }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = { onStatsEnabledChanged(!isStatsEnabled) })
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(R.string.settings_stats_title),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = stringResource(R.string.settings_stats_description),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
-            )
-
-            if (devOptionsEnabled) {
-                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-                DeveloperSection(
-                    isCooldownDisabled = isCooldownDisabled,
-                    onCooldownDisabledChanged = onDevCooldownDisabledChanged,
-                    onResetUnlock = {
-                        onDevResetUnlock()
-                        coroutineScope.launch { snackbarHostState.showSnackbar("Unlock state reset") }
-                    },
-                    onResetStatsTimer = {
-                        onDevResetStatsTimer()
-                        coroutineScope.launch { snackbarHostState.showSnackbar("Stats timer reset") }
-                    }
+                Switch(
+                    checked = isStatsEnabled,
+                    onCheckedChange = onStatsEnabledChanged
                 )
+            }
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = { showAdvancedSettings = true })
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(R.string.settings_advanced),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = stringResource(R.string.settings_advanced_description),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))

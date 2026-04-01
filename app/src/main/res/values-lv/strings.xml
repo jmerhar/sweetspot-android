@@ -97,6 +97,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Papildu</string>
+    <string name="settings_advanced_description">Datu avoti, kešatmiņa</string>
     <string name="settings_clear_cache">Notīrīt cenu kešatmiņu</string>
     <string name="settings_clear_cache_description">Cenas tiks ielādētas no jauna nākamajā meklēšanā.</string>
     <string name="snackbar_cache_cleared">Kešatmiņa notīrīta</string>

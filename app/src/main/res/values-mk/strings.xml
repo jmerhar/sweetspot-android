@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Напредно</string>
+    <string name="settings_advanced_description">Извори на податоци, кеш</string>
     <string name="settings_clear_cache">Исчисти кеш на цени</string>
     <string name="settings_clear_cache_description">Цените ќе бидат повторно преземени при следното пребарување.</string>
     <string name="snackbar_cache_cleared">Кешот е исчистен</string>

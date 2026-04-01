@@ -97,6 +97,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Avanzado</string>
+    <string name="settings_advanced_description">Fuentes de datos, caché</string>
     <string name="settings_clear_cache">Borrar caché de precios</string>
     <string name="settings_clear_cache_description">Los precios se volverán a cargar en la próxima búsqueda.</string>
     <string name="snackbar_cache_cleared">Caché borrada</string>

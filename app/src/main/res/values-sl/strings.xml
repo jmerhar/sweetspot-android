@@ -100,6 +100,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>
+    <string name="settings_advanced_description">Viri podatkov, predpomnilnik</string>
     <string name="settings_clear_cache">Počisti predpomnilnik cen</string>
     <string name="settings_clear_cache_description">Cene se bodo ob naslednjem iskanju ponovno naložile.</string>
     <string name="snackbar_cache_cleared">Predpomnilnik počiščen</string>

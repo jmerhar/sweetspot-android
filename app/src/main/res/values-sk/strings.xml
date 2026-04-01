@@ -100,6 +100,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Pokročilé</string>
+    <string name="settings_advanced_description">Zdroje dát, vyrovnávacia pamäť</string>
     <string name="settings_clear_cache">Vymazať vyrovnávaciu pamäť cien</string>
     <string name="settings_clear_cache_description">Ceny budú pri ďalšom vyhľadávaní znovu načítané.</string>
     <string name="snackbar_cache_cleared">Vyrovnávacia pamäť vymazaná</string>

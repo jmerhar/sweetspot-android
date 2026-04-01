@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Avancerat</string>
+    <string name="settings_advanced_description">Datakällor, cache</string>
     <string name="settings_clear_cache">Rensa priscache</string>
     <string name="settings_clear_cache_description">Priserna laddas om vid nästa sökning.</string>
     <string name="snackbar_cache_cleared">Cache rensad</string>

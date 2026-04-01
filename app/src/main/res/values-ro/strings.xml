@@ -97,6 +97,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Avansat</string>
+    <string name="settings_advanced_description">Surse de date, cache</string>
     <string name="settings_clear_cache">Șterge cache-ul de prețuri</string>
     <string name="settings_clear_cache_description">Prețurile vor fi încărcate din nou la următoarea căutare.</string>
     <string name="snackbar_cache_cleared">Cache-ul a fost șters</string>

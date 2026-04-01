@@ -97,6 +97,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>
+    <string name="settings_advanced_description">Izvori podataka, keš</string>
     <string name="settings_clear_cache">Obriši keš cijena</string>
     <string name="settings_clear_cache_description">Cijene će se ponovno učitati pri sljedećem pretraživanju.</string>
     <string name="snackbar_cache_cleared">Keš je obrisan</string>

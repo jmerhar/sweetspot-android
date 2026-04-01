@@ -100,6 +100,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Pokročilé</string>
+    <string name="settings_advanced_description">Zdroje dat, mezipaměť</string>
     <string name="settings_clear_cache">Vymazat mezipaměť cen</string>
     <string name="settings_clear_cache_description">Ceny budou při příštím hledání znovu načteny.</string>
     <string name="snackbar_cache_cleared">Mezipaměť vymazána</string>

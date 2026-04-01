@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Avansert</string>
+    <string name="settings_advanced_description">Datakilder, buffer</string>
     <string name="settings_clear_cache">Tøm prisbuffer</string>
     <string name="settings_clear_cache_description">Prisene vil bli lastet inn på nytt ved neste søk.</string>
     <string name="snackbar_cache_cleared">Buffer tømt</string>

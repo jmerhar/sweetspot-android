@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Advanced</string>
+    <string name="settings_advanced_description">Data sources, cache</string>
     <string name="settings_clear_cache">Clear price cache</string>
     <string name="settings_clear_cache_description">Prices will be reloaded on the next search.</string>
     <string name="snackbar_cache_cleared">Cache cleared</string>

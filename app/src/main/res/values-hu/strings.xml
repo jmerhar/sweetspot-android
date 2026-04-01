@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Haladó</string>
+    <string name="settings_advanced_description">Adatforrások, gyorsítótár</string>
     <string name="settings_clear_cache">Árgyorsítótár törlése</string>
     <string name="settings_clear_cache_description">Az árak a következő keresésnél újra betöltődnek.</string>
     <string name="snackbar_cache_cleared">Gyorsítótár törölve</string>

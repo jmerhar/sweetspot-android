@@ -94,6 +94,7 @@
 
     <!-- Cache management -->
     <string name="settings_advanced">Avanceret</string>
+    <string name="settings_advanced_description">Datakilder, cache</string>
     <string name="settings_clear_cache">Ryd priscache</string>
     <string name="settings_clear_cache_description">Priserne vil blive indlæst på ny ved næste søgning.</string>
     <string name="snackbar_cache_cleared">Cache ryddet</string>

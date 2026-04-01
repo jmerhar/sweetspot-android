@@ -3,6 +3,11 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.1.4" date="1 april 2026" >}}
+- Bedankbevestiging na het ontgrendelen van SweetSpot
+- Een flits van de oude taal bij het wijzigen van de app-taal in instellingen verholpen
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1 april 2026" >}}
 - Instellingen gereorganiseerd: databronnen, cache en ontwikkelaaropties staan nu in een sectie Geavanceerd
 - Landenlijst sorteert nu correct voor alle talen, inclusief letters met accenten

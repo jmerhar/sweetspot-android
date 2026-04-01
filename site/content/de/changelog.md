@@ -3,6 +3,11 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.1.4" date="1. April 2026" >}}
+- Dankesbestätigung nach dem Freischalten von SweetSpot
+- Kurzes Aufblitzen der alten Sprache beim Ändern der App-Sprache in den Einstellungen behoben
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. April 2026" >}}
 - Einstellungen neu organisiert: Datenquellen, Cache und Entwickleroptionen befinden sich jetzt im Bereich Erweitert
 - Länderliste sortiert nun korrekt für alle Sprachen, einschließlich Buchstaben mit Akzenten

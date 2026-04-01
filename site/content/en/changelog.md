@@ -3,6 +3,11 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.1.4" date="April 1, 2026" >}}
+- Thank-you confirmation dialog after unlocking SweetSpot
+- Fixed a flash of the old language when changing the app language in settings
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="April 1, 2026" >}}
 - Reorganised settings: data sources, cache, and developer options are now in an Advanced section
 - Country list sorts correctly for all languages, including accented characters

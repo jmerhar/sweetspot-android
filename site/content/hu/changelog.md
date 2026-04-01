@@ -3,6 +3,11 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.1.4" date="2026. április 1." >}}
+- Köszönő megerősítés a SweetSpot feloldása után
+- Javítva a régi nyelv felvillanása az alkalmazás nyelvének módosításakor a beállításokban
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="2026. április 1." >}}
 - Beállítások átszervezése: az adatforrások, gyorsítótár és fejlesztői beállítások mostantól a Speciális részben találhatók
 - Az országlista helyesen rendeződik minden nyelven, beleértve az ékezetes karaktereket

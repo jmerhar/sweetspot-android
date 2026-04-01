@@ -3,6 +3,11 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.1.4" date="2026 m. balandžio 1 d." >}}
+- Padėkos patvirtinimas atrakinant SweetSpot
+- Ištaisytas senos kalbos blyksnis keičiant programėlės kalbą nustatymuose
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="2026 m. balandžio 1 d." >}}
 - Pertvarkyti nustatymai: duomenų šaltiniai, podėlis ir kūrėjo parinktys dabar skyriuje Išplėstiniai
 - Šalių sąrašas teisingai rikiuojamas visomis kalbomis, įskaitant kirčiuotus simbolius

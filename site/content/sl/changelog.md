@@ -3,6 +3,11 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1. april 2026" >}}
+- Potrditveno okno z zahvalo po odklenitvi SweetSpot
+- Odpravljen blic stare jezike ob spremembi jezika aplikacije v nastavitvah
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. april 2026" >}}
 - Nastavitve pregledneje razporejene: viri podatkov, predpomnilnik in razvojne možnosti so zdaj v razdelku Napredno
 - Seznam držav se zdaj pravilno razvrsti za vse jezike, vključno s črkami z naglasnimi znamenji

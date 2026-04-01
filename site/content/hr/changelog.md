@@ -3,6 +3,11 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1. travnja 2026." >}}
+- Potvrda zahvale nakon otključavanja SweetSpota
+- Ispravljen bljesak starog jezika pri promjeni jezika aplikacije u postavkama
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. travnja 2026." >}}
 - Preglednije postavke: izvori podataka, predmemorija i opcije za razvojne programere sada su u odjeljku Napredno
 - Popis zemalja se ispravno sortira za sve jezike, uključujući znakove s dijakritičkim oznakama

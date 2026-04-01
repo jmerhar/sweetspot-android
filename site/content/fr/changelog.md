@@ -3,6 +3,11 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1er avril 2026" >}}
+- Confirmation de remerciement après le déverrouillage de SweetSpot
+- Correction d'un flash de l'ancienne langue lors du changement de langue dans les paramètres
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1er avril 2026" >}}
 - Paramètres réorganisés : les sources de données, le cache et les options développeur sont désormais dans une section Avancé
 - La liste des pays se trie correctement pour toutes les langues, y compris les caractères accentués

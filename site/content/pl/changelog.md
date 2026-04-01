@@ -3,6 +3,11 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1 kwietnia 2026" >}}
+- Potwierdzenie z podziękowaniem po odblokowaniu SweetSpot
+- Naprawiono błysk starego języka przy zmianie języka aplikacji w ustawieniach
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1 kwietnia 2026" >}}
 - Zreorganizowane ustawienia: źródła danych, pamięć podręczna i opcje deweloperskie są teraz w sekcji zaawansowanej
 - Lista krajów sortuje się poprawnie dla wszystkich języków, w tym znaków z akcentami

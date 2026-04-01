@@ -3,6 +3,11 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1 aprilie 2026" >}}
+- Confirmare de mulțumire după deblocarea SweetSpot
+- Remediat un flash al limbii vechi la schimbarea limbii aplicației din setări
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1 aprilie 2026" >}}
 - Setări reorganizate: sursele de date, cache-ul și opțiunile pentru dezvoltatori sunt acum într-o secțiune Avansat
 - Lista de țări se sortează corect pentru toate limbile, inclusiv caracterele cu accente

@@ -3,6 +3,11 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1. apríla 2026" >}}
+- Potvrdenie s poďakovaním po odomknutí SweetSpot
+- Opravený záblesk starého jazyka pri zmene jazyka aplikácie v nastaveniach
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. apríla 2026" >}}
 - Reorganizované nastavenia: zdroje údajov, vyrovnávacia pamäť a vývojárske možnosti sú teraz v sekcii Pokročilé
 - Zoznam krajín sa správne zoraďuje pre všetky jazyky vrátane znakov s diakritikou

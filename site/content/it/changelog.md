@@ -3,6 +3,11 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="5.1.4" date="1 aprile 2026" >}}
+- Conferma di ringraziamento dopo lo sblocco di SweetSpot
+- Corretto un flash della vecchia lingua quando si cambia la lingua dell'app nelle impostazioni
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1 aprile 2026" >}}
 - Impostazioni riorganizzate: fonti dati, cache e opzioni sviluppatore ora in una sezione Avanzate
 - L'elenco dei paesi si ordina correttamente per tutte le lingue, compresi i caratteri accentati

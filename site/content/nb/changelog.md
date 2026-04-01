@@ -3,6 +3,11 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="5.1.4" date="1. april 2026" >}}
+- Takkebekreftelse etter opplåsing av SweetSpot
+- Rettet et glimt av det gamle språket ved endring av appspråket i innstillinger
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. april 2026" >}}
 - Omorganiserte innstillinger: datakilder, hurtiglager og utvikleralternativer er nå i en avansert-seksjon
 - Landlisten sorteres korrekt for alle språk, inkludert tegn med aksenter

@@ -3,6 +3,11 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.1.4" date="1. aprill 2026" >}}
+- Tänukinnitus pärast SweetSpoti avamist
+- Parandatud vana keele vilkumine rakenduse keele vahetamisel seadetes
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. aprill 2026" >}}
 - Seadete ümberkorraldamine: andmeallikad, vahemälu ja arendaja valikud on nüüd jaotises Täpsemad
 - Riikide loend sorteeritakse õigesti kõigis keeltes, sealhulgas diakriitiliste märkidega tähti

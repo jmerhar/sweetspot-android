@@ -3,6 +3,11 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.1.4" date="1. huhtikuuta 2026" >}}
+- Kiitosvahvistus SweetSpotin avaamisen jälkeen
+- Korjattu vanhan kielen välähdys sovelluksen kielen vaihdon yhteydessä asetuksissa
+{{< /changelog >}}
+
 {{< changelog version="5.1.3" date="1. huhtikuuta 2026" >}}
 - Asetusten uudelleenjärjestely: tietolähteet, välimuisti ja kehittäjäasetukset ovat nyt Lisäasetukset-osiossa
 - Maaluettelo lajitellaan oikein kaikilla kielillä, myös diakriittisten merkkien osalta

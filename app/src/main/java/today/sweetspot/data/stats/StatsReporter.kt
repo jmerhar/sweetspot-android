@@ -104,6 +104,15 @@ class StatsReporter(
         val lastReport = prefs.getLong(KEY_LAST_REPORT_MS, 0L)
         return System.currentTimeMillis() - lastReport >= MIN_INTERVAL_MS
     }
+
+    /**
+     * Resets the report timer, allowing immediate stats reporting.
+     *
+     * Used by developer options for testing.
+     */
+    fun resetReportTimer() {
+        prefs.edit { remove(KEY_LAST_REPORT_MS) }
+    }
 }
 
 /**

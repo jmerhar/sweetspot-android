@@ -85,4 +85,11 @@ interface PriceCache {
      * @return Remaining time in milliseconds, or 0 if the cooldown has elapsed.
      */
     fun cooldownRemainingMs(cooldownMs: Long): Long
+
+    /**
+     * Resets the fetch cooldown timer, allowing immediate API fetches.
+     *
+     * Used by developer options for testing.
+     */
+    fun resetCooldown()
 }

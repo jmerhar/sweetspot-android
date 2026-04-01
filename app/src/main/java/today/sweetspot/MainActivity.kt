@@ -88,6 +88,12 @@ class MainActivity : AppCompatActivity() {
                             trialDaysRemaining = state.trialDaysRemaining,
                             productPrice = state.productPrice,
                             onPurchaseClicked = { vm.onPurchaseClicked(this@MainActivity) },
+                            devOptionsEnabled = state.devOptionsEnabled,
+                            isCooldownDisabled = state.isCooldownDisabled,
+                            onDevOptionsUnlocked = vm::onDevOptionsUnlocked,
+                            onDevResetUnlock = vm::onDevResetUnlock,
+                            onDevCooldownDisabledChanged = vm::onDevCooldownDisabledChanged,
+                            onDevResetStatsTimer = vm::onDevResetStatsTimer,
                             onBack = vm::onHideSettings
                         )
                     }

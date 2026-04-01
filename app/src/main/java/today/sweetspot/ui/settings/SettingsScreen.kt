@@ -3,6 +3,7 @@
 package today.sweetspot.ui.settings
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +25,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -77,6 +79,12 @@ fun SettingsScreen(
     trialDaysRemaining: Int,
     productPrice: String?,
     onPurchaseClicked: () -> Unit,
+    devOptionsEnabled: Boolean,
+    isCooldownDisabled: Boolean,
+    onDevOptionsUnlocked: () -> Unit,
+    onDevResetUnlock: () -> Unit,
+    onDevCooldownDisabledChanged: (Boolean) -> Unit,
+    onDevResetStatsTimer: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -281,7 +289,26 @@ fun SettingsScreen(
                 }
             )
 
+            if (devOptionsEnabled) {
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+                DeveloperSection(
+                    isCooldownDisabled = isCooldownDisabled,
+                    onCooldownDisabledChanged = onDevCooldownDisabledChanged,
+                    onResetUnlock = {
+                        onDevResetUnlock()
+                        coroutineScope.launch { snackbarHostState.showSnackbar("Unlock state reset") }
+                    },
+                    onResetStatsTimer = {
+                        onDevResetStatsTimer()
+                        coroutineScope.launch { snackbarHostState.showSnackbar("Stats timer reset") }
+                    }
+                )
+            }
+
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            var versionTapCount by remember { mutableIntStateOf(0) }
 
             Text(
                 text = "SweetSpot v${BuildConfig.VERSION_NAME}",
@@ -289,6 +316,15 @@ fun SettingsScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .clickable {
+                        if (!devOptionsEnabled) {
+                            versionTapCount++
+                            if (versionTapCount >= 7) {
+                                onDevOptionsUnlocked()
+                                coroutineScope.launch { snackbarHostState.showSnackbar("Developer options enabled") }
+                            }
+                        }
+                    }
                     .padding(vertical = 16.dp),
                 textAlign = TextAlign.Center
             )

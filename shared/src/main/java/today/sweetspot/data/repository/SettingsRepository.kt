@@ -33,6 +33,8 @@ class SettingsRepository(private val context: Context) {
         const val KEY_STATS_PROMPT_SHOWN = "stats_prompt_shown"
         const val KEY_FIRST_LAUNCH_MS = "first_launch_ms"
         const val KEY_UNLOCKED = "unlocked"
+        const val KEY_DEV_OPTIONS = "dev_options"
+        const val KEY_COOLDOWN_DISABLED = "cooldown_disabled"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -311,5 +313,27 @@ class SettingsRepository(private val context: Context) {
      */
     fun setUnlocked(unlocked: Boolean) {
         prefs.edit { putBoolean(KEY_UNLOCKED, unlocked) }
+    }
+
+    // --- Developer Options ---
+
+    /** Returns whether hidden developer options have been unlocked. */
+    fun isDevOptionsEnabled(): Boolean = prefs.getBoolean(KEY_DEV_OPTIONS, false)
+
+    /** Persistently enables hidden developer options. */
+    fun setDevOptionsEnabled() {
+        prefs.edit { putBoolean(KEY_DEV_OPTIONS, true) }
+    }
+
+    /** Returns whether the API fetch cooldown is disabled (developer option). */
+    fun isCooldownDisabled(): Boolean = prefs.getBoolean(KEY_COOLDOWN_DISABLED, false)
+
+    /**
+     * Enables or disables the API fetch cooldown bypass.
+     *
+     * @param disabled `true` to skip the cooldown between API requests.
+     */
+    fun setCooldownDisabled(disabled: Boolean) {
+        prefs.edit { putBoolean(KEY_COOLDOWN_DISABLED, disabled) }
     }
 }

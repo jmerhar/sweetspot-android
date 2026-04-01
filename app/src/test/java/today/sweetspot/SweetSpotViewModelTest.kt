@@ -61,6 +61,7 @@ class SweetSpotViewModelTest {
         override fun clear() { clearCount++ }
         override fun clearForZone(key: String) { clearedZones += key }
         override fun cooldownRemainingMs(cooldownMs: Long) = cooldownRemaining
+        override fun resetCooldown() {}
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */
@@ -758,5 +759,102 @@ class SweetSpotViewModelTest {
 
         assertTrue(viewModel.uiState.value.isUnlocked)
         assertFalse(viewModel.uiState.value.showPaywall)
+    }
+
+    // --- Developer options ---
+
+    @Test
+    fun `initial state has developer options disabled`() {
+        assertFalse(defaultViewModel().uiState.value.devOptionsEnabled)
+    }
+
+    @Test
+    fun `initial state has cooldown not disabled`() {
+        assertFalse(defaultViewModel().uiState.value.isCooldownDisabled)
+    }
+
+    @Test
+    fun `onDevOptionsUnlocked enables developer options`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevOptionsUnlocked()
+        assertTrue(viewModel.uiState.value.devOptionsEnabled)
+    }
+
+    @Test
+    fun `onDevOptionsUnlocked persists across ViewModel creation`() {
+        val viewModel1 = defaultViewModel()
+        viewModel1.onDevOptionsUnlocked()
+
+        val viewModel2 = SweetSpotViewModel(app)
+        assertTrue(viewModel2.uiState.value.devOptionsEnabled)
+    }
+
+    @Test
+    fun `onDevResetUnlock clears unlock state`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        prefs.edit().putBoolean("unlocked", true).commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertTrue(viewModel.uiState.value.isUnlocked)
+
+        viewModel.onDevResetUnlock()
+        assertFalse(viewModel.uiState.value.isUnlocked)
+    }
+
+    @Test
+    fun `onDevCooldownDisabledChanged true disables cooldown`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevCooldownDisabledChanged(true)
+        assertTrue(viewModel.uiState.value.isCooldownDisabled)
+    }
+
+    @Test
+    fun `onDevCooldownDisabledChanged false re-enables cooldown`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevCooldownDisabledChanged(true)
+        viewModel.onDevCooldownDisabledChanged(false)
+        assertFalse(viewModel.uiState.value.isCooldownDisabled)
+    }
+
+    @Test
+    fun `onDevCooldownDisabledChanged persists across ViewModel creation`() {
+        val viewModel1 = defaultViewModel()
+        viewModel1.onDevCooldownDisabledChanged(true)
+
+        val viewModel2 = SweetSpotViewModel(app)
+        assertTrue(viewModel2.uiState.value.isCooldownDisabled)
+    }
+
+    @Test
+    fun `onClearCache bypasses cooldown when cooldown is disabled`() {
+        val cache = FakeCache(cooldownRemaining = 120_000L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+        viewModel.onDevCooldownDisabledChanged(true)
+
+        val message = viewModel.onClearCache()
+        assertEquals(1, cache.clearCount)
+        assertTrue(message.contains("cleared", ignoreCase = true))
+    }
+
+    @Test
+    fun `onRefreshResults bypasses cooldown when cooldown is disabled`() = runTest {
+        val cache = FakeCache(cooldownRemaining = 180_000L)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+        viewModel.onDevCooldownDisabledChanged(true)
+
+        // Perform initial search so there's something to refresh
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+        assertNotNull(viewModel.uiState.value.result)
+
+        viewModel.onRefreshResults()
+
+        // Should be loading (not blocked by cooldown)
+        assertTrue(viewModel.uiState.value.isLoading)
+        assertTrue(cache.clearedZones.isNotEmpty())
+
+        runCurrent()
+        assertFalse(viewModel.uiState.value.isLoading)
+        viewModel.onClearResult()
     }
 }

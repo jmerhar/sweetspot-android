@@ -56,6 +56,7 @@ class WearViewModelTest {
         override fun clear() {}
         override fun clearForZone(key: String) {}
         override fun cooldownRemainingMs(cooldownMs: Long) = 0L
+        override fun resetCooldown() {}
     }
 
     /** [PriceFetcher] that returns configurable prices or throws. */

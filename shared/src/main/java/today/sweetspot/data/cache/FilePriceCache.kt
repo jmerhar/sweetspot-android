@@ -92,4 +92,8 @@ class FilePriceCache(private val context: Context) : PriceCache {
         val elapsed = System.currentTimeMillis() - lastFetch
         return maxOf(0L, cooldownMs - elapsed)
     }
+
+    override fun resetCooldown() {
+        prefs.edit { remove(KEY_LAST_FETCH_MS) }
+    }
 }

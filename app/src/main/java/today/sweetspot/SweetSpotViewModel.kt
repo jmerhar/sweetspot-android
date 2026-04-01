@@ -89,6 +89,8 @@ sealed interface AppError {
  * @property trialDaysRemaining Number of trial days remaining (0–14).
  * @property showPaywall Whether the paywall screen should block the app.
  * @property productPrice Localized price string for the unlock purchase (e.g. "€2.99"), or `null` if not loaded.
+ * @property devOptionsEnabled Whether hidden developer options are visible.
+ * @property isCooldownDisabled Whether the API fetch cooldown is bypassed (developer option).
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -114,7 +116,9 @@ data class UiState(
     val isUnlocked: Boolean = false,
     val trialDaysRemaining: Int = 14,
     val showPaywall: Boolean = false,
-    val productPrice: String? = null
+    val productPrice: String? = null,
+    val devOptionsEnabled: Boolean = false,
+    val isCooldownDisabled: Boolean = false
 )
 
 /**
@@ -178,7 +182,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             isTrialExpired = settingsRepository.isTrialExpired(),
             isUnlocked = settingsRepository.isUnlocked(),
             trialDaysRemaining = settingsRepository.trialDaysRemaining(),
-            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired()
+            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired(),
+            devOptionsEnabled = settingsRepository.isDevOptionsEnabled(),
+            isCooldownDisabled = settingsRepository.isCooldownDisabled()
         )
     )
 
@@ -453,7 +459,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @return A user-facing message: confirmation if cleared, or cooldown warning.
      */
     fun onClearCache(): String {
-        val remaining = priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
+        val cooldownDisabled = settingsRepository.isCooldownDisabled()
+        val remaining = if (cooldownDisabled) 0L else priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
         val app = getApplication<Application>()
         return if (remaining > 0) {
             val minutes = (remaining / 60_000).toInt() + 1
@@ -472,7 +479,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * the fetch-and-find flow.
      */
     fun onRefreshResults() {
-        val remaining = priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
+        val cooldownDisabled = settingsRepository.isCooldownDisabled()
+        val remaining = if (cooldownDisabled) 0L else priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
         val app = getApplication<Application>()
         if (remaining > 0) {
             val minutes = (remaining / 60_000).toInt() + 1
@@ -686,6 +694,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             val factory = priceFetcherFactory
                 ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder, activeCollector, "phone")
             val fetcher = factory.create(priceZone)
+            if (settingsRepository.isCooldownDisabled()) priceCache.resetCooldown()
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
             val prices = priceResult.prices
@@ -836,6 +845,52 @@ class SweetSpotViewModel @JvmOverloads constructor(
      */
     fun onRestorePurchases() {
         activeBilling?.queryPurchases()
+    }
+
+    // --- Developer options ---
+
+    /**
+     * Persistently enables hidden developer options (triggered by 7-tap on version number).
+     */
+    fun onDevOptionsUnlocked() {
+        settingsRepository.setDevOptionsEnabled()
+        _uiState.update { it.copy(devOptionsEnabled = true) }
+    }
+
+    /**
+     * Resets the unlock/payment state, re-enabling the trial paywall.
+     *
+     * Clears the local unlock flag and updates the UI state. Does not affect
+     * the actual Google Play purchase — only the local cached state.
+     */
+    fun onDevResetUnlock() {
+        settingsRepository.setUnlocked(false)
+        _uiState.update {
+            it.copy(
+                isUnlocked = false,
+                showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired()
+            )
+        }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Toggles the API fetch cooldown bypass.
+     *
+     * When disabled, all API cooldown checks are skipped, allowing immediate fetches.
+     *
+     * @param disabled `true` to disable the cooldown.
+     */
+    fun onDevCooldownDisabledChanged(disabled: Boolean) {
+        settingsRepository.setCooldownDisabled(disabled)
+        _uiState.update { it.copy(isCooldownDisabled = disabled) }
+    }
+
+    /**
+     * Resets the stats report timer, allowing immediate stats reporting.
+     */
+    fun onDevResetStatsTimer() {
+        statsReporter.resetReportTimer()
     }
 
     /**

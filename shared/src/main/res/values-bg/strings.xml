@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Южноцентрална Швеция</string>
     <string name="zone_se4">SE4 — Южна Швеция</string>
     <string name="zone_ch">Швейцария</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Пералня</string>
+    <string name="icon_dryer">Сушилня</string>
+    <string name="icon_iron">Ютия</string>
+    <string name="icon_dishwasher">Съдомиялна</string>
+    <string name="icon_vacuum">Прахосмукачка</string>
+    <string name="icon_oven">Фурна</string>
+    <string name="icon_kettle">Чайник</string>
+    <string name="icon_heat_pump">Термопомпа</string>
+    <string name="icon_heater">Отоплител</string>
+    <string name="icon_air_conditioner">Климатик</string>
+    <string name="icon_thermostat">Термостат</string>
+    <string name="icon_fan">Вентилатор</string>
+    <string name="icon_dehumidifier">Обезвлажнител</string>
+    <string name="icon_water_heater">Бойлер</string>
+    <string name="icon_hot_tub">Джакузи</string>
+    <string name="icon_sauna">Сауна</string>
+    <string name="icon_pool_pump">Помпа за басейн</string>
+    <string name="icon_lawn_mower">Косачка</string>
+    <string name="icon_sprinkler">Пръскачка</string>
+    <string name="icon_ev_charger">Зарядно за ел. кола</string>
+    <string name="icon_solar_battery">Соларно / батерия</string>
+    <string name="icon_tv">Телевизор</string>
+    <string name="icon_electricity">Електричество</string>
+    <string name="icon_power">Захранване</string>
+    <string name="icon_timer">Таймер</string>
+    <string name="icon_light">Осветление</string>
+    <string name="icon_device">Устройство</string>
+    <string name="icon_home">Дом</string>
+    <string name="icon_favorite">Любимо</string>
+    <string name="icon_other">Друго</string>
 </resources>

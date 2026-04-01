@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Södra Mellansverige</string>
     <string name="zone_se4">SE4 — Södra Sverige</string>
     <string name="zone_ch">Schweiz</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Tvättmaskin</string>
+    <string name="icon_dryer">Torktumlare</string>
+    <string name="icon_iron">Strykjärn</string>
+    <string name="icon_dishwasher">Diskmaskin</string>
+    <string name="icon_vacuum">Dammsugare</string>
+    <string name="icon_oven">Ugn</string>
+    <string name="icon_kettle">Vattenkokare</string>
+    <string name="icon_heat_pump">Värmepump</string>
+    <string name="icon_heater">Värmeelement</string>
+    <string name="icon_air_conditioner">Luftkonditionering</string>
+    <string name="icon_thermostat">Termostat</string>
+    <string name="icon_fan">Fläkt</string>
+    <string name="icon_dehumidifier">Avfuktare</string>
+    <string name="icon_water_heater">Varmvattenberedare</string>
+    <string name="icon_hot_tub">Bubbelbad</string>
+    <string name="icon_sauna">Bastu</string>
+    <string name="icon_pool_pump">Poolpump</string>
+    <string name="icon_lawn_mower">Gräsklippare</string>
+    <string name="icon_sprinkler">Vattenspridare</string>
+    <string name="icon_ev_charger">Elbilsladdare</string>
+    <string name="icon_solar_battery">Sol / batteri</string>
+    <string name="icon_tv">TV</string>
+    <string name="icon_electricity">Elektricitet</string>
+    <string name="icon_power">Ström</string>
+    <string name="icon_timer">Timer</string>
+    <string name="icon_light">Ljus</string>
+    <string name="icon_device">Enhet</string>
+    <string name="icon_home">Hem</string>
+    <string name="icon_favorite">Favorit</string>
+    <string name="icon_other">Övrigt</string>
 </resources>

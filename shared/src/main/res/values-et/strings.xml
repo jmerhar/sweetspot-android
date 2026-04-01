@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Kesk-Lõuna-Rootsi</string>
     <string name="zone_se4">SE4 — Lõuna-Rootsi</string>
     <string name="zone_ch">Šveits</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Pesumasin</string>
+    <string name="icon_dryer">Kuivati</string>
+    <string name="icon_iron">Triikraud</string>
+    <string name="icon_dishwasher">Nõudepesumasin</string>
+    <string name="icon_vacuum">Tolmuimeja</string>
+    <string name="icon_oven">Ahi</string>
+    <string name="icon_kettle">Veekeetja</string>
+    <string name="icon_heat_pump">Soojuspump</string>
+    <string name="icon_heater">Kütteseade</string>
+    <string name="icon_air_conditioner">Konditsioneer</string>
+    <string name="icon_thermostat">Termostaat</string>
+    <string name="icon_fan">Ventilaator</string>
+    <string name="icon_dehumidifier">Õhukuivati</string>
+    <string name="icon_water_heater">Veeboiler</string>
+    <string name="icon_hot_tub">Mullivann</string>
+    <string name="icon_sauna">Saun</string>
+    <string name="icon_pool_pump">Basseinipump</string>
+    <string name="icon_lawn_mower">Muruniiduk</string>
+    <string name="icon_sprinkler">Vihmuti</string>
+    <string name="icon_ev_charger">EV laadija</string>
+    <string name="icon_solar_battery">Päike / aku</string>
+    <string name="icon_tv">Teler</string>
+    <string name="icon_electricity">Elekter</string>
+    <string name="icon_power">Toide</string>
+    <string name="icon_timer">Taimer</string>
+    <string name="icon_light">Valgus</string>
+    <string name="icon_device">Seade</string>
+    <string name="icon_home">Kodu</string>
+    <string name="icon_favorite">Lemmik</string>
+    <string name="icon_other">Muu</string>
 </resources>

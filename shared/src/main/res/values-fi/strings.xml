@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Eteläkeski-Ruotsi</string>
     <string name="zone_se4">SE4 — Etelä-Ruotsi</string>
     <string name="zone_ch">Sveitsi</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Pesukone</string>
+    <string name="icon_dryer">Kuivausrumpu</string>
+    <string name="icon_iron">Silitysrauta</string>
+    <string name="icon_dishwasher">Astianpesukone</string>
+    <string name="icon_vacuum">Imuri</string>
+    <string name="icon_oven">Uuni</string>
+    <string name="icon_kettle">Vedenkeitin</string>
+    <string name="icon_heat_pump">Lämpöpumppu</string>
+    <string name="icon_heater">Lämmitin</string>
+    <string name="icon_air_conditioner">Ilmastointilaite</string>
+    <string name="icon_thermostat">Termostaatti</string>
+    <string name="icon_fan">Tuuletin</string>
+    <string name="icon_dehumidifier">Ilmankuivain</string>
+    <string name="icon_water_heater">Lämminvesivaraaja</string>
+    <string name="icon_hot_tub">Poreallas</string>
+    <string name="icon_sauna">Sauna</string>
+    <string name="icon_pool_pump">Allaspumppu</string>
+    <string name="icon_lawn_mower">Ruohonleikkuri</string>
+    <string name="icon_sprinkler">Sprinkleri</string>
+    <string name="icon_ev_charger">Sähköauton laturi</string>
+    <string name="icon_solar_battery">Aurinko / akku</string>
+    <string name="icon_tv">Televisio</string>
+    <string name="icon_electricity">Sähkö</string>
+    <string name="icon_power">Virta</string>
+    <string name="icon_timer">Ajastin</string>
+    <string name="icon_light">Valo</string>
+    <string name="icon_device">Laite</string>
+    <string name="icon_home">Koti</string>
+    <string name="icon_favorite">Suosikki</string>
+    <string name="icon_other">Muu</string>
 </resources>

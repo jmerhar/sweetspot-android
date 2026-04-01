@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Svezia centro-meridionale</string>
     <string name="zone_se4">SE4 — Svezia meridionale</string>
     <string name="zone_ch">Svizzera</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Lavatrice</string>
+    <string name="icon_dryer">Asciugatrice</string>
+    <string name="icon_iron">Ferro da stiro</string>
+    <string name="icon_dishwasher">Lavastoviglie</string>
+    <string name="icon_vacuum">Aspirapolvere</string>
+    <string name="icon_oven">Forno</string>
+    <string name="icon_kettle">Bollitore</string>
+    <string name="icon_heat_pump">Pompa di calore</string>
+    <string name="icon_heater">Stufa</string>
+    <string name="icon_air_conditioner">Condizionatore</string>
+    <string name="icon_thermostat">Termostato</string>
+    <string name="icon_fan">Ventilatore</string>
+    <string name="icon_dehumidifier">Deumidificatore</string>
+    <string name="icon_water_heater">Scaldabagno</string>
+    <string name="icon_hot_tub">Vasca idromassaggio</string>
+    <string name="icon_sauna">Sauna</string>
+    <string name="icon_pool_pump">Pompa per piscina</string>
+    <string name="icon_lawn_mower">Tosaerba</string>
+    <string name="icon_sprinkler">Irrigatore</string>
+    <string name="icon_ev_charger">Caricatore EV</string>
+    <string name="icon_solar_battery">Solare / batteria</string>
+    <string name="icon_tv">Televisore</string>
+    <string name="icon_electricity">Elettricità</string>
+    <string name="icon_power">Energia</string>
+    <string name="icon_timer">Timer</string>
+    <string name="icon_light">Luce</string>
+    <string name="icon_device">Dispositivo</string>
+    <string name="icon_home">Casa</string>
+    <string name="icon_favorite">Preferito</string>
+    <string name="icon_other">Altro</string>
 </resources>

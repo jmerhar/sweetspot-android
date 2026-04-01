@@ -107,4 +107,36 @@
     <string name="zone_se3">SE3 — Piet\u0173 centro \u0160vedija</string>
     <string name="zone_se4">SE4 — Piet\u0173 \u0160vedija</string>
     <string name="zone_ch">\u0160veicarija</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Skalbyklė</string>
+    <string name="icon_dryer">Džiovyklė</string>
+    <string name="icon_iron">Lygintuvas</string>
+    <string name="icon_dishwasher">Indaplovė</string>
+    <string name="icon_vacuum">Siurblys</string>
+    <string name="icon_oven">Orkaitė</string>
+    <string name="icon_kettle">Virdulys</string>
+    <string name="icon_heat_pump">Šilumos siurblys</string>
+    <string name="icon_heater">Šildytuvas</string>
+    <string name="icon_air_conditioner">Oro kondicionierius</string>
+    <string name="icon_thermostat">Termostatas</string>
+    <string name="icon_fan">Ventiliatorius</string>
+    <string name="icon_dehumidifier">Sausintuvas</string>
+    <string name="icon_water_heater">Vandens šildytuvas</string>
+    <string name="icon_hot_tub">Sūkurinė vonia</string>
+    <string name="icon_sauna">Sauna</string>
+    <string name="icon_pool_pump">Baseino siurblys</string>
+    <string name="icon_lawn_mower">Vejapjovė</string>
+    <string name="icon_sprinkler">Laistytuvas</string>
+    <string name="icon_ev_charger">EV įkroviklis</string>
+    <string name="icon_solar_battery">Saulės / baterija</string>
+    <string name="icon_tv">Televizorius</string>
+    <string name="icon_electricity">Elektra</string>
+    <string name="icon_power">Galia</string>
+    <string name="icon_timer">Laikmatis</string>
+    <string name="icon_light">Šviesa</string>
+    <string name="icon_device">Įrenginys</string>
+    <string name="icon_home">Namai</string>
+    <string name="icon_favorite">Mėgstamas</string>
+    <string name="icon_other">Kita</string>
 </resources>

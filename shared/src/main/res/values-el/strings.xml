@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Νοτιοκεντρική Σουηδία</string>
     <string name="zone_se4">SE4 — Νότια Σουηδία</string>
     <string name="zone_ch">Ελβετία</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Πλυντήριο</string>
+    <string name="icon_dryer">Στεγνωτήριο</string>
+    <string name="icon_iron">Σίδερο</string>
+    <string name="icon_dishwasher">Πλυντήριο πιάτων</string>
+    <string name="icon_vacuum">Ηλεκτρική σκούπα</string>
+    <string name="icon_oven">Φούρνος</string>
+    <string name="icon_kettle">Βραστήρας</string>
+    <string name="icon_heat_pump">Αντλία θερμότητας</string>
+    <string name="icon_heater">Θερμάστρα</string>
+    <string name="icon_air_conditioner">Κλιματιστικό</string>
+    <string name="icon_thermostat">Θερμοστάτης</string>
+    <string name="icon_fan">Ανεμιστήρας</string>
+    <string name="icon_dehumidifier">Αφυγραντήρας</string>
+    <string name="icon_water_heater">Θερμοσίφωνας</string>
+    <string name="icon_hot_tub">Τζακούζι</string>
+    <string name="icon_sauna">Σάουνα</string>
+    <string name="icon_pool_pump">Αντλία πισίνας</string>
+    <string name="icon_lawn_mower">Χλοοκοπτικό</string>
+    <string name="icon_sprinkler">Ψεκαστήρας</string>
+    <string name="icon_ev_charger">Φορτιστής EV</string>
+    <string name="icon_solar_battery">Ηλιακά / μπαταρία</string>
+    <string name="icon_tv">Τηλεόραση</string>
+    <string name="icon_electricity">Ηλεκτρισμός</string>
+    <string name="icon_power">Ισχύς</string>
+    <string name="icon_timer">Χρονόμετρο</string>
+    <string name="icon_light">Φως</string>
+    <string name="icon_device">Συσκευή</string>
+    <string name="icon_home">Σπίτι</string>
+    <string name="icon_favorite">Αγαπημένο</string>
+    <string name="icon_other">Άλλο</string>
 </resources>

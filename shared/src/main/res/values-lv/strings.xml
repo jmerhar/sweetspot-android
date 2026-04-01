@@ -103,4 +103,36 @@
     <string name="zone_se3">SE3 — Dienvidu centr\u0101l\u0101 Zviedrija</string>
     <string name="zone_se4">SE4 — Dienvidu Zviedrija</string>
     <string name="zone_ch">\u0160veice</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Veļas mašīna</string>
+    <string name="icon_dryer">Žāvētājs</string>
+    <string name="icon_iron">Gludeklis</string>
+    <string name="icon_dishwasher">Trauku mazgājamā mašīna</string>
+    <string name="icon_vacuum">Putekļsūcējs</string>
+    <string name="icon_oven">Cepeškrāsns</string>
+    <string name="icon_kettle">Tējkanna</string>
+    <string name="icon_heat_pump">Siltumsūknis</string>
+    <string name="icon_heater">Sildītājs</string>
+    <string name="icon_air_conditioner">Gaisa kondicionētājs</string>
+    <string name="icon_thermostat">Termostats</string>
+    <string name="icon_fan">Ventilators</string>
+    <string name="icon_dehumidifier">Gaisa sausinātājs</string>
+    <string name="icon_water_heater">Ūdens sildītājs</string>
+    <string name="icon_hot_tub">Burbuļvanna</string>
+    <string name="icon_sauna">Pirts</string>
+    <string name="icon_pool_pump">Baseina sūknis</string>
+    <string name="icon_lawn_mower">Zāles pļāvējs</string>
+    <string name="icon_sprinkler">Sprinklers</string>
+    <string name="icon_ev_charger">EV lādētājs</string>
+    <string name="icon_solar_battery">Saule / akumulators</string>
+    <string name="icon_tv">Televizors</string>
+    <string name="icon_electricity">Elektrība</string>
+    <string name="icon_power">Jauda</string>
+    <string name="icon_timer">Taimeris</string>
+    <string name="icon_light">Gaisma</string>
+    <string name="icon_device">Ierīce</string>
+    <string name="icon_home">Mājas</string>
+    <string name="icon_favorite">Izlase</string>
+    <string name="icon_other">Cits</string>
 </resources>

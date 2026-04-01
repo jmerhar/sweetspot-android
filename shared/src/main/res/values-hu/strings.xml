@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Dél-közép Svédország</string>
     <string name="zone_se4">SE4 — Dél-Svédország</string>
     <string name="zone_ch">Svájc</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Mosógép</string>
+    <string name="icon_dryer">Szárítógép</string>
+    <string name="icon_iron">Vasaló</string>
+    <string name="icon_dishwasher">Mosogatógép</string>
+    <string name="icon_vacuum">Porszívó</string>
+    <string name="icon_oven">Sütő</string>
+    <string name="icon_kettle">Vízforraló</string>
+    <string name="icon_heat_pump">Hőszivattyú</string>
+    <string name="icon_heater">Fűtőtest</string>
+    <string name="icon_air_conditioner">Légkondicionáló</string>
+    <string name="icon_thermostat">Termosztát</string>
+    <string name="icon_fan">Ventilátor</string>
+    <string name="icon_dehumidifier">Párátlanító</string>
+    <string name="icon_water_heater">Vízmelegítő</string>
+    <string name="icon_hot_tub">Jacuzzi</string>
+    <string name="icon_sauna">Szauna</string>
+    <string name="icon_pool_pump">Medenceszivattyú</string>
+    <string name="icon_lawn_mower">Fűnyíró</string>
+    <string name="icon_sprinkler">Öntözőrendszer</string>
+    <string name="icon_ev_charger">EV töltő</string>
+    <string name="icon_solar_battery">Napelem / akkumulátor</string>
+    <string name="icon_tv">Televízió</string>
+    <string name="icon_electricity">Áram</string>
+    <string name="icon_power">Energia</string>
+    <string name="icon_timer">Időzítő</string>
+    <string name="icon_light">Fény</string>
+    <string name="icon_device">Eszköz</string>
+    <string name="icon_home">Otthon</string>
+    <string name="icon_favorite">Kedvenc</string>
+    <string name="icon_other">Egyéb</string>
 </resources>

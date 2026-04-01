@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Јужно-централна Шведска</string>
     <string name="zone_se4">SE4 — Јужна Шведска</string>
     <string name="zone_ch">Швајцарија</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Машина за перење</string>
+    <string name="icon_dryer">Машина за сушење</string>
+    <string name="icon_iron">Пегла</string>
+    <string name="icon_dishwasher">Машина за миење садови</string>
+    <string name="icon_vacuum">Правосмукалка</string>
+    <string name="icon_oven">Рерна</string>
+    <string name="icon_kettle">Бојлер за вода</string>
+    <string name="icon_heat_pump">Топлинска пумпа</string>
+    <string name="icon_heater">Грејач</string>
+    <string name="icon_air_conditioner">Клима-уред</string>
+    <string name="icon_thermostat">Термостат</string>
+    <string name="icon_fan">Вентилатор</string>
+    <string name="icon_dehumidifier">Обезвлажнувач</string>
+    <string name="icon_water_heater">Бојлер</string>
+    <string name="icon_hot_tub">Џакузи</string>
+    <string name="icon_sauna">Сауна</string>
+    <string name="icon_pool_pump">Пумпа за базен</string>
+    <string name="icon_lawn_mower">Косилка</string>
+    <string name="icon_sprinkler">Прскалка</string>
+    <string name="icon_ev_charger">Полнач за ЕВ</string>
+    <string name="icon_solar_battery">Соларно / батерија</string>
+    <string name="icon_tv">Телевизор</string>
+    <string name="icon_electricity">Електрична енергија</string>
+    <string name="icon_power">Моќност</string>
+    <string name="icon_timer">Тајмер</string>
+    <string name="icon_light">Светло</string>
+    <string name="icon_device">Уред</string>
+    <string name="icon_home">Дом</string>
+    <string name="icon_favorite">Омилено</string>
+    <string name="icon_other">Друго</string>
 </resources>

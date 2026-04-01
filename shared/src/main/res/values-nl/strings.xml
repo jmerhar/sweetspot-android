@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — Midden-Zuid-Zweden</string>
     <string name="zone_se4">SE4 — Zuid-Zweden</string>
     <string name="zone_ch">Zwitserland</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Wasmachine</string>
+    <string name="icon_dryer">Droger</string>
+    <string name="icon_iron">Strijkijzer</string>
+    <string name="icon_dishwasher">Vaatwasser</string>
+    <string name="icon_vacuum">Stofzuiger</string>
+    <string name="icon_oven">Oven</string>
+    <string name="icon_kettle">Waterkoker</string>
+    <string name="icon_heat_pump">Warmtepomp</string>
+    <string name="icon_heater">Verwarming</string>
+    <string name="icon_air_conditioner">Airconditioning</string>
+    <string name="icon_thermostat">Thermostaat</string>
+    <string name="icon_fan">Ventilator</string>
+    <string name="icon_dehumidifier">Luchtontvochtiger</string>
+    <string name="icon_water_heater">Boiler</string>
+    <string name="icon_hot_tub">Jacuzzi</string>
+    <string name="icon_sauna">Sauna</string>
+    <string name="icon_pool_pump">Zwembadpomp</string>
+    <string name="icon_lawn_mower">Grasmaaier</string>
+    <string name="icon_sprinkler">Sproeier</string>
+    <string name="icon_ev_charger">EV-lader</string>
+    <string name="icon_solar_battery">Zonne-energie / accu</string>
+    <string name="icon_tv">Televisie</string>
+    <string name="icon_electricity">Elektriciteit</string>
+    <string name="icon_power">Stroom</string>
+    <string name="icon_timer">Timer</string>
+    <string name="icon_light">Licht</string>
+    <string name="icon_device">Apparaat</string>
+    <string name="icon_home">Thuis</string>
+    <string name="icon_favorite">Favoriet</string>
+    <string name="icon_other">Overig</string>
 </resources>

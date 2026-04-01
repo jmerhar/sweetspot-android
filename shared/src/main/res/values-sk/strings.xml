@@ -107,4 +107,36 @@
     <string name="zone_se3">SE3 — Stredojužné Švédsko</string>
     <string name="zone_se4">SE4 — Južné Švédsko</string>
     <string name="zone_ch">Švajčiarsko</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Práčka</string>
+    <string name="icon_dryer">Sušička</string>
+    <string name="icon_iron">Žehlička</string>
+    <string name="icon_dishwasher">Umývačka</string>
+    <string name="icon_vacuum">Vysávač</string>
+    <string name="icon_oven">Rúra</string>
+    <string name="icon_kettle">Rýchlovarná kanvica</string>
+    <string name="icon_heat_pump">Tepelné čerpadlo</string>
+    <string name="icon_heater">Ohrievač</string>
+    <string name="icon_air_conditioner">Klimatizácia</string>
+    <string name="icon_thermostat">Termostat</string>
+    <string name="icon_fan">Ventilátor</string>
+    <string name="icon_dehumidifier">Odvlhčovač</string>
+    <string name="icon_water_heater">Ohrievač vody</string>
+    <string name="icon_hot_tub">Vírivka</string>
+    <string name="icon_sauna">Sauna</string>
+    <string name="icon_pool_pump">Bazénové čerpadlo</string>
+    <string name="icon_lawn_mower">Kosačka</string>
+    <string name="icon_sprinkler">Zavlažovač</string>
+    <string name="icon_ev_charger">Nabíjačka EV</string>
+    <string name="icon_solar_battery">Solárne / batéria</string>
+    <string name="icon_tv">Televízor</string>
+    <string name="icon_electricity">Elektrina</string>
+    <string name="icon_power">Napájanie</string>
+    <string name="icon_timer">Časovač</string>
+    <string name="icon_light">Svetlo</string>
+    <string name="icon_device">Zariadenie</string>
+    <string name="icon_home">Domov</string>
+    <string name="icon_favorite">Obľúbené</string>
+    <string name="icon_other">Iné</string>
 </resources>

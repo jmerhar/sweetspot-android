@@ -103,4 +103,36 @@
     <string name="zone_se3">SE3 — Centru-Sudul Suediei</string>
     <string name="zone_se4">SE4 — Sudul Suediei</string>
     <string name="zone_ch">Elveția</string>
+
+    <!-- Appliance icon labels -->
+    <string name="icon_washing_machine">Mașină de spălat</string>
+    <string name="icon_dryer">Uscător</string>
+    <string name="icon_iron">Fier de călcat</string>
+    <string name="icon_dishwasher">Mașină de spălat vase</string>
+    <string name="icon_vacuum">Aspirator</string>
+    <string name="icon_oven">Cuptor</string>
+    <string name="icon_kettle">Fierbător</string>
+    <string name="icon_heat_pump">Pompă de căldură</string>
+    <string name="icon_heater">Încălzitor</string>
+    <string name="icon_air_conditioner">Aer condiționat</string>
+    <string name="icon_thermostat">Termostat</string>
+    <string name="icon_fan">Ventilator</string>
+    <string name="icon_dehumidifier">Dezumidificator</string>
+    <string name="icon_water_heater">Boiler</string>
+    <string name="icon_hot_tub">Jacuzzi</string>
+    <string name="icon_sauna">Saună</string>
+    <string name="icon_pool_pump">Pompă de piscină</string>
+    <string name="icon_lawn_mower">Mașină de tuns iarba</string>
+    <string name="icon_sprinkler">Sprinkler</string>
+    <string name="icon_ev_charger">Încărcător EV</string>
+    <string name="icon_solar_battery">Solar / baterie</string>
+    <string name="icon_tv">Televizor</string>
+    <string name="icon_electricity">Electricitate</string>
+    <string name="icon_power">Energie</string>
+    <string name="icon_timer">Cronometru</string>
+    <string name="icon_light">Lumină</string>
+    <string name="icon_device">Dispozitiv</string>
+    <string name="icon_home">Acasă</string>
+    <string name="icon_favorite">Favorit</string>
+    <string name="icon_other">Altele</string>
 </resources>

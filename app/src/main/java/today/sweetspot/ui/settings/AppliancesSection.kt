@@ -168,7 +168,7 @@ internal fun ApplianceDialog(
                     onChanged = { h, m -> pickerHours = h; pickerMinutes = m }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
-                val selectedLabel = applianceIcons.firstOrNull { it.id == selectedIcon }?.label ?: ""
+                val selectedLabel = applianceIcons.firstOrNull { it.id == selectedIcon }?.let { stringResource(it.labelRes) } ?: ""
                 Text(
                     text = if (selectedLabel.isNotEmpty()) "${stringResource(R.string.dialog_icon)} - $selectedLabel"
                            else stringResource(R.string.dialog_icon),
@@ -200,7 +200,7 @@ internal fun ApplianceDialog(
                         ) {
                             Icon(
                                 painter = painterResource(entry.iconRes),
-                                contentDescription = entry.label,
+                                contentDescription = stringResource(entry.labelRes),
                                 modifier = Modifier.size(22.dp),
                                 tint = if (isSelected) MaterialTheme.colorScheme.primary
                                        else MaterialTheme.colorScheme.onSurfaceVariant

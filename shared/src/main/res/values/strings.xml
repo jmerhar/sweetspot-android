@@ -99,4 +99,36 @@
     <string name="zone_se3">SE3 — South-Central Sweden</string>
     <string name="zone_se4">SE4 — South Sweden</string>
     <string name="zone_ch">Switzerland</string>
+
+    <!-- Appliance icon labels (30 icons) -->
+    <string name="icon_washing_machine">Washing machine</string>
+    <string name="icon_dryer">Dryer</string>
+    <string name="icon_iron">Iron</string>
+    <string name="icon_dishwasher">Dishwasher</string>
+    <string name="icon_vacuum">Vacuum</string>
+    <string name="icon_oven">Oven</string>
+    <string name="icon_kettle">Kettle</string>
+    <string name="icon_heat_pump">Heat pump</string>
+    <string name="icon_heater">Heater</string>
+    <string name="icon_air_conditioner">Air conditioner</string>
+    <string name="icon_thermostat">Thermostat</string>
+    <string name="icon_fan">Fan</string>
+    <string name="icon_dehumidifier">Dehumidifier</string>
+    <string name="icon_water_heater">Water heater</string>
+    <string name="icon_hot_tub">Hot tub</string>
+    <string name="icon_sauna">Sauna</string>
+    <string name="icon_pool_pump">Pool pump</string>
+    <string name="icon_lawn_mower">Lawn mower</string>
+    <string name="icon_sprinkler">Sprinkler</string>
+    <string name="icon_ev_charger">EV charger</string>
+    <string name="icon_solar_battery">Solar / battery</string>
+    <string name="icon_tv">TV</string>
+    <string name="icon_electricity">Electricity</string>
+    <string name="icon_power">Power</string>
+    <string name="icon_timer">Timer</string>
+    <string name="icon_light">Light</string>
+    <string name="icon_device">Device</string>
+    <string name="icon_home">Home</string>
+    <string name="icon_favorite">Favorite</string>
+    <string name="icon_other">Other</string>
 </resources>

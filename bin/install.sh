@@ -30,6 +30,7 @@ case "$TARGET" in
             APK_PATTERN="app/build/outputs/apk/debug/app-debug.apk"
         else
             APK_PATTERN="app/build/outputs/apk/release/sweetspot-*.apk"
+            APK_FALLBACK="app/build/outputs/apk/release/app-release.apk"
         fi
         # Match any device that is NOT a watch
         LINE=$("$ADB" devices -l | grep -v -i 'watch\|wrist' | grep 'device ' | head -1 || true)
@@ -40,6 +41,7 @@ case "$TARGET" in
             APK_PATTERN="wear/build/outputs/apk/debug/wear-debug.apk"
         else
             APK_PATTERN="wear/build/outputs/apk/release/sweetspot-wear-*.apk"
+            APK_FALLBACK="wear/build/outputs/apk/release/wear-release.apk"
         fi
         LINE=$("$ADB" devices -l | grep -i 'watch\|wrist' | head -1 || true)
         DEVICE_LABEL="watch"
@@ -59,10 +61,13 @@ if [[ -z "$SERIAL" ]]; then
     exit 1
 fi
 
-# Find the APK (newest by modification time)
+# Find the APK (newest by modification time, with fallback to default name)
 APK_DIR=$(dirname "$APK_PATTERN")
 APK_NAME=$(basename "$APK_PATTERN")
 APK=$(find "$APK_DIR" -maxdepth 1 -name "$APK_NAME" -exec stat -f '%m %N' {} + 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
+if [[ -z "$APK" && -n "${APK_FALLBACK:-}" && -f "$APK_FALLBACK" ]]; then
+    APK="$APK_FALLBACK"
+fi
 if [[ -z "$APK" ]]; then
     echo "ERROR: No APK found matching $APK_PATTERN. Build first."
     exit 1

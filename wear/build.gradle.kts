@@ -2,6 +2,8 @@ plugins {
     id("sweetspot-app")
 }
 
+base.archivesName = "sweetspot-wear"
+
 android {
     namespace = "today.sweetspot.wear"
 

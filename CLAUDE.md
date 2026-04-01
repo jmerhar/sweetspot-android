@@ -35,7 +35,7 @@ The watch app must be installed separately via ADB (auto-install only works via 
 1. Enable Developer Options on the watch (Settings > System > About > tap Build Number 7 times)
 2. Enable Wi-Fi debugging (Settings > Developer options > Debug over Wi-Fi)
 3. Connect: `adb connect <ip>:<port>`
-4. Install: `make install-watch` (or manually: `adb -s <watch-serial> install wear/build/outputs/apk/release/wear-release.apk`)
+4. Install: `make install-watch` (or manually: `adb -s <watch-serial> install wear/build/outputs/apk/release/sweetspot-wear-release.apk`)
 
 Use `adb devices` to list connected devices when both phone and watch are connected.
 

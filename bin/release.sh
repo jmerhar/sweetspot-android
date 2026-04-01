@@ -72,13 +72,13 @@ sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$CONVENTION_FILE"
 echo "Building release APK and AAB..."
 ./gradlew assembleRelease bundleRelease
 
-APK_PATH="app/build/outputs/apk/release/app-release.apk"
+APK_PATH="app/build/outputs/apk/release/sweetspot-release.apk"
 if [[ ! -f "$APK_PATH" ]]; then
     echo "ERROR: Release APK not found at $APK_PATH"
     exit 1
 fi
 
-WEAR_APK_PATH="wear/build/outputs/apk/release/wear-release.apk"
+WEAR_APK_PATH="wear/build/outputs/apk/release/sweetspot-wear-release.apk"
 if [[ ! -f "$WEAR_APK_PATH" ]]; then
     echo "ERROR: Wear APK not found at $WEAR_APK_PATH"
     exit 1
@@ -121,5 +121,5 @@ echo ""
 echo "Done! Release ${TAG} created."
 echo "Phone APK: ${NAMED_APK}"
 echo "Wear APK:  ${NAMED_WEAR_APK}"
-echo "Phone AAB: app/build/outputs/bundle/release/app-release.aab"
-echo "Wear AAB:  wear/build/outputs/bundle/release/wear-release.aab"
+echo "Phone AAB: app/build/outputs/bundle/release/sweetspot-release.aab"
+echo "Wear AAB:  wear/build/outputs/bundle/release/sweetspot-wear-release.aab"

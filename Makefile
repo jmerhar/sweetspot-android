@@ -13,8 +13,8 @@ build-release: ## Build signed release APKs
 bundle: ## Build signed release AABs for Play Store
 	./gradlew bundleRelease
 	@mkdir -p build
-	@cp app/build/outputs/bundle/release/app-release.aab build/sweetspot-phone.aab
-	@cp wear/build/outputs/bundle/release/wear-release.aab build/sweetspot-wear.aab
+	@cp app/build/outputs/bundle/release/sweetspot-release.aab build/sweetspot-phone.aab
+	@cp wear/build/outputs/bundle/release/sweetspot-wear-release.aab build/sweetspot-wear.aab
 	@echo "AABs ready in build/"
 	@echo "  build/sweetspot-phone.aab"
 	@echo "  build/sweetspot-wear.aab"

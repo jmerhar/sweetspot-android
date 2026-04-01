@@ -14,7 +14,7 @@
 ./gradlew bundleRelease
 ```
 
-Produces `app/build/outputs/bundle/release/app-release.aab`.
+Produces `app/build/outputs/bundle/release/sweetspot-release.aab`.
 
 The release script (`bin/release.sh`) currently builds APKs. Either update it to also
 build AABs, or add a separate `make bundle` target.

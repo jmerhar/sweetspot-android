@@ -34,7 +34,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import android.content.Context
 import androidx.core.app.LocaleManagerCompat
-import androidx.core.os.LocaleListCompat
 import today.sweetspot.R
 import java.util.Locale
 
@@ -219,12 +218,7 @@ internal fun LanguagePickerScreen(
                         label = systemDefaultLabel,
                         subtitle = systemLanguageName(context),
                         isSelected = currentTag.isEmpty(),
-                        onClick = {
-                            onLanguageChanged("")
-                            AppCompatDelegate.setApplicationLocales(
-                                LocaleListCompat.forLanguageTags("")
-                            )
-                        }
+                        onClick = { onLanguageChanged("") }
                     )
                     HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
                 }
@@ -234,12 +228,7 @@ internal fun LanguagePickerScreen(
                         label = option.nativeName,
                         subtitle = option.englishName.ifEmpty { null },
                         isSelected = option.tag == currentTag,
-                        onClick = {
-                            onLanguageChanged(option.tag)
-                            AppCompatDelegate.setApplicationLocales(
-                                LocaleListCompat.forLanguageTags(option.tag)
-                            )
-                        }
+                        onClick = { onLanguageChanged(option.tag) }
                     )
                 }
             }

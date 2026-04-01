@@ -3,7 +3,7 @@ package today.sweetspot
 import android.app.Activity
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.DataClient
@@ -578,14 +578,17 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     /**
-     * Called before the user changes the per-app language in Settings.
+     * Called when the user picks a new per-app language in Settings.
      *
-     * Accepts the new [languageTag] explicitly because [AppCompatDelegate.getApplicationLocales]
-     * still returns the old value at this point. Syncs the tag to the watch via the Data Layer.
-     * The actual locale switch is handled by [AppCompatDelegate.setApplicationLocales] in the UI.
+     * Syncs the tag to the watch via the Data Layer and then triggers the locale switch.
+     * Setting the locale here (before the Compose navigation state changes) avoids a
+     * flash of the old language when the picker closes and the Activity recreates.
      */
     fun onLanguageChanged(languageTag: String) {
         syncSettingsToWear(languageTag = languageTag)
+        AppCompatDelegate.setApplicationLocales(
+            LocaleListCompat.forLanguageTags(languageTag)
+        )
     }
 
     /**

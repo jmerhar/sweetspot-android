@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -76,7 +77,7 @@ internal fun AppliancesSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = applianceIconFor(appliance.icon),
+                painter = painterResource(applianceIconFor(appliance.icon)),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -198,7 +199,7 @@ internal fun ApplianceDialog(
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                imageVector = entry.icon,
+                                painter = painterResource(entry.iconRes),
                                 contentDescription = entry.label,
                                 modifier = Modifier.size(22.dp),
                                 tint = if (isSelected) MaterialTheme.colorScheme.primary

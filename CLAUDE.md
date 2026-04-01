@@ -116,7 +116,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - MVVM: `SweetSpotViewModel` (phone) and `WearViewModel` (watch) with `StateFlow`
 - OkHttp 5 for HTTP, kotlinx-serialization for JSON
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
-- Material Icons Extended for appliance icon picker
+- Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for one-time in-app purchase (phone only)
 - JUnit 4 + Robolectric for unit tests (301 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
@@ -175,7 +175,7 @@ The data layer is organised into four subpackages under `data/`:
 - **`CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
-- **`model/ApplianceIcon`** — Icon registry mapping string IDs to Material `ImageVector`s. Contains 31 curated icons (23 household appliances + 8 generic). `applianceIconFor(id)` resolves an ID to its icon.
+- **`model/ApplianceIcon`** — Icon registry mapping string IDs to drawable resource IDs. Contains 30 curated icons (22 household appliances + 8 generic) using Material Symbols (Outlined, 24px) as XML vector drawables in `shared/src/main/res/drawable/`. `applianceIconFor(id)` resolves an ID to its drawable resource.
 - **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
 - **`util/FormatUtils`** — `formatDuration()` and `shortTimeFormatter` shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.
@@ -230,6 +230,20 @@ The form view (`DurationInput` card) contains:
 4. **Write tests** (3 files, following existing patterns): `XxxApiParseTest` (valid parsing, edge cases), `XxxApiMalformedTest` (invalid JSON/XML handling), `XxxApiDstTest` (5 DST tests with a representative timezone: winter, summer, spring-forward, fall-back, cross-DST).
 5. **Update `DataSourceTest`**: update zone count expectations in the `source zone counts match expected values` test.
 6. **Update docs**: `CLAUDE.md` (External APIs, test list, test count) and `README.md` (data sources description, test count).
+
+### Adding a New Appliance Icon
+
+Icons use [Material Symbols](https://fonts.google.com/icons?icon.set=Material+Symbols) (Outlined style, 24px) as Android XML vector drawables.
+
+1. **Find the icon** at [fonts.google.com/icons](https://fonts.google.com/icons?icon.set=Material+Symbols). Filter by "Material Symbols" and "Outlined" style. Note the icon's snake_case name (e.g. `dishwasher`, `heat_pump`).
+2. **Download the drawable**:
+   ```bash
+   curl -sL "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/android/<symbol_name>/materialsymbolsoutlined/<symbol_name>_24px.xml" \
+     -o shared/src/main/res/drawable/ic_<appliance_id>.xml
+   ```
+   Where `<symbol_name>` is the Material Symbol name and `<appliance_id>` is the ID you'll use in the registry (should match the label, e.g. `dishwasher`, `heat_pump`).
+3. **Register in `ApplianceIcon.kt`**: add an `ApplianceIcon("<id>", R.drawable.ic_<id>, "<Label>")` entry in the appropriate section (household or generic).
+4. **Update docs**: update icon counts in `CLAUDE.md` and `README.md`.
 
 ## Key Conventions
 

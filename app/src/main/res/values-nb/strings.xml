@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Legg til husholdningsapparatene dine her for rask tilgang. Du kan også legge til spesifikke programmer, f.eks. Oppvaskmaskin Øko, Oppvaskmaskin Rask, Vaskemaskin Bomull.</string>
     <string name="settings_add_appliance">Legg til apparat</string>
     <string name="settings_timezone">Tidssone</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Systemstandard</string>
+    <string name="settings_theme_light">Lyst</string>
+    <string name="settings_theme_dark">Mørkt</string>
     <string name="settings_auto_timezone">Automatisk (fra land)</string>
     <string name="settings_custom_timezone">Egendefinert tidssone</string>
     <string name="settings_unknown_country">Ukjent</string>

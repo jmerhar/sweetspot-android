@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Add your home appliances here for easy access. You can also add specific programmes, e.g. Dishwasher Eco, Dishwasher Quick, Washing Machine Cotton.</string>
     <string name="settings_add_appliance">Add appliance</string>
     <string name="settings_timezone">Timezone</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
     <string name="settings_auto_timezone">Auto (from country)</string>
     <string name="settings_custom_timezone">Custom timezone</string>
     <string name="settings_unknown_country">Unknown</string>

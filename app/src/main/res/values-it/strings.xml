@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Aggiungi qui i tuoi elettrodomestici per un accesso rapido. Puoi anche aggiungere programmi specifici, ad es. Lavastoviglie Eco, Lavastoviglie Rapida, Lavatrice Cotone.</string>
     <string name="settings_add_appliance">Aggiungi elettrodomestico</string>
     <string name="settings_timezone">Fuso orario</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Predefinito di sistema</string>
+    <string name="settings_theme_light">Chiaro</string>
+    <string name="settings_theme_dark">Scuro</string>
     <string name="settings_auto_timezone">Automatico (dal paese)</string>
     <string name="settings_custom_timezone">Fuso orario personalizzato</string>
     <string name="settings_unknown_country">Sconosciuto</string>

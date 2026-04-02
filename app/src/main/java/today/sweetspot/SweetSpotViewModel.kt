@@ -96,6 +96,7 @@ sealed interface AppError {
  * @property timeOverrideMs Developer time override as epoch millis, or `null` when using real time.
  * @property now The current effective time, reflecting any active time override. Used by the UI for relative time display.
  * @property useProductionLogo Whether to show the production logo instead of the debug logo (debug builds only).
+ * @property themeMode The user's preferred theme mode.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -127,7 +128,8 @@ data class UiState(
     val isCooldownDisabled: Boolean = false,
     val timeOverrideMs: Long? = null,
     val now: ZonedDateTime = ZonedDateTime.now(),
-    val useProductionLogo: Boolean = false
+    val useProductionLogo: Boolean = false,
+    val themeMode: ThemeMode = ThemeMode.SYSTEM
 )
 
 /**
@@ -196,7 +198,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             isCooldownDisabled = settingsRepository.isCooldownDisabled(),
             timeOverrideMs = settingsRepository.getTimeOverrideMs(),
             now = currentNow(settingsRepository.getTimeZoneId()),
-            useProductionLogo = settingsRepository.isUseProductionLogo()
+            useProductionLogo = settingsRepository.isUseProductionLogo(),
+            themeMode = ThemeMode.fromKey(settingsRepository.getThemeMode())
         )
     )
 
@@ -616,6 +619,17 @@ class SweetSpotViewModel @JvmOverloads constructor(
         AppCompatDelegate.setApplicationLocales(
             LocaleListCompat.forLanguageTags(languageTag)
         )
+    }
+
+    /**
+     * Applies the selected theme mode and persists it.
+     *
+     * @param mode The selected [ThemeMode].
+     */
+    fun onThemeModeChanged(mode: ThemeMode) {
+        settingsRepository.setThemeMode(mode.key)
+        _uiState.update { it.copy(themeMode = mode) }
+        AppCompatDelegate.setDefaultNightMode(mode.nightMode)
     }
 
     /**

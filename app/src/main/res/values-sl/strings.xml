@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Tukaj dodajte svoje gospodinjske aparate za hiter dostop. Dodate lahko tudi določene programe, npr. Pomivalni stroj Eco, Pomivalni stroj Hitri, Pralni stroj Bombaž.</string>
     <string name="settings_add_appliance">Dodaj aparat</string>
     <string name="settings_timezone">Časovni pas</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Sistemska privzeta</string>
+    <string name="settings_theme_light">Svetla</string>
+    <string name="settings_theme_dark">Temna</string>
     <string name="settings_auto_timezone">Samodejno (iz države)</string>
     <string name="settings_custom_timezone">Časovni pas po meri</string>
     <string name="settings_unknown_country">Neznana</string>

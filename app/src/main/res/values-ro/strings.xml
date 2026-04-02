@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Adaugă aici aparatele electrocasnice pentru acces rapid. Poți adăuga și programe specifice, de ex. Mașină de spălat vase Eco, Mașină de spălat vase Rapid, Mașină de spălat rufe Bumbac.</string>
     <string name="settings_add_appliance">Adaugă aparat</string>
     <string name="settings_timezone">Fus orar</string>
+    <string name="settings_theme">Temă</string>
+    <string name="settings_theme_system">Implicit sistem</string>
+    <string name="settings_theme_light">Luminoasă</string>
+    <string name="settings_theme_dark">Întunecată</string>
     <string name="settings_auto_timezone">Automat (din țară)</string>
     <string name="settings_custom_timezone">Fus orar personalizat</string>
     <string name="settings_unknown_country">Necunoscută</string>

@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Přidejte si zde své domácí spotřebiče pro rychlý přístup. Můžete přidat i konkrétní programy, např. Myčka Eko, Myčka Rychlá, Pračka Bavlna.</string>
     <string name="settings_add_appliance">Přidat spotřebič</string>
     <string name="settings_timezone">Časová zóna</string>
+    <string name="settings_theme">Motiv</string>
+    <string name="settings_theme_system">Systémový</string>
+    <string name="settings_theme_light">Světlý</string>
+    <string name="settings_theme_dark">Tmavý</string>
     <string name="settings_auto_timezone">Automaticky (ze země)</string>
     <string name="settings_custom_timezone">Vlastní časová zóna</string>
     <string name="settings_unknown_country">Neznámá</string>

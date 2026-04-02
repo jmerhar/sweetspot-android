@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Lisää kodinkoneet tänne nopeaa käyttöä varten. Voit myös lisätä tiettyjä ohjelmia, esim. Astianpesukone Eco, Astianpesukone Pika, Pyykinpesukone Puuvilla.</string>
     <string name="settings_add_appliance">Lisää laite</string>
     <string name="settings_timezone">Aikavyöhyke</string>
+    <string name="settings_theme">Teema</string>
+    <string name="settings_theme_system">Järjestelmän oletus</string>
+    <string name="settings_theme_light">Vaalea</string>
+    <string name="settings_theme_dark">Tumma</string>
     <string name="settings_auto_timezone">Automaattinen (maasta)</string>
     <string name="settings_custom_timezone">Mukautettu aikavyöhyke</string>
     <string name="settings_unknown_country">Tuntematon</string>

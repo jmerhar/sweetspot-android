@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Añade aquí tus electrodomésticos para un acceso rápido. También puedes añadir programas específicos, p. ej. Lavavajillas Eco, Lavavajillas Rápido, Lavadora Algodón.</string>
     <string name="settings_add_appliance">Añadir electrodoméstico</string>
     <string name="settings_timezone">Zona horaria</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Predeterminado del sistema</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_theme_dark">Oscuro</string>
     <string name="settings_auto_timezone">Automática (del país)</string>
     <string name="settings_custom_timezone">Zona horaria personalizada</string>
     <string name="settings_unknown_country">Desconocido</string>

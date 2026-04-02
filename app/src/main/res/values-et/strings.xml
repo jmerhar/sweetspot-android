@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Lisage siia oma koduseadmed kiireks ligipääsuks. Saate lisada ka konkreetseid programme, nt nõudepesumasin Eco, nõudepesumasin kiire, pesumasin puuvillane.</string>
     <string name="settings_add_appliance">Lisa seade</string>
     <string name="settings_timezone">Ajavöönd</string>
+    <string name="settings_theme">Teema</string>
+    <string name="settings_theme_system">Süsteemi vaikimisi</string>
+    <string name="settings_theme_light">Hele</string>
+    <string name="settings_theme_dark">Tume</string>
     <string name="settings_auto_timezone">Automaatne (riigi järgi)</string>
     <string name="settings_custom_timezone">Kohandatud ajavöönd</string>
     <string name="settings_unknown_country">Tundmatu</string>

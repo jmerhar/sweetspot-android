@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Voeg hier je huishoudelijke apparaten toe voor snelle toegang. Je kunt ook specifieke programma\'s toevoegen, bijv. Vaatwasser Eco, Vaatwasser Snel, Wasmachine Katoen.</string>
     <string name="settings_add_appliance">Apparaat toevoegen</string>
     <string name="settings_timezone">Tijdzone</string>
+    <string name="settings_theme">Thema</string>
+    <string name="settings_theme_system">Systeemstandaard</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_theme_dark">Donker</string>
     <string name="settings_auto_timezone">Automatisch (van land)</string>
     <string name="settings_custom_timezone">Aangepaste tijdzone</string>
     <string name="settings_unknown_country">Onbekend</string>

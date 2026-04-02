@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Ajoutez ici vos appareils électroménagers pour un accès rapide. Vous pouvez aussi ajouter des programmes spécifiques, par ex. Lave-vaisselle Eco, Lave-vaisselle Rapide, Lave-linge Coton.</string>
     <string name="settings_add_appliance">Ajouter un appareil</string>
     <string name="settings_timezone">Fuseau horaire</string>
+    <string name="settings_theme">Thème</string>
+    <string name="settings_theme_system">Par défaut du système</string>
+    <string name="settings_theme_light">Clair</string>
+    <string name="settings_theme_dark">Sombre</string>
     <string name="settings_auto_timezone">Automatique (du pays)</string>
     <string name="settings_custom_timezone">Fuseau horaire personnalisé</string>
     <string name="settings_unknown_country">Inconnu</string>

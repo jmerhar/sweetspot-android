@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Lägg till dina hushållsapparater här för snabb åtkomst. Du kan också lägga till specifika program, t.ex. Diskmaskin Eco, Diskmaskin Snabb, Tvättmaskin Bomull.</string>
     <string name="settings_add_appliance">Lägg till apparat</string>
     <string name="settings_timezone">Tidszon</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Systemstandard</string>
+    <string name="settings_theme_light">Ljust</string>
+    <string name="settings_theme_dark">Mörkt</string>
     <string name="settings_auto_timezone">Automatisk (från land)</string>
     <string name="settings_custom_timezone">Anpassad tidszon</string>
     <string name="settings_unknown_country">Okänt</string>

@@ -5,6 +5,7 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -18,6 +19,7 @@ import today.sweetspot.ui.PaywallScreen
 import today.sweetspot.ui.settings.SettingsScreen
 import today.sweetspot.ui.SweetSpotScreen
 import today.sweetspot.ui.theme.SweetSpotTheme
+import today.sweetspot.data.repository.SettingsRepository
 
 /**
  * Entry point for the phone app.
@@ -29,6 +31,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Apply stored theme before setContent so the first frame uses the correct mode
+        val themeMode = ThemeMode.fromKey(SettingsRepository(this).getThemeMode())
+        AppCompatDelegate.setDefaultNightMode(themeMode.nightMode)
+
         setContent {
             SweetSpotTheme {
                 val vm: SweetSpotViewModel = viewModel()
@@ -45,6 +52,8 @@ class MainActivity : AppCompatActivity() {
                     state.showSettings -> {
                         BackHandler { vm.onHideSettings() }
                         SettingsScreen(
+                            themeMode = state.themeMode,
+                            onThemeModeChanged = vm::onThemeModeChanged,
                             currentTimeZoneId = state.timeZoneId,
                             isUsingDefaultTimezone = state.isUsingDefaultTimezone,
                             onTimezoneSelected = vm::onTimezoneSelected,

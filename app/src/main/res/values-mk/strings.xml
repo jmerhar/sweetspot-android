@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Додајте ги вашите домашни апарати тука за брз пристап. Можете и да додадете конкретни програми, на пр. Машина за садови Еко, Машина за садови Брза, Машина за перење Памук.</string>
     <string name="settings_add_appliance">Додај апарат</string>
     <string name="settings_timezone">Временска зона</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_system">Системски</string>
+    <string name="settings_theme_light">Светла</string>
+    <string name="settings_theme_dark">Темна</string>
     <string name="settings_auto_timezone">Автоматски (од земјата)</string>
     <string name="settings_custom_timezone">Прилагодена временска зона</string>
     <string name="settings_unknown_country">Непозната</string>

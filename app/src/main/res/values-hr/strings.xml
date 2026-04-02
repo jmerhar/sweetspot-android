@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Ovdje dodajte svoje kućanske uređaje za brzi pristup. Možete dodati i određene programe, npr. Perilica posuđa Eco, Perilica posuđa Brzi, Perilica rublja Pamuk.</string>
     <string name="settings_add_appliance">Dodaj uređaj</string>
     <string name="settings_timezone">Vremenska zona</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Zadano sustava</string>
+    <string name="settings_theme_light">Svijetla</string>
+    <string name="settings_theme_dark">Tamna</string>
     <string name="settings_auto_timezone">Automatski (prema državi)</string>
     <string name="settings_custom_timezone">Prilagođena vremenska zona</string>
     <string name="settings_unknown_country">Nepoznata</string>

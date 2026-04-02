@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Προσθέστε εδώ τις οικιακές σας συσκευές για γρήγορη πρόσβαση. Μπορείτε επίσης να προσθέσετε συγκεκριμένα προγράμματα, π.χ. Πλυντήριο πιάτων Eco, Πλυντήριο πιάτων Γρήγορο, Πλυντήριο ρούχων Βαμβακερά.</string>
     <string name="settings_add_appliance">Προσθήκη συσκευής</string>
     <string name="settings_timezone">Ζώνη ώρας</string>
+    <string name="settings_theme">Θέμα</string>
+    <string name="settings_theme_system">Προεπιλογή συστήματος</string>
+    <string name="settings_theme_light">Φωτεινό</string>
+    <string name="settings_theme_dark">Σκοτεινό</string>
     <string name="settings_auto_timezone">Αυτόματη (από τη χώρα)</string>
     <string name="settings_custom_timezone">Προσαρμοσμένη ζώνη ώρας</string>
     <string name="settings_unknown_country">Άγνωστη</string>

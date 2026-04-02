@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Pievienojiet savas mājas ierīces ātrai piekļuvei. Varat pievienot arī konkrētas programmas, piem. Trauku mazgājamā mašīna Eco, Trauku mazgājamā mašīna Ātrā, Veļas mašīna Kokvilna.</string>
     <string name="settings_add_appliance">Pievienot ierīci</string>
     <string name="settings_timezone">Laika josla</string>
+    <string name="settings_theme">Motīvs</string>
+    <string name="settings_theme_system">Sistēmas noklusējums</string>
+    <string name="settings_theme_light">Gaišs</string>
+    <string name="settings_theme_dark">Tumšs</string>
     <string name="settings_auto_timezone">Automātiski (no valsts)</string>
     <string name="settings_custom_timezone">Pielāgota laika josla</string>
     <string name="settings_unknown_country">Nezināma</string>

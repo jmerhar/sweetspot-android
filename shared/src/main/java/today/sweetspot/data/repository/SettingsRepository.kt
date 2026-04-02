@@ -39,6 +39,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_COOLDOWN_DISABLED = "cooldown_disabled"
         const val KEY_TIME_OVERRIDE = "time_override"
         const val KEY_USE_PRODUCTION_LOGO = "use_production_logo"
+        const val KEY_THEME_MODE = "theme_mode"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -393,5 +394,25 @@ class SettingsRepository(private val context: Context) {
      */
     fun setUseProductionLogo(use: Boolean) {
         prefs.edit { putBoolean(KEY_USE_PRODUCTION_LOGO, use) }
+    }
+
+    // --- Theme ---
+
+    /**
+     * Returns the user's preferred theme mode key.
+     *
+     * @return One of `"system"`, `"light"`, or `"dark"`. Defaults to `"system"`.
+     */
+    fun getThemeMode(): String {
+        return prefs.getString(KEY_THEME_MODE, "system") ?: "system"
+    }
+
+    /**
+     * Persists the user's preferred theme mode key.
+     *
+     * @param mode One of `"system"`, `"light"`, or `"dark"`.
+     */
+    fun setThemeMode(mode: String) {
+        prefs.edit { putString(KEY_THEME_MODE, mode) }
     }
 }

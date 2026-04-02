@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import today.sweetspot.BuildConfig
 import kotlinx.coroutines.launch
 import today.sweetspot.R
+import today.sweetspot.ThemeMode
 import today.sweetspot.data.api.DataSource
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.Countries
@@ -56,6 +57,8 @@ import java.time.ZoneId
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
+    themeMode: ThemeMode,
+    onThemeModeChanged: (ThemeMode) -> Unit,
     currentTimeZoneId: ZoneId,
     isUsingDefaultTimezone: Boolean,
     onTimezoneSelected: (ZoneId?) -> Unit,
@@ -274,6 +277,13 @@ fun SettingsScreen(
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
             LanguageSection(onClick = { showLanguagePicker = true })
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            ThemeSection(
+                themeMode = themeMode,
+                onThemeModeChanged = onThemeModeChanged
+            )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 

@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Füge hier deine Haushaltsgeräte hinzu für schnellen Zugriff. Du kannst auch bestimmte Programme hinzufügen, z.B. Spülmaschine Eco, Spülmaschine Schnell, Waschmaschine Baumwolle.</string>
     <string name="settings_add_appliance">Gerät hinzufügen</string>
     <string name="settings_timezone">Zeitzone</string>
+    <string name="settings_theme">Design</string>
+    <string name="settings_theme_system">Systemstandard</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
     <string name="settings_auto_timezone">Automatisch (vom Land)</string>
     <string name="settings_custom_timezone">Benutzerdefinierte Zeitzone</string>
     <string name="settings_unknown_country">Unbekannt</string>

@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Adicione aqui os seus eletrodomésticos para acesso rápido. Também pode adicionar programas específicos, por ex. Máquina de lavar loiça Eco, Máquina de lavar loiça Rápido, Máquina de lavar roupa Algodão.</string>
     <string name="settings_add_appliance">Adicionar eletrodoméstico</string>
     <string name="settings_timezone">Fuso horário</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Padrão do sistema</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_theme_dark">Escuro</string>
     <string name="settings_auto_timezone">Automático (do país)</string>
     <string name="settings_custom_timezone">Fuso horário personalizado</string>
     <string name="settings_unknown_country">Desconhecido</string>

@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Dodaj tutaj swoje urządzenia domowe dla szybkiego dostępu. Możesz też dodać konkretne programy, np. Zmywarka Eco, Zmywarka Szybki, Pralka Bawełna.</string>
     <string name="settings_add_appliance">Dodaj urządzenie</string>
     <string name="settings_timezone">Strefa czasowa</string>
+    <string name="settings_theme">Motyw</string>
+    <string name="settings_theme_system">Domyślny systemowy</string>
+    <string name="settings_theme_light">Jasny</string>
+    <string name="settings_theme_dark">Ciemny</string>
     <string name="settings_auto_timezone">Automatyczna (z kraju)</string>
     <string name="settings_custom_timezone">Własna strefa czasowa</string>
     <string name="settings_unknown_country">Nieznany</string>

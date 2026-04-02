@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Pridėkite savo buitinius prietaisus čia greitai prieigai. Taip pat galite pridėti konkrečias programas, pvz. Indaplovė Eco, Indaplovė Greita, Skalbyklė Medvilnė.</string>
     <string name="settings_add_appliance">Pridėti prietaisą</string>
     <string name="settings_timezone">Laiko juosta</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Sistemos numatytoji</string>
+    <string name="settings_theme_light">Šviesi</string>
+    <string name="settings_theme_dark">Tamsi</string>
     <string name="settings_auto_timezone">Automatinė (pagal šalį)</string>
     <string name="settings_custom_timezone">Pasirinktinė laiko juosta</string>
     <string name="settings_unknown_country">Nežinoma</string>

@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Add hozzá háztartási készülékeidet a gyors elérés érdekében. Konkrét programokat is hozzáadhatsz, pl. Mosogatógép Eco, Mosogatógép Gyors, Mosógép Pamut.</string>
     <string name="settings_add_appliance">Készülék hozzáadása</string>
     <string name="settings_timezone">Időzóna</string>
+    <string name="settings_theme">Téma</string>
+    <string name="settings_theme_system">Rendszer alapértelmezett</string>
+    <string name="settings_theme_light">Világos</string>
+    <string name="settings_theme_dark">Sötét</string>
     <string name="settings_auto_timezone">Automatikus (ország alapján)</string>
     <string name="settings_custom_timezone">Egyéni időzóna</string>
     <string name="settings_unknown_country">Ismeretlen</string>

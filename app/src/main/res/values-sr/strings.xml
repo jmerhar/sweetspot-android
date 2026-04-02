@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Овде додајте своје кућне апарате за брз приступ. Можете додати и одређене програме, нпр. Машина за судове Еко, Машина за судове Брзи, Веш машина Памук.</string>
     <string name="settings_add_appliance">Додај апарат</string>
     <string name="settings_timezone">Временска зона</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_system">Системска</string>
+    <string name="settings_theme_light">Светла</string>
+    <string name="settings_theme_dark">Тамна</string>
     <string name="settings_auto_timezone">Аутоматски (из државе)</string>
     <string name="settings_custom_timezone">Прилагођена временска зона</string>
     <string name="settings_unknown_country">Непозната</string>

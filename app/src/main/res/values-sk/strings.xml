@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Pridajte sem svoje domáce spotrebiče pre rýchly prístup. Môžete pridať aj konkrétne programy, napr. Umývačka Eco, Umývačka Rýchly, Práčka Bavlna.</string>
     <string name="settings_add_appliance">Pridať spotrebič</string>
     <string name="settings_timezone">Časové pásmo</string>
+    <string name="settings_theme">Motív</string>
+    <string name="settings_theme_system">Systémový</string>
+    <string name="settings_theme_light">Svetlý</string>
+    <string name="settings_theme_dark">Tmavý</string>
     <string name="settings_auto_timezone">Automaticky (podľa krajiny)</string>
     <string name="settings_custom_timezone">Vlastné časové pásmo</string>
     <string name="settings_unknown_country">Neznáma</string>

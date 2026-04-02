@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Добавете домашните си уреди тук за бърз достъп. Можете също да добавите конкретни програми, напр. Съдомиялна Еко, Съдомиялна Бърза, Пералня Памук.</string>
     <string name="settings_add_appliance">Добавяне на уред</string>
     <string name="settings_timezone">Часова зона</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_system">Системна</string>
+    <string name="settings_theme_light">Светла</string>
+    <string name="settings_theme_dark">Тъмна</string>
     <string name="settings_auto_timezone">Автоматично (от държавата)</string>
     <string name="settings_custom_timezone">Персонализирана часова зона</string>
     <string name="settings_unknown_country">Неизвестна</string>

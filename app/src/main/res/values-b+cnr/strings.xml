@@ -50,6 +50,10 @@
     <string name="settings_appliances_description">Ovdje dodajte svoje kućne aparate za brz pristup. Možete dodati i određene programe, npr. Mašina za sudove Eko, Mašina za sudove Brzi, Veš mašina Pamuk.</string>
     <string name="settings_add_appliance">Dodaj aparat</string>
     <string name="settings_timezone">Vremenska zona</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_system">Sistemski zadano</string>
+    <string name="settings_theme_light">Svijetla</string>
+    <string name="settings_theme_dark">Tamna</string>
     <string name="settings_auto_timezone">Automatski (iz države)</string>
     <string name="settings_custom_timezone">Prilagođena vremenska zona</string>
     <string name="settings_unknown_country">Nepoznata</string>

@@ -44,6 +44,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 import kotlinx.serialization.json.Json
+import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.UUID
@@ -92,6 +93,8 @@ sealed interface AppError {
  * @property showThankYou Whether the thank-you dialog should be shown after a successful purchase.
  * @property devOptionsEnabled Whether hidden developer options are visible.
  * @property isCooldownDisabled Whether the API fetch cooldown is bypassed (developer option).
+ * @property timeOverrideMs Developer time override as epoch millis, or `null` when using real time.
+ * @property now The current effective time, reflecting any active time override. Used by the UI for relative time display.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -120,7 +123,9 @@ data class UiState(
     val productPrice: String? = null,
     val showThankYou: Boolean = false,
     val devOptionsEnabled: Boolean = false,
-    val isCooldownDisabled: Boolean = false
+    val isCooldownDisabled: Boolean = false,
+    val timeOverrideMs: Long? = null,
+    val now: ZonedDateTime = ZonedDateTime.now()
 )
 
 /**
@@ -186,7 +191,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             trialDaysRemaining = settingsRepository.trialDaysRemaining(),
             showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired(),
             devOptionsEnabled = settingsRepository.isDevOptionsEnabled(),
-            isCooldownDisabled = settingsRepository.isCooldownDisabled()
+            isCooldownDisabled = settingsRepository.isCooldownDisabled(),
+            timeOverrideMs = settingsRepository.getTimeOverrideMs(),
+            now = currentNow(settingsRepository.getTimeZoneId())
         )
     )
 
@@ -241,6 +248,20 @@ class SweetSpotViewModel @JvmOverloads constructor(
             Wearable.getDataClient(getApplication()).removeListener(this)
         } catch (_: Exception) {
             // Play Services unavailable
+        }
+    }
+
+    /**
+     * Returns the effective "now" for the given timezone, respecting any active time override.
+     *
+     * @param timeZoneId Timezone to apply.
+     */
+    private fun currentNow(timeZoneId: ZoneId): ZonedDateTime {
+        val overrideMs = settingsRepository.getTimeOverrideMs()
+        return if (overrideMs != null) {
+            Instant.ofEpochMilli(overrideMs).atZone(timeZoneId)
+        } else {
+            ZonedDateTime.now(timeZoneId)
         }
     }
 
@@ -443,7 +464,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (prices.isEmpty() || state.result == null) return
 
         val timeZoneId = state.timeZoneId
-        val now = ZonedDateTime.now(timeZoneId)
+        val now = currentNow(timeZoneId)
         val futurePrices = prices.filter {
             it.time.plusMinutes(it.durationMinutes.toLong()).isAfter(now)
         }
@@ -453,7 +474,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             findCheapestWindow(futurePrices, durationHours, now)
         } else null
 
-        _uiState.update { it.copy(result = result, allPrices = futurePrices) }
+        _uiState.update { it.copy(result = result, allPrices = futurePrices, now = now) }
     }
 
     /**
@@ -701,7 +722,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder, activeCollector, "phone")
             val fetcher = factory.create(priceZone)
             if (settingsRepository.isCooldownDisabled()) priceCache.resetCooldown()
-            val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
+            val repository = PriceRepository(priceCache, timeZoneId, fetcher, clock = settingsRepository.devClock(timeZoneId), cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
             val prices = priceResult.prices
 
@@ -717,7 +738,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 return
             }
 
-            val now = ZonedDateTime.now(timeZoneId)
+            val now = currentNow(timeZoneId)
             val result = findCheapestWindow(prices, durationHours, now)
 
             if (result == null) {
@@ -738,7 +759,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     result = result,
                     allPrices = prices,
                     priceSource = priceResult.source,
-                    error = null
+                    error = null,
+                    now = now
                 )
             }
             startResultRefresh()
@@ -895,6 +917,29 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onDevCooldownDisabledChanged(disabled: Boolean) {
         settingsRepository.setCooldownDisabled(disabled)
         _uiState.update { it.copy(isCooldownDisabled = disabled) }
+    }
+
+    /**
+     * Sets or clears the developer time override.
+     *
+     * When set, the app behaves as if the current time is the override value.
+     * Clears cached prices so the next fetch uses the overridden date range.
+     *
+     * @param ms Epoch milliseconds for the fake "now", or `null` to clear.
+     */
+    fun onDevTimeOverrideChanged(ms: Long?) {
+        settingsRepository.setTimeOverrideMs(ms)
+        priceCache.clear()
+        val timeZoneId = _uiState.value.timeZoneId
+        _uiState.update {
+            it.copy(
+                timeOverrideMs = ms,
+                now = currentNow(timeZoneId),
+                isTrialExpired = settingsRepository.isTrialExpired(),
+                trialDaysRemaining = settingsRepository.trialDaysRemaining(),
+                showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !settingsRepository.isUnlocked()
+            )
+        }
     }
 
     /**

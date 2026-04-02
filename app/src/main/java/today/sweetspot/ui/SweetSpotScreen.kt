@@ -93,7 +93,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             result = state.result!!,
             allPrices = state.allPrices,
             resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
-            timeZoneId = state.timeZoneId,
+            now = state.now,
             priceSource = state.priceSource,
             priceZoneName = priceZoneName,
             isLoading = state.isLoading,
@@ -225,7 +225,7 @@ private fun ResultScreen(
     result: today.sweetspot.model.WindowResult,
     allPrices: List<today.sweetspot.model.PriceSlot>,
     resultLabel: String,
-    timeZoneId: java.time.ZoneId,
+    now: java.time.ZonedDateTime,
     priceSource: String?,
     priceZoneName: String?,
     isLoading: Boolean,
@@ -284,7 +284,7 @@ private fun ResultScreen(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
-                ResultSummary(result = result, timeZoneId = timeZoneId)
+                ResultSummary(result = result, now = now)
 
                 Spacer(modifier = Modifier.height(16.dp))
 

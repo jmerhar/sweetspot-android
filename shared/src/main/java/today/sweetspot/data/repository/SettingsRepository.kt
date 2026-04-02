@@ -8,6 +8,8 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.Countries
 
 import today.sweetspot.model.PriceZone
+import java.time.Clock
+import java.time.Instant
 import java.time.ZoneId
 
 /**
@@ -35,6 +37,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_UNLOCKED = "unlocked"
         const val KEY_DEV_OPTIONS = "dev_options"
         const val KEY_COOLDOWN_DISABLED = "cooldown_disabled"
+        const val KEY_TIME_OVERRIDE = "time_override"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -285,7 +288,8 @@ class SettingsRepository(private val context: Context) {
      * returns 0 (the caller should check [isUnlocked] separately).
      */
     fun trialDaysRemaining(): Int {
-        val elapsed = System.currentTimeMillis() - getFirstLaunchMs()
+        val now = getTimeOverrideMs() ?: System.currentTimeMillis()
+        val elapsed = now - getFirstLaunchMs()
         val elapsedDays = (elapsed / (24 * 60 * 60 * 1000L)).toInt()
         return (TRIAL_DAYS - elapsedDays).coerceIn(0, TRIAL_DAYS)
     }
@@ -335,5 +339,46 @@ class SettingsRepository(private val context: Context) {
      */
     fun setCooldownDisabled(disabled: Boolean) {
         prefs.edit { putBoolean(KEY_COOLDOWN_DISABLED, disabled) }
+    }
+
+    /**
+     * Returns the stored time override as epoch milliseconds, or `null` if no override is set.
+     *
+     * When set, the app behaves as if the current time is the override value,
+     * affecting price filtering, cheapest window calculation, and trial expiration.
+     */
+    fun getTimeOverrideMs(): Long? {
+        val stored = prefs.getLong(KEY_TIME_OVERRIDE, 0L)
+        return if (stored != 0L) stored else null
+    }
+
+    /**
+     * Sets or clears the time override.
+     *
+     * @param ms Epoch milliseconds to use as the fake "now", or `null` to clear.
+     */
+    fun setTimeOverrideMs(ms: Long?) {
+        if (ms == null) {
+            prefs.edit { remove(KEY_TIME_OVERRIDE) }
+        } else {
+            prefs.edit { putLong(KEY_TIME_OVERRIDE, ms) }
+        }
+    }
+
+    /**
+     * Returns a [Clock] that respects the time override developer option.
+     *
+     * When a time override is set, returns a fixed clock at the override instant.
+     * Otherwise returns a normal system clock for the given timezone.
+     *
+     * @param timeZoneId The timezone for the clock.
+     */
+    fun devClock(timeZoneId: ZoneId): Clock {
+        val overrideMs = getTimeOverrideMs()
+        return if (overrideMs != null) {
+            Clock.fixed(Instant.ofEpochMilli(overrideMs), timeZoneId)
+        } else {
+            Clock.system(timeZoneId)
+        }
     }
 }

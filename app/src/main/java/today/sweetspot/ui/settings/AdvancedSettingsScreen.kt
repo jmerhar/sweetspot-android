@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import today.sweetspot.R
 import today.sweetspot.data.api.DataSource
+import java.time.ZoneId
 
 /**
  * Advanced settings screen containing data source preferences, cache management,
@@ -48,6 +49,9 @@ import today.sweetspot.data.api.DataSource
  * @param onDevCooldownDisabledChanged Called when the cooldown toggle changes.
  * @param onDevResetUnlock Called when the developer taps "Reset unlock state".
  * @param onDevResetStatsTimer Called when the developer taps "Reset stats timer".
+ * @param timeOverrideMs Current time override as epoch millis, or `null` if using real time.
+ * @param onDevTimeOverrideChanged Called with epoch millis to set, or `null` to clear the override.
+ * @param timeZoneId Current timezone for displaying the override datetime.
  * @param onBack Called when the user navigates back.
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,6 +69,9 @@ internal fun AdvancedSettingsScreen(
     onDevCooldownDisabledChanged: (Boolean) -> Unit,
     onDevResetUnlock: () -> Unit,
     onDevResetStatsTimer: () -> Unit,
+    timeOverrideMs: Long?,
+    onDevTimeOverrideChanged: (Long?) -> Unit,
+    timeZoneId: ZoneId,
     onBack: () -> Unit
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -145,7 +152,10 @@ internal fun AdvancedSettingsScreen(
                     onResetStatsTimer = {
                         onDevResetStatsTimer()
                         coroutineScope.launch { snackbarHostState.showSnackbar("Stats timer reset") }
-                    }
+                    },
+                    timeOverrideMs = timeOverrideMs,
+                    onTimeOverrideChanged = onDevTimeOverrideChanged,
+                    timeZoneId = timeZoneId
                 )
             }
         }

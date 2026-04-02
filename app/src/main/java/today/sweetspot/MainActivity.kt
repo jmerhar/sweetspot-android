@@ -77,6 +77,8 @@ class MainActivity : AppCompatActivity() {
                             onDevResetUnlock = vm::onDevResetUnlock,
                             onDevCooldownDisabledChanged = vm::onDevCooldownDisabledChanged,
                             onDevResetStatsTimer = vm::onDevResetStatsTimer,
+                            timeOverrideMs = state.timeOverrideMs,
+                            onDevTimeOverrideChanged = vm::onDevTimeOverrideChanged,
                             onBack = vm::onHideSettings
                         )
                     }

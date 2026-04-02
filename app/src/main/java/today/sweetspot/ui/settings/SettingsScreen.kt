@@ -88,6 +88,8 @@ fun SettingsScreen(
     onDevResetUnlock: () -> Unit,
     onDevCooldownDisabledChanged: (Boolean) -> Unit,
     onDevResetStatsTimer: () -> Unit,
+    timeOverrideMs: Long?,
+    onDevTimeOverrideChanged: (Long?) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -120,6 +122,9 @@ fun SettingsScreen(
             onDevCooldownDisabledChanged = onDevCooldownDisabledChanged,
             onDevResetUnlock = onDevResetUnlock,
             onDevResetStatsTimer = onDevResetStatsTimer,
+            timeOverrideMs = timeOverrideMs,
+            onDevTimeOverrideChanged = onDevTimeOverrideChanged,
+            timeZoneId = currentTimeZoneId,
             onBack = { showAdvancedSettings = false }
         )
         return

@@ -20,18 +20,18 @@ import today.sweetspot.model.WindowResult
 import today.sweetspot.util.formatPrice
 import today.sweetspot.util.formatRelative
 import today.sweetspot.util.shortTimeFormatter
-import java.time.ZoneId
 import java.time.ZonedDateTime
 
 /**
  * Summary cards showing the cheapest window's start time, end time, and estimated cost.
  * Times include a relative label (e.g. "now" or "in 2h 30m") that stays current because
  * the ViewModel periodically recalculates the result.
+ *
+ * @param now The effective current time, which may be overridden by a developer option.
  */
 @Composable
-fun ResultSummary(result: WindowResult, timeZoneId: ZoneId, modifier: Modifier = Modifier) {
+fun ResultSummary(result: WindowResult, now: ZonedDateTime, modifier: Modifier = Modifier) {
     val resources = LocalContext.current.resources
-    val now = ZonedDateTime.now(timeZoneId)
 
     Column(
         modifier = modifier.fillMaxWidth(),

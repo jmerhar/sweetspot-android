@@ -13,8 +13,8 @@ Austria, Belgio, Bulgaria, Croazia, Danimarca (DK1, DK2), Estonia, Finlandia, Fr
 I prezzi provengono dalla **ENTSO-E Transparency Platform**, che pubblica i prezzi dell'energia elettrica del giorno successivo per tutte le zone di offerta europee. SweetSpot supporta anche quattro fonti di fallback per una maggiore affidabilità:
 
 - **Spot-Hinta.fi** per le zone nordiche e baltiche (15 zone)
-- **EnergyZero** per i Paesi Bassi
 - **Energy-Charts** per 15 zone europee
+- **EnergyZero** per i Paesi Bassi
 - **aWATTar** per Austria e Germania
 
 Puoi configurare l'ordine di priorità delle fonti di dati nelle impostazioni.

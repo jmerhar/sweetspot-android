@@ -13,8 +13,8 @@ Alemanha, Áustria, Bélgica, Bulgária, Chéquia, Croácia, Dinamarca (DK1, DK2
 Os preços provêm da **ENTSO-E Transparency Platform**, que publica os preços de eletricidade do dia seguinte para todas as zonas de licitação europeias. O SweetSpot também suporta quatro fontes de recurso para maior fiabilidade:
 
 - **Spot-Hinta.fi** para as zonas nórdicas e bálticas (15 zonas)
-- **EnergyZero** para os Países Baixos
 - **Energy-Charts** para 15 zonas europeias
+- **EnergyZero** para os Países Baixos
 - **aWATTar** para a Áustria e a Alemanha
 
 Pode configurar a ordem de prioridade das fontes de dados nas definições.

@@ -13,8 +13,8 @@ O SweetSpot obtém preços de eletricidade do dia seguinte a partir de APIs púb
 
 - **ENTSO-E Transparency Platform** — a fonte principal para todas as 43 zonas de licitação europeias
 - **Spot-Hinta.fi** — recurso para as zonas nórdicas e bálticas
-- **EnergyZero** — recurso para os Países Baixos
 - **Energy-Charts** — recurso para 15 zonas europeias
+- **EnergyZero** — recurso para os Países Baixos
 - **aWATTar** — recurso para a Áustria e a Alemanha
 
 Estes pedidos à API contêm apenas o identificador da zona de licitação e o intervalo de datas. Nenhuma informação pessoal é incluída.

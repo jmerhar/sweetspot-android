@@ -13,8 +13,8 @@ Austria, Belgia, Bułgaria, Chorwacja, Czarnogóra, Czechy, Dania (DK1, DK2), Es
 Ceny pochodzą z platformy **ENTSO-E Transparency Platform**, która publikuje ceny energii elektrycznej dnia następnego dla wszystkich europejskich obszarów rynkowych. SweetSpot obsługuje również cztery źródła zapasowe dla zwiększonej niezawodności:
 
 - **Spot-Hinta.fi** dla stref nordyckich i bałtyckich (15 stref)
-- **EnergyZero** dla Holandii
 - **Energy-Charts** dla 15 stref europejskich
+- **EnergyZero** dla Holandii
 - **aWATTar** dla Austrii i Niemiec
 
 Kolejność priorytetów źródeł danych możesz skonfigurować w ustawieniach.

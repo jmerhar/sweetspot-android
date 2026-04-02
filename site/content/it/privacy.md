@@ -13,8 +13,8 @@ SweetSpot recupera i prezzi dell'energia elettrica del giorno successivo da API 
 
 - **ENTSO-E Transparency Platform** — fonte principale per tutte le 43 zone di offerta europee
 - **Spot-Hinta.fi** — fallback per le zone nordiche e baltiche
-- **EnergyZero** — fallback per i Paesi Bassi
 - **Energy-Charts** — fallback per 15 zone europee
+- **EnergyZero** — fallback per i Paesi Bassi
 - **aWATTar** — fallback per Austria e Germania
 
 Queste richieste API contengono solo l'identificativo della zona di offerta e l'intervallo di date. Non vengono incluse informazioni personali.

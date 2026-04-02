@@ -13,8 +13,8 @@ Austria, Belgia, Bulgaaria, Eesti, Hispaania, Holland, Horvaatia, Iirimaa, Itaal
 Hinnad pärinevad **ENTSO-E Transparency Platformilt**, mis avaldab järgmise päeva elektrihindu kõigi Euroopa pakkumistsoonide kohta. SweetSpot toetab ka nelja varuallikat suurema usaldusväärsuse tagamiseks:
 
 - **Spot-Hinta.fi** Põhja- ja Baltimaade tsoonidele (15 tsooni)
-- **EnergyZero** Madalmadele
 - **Energy-Charts** 15 Euroopa tsoonile
+- **EnergyZero** Madalmadele
 - **aWATTar** Austriale ja Saksamaale
 
 Andmeallikate prioriteedijärjestust saad seadistada seadetes.

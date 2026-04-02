@@ -13,8 +13,8 @@ SweetSpot gauna kitos dienos elektros kainas iš viešų API:
 
 - **ENTSO-E Transparency Platform** — pagrindinis šaltinis visoms 43 Europos prekybos zonoms
 - **Spot-Hinta.fi** — atsarginis šaltinis Šiaurės ir Baltijos šalių zonoms
-- **EnergyZero** — atsarginis šaltinis Nyderlandams
 - **Energy-Charts** — atsarginis šaltinis 15 Europos zonų
+- **EnergyZero** — atsarginis šaltinis Nyderlandams
 - **aWATTar** — atsarginis šaltinis Austrijai ir Vokietijai
 
 Šios API užklausos apima tik prekybos zonos identifikatorių ir datų intervalą. Jokia asmeninė informacija nėra siunčiama.

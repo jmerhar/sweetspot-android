@@ -4,7 +4,7 @@
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries. Website: [sweetspot.today](https://sweetspot.today)
 
-SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones, 15-minute resolution) with [EnergyZero](https://api.energyzero.nl) as a fallback for the Netherlands, [Spot-Hinta.fi](https://spot-hinta.fi/) for 15 Nordic/Baltic zones, [Energy-Charts](https://api.energy-charts.info/) for 15 European zones, and [aWATTar](https://www.awattar.com/) for Austria and Germany, then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
+SweetSpot fetches day-ahead electricity prices from the [ENTSO-E Transparency Platform](https://transparency.entsoe.eu/) (43 bidding zones, 15-minute resolution) with [Spot-Hinta.fi](https://spot-hinta.fi/) for 15 Nordic/Baltic zones, [Energy-Charts](https://api.energy-charts.info/) for 15 European zones, [EnergyZero](https://api.energyzero.nl) as a fallback for the Netherlands, and [aWATTar](https://www.awattar.com/) for Austria and Germany, then finds the cheapest contiguous time window for a user-specified duration using a sliding window algorithm.
 
 ## Requirements
 
@@ -34,7 +34,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 
 ## Features
 
-- **30 European countries** — 43 bidding zones via ENTSO-E (15-minute resolution), with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi for Nordic/Baltic zones, Energy-Charts for 15 European zones, and aWATTar for Austria and Germany
+- **30 European countries** — 43 bidding zones via ENTSO-E (15-minute resolution), with Spot-Hinta.fi for Nordic/Baltic zones, Energy-Charts for 15 European zones, EnergyZero as a fallback for the Netherlands, and aWATTar for Austria and Germany
 - **Country auto-detection** — detects your country on first launch from SIM, network, or timezone (no permissions required)
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behaviour
 - **Quick-duration buttons** — 1h–6h chips for common durations

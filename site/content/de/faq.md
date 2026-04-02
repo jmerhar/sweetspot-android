@@ -13,8 +13,8 @@ SweetSpot unterstützt 30 europäische Länder mit 43 Gebotszonen:
 Die Preise stammen von der **ENTSO-E Transparency Platform**, die Day-Ahead-Strompreise für alle europäischen Gebotszonen veröffentlicht. SweetSpot unterstützt auch vier Fallback-Quellen für erhöhte Zuverlässigkeit:
 
 - **Spot-Hinta.fi** für skandinavische und baltische Zonen (15 Zonen)
-- **EnergyZero** für die Niederlande
 - **Energy-Charts** für 15 europäische Zonen
+- **EnergyZero** für die Niederlande
 - **aWATTar** für Österreich und Deutschland
 
 Du kannst die Prioritätsreihenfolge der Datenquellen in den Einstellungen konfigurieren.

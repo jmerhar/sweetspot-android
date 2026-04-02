@@ -13,8 +13,8 @@ SweetSpot iegūst nākamās dienas elektrības cenas no publiskajām API:
 
 - **ENTSO-E Transparency Platform** — galvenais avots visām 43 Eiropas tirdzniecības zonām
 - **Spot-Hinta.fi** — rezerves avots Ziemeļvalstu un Baltijas zonām
-- **EnergyZero** — rezerves avots Nīderlandei
 - **Energy-Charts** — rezerves avots 15 Eiropas zonām
+- **EnergyZero** — rezerves avots Nīderlandei
 - **aWATTar** — rezerves avots Austrijai un Vācijai
 
 Šie API pieprasījumi satur tikai tirdzniecības zonas identifikatoru un datumu diapazonu. Nekāda personiskā informācija netiek iekļauta.

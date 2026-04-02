@@ -13,8 +13,8 @@ SweetSpot ruft Day-Ahead-Strompreise von öffentlichen APIs ab:
 
 - **ENTSO-E Transparency Platform** — die primäre Quelle für alle 43 europäischen Gebotszonen
 - **Spot-Hinta.fi** — Fallback für skandinavische und baltische Zonen
-- **EnergyZero** — Fallback für die Niederlande
 - **Energy-Charts** — Fallback für 15 europäische Zonen
+- **EnergyZero** — Fallback für die Niederlande
 - **aWATTar** — Fallback für Österreich und Deutschland
 
 Diese API-Anfragen enthalten nur die Gebotszonen-Kennung und den Datumsbereich. Keine persönlichen Informationen werden übermittelt.

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with EnergyZero as a fallback for the Netherlands, Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, and aWATTar as a fallback for Austria and Germany. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
+SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, EnergyZero as a fallback for the Netherlands, and aWATTar as a fallback for Austria and Germany. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
 
 ## Build & Run
 
@@ -148,7 +148,7 @@ The data layer is organised into four subpackages under `data/`:
 - **`PriceFetcher`** — Interface with a single `fetchPrices(from, to, timeZoneId)` method returning `FetchResult` (prices + source name). `FetchResult` pairs a `List<PriceSlot>` with the data source name (e.g. "ENTSO-E", "EnergyZero"). Decouples `PriceRepository` from a specific API provider. Also defines `sharedHttpClient`, a single `OkHttpClient` (10s connect + 10s read timeout) shared by all API implementations.
 - **`HttpException`** — Typed exception for non-200 HTTP responses. Carries the HTTP `code` for reliable error categorisation.
 - **`EntsoeException`** — Typed exception for ENTSO-E Acknowledgement_MarketDocument errors (HTTP 200 but error body). Carries the `reason` text. Categorised as `ENTSOE_ERROR` in stats.
-- **`FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Used for NL (ENTSO-E primary, EnergyZero fallback) and Nordic/Baltic zones (ENTSO-E primary, Spot-Hinta.fi fallback).
+- **`FallbackPriceFetcher`** — `PriceFetcher` that tries a list of fetchers in order and returns the first successful result. If all fail, throws the last exception. Tries each fetcher in list order; used for all multi-source zones (e.g. NL: ENTSO-E → Energy-Charts → EnergyZero).
 - **`PriceFetcherFactory`** — `fun interface` that returns the right `PriceFetcher` for a given `PriceZone`. `defaultPriceFetcherFactory(entsoeToken, sourceOrder, statsCollector, device)` builds the fetcher chain dynamically from the user's source order preference (or zone defaults when `null`). Optionally wraps each fetcher in `InstrumentedPriceFetcher` when `statsCollector` is provided. Always wraps in `FallbackPriceFetcher`.
 - **`EnergyZeroApi`** — `PriceFetcher` for the EnergyZero API (NL-only). Returns JSON, parses with kotlinx-serialization. Also exposes `fetchRaw()` and `parse()` directly for tests.
 - **`SpotHintaApi`** — `PriceFetcher` for the Spot-Hinta.fi API (15 Nordic/Baltic zones). Returns JSON (top-level array), parses with kotlinx-serialization. Prices are already EUR/kWh, 15-minute resolution. Region parameter maps directly to zone IDs. Also exposes `fetchRaw()` and `parse()` directly for tests.

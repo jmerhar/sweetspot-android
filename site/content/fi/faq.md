@@ -13,8 +13,8 @@ Alankomaat, Belgia, Bulgaria, Espanja, Irlanti, Italia (7 aluetta), Itävalta, K
 Hinnat tulevat **ENTSO-E Transparency Platformilta**, joka julkaisee seuraavan päivän sähkön hintoja kaikille eurooppalaisille tarjousalueille. SweetSpot tukee myös neljää varalähdettä luotettavuuden parantamiseksi:
 
 - **Spot-Hinta.fi** Pohjoismaiden ja Baltian alueille (15 aluetta)
-- **EnergyZero** Alankomaille
 - **Energy-Charts** 15 eurooppalaiselle alueelle
+- **EnergyZero** Alankomaille
 - **aWATTar** Itävallalle ja Saksalle
 
 Voit määrittää tietolähteiden prioriteettijärjestyksen asetuksissa.

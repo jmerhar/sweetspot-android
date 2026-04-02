@@ -13,8 +13,8 @@ SweetSpot henter day-ahead-elpriser fra offentlige API'er:
 
 - **ENTSO-E Transparency Platform** — den primære kilde til alle 43 europæiske budområder
 - **Spot-Hinta.fi** — reservekilde for nordiske og baltiske zoner
-- **EnergyZero** — reservekilde for Nederlandene
 - **Energy-Charts** — reservekilde for 15 europæiske zoner
+- **EnergyZero** — reservekilde for Nederlandene
 - **aWATTar** — reservekilde for Østrig og Tyskland
 
 Disse API-forespørgsler indeholder kun budområdets identifikator og datointerval. Der sendes ingen personlige oplysninger.

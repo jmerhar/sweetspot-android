@@ -13,8 +13,8 @@ Oostenrijk, België, Bulgarije, Kroatië, Tsjechië, Denemarken (DK1, DK2), Estl
 Prijzen komen van het **ENTSO-E Transparency Platform**, dat day-ahead stroomprijzen publiceert voor alle Europese biedingszones. SweetSpot ondersteunt ook vier terugvalbronnen voor meer betrouwbaarheid:
 
 - **Spot-Hinta.fi** voor Scandinavische en Baltische zones (15 zones)
-- **EnergyZero** voor Nederland
 - **Energy-Charts** voor 15 Europese zones
+- **EnergyZero** voor Nederland
 - **aWATTar** voor Oostenrijk en Duitsland
 
 Je kunt de prioriteitsvolgorde van gegevensbronnen instellen via de instellingen.

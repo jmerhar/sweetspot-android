@@ -46,15 +46,16 @@ object DataSources {
      * Declarative registry of data sources and their zone coverage.
      *
      * List order defines the default fallback priority: ENTSO-E first (covers all
-     * zones), then specialised sources (EnergyZero for NL, Spot-Hinta for Nordic/Baltic),
-     * then broader fallbacks (Energy-Charts, aWATTar). Adding a new source is a single
-     * line — no intersection logic required.
+     * zones), then higher-resolution fallbacks (Spot-Hinta for Nordic/Baltic,
+     * Energy-Charts for 15 European zones), then hourly sources (EnergyZero for NL,
+     * aWATTar for AT/DE-LU). Adding a new source is a single line — no intersection
+     * logic required.
      */
     private val registry = listOf(
         SourceEntry(ENTSOE, null),
-        SourceEntry(ENERGY_ZERO, setOf("NL")),
         SourceEntry(SPOT_HINTA, SpotHintaApi.ZONES),
         SourceEntry(ENERGY_CHARTS, EnergyChartsApi.ZONE_TO_BZN.keys),
+        SourceEntry(ENERGY_ZERO, setOf("NL")),
         SourceEntry(AWATTAR, AwattarApi.ZONE_TO_BASE_URL.keys),
     )
 

@@ -13,8 +13,8 @@ SweetSpot získava denné ceny elektriny z verejných API:
 
 - **ENTSO-E Transparency Platform** — primárny zdroj pre všetkých 43 európskych cenových zón
 - **Spot-Hinta.fi** — záložný zdroj pre severské a baltské zóny
-- **EnergyZero** — záložný zdroj pre Holandsko
 - **Energy-Charts** — záložný zdroj pre 15 európskych zón
+- **EnergyZero** — záložný zdroj pre Holandsko
 - **aWATTar** — záložný zdroj pre Rakúsko a Nemecko
 
 Tieto API požiadavky obsahujú iba identifikátor cenovej zóny a rozsah dátumov. Žiadne osobné údaje nie sú zahrnuté.

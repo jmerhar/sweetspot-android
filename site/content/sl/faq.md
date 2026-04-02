@@ -13,8 +13,8 @@ Avstrija, Belgija, Bolgarija, Hrvaška, Češka, Danska (DK1, DK2), Estonija, Fi
 Cene prihajajo s platforme **ENTSO-E Transparency Platform**, ki objavlja dnevne cene električne energije za vsa evropska cenovna območja. SweetSpot podpira tudi štiri rezervne vire za večjo zanesljivost:
 
 - **Spot-Hinta.fi** za skandinavska in baltska območja (15 območij)
-- **EnergyZero** za Nizozemsko
 - **Energy-Charts** za 15 evropskih območij
+- **EnergyZero** za Nizozemsko
 - **aWATTar** za Avstrijo in Nemčijo
 
 Prednostni vrstni red virov podatkov lahko nastavite v nastavitvah.

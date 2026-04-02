@@ -17,7 +17,7 @@ HOW IT WORKS
 
 FEATURES
 - 30 European countries, 43 bidding zones — from Portugal to Finland, Norway to Greece
-- 5 data sources with automatic fallback (ENTSO-E, Spot-Hinta.fi, EnergyZero, Energy-Charts, aWATTar)
+- 5 data sources with automatic fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Save your appliances with custom names, icons, and durations for one-tap access
 - Wear OS companion app for Pixel Watch and other Wear OS 3+ devices
 - Available in 25 European languages
@@ -51,7 +51,7 @@ HOE HET WERKT
 
 FUNCTIES
 - 30 Europese landen, 43 biedingszones — van Portugal tot Finland, Noorwegen tot Griekenland
-- 5 gegevensbronnen met automatische terugval (ENTSO-E, Spot-Hinta.fi, EnergyZero, Energy-Charts, aWATTar)
+- 5 gegevensbronnen met automatische terugval (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang
 - Wear OS horloge-app voor Pixel Watch en andere Wear OS 3+ apparaten
 - Beschikbaar in 25 Europese talen
@@ -85,7 +85,7 @@ SO FUNKTIONIERT ES
 
 FUNKTIONEN
 - 30 europäische Länder, 43 Gebotszonen — von Portugal bis Finnland, Norwegen bis Griechenland
-- 5 Datenquellen mit automatischem Fallback (ENTSO-E, Spot-Hinta.fi, EnergyZero, Energy-Charts, aWATTar)
+- 5 Datenquellen mit automatischem Fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff
 - Wear OS Begleit-App für Pixel Watch und andere Wear OS 3+ Geräte
 - Verfügbar in 25 europäischen Sprachen
@@ -119,7 +119,7 @@ COMMENT ÇA MARCHE
 
 FONCTIONNALITÉS
 - 30 pays européens, 43 zones de prix — du Portugal à la Finlande, de la Norvège à la Grèce
-- 5 sources de données avec basculement automatique (ENTSO-E, Spot-Hinta.fi, EnergyZero, Energy-Charts, aWATTar)
+- 5 sources de données avec basculement automatique (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide
 - Application Wear OS pour Pixel Watch et autres appareils Wear OS 3+
 - Disponible en 25 langues européennes
@@ -153,7 +153,7 @@ KAKO DELUJE
 
 FUNKCIJE
 - 30 evropskih držav, 43 cenovnih območij — od Portugalske do Finske, od Norveške do Grčije
-- 5 virov podatkov s samodejnim preklopom (ENTSO-E, Spot-Hinta.fi, EnergyZero, Energy-Charts, aWATTar)
+- 5 virov podatkov s samodejnim preklopom (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop
 - Wear OS aplikacija za Pixel Watch in druge naprave Wear OS 3+
 - Na voljo v 25 evropskih jezikih

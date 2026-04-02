@@ -13,8 +13,8 @@ Airija, Austrija, Belgija, Bulgarija, Čekija, Danija (DK1, DK2), Estija, Graiki
 Kainos gaunamos iš **ENTSO-E Transparency Platform**, kuri skelbia kitos dienos elektros kainas visoms Europos prekybos zonoms. SweetSpot taip pat palaiko keturis atsarginius šaltinius didesniam patikimumui:
 
 - **Spot-Hinta.fi** Šiaurės ir Baltijos šalių zonoms (15 zonų)
-- **EnergyZero** Nyderlandams
 - **Energy-Charts** 15 Europos zonų
+- **EnergyZero** Nyderlandams
 - **aWATTar** Austrijai ir Vokietijai
 
 Duomenų šaltinių prioritetų tvarką galite konfigūruoti nustatymuose.

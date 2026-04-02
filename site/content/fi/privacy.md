@@ -13,8 +13,8 @@ SweetSpot hakee seuraavan päivän sähkön hintoja julkisista rajapinnoista:
 
 - **ENTSO-E Transparency Platform** — ensisijainen lähde kaikille 43 eurooppalaiselle tarjousalueelle
 - **Spot-Hinta.fi** — varalähde Pohjoismaiden ja Baltian alueille
-- **EnergyZero** — varalähde Alankomaille
 - **Energy-Charts** — varalähde 15 eurooppalaiselle alueelle
+- **EnergyZero** — varalähde Alankomaille
 - **aWATTar** — varalähde Itävallalle ja Saksalle
 
 Nämä rajapintakyselyt sisältävät vain tarjousaluetunnisteen ja päivämäärävälin. Henkilötietoja ei lähetetä.

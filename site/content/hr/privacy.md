@@ -13,8 +13,8 @@ SweetSpot dohvaća dnevne cijene električne energije s javnih API-ja:
 
 - **ENTSO-E Transparency Platform** — primarni izvor za sve 43 europske ponudbene zone
 - **Spot-Hinta.fi** — rezervni izvor za nordijske i baltičke zone
-- **EnergyZero** — rezervni izvor za Nizozemsku
 - **Energy-Charts** — rezervni izvor za 15 europskih zona
+- **EnergyZero** — rezervni izvor za Nizozemsku
 - **aWATTar** — rezervni izvor za Austriju i Njemačku
 
 Ti API zahtjevi sadrže samo oznaku ponudbene zone i vremenski raspon. Osobni podaci se ne šalju.

@@ -19,12 +19,12 @@ class DataSourceTest {
     }
 
     @Test
-    fun `defaultsForZone NL returns ENTSOE, ENERGY_ZERO, and ENERGY_CHARTS`() {
+    fun `defaultsForZone NL returns ENTSOE, ENERGY_CHARTS, and ENERGY_ZERO`() {
         val sources = DataSources.defaultsForZone("NL")
         assertEquals(3, sources.size)
         assertEquals(DataSources.ENTSOE, sources[0])
-        assertEquals(DataSources.ENERGY_ZERO, sources[1])
-        assertEquals(DataSources.ENERGY_CHARTS, sources[2])
+        assertEquals(DataSources.ENERGY_CHARTS, sources[1])
+        assertEquals(DataSources.ENERGY_ZERO, sources[2])
     }
 
     @Test

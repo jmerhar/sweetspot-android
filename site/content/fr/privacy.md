@@ -13,8 +13,8 @@ SweetSpot récupère les prix day-ahead de l'électricité via des API publiques
 
 - **ENTSO-E Transparency Platform** — la source principale pour les 43 zones de prix européennes
 - **Spot-Hinta.fi** — solution de repli pour les zones nordiques et baltes
-- **EnergyZero** — solution de repli pour les Pays-Bas
 - **Energy-Charts** — solution de repli pour 15 zones européennes
+- **EnergyZero** — solution de repli pour les Pays-Bas
 - **aWATTar** — solution de repli pour l'Autriche et l'Allemagne
 
 Ces requêtes API contiennent uniquement l'identifiant de la zone de prix et la plage de dates. Aucune information personnelle n'est incluse.

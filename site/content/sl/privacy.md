@@ -13,8 +13,8 @@ SweetSpot pridobiva dnevne cene električne energije iz javnih API-jev:
 
 - **ENTSO-E Transparency Platform** — primarni vir za vseh 43 evropskih cenovnih območij
 - **Spot-Hinta.fi** — rezervni vir za skandinavska in baltska območja
-- **EnergyZero** — rezervni vir za Nizozemsko
 - **Energy-Charts** — rezervni vir za 15 evropskih območij
+- **EnergyZero** — rezervni vir za Nizozemsko
 - **aWATTar** — rezervni vir za Avstrijo in Nemčijo
 
 Te zahteve API vsebujejo le identifikator cenovnega območja in datumski obseg. Nikakršni osebni podatki niso vključeni.

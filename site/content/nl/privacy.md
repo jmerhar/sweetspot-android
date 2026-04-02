@@ -13,8 +13,8 @@ SweetSpot haalt day-ahead stroomprijzen op via openbare API's:
 
 - **ENTSO-E Transparency Platform** — de primaire bron voor alle 43 Europese biedingszones
 - **Spot-Hinta.fi** — terugval voor Scandinavische en Baltische zones
-- **EnergyZero** — terugval voor Nederland
 - **Energy-Charts** — terugval voor 15 Europese zones
+- **EnergyZero** — terugval voor Nederland
 - **aWATTar** — terugval voor Oostenrijk en Duitsland
 
 Deze API-verzoeken bevatten alleen de biedingszone en het datumbereik. Er worden geen persoonlijke gegevens meegestuurd.

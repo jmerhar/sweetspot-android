@@ -75,16 +75,13 @@ class StatsReporter(
             }
             try {
                 connection.outputStream.use { it.write(json.toByteArray(Charsets.UTF_8)) }
-                val code = connection.responseCode
-                when {
-                    code == HttpURLConnection.HTTP_OK -> {
+                when (val code = connection.responseCode) {
+                    HttpURLConnection.HTTP_OK -> {
                         collector.clear()
                         prefs.edit { putLong(KEY_LAST_REPORT_MS, System.currentTimeMillis()) }
                     }
                     // 4xx (except 429 rate limit): payload is invalid, drop it
-                    code in 400..499 && code != 429 -> {
-                        collector.clear()
-                    }
+                    in 400..499 -> if (code != 429) collector.clear()
                     // 429 or 5xx: keep data, retry next day
                 }
             } finally {

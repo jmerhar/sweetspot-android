@@ -3,6 +3,11 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="5.2" date="2. apríla 2026" >}}
+- Prepracované ikony spotrebičov — 30 kvalitných ikon Material Symbols s lepším priradením a novými ikonami pre kanvice, vírivky, zavlažovače a ďalšie
+- Výber ikon teraz zobrazuje názov vybranej ikony preložený do všetkých 25 podporovaných jazykov
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1. apríla 2026" >}}
 - Pridané natívne ladiace symboly do balíčkov vydania pre lepšie hlásenie pádov v Play Store
 {{< /changelog >}}

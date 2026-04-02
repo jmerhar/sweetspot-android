@@ -3,6 +3,11 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.2" date="April 2, 2026" >}}
+- Revamped appliance icons — 30 high-quality Material Symbols icons with better matches and new icons for kettles, hot tubs, sprinklers, and more
+- Icon picker now shows the name of the selected icon, translated into all 25 supported languages
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="April 1, 2026" >}}
 - Included native debug symbols in release bundles for better Play Store crash reporting
 {{< /changelog >}}

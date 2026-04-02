@@ -3,6 +3,11 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="5.2" date="2. april 2026" >}}
+- Fornyede apparatikoner — 30 ikoner i høj kvalitet fra Material Symbols med bedre match og nye ikoner til elkedler, boblebade, sprinklere og mere
+- Ikonvælgeren viser nu navnet på det valgte ikon, oversat til alle 25 understøttede sprog
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1. april 2026" >}}
 - Inkluderet native fejlsøgningssymboler i release-pakker for bedre nedbrudsrapportering i Play Store
 {{< /changelog >}}

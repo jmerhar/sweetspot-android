@@ -3,6 +3,11 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="5.2" date="2 kwietnia 2026" >}}
+- Odświeżone ikony urządzeń — 30 wysokiej jakości ikon Material Symbols z lepszymi dopasowaniami i nowymi ikonami dla czajników, jacuzzi, zraszaczy i innych
+- Wybór ikon wyświetla teraz nazwę wybranej ikony, przetłumaczoną na wszystkie 25 obsługiwanych języków
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1 kwietnia 2026" >}}
 - Dołączono natywne symbole debugowania do pakietów wydania w celu lepszego raportowania awarii w Play Store
 {{< /changelog >}}

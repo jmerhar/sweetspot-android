@@ -3,6 +3,11 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="5.2" date="2 april 2026" >}}
+- Förnyade apparatikoner — 30 högkvalitativa Material Symbols-ikoner med bättre matchningar och nya ikoner för vattenkokare, bubbelpooler, sprinklers och mer
+- Ikonväljaren visar nu namnet på den valda ikonen, översatt till alla 25 språk som stöds
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1 april 2026" >}}
 - Inkluderat inbyggda felsökningssymboler i releasepaket för bättre kraschrapportering i Play Store
 {{< /changelog >}}

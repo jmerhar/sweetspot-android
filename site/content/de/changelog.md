@@ -3,6 +3,11 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.2" date="2. April 2026" >}}
+- Überarbeitete Gerätesymbole — 30 hochwertige Material Symbols-Icons mit besseren Zuordnungen und neuen Symbolen für Wasserkocher, Whirlpools, Rasensprenger und mehr
+- Die Symbolauswahl zeigt jetzt den Namen des gewählten Symbols an, übersetzt in alle 25 unterstützten Sprachen
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1. April 2026" >}}
 - Native Debug-Symbole in Release-Bundles für bessere Absturzberichte im Play Store integriert
 {{< /changelog >}}

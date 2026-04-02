@@ -3,6 +3,11 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="5.2" date="2 aprile 2026" >}}
+- Icone degli elettrodomestici rinnovate — 30 icone Material Symbols di alta qualità con corrispondenze migliori e nuove icone per bollitori, vasche idromassaggio, irrigatori e altro
+- Il selettore di icone ora mostra il nome dell'icona selezionata, tradotto in tutte le 25 lingue supportate
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1 aprile 2026" >}}
 - Inclusi simboli di debug nativi nei bundle di rilascio per una migliore segnalazione degli arresti anomali sul Play Store
 {{< /changelog >}}

@@ -3,6 +3,11 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.2" date="2026 m. balandžio 2 d." >}}
+- Atnaujintos prietaisų piktogramos — 30 aukštos kokybės Material Symbols piktogramų su geresniais atitikmenimis ir naujomis piktogramomis virdulių, sūkurinių vonių, laistymo įrenginių ir kt.
+- Piktogramų parinkiklis dabar rodo pasirinktos piktogramos pavadinimą, išverstą į visas 25 palaikomas kalbas
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="2026 m. balandžio 1 d." >}}
 - Į leidimo paketus įtraukti vietiniai derinimo simboliai geresniam strigčių ataskaitų teikimui Play Store
 {{< /changelog >}}

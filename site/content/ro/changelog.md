@@ -3,6 +3,11 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.2" date="2 aprilie 2026" >}}
+- Pictograme de electrocasnice reînnoite — 30 de pictograme Material Symbols de înaltă calitate cu potriviri mai bune și pictograme noi pentru fierbătoare, jacuzzi-uri, aspersoare și altele
+- Selectorul de pictograme afișează acum numele pictogramei selectate, tradus în toate cele 25 de limbi acceptate
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1 aprilie 2026" >}}
 - Simboluri native de depanare incluse în pachetele de lansare pentru raportarea mai bună a erorilor fatale în Play Store
 {{< /changelog >}}

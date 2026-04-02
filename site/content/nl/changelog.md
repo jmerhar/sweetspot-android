@@ -3,6 +3,11 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.2" date="2 april 2026" >}}
+- Vernieuwde apparaatpictogrammen — 30 hoogwaardige Material Symbols-pictogrammen met betere overeenkomsten en nieuwe pictogrammen voor waterkokers, bubbelbaden, sproeiers en meer
+- De pictogramkiezer toont nu de naam van het geselecteerde pictogram, vertaald in alle 25 ondersteunde talen
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1 april 2026" >}}
 - Eigen foutopsporingssymbolen opgenomen in releasebundels voor betere crashrapportage in de Play Store
 {{< /changelog >}}

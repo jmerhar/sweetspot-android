@@ -3,6 +3,11 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.2" date="2. aprill 2026" >}}
+- Uuendatud seadmeikoonid — 30 kvaliteetset Material Symbols ikooni paremate vastetega ja uued ikoonid veekeetjatele, mullivannidele, vihmutitele ja muule
+- Ikoonivalija näitab nüüd valitud ikooni nime, mis on tõlgitud kõigisse 25 toetatud keelde
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1. aprill 2026" >}}
 - Lisatud natiivsed silumissümbolid väljalaskepakettidesse Play Store'i parema tõrkeraportluse jaoks
 {{< /changelog >}}

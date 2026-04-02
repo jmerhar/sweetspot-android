@@ -3,6 +3,11 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.2" date="2026. április 2." >}}
+- Megújult készülékikonok — 30 kiváló minőségű Material Symbols ikon jobb megfeleltetésekkel és új ikonokkal vízforralókhoz, pezsgőfürdőkhöz, locsolókhoz és egyebekhez
+- Az ikonválasztó mostantól megjeleníti a kiválasztott ikon nevét, lefordítva mind a 25 támogatott nyelvre
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="2026. április 1." >}}
 - Natív hibakeresési szimbólumok hozzáadása a kiadási csomagokhoz a jobb Play Store összeomlás-jelentésekért
 {{< /changelog >}}

@@ -3,6 +3,11 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="5.2" date="2026. gada 2. aprīlis" >}}
+- Atjaunotas ierīču ikonas — 30 augstas kvalitātes Material Symbols ikonas ar labākām atbilstībām un jaunām ikonām tējkannām, burbuļvannām, laistītājiem un citām
+- Ikonu izvēlne tagad rāda atlasītās ikonas nosaukumu, tulkotu visās 25 atbalstītajās valodās
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="2026. gada 1. aprīlis" >}}
 - Izlaiduma pakotnēs iekļauti vietējie atkļūdošanas simboli labākai avāriju ziņošanai Play Store
 {{< /changelog >}}

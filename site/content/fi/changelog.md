@@ -3,6 +3,11 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.2" date="2. huhtikuuta 2026" >}}
+- Uudistetut laitekuvakkeet — 30 korkealaatuista Material Symbols -kuvaketta paremmilla vastaavuuksilla ja uusilla kuvakkeilla vedenkeittimiä, porealtaita, sprinklereitä ja muuta varten
+- Kuvakevalitsin näyttää nyt valitun kuvakkeen nimen käännettynä kaikille 25 tuetulle kielelle
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1. huhtikuuta 2026" >}}
 - Natiivit virheenkorjaussymbolit sisällytetty julkaisupaketteihin parempaa Play Storen kaatumisraportointia varten
 {{< /changelog >}}

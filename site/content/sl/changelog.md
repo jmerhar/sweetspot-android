@@ -3,6 +3,11 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.2" date="2. april 2026" >}}
+- Prenovljene ikone naprav — 30 visokokakovostnih ikon Material Symbols z boljšimi ujemanji in novimi ikonami za čajnike, masažne kadi, razpršilce in drugo
+- Izbirnik ikon zdaj prikazuje ime izbrane ikone, prevedeno v vseh 25 podprtih jezikov
+{{< /changelog >}}
+
 {{< changelog version="5.1.5" date="1. april 2026" >}}
 - Vključeni nativni simboli za razhroščevanje v pakete izdaj za boljše poročanje o sesutjih v Play Store
 {{< /changelog >}}

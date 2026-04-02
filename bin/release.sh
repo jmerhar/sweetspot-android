@@ -91,6 +91,11 @@ cp "$APK_PATH" "$NAMED_APK"
 NAMED_WEAR_APK="wear/build/outputs/apk/release/sweetspot-wear-${VERSION}.apk"
 cp "$WEAR_APK_PATH" "$NAMED_WEAR_APK"
 
+# Copy AABs to build/ for easy access
+mkdir -p build
+cp app/build/outputs/bundle/release/sweetspot-release.aab "build/sweetspot-phone.aab"
+cp wear/build/outputs/bundle/release/sweetspot-wear-release.aab "build/sweetspot-wear.aab"
+
 # --- Commit and tag ---
 
 git add "$CONVENTION_FILE"
@@ -121,5 +126,5 @@ echo ""
 echo "Done! Release ${TAG} created."
 echo "Phone APK: ${NAMED_APK}"
 echo "Wear APK:  ${NAMED_WEAR_APK}"
-echo "Phone AAB: app/build/outputs/bundle/release/sweetspot-release.aab"
-echo "Wear AAB:  wear/build/outputs/bundle/release/sweetspot-wear-release.aab"
+echo "Phone AAB: build/sweetspot-phone.aab"
+echo "Wear AAB:  build/sweetspot-wear.aab"

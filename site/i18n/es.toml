@@ -135,3 +135,18 @@ other = "La página que buscas no existe."
 
 [back_home]
 other = "Volver al inicio"
+
+[screenshot_1_alt]
+other = "Resultado de la franja más barata con hora de inicio, coste total y desglose de costes"
+
+[screenshot_2_alt]
+other = "Pantalla principal con electrodomésticos, selector de duración y botón Buscar"
+
+[screenshot_3_alt]
+other = "Próximos precios de electricidad en un gráfico de barras horizontal"
+
+[screenshot_4_alt]
+other = "Pantalla de ajustes con electrodomésticos guardados, idioma, país y zona horaria"
+
+[screenshot_5_alt]
+other = "Selección de idioma con 25 idiomas europeos"

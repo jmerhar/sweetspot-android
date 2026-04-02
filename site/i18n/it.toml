@@ -135,3 +135,18 @@ other = "La pagina che stai cercando non esiste."
 
 [back_home]
 other = "Torna alla home"
+
+[screenshot_1_alt]
+other = "Risultato della fascia più economica con orario di inizio, costo totale e dettaglio costi"
+
+[screenshot_2_alt]
+other = "Schermata iniziale con elettrodomestici, selettore durata e pulsante Cerca"
+
+[screenshot_3_alt]
+other = "Prossimi prezzi dell'energia come grafico a barre orizzontale"
+
+[screenshot_4_alt]
+other = "Schermata impostazioni con elettrodomestici salvati, lingua, paese e fuso orario"
+
+[screenshot_5_alt]
+other = "Selezione della lingua tra 25 lingue europee"

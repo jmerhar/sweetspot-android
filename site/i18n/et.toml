@@ -135,3 +135,18 @@ other = "Otsitavat lehte ei ole olemas."
 
 [back_home]
 other = "Tagasi avalehele"
+
+[screenshot_1_alt]
+other = "Soodsaima ajavahemiku tulemus algusaja, kogukulu ja kulude jaotusega"
+
+[screenshot_2_alt]
+other = "Avakuva seadmetega, kestuse valijaga ja Otsi nupuga"
+
+[screenshot_3_alt]
+other = "Tulevased elektrihinnad horisontaalse tulpdiagrammina"
+
+[screenshot_4_alt]
+other = "Seadete ekraan salvestatud seadmete, keele, riigi ja ajavööndiga"
+
+[screenshot_5_alt]
+other = "Keelevalik 25 Euroopa keelega"

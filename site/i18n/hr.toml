@@ -135,3 +135,18 @@ other = "Stranica koju tražite ne postoji."
 
 [back_home]
 other = "Natrag na početnu"
+
+[screenshot_1_alt]
+other = "Rezultat najjeftinijeg perioda s vremenom početka, ukupnim troškom i pregledom troškova"
+
+[screenshot_2_alt]
+other = "Početni zaslon s uređajima, odabirom trajanja i gumbom Traži"
+
+[screenshot_3_alt]
+other = "Nadolazeće cijene struje kao vodoravni stupčasti grafikon"
+
+[screenshot_4_alt]
+other = "Zaslon postavki sa spremljenim uređajima, jezikom, državom i vremenskom zonom"
+
+[screenshot_5_alt]
+other = "Odabir jezika od 25 europskih jezika"

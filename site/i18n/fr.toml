@@ -135,3 +135,18 @@ other = "La page que vous recherchez n'existe pas."
 
 [back_home]
 other = "Retour à l'accueil"
+
+[screenshot_1_alt]
+other = "Résultat de la période la moins chère avec heure de début, coût total et détail des coûts"
+
+[screenshot_2_alt]
+other = "Écran d'accueil avec appareils, sélecteur de durée et bouton Rechercher"
+
+[screenshot_3_alt]
+other = "Prochains prix de l'électricité sous forme de graphique à barres horizontal"
+
+[screenshot_4_alt]
+other = "Écran des paramètres avec appareils enregistrés, langue, pays et fuseau horaire"
+
+[screenshot_5_alt]
+other = "Sélection de la langue parmi 25 langues européennes"

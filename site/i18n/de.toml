@@ -135,3 +135,18 @@ other = "Die Seite, die du suchst, existiert nicht."
 
 [back_home]
 other = "Zurück zur Startseite"
+
+[screenshot_1_alt]
+other = "Ergebnis des günstigsten Zeitfensters mit Startzeit, Gesamtkosten und Kostenaufschlüsselung"
+
+[screenshot_2_alt]
+other = "Startbildschirm mit Geräten, Dauerauswahl und Suchen-Taste"
+
+[screenshot_3_alt]
+other = "Kommende Strompreise als waagerechtes Balkendiagramm"
+
+[screenshot_4_alt]
+other = "Einstellungen mit gespeicherten Geräten, Sprache, Land und Zeitzone"
+
+[screenshot_5_alt]
+other = "Sprachauswahl mit 25 europäischen Sprachen"

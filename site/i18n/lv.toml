@@ -135,3 +135,18 @@ other = "Lapa, kuru meklējat, neeksistē."
 
 [back_home]
 other = "Atpakaļ uz sākumu"
+
+[screenshot_1_alt]
+other = "Lētākā perioda rezultāts ar sākuma laiku, kopējām izmaksām un izmaksu sadalījumu"
+
+[screenshot_2_alt]
+other = "Sākuma ekrāns ar ierīcēm, ilguma izvēli un pogu Meklēt"
+
+[screenshot_3_alt]
+other = "Tuvošās elektrības cenas horizontālā joslu diagrammā"
+
+[screenshot_4_alt]
+other = "Iestatījumu ekrāns ar saglabātām ierīcēm, valodu, valsti un laika joslu"
+
+[screenshot_5_alt]
+other = "Valodas izvēle no 25 Eiropas valodām"

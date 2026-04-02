@@ -135,3 +135,18 @@ other = "Strona, której szukasz, nie istnieje."
 
 [back_home]
 other = "Wróć na stronę główną"
+
+[screenshot_1_alt]
+other = "Wynik najtańszego okresu z godziną rozpoczęcia, kosztem całkowitym i podziałem kosztów"
+
+[screenshot_2_alt]
+other = "Ekran główny z urządzeniami, wyborem czasu trwania i przyciskiem Szukaj"
+
+[screenshot_3_alt]
+other = "Nadchodzące ceny prądu jako poziomy wykres słupkowy"
+
+[screenshot_4_alt]
+other = "Ekran ustawień z zapisanymi urządzeniami, językiem, krajem i strefą czasową"
+
+[screenshot_5_alt]
+other = "Wybór języka z 25 języków europejskich"

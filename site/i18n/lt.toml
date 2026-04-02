@@ -135,3 +135,18 @@ other = "Puslapis, kurio ieškote, neegzistuoja."
 
 [back_home]
 other = "Grįžti į pradžią"
+
+[screenshot_1_alt]
+other = "Pigiausio laikotarpio rezultatas su pradžios laiku, bendra kaina ir kainų suskirstymu"
+
+[screenshot_2_alt]
+other = "Pradinis ekranas su prietaisais, trukmės pasirinkimu ir paieškos mygtuku"
+
+[screenshot_3_alt]
+other = "Artėjančios elektros kainos horizontalioje juostinėje diagramoje"
+
+[screenshot_4_alt]
+other = "Nustatymų ekranas su išsaugotais prietaisais, kalba, šalimi ir laiko juosta"
+
+[screenshot_5_alt]
+other = "Kalbos pasirinkimas iš 25 Europos kalbų"

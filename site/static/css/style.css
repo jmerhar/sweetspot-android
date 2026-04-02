@@ -260,6 +260,36 @@ img { max-width: 100%; height: auto; }
   flex-wrap: wrap;
 }
 
+/* === Screenshots === */
+.screenshots {
+  background: var(--color-surface);
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+.screenshots-scroll {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screenshots-scroll::before,
+.screenshots-scroll::after {
+  content: "";
+  flex: 1;
+}
+
+.screenshots-scroll img {
+  flex-shrink: 0;
+  height: 500px;
+  width: auto;
+  border-radius: var(--radius);
+  scroll-snap-align: center;
+}
+
 /* === Buttons === */
 .btn {
   display: inline-flex;
@@ -692,6 +722,10 @@ details p, details ul {
 
   .lang-switcher {
     padding: 0.75rem 0;
+  }
+
+  .screenshots-scroll img {
+    height: 360px;
   }
 
   .hero {

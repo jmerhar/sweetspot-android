@@ -135,3 +135,18 @@ other = "Sidan du letar efter finns inte."
 
 [back_home]
 other = "Tillbaka till startsidan"
+
+[screenshot_1_alt]
+other = "Resultat för billigaste tidsperioden med starttid, totalkostnad och kostnadsfördelning"
+
+[screenshot_2_alt]
+other = "Startskärm med apparater, varaktighetsväljare och Sök-knapp"
+
+[screenshot_3_alt]
+other = "Kommande elpriser som horisontellt stapeldiagram"
+
+[screenshot_4_alt]
+other = "Inställningar med sparade apparater, språk, land och tidszon"
+
+[screenshot_5_alt]
+other = "Språkval med 25 europeiska språk"

@@ -135,3 +135,18 @@ other = "A página que procura não existe."
 
 [back_home]
 other = "Voltar ao início"
+
+[screenshot_1_alt]
+other = "Resultado do período mais barato com hora de início, custo total e discriminação de custos"
+
+[screenshot_2_alt]
+other = "Ecrã inicial com eletrodomésticos, seletor de duração e botão Procurar"
+
+[screenshot_3_alt]
+other = "Próximos preços de eletricidade como gráfico de barras horizontal"
+
+[screenshot_4_alt]
+other = "Ecrã de definições com eletrodomésticos guardados, idioma, país e fuso horário"
+
+[screenshot_5_alt]
+other = "Seleção de idioma com 25 línguas europeias"

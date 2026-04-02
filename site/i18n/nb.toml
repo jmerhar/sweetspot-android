@@ -135,3 +135,18 @@ other = "Siden du leter etter finnes ikke."
 
 [back_home]
 other = "Tilbake til forsiden"
+
+[screenshot_1_alt]
+other = "Resultat for billigste periode med starttid, totalkostnad og kostnadsfordeling"
+
+[screenshot_2_alt]
+other = "Startskjerm med apparater, varighetsvelger og Finn-knapp"
+
+[screenshot_3_alt]
+other = "Kommende strømpriser som horisontalt søylediagram"
+
+[screenshot_4_alt]
+other = "Innstillinger med lagrede apparater, språk, land og tidssone"
+
+[screenshot_5_alt]
+other = "Språkvalg med 25 europeiske språk"

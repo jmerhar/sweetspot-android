@@ -135,3 +135,18 @@ other = "Stránka, kterou hledáte, neexistuje."
 
 [back_home]
 other = "Zpět na úvod"
+
+[screenshot_1_alt]
+other = "Výsledek nejlevnějšího období s časem začátku, celkovou cenou a rozpisem nákladů"
+
+[screenshot_2_alt]
+other = "Úvodní obrazovka se spotřebiči, výběrem doby trvání a tlačítkem Hledat"
+
+[screenshot_3_alt]
+other = "Nadcházející ceny elektřiny jako vodorovný sloupcový graf"
+
+[screenshot_4_alt]
+other = "Obrazovka nastavení s uloženými spotřebiči, jazykem, zemí a časovým pásmem"
+
+[screenshot_5_alt]
+other = "Výběr jazyka z 25 evropských jazyků"

@@ -34,6 +34,9 @@ other = "Get it on Google Play"
 [learn_more]
 other = "Learn more"
 
+
+
+
 [features_title]
 other = "Features"
 
@@ -135,3 +138,18 @@ other = "The page you're looking for doesn't exist."
 
 [back_home]
 other = "Back to home"
+
+[screenshot_1_alt]
+other = "Cheapest window result with start time, total cost, and cost breakdown"
+
+[screenshot_2_alt]
+other = "Home screen with appliance chips, duration picker, and Find button"
+
+[screenshot_3_alt]
+other = "Upcoming electricity prices as a horizontal bar chart"
+
+[screenshot_4_alt]
+other = "Settings screen with saved appliances, language, country, and timezone"
+
+[screenshot_5_alt]
+other = "Language selection with 25 European languages"

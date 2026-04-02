@@ -135,3 +135,18 @@ other = "Etsimääsi sivua ei löydy."
 
 [back_home]
 other = "Takaisin etusivulle"
+
+[screenshot_1_alt]
+other = "Halvimman ajanjakson tulos alkamisajan, kokonaiskustannuksen ja kustannuserittelyn kanssa"
+
+[screenshot_2_alt]
+other = "Aloitusnäyttö laitteilla, keston valitsimella ja Etsi-painikkeella"
+
+[screenshot_3_alt]
+other = "Tulevat sähkön hinnat vaakapalkkikaaviossa"
+
+[screenshot_4_alt]
+other = "Asetukset tallennetuilla laitteilla, kielellä, maalla ja aikavyöhykkeellä"
+
+[screenshot_5_alt]
+other = "Kielen valinta 25 eurooppalaisesta kielestä"

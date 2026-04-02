@@ -135,3 +135,18 @@ other = "Pagina pe care o cauți nu există."
 
 [back_home]
 other = "Înapoi la pagina principală"
+
+[screenshot_1_alt]
+other = "Rezultatul celei mai ieftine perioade cu ora de start, costul total și detalii costuri"
+
+[screenshot_2_alt]
+other = "Ecran principal cu aparate electrocasnice, selector de durată și butonul Caută"
+
+[screenshot_3_alt]
+other = "Prețuri viitoare ale electricității ca grafic cu bare orizontale"
+
+[screenshot_4_alt]
+other = "Ecran de setări cu aparate salvate, limbă, țară și fus orar"
+
+[screenshot_5_alt]
+other = "Selectarea limbii din 25 de limbi europene"

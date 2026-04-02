@@ -135,3 +135,18 @@ other = "A keresett oldal nem létezik."
 
 [back_home]
 other = "Vissza a főoldalra"
+
+[screenshot_1_alt]
+other = "A legolcsóbb időablak eredménye kezdési idővel, összköltséggel és költségbontással"
+
+[screenshot_2_alt]
+other = "Kezdőképernyő készülékekkel, időtartam-választóval és Keresés gombbal"
+
+[screenshot_3_alt]
+other = "Közelgő villamosenergia-árak vízszintes oszlopdiagramon"
+
+[screenshot_4_alt]
+other = "Beállítások mentett készülékekkel, nyelvvel, országgal és időzónával"
+
+[screenshot_5_alt]
+other = "Nyelvválasztás 25 európai nyelvből"

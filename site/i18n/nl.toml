@@ -135,3 +135,18 @@ other = "De pagina die je zoekt bestaat niet."
 
 [back_home]
 other = "Terug naar home"
+
+[screenshot_1_alt]
+other = "Resultaat van de goedkoopste periode met starttijd, totale kosten en kostenoverzicht"
+
+[screenshot_2_alt]
+other = "Startscherm met apparaten, duurkiezer en Zoek-knop"
+
+[screenshot_3_alt]
+other = "Komende elektriciteitsprijzen als horizontaal staafdiagram"
+
+[screenshot_4_alt]
+other = "Instellingen met opgeslagen apparaten, taal, land en tijdzone"
+
+[screenshot_5_alt]
+other = "Taalkeuze uit 25 Europese talen"

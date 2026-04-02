@@ -135,3 +135,18 @@ other = "Siden, du leder efter, findes ikke."
 
 [back_home]
 other = "Tilbage til forsiden"
+
+[screenshot_1_alt]
+other = "Resultat for billigste tidsrum med starttid, samlet pris og prisfordeling"
+
+[screenshot_2_alt]
+other = "Startskærm med apparater, varighedsvælger og Find-knap"
+
+[screenshot_3_alt]
+other = "Kommende elpriser som vandret søjlediagram"
+
+[screenshot_4_alt]
+other = "Indstillingsskærm med gemte apparater, sprog, land og tidszone"
+
+[screenshot_5_alt]
+other = "Sprogvalg med 25 europæiske sprog"

@@ -135,3 +135,18 @@ other = "Stran, ki jo iščete, ne obstaja."
 
 [back_home]
 other = "Nazaj na domačo stran"
+
+[screenshot_1_alt]
+other = "Rezultat najcenejšega termina z začetnim časom, skupnimi stroški in razčlenitvijo stroškov"
+
+[screenshot_2_alt]
+other = "Začetni zaslon z aparati, izbirnikom trajanja in gumbom Poišči"
+
+[screenshot_3_alt]
+other = "Prihajajoče cene električne energije kot vodoravni stolpčni grafikon"
+
+[screenshot_4_alt]
+other = "Zaslon z nastavitvami za shranjene aparate, jezik, državo in časovni pas"
+
+[screenshot_5_alt]
+other = "Izbira jezika med 25 evropskimi jeziki"

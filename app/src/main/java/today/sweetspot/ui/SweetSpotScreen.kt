@@ -40,6 +40,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
@@ -127,11 +128,13 @@ private fun FormScreen(
             TopAppBar(
                 title = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
+                        val logoBg = if (state.useProductionLogo) Color(0xFFF5F7FA)
+                            else colorResource(R.color.ic_launcher_background)
                         Box(
                             modifier = Modifier
                                 .size(36.dp)
                                 .clip(CircleShape)
-                                .background(colorResource(R.color.ic_launcher_background)),
+                                .background(logoBg),
                             contentAlignment = Alignment.Center
                         ) {
                             Image(

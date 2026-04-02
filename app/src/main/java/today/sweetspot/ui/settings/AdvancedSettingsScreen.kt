@@ -52,6 +52,8 @@ import java.time.ZoneId
  * @param timeOverrideMs Current time override as epoch millis, or `null` if using real time.
  * @param onDevTimeOverrideChanged Called with epoch millis to set, or `null` to clear the override.
  * @param timeZoneId Current timezone for displaying the override datetime.
+ * @param useProductionLogo Whether the production logo is shown instead of the debug logo.
+ * @param onDevUseProductionLogoChanged Called when the production logo toggle changes.
  * @param onBack Called when the user navigates back.
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,6 +74,8 @@ internal fun AdvancedSettingsScreen(
     timeOverrideMs: Long?,
     onDevTimeOverrideChanged: (Long?) -> Unit,
     timeZoneId: ZoneId,
+    useProductionLogo: Boolean,
+    onDevUseProductionLogoChanged: (Boolean) -> Unit,
     onBack: () -> Unit
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
@@ -155,7 +159,9 @@ internal fun AdvancedSettingsScreen(
                     },
                     timeOverrideMs = timeOverrideMs,
                     onTimeOverrideChanged = onDevTimeOverrideChanged,
-                    timeZoneId = timeZoneId
+                    timeZoneId = timeZoneId,
+                    useProductionLogo = useProductionLogo,
+                    onUseProductionLogoChanged = onDevUseProductionLogoChanged
                 )
             }
         }

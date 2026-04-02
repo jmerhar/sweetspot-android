@@ -32,6 +32,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import today.sweetspot.BuildConfig
 
 /**
  * Hidden developer options section with reset buttons and toggles for testing.
@@ -45,6 +46,8 @@ import java.time.format.DateTimeFormatter
  * @param timeOverrideMs Current time override as epoch millis, or `null` if using real time.
  * @param onTimeOverrideChanged Called with epoch millis to set, or `null` to clear the override.
  * @param timeZoneId Current timezone for displaying the override datetime.
+ * @param useProductionLogo Whether the production logo is shown instead of the debug logo.
+ * @param onUseProductionLogoChanged Called when the production logo toggle changes.
  */
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -55,7 +58,9 @@ internal fun DeveloperSection(
     onResetStatsTimer: () -> Unit,
     timeOverrideMs: Long?,
     onTimeOverrideChanged: (Long?) -> Unit,
-    timeZoneId: ZoneId
+    timeZoneId: ZoneId,
+    useProductionLogo: Boolean,
+    onUseProductionLogoChanged: (Boolean) -> Unit
 ) {
     Text(
         text = "Developer",
@@ -195,6 +200,32 @@ internal fun DeveloperSection(
             }
         ) {
             TimePicker(state = timePickerState)
+        }
+    }
+
+    if (BuildConfig.DEBUG) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = { onUseProductionLogoChanged(!useProductionLogo) })
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = "Production logo",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = "Show the release app icon instead of the debug one",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Switch(
+                checked = useProductionLogo,
+                onCheckedChange = onUseProductionLogoChanged
+            )
         }
     }
 }

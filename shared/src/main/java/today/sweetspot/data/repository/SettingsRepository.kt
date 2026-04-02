@@ -38,6 +38,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_DEV_OPTIONS = "dev_options"
         const val KEY_COOLDOWN_DISABLED = "cooldown_disabled"
         const val KEY_TIME_OVERRIDE = "time_override"
+        const val KEY_USE_PRODUCTION_LOGO = "use_production_logo"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -380,5 +381,17 @@ class SettingsRepository(private val context: Context) {
         } else {
             Clock.system(timeZoneId)
         }
+    }
+
+    /** Returns whether the production logo should be used instead of the debug logo. */
+    fun isUseProductionLogo(): Boolean = prefs.getBoolean(KEY_USE_PRODUCTION_LOGO, false)
+
+    /**
+     * Enables or disables the production logo override.
+     *
+     * @param use `true` to show the production logo in debug builds.
+     */
+    fun setUseProductionLogo(use: Boolean) {
+        prefs.edit { putBoolean(KEY_USE_PRODUCTION_LOGO, use) }
     }
 }

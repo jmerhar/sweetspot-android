@@ -95,6 +95,7 @@ sealed interface AppError {
  * @property isCooldownDisabled Whether the API fetch cooldown is bypassed (developer option).
  * @property timeOverrideMs Developer time override as epoch millis, or `null` when using real time.
  * @property now The current effective time, reflecting any active time override. Used by the UI for relative time display.
+ * @property useProductionLogo Whether to show the production logo instead of the debug logo (debug builds only).
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -125,7 +126,8 @@ data class UiState(
     val devOptionsEnabled: Boolean = false,
     val isCooldownDisabled: Boolean = false,
     val timeOverrideMs: Long? = null,
-    val now: ZonedDateTime = ZonedDateTime.now()
+    val now: ZonedDateTime = ZonedDateTime.now(),
+    val useProductionLogo: Boolean = false
 )
 
 /**
@@ -193,7 +195,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             devOptionsEnabled = settingsRepository.isDevOptionsEnabled(),
             isCooldownDisabled = settingsRepository.isCooldownDisabled(),
             timeOverrideMs = settingsRepository.getTimeOverrideMs(),
-            now = currentNow(settingsRepository.getTimeZoneId())
+            now = currentNow(settingsRepository.getTimeZoneId()),
+            useProductionLogo = settingsRepository.isUseProductionLogo()
         )
     )
 
@@ -940,6 +943,16 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !settingsRepository.isUnlocked()
             )
         }
+    }
+
+    /**
+     * Toggles the production logo override for debug builds.
+     *
+     * @param use `true` to show the production logo.
+     */
+    fun onDevUseProductionLogoChanged(use: Boolean) {
+        settingsRepository.setUseProductionLogo(use)
+        _uiState.update { it.copy(useProductionLogo = use) }
     }
 
     /**

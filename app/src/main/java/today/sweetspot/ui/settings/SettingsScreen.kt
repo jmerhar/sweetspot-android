@@ -90,6 +90,8 @@ fun SettingsScreen(
     onDevResetStatsTimer: () -> Unit,
     timeOverrideMs: Long?,
     onDevTimeOverrideChanged: (Long?) -> Unit,
+    useProductionLogo: Boolean,
+    onDevUseProductionLogoChanged: (Boolean) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -125,6 +127,8 @@ fun SettingsScreen(
             timeOverrideMs = timeOverrideMs,
             onDevTimeOverrideChanged = onDevTimeOverrideChanged,
             timeZoneId = currentTimeZoneId,
+            useProductionLogo = useProductionLogo,
+            onDevUseProductionLogoChanged = onDevUseProductionLogoChanged,
             onBack = { showAdvancedSettings = false }
         )
         return

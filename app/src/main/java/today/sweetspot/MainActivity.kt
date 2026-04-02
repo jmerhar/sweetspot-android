@@ -79,6 +79,8 @@ class MainActivity : AppCompatActivity() {
                             onDevResetStatsTimer = vm::onDevResetStatsTimer,
                             timeOverrideMs = state.timeOverrideMs,
                             onDevTimeOverrideChanged = vm::onDevTimeOverrideChanged,
+                            useProductionLogo = state.useProductionLogo,
+                            onDevUseProductionLogoChanged = vm::onDevUseProductionLogoChanged,
                             onBack = vm::onHideSettings
                         )
                     }

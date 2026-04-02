@@ -17,7 +17,7 @@ make debug-watch                  # Install debug app on connected watch
 make install-phone                # Install release APK on connected phone
 make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
-make inspect                      # Run Android Studio offline inspections
+make inspect                      # Summarise inspection XML files (see Inspections section)
 make site-validate                # Validate Hugo site (build, pages, links, i18n)
 make clean                        # Remove all build outputs
 ```
@@ -25,7 +25,7 @@ make clean                        # Remove all build outputs
 A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
-- **`bin/inspect.sh`** — Runs Android Studio offline code inspections. Results are written as XML files to `inspect/xml/` (one file per inspection category). Called by `make inspect`.
+- **`bin/inspect.sh`** — Summarises inspection XML files exported from Android Studio. Does **not** run inspections itself. Called by `make inspect`.
 - **`bin/site-validate.sh`** — Validates the Hugo site: builds, checks expected pages/assets exist, verifies internal links resolve, checks page sizes, and ensures i18n key parity across languages. Called by `make site-validate`.
 
 ### Installing the Wear OS app
@@ -105,6 +105,19 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
 - `data/stats/FileStatsCollectorTest` — record, read, clear, append, persistence, corruption (8 tests, in shared)
 - `data/stats/StatsReporterTest` — JSON format, grouping, version field, error field presence (5 tests, in app)
+
+## Inspections
+
+Inspections are run manually in Android Studio and exported as XML — **not** run from the CLI.
+
+**Workflow:**
+1. The user runs "Code → Inspect Code" in Android Studio (whole project, default profile)
+2. The user exports results to `inspect/xml/` (one XML file per inspection category)
+3. Claude reads the XML files, identifies new issues, and fixes them
+4. The user re-runs the inspection in Android Studio and re-exports
+5. Claude verifies the issues are resolved
+
+**Important:** `make inspect` / `bin/inspect.sh` only **summarises** the existing XML files — it does not run inspections. Do not attempt to run inspections from the CLI. The XML files in `inspect/xml/` are gitignored local artifacts.
 
 ## Stack
 

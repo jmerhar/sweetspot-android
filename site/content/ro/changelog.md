@@ -19,7 +19,7 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1 aprilie 2026" >}}
-- Confirmare de mulțumire după abonarea la SweetSpot
+- Confirmare de mulțumire după deblocarea SweetSpot
 - Remediat un flash al limbii vechi la schimbarea limbii aplicației din setări
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30 martie 2026" >}}
-- Adăugată opțiunea de abonare anticipată în Setări pe durata perioadei de probă
+- Adăugată opțiunea de deblocare anticipată în Setări pe durata perioadei de probă
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30 martie 2026" >}}
@@ -38,10 +38,10 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30 martie 2026" >}}
-- Perioadă de probă gratuită de 14 zile cu abonament anual pentru a continua utilizarea aplicației
-- Ecran de plată după expirarea perioadei de probă, cu opțiunea de a restaura abonamentul
+- Perioadă de probă gratuită de 14 zile cu achiziție unică pentru deblocare permanentă
+- Ecran de plată după expirarea perioadei de probă, cu opțiunea de a restaura achizițiile anterioare
 - Numărătoare inversă a perioadei de probă afișată pe ecranul principal
-- Ceasul Wear OS afișează un mesaj de abonare de pe telefon când perioada de probă expiră
+- Ceasul Wear OS afișează un mesaj de deblocare de pe telefon când perioada de probă expiră
 - Corectată deduplicarea TimeSeries ENTSO-E suprapuse
 - Versiunea aplicației afișată în partea de jos a ecranului de setări
 {{< /changelog >}}

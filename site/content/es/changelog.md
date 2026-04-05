@@ -19,7 +19,7 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1 de abril de 2026" >}}
-- Diálogo de agradecimiento tras suscribirse a SweetSpot
+- Diálogo de agradecimiento tras desbloquear SweetSpot
 - Corregido un destello del idioma anterior al cambiar el idioma de la app en ajustes
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30 de marzo de 2026" >}}
-- Añadida opción de suscripción anticipada en Ajustes durante el periodo de prueba
+- Añadida opción de desbloqueo anticipado en Ajustes durante el periodo de prueba
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30 de marzo de 2026" >}}
@@ -38,10 +38,10 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30 de marzo de 2026" >}}
-- Periodo de prueba gratuito de 14 días con suscripción anual para seguir usando la app
-- Pantalla de pago tras finalizar el periodo de prueba con opción de restaurar suscripción
+- Periodo de prueba gratuito de 14 días con compra única para desbloqueo permanente
+- Pantalla de pago tras finalizar el periodo de prueba con opción de restaurar compras anteriores
 - Cuenta atrás del periodo de prueba en la pantalla principal
-- El reloj Wear OS muestra un mensaje para suscribirse desde el teléfono cuando expira el periodo de prueba
+- El reloj Wear OS muestra un mensaje para desbloquear desde el teléfono cuando expira el periodo de prueba
 - Corregida la deduplicación de TimeSeries superpuestos de ENTSO-E
 - Versión de la aplicación visible en la parte inferior de la pantalla de ajustes
 {{< /changelog >}}

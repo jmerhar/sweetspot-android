@@ -19,7 +19,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1. april 2026" >}}
-- Potrditveno okno z zahvalo po naročnini na SweetSpot
+- Potrditveno okno z zahvalo po odklenitvi SweetSpot
 - Odpravljen blic stare jezike ob spremembi jezika aplikacije v nastavitvah
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30. marec 2026" >}}
-- Možnost zgodnje naročnine v nastavitvah med preizkusnim obdobjem
+- Možnost zgodnjega odklepanja v nastavitvah med preizkusnim obdobjem
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30. marec 2026" >}}
@@ -38,10 +38,10 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30. marec 2026" >}}
-- 14-dnevni brezplačni preizkus z letno naročnino za nadaljnjo uporabo aplikacije
-- Zaslon za plačilo po koncu preizkusnega obdobja z možnostjo obnovitve naročnine
+- 14-dnevni brezplačni preizkus z enkratnim nakupom za trajno odklepanje
+- Zaslon za plačilo po koncu preizkusnega obdobja z možnostjo obnovitve prejšnjih nakupov
 - Odštevalnik preizkusnega obdobja na glavnem zaslonu
-- Ura Wear OS prikaže sporočilo za naročnino prek telefona, ko se preizkusno obdobje izteče
+- Ura Wear OS prikaže sporočilo za odklepanje prek telefona, ko se preizkusno obdobje izteče
 - Odpravljena podvajanja prekrivajočih se ENTSO-E TimeSeries
 - Različica aplikacije prikazana na dnu zaslona z nastavitvami
 {{< /changelog >}}

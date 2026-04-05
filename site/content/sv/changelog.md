@@ -19,7 +19,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1 april 2026" >}}
-- Tackbekräftelse efter prenumeration på SweetSpot
+- Tackbekräftelse efter upplåsning av SweetSpot
 - Åtgärdat en blixt av det gamla språket vid ändring av appspråket i inställningar
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30 mars 2026" >}}
-- Lagt till möjlighet till tidig prenumeration i Inställningar under provperioden
+- Lagt till möjlighet till tidig upplåsning i Inställningar under provperioden
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30 mars 2026" >}}
@@ -38,10 +38,10 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30 mars 2026" >}}
-- 14 dagars gratis provperiod med årsprenumeration för fortsatt användning av appen
-- Betalningsskärm efter provperiodens slut med möjlighet att återställa prenumeration
+- 14 dagars gratis provperiod med engångsköp för permanent upplåsning
+- Betalningsskärm efter provperiodens slut med möjlighet att återställa tidigare köp
 - Nedräkning av provperioden på huvudskärmen
-- Wear OS-klockan visar ett meddelande om att prenumerera från telefonen när provperioden löper ut
+- Wear OS-klockan visar ett meddelande om att låsa upp från telefonen när provperioden löper ut
 - Åtgärdad deduplicering av överlappande ENTSO-E TimeSeries
 - Appversion visas längst ner på inställningsskärmen
 {{< /changelog >}}

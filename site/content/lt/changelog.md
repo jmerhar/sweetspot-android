@@ -19,7 +19,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="2026 m. balandžio 1 d." >}}
-- Padėkos patvirtinimas užsiprenumeravus SweetSpot
+- Padėkos patvirtinimas atrakinant SweetSpot
 - Ištaisytas senos kalbos blyksnis keičiant programėlės kalbą nustatymuose
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="2026 m. kovo 30 d." >}}
-- Pridėta galimybė ankstyvos prenumeratos nustatymuose bandomojo laikotarpio metu
+- Pridėta galimybė ankstyvo atrakinimo nustatymuose bandomojo laikotarpio metu
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="2026 m. kovo 30 d." >}}
@@ -38,10 +38,10 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="2026 m. kovo 30 d." >}}
-- 14 dienų nemokamas bandomasis laikotarpis su metine prenumerata programėlės naudojimui tęsti
-- Mokėjimo ekranas pasibaigus bandomajam laikotarpiui su galimybe atkurti prenumeratą
+- 14 dienų nemokamas bandomasis laikotarpis su vienkartiniu pirkiniu nuolatiniam atrakinimui
+- Mokėjimo ekranas pasibaigus bandomajam laikotarpiui su galimybe atkurti ankstesnius pirkinius
 - Bandomojo laikotarpio atgalinė atskaita pagrindiniame ekrane
-- Wear OS laikrodis rodo pranešimą prenumeruoti iš telefono, kai bandomasis laikotarpis baigiasi
+- Wear OS laikrodis rodo pranešimą atrakinti iš telefono, kai bandomasis laikotarpis baigiasi
 - Ištaisyta persidengusių ENTSO-E TimeSeries deduplikacija
 - Programėlės versija rodoma nustatymų ekrano apačioje
 {{< /changelog >}}

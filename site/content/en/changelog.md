@@ -19,7 +19,7 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="April 1, 2026" >}}
-- Thank-you confirmation dialog after subscribing to SweetSpot
+- Thank-you confirmation dialog after unlocking SweetSpot
 - Fixed a flash of the old language when changing the app language in settings
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="March 30, 2026" >}}
-- Added early subscribe option in Settings during the trial period
+- Added early unlock option in Settings during the trial period
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="March 30, 2026" >}}
@@ -38,10 +38,10 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="March 30, 2026" >}}
-- 14-day free trial with a yearly subscription to keep using the app
-- Paywall screen after the trial ends with option to restore subscription
+- 14-day free trial with a one-time purchase to unlock permanently
+- Paywall screen after the trial ends with option to restore previous purchases
 - Trial countdown shown on the main screen
-- Wear OS watch shows a message to subscribe from the phone when the trial expires
+- Wear OS watch shows a message to unlock from the phone when the trial expires
 - Fixed overlapping ENTSO-E TimeSeries deduplication
 - App version shown at the bottom of the settings screen
 {{< /changelog >}}

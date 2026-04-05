@@ -19,7 +19,7 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1. April 2026" >}}
-- Dankesbestätigung nach dem Abonnieren von SweetSpot
+- Dankesbestätigung nach dem Freischalten von SweetSpot
 - Kurzes Aufblitzen der alten Sprache beim Ändern der App-Sprache in den Einstellungen behoben
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30. März 2026" >}}
-- Option zum vorzeitigen Abonnieren in den Einstellungen während des Testzeitraums hinzugefügt
+- Option zum vorzeitigen Freischalten in den Einstellungen während des Testzeitraums hinzugefügt
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30. März 2026" >}}
@@ -38,10 +38,10 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30. März 2026" >}}
-- 14 Tage kostenlos testen mit Jahresabonnement zur weiteren Nutzung der App
-- Bezahlbildschirm nach Ablauf des Testzeitraums mit Option zur Wiederherstellung des Abonnements
+- 14 Tage kostenlos testen mit einmaligem Kauf zum dauerhaften Freischalten
+- Bezahlbildschirm nach Ablauf des Testzeitraums mit Option zur Wiederherstellung früherer Käufe
 - Countdown des Testzeitraums auf dem Hauptbildschirm
-- Wear OS-Uhr zeigt eine Nachricht zum Abonnieren über das Telefon, wenn der Testzeitraum abläuft
+- Wear OS-Uhr zeigt eine Nachricht zum Freischalten über das Telefon, wenn der Testzeitraum abläuft
 - Überlappende ENTSO-E TimeSeries-Deduplizierung behoben
 - App-Version am unteren Rand des Einstellungsbildschirms angezeigt
 {{< /changelog >}}

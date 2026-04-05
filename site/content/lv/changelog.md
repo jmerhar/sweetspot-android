@@ -19,7 +19,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="2026. gada 1. aprīlis" >}}
-- Pateicības apstiprinājums pēc SweetSpot abonēšanas
+- Pateicības apstiprinājums pēc SweetSpot atbloķēšanas
 - Novērsta vecās valodas uzmirgšana, mainot lietotnes valodu iestatījumos
 {{< /changelog >}}
 
@@ -30,7 +30,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="2026. gada 30. marts" >}}
-- Pievienota agrīnas abonēšanas iespēja iestatījumos izmēģinājuma periodā
+- Pievienota agrīnas atbloķēšanas iespēja iestatījumos izmēģinājuma periodā
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="2026. gada 30. marts" >}}
@@ -38,10 +38,10 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="2026. gada 30. marts" >}}
-- 14 dienu bezmaksas izmēģinājums ar gada abonementu lietotnes turpmākai izmantošanai
-- Maksājumu ekrāns pēc izmēģinājuma beigām ar iespēju atjaunot abonementu
+- 14 dienu bezmaksas izmēģinājums ar vienreizēju maksājumu pastāvīgai atbloķēšanai
+- Maksājumu ekrāns pēc izmēģinājuma beigām ar iespēju atjaunot iepriekšējos pirkumus
 - Izmēģinājuma atpakaļskaitīšana galvenajā ekrānā
-- Wear OS pulkstenis rāda ziņojumu par abonēšanu no tālruņa, kad izmēģinājums beidzas
+- Wear OS pulkstenis rāda ziņojumu par atbloķēšanu no tālruņa, kad izmēģinājums beidzas
 - Novērsta pārklājošos ENTSO-E TimeSeries deduplikācija
 - Lietotnes versija redzama iestatījumu ekrāna apakšā
 {{< /changelog >}}

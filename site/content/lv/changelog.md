@@ -3,6 +3,12 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="5.3" date="2026. gada 5. aprīlis" >}}
+- Gada abonements aizstāj vienreizējo pirkumu — 14 dienu bezmaksas izmēģinājums paliek nemainīgs
+- Lietotne atkārtoti pārbauda abonementa statusu, atgriežoties priekšplānā
+- Uzlaboti tulkojumi ungāru, rumāņu, poļu, bulgāru un melnkalniešu valodā
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2026. gada 2. aprīlis" >}}
 - Atjaunotas ierīču ikonas — 30 augstas kvalitātes Material Symbols ikonas ar labākām atbilstībām un jaunām ikonām tējkannām, burbuļvannām, laistītājiem un citām
 - Ikonu izvēlne tagad rāda atlasītās ikonas nosaukumu, tulkotu visās 25 atbalstītajās valodās

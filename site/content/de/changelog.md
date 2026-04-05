@@ -3,6 +3,12 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.3" date="5. April 2026" >}}
+- Jahresabonnement ersetzt den Einmalkauf — der 14-tägige kostenlose Testzeitraum bleibt unverändert
+- Die App überprüft den Abonnementstatus erneut, wenn sie in den Vordergrund zurückkehrt
+- Verbesserte Übersetzungen in Ungarisch, Rumänisch, Polnisch, Bulgarisch und Montenegrinisch
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2. April 2026" >}}
 - Überarbeitete Gerätesymbole — 30 hochwertige Material Symbols-Icons mit besseren Zuordnungen und neuen Symbolen für Wasserkocher, Whirlpools, Rasensprenger und mehr
 - Die Symbolauswahl zeigt jetzt den Namen des gewählten Symbols an, übersetzt in alle 25 unterstützten Sprachen

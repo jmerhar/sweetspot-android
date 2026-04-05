@@ -3,6 +3,12 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="5.3" date="5 april 2026" >}}
+- Årsprenumeration ersätter engångsköpet — den 14 dagar långa gratis provperioden förblir oförändrad
+- Appen kontrollerar prenumerationsstatus igen när den återgår till förgrunden
+- Förbättrade översättningar på ungerska, rumänska, polska, bulgariska och montenegrinska
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2 april 2026" >}}
 - Förnyade apparatikoner — 30 högkvalitativa Material Symbols-ikoner med bättre matchningar och nya ikoner för vattenkokare, bubbelpooler, sprinklers och mer
 - Ikonväljaren visar nu namnet på den valda ikonen, översatt till alla 25 språk som stöds

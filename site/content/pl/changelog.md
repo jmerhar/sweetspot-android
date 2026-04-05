@@ -3,6 +3,12 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="5.3" date="5 kwietnia 2026" >}}
+- Roczna subskrypcja zastępuje jednorazowy zakup — 14-dniowy bezpłatny okres próbny pozostaje bez zmian
+- Aplikacja ponownie sprawdza status subskrypcji po powrocie na pierwszy plan
+- Poprawione tłumaczenia w języku węgierskim, rumuńskim, polskim, bułgarskim i czarnogórskim
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2 kwietnia 2026" >}}
 - Odświeżone ikony urządzeń — 30 wysokiej jakości ikon Material Symbols z lepszymi dopasowaniami i nowymi ikonami dla czajników, jacuzzi, zraszaczy i innych
 - Wybór ikon wyświetla teraz nazwę wybranej ikony, przetłumaczoną na wszystkie 25 obsługiwanych języków

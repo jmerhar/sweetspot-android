@@ -3,6 +3,12 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.3" date="2026. április 5." >}}
+- Az éves előfizetés felváltja az egyszeri vásárlást — a 14 napos ingyenes próbaidőszak változatlan marad
+- Az alkalmazás újra ellenőrzi az előfizetés állapotát, amikor visszatér az előtérbe
+- Fordítási javítások magyar, román, lengyel, bolgár és montenegrói nyelven
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2026. április 2." >}}
 - Megújult készülékikonok — 30 kiváló minőségű Material Symbols ikon jobb megfeleltetésekkel és új ikonokkal vízforralókhoz, pezsgőfürdőkhöz, locsolókhoz és egyebekhez
 - Az ikonválasztó mostantól megjeleníti a kiválasztott ikon nevét, lefordítva mind a 25 támogatott nyelvre

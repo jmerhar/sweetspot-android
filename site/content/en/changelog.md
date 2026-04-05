@@ -3,6 +3,12 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.3" date="April 5, 2026" >}}
+- Yearly subscription replaces the one-time purchase — the 14-day free trial remains unchanged
+- App re-checks subscription status when returning to the foreground
+- Translation improvements in Hungarian, Romanian, Polish, Bulgarian, and Montenegrin
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="April 2, 2026" >}}
 - Revamped appliance icons — 30 high-quality Material Symbols icons with better matches and new icons for kettles, hot tubs, sprinklers, and more
 - Icon picker now shows the name of the selected icon, translated into all 25 supported languages

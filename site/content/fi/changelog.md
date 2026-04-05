@@ -3,6 +3,12 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.3" date="5. huhtikuuta 2026" >}}
+- Vuositilaus korvaa kertaostoksen — 14 päivän ilmainen kokeilu pysyy ennallaan
+- Sovellus tarkistaa tilauksen tilan uudelleen palatessaan etualalle
+- Käännösparannuksia unkarissa, romaniassa, puolassa, bulgariassa ja montenegrossa
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2. huhtikuuta 2026" >}}
 - Uudistetut laitekuvakkeet — 30 korkealaatuista Material Symbols -kuvaketta paremmilla vastaavuuksilla ja uusilla kuvakkeilla vedenkeittimiä, porealtaita, sprinklereitä ja muuta varten
 - Kuvakevalitsin näyttää nyt valitun kuvakkeen nimen käännettynä kaikille 25 tuetulle kielelle

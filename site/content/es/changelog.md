@@ -3,6 +3,12 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="5.3" date="5 de abril de 2026" >}}
+- La suscripción anual sustituye a la compra única — el periodo de prueba gratuito de 14 días se mantiene sin cambios
+- La app vuelve a comprobar el estado de la suscripción al volver al primer plano
+- Mejoras en las traducciones en húngaro, rumano, polaco, búlgaro y montenegrino
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2 de abril de 2026" >}}
 - Iconos de electrodomésticos renovados — 30 iconos Material Symbols de alta calidad con mejores coincidencias y nuevos iconos para hervidores, jacuzzis, aspersores y más
 - El selector de iconos ahora muestra el nombre del icono seleccionado, traducido a los 25 idiomas admitidos

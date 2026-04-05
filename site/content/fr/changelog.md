@@ -3,6 +3,12 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="5.3" date="5 avril 2026" >}}
+- L'abonnement annuel remplace l'achat unique — la période d'essai gratuite de 14 jours reste inchangée
+- L'application revérifie l'état de l'abonnement lors du retour au premier plan
+- Améliorations des traductions en hongrois, roumain, polonais, bulgare et monténégrin
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2 avril 2026" >}}
 - Icônes d'appareils repensées — 30 icônes Material Symbols de haute qualité avec de meilleures correspondances et de nouvelles icônes pour les bouilloires, jacuzzis, arroseurs et plus
 - Le sélecteur d'icônes affiche désormais le nom de l'icône sélectionnée, traduit dans les 25 langues prises en charge

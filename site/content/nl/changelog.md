@@ -3,6 +3,12 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.3" date="5 april 2026" >}}
+- Jaarabonnement vervangt de eenmalige aankoop — de gratis proefperiode van 14 dagen blijft ongewijzigd
+- De app controleert de abonnementsstatus opnieuw bij terugkeer naar de voorgrond
+- Verbeterde vertalingen in het Hongaars, Roemeens, Pools, Bulgaars en Montenegrijns
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2 april 2026" >}}
 - Vernieuwde apparaatpictogrammen — 30 hoogwaardige Material Symbols-pictogrammen met betere overeenkomsten en nieuwe pictogrammen voor waterkokers, bubbelbaden, sproeiers en meer
 - De pictogramkiezer toont nu de naam van het geselecteerde pictogram, vertaald in alle 25 ondersteunde talen

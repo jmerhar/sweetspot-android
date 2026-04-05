@@ -3,6 +3,12 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.3" date="5. aprill 2026" >}}
+- Aastatellimus asendab ühekordse ostu — 14-päevane tasuta prooviperiood jääb muutmata
+- Rakendus kontrollib tellimuse olekut uuesti esiplaanile naasmisel
+- Tõlkeparandused ungari, rumeenia, poola, bulgaaria ja montenegro keeles
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2. aprill 2026" >}}
 - Uuendatud seadmeikoonid — 30 kvaliteetset Material Symbols ikooni paremate vastetega ja uued ikoonid veekeetjatele, mullivannidele, vihmutitele ja muule
 - Ikoonivalija näitab nüüd valitud ikooni nime, mis on tõlgitud kõigisse 25 toetatud keelde

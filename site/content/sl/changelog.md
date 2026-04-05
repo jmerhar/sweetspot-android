@@ -3,6 +3,12 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.3" date="5. april 2026" >}}
+- Letna naročnina nadomešča enkratni nakup — 14-dnevni brezplačni preizkus ostaja nespremenjen
+- Aplikacija ob vrnitvi v ospredje ponovno preveri stanje naročnine
+- Izboljšani prevodi v madžarščini, romunščini, poljščini, bolgarščini in črnogorščini
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2. april 2026" >}}
 - Prenovljene ikone naprav — 30 visokokakovostnih ikon Material Symbols z boljšimi ujemanji in novimi ikonami za čajnike, masažne kadi, razpršilce in drugo
 - Izbirnik ikon zdaj prikazuje ime izbrane ikone, prevedeno v vseh 25 podprtih jezikov

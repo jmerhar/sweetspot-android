@@ -3,6 +3,12 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.3" date="5 aprilie 2026" >}}
+- Abonamentul anual înlocuiește achiziția unică — perioada de probă gratuită de 14 zile rămâne neschimbată
+- Aplicația reverifică starea abonamentului la revenirea în prim-plan
+- Îmbunătățiri ale traducerilor în maghiară, română, poloneză, bulgară și muntenegreană
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2 aprilie 2026" >}}
 - Pictograme de electrocasnice reînnoite — 30 de pictograme Material Symbols de înaltă calitate cu potriviri mai bune și pictograme noi pentru fierbătoare, jacuzzi-uri, aspersoare și altele
 - Selectorul de pictograme afișează acum numele pictogramei selectate, tradus în toate cele 25 de limbi acceptate

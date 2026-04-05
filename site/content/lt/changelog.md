@@ -3,6 +3,12 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.3" date="2026 m. balandžio 5 d." >}}
+- Metinė prenumerata pakeičia vienkartinį pirkimą — 14 dienų nemokamas bandomasis laikotarpis lieka nepakitęs
+- Programėlė iš naujo patikrina prenumeratos būseną grįžus į pirmą planą
+- Patobulinti vertimai vengrų, rumunų, lenkų, bulgarų ir juodkalniečių kalbomis
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2026 m. balandžio 2 d." >}}
 - Atnaujintos prietaisų piktogramos — 30 aukštos kokybės Material Symbols piktogramų su geresniais atitikmenimis ir naujomis piktogramomis virdulių, sūkurinių vonių, laistymo įrenginių ir kt.
 - Piktogramų parinkiklis dabar rodo pasirinktos piktogramos pavadinimą, išverstą į visas 25 palaikomas kalbas

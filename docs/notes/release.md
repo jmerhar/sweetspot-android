@@ -1,4 +1,5 @@
 ### What's new
 
-- **Revamped appliance icons** — 30 high-quality Material Symbols icons replace the old set, with better matches for dishwashers, fans, lawn mowers, and more. New icons for kettles, hot tubs, sprinklers, and other common appliances.
-- **Icon labels** — the icon picker now shows the name of the selected icon, translated into all 25 supported languages.
+- **Yearly subscription** — SweetSpot now uses a yearly subscription instead of a one-time purchase. The 14-day free trial remains unchanged.
+- **Subscription state detection** — the app re-checks your subscription status when returning to the foreground, so changes take effect immediately.
+- **Translation improvements** — fixed formality inconsistencies in Hungarian, Romanian, Polish, Bulgarian, and Montenegrin.

@@ -3,6 +3,12 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="5.3" date="5. dubna 2026" >}}
+- Roční předplatné nahrazuje jednorázový nákup — 14denní bezplatná zkušební doba zůstává beze změny
+- Aplikace znovu ověří stav předplatného při návratu do popředí
+- Vylepšení překladů v maďarštině, rumunštině, polštině, bulharštině a černohorštině
+{{< /changelog >}}
+
 {{< changelog version="5.2" date="2. dubna 2026" >}}
 - Přepracované ikony spotřebičů — 30 kvalitních ikon Material Symbols s lepším přiřazením a novými ikonami pro konvice, vířivky, zavlažovače a další
 - Výběr ikon nyní zobrazuje název vybrané ikony přeložený do všech 25 podporovaných jazyků

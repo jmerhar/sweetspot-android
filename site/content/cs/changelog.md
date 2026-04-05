@@ -3,6 +3,10 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="5.3.1" date="5. dubna 2026" >}}
+- Opraven pád při spuštění způsobený problémem s kompatibilitou Play Billing Library
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5. dubna 2026" >}}
 - Roční předplatné nahrazuje jednorázový nákup — 14denní bezplatná zkušební doba zůstává beze změny
 - Aplikace znovu ověří stav předplatného při návratu do popředí

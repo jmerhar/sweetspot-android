@@ -16,6 +16,7 @@ HOW IT WORKS
 3. See exactly when to start, with a full cost breakdown per time slot
 
 FEATURES
+- Free 14-day trial, then a yearly subscription to keep using the app
 - 30 European countries, 43 bidding zones — from Portugal to Finland, Norway to Greece
 - 5 data sources with automatic fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Save your appliances with custom names, icons, and durations for one-tap access
@@ -50,6 +51,7 @@ HOE HET WERKT
 3. Zie precies wanneer je moet starten, met een volledig kostenoverzicht per tijdslot
 
 FUNCTIES
+- Gratis proefperiode van 14 dagen, daarna een jaarabonnement om de app te blijven gebruiken
 - 30 Europese landen, 43 biedingszones — van Portugal tot Finland, Noorwegen tot Griekenland
 - 5 gegevensbronnen met automatische terugval (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang
@@ -84,6 +86,7 @@ SO FUNKTIONIERT ES
 3. Sieh genau, wann du starten solltest, mit einer vollständigen Kostenaufschlüsselung pro Zeitslot
 
 FUNKTIONEN
+- 14 Tage kostenlos testen, danach ein Jahresabo zur weiteren Nutzung
 - 30 europäische Länder, 43 Gebotszonen — von Portugal bis Finnland, Norwegen bis Griechenland
 - 5 Datenquellen mit automatischem Fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff
@@ -118,6 +121,7 @@ COMMENT ÇA MARCHE
 3. Voyez exactement quand démarrer, avec un détail complet des coûts par créneau horaire
 
 FONCTIONNALITÉS
+- Essai gratuit de 14 jours, puis un abonnement annuel pour continuer à utiliser l'application
 - 30 pays européens, 43 zones de prix — du Portugal à la Finlande, de la Norvège à la Grèce
 - 5 sources de données avec basculement automatique (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide
@@ -152,6 +156,7 @@ KAKO DELUJE
 3. Natanko poglejte, kdaj začeti, s podrobno razčlenitvijo stroškov po časovnih intervalih
 
 FUNKCIJE
+- 14-dnevno brezplačno preizkusno obdobje, nato letna naročnina za nadaljnjo uporabo
 - 30 evropskih držav, 43 cenovnih območij — od Portugalske do Finske, od Norveške do Grčije
 - 5 virov podatkov s samodejnim preklopom (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop
@@ -161,7 +166,7 @@ FUNKCIJE
 - Odprta koda (GPL v3) — celotna izvorna koda na GitHubu
 
 PODPRTE DRŽAVE
-Avstrija, Belgija, Bolgarija, Češka, Danska, Estonija, Finska, Francija, Grčija, Hrvaška, Irska, Italija, Latvija, Litva, Luksemburg, Madžarska, Črna gora, Nemčija, Nizozemska, Norveška, Poljska, Portugalska, Romunija, Severna Makedonija, Slovenija, Slovaška, Srbija, Španija, Švédska, Švica.
+Avstrija, Belgija, Bolgarija, Češka, Danska, Estonija, Finska, Francija, Grčija, Hrvaška, Irska, Italija, Latvija, Litva, Luksemburg, Madžarska, Črna gora, Nemčija, Nizozemska, Norveška, Poljska, Portugalska, Romunija, Severna Makedonija, Slovenija, Slovaška, Srbija, Španija, Švedska, Švica.
 
 OPOMBA
 Prikazane cene so veleprodajne dnevne cene in ne vključujejo DDV, energetskih taks ali dobaviteljskih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET. Za izkoriščanje cenovnih razlik je potrebna pogodba z dinamično ceno električne energije.

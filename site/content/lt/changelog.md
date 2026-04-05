@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.3.1" date="2026 m. balandžio 5 d." >}}
+- Ištaisytas paleidimo metu įvykstantis gedimas, kurį sukėlė Play Billing Library suderinamumo problema
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="2026 m. balandžio 5 d." >}}
 - Metinė prenumerata pakeičia vienkartinį pirkimą — 14 dienų nemokamas bandomasis laikotarpis lieka nepakitęs
 - Programėlė iš naujo patikrina prenumeratos būseną grįžus į pirmą planą

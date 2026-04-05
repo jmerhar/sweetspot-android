@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.3.1" date="5 aprilie 2026" >}}
+- Remediat blocarea la pornire cauzată de o problemă de compatibilitate cu Play Billing Library
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5 aprilie 2026" >}}
 - Abonamentul anual înlocuiește achiziția unică — perioada de probă gratuită de 14 zile rămâne neschimbată
 - Aplicația reverifică starea abonamentului la revenirea în prim-plan

@@ -3,6 +3,10 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="5.3.1" date="5 de abril de 2026" >}}
+- Corregido un fallo al iniciar causado por un problema de compatibilidad con la Play Billing Library
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5 de abril de 2026" >}}
 - La suscripción anual sustituye a la compra única — el periodo de prueba gratuito de 14 días se mantiene sin cambios
 - La app vuelve a comprobar el estado de la suscripción al volver al primer plano

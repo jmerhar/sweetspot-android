@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.3.1" date="5 april 2026" >}}
+- Crashprobleem bij het opstarten opgelost, veroorzaakt door een compatibiliteitsprobleem met de Play Billing Library
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5 april 2026" >}}
 - Jaarabonnement vervangt de eenmalige aankoop — de gratis proefperiode van 14 dagen blijft ongewijzigd
 - De app controleert de abonnementsstatus opnieuw bij terugkeer naar de voorgrond

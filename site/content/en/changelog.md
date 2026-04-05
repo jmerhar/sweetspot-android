@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.3.1" date="April 5, 2026" >}}
+- Fixed a startup crash caused by a Play Billing Library compatibility issue
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="April 5, 2026" >}}
 - Yearly subscription replaces the one-time purchase — the 14-day free trial remains unchanged
 - App re-checks subscription status when returning to the foreground

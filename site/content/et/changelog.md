@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.3.1" date="5. aprill 2026" >}}
+- Parandatud käivitamisel ilmnenud kokkujooksmine, mille põhjustas Play Billing Library ühilduvusprobleem
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5. aprill 2026" >}}
 - Aastatellimus asendab ühekordse ostu — 14-päevane tasuta prooviperiood jääb muutmata
 - Rakendus kontrollib tellimuse olekut uuesti esiplaanile naasmisel

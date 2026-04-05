@@ -3,6 +3,10 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="5.3.1" date="5. april 2026" >}}
+- Rettet nedbrud ved opstart forårsaget af et kompatibilitetsproblem med Play Billing Library
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5. april 2026" >}}
 - Årsabonnement erstatter engangskøbet — den 14 dages gratis prøveperiode forbliver uændret
 - Appen kontrollerer abonnementsstatus igen, når den vender tilbage til forgrunden

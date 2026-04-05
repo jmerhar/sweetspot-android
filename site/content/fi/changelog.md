@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.3.1" date="5. huhtikuuta 2026" >}}
+- Korjattu käynnistyksen kaatuminen, joka johtui Play Billing Libraryn yhteensopivuusongelmasta
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5. huhtikuuta 2026" >}}
 - Vuositilaus korvaa kertaostoksen — 14 päivän ilmainen kokeilu pysyy ennallaan
 - Sovellus tarkistaa tilauksen tilan uudelleen palatessaan etualalle

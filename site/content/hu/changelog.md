@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.3.1" date="2026. április 5." >}}
+- Javítva az indításkor fellépő összeomlás, amelyet a Play Billing Library kompatibilitási problémája okozott
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="2026. április 5." >}}
 - Az éves előfizetés felváltja az egyszeri vásárlást — a 14 napos ingyenes próbaidőszak változatlan marad
 - Az alkalmazás újra ellenőrzi az előfizetés állapotát, amikor visszatér az előtérbe

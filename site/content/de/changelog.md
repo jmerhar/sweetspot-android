@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.3.1" date="5. April 2026" >}}
+- Absturz beim Start behoben, verursacht durch ein Kompatibilitätsproblem mit der Play Billing Library
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="5. April 2026" >}}
 - Jahresabonnement ersetzt den Einmalkauf — der 14-tägige kostenlose Testzeitraum bleibt unverändert
 - Die App überprüft den Abonnementstatus erneut, wenn sie in den Vordergrund zurückkehrt

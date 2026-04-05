@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="5.3.1" date="2026. gada 5. aprīlis" >}}
+- Novērsta avārija startēšanas laikā, ko izraisīja Play Billing Library saderības problēma
+{{< /changelog >}}
+
 {{< changelog version="5.3" date="2026. gada 5. aprīlis" >}}
 - Gada abonements aizstāj vienreizējo pirkumu — 14 dienu bezmaksas izmēģinājums paliek nemainīgs
 - Lietotne atkārtoti pārbauda abonementa statusu, atgriežoties priekšplānā

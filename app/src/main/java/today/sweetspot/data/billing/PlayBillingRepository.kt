@@ -66,6 +66,7 @@ class PlayBillingRepository(
         .setListener(purchasesUpdatedListener)
         .enablePendingPurchases(
             PendingPurchasesParams.newBuilder()
+                .enableOneTimeProducts()
                 .enablePrepaidPlans()
                 .build()
         )

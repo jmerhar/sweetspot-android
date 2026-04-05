@@ -51,5 +51,15 @@ dependencies {
     testImplementation(libs.coroutines.test)
     testImplementation(libs.arch.core.testing)
 
+    // Instrumented testing (screenshot automation)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.test.core)
+    androidTestImplementation(libs.test.ext.junit)
+    androidTestImplementation(libs.test.rules)
+    androidTestImplementation(libs.screengrab)
+
     debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 }

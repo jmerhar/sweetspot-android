@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats
+.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats screenshots frames
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -57,3 +57,9 @@ site-validate: ## Validate Hugo site: build, check pages, links, and assets
 
 deploy-stats: ## Deploy stats.php to the stats server
 	./bin/deploy-stats.sh
+
+screenshots: ## Capture localized screenshots via Fastlane Screengrab (LOCALE=xx-XX for one)
+	bundle exec fastlane screenshots$(if $(LOCALE), locale:$(LOCALE))
+
+frames: ## Frame screenshots with marketing text and coloured backgrounds (LOCALE=xx-XX for one)
+	LOCALE=$(LOCALE) ./bin/frame-screenshots.sh

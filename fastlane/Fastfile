@@ -1,0 +1,19 @@
+# Fastfile — Automated screenshot capture via Screengrab.
+#
+# Lanes:
+#   screenshots           — Builds debug APKs and runs Screengrab across all locales.
+#   screenshots locale:xx — Builds debug APKs and runs Screengrab for a single locale.
+
+default_platform(:android)
+
+platform :android do
+  lane :screenshots do |options|
+    build_android_app(task: 'assembleDebug')
+    build_android_app(task: 'assembleDebugAndroidTest')
+    if options[:locale]
+      screengrab(locales: [options[:locale]])
+    else
+      screengrab
+    end
+  end
+end

@@ -41,7 +41,7 @@ You can opt in to sharing anonymous API reliability statistics. When enabled, th
 - Error category on failure (e.g. "timeout", "server error")
 - App version number
 - App language (e.g. "en", "nl")
-- Payment status (trial, unlocked, or expired)
+- Payment status (trial, subscribed, or expired)
 - Request duration in milliseconds
 
 This data does **not** contain device identifiers, location, price data, or any other personal information. It is used solely to improve data source reliability and default ordering.

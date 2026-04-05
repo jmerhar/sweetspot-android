@@ -40,10 +40,13 @@ Voit osallistua nimettömien API-luotettavuustilastojen jakamiseen. Kun toiminto
 - Onnistuiko vai epäonnistuiko pyyntö
 - Virhekategorian epäonnistumisen yhteydessä (esim. "aikakatkaisu", "palvelinvirhe")
 - Sovelluksen versionumeron
+- Sovelluksen kielen (esim. "en", "nl")
+- Maksutilan (kokeilujakso, tilattu tai vanhentunut)
+- Pyynnön keston millisekunteina
 
 Nämä tiedot **eivät** sisällä laitetunnisteita, sijaintia, hintatietoja tai muita henkilötietoja. Niitä käytetään ainoastaan tietolähteiden luotettavuuden ja oletusjärjestyksen parantamiseen.
 
-Tämä toiminto on oletuksena pois käytöstä. Voit ottaa sen käyttöön tai poistaa sen käytöstä milloin tahansa kohdassa Asetukset > Lisäasetukset.
+Tämä toiminto on oletuksena pois käytöstä. Voit ottaa sen käyttöön tai poistaa sen käytöstä milloin tahansa kohdassa Asetukset.
 
 ## Avoin lähdekoodi
 
@@ -53,4 +56,4 @@ SweetSpot on avointa lähdekoodia ja lisensoitu GPL v3 -lisenssillä. Voit tarka
 
 Jos sinulla on kysyttävää tästä tietosuojakäytännöstä, voit avata keskusteluaiheen [GitHubissa](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Päivitetty viimeksi: maaliskuu 2026*
+*Päivitetty viimeksi: huhtikuu 2026*

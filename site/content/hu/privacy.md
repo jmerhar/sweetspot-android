@@ -40,10 +40,13 @@ Feliratkozhat névtelen API-megbízhatósági statisztikák megosztására. Ha e
 - A kérés sikerességét vagy sikertelenségét
 - A hiba kategóriáját sikertelenség esetén (pl. „időtúllépés", „szerverhiba")
 - Az alkalmazás verziószámát
+- Az alkalmazás nyelvét (pl. „en", „nl")
+- Fizetési állapotot (próbaidőszak, előfizetve vagy lejárt)
+- A kérés időtartamát ezredmásodpercben
 
 Ezek az adatok **nem** tartalmaznak eszközazonosítókat, helymeghatározást, áradatokat vagy bármilyen más személyes információt. Kizárólag az adatforrások megbízhatóságának és alapértelmezett sorrendjének javítására szolgálnak.
 
-Ez a funkció alapértelmezetten ki van kapcsolva. Bármikor be- vagy kikapcsolhatja a Beállítások > Speciális menüpontban.
+Ez a funkció alapértelmezetten ki van kapcsolva. Bármikor be- vagy kikapcsolhatja a Beállítások menüpontban.
 
 ## Nyílt forráskód
 
@@ -53,4 +56,4 @@ A SweetSpot nyílt forráskódú, és GPL v3 licenc alatt érhető el. A teljes 
 
 Ha kérdése van ezzel az adatvédelmi irányelvvel kapcsolatban, nyithat egy témát a [GitHubon](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Utoljára frissítve: 2026. március*
+*Utoljára frissítve: 2026. április*

@@ -116,19 +116,19 @@
     <string name="stats_prompt_dismiss">No grazie</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Sblocca SweetSpot</string>
-    <string name="settings_unlock_description">Rimuovi il periodo di prova e sblocca l\'app in modo permanente.</string>
+    <string name="settings_unlock">Abbonati a SweetSpot</string>
+    <string name="settings_unlock_description">Abbonati per un anno per continuare a usare SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Il tuo periodo di prova è terminato</string>
-    <string name="paywall_description">SweetSpot trova il momento più economico per utilizzare i tuoi elettrodomestici usando i prezzi dell\'elettricità in tempo reale in 30 paesi europei. Sblocca una volta, usa per sempre.</string>
-    <string name="paywall_unlock">Sblocca SweetSpot</string>
-    <string name="paywall_unlock_price">Sblocca per %s</string>
-    <string name="paywall_restore">Ripristina acquisto</string>
+    <string name="paywall_description">SweetSpot trova il momento più economico per utilizzare i tuoi elettrodomestici usando i prezzi dell\'elettricità in tempo reale in 30 paesi europei. Abbonati per continuare a trovare il momento più economico per i tuoi elettrodomestici.</string>
+    <string name="paywall_unlock">Abbonati a SweetSpot</string>
+    <string name="paywall_unlock_price">Abbonati per %s/anno</string>
+    <string name="paywall_restore">Ripristina abbonamento</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Grazie!</string>
-    <string name="thank_you_message">SweetSpot è ora completamente sbloccato. Divertiti a trovare il momento più economico per i tuoi elettrodomestici!</string>
+    <string name="thank_you_message">Il tuo abbonamento è ora attivo. Divertiti a trovare il momento più economico per i tuoi elettrodomestici!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Prova: %d giorno rimanente</item>

@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Няма налични ценови данни.</string>
     <string name="wear_error_not_enough_data">Недостатъчно данни за %s.</string>
     <string name="wear_error_network">Неуспешно извличане на цени.</string>
-    <string name="wear_trial_expired">Пробният период изтече\n\nОтворете SweetSpot на телефона си, за да отключите.</string>
+    <string name="wear_trial_expired">Абонаментът е изтекъл\n\nОтворете SweetSpot на телефона си, за да се абонирате.</string>
 </resources>

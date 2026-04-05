@@ -113,19 +113,19 @@
     <string name="stats_prompt_dismiss">Όχι, ευχαριστώ</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Ξεκλείδωμα SweetSpot</string>
-    <string name="settings_unlock_description">Αφαιρέστε τη δοκιμαστική περίοδο και ξεκλειδώστε την εφαρμογή μόνιμα.</string>
+    <string name="settings_unlock">Συνδρομή στο SweetSpot</string>
+    <string name="settings_unlock_description">Εγγραφείτε για ένα χρόνο για να συνεχίσετε να χρησιμοποιείτε το SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Η δοκιμαστική σας περίοδος έληξε</string>
-    <string name="paywall_description">Το SweetSpot βρίσκει τη φθηνότερη ώρα για τη λειτουργία των συσκευών σας χρησιμοποιώντας τιμές ηλεκτρικής ενέργειας σε πραγματικό χρόνο σε 30 ευρωπαϊκές χώρες. Ξεκλειδώστε μία φορά, χρησιμοποιήστε για πάντα.</string>
-    <string name="paywall_unlock">Ξεκλείδωμα SweetSpot</string>
-    <string name="paywall_unlock_price">Ξεκλείδωμα για %s</string>
-    <string name="paywall_restore">Επαναφορά αγοράς</string>
+    <string name="paywall_description">Το SweetSpot βρίσκει τη φθηνότερη ώρα για τη λειτουργία των συσκευών σας χρησιμοποιώντας τιμές ηλεκτρικής ενέργειας σε πραγματικό χρόνο σε 30 ευρωπαϊκές χώρες. Εγγραφείτε για να συνεχίσετε να βρίσκετε τη φθηνότερη ώρα για τις συσκευές σας.</string>
+    <string name="paywall_unlock">Συνδρομή στο SweetSpot</string>
+    <string name="paywall_unlock_price">Συνδρομή για %s/έτος</string>
+    <string name="paywall_restore">Επαναφορά συνδρομής</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Ευχαριστούμε!</string>
-    <string name="thank_you_message">Το SweetSpot είναι πλέον πλήρως ξεκλειδωμένο. Απολαύστε την εύρεση της φθηνότερης ώρας για τις συσκευές σας!</string>
+    <string name="thank_you_message">Η συνδρομή σας είναι πλέον ενεργή. Απολαύστε την εύρεση της φθηνότερης ώρας για τις συσκευές σας!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Δοκιμαστική περίοδος: %d ημέρα απομένει</item>

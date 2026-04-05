@@ -13,7 +13,7 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1. aprill 2026" >}}
-- Tänukinnitus pärast SweetSpoti avamist
+- Tänukinnitus pärast SweetSpoti tellimist
 - Parandatud vana keele vilkumine rakenduse keele vahetamisel seadetes
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30. märts 2026" >}}
-- Lisatud varajase avamise võimalus seadetes prooviperioodi ajal
+- Lisatud varajase tellimise võimalus seadetes prooviperioodi ajal
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30. märts 2026" >}}
@@ -32,10 +32,10 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30. märts 2026" >}}
-- 14-päevane tasuta prooviperiood ühekordse ostuga püsivaks avamiseks
-- Maksemüür pärast prooviperioodi lõppu koos varasemate ostude taastamise võimalusega
+- 14-päevane tasuta prooviperiood aastatellimisega rakenduse edasiseks kasutamiseks
+- Maksemüür pärast prooviperioodi lõppu koos tellimuse taastamise võimalusega
 - Prooviperioodi loendur peaekraanil
-- Wear OS kell näitab teadet telefonis avamiseks, kui prooviperiood on lõppenud
+- Wear OS kell näitab teadet telefonis tellimiseks, kui prooviperiood on lõppenud
 - Parandatud kattuvate ENTSO-E TimeSeries'ite deduplikatsioon
 - Rakenduse versioon kuvatakse seadete ekraani allosas
 {{< /changelog >}}

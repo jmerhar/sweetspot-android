@@ -13,7 +13,7 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1. travnja 2026." >}}
-- Potvrda zahvale nakon otključavanja SweetSpota
+- Potvrda zahvale nakon pretplate na SweetSpot
 - Ispravljen bljesak starog jezika pri promjeni jezika aplikacije u postavkama
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30. ožujka 2026." >}}
-- Dodana mogućnost ranog otključavanja u Postavkama tijekom probnog razdoblja
+- Dodana mogućnost rane pretplate u Postavkama tijekom probnog razdoblja
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30. ožujka 2026." >}}
@@ -32,10 +32,10 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30. ožujka 2026." >}}
-- 14-dnevno besplatno probno razdoblje s jednokratnom kupnjom za trajno otključavanje
-- Zaslon za plaćanje nakon isteka probnog razdoblja s mogućnošću obnavljanja prethodnih kupnji
+- 14-dnevno besplatno probno razdoblje s godišnjom pretplatom za nastavak korištenja aplikacije
+- Zaslon za plaćanje nakon isteka probnog razdoblja s mogućnošću obnavljanja pretplate
 - Odbrojavanje probnog razdoblja na glavnom zaslonu
-- Wear OS sat prikazuje poruku za otključavanje putem telefona kada probno razdoblje istekne
+- Wear OS sat prikazuje poruku za pretplatu putem telefona kada probno razdoblje istekne
 - Ispravljena deduplikacija preklapajućih ENTSO-E TimeSeries
 - Verzija aplikacije prikazana na dnu zaslona s postavkama
 {{< /changelog >}}

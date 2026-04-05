@@ -119,19 +119,19 @@
     <string name="stats_prompt_dismiss">Ne, děkuji</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Odemknout SweetSpot</string>
-    <string name="settings_unlock_description">Odstraňte zkušební období a odemkněte aplikaci natrvalo.</string>
+    <string name="settings_unlock">Předplatit SweetSpot</string>
+    <string name="settings_unlock_description">Předplaťte si na rok a pokračujte v používání SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Zkušební období skončilo</string>
-    <string name="paywall_description">SweetSpot najde nejlevnější čas pro spuštění vašich spotřebičů pomocí cen elektřiny v reálném čase ve 30 evropských zemích. Odemkněte jednou, používejte navždy.</string>
-    <string name="paywall_unlock">Odemknout SweetSpot</string>
-    <string name="paywall_unlock_price">Odemknout za %s</string>
-    <string name="paywall_restore">Obnovit nákup</string>
+    <string name="paywall_description">SweetSpot najde nejlevnější čas pro spuštění vašich spotřebičů pomocí cen elektřiny v reálném čase ve 30 evropských zemích. Předplaťte si a pokračujte v hledání nejlevnějšího času pro vaše spotřebiče.</string>
+    <string name="paywall_unlock">Předplatit SweetSpot</string>
+    <string name="paywall_unlock_price">Předplatit za %s/rok</string>
+    <string name="paywall_restore">Obnovit předplatné</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Děkujeme!</string>
-    <string name="thank_you_message">SweetSpot je nyní plně odemčen. Užijte si hledání nejlevnějšího času pro vaše spotřebiče!</string>
+    <string name="thank_you_message">Vaše předplatné je nyní aktivní. Užijte si hledání nejlevnějšího času pro vaše spotřebiče!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Zkušební období: ještě %d den</item>

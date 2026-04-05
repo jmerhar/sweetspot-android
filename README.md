@@ -48,7 +48,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - Configurable timezone (defaults to the selected zone's timezone)
 - Offline-capable with smart price caching (both phone and watch)
 - Optional anonymous API reliability stats (opt-in via Settings > Advanced)
-- **14-day free trial** with a one-time in-app purchase to unlock permanently
+- **14-day free trial** with a yearly subscription to keep using the app
 
 ## Building
 
@@ -90,7 +90,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-301 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/unlock logic, and ViewModel state management (via Robolectric).
+304 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/subscription logic, and ViewModel state management (via Robolectric).
 
 ## License
 

@@ -119,19 +119,19 @@
     <string name="stats_prompt_dismiss">Nie, dziękuję</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Odblokuj SweetSpot</string>
-    <string name="settings_unlock_description">Usuń okres próbny i odblokuj aplikację na stałe.</string>
+    <string name="settings_unlock">Subskrybuj SweetSpot</string>
+    <string name="settings_unlock_description">Wykup roczną subskrypcję, aby dalej korzystać z SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Okres próbny dobiegł końca</string>
-    <string name="paywall_description">SweetSpot znajduje najtańszy czas na uruchomienie urządzeń, korzystając z cen energii elektrycznej w czasie rzeczywistym w 30 krajach europejskich. Odblokuj raz, korzystaj na zawsze.</string>
-    <string name="paywall_unlock">Odblokuj SweetSpot</string>
-    <string name="paywall_unlock_price">Odblokuj za %s</string>
-    <string name="paywall_restore">Przywróć zakup</string>
+    <string name="paywall_description">SweetSpot znajduje najtańszy czas na uruchomienie urządzeń, korzystając z cen energii elektrycznej w czasie rzeczywistym w 30 krajach europejskich. Subskrybuj, aby dalej znajdować najtańszy czas dla Twoich urządzeń.</string>
+    <string name="paywall_unlock">Subskrybuj SweetSpot</string>
+    <string name="paywall_unlock_price">Subskrybuj za %s/rok</string>
+    <string name="paywall_restore">Przywróć subskrypcję</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Dziękujemy!</string>
-    <string name="thank_you_message">SweetSpot jest teraz w pełni odblokowany. Ciesz się znajdowaniem najkorzystniejszego momentu dla Twoich urządzeń!</string>
+    <string name="thank_you_message">Twoja subskrypcja jest teraz aktywna. Ciesz się znajdowaniem najtańszego czasu dla Twoich urządzeń!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Okres próbny: %d dzień pozostał</item>

@@ -13,7 +13,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModelProvider
 import today.sweetspot.data.api.DataSources
 import today.sweetspot.ui.PaywallScreen
 import today.sweetspot.ui.settings.SettingsScreen
@@ -26,8 +26,14 @@ import today.sweetspot.data.repository.SettingsRepository
  *
  * Hosts the [SweetSpotTheme] and switches between [SweetSpotScreen] and [SettingsScreen]
  * based on [SweetSpotViewModel] state. Also shows a one-time stats opt-in dialog.
+ * Re-queries subscription state on every resume to detect expiry.
  */
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: SweetSpotViewModel by lazy {
+        ViewModelProvider(this)[SweetSpotViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             SweetSpotTheme {
-                val vm: SweetSpotViewModel = viewModel()
+                val vm = viewModel
                 val state by vm.uiState.collectAsState()
 
                 when {
@@ -105,6 +111,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
     }
 }
 

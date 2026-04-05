@@ -113,19 +113,19 @@
     <string name="stats_prompt_dismiss">Ei, aitäh</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Ava SweetSpot</string>
-    <string name="settings_unlock_description">Eemalda prooviperiood ja ava rakendus jäädavalt.</string>
+    <string name="settings_unlock">Telli SweetSpot</string>
+    <string name="settings_unlock_description">Tellige aastaks, et jätkata SweetSpoti kasutamist.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Proovperiood on lõppenud</string>
-    <string name="paywall_description">SweetSpot leiab soodsaima aja teie seadmete kasutamiseks, kasutades reaalajas elektrihindu 30 Euroopa riigis. Avage ühe korra, kasutage igavesti.</string>
-    <string name="paywall_unlock">Ava SweetSpot</string>
-    <string name="paywall_unlock_price">Ava hinnaga %s</string>
-    <string name="paywall_restore">Taasta ost</string>
+    <string name="paywall_description">SweetSpot leiab soodsaima aja teie seadmete kasutamiseks, kasutades reaalajas elektrihindu 30 Euroopa riigis. Tellige, et jätkata oma seadmetele soodsaima aja leidmist.</string>
+    <string name="paywall_unlock">Telli SweetSpot</string>
+    <string name="paywall_unlock_price">Telli hinnaga %s/aastas</string>
+    <string name="paywall_restore">Taasta tellimus</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Täname!</string>
-    <string name="thank_you_message">SweetSpot on nüüd täielikult avatud. Nautige oma seadmetele soodsaima aja leidmist!</string>
+    <string name="thank_you_message">Teie tellimus on nüüd aktiivne. Nautige oma seadmetele soodsaima aja leidmist!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Proovperiood: %d päev jäänud</item>

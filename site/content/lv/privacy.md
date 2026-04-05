@@ -40,10 +40,13 @@ Jūs varat izvēlēties kopīgot anonīmu API uzticamības statistiku. Kad šī 
 - Vai pieprasījums izdevās vai neizdevās
 - Kļūdas kategoriju neveiksmīgiem pieprasījumiem (piem., "timeout", "servera kļūda")
 - Lietotnes versijas numuru
+- Lietotnes valodu (piem., "en", "nl")
+- Maksājuma statusu (izmēģinājuma periods, abonēts vai beidzies)
+- Pieprasījuma ilgumu milisekundēs
 
 Šie dati **nesatur** ierīces identifikatorus, atrašanās vietu, cenu datus vai citu personisko informāciju. Tie tiek izmantoti tikai datu avotu uzticamības un noklusējuma secības uzlabošanai.
 
-Šī funkcija ir izslēgta pēc noklusējuma. Jūs varat to iespējot vai atspējot jebkurā laikā sadaļā Iestatījumi > Papildu.
+Šī funkcija ir izslēgta pēc noklusējuma. Jūs varat to iespējot vai atspējot jebkurā laikā sadaļā Iestatījumi.
 
 ## Atvērtā koda
 
@@ -53,4 +56,4 @@ SweetSpot ir atvērtā koda programmatūra ar GPL v3 licenci. Pilnu pirmkodu var
 
 Ja jums ir jautājumi par šo privātuma politiku, varat izveidot pieteikumu [GitHub](https://github.com/jmerhar/sweetspot-android/issues) vietnē.
 
-*Pēdējo reizi atjaunināts: 2026. gada marts*
+*Pēdējo reizi atjaunināts: 2026. gada aprīlis*

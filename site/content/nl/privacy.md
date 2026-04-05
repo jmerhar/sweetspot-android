@@ -41,7 +41,7 @@ Je kunt ervoor kiezen om anonieme API-betrouwbaarheidsstatistieken te delen. Wan
 - Foutcategorie bij mislukking (bijv. "timeout", "serverfout")
 - App-versienummer
 - App-taal (bijv. "en", "nl")
-- Betalingsstatus (proefperiode, ontgrendeld of verlopen)
+- Betalingsstatus (proefperiode, geabonneerd of verlopen)
 - Verzoekduur in milliseconden
 
 Deze gegevens bevatten **geen** apparaat-ID's, locatie, prijsgegevens of andere persoonlijke informatie. Ze worden uitsluitend gebruikt om de betrouwbaarheid van databronnen en de standaardvolgorde te verbeteren.

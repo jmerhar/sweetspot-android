@@ -119,19 +119,19 @@
     <string name="stats_prompt_dismiss">Ne, ačiū</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Atrakinti SweetSpot</string>
-    <string name="settings_unlock_description">Pašalinkite bandomąjį laikotarpį ir atrakinkite programėlę visam laikui.</string>
+    <string name="settings_unlock">Prenumeruoti SweetSpot</string>
+    <string name="settings_unlock_description">Prenumeruokite metams, kad galėtumėte toliau naudoti SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Jūsų bandomasis laikotarpis baigėsi</string>
-    <string name="paywall_description">SweetSpot randa pigiausią laiką jūsų prietaisams naudojant realaus laiko elektros kainas 30 Europos šalių. Atrakinkite vieną kartą, naudokite amžinai.</string>
-    <string name="paywall_unlock">Atrakinti SweetSpot</string>
-    <string name="paywall_unlock_price">Atrakinti už %s</string>
-    <string name="paywall_restore">Atkurti pirkinį</string>
+    <string name="paywall_description">SweetSpot randa pigiausią laiką jūsų prietaisams naudojant realaus laiko elektros kainas 30 Europos šalių. Prenumeruokite, kad galėtumėte toliau ieškoti pigiausio laiko savo prietaisams.</string>
+    <string name="paywall_unlock">Prenumeruoti SweetSpot</string>
+    <string name="paywall_unlock_price">Prenumeruoti už %s/metus</string>
+    <string name="paywall_restore">Atkurti prenumeratą</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Ačiū!</string>
-    <string name="thank_you_message">SweetSpot dabar visiškai atrakintas. Mėgaukitės pigiausio laiko paieška savo prietaisams!</string>
+    <string name="thank_you_message">Jūsų prenumerata dabar aktyvi. Mėgaukitės pigiausio laiko paieška savo prietaisams!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Bandomasis laikotarpis: liko %d diena</item>

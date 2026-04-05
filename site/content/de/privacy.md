@@ -41,7 +41,7 @@ Du kannst dich dafür entscheiden, anonyme API-Zuverlässigkeitsstatistiken zu t
 - Fehlerkategorie bei Fehlschlag (z.B. „Timeout", „Serverfehler")
 - App-Versionsnummer
 - App-Sprache (z.B. „en", „nl")
-- Zahlungsstatus (Testphase, freigeschaltet oder abgelaufen)
+- Zahlungsstatus (Testphase, Abonnement oder abgelaufen)
 - Anfragedauer in Millisekunden
 
 Diese Daten enthalten **keine** Gerätekennungen, Standort, Preisdaten oder andere persönliche Informationen. Sie werden ausschließlich zur Verbesserung der Zuverlässigkeit der Datenquellen und der Standardreihenfolge verwendet.

@@ -41,7 +41,7 @@ Vous pouvez choisir de partager des statistiques anonymes sur la fiabilité des 
 - La catégorie d'erreur en cas d'échec (par ex. « timeout », « erreur serveur »)
 - Le numéro de version de l'application
 - La langue de l'application (par ex. « en », « nl »)
-- Le statut de paiement (période d'essai, déverrouillé ou expiré)
+- Le statut de paiement (période d'essai, abonné ou expiré)
 - La durée de la requête en millisecondes
 
 Ces données ne contiennent **aucun** identifiant d'appareil, localisation, données de prix ou autre information personnelle. Elles sont utilisées uniquement pour améliorer la fiabilité des sources de données et l'ordre par défaut.

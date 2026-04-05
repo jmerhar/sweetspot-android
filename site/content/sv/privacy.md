@@ -40,10 +40,13 @@ Du kan välja att dela anonym statistik över API-tillförlitlighet. När det ä
 - Om förfrågan lyckades eller misslyckades
 - Felkategori vid misslyckande (t.ex. "timeout", "serverfel")
 - Appens versionsnummer
+- Appens språk (t.ex. "en", "nl")
+- Betalningsstatus (provperiod, prenumerant eller utgången)
+- Förfrågans varaktighet i millisekunder
 
 Dessa data innehåller **inte** enhetsidentifierare, plats, prisdata eller någon annan personlig information. De används enbart för att förbättra datakällors tillförlitlighet och standardordning.
 
-Denna funktion är inaktiverad som standard. Du kan aktivera eller inaktivera den när som helst under Inställningar > Avancerat.
+Denna funktion är inaktiverad som standard. Du kan aktivera eller inaktivera den när som helst under Inställningar.
 
 ## Öppen källkod
 
@@ -53,4 +56,4 @@ SweetSpot är öppen källkod och licensierad under GPL v3. Du kan granska den f
 
 Om du har frågor om denna integritetspolicy kan du öppna ett issue på [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Senast uppdaterad: mars 2026*
+*Senast uppdaterad: april 2026*

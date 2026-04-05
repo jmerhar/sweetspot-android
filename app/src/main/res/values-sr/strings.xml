@@ -116,19 +116,19 @@
     <string name="stats_prompt_dismiss">Не, хвала</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Откључај SweetSpot</string>
-    <string name="settings_unlock_description">Уклоните пробни период и трајно откључајте апликацију.</string>
+    <string name="settings_unlock">Претплати се на SweetSpot</string>
+    <string name="settings_unlock_description">Претплатите се на годину дана да бисте наставили да користите SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Ваш пробни период је завршен</string>
-    <string name="paywall_description">SweetSpot проналази најјефтиније време за покретање ваших уређаја користећи цене електричне енергије у реалном времену у 30 европских земаља. Откључајте једном, користите заувек.</string>
-    <string name="paywall_unlock">Откључај SweetSpot</string>
-    <string name="paywall_unlock_price">Откључај за %s</string>
-    <string name="paywall_restore">Врати куповину</string>
+    <string name="paywall_description">SweetSpot проналази најјефтиније време за покретање ваших уређаја користећи цене електричне енергије у реалном времену у 30 европских земаља. Претплатите се да бисте наставили да проналазите најјефтиније време за ваше уређаје.</string>
+    <string name="paywall_unlock">Претплати се на SweetSpot</string>
+    <string name="paywall_unlock_price">Претплата за %s/год.</string>
+    <string name="paywall_restore">Врати претплату</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Хвала!</string>
-    <string name="thank_you_message">SweetSpot је сада потпуно откључан. Уживајте у проналажењу најјефтинијег времена за ваше уређаје!</string>
+    <string name="thank_you_message">Ваша претплата је сада активна. Уживајте у проналажењу најјефтинијег времена за ваше уређаје!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Пробни период: још %d дан</item>

@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Hinnaandmed pole saadaval.</string>
     <string name="wear_error_not_enough_data">Ebapiisavad andmed %s jaoks.</string>
     <string name="wear_error_network">Hindade toomine ebaõnnestus.</string>
-    <string name="wear_trial_expired">Proovperiood on lõppenud\n\nAvage SweetSpot oma telefonis, et avada.</string>
+    <string name="wear_trial_expired">Tellimus on aegunud\n\nAvage SweetSpot oma telefonis, et tellida.</string>
 </resources>

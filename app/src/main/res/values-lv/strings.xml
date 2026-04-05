@@ -116,19 +116,19 @@
     <string name="stats_prompt_dismiss">Nē, paldies</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Atbloķēt SweetSpot</string>
-    <string name="settings_unlock_description">Noņemiet izmēģinājuma periodu un atbloķējiet lietotni neatgriezeniski.</string>
+    <string name="settings_unlock">Abonēt SweetSpot</string>
+    <string name="settings_unlock_description">Abonējiet uz gadu, lai turpinātu izmantot SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Jūsu izmēģinājuma periods ir beidzies</string>
-    <string name="paywall_description">SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai, izmantojot reāllaika elektrības cenas 30 Eiropas valstīs. Atbloķējiet vienreiz, lietojiet mūžīgi.</string>
-    <string name="paywall_unlock">Atbloķēt SweetSpot</string>
-    <string name="paywall_unlock_price">Atbloķēt par %s</string>
-    <string name="paywall_restore">Atjaunot pirkumu</string>
+    <string name="paywall_description">SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai, izmantojot reāllaika elektrības cenas 30 Eiropas valstīs. Abonējiet, lai turpinātu atrast lētāko laiku savām ierīcēm.</string>
+    <string name="paywall_unlock">Abonēt SweetSpot</string>
+    <string name="paywall_unlock_price">Abonēt par %s/gadā</string>
+    <string name="paywall_restore">Atjaunot abonementu</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Paldies!</string>
-    <string name="thank_you_message">SweetSpot tagad ir pilnībā atbloķēts. Izbaudiet lētākā laika meklēšanu savām ierīcēm!</string>
+    <string name="thank_you_message">Jūsu abonements tagad ir aktīvs. Izbaudiet lētākā laika meklēšanu savām ierīcēm!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="zero">Izmēģinājuma periods: vēl %d dienu</item>

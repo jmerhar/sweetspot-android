@@ -110,10 +110,13 @@ class SweetSpotViewModelTest {
         private val _isUnlocked = MutableStateFlow(initialUnlocked)
         override val isUnlocked: StateFlow<Boolean> = _isUnlocked.asStateFlow()
         override val productPrice: StateFlow<String?> = MutableStateFlow(null)
+        var resumeCount = 0
+            private set
         override fun connect() {}
         override fun disconnect() {}
         override fun launchPurchaseFlow(activity: Activity) {}
         override fun queryPurchases() {}
+        override fun onResume() { resumeCount++ }
         fun setUnlocked(value: Boolean) { _isUnlocked.value = value }
     }
 
@@ -760,6 +763,17 @@ class SweetSpotViewModelTest {
         assertTrue(viewModel.uiState.value.isUnlocked)
         assertFalse(viewModel.uiState.value.showPaywall)
         assertTrue(viewModel.uiState.value.showThankYou)
+    }
+
+    @Test
+    fun `onResume forwards to billing`() = runTest {
+        val billing = FakeBillingRepository(initialUnlocked = false)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), billing = billing)
+        runCurrent()
+
+        assertEquals(0, billing.resumeCount)
+        viewModel.onResume()
+        assertEquals(1, billing.resumeCount)
     }
 
     // --- Developer options ---

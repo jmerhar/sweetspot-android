@@ -40,10 +40,13 @@ Możesz wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności A
 - Czy zapytanie zakończyło się sukcesem czy błędem
 - Kategorię błędu w przypadku niepowodzenia (np. „przekroczenie czasu", „błąd serwera")
 - Numer wersji aplikacji
+- Język aplikacji (np. „en", „nl")
+- Status płatności (okres próbny, subskrypcja lub wygasły)
+- Czas trwania zapytania w milisekundach
 
 Dane te **nie** zawierają identyfikatorów urządzenia, lokalizacji, danych cenowych ani żadnych innych danych osobowych. Są wykorzystywane wyłącznie do poprawy niezawodności źródeł danych i domyślnej kolejności.
 
-Funkcja ta jest domyślnie wyłączona. Możesz ją włączyć lub wyłączyć w dowolnym momencie w Ustawieniach > Zaawansowane.
+Funkcja ta jest domyślnie wyłączona. Możesz ją włączyć lub wyłączyć w dowolnym momencie w Ustawieniach.
 
 ## Otwarte źródło
 
@@ -53,4 +56,4 @@ SweetSpot jest oprogramowaniem o otwartym kodzie źródłowym, licencjonowanym n
 
 Jeśli masz pytania dotyczące tej polityki prywatności, możesz zgłosić je na [GitHubie](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Ostatnia aktualizacja: marzec 2026*
+*Ostatnia aktualizacja: kwiecień 2026*

@@ -13,7 +13,7 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1 april 2026" >}}
-- Bedankbevestiging na het ontgrendelen van SweetSpot
+- Bedankbevestiging na het abonneren op SweetSpot
 - Een flits van de oude taal bij het wijzigen van de app-taal in instellingen verholpen
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30 maart 2026" >}}
-- Optie toegevoegd om SweetSpot al tijdens de proefperiode te ontgrendelen via Instellingen
+- Optie toegevoegd om al tijdens de proefperiode te abonneren via Instellingen
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30 maart 2026" >}}
@@ -32,10 +32,10 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30 maart 2026" >}}
-- 14 dagen gratis uitproberen met een eenmalige aankoop om permanent te ontgrendelen
-- Betaalscherm na afloop van de proefperiode met optie om eerdere aankopen te herstellen
+- 14 dagen gratis uitproberen met een jaarabonnement om de app te blijven gebruiken
+- Betaalscherm na afloop van de proefperiode met optie om abonnement te herstellen
 - Aftelling van de proefperiode op het hoofdscherm
-- Wear OS-horloge toont een melding om te ontgrendelen via de telefoon wanneer de proefperiode verloopt
+- Wear OS-horloge toont een melding om te abonneren via de telefoon wanneer de proefperiode verloopt
 - Overlappende ENTSO-E TimeSeries-deduplicatie opgelost
 - App-versie onderaan het instellingenscherm weergegeven
 {{< /changelog >}}

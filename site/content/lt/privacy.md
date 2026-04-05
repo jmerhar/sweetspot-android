@@ -40,10 +40,13 @@ Galite pasirinkti dalintis anonimine API patikimumo statistika. Kai ši funkcija
 - Ar užklausa pavyko, ar ne
 - Klaidos kategoriją nesėkmės atveju (pvz., "timeout", "serverio klaida")
 - Programėlės versijos numerį
+- Programėlės kalbą (pvz., "en", "nl")
+- Mokėjimo būseną (bandomasis laikotarpis, prenumeruojama arba pasibaigusi)
+- Užklausos trukmę milisekundėmis
 
 Šie duomenys **neapima** įrenginio identifikatorių, vietos, kainų duomenų ar kitos asmeninės informacijos. Jie naudojami tik duomenų šaltinių patikimumui ir numatytajai tvarkai gerinti.
 
-Ši funkcija pagal numatytuosius nustatymus yra išjungta. Galite ją įjungti arba išjungti bet kuriuo metu skiltyje Nustatymai > Išplėstiniai.
+Ši funkcija pagal numatytuosius nustatymus yra išjungta. Galite ją įjungti arba išjungti bet kuriuo metu skiltyje Nustatymai.
 
 ## Atviras kodas
 
@@ -53,4 +56,4 @@ SweetSpot yra atviro kodo programinė įranga, licencijuota pagal GPL v3. Visą 
 
 Jei turite klausimų dėl šios privatumo politikos, galite sukurti pranešimą [GitHub](https://github.com/jmerhar/sweetspot-android/issues) svetainėje.
 
-*Paskutinį kartą atnaujinta: 2026 m. kovas*
+*Paskutinį kartą atnaujinta: 2026 m. balandis*

@@ -113,19 +113,19 @@
     <string name="stats_prompt_dismiss">Nej tak</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Lås SweetSpot op</string>
-    <string name="settings_unlock_description">Fjern prøveperioden og lås appen op permanent.</string>
+    <string name="settings_unlock">Abonnér på SweetSpot</string>
+    <string name="settings_unlock_description">Abonnér for et år for at fortsætte med at bruge SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Din prøveperiode er udløbet</string>
-    <string name="paywall_description">SweetSpot finder det billigste tidspunkt at køre dine apparater ved hjælp af elpriser i realtid i 30 europæiske lande. Lås op én gang, brug for evigt.</string>
-    <string name="paywall_unlock">Lås SweetSpot op</string>
-    <string name="paywall_unlock_price">Lås op for %s</string>
-    <string name="paywall_restore">Gendan køb</string>
+    <string name="paywall_description">SweetSpot finder det billigste tidspunkt at køre dine apparater ved hjælp af elpriser i realtid i 30 europæiske lande. Abonnér for at fortsætte med at finde det billigste tidspunkt for dine apparater.</string>
+    <string name="paywall_unlock">Abonnér på SweetSpot</string>
+    <string name="paywall_unlock_price">Abonnér for %s/år</string>
+    <string name="paywall_restore">Gendan abonnement</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Tak!</string>
-    <string name="thank_you_message">SweetSpot er nu fuldt oplåst. Nyd at finde det billigste tidspunkt for dine apparater!</string>
+    <string name="thank_you_message">Dit abonnement er nu aktivt. Nyd at finde det billigste tidspunkt for dine apparater!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Prøveperiode: %d dag tilbage</item>

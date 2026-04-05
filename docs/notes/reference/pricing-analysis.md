@@ -57,13 +57,13 @@ Independent apps that charge are almost always in the €1.99–€2.99 range (a
 6. **No ads, no tracking** — privacy-first. No analytics SDK, no device identifiers.
 7. **Open source** — users can verify the code, contribute, or build from source.
 
-## Pricing model: trial + one-time unlock
+## Pricing model: trial + yearly subscription
 
 See `play-store.md` for full rationale and implementation details. Summary:
 
 - 14-day free trial (full functionality, no restrictions)
-- One-time purchase to continue using the app after trial expires
-- No subscriptions, no ads, no feature gating
+- Yearly subscription to continue using the app after trial expires
+- No ads, no feature gating
 
 ## Price points by market
 
@@ -112,13 +112,14 @@ Play Console will suggest specific tier-aligned prices when the base price is se
 Realistic estimates for a niche utility app:
 
 - **Downloads:** 1,000–5,000/month after initial launch push
-- **Trial-to-purchase conversion:** 2–5% (typical for utility apps with trials)
-- **Average price after regional mix:** ~€2.20
-- **Gross revenue:** ~€50–€550/month
-- **Net after Google's 15% cut:** ~€40–€470/month
+- **Trial-to-subscription conversion:** 2–5% (typical for utility apps with trials)
+- **Average price after regional mix:** ~€2.20/year
+- **Year 1 gross revenue:** ~€50–€550/month (same as one-time, since all subscribers are new)
+- **Steady-state gross revenue:** higher than one-time if renewal rate is decent
+- **Net after Google's 15% cut:** ~€40–€470/month in year 1
 
-This is hobby-scale revenue. The model works because the development cost is already sunk
-and the marginal cost of each user is near zero.
+This is hobby-scale revenue. The subscription model provides recurring revenue at the cost
+of higher churn risk, but at €2.49/year the renewal friction is minimal.
 
 ## Open questions
 

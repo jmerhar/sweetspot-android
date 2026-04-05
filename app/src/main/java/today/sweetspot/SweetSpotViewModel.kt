@@ -169,7 +169,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         },
         statusProvider = {
             when {
-                settingsRepository.isUnlocked() -> "unlocked"
+                settingsRepository.isUnlocked() -> "subscribed"
                 settingsRepository.isTrialExpired() -> "expired"
                 else -> "trial"
             }
@@ -875,7 +875,16 @@ class SweetSpotViewModel @JvmOverloads constructor(
     // --- Purchase ---
 
     /**
-     * Launches the in-app purchase flow for the full unlock.
+     * Re-queries subscription state to detect expiry when the app returns to foreground.
+     *
+     * Called from [MainActivity.onResume].
+     */
+    fun onResume() {
+        activeBilling?.onResume()
+    }
+
+    /**
+     * Launches the subscription purchase flow.
      *
      * @param activity The activity to host the purchase UI.
      */
@@ -884,9 +893,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     /**
-     * Re-queries existing purchases to restore unlock state.
+     * Re-queries existing purchases to restore subscription state.
      *
-     * Useful for users who previously purchased on another device or after reinstalling.
+     * Useful for users who previously subscribed on another device or after reinstalling.
      */
     fun onRestorePurchases() {
         activeBilling?.queryPurchases()

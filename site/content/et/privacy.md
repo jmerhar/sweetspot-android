@@ -40,10 +40,13 @@ Saad nõustuda anonüümse API usaldusväärsuse statistika jagamisega. Lubamise
 - Kas päring õnnestus või ebaõnnestus
 - Vea kategooria ebaõnnestumise korral (nt „ajalõpp", „serveri viga")
 - Rakenduse versiooninumber
+- Rakenduse keel (nt „en", „nl")
+- Maksestaatus (prooviperiood, tellitud või aegunud)
+- Päringu kestus millisekundites
 
 Need andmed **ei sisalda** seadme identifikaatoreid, asukohta, hinnaandmeid ega muid isikuandmeid. Neid kasutatakse ainult andmeallikate usaldusväärsuse ja vaikejärjestuse parandamiseks.
 
-See funktsioon on vaikimisi keelatud. Saad selle igal ajal sisse või välja lülitada menüüs Seaded > Täpsemad.
+See funktsioon on vaikimisi keelatud. Saad selle igal ajal sisse või välja lülitada menüüs Seaded.
 
 ## Avatud lähtekood
 
@@ -53,4 +56,4 @@ SweetSpot on avatud lähtekoodiga ja litsentseeritud GPL v3 all. Kogu lähtekood
 
 Kui sul on küsimusi selle privaatsuspoliitika kohta, saad avada teema [GitHubis](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Viimati uuendatud: märts 2026*
+*Viimati uuendatud: aprill 2026*

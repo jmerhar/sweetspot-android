@@ -40,10 +40,13 @@ Můžete se přihlásit ke sdílení anonymní statistiky spolehlivosti API. Po 
 - Zda požadavek uspěl, či selhal
 - Kategorii chyby při selhání (např. „timeout", „server error")
 - Verzi aplikace
+- Jazyk aplikace (např. „en", „nl")
+- Stav platby (zkušební období, předplaceno nebo vypršelo)
+- Dobu trvání požadavku v milisekundách
 
 Tato data **neobsahují** identifikátory zařízení, polohu, cenová data ani žádné jiné osobní údaje. Slouží výhradně ke zlepšení spolehlivosti zdrojů dat a jejich výchozího pořadí.
 
-Tato funkce je ve výchozím stavu vypnutá. Můžete ji zapnout nebo vypnout kdykoli v Nastavení > Rozšířené.
+Tato funkce je ve výchozím stavu vypnutá. Můžete ji zapnout nebo vypnout kdykoli v Nastavení.
 
 ## Otevřený zdrojový kód
 
@@ -53,4 +56,4 @@ SweetSpot je open source a licencován pod GPL v3. Kompletní zdrojový kód si 
 
 Máte-li dotazy ohledně těchto zásad ochrany soukromí, můžete otevřít požadavek na [GitHubu](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Poslední aktualizace: březen 2026*
+*Poslední aktualizace: duben 2026*

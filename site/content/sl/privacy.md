@@ -41,7 +41,7 @@ Lahko se odločite za deljenje anonimnih statistik zanesljivosti API-jev. Ko je 
 - Kategorijo napake pri neuspehu (npr. »timeout«, »napaka strežnika«)
 - Številko različice aplikacije
 - Jezik aplikacije (npr. »en«, »nl«)
-- Status plačila (poskusno obdobje, odklenjen ali potekel)
+- Status plačila (poskusno obdobje, naročnina ali potekel)
 - Trajanje zahtevka v milisekundah
 
 Ti podatki **ne** vsebujejo identifikatorjev naprave, lokacije, cenovnih podatkov ali drugih osebnih informacij. Uporabljajo se izključno za izboljšanje zanesljivosti podatkovnih virov in privzetega vrstnega reda.

@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Nem állnak rendelkezésre áradatok.</string>
     <string name="wear_error_not_enough_data">Nincs elég adat a(z) %s lefedéséhez.</string>
     <string name="wear_error_network">Az árak lekérése nem sikerült.</string>
-    <string name="wear_trial_expired">A próbaidőszak lejárt\n\nNyissa meg a SweetSpot alkalmazást a telefonján a feloldáshoz.</string>
+    <string name="wear_trial_expired">Az előfizetés lejárt\n\nNyisd meg a SweetSpot alkalmazást a telefonodon az előfizetéshez.</string>
 </resources>

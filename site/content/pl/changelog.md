@@ -13,7 +13,7 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1 kwietnia 2026" >}}
-- Potwierdzenie z podziękowaniem po odblokowaniu SweetSpot
+- Potwierdzenie z podziękowaniem po subskrypcji SweetSpot
 - Naprawiono błysk starego języka przy zmianie języka aplikacji w ustawieniach
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30 marca 2026" >}}
-- Dodano możliwość wcześniejszego odblokowania w Ustawieniach w trakcie okresu próbnego
+- Dodano możliwość wcześniejszej subskrypcji w Ustawieniach w trakcie okresu próbnego
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30 marca 2026" >}}
@@ -32,10 +32,10 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30 marca 2026" >}}
-- 14-dniowy bezpłatny okres próbny z jednorazowym zakupem do trwałego odblokowania
-- Ekran płatności po zakończeniu okresu próbnego z opcją przywrócenia wcześniejszych zakupów
+- 14-dniowy bezpłatny okres próbny z roczną subskrypcją na dalsze korzystanie z aplikacji
+- Ekran płatności po zakończeniu okresu próbnego z opcją przywrócenia subskrypcji
 - Odliczanie okresu próbnego wyświetlane na ekranie głównym
-- Zegarek Wear OS wyświetla komunikat o odblokowaniu z telefonu po wygaśnięciu okresu próbnego
+- Zegarek Wear OS wyświetla komunikat o subskrypcji z telefonu po wygaśnięciu okresu próbnego
 - Naprawiono deduplikację nakładających się ENTSO-E TimeSeries
 - Wersja aplikacji wyświetlana na dole ekranu ustawień
 {{< /changelog >}}

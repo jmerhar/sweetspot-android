@@ -40,10 +40,13 @@ Pode optar por partilhar estatísticas anónimas de fiabilidade da API. Quando a
 - Se o pedido foi bem-sucedido ou falhou
 - Categoria do erro em caso de falha (ex.: "tempo esgotado", "erro do servidor")
 - Número da versão da aplicação
+- Idioma da aplicação (ex.: "en", "nl")
+- Estado do pagamento (período de teste, subscrito ou expirado)
+- Duração do pedido em milissegundos
 
 Estes dados **não** contêm identificadores do dispositivo, localização, dados de preços ou qualquer outra informação pessoal. São utilizados exclusivamente para melhorar a fiabilidade das fontes de dados e a ordenação predefinida.
 
-Esta funcionalidade está desativada por predefinição. Pode ativá-la ou desativá-la a qualquer momento em Definições > Avançado.
+Esta funcionalidade está desativada por predefinição. Pode ativá-la ou desativá-la a qualquer momento em Definições.
 
 ## Código aberto
 
@@ -53,4 +56,4 @@ O SweetSpot é de código aberto e licenciado sob GPL v3. Pode consultar o códi
 
 Se tiver questões sobre esta política de privacidade, pode abrir um pedido no [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Última atualização: março de 2026*
+*Última atualização: abril de 2026*

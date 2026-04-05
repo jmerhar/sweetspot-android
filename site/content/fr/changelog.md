@@ -13,7 +13,7 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1er avril 2026" >}}
-- Confirmation de remerciement après le déverrouillage de SweetSpot
+- Confirmation de remerciement après l'abonnement à SweetSpot
 - Correction d'un flash de l'ancienne langue lors du changement de langue dans les paramètres
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30 mars 2026" >}}
-- Possibilité de déverrouiller SweetSpot depuis les paramètres pendant la période d'essai
+- Possibilité de s'abonner à SweetSpot depuis les paramètres pendant la période d'essai
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30 mars 2026" >}}
@@ -32,10 +32,10 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30 mars 2026" >}}
-- 14 jours d'essai gratuit avec un achat unique pour déverrouiller définitivement
-- Écran de paiement après la fin de la période d'essai avec option pour restaurer les achats précédents
+- 14 jours d'essai gratuit avec un abonnement annuel pour continuer à utiliser l'application
+- Écran de paiement après la fin de la période d'essai avec option pour restaurer l'abonnement
 - Compte à rebours de la période d'essai sur l'écran principal
-- La montre Wear OS affiche un message pour déverrouiller depuis le téléphone lorsque la période d'essai expire
+- La montre Wear OS affiche un message pour s'abonner depuis le téléphone lorsque la période d'essai expire
 - Correction de la déduplication des TimeSeries ENTSO-E chevauchantes
 - Version de l'application affichée en bas de l'écran des paramètres
 {{< /changelog >}}

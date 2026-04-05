@@ -13,7 +13,7 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="2026. április 1." >}}
-- Köszönő megerősítés a SweetSpot feloldása után
+- Köszönő megerősítés a SweetSpot előfizetése után
 - Javítva a régi nyelv felvillanása az alkalmazás nyelvének módosításakor a beállításokban
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="2026. március 30." >}}
-- Korai feloldás lehetősége hozzáadva a Beállításokban a próbaidőszak alatt
+- Korai előfizetés lehetősége hozzáadva a Beállításokban a próbaidőszak alatt
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="2026. március 30." >}}
@@ -32,10 +32,10 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="2026. március 30." >}}
-- 14 napos ingyenes próbaidőszak egyszeri vásárlással végleges feloldáshoz
-- Fizetési képernyő a próbaidőszak lejárta után korábbi vásárlások visszaállítási lehetőségével
+- 14 napos ingyenes próbaidőszak éves előfizetéssel az alkalmazás további használatához
+- Fizetési képernyő a próbaidőszak lejárta után előfizetés visszaállítási lehetőségével
 - Próbaidőszak visszaszámláló a főképernyőn
-- A Wear OS óra üzenetet jelenít meg a telefonon történő feloldásról, amikor a próbaidőszak lejár
+- A Wear OS óra üzenetet jelenít meg a telefonon történő előfizetésről, amikor a próbaidőszak lejár
 - Javítva az átfedő ENTSO-E TimeSeries deduplikáció
 - Az alkalmazás verziója megjelenik a beállítások képernyő alján
 {{< /changelog >}}

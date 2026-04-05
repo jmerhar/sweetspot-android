@@ -116,19 +116,19 @@
     <string name="stats_prompt_dismiss">Non merci</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Déverrouiller SweetSpot</string>
-    <string name="settings_unlock_description">Supprimez la période d\'essai et déverrouillez l\'application définitivement.</string>
+    <string name="settings_unlock">S\'abonner à SweetSpot</string>
+    <string name="settings_unlock_description">Abonnez-vous pour un an pour continuer à utiliser SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Votre période d\'essai est terminée</string>
-    <string name="paywall_description">SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils en utilisant les prix de l\'électricité en temps réel dans 30 pays européens. Déverrouillez une fois, utilisez pour toujours.</string>
-    <string name="paywall_unlock">Déverrouiller SweetSpot</string>
-    <string name="paywall_unlock_price">Déverrouiller pour %s</string>
-    <string name="paywall_restore">Restaurer l\'achat</string>
+    <string name="paywall_description">SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils en utilisant les prix de l\'électricité en temps réel dans 30 pays européens. Abonnez-vous pour continuer à trouver le meilleur créneau pour vos appareils.</string>
+    <string name="paywall_unlock">S\'abonner à SweetSpot</string>
+    <string name="paywall_unlock_price">S\'abonner pour %s/an</string>
+    <string name="paywall_restore">Restaurer l\'abonnement</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Merci !</string>
-    <string name="thank_you_message">SweetSpot est maintenant entièrement déverrouillé. Profitez-en pour trouver le meilleur créneau pour vos appareils !</string>
+    <string name="thank_you_message">Votre abonnement est maintenant actif. Profitez-en pour trouver le meilleur créneau pour vos appareils !</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Essai : %d jour restant</item>

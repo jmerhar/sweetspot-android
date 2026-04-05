@@ -119,19 +119,19 @@
     <string name="stats_prompt_dismiss">Ne, hvala</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Odkleni SweetSpot</string>
-    <string name="settings_unlock_description">Odstranite preizkusno obdobje in trajno odklenite aplikacijo.</string>
+    <string name="settings_unlock">Naroči se na SweetSpot</string>
+    <string name="settings_unlock_description">Naročite se za eno leto, da boste lahko še naprej uporabljali SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Preizkusno obdobje se je končalo</string>
-    <string name="paywall_description">SweetSpot najde najcenejši čas za uporabo vaših naprav z uporabo cen električne energije v realnem času v 30 evropskih državah. Odklenite enkrat, uporabljajte za vedno.</string>
-    <string name="paywall_unlock">Odkleni SweetSpot</string>
-    <string name="paywall_unlock_price">Odkleni za %s</string>
-    <string name="paywall_restore">Obnovi nakup</string>
+    <string name="paywall_description">SweetSpot najde najcenejši čas za uporabo vaših naprav z uporabo cen električne energije v realnem času v 30 evropskih državah. Naročite se, da boste še naprej iskali najugodnejši čas za vaše naprave.</string>
+    <string name="paywall_unlock">Naroči se na SweetSpot</string>
+    <string name="paywall_unlock_price">Naročnina za %s/leto</string>
+    <string name="paywall_restore">Obnovi naročnino</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Hvala!</string>
-    <string name="thank_you_message">SweetSpot je zdaj v celoti odklenjen. Uživajte v iskanju najugodnejšega časa za vaše naprave!</string>
+    <string name="thank_you_message">Vaša naročnina je zdaj aktivna. Uživajte v iskanju najugodnejšega časa za vaše naprave!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Preizkusno obdobje: še %d dan</item>

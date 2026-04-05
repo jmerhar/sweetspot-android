@@ -13,7 +13,7 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1. huhtikuuta 2026" >}}
-- Kiitosvahvistus SweetSpotin avaamisen jälkeen
+- Kiitosvahvistus SweetSpotin tilaamisen jälkeen
 - Korjattu vanhan kielen välähdys sovelluksen kielen vaihdon yhteydessä asetuksissa
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30. maaliskuuta 2026" >}}
-- Lisätty aikainen avausvaihtoehto asetuksissa kokeilujakson aikana
+- Lisätty aikainen tilausvaihtoehto asetuksissa kokeilujakson aikana
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30. maaliskuuta 2026" >}}
@@ -32,10 +32,10 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30. maaliskuuta 2026" >}}
-- 14 päivän ilmainen kokeilu kertaostolla pysyvään avaamiseen
-- Maksumuurinäkymä kokeilujakson jälkeen aiempien ostosten palautusmahdollisuudella
+- 14 päivän ilmainen kokeilu vuositilauksella sovelluksen käytön jatkamiseksi
+- Maksumuurinäkymä kokeilujakson jälkeen tilauksen palautusmahdollisuudella
 - Kokeilujakson laskuri päänäkymässä
-- Wear OS -kello näyttää viestin avaamisesta puhelimella, kun kokeilujakso päättyy
+- Wear OS -kello näyttää viestin tilaamisesta puhelimella, kun kokeilujakso päättyy
 - Korjattu päällekkäisten ENTSO-E TimeSeries -tietueiden deduplikaatio
 - Sovelluksen versio näkyy asetusnäkymän alareunassa
 {{< /changelog >}}

@@ -104,7 +104,7 @@ English screenshots with localised captions.
 4. Start with **internal testing** (up to 100 testers, instant approval)
    - Verify the app installs and runs correctly from Play Store
    - Verify Wear OS companion installs correctly
-   - Test in-app purchases (if implemented) using test accounts
+   - Test subscription purchases using test accounts
 5. Move to **closed testing** (invite-only, review takes hours)
    - Get feedback from a wider group before going public
 6. Move to **open testing** or straight to **production** (review takes hours to days)
@@ -139,10 +139,10 @@ crashes or UI issues on devices you don't own.
 
 ## Monetization strategy
 
-### Recommendation: free trial + one-time unlock
+### Recommendation: free trial + yearly subscription
 
 Every user gets the full app — all features, no restrictions. After a trial period
-(7 or 14 days), a paywall appears requiring a one-time purchase to continue using
+(14 days), a paywall appears requiring a yearly subscription to continue using
 the app.
 
 **Why this model works for SweetSpot:**
@@ -150,10 +150,12 @@ the app.
 - **Single tier** — no awkward decisions about which features are free and which are
   premium. The app does one thing well; splitting it into tiers feels artificial.
 - **The app sells itself** — users experience full value during the trial. If it's
-  useful, the purchase is an easy decision. No "imagine how good it could be if you
+  useful, subscribing is an easy decision. No "imagine how good it could be if you
   paid" — they already know.
-- **No subscription fatigue** — one payment, done forever. Users don't resent it.
+- **Low price point** — at €2.49/year, the subscription feels trivial and renewal
+  friction is minimal. Less than a coffee per year.
 - **Simple code** — one `isUnlocked` boolean instead of per-feature gating logic.
+  Subscription expiry is detected by re-querying purchases on app resume.
 - **Fair to users** — they can evaluate before committing. Better than paid-only
   (where you buy blind) and less annoying than freemium (where you're constantly
   reminded of what you can't do).
@@ -172,13 +174,13 @@ the app.
 
 ### Price point
 
-**€2.99** is the sweet spot (pun intended):
+**€2.49/year** is the sweet spot (pun intended):
 
 - Low enough for an impulse buy — less than a coffee.
 - High enough to generate meaningful revenue at scale.
 - Use Play Console's regional pricing to set lower prices for lower-income EU
   countries (e.g. Baltic states, Balkans).
-- Can always increase later — harder to decrease without upsetting early buyers.
+- Can always raise later — harder to decrease without upsetting existing subscribers.
 
 ### User experience
 
@@ -188,43 +190,41 @@ the app.
 - Subtle indicator: "Trial: 12 days remaining" in settings or as a small banner.
   Not intrusive — the user should enjoy the app, not feel pressured.
 - On the last 3 days, the indicator becomes slightly more prominent (e.g. a chip
-  on the main screen: "3 days left — unlock SweetSpot").
+  on the main screen: "3 days left — subscribe to SweetSpot").
 
 #### When trial expires
 
 - App opens to a paywall screen instead of the main screen.
 - Clean, friendly design — not aggressive. Show what they've been using:
   "You've found the cheapest window 23 times. Keep saving with SweetSpot."
-- Single "Unlock for €2.99" button that launches the Google Play purchase flow.
-- "Restore purchase" link for reinstalls or device switches.
-- No way to dismiss — the app is locked until purchase (or uninstall).
+- Single "Subscribe for €2.49/year" button that launches the Google Play subscription flow.
+- "Restore subscription" link for reinstalls or device switches.
+- No way to dismiss — the app is locked until subscription (or uninstall).
 
-#### After purchase
+#### After subscription
 
-- Paywall disappears permanently. App works exactly as before.
+- Paywall disappears. App works exactly as before until the subscription expires.
 - "Thank you" toast or brief confirmation, then straight to the main screen.
+- When subscription lapses, paywall reappears on next app open.
 
 #### Watch behaviour
 
 - Trial state syncs to watch via existing Data Layer `/settings` path.
-- When trial expires, watch shows a message: "Trial expired — open SweetSpot on
-  your phone to unlock."
+- When trial expires, watch shows a message: "Subscription expired — open SweetSpot on
+  your phone to subscribe."
 
 ### Other monetization options
 
-#### Subscriptions
+#### One-time purchase
 
-Monthly or yearly recurring payment (e.g. €0.99/month or €4.99/year) that unlocks
-the app. Google Play supports subscription trials natively, with automatic billing
-after the trial ends.
+A single non-consumable in-app purchase (e.g. €2.99) that unlocks the app permanently
+after the trial ends. No recurring billing.
 
-- **Pros:** Predictable recurring revenue. Google handles trial-to-paid conversion.
-  Play Console has built-in subscription analytics (MRR, churn, LTV).
-- **Cons:** Subscription fatigue — the #1 complaint in reviews for utility apps that
-  charge monthly. High churn (70-80% within 3 months for small utility apps). No
-  recurring server cost to justify it. Billing complexity (grace periods, account
-  holds, pauses, cancellation, pro-rating). Open source tension — anyone can build
-  from source, making a subscription feel exploitative.
+- **Pros:** No subscription fatigue — one payment, done forever. Users don't resent it.
+  Simpler billing code (no expiry detection, no re-query on resume). No churn.
+- **Cons:** No recurring revenue — each user pays once. Revenue depends entirely on new
+  user acquisition. Harder to sustain long-term development costs. Can't adjust pricing
+  for existing users.
 
 #### Ads (free with ads)
 
@@ -243,7 +243,7 @@ Requires integrating the Google Mobile Ads SDK (AdMob):
 
 #### Paid app (no trial)
 
-Set a one-time price (€1.99–€2.99) in Play Console. No code changes needed. Google
+Set a one-time price (€1.99–€2.99) in Play Console. No billing code needed. Google
 takes a 15% cut on the first $1M/year (30% after that).
 
 - **Pros:** Zero complexity — no billing code, no IAPs, no feature gating. Clean UX.
@@ -253,7 +253,7 @@ takes a 15% cut on the first $1M/year (30% after that).
 
 #### Freemium (feature gating)
 
-Core functionality free, premium features behind a one-time in-app purchase
+Core functionality free, premium features behind an in-app purchase
 (€2.99–€4.99). Possible premium features: unlimited appliances (free tier: 2-3),
 widget, notifications, price history, data source customisation.
 
@@ -266,24 +266,24 @@ widget, notifications, price history, data source customisation.
 #### Donations / tip jar
 
 "Buy me a coffee" style in-app purchase or link to an external service (Ko-fi, GitHub
-Sponsors). Can be a non-consumable IAP or just an external link in settings.
+Sponsors). Can be an IAP or just an external link in settings.
 
 - **Pros:** App stays fully free and clean. No complexity. Goodwill from users.
 - **Cons:** Very low conversion rate (typically <1% of active users). Not a viable
   primary revenue source. Better as a supplement to another model.
 
-### Why trial + one-time unlock is the best fit
+### Why trial + yearly subscription is the best fit
 
 Compared to the alternatives above:
 
-- **vs. subscriptions** — avoids subscription fatigue and churn. Same simplicity of
-  a single unlock, but users pay once instead of forever.
+- **vs. one-time purchase** — provides recurring revenue to sustain long-term development.
+  At €2.49/year the price is low enough that subscription fatigue is minimal.
 - **vs. ads** — preserves the privacy-first brand and clean UX. No tracking SDK.
 - **vs. paid-only** — the trial removes the discovery barrier. Users try first, then
   decide. Reviews come from actual users, not blind buyers.
 - **vs. freemium** — no artificial feature split. Single tier, single experience,
   single code path. Much simpler to build and maintain.
-- **vs. donations** — realistic revenue. Trial creates a natural purchase moment
+- **vs. donations** — realistic revenue. Trial creates a natural subscription moment
   instead of relying on goodwill.
 
 ### Implementation
@@ -338,26 +338,27 @@ Play Billing Library.
 **Architecture:**
 
 ```
-BillingRepository (new, in :app)
+BillingRepository (in :app)
 ├── Connects to Google Play BillingClient on app start
-├── Queries existing purchases → sets isUnlocked = true if found
+├── Queries existing subscriptions → sets isUnlocked = true if found
 ├── Exposes isUnlocked: StateFlow<Boolean>
-├── launchPurchaseFlow(activity) → triggers Google Play purchase UI
+├── launchPurchaseFlow(activity) → triggers Google Play subscription UI
 ├── onPurchasesUpdated callback → verifies + acknowledges + updates state
-└── Persists unlock state in SharedPreferences (cache for offline)
+├── onResume() → re-queries purchases to detect subscription expiry
+└── Persists subscription state in SharedPreferences (cache for offline)
 ```
 
 **Product setup in Play Console:**
 
-- **Product ID:** `full_unlock`
-- **Product type:** One-time (non-consumable)
-- **Price:** €2.99 (with regional pricing adjustments)
-- **Grace:** Google handles refund window (48 hours by default in EU)
+- **Product ID:** `yearly_subscription`
+- **Product type:** Subscription (auto-renewing)
+- **Base plan:** 1 year at €2.49 (with regional pricing adjustments)
+- **Grace:** Google handles grace periods and account holds for subscriptions
 
 **Key implementation steps:**
 
 1. **`BillingRepository`** — wraps `BillingClient`. Connects on app start, queries
-   purchases, exposes `isUnlocked: StateFlow<Boolean>`. Handles
+   subscriptions, exposes `isUnlocked: StateFlow<Boolean>`. Handles
    `onPurchasesUpdated` callback.
 
 2. **Purchase verification** — for a small app without a backend, local verification
@@ -365,21 +366,25 @@ BillingRepository (new, in :app)
    server-side verification via Google Play Developer API later.
 
 3. **App lock logic** — `ViewModel` checks `isUnlocked` and `isTrialExpired()`. If
-   trial expired and not unlocked, navigate to the paywall screen. Otherwise, show
+   trial expired and not subscribed, navigate to the paywall screen. Otherwise, show
    the normal app. Single check point in the ViewModel, not scattered throughout.
 
-4. **Restore purchases** — on first launch or reinstall, `BillingClient` queries
-   existing purchases. If found, set `isUnlocked = true`. Users never have to
-   re-purchase.
+4. **Restore subscription** — on first launch or reinstall, `BillingClient` queries
+   existing subscriptions. If an active subscription is found, set `isUnlocked = true`.
+   Users never have to re-subscribe on a new device.
 
-5. **Testing** — Play Console supports license testing. Add test accounts that can
-   "purchase" without being charged. Test: purchase flow, restore, trial expiry,
-   paywall display, refund handling.
+5. **Subscription expiry** — `onResume()` re-queries `queryPurchasesAsync(SUBS)`.
+   When a subscription lapses, the query returns an empty list, `isUnlocked` is set
+   to `false`, and the paywall reappears.
+
+6. **Testing** — Play Console supports license testing. Add test accounts that can
+   "subscribe" without being charged. Test: subscription flow, restore, trial expiry,
+   paywall display, expiry handling.
 
 #### Considerations
 
-- **Offline access** — cache unlock state in SharedPreferences. The app should never
-  lock a paying user out because they're offline.
+- **Offline access** — cache subscription state in SharedPreferences. The app should never
+  lock a paying subscriber out because they're offline.
 - **Clock manipulation** — users could set their clock back to extend the trial. Not
   worth defending against — same argument as clearing app data. Don't add complexity
   for edge cases.
@@ -387,39 +392,41 @@ BillingRepository (new, in :app)
   prices for lower-income EU countries (e.g. €1.99 for Baltic states, €2.99 for
   Western Europe).
 - **Wear OS** — sync `isUnlocked` and `trialDaysRemaining` to the watch via the
-  existing Data Layer `/settings` path. Watch shows a "trial expired" message when
-  locked, directing the user to unlock on the phone.
+  existing Data Layer `/settings` path. Watch shows a "subscription expired" message when
+  locked, directing the user to subscribe on the phone.
 - **GPL consideration** — the app is open source. Anyone can build from source without
-  the trial. The purchase is for the convenience of Play Store distribution, updates,
+  the trial. The subscription is for the convenience of Play Store distribution, updates,
   and supporting development. This is a well-established model (e.g. Syncthing,
   K-9 Mail). Consider noting this in the FAQ.
 
-## Testing the billing integration
+## Testing the subscription integration
 
 ### Prerequisites
 
 - A Google Play Console developer account
 - The app uploaded to Play Console (even as internal testing track — doesn't need to
   be published publicly)
-- The `full_unlock` in-app product created in Play Console
+- The `yearly_subscription` subscription created in Play Console
 - At least one license tester configured
 
 ### Play Console setup
 
 1. **Create the app** in Play Console. Choose **Free** (not Paid) — the monetization
-   happens through in-app purchase, which requires a free listing.
+   happens through subscription, which requires a free listing.
 2. **Upload an AAB** to any track (internal testing is fine). Play Billing only works
    with apps that have been uploaded at least once. Build with `make bundle`.
-3. **Create the in-app product:**
-   - Go to Monetize > In-app products
-   - Product ID: `full_unlock`
-   - Type: one-time (not subscription)
-   - Price: €2.99 (adjust regional pricing as needed)
-   - Activate it
+3. **Create the subscription:**
+   - Go to Monetize > Products > Subscriptions
+   - Product ID: `yearly_subscription`
+   - Name: "SweetSpot Yearly" (internal/receipt-facing)
+   - Create a base plan: plan ID `yearly`, billing period 1 year
+   - Set base price to €2.49, then "Convert from base price" for all countries
+   - No Play-managed trial (the app manages its own 14-day trial)
+   - Activate the base plan, then activate the subscription
 4. **Add license testers:**
    - Go to Settings > License testing
    - Add your Google account email(s)
-   - License testers can make purchases without being charged
+   - License testers can subscribe without being charged
 
 ### Debug builds skip the paywall
 
@@ -450,27 +457,27 @@ Alternatively, use `adb` to manipulate the SharedPreferences timestamp:
 adb shell "run-as today.sweetspot cat /data/data/today.sweetspot/shared_prefs/sweetspot_settings.xml"
 ```
 
-### Testing the purchase flow
+### Testing the subscription flow
 
 1. Build and install the release APK: `make install-phone`
 2. If needed, set `TRIAL_DAYS = 0` to trigger the paywall immediately
-3. The paywall should show "Unlock for €2.99" (or the localized price)
-4. Tap "Unlock" — the Google Play purchase dialog appears
-5. As a license tester, the purchase completes without charging
+3. The paywall should show "Subscribe for €2.49/year" (or the localized price)
+4. Tap "Subscribe" — the Google Play subscription dialog appears
+5. As a license tester, the subscription completes without charging
 6. The paywall should disappear and the app should work normally
 
 ### Testing restore
 
-1. After purchasing, uninstall: `adb uninstall today.sweetspot`
+1. After subscribing, uninstall: `adb uninstall today.sweetspot`
 2. Reinstall: `make install-phone`
-3. The paywall appears (trial expired, no local cache of purchase)
-4. Tap "Restore purchase"
-5. BillingClient queries Play and finds the existing purchase
+3. The paywall appears (trial expired, no local cache of subscription)
+4. Tap "Restore subscription"
+5. BillingClient queries Play and finds the existing subscription
 6. The paywall should disappear
 
 ### Testing offline behaviour
 
-1. Purchase the unlock while online
+1. Subscribe while online
 2. Turn off Wi-Fi and mobile data
 3. Force-stop and reopen the app
 4. The app should remain unlocked (cached in SharedPreferences)
@@ -486,9 +493,9 @@ make install-watch
 The watch reads `is_trial_expired` and `is_unlocked` from the Data Layer:
 
 - **Phone trial active:** Watch shows the normal appliance list
-- **Phone trial expired + not unlocked:** Watch shows "Trial expired — Open
-  SweetSpot on your phone to unlock."
-- **Phone unlocked:** Watch shows the normal appliance list
+- **Phone trial expired + not subscribed:** Watch shows "Subscription expired — Open
+  SweetSpot on your phone to subscribe."
+- **Phone subscribed:** Watch shows the normal appliance list
 
 To test, set `TRIAL_DAYS = 0` on the phone, install the release build on both
 devices, and verify the watch shows the locked screen. Then purchase on the phone
@@ -500,13 +507,13 @@ and verify the watch unlocks.
 |---|---|---|
 | Fresh install, trial active | Install, open app | App works normally, no paywall |
 | Trial days remaining | Check via Settings or UiState | Correct countdown (0–14) |
-| Trial expired, not unlocked | Set `TRIAL_DAYS=0` + release build | Paywall blocks app |
-| Purchase flow | Tap "Unlock" (license tester) | Play dialog → app unlocks |
-| Restore purchase | Uninstall → reinstall → "Restore" | Unlock restored from Play |
-| Offline after purchase | Purchase → airplane mode → reopen | App stays unlocked |
-| Refund | Refund in Play Console → reopen app | Paywall reappears |
+| Trial expired, not subscribed | Set `TRIAL_DAYS=0` + release build | Paywall blocks app |
+| Subscription flow | Tap "Subscribe" (license tester) | Play dialog → app unlocks |
+| Restore subscription | Uninstall → reinstall → "Restore" | Subscription restored from Play |
+| Offline after subscribe | Subscribe → airplane mode → reopen | App stays unlocked |
+| Subscription expired | Cancel subscription → wait → reopen | Paywall reappears |
 | Watch locked | Phone trial expired + watch connected | Watch shows locked screen |
-| Watch unlocked | Phone unlocked + watch connected | Watch shows appliance list |
+| Watch unlocked | Phone subscribed + watch connected | Watch shows appliance list |
 | Debug build | `make debug-phone` | Paywall always skipped |
 
 ## Marketing
@@ -559,9 +566,9 @@ and verify the watch unlocks.
 - ⬜ Data safety form completed in Play Console
 - ✅ Trial logic implemented (first launch date tracking, trial expiry check)
 - ✅ Paywall screen designed and implemented
-- ✅ Google Play Billing integration (BillingRepository, purchase flow, restore)
-- ⬜ Billing tested with Play Console license test accounts
-- ✅ Trial + unlock state synced to watch via Data Layer
+- ✅ Google Play Billing integration (BillingRepository, subscription flow, restore)
+- ⬜ Subscription tested with Play Console license test accounts
+- ✅ Trial + subscription state synced to watch via Data Layer
 - ⬜ Wear OS manifest metadata added for paired distribution
 - ⬜ Internal testing track verified on real devices
 - ⬜ Store listing localised for priority languages (EN, NL, DE, FR, SL)

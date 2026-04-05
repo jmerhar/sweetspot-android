@@ -40,10 +40,13 @@ Poți opta pentru partajarea statisticilor anonime de fiabilitate API. Când est
 - Dacă cererea a reușit sau a eșuat
 - Categoria erorii în caz de eșec (de ex. „expirare timp", „eroare server")
 - Numărul versiunii aplicației
+- Limba aplicației (de ex. „en", „nl")
+- Starea plății (perioadă de probă, abonat sau expirat)
+- Durata cererii în milisecunde
 
 Aceste date **nu** conțin identificatori de dispozitiv, locație, date despre prețuri sau alte informații personale. Sunt utilizate exclusiv pentru îmbunătățirea fiabilității surselor de date și a ordinii implicite.
 
-Această funcție este dezactivată în mod implicit. O poți activa sau dezactiva oricând din Setări > Avansat.
+Această funcție este dezactivată în mod implicit. O poți activa sau dezactiva oricând din Setări.
 
 ## Cod deschis
 
@@ -53,4 +56,4 @@ SweetSpot este cu cod deschis și licențiat sub GPL v3. Poți consulta codul su
 
 Dacă ai întrebări despre această politică de confidențialitate, poți deschide o problemă pe [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Ultima actualizare: martie 2026*
+*Ultima actualizare: aprilie 2026*

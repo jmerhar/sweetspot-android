@@ -26,9 +26,10 @@ import today.sweetspot.data.repository.SettingsRepository
 /**
  * Play Billing implementation of [BillingRepository].
  *
- * Wraps [BillingClient] to manage the full-unlock non-consumable in-app purchase.
+ * Wraps [BillingClient] to manage the yearly subscription.
  * On connect, queries existing purchases to restore state and fetches product details
  * for the price display. Caches unlock state in [SettingsRepository] for offline access.
+ * When a subscription lapses, [queryPurchases] sets unlock to `false` so the paywall reappears.
  *
  * @param context Application context for [BillingClient].
  * @param settingsRepository Used to cache unlock state locally.
@@ -42,7 +43,7 @@ class PlayBillingRepository(
 
     private companion object {
         const val TAG = "PlayBilling"
-        const val PRODUCT_ID = "full_unlock"
+        const val PRODUCT_ID = "yearly_subscription"
     }
 
     private val _isUnlocked = MutableStateFlow(settingsRepository.isUnlocked())
@@ -65,7 +66,7 @@ class PlayBillingRepository(
         .setListener(purchasesUpdatedListener)
         .enablePendingPurchases(
             PendingPurchasesParams.newBuilder()
-                .enableOneTimeProducts()
+                .enablePrepaidPlans()
                 .build()
         )
         .enableAutoServiceReconnection()
@@ -99,9 +100,10 @@ class PlayBillingRepository(
             return
         }
 
-        details.oneTimePurchaseOfferDetails ?: return
+        val offerDetails = details.subscriptionOfferDetails?.firstOrNull() ?: return
         val productDetailsParams = BillingFlowParams.ProductDetailsParams.newBuilder()
             .setProductDetails(details)
+            .setOfferToken(offerDetails.offerToken)
             .build()
         val flowParams = BillingFlowParams.newBuilder()
             .setProductDetailsParamsList(listOf(productDetailsParams))
@@ -109,11 +111,15 @@ class PlayBillingRepository(
         billingClient.launchBillingFlow(activity, flowParams)
     }
 
+    override fun onResume() {
+        queryPurchases()
+    }
+
     override fun queryPurchases() {
         coroutineScope.launch {
             try {
                 val params = QueryPurchasesParams.newBuilder()
-                    .setProductType(BillingClient.ProductType.INAPP)
+                    .setProductType(BillingClient.ProductType.SUBS)
                     .build()
                 val result = billingClient.queryPurchasesAsync(params)
                 val hasUnlock = result.purchasesList.any { purchase ->
@@ -137,7 +143,7 @@ class PlayBillingRepository(
     }
 
     /**
-     * Fetches product details for the full unlock product.
+     * Fetches product details for the yearly subscription.
      *
      * Runs asynchronously within [coroutineScope]. Updates [_productPrice] when loaded.
      */
@@ -146,14 +152,17 @@ class PlayBillingRepository(
             try {
                 val product = QueryProductDetailsParams.Product.newBuilder()
                     .setProductId(PRODUCT_ID)
-                    .setProductType(BillingClient.ProductType.INAPP)
+                    .setProductType(BillingClient.ProductType.SUBS)
                     .build()
                 val params = QueryProductDetailsParams.newBuilder()
                     .setProductList(listOf(product))
                     .build()
                 val result = billingClient.queryProductDetails(params)
                 productDetails = result.productDetailsList?.firstOrNull()
-                _productPrice.value = productDetails?.oneTimePurchaseOfferDetails?.formattedPrice
+                _productPrice.value = productDetails
+                    ?.subscriptionOfferDetails?.firstOrNull()
+                    ?.pricingPhases?.pricingPhaseList?.firstOrNull()
+                    ?.formattedPrice
             } catch (e: Exception) {
                 Log.w(TAG, "Failed to query product details", e)
             }

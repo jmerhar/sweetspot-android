@@ -113,19 +113,19 @@
     <string name="stats_prompt_dismiss">Nee, bedankt</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">SweetSpot ontgrendelen</string>
-    <string name="settings_unlock_description">Verwijder de proefperiode en ontgrendel de app permanent.</string>
+    <string name="settings_unlock">Abonneer op SweetSpot</string>
+    <string name="settings_unlock_description">Neem een jaarabonnement om SweetSpot te blijven gebruiken.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Je proefperiode is verlopen</string>
-    <string name="paywall_description">SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken op basis van realtime elektriciteitsprijzen in 30 Europese landen. Ontgrendel eenmalig, gebruik voor altijd.</string>
-    <string name="paywall_unlock">Ontgrendel SweetSpot</string>
-    <string name="paywall_unlock_price">Ontgrendel voor %s</string>
-    <string name="paywall_restore">Aankoop herstellen</string>
+    <string name="paywall_description">SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken op basis van realtime elektriciteitsprijzen in 30 Europese landen. Abonneer om het goedkoopste tijdstip voor je apparaten te blijven vinden.</string>
+    <string name="paywall_unlock">Abonneer op SweetSpot</string>
+    <string name="paywall_unlock_price">Abonneer voor %s/jaar</string>
+    <string name="paywall_restore">Abonnement herstellen</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Bedankt!</string>
-    <string name="thank_you_message">SweetSpot is nu volledig ontgrendeld. Veel plezier met het vinden van het goedkoopste tijdstip voor je apparaten!</string>
+    <string name="thank_you_message">Je abonnement is nu actief. Veel plezier met het vinden van het goedkoopste tijdstip voor je apparaten!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Proefperiode: nog %d dag</item>

@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Δεν υπάρχουν διαθέσιμα δεδομένα τιμών.</string>
     <string name="wear_error_not_enough_data">Ανεπαρκή δεδομένα για %s.</string>
     <string name="wear_error_network">Αδυναμία ανάκτησης τιμών.</string>
-    <string name="wear_trial_expired">Η δοκιμαστική περίοδος έληξε\n\nΑνοίξτε το SweetSpot στο τηλέφωνό σας για ξεκλείδωμα.</string>
+    <string name="wear_trial_expired">Η συνδρομή έληξε\n\nΑνοίξτε το SweetSpot στο τηλέφωνό σας για εγγραφή.</string>
 </resources>

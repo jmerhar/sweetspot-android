@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Žádná cenová data nejsou k dispozici.</string>
     <string name="wear_error_not_enough_data">Nedostatek dat pro %s.</string>
     <string name="wear_error_network">Nepodařilo se stáhnout ceny.</string>
-    <string name="wear_trial_expired">Zkušební období vypršelo\n\nOtevřete SweetSpot na telefonu pro odemknutí.</string>
+    <string name="wear_trial_expired">Předplatné vypršelo\n\nOtevřete SweetSpot na telefonu pro předplacení.</string>
 </resources>

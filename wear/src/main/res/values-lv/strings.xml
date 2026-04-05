@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Nav pieejamu cenu datu.</string>
     <string name="wear_error_not_enough_data">Nepietiek datu %s.</string>
     <string name="wear_error_network">Neizdev\u0101s ieg\u016bt cenas.</string>
-    <string name="wear_trial_expired">Izmēģinājuma periods beidzies\n\nAtveriet SweetSpot savā tālrunī, lai atbloķētu.</string>
+    <string name="wear_trial_expired">Abonements beidzies\n\nAtveriet SweetSpot savā tālrunī, lai abonētu.</string>
 </resources>

@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Нема достапни податоци за цени.</string>
     <string name="wear_error_not_enough_data">Нема доволно податоци за %s.</string>
     <string name="wear_error_network">Не можеше да се преземат цените.</string>
-    <string name="wear_trial_expired">Пробниот период заврши\n\nОтворете SweetSpot на вашиот телефон за отклучување.</string>
+    <string name="wear_trial_expired">Претплатата истече\n\nОтворете SweetSpot на вашиот телефон за претплата.</string>
 </resources>

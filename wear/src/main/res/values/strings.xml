@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">No price data available.</string>
     <string name="wear_error_not_enough_data">Not enough data for %s.</string>
     <string name="wear_error_network">Could not fetch prices.</string>
-    <string name="wear_trial_expired">Trial expired\n\nOpen SweetSpot on your phone to unlock.</string>
+    <string name="wear_trial_expired">Subscription expired\n\nOpen SweetSpot on your phone to subscribe.</string>
 </resources>

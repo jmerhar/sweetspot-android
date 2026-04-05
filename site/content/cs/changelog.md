@@ -13,7 +13,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.4" date="1. dubna 2026" >}}
-- Potvrzení s poděkováním po odemčení SweetSpot
+- Potvrzení s poděkováním po přihlášení k odběru SweetSpot
 - Opraveno probliknutí starého jazyka při změně jazyka aplikace v nastavení
 {{< /changelog >}}
 
@@ -24,7 +24,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.1.2" date="30. března 2026" >}}
-- Přidána možnost předčasného odemknutí v Nastavení během zkušební doby
+- Přidána možnost předčasného předplatného v Nastavení během zkušební doby
 {{< /changelog >}}
 
 {{< changelog version="5.1.1" date="30. března 2026" >}}
@@ -32,10 +32,10 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.0" date="30. března 2026" >}}
-- 14denní bezplatná zkušební doba s jednorázovým nákupem pro trvalé odemknutí
-- Obrazovka platby po skončení zkušební doby s možností obnovení předchozích nákupů
+- 14denní bezplatná zkušební doba s ročním předplatným pro další používání aplikace
+- Obrazovka platby po skončení zkušební doby s možností obnovení předplatného
 - Odpočet zkušební doby na hlavní obrazovce
-- Hodinky s Wear OS zobrazí zprávu o odemknutí z telefonu, když zkušební doba vyprší
+- Hodinky s Wear OS zobrazí zprávu o předplacení z telefonu, když zkušební doba vyprší
 - Odstraněna duplikace překrývajících se ENTSO-E TimeSeries
 - Verze aplikace zobrazena ve spodní části obrazovky nastavení
 {{< /changelog >}}

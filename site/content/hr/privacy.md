@@ -40,10 +40,13 @@ Možete se uključiti u dijeljenje anonimne statistike pouzdanosti API-ja. Kada 
 - Je li zahtjev uspio ili nije
 - Kategoriju greške u slučaju neuspjeha (npr. „timeout", „server error")
 - Verziju aplikacije
+- Jezik aplikacije (npr. „en", „nl")
+- Status plaćanja (probno razdoblje, pretplaćeno ili isteklo)
+- Trajanje zahtjeva u milisekundama
 
 Ti podaci **ne** sadrže identifikatore uređaja, lokaciju, podatke o cijenama ni bilo koje druge osobne podatke. Koriste se isključivo za poboljšanje pouzdanosti izvora podataka i njihovog zadanog redoslijeda.
 
-Ova značajka je prema zadanim postavkama isključena. Možete je uključiti ili isključiti u bilo kojem trenutku u Postavke > Napredno.
+Ova značajka je prema zadanim postavkama isključena. Možete je uključiti ili isključiti u bilo kojem trenutku u Postavke.
 
 ## Otvoreni kod
 
@@ -53,4 +56,4 @@ SweetSpot je otvorenog koda i licenciran pod GPL v3. Cjelokupni izvorni kod mož
 
 Ako imate pitanja o ovim pravilima privatnosti, možete otvoriti upit na [GitHubu](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Zadnje ažuriranje: ožujak 2026.*
+*Zadnje ažuriranje: travanj 2026.*

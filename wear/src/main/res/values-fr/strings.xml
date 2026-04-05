@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Aucune donnée de prix disponible.</string>
     <string name="wear_error_not_enough_data">Pas assez de données pour %s.</string>
     <string name="wear_error_network">Impossible de récupérer les prix.</string>
-    <string name="wear_trial_expired">Période d\'essai terminée\n\nOuvrez SweetSpot sur votre téléphone pour déverrouiller.</string>
+    <string name="wear_trial_expired">Abonnement expiré\n\nOuvrez SweetSpot sur votre téléphone pour vous abonner.</string>
 </resources>

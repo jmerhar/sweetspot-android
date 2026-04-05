@@ -113,19 +113,19 @@
     <string name="stats_prompt_dismiss">Nein danke</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">SweetSpot freischalten</string>
-    <string name="settings_unlock_description">Entferne den Testzeitraum und schalte die App dauerhaft frei.</string>
+    <string name="settings_unlock">SweetSpot abonnieren</string>
+    <string name="settings_unlock_description">Abonniere für ein Jahr, um SweetSpot weiter zu nutzen.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Dein Testzeitraum ist abgelaufen</string>
-    <string name="paywall_description">SweetSpot findet die günstigste Zeit für den Betrieb deiner Geräte anhand von Echtzeit-Strompreisen in 30 europäischen Ländern. Einmal freischalten, für immer nutzen.</string>
-    <string name="paywall_unlock">SweetSpot freischalten</string>
-    <string name="paywall_unlock_price">Freischalten für %s</string>
-    <string name="paywall_restore">Kauf wiederherstellen</string>
+    <string name="paywall_description">SweetSpot findet die günstigste Zeit für den Betrieb deiner Geräte anhand von Echtzeit-Strompreisen in 30 europäischen Ländern. Abonniere, um weiterhin die günstigste Zeit für deine Geräte zu finden.</string>
+    <string name="paywall_unlock">SweetSpot abonnieren</string>
+    <string name="paywall_unlock_price">Abonnieren für %s/Jahr</string>
+    <string name="paywall_restore">Abonnement wiederherstellen</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Vielen Dank!</string>
-    <string name="thank_you_message">SweetSpot ist jetzt vollständig freigeschaltet. Viel Spaß beim Finden der günstigsten Zeit für Ihre Geräte!</string>
+    <string name="thank_you_message">Dein Abonnement ist jetzt aktiv. Viel Spaß beim Finden der günstigsten Zeit für deine Geräte!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Testzeitraum: noch %d Tag</item>

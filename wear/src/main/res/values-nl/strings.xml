@@ -9,5 +9,5 @@
     <string name="wear_error_no_data">Geen prijsgegevens beschikbaar.</string>
     <string name="wear_error_not_enough_data">Niet genoeg gegevens voor %s.</string>
     <string name="wear_error_network">Kan prijzen niet ophalen.</string>
-    <string name="wear_trial_expired">Proefperiode verlopen\n\nOpen SweetSpot op je telefoon om te ontgrendelen.</string>
+    <string name="wear_trial_expired">Abonnement verlopen\n\nOpen SweetSpot op je telefoon om te abonneren.</string>
 </resources>

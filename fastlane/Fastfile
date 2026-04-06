@@ -20,6 +20,9 @@ platform :android do
 
   lane :supply do
     upload_to_play_store(
+      package_name: 'today.sweetspot',
+      json_key: 'fastlane/credentials.json',
+      track: 'alpha',
       skip_upload_apk: true,
       skip_upload_aab: true,
       skip_upload_changelogs: true,

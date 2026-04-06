@@ -247,7 +247,9 @@ main() {
 
     # Clean existing framed screenshots
     if [[ -n "${LOCALE:-}" ]]; then
-        rm -f "$METADATA_DIR/$LOCALE/images/phoneScreenshots"/*.png 2>/dev/null || true
+        local clean_locale
+        clean_locale=$(metadata_locale "$LOCALE")
+        rm -f "$METADATA_DIR/$clean_locale/images/phoneScreenshots"/*.png 2>/dev/null || true
     else
         for d in "$METADATA_DIR"/*/images/phoneScreenshots; do
             rm -f "$d"/*.png 2>/dev/null || true
@@ -267,7 +269,9 @@ main() {
         local img_dir="$locale_dir/images/phoneScreenshots"
         [[ -d "$img_dir" ]] || continue
 
-        local out_dir="$METADATA_DIR/$locale/images/phoneScreenshots"
+        local out_locale
+        out_locale=$(metadata_locale "$locale")
+        local out_dir="$METADATA_DIR/$out_locale/images/phoneScreenshots"
         mkdir -p "$out_dir"
 
         echo "Framing $locale..."
@@ -334,32 +338,51 @@ main() {
 # ──────────────────────────────────────────────
 # Map locale code to Play Console display name
 # ──────────────────────────────────────────────
+# ──────────────────────────────────────────────
+# Map screengrab locale (device BCP 47) to Play Console metadata locale
+# ──────────────────────────────────────────────
+metadata_locale() {
+    case "$1" in
+        bg-BG) echo "bg"    ;;
+        et-EE) echo "et"    ;;
+        hr-HR) echo "hr"    ;;
+        lt-LT) echo "lt"    ;;
+        lv-LV) echo "lv"    ;;
+        nb-NO) echo "no-NO" ;;
+        ro-RO) echo "ro"    ;;
+        sk-SK) echo "sk"    ;;
+        sl-SI) echo "sl"    ;;
+        sr-RS) echo "sr"    ;;
+        *)     echo "$1"    ;;
+    esac
+}
+
 locale_name() {
     case "$1" in
-        bg-BG) echo "Bulgarian" ;;
+        bg)    echo "Bulgarian" ;;
         cs-CZ) echo "Czech" ;;
         da-DK) echo "Danish" ;;
         de-DE) echo "German" ;;
         el-GR) echo "Greek" ;;
         en-US) echo "English (United States)" ;;
         es-ES) echo "Spanish (Spain)" ;;
-        et-EE) echo "Estonian" ;;
+        et)    echo "Estonian" ;;
         fi-FI) echo "Finnish" ;;
         fr-FR) echo "French (France)" ;;
-        hr-HR) echo "Croatian" ;;
+        hr)    echo "Croatian" ;;
         hu-HU) echo "Hungarian" ;;
         it-IT) echo "Italian" ;;
-        lt-LT) echo "Lithuanian" ;;
-        lv-LV) echo "Latvian" ;;
+        lt)    echo "Lithuanian" ;;
+        lv)    echo "Latvian" ;;
         mk-MK) echo "Macedonian" ;;
-        nb-NO) echo "Norwegian (Bokmål)" ;;
+        no-NO) echo "Norwegian (Bokmål)" ;;
         nl-NL) echo "Dutch" ;;
         pl-PL) echo "Polish" ;;
         pt-PT) echo "Portuguese (Portugal)" ;;
-        ro-RO) echo "Romanian" ;;
-        sk-SK) echo "Slovak" ;;
-        sl-SI) echo "Slovenian" ;;
-        sr-RS) echo "Serbian" ;;
+        ro)    echo "Romanian" ;;
+        sk)    echo "Slovak" ;;
+        sl)    echo "Slovenian" ;;
+        sr)    echo "Serbian" ;;
         sv-SE) echo "Swedish" ;;
         *)     echo "$1" ;;
     esac

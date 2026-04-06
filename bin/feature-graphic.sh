@@ -50,7 +50,7 @@ TEXT_X=319              # Left edge of text area
 TEXT_GAP=13             # Gap between title label bottom and tagline label top
 
 # All supported locales (iteration order)
-LOCALES="en-US nl-NL de-DE fr-FR sl-SI bg-BG cs-CZ da-DK el-GR es-ES et-EE fi-FI hr-HR hu-HU it-IT lt-LT lv-LV mk-MK nb-NO pl-PL pt-PT ro-RO sk-SK sr-RS sv-SE"
+LOCALES="en-US nl-NL de-DE fr-FR sl bg cs-CZ da-DK el-GR es-ES et fi-FI hr hu-HU it-IT lt lv mk-MK no-NO pl-PL pt-PT ro sk sr sv-SE"
 
 # ──────────────────────────────────────────────
 # Extract Avenir Next Bold from the macOS TTC (TrueType Collection) file.
@@ -138,26 +138,26 @@ tagline_for() {
         nl-NL) echo "Vind het goedkoopste moment om je apparaten te draaien" ;;
         de-DE) echo "Finde den günstigsten Zeitpunkt für deine Geräte" ;;
         fr-FR) echo "Trouvez le meilleur moment pour vos appareils" ;;
-        sl-SI) echo "Poiščite najcenejši čas za vaše aparate" ;;
-        bg-BG) echo "Намерете най-евтиното време за вашите уреди" ;;
+        sl)    echo "Poiščite najcenejši čas za vaše aparate" ;;
+        bg)    echo "Намерете най-евтиното време за вашите уреди" ;;
         cs-CZ) echo "Najděte nejlevnější čas pro vaše spotřebiče" ;;
         da-DK) echo "Find det billigste tidspunkt for dine apparater" ;;
         el-GR) echo "Βρείτε την πιο φθηνή ώρα για τις συσκευές σας" ;;
         es-ES) echo "Encuentra el momento más barato para tus aparatos" ;;
-        et-EE) echo "Leidke oma seadmete jaoks soodsaim aeg" ;;
+        et)    echo "Leidke oma seadmete jaoks soodsaim aeg" ;;
         fi-FI) echo "Löydä halvin aika kodinkoneillesi" ;;
-        hr-HR) echo "Pronađite najjeftinije vrijeme za vaše uređaje" ;;
+        hr)    echo "Pronađite najjeftinije vrijeme za vaše uređaje" ;;
         hu-HU) echo "Találja meg a legolcsóbb időpontot készülékeihez" ;;
         it-IT) echo "Trova il momento più economico per i tuoi elettrodomestici" ;;
-        lt-LT) echo "Raskite pigiausią laiką savo prietaisams" ;;
-        lv-LV) echo "Atrodiet lētāko laiku savām ierīcēm" ;;
+        lt)    echo "Raskite pigiausią laiką savo prietaisams" ;;
+        lv)    echo "Atrodiet lētāko laiku savām ierīcēm" ;;
         mk-MK) echo "Најдете го најевтиното време за вашите апарати" ;;
-        nb-NO) echo "Finn det billigste tidspunktet for apparatene dine" ;;
+        no-NO) echo "Finn det billigste tidspunktet for apparatene dine" ;;
         pl-PL) echo "Znajdź najtańszy czas na uruchomienie urządzeń" ;;
         pt-PT) echo "Encontre o momento mais barato para os seus aparelhos" ;;
-        ro-RO) echo "Găsiți cel mai ieftin moment pentru aparatele dvs." ;;
-        sk-SK) echo "Nájdite najlacnejší čas pre vaše spotrebiče" ;;
-        sr-RS) echo "Пронађите најјефтиније време за ваше уређаје" ;;
+        ro)    echo "Găsiți cel mai ieftin moment pentru aparatele dvs." ;;
+        sk)    echo "Nájdite najlacnejší čas pre vaše spotrebiče" ;;
+        sr)    echo "Пронађите најјефтиније време за ваше уређаје" ;;
         sv-SE) echo "Hitta billigaste tiden för dina apparater" ;;
     esac
 }
@@ -226,30 +226,30 @@ generate() {
 # ──────────────────────────────────────────────
 locale_name() {
     case "$1" in
-        bg-BG) echo "Bulgarian" ;;
+        bg)    echo "Bulgarian" ;;
         cs-CZ) echo "Czech" ;;
         da-DK) echo "Danish" ;;
         de-DE) echo "German" ;;
         el-GR) echo "Greek" ;;
         en-US) echo "English (United States)" ;;
         es-ES) echo "Spanish (Spain)" ;;
-        et-EE) echo "Estonian" ;;
+        et)    echo "Estonian" ;;
         fi-FI) echo "Finnish" ;;
         fr-FR) echo "French (France)" ;;
-        hr-HR) echo "Croatian" ;;
+        hr)    echo "Croatian" ;;
         hu-HU) echo "Hungarian" ;;
         it-IT) echo "Italian" ;;
-        lt-LT) echo "Lithuanian" ;;
-        lv-LV) echo "Latvian" ;;
+        lt)    echo "Lithuanian" ;;
+        lv)    echo "Latvian" ;;
         mk-MK) echo "Macedonian" ;;
-        nb-NO) echo "Norwegian (Bokmål)" ;;
+        no-NO) echo "Norwegian (Bokmål)" ;;
         nl-NL) echo "Dutch" ;;
         pl-PL) echo "Polish" ;;
         pt-PT) echo "Portuguese (Portugal)" ;;
-        ro-RO) echo "Romanian" ;;
-        sk-SK) echo "Slovak" ;;
-        sl-SI) echo "Slovenian" ;;
-        sr-RS) echo "Serbian" ;;
+        ro)    echo "Romanian" ;;
+        sk)    echo "Slovak" ;;
+        sl)    echo "Slovenian" ;;
+        sr)    echo "Serbian" ;;
         sv-SE) echo "Swedish" ;;
         *)     echo "$1" ;;
     esac

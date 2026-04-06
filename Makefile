@@ -1,8 +1,10 @@
 .PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats screenshots frames feature-graphic supply
 
 help: ## Show available commands
-	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*## "}; {printf "  \033[36mmake %-15s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
+		awk 'BEGIN {FS = ":.*## "}; /^##@/ {printf "\n\033[1m%s\033[0m\n", substr($$0, 5); next} {printf "  \033[36mmake %-20s\033[0m %s\n", $$1, $$2}'
+
+##@ Build
 
 build: ## Build debug APKs (phone + watch)
 	./gradlew assembleDebug
@@ -19,13 +21,20 @@ bundle: ## Build signed release AABs for Play Store
 	@echo "  build/sweetspot-phone.aab"
 	@echo "  build/sweetspot-wear.aab"
 
+clean: ## Remove all build outputs
+	./gradlew clean
+
+##@ Test & Quality
+
 test: ## Run all unit tests
 	./gradlew test
 
-inspect: ## Run Android Studio offline inspections
+inspect: ## Summarise Android Studio inspection XML files
 	./bin/inspect.sh
 
-debug: debug-phone debug-watch ## Build and install debug app on connected phone and watch
+##@ Device
+
+debug: debug-phone debug-watch ## Build and install debug app on phone and watch
 
 debug-phone: ## Build and install debug phone app on connected phone
 	./gradlew app:assembleDebug
@@ -35,7 +44,7 @@ debug-watch: ## Build and install debug watch app on connected watch
 	./gradlew wear:assembleDebug
 	./bin/install.sh watch --debug
 
-install: install-phone install-watch ## Install release APKs on connected phone and watch
+install: install-phone install-watch ## Install release APKs on phone and watch
 
 install-phone: ## Install release phone APK on connected phone via ADB
 	./bin/install.sh phone
@@ -43,11 +52,15 @@ install-phone: ## Install release phone APK on connected phone via ADB
 install-watch: ## Install release watch APK on connected watch via ADB
 	./bin/install.sh watch
 
+##@ Release & Deploy
+
 release: ## Bump version, build, tag, push, and create GitHub Release
 	./bin/release.sh $(VERSION) -n docs/notes/release.md $(if $(DRAFT),--draft)
 
-clean: ## Remove all build outputs
-	./gradlew clean
+deploy-stats: ## Deploy stats.php to the stats server
+	./bin/deploy-stats.sh
+
+##@ Website
 
 site: ## Start local Hugo server and open website in browser
 	open http://localhost:1313/ && hugo server --source site --baseURL http://localhost:1313/
@@ -55,8 +68,7 @@ site: ## Start local Hugo server and open website in browser
 site-validate: ## Validate Hugo site: build, check pages, links, and assets
 	./bin/site-validate.sh
 
-deploy-stats: ## Deploy stats.php to the stats server
-	./bin/deploy-stats.sh
+##@ Play Store
 
 screenshots: ## Capture localized screenshots via Fastlane Screengrab (LOCALE=xx-XX for one)
 	bundle exec fastlane screenshots$(if $(LOCALE), locale:$(LOCALE))

@@ -303,17 +303,6 @@ generate_html() {
     </div>
 HEADER
 
-    # Reference image at the top (temporary)
-    local ref="$PROJECT_DIR/docs/store-assets/feature-graphic.png"
-    if [[ -f "$ref" ]]; then
-        local rel_ref="../docs/store-assets/feature-graphic.png"
-        cat >> "$html" <<EOF
-    <hr>
-    <h1>Reference (original)</h1>
-    <img src="${rel_ref}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
-EOF
-    fi
-
     for locale in $LOCALES; do
         local img="$METADATA_DIR/$locale/images/featureGraphic.png"
         [[ -f "$img" ]] || continue

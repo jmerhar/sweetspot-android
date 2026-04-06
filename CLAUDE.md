@@ -19,6 +19,10 @@ make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
 make inspect                      # Summarise inspection XML files (see Inspections section)
 make site-validate                # Validate Hugo site (build, pages, links, i18n)
+make screenshots                  # Capture localized screenshots via Screengrab (LOCALE=xx-XX for one)
+make frames                       # Frame screenshots with marketing text (LOCALE=xx-XX for one)
+make feature-graphic              # Generate localised Play Store feature graphics (LOCALE=xx-XX for one)
+make publish                      # Upload metadata, screenshots, and images to Play Store
 make clean                        # Remove all build outputs
 ```
 
@@ -27,6 +31,12 @@ A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 - **`bin/inspect.sh`** — Summarises inspection XML files exported from Android Studio. Does **not** run inspections itself. Called by `make inspect`.
 - **`bin/site-validate.sh`** — Validates the Hugo site: builds, checks expected pages/assets exist, verifies internal links resolve, checks page sizes, and ensures i18n key parity across languages. Called by `make site-validate`.
+- **`bin/frame-screenshots.sh`** — Frames raw Screengrab screenshots with marketing text and coloured backgrounds. Outputs to `fastlane/metadata/android/<locale>/images/phoneScreenshots/` and generates `build/screenshots.html` gallery. Requires ImageMagick 7. Called by `make frames`.
+- **`bin/feature-graphic.sh`** — Generates localised Play Store feature graphics (1024x500) with gradient, app icon, and translated tagline. Outputs to `fastlane/metadata/android/<locale>/images/featureGraphic.png` and generates `build/feature-graphics.html` gallery. Requires ImageMagick 7 and Python 3. Called by `make feature-graphic`.
+
+Fastlane is used for automated screenshot capture and Play Store metadata upload. Requires Ruby 3.3 (managed via `.ruby-version` and rbenv). Lanes are defined in `fastlane/Fastfile`:
+- **`screenshots`** — Builds debug APKs and runs Screengrab across all locales (or one with `locale:xx`).
+- **`publish`** — Uploads metadata, screenshots, and images to the Play Store via `upload_to_play_store`. Dynamically resolves the latest version code on the alpha track.
 
 ### Installing the Wear OS app
 
@@ -296,8 +306,8 @@ site/
     js/main.js                     # Nav toggle, language switcher
     images/
       icon.svg                     # App icon (converted from Android vector)
-      badges/                      # Official Google Play badges (per language)
-        en.png, nl.png, de.png, fr.png, sl.png
+      badges/                      # Official Google Play badges (25 languages)
+        en.png, bg.png, cs.png, da.png, de.png, ...
   layouts/
     _default/
       baseof.html                  # Base template: <html>, <head>, nav, footer
@@ -311,13 +321,14 @@ site/
       footer.html                  # Dark footer
       language-switcher.html       # Dropdown using .AllTranslations
   i18n/
-    en.toml, nl.toml, de.toml, fr.toml, sl.toml  # UI strings per language
+    en.toml, bg.toml, cs.toml, ...   # UI strings (25 languages)
   content/
     en/                            # English content (served at root /)
-    nl/                            # Dutch content (served at /nl/)
-    de/                            # German content (served at /de/)
-    fr/                            # French content (served at /fr/)
-    sl/                            # Slovenian content (served at /sl/)
+    bg/, cs/, da/, de/, el/        # 24 additional languages, each under /<lang>/
+    es/, et/, fi/, fr/, hr/
+    hu/, it/, lt/, lv/, mk/
+    nb/, nl/, pl/, pt/, ro/
+    sk/, sl/, sr/, sv/
 ```
 
 Each content directory contains: `_index.md` (landing page), `privacy.md`, `changelog.md`, `faq.md`.

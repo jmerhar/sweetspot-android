@@ -63,6 +63,10 @@ make install                      # Install release APKs on phone + watch
 make install-phone                # Install release APK on connected phone
 make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
+make screenshots                  # Capture localized screenshots via Screengrab
+make frames                       # Frame screenshots with marketing text
+make feature-graphic              # Generate localised Play Store feature graphics
+make publish                       # Upload metadata and images to Play Store
 make clean                        # Remove all build outputs
 ```
 

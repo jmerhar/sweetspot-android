@@ -18,6 +18,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+source "$SCRIPT_DIR/lib/common.sh"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
 ICON_SRC="$PROJECT_DIR/fastlane/metadata/android/en-US/images/icon.png"
 
@@ -223,40 +224,6 @@ generate() {
 }
 
 # ──────────────────────────────────────────────
-# Map locale code to Play Console display name
-# ──────────────────────────────────────────────
-locale_name() {
-    case "$1" in
-        bg)    echo "Bulgarian" ;;
-        cs-CZ) echo "Czech" ;;
-        da-DK) echo "Danish" ;;
-        de-DE) echo "German" ;;
-        el-GR) echo "Greek" ;;
-        en-US) echo "English (United States)" ;;
-        es-ES) echo "Spanish (Spain)" ;;
-        et)    echo "Estonian" ;;
-        fi-FI) echo "Finnish" ;;
-        fr-FR) echo "French (France)" ;;
-        hr)    echo "Croatian" ;;
-        hu-HU) echo "Hungarian" ;;
-        it-IT) echo "Italian" ;;
-        lt)    echo "Lithuanian" ;;
-        lv)    echo "Latvian" ;;
-        mk-MK) echo "Macedonian" ;;
-        no-NO) echo "Norwegian (Bokmål)" ;;
-        nl-NL) echo "Dutch" ;;
-        pl-PL) echo "Polish" ;;
-        pt-PT) echo "Portuguese (Portugal)" ;;
-        ro)    echo "Romanian" ;;
-        sk)    echo "Slovak" ;;
-        sl)    echo "Slovenian" ;;
-        sr)    echo "Serbian" ;;
-        sv-SE) echo "Swedish" ;;
-        *)     echo "$1" ;;
-    esac
-}
-
-# ──────────────────────────────────────────────
 # Generate HTML gallery for visual review
 # ──────────────────────────────────────────────
 generate_html() {
@@ -264,45 +231,13 @@ generate_html() {
     mkdir -p "$html_dir"
     local html="$html_dir/feature-graphics.html"
 
-    cat > "$html" <<'HEADER'
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Feature Graphics</title>
-    <meta charset="UTF-8">
-    <style>
-      * {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        font-weight: 300;
-      }
-      body { margin: 20px 40px; }
-      h1 { font-size: 24px; font-weight: 400; margin: 0; padding: 16px 0 12px; }
-      h2 { font-size: 18px; font-weight: 400; margin: 0; padding: 12px 0 8px; color: #888; }
-      hr { border: none; border-top: 1px solid #DDD; margin: 32px 0 0; }
+    gallery_header "$html" "Feature Graphics" \
+"      h2 { font-size: 18px; font-weight: 400; margin: 0; padding: 12px 0 8px; color: #888; }
       img {
         max-width: 100%;
         cursor: pointer;
         border-radius: 4px;
-      }
-      #overlay {
-        position: fixed; top: 0; left: 0;
-        background: rgba(0,0,0,0.85);
-        width: 100%; height: 100%;
-        display: none; z-index: 5;
-        cursor: zoom-out;
-        text-align: center;
-      }
-      #overlay img {
-        max-height: 95vh; max-width: 95vw;
-        margin-top: 2.5vh;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="overlay" onclick="this.style.display='none'">
-      <img id="lightbox">
-    </div>
-HEADER
+      }"
 
     for locale in $LOCALES; do
         local img="$METADATA_DIR/$locale/images/featureGraphic.png"
@@ -315,29 +250,17 @@ HEADER
         cat >> "$html" <<EOF
     <hr>
     <h1>${display_name}</h1>
-    <img src="${rel_path}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
+    $(gallery_img "$rel_path")
 EOF
     done
 
-    cat >> "$html" <<'FOOTER'
-  </body>
-</html>
-FOOTER
-    echo "Gallery: $html"
-    open "$html"
+    gallery_footer "$html"
 }
 
 # ──────────────────────────────────────────────
 main() {
-    if ! command -v magick &>/dev/null; then
-        echo "Error: ImageMagick 7 (magick) is required." >&2
-        echo "  Install: brew install imagemagick" >&2
-        exit 1
-    fi
-    if ! command -v python3 &>/dev/null; then
-        echo "Error: Python 3 is required (for TTC font extraction)." >&2
-        exit 1
-    fi
+    require_command magick "brew install imagemagick"
+    require_command python3
     [[ -f "$AVENIR_NEXT_TTC" ]] || { echo "Error: Avenir Next font not found: $AVENIR_NEXT_TTC" >&2; exit 1; }
     [[ -f "$ICON_SRC" ]]       || { echo "Error: Icon not found: $ICON_SRC" >&2; exit 1; }
 

@@ -16,6 +16,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+source "$SCRIPT_DIR/lib/common.sh"
 SCREENSHOTS_DIR="$PROJECT_DIR/fastlane/screenshots"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
 HTML_DIR="$PROJECT_DIR/build"
@@ -239,11 +240,7 @@ find_raw() {
 
 # ──────────────────────────────────────────────
 main() {
-    if ! command -v magick &>/dev/null; then
-        echo "Error: ImageMagick 7 (magick) is required." >&2
-        echo "  Install: brew install imagemagick" >&2
-        exit 1
-    fi
+    require_command magick "brew install imagemagick"
     [[ -f "$FONT" ]] || { echo "Error: Font not found: $FONT" >&2; exit 1; }
 
     # Clean existing framed screenshots
@@ -336,77 +333,12 @@ main() {
     echo "Framed $count screenshots in fastlane/metadata/android/"
 }
 
-# ──────────────────────────────────────────────
-# Map locale code to Play Console display name
-# ──────────────────────────────────────────────
-# ──────────────────────────────────────────────
-# Map screengrab locale (device BCP 47) to Play Console metadata locale
-# ──────────────────────────────────────────────
-metadata_locale() {
-    case "$1" in
-        bg-BG) echo "bg"    ;;
-        et-EE) echo "et"    ;;
-        hr-HR) echo "hr"    ;;
-        lt-LT) echo "lt"    ;;
-        lv-LV) echo "lv"    ;;
-        nb-NO) echo "no-NO" ;;
-        ro-RO) echo "ro"    ;;
-        sk-SK) echo "sk"    ;;
-        sl-SI) echo "sl"    ;;
-        sr-RS) echo "sr"    ;;
-        *)     echo "$1"    ;;
-    esac
-}
-
-locale_name() {
-    case "$1" in
-        bg)    echo "Bulgarian" ;;
-        cs-CZ) echo "Czech" ;;
-        da-DK) echo "Danish" ;;
-        de-DE) echo "German" ;;
-        el-GR) echo "Greek" ;;
-        en-US) echo "English (United States)" ;;
-        es-ES) echo "Spanish (Spain)" ;;
-        et)    echo "Estonian" ;;
-        fi-FI) echo "Finnish" ;;
-        fr-FR) echo "French (France)" ;;
-        hr)    echo "Croatian" ;;
-        hu-HU) echo "Hungarian" ;;
-        it-IT) echo "Italian" ;;
-        lt)    echo "Lithuanian" ;;
-        lv)    echo "Latvian" ;;
-        mk-MK) echo "Macedonian" ;;
-        no-NO) echo "Norwegian (Bokmål)" ;;
-        nl-NL) echo "Dutch" ;;
-        pl-PL) echo "Polish" ;;
-        pt-PT) echo "Portuguese (Portugal)" ;;
-        ro)    echo "Romanian" ;;
-        sk)    echo "Slovak" ;;
-        sl)    echo "Slovenian" ;;
-        sr)    echo "Serbian" ;;
-        sv-SE) echo "Swedish" ;;
-        *)     echo "$1" ;;
-    esac
-}
-
 generate_html() {
     mkdir -p "$HTML_DIR"
     local html="$HTML_DIR/screenshots.html"
-    cat > "$html" <<'HEADER'
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Framed Screenshots</title>
-    <meta charset="UTF-8">
-    <style>
-      * {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        font-weight: 300;
-      }
-      body { margin: 20px 40px; }
-      h1 { font-size: 24px; font-weight: 400; margin: 0; padding: 16px 0 12px; }
-      hr { border: none; border-top: 1px solid #DDD; margin: 32px 0 0; }
-      /* Gap must equal FRAME_GAP/CANVAS_W of each image's width for spanning
+
+    gallery_header "$html" "Framed Screenshots" \
+"      /* Gap must equal FRAME_GAP/CANVAS_W of each image's width for spanning
          phone alignment. With N equal images: gap% = ratio / (N + N*ratio - ratio)
          where ratio = FRAME_GAP/CANVAS_W ≈ 0.0519.
          5 imgs → 1%, 6 → 0.84%, 7 → 0.72%, 8 → 0.63%, 9 → 0.56%, 10 → 0.5% */
@@ -416,26 +348,7 @@ generate_html() {
         min-width: 0;
         cursor: pointer;
         border-radius: 4px;
-      }
-      #overlay {
-        position: fixed; top: 0; left: 0;
-        background: rgba(0,0,0,0.85);
-        width: 100%; height: 100%;
-        display: none; z-index: 5;
-        cursor: zoom-out;
-        text-align: center;
-      }
-      #overlay img {
-        max-height: 95vh; max-width: 95vw;
-        margin-top: 2.5vh;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="overlay" onclick="this.style.display='none'">
-      <img id="lightbox">
-    </div>
-HEADER
+      }"
 
     # Collect locales and sort by display name
     local sorted_locales=()
@@ -470,21 +383,14 @@ HEADER
     <div class="screenshots">
 EOF
         for img in "${images[@]}"; do
-            cat >> "$html" <<EOF
-      <img src="${rel_dir}/${img}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
-EOF
+            echo "      $(gallery_img "$rel_dir/$img")" >> "$html"
         done
         cat >> "$html" <<'EOF'
     </div>
 EOF
     done
 
-    cat >> "$html" <<'FOOTER'
-  </body>
-</html>
-FOOTER
-    echo "Gallery: $html"
-    open "$html"
+    gallery_footer "$html"
 }
 
 main "$@"

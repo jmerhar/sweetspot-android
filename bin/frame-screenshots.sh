@@ -109,6 +109,7 @@ round_frame() {
             -fill black -colorize 100 \
             -fill white -draw "roundrectangle 0,0,%[fx:w-1],%[fx:h-1],${FRAME_RADIUS},${FRAME_RADIUS}" \
         \) -alpha off -compose CopyOpacity -composite \
+        -define png:exclude-chunks=date,time \
         "$file"
 }
 
@@ -436,10 +437,19 @@ generate_html() {
     </div>
 HEADER
 
+    # Collect locales and sort by display name
+    local sorted_locales=()
     for locale_dir in "$METADATA_DIR"/*/images/phoneScreenshots; do
         [[ -d "$locale_dir" ]] || continue
         local locale
         locale=$(basename "$(dirname "$(dirname "$locale_dir")")")
+        sorted_locales+=("$(locale_name "$locale")|$locale")
+    done
+    IFS=$'\n' sorted_locales=($(sort <<< "${sorted_locales[*]}")); unset IFS
+
+    for entry in "${sorted_locales[@]}"; do
+        local locale="${entry#*|}"
+        local locale_dir="$METADATA_DIR/$locale/images/phoneScreenshots"
         local display_name
         display_name="$(locale_name "$locale") – $locale"
 

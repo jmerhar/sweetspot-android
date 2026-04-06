@@ -50,7 +50,7 @@ TEXT_X=319              # Left edge of text area
 TEXT_GAP=13             # Gap between title label bottom and tagline label top
 
 # All supported locales (iteration order)
-LOCALES="en-US nl-NL de-DE fr-FR sl bg cs-CZ da-DK el-GR es-ES et fi-FI hr hu-HU it-IT lt lv mk-MK no-NO pl-PL pt-PT ro sk sr sv-SE"
+LOCALES="bg hr cs-CZ da-DK nl-NL en-US et fi-FI fr-FR de-DE el-GR hu-HU it-IT lv lt mk-MK no-NO pl-PL pt-PT ro sr sk sl es-ES sv-SE"
 
 # ──────────────────────────────────────────────
 # Extract Avenir Next Bold from the macOS TTC (TrueType Collection) file.
@@ -216,6 +216,7 @@ generate() {
         "$tmp/badge_icon.png" -geometry "+${BADGE_X}+${BADGE_Y}" -composite \
         "$tmp/title.png"      -geometry "+${TEXT_X}+${text_top_y}" -composite \
         "$tmp/tagline.png"    -geometry "+${TEXT_X}+${tagline_y}" -composite \
+        -define png:exclude-chunks=date,time \
         "$output"
 
     rm -rf "$tmp"

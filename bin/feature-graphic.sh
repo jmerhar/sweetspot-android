@@ -3,9 +3,12 @@ set -euo pipefail
 
 # Generates localised Play Store feature graphics (1024x500) for all languages.
 #
+# Output: fastlane/metadata/android/<locale>/images/featureGraphic.png
+# Gallery: build/feature-graphics.html
+#
 # Layout: blue vertical gradient, app icon on near-white rounded-rect badge (left),
-# "SweetSpot" title + translated tagline (right). Title in Futura Bold (white),
-# tagline in Futura Medium (light blue-white). Cyrillic/Greek taglines use Noto Sans.
+# "SweetSpot" title + translated tagline (right). Both in Futura Bold — title in
+# white, tagline in light blue-white. Cyrillic/Greek taglines use Noto Sans.
 #
 # Usage:
 #   ./bin/feature-graphic.sh                # Generate for all languages
@@ -20,7 +23,7 @@ ICON_SRC="$PROJECT_DIR/fastlane/metadata/android/en-US/images/icon.png"
 
 # Fonts — Futura Bold/Medium extracted from macOS TTC at runtime
 FUTURA_TTC="/System/Library/Fonts/Supplemental/Futura.ttc"
-FONT_NOTO="$PROJECT_DIR/fastlane/screenshots/fonts/NotoSans-SemiBold.ttf"
+FONT_NOTO="$PROJECT_DIR/fastlane/screenshots/fonts/NotoSans-Bold.ttf"
 FONT_TITLE=""       # Set by extract_fonts()
 FONT_TAGLINE=""     # Set by extract_fonts()
 
@@ -42,7 +45,7 @@ BADGE_Y=170             # Top edge of badge
 # Text
 TITLE_TEXT="SweetSpot"
 TITLE_SIZE=59
-TAGLINE_SIZE=30
+TAGLINE_SIZE=25
 TITLE_COLOR="white"
 TAGLINE_COLOR="#E8F0FF"
 TEXT_X=319              # Left edge of text area
@@ -169,7 +172,7 @@ tagline_for() {
 tagline_font_for() {
     case "$1" in
         bg-BG|el-GR|mk-MK|sr-RS) echo "$FONT_NOTO" ;;
-        *) echo "$FONT_TAGLINE" ;;
+        *) echo "$FONT_TITLE" ;;
     esac
 }
 
@@ -234,6 +237,122 @@ generate() {
 }
 
 # ──────────────────────────────────────────────
+# Map locale code to Play Console display name
+# ──────────────────────────────────────────────
+locale_name() {
+    case "$1" in
+        bg-BG) echo "Bulgarian" ;;
+        cs-CZ) echo "Czech" ;;
+        da-DK) echo "Danish" ;;
+        de-DE) echo "German" ;;
+        el-GR) echo "Greek" ;;
+        en-US) echo "English (United States)" ;;
+        es-ES) echo "Spanish (Spain)" ;;
+        et-EE) echo "Estonian" ;;
+        fi-FI) echo "Finnish" ;;
+        fr-FR) echo "French (France)" ;;
+        hr-HR) echo "Croatian" ;;
+        hu-HU) echo "Hungarian" ;;
+        it-IT) echo "Italian" ;;
+        lt-LT) echo "Lithuanian" ;;
+        lv-LV) echo "Latvian" ;;
+        mk-MK) echo "Macedonian" ;;
+        nb-NO) echo "Norwegian (Bokmål)" ;;
+        nl-NL) echo "Dutch" ;;
+        pl-PL) echo "Polish" ;;
+        pt-PT) echo "Portuguese (Portugal)" ;;
+        ro-RO) echo "Romanian" ;;
+        sk-SK) echo "Slovak" ;;
+        sl-SI) echo "Slovenian" ;;
+        sr-RS) echo "Serbian" ;;
+        sv-SE) echo "Swedish" ;;
+        *)     echo "$1" ;;
+    esac
+}
+
+# ──────────────────────────────────────────────
+# Generate HTML gallery for visual review
+# ──────────────────────────────────────────────
+generate_html() {
+    local html_dir="$PROJECT_DIR/build"
+    mkdir -p "$html_dir"
+    local html="$html_dir/feature-graphics.html"
+
+    cat > "$html" <<'HEADER'
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Feature Graphics</title>
+    <meta charset="UTF-8">
+    <style>
+      * {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 300;
+      }
+      body { margin: 20px 40px; }
+      h1 { font-size: 24px; font-weight: 400; margin: 0; padding: 16px 0 12px; }
+      h2 { font-size: 18px; font-weight: 400; margin: 0; padding: 12px 0 8px; color: #888; }
+      hr { border: none; border-top: 1px solid #DDD; margin: 32px 0 0; }
+      img {
+        max-width: 100%;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      #overlay {
+        position: fixed; top: 0; left: 0;
+        background: rgba(0,0,0,0.85);
+        width: 100%; height: 100%;
+        display: none; z-index: 5;
+        cursor: zoom-out;
+        text-align: center;
+      }
+      #overlay img {
+        max-height: 95vh; max-width: 95vw;
+        margin-top: 2.5vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="overlay" onclick="this.style.display='none'">
+      <img id="lightbox">
+    </div>
+HEADER
+
+    # Reference image at the top (temporary)
+    local ref="$PROJECT_DIR/docs/store-assets/feature-graphic.png"
+    if [[ -f "$ref" ]]; then
+        local rel_ref="../docs/store-assets/feature-graphic.png"
+        cat >> "$html" <<EOF
+    <hr>
+    <h1>Reference (original)</h1>
+    <img src="${rel_ref}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
+EOF
+    fi
+
+    for locale in $LOCALES; do
+        local img="$METADATA_DIR/$locale/images/featureGraphic.png"
+        [[ -f "$img" ]] || continue
+
+        local display_name
+        display_name="$(locale_name "$locale") – $locale"
+        local rel_path="../fastlane/metadata/android/$locale/images/featureGraphic.png"
+
+        cat >> "$html" <<EOF
+    <hr>
+    <h1>${display_name}</h1>
+    <img src="${rel_path}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
+EOF
+    done
+
+    cat >> "$html" <<'FOOTER'
+  </body>
+</html>
+FOOTER
+    echo "Gallery: $html"
+    open "$html"
+}
+
+# ──────────────────────────────────────────────
 main() {
     if ! command -v magick &>/dev/null; then
         echo "Error: ImageMagick 7 (magick) is required." >&2
@@ -266,6 +385,7 @@ main() {
     # Clean up extracted fonts
     [[ -n "${FONT_DIR:-}" ]] && rm -rf "$FONT_DIR"
 
+    generate_html
     echo "Generated $count feature graphics."
 }
 

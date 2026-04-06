@@ -3,7 +3,7 @@
 # Lanes:
 #   screenshots           — Builds debug APKs and runs Screengrab across all locales.
 #   screenshots locale:xx — Builds debug APKs and runs Screengrab for a single locale.
-#   supply                — Uploads metadata, screenshots, and images to the Play Store.
+#   publish               — Uploads metadata, screenshots, and images to the Play Store.
 
 default_platform(:android)
 
@@ -18,11 +18,17 @@ platform :android do
     end
   end
 
-  lane :supply do
+  lane :publish do
+    codes = google_play_track_version_codes(
+      package_name: 'today.sweetspot',
+      json_key: 'fastlane/credentials.json',
+      track: 'alpha',
+    )
     upload_to_play_store(
       package_name: 'today.sweetspot',
       json_key: 'fastlane/credentials.json',
       track: 'alpha',
+      version_code: codes.max,
       skip_upload_apk: true,
       skip_upload_aab: true,
       skip_upload_changelogs: true,

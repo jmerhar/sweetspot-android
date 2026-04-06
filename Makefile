@@ -80,4 +80,4 @@ feature-graphic: ## Generate localised Play Store feature graphics (LOCALE=xx-XX
 	LOCALE=$(LOCALE) ./bin/feature-graphic.sh
 
 supply: ## Upload metadata, screenshots, and images to the Play Store
-	bundle exec fastlane supply
+	bundle exec fastlane publish

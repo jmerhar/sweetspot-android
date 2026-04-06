@@ -1,0 +1,26 @@
+SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils. Choisissez simplement la durée de fonctionnement et SweetSpot analyse les prochaines 24 heures de prix dynamiques de l'électricité pour trouver le créneau optimal.
+
+Que ce soit un lave-linge, lave-vaisselle, sèche-linge ou une voiture électrique — démarrez au bon moment et payez moins pour la même électricité.
+
+COMMENT ÇA MARCHE
+1. Choisissez un appareil ou définissez une durée personnalisée
+2. SweetSpot récupère les derniers prix day-ahead de l'électricité pour votre région
+3. Voyez exactement quand démarrer, avec un détail complet des coûts par créneau horaire
+
+FONCTIONNALITÉS
+- 30 pays européens, 43 zones de prix — du Portugal à la Finlande, de la Norvège à la Grèce
+- 5 sources de données avec basculement automatique (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide
+- Application Wear OS pour Pixel Watch et autres appareils Wear OS 3+
+- Disponible en 25 langues européennes
+- Pas de comptes, aucune collecte de données, aucun suivi — les prix sont stockés localement sur votre appareil
+- Open source (GPL v3) — code source complet sur GitHub
+- Essai gratuit de 14 jours, puis un abonnement annuel pour continuer à utiliser l'application
+
+PAYS PRIS EN CHARGE
+Allemagne, Autriche, Belgique, Bulgarie, Croatie, Danemark, Espagne, Estonie, Finlande, France, Grèce, Hongrie, Irlande, Italie, Lettonie, Lituanie, Luxembourg, Macédoine du Nord, Monténégro, Norvège, Pays-Bas, Pologne, Portugal, République tchèque, Roumanie, Serbie, Slovaquie, Slovénie, Suède, Suisse.
+
+REMARQUE
+Les prix affichés sont des prix spot day-ahead et ne comprennent pas la TVA, les taxes sur l'énergie ni les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET. Un contrat d'électricité dynamique est nécessaire pour bénéficier des différences de prix.
+
+Politique de confidentialité : https://sweetspot.today/fr/privacy/

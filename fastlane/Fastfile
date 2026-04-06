@@ -1,8 +1,9 @@
-# Fastfile — Automated screenshot capture via Screengrab.
+# Fastfile — Automated screenshot capture and Play Store metadata upload.
 #
 # Lanes:
 #   screenshots           — Builds debug APKs and runs Screengrab across all locales.
 #   screenshots locale:xx — Builds debug APKs and runs Screengrab for a single locale.
+#   supply                — Uploads metadata, screenshots, and images to the Play Store.
 
 default_platform(:android)
 
@@ -15,5 +16,14 @@ platform :android do
     else
       screengrab
     end
+  end
+
+  lane :supply do
+    upload_to_play_store(
+      skip_upload_apk: true,
+      skip_upload_aab: true,
+      skip_upload_changelogs: true,
+      sync_image_upload: true,
+    )
   end
 end

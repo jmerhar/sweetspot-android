@@ -1,0 +1,26 @@
+O SweetSpot encontra o momento mais barato para utilizar os seus aparelhos. Basta escolher quanto tempo o seu aparelho precisa de funcionar e o SweetSpot analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar a melhor janela de tempo.
+
+Seja uma máquina de lavar, máquina de lavar louça, secador ou carro elétrico — ligue no momento certo e pague menos pela mesma eletricidade.
+
+COMO FUNCIONA
+1. Escolha um aparelho ou defina uma duração personalizada
+2. O SweetSpot obtém os preços de eletricidade day-ahead mais recentes para a sua região
+3. Veja exatamente quando ligar, com uma discriminação completa de custos por intervalo de tempo
+
+FUNCIONALIDADES
+- 30 países europeus, 43 zonas de preços — de Portugal à Finlândia, da Noruega à Grécia
+- 5 fontes de dados com alternância automática (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Guarde os seus aparelhos com nomes, ícones e durações personalizados para acesso rápido
+- Aplicação Wear OS para Pixel Watch e outros dispositivos Wear OS 3+
+- Disponível em 25 idiomas europeus
+- Sem contas, sem análises, sem rastreamento — os preços são armazenados localmente no seu dispositivo
+- Código aberto (GPL v3) — código-fonte completo no GitHub
+- 14 dias de teste gratuito, depois uma subscrição anual para continuar a usar a aplicação
+
+PAÍSES SUPORTADOS
+Alemanha, Áustria, Bélgica, Bulgária, Chéquia, Croácia, Dinamarca, Eslováquia, Eslovénia, Espanha, Estónia, Finlândia, França, Grécia, Hungria, Irlanda, Itália, Letónia, Lituânia, Luxemburgo, Macedónia do Norte, Montenegro, Noruega, Países Baixos, Polónia, Portugal, Roménia, Sérvia, Suécia, Suíça.
+
+NOTA
+Os preços apresentados são preços spot day-ahead por grosso e não incluem IVA, impostos sobre energia ou taxas do fornecedor. Os preços de amanhã estão geralmente disponíveis após as 13:00 CET. É necessário um contrato de eletricidade com preço dinâmico para beneficiar das diferenças de preços.
+
+Política de privacidade: https://sweetspot.today/pt/privacy/

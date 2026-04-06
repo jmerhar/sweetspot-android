@@ -1,0 +1,26 @@
+SweetSpot löytää halvimman ajan kodinkoneidesi käyttöön. Valitse vain, kuinka kauan laitteesi tarvitsee toimia, ja SweetSpot etsii seuraavien 24 tunnin dynaamisista sähkön hinnoista parhaan ajankohdan.
+
+Olipa kyseessä pesukone, astianpesukone, kuivausrumpu tai sähköauto — käynnistä oikeaan aikaan ja maksa vähemmän samasta sähköstä.
+
+NÄIN SE TOIMII
+1. Valitse laite tai aseta mukautettu kesto
+2. SweetSpot hakee alueesi uusimmat day-ahead-sähköhinnat
+3. Näe tarkalleen, milloin aloittaa, täydellisellä kustannuserittelyllä aikaväleittäin
+
+OMINAISUUDET
+- 30 Euroopan maata, 43 hinnoittelualuetta — Portugalista Suomeen, Norjasta Kreikkaan
+- 5 tietolähdettä automaattisella varayhteydellä (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Tallenna laitteesi mukautetuilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten
+- Wear OS -sovellus Pixel Watchille ja muille Wear OS 3+ -laitteille
+- Saatavilla 25 eurooppalaisella kielellä
+- Ei tilejä, ei analytiikkaa, ei seurantaa — hinnat tallennetaan paikallisesti laitteeseesi
+- Avoin lähdekoodi (GPL v3) — koko lähdekoodi GitHubissa
+- 14 päivän ilmainen kokeilujakso, sen jälkeen vuositilaus sovelluksen jatkuvaan käyttöön
+
+TUETUT MAAT
+Alankomaat, Belgia, Bulgaria, Espanja, Irlanti, Italia, Itävalta, Kreikka, Kroatia, Latvia, Liettua, Luxemburg, Montenegro, Norja, Pohjois-Makedonia, Portugali, Puola, Ranska, Romania, Ruotsi, Saksa, Serbia, Slovakia, Slovenia, Suomi, Sveitsi, Tanska, Tšekki, Unkari, Viro.
+
+HUOMAUTUS
+Näytetyt hinnat ovat tukkumarkkinoiden day-ahead-hintoja eivätkä sisällä arvonlisäveroa, energiaveroja tai toimittajan maksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen. Hintaeroista hyötyminen edellyttää dynaamista sähkösopimusta.
+
+Tietosuojakäytäntö: https://sweetspot.today/fi/privacy/

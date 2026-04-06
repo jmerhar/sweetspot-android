@@ -1,0 +1,26 @@
+SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken. Kies hoe lang je apparaat moet draaien en SweetSpot scant de komende 24 uur aan dynamische stroomprijzen om het beste tijdvenster te vinden.
+
+Of het nu gaat om een wasmachine, vaatwasser, droger of elektrische auto — start op het juiste moment en betaal minder voor dezelfde stroom.
+
+HOE HET WERKT
+1. Kies een apparaat of stel een aangepaste duur in
+2. SweetSpot haalt de nieuwste day-ahead stroomprijzen op voor jouw regio
+3. Zie precies wanneer je moet starten, met een volledig kostenoverzicht per tijdslot
+
+FUNCTIES
+- 30 Europese landen, 43 biedingszones — van Portugal tot Finland, Noorwegen tot Griekenland
+- 5 gegevensbronnen met automatische terugval (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang
+- Wear OS horloge-app voor Pixel Watch en andere Wear OS 3+ apparaten
+- Beschikbaar in 25 Europese talen
+- Geen accounts, geen analytics, geen tracking — prijzen worden lokaal op je apparaat opgeslagen
+- Open source (GPL v3) — volledige broncode op GitHub
+- Gratis proefperiode van 14 dagen, daarna een jaarabonnement om de app te blijven gebruiken
+
+ONDERSTEUNDE LANDEN
+België, Bulgarije, Denemarken, Duitsland, Estland, Finland, Frankrijk, Griekenland, Hongarije, Ierland, Italië, Kroatië, Letland, Litouwen, Luxemburg, Montenegro, Nederland, Noord-Macedonië, Noorwegen, Oostenrijk, Polen, Portugal, Roemenië, Servië, Slovenië, Slowakije, Spanje, Tsjechië, Zweden, Zwitserland.
+
+OPMERKING
+De getoonde prijzen zijn day-ahead spotprijzen en zijn exclusief btw, energiebelasting en leverancierskosten. Morgen's prijzen zijn doorgaans beschikbaar na 13:00 CET. Een dynamisch energiecontract is nodig om te profiteren van prijsverschillen.
+
+Privacybeleid: https://sweetspot.today/nl/privacy/

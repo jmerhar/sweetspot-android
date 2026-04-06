@@ -1,0 +1,26 @@
+SweetSpot znajduje najtańszy czas na uruchomienie Twoich urządzeń. Po prostu wybierz, jak długo ma działać urządzenie, a SweetSpot przeszuka kolejne 24 godziny dynamicznych cen prądu, aby znaleźć najlepsze okno czasowe.
+
+Czy to pralka, zmywarka, suszarka czy samochód elektryczny — uruchom we właściwym momencie i zapłać mniej za ten sam prąd.
+
+JAK TO DZIAŁA
+1. Wybierz urządzenie lub ustaw własny czas trwania
+2. SweetSpot pobiera najnowsze ceny prądu day-ahead dla Twojego regionu
+3. Zobacz dokładnie, kiedy uruchomić, z pełnym rozbiciem kosztów na przedziały czasowe
+
+FUNKCJE
+- 30 krajów europejskich, 43 strefy cenowe — od Portugalii do Finlandii, od Norwegii do Grecji
+- 5 źródeł danych z automatycznym przełączaniem (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania dla szybkiego dostępu
+- Aplikacja Wear OS na Pixel Watch i inne urządzenia Wear OS 3+
+- Dostępna w 25 językach europejskich
+- Bez kont, bez analityki, bez śledzenia — ceny są przechowywane lokalnie na Twoim urządzeniu
+- Otwarty kod źródłowy (GPL v3) — pełny kod źródłowy na GitHubie
+- 14-dniowy bezpłatny okres próbny, następnie roczna subskrypcja do dalszego korzystania
+
+OBSŁUGIWANE KRAJE
+Austria, Belgia, Bułgaria, Chorwacja, Czarnogóra, Czechy, Dania, Estonia, Finlandia, Francja, Grecja, Hiszpania, Holandia, Irlandia, Litwa, Luksemburg, Łotwa, Macedonia Północna, Niemcy, Norwegia, Polska, Portugalia, Rumunia, Serbia, Słowacja, Słowenia, Szwajcaria, Szwecja, Węgry, Włochy.
+
+UWAGA
+Wyświetlane ceny to hurtowe ceny day-ahead i nie obejmują VAT, podatku energetycznego ani opłat dostawcy. Ceny na jutro są zazwyczaj dostępne po godzinie 13:00 CET. Do korzystania z różnic cenowych wymagana jest umowa na dynamiczną cenę energii elektrycznej.
+
+Polityka prywatności: https://sweetspot.today/pl/privacy/

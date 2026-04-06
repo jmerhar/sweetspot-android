@@ -1,0 +1,26 @@
+SweetSpot poišče najcenejši čas za uporabo vaših aparatov. Izberite trajanje delovanja in SweetSpot pregleda naslednjih 24 ur dinamičnih cen električne energije ter poišče optimalni termin.
+
+Bodisi pralni stroj, pomivalni stroj, sušilec ali električni avtomobil — zaženite ob pravem času in plačajte manj za isto elektriko.
+
+KAKO DELUJE
+1. Izberite aparat ali nastavite poljubno trajanje
+2. SweetSpot pridobi najnovejše dnevne cene električne energije za vašo regijo
+3. Natanko poglejte, kdaj začeti, s podrobno razčlenitvijo stroškov po časovnih intervalih
+
+FUNKCIJE
+- 30 evropskih držav, 43 cenovnih območij — od Portugalske do Finske, od Norveške do Grčije
+- 5 virov podatkov s samodejnim preklopom (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop
+- Wear OS aplikacija za Pixel Watch in druge naprave Wear OS 3+
+- Na voljo v 25 evropskih jezikih
+- Brez računov, brez analitike, brez sledenja — cene se shranjujejo lokalno na vaši napravi
+- Odprta koda (GPL v3) — celotna izvorna koda na GitHubu
+- 14-dnevno brezplačno preizkusno obdobje, nato letna naročnina za nadaljnjo uporabo
+
+PODPRTE DRŽAVE
+Avstrija, Belgija, Bolgarija, Češka, Danska, Estonija, Finska, Francija, Grčija, Hrvaška, Irska, Italija, Latvija, Litva, Luksemburg, Madžarska, Črna gora, Nemčija, Nizozemska, Norveška, Poljska, Portugalska, Romunija, Severna Makedonija, Slovenija, Slovaška, Srbija, Španija, Švedska, Švica.
+
+OPOMBA
+Prikazane cene so veleprodajne dnevne cene in ne vključujejo DDV, energetskih taks ali dobaviteljskih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET. Za izkoriščanje cenovnih razlik je potrebna pogodba z dinamično ceno električne energije.
+
+Pravilnik o zasebnosti: https://sweetspot.today/sl/privacy/

@@ -1,0 +1,26 @@
+SweetSpot leiab teie seadmete jaoks soodsaima aja. Valige lihtsalt, kui kaua teie seade peab töötama, ja SweetSpot otsib järgmise 24 tunni dünaamilistest elektrihindadest parima ajavahemiku.
+
+Olgu selleks pesumasin, nõudepesumasin, kuivati või elektriautole laadimine — käivitage õigel ajal ja makske sama elektri eest vähem.
+
+KUIDAS SEE TÖÖTAB
+1. Valige seade või määrake kohandatud kestus
+2. SweetSpot hangib teie piirkonna värskeimad day-ahead elektrihinnad
+3. Näete täpselt, millal alustada, koos täieliku kulude jaotusega ajavahemike kaupa
+
+FUNKTSIOONID
+- 30 Euroopa riiki, 43 hinnatsooni — Portugalist Soomeni, Norrast Kreekani
+- 5 andmeallikat automaatse ümberlülitusega (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Salvestage oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks juurdepääsuks
+- Wear OS rakendus Pixel Watchi ja teiste Wear OS 3+ seadmete jaoks
+- Saadaval 25 Euroopa keeles
+- Ilma kontodeta, ilma analüütiketa, ilma jälgimiseta — hinnad salvestatakse kohalikult teie seadmesse
+- Avatud lähtekood (GPL v3) — täielik lähtekood GitHubis
+- 14-päevane tasuta proovperiood, seejärel aastatellimus rakenduse edasiseks kasutamiseks
+
+TOETATUD RIIGID
+Austria, Belgia, Bulgaaria, Eesti, Hispaania, Horvaatia, Iirimaa, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Madalmaad, Montenegro, Norra, Poola, Portugal, Prantsusmaa, Põhja-Makedoonia, Rootsi, Rumeenia, Saksamaa, Serbia, Slovakkia, Sloveenia, Soome, Šveits, Taani, Tšehhi, Ungari.
+
+MÄRKUS
+Näidatud hinnad on hulgimüügi day-ahead hinnad ega sisalda käibemaksu, energiamaksu ega tarnija tasusid. Homse hinnad on tavaliselt saadaval pärast kella 13:00 CET. Hinnaerinevustest kasu saamiseks on vajalik dünaamilise hinnaga elektrileping.
+
+Privaatsuspoliitika: https://sweetspot.today/et/privacy/

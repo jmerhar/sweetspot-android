@@ -1,0 +1,26 @@
+A SweetSpot megtalálja a legolcsóbb időpontot készülékei használatához. Egyszerűen válassza ki, mennyi ideig kell működnie a készüléknek, és a SweetSpot átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legjobb időablakot.
+
+Legyen szó mosógépről, mosogatógépről, szárítógépről vagy elektromos autóról — indítsa a megfelelő időpontban, és fizessen kevesebbet ugyanazért az áramért.
+
+HOGYAN MŰKÖDIK
+1. Válasszon készüléket vagy állítson be egyéni időtartamot
+2. A SweetSpot lekéri a legfrissebb day-ahead villamosenergia-árakat az Ön régiójához
+3. Pontosan láthatja, mikor érdemes indítani, részletes költségbontással időszakonként
+
+FUNKCIÓK
+- 30 európai ország, 43 árazási zóna — Portugáliától Finnországig, Norvégiától Görögországig
+- 5 adatforrás automatikus váltással (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Mentse el készülékeit egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
+- Wear OS alkalmazás Pixel Watchhoz és más Wear OS 3+ eszközökhöz
+- 25 európai nyelven elérhető
+- Nincs fiók, nincs elemzés, nincs követés — az árak helyileg tárolódnak az eszközén
+- Nyílt forráskód (GPL v3) — teljes forráskód a GitHubon
+- 14 napos ingyenes próbaidőszak, utána éves előfizetés az alkalmazás további használatához
+
+TÁMOGATOTT ORSZÁGOK
+Ausztria, Belgium, Bulgária, Csehország, Dánia, Észak-Macedónia, Észtország, Finnország, Franciaország, Görögország, Hollandia, Horvátország, Írország, Lengyelország, Lettország, Litvánia, Luxemburg, Magyarország, Montenegró, Németország, Norvégia, Olaszország, Portugália, Románia, Spanyolország, Svájc, Svédország, Szerbia, Szlovákia, Szlovénia.
+
+MEGJEGYZÉS
+A megjelenített árak nagykereskedelmi day-ahead árak, és nem tartalmazzák az ÁFÁ-t, az energiaadókat vagy a szolgáltatói díjakat. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
+
+Adatvédelmi irányelvek: https://sweetspot.today/hu/privacy/

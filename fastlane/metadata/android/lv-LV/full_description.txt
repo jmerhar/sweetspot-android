@@ -1,0 +1,26 @@
+SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai. Vienkārši izvēlieties, cik ilgi jūsu ierīcei jādarbojas, un SweetSpot analizē nākamo 24 stundu dinamiskās elektroenerģijas cenas, lai atrastu labāko laika posmu.
+
+Vai tā būtu veļas mašīna, trauku mazgājamā mašīna, žāvētājs vai elektroauto — ieslēdziet īstajā laikā un maksājiet mazāk par to pašu elektrību.
+
+KĀ TAS DARBOJAS
+1. Izvēlieties ierīci vai iestatiet pielāgotu ilgumu
+2. SweetSpot iegūst jaunākās nākamās dienas elektroenerģijas cenas jūsu reģionam
+3. Skatiet precīzi, kad sākt, ar pilnīgu izmaksu sadalījumu pa laika intervāliem
+
+FUNKCIJAS
+- 30 Eiropas valstis, 43 cenu zonas — no Portugāles līdz Somijai, no Norvēģijas līdz Grieķijai
+- 5 datu avoti ar automātisku pārslēgšanos (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Saglabājiet savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei
+- Wear OS lietotne Pixel Watch un citām Wear OS 3+ ierīcēm
+- Pieejama 25 Eiropas valodās
+- Bez kontu, bez analītikas, bez izsekošanas — cenas tiek glabātas lokāli jūsu ierīcē
+- Atvērtais kods (GPL v3) — pilns pirmkods GitHub platformā
+- 14 dienu bezmaksas izmēģinājuma periods, pēc tam gada abonements turpmākai lietošanai
+
+ATBALSTĪTĀS VALSTIS
+Austrija, Beļģija, Bulgārija, Čehija, Dānija, Francija, Grieķija, Horvātija, Igaunija, Itālija, Īrija, Latvija, Lietuva, Luksemburga, Melnkalne, Nīderlande, Norvēģija, Polija, Portugāle, Rumānija, Serbija, Slovākija, Slovenija, Somija, Spānija, Šveice, Ungārija, Vācija, Ziemeļmakedonija, Zviedrija.
+
+PIEZĪME
+Rādītās cenas ir vairumtirdzniecības nākamās dienas cenas un neietver PVN, enerģijas nodokļus vai piegādātāja maksas. Rītdienas cenas parasti ir pieejamas pēc plkst. 13:00 CET. Lai gūtu labumu no cenu atšķirībām, nepieciešams dinamiskā elektroenerģijas tarifa līgums.
+
+Privātuma politika: https://sweetspot.today/lv/privacy/

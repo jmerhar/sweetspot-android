@@ -3,6 +3,9 @@ set -euo pipefail
 
 # Frames raw screenshots with marketing text and coloured backgrounds.
 #
+# Output: fastlane/metadata/android/<locale>/images/phoneScreenshots/
+# Gallery: build/screenshots.html
+#
 # Layout:
 #   Image 1 — Title text + large rotated result phone (extends past right edge)
 #   Image 2 — No title. Two phones: home screen (background, upright, higher)
@@ -14,7 +17,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 SCREENSHOTS_DIR="$PROJECT_DIR/fastlane/screenshots"
-OUTPUT_DIR="$PROJECT_DIR/build/screenshots"
+METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
+HTML_DIR="$PROJECT_DIR/build"
 FONT="$SCREENSHOTS_DIR/fonts/Raleway-SemiBold.ttf"
 FONT_GREEK="$SCREENSHOTS_DIR/fonts/NotoSans-SemiBold.ttf"  # Raleway lacks Greek glyphs
 
@@ -241,11 +245,13 @@ main() {
     fi
     [[ -f "$FONT" ]] || { echo "Error: Font not found: $FONT" >&2; exit 1; }
 
-    # Single-locale mode: only frame one language (skip clean to preserve others)
+    # Clean existing framed screenshots
     if [[ -n "${LOCALE:-}" ]]; then
-        rm -rf "${OUTPUT_DIR:?}/$(locale_dir_name "$LOCALE")"
+        rm -f "$METADATA_DIR/$LOCALE/images/phoneScreenshots"/*.png 2>/dev/null || true
     else
-        rm -rf "$OUTPUT_DIR"
+        for d in "$METADATA_DIR"/*/images/phoneScreenshots; do
+            rm -f "$d"/*.png 2>/dev/null || true
+        done
     fi
 
     local count=0
@@ -261,8 +267,7 @@ main() {
         local img_dir="$locale_dir/images/phoneScreenshots"
         [[ -d "$img_dir" ]] || continue
 
-        local out_dir
-        out_dir="$OUTPUT_DIR/$(locale_dir_name "$locale")"
+        local out_dir="$METADATA_DIR/$locale/images/phoneScreenshots"
         mkdir -p "$out_dir"
 
         echo "Framing $locale..."
@@ -323,7 +328,7 @@ main() {
     done
 
     generate_html
-    echo "Framed $count screenshots in build/screenshots/"
+    echo "Framed $count screenshots in fastlane/metadata/android/"
 }
 
 # ──────────────────────────────────────────────
@@ -360,15 +365,9 @@ locale_name() {
     esac
 }
 
-# ──────────────────────────────────────────────
-# Format output directory name: "Language Name – locale-code"
-# ──────────────────────────────────────────────
-locale_dir_name() {
-    echo "$(locale_name "$1") – $1"
-}
-
 generate_html() {
-    local html="$OUTPUT_DIR/screenshots.html"
+    mkdir -p "$HTML_DIR"
+    local html="$HTML_DIR/screenshots.html"
     cat > "$html" <<'HEADER'
 <!DOCTYPE html>
 <html>
@@ -414,9 +413,12 @@ generate_html() {
     </div>
 HEADER
 
-    for locale_dir in "$OUTPUT_DIR"/*/; do
-        local dir_name
-        dir_name=$(basename "$locale_dir")
+    for locale_dir in "$METADATA_DIR"/*/images/phoneScreenshots; do
+        [[ -d "$locale_dir" ]] || continue
+        local locale
+        locale=$(basename "$(dirname "$(dirname "$locale_dir")")")
+        local display_name
+        display_name="$(locale_name "$locale") – $locale"
 
         # Collect PNGs in sorted order
         local images=()
@@ -426,14 +428,17 @@ HEADER
         done
         [[ ${#images[@]} -eq 0 ]] && continue
 
+        # Relative path from build/ to fastlane/metadata/android/<locale>/images/phoneScreenshots/
+        local rel_dir="../fastlane/metadata/android/$locale/images/phoneScreenshots"
+
         cat >> "$html" <<EOF
     <hr>
-    <h1>${dir_name}</h1>
+    <h1>${display_name}</h1>
     <div class="screenshots">
 EOF
         for img in "${images[@]}"; do
             cat >> "$html" <<EOF
-      <img src="${dir_name}/${img}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
+      <img src="${rel_dir}/${img}" onclick="document.getElementById('lightbox').src=this.src;document.getElementById('overlay').style.display='block'">
 EOF
         done
         cat >> "$html" <<'EOF'

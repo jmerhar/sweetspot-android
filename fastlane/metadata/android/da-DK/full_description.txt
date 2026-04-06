@@ -1,0 +1,26 @@
+SweetSpot finder det billigste tidspunkt til at køre dine apparater. Vælg blot hvor længe dit apparat skal køre, og SweetSpot scanner de næste 24 timers dynamiske elpriser for at finde det bedste tidsvindue.
+
+Uanset om det er en vaskemaskine, opvaskemaskine, tørretumbler eller elbil — start på det rigtige tidspunkt og betal mindre for den samme strøm.
+
+SÅDAN VIRKER DET
+1. Vælg et apparat eller indstil en brugerdefineret varighed
+2. SweetSpot henter de seneste day-ahead elpriser for din region
+3. Se præcis hvornår du skal starte, med en fuld omkostningsoversigt pr. tidsslot
+
+FUNKTIONER
+- 30 europæiske lande, 43 budområder — fra Portugal til Finland, Norge til Grækenland
+- 5 datakilder med automatisk fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Gem dine apparater med egne navne, ikoner og varigheder for hurtig adgang
+- Wear OS-app til Pixel Watch og andre Wear OS 3+ enheder
+- Tilgængelig på 25 europæiske sprog
+- Ingen konti, ingen analyse, ingen sporing — priser gemmes lokalt på din enhed
+- Open source (GPL v3) — fuld kildekode på GitHub
+- 14 dages gratis prøveperiode, derefter et årsabonnement for fortsat brug
+
+UNDERSTØTTEDE LANDE
+Belgien, Bulgarien, Danmark, Estland, Finland, Frankrig, Grækenland, Irland, Italien, Kroatien, Letland, Litauen, Luxembourg, Montenegro, Nederlandene, Nordmakedonien, Norge, Polen, Portugal, Rumænien, Schweiz, Serbien, Slovakiet, Slovenien, Spanien, Sverige, Tjekkiet, Tyskland, Ungarn, Østrig.
+
+BEMÆRK
+De viste priser er day-ahead spotpriser og inkluderer ikke moms, energiafgifter eller leverandørgebyrer. Morgendagens priser er typisk tilgængelige efter kl. 13:00 CET. En dynamisk elaftale er nødvendig for at drage fordel af prisforskelle.
+
+Privatlivspolitik: https://sweetspot.today/da/privacy/

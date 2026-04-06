@@ -1,0 +1,26 @@
+SweetSpot pronalazi najjeftinije vrijeme za korištenje vaših uređaja. Jednostavno odaberite koliko dugo vaš uređaj treba raditi i SweetSpot pretražuje sljedećih 24 sata dinamičnih cijena električne energije kako bi pronašao najbolji termin.
+
+Bilo da se radi o perilici rublja, perilici posuđa, sušilici ili električnom automobilu — pokrenite u pravo vrijeme i platite manje za istu struju.
+
+KAKO FUNKCIONIRA
+1. Odaberite uređaj ili postavite prilagođeno trajanje
+2. SweetSpot dohvaća najnovije day-ahead cijene električne energije za vašu regiju
+3. Pogledajte točno kada pokrenuti, s potpunim pregledom troškova po vremenskim intervalima
+
+ZNAČAJKE
+- 30 europskih država, 43 cjenovne zone — od Portugala do Finske, od Norveške do Grčke
+- 5 izvora podataka s automatskim prebacivanjem (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Spremite svoje uređaje s prilagođenim imenima, ikonama i trajanjima za brzi pristup
+- Wear OS aplikacija za Pixel Watch i druge Wear OS 3+ uređaje
+- Dostupno na 25 europskih jezika
+- Bez računa, bez analitike, bez praćenja — cijene se pohranjuju lokalno na vašem uređaju
+- Otvoreni kod (GPL v3) — potpuni izvorni kod na GitHubu
+- 14 dana besplatnog probnog razdoblja, zatim godišnja pretplata za nastavak korištenja
+
+PODRŽANE DRŽAVE
+Austrija, Belgija, Bugarska, Crna Gora, Češka, Danska, Estonija, Finska, Francuska, Grčka, Hrvatska, Irska, Italija, Latvija, Litva, Luksemburg, Mađarska, Nizozemska, Norveška, Njemačka, Poljska, Portugal, Rumunjska, Sjeverna Makedonija, Slovačka, Slovenija, Srbija, Španjolska, Švedska, Švicarska.
+
+NAPOMENA
+Prikazane cijene su veleprodajne day-ahead cijene i ne uključuju PDV, energetske poreze ili naknade dobavljača. Sutrašnje cijene su obično dostupne nakon 13:00 CET. Za iskorištavanje cjenovnih razlika potreban je ugovor s dinamičnom cijenom električne energije.
+
+Pravila privatnosti: https://sweetspot.today/hr/privacy/

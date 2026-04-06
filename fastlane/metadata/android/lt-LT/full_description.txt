@@ -1,0 +1,26 @@
+SweetSpot randa pigiausią laiką jūsų prietaisams naudoti. Tiesiog pasirinkite, kiek laiko turi veikti jūsų prietaisas, ir SweetSpot peržiūri artimiausias 24 valandas dinaminių elektros kainų, kad rastų geriausią laiko langą.
+
+Nesvarbu, ar tai skalbyklė, indaplovė, džiovyklė ar elektrinis automobilis — paleiskite tinkamu metu ir mokėkite mažiau už tą pačią elektros energiją.
+
+KAIP TAI VEIKIA
+1. Pasirinkite prietaisą arba nustatykite norimą trukmę
+2. SweetSpot gauna naujausias kitos dienos elektros kainas jūsų regionui
+3. Tiksliai matysite, kada pradėti, su pilnu išlaidų suskirstymu pagal laiko intervalus
+
+FUNKCIJOS
+- 30 Europos šalių, 43 kainų zonos — nuo Portugalijos iki Suomijos, nuo Norvegijos iki Graikijos
+- 5 duomenų šaltiniai su automatiniu perjungimu (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Išsaugokite savo prietaisus su savo pavadinimais, piktogramomis ir trukmėmis greitai prieigai
+- Wear OS programėlė skirta Pixel Watch ir kitiems Wear OS 3+ įrenginiams
+- Prieinama 25 Europos kalbomis
+- Jokių paskyrų, jokios analitikos, jokio sekimo — kainos saugomos vietinėje jūsų įrenginio atmintyje
+- Atviras kodas (GPL v3) — pilnas išeities kodas GitHub platformoje
+- 14 dienų nemokamas bandomasis laikotarpis, po to metinė prenumerata tolesniam naudojimui
+
+PALAIKOMOS ŠALYS
+Airija, Austrija, Belgija, Bulgarija, Čekija, Danija, Estija, Graikija, Ispanija, Italija, Juodkalnija, Kroatija, Latvija, Lenkija, Lietuva, Liuksemburgas, Nyderlandai, Norvegija, Portugalija, Prancūzija, Rumunija, Serbija, Slovakija, Slovenija, Suomija, Šiaurės Makedonija, Švedija, Šveicarija, Vengrija, Vokietija.
+
+PASTABA
+Rodomos kainos yra didmeninės kitos dienos kainos ir neapima PVM, energijos mokesčių ar tiekėjo mokesčių. Rytojaus kainos paprastai prieinamos po 13:00 CET. Norint pasinaudoti kainų skirtumais, reikalinga dinaminio elektros energijos tarifų sutartis.
+
+Privatumo politika: https://sweetspot.today/lt/privacy/

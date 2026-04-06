@@ -1,0 +1,26 @@
+SweetSpot trova il momento più economico per usare i tuoi elettrodomestici. Scegli semplicemente per quanto tempo deve funzionare il tuo apparecchio e SweetSpot analizza le prossime 24 ore di prezzi dinamici dell'energia per trovare la finestra migliore.
+
+Che si tratti di lavatrice, lavastoviglie, asciugatrice o auto elettrica — avviala al momento giusto e paga meno per la stessa elettricità.
+
+COME FUNZIONA
+1. Scegli un elettrodomestico o imposta una durata personalizzata
+2. SweetSpot recupera gli ultimi prezzi dell'energia day-ahead per la tua zona
+3. Vedi esattamente quando avviare, con un dettaglio completo dei costi per fascia oraria
+
+FUNZIONALITÀ
+- 30 paesi europei, 43 zone di prezzo — dal Portogallo alla Finlandia, dalla Norvegia alla Grecia
+- 5 fonti di dati con fallback automatico (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido
+- App Wear OS per Pixel Watch e altri dispositivi Wear OS 3+
+- Disponibile in 25 lingue europee
+- Nessun account, nessuna analisi, nessun tracciamento — i prezzi vengono salvati localmente sul tuo dispositivo
+- Open source (GPL v3) — codice sorgente completo su GitHub
+- 14 giorni di prova gratuita, poi un abbonamento annuale per continuare a usare l'app
+
+PAESI SUPPORTATI
+Austria, Belgio, Bulgaria, Cechia, Croazia, Danimarca, Estonia, Finlandia, Francia, Germania, Grecia, Irlanda, Italia, Lettonia, Lituania, Lussemburgo, Macedonia del Nord, Montenegro, Norvegia, Paesi Bassi, Polonia, Portogallo, Romania, Serbia, Slovacchia, Slovenia, Spagna, Svezia, Svizzera, Ungheria.
+
+NOTA
+I prezzi mostrati sono prezzi spot day-ahead all'ingrosso e non includono IVA, imposte sull'energia o tariffe del fornitore. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET. È necessario un contratto di energia elettrica a prezzo dinamico per beneficiare delle differenze di prezzo.
+
+Informativa sulla privacy: https://sweetspot.today/it/privacy/

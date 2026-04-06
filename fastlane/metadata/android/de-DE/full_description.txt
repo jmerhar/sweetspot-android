@@ -1,0 +1,26 @@
+SweetSpot findet den günstigsten Zeitpunkt für deine Geräte. Wähle einfach die Laufzeit deines Geräts und SweetSpot scannt die nächsten 24 Stunden dynamischer Strompreise, um das beste Zeitfenster zu finden.
+
+Ob Waschmaschine, Geschirrspüler, Trockner oder E-Auto — starte zum richtigen Zeitpunkt und zahle weniger für den gleichen Strom.
+
+SO FUNKTIONIERT ES
+1. Wähle ein Gerät oder stelle eine individuelle Laufzeit ein
+2. SweetSpot ruft die aktuellen Day-Ahead-Strompreise für deine Region ab
+3. Sieh genau, wann du starten solltest, mit einer vollständigen Kostenaufschlüsselung pro Zeitslot
+
+FUNKTIONEN
+- 30 europäische Länder, 43 Gebotszonen — von Portugal bis Finnland, Norwegen bis Griechenland
+- 5 Datenquellen mit automatischem Fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff
+- Wear OS Begleit-App für Pixel Watch und andere Wear OS 3+ Geräte
+- Verfügbar in 25 europäischen Sprachen
+- Keine Konten, keine Nutzeranalyse, kein Tracking — Preise werden lokal auf dem Gerät gespeichert
+- Open Source (GPL v3) — vollständiger Quellcode auf GitHub
+- 14 Tage kostenlos testen, danach ein Jahresabo zur weiteren Nutzung
+
+UNTERSTÜTZTE LÄNDER
+Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, Irland, Italien, Kroatien, Lettland, Litauen, Luxemburg, Montenegro, Niederlande, Nordmazedonien, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Serbien, Slowakei, Slowenien, Spanien, Tschechien, Ungarn.
+
+HINWEIS
+Die angezeigten Preise sind Day-Ahead-Spotpreise und enthalten keine MwSt., Energiesteuern oder Lieferantengebühren. Die Preise für morgen sind in der Regel nach 13:00 Uhr MEZ verfügbar. Ein dynamischer Stromvertrag ist erforderlich, um von Preisunterschieden zu profitieren.
+
+Datenschutzerklärung: https://sweetspot.today/de/privacy/

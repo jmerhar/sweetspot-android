@@ -1,0 +1,1 @@
+Znajdź najtańszy czas na uruchomienie urządzeń z dynamicznymi cenami prądu.

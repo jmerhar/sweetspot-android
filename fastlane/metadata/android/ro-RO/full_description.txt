@@ -1,0 +1,26 @@
+SweetSpot găsește cel mai ieftin moment pentru a utiliza aparatele dvs. Alegeți pur și simplu cât timp trebuie să funcționeze aparatul și SweetSpot analizează următoarele 24 de ore de prețuri dinamice ale energiei electrice pentru a găsi fereastra optimă.
+
+Fie că este vorba de o mașină de spălat, mașină de spălat vase, uscător sau mașină electrică — porniți la momentul potrivit și plătiți mai puțin pentru aceeași electricitate.
+
+CUM FUNCȚIONEAZĂ
+1. Alegeți un aparat sau setați o durată personalizată
+2. SweetSpot obține cele mai recente prețuri day-ahead ale energiei electrice pentru regiunea dvs.
+3. Vedeți exact când să porniți, cu o defalcare completă a costurilor pe intervale de timp
+
+FUNCȚIONALITĂȚI
+- 30 de țări europene, 43 de zone de prețuri — din Portugalia până în Finlanda, din Norvegia până în Grecia
+- 5 surse de date cu comutare automată (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Salvați aparatele cu nume, pictograme și durate personalizate pentru acces rapid
+- Aplicație Wear OS pentru Pixel Watch și alte dispozitive Wear OS 3+
+- Disponibilă în 25 de limbi europene
+- Fără conturi, fără analize, fără urmărire — prețurile sunt stocate local pe dispozitivul dvs.
+- Cod sursă deschis (GPL v3) — cod sursă complet pe GitHub
+- Perioadă de probă gratuită de 14 zile, apoi un abonament anual pentru a continua utilizarea
+
+ȚĂRI SUPORTATE
+Austria, Belgia, Bulgaria, Cehia, Croația, Danemarca, Elveția, Estonia, Finlanda, Franța, Germania, Grecia, Irlanda, Italia, Letonia, Lituania, Luxemburg, Macedonia de Nord, Muntenegru, Norvegia, Polonia, Portugalia, România, Serbia, Slovacia, Slovenia, Spania, Suedia, Ungaria, Țările de Jos.
+
+NOTĂ
+Prețurile afișate sunt prețuri spot day-ahead en-gros și nu includ TVA, taxe pe energie sau tarife ale furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET. Este necesar un contract cu preț dinamic al energiei electrice pentru a beneficia de diferențele de preț.
+
+Politica de confidențialitate: https://sweetspot.today/ro/privacy/

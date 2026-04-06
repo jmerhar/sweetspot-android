@@ -1,0 +1,26 @@
+SweetSpot nájde najlacnejší čas na prevádzku vašich spotrebičov. Jednoducho zvoľte dobu behu a SweetSpot prehľadá nasledujúcich 24 hodín dynamických cien elektriny, aby našiel najlepšie časové okno.
+
+Či už ide o práčku, umývačku, sušičku alebo elektromobil — spustite ich v správny čas a plaťte menej za rovnakú elektrinu.
+
+AKO TO FUNGUJE
+1. Vyberte spotrebič alebo nastavte vlastnú dobu trvania
+2. SweetSpot stiahne najnovšie denné ceny elektriny pre váš región
+3. Presne uvidíte, kedy spustiť, s podrobným rozpisom nákladov po časových úsekoch
+
+FUNKCIE
+- 30 európskych krajín, 43 cenových zón — od Portugalska po Fínsko, od Nórska po Grécko
+- 5 zdrojov dát s automatickým prepínaním (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Uložte si spotrebiče s vlastnými názvami, ikonami a dobami trvania pre rýchly prístup
+- Wear OS aplikácia pre Pixel Watch a ďalšie Wear OS 3+ zariadenia
+- K dispozícii v 25 európskych jazykoch
+- Žiadne účty, žiadna analytika, žiadne sledovanie — ceny sa ukladajú lokálne na vašom zariadení
+- Open source (GPL v3) — kompletný zdrojový kód na GitHube
+- 14 dní zadarmo na vyskúšanie, potom ročné predplatné na ďalšie používanie
+
+PODPOROVANÉ KRAJINY
+Belgicko, Bulharsko, Česko, Čierna Hora, Dánsko, Estónsko, Fínsko, Francúzsko, Grécko, Holandsko, Chorvátsko, Írsko, Litva, Lotyšsko, Luxembursko, Maďarsko, Nemecko, Nórsko, Poľsko, Portugalsko, Rakúsko, Rumunsko, Severné Macedónsko, Slovensko, Slovinsko, Srbsko, Španielsko, Švajčiarsko, Švédsko, Taliansko.
+
+POZNÁMKA
+Zobrazené ceny sú veľkoobchodné denné ceny a nezahŕňajú DPH, daň z energie ani poplatky dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET. Na využitie cenových rozdielov je potrebná zmluva s dynamickou cenou elektriny.
+
+Zásady ochrany súkromia: https://sweetspot.today/sk/privacy/

@@ -1,0 +1,1 @@
+Találja meg a legolcsóbb időpontot készülékeihez dinamikus áramárakkal.

@@ -1,0 +1,26 @@
+SweetSpot finds the cheapest time to run your appliances. Just pick how long your appliance needs to run, and SweetSpot scans the next 24 hours of dynamic electricity prices to find the best window.
+
+Whether it's a washing machine, dishwasher, dryer, or EV charger — start it at the right time and pay less for the same electricity.
+
+HOW IT WORKS
+1. Choose an appliance or set a custom duration
+2. SweetSpot fetches the latest day-ahead electricity prices for your region
+3. See exactly when to start, with a full cost breakdown per time slot
+
+FEATURES
+- 30 European countries, 43 bidding zones — from Portugal to Finland, Norway to Greece
+- 5 data sources with automatic fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Save your appliances with custom names, icons, and durations for one-tap access
+- Wear OS companion app for Pixel Watch and other Wear OS 3+ devices
+- Available in 25 European languages
+- No accounts, no analytics, no tracking — prices are cached locally on your device
+- Open source (GPL v3) — full source code on GitHub
+- Free 14-day trial, then a yearly subscription to keep using the app
+
+SUPPORTED COUNTRIES
+Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Montenegro, Netherlands, North Macedonia, Norway, Poland, Portugal, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland.
+
+NOTE
+Prices shown are wholesale day-ahead spot prices and do not include VAT, energy tax, or supplier fees. Tomorrow's prices are typically available after 13:00 CET. A dynamic electricity contract is required to benefit from price differences.
+
+Privacy policy: https://sweetspot.today/privacy/

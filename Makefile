@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats screenshots frames supply
+.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats screenshots frames feature-graphic supply
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -63,6 +63,9 @@ screenshots: ## Capture localized screenshots via Fastlane Screengrab (LOCALE=xx
 
 frames: ## Frame screenshots with marketing text and coloured backgrounds (LOCALE=xx-XX for one)
 	LOCALE=$(LOCALE) ./bin/frame-screenshots.sh
+
+feature-graphic: ## Generate localised Play Store feature graphics (LOCALE=xx-XX for one)
+	LOCALE=$(LOCALE) ./bin/feature-graphic.sh
 
 supply: ## Upload metadata, screenshots, and images to the Play Store
 	bundle exec fastlane supply

@@ -7,8 +7,8 @@ set -euo pipefail
 # Gallery: build/feature-graphics.html
 #
 # Layout: blue vertical gradient, app icon on near-white rounded-rect badge (left),
-# "SweetSpot" title + translated tagline (right). Both in Futura Bold — title in
-# white, tagline in light blue-white. Cyrillic/Greek taglines use Noto Sans.
+# "SweetSpot" title + translated tagline (right). Both in Avenir Next Bold — title
+# in white, tagline in light blue-white.
 #
 # Usage:
 #   ./bin/feature-graphic.sh                # Generate for all languages
@@ -21,11 +21,9 @@ PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
 ICON_SRC="$PROJECT_DIR/fastlane/metadata/android/en-US/images/icon.png"
 
-# Fonts — Futura Bold/Medium extracted from macOS TTC at runtime
-FUTURA_TTC="/System/Library/Fonts/Supplemental/Futura.ttc"
-FONT_NOTO="$PROJECT_DIR/fastlane/screenshots/fonts/NotoSans-Bold.ttf"
+# Fonts — Avenir Next Bold extracted from macOS TTC at runtime
+AVENIR_NEXT_TTC="/System/Library/Fonts/Avenir Next.ttc"
 FONT_TITLE=""       # Set by extract_fonts()
-FONT_TAGLINE=""     # Set by extract_fonts()
 
 # Canvas
 CANVAS_W=1024
@@ -44,8 +42,8 @@ BADGE_Y=170             # Top edge of badge
 
 # Text
 TITLE_TEXT="SweetSpot"
-TITLE_SIZE=59
-TAGLINE_SIZE=25
+TITLE_SIZE=64
+TAGLINE_SIZE=28
 TITLE_COLOR="white"
 TAGLINE_COLOR="#E8F0FF"
 TEXT_X=319              # Left edge of text area
@@ -55,9 +53,9 @@ TEXT_GAP=13             # Gap between title label bottom and tagline label top
 LOCALES="en-US nl-NL de-DE fr-FR sl-SI bg-BG cs-CZ da-DK el-GR es-ES et-EE fi-FI hr-HR hu-HU it-IT lt-LT lv-LV mk-MK nb-NO pl-PL pt-PT ro-RO sk-SK sr-RS sv-SE"
 
 # ──────────────────────────────────────────────
-# Extract individual font faces from a TTC (TrueType Collection) file.
+# Extract Avenir Next Bold from the macOS TTC (TrueType Collection) file.
 # ImageMagick cannot select a face index from TTC files, so we extract
-# the needed faces (Bold = index 2, Medium = index 0) to standalone TTFs.
+# the Bold face (index 0) to a standalone TTF.
 # ──────────────────────────────────────────────
 extract_fonts() {
     local font_dir
@@ -122,15 +120,13 @@ def extract_face(data, face_index, output_path):
     with open(output_path, 'wb') as f:
         f.write(out)
 
-with open('$FUTURA_TTC', 'rb') as f:
+with open('$AVENIR_NEXT_TTC', 'rb') as f:
     data = f.read()
 
-extract_face(data, 2, '$font_dir/FuturaBold.ttf')
-extract_face(data, 0, '$font_dir/FuturaMedium.ttf')
-" || { echo "Error: Failed to extract Futura fonts from TTC." >&2; exit 1; }
+extract_face(data, 0, '$font_dir/AvenirNextBold.ttf')
+" || { echo "Error: Failed to extract Avenir Next Bold from TTC." >&2; exit 1; }
 
-    FONT_TITLE="$font_dir/FuturaBold.ttf"
-    FONT_TAGLINE="$font_dir/FuturaMedium.ttf"
+    FONT_TITLE="$font_dir/AvenirNextBold.ttf"
 }
 
 # ──────────────────────────────────────────────
@@ -167,24 +163,13 @@ tagline_for() {
 }
 
 # ──────────────────────────────────────────────
-# Select tagline font for the current locale (Noto Sans for Cyrillic/Greek)
-# ──────────────────────────────────────────────
-tagline_font_for() {
-    case "$1" in
-        bg-BG|el-GR|mk-MK|sr-RS) echo "$FONT_NOTO" ;;
-        *) echo "$FONT_TITLE" ;;
-    esac
-}
-
-# ──────────────────────────────────────────────
 # Generate one feature graphic
 # ──────────────────────────────────────────────
 generate() {
     local locale="$1" output="$2"
     local tagline
     tagline=$(tagline_for "$locale")
-    local tagline_font
-    tagline_font=$(tagline_font_for "$locale")
+    local tagline_font="$FONT_TITLE"
 
     local tmp
     tmp=$(mktemp -d)
@@ -206,14 +191,14 @@ generate() {
         -gravity center -composite \
         "$tmp/badge_icon.png"
 
-    # --- Title text (Futura Bold, white) ---
+    # --- Title text (Avenir Next Bold, white) ---
     magick -font "$FONT_TITLE" -pointsize "$TITLE_SIZE" -fill "$TITLE_COLOR" \
         -background none label:"$TITLE_TEXT" \
         "$tmp/title.png"
     local title_h
     title_h=$(magick identify -format "%h" "$tmp/title.png")
 
-    # --- Tagline text (Futura Medium or Noto Sans, light blue-white) ---
+    # --- Tagline text (Avenir Next Bold, light blue-white) ---
     local text_max_w=$((CANVAS_W - TEXT_X - 40))
     magick -font "$tagline_font" -pointsize "$TAGLINE_SIZE" -fill "$TAGLINE_COLOR" \
         -background none -size "${text_max_w}x" -gravity West caption:"$tagline" \
@@ -363,11 +348,10 @@ main() {
         echo "Error: Python 3 is required (for TTC font extraction)." >&2
         exit 1
     fi
-    [[ -f "$FUTURA_TTC" ]] || { echo "Error: Futura font not found: $FUTURA_TTC" >&2; exit 1; }
-    [[ -f "$FONT_NOTO" ]]  || { echo "Error: Font not found: $FONT_NOTO" >&2; exit 1; }
-    [[ -f "$ICON_SRC" ]]   || { echo "Error: Icon not found: $ICON_SRC" >&2; exit 1; }
+    [[ -f "$AVENIR_NEXT_TTC" ]] || { echo "Error: Avenir Next font not found: $AVENIR_NEXT_TTC" >&2; exit 1; }
+    [[ -f "$ICON_SRC" ]]       || { echo "Error: Icon not found: $ICON_SRC" >&2; exit 1; }
 
-    echo "Extracting Futura fonts..."
+    echo "Extracting Avenir Next Bold..."
     extract_fonts
 
     local count=0

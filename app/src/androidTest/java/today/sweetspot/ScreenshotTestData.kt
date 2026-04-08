@@ -39,7 +39,7 @@ object ScreenshotTestData {
      * (Washing machine, Dishwasher eco, Dishwasher quick).
      */
     private val applianceNames = mapOf(
-        "en-US" to Triple("Washing machine", "Dishwasher (eco)", "Dishwasher (quick)"),
+        "en-GB" to Triple("Washing machine", "Dishwasher (eco)", "Dishwasher (quick)"),
         "bg-BG" to Triple("Пералня", "Съдомиялна (еко)", "Съдомиялна (бърза)"),
         "cs-CZ" to Triple("Pračka", "Myčka (eko)", "Myčka (rychlá)"),
         "da-DK" to Triple("Vaskemaskine", "Opvaskemaskine (øko)", "Opvaskemaskine (hurtig)"),
@@ -72,8 +72,8 @@ object ScreenshotTestData {
      * Used by the test to find the correct chip to tap for the result screenshot.
      */
     fun washingMachineName(): String {
-        val locale = InstrumentationRegistry.getArguments().getString("testLocale") ?: "en-US"
-        return applianceNames[locale]?.first ?: applianceNames["en-US"]!!.first
+        val locale = InstrumentationRegistry.getArguments().getString("testLocale") ?: "en-GB"
+        return applianceNames[locale]?.first ?: applianceNames["en-GB"]!!.first
     }
 
     /**
@@ -116,8 +116,8 @@ object ScreenshotTestData {
     }
 
     private fun populateSettings(context: Context) {
-        val locale = InstrumentationRegistry.getArguments().getString("testLocale") ?: "en-US"
-        val (washer, dishEco, dishQuick) = applianceNames[locale] ?: applianceNames["en-US"]!!
+        val locale = InstrumentationRegistry.getArguments().getString("testLocale") ?: "en-GB"
+        val (washer, dishEco, dishQuick) = applianceNames[locale] ?: applianceNames["en-GB"]!!
 
         // Escape for JSON — handle quotes in translated names
         fun esc(s: String) = s.replace("\\", "\\\\").replace("\"", "\\\"")

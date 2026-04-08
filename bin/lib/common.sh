@@ -15,7 +15,7 @@ locale_name() {
         da-DK) echo "Danish" ;;
         de-DE) echo "German" ;;
         el-GR) echo "Greek" ;;
-        en-US) echo "English (United States)" ;;
+        en-GB) echo "English" ;;
         es-ES) echo "Spanish (Spain)" ;;
         et)    echo "Estonian" ;;
         fi-FI) echo "Finnish" ;;

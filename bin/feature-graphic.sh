@@ -20,7 +20,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 source "$SCRIPT_DIR/lib/common.sh"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
-ICON_SRC="$PROJECT_DIR/fastlane/metadata/android/en-US/images/icon.png"
+ICON_SRC="$PROJECT_DIR/fastlane/metadata/android/en-GB/images/icon.png"
 
 # Fonts — Avenir Next Bold extracted from macOS TTC at runtime
 AVENIR_NEXT_TTC="/System/Library/Fonts/Avenir Next.ttc"
@@ -51,7 +51,7 @@ TEXT_X=319              # Left edge of text area
 TEXT_GAP=13             # Gap between title label bottom and tagline label top
 
 # All supported locales (iteration order)
-LOCALES="bg hr cs-CZ da-DK nl-NL en-US et fi-FI fr-FR de-DE el-GR hu-HU it-IT lv lt mk-MK no-NO pl-PL pt-PT ro sr sk sl es-ES sv-SE"
+LOCALES="bg hr cs-CZ da-DK nl-NL en-GB et fi-FI fr-FR de-DE el-GR hu-HU it-IT lv lt mk-MK no-NO pl-PL pt-PT ro sr sk sl es-ES sv-SE"
 
 # ──────────────────────────────────────────────
 # Extract Avenir Next Bold from the macOS TTC (TrueType Collection) file.
@@ -135,7 +135,7 @@ extract_face(data, 0, '$font_dir/AvenirNextBold.ttf')
 # ──────────────────────────────────────────────
 tagline_for() {
     case "$1" in
-        en-US) echo "Find the cheapest time to run your appliances" ;;
+        en-GB) echo "Find the cheapest time to run your appliances" ;;
         nl-NL) echo "Vind het goedkoopste moment om je apparaten te draaien" ;;
         de-DE) echo "Finde den günstigsten Zeitpunkt für deine Geräte" ;;
         fr-FR) echo "Trouvez le meilleur moment pour vos appareils" ;;

@@ -8,7 +8,7 @@ use_tests_in_packages(['today.sweetspot'])
 app_apk_path('app/build/outputs/apk/debug/sweetspot-debug.apk')
 tests_apk_path('app/build/outputs/apk/androidTest/debug/sweetspot-debug-androidTest.apk')
 locales([
-  'en-US', 'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'es-ES',
+  'en-GB', 'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'es-ES',
   'et-EE', 'fi-FI', 'fr-FR', 'hr-HR', 'hu-HU', 'it-IT', 'lt-LT',
   'lv-LV', 'mk-MK', 'nb-NO', 'nl-NL', 'pl-PL', 'pt-PT', 'ro-RO',
   'sk-SK', 'sl-SI', 'sr-RS', 'sv-SE'

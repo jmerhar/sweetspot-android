@@ -36,7 +36,7 @@ A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 
 Fastlane is used for automated screenshot capture and Play Store metadata upload. Requires Ruby 3.3 (managed via `.ruby-version` and rbenv). Lanes are defined in `fastlane/Fastfile`:
 - **`screenshots`** — Builds debug APKs and runs Screengrab across all locales (or one with `locale:xx`).
-- **`publish`** — Uploads metadata, screenshots, and images to the Play Store via `upload_to_play_store`. Dynamically resolves the latest version code on the alpha track.
+- **`publish`** — Uploads metadata, screenshots, and images to the Play Store via `upload_to_play_store`. Dynamically resolves the latest version code on the alpha track. Runs automatically in CI via `.github/workflows/publish-listing.yml` when metadata changes are pushed to `main`. Requires `PLAY_STORE_SERVICE_ACCOUNT_JSON` GitHub secret.
 
 ### Installing the Wear OS app
 
@@ -143,6 +143,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
 - JUnit 4 + Robolectric for unit tests (304 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
+- GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - No frameworks, no DI, no database — SharedPreferences + file cache only
 - Licensed under GPL v3
 

@@ -358,7 +358,8 @@ generate_html() {
         locale=$(basename "$(dirname "$(dirname "$locale_dir")")")
         sorted_locales+=("$(locale_name "$locale")|$locale")
     done
-    mapfile -t sorted_locales < <(sort <<< "${sorted_locales[*]}")
+    # shellcheck disable=SC2207 — mapfile requires bash 4+, macOS ships 3.2
+    IFS=$'\n' sorted_locales=($(sort <<< "${sorted_locales[*]}")); unset IFS
 
     for entry in "${sorted_locales[@]}"; do
         local locale="${entry#*|}"

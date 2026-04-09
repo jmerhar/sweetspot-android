@@ -3,6 +3,10 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="5.3.2" date="9. apríla 2026" >}}
+- Aktualizované závislosti pre zlepšenú stabilitu
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5. apríla 2026" >}}
 - Opravený pád pri spustení spôsobený problémom s kompatibilitou Play Billing Library
 {{< /changelog >}}

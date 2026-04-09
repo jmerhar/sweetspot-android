@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="5.3.2" date="9 aprile 2026" >}}
+- Dipendenze aggiornate per una maggiore stabilità
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5 aprile 2026" >}}
 - Corretto un arresto anomalo all'avvio causato da un problema di compatibilità con la Play Billing Library
 {{< /changelog >}}

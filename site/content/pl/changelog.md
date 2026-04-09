@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="5.3.2" date="9 kwietnia 2026" >}}
+- Zaktualizowane zależności w celu poprawy stabilności
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5 kwietnia 2026" >}}
 - Naprawiono awarię przy uruchamianiu spowodowaną problemem z kompatybilnością Play Billing Library
 {{< /changelog >}}

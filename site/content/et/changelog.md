@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.3.2" date="9. aprill 2026" >}}
+- Sõltuvused uuendatud parema stabiilsuse tagamiseks
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5. aprill 2026" >}}
 - Parandatud käivitamisel ilmnenud kokkujooksmine, mille põhjustas Play Billing Library ühilduvusprobleem
 {{< /changelog >}}

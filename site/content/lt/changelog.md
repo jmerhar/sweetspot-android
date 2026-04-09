@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.3.2" date="2026 m. balandžio 9 d." >}}
+- Atnaujintos priklausomybės geresniam stabilumui
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="2026 m. balandžio 5 d." >}}
 - Ištaisytas paleidimo metu įvykstantis gedimas, kurį sukėlė Play Billing Library suderinamumo problema
 {{< /changelog >}}

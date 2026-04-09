@@ -3,6 +3,10 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="5.3.2" date="9. april 2026" >}}
+- Opdaterede afhængigheder for forbedret stabilitet
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5. april 2026" >}}
 - Rettet nedbrud ved opstart forårsaget af et kompatibilitetsproblem med Play Billing Library
 {{< /changelog >}}

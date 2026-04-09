@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="5.3.2" date="9. travnja 2026." >}}
+- Ažurirane ovisnosti za poboljšanu stabilnost
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5. travnja 2026." >}}
 - Ispravljen pad pri pokretanju uzrokovan problemom kompatibilnosti s Play Billing Library
 {{< /changelog >}}

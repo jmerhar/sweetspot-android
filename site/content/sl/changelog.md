@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.3.2" date="9. april 2026" >}}
+- Posodobljene knjižnice za boljšo stabilnost
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5. april 2026" >}}
 - Odpravljena sesutje ob zagonu, ki ga je povzročila nezdružljivost s knjižnico Play Billing
 {{< /changelog >}}

@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.3.2" date="9 aprilie 2026" >}}
+- Dependențe actualizate pentru stabilitate îmbunătățită
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5 aprilie 2026" >}}
 - Remediat blocarea la pornire cauzată de o problemă de compatibilitate cu Play Billing Library
 {{< /changelog >}}

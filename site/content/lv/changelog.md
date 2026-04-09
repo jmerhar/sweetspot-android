@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="5.3.2" date="2026. gada 9. aprīlis" >}}
+- Atjauninātas atkarības uzlabotai stabilitātei
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="2026. gada 5. aprīlis" >}}
 - Novērsta avārija startēšanas laikā, ko izraisīja Play Billing Library saderības problēma
 {{< /changelog >}}

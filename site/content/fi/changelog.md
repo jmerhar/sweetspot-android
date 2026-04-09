@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.3.2" date="9. huhtikuuta 2026" >}}
+- Riippuvuudet päivitetty vakauden parantamiseksi
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5. huhtikuuta 2026" >}}
 - Korjattu käynnistyksen kaatuminen, joka johtui Play Billing Libraryn yhteensopivuusongelmasta
 {{< /changelog >}}

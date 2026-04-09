@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.3.2" date="9 april 2026" >}}
+- Afhankelijkheden bijgewerkt voor verbeterde stabiliteit
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="5 april 2026" >}}
 - Crashprobleem bij het opstarten opgelost, veroorzaakt door een compatibiliteitsprobleem met de Play Billing Library
 {{< /changelog >}}

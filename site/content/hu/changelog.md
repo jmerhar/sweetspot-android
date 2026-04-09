@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.3.2" date="2026. április 9." >}}
+- Függőségek frissítve a jobb stabilitás érdekében
+{{< /changelog >}}
+
 {{< changelog version="5.3.1" date="2026. április 5." >}}
 - Javítva az indításkor fellépő összeomlás, amelyet a Play Billing Library kompatibilitási problémája okozott
 {{< /changelog >}}

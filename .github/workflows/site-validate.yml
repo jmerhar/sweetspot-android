@@ -6,22 +6,18 @@ on:
     paths:
       - 'site/**'
       - 'bin/site-validate.sh'
+      - 'bin/install-hugo.sh'
   pull_request:
     branches: [main]
     paths:
       - 'site/**'
       - 'bin/site-validate.sh'
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      - 'bin/install-hugo.sh'
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: latest
-          extended: true
+      - run: ./bin/install-hugo.sh
       - run: ./bin/site-validate.sh

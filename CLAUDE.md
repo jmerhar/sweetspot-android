@@ -28,6 +28,7 @@ make clean                        # Remove all build outputs
 
 A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
+- **`bin/install-hugo.sh`** — Downloads and installs the latest Hugo extended binary from GitHub. Used by CI workflows (`deploy-site`, `site-validate`).
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 - **`bin/inspect.sh`** — Summarises inspection XML files exported from Android Studio. Does **not** run inspections itself. Called by `make inspect`.
 - **`bin/site-validate.sh`** — Validates the Hugo site: builds, checks expected pages/assets exist, verifies internal links resolve, checks page sizes, and ensures i18n key parity across languages. Called by `make site-validate`.

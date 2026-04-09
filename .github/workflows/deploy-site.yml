@@ -15,18 +15,12 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: latest
-          extended: true
+      - run: ./bin/install-hugo.sh
       - run: hugo --source site --minify
       - uses: actions/upload-pages-artifact@v4
         with:

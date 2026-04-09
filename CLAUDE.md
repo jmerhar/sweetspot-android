@@ -304,7 +304,7 @@ site/
   static/
     CNAME                          # Custom domain: sweetspot.today
     css/style.css                  # All styles (single file)
-    js/main.js                     # Nav toggle, language switcher
+    js/main.js                     # Language auto-redirect, nav toggle, language switcher
     images/
       icon.svg                     # App icon (converted from Android vector)
       badges/                      # Official Google Play badges (25 languages)
@@ -366,7 +366,8 @@ When adding a new language to the website:
 2. **Create `site/i18n/xx.toml`**: translate all UI strings (copy `en.toml` as template, ~40 keys).
 3. **Create `site/content/xx/`**: translate all 4 content pages (`_index.md`, `privacy.md`, `changelog.md`, `faq.md`). Changelog versions and dates stay the same, only descriptions are translated.
 4. **Download Google Play badge**: `curl -sL "https://play.google.com/intl/en_us/badges/static/images/badges/xx_badge_web_generic.png" -o site/static/images/badges/xx.png`. The badge includes localized "Get it on Google Play" text from Google.
-5. **Verify**: run `make site` and check the new language appears in the language switcher and all pages render correctly.
+5. **Add language to `site/static/js/main.js`**: add the language code to the `SUPPORTED` array (used for browser language auto-detection on first visit).
+6. **Verify**: run `make site` and check the new language appears in the language switcher and all pages render correctly.
 
 ### Design
 

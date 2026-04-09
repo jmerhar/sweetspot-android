@@ -59,6 +59,21 @@ metadata_locale() {
 }
 
 # ──────────────────────────────────────────────
+# Map website language code to Play Console metadata locale
+# ──────────────────────────────────────────────
+website_to_metadata() {
+    case "$1" in
+        cs) echo "cs-CZ" ;; da) echo "da-DK" ;; de) echo "de-DE" ;;
+        el) echo "el-GR" ;; en) echo "en-GB" ;; es) echo "es-ES" ;;
+        fi) echo "fi-FI" ;; fr) echo "fr-FR" ;; hu) echo "hu-HU" ;;
+        it) echo "it-IT" ;; mk) echo "mk-MK" ;; nb) echo "no-NO" ;;
+        nl) echo "nl-NL" ;; pl) echo "pl-PL" ;; pt) echo "pt-PT" ;;
+        sv) echo "sv-SE" ;;
+        *)  echo "$1" ;;   # bg, et, hr, lt, lv, ro, sk, sl, sr pass through
+    esac
+}
+
+# ──────────────────────────────────────────────
 # Check that a CLI tool is available, exit with an error if not
 #
 # Usage: require_command <cmd> [install_hint]

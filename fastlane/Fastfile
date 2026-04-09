@@ -1,9 +1,10 @@
-# Fastfile — Automated screenshot capture and Play Store metadata upload.
+# Fastfile — Automated screenshot capture and Play Store management.
 #
 # Lanes:
 #   screenshots           — Builds debug APKs and runs Screengrab across all locales.
 #   screenshots locale:xx — Builds debug APKs and runs Screengrab for a single locale.
 #   publish               — Uploads metadata, screenshots, and images to the Play Store.
+#   deploy                — Uploads phone and wear AABs with release notes to a track.
 
 default_platform(:android)
 
@@ -33,6 +34,41 @@ platform :android do
       skip_upload_aab: true,
       skip_upload_changelogs: true,
       sync_image_upload: true,
+    )
+  end
+
+  lane :deploy do |options|
+    track = options[:track] || 'alpha'
+    phone_code = options[:phone_code].to_i
+    wear_code = options[:wear_code].to_i
+
+    # Phone AAB — creates release with changelogs
+    upload_to_play_store(
+      package_name: 'today.sweetspot',
+      json_key: 'fastlane/credentials.json',
+      track: track,
+      aab: 'build/sweetspot-phone.aab',
+      version_code: phone_code,
+      release_status: 'completed',
+      skip_upload_apk: true,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+
+    # Wear AAB — new release retaining phone code
+    upload_to_play_store(
+      package_name: 'today.sweetspot',
+      json_key: 'fastlane/credentials.json',
+      track: track,
+      aab: 'build/sweetspot-wear.aab',
+      version_code: wear_code,
+      release_status: 'completed',
+      skip_upload_apk: true,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      version_codes_to_retain: [phone_code],
     )
   end
 end

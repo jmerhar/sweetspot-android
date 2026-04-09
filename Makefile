@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release clean site site-validate deploy-stats screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats clean site site-validate screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -56,6 +56,9 @@ install-watch: ## Install release watch APK on connected watch via ADB
 
 release: ## Bump version, build, tag, push, and create GitHub Release
 	./bin/release.sh $(VERSION) -n docs/notes/release.md $(if $(DRAFT),--draft)
+
+deploy: ## Deploy AABs with release notes to Play Store (TRACK=alpha|production)
+	TRACK=$(or $(TRACK),alpha) ./bin/deploy.sh
 
 deploy-stats: ## Deploy stats.php to the stats server
 	./bin/deploy-stats.sh

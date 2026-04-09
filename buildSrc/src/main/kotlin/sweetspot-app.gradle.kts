@@ -89,6 +89,14 @@ android {
     }
 }
 
+tasks.register("printVersionCode") {
+    doLast { println(android.defaultConfig.versionCode) }
+}
+
+tasks.register("printVersionName") {
+    doLast { println(android.defaultConfig.versionName) }
+}
+
 kotlin {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)

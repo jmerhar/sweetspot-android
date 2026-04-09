@@ -358,7 +358,7 @@ generate_html() {
         locale=$(basename "$(dirname "$(dirname "$locale_dir")")")
         sorted_locales+=("$(locale_name "$locale")|$locale")
     done
-    IFS=$'\n' sorted_locales=($(sort <<< "${sorted_locales[*]}")); unset IFS
+    mapfile -t sorted_locales < <(sort <<< "${sorted_locales[*]}")
 
     for entry in "${sorted_locales[@]}"; do
         local locale="${entry#*|}"

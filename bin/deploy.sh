@@ -20,9 +20,9 @@ TRACK="${TRACK:-alpha}"
 # ── Read version from Gradle ─────────────────────────────────
 
 echo "Reading version from Gradle..."
-PHONE_CODE=$("$ROOT_DIR/gradlew" -q -p "$ROOT_DIR" app:printVersionCode)
-WEAR_CODE=$("$ROOT_DIR/gradlew" -q -p "$ROOT_DIR" wear:printVersionCode)
-VERSION_NAME=$("$ROOT_DIR/gradlew" -q -p "$ROOT_DIR" app:printVersionName)
+PHONE_CODE=$("$ROOT_DIR/gradlew" -q -p "$ROOT_DIR" app:printVersionCode | head -1)
+WEAR_CODE=$("$ROOT_DIR/gradlew" -q -p "$ROOT_DIR" wear:printVersionCode | head -1)
+VERSION_NAME=$("$ROOT_DIR/gradlew" -q -p "$ROOT_DIR" app:printVersionName | head -1)
 echo "  Version: $VERSION_NAME"
 echo "  Phone:   $PHONE_CODE"
 echo "  Wear:    $WEAR_CODE"

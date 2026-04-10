@@ -23,7 +23,7 @@ make screenshots                  # Capture localized screenshots via Screengrab
 make frames                       # Frame screenshots with marketing text (LOCALE=xx-XX for one)
 make feature-graphic              # Generate localised Play Store feature graphics (LOCALE=xx-XX for one)
 make publish                      # Upload metadata, screenshots, and images to Play Store
-make deploy                       # Deploy AABs with release notes to Play Store (TRACK=alpha|production)
+make deploy                       # Deploy AABs with release notes to Play Store (TRACK=alpha|production APP=phone|wear|both)
 make clean                        # Remove all build outputs
 ```
 
@@ -35,12 +35,12 @@ A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/site-validate.sh`** — Validates the Hugo site: builds, checks expected pages/assets exist, verifies internal links resolve, checks page sizes, and ensures i18n key parity across languages. Called by `make site-validate`.
 - **`bin/frame-screenshots.sh`** — Frames raw Screengrab screenshots with marketing text and coloured backgrounds. Outputs to `fastlane/metadata/android/<locale>/images/phoneScreenshots/` and generates `build/screenshots.html` gallery. Requires ImageMagick 7. Called by `make frames`.
 - **`bin/feature-graphic.sh`** — Generates localised Play Store feature graphics (1024x500) with gradient, app icon, and translated tagline. Outputs to `fastlane/metadata/android/<locale>/images/featureGraphic.png` and generates `build/feature-graphics.html` gallery. Requires ImageMagick 7 and Python 3. Called by `make feature-graphic`.
-- **`bin/deploy.sh`** — Deploys phone and wear AABs with localised release notes to the Play Store. Reads version codes from Gradle, extracts the latest changelog entry from each website translation, writes Fastlane changelog files, and runs the `deploy` Fastlane lane. Called by `make deploy`.
+- **`bin/deploy.sh`** — Deploys phone and/or wear AABs with localised release notes to the Play Store. Supports `APP=phone|wear|both` (default: both) for selective deployment. Wear OS is always skipped on the `alpha` track (closed testing not supported for Wear); use `TRACK=production` to deploy wear. Reads version codes from Gradle, extracts the latest changelog entry from each website translation, writes Fastlane changelog files, and runs the `deploy` Fastlane lane. Called by `make deploy`.
 
 Fastlane is used for automated screenshot capture and Play Store metadata upload. Requires Ruby 3.3 (managed via `.ruby-version` and rbenv). Lanes are defined in `fastlane/Fastfile`:
 - **`screenshots`** — Builds debug APKs and runs Screengrab across all locales (or one with `locale:xx`).
 - **`publish`** — Uploads metadata, screenshots, and images to the Play Store via `upload_to_play_store`. Dynamically resolves the latest version code on the alpha track. Runs automatically in CI via `.github/workflows/publish-listing.yml` when metadata changes are pushed to `main`. Requires `PLAY_STORE_SERVICE_ACCOUNT_JSON` GitHub secret.
-- **`deploy`** — Uploads phone and wear AABs with localised release notes to a Play Store track. Takes `track`, `phone_code`, and `wear_code` parameters. Uploads phone AAB first (creating a release with changelogs), then wear AAB with `version_codes_to_retain` to keep both active. Called by `bin/deploy.sh`.
+- **`deploy`** — Uploads phone and/or wear AABs with localised release notes to a Play Store track. Takes `track`, `phone_code`, `wear_code`, `skip_phone`, and `skip_wear` parameters. Phone AAB goes to the specified track, Wear AAB goes to the `wear:` prefixed track (e.g. `wear:production`). Called by `bin/deploy.sh`.
 
 ### Installing the Wear OS app
 

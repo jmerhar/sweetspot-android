@@ -41,34 +41,39 @@ platform :android do
     track = options[:track] || 'alpha'
     phone_code = options[:phone_code].to_i
     wear_code = options[:wear_code].to_i
+    skip_phone = options[:skip_phone].to_s == 'true'
+    skip_wear = options[:skip_wear].to_s == 'true'
 
     # Phone AAB — creates release with changelogs
-    upload_to_play_store(
-      package_name: 'today.sweetspot',
-      json_key: 'fastlane/credentials.json',
-      track: track,
-      aab: 'build/sweetspot-phone.aab',
-      version_code: phone_code,
-      release_status: 'completed',
-      skip_upload_apk: true,
-      skip_upload_metadata: true,
-      skip_upload_images: true,
-      skip_upload_screenshots: true,
-    )
+    unless skip_phone
+      upload_to_play_store(
+        package_name: 'today.sweetspot',
+        json_key: 'fastlane/credentials.json',
+        track: track,
+        aab: 'build/sweetspot-phone.aab',
+        version_code: phone_code,
+        release_status: 'completed',
+        skip_upload_apk: true,
+        skip_upload_metadata: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+      )
+    end
 
-    # Wear AAB — new release retaining phone code
-    upload_to_play_store(
-      package_name: 'today.sweetspot',
-      json_key: 'fastlane/credentials.json',
-      track: track,
-      aab: 'build/sweetspot-wear.aab',
-      version_code: wear_code,
-      release_status: 'completed',
-      skip_upload_apk: true,
-      skip_upload_metadata: true,
-      skip_upload_images: true,
-      skip_upload_screenshots: true,
-      version_codes_to_retain: [phone_code],
-    )
+    # Wear AAB — separate wear track
+    unless skip_wear
+      upload_to_play_store(
+        package_name: 'today.sweetspot',
+        json_key: 'fastlane/credentials.json',
+        track: "wear:#{track}",
+        aab: 'build/sweetspot-wear.aab',
+        version_code: wear_code,
+        release_status: 'completed',
+        skip_upload_apk: true,
+        skip_upload_metadata: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+      )
+    end
   end
 end

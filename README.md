@@ -67,7 +67,7 @@ make screenshots                  # Capture localized screenshots via Screengrab
 make frames                       # Frame screenshots with marketing text
 make feature-graphic              # Generate localised Play Store feature graphics
 make publish                       # Upload metadata and images to Play Store
-make deploy                        # Deploy AABs with release notes to Play Store
+make deploy                        # Deploy AABs to Play Store (APP=phone|wear|both)
 make clean                        # Remove all build outputs
 ```
 

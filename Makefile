@@ -57,8 +57,8 @@ install-watch: ## Install release watch APK on connected watch via ADB
 release: ## Bump version, build, tag, push, and create GitHub Release
 	./bin/release.sh $(VERSION) -n docs/notes/release.md $(if $(DRAFT),--draft)
 
-deploy: ## Deploy AABs with release notes to Play Store (TRACK=alpha|production)
-	TRACK=$(or $(TRACK),alpha) ./bin/deploy.sh
+deploy: ## Deploy AABs with release notes to Play Store (TRACK=alpha|production APP=phone|wear|both)
+	TRACK=$(or $(TRACK),alpha) APP=$(or $(APP),both) ./bin/deploy.sh
 
 deploy-stats: ## Deploy stats.php to the stats server
 	./bin/deploy-stats.sh

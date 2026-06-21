@@ -215,7 +215,9 @@ $status = $data['status'] ?? 'unknown';
 if ($lang !== '' && !validate_string($lang, '/^[a-z]{2,3}(-[A-Za-z]{2,8})?$/', 16)) {
     error_response(400, 'Invalid language');
 }
-if (!in_array($status, ['trial', 'unlocked', 'expired', 'unknown'], true)) {
+// 'subscribed' is the current app value (v5.x billing migration); 'unlocked' is
+// kept for older app versions still deployed in the field.
+if (!in_array($status, ['trial', 'subscribed', 'unlocked', 'expired', 'unknown'], true)) {
     error_response(400, 'Invalid status');
 }
 

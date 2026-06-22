@@ -18,6 +18,9 @@
     <string name="result_total_cost">Costo totale</string>
     <string name="result_avg_price">Prezzo medio</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s in più del minimo</string>
+    <string name="result_earlier">Prima</string>
+    <string name="result_cheaper">Più economico</string>
     <string name="result_cost_breakdown">Dettaglio costi</string>
     <string name="cd_collapse">Comprimi</string>
     <string name="cd_expand">Espandi</string>

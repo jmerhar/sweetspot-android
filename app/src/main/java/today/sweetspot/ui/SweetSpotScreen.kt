@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,6 +27,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -98,6 +100,12 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             priceSource = state.priceSource,
             priceZoneName = priceZoneName,
             isLoading = state.isLoading,
+            canGoEarlier = state.windowOffset < state.windowAlternatives.size - 1,
+            canGoCheaper = state.windowOffset > 0,
+            costDelta = state.windowAlternatives.firstOrNull()
+                ?.let { state.result!!.totalCost - it.totalCost },
+            onEarlier = viewModel::onEarlierWindow,
+            onCheaper = viewModel::onCheaperWindow,
             onRefresh = viewModel::onRefreshResults,
             onBack = viewModel::onClearResult,
             snackbarHostState = snackbarHostState,
@@ -232,6 +240,11 @@ private fun ResultScreen(
     priceSource: String?,
     priceZoneName: String?,
     isLoading: Boolean,
+    canGoEarlier: Boolean,
+    canGoCheaper: Boolean,
+    costDelta: Double?,
+    onEarlier: () -> Unit,
+    onCheaper: () -> Unit,
     onRefresh: () -> Unit,
     onBack: () -> Unit,
     snackbarHostState: SnackbarHostState,
@@ -287,7 +300,29 @@ private fun ResultScreen(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
-                ResultSummary(result = result, now = now)
+                ResultSummary(result = result, now = now, costDelta = costDelta)
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    OutlinedButton(
+                        onClick = onEarlier,
+                        enabled = canGoEarlier,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(stringResource(R.string.result_earlier))
+                    }
+                    OutlinedButton(
+                        onClick = onCheaper,
+                        enabled = canGoCheaper,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(stringResource(R.string.result_cheaper))
+                    }
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 

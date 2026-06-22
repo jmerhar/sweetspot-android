@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22 czerwca 2026" >}}
+- Nowe przyciski „Wcześniej“ i „Taniej“ pozwalają wybrać wcześniejszą porę, gdy najtańsze okno jest niewygodne, i pokazują, o ile więcej kosztuje.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 kwietnia 2026" >}}
 - Zaktualizowane zależności w celu poprawy stabilności
 {{< /changelog >}}

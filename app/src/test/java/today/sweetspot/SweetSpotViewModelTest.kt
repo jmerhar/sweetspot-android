@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
@@ -966,5 +967,121 @@ class SweetSpotViewModelTest {
 
         viewModel.onThankYouDismissed()
         assertFalse(viewModel.uiState.value.showThankYou)
+    }
+
+    // --- Earlier / Cheaper window navigation ---
+
+    /**
+     * Hourly slots whose price *decreases* over time, so the cheapest window is last and every
+     * earlier slot is a progressively-earlier (and costlier) alternative.
+     */
+    private fun descendingPrices(count: Int): List<PriceSlot> {
+        val base = ZonedDateTime.now().withMinute(0).withSecond(0).withNano(0)
+        return (0 until count).map { i ->
+            PriceSlot(time = base.plusHours(i.toLong()), price = 1.0 - i * 0.05, durationMinutes = 60)
+        }
+    }
+
+    @Test
+    fun `fresh result starts at cheapest window with alternatives populated`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        assertEquals(0, state.windowOffset)
+        assertTrue("expected several alternatives", state.windowAlternatives.size > 1)
+        assertEquals(state.windowAlternatives.first(), state.result)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onEarlierWindow advances to an earlier costlier window`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        val cheapest = viewModel.uiState.value.result!!
+        viewModel.onEarlierWindow()
+
+        val state = viewModel.uiState.value
+        assertEquals(1, state.windowOffset)
+        assertTrue(state.result!!.startTime.isBefore(cheapest.startTime))
+        assertTrue(state.result!!.totalCost > cheapest.totalCost)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onCheaperWindow reverses onEarlierWindow`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        val cheapest = viewModel.uiState.value.result!!
+        viewModel.onEarlierWindow()
+        viewModel.onEarlierWindow()
+        viewModel.onCheaperWindow()
+
+        val state = viewModel.uiState.value
+        assertEquals(1, state.windowOffset)
+        viewModel.onCheaperWindow()
+        assertEquals(0, viewModel.uiState.value.windowOffset)
+        assertEquals(cheapest, viewModel.uiState.value.result)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onCheaperWindow is a no-op at the cheapest window`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        viewModel.onCheaperWindow()
+        assertEquals(0, viewModel.uiState.value.windowOffset)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onEarlierWindow stops at the earliest window`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        val lastIndex = viewModel.uiState.value.windowAlternatives.size - 1
+        repeat(lastIndex + 5) { viewModel.onEarlierWindow() } // tap past the end
+        assertEquals(lastIndex, viewModel.uiState.value.windowOffset)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `periodic refresh preserves the navigated window`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        viewModel.onEarlierWindow()
+        val selectedStart = viewModel.uiState.value.result!!.startTime
+
+        advanceTimeBy(61_000) // fire the 60s recalculateResult
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        assertEquals(selectedStart, state.result!!.startTime)
+        assertEquals(1, state.windowOffset)
+        viewModel.onClearResult() // cancel the refresh loop so runTest can settle
+    }
+
+    @Test
+    fun `onClearResult resets window navigation`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+        viewModel.onEarlierWindow()
+
+        viewModel.onClearResult()
+        val state = viewModel.uiState.value
+        assertEquals(0, state.windowOffset)
+        assertTrue(state.windowAlternatives.isEmpty())
+        assertNull(state.result)
     }
 }

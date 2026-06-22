@@ -18,6 +18,9 @@
     <string name="result_total_cost">Kokonaiskustannus</string>
     <string name="result_avg_price">Keskim. hinta</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s enemmän kuin halvin</string>
+    <string name="result_earlier">Aiemmin</string>
+    <string name="result_cheaper">Halvemmalla</string>
     <string name="result_cost_breakdown">Kustannuserittely</string>
     <string name="cd_collapse">Pienennä</string>
     <string name="cd_expand">Laajenna</string>

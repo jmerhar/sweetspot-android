@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="5.4" date="2026 m. birželio 22 d." >}}
+- Nauji mygtukai „Anksčiau“ ir „Pigiau“ leidžia pasirinkti ankstesnį laiką, kai pigiausias langas nepatogus, ir parodo, kiek brangiau.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="2026 m. balandžio 9 d." >}}
 - Atnaujintos priklausomybės geresniam stabilumui
 {{< /changelog >}}

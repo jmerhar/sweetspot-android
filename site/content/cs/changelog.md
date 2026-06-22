@@ -3,6 +3,10 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22. června 2026" >}}
+- Nová tlačítka „Dříve“ a „Levněji“ umožňují zvolit dřívější čas, když nejlevnější okno nevyhovuje, a ukážou, o kolik je to dražší.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. dubna 2026" >}}
 - Aktualizované závislosti pro zlepšenou stabilitu
 {{< /changelog >}}

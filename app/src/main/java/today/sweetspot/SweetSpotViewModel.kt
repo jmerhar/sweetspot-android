@@ -31,7 +31,7 @@ import today.sweetspot.model.Country
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.PriceZone
 import today.sweetspot.model.WindowResult
-import today.sweetspot.util.findCheapestWindow
+import today.sweetspot.util.findWindowAlternatives
 import today.sweetspot.util.formatDuration
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -70,8 +70,14 @@ sealed interface AppError {
  * @property durationMinutes Selected minutes component of the duration (0, 5, 10, ..., 55).
  * @property isLoading Whether a price fetch is in progress.
  * @property error Error to display, or `null` if none.
- * @property result The cheapest-window result, or `null` if no search has been performed.
+ * @property result The currently-displayed window, or `null` if no search has been performed.
+ *           This is the cheapest window initially, but the "earlier"/"cheaper" buttons can move
+ *           it to an earlier (and costlier) alternative — see [windowAlternatives].
  * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
+ * @property windowAlternatives Progressively-earlier window options, cheapest first (index 0).
+ *           [result] is `windowAlternatives[windowOffset]`. Empty when there is no result.
+ * @property windowOffset Index into [windowAlternatives] of the currently-displayed window
+ *           (0 = cheapest). Advanced by "earlier", reduced by "cheaper".
  * @property allPrices All price slots for the next 24h, used by the bar chart.
  * @property priceSource Name of the data source (e.g. "ENTSO-E", "EnergyZero"), or `null` if no result.
  * @property showSettings Whether the settings screen is currently visible.
@@ -106,6 +112,8 @@ data class UiState(
     val error: AppError? = null,
     val result: WindowResult? = null,
     val resultLabel: String? = null,
+    val windowAlternatives: List<WindowResult> = emptyList(),
+    val windowOffset: Int = 0,
     val allPrices: List<PriceSlot> = emptyList(),
     val priceSource: String? = null,
     val showSettings: Boolean = false,
@@ -433,7 +441,43 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onClearResult() {
         stopResultRefresh()
         _uiState.update {
-            it.copy(result = null, resultLabel = null, allPrices = emptyList(), priceSource = null, error = null)
+            it.copy(
+                result = null,
+                resultLabel = null,
+                windowAlternatives = emptyList(),
+                windowOffset = 0,
+                allPrices = emptyList(),
+                priceSource = null,
+                error = null
+            )
+        }
+    }
+
+    /**
+     * Moves the displayed window one step earlier, to the next-cheapest window that starts sooner.
+     *
+     * Advances [UiState.windowOffset] within [UiState.windowAlternatives]. No-op when already at
+     * the earliest available window (the last alternative). Each step is costlier but starts sooner.
+     */
+    fun onEarlierWindow() {
+        _uiState.update { state ->
+            val next = state.windowOffset + 1
+            if (next >= state.windowAlternatives.size) return@update state
+            state.copy(windowOffset = next, result = state.windowAlternatives[next])
+        }
+    }
+
+    /**
+     * Moves the displayed window one step back toward the cheapest window.
+     *
+     * Reduces [UiState.windowOffset], reversing [onEarlierWindow]. No-op when already showing the
+     * cheapest window (offset 0).
+     */
+    fun onCheaperWindow() {
+        _uiState.update { state ->
+            val prev = state.windowOffset - 1
+            if (prev < 0) return@update state
+            state.copy(windowOffset = prev, result = state.windowAlternatives[prev])
         }
     }
 
@@ -462,10 +506,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     /**
-     * Recalculates the cheapest window using already-fetched prices and the current time.
+     * Recalculates the window alternatives using already-fetched prices and the current time.
      *
-     * Filters [UiState.allPrices] to exclude elapsed slots, then re-runs [findCheapestWindow].
-     * Updates both [UiState.result] and [UiState.allPrices] so the chart and summary stay current.
+     * Filters [UiState.allPrices] to exclude elapsed slots, then re-runs [findWindowAlternatives].
+     * Preserves the user's current selection by matching the previously-displayed window's start
+     * time in the rebuilt list; if that window has elapsed, falls back to the cheapest (offset 0).
+     * Updates [UiState.result], [UiState.windowAlternatives], [UiState.windowOffset], and
+     * [UiState.allPrices] so the chart and summary stay current.
      */
     private fun recalculateResult() {
         val state = _uiState.value
@@ -479,11 +526,25 @@ class SweetSpotViewModel @JvmOverloads constructor(
         }
 
         val durationHours = state.durationHours + state.durationMinutes / 60.0
-        val result = if (futurePrices.isNotEmpty()) {
-            findCheapestWindow(futurePrices, durationHours, now)
-        } else null
+        val alternatives = if (futurePrices.isNotEmpty()) {
+            findWindowAlternatives(futurePrices, durationHours, now)
+        } else emptyList()
 
-        _uiState.update { it.copy(result = result, allPrices = futurePrices, now = now) }
+        // Keep showing the window the user navigated to, matched by start time. If it has
+        // elapsed out of the list, fall back to the cheapest window.
+        val selectedStart = state.result.startTime.toEpochSecond()
+        val offset = alternatives.indexOfFirst { it.startTime.toEpochSecond() == selectedStart }
+            .let { if (it >= 0) it else 0 }
+
+        _uiState.update {
+            it.copy(
+                result = alternatives.getOrNull(offset),
+                windowAlternatives = alternatives,
+                windowOffset = offset,
+                allPrices = futurePrices,
+                now = now
+            )
+        }
     }
 
     /**
@@ -759,9 +820,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             }
 
             val now = currentNow(timeZoneId)
-            val result = findCheapestWindow(prices, durationHours, now)
+            val alternatives = findWindowAlternatives(prices, durationHours, now)
 
-            if (result == null) {
+            if (alternatives.isEmpty()) {
                 val coverageHours = prices.sumOf { it.durationMinutes.toLong() } / 60
                 _uiState.update {
                     it.copy(
@@ -776,7 +837,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             _uiState.update {
                 it.copy(
                     isLoading = false,
-                    result = result,
+                    result = alternatives.first(),
+                    windowAlternatives = alternatives,
+                    windowOffset = 0,
                     allPrices = prices,
                     priceSource = priceResult.source,
                     error = null,

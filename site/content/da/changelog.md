@@ -3,6 +3,10 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="5.4" date="22. juni 2026" >}}
+- Nye knapper „Tidligere“ og „Billigere“ lader dig vælge et tidligere tidspunkt, når det billigste vindue ikke passer, og viser hvor meget mere det koster.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. april 2026" >}}
 - Opdaterede afhængigheder for forbedret stabilitet
 {{< /changelog >}}

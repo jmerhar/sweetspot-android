@@ -3,6 +3,10 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="5.4" date="22 juni 2026" >}}
+- Nya knappar ”Tidigare” och ”Billigare” låter dig välja en tidigare tid när det billigaste fönstret inte passar, och visar hur mycket mer det kostar.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 april 2026" >}}
 - Uppdaterade beroenden för förbättrad stabilitet
 {{< /changelog >}}

@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="5.4" date="22. juuni 2026" >}}
+- Uued nupud „Varem“ ja „Odavam“ võimaldavad valida varasema aja, kui odavaim aken ei sobi, ja näitavad, kui palju rohkem see maksab.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. aprill 2026" >}}
 - Sõltuvused uuendatud parema stabiilsuse tagamiseks
 {{< /changelog >}}

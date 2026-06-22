@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22. junij 2026" >}}
+- Nova gumba »Prej« in »Ceneje« omogočata izbiro zgodnejšega časa, ko najcenejši ni primeren, in pokažeta, koliko več stane.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. april 2026" >}}
 - Posodobljene knjižnice za boljšo stabilnost
 {{< /changelog >}}

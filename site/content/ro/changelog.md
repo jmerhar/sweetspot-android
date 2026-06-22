@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22 iunie 2026" >}}
+- Butoane noi „Mai devreme“ și „Mai ieftin“ pentru a alege o oră mai devreme când cea mai ieftină nu convine și a vedea cu cât costă mai mult.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 aprilie 2026" >}}
 - Dependențe actualizate pentru stabilitate îmbunătățită
 {{< /changelog >}}

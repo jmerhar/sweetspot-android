@@ -18,6 +18,9 @@
     <string name="result_total_cost">Összes költség</string>
     <string name="result_avg_price">Átl. ár</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s több, mint a legolcsóbb</string>
+    <string name="result_earlier">Korábban</string>
+    <string name="result_cheaper">Olcsóbban</string>
     <string name="result_cost_breakdown">Költségbontás</string>
     <string name="cd_collapse">Összecsukás</string>
     <string name="cd_expand">Kibontás</string>

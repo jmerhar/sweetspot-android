@@ -18,6 +18,9 @@
     <string name="result_total_cost">Cost total</string>
     <string name="result_avg_price">Preț mediu</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s peste minim</string>
+    <string name="result_earlier">Mai devreme</string>
+    <string name="result_cheaper">Mai ieftin</string>
     <string name="result_cost_breakdown">Detalii costuri</string>
     <string name="cd_collapse">Restrânge</string>
     <string name="cd_expand">Extinde</string>

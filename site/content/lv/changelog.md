@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="5.4" date="2026. gada 22. jūnijs" >}}
+- Jaunas pogas „Agrāk“ un „Lētāk“ ļauj izvēlēties agrāku laiku, kad lētākais logs neder, un parāda, cik daudz dārgāk tas izmaksā.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="2026. gada 9. aprīlis" >}}
 - Atjauninātas atkarības uzlabotai stabilitātei
 {{< /changelog >}}

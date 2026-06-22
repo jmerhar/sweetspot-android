@@ -18,6 +18,9 @@
     <string name="result_total_cost">Обща цена</string>
     <string name="result_avg_price">Средна цена</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s повече от най-евтиното</string>
+    <string name="result_earlier">По-рано</string>
+    <string name="result_cheaper">По-евтино</string>
     <string name="result_cost_breakdown">Разбивка на разходите</string>
     <string name="cd_collapse">Свиване</string>
     <string name="cd_expand">Разгъване</string>

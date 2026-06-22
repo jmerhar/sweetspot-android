@@ -18,6 +18,9 @@
     <string name="result_total_cost">Totale kosten</string>
     <string name="result_avg_price">Gem. prijs</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s meer dan het goedkoopste</string>
+    <string name="result_earlier">Eerder</string>
+    <string name="result_cheaper">Goedkoper</string>
     <string name="result_cost_breakdown">Kostenoverzicht</string>
     <string name="cd_collapse">Inklappen</string>
     <string name="cd_expand">Uitklappen</string>

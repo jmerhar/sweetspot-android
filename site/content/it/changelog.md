@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22 giugno 2026" >}}
+- Nuovi pulsanti «Prima» e «Più economico» per scegliere un orario anticipato quando quello più economico non va bene, e vedere quanto costa in più.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 aprile 2026" >}}
 - Dipendenze aggiornate per una maggiore stabilità
 {{< /changelog >}}

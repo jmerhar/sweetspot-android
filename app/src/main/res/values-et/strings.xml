@@ -18,6 +18,9 @@
     <string name="result_total_cost">Kogumaksumus</string>
     <string name="result_avg_price">Keskmine hind</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s rohkem kui odavaim</string>
+    <string name="result_earlier">Varem</string>
+    <string name="result_cheaper">Odavam</string>
     <string name="result_cost_breakdown">Kulude jaotus</string>
     <string name="cd_collapse">Ahenda</string>
     <string name="cd_expand">Laienda</string>

@@ -18,6 +18,9 @@
     <string name="result_total_cost">Укупни трошкови</string>
     <string name="result_avg_price">Просечна цена</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s више од најјефтинијег</string>
+    <string name="result_earlier">Раније</string>
+    <string name="result_cheaper">Јефтиније</string>
     <string name="result_cost_breakdown">Преглед трошкова</string>
     <string name="cd_collapse">Скупи</string>
     <string name="cd_expand">Рашири</string>

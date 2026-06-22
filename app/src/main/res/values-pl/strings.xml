@@ -18,6 +18,9 @@
     <string name="result_total_cost">Koszt całkowity</string>
     <string name="result_avg_price">Śr. cena</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s więcej niż najtańsze</string>
+    <string name="result_earlier">Wcześniej</string>
+    <string name="result_cheaper">Taniej</string>
     <string name="result_cost_breakdown">Podział kosztów</string>
     <string name="cd_collapse">Zwiń</string>
     <string name="cd_expand">Rozwiń</string>

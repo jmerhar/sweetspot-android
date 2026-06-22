@@ -42,6 +42,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Data source preferences** — reorder, enable, or disable price data sources per zone in Settings
 - **25 languages** — per-app language setting with localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
+- **Earlier / Cheaper navigation** — step to a sooner window when the cheapest time is inconvenient, and see exactly how much more it costs than the cheapest; step back toward the cheapest at any time
 - **Wear OS companion** — tap an appliance on your watch to see cheapest start/end times
 - **Automatic appliance sync** — appliances and zone settings sync from phone to watch via Wearable Data Layer
 - Material 3 with dynamic colour theming and dark mode
@@ -95,7 +96,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-310 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/subscription logic, and ViewModel state management (via Robolectric).
+323 unit tests cover the sliding window algorithm (including 15-minute slot support and earlier-window alternatives), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/subscription logic, and ViewModel state management (via Robolectric).
 
 ## License
 

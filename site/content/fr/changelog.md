@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22 juin 2026" >}}
+- Nouveaux boutons « Plus tôt » et « Moins cher » pour choisir un créneau plus tôt quand le moins cher ne convient pas, et voir le surcoût.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 avril 2026" >}}
 - Dépendances mises à jour pour une meilleure stabilité
 {{< /changelog >}}

@@ -23,14 +23,22 @@ import today.sweetspot.util.shortTimeFormatter
 import java.time.ZonedDateTime
 
 /**
- * Summary cards showing the cheapest window's start time, end time, and estimated cost.
+ * Summary cards showing the window's start time, end time, and estimated cost.
  * Times include a relative label (e.g. "now" or "in 2h 30m") that stays current because
  * the ViewModel periodically recalculates the result.
  *
+ * @param result The currently-displayed window (may be an earlier alternative, not the cheapest).
  * @param now The effective current time, which may be overridden by a developer option.
+ * @param costDelta Extra cost versus the cheapest window, in EUR. When non-null and positive it is
+ *        shown beneath the total cost. `null` (or zero) when the cheapest window is displayed.
  */
 @Composable
-fun ResultSummary(result: WindowResult, now: ZonedDateTime, modifier: Modifier = Modifier) {
+fun ResultSummary(
+    result: WindowResult,
+    now: ZonedDateTime,
+    modifier: Modifier = Modifier,
+    costDelta: Double? = null
+) {
     val resources = LocalContext.current.resources
 
     Column(
@@ -61,6 +69,9 @@ fun ResultSummary(result: WindowResult, now: ZonedDateTime, modifier: Modifier =
             SummaryCard(
                 label = stringResource(R.string.result_total_cost),
                 value = formatPrice(result.totalCost, 4),
+                subtitle = costDelta?.takeIf { it > 0 }?.let {
+                    stringResource(R.string.result_cost_above_cheapest, formatPrice(it, 4))
+                },
                 modifier = Modifier.weight(1f)
             )
             SummaryCard(

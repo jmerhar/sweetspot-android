@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22. lipnja 2026." >}}
+- Nove tipke „Ranije“ i „Jeftinije“ omogućuju odabir ranijeg termina kada najjeftiniji nije zgodan i pokazuju koliko više košta.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. travnja 2026." >}}
 - Ažurirane ovisnosti za poboljšanu stabilnost
 {{< /changelog >}}

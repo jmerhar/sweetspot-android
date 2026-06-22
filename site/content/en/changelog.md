@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="5.4" date="June 22, 2026" >}}
+- New Earlier and Cheaper buttons let you choose a sooner run time when the cheapest window isn't convenient, and show exactly how much more it costs.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="April 9, 2026" >}}
 - Updated dependencies for improved stability
 {{< /changelog >}}

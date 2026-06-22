@@ -18,6 +18,9 @@
     <string name="result_total_cost">Συνολικό κόστος</string>
     <string name="result_avg_price">Μέση τιμή</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s πάνω από το φθηνότερο</string>
+    <string name="result_earlier">Νωρίτερα</string>
+    <string name="result_cheaper">Φθηνότερα</string>
     <string name="result_cost_breakdown">Ανάλυση κόστους</string>
     <string name="cd_collapse">Σύμπτυξη</string>
     <string name="cd_expand">Ανάπτυξη</string>

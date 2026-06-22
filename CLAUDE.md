@@ -87,7 +87,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (310 tests)
+./gradlew test                   # Run all unit tests (323 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -108,12 +108,12 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/api/AwattarApiParseTest` — aWATTar JSON parsing, EUR/MWh→kWh conversion, timestamp conversion, duration computation (9 tests, in shared)
 - `data/api/AwattarApiMalformedTest` — malformed/invalid JSON handling for aWATTar (6 tests, in shared)
 - `data/api/AwattarApiDstTest` — DST transition parsing with Europe/Vienna: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests (30 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives (36 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (12 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
 - `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options (77 tests, Robolectric, in app)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options, earlier/cheaper window navigation (84 tests, Robolectric, in app)
 - `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing, locked state (18 tests, Robolectric, in wear)
 - `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
@@ -145,7 +145,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (310 tests)
+- JUnit 4 + Robolectric for unit tests (323 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - No frameworks, no DI, no database — SharedPreferences + file cache only
@@ -204,7 +204,7 @@ The data layer is organised into four subpackages under `data/`:
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
 - **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to drawable resource IDs. Contains 30 curated icons (22 household appliances + 8 generic) using Material Symbols (Outlined, 24px) as XML vector drawables in `shared/src/main/res/drawable/`. `applianceIconFor(id)` resolves an ID to its drawable resource.
-- **`util/CheapestWindowFinder`** — Pure function implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, and `buildBreakdown`.
+- **`util/CheapestWindowFinder`** — Pure functions implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, `buildBreakdown`, and `buildWindowAt`. `findCheapestWindow` returns the single cheapest window; `findWindowAlternatives` returns the "earlier path" — the cheapest window first, then each successively-cheapest window that starts earlier, down to the earliest (start clamped to now). Cost increases monotonically along the list, so the results screen can step "earlier" (costlier, sooner) and "cheaper" (back toward the cheapest) by moving an offset.
 - **`util/FormatUtils`** — `formatDuration()` and `shortTimeFormatter` shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.
 
@@ -228,6 +228,7 @@ The data layer is organised into four subpackages under `data/`:
 State-based in `MainActivity`, no navigation library:
 - `UiState.showSettings` toggles between `SweetSpotScreen` and `SettingsScreen`
 - `UiState.result != null` switches `SweetSpotScreen` from the form view to a dedicated results screen (separate `Scaffold` with back arrow and result label in the top bar)
+- The results screen shows **Earlier** / **Cheaper** buttons that walk the `findWindowAlternatives` list: "Earlier" moves to a sooner (costlier) window, "Cheaper" steps back toward the cheapest. "Cheaper" is disabled at the cheapest window, "Earlier" at the earliest. When a non-cheapest window is shown, the total-cost card displays how much more it costs than the cheapest (`windowOffset` / `windowAlternatives` in `UiState`).
 - System back and the top-bar back arrow both call `onClearResult()` to return to the form
 
 ### Main Screen

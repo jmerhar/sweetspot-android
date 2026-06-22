@@ -438,4 +438,69 @@ class CheapestWindowFinderTest {
         val prices = prices15mAt(10, 0, 0.10, 0.20, 0.30)
         assertNull(findCheapestWindow(prices, 1.0, earlyNow))
     }
+
+    // --- findWindowAlternatives (earlier-path navigation) ---
+
+    @Test
+    fun `alternatives returns empty list when not enough data`() {
+        assertTrue(findWindowAlternatives(emptyList(), 1.0, earlyNow).isEmpty())
+        val prices = pricesAt(10, 0.10, 0.20) // 2h
+        assertTrue(findWindowAlternatives(prices, 3.0, earlyNow).isEmpty())
+    }
+
+    @Test
+    fun `alternatives first entry equals findCheapestWindow`() {
+        val prices = pricesAt(8, 0.30, 0.10, 0.20, 0.05, 0.15)
+        val cheapest = findCheapestWindow(prices, 1.0, earlyNow)!!
+        val alts = findWindowAlternatives(prices, 1.0, earlyNow)
+
+        assertEquals(cheapest.startTime, alts.first().startTime)
+        assertEquals(cheapest.totalCost, alts.first().totalCost, 0.0001)
+    }
+
+    @Test
+    fun `alternatives step to cheapest window that starts earlier`() {
+        // Hours 8..12: 0.30, 0.10, 0.20, 0.05, 0.15
+        // Cheapest 1h window is hour 11 (0.05). Earlier than that: cheapest is hour 9 (0.10).
+        // Earlier than hour 9: only hour 8 (0.30).
+        val prices = pricesAt(8, 0.30, 0.10, 0.20, 0.05, 0.15)
+        val alts = findWindowAlternatives(prices, 1.0, earlyNow)
+
+        assertEquals(3, alts.size)
+        assertEquals(11, alts[0].startTime.hour) // cheapest
+        assertEquals(9, alts[1].startTime.hour)  // next cheapest, earlier
+        assertEquals(8, alts[2].startTime.hour)  // earliest
+    }
+
+    @Test
+    fun `alternatives have strictly earlier starts and strictly increasing cost`() {
+        val prices = pricesAt(8, 0.30, 0.10, 0.20, 0.05, 0.15)
+        val alts = findWindowAlternatives(prices, 1.0, earlyNow)
+
+        for (i in 1 until alts.size) {
+            assertTrue("start should decrease", alts[i].startTime.isBefore(alts[i - 1].startTime))
+            assertTrue("cost should increase", alts[i].totalCost > alts[i - 1].totalCost)
+        }
+    }
+
+    @Test
+    fun `alternatives is singleton when cheapest window is the earliest`() {
+        // Cheapest is the first slot, so nothing starts earlier.
+        val prices = pricesAt(10, 0.05, 0.10, 0.20, 0.30)
+        val alts = findWindowAlternatives(prices, 1.0, earlyNow)
+
+        assertEquals(1, alts.size)
+        assertEquals(10, alts[0].startTime.hour)
+    }
+
+    @Test
+    fun `alternatives earliest entry is clamped to now`() {
+        // now sits inside the first slot (10:30). The earliest alternative's start clamps to now.
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
+        val prices = pricesAt(10, 0.30, 0.20, 0.05) // cheapest is hour 12
+        val alts = findWindowAlternatives(prices, 1.0, now)
+
+        val earliest = alts.last()
+        assertEquals(now, earliest.startTime)
+    }
 }

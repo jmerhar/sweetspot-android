@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="5.4" date="22 juni 2026" >}}
+- Nieuwe knoppen 'Eerder' en 'Goedkoper' om een eerder tijdstip te kiezen wanneer het goedkoopste venster niet uitkomt, en te zien hoeveel duurder het is.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 april 2026" >}}
 - Afhankelijkheden bijgewerkt voor verbeterde stabiliteit
 {{< /changelog >}}

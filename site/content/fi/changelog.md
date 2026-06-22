@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="5.4" date="22. kesäkuuta 2026" >}}
+- Uudet painikkeet ”Aiemmin” ja ”Halvemmalla”: valitse aikaisempi ajankohta, kun halvin hetki ei sovi, ja näe kuinka paljon enemmän se maksaa.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. huhtikuuta 2026" >}}
 - Riippuvuudet päivitetty vakauden parantamiseksi
 {{< /changelog >}}

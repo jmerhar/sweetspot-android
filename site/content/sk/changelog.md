@@ -3,6 +3,10 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22. júna 2026" >}}
+- Nové tlačidlá „Skôr“ a „Lacnejšie“ umožňujú zvoliť skorší čas, keď najlacnejšie okno nevyhovuje, a ukážu, o koľko je to drahšie.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. apríla 2026" >}}
 - Aktualizované závislosti pre zlepšenú stabilitu
 {{< /changelog >}}

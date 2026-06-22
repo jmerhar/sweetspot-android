@@ -3,6 +3,10 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="5.4" date="22 de junio de 2026" >}}
+- Nuevos botones «Antes» y «Más barato» para elegir una hora más temprana cuando la más barata no te conviene, y ver cuánto más cuesta.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9 de abril de 2026" >}}
 - Dependencias actualizadas para mejorar la estabilidad
 {{< /changelog >}}

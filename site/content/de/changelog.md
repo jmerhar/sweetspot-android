@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="5.4" date="22. Juni 2026" >}}
+- Neue Schaltflächen „Früher“ und „Günstiger“: Wähle eine frühere Startzeit, wenn der günstigste Zeitpunkt unpassend ist, und sieh, wie viel mehr es kostet.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="9. April 2026" >}}
 - Abhängigkeiten für verbesserte Stabilität aktualisiert
 {{< /changelog >}}

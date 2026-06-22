@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="5.4" date="2026. június 22." >}}
+- Új „Korábban“ és „Olcsóbban“ gombok: válassz korábbi időpontot, ha a legolcsóbb nem alkalmas, és lásd, mennyivel kerül többe.
+{{< /changelog >}}
+
 {{< changelog version="5.3.2" date="2026. április 9." >}}
 - Függőségek frissítve a jobb stabilitás érdekében
 {{< /changelog >}}

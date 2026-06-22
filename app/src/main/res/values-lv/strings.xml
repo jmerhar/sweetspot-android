@@ -18,6 +18,9 @@
     <string name="result_total_cost">Kopējās izmaksas</string>
     <string name="result_avg_price">Vid. cena</string>
     <string name="result_per_kwh">/kWh</string>
+    <string name="result_cost_above_cheapest">%1$s dārgāk par lētāko</string>
+    <string name="result_earlier">Agrāk</string>
+    <string name="result_cheaper">Lētāk</string>
     <string name="result_cost_breakdown">Izmaksu sadalījums</string>
     <string name="cd_collapse">Savērt</string>
     <string name="cd_expand">Izvērst</string>

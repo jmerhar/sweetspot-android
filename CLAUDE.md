@@ -87,7 +87,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (304 tests)
+./gradlew test                   # Run all unit tests (310 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -113,7 +113,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (12 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
 - `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options (71 tests, Robolectric, in app)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options (77 tests, Robolectric, in app)
 - `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing, locked state (18 tests, Robolectric, in wear)
 - `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
@@ -145,7 +145,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (304 tests)
+- JUnit 4 + Robolectric for unit tests (310 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - No frameworks, no DI, no database — SharedPreferences + file cache only

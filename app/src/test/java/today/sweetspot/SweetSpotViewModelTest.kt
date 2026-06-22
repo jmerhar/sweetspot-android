@@ -841,6 +841,69 @@ class SweetSpotViewModelTest {
     }
 
     @Test
+    fun `initial state has dev unlock disabled`() {
+        assertFalse(defaultViewModel().uiState.value.isDevUnlocked)
+    }
+
+    @Test
+    fun `onDevUnlockChanged true enables subscription bypass`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevUnlockChanged(true)
+        assertTrue(viewModel.uiState.value.isDevUnlocked)
+    }
+
+    @Test
+    fun `onDevUnlockChanged false disables subscription bypass`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevUnlockChanged(true)
+        viewModel.onDevUnlockChanged(false)
+        assertFalse(viewModel.uiState.value.isDevUnlocked)
+    }
+
+    @Test
+    fun `onDevUnlockChanged persists across ViewModel creation`() {
+        val viewModel1 = defaultViewModel()
+        viewModel1.onDevUnlockChanged(true)
+
+        val viewModel2 = SweetSpotViewModel(app)
+        assertTrue(viewModel2.uiState.value.isDevUnlocked)
+    }
+
+    @Test
+    fun `dev unlock overrides expired trial`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fifteenDaysAgo = System.currentTimeMillis() - (15 * 24 * 60 * 60 * 1000L)
+        prefs.edit()
+            .putLong("first_launch_ms", fifteenDaysAgo)
+            .putBoolean("unlocked", false)
+            .putBoolean("dev_unlock", true)
+            .commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        val state = viewModel.uiState.value
+        assertTrue(state.isDevUnlocked)
+        assertFalse(state.isTrialExpired)
+        assertFalse(state.showPaywall)
+    }
+
+    @Test
+    fun `disabling dev unlock restores expired trial state`() {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fifteenDaysAgo = System.currentTimeMillis() - (15 * 24 * 60 * 60 * 1000L)
+        prefs.edit()
+            .putLong("first_launch_ms", fifteenDaysAgo)
+            .putBoolean("unlocked", false)
+            .putBoolean("dev_unlock", true)
+            .commit()
+
+        val viewModel = SweetSpotViewModel(app)
+        assertFalse(viewModel.uiState.value.isTrialExpired)
+
+        viewModel.onDevUnlockChanged(false)
+        assertTrue(viewModel.uiState.value.isTrialExpired)
+    }
+
+    @Test
     fun `onClearCache bypasses cooldown when cooldown is disabled`() {
         val cache = FakeCache(cooldownRemaining = 120_000L)
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)

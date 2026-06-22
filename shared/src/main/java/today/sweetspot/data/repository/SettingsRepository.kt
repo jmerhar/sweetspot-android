@@ -36,6 +36,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_FIRST_LAUNCH_MS = "first_launch_ms"
         const val KEY_UNLOCKED = "unlocked"
         const val KEY_DEV_OPTIONS = "dev_options"
+        const val KEY_DEV_UNLOCK = "dev_unlock"
         const val KEY_COOLDOWN_DISABLED = "cooldown_disabled"
         const val KEY_TIME_OVERRIDE = "time_override"
         const val KEY_USE_PRODUCTION_LOGO = "use_production_logo"
@@ -299,9 +300,12 @@ class SettingsRepository(private val context: Context) {
     /**
      * Returns `true` if the free trial has expired and the app has not been unlocked.
      *
-     * The trial lasts [TRIAL_DAYS] days from first launch.
+     * The trial lasts [TRIAL_DAYS] days from first launch. Returns `false` when the
+     * developer-only subscription bypass ([isDevUnlocked]) is enabled, so a developer
+     * can use the app on their own device without an active subscription.
      */
     fun isTrialExpired(): Boolean {
+        if (isDevUnlocked()) return false
         return trialDaysRemaining() <= 0 && !isUnlocked()
     }
 
@@ -329,6 +333,24 @@ class SettingsRepository(private val context: Context) {
     /** Persistently enables hidden developer options. */
     fun setDevOptionsEnabled() {
         prefs.edit { putBoolean(KEY_DEV_OPTIONS, true) }
+    }
+
+    /**
+     * Returns whether the developer-only subscription bypass is enabled.
+     *
+     * When `true`, [isTrialExpired] always returns `false`, so the paywall never
+     * blocks the app. Intended for use on the developer's own device during the
+     * testing phase, where Play test subscriptions expire every ~30 minutes.
+     */
+    fun isDevUnlocked(): Boolean = prefs.getBoolean(KEY_DEV_UNLOCK, false)
+
+    /**
+     * Enables or disables the developer-only subscription bypass.
+     *
+     * @param unlocked `true` to bypass the paywall locally, `false` to restore normal trial/paywall behaviour.
+     */
+    fun setDevUnlocked(unlocked: Boolean) {
+        prefs.edit { putBoolean(KEY_DEV_UNLOCK, unlocked) }
     }
 
     /** Returns whether the API fetch cooldown is disabled (developer option). */

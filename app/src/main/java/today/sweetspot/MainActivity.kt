@@ -91,6 +91,8 @@ class MainActivity : AppCompatActivity() {
                             onDevOptionsUnlocked = vm::onDevOptionsUnlocked,
                             onDevResetUnlock = vm::onDevResetUnlock,
                             onDevCooldownDisabledChanged = vm::onDevCooldownDisabledChanged,
+                            isDevUnlocked = state.isDevUnlocked,
+                            onDevUnlockChanged = vm::onDevUnlockChanged,
                             onDevResetStatsTimer = vm::onDevResetStatsTimer,
                             timeOverrideMs = state.timeOverrideMs,
                             onDevTimeOverrideChanged = vm::onDevTimeOverrideChanged,

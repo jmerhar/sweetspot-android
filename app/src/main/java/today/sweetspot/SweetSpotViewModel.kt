@@ -92,6 +92,7 @@ sealed interface AppError {
  * @property productPrice Localized price string for the unlock purchase (e.g. "€2.99"), or `null` if not loaded.
  * @property showThankYou Whether the thank-you dialog should be shown after a successful purchase.
  * @property devOptionsEnabled Whether hidden developer options are visible.
+ * @property isDevUnlocked Whether the developer-only subscription bypass is enabled.
  * @property isCooldownDisabled Whether the API fetch cooldown is bypassed (developer option).
  * @property timeOverrideMs Developer time override as epoch millis, or `null` when using real time.
  * @property now The current effective time, reflecting any active time override. Used by the UI for relative time display.
@@ -125,6 +126,7 @@ data class UiState(
     val productPrice: String? = null,
     val showThankYou: Boolean = false,
     val devOptionsEnabled: Boolean = false,
+    val isDevUnlocked: Boolean = false,
     val isCooldownDisabled: Boolean = false,
     val timeOverrideMs: Long? = null,
     val now: ZonedDateTime = ZonedDateTime.now(),
@@ -195,6 +197,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             trialDaysRemaining = settingsRepository.trialDaysRemaining(),
             showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired(),
             devOptionsEnabled = settingsRepository.isDevOptionsEnabled(),
+            isDevUnlocked = settingsRepository.isDevUnlocked(),
             isCooldownDisabled = settingsRepository.isCooldownDisabled(),
             timeOverrideMs = settingsRepository.getTimeOverrideMs(),
             now = currentNow(settingsRepository.getTimeZoneId()),
@@ -928,6 +931,28 @@ class SweetSpotViewModel @JvmOverloads constructor(
             it.copy(
                 isUnlocked = false,
                 showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired()
+            )
+        }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Enables or disables the developer-only subscription bypass.
+     *
+     * When enabled, the paywall is suppressed on this device regardless of trial
+     * or subscription state. Intended for the developer's own phone during the
+     * testing phase, where Play test subscriptions expire every ~30 minutes.
+     * Also propagates to the watch via the Data Layer so the wear app unlocks too.
+     *
+     * @param enabled `true` to bypass the paywall locally, `false` to restore normal behaviour.
+     */
+    fun onDevUnlockChanged(enabled: Boolean) {
+        settingsRepository.setDevUnlocked(enabled)
+        _uiState.update {
+            it.copy(
+                isDevUnlocked = enabled,
+                isTrialExpired = settingsRepository.isTrialExpired(),
+                showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !settingsRepository.isUnlocked()
             )
         }
         syncSettingsToWear()

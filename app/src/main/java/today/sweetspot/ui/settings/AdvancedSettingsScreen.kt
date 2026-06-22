@@ -47,6 +47,8 @@ import java.time.ZoneId
  * @param devOptionsEnabled Whether developer options are unlocked.
  * @param isCooldownDisabled Whether the API fetch cooldown is currently bypassed.
  * @param onDevCooldownDisabledChanged Called when the cooldown toggle changes.
+ * @param isDevUnlocked Whether the developer-only subscription bypass is enabled.
+ * @param onDevUnlockChanged Called when the subscription bypass toggle changes.
  * @param onDevResetUnlock Called when the developer taps "Reset unlock state".
  * @param onDevResetStatsTimer Called when the developer taps "Reset stats timer".
  * @param timeOverrideMs Current time override as epoch millis, or `null` if using real time.
@@ -69,6 +71,8 @@ internal fun AdvancedSettingsScreen(
     devOptionsEnabled: Boolean,
     isCooldownDisabled: Boolean,
     onDevCooldownDisabledChanged: (Boolean) -> Unit,
+    isDevUnlocked: Boolean,
+    onDevUnlockChanged: (Boolean) -> Unit,
     onDevResetUnlock: () -> Unit,
     onDevResetStatsTimer: () -> Unit,
     timeOverrideMs: Long?,
@@ -149,6 +153,8 @@ internal fun AdvancedSettingsScreen(
                 DeveloperSection(
                     isCooldownDisabled = isCooldownDisabled,
                     onCooldownDisabledChanged = onDevCooldownDisabledChanged,
+                    isDevUnlocked = isDevUnlocked,
+                    onDevUnlockChanged = onDevUnlockChanged,
                     onResetUnlock = {
                         onDevResetUnlock()
                         coroutineScope.launch { snackbarHostState.showSnackbar("Unlock state reset") }

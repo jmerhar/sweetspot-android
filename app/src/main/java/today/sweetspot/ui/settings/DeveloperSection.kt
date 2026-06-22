@@ -41,6 +41,8 @@ import today.sweetspot.BuildConfig
  *
  * @param isCooldownDisabled Whether the API fetch cooldown is currently bypassed.
  * @param onCooldownDisabledChanged Called when the cooldown toggle changes.
+ * @param isDevUnlocked Whether the developer-only subscription bypass is enabled.
+ * @param onDevUnlockChanged Called when the subscription bypass toggle changes.
  * @param onResetUnlock Called when the developer taps "Reset unlock state". Should return a confirmation message.
  * @param onResetStatsTimer Called when the developer taps "Reset stats timer". Should return a confirmation message.
  * @param timeOverrideMs Current time override as epoch millis, or `null` if using real time.
@@ -54,6 +56,8 @@ import today.sweetspot.BuildConfig
 internal fun DeveloperSection(
     isCooldownDisabled: Boolean,
     onCooldownDisabledChanged: (Boolean) -> Unit,
+    isDevUnlocked: Boolean,
+    onDevUnlockChanged: (Boolean) -> Unit,
     onResetUnlock: () -> Unit,
     onResetStatsTimer: () -> Unit,
     timeOverrideMs: Long?,
@@ -68,6 +72,30 @@ internal fun DeveloperSection(
         color = MaterialTheme.colorScheme.error,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
     )
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = { onDevUnlockChanged(!isDevUnlocked) })
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = "Bypass subscription",
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = "Disable the paywall on this device (and the watch)",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Switch(
+            checked = isDevUnlocked,
+            onCheckedChange = onDevUnlockChanged
+        )
+    }
 
     DevActionRow(
         label = "Reset unlock state",

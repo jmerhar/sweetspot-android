@@ -95,7 +95,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-304 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/subscription logic, and ViewModel state management (via Robolectric).
+310 unit tests cover the sliding window algorithm (including 15-minute slot support), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/subscription logic, and ViewModel state management (via Robolectric).
 
 ## License
 

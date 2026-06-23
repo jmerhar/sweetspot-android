@@ -138,4 +138,28 @@
         <item quantity="many">Teste: %d dias restantes</item>
         <item quantity="other">Teste: %d dias restantes</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Carregamento de VE</string>
+    <string name="ev_add_vehicle">Adicionar um veículo</string>
+    <string name="ev_search_hint">Pesquisar marca ou modelo</string>
+    <string name="ev_custom_hint">Não está na lista? Introduza os detalhes abaixo para adicionar um veículo personalizado.</string>
+    <string name="ev_vehicle_specs">Bateria de %1$s kWh · %2$s kW máx. AC</string>
+    <string name="ev_battery_label">Capacidade da bateria</string>
+    <string name="ev_power_label">Potência máxima de carregamento AC</string>
+    <string name="ev_home_charger">Carregador doméstico</string>
+    <string name="ev_home_charger_description">A potência da sua wallbox ou carregador. O carregamento usa o valor mais baixo — este ou o máximo do carro.</string>
+    <string name="ev_charger_custom">Personalizado</string>
+    <string name="ev_default_target">Carga-alvo predefinida: %d%%</string>
+    <string name="ev_current_soc">Carga atual: %d%%</string>
+    <string name="ev_target_soc">Carga-alvo: %d%%</string>
+    <string name="ev_deadline_toggle">Pronto até</string>
+    <string name="ev_deadline_hint">Pronto até %s</string>
+    <string name="ev_charging_estimate">Tempo de carregamento: %1$s a %2$s kW</string>
+    <string name="dialog_add_vehicle">Adicionar veículo</string>
+    <string name="dialog_edit_vehicle">Editar veículo</string>
+    <string name="ev_attribution">Dados do veículo: Open EV Data</string>
+    <string name="ev_error_invalid_soc">A carga-alvo tem de ser superior à carga atual.</string>
+    <string name="ev_error_invalid_charger">Defina uma potência de carregador superior a zero.</string>
+    <string name="ev_error_deadline_unreachable">O carregamento não consegue terminar até ao prazo definido. Experimente uma potência de carregador mais alta, uma carga atual mais baixa ou uma hora mais tardia.</string>
 </resources>

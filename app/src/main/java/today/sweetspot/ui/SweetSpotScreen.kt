@@ -38,7 +38,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -56,6 +58,8 @@ import today.sweetspot.ui.components.DurationInput
 import today.sweetspot.ui.components.ErrorBox
 import today.sweetspot.ui.components.PriceBarChart
 import today.sweetspot.ui.components.ResultSummary
+import today.sweetspot.ui.components.SocDialog
+import today.sweetspot.ui.components.formatHhMm
 import today.sweetspot.util.formatDuration
 
 /**
@@ -129,6 +133,29 @@ private fun FormScreen(
     modifier: Modifier = Modifier
 ) {
     val state by viewModel.uiState.collectAsState()
+    var socDialogFor by remember { mutableStateOf<today.sweetspot.model.Appliance?>(null) }
+
+    socDialogFor?.let { appliance ->
+        val ev = appliance.ev
+        if (ev != null) {
+            SocDialog(
+                vehicleName = appliance.name,
+                batteryKwh = ev.batteryKwh,
+                acMaxPowerKw = ev.acMaxPowerKw,
+                homeChargerKw = state.evHomeChargerKw,
+                initialCurrentSoc = state.evLastCurrentSoc,
+                initialTargetSoc = state.evDefaultTargetSoc,
+                deadlineHint = if (state.deadlineEnabled) {
+                    stringResource(R.string.ev_deadline_hint, formatHhMm(state.deadlineHour, state.deadlineMinute))
+                } else null,
+                onConfirm = { current, target ->
+                    socDialogFor = null
+                    viewModel.onEvApplianceFind(appliance, current, target)
+                },
+                onDismiss = { socDialogFor = null }
+            )
+        }
+    }
 
     Scaffold(
         modifier = modifier,
@@ -185,9 +212,17 @@ private fun FormScreen(
                 onFind = viewModel::onFindClicked,
                 onQuickDuration = viewModel::onQuickDuration,
                 appliances = state.appliances,
-                onApplianceTap = viewModel::onApplianceDuration,
+                onApplianceTap = { appliance ->
+                    if (appliance.isEv) socDialogFor = appliance
+                    else viewModel.onApplianceDuration(appliance)
+                },
                 onAddAppliancesTap = viewModel::onShowSettings,
-                isLoading = state.isLoading
+                isLoading = state.isLoading,
+                deadlineEnabled = state.deadlineEnabled,
+                deadlineHour = state.deadlineHour,
+                deadlineMinute = state.deadlineMinute,
+                onDeadlineEnabledChange = viewModel::onDeadlineEnabledChanged,
+                onDeadlineTimeChange = viewModel::onDeadlineChanged
             )
 
             if (state.isLoading) {

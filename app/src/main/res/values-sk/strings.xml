@@ -142,4 +142,28 @@
         <item quantity="many">Skúšobné obdobie: ešte %d dňa</item>
         <item quantity="other">Skúšobné obdobie: ešte %d dní</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Nabíjanie elektromobilu</string>
+    <string name="ev_add_vehicle">Pridať vozidlo</string>
+    <string name="ev_search_hint">Hľadať značku alebo model</string>
+    <string name="ev_custom_hint">Nie je v zozname? Zadajte údaje nižšie a pridajte vlastné vozidlo.</string>
+    <string name="ev_vehicle_specs">batéria %1$s kWh · max. %2$s kW AC</string>
+    <string name="ev_battery_label">Kapacita batérie</string>
+    <string name="ev_power_label">Max. nabíjací výkon AC</string>
+    <string name="ev_home_charger">Domáca nabíjačka</string>
+    <string name="ev_home_charger_description">Výkon vašej nástennej nabíjačky alebo wallboxu. Nabíja sa nižšou hodnotou — touto alebo maximom vozidla.</string>
+    <string name="ev_charger_custom">Vlastný</string>
+    <string name="ev_default_target">Predvolený cieľový stav nabitia: %d%%</string>
+    <string name="ev_current_soc">Aktuálne nabitie: %d%%</string>
+    <string name="ev_target_soc">Cieľové nabitie: %d%%</string>
+    <string name="ev_deadline_toggle">Pripravené do</string>
+    <string name="ev_deadline_hint">Pripravené do %s</string>
+    <string name="ev_charging_estimate">Čas nabíjania: %1$s pri %2$s kW</string>
+    <string name="dialog_add_vehicle">Pridať vozidlo</string>
+    <string name="dialog_edit_vehicle">Upraviť vozidlo</string>
+    <string name="ev_attribution">Údaje o vozidlách: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Cieľové nabitie musí byť vyššie ako aktuálne nabitie.</string>
+    <string name="ev_error_invalid_charger">Nastavte nabíjací výkon väčší ako nula.</string>
+    <string name="ev_error_deadline_unreachable">Nabíjanie sa nestihne dokončiť do vášho termínu. Skúste vyšší nabíjací výkon, nižšie aktuálne nabitie alebo neskorší čas.</string>
 </resources>

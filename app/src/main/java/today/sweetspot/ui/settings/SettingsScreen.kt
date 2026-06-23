@@ -66,6 +66,12 @@ fun SettingsScreen(
     onAddAppliance: (name: String, durationHours: Int, durationMinutes: Int, icon: String) -> Unit,
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
+    evHomeChargerKw: Double,
+    evDefaultTargetSoc: Int,
+    onEvHomeChargerChanged: (Double) -> Unit,
+    onEvDefaultTargetChanged: (Int) -> Unit,
+    searchVehicles: (String) -> List<today.sweetspot.model.EvVehicle>,
+    onAddVehicle: (name: String, batteryKwh: Double, acPowerKw: Double) -> Unit,
     countryCode: String,
     priceZone: PriceZone?,
     countries: List<Country>,
@@ -107,6 +113,8 @@ fun SettingsScreen(
     var showZonePicker by rememberSaveable { mutableStateOf(false) }
     var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
+    var editingVehicle by remember { mutableStateOf<Appliance?>(null) }
+    var showAddVehicleDialog by rememberSaveable { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
@@ -232,6 +240,37 @@ fun SettingsScreen(
         )
     }
 
+    if (showAddVehicleDialog) {
+        VehicleDialog(
+            vehicle = null,
+            searchVehicles = searchVehicles,
+            onSave = { name, batteryKwh, acPowerKw ->
+                onAddVehicle(name, batteryKwh, acPowerKw)
+                showAddVehicleDialog = false
+            },
+            onDelete = null,
+            onDismiss = { showAddVehicleDialog = false }
+        )
+    }
+
+    editingVehicle?.let { vehicle ->
+        VehicleDialog(
+            vehicle = vehicle,
+            searchVehicles = searchVehicles,
+            onSave = { name, batteryKwh, acPowerKw ->
+                onUpdateAppliance(
+                    vehicle.copy(name = name, ev = today.sweetspot.model.EvSpec(batteryKwh, acPowerKw))
+                )
+                editingVehicle = null
+            },
+            onDelete = {
+                onDeleteAppliance(vehicle.id)
+                editingVehicle = null
+            },
+            onDismiss = { editingVehicle = null }
+        )
+    }
+
     val currentCountry = remember(countryCode) { Countries.findByCode(countryCode) }
     val isMultiZone = (currentCountry?.zones?.size ?: 0) > 1
 
@@ -273,9 +312,21 @@ fun SettingsScreen(
             }
 
             AppliancesSection(
-                appliances = appliances,
+                appliances = appliances.filterNot { it.isEv },
                 onApplianceClick = { editingAppliance = it },
                 onAddClick = { showAddDialog = true }
+            )
+
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+            EvSection(
+                vehicles = appliances.filter { it.isEv },
+                homeChargerKw = evHomeChargerKw,
+                defaultTargetSoc = evDefaultTargetSoc,
+                onHomeChargerChanged = onEvHomeChargerChanged,
+                onDefaultTargetChanged = onEvDefaultTargetChanged,
+                onVehicleClick = { editingVehicle = it },
+                onAddVehicleClick = { showAddVehicleDialog = true }
             )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))

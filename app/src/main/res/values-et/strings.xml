@@ -134,4 +134,28 @@
         <item quantity="one">Proovperiood: %d päev jäänud</item>
         <item quantity="other">Proovperiood: %d päeva jäänud</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Elektriauto laadimine</string>
+    <string name="ev_add_vehicle">Lisa sõiduk</string>
+    <string name="ev_search_hint">Otsi marki või mudelit</string>
+    <string name="ev_custom_hint">Ei leidnud nimekirjast? Sisesta andmed allpool, et lisada oma sõiduk.</string>
+    <string name="ev_vehicle_specs">%1$s kWh aku · %2$s kW maks AC</string>
+    <string name="ev_battery_label">Aku mahtuvus</string>
+    <string name="ev_power_label">Maksimaalne AC-laadimisvõimsus</string>
+    <string name="ev_home_charger">Kodulaadija</string>
+    <string name="ev_home_charger_description">Sinu seinalaadija või laadija väljundvõimsus. Laadimisel kasutatakse väiksemat väärtust — kas seda või auto maksimumi.</string>
+    <string name="ev_charger_custom">Kohandatud</string>
+    <string name="ev_default_target">Vaikimisi laetuse eesmärk: %d%%</string>
+    <string name="ev_current_soc">Praegune laetus: %d%%</string>
+    <string name="ev_target_soc">Laetuse eesmärk: %d%%</string>
+    <string name="ev_deadline_toggle">Valmis hiljemalt</string>
+    <string name="ev_deadline_hint">Valmis hiljemalt %s</string>
+    <string name="ev_charging_estimate">Laadimisaeg: %1$s võimsusel %2$s kW</string>
+    <string name="dialog_add_vehicle">Lisa sõiduk</string>
+    <string name="dialog_edit_vehicle">Muuda sõidukit</string>
+    <string name="ev_attribution">Sõidukiandmed: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Laetuse eesmärk peab olema suurem kui praegune laetus.</string>
+    <string name="ev_error_invalid_charger">Määra laadija võimsus, mis on suurem kui null.</string>
+    <string name="ev_error_deadline_unreachable">Laadimine ei jõua sinu tähtajaks valmis. Proovi suuremat laadija võimsust, madalamat praegust laetust või hilisemat aega.</string>
 </resources>

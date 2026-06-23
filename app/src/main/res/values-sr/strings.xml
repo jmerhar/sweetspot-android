@@ -138,4 +138,28 @@
         <item quantity="few">Пробни период: још %d дана</item>
         <item quantity="other">Пробни период: још %d дана</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Пуњење електричног возила</string>
+    <string name="ev_add_vehicle">Додај возило</string>
+    <string name="ev_search_hint">Претражи марку или модел</string>
+    <string name="ev_custom_hint">Нема га на списку? Унесите детаље испод да бисте додали прилагођено возило.</string>
+    <string name="ev_vehicle_specs">Батерија %1$s kWh · највише %2$s kW AC</string>
+    <string name="ev_battery_label">Капацитет батерије</string>
+    <string name="ev_power_label">Максимална снага AC пуњења</string>
+    <string name="ev_home_charger">Кућни пуњач</string>
+    <string name="ev_home_charger_description">Снага вашег зидног пуњача. За пуњење се користи мања вредност — ова или максимум возила.</string>
+    <string name="ev_charger_custom">Прилагођено</string>
+    <string name="ev_default_target">Подразумевана циљна напуњеност: %d%%</string>
+    <string name="ev_current_soc">Тренутна напуњеност: %d%%</string>
+    <string name="ev_target_soc">Циљна напуњеност: %d%%</string>
+    <string name="ev_deadline_toggle">Спремно до</string>
+    <string name="ev_deadline_hint">Спремно до %s</string>
+    <string name="ev_charging_estimate">Време пуњења: %1$s при %2$s kW</string>
+    <string name="dialog_add_vehicle">Додај возило</string>
+    <string name="dialog_edit_vehicle">Уреди возило</string>
+    <string name="ev_attribution">Подаци о возилу: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Циљна напуњеност мора бити већа од тренутне.</string>
+    <string name="ev_error_invalid_charger">Подесите снагу пуњача већу од нуле.</string>
+    <string name="ev_error_deadline_unreachable">Пуњење не може да се заврши до задатог рока. Покушајте са већом снагом пуњача, нижом тренутном напуњеношћу или каснијим временом.</string>
 </resources>

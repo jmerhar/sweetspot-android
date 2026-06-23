@@ -62,6 +62,11 @@ fun DurationInput(
     onApplianceTap: (Appliance) -> Unit,
     onAddAppliancesTap: () -> Unit,
     isLoading: Boolean,
+    deadlineEnabled: Boolean,
+    deadlineHour: Int,
+    deadlineMinute: Int,
+    onDeadlineEnabledChange: (Boolean) -> Unit,
+    onDeadlineTimeChange: (Int, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val resources = LocalContext.current.resources
@@ -142,6 +147,16 @@ fun DurationInput(
                 hours = hours,
                 minutes = minutes,
                 onChanged = onDurationChanged
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            DeadlineRow(
+                enabled = deadlineEnabled,
+                hour = deadlineHour,
+                minute = deadlineMinute,
+                onEnabledChange = onDeadlineEnabledChange,
+                onTimeChange = onDeadlineTimeChange
             )
 
             Spacer(modifier = Modifier.height(8.dp))

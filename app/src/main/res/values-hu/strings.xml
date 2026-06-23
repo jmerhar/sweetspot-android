@@ -134,4 +134,28 @@
         <item quantity="one">Próbaidőszak: %d nap van hátra</item>
         <item quantity="other">Próbaidőszak: %d nap van hátra</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Elektromos autó töltése</string>
+    <string name="ev_add_vehicle">Jármű hozzáadása</string>
+    <string name="ev_search_hint">Keress gyártóra vagy modellre</string>
+    <string name="ev_custom_hint">Nem találod a listában? Add meg az adatokat alább egyéni jármű hozzáadásához.</string>
+    <string name="ev_vehicle_specs">%1$s kWh akkumulátor · max. %2$s kW AC</string>
+    <string name="ev_battery_label">Akkumulátor kapacitása</string>
+    <string name="ev_power_label">Max. AC töltési teljesítmény</string>
+    <string name="ev_home_charger">Otthoni töltő</string>
+    <string name="ev_home_charger_description">A fali töltőd vagy töltőd teljesítménye. A töltés mindig az alacsonyabb értékkel történik — ezzel vagy az autó maximumával.</string>
+    <string name="ev_charger_custom">Egyéni</string>
+    <string name="ev_default_target">Alapértelmezett céltöltöttség: %d%%</string>
+    <string name="ev_current_soc">Jelenlegi töltöttség: %d%%</string>
+    <string name="ev_target_soc">Céltöltöttség: %d%%</string>
+    <string name="ev_deadline_toggle">Készen legyen ekkorra</string>
+    <string name="ev_deadline_hint">Készen ekkorra: %s</string>
+    <string name="ev_charging_estimate">Töltési idő: %1$s, %2$s kW mellett</string>
+    <string name="dialog_add_vehicle">Jármű hozzáadása</string>
+    <string name="dialog_edit_vehicle">Jármű szerkesztése</string>
+    <string name="ev_attribution">Járműadatok: Open EV Data</string>
+    <string name="ev_error_invalid_soc">A céltöltöttségnek magasabbnak kell lennie a jelenlegi töltöttségnél.</string>
+    <string name="ev_error_invalid_charger">Adj meg nullánál nagyobb töltési teljesítményt.</string>
+    <string name="ev_error_deadline_unreachable">A töltés nem fejeződik be a megadott határidőre. Próbálj nagyobb töltési teljesítményt, alacsonyabb jelenlegi töltöttséget vagy későbbi időpontot.</string>
 </resources>

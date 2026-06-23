@@ -28,6 +28,9 @@ class SettingsRepository(private val context: Context) {
         const val KEY_TIMEZONE_ID = "zone_id"
         const val KEY_APPLIANCES = "appliances"
         const val KEY_COUNTRY_CODE = "country_code"
+        const val KEY_EV_HOME_CHARGER_KW = "ev_home_charger_kw"
+        const val KEY_EV_DEFAULT_TARGET_SOC = "ev_default_target_soc"
+        const val KEY_EV_LAST_CURRENT_SOC = "ev_last_current_soc"
         const val KEY_PRICE_ZONE_ID = "price_zone_id"
         const val KEY_SOURCE_ORDER = "source_order"
         const val KEY_DISABLED_SOURCES = "disabled_sources"
@@ -44,6 +47,15 @@ class SettingsRepository(private val context: Context) {
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
+
+        /** Default home charger output in kW (a common 3-phase wall box). */
+        const val DEFAULT_HOME_CHARGER_KW = 11.0f
+
+        /** Default current state of charge (%) prefilled on the EV screen. */
+        const val DEFAULT_CURRENT_SOC = 20
+
+        /** Default target state of charge (%) prefilled on the EV screen. */
+        const val DEFAULT_TARGET_SOC = 80
 
         /** Lenient parser that ignores unknown fields for forward compatibility. */
         val json = Json { ignoreUnknownKeys = true }
@@ -243,6 +255,45 @@ class SettingsRepository(private val context: Context) {
      */
     fun setAppliances(appliances: List<Appliance>) {
         prefs.edit { putString(KEY_APPLIANCES, json.encodeToString(appliances)) }
+    }
+
+    // --- EV charging ---
+
+    /** Returns the home charger output in kW. Defaults to 11.0 (a common 3-phase wall box). */
+    fun getEvHomeChargerKw(): Double =
+        prefs.getFloat(KEY_EV_HOME_CHARGER_KW, DEFAULT_HOME_CHARGER_KW).toDouble()
+
+    /**
+     * Persists the home charger output.
+     *
+     * @param kw Charger output in kW.
+     */
+    fun setEvHomeChargerKw(kw: Double) {
+        prefs.edit { putFloat(KEY_EV_HOME_CHARGER_KW, kw.toFloat()) }
+    }
+
+    /** Returns the default target state of charge (0–100) used to prefill the charge prompt. Defaults to 80. */
+    fun getEvDefaultTargetSoc(): Int = prefs.getInt(KEY_EV_DEFAULT_TARGET_SOC, DEFAULT_TARGET_SOC)
+
+    /**
+     * Persists the default target state of charge.
+     *
+     * @param soc Target SoC (0–100).
+     */
+    fun setEvDefaultTargetSoc(soc: Int) {
+        prefs.edit { putInt(KEY_EV_DEFAULT_TARGET_SOC, soc) }
+    }
+
+    /** Returns the last-used current state of charge (0–100), used to prefill the prompt. Defaults to 20. */
+    fun getEvLastCurrentSoc(): Int = prefs.getInt(KEY_EV_LAST_CURRENT_SOC, DEFAULT_CURRENT_SOC)
+
+    /**
+     * Persists the last-used current state of charge.
+     *
+     * @param soc Current SoC (0–100).
+     */
+    fun setEvLastCurrentSoc(soc: Int) {
+        prefs.edit { putInt(KEY_EV_LAST_CURRENT_SOC, soc) }
     }
 
     // --- Stats ---

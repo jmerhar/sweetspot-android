@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats clean site site-validate screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats clean site site-validate ev-db screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -70,6 +70,9 @@ site: ## Start local Hugo server and open website in browser
 
 site-validate: ## Validate Hugo site: build, check pages, links, and assets
 	./bin/site-validate.sh
+
+ev-db: ## Rebuild the bundled EV vehicle database from upstream open data sources
+	./bin/build-ev-db.py
 
 ##@ Play Store
 

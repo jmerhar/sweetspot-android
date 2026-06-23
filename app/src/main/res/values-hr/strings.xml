@@ -138,4 +138,28 @@
         <item quantity="few">Probno razdoblje: još %d dana</item>
         <item quantity="other">Probno razdoblje: još %d dana</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Punjenje električnog vozila</string>
+    <string name="ev_add_vehicle">Dodaj vozilo</string>
+    <string name="ev_search_hint">Pretraži marku ili model</string>
+    <string name="ev_custom_hint">Nije na popisu? Unesite podatke u nastavku da biste dodali prilagođeno vozilo.</string>
+    <string name="ev_vehicle_specs">Baterija %1$s kWh · najveća AC snaga %2$s kW</string>
+    <string name="ev_battery_label">Kapacitet baterije</string>
+    <string name="ev_power_label">Najveća snaga AC punjenja</string>
+    <string name="ev_home_charger">Kućni punjač</string>
+    <string name="ev_home_charger_description">Izlazna snaga vašeg zidnog ili drugog punjača. Punjenje koristi nižu vrijednost — ovu ili najveću snagu vozila.</string>
+    <string name="ev_charger_custom">Prilagođeno</string>
+    <string name="ev_default_target">Zadana ciljana napunjenost: %d%%</string>
+    <string name="ev_current_soc">Trenutna napunjenost: %d%%</string>
+    <string name="ev_target_soc">Ciljana napunjenost: %d%%</string>
+    <string name="ev_deadline_toggle">Spremno do</string>
+    <string name="ev_deadline_hint">Spremno do %s</string>
+    <string name="ev_charging_estimate">Vrijeme punjenja: %1$s pri %2$s kW</string>
+    <string name="dialog_add_vehicle">Dodaj vozilo</string>
+    <string name="dialog_edit_vehicle">Uredi vozilo</string>
+    <string name="ev_attribution">Podaci o vozilima: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Ciljana napunjenost mora biti veća od trenutne napunjenosti.</string>
+    <string name="ev_error_invalid_charger">Postavite snagu punjača veću od nule.</string>
+    <string name="ev_error_deadline_unreachable">Punjenje se ne može završiti do zadanog roka. Pokušajte s većom snagom punjača, nižom trenutnom napunjenošću ili kasnijim vremenom.</string>
 </resources>

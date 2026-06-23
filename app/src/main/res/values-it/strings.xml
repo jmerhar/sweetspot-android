@@ -138,4 +138,28 @@
         <item quantity="many">Prova: %d giorni rimanenti</item>
         <item quantity="other">Prova: %d giorni rimanenti</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Ricarica auto elettrica</string>
+    <string name="ev_add_vehicle">Aggiungi un veicolo</string>
+    <string name="ev_search_hint">Cerca marca o modello</string>
+    <string name="ev_custom_hint">Non lo trovi? Inserisci i dati qui sotto per aggiungere un veicolo personalizzato.</string>
+    <string name="ev_vehicle_specs">Batteria da %1$s kWh · %2$s kW max in AC</string>
+    <string name="ev_battery_label">Capacità della batteria</string>
+    <string name="ev_power_label">Potenza massima di ricarica in AC</string>
+    <string name="ev_home_charger">Caricatore domestico</string>
+    <string name="ev_home_charger_description">La potenza della tua wallbox o del tuo caricatore. La ricarica usa il valore più basso tra questo e il massimo dell\'auto.</string>
+    <string name="ev_charger_custom">Personalizzato</string>
+    <string name="ev_default_target">Carica obiettivo predefinita: %d%%</string>
+    <string name="ev_current_soc">Carica attuale: %d%%</string>
+    <string name="ev_target_soc">Carica obiettivo: %d%%</string>
+    <string name="ev_deadline_toggle">Pronta entro</string>
+    <string name="ev_deadline_hint">Pronta entro le %s</string>
+    <string name="ev_charging_estimate">Tempo di ricarica: %1$s a %2$s kW</string>
+    <string name="dialog_add_vehicle">Aggiungi veicolo</string>
+    <string name="dialog_edit_vehicle">Modifica veicolo</string>
+    <string name="ev_attribution">Dati dei veicoli: Open EV Data</string>
+    <string name="ev_error_invalid_soc">La carica obiettivo deve essere superiore a quella attuale.</string>
+    <string name="ev_error_invalid_charger">Imposta una potenza del caricatore maggiore di zero.</string>
+    <string name="ev_error_deadline_unreachable">La ricarica non può terminare entro la scadenza impostata. Prova con una potenza del caricatore più alta, una carica attuale più bassa o un orario più tardi.</string>
 </resources>

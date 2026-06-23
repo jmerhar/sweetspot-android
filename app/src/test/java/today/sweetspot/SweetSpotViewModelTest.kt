@@ -28,6 +28,7 @@ import today.sweetspot.data.api.PriceFetcher
 import today.sweetspot.data.billing.BillingRepository
 import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
+import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
@@ -1083,5 +1084,142 @@ class SweetSpotViewModelTest {
         assertEquals(0, state.windowOffset)
         assertTrue(state.windowAlternatives.isEmpty())
         assertNull(state.result)
+    }
+
+    // --- EV charging ---
+
+    private val testEvRepo = EvVehicleRepository(
+        """[{"brand":"Test","model":"EV","variant":null,"year":2024,"batteryKwh":60.0,"acMaxPowerKw":11.0}]"""
+    )
+
+    /** Creates a ViewModel with injected fakes plus the test EV database. */
+    private fun evViewModel(fetcher: FakeFetcher = FakeFetcher(fakePrices(24))) =
+        SweetSpotViewModel(app, { _ -> fetcher }, FakeCache(), FakeStatsCollector(), testDispatcher, null, testEvRepo)
+
+    /** A test vehicle appliance: 60 kWh battery, 11 kW max AC. */
+    private fun addTestVehicle(viewModel: SweetSpotViewModel): Appliance {
+        viewModel.onAddVehicle("Test EV", 60.0, 11.0)
+        return viewModel.uiState.value.appliances.first { it.isEv }
+    }
+
+    @Test
+    fun `searchEvVehicles finds matches once the database has loaded`() = runTest {
+        val viewModel = evViewModel()
+        runCurrent() // let the eager DB load complete
+        assertEquals(1, viewModel.searchEvVehicles("test ev").size)
+        assertTrue(viewModel.searchEvVehicles("").isEmpty())
+    }
+
+    @Test
+    fun `onAddVehicle stores an EV-type appliance`() {
+        val viewModel = evViewModel()
+        viewModel.onAddVehicle("Test EV", 60.0, 11.0)
+
+        val vehicles = viewModel.uiState.value.appliances.filter { it.isEv }
+        assertEquals(1, vehicles.size)
+        assertEquals("Test EV", vehicles.first().name)
+        assertEquals(60.0, vehicles.first().ev!!.batteryKwh, 0.001)
+        assertEquals("ev_charger", vehicles.first().icon)
+    }
+
+    @Test
+    fun `onEvApplianceFind computes duration and produces a result`() = runTest {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel)
+        viewModel.onEvHomeChargerChanged(11.0)
+        viewModel.onEvApplianceFind(vehicle, 20, 80)
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        // 36 kWh at 11 kW = 196 min = 3h 16m.
+        assertEquals(3, state.durationHours)
+        assertEquals(16, state.durationMinutes)
+        assertNotNull(state.result)
+        assertTrue(state.resultLabel!!.contains("→"))
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onEvApplianceFind uses the lower of vehicle and charger power`() = runTest {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel) // 11 kW max
+        viewModel.onEvHomeChargerChanged(3.7) // slower charger wins
+        viewModel.onEvApplianceFind(vehicle, 20, 80)
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        // 36 kWh at 3.7 kW = 584 min = 9h 44m.
+        assertEquals(9, state.durationHours)
+        assertEquals(44, state.durationMinutes)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onEvApplianceFind with target not above current sets validation error`() {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel)
+        viewModel.onEvApplianceFind(vehicle, 80, 80)
+
+        assertTrue(viewModel.uiState.value.error is AppError.Validation)
+        assertNull(viewModel.uiState.value.result)
+    }
+
+    @Test
+    fun `deadline is applied to a regular duration search when enabled`() = runTest {
+        val viewModel = evViewModel()
+        viewModel.onDurationChanged(2, 0)
+
+        viewModel.onFindClicked()
+        runCurrent()
+        assertNull(viewModel.uiState.value.searchDeadline)
+        viewModel.onClearResult()
+
+        viewModel.onDeadlineEnabledChanged(true)
+        viewModel.onDeadlineChanged(7, 30)
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+        assertNotNull(viewModel.uiState.value.searchDeadline)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `onEvApplianceFind applies the universal deadline when enabled`() = runTest {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel)
+        viewModel.onDeadlineEnabledChanged(true)
+        viewModel.onDeadlineChanged(7, 30)
+        viewModel.onEvApplianceFind(vehicle, 20, 80)
+        runCurrent()
+
+        assertNotNull(viewModel.uiState.value.searchDeadline)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `EV settings persist across ViewModel instances`() {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel)
+        viewModel.onEvHomeChargerChanged(7.4)
+        viewModel.onEvDefaultTargetChanged(90)
+        viewModel.onEvApplianceFind(vehicle, 30, 90) // persists last current SoC
+
+        val reloaded = evViewModel()
+        val state = reloaded.uiState.value
+        assertEquals(1, state.appliances.count { it.isEv })
+        assertEquals(7.4, state.evHomeChargerKw, 0.001)
+        assertEquals(90, state.evDefaultTargetSoc)
+        assertEquals(30, state.evLastCurrentSoc)
+    }
+
+    @Test
+    fun `EV appliances are excluded from wear sync but kept on the phone`() {
+        val viewModel = evViewModel()
+        viewModel.onAddAppliance("Washer", 2, 0, "washing_machine")
+        viewModel.onAddVehicle("Test EV", 60.0, 11.0)
+
+        // Both kinds are kept in the phone-side appliance list.
+        assertEquals(2, viewModel.uiState.value.appliances.size)
+        assertEquals(1, viewModel.uiState.value.appliances.count { it.isEv })
     }
 }

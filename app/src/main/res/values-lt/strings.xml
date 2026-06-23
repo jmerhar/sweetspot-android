@@ -142,4 +142,28 @@
         <item quantity="many">Bandomasis laikotarpis: liko %d dienos</item>
         <item quantity="other">Bandomasis laikotarpis: liko %d dienų</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Elektromobilio įkrovimas</string>
+    <string name="ev_add_vehicle">Pridėti automobilį</string>
+    <string name="ev_search_hint">Ieškoti markės ar modelio</string>
+    <string name="ev_custom_hint">Nerandate sąraše? Įveskite duomenis žemiau ir pridėkite pasirinktinį automobilį.</string>
+    <string name="ev_vehicle_specs">%1$s kWh baterija · %2$s kW maks. AC</string>
+    <string name="ev_battery_label">Baterijos talpa</string>
+    <string name="ev_power_label">Maks. AC įkrovimo galia</string>
+    <string name="ev_home_charger">Namų įkroviklis</string>
+    <string name="ev_home_charger_description">Jūsų sieninio įkroviklio galia. Įkraunama mažesniąja iš dviejų – šia arba automobilio maksimalia.</string>
+    <string name="ev_charger_custom">Pasirinktinis</string>
+    <string name="ev_default_target">Numatytasis įkrovimo tikslas: %d%%</string>
+    <string name="ev_current_soc">Dabartinis įkrovimas: %d%%</string>
+    <string name="ev_target_soc">Įkrovimo tikslas: %d%%</string>
+    <string name="ev_deadline_toggle">Paruošti iki</string>
+    <string name="ev_deadline_hint">Paruošti iki %s</string>
+    <string name="ev_charging_estimate">Įkrovimo laikas: %1$s, kai galia %2$s kW</string>
+    <string name="dialog_add_vehicle">Pridėti automobilį</string>
+    <string name="dialog_edit_vehicle">Redaguoti automobilį</string>
+    <string name="ev_attribution">Automobilių duomenys: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Įkrovimo tikslas turi būti didesnis nei dabartinis įkrovimas.</string>
+    <string name="ev_error_invalid_charger">Nustatykite didesnę nei nulis įkroviklio galią.</string>
+    <string name="ev_error_deadline_unreachable">Įkrovimas nespės baigtis iki nurodyto laiko. Pabandykite didesnę įkroviklio galią, mažesnį dabartinį įkrovimą arba vėlesnį laiką.</string>
 </resources>

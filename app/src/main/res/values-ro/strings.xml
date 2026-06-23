@@ -138,4 +138,28 @@
         <item quantity="few">Perioadă de probă: %d zile rămase</item>
         <item quantity="other">Perioadă de probă: %d de zile rămase</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Încărcare mașină electrică</string>
+    <string name="ev_add_vehicle">Adaugă un vehicul</string>
+    <string name="ev_search_hint">Caută marca sau modelul</string>
+    <string name="ev_custom_hint">Nu apare în listă? Introdu detaliile mai jos pentru a adăuga un vehicul personalizat.</string>
+    <string name="ev_vehicle_specs">Baterie de %1$s kWh · %2$s kW AC max.</string>
+    <string name="ev_battery_label">Capacitatea bateriei</string>
+    <string name="ev_power_label">Putere maximă de încărcare AC</string>
+    <string name="ev_home_charger">Stație de încărcare la domiciliu</string>
+    <string name="ev_home_charger_description">Puterea stației sau a încărcătorului tău de perete. Încărcarea folosește valoarea mai mică dintre aceasta și maximul mașinii.</string>
+    <string name="ev_charger_custom">Personalizat</string>
+    <string name="ev_default_target">Nivel de încărcare implicit: %d%%</string>
+    <string name="ev_current_soc">Nivel actual: %d%%</string>
+    <string name="ev_target_soc">Nivel dorit: %d%%</string>
+    <string name="ev_deadline_toggle">Gata până la</string>
+    <string name="ev_deadline_hint">Gata până la %s</string>
+    <string name="ev_charging_estimate">Timp de încărcare: %1$s la %2$s kW</string>
+    <string name="dialog_add_vehicle">Adaugă vehicul</string>
+    <string name="dialog_edit_vehicle">Editează vehicul</string>
+    <string name="ev_attribution">Date despre vehicule: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Nivelul dorit trebuie să fie mai mare decât nivelul actual.</string>
+    <string name="ev_error_invalid_charger">Setează o putere a încărcătorului mai mare decât zero.</string>
+    <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încearcă o putere mai mare a încărcătorului, un nivel actual mai mic sau o oră mai târzie.</string>
 </resources>

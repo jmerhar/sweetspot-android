@@ -134,4 +134,28 @@
         <item quantity="one">Provperiod: %d dag kvar</item>
         <item quantity="other">Provperiod: %d dagar kvar</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Laddning av elbil</string>
+    <string name="ev_add_vehicle">Lägg till ett fordon</string>
+    <string name="ev_search_hint">Sök märke eller modell</string>
+    <string name="ev_custom_hint">Finns den inte med? Ange uppgifterna nedan för att lägga till ett eget fordon.</string>
+    <string name="ev_vehicle_specs">%1$s kWh batteri · %2$s kW max AC</string>
+    <string name="ev_battery_label">Batterikapacitet</string>
+    <string name="ev_power_label">Max AC-laddeffekt</string>
+    <string name="ev_home_charger">Hemmaladdare</string>
+    <string name="ev_home_charger_description">Effekten på din laddbox eller laddare. Laddningen använder den lägsta av dem — denna eller bilens maximala.</string>
+    <string name="ev_charger_custom">Anpassad</string>
+    <string name="ev_default_target">Standardmål för laddning: %d%%</string>
+    <string name="ev_current_soc">Nuvarande laddning: %d%%</string>
+    <string name="ev_target_soc">Mål för laddning: %d%%</string>
+    <string name="ev_deadline_toggle">Klar senast</string>
+    <string name="ev_deadline_hint">Klar senast %s</string>
+    <string name="ev_charging_estimate">Laddtid: %1$s vid %2$s kW</string>
+    <string name="dialog_add_vehicle">Lägg till fordon</string>
+    <string name="dialog_edit_vehicle">Redigera fordon</string>
+    <string name="ev_attribution">Fordonsdata: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Målladdningen måste vara högre än den nuvarande laddningen.</string>
+    <string name="ev_error_invalid_charger">Ange en laddeffekt som är högre än noll.</string>
+    <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din deadline. Prova en högre laddeffekt, en lägre nuvarande laddning eller en senare tidpunkt.</string>
 </resources>

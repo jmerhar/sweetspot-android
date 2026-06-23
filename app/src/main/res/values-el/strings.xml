@@ -134,4 +134,28 @@
         <item quantity="one">Δοκιμαστική περίοδος: %d ημέρα απομένει</item>
         <item quantity="other">Δοκιμαστική περίοδος: %d ημέρες απομένουν</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Φόρτιση ηλεκτρικού οχήματος</string>
+    <string name="ev_add_vehicle">Προσθήκη οχήματος</string>
+    <string name="ev_search_hint">Αναζήτηση μάρκας ή μοντέλου</string>
+    <string name="ev_custom_hint">Δεν υπάρχει στη λίστα; Συμπληρώστε τα στοιχεία παρακάτω για να προσθέσετε ένα προσαρμοσμένο όχημα.</string>
+    <string name="ev_vehicle_specs">Μπαταρία %1$s kWh · μέγ. %2$s kW AC</string>
+    <string name="ev_battery_label">Χωρητικότητα μπαταρίας</string>
+    <string name="ev_power_label">Μέγιστη ισχύς φόρτισης AC</string>
+    <string name="ev_home_charger">Οικιακός φορτιστής</string>
+    <string name="ev_home_charger_description">Η ισχύς εξόδου του wall box ή του φορτιστή σας. Η φόρτιση χρησιμοποιεί τη χαμηλότερη τιμή — αυτή ή το μέγιστο του οχήματος.</string>
+    <string name="ev_charger_custom">Προσαρμοσμένη</string>
+    <string name="ev_default_target">Προεπιλεγμένο επίπεδο φόρτισης: %d%%</string>
+    <string name="ev_current_soc">Τρέχουσα φόρτιση: %d%%</string>
+    <string name="ev_target_soc">Επιθυμητή φόρτιση: %d%%</string>
+    <string name="ev_deadline_toggle">Έτοιμο έως</string>
+    <string name="ev_deadline_hint">Έτοιμο έως %s</string>
+    <string name="ev_charging_estimate">Χρόνος φόρτισης: %1$s στα %2$s kW</string>
+    <string name="dialog_add_vehicle">Προσθήκη οχήματος</string>
+    <string name="dialog_edit_vehicle">Επεξεργασία οχήματος</string>
+    <string name="ev_attribution">Δεδομένα οχημάτων: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Η επιθυμητή φόρτιση πρέπει να είναι υψηλότερη από την τρέχουσα φόρτιση.</string>
+    <string name="ev_error_invalid_charger">Ορίστε ισχύ φορτιστή μεγαλύτερη από μηδέν.</string>
+    <string name="ev_error_deadline_unreachable">Η φόρτιση δεν μπορεί να ολοκληρωθεί έως την προθεσμία σας. Δοκιμάστε υψηλότερη ισχύ φορτιστή, χαμηλότερη τρέχουσα φόρτιση ή μεταγενέστερη ώρα.</string>
 </resources>

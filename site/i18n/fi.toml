@@ -149,4 +149,7 @@ other = "Tulevat sähkön hinnat vaakapalkkikaaviossa"
 other = "Asetukset tallennetuilla laitteilla, kielellä, maalla ja aikavyöhykkeellä"
 
 [screenshot_5_alt]
+other = "Sähköauton lataus: nykyinen ja tavoitevaraus sekä laskettu latausaika"
+
+[screenshot_6_alt]
 other = "Kielen valinta 25 eurooppalaisesta kielestä"

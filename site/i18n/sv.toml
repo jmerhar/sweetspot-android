@@ -149,4 +149,7 @@ other = "Kommande elpriser som horisontellt stapeldiagram"
 other = "Inställningar med sparade apparater, språk, land och tidszon"
 
 [screenshot_5_alt]
+other = "Elbilsladdning: nuvarande och önskad laddning med beräknad laddtid"
+
+[screenshot_6_alt]
 other = "Språkval med 25 europeiska språk"

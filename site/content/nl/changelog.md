@@ -3,6 +3,12 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.0" date="23 juni 2026" >}}
+- Elektrisch rijden: voeg je auto toe, vul je huidige en gewenste laadniveau in, en SweetSpot vindt het goedkoopste moment om op te laden en hoe lang dat duurt.
+- 'Klaar om'-tijd: laat een apparaat of laadsessie klaar zijn vóór een door jou ingestelde deadline.
+- Vermogen: stel het vermogen van een apparaat in kW in zodat de kostenraming overeenkomt met het werkelijke verbruik.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 juni 2026" >}}
 - Nieuwe knoppen 'Eerder' en 'Goedkoper' om een eerder tijdstip te kiezen wanneer het goedkoopste venster niet uitkomt, en te zien hoeveel duurder het is.
 {{< /changelog >}}

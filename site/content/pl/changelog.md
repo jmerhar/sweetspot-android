@@ -3,6 +3,12 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23 czerwca 2026" >}}
+- Ładowanie pojazdu elektrycznego: dodaj swój samochód, podaj obecny i docelowy poziom naładowania, a SweetSpot znajdzie najtańszą porę na podłączenie i obliczy, ile to potrwa.
+- Termin „Gotowe do“: spraw, by dowolne urządzenie lub ładowanie zakończyło się przed wyznaczonym przez Ciebie terminem.
+- Moc znamionowa: ustaw moc urządzenia w kW, aby szacowany koszt odzwierciedlał jego rzeczywiste zużycie.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 czerwca 2026" >}}
 - Nowe przyciski „Wcześniej“ i „Taniej“ pozwalają wybrać wcześniejszą porę, gdy najtańsze okno jest niewygodne, i pokazują, o ile więcej kosztuje.
 {{< /changelog >}}

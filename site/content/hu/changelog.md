@@ -3,6 +3,12 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.0" date="2026. június 23." >}}
+- Elektromos autó töltése: add hozzá az autódat, add meg az aktuális és a kívánt töltöttséget, a SweetSpot pedig megkeresi a legolcsóbb időpontot a csatlakoztatásra, és megmutatja, mennyi ideig tart majd.
+- „Készen ekkorra“ időpont: bármely készülék vagy töltés befejeződjön egy általad megadott határidőre.
+- Teljesítmény: állítsd be a készülék teljesítményét kW-ban, hogy a költségbecslés a valós fogyasztását tükrözze.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="2026. június 22." >}}
 - Új „Korábban“ és „Olcsóbban“ gombok: válassz korábbi időpontot, ha a legolcsóbb nem alkalmas, és lásd, mennyivel kerül többe.
 {{< /changelog >}}

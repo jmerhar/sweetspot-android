@@ -3,6 +3,12 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23 de junio de 2026" >}}
+- Carga de vehículos eléctricos: añade tu coche, indica la carga actual y la deseada, y SweetSpot encuentra el momento más barato para enchufarlo y cuánto tardará.
+- Hora límite «Listo a las»: consigue que cualquier electrodoméstico o carga termine antes de la fecha límite que establezcas.
+- Potencia: indica la potencia de un electrodoméstico en kW para que la estimación de coste refleje su consumo real.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 de junio de 2026" >}}
 - Nuevos botones «Antes» y «Más barato» para elegir una hora más temprana cuando la más barata no te conviene, y ver cuánto más cuesta.
 {{< /changelog >}}

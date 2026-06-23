@@ -3,6 +3,12 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23 iunie 2026" >}}
+- Încărcarea mașinilor electrice: adaugă-ți mașina, introdu nivelul actual și cel dorit al bateriei, iar SweetSpot găsește cea mai ieftină oră pentru a o conecta și cât va dura.
+- Ora „Gata până la“: orice electrocasnic sau încărcare se termină până la termenul limită stabilit de tine.
+- Puterea: setează puterea unui electrocasnic în kW pentru ca estimarea costului să reflecte consumul real.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 iunie 2026" >}}
 - Butoane noi „Mai devreme“ și „Mai ieftin“ pentru a alege o oră mai devreme când cea mai ieftină nu convine și a vedea cu cât costă mai mult.
 {{< /changelog >}}

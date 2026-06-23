@@ -3,6 +3,12 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23 de junho de 2026" >}}
+- Carregamento de VE: adicione o seu carro, indique a carga atual e a pretendida, e o SweetSpot encontra a hora mais barata para ligar e quanto tempo demora.
+- Hora «Pronto até»: tenha qualquer eletrodoméstico ou carga concluído antes do prazo que definir.
+- Potência: defina a potência de um eletrodoméstico em kW para que a estimativa de custo reflita o seu consumo real.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 de junho de 2026" >}}
 - Novos botões «Mais cedo» e «Mais barato» para escolher uma hora mais cedo quando a mais barata não é conveniente, e ver quanto custa a mais.
 {{< /changelog >}}

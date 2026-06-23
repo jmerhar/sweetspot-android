@@ -3,6 +3,12 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.0" date="23. juuni 2026" >}}
+- Elektriauto laadimine: lisa oma auto, sisesta praegune ja soovitud laetuse tase ning SweetSpot leiab soodsaima aja laadima panemiseks ja arvutab, kui kaua see kestab.
+- „Valmis hiljemalt“ aeg: lase mis tahes seadmel või laadimisel valmis saada sinu määratud tähtajaks.
+- Võimsus: määra seadme võimsus kW-des, et kuluhinnang kajastaks selle tegelikku tarbimist.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. juuni 2026" >}}
 - Uued nupud „Varem“ ja „Odavam“ võimaldavad valida varasema aja, kui odavaim aken ei sobi, ja näitavad, kui palju rohkem see maksab.
 {{< /changelog >}}

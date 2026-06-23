@@ -3,6 +3,12 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23 juin 2026" >}}
+- Recharge de véhicule électrique : ajoutez votre voiture, indiquez sa charge actuelle et cible, et SweetSpot trouve le moment le moins cher pour la brancher et la durée nécessaire.
+- Heure « Prêt à » : faites en sorte qu'un appareil ou une recharge soit terminé avant une échéance que vous définissez.
+- Puissance : indiquez la puissance d'un appareil en kW pour que l'estimation du coût reflète sa consommation réelle.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 juin 2026" >}}
 - Nouveaux boutons « Plus tôt » et « Moins cher » pour choisir un créneau plus tôt quand le moins cher ne convient pas, et voir le surcoût.
 {{< /changelog >}}

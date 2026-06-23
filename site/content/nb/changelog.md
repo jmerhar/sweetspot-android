@@ -3,6 +3,12 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.0" date="23. juni 2026" >}}
+- Elbillading: legg til bilen din, oppgi nåværende og ønsket ladenivå, så finner SweetSpot det billigste tidspunktet å koble til og hvor lang tid det tar.
+- «Ferdig innen»-tidspunkt: få et hvilket som helst apparat eller en lading ferdig innen en frist du selv setter.
+- Effekt: angi et apparats effekt i kW slik at kostnadsestimatet gjenspeiler det reelle forbruket.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. juni 2026" >}}
 - Nye knapper «Tidligere» og «Billigere» lar deg velge et tidligere tidspunkt når det billigste vinduet ikke passer, og viser hvor mye mer det koster.
 {{< /changelog >}}

@@ -3,6 +3,12 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.0" date="2026. gada 23. jūnijs" >}}
+- Elektromobiļa uzlāde: pievienojiet savu automašīnu, ievadiet pašreizējo un vēlamo uzlādes līmeni, un SweetSpot atradīs lētāko laiku, kad pieslēgt to lādēšanai, un cik ilgi tas aizņems.
+- Laiks „Gatavs līdz“: pabeidziet jebkuras ierīces darbu vai uzlādi līdz noteiktam termiņam.
+- Jauda: norādiet ierīces jaudu kW, lai izmaksu aprēķins atbilstu tās reālajam patēriņam.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="2026. gada 22. jūnijs" >}}
 - Jaunas pogas „Agrāk“ un „Lētāk“ ļauj izvēlēties agrāku laiku, kad lētākais logs neder, un parāda, cik daudz dārgāk tas izmaksā.
 {{< /changelog >}}

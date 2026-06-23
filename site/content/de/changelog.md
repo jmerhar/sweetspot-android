@@ -3,6 +3,12 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.0" date="23. Juni 2026" >}}
+- E-Auto-Ladung: Füge dein Auto hinzu, gib den aktuellen und den gewünschten Ladestand ein, und SweetSpot findet den günstigsten Zeitpunkt zum Anstecken sowie die benötigte Dauer.
+- „Fertig bis“-Zeit: Lass jedes Gerät oder jede Ladung bis zu einem von dir festgelegten Zeitpunkt abschließen.
+- Leistungsangabe: Lege die Leistung eines Geräts in kW fest, damit die Kostenschätzung den tatsächlichen Verbrauch widerspiegelt.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. Juni 2026" >}}
 - Neue Schaltflächen „Früher“ und „Günstiger“: Wähle eine frühere Startzeit, wenn der günstigste Zeitpunkt unpassend ist, und sieh, wie viel mehr es kostet.
 {{< /changelog >}}

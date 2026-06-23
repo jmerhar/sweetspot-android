@@ -3,6 +3,12 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="6.0" date="23 juni 2026" >}}
+- Elbilsladdning: lägg till din bil, ange aktuell och önskad laddningsnivå, så hittar SweetSpot den billigaste tiden att ladda och hur lång tid det tar.
+- ”Klar senast”-tid: få vilken apparat eller laddning som helst färdig till en tidsgräns du anger.
+- Effekt: ange en apparats effekt i kW så att kostnadsberäkningen återspeglar dess verkliga förbrukning.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 juni 2026" >}}
 - Nya knappar ”Tidigare” och ”Billigare” låter dig välja en tidigare tid när det billigaste fönstret inte passar, och visar hur mycket mer det kostar.
 {{< /changelog >}}

@@ -3,6 +3,12 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23. junij 2026" >}}
+- Polnjenje električnih vozil: dodajte svoj avto, vnesite trenutno in želeno napolnjenost, SweetSpot pa poišče najcenejši čas za priklop in koliko časa bo trajalo.
+- Čas »Pripravljeno do«: poskrbite, da je katera koli naprava ali polnjenje končano do roka, ki ga določite.
+- Moč naprave: nastavite moč naprave v kW, da ocena stroškov upošteva njeno dejansko porabo.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. junij 2026" >}}
 - Nova gumba »Prej« in »Ceneje« omogočata izbiro zgodnejšega časa, ko najcenejši ni primeren, in pokažeta, koliko več stane.
 {{< /changelog >}}

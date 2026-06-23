@@ -3,6 +3,12 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="6.0" date="23. juni 2026" >}}
+- Opladning af elbil: tilføj din bil, indtast din nuværende og ønskede opladning, og SweetSpot finder det billigste tidspunkt at sætte til opladning og hvor lang tid det tager.
+- „Klar senest“-tidspunkt: få ethvert apparat eller enhver opladning færdig inden en frist, du selv vælger.
+- Effekt: angiv et apparats effekt i kW, så omkostningsestimatet afspejler dets reelle forbrug.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. juni 2026" >}}
 - Nye knapper „Tidligere“ og „Billigere“ lader dig vælge et tidligere tidspunkt, når det billigste vindue ikke passer, og viser hvor meget mere det koster.
 {{< /changelog >}}

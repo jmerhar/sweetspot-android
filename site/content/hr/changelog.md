@@ -3,6 +3,12 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23. lipnja 2026." >}}
+- Punjenje električnog automobila: dodajte svoj automobil, unesite trenutnu i željenu razinu napunjenosti, a SweetSpot pronalazi najjeftinije vrijeme za priključivanje i koliko će trajati.
+- Vrijeme „Gotovo do“: bilo koji uređaj ili punjenje neka budu dovršeni do roka koji odredite.
+- Snaga uređaja: postavite snagu uređaja u kW kako bi procjena troška odražavala njegovu stvarnu potrošnju.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. lipnja 2026." >}}
 - Nove tipke „Ranije“ i „Jeftinije“ omogućuju odabir ranijeg termina kada najjeftiniji nije zgodan i pokazuju koliko više košta.
 {{< /changelog >}}

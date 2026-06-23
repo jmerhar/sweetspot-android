@@ -3,6 +3,12 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.0" date="2026 m. birželio 23 d." >}}
+- Elektromobilio įkrovimas: pridėkite automobilį, įveskite dabartinį ir norimą įkrovos lygį, o SweetSpot suras pigiausią laiką prijungti ir parodys, kiek tai užtruks.
+- Laikas „Baigti iki“: bet kuris prietaisas ar įkrovimas bus baigtas iki jūsų nustatyto termino.
+- Galingumas: nurodykite prietaiso galią kW, kad išlaidų įvertinimas atitiktų realų suvartojimą.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="2026 m. birželio 22 d." >}}
 - Nauji mygtukai „Anksčiau“ ir „Pigiau“ leidžia pasirinkti ankstesnį laiką, kai pigiausias langas nepatogus, ir parodo, kiek brangiau.
 {{< /changelog >}}

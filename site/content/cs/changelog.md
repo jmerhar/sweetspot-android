@@ -3,6 +3,12 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23. června 2026" >}}
+- Nabíjení elektromobilu: přidejte své auto, zadejte aktuální a cílovou úroveň nabití a SweetSpot najde nejlevnější čas zapojení i to, jak dlouho bude nabíjení trvat.
+- Čas „Hotovo do“: nechte libovolný spotřebič nebo nabíjení dokončit do termínu, který si nastavíte.
+- Příkon: nastavte příkon spotřebiče v kW, aby odhad nákladů odpovídal jeho skutečné spotřebě.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22. června 2026" >}}
 - Nová tlačítka „Dříve“ a „Levněji“ umožňují zvolit dřívější čas, když nejlevnější okno nevyhovuje, a ukážou, o kolik je to dražší.
 {{< /changelog >}}

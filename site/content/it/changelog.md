@@ -3,6 +3,12 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.0" date="23 giugno 2026" >}}
+- Ricarica auto elettrica: aggiungi la tua auto, indica la carica attuale e quella desiderata e SweetSpot trova l'orario più economico per collegarla e quanto tempo ci vorrà.
+- Orario «Pronto entro»: fai terminare qualsiasi elettrodomestico o ricarica entro una scadenza che imposti tu.
+- Potenza nominale: imposta la potenza di un elettrodomestico in kW così la stima dei costi rispecchia il consumo reale.
+{{< /changelog >}}
+
 {{< changelog version="5.4" date="22 giugno 2026" >}}
 - Nuovi pulsanti «Prima» e «Più economico» per scegliere un orario anticipato quando quello più economico non va bene, e vedere quanto costa in più.
 {{< /changelog >}}

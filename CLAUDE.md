@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, EnergyZero as a fallback for the Netherlands, and aWATTar as a fallback for Austria and Germany. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
+SweetSpot is an Android app that finds the cheapest contiguous time window for running an appliance, based on dynamic electricity prices. Supports 30 European countries (43 bidding zones) via the ENTSO-E Transparency Platform, with Spot-Hinta.fi as a fallback for 15 Nordic/Baltic zones, Energy-Charts as a fallback for 15 European zones, EnergyZero as a fallback for the Netherlands, and aWATTar as a fallback for Austria and Germany. Appliances can be electric vehicles: tapping a vehicle prompts for current/target state of charge and computes the charging time, and any search can be bounded by an optional "ready by" deadline. Includes a Wear OS companion app for Pixel Watch and other Wear OS 3+ devices.
 
 ## Build & Run
 
@@ -19,6 +19,7 @@ make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
 make inspect                      # Summarise inspection XML files (see Inspections section)
 make site-validate                # Validate Hugo site (build, pages, links, i18n)
+make ev-db                        # Rebuild the bundled EV vehicle database from open data sources
 make screenshots                  # Capture localized screenshots via Screengrab (LOCALE=xx-XX for one)
 make frames                       # Frame screenshots with marketing text (LOCALE=xx-XX for one)
 make feature-graphic              # Generate localised Play Store feature graphics (LOCALE=xx-XX for one)
@@ -29,6 +30,7 @@ make clean                        # Remove all build outputs
 
 A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
+- **`bin/build-ev-db.py`** — Builds the bundled EV vehicle database (`app/src/main/assets/ev-vehicles.json`) by merging two open datasets via per-source adapters into a normalised schema. Cars only; source #2 wins on collision (newer data). Called by `make ev-db`. Both the script and the generated asset are committed.
 - **`bin/install-hugo.sh`** — Downloads and installs the latest Hugo extended binary from GitHub. Used by CI workflows (`deploy-site`, `site-validate`).
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 - **`bin/inspect.sh`** — Summarises inspection XML files exported from Android Studio. Does **not** run inspections itself. Called by `make inspect`.
@@ -78,8 +80,8 @@ RELEASE_KEY_PASSWORD=...
 
 - **`release.md`** — Current release notes (used by the release script)
 - **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
-- **`ideas/`** — Feature ideas (mix of done and pending): website, car charging, low price alerts, all-in pricing, appliance power rating (kW), widget, test coverage CI, API reliability stats, ViewModel locale bug
-- **`ideas/done/`** — Implemented features: localisation, cache management, data source preferences
+- **`ideas/`** — Feature ideas (mix of done and pending): website, low price alerts, all-in pricing, appliance power rating (kW), widget, test coverage CI, API reliability stats, ViewModel locale bug
+- **`ideas/done/`** — Implemented features: localisation, cache management, data source preferences, car charging
 - **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide, country & language coverage audit
 
 `docs/entsoe/` contains ENTSO-E API documentation and sample XML responses.
@@ -87,7 +89,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (323 tests)
+./gradlew test                   # Run all unit tests (352 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -108,12 +110,13 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/api/AwattarApiParseTest` — aWATTar JSON parsing, EUR/MWh→kWh conversion, timestamp conversion, duration computation (9 tests, in shared)
 - `data/api/AwattarApiMalformedTest` — malformed/invalid JSON handling for aWATTar (6 tests, in shared)
 - `data/api/AwattarApiDstTest` — DST transition parsing with Europe/Vienna: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives (36 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives + optional "ready by" deadline (43 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (12 tests, in shared)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
 - `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options, earlier/cheaper window navigation (84 tests, Robolectric, in app)
+- `data/repository/EvVehicleRepositoryTest` — EV database parsing, brand/model filtering, free-text search, displayName, malformed JSON (13 tests, in shared)
+- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options, earlier/cheaper window navigation, EV charging (vehicle add, SoC→duration computation, universal deadline) (93 tests, Robolectric, in app)
 - `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing, locked state (18 tests, Robolectric, in wear)
 - `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
@@ -145,10 +148,10 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (323 tests)
+- JUnit 4 + Robolectric for unit tests (352 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
-- No frameworks, no DI, no database — SharedPreferences + file cache only
+- No frameworks, no DI, no database — SharedPreferences + file cache only (plus one bundled read-only JSON asset, `ev-vehicles.json`, for the EV database)
 - Licensed under GPL v3
 
 ## Architecture
@@ -199,18 +202,20 @@ The data layer is organised into four subpackages under `data/`:
 
 **`data/repository/`** — Business logic:
 - **`PriceRepository`** — Created per-call with current `ZoneId` and `cacheKey`. Returns `PriceResult` (prices + source name). Computes date range (today → day-after-tomorrow), reads typed cache first (maps `CachedPrice` → `PriceSlot` with zone applied), filters to future prices using slot-aware end-time check, re-fetches if coverage is below 12 hours (with 5-minute cooldown). Threads the data source name from `FetchResult`/cache through to `PriceResult`. Takes injectable `PriceFetcher` and `Clock` for testing.
-- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), appliances (JSON-serialized list), stats preferences (enabled, prompt shown, first launch time), and trial/subscription state (`unlocked` boolean). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order. Trial methods: `isTrialExpired()` checks if 14 days have elapsed since first launch and app is not unlocked, `trialDaysRemaining()` returns 0–14, `isUnlocked()`/`setUnlocked()` cache the subscription state locally for offline access.
+- **`SettingsRepository`** — SharedPreferences `sweetspot_settings`. Stores country code, price zone ID, timezone override, data source order (JSON list of source IDs), appliances (JSON-serialized list — vehicles are appliances with an `EvSpec`), EV charging settings (home charger kW, default target SoC, last current SoC), stats preferences (enabled, prompt shown, first launch time), and trial/subscription state (`unlocked` boolean). Auto-detects country on first access via `CountryDetector`. Country change clears custom source order. Trial methods: `isTrialExpired()` checks if 14 days have elapsed since first launch and app is not unlocked, `trialDaysRemaining()` returns 0–14, `isUnlocked()`/`setUnlocked()` cache the subscription state locally for offline access.
+- **`EvVehicleRepository`** — Read-only access to the bundled EV database. Android-free (takes the raw `ev-vehicles.json` string, so it is unit-testable). Parses the normalised array eagerly and exposes `vehicles`, `brands()`, `models(brand)`, and a free-text `search(query)`. The ViewModel loads it once in the background and exposes `searchEvVehicles()` for the "add vehicle" picker in Settings.
 - **`CountryDetector`** — Zero-permission country auto-detection for first launch. Checks SIM → network → timezone → locale → NL fallback.
 - **`model/PriceZone`** — Data class representing a bidding zone (`id`, `label`, `eicCode`, `timeZoneId`). `Country` groups zones by country. `Countries` is the registry of all 30 supported countries / 43 zones, with `defaultCountry()` (NL), `findByCode()`, and `findPriceZoneById()`.
-- **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, and `icon` (string ID referencing the icon registry).
+- **`model/Appliance`** — `@Serializable` data class with `id`, `name`, `durationHours`, `durationMinutes`, `icon` (string ID referencing the icon registry), and an optional `ev: EvSpec?`. When `ev` is non-null the appliance is an electric vehicle: tapping it on the home screen prompts for a state-of-charge range instead of searching a fixed duration.
+- **`model/EvVehicle`** — `@Serializable` normalised EV record (`brand`, `model`, `variant`, `year`, `batteryKwh`, `acMaxPowerKw`) from the bundled database, used only to populate the "add vehicle" picker. `EvSpec` (`batteryKwh`, `acMaxPowerKw`) is the subset stored on a vehicle `Appliance`.
 - **`model/ApplianceIcon`** — Icon registry mapping string IDs to drawable resource IDs. Contains 30 curated icons (22 household appliances + 8 generic) using Material Symbols (Outlined, 24px) as XML vector drawables in `shared/src/main/res/drawable/`. `applianceIconFor(id)` resolves an ID to its drawable resource.
-- **`util/CheapestWindowFinder`** — Pure functions implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, `buildBreakdown`, and `buildWindowAt`. `findCheapestWindow` returns the single cheapest window; `findWindowAlternatives` returns the "earlier path" — the cheapest window first, then each successively-cheapest window that starts earlier, down to the earliest (start clamped to now). Cost increases monotonically along the list, so the results screen can step "earlier" (costlier, sooner) and "cheaper" (back toward the cheapest) by moving an offset.
+- **`util/CheapestWindowFinder`** — Pure functions implementing the sliding window algorithm. Works with any slot duration (15min, 30min, 60min). Converts requested duration to "slot units" and multiplies by `slotMinutes / 60.0` for EUR costs. Supports fractional slots. Split into `findBestStartIndex`, `computeWindowCost`, `buildBreakdown`, and `buildWindowAt`. `findCheapestWindow` returns the single cheapest window; `findWindowAlternatives` returns the "earlier path" — the cheapest window first, then each successively-cheapest window that starts earlier, down to the earliest (start clamped to now). Cost increases monotonically along the list, so the results screen can step "earlier" (costlier, sooner) and "cheaper" (back toward the cheapest) by moving an offset. Both functions accept an optional `notLaterThan` deadline (used by EV charging's "ready by") that caps candidate start indices so the window's clamped end time does not exceed it; `null` (default) imposes no constraint.
 - **`util/FormatUtils`** — `formatDuration()` and `shortTimeFormatter` shared by ViewModel and UI screens.
 - **`util/TimeUtils`** — `formatRelative()` helper for "in Xh Ym" display.
 
 ### Phone app (`:app`)
 
-- **`SweetSpotViewModel`** — Owns all UI state. Implements `DataClient.OnDataChangedListener` to receive watch stats. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference, optionally with `InstrumentedPriceFetcher` wrapping when stats are enabled. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, source order, stats opt-in, and trial/subscription state to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Shows one-time stats opt-in prompt after 3 days. Reports stats via `StatsReporter` after successful fetches. Receives watch stats via `/stats` Data Layer path. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors). Manages billing via `BillingRepository`: connects on init, collects unlock state, shows paywall when trial expired and not subscribed. Debug builds always skip the paywall.
+- **`SweetSpotViewModel`** — Owns all UI state. Implements `DataClient.OnDataChangedListener` to receive watch stats. Orchestrates duration selection, price fetching via `PriceRepository`, and cheapest-window calculation via `findCheapestWindow()`. Creates `PriceFetcherFactory` dynamically from the current source order preference, optionally with `InstrumentedPriceFetcher` wrapping when stats are enabled. CRUD for appliances persisted via `SettingsRepository`. Country/zone selection with auto-detection on first launch. Pushes appliances, zone settings, source order, stats opt-in, and trial/subscription state to Wearable Data Layer after every change via `syncAppliancesToWear()` / `syncSettingsToWear()`. Stores `priceSource` in `UiState` for display in the results disclaimer. Shows one-time stats opt-in prompt after 3 days. Reports stats via `StatsReporter` after successful fetches. Receives watch stats via `/stats` Data Layer path. Errors use an `AppError` sealed interface (`Validation` for inline errors, `Network` for snackbar errors). Manages billing via `BillingRepository`: connects on init, collects unlock state, shows paywall when trial expired and not subscribed. Debug builds always skip the paywall. Also owns EV charging: loads the bundled vehicle DB in the background (`searchEvVehicles()` powers the Settings picker), `onAddVehicle()` saves a vehicle as an EV-type `Appliance`, and `onEvApplianceFind()` computes the charging duration (`ΔSoC/100 × batteryKwh / min(vehicle AC, home charger)`, pure-linear) when a vehicle chip is tapped. A universal "ready by" deadline (`deadlineEnabled`/`deadlineHour`/`deadlineMinute`) is resolved per search and threaded through `fetchAndFind()` and the periodic refresh via `UiState.searchDeadline`. EV-type appliances are filtered out of the wear sync (no state-of-charge UI on the watch).
 - **`BillingRepository`** (interface in `data/billing/`) — Abstraction over Play Billing with `isUnlocked: StateFlow<Boolean>`, `productPrice: StateFlow<String?>`, `connect()`, `disconnect()`, `launchPurchaseFlow(activity)`, `queryPurchases()`, `onResume()`. Enables injecting a fake in tests.
 - **`PlayBillingRepository`** (in `data/billing/`) — Real implementation wrapping `BillingClient` (billing-ktx 8.3.0). Product ID: `yearly_subscription` (SUBS). On connect, queries existing subscriptions to restore state and fetches product details for the price display. Uses `enableAutoServiceReconnection()` for automatic reconnection. Caches subscription state in `SettingsRepository` for offline. Acknowledges purchases to prevent auto-refund. `onResume()` re-queries purchases to detect subscription expiry.
 
@@ -234,10 +239,13 @@ State-based in `MainActivity`, no navigation library:
 ### Main Screen
 
 The form view (`DurationInput` card) contains:
-- **Appliance chips** (top) — `AssistChip` buttons with configurable icons for user-defined appliances; tapping fills duration and triggers search. If no appliances exist, a CTA links to settings.
+- **Appliance chips** (top) — `AssistChip` buttons with configurable icons for user-defined appliances; tapping fills duration and triggers search. EV-type appliances (those with an `EvSpec`) instead open a `SocDialog` to enter current/target state of charge before searching. If no appliances exist, a CTA links to settings.
 - **Quick-duration row** (below) — 6 equal-width `SuggestionChip` buttons (1h–6h) using `Row` with `weight(1f)` so they fill the row on any screen width.
 - **Duration picker** — two-column scroll wheel (`DurationPicker`) for hours (0–24) and minutes (0–55 in 5-min steps) with snap-to-item behaviour.
+- **"Ready by" row** (`DeadlineRow`) — an optional universal deadline (switch + time picker) applied to every search type, including EV charging.
 - **Find button** — disabled when duration is 0h 0m.
+
+EV charging is configured in Settings (`EvSection`): the home charger power and default target charge, plus the list of saved vehicles. "Add vehicle" opens `VehicleDialog`, which searches the bundled database (or accepts a custom vehicle typed in manually) and saves it as an EV-type `Appliance`.
 
 ### Theme
 

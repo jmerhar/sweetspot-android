@@ -134,4 +134,28 @@
         <item quantity="one">Testzeitraum: noch %d Tag</item>
         <item quantity="other">Testzeitraum: noch %d Tage</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">E-Auto laden</string>
+    <string name="ev_add_vehicle">Fahrzeug hinzufügen</string>
+    <string name="ev_search_hint">Marke oder Modell suchen</string>
+    <string name="ev_custom_hint">Nicht dabei? Gib unten die Daten ein, um ein eigenes Fahrzeug hinzuzufügen.</string>
+    <string name="ev_vehicle_specs">%1$s kWh Akku · max. %2$s kW AC</string>
+    <string name="ev_battery_label">Akkukapazität</string>
+    <string name="ev_power_label">Max. AC-Ladeleistung</string>
+    <string name="ev_home_charger">Heim-Ladestation</string>
+    <string name="ev_home_charger_description">Die Leistung deiner Wallbox oder Ladestation. Geladen wird mit dem niedrigeren Wert — diesem oder dem Maximum des Autos.</string>
+    <string name="ev_charger_custom">Benutzerdefiniert</string>
+    <string name="ev_default_target">Standard-Ladeziel: %d%%</string>
+    <string name="ev_current_soc">Aktueller Ladestand: %d%%</string>
+    <string name="ev_target_soc">Ladeziel: %d%%</string>
+    <string name="ev_deadline_toggle">Fertig bis</string>
+    <string name="ev_deadline_hint">Fertig bis %s</string>
+    <string name="ev_charging_estimate">Ladezeit: %1$s bei %2$s kW</string>
+    <string name="dialog_add_vehicle">Fahrzeug hinzufügen</string>
+    <string name="dialog_edit_vehicle">Fahrzeug bearbeiten</string>
+    <string name="ev_attribution">Fahrzeugdaten: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Das Ladeziel muss höher sein als der aktuelle Ladestand.</string>
+    <string name="ev_error_invalid_charger">Lege eine Ladeleistung größer als null fest.</string>
+    <string name="ev_error_deadline_unreachable">Das Laden kann nicht bis zu deinem Zeitpunkt abgeschlossen werden. Versuche eine höhere Ladeleistung, einen niedrigeren aktuellen Ladestand oder einen späteren Zeitpunkt.</string>
 </resources>

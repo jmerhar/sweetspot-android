@@ -134,4 +134,28 @@
         <item quantity="one">Trial: %d day remaining</item>
         <item quantity="other">Trial: %d days remaining</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">EV charging</string>
+    <string name="ev_add_vehicle">Add a vehicle</string>
+    <string name="ev_search_hint">Search make or model</string>
+    <string name="ev_custom_hint">Not listed? Enter the details below to add a custom vehicle.</string>
+    <string name="ev_vehicle_specs">%1$s kWh battery · %2$s kW max AC</string>
+    <string name="ev_battery_label">Battery capacity</string>
+    <string name="ev_power_label">Max AC charging power</string>
+    <string name="ev_home_charger">Home charger</string>
+    <string name="ev_home_charger_description">Your wall box or charger output. Charging uses whichever is lower — this or the car\'s maximum.</string>
+    <string name="ev_charger_custom">Custom</string>
+    <string name="ev_default_target">Default target charge: %d%%</string>
+    <string name="ev_current_soc">Current charge: %d%%</string>
+    <string name="ev_target_soc">Target charge: %d%%</string>
+    <string name="ev_deadline_toggle">Ready by</string>
+    <string name="ev_deadline_hint">Ready by %s</string>
+    <string name="ev_charging_estimate">Charging time: %1$s at %2$s kW</string>
+    <string name="dialog_add_vehicle">Add vehicle</string>
+    <string name="dialog_edit_vehicle">Edit vehicle</string>
+    <string name="ev_attribution">Vehicle data: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Target charge must be higher than the current charge.</string>
+    <string name="ev_error_invalid_charger">Set a charger power greater than zero.</string>
+    <string name="ev_error_deadline_unreachable">Charging can\'t finish by your deadline. Try a higher charger power, a lower current charge, or a later time.</string>
 </resources>

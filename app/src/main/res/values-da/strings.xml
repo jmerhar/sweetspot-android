@@ -134,4 +134,28 @@
         <item quantity="one">Prøveperiode: %d dag tilbage</item>
         <item quantity="other">Prøveperiode: %d dage tilbage</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Opladning af elbil</string>
+    <string name="ev_add_vehicle">Tilføj et køretøj</string>
+    <string name="ev_search_hint">Søg efter mærke eller model</string>
+    <string name="ev_custom_hint">Ikke på listen? Indtast oplysningerne nedenfor for at tilføje et brugerdefineret køretøj.</string>
+    <string name="ev_vehicle_specs">%1$s kWh batteri · maks. %2$s kW AC</string>
+    <string name="ev_battery_label">Batterikapacitet</string>
+    <string name="ev_power_label">Maks. AC-opladningseffekt</string>
+    <string name="ev_home_charger">Hjemmelader</string>
+    <string name="ev_home_charger_description">Effekten fra din vægboks eller lader. Opladningen bruger den laveste af de to — denne eller bilens maksimum.</string>
+    <string name="ev_charger_custom">Brugerdefineret</string>
+    <string name="ev_default_target">Standardmål for opladning: %d%%</string>
+    <string name="ev_current_soc">Aktuel opladning: %d%%</string>
+    <string name="ev_target_soc">Mål for opladning: %d%%</string>
+    <string name="ev_deadline_toggle">Klar senest</string>
+    <string name="ev_deadline_hint">Klar senest %s</string>
+    <string name="ev_charging_estimate">Opladningstid: %1$s ved %2$s kW</string>
+    <string name="dialog_add_vehicle">Tilføj køretøj</string>
+    <string name="dialog_edit_vehicle">Rediger køretøj</string>
+    <string name="ev_attribution">Køretøjsdata: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Målet for opladning skal være højere end den aktuelle opladning.</string>
+    <string name="ev_error_invalid_charger">Angiv en ladeeffekt større end nul.</string>
+    <string name="ev_error_deadline_unreachable">Opladningen kan ikke nå at blive færdig inden din frist. Prøv en højere ladeeffekt, en lavere aktuel opladning eller et senere tidspunkt.</string>
 </resources>

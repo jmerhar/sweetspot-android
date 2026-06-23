@@ -12,6 +12,9 @@ import kotlinx.serialization.Serializable
  * @property durationHours Hours component of the default run duration.
  * @property durationMinutes Minutes component of the default run duration (0–55, in 5-min steps).
  * @property icon Icon ID referencing the [applianceIcons] registry.
+ * @property ev When non-null, this appliance is an electric vehicle: tapping it prompts for a
+ *           state-of-charge range and the charging duration is computed from these specs rather
+ *           than [durationHours]/[durationMinutes]. `null` for ordinary appliances.
  */
 @Serializable
 data class Appliance(
@@ -19,5 +22,9 @@ data class Appliance(
     val name: String,
     val durationHours: Int = 1,
     val durationMinutes: Int = 0,
-    val icon: String = "electricity"
-)
+    val icon: String = "electricity",
+    val ev: EvSpec? = null
+) {
+    /** Whether this appliance represents an electric vehicle (has charging specs). */
+    val isEv: Boolean get() = ev != null
+}

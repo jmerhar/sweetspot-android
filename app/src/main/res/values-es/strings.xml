@@ -138,4 +138,28 @@
         <item quantity="many">Prueba: %d días restantes</item>
         <item quantity="other">Prueba: %d días restantes</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Carga de vehículo eléctrico</string>
+    <string name="ev_add_vehicle">Añadir un vehículo</string>
+    <string name="ev_search_hint">Buscar marca o modelo</string>
+    <string name="ev_custom_hint">¿No aparece? Introduce los datos a continuación para añadir un vehículo personalizado.</string>
+    <string name="ev_vehicle_specs">Batería de %1$s kWh · %2$s kW máx. en CA</string>
+    <string name="ev_battery_label">Capacidad de la batería</string>
+    <string name="ev_power_label">Potencia máxima de carga en CA</string>
+    <string name="ev_home_charger">Cargador doméstico</string>
+    <string name="ev_home_charger_description">La potencia de tu wallbox o cargador. La carga usa la menor de las dos: esta o el máximo del coche.</string>
+    <string name="ev_charger_custom">Personalizada</string>
+    <string name="ev_default_target">Carga objetivo predeterminada: %d%%</string>
+    <string name="ev_current_soc">Carga actual: %d%%</string>
+    <string name="ev_target_soc">Carga objetivo: %d%%</string>
+    <string name="ev_deadline_toggle">Listo para</string>
+    <string name="ev_deadline_hint">Listo para las %s</string>
+    <string name="ev_charging_estimate">Tiempo de carga: %1$s a %2$s kW</string>
+    <string name="dialog_add_vehicle">Añadir vehículo</string>
+    <string name="dialog_edit_vehicle">Editar vehículo</string>
+    <string name="ev_attribution">Datos del vehículo: Open EV Data</string>
+    <string name="ev_error_invalid_soc">La carga objetivo debe ser mayor que la carga actual.</string>
+    <string name="ev_error_invalid_charger">Establece una potencia de carga mayor que cero.</string>
+    <string name="ev_error_deadline_unreachable">La carga no puede terminar antes de tu hora límite. Prueba con una potencia de carga mayor, una carga actual menor o una hora más tarde.</string>
 </resources>

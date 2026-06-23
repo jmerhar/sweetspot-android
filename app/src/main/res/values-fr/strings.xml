@@ -138,4 +138,28 @@
         <item quantity="many">Essai : %d jours restants</item>
         <item quantity="other">Essai : %d jours restants</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Recharge de véhicule électrique</string>
+    <string name="ev_add_vehicle">Ajouter un véhicule</string>
+    <string name="ev_search_hint">Rechercher une marque ou un modèle</string>
+    <string name="ev_custom_hint">Absent de la liste ? Saisissez les détails ci-dessous pour ajouter un véhicule personnalisé.</string>
+    <string name="ev_vehicle_specs">Batterie de %1$s kWh · %2$s kW max en AC</string>
+    <string name="ev_battery_label">Capacité de la batterie</string>
+    <string name="ev_power_label">Puissance de recharge AC max</string>
+    <string name="ev_home_charger">Borne de recharge</string>
+    <string name="ev_home_charger_description">La puissance de sortie de votre wallbox ou borne. La recharge utilise la valeur la plus basse — celle-ci ou le maximum de la voiture.</string>
+    <string name="ev_charger_custom">Personnalisé</string>
+    <string name="ev_default_target">Charge cible par défaut : %d%%</string>
+    <string name="ev_current_soc">Charge actuelle : %d%%</string>
+    <string name="ev_target_soc">Charge cible : %d%%</string>
+    <string name="ev_deadline_toggle">Prêt à</string>
+    <string name="ev_deadline_hint">Prêt à %s</string>
+    <string name="ev_charging_estimate">Temps de recharge : %1$s à %2$s kW</string>
+    <string name="dialog_add_vehicle">Ajouter un véhicule</string>
+    <string name="dialog_edit_vehicle">Modifier le véhicule</string>
+    <string name="ev_attribution">Données du véhicule : Open EV Data</string>
+    <string name="ev_error_invalid_soc">La charge cible doit être supérieure à la charge actuelle.</string>
+    <string name="ev_error_invalid_charger">Définissez une puissance de borne supérieure à zéro.</string>
+    <string name="ev_error_deadline_unreachable">La recharge ne peut pas se terminer avant votre échéance. Essayez une puissance de borne plus élevée, une charge actuelle plus basse ou une heure plus tardive.</string>
 </resources>

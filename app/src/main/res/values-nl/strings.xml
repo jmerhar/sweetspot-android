@@ -134,4 +134,28 @@
         <item quantity="one">Proefperiode: nog %d dag</item>
         <item quantity="other">Proefperiode: nog %d dagen</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Elektrisch laden</string>
+    <string name="ev_add_vehicle">Voertuig toevoegen</string>
+    <string name="ev_search_hint">Zoek op merk of model</string>
+    <string name="ev_custom_hint">Staat je auto er niet bij? Voer hieronder de gegevens in om een eigen voertuig toe te voegen.</string>
+    <string name="ev_vehicle_specs">Accu van %1$s kWh · max. %2$s kW AC</string>
+    <string name="ev_battery_label">Accucapaciteit</string>
+    <string name="ev_power_label">Max. AC-laadvermogen</string>
+    <string name="ev_home_charger">Laadpunt thuis</string>
+    <string name="ev_home_charger_description">Het vermogen van je laadpaal of lader. Er wordt geladen met de laagste van de twee — deze of het maximum van de auto.</string>
+    <string name="ev_charger_custom">Aangepast</string>
+    <string name="ev_default_target">Standaard streefniveau: %d%%</string>
+    <string name="ev_current_soc">Huidig laadniveau: %d%%</string>
+    <string name="ev_target_soc">Streefniveau: %d%%</string>
+    <string name="ev_deadline_toggle">Klaar om</string>
+    <string name="ev_deadline_hint">Klaar om %s</string>
+    <string name="ev_charging_estimate">Laadtijd: %1$s bij %2$s kW</string>
+    <string name="dialog_add_vehicle">Voertuig toevoegen</string>
+    <string name="dialog_edit_vehicle">Voertuig bewerken</string>
+    <string name="ev_attribution">Voertuiggegevens: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Het streefniveau moet hoger zijn dan het huidige laadniveau.</string>
+    <string name="ev_error_invalid_charger">Stel een laadvermogen groter dan nul in.</string>
+    <string name="ev_error_deadline_unreachable">Het laden kan niet voor je deadline klaar zijn. Probeer een hoger laadvermogen, een lager huidig laadniveau of een later tijdstip.</string>
 </resources>

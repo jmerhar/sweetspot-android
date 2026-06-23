@@ -142,4 +142,28 @@
         <item quantity="many">Okres próbny: %d dni pozostało</item>
         <item quantity="other">Okres próbny: %d dni pozostało</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Ładowanie auta elektrycznego</string>
+    <string name="ev_add_vehicle">Dodaj pojazd</string>
+    <string name="ev_search_hint">Szukaj marki lub modelu</string>
+    <string name="ev_custom_hint">Nie ma go na liście? Wpisz dane poniżej, aby dodać własny pojazd.</string>
+    <string name="ev_vehicle_specs">Akumulator %1$s kWh · maks. %2$s kW AC</string>
+    <string name="ev_battery_label">Pojemność akumulatora</string>
+    <string name="ev_power_label">Maks. moc ładowania AC</string>
+    <string name="ev_home_charger">Ładowarka domowa</string>
+    <string name="ev_home_charger_description">Moc Twojej ścianki lub ładowarki. Ładowanie odbywa się z niższej z dwóch wartości — tej lub maksymalnej mocy auta.</string>
+    <string name="ev_charger_custom">Własna</string>
+    <string name="ev_default_target">Domyślny poziom docelowy: %d%%</string>
+    <string name="ev_current_soc">Obecny poziom: %d%%</string>
+    <string name="ev_target_soc">Poziom docelowy: %d%%</string>
+    <string name="ev_deadline_toggle">Gotowe do</string>
+    <string name="ev_deadline_hint">Gotowe do %s</string>
+    <string name="ev_charging_estimate">Czas ładowania: %1$s przy %2$s kW</string>
+    <string name="dialog_add_vehicle">Dodaj pojazd</string>
+    <string name="dialog_edit_vehicle">Edytuj pojazd</string>
+    <string name="ev_attribution">Dane pojazdów: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Poziom docelowy musi być wyższy niż obecny.</string>
+    <string name="ev_error_invalid_charger">Ustaw moc ładowarki większą od zera.</string>
+    <string name="ev_error_deadline_unreachable">Ładowanie nie zakończy się przed wyznaczonym czasem. Spróbuj zwiększyć moc ładowarki, obniżyć obecny poziom lub wybrać późniejszą godzinę.</string>
 </resources>

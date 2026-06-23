@@ -138,4 +138,28 @@
         <item quantity="one">Izmēģinājuma periods: vēl %d diena</item>
         <item quantity="other">Izmēģinājuma periods: vēl %d dienas</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Elektroauto uzlāde</string>
+    <string name="ev_add_vehicle">Pievienot transportlīdzekli</string>
+    <string name="ev_search_hint">Meklēt marku vai modeli</string>
+    <string name="ev_custom_hint">Nav sarakstā? Ievadiet datus zemāk, lai pievienotu pielāgotu transportlīdzekli.</string>
+    <string name="ev_vehicle_specs">%1$s kWh akumulators · %2$s kW maks. AC</string>
+    <string name="ev_battery_label">Akumulatora ietilpība</string>
+    <string name="ev_power_label">Maks. AC uzlādes jauda</string>
+    <string name="ev_home_charger">Mājas lādētājs</string>
+    <string name="ev_home_charger_description">Jūsu sienas lādētāja vai uzlādes stacijas jauda. Uzlādei tiek izmantota mazākā vērtība — šī vai automašīnas maksimālā.</string>
+    <string name="ev_charger_custom">Pielāgots</string>
+    <string name="ev_default_target">Noklusējuma uzlādes mērķis: %d%%</string>
+    <string name="ev_current_soc">Pašreizējais uzlādes līmenis: %d%%</string>
+    <string name="ev_target_soc">Mērķa uzlādes līmenis: %d%%</string>
+    <string name="ev_deadline_toggle">Gatavs līdz</string>
+    <string name="ev_deadline_hint">Gatavs līdz %s</string>
+    <string name="ev_charging_estimate">Uzlādes laiks: %1$s ar %2$s kW</string>
+    <string name="dialog_add_vehicle">Pievienot transportlīdzekli</string>
+    <string name="dialog_edit_vehicle">Rediģēt transportlīdzekli</string>
+    <string name="ev_attribution">Transportlīdzekļu dati: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Mērķa uzlādes līmenim jābūt augstākam par pašreizējo.</string>
+    <string name="ev_error_invalid_charger">Iestatiet lādētāja jaudu, kas lielāka par nulli.</string>
+    <string name="ev_error_deadline_unreachable">Uzlādi nevar pabeigt līdz norādītajam laikam. Mēģiniet lielāku lādētāja jaudu, zemāku pašreizējo uzlādes līmeni vai vēlāku laiku.</string>
 </resources>

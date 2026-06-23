@@ -134,4 +134,28 @@
         <item quantity="one">Пробен период: още %d ден</item>
         <item quantity="other">Пробен период: още %d дни</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Зареждане на електромобил</string>
+    <string name="ev_add_vehicle">Добавяне на превозно средство</string>
+    <string name="ev_search_hint">Търсене на марка или модел</string>
+    <string name="ev_custom_hint">Не е в списъка? Въведете данните по-долу, за да добавите собствено превозно средство.</string>
+    <string name="ev_vehicle_specs">Батерия %1$s kWh · макс. %2$s kW AC</string>
+    <string name="ev_battery_label">Капацитет на батерията</string>
+    <string name="ev_power_label">Максимална мощност на зареждане (AC)</string>
+    <string name="ev_home_charger">Домашно зарядно</string>
+    <string name="ev_home_charger_description">Мощността на вашата стенна станция или зарядно. Зареждането използва по-ниската от двете — тази или максималната на автомобила.</string>
+    <string name="ev_charger_custom">Персонализирано</string>
+    <string name="ev_default_target">Целево ниво по подразбиране: %d%%</string>
+    <string name="ev_current_soc">Текущо ниво: %d%%</string>
+    <string name="ev_target_soc">Целево ниво: %d%%</string>
+    <string name="ev_deadline_toggle">Готово до</string>
+    <string name="ev_deadline_hint">Готово до %s</string>
+    <string name="ev_charging_estimate">Време за зареждане: %1$s при %2$s kW</string>
+    <string name="dialog_add_vehicle">Добавяне на превозно средство</string>
+    <string name="dialog_edit_vehicle">Редактиране на превозно средство</string>
+    <string name="ev_attribution">Данни за превозните средства: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Целевото ниво трябва да е по-високо от текущото.</string>
+    <string name="ev_error_invalid_charger">Задайте мощност на зарядното, по-голяма от нула.</string>
+    <string name="ev_error_deadline_unreachable">Зареждането не може да приключи до зададения краен срок. Опитайте с по-голяма мощност на зарядното, по-ниско текущо ниво или по-късно време.</string>
 </resources>

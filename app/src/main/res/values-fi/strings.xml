@@ -134,4 +134,28 @@
         <item quantity="one">Kokeilujakso: %d päivä jäljellä</item>
         <item quantity="other">Kokeilujakso: %d päivää jäljellä</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Sähköauton lataus</string>
+    <string name="ev_add_vehicle">Lisää ajoneuvo</string>
+    <string name="ev_search_hint">Hae merkkiä tai mallia</string>
+    <string name="ev_custom_hint">Eikö löytynyt? Lisää mukautettu ajoneuvo syöttämällä tiedot alle.</string>
+    <string name="ev_vehicle_specs">%1$s kWh:n akku · %2$s kW maks. AC</string>
+    <string name="ev_battery_label">Akun kapasiteetti</string>
+    <string name="ev_power_label">Suurin AC-latausteho</string>
+    <string name="ev_home_charger">Kotilatauslaite</string>
+    <string name="ev_home_charger_description">Seinälatauslaitteesi tai latausasemasi teho. Latauksessa käytetään pienempää arvoa — tätä tai auton enimmäistehoa.</string>
+    <string name="ev_charger_custom">Mukautettu</string>
+    <string name="ev_default_target">Oletuslataustavoite: %d%%</string>
+    <string name="ev_current_soc">Nykyinen lataus: %d%%</string>
+    <string name="ev_target_soc">Lataustavoite: %d%%</string>
+    <string name="ev_deadline_toggle">Valmis viimeistään</string>
+    <string name="ev_deadline_hint">Valmis viimeistään %s</string>
+    <string name="ev_charging_estimate">Latausaika: %1$s teholla %2$s kW</string>
+    <string name="dialog_add_vehicle">Lisää ajoneuvo</string>
+    <string name="dialog_edit_vehicle">Muokkaa ajoneuvoa</string>
+    <string name="ev_attribution">Ajoneuvon tiedot: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Lataustavoitteen on oltava suurempi kuin nykyinen lataus.</string>
+    <string name="ev_error_invalid_charger">Aseta latausteho, joka on suurempi kuin nolla.</string>
+    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua määräaikaan mennessä. Kokeile suurempaa lataustehoa, alhaisempaa nykyistä latausta tai myöhempää ajankohtaa.</string>
 </resources>

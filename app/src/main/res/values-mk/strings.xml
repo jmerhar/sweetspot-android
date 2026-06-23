@@ -134,4 +134,28 @@
         <item quantity="one">Пробен период: уште %d ден</item>
         <item quantity="other">Пробен период: уште %d дена</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Полнење на електричен автомобил</string>
+    <string name="ev_add_vehicle">Додај возило</string>
+    <string name="ev_search_hint">Пребарај марка или модел</string>
+    <string name="ev_custom_hint">Не е на списокот? Внесете ги деталите подолу за да додадете прилагодено возило.</string>
+    <string name="ev_vehicle_specs">Батерија %1$s kWh · макс. %2$s kW AC</string>
+    <string name="ev_battery_label">Капацитет на батеријата</string>
+    <string name="ev_power_label">Макс. моќност на AC полнење</string>
+    <string name="ev_home_charger">Домашен полнач</string>
+    <string name="ev_home_charger_description">Излезната моќност на вашиот ѕиден полнач. За полнење се користи помалата вредност — оваа или максималната на автомобилот.</string>
+    <string name="ev_charger_custom">Прилагодено</string>
+    <string name="ev_default_target">Стандардна цел на полнење: %d%%</string>
+    <string name="ev_current_soc">Тековна наполнетост: %d%%</string>
+    <string name="ev_target_soc">Целна наполнетост: %d%%</string>
+    <string name="ev_deadline_toggle">Готово до</string>
+    <string name="ev_deadline_hint">Готово до %s</string>
+    <string name="ev_charging_estimate">Време на полнење: %1$s при %2$s kW</string>
+    <string name="dialog_add_vehicle">Додај возило</string>
+    <string name="dialog_edit_vehicle">Уреди возило</string>
+    <string name="ev_attribution">Податоци за возилото: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Целната наполнетост мора да биде поголема од тековната наполнетост.</string>
+    <string name="ev_error_invalid_charger">Поставете моќност на полначот поголема од нула.</string>
+    <string name="ev_error_deadline_unreachable">Полнењето не може да заврши до вашиот краен рок. Пробајте со поголема моќност на полначот, пониска тековна наполнетост или подоцнежно време.</string>
 </resources>

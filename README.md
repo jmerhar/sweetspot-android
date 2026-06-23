@@ -39,6 +39,8 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behaviour
 - **Quick-duration buttons** — 1h–6h chips for common durations
 - **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
+- **EV charging** — add your car as a special appliance (picked from a bundled database of ~1,600 EVs/PHEVs, or entered manually); tapping it asks for current and target state of charge and computes the charging time from the battery size and the lower of the car's AC limit and your home charger
+- **"Ready by" deadline** — optionally constrain any search so the chosen window finishes by a set time
 - **Data source preferences** — reorder, enable, or disable price data sources per zone in Settings
 - **25 languages** — per-app language setting with localised UI in Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Serbian, Slovak, Slovenian, Spanish, and Swedish
 - **Dedicated results screen** — shows the cheapest window with back navigation to the form
@@ -96,7 +98,15 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-323 unit tests cover the sliding window algorithm (including 15-minute slot support and earlier-window alternatives), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, API stats instrumentation, trial/subscription logic, and ViewModel state management (via Robolectric).
+352 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
+
+## Data attribution
+
+The bundled EV database is built from two open datasets, merged into a normalised schema by
+`bin/build-ev-db.py` (run `make ev-db` to refresh):
+
+- [Open EV Data](https://github.com/KilowattApp/open-ev-data) (MIT) — broad coverage of EVs/PHEVs back to 2010.
+- [open-ev-data-dataset](https://github.com/open-ev-data/open-ev-data-dataset) (CDLA-Permissive-2.0) — recent models, preferred on overlap.
 
 ## License
 

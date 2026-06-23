@@ -134,4 +134,28 @@
         <item quantity="one">Prøveperiode: %d dag gjenstår</item>
         <item quantity="other">Prøveperiode: %d dager gjenstår</item>
     </plurals>
+
+    <!-- EV charging -->
+    <string name="settings_ev_title">Elbillading</string>
+    <string name="ev_add_vehicle">Legg til en bil</string>
+    <string name="ev_search_hint">Søk etter merke eller modell</string>
+    <string name="ev_custom_hint">Finner du ikke bilen? Fyll inn detaljene nedenfor for å legge til en egendefinert bil.</string>
+    <string name="ev_vehicle_specs">%1$s kWh batteri · %2$s kW maks AC</string>
+    <string name="ev_battery_label">Batterikapasitet</string>
+    <string name="ev_power_label">Maks AC-ladeeffekt</string>
+    <string name="ev_home_charger">Hjemmelader</string>
+    <string name="ev_home_charger_description">Effekten til veggboksen eller laderen din. Ladingen bruker den laveste av de to — denne eller bilens maksimum.</string>
+    <string name="ev_charger_custom">Egendefinert</string>
+    <string name="ev_default_target">Standard ladenivå: %d%%</string>
+    <string name="ev_current_soc">Nåværende ladenivå: %d%%</string>
+    <string name="ev_target_soc">Ønsket ladenivå: %d%%</string>
+    <string name="ev_deadline_toggle">Klar innen</string>
+    <string name="ev_deadline_hint">Klar innen %s</string>
+    <string name="ev_charging_estimate">Ladetid: %1$s med %2$s kW</string>
+    <string name="dialog_add_vehicle">Legg til bil</string>
+    <string name="dialog_edit_vehicle">Rediger bil</string>
+    <string name="ev_attribution">Bildata: Open EV Data</string>
+    <string name="ev_error_invalid_soc">Ønsket ladenivå må være høyere enn det nåværende ladenivået.</string>
+    <string name="ev_error_invalid_charger">Angi en ladeeffekt større enn null.</string>
+    <string name="ev_error_deadline_unreachable">Ladingen kan ikke bli ferdig innen fristen din. Prøv en høyere ladeeffekt, et lavere nåværende ladenivå eller et senere tidspunkt.</string>
 </resources>

@@ -19,6 +19,7 @@ import today.sweetspot.data.billing.PlayBillingRepository
 import today.sweetspot.data.cache.FilePriceCache
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.repository.CountryDetector
+import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.repository.PriceRepository
 import today.sweetspot.data.repository.SettingsRepository
 import today.sweetspot.data.stats.FileStatsCollector
@@ -28,6 +29,8 @@ import today.sweetspot.data.stats.StatsReporter
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.Countries
 import today.sweetspot.model.Country
+import today.sweetspot.model.EvSpec
+import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.PriceZone
 import today.sweetspot.model.WindowResult
@@ -62,6 +65,9 @@ sealed interface AppError {
     /** Network or fetch error shown as a snackbar. Unique [id] ensures consecutive identical messages still trigger the snackbar. */
     data class Network(override val message: String, val id: Long = System.nanoTime()) : AppError
 }
+
+/** Maximum number of vehicle picker results shown at once. */
+private const val EV_SEARCH_LIMIT = 50
 
 /**
  * UI state for the main screen.
@@ -104,6 +110,13 @@ sealed interface AppError {
  * @property now The current effective time, reflecting any active time override. Used by the UI for relative time display.
  * @property useProductionLogo Whether to show the production logo instead of the debug logo (debug builds only).
  * @property themeMode The user's preferred theme mode.
+ * @property evHomeChargerKw The user's home charger output in kW (set once in Settings).
+ * @property evDefaultTargetSoc Default target state of charge (%) used to prefill the charge prompt.
+ * @property evLastCurrentSoc Last-used current state of charge (%), used to prefill the charge prompt.
+ * @property deadlineEnabled Whether the optional "ready by" deadline is active for searches.
+ * @property deadlineHour Hour-of-day component of the "ready by" deadline (0–23).
+ * @property deadlineMinute Minute component of the "ready by" deadline (0–59).
+ * @property searchDeadline The deadline resolved at search time, or `null` when disabled.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -139,7 +152,21 @@ data class UiState(
     val timeOverrideMs: Long? = null,
     val now: ZonedDateTime = ZonedDateTime.now(),
     val useProductionLogo: Boolean = false,
-    val themeMode: ThemeMode = ThemeMode.SYSTEM
+    val themeMode: ThemeMode = ThemeMode.SYSTEM,
+    // --- EV charging ---
+    val evHomeChargerKw: Double = 11.0,
+    val evDefaultTargetSoc: Int = 80,
+    val evLastCurrentSoc: Int = 20,
+    // --- Universal "ready by" deadline ---
+    val deadlineEnabled: Boolean = false,
+    val deadlineHour: Int = 7,
+    val deadlineMinute: Int = 0,
+    /**
+     * The "ready by" deadline resolved at search time (the next occurrence of [deadlineHour]:
+     * [deadlineMinute]), or `null` when disabled. Threaded into the window finder and the periodic
+     * refresh so the chosen window finishes in time.
+     */
+    val searchDeadline: ZonedDateTime? = null
 )
 
 /**
@@ -157,6 +184,8 @@ data class UiState(
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  * @param billingRepository Optional billing repository override. When `null` (production),
  *   creates a [PlayBillingRepository]. Pass a fake for tests.
+ * @param evVehicleRepositoryOverride Optional EV database override for testing. When `null`
+ *   (production), the bundled `ev-vehicles.json` asset is loaded lazily on first use.
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
@@ -164,7 +193,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private val priceCache: PriceCache = FilePriceCache(application),
     private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val billingRepository: BillingRepository? = null
+    private val billingRepository: BillingRepository? = null,
+    private val evVehicleRepositoryOverride: EvVehicleRepository? = null
 ) : AndroidViewModel(application),
     DataClient.OnDataChangedListener {
 
@@ -189,6 +219,22 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
 
+    /** Whether [evVehicleRepository] has finished loading (set after the eager load in [init]). */
+    @Volatile
+    private var evDbReady: Boolean = false
+
+    /**
+     * The bundled EV vehicle database, backing the "add vehicle" picker in Settings. In production
+     * it is parsed from the `ev-vehicles.json` asset; tests may inject a small fixture via the
+     * constructor. Loaded eagerly off the main thread in [init] so [searchEvVehicles] is synchronous.
+     */
+    private val evVehicleRepository: EvVehicleRepository by lazy {
+        evVehicleRepositoryOverride ?: EvVehicleRepository(
+            getApplication<Application>().assets.open("ev-vehicles.json")
+                .bufferedReader().use { it.readText() }
+        )
+    }
+
     private val _uiState = MutableStateFlow(
         UiState(
             timeZoneId = settingsRepository.getTimeZoneId(),
@@ -210,7 +256,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
             timeOverrideMs = settingsRepository.getTimeOverrideMs(),
             now = currentNow(settingsRepository.getTimeZoneId()),
             useProductionLogo = settingsRepository.isUseProductionLogo(),
-            themeMode = ThemeMode.fromKey(settingsRepository.getThemeMode())
+            themeMode = ThemeMode.fromKey(settingsRepository.getThemeMode()),
+            evHomeChargerKw = settingsRepository.getEvHomeChargerKw(),
+            evDefaultTargetSoc = settingsRepository.getEvDefaultTargetSoc(),
+            evLastCurrentSoc = settingsRepository.getEvLastCurrentSoc()
         )
     )
 
@@ -228,6 +277,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
         // Record first launch time for stats prompt delay
         settingsRepository.getFirstLaunchMs()
         checkStatsPrompt()
+        // Parse the bundled EV database off the main thread so the vehicle picker search is instant.
+        viewModelScope.launch(ioDispatcher) {
+            evVehicleRepository.vehicles
+            evDbReady = true
+        }
         // Connect billing and observe unlock state
         activeBilling?.let { billing ->
             billing.connect()
@@ -302,6 +356,156 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val appliances = settingsRepository.getAppliances()
         _uiState.update { it.copy(showSettings = false, appliances = appliances) }
         syncAppliancesToWear(appliances)
+    }
+
+    // --- EV charging ---
+
+    /**
+     * Searches the bundled vehicle database for the "add vehicle" picker in Settings.
+     *
+     * Runs synchronously over the in-memory list (loaded eagerly in [init]); returns an empty
+     * list if the database has not finished loading yet or the query is blank.
+     *
+     * @param query Free-text search over brand/model/variant.
+     * @return Up to [EV_SEARCH_LIMIT] matching vehicles.
+     */
+    fun searchEvVehicles(query: String): List<EvVehicle> {
+        if (!evDbReady || query.isBlank()) return emptyList()
+        return evVehicleRepository.search(query).take(EV_SEARCH_LIMIT)
+    }
+
+    /**
+     * Adds a vehicle as an EV-type [Appliance] and persists it.
+     *
+     * Used by both database picks and custom entries — the caller supplies the resolved specs.
+     *
+     * @param name Display name (e.g. "VW ID.3" or a custom label).
+     * @param batteryKwh Usable battery capacity in kWh.
+     * @param acMaxPowerKw Maximum AC charging power in kW.
+     */
+    fun onAddVehicle(name: String, batteryKwh: Double, acMaxPowerKw: Double) {
+        val vehicle = Appliance(
+            id = UUID.randomUUID().toString(),
+            name = name,
+            durationHours = 0,
+            durationMinutes = 0,
+            icon = "ev_charger",
+            ev = EvSpec(batteryKwh, acMaxPowerKw)
+        )
+        val updated = _uiState.value.appliances + vehicle
+        settingsRepository.setAppliances(updated)
+        _uiState.update { it.copy(appliances = updated) }
+        syncAppliancesToWear(updated)
+    }
+
+    /**
+     * Updates and persists the home charger output.
+     *
+     * @param kw Charger output in kW.
+     */
+    fun onEvHomeChargerChanged(kw: Double) {
+        settingsRepository.setEvHomeChargerKw(kw)
+        _uiState.update { it.copy(evHomeChargerKw = kw) }
+    }
+
+    /**
+     * Updates and persists the default target state of charge used to prefill the charge prompt.
+     *
+     * @param soc Target SoC (0–100).
+     */
+    fun onEvDefaultTargetChanged(soc: Int) {
+        settingsRepository.setEvDefaultTargetSoc(soc)
+        _uiState.update { it.copy(evDefaultTargetSoc = soc) }
+    }
+
+    /** Toggles the optional universal "ready by" deadline. */
+    fun onDeadlineEnabledChanged(enabled: Boolean) {
+        _uiState.update { it.copy(deadlineEnabled = enabled) }
+    }
+
+    /**
+     * Sets the "ready by" deadline time of day.
+     *
+     * @param hour Hour of day (0–23).
+     * @param minute Minute (0–59).
+     */
+    fun onDeadlineChanged(hour: Int, minute: Int) {
+        _uiState.update { it.copy(deadlineHour = hour, deadlineMinute = minute) }
+    }
+
+    /**
+     * Resolves the active "ready by" deadline to a concrete instant: the next occurrence of the
+     * configured time of day at or after [now], or `null` when the deadline is disabled.
+     */
+    private fun resolveDeadline(now: ZonedDateTime): ZonedDateTime? {
+        val state = _uiState.value
+        if (!state.deadlineEnabled) return null
+        var dl = now.withHour(state.deadlineHour).withMinute(state.deadlineMinute).withSecond(0).withNano(0)
+        if (!dl.isAfter(now)) dl = dl.plusDays(1)
+        return dl
+    }
+
+    /**
+     * Computes the charging duration for a vehicle appliance from a state-of-charge range and
+     * runs the cheapest-window search (honouring the universal "ready by" deadline if set).
+     *
+     * Effective charging power is the lesser of the vehicle's max AC power and the home charger
+     * output. Duration uses a pure-linear model, appropriate for slow AC charging.
+     *
+     * @param appliance The tapped vehicle appliance (must have a non-null [Appliance.ev]).
+     * @param currentSoc Current state of charge (0–100).
+     * @param targetSoc Target state of charge (0–100).
+     */
+    fun onEvApplianceFind(appliance: Appliance, currentSoc: Int, targetSoc: Int) {
+        val app = getApplication<Application>()
+        val spec = appliance.ev ?: return
+
+        if (targetSoc <= currentSoc) {
+            _uiState.update { it.copy(error = AppError.Validation(app.getString(R.string.ev_error_invalid_soc))) }
+            return
+        }
+        val priceZone = _uiState.value.priceZone
+        if (priceZone == null) {
+            _uiState.update { it.copy(error = AppError.Validation(app.getString(R.string.error_no_zone))) }
+            return
+        }
+        val effectivePowerKw = minOf(spec.acMaxPowerKw, _uiState.value.evHomeChargerKw)
+        if (effectivePowerKw <= 0.0) {
+            _uiState.update { it.copy(error = AppError.Validation(app.getString(R.string.ev_error_invalid_charger))) }
+            return
+        }
+
+        // Pure-linear AC charging model: energy needed / effective power.
+        val energyKwh = (targetSoc - currentSoc) / 100.0 * spec.batteryKwh
+        val totalMinutes = Math.round(energyKwh / effectivePowerKw * 60).toInt().coerceAtLeast(1)
+        val roundedDurationHours = totalMinutes / 60.0
+
+        val timeZoneId = _uiState.value.timeZoneId
+        val deadline = resolveDeadline(currentNow(timeZoneId))
+
+        // Remember the current SoC to prefill the prompt next time.
+        settingsRepository.setEvLastCurrentSoc(currentSoc)
+
+        val label = "${appliance.name} · ${currentSoc}→${targetSoc}%"
+
+        _uiState.update {
+            it.copy(
+                evLastCurrentSoc = currentSoc,
+                durationHours = totalMinutes / 60,
+                durationMinutes = totalMinutes % 60,
+                isLoading = true,
+                error = null,
+                result = null,
+                resultLabel = label,
+                searchDeadline = deadline
+            )
+        }
+
+        stopResultRefresh()
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch(ioDispatcher) {
+            fetchAndFind(roundedDurationHours, label, timeZoneId, priceZone)
+        }
     }
 
     /**
@@ -448,7 +652,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 windowOffset = 0,
                 allPrices = emptyList(),
                 priceSource = null,
-                error = null
+                error = null,
+                searchDeadline = null
             )
         }
     }
@@ -527,8 +732,17 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
         val durationHours = state.durationHours + state.durationMinutes / 60.0
         val alternatives = if (futurePrices.isNotEmpty()) {
-            findWindowAlternatives(futurePrices, durationHours, now)
+            findWindowAlternatives(futurePrices, durationHours, now, state.searchDeadline)
         } else emptyList()
+
+        // No window fits any more — every slot has elapsed, or a "ready by" deadline has now
+        // passed. Keep the last result on screen (the search already happened) and stop refreshing
+        // rather than nulling the result and flipping the UI back to the form.
+        if (alternatives.isEmpty()) {
+            stopResultRefresh()
+            _uiState.update { it.copy(now = now) }
+            return
+        }
 
         // Keep showing the window the user navigated to, matched by start time. If it has
         // elapsed out of the list, fall back to the cheapest window.
@@ -656,11 +870,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * Silently ignores failures (e.g. Play Services unavailable) since
      * watch sync is best-effort and should never crash the phone app.
      *
-     * @param appliances The appliance list to sync.
+     * EV-type appliances are excluded — the watch has no state-of-charge UI in this version.
+     *
+     * @param appliances The appliance list to sync (EV appliances are filtered out).
      */
     private fun syncAppliancesToWear(appliances: List<Appliance>) {
         try {
-            val json = Json.encodeToString(appliances)
+            val json = Json.encodeToString(appliances.filterNot { it.isEv })
             val request = PutDataMapRequest.create("/appliances").apply {
                 dataMap.putString("json", json)
                 dataMap.putLong("ts", System.currentTimeMillis())
@@ -771,7 +987,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 isLoading = true,
                 error = null,
                 result = null,
-                resultLabel = it.resultLabel ?: durationLabel
+                resultLabel = it.resultLabel ?: durationLabel,
+                searchDeadline = resolveDeadline(currentNow(it.timeZoneId))
             )
         }
 
@@ -820,14 +1037,21 @@ class SweetSpotViewModel @JvmOverloads constructor(
             }
 
             val now = currentNow(timeZoneId)
-            val alternatives = findWindowAlternatives(prices, durationHours, now)
+            val deadline = _uiState.value.searchDeadline
+            val alternatives = findWindowAlternatives(prices, durationHours, now, deadline)
 
             if (alternatives.isEmpty()) {
-                val coverageHours = prices.sumOf { it.durationMinutes.toLong() } / 60
+                val app = getApplication<Application>()
+                val message = if (deadline != null) {
+                    app.getString(R.string.ev_error_deadline_unreachable)
+                } else {
+                    val coverageHours = prices.sumOf { it.durationMinutes.toLong() } / 60
+                    app.resources.getQuantityString(R.plurals.error_not_enough_data, coverageHours.toInt(), durationLabel, coverageHours)
+                }
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = AppError.Validation(getApplication<Application>().resources.getQuantityString(R.plurals.error_not_enough_data, coverageHours.toInt(), durationLabel, coverageHours)),
+                        error = AppError.Validation(message),
                         allPrices = prices
                     )
                 }

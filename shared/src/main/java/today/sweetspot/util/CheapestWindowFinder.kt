@@ -24,10 +24,19 @@ import kotlin.math.floor
  * @param durationHours Desired window length in decimal hours (e.g. 2.5 for 2h 30m).
  * @param now The current time, used to clamp the start when the cheapest window begins in the
  *            current slot.
+ * @param notLaterThan Optional "ready by" deadline: when set, only windows whose (clamped) end
+ *            time is at or before this instant are considered. Used by EV charging to honour a
+ *            "charged by HH:mm" constraint. `null` (the default) imposes no deadline.
  * @return The cheapest window with start/end times, total cost, average price, and per-slot
- *         breakdown, or `null` if there isn't enough price data to cover the duration.
+ *         breakdown, or `null` if there isn't enough price data to cover the duration (or no
+ *         window can finish by [notLaterThan]).
  */
-fun findCheapestWindow(prices: List<PriceSlot>, durationHours: Double, now: ZonedDateTime): WindowResult? {
+fun findCheapestWindow(
+    prices: List<PriceSlot>,
+    durationHours: Double,
+    now: ZonedDateTime,
+    notLaterThan: ZonedDateTime? = null
+): WindowResult? {
     val count = prices.size
     if (count == 0) return null
 
@@ -41,7 +50,10 @@ fun findCheapestWindow(prices: List<PriceSlot>, durationHours: Double, now: Zone
 
     if (count < slotsNeeded) return null
 
-    val bestStart = findBestStartIndex(prices, fullSlots, fractionalSlot, count, slotsNeeded, slotHours)
+    val lastStart = maxStartIndex(prices, count - slotsNeeded, durationHours, now, notLaterThan)
+    if (lastStart < 0) return null
+
+    val bestStart = findBestStartIndex(prices, fullSlots, fractionalSlot, lastStart, slotHours)
 
     return buildWindowAt(prices, bestStart, durationHours, durationInSlots, fullSlots, fractionalSlot, slotHours, slotMinutes, now)
 }
@@ -63,10 +75,19 @@ fun findCheapestWindow(prices: List<PriceSlot>, durationHours: Double, now: Zone
  * @param prices Price data sorted chronologically (all slots share the same [PriceSlot.durationMinutes]).
  * @param durationHours Desired window length in decimal hours.
  * @param now The current time, used to clamp the earliest window's start.
+ * @param notLaterThan Optional "ready by" deadline: when set, only windows whose (clamped) end
+ *            time is at or before this instant are considered. `null` (the default) imposes no
+ *            deadline.
  * @return Alternatives ordered cheapest-first then progressively earlier, or an empty list if
- *         there isn't enough price data to cover the duration.
+ *         there isn't enough price data to cover the duration (or no window can finish by
+ *         [notLaterThan]).
  */
-fun findWindowAlternatives(prices: List<PriceSlot>, durationHours: Double, now: ZonedDateTime): List<WindowResult> {
+fun findWindowAlternatives(
+    prices: List<PriceSlot>,
+    durationHours: Double,
+    now: ZonedDateTime,
+    notLaterThan: ZonedDateTime? = null
+): List<WindowResult> {
     val count = prices.size
     if (count == 0) return emptyList()
 
@@ -80,7 +101,9 @@ fun findWindowAlternatives(prices: List<PriceSlot>, durationHours: Double, now: 
 
     if (count < slotsNeeded) return emptyList()
 
-    val lastStart = count - slotsNeeded
+    val lastStart = maxStartIndex(prices, count - slotsNeeded, durationHours, now, notLaterThan)
+    if (lastStart < 0) return emptyList()
+
     val costs = DoubleArray(lastStart + 1) { i ->
         computeWindowCost(prices, i, fullSlots, fractionalSlot, slotHours)
     }
@@ -157,13 +180,14 @@ private fun buildWindowAt(
 }
 
 /**
- * Scans all possible window positions and returns the start index with the lowest total cost.
+ * Scans all possible window positions up to [lastStart] and returns the start index with the
+ * lowest total cost.
  *
  * @param prices Price data.
  * @param fullSlots Number of complete slots in the window.
  * @param fractionalSlot Fractional part of the last slot (0.0–1.0 in slot units).
- * @param count Total number of price entries.
- * @param slotsNeeded Total slots required (fullSlots + 1 if fractionalSlot > 0).
+ * @param lastStart Highest start index to consider (inclusive). Normally `count - slotsNeeded`,
+ *                  but lower when a deadline restricts how late the window may start.
  * @param slotHours Duration of one slot in hours.
  * @return Index into [prices] where the cheapest window starts.
  */
@@ -171,14 +195,13 @@ private fun findBestStartIndex(
     prices: List<PriceSlot>,
     fullSlots: Int,
     fractionalSlot: Double,
-    count: Int,
-    slotsNeeded: Int,
+    lastStart: Int,
     slotHours: Double
 ): Int {
     var bestCost: Double? = null
     var bestStart = 0
 
-    for (i in 0..count - slotsNeeded) {
+    for (i in 0..lastStart) {
         val cost = computeWindowCost(prices, i, fullSlots, fractionalSlot, slotHours)
         if (bestCost == null || cost < bestCost) {
             bestCost = cost
@@ -187,6 +210,43 @@ private fun findBestStartIndex(
     }
 
     return bestStart
+}
+
+/**
+ * Returns the highest start index whose window finishes at or before [notLaterThan].
+ *
+ * A window's *actual* end is `max(prices[i].time, now) + durationHours` — start-clamping to
+ * [now] pushes the end of past-starting windows out to `now + durationHours`. Because that end
+ * is non-decreasing in the start index, the valid starts form a prefix `[0, maxStart]`, so this
+ * scans upward and stops at the first window that overruns the deadline.
+ *
+ * @param prices Price data sorted chronologically.
+ * @param fullRangeLast The highest start index available ignoring any deadline (`count - slotsNeeded`).
+ * @param durationHours Window length in decimal hours.
+ * @param now The current time, used to clamp window start (and thus end).
+ * @param notLaterThan The deadline, or `null` to impose no constraint.
+ * @return The highest usable start index, or `fullRangeLast` when [notLaterThan] is `null`, or
+ *         `-1` when no window — not even one starting now — can finish in time.
+ */
+private fun maxStartIndex(
+    prices: List<PriceSlot>,
+    fullRangeLast: Int,
+    durationHours: Double,
+    now: ZonedDateTime,
+    notLaterThan: ZonedDateTime?
+): Int {
+    if (notLaterThan == null) return fullRangeLast
+
+    val durationSeconds = (durationHours * 3600).toLong()
+    var maxStart = -1
+    for (i in 0..fullRangeLast) {
+        val slotStart = prices[i].time
+        val start = if (slotStart.isBefore(now)) now else slotStart
+        val end = start.plusSeconds(durationSeconds)
+        if (end.isAfter(notLaterThan)) break
+        maxStart = i
+    }
+    return maxStart
 }
 
 /**

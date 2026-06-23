@@ -152,4 +152,7 @@ other = "Upcoming electricity prices as a horizontal bar chart"
 other = "Settings screen with saved appliances, language, country, and timezone"
 
 [screenshot_5_alt]
+other = "EV charging: current and target charge with the calculated charging time"
+
+[screenshot_6_alt]
 other = "Language selection with 25 European languages"

@@ -26,6 +26,8 @@ credentials.json
 # Hugo
 site/public
 site/resources
+# Per-language website screenshots, generated from fastlane/metadata by bin/site-screenshots.sh
+site/static/images/screenshots/
 
 # Fastlane
 fastlane/report.xml

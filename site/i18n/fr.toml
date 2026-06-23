@@ -149,4 +149,7 @@ other = "Prochains prix de l'électricité sous forme de graphique à barres hor
 other = "Écran des paramètres avec appareils enregistrés, langue, pays et fuseau horaire"
 
 [screenshot_5_alt]
+other = "Recharge de VE : charge actuelle et cible avec le temps de recharge calculé"
+
+[screenshot_6_alt]
 other = "Sélection de la langue parmi 25 langues européennes"

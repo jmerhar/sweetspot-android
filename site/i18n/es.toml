@@ -149,4 +149,7 @@ other = "Próximos precios de electricidad en un gráfico de barras horizontal"
 other = "Pantalla de ajustes con electrodomésticos guardados, idioma, país y zona horaria"
 
 [screenshot_5_alt]
+other = "Carga de VE: carga actual y objetivo con el tiempo de carga calculado"
+
+[screenshot_6_alt]
 other = "Selección de idioma con 25 idiomas europeos"

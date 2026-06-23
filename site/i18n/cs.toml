@@ -149,4 +149,7 @@ other = "Nadcházející ceny elektřiny jako vodorovný sloupcový graf"
 other = "Obrazovka nastavení s uloženými spotřebiči, jazykem, zemí a časovým pásmem"
 
 [screenshot_5_alt]
+other = "Nabíjení elektromobilu: aktuální a cílové nabití s vypočítaným časem nabíjení"
+
+[screenshot_6_alt]
 other = "Výběr jazyka z 25 evropských jazyků"

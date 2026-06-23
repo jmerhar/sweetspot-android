@@ -149,4 +149,7 @@ other = "Kommende strømpriser som horisontalt søylediagram"
 other = "Innstillinger med lagrede apparater, språk, land og tidssone"
 
 [screenshot_5_alt]
+other = "Elbillading: nåværende og ønsket ladenivå med beregnet ladetid"
+
+[screenshot_6_alt]
 other = "Språkvalg med 25 europeiske språk"

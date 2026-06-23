@@ -19,6 +19,7 @@ make install-watch                # Install release APK on connected watch
 make test                         # Run all unit tests
 make inspect                      # Summarise inspection XML files (see Inspections section)
 make site-validate                # Validate Hugo site (build, pages, links, i18n)
+make site-screenshots             # Generate per-language website screenshots (WebP) from framed images
 make ev-db                        # Rebuild the bundled EV vehicle database from open data sources
 make screenshots                  # Capture localized screenshots via Screengrab (LOCALE=xx-XX for one)
 make frames                       # Frame screenshots with marketing text (LOCALE=xx-XX for one)
@@ -35,7 +36,8 @@ A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 - **`bin/inspect.sh`** — Summarises inspection XML files exported from Android Studio. Does **not** run inspections itself. Called by `make inspect`.
 - **`bin/site-validate.sh`** — Validates the Hugo site: builds, checks expected pages/assets exist, verifies internal links resolve, checks page sizes, and ensures i18n key parity across languages. Called by `make site-validate`.
-- **`bin/frame-screenshots.sh`** — Frames raw Screengrab screenshots with marketing text and coloured backgrounds. Outputs to `fastlane/metadata/android/<locale>/images/phoneScreenshots/` and generates `build/screenshots.html` gallery. Requires ImageMagick 7. Called by `make frames`.
+- **`bin/frame-screenshots.sh`** — Frames raw Screengrab screenshots with marketing text and coloured backgrounds. Produces 6 shots per locale (result, home, prices, settings, EV charging, language); the EV shot is the state-of-charge dialog, whose top is auto-cropped to the dialog so it sits high in the frame. Outputs to `fastlane/metadata/android/<locale>/images/phoneScreenshots/` and generates `build/screenshots.html` gallery. Requires ImageMagick 7. Called by `make frames`.
+- **`bin/site-screenshots.sh`** — Generates the per-language website screenshots: converts the framed `fastlane/metadata` PNGs to WebP (563×1000) into `site/static/images/screenshots/<lang>/{1..6}.webp` (gitignored, generated on demand). Run by `make site` / `make site-validate` and by the `deploy-site` CI before the Hugo build, so the landing page shows screenshots in the visitor's language. Requires `cwebp` (or ImageMagick).
 - **`bin/feature-graphic.sh`** — Generates localised Play Store feature graphics (1024x500) with gradient, app icon, and translated tagline. Outputs to `fastlane/metadata/android/<locale>/images/featureGraphic.png` and generates `build/feature-graphics.html` gallery. Requires ImageMagick 7 and Python 3. Called by `make feature-graphic`.
 - **`bin/deploy.sh`** — Deploys phone and/or wear AABs with localised release notes to the Play Store. Supports `APP=phone|wear|both` (default: both) for selective deployment. Wear OS is always skipped on the `alpha` track (closed testing not supported for Wear); use `TRACK=production` to deploy wear. Reads version codes from Gradle, extracts the latest changelog entry from each website translation, writes Fastlane changelog files, and runs the `deploy` Fastlane lane. Called by `make deploy`.
 
@@ -392,7 +394,7 @@ When adding a new language to the website:
 
 ### Deployment
 
-GitHub Actions (`.github/workflows/deploy-site.yml`) triggers on pushes to `main` that change `site/**`. Builds with Hugo extended + `--minify`, deploys to GitHub Pages. Custom domain via `CNAME` file + DNS A records pointing to GitHub Pages IPs (185.199.108–111.153).
+GitHub Actions (`.github/workflows/deploy-site.yml`) triggers on pushes to `main` that change `site/**`, `fastlane/metadata/android/**`, or `bin/site-screenshots.sh`. It installs `webp`, runs `bin/site-screenshots.sh` to generate the per-language landing-page screenshots from the committed framed images, then builds with Hugo extended + `--minify` and deploys to GitHub Pages. Custom domain via `CNAME` file + DNS A records pointing to GitHub Pages IPs (185.199.108–111.153).
 
 ### Updating the Changelog
 

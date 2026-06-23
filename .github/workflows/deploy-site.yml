@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'site/**'
+      - 'fastlane/metadata/android/**'
+      - 'bin/site-screenshots.sh'
 
 permissions:
   contents: read
@@ -20,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - run: sudo apt-get update && sudo apt-get install -y webp
+      - run: ./bin/site-screenshots.sh
       - run: ./bin/install-hugo.sh
       - run: hugo --source site --minify
       - uses: actions/upload-pages-artifact@v4

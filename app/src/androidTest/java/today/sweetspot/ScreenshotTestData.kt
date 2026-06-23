@@ -24,6 +24,12 @@ object ScreenshotTestData {
     private val ZONE_ID = ZoneId.of("Europe/Amsterdam")
 
     /**
+     * EV vehicle name used for the EV-charging screenshot. A model name, identical across
+     * locales (no translation needed). Tapping its chip opens the state-of-charge dialog.
+     */
+    const val EV_VEHICLE_NAME = "VW ID.3"
+
+    /**
      * Fixed "current time" used for all screenshots: 08:00 today in Amsterdam.
      *
      * This ensures the cheapest window (midday) appears a few hours in the future,
@@ -122,7 +128,7 @@ object ScreenshotTestData {
         // Escape for JSON — handle quotes in translated names
         fun esc(s: String) = s.replace("\\", "\\\\").replace("\"", "\\\"")
 
-        val appliancesJson = """[{"id":"a1","name":"${esc(washer)}","durationHours":2,"durationMinutes":30,"icon":"washing_machine"},{"id":"a2","name":"${esc(dishEco)}","durationHours":4,"durationMinutes":0,"icon":"dishwasher"},{"id":"a3","name":"${esc(dishQuick)}","durationHours":1,"durationMinutes":15,"icon":"dishwasher"}]"""
+        val appliancesJson = """[{"id":"a1","name":"${esc(washer)}","durationHours":2,"durationMinutes":30,"icon":"washing_machine"},{"id":"a2","name":"${esc(dishEco)}","durationHours":4,"durationMinutes":0,"icon":"dishwasher"},{"id":"a3","name":"${esc(dishQuick)}","durationHours":1,"durationMinutes":15,"icon":"dishwasher"},{"id":"a4","name":"$EV_VEHICLE_NAME","durationHours":0,"durationMinutes":0,"icon":"ev_charger","ev":{"batteryKwh":58.0,"acMaxPowerKw":11.0}}]"""
 
         context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE).edit {
             putString("country_code", "NL")
@@ -134,6 +140,11 @@ object ScreenshotTestData {
             putBoolean("use_production_logo", true)
             putLong("first_launch_ms", System.currentTimeMillis())
             putLong("time_override", fixedNow().toInstant().toEpochMilli())
+            // EV charging: a 7.4 kW home charger and a 20→80% range so the SoC dialog shows
+            // "Charging time: 4h 42m at 7.4 kW" (effective power = min(11 kW car, 7.4 kW charger)).
+            putFloat("ev_home_charger_kw", 7.4f)
+            putInt("ev_default_target_soc", 80)
+            putInt("ev_last_current_soc", 20)
         }
     }
 

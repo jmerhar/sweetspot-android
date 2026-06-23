@@ -161,5 +161,5 @@
     <string name="ev_attribution">Dati dei veicoli: Open EV Data</string>
     <string name="ev_error_invalid_soc">La carica obiettivo deve essere superiore a quella attuale.</string>
     <string name="ev_error_invalid_charger">Imposta una potenza del caricatore maggiore di zero.</string>
-    <string name="ev_error_deadline_unreachable">La ricarica non può terminare entro la scadenza impostata. Prova con una potenza del caricatore più alta, una carica attuale più bassa o un orario più tardi.</string>
+    <string name="ev_error_deadline_unreachable">La ricarica non può terminare entro la scadenza impostata. Prova con una carica obiettivo più bassa o un orario più tardi.</string>
 </resources>

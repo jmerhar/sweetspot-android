@@ -157,5 +157,5 @@
     <string name="ev_attribution">Sõidukiandmed: Open EV Data</string>
     <string name="ev_error_invalid_soc">Laetuse eesmärk peab olema suurem kui praegune laetus.</string>
     <string name="ev_error_invalid_charger">Määra laadija võimsus, mis on suurem kui null.</string>
-    <string name="ev_error_deadline_unreachable">Laadimine ei jõua sinu tähtajaks valmis. Proovi suuremat laadija võimsust, madalamat praegust laetust või hilisemat aega.</string>
+    <string name="ev_error_deadline_unreachable">Laadimine ei jõua sinu tähtajaks valmis. Proovi madalamat laetuse eesmärki või hilisemat aega.</string>
 </resources>

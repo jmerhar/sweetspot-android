@@ -157,5 +157,5 @@
     <string name="ev_attribution">Bildata: Open EV Data</string>
     <string name="ev_error_invalid_soc">Ønsket ladenivå må være høyere enn det nåværende ladenivået.</string>
     <string name="ev_error_invalid_charger">Angi en ladeeffekt større enn null.</string>
-    <string name="ev_error_deadline_unreachable">Ladingen kan ikke bli ferdig innen fristen din. Prøv en høyere ladeeffekt, et lavere nåværende ladenivå eller et senere tidspunkt.</string>
+    <string name="ev_error_deadline_unreachable">Ladingen kan ikke bli ferdig innen fristen din. Prøv et lavere ladenivå eller et senere tidspunkt.</string>
 </resources>

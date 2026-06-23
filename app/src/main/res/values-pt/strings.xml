@@ -161,5 +161,5 @@
     <string name="ev_attribution">Dados do veículo: Open EV Data</string>
     <string name="ev_error_invalid_soc">A carga-alvo tem de ser superior à carga atual.</string>
     <string name="ev_error_invalid_charger">Defina uma potência de carregador superior a zero.</string>
-    <string name="ev_error_deadline_unreachable">O carregamento não consegue terminar até ao prazo definido. Experimente uma potência de carregador mais alta, uma carga atual mais baixa ou uma hora mais tardia.</string>
+    <string name="ev_error_deadline_unreachable">O carregamento não consegue terminar até ao prazo definido. Experimente uma carga-alvo mais baixa ou uma hora mais tardia.</string>
 </resources>

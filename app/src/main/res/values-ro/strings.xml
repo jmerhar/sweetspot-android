@@ -161,5 +161,5 @@
     <string name="ev_attribution">Date despre vehicule: Open EV Data</string>
     <string name="ev_error_invalid_soc">Nivelul dorit trebuie să fie mai mare decât nivelul actual.</string>
     <string name="ev_error_invalid_charger">Setează o putere a încărcătorului mai mare decât zero.</string>
-    <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încearcă o putere mai mare a încărcătorului, un nivel actual mai mic sau o oră mai târzie.</string>
+    <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încearcă un nivel dorit mai mic sau o oră mai târzie.</string>
 </resources>

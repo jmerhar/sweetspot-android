@@ -157,5 +157,5 @@
     <string name="ev_attribution">Ajoneuvon tiedot: Open EV Data</string>
     <string name="ev_error_invalid_soc">Lataustavoitteen on oltava suurempi kuin nykyinen lataus.</string>
     <string name="ev_error_invalid_charger">Aseta latausteho, joka on suurempi kuin nolla.</string>
-    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua määräaikaan mennessä. Kokeile suurempaa lataustehoa, alhaisempaa nykyistä latausta tai myöhempää ajankohtaa.</string>
+    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua määräaikaan mennessä. Kokeile alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
 </resources>

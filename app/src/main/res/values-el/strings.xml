@@ -157,5 +157,5 @@
     <string name="ev_attribution">Δεδομένα οχημάτων: Open EV Data</string>
     <string name="ev_error_invalid_soc">Η επιθυμητή φόρτιση πρέπει να είναι υψηλότερη από την τρέχουσα φόρτιση.</string>
     <string name="ev_error_invalid_charger">Ορίστε ισχύ φορτιστή μεγαλύτερη από μηδέν.</string>
-    <string name="ev_error_deadline_unreachable">Η φόρτιση δεν μπορεί να ολοκληρωθεί έως την προθεσμία σας. Δοκιμάστε υψηλότερη ισχύ φορτιστή, χαμηλότερη τρέχουσα φόρτιση ή μεταγενέστερη ώρα.</string>
+    <string name="ev_error_deadline_unreachable">Η φόρτιση δεν μπορεί να ολοκληρωθεί έως την προθεσμία σας. Δοκιμάστε χαμηλότερη επιθυμητή φόρτιση ή μεταγενέστερη ώρα.</string>
 </resources>

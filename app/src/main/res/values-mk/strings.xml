@@ -157,5 +157,5 @@
     <string name="ev_attribution">Податоци за возилото: Open EV Data</string>
     <string name="ev_error_invalid_soc">Целната наполнетост мора да биде поголема од тековната наполнетост.</string>
     <string name="ev_error_invalid_charger">Поставете моќност на полначот поголема од нула.</string>
-    <string name="ev_error_deadline_unreachable">Полнењето не може да заврши до вашиот краен рок. Пробајте со поголема моќност на полначот, пониска тековна наполнетост или подоцнежно време.</string>
+    <string name="ev_error_deadline_unreachable">Полнењето не може да заврши до вашиот краен рок. Пробајте со пониска целна наполнетост или подоцнежно време.</string>
 </resources>

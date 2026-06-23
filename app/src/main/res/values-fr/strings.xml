@@ -161,5 +161,5 @@
     <string name="ev_attribution">Données du véhicule : Open EV Data</string>
     <string name="ev_error_invalid_soc">La charge cible doit être supérieure à la charge actuelle.</string>
     <string name="ev_error_invalid_charger">Définissez une puissance de borne supérieure à zéro.</string>
-    <string name="ev_error_deadline_unreachable">La recharge ne peut pas se terminer avant votre échéance. Essayez une puissance de borne plus élevée, une charge actuelle plus basse ou une heure plus tardive.</string>
+    <string name="ev_error_deadline_unreachable">La recharge ne peut pas se terminer avant votre échéance. Essayez une charge cible plus basse ou une heure plus tardive.</string>
 </resources>

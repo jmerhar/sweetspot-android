@@ -165,5 +165,5 @@
     <string name="ev_attribution">Dane pojazdów: Open EV Data</string>
     <string name="ev_error_invalid_soc">Poziom docelowy musi być wyższy niż obecny.</string>
     <string name="ev_error_invalid_charger">Ustaw moc ładowarki większą od zera.</string>
-    <string name="ev_error_deadline_unreachable">Ładowanie nie zakończy się przed wyznaczonym czasem. Spróbuj zwiększyć moc ładowarki, obniżyć obecny poziom lub wybrać późniejszą godzinę.</string>
+    <string name="ev_error_deadline_unreachable">Ładowanie nie zakończy się przed wyznaczonym czasem. Spróbuj obniżyć poziom docelowy lub wybrać późniejszą godzinę.</string>
 </resources>

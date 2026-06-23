@@ -157,5 +157,5 @@
     <string name="ev_attribution">Fahrzeugdaten: Open EV Data</string>
     <string name="ev_error_invalid_soc">Das Ladeziel muss höher sein als der aktuelle Ladestand.</string>
     <string name="ev_error_invalid_charger">Lege eine Ladeleistung größer als null fest.</string>
-    <string name="ev_error_deadline_unreachable">Das Laden kann nicht bis zu deinem Zeitpunkt abgeschlossen werden. Versuche eine höhere Ladeleistung, einen niedrigeren aktuellen Ladestand oder einen späteren Zeitpunkt.</string>
+    <string name="ev_error_deadline_unreachable">Das Laden kann nicht bis zu deinem Zeitpunkt abgeschlossen werden. Versuche ein niedrigeres Ladeziel oder einen späteren Zeitpunkt.</string>
 </resources>

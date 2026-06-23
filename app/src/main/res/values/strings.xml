@@ -157,5 +157,5 @@
     <string name="ev_attribution">Vehicle data: Open EV Data</string>
     <string name="ev_error_invalid_soc">Target charge must be higher than the current charge.</string>
     <string name="ev_error_invalid_charger">Set a charger power greater than zero.</string>
-    <string name="ev_error_deadline_unreachable">Charging can\'t finish by your deadline. Try a higher charger power, a lower current charge, or a later time.</string>
+    <string name="ev_error_deadline_unreachable">Charging can\'t finish by your deadline. Try a lower target charge or a later time.</string>
 </resources>

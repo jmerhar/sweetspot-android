@@ -161,5 +161,5 @@
     <string name="ev_attribution">Podaci o vozilu: Open EV Data</string>
     <string name="ev_error_invalid_soc">Ciljna napunjenost mora biti veća od trenutne.</string>
     <string name="ev_error_invalid_charger">Postavite snagu punjača veću od nule.</string>
-    <string name="ev_error_deadline_unreachable">Punjenje se ne može završiti do zadatog roka. Pokušajte sa većom snagom punjača, nižom trenutnom napunjenošću ili kasnijim vremenom.</string>
+    <string name="ev_error_deadline_unreachable">Punjenje se ne može završiti do zadatog roka. Pokušajte sa nižom ciljnom napunjenošću ili kasnijim vremenom.</string>
 </resources>

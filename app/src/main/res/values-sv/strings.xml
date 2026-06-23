@@ -157,5 +157,5 @@
     <string name="ev_attribution">Fordonsdata: Open EV Data</string>
     <string name="ev_error_invalid_soc">Målladdningen måste vara högre än den nuvarande laddningen.</string>
     <string name="ev_error_invalid_charger">Ange en laddeffekt som är högre än noll.</string>
-    <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din deadline. Prova en högre laddeffekt, en lägre nuvarande laddning eller en senare tidpunkt.</string>
+    <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din deadline. Prova ett lägre laddningsmål eller en senare tidpunkt.</string>
 </resources>

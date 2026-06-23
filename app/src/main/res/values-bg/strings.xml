@@ -157,5 +157,5 @@
     <string name="ev_attribution">Данни за превозните средства: Open EV Data</string>
     <string name="ev_error_invalid_soc">Целевото ниво трябва да е по-високо от текущото.</string>
     <string name="ev_error_invalid_charger">Задайте мощност на зарядното, по-голяма от нула.</string>
-    <string name="ev_error_deadline_unreachable">Зареждането не може да приключи до зададения краен срок. Опитайте с по-голяма мощност на зарядното, по-ниско текущо ниво или по-късно време.</string>
+    <string name="ev_error_deadline_unreachable">Зареждането не може да приключи до зададения краен срок. Опитайте с по-ниско целево ниво или по-късно време.</string>
 </resources>

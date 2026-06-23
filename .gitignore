@@ -31,5 +31,6 @@ site/resources
 fastlane/report.xml
 fastlane/README.md
 fastlane/screenshots/**/images/
+fastlane/screenshots/screenshots.html
 fastlane/metadata/android/*/changelogs/
 vendor/

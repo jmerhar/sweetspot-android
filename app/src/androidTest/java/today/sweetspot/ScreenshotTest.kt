@@ -21,17 +21,19 @@ import tools.fastlane.screengrab.Screengrab
 import tools.fastlane.screengrab.locale.LocaleTestRule
 
 /**
- * Instrumented test that captures 5 screenshots for each locale via Fastlane Screengrab.
+ * Instrumented test that captures 6 screenshots for each locale via Fastlane Screengrab.
  *
- * Navigates through the real UI using Compose test semantics:
+ * Navigates through the real UI using Compose test semantics. The numeric name prefix encodes
+ * the final gallery order:
  * 1. Result screen (cheapest window for washing machine)
- * 2. Home screen (form with translated appliance chips)
+ * 2. Home screen (form with translated appliance chips, incl. an EV)
  * 3. Price chart (scrolled to show "Upcoming Prices" title + chart)
  * 4. Settings screen
- * 5. Language picker
+ * 5. EV charging (state-of-charge dialog)
+ * 6. Language picker
  *
- * Test data is pre-populated via [ScreenshotTestData] with a fixed time override
- * and 15-minute resolution prices. Appliance names are translated per locale.
+ * Test data is pre-populated via [ScreenshotTestData] with a fixed time override, 15-minute
+ * resolution prices, and a seeded EV vehicle. Appliance names are translated per locale.
  */
 class ScreenshotTest {
 
@@ -58,6 +60,9 @@ class ScreenshotTest {
     /** Localized title for the "Upcoming Prices" chart section. */
     private lateinit var labelUpcomingPrices: String
 
+    /** Localized "Cancel" label, used to dismiss the EV state-of-charge dialog. */
+    private lateinit var cancelLabel: String
+
     @Before
     fun setUp() {
         // 1. Populate SharedPreferences and cache BEFORE launching.
@@ -79,6 +84,7 @@ class ScreenshotTest {
             cdSettings = activity.getString(R.string.cd_settings)
             cdBack = activity.getString(R.string.cd_back)
             labelUpcomingPrices = activity.getString(R.string.result_upcoming_prices)
+            cancelLabel = activity.getString(R.string.action_cancel)
         }
     }
 
@@ -89,7 +95,17 @@ class ScreenshotTest {
         composeTestRule.waitUntilAtLeastOneExists(hasText(washerName), timeoutMillis = 10_000)
         Screengrab.screenshot("2_home")
 
-        // 2. Result screen — tap washing machine to trigger search
+        // 2. EV charging — tap the EV chip to open the state-of-charge dialog
+        composeTestRule.onNodeWithText(ScreenshotTestData.EV_VEHICLE_NAME).performClick()
+        composeTestRule.waitUntilAtLeastOneExists(hasText(cancelLabel), timeoutMillis = 5_000)
+        composeTestRule.waitForIdle()
+        Thread.sleep(1_000)
+        Screengrab.screenshot("5_ev_charging")
+        // Dismiss the dialog so the home screen is restored for the next steps.
+        composeTestRule.onNodeWithText(cancelLabel).performClick()
+        composeTestRule.waitForIdle()
+
+        // 3. Result screen — tap washing machine to trigger search
         composeTestRule.onNodeWithText(washerName).performClick()
         composeTestRule.waitUntilAtLeastOneExists(hasText(washerName, substring = true), timeoutMillis = 15_000)
         composeTestRule.waitForIdle()
@@ -122,6 +138,6 @@ class ScreenshotTest {
             .performClick()
         composeTestRule.waitForIdle()
         Thread.sleep(1_000)
-        Screengrab.screenshot("5_languages")
+        Screengrab.screenshot("6_languages")
     }
 }

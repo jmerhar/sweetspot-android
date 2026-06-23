@@ -47,6 +47,7 @@ BG_2="#BBDEFB"   # Light blue
 BG_3="#E1BEE7"   # Lavender
 BG_4="#FFF9C4"   # Pale yellow
 BG_5="#F8BBD0"   # Light pink
+BG_6="#C5E1A5"   # Pale green (EV charging)
 
 # --- Spanning phone config (images 1 & 2) ---
 SPAN_SCALE_PCT=105        # Width as % of canvas (before rotation)
@@ -67,6 +68,34 @@ SINGLE_GAP=80            # Gap between bottom of title text and top of phone (px
 
 # ──────────────────────────────────────────────
 # Helper: prepare a phone image (scale → round corners → shadow)
+# ──────────────────────────────────────────────
+# Crops the top off a centred-dialog screenshot so the dialog sits high in the frame.
+#
+# Detects the bright modal dialog card (near-white over the dimmed background) and crops the
+# image down to a fixed margin above it, keeping everything below. Falls back to copying the
+# raw unchanged if the dialog can't be located.
+# ──────────────────────────────────────────────
+DIALOG_MARGIN_ABOVE=170   # px of dimmed scrim kept above the dialog after cropping
+
+crop_above_dialog() {
+    local raw="$1" out="$2"
+    local w h top crop_y
+    w=$(magick identify -format "%w" "$raw")
+    h=$(magick identify -format "%h" "$raw")
+    # Find the first row whose mean brightness exceeds 60% — the top edge of the white modal
+    # dialog. A row profile (image squashed to 1px wide) cleanly distinguishes the bright dialog
+    # (~75%) from the thin status bar and the dimmed app behind it (both <45%), unlike a plain
+    # white-pixel bounding box, which would latch onto the status-bar icons at the very top.
+    top=$(magick "$raw" -colorspace Gray -resize "1x${h}!" txt:- 2>/dev/null \
+        | sed -n 's/^0,\([0-9]*\):.*[Gg]r[ae]y(\([0-9.]*\)%).*/\1 \2/p' \
+        | awk '$2 > 60 && f == 0 { print $1; f = 1 }') || true
+    if [[ -z "$top" ]]; then
+        cp "$raw" "$out"; return
+    fi
+    crop_y=$(( top > DIALOG_MARGIN_ABOVE ? top - DIALOG_MARGIN_ABOVE : 0 ))
+    magick "$raw" -crop "${w}x$(( h - crop_y ))+0+${crop_y}" +repage "$out"
+}
+
 # ──────────────────────────────────────────────
 prepare_phone() {
     local raw="$1" output="$2" scale_pct="$3"
@@ -276,12 +305,13 @@ main() {
         CURRENT_LOCALE="$locale"
 
         # Find raw screenshots
-        local raw_result raw_home raw_prices raw_settings raw_languages
+        local raw_result raw_home raw_prices raw_settings raw_ev_charging raw_languages
         raw_result=$(find_raw "$img_dir" "1_result")
         raw_home=$(find_raw "$img_dir" "2_home")
         raw_prices=$(find_raw "$img_dir" "3_prices")
         raw_settings=$(find_raw "$img_dir" "4_settings")
-        raw_languages=$(find_raw "$img_dir" "5_languages")
+        raw_ev_charging=$(find_raw "$img_dir" "5_ev_charging")
+        raw_languages=$(find_raw "$img_dir" "6_languages")
 
         # --- Generate spanning phone (used by images 1 & 2) ---
         local spanning_phone=""
@@ -313,13 +343,24 @@ main() {
         # Clean up spanning phone
         [[ -n "$spanning_phone" ]] && rm -f "$spanning_phone"
 
-        # --- Images 3–5: single phone ---
+        # The EV charging screenshot is a centred modal dialog. Crop the phone's top down to
+        # just above the dialog so it sits high in the frame instead of being pushed to the
+        # bottom (and clipped) when the caption wraps to several lines.
+        local raw_ev_cropped="" ev_tmp_dir=""
+        if [[ -n "$raw_ev_charging" && -f "$raw_ev_charging" ]]; then
+            ev_tmp_dir=$(mktemp -d)
+            raw_ev_cropped="$ev_tmp_dir/ev.png"
+            crop_above_dialog "$raw_ev_charging" "$raw_ev_cropped"
+        fi
+
+        # --- Images 3–6: single phone ---
         local filter raw bg text
-        for filter in 3_prices 4_settings 5_languages; do
+        for filter in 3_prices 4_settings 5_ev_charging 6_languages; do
             case "$filter" in
-                3_prices)    raw="$raw_prices";    bg="$BG_3" ;;
-                4_settings)  raw="$raw_settings";  bg="$BG_4" ;;
-                5_languages) raw="$raw_languages"; bg="$BG_5" ;;
+                3_prices)      raw="$raw_prices";      bg="$BG_3" ;;
+                4_settings)    raw="$raw_settings";    bg="$BG_4" ;;
+                5_ev_charging) raw="$raw_ev_cropped";  bg="$BG_6" ;;
+                6_languages)   raw="$raw_languages";   bg="$BG_5" ;;
             esac
             [[ -n "$raw" && -f "$raw" ]] || continue
             text=$(read_title "$title_file" "$filter")
@@ -327,6 +368,8 @@ main() {
             frame_single "$raw" "$text" "$bg" "$out_dir/${filter}.png"
             count=$((count + 1))
         done
+
+        [[ -n "$ev_tmp_dir" ]] && rm -rf "$ev_tmp_dir"
     done
 
     generate_html
@@ -342,7 +385,7 @@ generate_html() {
          phone alignment. With N equal images: gap% = ratio / (N + N*ratio - ratio)
          where ratio = FRAME_GAP/CANVAS_W ≈ 0.0519.
          5 imgs → 1%, 6 → 0.84%, 7 → 0.72%, 8 → 0.63%, 9 → 0.56%, 10 → 0.5% */
-      .screenshots { display: flex; gap: 1%; }
+      .screenshots { display: flex; gap: 0.84%; }
       .screenshots img {
         flex: 1;
         min-width: 0;

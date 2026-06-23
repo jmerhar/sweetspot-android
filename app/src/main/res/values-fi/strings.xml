@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Lataustavoitteen on oltava suurempi kuin nykyinen lataus.</string>
     <string name="ev_error_invalid_charger">Aseta latausteho, joka on suurempi kuin nolla.</string>
     <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua määräaikaan mennessä. Kokeile alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
+    <string name="result_disclaimer_power">Kustannukset on laskettu %s kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä toimittajan palkkiota. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
+    <string name="dialog_power">Teho (kW, valinnainen)</string>
 </resources>

@@ -166,4 +166,6 @@
     <string name="ev_error_invalid_soc">Ciljna napolnjenost mora biti višja od trenutne.</string>
     <string name="ev_error_invalid_charger">Nastavite moč polnilnika, večjo od nič.</string>
     <string name="ev_error_deadline_unreachable">Polnjenje se ne more končati do vašega roka. Poskusite z nižjo ciljno napolnjenostjo ali poznejšim časom.</string>
+    <string name="result_disclaimer_power">Stroški so prikazani za %s kW obremenitev. Cene ne vključujejo DDV, davka na energijo in dobaviteljske pristojbine. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="dialog_power">Moč (kW, izbirno)</string>
 </resources>

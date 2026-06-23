@@ -26,6 +26,7 @@
     <string name="cd_expand">Expand</string>
     <string name="result_upcoming_prices">Upcoming Prices</string>
     <string name="result_disclaimer">Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_disclaimer_power">Costs shown are for a %s kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow’s prices are usually available after 13:00 CET.</string>
     <string name="result_data_source">\nData source: %s</string>
     <string name="result_price_zone">\nPrice zone: %s</string>
     <string name="cd_cheapest_window">cheapest window</string>
@@ -66,6 +67,7 @@
     <string name="dialog_edit_appliance">Edit appliance</string>
     <string name="dialog_name">Name</string>
     <string name="dialog_name_placeholder">e.g. Washing machine</string>
+    <string name="dialog_power">Power (kW, optional)</string>
     <string name="dialog_icon">Icon</string>
     <string name="action_delete">Delete</string>
     <string name="action_save">Save</string>

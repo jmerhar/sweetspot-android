@@ -39,9 +39,12 @@ import kotlin.math.roundToLong
 /**
  * Expandable table listing each hourly slot in the cheapest window with its time range,
  * price per kWh, and fractional usage. Collapsed by default to keep the result screen compact.
+ *
+ * @param powerKw Load rating (kW) by which each slot's per-1-kW cost is scaled for display.
+ *        Defaults to 1.0 (costs as computed).
  */
 @Composable
-fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier) {
+fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier, powerKw: Double = 1.0) {
     var expanded by remember { mutableStateOf(false) }
 
     Column(modifier = modifier.fillMaxWidth()) {
@@ -99,7 +102,7 @@ fun BreakdownTable(breakdown: List<BreakdownSlot>, modifier: Modifier = Modifier
                                 style = MaterialTheme.typography.bodyMedium
                             )
                             Text(
-                                text = formatPrice(slot.cost, 4),
+                                text = formatPrice(slot.cost * powerKw, 4),
                                 style = MaterialTheme.typography.bodyMedium
                             )
                         }

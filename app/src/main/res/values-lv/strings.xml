@@ -162,4 +162,6 @@
     <string name="ev_error_invalid_soc">Mērķa uzlādes līmenim jābūt augstākam par pašreizējo.</string>
     <string name="ev_error_invalid_charger">Iestatiet lādētāja jaudu, kas lielāka par nulli.</string>
     <string name="ev_error_deadline_unreachable">Uzlādi nevar pabeigt līdz norādītajam laikam. Mēģiniet zemāku mērķa uzlādes līmeni vai vēlāku laiku.</string>
+    <string name="result_disclaimer_power">Izmaksas ir norādītas %s kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
+    <string name="dialog_power">Jauda (kW, neobligāti)</string>
 </resources>

@@ -63,7 +63,7 @@ fun SettingsScreen(
     isUsingDefaultTimezone: Boolean,
     onTimezoneSelected: (ZoneId?) -> Unit,
     appliances: List<Appliance>,
-    onAddAppliance: (name: String, durationHours: Int, durationMinutes: Int, icon: String) -> Unit,
+    onAddAppliance: (name: String, durationHours: Int, durationMinutes: Int, icon: String, powerKw: Double?) -> Unit,
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
     evHomeChargerKw: Double,
@@ -216,8 +216,8 @@ fun SettingsScreen(
     if (showAddDialog) {
         ApplianceDialog(
             appliance = null,
-            onSave = { name, durationHours, durationMinutes, icon ->
-                onAddAppliance(name, durationHours, durationMinutes, icon)
+            onSave = { name, durationHours, durationMinutes, icon, powerKw ->
+                onAddAppliance(name, durationHours, durationMinutes, icon, powerKw)
                 showAddDialog = false
             },
             onDelete = null,
@@ -228,8 +228,8 @@ fun SettingsScreen(
     editingAppliance?.let { appliance ->
         ApplianceDialog(
             appliance = appliance,
-            onSave = { name, durationHours, durationMinutes, icon ->
-                onUpdateAppliance(appliance.copy(name = name, durationHours = durationHours, durationMinutes = durationMinutes, icon = icon))
+            onSave = { name, durationHours, durationMinutes, icon, powerKw ->
+                onUpdateAppliance(appliance.copy(name = name, durationHours = durationHours, durationMinutes = durationMinutes, icon = icon, powerKw = powerKw))
                 editingAppliance = null
             },
             onDelete = {

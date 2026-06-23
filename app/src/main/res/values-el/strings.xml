@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Η επιθυμητή φόρτιση πρέπει να είναι υψηλότερη από την τρέχουσα φόρτιση.</string>
     <string name="ev_error_invalid_charger">Ορίστε ισχύ φορτιστή μεγαλύτερη από μηδέν.</string>
     <string name="ev_error_deadline_unreachable">Η φόρτιση δεν μπορεί να ολοκληρωθεί έως την προθεσμία σας. Δοκιμάστε χαμηλότερη επιθυμητή φόρτιση ή μεταγενέστερη ώρα.</string>
+    <string name="result_disclaimer_power">Το κόστος υπολογίζεται για φορτίο %s kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο και τέλη προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
+    <string name="dialog_power">Ισχύς (kW, προαιρετικό)</string>
 </resources>

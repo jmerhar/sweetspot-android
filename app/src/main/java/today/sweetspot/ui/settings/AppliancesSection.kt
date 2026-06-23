@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
@@ -36,12 +37,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.applianceIconFor
 import today.sweetspot.model.applianceIcons
 import today.sweetspot.ui.components.DurationPicker
+import today.sweetspot.ui.components.formatKw
 import today.sweetspot.util.formatDuration
 
 /** Appliances settings section with description, appliance list, and add button. */
@@ -118,12 +121,12 @@ internal fun AppliancesSection(
     }
 }
 
-/** Dialog for creating or editing an appliance with name, duration, and icon fields. */
+/** Dialog for creating or editing an appliance with name, duration, icon, and optional power. */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun ApplianceDialog(
     appliance: Appliance?,
-    onSave: (name: String, durationHours: Int, durationMinutes: Int, icon: String) -> Unit,
+    onSave: (name: String, durationHours: Int, durationMinutes: Int, icon: String, powerKw: Double?) -> Unit,
     onDelete: (() -> Unit)?,
     onDismiss: () -> Unit
 ) {
@@ -131,6 +134,11 @@ internal fun ApplianceDialog(
     var pickerHours by rememberSaveable { mutableIntStateOf(appliance?.durationHours ?: 1) }
     var pickerMinutes by rememberSaveable { mutableIntStateOf(appliance?.durationMinutes ?: 0) }
     var selectedIcon by rememberSaveable { mutableStateOf(appliance?.icon ?: "electricity") }
+    var powerText by rememberSaveable { mutableStateOf(appliance?.powerKw?.let { formatKw(it) } ?: "") }
+
+    // Power is optional: blank ⇒ null. When entered it must parse to a positive number.
+    val powerKw = powerText.trim().replace(',', '.').toDoubleOrNull()
+    val powerValid = powerText.isBlank() || (powerKw != null && powerKw > 0)
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -159,6 +167,17 @@ internal fun ApplianceDialog(
                     label = { Text(stringResource(R.string.dialog_name)) },
                     placeholder = { Text(stringResource(R.string.dialog_name_placeholder)) },
                     singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = powerText,
+                    onValueChange = { powerText = it },
+                    label = { Text(stringResource(R.string.dialog_power)) },
+                    suffix = { Text("kW") },
+                    singleLine = true,
+                    isError = !powerValid,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(8.dp))
@@ -212,8 +231,8 @@ internal fun ApplianceDialog(
         },
         confirmButton = {
             TextButton(
-                onClick = { onSave(name.trim(), pickerHours, pickerMinutes, selectedIcon) },
-                enabled = name.isNotBlank() && (pickerHours > 0 || pickerMinutes > 0)
+                onClick = { onSave(name.trim(), pickerHours, pickerMinutes, selectedIcon, powerKw?.takeIf { powerText.isNotBlank() }) },
+                enabled = name.isNotBlank() && (pickerHours > 0 || pickerMinutes > 0) && powerValid
             ) {
                 Text(stringResource(R.string.action_save))
             }

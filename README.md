@@ -24,7 +24,7 @@ SweetSpot returns:
 - **Cost breakdown** — per-hour price, fraction used, and cost
 - **24h bar chart** — all prices with the optimal window highlighted in green; sub-hourly slots are grouped by hour with individual bars stacked within each row
 
-All costs shown are per 1 kW load. Prices do not include energy tax and supplier fee.
+Costs are shown per 1 kW load by default; set an appliance's power rating (or charge an EV) and the cost reflects the actual load. Prices do not include energy tax and supplier fee.
 
 ### Wear OS companion app
 
@@ -38,7 +38,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Country auto-detection** — detects your country on first launch from SIM, network, or timezone (no permissions required)
 - **Duration scroll picker** — two-column wheel for hours and minutes with snap behaviour
 - **Quick-duration buttons** — 1h–6h chips for common durations
-- **Configurable appliances** — save your appliances with name, duration, and icon; persisted across app restarts
+- **Configurable appliances** — save your appliances with name, duration, icon, and an optional power rating (kW) so the cost reflects the real load; persisted across app restarts
 - **EV charging** — add your car as a special appliance (picked from a bundled database of ~1,600 EVs/PHEVs, or entered manually); tapping it asks for current and target state of charge and computes the charging time from the battery size and the lower of the car's AC limit and your home charger
 - **"Ready by" deadline** — optionally constrain any search so the chosen window finishes by a set time
 - **Data source preferences** — reorder, enable, or disable price data sources per zone in Settings
@@ -98,7 +98,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-352 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
+358 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
 
 ## Data attribution
 

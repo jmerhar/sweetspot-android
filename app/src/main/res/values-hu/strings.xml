@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">A céltöltöttségnek magasabbnak kell lennie a jelenlegi töltöttségnél.</string>
     <string name="ev_error_invalid_charger">Adj meg nullánál nagyobb töltési teljesítményt.</string>
     <string name="ev_error_deadline_unreachable">A töltés nem fejeződik be a megadott határidőre. Próbálj alacsonyabb céltöltöttséget vagy későbbi időpontot.</string>
+    <string name="result_disclaimer_power">A költségek %s kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói díjat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
+    <string name="dialog_power">Teljesítmény (kW, opcionális)</string>
 </resources>

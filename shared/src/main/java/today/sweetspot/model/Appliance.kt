@@ -15,6 +15,9 @@ import kotlinx.serialization.Serializable
  * @property ev When non-null, this appliance is an electric vehicle: tapping it prompts for a
  *           state-of-charge range and the charging duration is computed from these specs rather
  *           than [durationHours]/[durationMinutes]. `null` for ordinary appliances.
+ * @property powerKw Optional load rating in kilowatts. When set, displayed costs reflect this
+ *           load instead of the default per-1-kW figure. `null` leaves the per-1-kW behaviour.
+ *           Not used by EV appliances, whose charging power is derived per search.
  */
 @Serializable
 data class Appliance(
@@ -23,7 +26,8 @@ data class Appliance(
     val durationHours: Int = 1,
     val durationMinutes: Int = 0,
     val icon: String = "electricity",
-    val ev: EvSpec? = null
+    val ev: EvSpec? = null,
+    val powerKw: Double? = null
 ) {
     /** Whether this appliance represents an electric vehicle (has charging specs). */
     val isEv: Boolean get() = ev != null

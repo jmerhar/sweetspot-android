@@ -166,4 +166,6 @@
     <string name="ev_error_invalid_soc">Cieľové nabitie musí byť vyššie ako aktuálne nabitie.</string>
     <string name="ev_error_invalid_charger">Nastavte nabíjací výkon väčší ako nula.</string>
     <string name="ev_error_deadline_unreachable">Nabíjanie sa nestihne dokončiť do vášho termínu. Skúste nižšie cieľové nabitie alebo neskorší čas.</string>
+    <string name="result_disclaimer_power">Náklady sú uvedené pre záťaž %s kW. Ceny nezahŕňajú DPH, daň z energie a poplatok dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="dialog_power">Výkon (kW, voliteľné)</string>
 </resources>

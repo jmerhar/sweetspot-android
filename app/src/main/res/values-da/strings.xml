@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Målet for opladning skal være højere end den aktuelle opladning.</string>
     <string name="ev_error_invalid_charger">Angiv en ladeeffekt større end nul.</string>
     <string name="ev_error_deadline_unreachable">Opladningen kan ikke nå at blive færdig inden din frist. Prøv et lavere opladningsmål eller et senere tidspunkt.</string>
+    <string name="result_disclaimer_power">Omkostningerne er for en belastning på %s kW. Priserne inkluderer ikke moms, energiafgift og leverandørgebyr. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
+    <string name="dialog_power">Effekt (kW, valgfrit)</string>
 </resources>

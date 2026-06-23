@@ -117,6 +117,7 @@ private const val EV_SEARCH_LIMIT = 50
  * @property deadlineHour Hour-of-day component of the "ready by" deadline (0–23).
  * @property deadlineMinute Minute component of the "ready by" deadline (0–59).
  * @property searchDeadline The deadline resolved at search time, or `null` when disabled.
+ * @property searchPowerKw Load power (kW) used to scale displayed costs, or `null` for per-1-kW.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -166,7 +167,13 @@ data class UiState(
      * [deadlineMinute]), or `null` when disabled. Threaded into the window finder and the periodic
      * refresh so the chosen window finishes in time.
      */
-    val searchDeadline: ZonedDateTime? = null
+    val searchDeadline: ZonedDateTime? = null,
+    /**
+     * Load power (kW) for the current search, used only to scale displayed costs. `null` keeps the
+     * per-1-kW behaviour (and disclaimer). Set from an appliance's [Appliance.powerKw] or, for EV
+     * charging, the effective charging power.
+     */
+    val searchPowerKw: Double? = null
 )
 
 /**
@@ -497,7 +504,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 error = null,
                 result = null,
                 resultLabel = label,
-                searchDeadline = deadline
+                searchDeadline = deadline,
+                searchPowerKw = effectivePowerKw
             )
         }
 
@@ -638,7 +646,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 resultLabel = label
             )
         }
-        onFindClicked()
+        onFindClicked(appliance.powerKw)
     }
 
     /** Clears the current result and returns to the form screen. */
@@ -653,7 +661,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 allPrices = emptyList(),
                 priceSource = null,
                 error = null,
-                searchDeadline = null
+                searchDeadline = null,
+                searchPowerKw = null
             )
         }
     }
@@ -822,14 +831,16 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param durationHours Hours component of the default duration.
      * @param durationMinutes Minutes component of the default duration.
      * @param icon Icon ID from the appliance icon registry.
+     * @param powerKw Optional load rating in kW, or `null` for the default per-1-kW cost display.
      */
-    fun onAddAppliance(name: String, durationHours: Int, durationMinutes: Int, icon: String) {
+    fun onAddAppliance(name: String, durationHours: Int, durationMinutes: Int, icon: String, powerKw: Double? = null) {
         val appliance = Appliance(
             id = UUID.randomUUID().toString(),
             name = name,
             durationHours = durationHours,
             durationMinutes = durationMinutes,
-            icon = icon
+            icon = icon,
+            powerKw = powerKw
         )
         val updated = _uiState.value.appliances + appliance
         settingsRepository.setAppliances(updated)
@@ -951,8 +962,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
      *
      * Sets [UiState.isLoading] while working. On success, populates [UiState.result]
      * and [UiState.allPrices]. On failure, sets [UiState.error].
+     *
+     * @param powerKw Optional load rating (kW) used to scale displayed costs. `null` (the default,
+     *   used by the Find button and quick-duration chips) keeps the per-1-kW behaviour.
      */
-    fun onFindClicked() {
+    fun onFindClicked(powerKw: Double? = null) {
         val h = _uiState.value.durationHours
         val m = _uiState.value.durationMinutes
 
@@ -988,7 +1002,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 error = null,
                 result = null,
                 resultLabel = it.resultLabel ?: durationLabel,
-                searchDeadline = resolveDeadline(currentNow(it.timeZoneId))
+                searchDeadline = resolveDeadline(currentNow(it.timeZoneId)),
+                searchPowerKw = powerKw
             )
         }
 

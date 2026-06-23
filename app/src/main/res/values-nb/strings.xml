@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Ønsket ladenivå må være høyere enn det nåværende ladenivået.</string>
     <string name="ev_error_invalid_charger">Angi en ladeeffekt større enn null.</string>
     <string name="ev_error_deadline_unreachable">Ladingen kan ikke bli ferdig innen fristen din. Prøv et lavere ladenivå eller et senere tidspunkt.</string>
+    <string name="result_disclaimer_power">Kostnadene er vist for en last på %s kW. Prisene inkluderer ikke MVA, energiavgift og leverandørgebyr. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.</string>
+    <string name="dialog_power">Effekt (kW, valgfritt)</string>
 </resources>

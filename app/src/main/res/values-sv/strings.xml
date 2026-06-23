@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Målladdningen måste vara högre än den nuvarande laddningen.</string>
     <string name="ev_error_invalid_charger">Ange en laddeffekt som är högre än noll.</string>
     <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din deadline. Prova ett lägre laddningsmål eller en senare tidpunkt.</string>
+    <string name="result_disclaimer_power">Kostnader visas för en last på %s kW. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="dialog_power">Effekt (kW, valfritt)</string>
 </resources>

@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Laetuse eesmärk peab olema suurem kui praegune laetus.</string>
     <string name="ev_error_invalid_charger">Määra laadija võimsus, mis on suurem kui null.</string>
     <string name="ev_error_deadline_unreachable">Laadimine ei jõua sinu tähtajaks valmis. Proovi madalamat laetuse eesmärki või hilisemat aega.</string>
+    <string name="result_disclaimer_power">Kulud on arvutatud %s kW koormuse kohta. Hinnad ei sisalda käibemaksu, energiamaksu ega tarnija tasu. Homse hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
+    <string name="dialog_power">Võimsus (kW, valikuline)</string>
 </resources>

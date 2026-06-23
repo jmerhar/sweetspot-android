@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Целната наполнетост мора да биде поголема од тековната наполнетост.</string>
     <string name="ev_error_invalid_charger">Поставете моќност на полначот поголема од нула.</string>
     <string name="ev_error_deadline_unreachable">Полнењето не може да заврши до вашиот краен рок. Пробајте со пониска целна наполнетост или подоцнежно време.</string>
+    <string name="result_disclaimer_power">Трошоците се прикажани за оптоварување од %s kW. Цените не вклучуваат ДДВ, данок на енергија и провизија на добавувачот. Цените за утре обично се достапни по 13:00 CET.</string>
+    <string name="dialog_power">Моќност (kW, опционално)</string>
 </resources>

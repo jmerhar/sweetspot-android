@@ -162,4 +162,6 @@
     <string name="ev_error_invalid_soc">A carga-alvo tem de ser superior à carga atual.</string>
     <string name="ev_error_invalid_charger">Defina uma potência de carregador superior a zero.</string>
     <string name="ev_error_deadline_unreachable">O carregamento não consegue terminar até ao prazo definido. Experimente uma carga-alvo mais baixa ou uma hora mais tardia.</string>
+    <string name="result_disclaimer_power">Os custos apresentados referem-se a uma carga de %s kW. IVA, imposto sobre energia e taxa do fornecedor não estão incluídos. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
+    <string name="dialog_power">Potência (kW, opcional)</string>
 </resources>

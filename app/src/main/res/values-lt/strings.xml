@@ -166,4 +166,6 @@
     <string name="ev_error_invalid_soc">Įkrovimo tikslas turi būti didesnis nei dabartinis įkrovimas.</string>
     <string name="ev_error_invalid_charger">Nustatykite didesnę nei nulis įkroviklio galią.</string>
     <string name="ev_error_deadline_unreachable">Įkrovimas nespės baigtis iki nurodyto laiko. Pabandykite mažesnį įkrovimo tikslą arba vėlesnį laiką.</string>
+    <string name="result_disclaimer_power">Kainos nurodytos %s kW apkrovai. Kainos neapima PVM, energijos mokesčio ir tiekėjo mokesčio. Rytojaus kainos paprastai skelbiamos po 13:00 CET.</string>
+    <string name="dialog_power">Galia (kW, neprivaloma)</string>
 </resources>

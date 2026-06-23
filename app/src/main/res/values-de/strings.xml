@@ -158,4 +158,6 @@
     <string name="ev_error_invalid_soc">Das Ladeziel muss höher sein als der aktuelle Ladestand.</string>
     <string name="ev_error_invalid_charger">Lege eine Ladeleistung größer als null fest.</string>
     <string name="ev_error_deadline_unreachable">Das Laden kann nicht bis zu deinem Zeitpunkt abgeschlossen werden. Versuche ein niedrigeres Ladeziel oder einen späteren Zeitpunkt.</string>
+    <string name="result_disclaimer_power">Kosten gelten für eine Last von %s kW. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantengebühr. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="dialog_power">Leistung (kW, optional)</string>
 </resources>

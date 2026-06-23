@@ -1222,4 +1222,69 @@ class SweetSpotViewModelTest {
         assertEquals(2, viewModel.uiState.value.appliances.size)
         assertEquals(1, viewModel.uiState.value.appliances.count { it.isEv })
     }
+
+    // --- Power rating (cost scaling) ---
+
+    @Test
+    fun `manual search has no load power`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+        assertNull(viewModel.uiState.value.searchPowerKw)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `appliance tap carries its power rating into the search`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAddAppliance("Dishwasher", 2, 0, "dishwasher", 2.0)
+        val appliance = viewModel.uiState.value.appliances.first { it.name == "Dishwasher" }
+        viewModel.onApplianceDuration(appliance)
+        runCurrent()
+        assertEquals(2.0, viewModel.uiState.value.searchPowerKw)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `appliance without a power rating searches per 1 kW`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAddAppliance("Lamp", 2, 0, "electricity")
+        val appliance = viewModel.uiState.value.appliances.first { it.name == "Lamp" }
+        viewModel.onApplianceDuration(appliance)
+        runCurrent()
+        assertNull(viewModel.uiState.value.searchPowerKw)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `EV charging uses the effective charging power as the load`() = runTest {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel) // 11 kW max AC
+        viewModel.onEvHomeChargerChanged(7.4)   // slower charger wins
+        viewModel.onEvApplianceFind(vehicle, 20, 80)
+        runCurrent()
+        assertEquals(7.4, viewModel.uiState.value.searchPowerKw)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `appliance power rating persists across ViewModel instances`() {
+        val viewModel = evViewModel()
+        viewModel.onAddAppliance("Dishwasher", 2, 0, "dishwasher", 2.0)
+
+        val reloaded = evViewModel()
+        val appliance = reloaded.uiState.value.appliances.first { it.name == "Dishwasher" }
+        assertEquals(2.0, appliance.powerKw)
+    }
+
+    @Test
+    fun `onClearResult resets the load power`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAddAppliance("Dishwasher", 2, 0, "dishwasher", 2.0)
+        viewModel.onApplianceDuration(viewModel.uiState.value.appliances.first())
+        runCurrent()
+        viewModel.onClearResult()
+        assertNull(viewModel.uiState.value.searchPowerKw)
+    }
 }

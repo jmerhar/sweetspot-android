@@ -162,4 +162,6 @@
     <string name="ev_error_invalid_soc">La charge cible doit être supérieure à la charge actuelle.</string>
     <string name="ev_error_invalid_charger">Définissez une puissance de borne supérieure à zéro.</string>
     <string name="ev_error_deadline_unreachable">La recharge ne peut pas se terminer avant votre échéance. Essayez une charge cible plus basse ou une heure plus tardive.</string>
+    <string name="result_disclaimer_power">Les coûts sont indiqués pour une charge de %s kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
+    <string name="dialog_power">Puissance (kW, facultatif)</string>
 </resources>

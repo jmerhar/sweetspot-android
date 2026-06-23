@@ -60,6 +60,7 @@ import today.sweetspot.ui.components.PriceBarChart
 import today.sweetspot.ui.components.ResultSummary
 import today.sweetspot.ui.components.SocDialog
 import today.sweetspot.ui.components.formatHhMm
+import today.sweetspot.ui.components.formatKw
 import today.sweetspot.util.formatDuration
 
 /**
@@ -108,6 +109,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             canGoCheaper = state.windowOffset > 0,
             costDelta = state.windowAlternatives.firstOrNull()
                 ?.let { state.result!!.totalCost - it.totalCost },
+            powerKw = state.searchPowerKw,
             onEarlier = viewModel::onEarlierWindow,
             onCheaper = viewModel::onCheaperWindow,
             onRefresh = viewModel::onRefreshResults,
@@ -278,6 +280,7 @@ private fun ResultScreen(
     canGoEarlier: Boolean,
     canGoCheaper: Boolean,
     costDelta: Double?,
+    powerKw: Double?,
     onEarlier: () -> Unit,
     onCheaper: () -> Unit,
     onRefresh: () -> Unit,
@@ -335,7 +338,7 @@ private fun ResultScreen(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
-                ResultSummary(result = result, now = now, costDelta = costDelta)
+                ResultSummary(result = result, now = now, costDelta = costDelta, powerKw = powerKw ?: 1.0)
 
                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -361,7 +364,7 @@ private fun ResultScreen(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                BreakdownTable(breakdown = result.breakdown)
+                BreakdownTable(breakdown = result.breakdown, powerKw = powerKw ?: 1.0)
 
                 if (allPrices.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(16.dp))
@@ -381,7 +384,8 @@ private fun ResultScreen(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = stringResource(R.string.result_disclaimer) +
+                    text = (if (powerKw != null) stringResource(R.string.result_disclaimer_power, formatKw(powerKw))
+                            else stringResource(R.string.result_disclaimer)) +
                         (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else "") +
                         (if (priceZoneName != null) stringResource(R.string.result_price_zone, priceZoneName) else ""),
                     style = MaterialTheme.typography.bodySmall,

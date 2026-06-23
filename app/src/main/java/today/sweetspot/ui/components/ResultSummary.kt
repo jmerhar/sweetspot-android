@@ -37,7 +37,8 @@ fun ResultSummary(
     result: WindowResult,
     now: ZonedDateTime,
     modifier: Modifier = Modifier,
-    costDelta: Double? = null
+    costDelta: Double? = null,
+    powerKw: Double = 1.0
 ) {
     val resources = LocalContext.current.resources
 
@@ -68,9 +69,9 @@ fun ResultSummary(
         ) {
             SummaryCard(
                 label = stringResource(R.string.result_total_cost),
-                value = formatPrice(result.totalCost, 4),
+                value = formatPrice(result.totalCost * powerKw, 4),
                 subtitle = costDelta?.takeIf { it > 0 }?.let {
-                    stringResource(R.string.result_cost_above_cheapest, formatPrice(it, 4))
+                    stringResource(R.string.result_cost_above_cheapest, formatPrice(it * powerKw, 4))
                 },
                 modifier = Modifier.weight(1f)
             )

@@ -162,4 +162,8 @@
     <string name="ev_error_invalid_soc">Ciljna napunjenost mora biti veća od trenutne.</string>
     <string name="ev_error_invalid_charger">Postavite snagu punjača veću od nule.</string>
     <string name="ev_error_deadline_unreachable">Punjenje se ne može završiti do zadatog roka. Pokušajte sa nižom ciljnom napunjenošću ili kasnijim vremenom.</string>
+
+    <!-- Power -->
+    <string name="result_disclaimer_power">Troškovi su prikazani za opterećenje od %s kW. Cijene ne uključuju PDV, porez na energiju i naknadu dobavljača. Sutrašnje cijene su obično dostupne nakon 13:00 CET.</string>
+    <string name="dialog_power">Snaga (kW, opciono)</string>
 </resources>

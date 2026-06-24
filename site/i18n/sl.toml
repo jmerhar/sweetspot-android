@@ -23,10 +23,10 @@ other = "Zasebnost"
 other = "Izberi jezik"
 
 [hero_title]
-other = "Poiščite najcenejši čas za uporabo vaših aparatov"
+other = "Poiščite najcenejši čas za uporabo aparatov in polnjenje električnega vozila"
 
 [hero_subtitle]
-other = "SweetSpot pregleda dinamične cene električne energije v 30 evropskih državah in poišče optimalni termin za prihranek. Odprtokodno in brez zbiranja podatkov."
+other = "SweetSpot pregleda dinamične cene električne energije v 30 evropskih državah in poišče najcenejši termin za uporabo aparatov ali polnjenje električnega vozila — končano do roka, če ga nastavite. Odprtokodno in brez zbiranja podatkov."
 
 [download]
 other = "Na voljo na Google Play"
@@ -71,7 +71,19 @@ other = "Spremljevalna aplikacija za Pixel Watch in druge naprave Wear OS 3+. Pr
 other = "Lastni aparati"
 
 [feature_appliances_desc]
-other = "Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop z enim dotikom."
+other = "Shranite svoje aparate z lastnimi imeni, ikonami, trajanji in neobvezno močjo, da ocena stroškov upošteva njihovo dejansko porabo."
+
+[feature_ev_title]
+other = "Polnjenje električnega vozila"
+
+[feature_ev_desc]
+other = "Dodajte svoj avto, nato vnesite trenutno in želeno napolnjenost. SweetSpot izračuna čas polnjenja in najcenejši čas za priklop."
+
+[feature_deadline_title]
+other = "Čas »Pripravljeno do«"
+
+[feature_deadline_desc]
+other = "Mora biti končano do določenega časa? Dodajte rok »pripravljeno do« in SweetSpot izbere le termine, ki se končajo pravočasno."
 
 [feature_languages_title]
 other = "25 jezikov"
@@ -95,10 +107,10 @@ other = "Celotna izvorna koda je na voljo na GitHubu pod licenco GPL v3."
 other = "Kako deluje"
 
 [step1_title]
-other = "Izberite svoj aparat"
+other = "Izberite aparat ali električno vozilo"
 
 [step1_desc]
-other = "Izberite shranjen aparat ali nastavite poljubno trajanje delovanja."
+other = "Izberite shranjen aparat ali svoje električno vozilo ali nastavite poljubno trajanje — in neobvezno rok »pripravljeno do«."
 
 [step2_title]
 other = "Pregled cen"
@@ -116,10 +128,10 @@ other = "Natanko poglejte, kdaj začeti, s podrobno razčlenitvijo stroškov po 
 other = "Začnite varčevati pri elektriki"
 
 [cta_desc]
-other = "Prenesite SweetSpot na Google Play in poiščite najcenejši čas za uporabo vaših aparatov."
+other = "Prenesite SweetSpot na Google Play in poiščite najcenejši čas za uporabo aparatov in polnjenje električnega vozila."
 
 [footer_tagline]
-other = "Poiščite najcenejši čas za uporabo vaših aparatov."
+other = "Poiščite najcenejši čas za uporabo aparatov in polnjenje električnega vozila."
 
 [footer_app]
 other = "Aplikacija"
@@ -146,7 +158,7 @@ other = "Začetni zaslon z aparati, izbirnikom trajanja in gumbom Poišči"
 other = "Prihajajoče cene električne energije kot vodoravni stolpčni grafikon"
 
 [screenshot_4_alt]
-other = "Zaslon z nastavitvami za shranjene aparate, jezik, državo in časovni pas"
+other = "Zaslon z nastavitvami za shranjene aparate, polnjenje električnega vozila, jezik, državo in časovni pas"
 
 [screenshot_5_alt]
 other = "Polnjenje električnega vozila: trenutna in ciljna napolnjenost z izračunanim časom polnjenja"

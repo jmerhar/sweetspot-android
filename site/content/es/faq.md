@@ -23,7 +23,19 @@ Puedes configurar el orden de prioridad de las fuentes de datos en los ajustes.
 {{< faq question="¿Son exactos los precios?" >}}
 SweetSpot muestra los **precios spot del día anterior** — los precios mayoristas de electricidad determinados por el mercado el día antes de la entrega. Estos precios **no incluyen** IVA, impuestos sobre la energía, tarifas de red ni márgenes del proveedor, que varían según el país y el proveedor.
 
-Los precios son útiles para comparar franjas horarias entre sí (encontrar cuándo la electricidad es más barata), que es el propósito principal de la aplicación. Los precios de mañana suelen estar disponibles después de las 13:00 CET.
+Los precios son útiles para comparar franjas horarias entre sí (encontrar cuándo la electricidad es más barata), que es el propósito principal de la aplicación. Los costes se muestran por 1 kW de carga de forma predeterminada; indica la potencia de un electrodoméstico, o carga un VE, y la estimación reflejará la carga real. Los precios de mañana suelen estar disponibles después de las 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="¿Puede SweetSpot ayudarme a cargar mi coche eléctrico?" >}}
+Sí. Añade tu vehículo — elígelo de una base de datos integrada de unos 1.600 VE e híbridos enchufables, o introduce manualmente la capacidad de la batería y la potencia de carga. Después indica tu carga actual y la deseada, y SweetSpot calcula cuánto tardará la carga (a partir de la capacidad de la batería y el menor entre el límite de CA de tu coche y el de tu cargador doméstico) y encuentra la franja más barata para enchufarlo.
+{{< /faq >}}
+
+{{< faq question="¿Puedo asegurarme de que esté listo a una hora determinada?" >}}
+Sí. Activa la hora límite opcional **«Listo a las»** y elige una hora. SweetSpot solo tendrá en cuenta las franjas que terminen antes de ese momento — para cualquier electrodoméstico o para cargar tu VE (por ejemplo, completamente cargado a las 7:00 de la mañana).
+{{< /faq >}}
+
+{{< faq question="¿Los costes reflejan cuánta energía consume mi electrodoméstico?" >}}
+De forma predeterminada, los costes se muestran por 1 kW de carga. Si asignas a un electrodoméstico una **potencia** en kW — o cargas un VE, que usa su potencia de carga real — el coste estimado se ajusta a esa carga, de modo que refleja lo que el electrodoméstico consume realmente.
 {{< /faq >}}
 
 {{< faq question="¿Funciona sin conexión?" >}}

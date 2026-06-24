@@ -23,7 +23,19 @@ Je kunt de prioriteitsvolgorde van gegevensbronnen instellen via de instellingen
 {{< faq question="Zijn de prijzen nauwkeurig?" >}}
 SweetSpot toont **day-ahead spotprijzen** — de groothandelprijzen voor elektriciteit die de dag ervoor door de markt worden bepaald. Deze prijzen zijn **exclusief** btw, energiebelasting, netwerkkosten en leveranciersmarge, die per land en aanbieder verschillen.
 
-De prijzen zijn nuttig om tijdsloten met elkaar te vergelijken (vinden wanneer stroom het goedkoopst is), wat het primaire doel van de app is. Prijzen van morgen zijn doorgaans beschikbaar na 13:00 CET.
+De prijzen zijn nuttig om tijdsloten met elkaar te vergelijken (vinden wanneer stroom het goedkoopst is), wat het primaire doel van de app is. De kosten worden standaard per 1 kW belasting getoond; stel het vermogen van een apparaat in, of laad een elektrische auto, en de raming weerspiegelt de werkelijke belasting. Prijzen van morgen zijn doorgaans beschikbaar na 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Kan SweetSpot me helpen mijn elektrische auto op te laden?" >}}
+Ja. Voeg je voertuig toe — kies het uit een ingebouwde database van zo'n 1.600 elektrische auto's en plug-inhybrides, of voer de accucapaciteit en het laadvermogen handmatig in. Vul vervolgens je huidige en gewenste laadniveau in, en SweetSpot berekent hoe lang het laden duurt (op basis van de accucapaciteit en de laagste van de AC-limiet van je auto en je thuislader) en vindt het goedkoopste moment om op te laden.
+{{< /faq >}}
+
+{{< faq question="Kan ik zorgen dat het op een bepaald moment klaar is?" >}}
+Ja. Schakel de optionele **'klaar om'**-deadline in en kies een tijd. SweetSpot houdt dan alleen rekening met periodes die vóór dat moment klaar zijn — voor elk apparaat of voor het laden van je elektrische auto (bijvoorbeeld volledig opgeladen om 7:00 in de ochtend).
+{{< /faq >}}
+
+{{< faq question="Weerspiegelen de kosten hoeveel vermogen mijn apparaat verbruikt?" >}}
+Standaard worden de kosten per 1 kW belasting getoond. Als je een apparaat een **vermogen** in kW geeft — of een elektrische auto laadt, die zijn werkelijke laadvermogen gebruikt — wordt de geschatte kostprijs op die belasting afgestemd, zodat hij weerspiegelt wat het apparaat werkelijk verbruikt.
 {{< /faq >}}
 
 {{< faq question="Werkt het offline?" >}}

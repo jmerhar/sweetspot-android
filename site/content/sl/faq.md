@@ -23,7 +23,19 @@ Prednostni vrstni red virov podatkov lahko nastavite v nastavitvah.
 {{< faq question="Ali so cene točne?" >}}
 SweetSpot prikazuje **dnevne spotne cene** — veleprodajne cene električne energije, ki jih trg določi dan prej. Te cene **ne vključujejo** DDV, davka na energijo, omrežnin ali marž dobaviteljev, ki se razlikujejo glede na državo in ponudnika.
 
-Cene so uporabne za primerjavo časovnih intervalov med seboj (ugotavljanje, kdaj je elektrika najcenejša), kar je primarni namen aplikacije. Jutrišnje cene so običajno na voljo po 13:00 CET.
+Cene so uporabne za primerjavo časovnih intervalov med seboj (ugotavljanje, kdaj je elektrika najcenejša), kar je primarni namen aplikacije. Stroški so privzeto prikazani na 1 kW obremenitve; nastavite moč aparata ali polnite električno vozilo in ocena upošteva dejansko obremenitev. Jutrišnje cene so običajno na voljo po 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Ali mi lahko SweetSpot pomaga napolniti električni avto?" >}}
+Da. Dodajte svoje vozilo — izberite ga iz vgrajene zbirke približno 1.600 električnih in priključnih hibridnih vozil ali ročno vnesite velikost baterije in moč polnjenja. Nato vnesite trenutno in želeno napolnjenost, SweetSpot pa izračuna, kako dolgo bo trajalo polnjenje (iz velikosti baterije ter nižje vrednosti med AC-omejitvijo vašega avta in vašim domačim polnilnikom), in poišče najcenejši čas za priklop.
+{{< /faq >}}
+
+{{< faq question="Ali lahko poskrbim, da je pripravljeno do določenega časa?" >}}
+Da. Vklopite neobvezni rok **»pripravljeno do«** in izberite čas. SweetSpot nato upošteva le termine, ki se končajo do takrat — za kateri koli aparat ali za polnjenje vašega električnega vozila (na primer popolnoma napolnjeno do 7:00 zjutraj).
+{{< /faq >}}
+
+{{< faq question="Ali stroški upoštevajo, koliko energije porabi moj aparat?" >}}
+Privzeto so stroški prikazani na 1 kW obremenitve. Če aparatu določite **moč** v kW — ali polnite električno vozilo, ki uporablja svojo dejansko moč polnjenja — se ocenjeni stroški prilagodijo tej obremenitvi, tako da odražajo, koliko aparat dejansko porabi.
 {{< /faq >}}
 
 {{< faq question="Ali deluje brez povezave?" >}}

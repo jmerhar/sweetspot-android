@@ -23,10 +23,10 @@ other = "Privacidad"
 other = "Cambiar idioma"
 
 [hero_title]
-other = "Encuentra el momento más barato para usar tus electrodomésticos"
+other = "Encuentra el momento más barato para usar tus electrodomésticos y cargar tu VE"
 
 [hero_subtitle]
-other = "SweetSpot analiza los precios dinámicos de la electricidad en 30 países europeos y encuentra el momento óptimo para ahorrar dinero. Código abierto y privado."
+other = "SweetSpot analiza los precios dinámicos de la electricidad en 30 países europeos para encontrar la franja más barata para usar tus electrodomésticos o cargar tu VE — terminando antes de una hora límite si la estableces. Código abierto y privado."
 
 [download]
 other = "Disponible en Google Play"
@@ -71,7 +71,19 @@ other = "App complementaria para Pixel Watch y otros dispositivos Wear OS 3+. Co
 other = "Electrodomésticos personalizados"
 
 [feature_appliances_desc]
-other = "Guarda tus electrodomésticos con nombres, iconos y duraciones personalizados para acceso con un solo toque."
+other = "Guarda tus electrodomésticos con nombres, iconos y duraciones personalizados, y una potencia opcional, para que la estimación de coste refleje lo que realmente consumen."
+
+[feature_ev_title]
+other = "Carga de VE"
+
+[feature_ev_desc]
+other = "Añade tu coche e indica la carga actual y la deseada. SweetSpot calcula el tiempo de carga y el momento más barato para enchufarlo."
+
+[feature_deadline_title]
+other = "Hora límite «Listo a las»"
+
+[feature_deadline_desc]
+other = "¿Necesitas que termine a una hora concreta? Añade una hora límite «Listo a las» y SweetSpot solo elige franjas que terminan a tiempo."
 
 [feature_languages_title]
 other = "25 idiomas"
@@ -95,10 +107,10 @@ other = "El código fuente completo está disponible en GitHub bajo la licencia 
 other = "Cómo funciona"
 
 [step1_title]
-other = "Elige tu electrodoméstico"
+other = "Elige electrodoméstico o VE"
 
 [step1_desc]
-other = "Selecciona un electrodoméstico guardado o establece una duración personalizada."
+other = "Selecciona un electrodoméstico guardado o tu VE, o establece una duración personalizada — y, opcionalmente, una hora límite «Listo a las»."
 
 [step2_title]
 other = "Consulta los precios"
@@ -116,10 +128,10 @@ other = "Mira exactamente cuándo empezar, con un desglose completo de costes po
 other = "Empieza a ahorrar en electricidad"
 
 [cta_desc]
-other = "Descarga SweetSpot en Google Play y encuentra el momento más barato para usar tus electrodomésticos."
+other = "Descarga SweetSpot en Google Play y encuentra el momento más barato para usar tus electrodomésticos y cargar tu VE."
 
 [footer_tagline]
-other = "Encuentra el momento más barato para usar tus electrodomésticos."
+other = "Encuentra el momento más barato para usar tus electrodomésticos y cargar tu VE."
 
 [footer_app]
 other = "App"
@@ -146,7 +158,7 @@ other = "Pantalla principal con electrodomésticos, selector de duración y bot�
 other = "Próximos precios de electricidad en un gráfico de barras horizontal"
 
 [screenshot_4_alt]
-other = "Pantalla de ajustes con electrodomésticos guardados, idioma, país y zona horaria"
+other = "Pantalla de ajustes con electrodomésticos guardados, carga de VE, idioma, país y zona horaria"
 
 [screenshot_5_alt]
 other = "Carga de VE: carga actual y objetivo con el tiempo de carga calculado"

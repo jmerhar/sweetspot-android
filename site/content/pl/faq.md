@@ -23,7 +23,19 @@ Kolejność priorytetów źródeł danych możesz skonfigurować w ustawieniach.
 {{< faq question="Czy ceny są dokładne?" >}}
 SweetSpot pokazuje **ceny spot dnia następnego** — hurtowe ceny energii elektrycznej ustalane przez rynek na dzień przed dostawą. Ceny te **nie** zawierają VAT, podatku energetycznego, opłat sieciowych ani marży dostawcy, które różnią się w zależności od kraju i dostawcy.
 
-Ceny są przydatne do porównywania przedziałów czasowych między sobą (znajdowania, kiedy prąd jest najtańszy), co jest głównym celem aplikacji. Ceny na jutro są zwykle dostępne po godzinie 13:00 CET.
+Ceny są przydatne do porównywania przedziałów czasowych między sobą (znajdowania, kiedy prąd jest najtańszy), co jest głównym celem aplikacji. Koszty są domyślnie pokazywane na 1 kW obciążenia; ustaw moc znamionową urządzenia lub ładuj auto elektryczne, a szacunek odzwierciedli rzeczywiste obciążenie. Ceny na jutro są zwykle dostępne po godzinie 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Czy SweetSpot pomoże mi naładować auto elektryczne?" >}}
+Tak. Dodaj swój pojazd — wybierz go z wbudowanej bazy około 1600 aut elektrycznych i hybryd typu plug-in albo wpisz ręcznie pojemność akumulatora i moc ładowania. Następnie podaj obecny i docelowy poziom naładowania, a SweetSpot obliczy, ile potrwa ładowanie (na podstawie pojemności akumulatora oraz niższej z wartości: limitu AC Twojego auta i mocy domowej ładowarki) i znajdzie najtańsze okno na podłączenie.
+{{< /faq >}}
+
+{{< faq question="Czy mogę zadbać o to, by było gotowe na określoną godzinę?" >}}
+Tak. Włącz opcjonalny termin **„gotowe do“** i wybierz godzinę. SweetSpot uwzględni wtedy tylko te okna, które zakończą się przed tym czasem — dla dowolnego urządzenia lub dla ładowania auta elektrycznego (na przykład w pełni naładowane do 7:00 rano).
+{{< /faq >}}
+
+{{< faq question="Czy koszty odzwierciedlają, ile prądu zużywa moje urządzenie?" >}}
+Domyślnie koszty są pokazywane na 1 kW obciążenia. Jeśli nadasz urządzeniu **moc znamionową** w kW — lub ładujesz auto elektryczne, które wykorzystuje swoją rzeczywistą moc ładowania — szacowany koszt zostanie przeskalowany do tego obciążenia, dzięki czemu odzwierciedla rzeczywiste zużycie urządzenia.
 {{< /faq >}}
 
 {{< faq question="Czy działa offline?" >}}

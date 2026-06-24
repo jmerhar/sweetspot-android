@@ -23,7 +23,19 @@ Du kan konfigurere datakildernes prioriteringsrækkefølge i indstillingerne.
 {{< faq question="Er priserne nøjagtige?" >}}
 SweetSpot viser **day-ahead-spotpriser** — engros-elpriser fastsat af markedet dagen før levering. Disse priser inkluderer **ikke** moms, energiafgifter, netgebyrer eller leverandørmarginer, som varierer efter land og udbyder.
 
-Priserne er nyttige til at sammenligne tidsintervaller indbyrdes (finde ud af, hvornår strømmen er billigst), hvilket er appens primære formål. Morgendagens priser er typisk tilgængelige efter kl. 13:00 CET.
+Priserne er nyttige til at sammenligne tidsintervaller indbyrdes (finde ud af, hvornår strømmen er billigst), hvilket er appens primære formål. Omkostningerne vises som standard pr. 1 kW belastning; angiv et apparats effekt, eller oplad en elbil, så afspejler estimatet den reelle belastning. Morgendagens priser er typisk tilgængelige efter kl. 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Kan SweetSpot hjælpe mig med at oplade min elbil?" >}}
+Ja. Tilføj din bil — vælg den fra en indbygget database med omkring 1.600 elbiler og plug-in-hybrider, eller indtast batteristørrelsen og opladningseffekten manuelt. Indtast derefter din nuværende og ønskede opladningstilstand, så beregner SweetSpot, hvor lang tid opladningen vil tage (ud fra batteristørrelsen og den laveste af bilens AC-grænse og din hjemmelader) og finder det billigste vindue at sætte til opladning.
+{{< /faq >}}
+
+{{< faq question="Kan jeg sikre, at det er klar på et bestemt tidspunkt?" >}}
+Ja. Slå den valgfrie **„klar senest“**-frist til, og vælg et tidspunkt. SweetSpot tager så kun vinduer i betragtning, der bliver færdige inden da — for ethvert apparat eller til opladning af din elbil (for eksempel fuldt opladet kl. 7:00 om morgenen).
+{{< /faq >}}
+
+{{< faq question="Afspejler omkostningerne, hvor meget strøm mit apparat bruger?" >}}
+Som standard vises omkostningerne pr. 1 kW belastning. Hvis du angiver et apparats **effekt** i kW — eller oplader en elbil, som bruger sin reelle opladningseffekt — skaleres det estimerede beløb til den belastning, så det afspejler, hvad apparatet faktisk forbruger.
 {{< /faq >}}
 
 {{< faq question="Virker den offline?" >}}

@@ -23,7 +23,19 @@ Datu avotu prioritātes secību var konfigurēt iestatījumos.
 {{< faq question="Vai cenas ir precīzas?" >}}
 SweetSpot rāda **nākamās dienas spot cenas** — vairumtirdzniecības elektrības cenas, ko nosaka tirgus dienu pirms piegādes. Šīs cenas **neietver** PVN, enerģijas nodokļus, tīkla maksu vai piegādātāja uzcenojumu, kas atšķiras atkarībā no valsts un piegādātāja.
 
-Cenas ir noderīgas, lai salīdzinātu laika intervālus savā starpā (atrastu, kad elektrība ir lētākā), kas ir lietotnes galvenais mērķis. Nākamās dienas cenas parasti ir pieejamas pēc 13:00 CET.
+Cenas ir noderīgas, lai salīdzinātu laika intervālus savā starpā (atrastu, kad elektrība ir lētākā), kas ir lietotnes galvenais mērķis. Izmaksas pēc noklusējuma tiek rādītas par 1 kW slodzi; norādi ierīces jaudu vai lādē elektromobili, un aprēķins atspoguļos reālo slodzi. Nākamās dienas cenas parasti ir pieejamas pēc 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Vai SweetSpot var palīdzēt uzlādēt manu elektromobili?" >}}
+Jā. Pievieno savu automašīnu — izvēlies to no iebūvētas datubāzes ar aptuveni 1600 elektromobiļiem un uzlādējamiem hibrīdiem, vai ievadi akumulatora ietilpību un uzlādes jaudu manuāli. Pēc tam ievadi pašreizējo un vēlamo uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde aizņems (no akumulatora ietilpības un mazākās no tava auto AC ierobežojuma un mājas lādētāja), kā arī atradīs lētāko logu, kad to pieslēgt.
+{{< /faq >}}
+
+{{< faq question="Vai varu nodrošināt, ka tas ir gatavs līdz noteiktam laikam?" >}}
+Jā. Ieslēdz neobligāto termiņu **„Gatavs līdz“** un izvēlies laiku. SweetSpot tad ņem vērā tikai logus, kas pabeidz darbu līdz tam — jebkurai ierīcei vai elektromobiļa uzlādei (piemēram, pilnībā uzlādēts līdz pulksten 7:00 no rīta).
+{{< /faq >}}
+
+{{< faq question="Vai izmaksas atspoguļo, cik daudz jaudas patērē mana ierīce?" >}}
+Pēc noklusējuma izmaksas tiek rādītas par 1 kW slodzi. Ja ierīcei norādi **jaudu** kW — vai lādē elektromobili, kas izmanto savu reālo uzlādes jaudu —, aprēķinātās izmaksas tiek pielāgotas šai slodzei, tāpēc tās atspoguļo to, ko ierīce patiešām patērē.
 {{< /faq >}}
 
 {{< faq question="Vai tā darbojas bez interneta?" >}}

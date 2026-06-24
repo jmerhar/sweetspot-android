@@ -21,7 +21,7 @@ Estas solicitudes de API contienen únicamente el identificador de zona de ofert
 
 ## Almacenamiento local
 
-Los datos de precios se almacenan en la caché local de tu dispositivo para reducir las llamadas a la API y obtener resultados más rápidos. La configuración de tus electrodomésticos (nombres, duraciones, iconos) y los ajustes (país, zona, idioma) también se almacenan localmente en tu dispositivo.
+Los datos de precios se almacenan en la caché local de tu dispositivo para reducir las llamadas a la API y obtener resultados más rápidos. La configuración de tus electrodomésticos (nombres, duraciones, iconos y potencias opcionales), los vehículos guardados (capacidad de la batería y potencia de carga) y los ajustes (país, zona, idioma) también se almacenan localmente en tu dispositivo.
 
 En Wear OS, los datos de electrodomésticos y ajustes se sincronizan entre el teléfono y el reloj mediante la Wearable Data Layer API. Esta comunicación permanece en tus dispositivos locales y no pasa por ningún servidor externo.
 
@@ -56,4 +56,4 @@ SweetSpot es de código abierto y está licenciado bajo GPL v3. Puedes revisar e
 
 Si tienes preguntas sobre esta política de privacidad, puedes abrir un issue en [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Última actualización: abril de 2026*
+*Última actualización: junio de 2026*

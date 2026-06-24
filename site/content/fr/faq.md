@@ -23,7 +23,19 @@ Vous pouvez configurer l'ordre de priorité des sources de données dans les par
 {{< faq question="Les prix sont-ils exacts ?" >}}
 SweetSpot affiche les **prix spot day-ahead** — les prix de gros de l'électricité déterminés par le marché la veille. Ces prix **n'incluent pas** la TVA, la taxe sur l'énergie, les frais de réseau ou les marges du fournisseur, qui varient selon le pays et le fournisseur.
 
-Les prix sont utiles pour comparer les créneaux horaires entre eux (trouver quand l'électricité est la moins chère), ce qui est l'objectif principal de l'application. Les prix de demain sont généralement disponibles après 13h00 CET.
+Les prix sont utiles pour comparer les créneaux horaires entre eux (trouver quand l'électricité est la moins chère), ce qui est l'objectif principal de l'application. Les coûts sont affichés par défaut pour 1 kW de charge ; indiquez la puissance d'un appareil, ou rechargez un VE, et l'estimation reflète la charge réelle. Les prix de demain sont généralement disponibles après 13h00 CET.
+{{< /faq >}}
+
+{{< faq question="SweetSpot peut-il m'aider à recharger ma voiture électrique ?" >}}
+Oui. Ajoutez votre véhicule — choisissez-le dans une base de données intégrée d'environ 1 600 VE et hybrides rechargeables, ou saisissez manuellement la capacité de la batterie et la puissance de recharge. Indiquez ensuite votre niveau de charge actuel et cible, et SweetSpot calcule la durée de la recharge (à partir de la capacité de la batterie et de la plus faible valeur entre la limite AC de votre voiture et celle de votre borne) et trouve le créneau le moins cher pour la brancher.
+{{< /faq >}}
+
+{{< faq question="Puis-je m'assurer que ce soit prêt à une heure précise ?" >}}
+Oui. Activez l'échéance optionnelle **« Prêt à »** et choisissez une heure. SweetSpot ne retient alors que les créneaux qui se terminent avant cette heure — pour n'importe quel appareil ou pour la recharge de votre VE (par exemple, entièrement chargé à 7h00 du matin).
+{{< /faq >}}
+
+{{< faq question="Les coûts reflètent-ils la quantité d'énergie consommée par mon appareil ?" >}}
+Par défaut, les coûts sont affichés pour 1 kW de charge. Si vous attribuez une **puissance** en kW à un appareil — ou si vous rechargez un VE, qui utilise sa puissance de recharge réelle — le coût estimé est ajusté à cette charge, de sorte qu'il reflète ce que l'appareil consomme réellement.
 {{< /faq >}}
 
 {{< faq question="Est-ce que ça fonctionne hors ligne ?" >}}

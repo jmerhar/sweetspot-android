@@ -23,7 +23,19 @@ Puoi configurare l'ordine di priorità delle fonti di dati nelle impostazioni.
 {{< faq question="I prezzi sono accurati?" >}}
 SweetSpot mostra i **prezzi spot day-ahead** — i prezzi all'ingrosso dell'energia elettrica determinati dal mercato il giorno prima della consegna. Questi prezzi **non** includono IVA, accise sull'energia, costi di rete o margini del fornitore, che variano in base al paese e al fornitore.
 
-I prezzi sono utili per confrontare le fasce orarie tra loro (trovare quando l'elettricità costa meno), che è lo scopo principale dell'app. I prezzi del giorno successivo sono generalmente disponibili dopo le 13:00 CET.
+I prezzi sono utili per confrontare le fasce orarie tra loro (trovare quando l'elettricità costa meno), che è lo scopo principale dell'app. I costi sono mostrati per impostazione predefinita per 1 kW di carico; imposta la potenza nominale di un elettrodomestico, o ricarica un'auto elettrica, e la stima rispecchia il carico reale. I prezzi del giorno successivo sono generalmente disponibili dopo le 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="SweetSpot può aiutarmi a ricaricare l'auto elettrica?" >}}
+Sì. Aggiungi il tuo veicolo — sceglilo da un database integrato di circa 1.600 auto elettriche e ibride plug-in, oppure inserisci manualmente la capacità della batteria e la potenza di ricarica. Poi indica la carica attuale e quella desiderata, e SweetSpot calcola quanto durerà la ricarica (in base alla capacità della batteria e al minore tra il limite AC dell'auto e quello del tuo caricatore domestico) e trova la fascia più conveniente per collegarla.
+{{< /faq >}}
+
+{{< faq question="Posso assicurarmi che sia pronto entro un certo orario?" >}}
+Sì. Attiva la scadenza opzionale **«Pronto entro»** e scegli un orario. SweetSpot considera allora solo le fasce che terminano entro quel momento — per qualsiasi elettrodomestico o per la ricarica dell'auto elettrica (ad esempio, completamente carica entro le 7:00 del mattino).
+{{< /faq >}}
+
+{{< faq question="I costi rispecchiano quanta energia consuma il mio elettrodomestico?" >}}
+Per impostazione predefinita, i costi sono mostrati per 1 kW di carico. Se assegni a un elettrodomestico una **potenza nominale** in kW — o ricarichi un'auto elettrica, che usa la sua potenza di ricarica reale — il costo stimato viene adattato a quel carico, così rispecchia ciò che l'elettrodomestico consuma davvero.
 {{< /faq >}}
 
 {{< faq question="Funziona offline?" >}}

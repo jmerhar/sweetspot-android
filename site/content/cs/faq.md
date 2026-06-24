@@ -23,7 +23,19 @@ Prioritu zdrojů dat můžete nastavit v nastavení.
 {{< faq question="Jsou ceny přesné?" >}}
 SweetSpot zobrazuje **denní spotové ceny** — velkoobchodní ceny elektřiny stanovené trhem den předem. Tyto ceny **nezahrnují** DPH, energetické daně, síťové poplatky ani marže dodavatelů, které se liší podle země a poskytovatele.
 
-Ceny jsou užitečné pro vzájemné srovnání časových úseků (zjištění, kdy je elektřina nejlevnější), což je hlavní účel aplikace. Zítřejší ceny jsou obvykle k dispozici po 13:00 CET.
+Ceny jsou užitečné pro vzájemné srovnání časových úseků (zjištění, kdy je elektřina nejlevnější), což je hlavní účel aplikace. Náklady se ve výchozím nastavení zobrazují na 1 kW zátěže; nastavte příkon spotřebiče nebo nabíjejte elektromobil a odhad bude odpovídat skutečné zátěži. Zítřejší ceny jsou obvykle k dispozici po 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Může mi SweetSpot pomoci s nabíjením elektromobilu?" >}}
+Ano. Přidejte své vozidlo — vyberte je z vestavěné databáze přibližně 1 600 elektromobilů a plug-in hybridů, nebo ručně zadejte kapacitu baterie a nabíjecí výkon. Poté zadejte aktuální a cílovou úroveň nabití a SweetSpot vypočítá, jak dlouho bude nabíjení trvat (z kapacity baterie a z nižší z hodnot AC limitu vašeho auta a vaší domácí nabíječky), a najde nejlevnější okno pro zapojení.
+{{< /faq >}}
+
+{{< faq question="Mohu zajistit, aby to bylo hotové do určité doby?" >}}
+Ano. Zapněte volitelný termín **„hotovo do“** a vyberte čas. SweetSpot pak zváží pouze ta okna, která se do té doby dokončí — pro libovolný spotřebič nebo pro nabíjení elektromobilu (například plně nabito do 7:00 ráno).
+{{< /faq >}}
+
+{{< faq question="Odrážejí náklady, kolik energie můj spotřebič spotřebuje?" >}}
+Ve výchozím nastavení se náklady zobrazují na 1 kW zátěže. Pokud spotřebiči zadáte **příkon** v kW — nebo nabíjíte elektromobil, který používá svůj skutečný nabíjecí výkon — odhadované náklady se přepočítají na tuto zátěž, takže odpovídají tomu, co spotřebič skutečně spotřebuje.
 {{< /faq >}}
 
 {{< faq question="Funguje aplikace offline?" >}}

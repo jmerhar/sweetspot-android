@@ -23,7 +23,19 @@ Poradie priority zdrojov údajov môžete nastaviť v nastaveniach.
 {{< faq question="Sú ceny presné?" >}}
 SweetSpot zobrazuje **denné spotové ceny** — veľkoobchodné ceny elektriny určené trhom deň vopred. Tieto ceny **nezahŕňajú** DPH, dane z energie, sieťové poplatky ani marže dodávateľov, ktoré sa líšia podľa krajiny a dodávateľa.
 
-Ceny sú užitočné na vzájomné porovnanie časových úsekov (zistenie, kedy je elektrina najlacnejšia), čo je hlavný účel aplikácie. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.
+Ceny sú užitočné na vzájomné porovnanie časových úsekov (zistenie, kedy je elektrina najlacnejšia), čo je hlavný účel aplikácie. Náklady sú predvolene uvedené pre záťaž 1 kW; nastavte spotrebiču výkon alebo nabíjajte elektromobil a odhad zohľadní skutočnú záťaž. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Pomôže mi SweetSpot nabíjať elektromobil?" >}}
+Áno. Pridajte si vozidlo — vyberte ho z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov alebo ručne zadajte kapacitu batérie a nabíjací výkon. Potom zadajte aktuálnu a cieľovú úroveň nabitia a SweetSpot vypočíta, ako dlho bude nabíjanie trvať (z kapacity batérie a nižšej z hodnôt AC limitu vášho auta a vašej domácej nabíjačky), a nájde najlacnejšie okno na zapojenie.
+{{< /faq >}}
+
+{{< faq question="Môžem zaistiť, aby to bolo hotové do určitého času?" >}}
+Áno. Zapnite voliteľný termín **„hotové do“** a vyberte čas. SweetSpot potom zohľadní iba okná, ktoré sa dovtedy dokončia — pre ľubovoľný spotrebič alebo pri nabíjaní elektromobilu (napríklad plne nabité do 7:00 ráno).
+{{< /faq >}}
+
+{{< faq question="Zohľadňujú náklady, koľko energie môj spotrebič spotrebuje?" >}}
+Náklady sú predvolene uvedené pre záťaž 1 kW. Ak spotrebiču zadáte **výkon** v kW — alebo nabíjate elektromobil, ktorý používa svoj skutočný nabíjací výkon — odhadované náklady sa prepočítajú podľa danej záťaže, takže zohľadňujú, koľko spotrebič skutočne spotrebuje.
 {{< /faq >}}
 
 {{< faq question="Funguje to aj offline?" >}}

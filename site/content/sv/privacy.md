@@ -21,7 +21,7 @@ Dessa API-förfrågningar innehåller bara elområdesidentifieraren och datumint
 
 ## Lokal lagring
 
-Prisdata lagras lokalt på din enhet för att minska API-anrop och ge snabbare resultat. Din apparatkonfiguration (namn, körtider, ikoner) och inställningar (land, zon, språk) lagras också lokalt på din enhet.
+Prisdata lagras lokalt på din enhet för att minska API-anrop och ge snabbare resultat. Din apparatkonfiguration (namn, körtider, ikoner och valfri effekt), sparade fordon (batterikapacitet och laddeffekt) och inställningar (land, zon, språk) lagras också lokalt på din enhet.
 
 På Wear OS synkroniseras apparatdata och inställningar mellan telefon och klocka via Wearable Data Layer API. Denna kommunikation stannar på dina lokala enheter och går inte via någon extern server.
 
@@ -56,4 +56,4 @@ SweetSpot är öppen källkod och licensierad under GPL v3. Du kan granska den f
 
 Om du har frågor om denna integritetspolicy kan du öppna ett issue på [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Senast uppdaterad: april 2026*
+*Senast uppdaterad: juni 2026*

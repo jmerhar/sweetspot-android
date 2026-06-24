@@ -23,10 +23,10 @@ other = "Privaatsus"
 other = "Vaheta keelt"
 
 [hero_title]
-other = "Leia soodsaim aeg oma seadmete kasutamiseks"
+other = "Leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks"
 
 [hero_subtitle]
-other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab optimaalse ajavahemiku raha säästmiseks. Avatud lähtekoodiga ja privaatne."
+other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab soodsaima ajavahemiku oma seadmete kasutamiseks või elektriauto laadimiseks — vajadusel valmis sinu määratud tähtajaks. Avatud lähtekoodiga ja privaatne."
 
 [download]
 other = "Laadi alla Google Playst"
@@ -71,7 +71,19 @@ other = "Kaasrakendus Pixel Watchile ja teistele Wear OS 3+ seadmetele. Vaata hi
 other = "Kohandatud seadmed"
 
 [feature_appliances_desc]
-other = "Salvesta oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks ühe puutega ligipääsuks."
+other = "Salvesta oma seadmed kohandatud nimede, ikoonide, kestuste ja valikulise võimsusega, et kuluhinnang kajastaks nende tegelikku tarbimist."
+
+[feature_ev_title]
+other = "Elektriauto laadimine"
+
+[feature_ev_desc]
+other = "Lisa oma auto ning sisesta selle praegune ja soovitud laetuse tase. SweetSpot arvutab laadimisaja ja leiab soodsaima aja laadima panemiseks."
+
+[feature_deadline_title]
+other = "Valmis hiljemalt"
+
+[feature_deadline_desc]
+other = "Vajad seda valmis kindlaks ajaks? Lisa „valmis hiljemalt“ tähtaeg ja SweetSpot valib ainult ajavahemikud, mis õigeks ajaks lõpevad."
 
 [feature_languages_title]
 other = "25 keelt"
@@ -95,10 +107,10 @@ other = "Kogu lähtekood on saadaval GitHubis GPL v3 litsentsi all."
 other = "Kuidas see töötab"
 
 [step1_title]
-other = "Vali oma seade"
+other = "Vali seade või elektriauto"
 
 [step1_desc]
-other = "Vali salvestatud seade või määra kohandatud kestus, kui kaua seade peab töötama."
+other = "Vali salvestatud seade või oma elektriauto, või määra kohandatud kestus — ja soovi korral „valmis hiljemalt“ tähtaeg."
 
 [step2_title]
 other = "Otsi hindu"
@@ -116,10 +128,10 @@ other = "Vaata täpselt, millal alustada, koos täieliku kulujaotusega ajavahemi
 other = "Hakka elektri pealt säästma"
 
 [cta_desc]
-other = "Laadi SweetSpot alla Google Playst ja leia soodsaim aeg oma seadmete kasutamiseks."
+other = "Laadi SweetSpot alla Google Playst ja leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks."
 
 [footer_tagline]
-other = "Leia soodsaim aeg oma seadmete kasutamiseks."
+other = "Leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks."
 
 [footer_app]
 other = "Rakendus"
@@ -146,7 +158,7 @@ other = "Avakuva seadmetega, kestuse valijaga ja Otsi nupuga"
 other = "Tulevased elektrihinnad horisontaalse tulpdiagrammina"
 
 [screenshot_4_alt]
-other = "Seadete ekraan salvestatud seadmete, keele, riigi ja ajavööndiga"
+other = "Seadete ekraan salvestatud seadmete, elektriauto laadimise, keele, riigi ja ajavööndiga"
 
 [screenshot_5_alt]
 other = "Elektriauto laadimine: praegune ja soovitud laetus koos arvutatud laadimisajaga"

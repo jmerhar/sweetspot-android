@@ -21,7 +21,7 @@ Need API päringud sisaldavad ainult pakkumistsooni tunnust ja kuupäevavahemikk
 
 ## Kohalik salvestamine
 
-Hinnaandmed salvestatakse kohalikult sinu seadmesse, et vähendada API päringuid ja kiirendada tulemuste kuvamist. Sinu seadmete konfiguratsioon (nimed, kestused, ikoonid) ja seaded (riik, tsoon, keel) salvestatakse samuti kohalikult sinu seadmes.
+Hinnaandmed salvestatakse kohalikult sinu seadmesse, et vähendada API päringuid ja kiirendada tulemuste kuvamist. Sinu seadmete konfiguratsioon (nimed, kestused, ikoonid ja valikulised võimsused), salvestatud sõidukid (aku maht ja laadimisvõimsus) ja seaded (riik, tsoon, keel) salvestatakse samuti kohalikult sinu seadmes.
 
 Wear OS-is sünkroniseeritakse seadmete andmed ja seaded telefoni ja kella vahel Wearable Data Layer API kaudu. See suhtlus jääb sinu kohalikesse seadmetesse ega läbi ühtegi välist serverit.
 
@@ -56,4 +56,4 @@ SweetSpot on avatud lähtekoodiga ja litsentseeritud GPL v3 all. Kogu lähtekood
 
 Kui sul on küsimusi selle privaatsuspoliitika kohta, saad avada teema [GitHubis](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Viimati uuendatud: aprill 2026*
+*Viimati uuendatud: juuni 2026*

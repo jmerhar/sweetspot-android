@@ -21,7 +21,7 @@ SweetSpot iegūst nākamās dienas elektrības cenas no publiskajām API:
 
 ## Lokālā glabāšana
 
-Cenu dati tiek saglabāti lokāli jūsu ierīcē, lai samazinātu API pieprasījumu skaitu un nodrošinātu ātrākus rezultātus. Arī jūsu ierīču konfigurācija (nosaukumi, ilgumi, ikonas) un iestatījumi (valsts, zona, valoda) tiek saglabāti lokāli jūsu ierīcē.
+Cenu dati tiek saglabāti lokāli jūsu ierīcē, lai samazinātu API pieprasījumu skaitu un nodrošinātu ātrākus rezultātus. Arī jūsu ierīču konfigurācija (nosaukumi, ilgumi, ikonas un neobligātā jauda), saglabātie transportlīdzekļi (akumulatora ietilpība un uzlādes jauda) un iestatījumi (valsts, zona, valoda) tiek saglabāti lokāli jūsu ierīcē.
 
 Wear OS ierīcēs elektroierīču dati un iestatījumi tiek sinhronizēti starp tālruni un pulksteni, izmantojot Wearable Data Layer API. Šī komunikācija paliek starp jūsu lokālajām ierīcēm un neiet caur ārējiem serveriem.
 
@@ -56,4 +56,4 @@ SweetSpot ir atvērtā koda programmatūra ar GPL v3 licenci. Pilnu pirmkodu var
 
 Ja jums ir jautājumi par šo privātuma politiku, varat izveidot pieteikumu [GitHub](https://github.com/jmerhar/sweetspot-android/issues) vietnē.
 
-*Pēdējo reizi atjaunināts: 2026. gada aprīlis*
+*Pēdējo reizi atjaunināts: 2026. gada jūnijs*

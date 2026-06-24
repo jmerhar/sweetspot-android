@@ -23,10 +23,10 @@ other = "Privacy"
 other = "Cambia lingua"
 
 [hero_title]
-other = "Trova il momento più conveniente per usare i tuoi elettrodomestici"
+other = "Trova il momento più conveniente per usare i tuoi elettrodomestici e ricaricare l'auto elettrica"
 
 [hero_subtitle]
-other = "SweetSpot analizza i prezzi dinamici dell'energia elettrica in 30 paesi europei e trova la fascia oraria ottimale per risparmiare. Open source e rispettoso della privacy."
+other = "SweetSpot analizza i prezzi dinamici dell'energia elettrica in 30 paesi europei e trova la fascia più conveniente per usare i tuoi elettrodomestici o ricaricare l'auto elettrica — completata entro una scadenza, se ne imposti una. Open source e rispettoso della privacy."
 
 [download]
 other = "Disponibile su Google Play"
@@ -71,7 +71,19 @@ other = "App companion per Pixel Watch e altri dispositivi Wear OS 3+. Controlla
 other = "Elettrodomestici personalizzati"
 
 [feature_appliances_desc]
-other = "Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido."
+other = "Salva i tuoi elettrodomestici con nomi, icone, durate personalizzati e una potenza nominale opzionale, così la stima dei costi rispecchia il consumo reale."
+
+[feature_ev_title]
+other = "Ricarica auto elettrica"
+
+[feature_ev_desc]
+other = "Aggiungi la tua auto, poi indica la carica attuale e quella desiderata. SweetSpot calcola il tempo di ricarica e il momento più conveniente per collegarla."
+
+[feature_deadline_title]
+other = "Orario «Pronto entro»"
+
+[feature_deadline_desc]
+other = "Ti serve pronto entro un certo orario? Imposta una scadenza «Pronto entro» e SweetSpot sceglie solo le fasce che terminano in tempo."
 
 [feature_languages_title]
 other = "25 lingue"
@@ -95,10 +107,10 @@ other = "Il codice sorgente completo è disponibile su GitHub con licenza GPL v3
 other = "Come funziona"
 
 [step1_title]
-other = "Scegli il tuo elettrodomestico"
+other = "Scegli elettrodomestico o auto elettrica"
 
 [step1_desc]
-other = "Seleziona un elettrodomestico salvato oppure imposta una durata personalizzata."
+other = "Seleziona un elettrodomestico salvato o la tua auto elettrica, oppure imposta una durata personalizzata — e facoltativamente una scadenza «Pronto entro»."
 
 [step2_title]
 other = "Analizza i prezzi"
@@ -116,10 +128,10 @@ other = "Scopri esattamente quando avviare, con un dettaglio completo dei costi 
 other = "Inizia a risparmiare sull'energia elettrica"
 
 [cta_desc]
-other = "Scarica SweetSpot da Google Play e trova il momento più conveniente per usare i tuoi elettrodomestici."
+other = "Scarica SweetSpot da Google Play e trova il momento più conveniente per usare i tuoi elettrodomestici e ricaricare l'auto elettrica."
 
 [footer_tagline]
-other = "Trova il momento più conveniente per usare i tuoi elettrodomestici."
+other = "Trova il momento più conveniente per usare i tuoi elettrodomestici e ricaricare l'auto elettrica."
 
 [footer_app]
 other = "App"
@@ -146,7 +158,7 @@ other = "Schermata iniziale con elettrodomestici, selettore durata e pulsante Ce
 other = "Prossimi prezzi dell'energia come grafico a barre orizzontale"
 
 [screenshot_4_alt]
-other = "Schermata impostazioni con elettrodomestici salvati, lingua, paese e fuso orario"
+other = "Schermata impostazioni con elettrodomestici salvati, ricarica auto elettrica, lingua, paese e fuso orario"
 
 [screenshot_5_alt]
 other = "Ricarica auto elettrica: carica attuale e obiettivo con il tempo di ricarica calcolato"

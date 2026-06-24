@@ -21,7 +21,7 @@ Tieto API požiadavky obsahujú iba identifikátor cenovej zóny a rozsah dátum
 
 ## Lokálne ukladanie
 
-Údaje o cenách sa ukladajú lokálne na vašom zariadení, aby sa znížil počet API volaní a zrýchlili výsledky. Konfigurácia vašich spotrebičov (názvy, trvania, ikony) a nastavenia (krajina, zóna, jazyk) sa takisto ukladajú lokálne na vašom zariadení.
+Údaje o cenách sa ukladajú lokálne na vašom zariadení, aby sa znížil počet API volaní a zrýchlili výsledky. Konfigurácia vašich spotrebičov (názvy, trvania, ikony a voliteľné výkony), uložené vozidlá (kapacita batérie a nabíjací výkon) a nastavenia (krajina, zóna, jazyk) sa takisto ukladajú lokálne na vašom zariadení.
 
 Na Wear OS sa údaje o spotrebičoch a nastavenia synchronizujú medzi telefónom a hodinkami prostredníctvom Wearable Data Layer API. Táto komunikácia zostáva na vašich lokálnych zariadeniach a neprechádza cez žiadny externý server.
 
@@ -56,4 +56,4 @@ SweetSpot je open source a licencovaný pod GPL v3. Kompletný zdrojový kód si
 
 Ak máte otázky k týmto zásadám ochrany súkromia, môžete otvoriť issue na [GitHube](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Posledná aktualizácia: apríl 2026*
+*Posledná aktualizácia: jún 2026*

@@ -23,10 +23,10 @@ other = "Súkromie"
 other = "Zmeniť jazyk"
 
 [hero_title]
-other = "Nájdite najlacnejší čas na spustenie vašich spotrebičov"
+other = "Nájdite najlacnejší čas na spustenie spotrebičov a nabíjanie elektromobilu"
 
 [hero_subtitle]
-other = "SweetSpot analyzuje dynamické ceny elektriny v 30 európskych krajinách a nájde optimálny čas na úsporu peňazí. Open source a s dôrazom na súkromie."
+other = "SweetSpot analyzuje dynamické ceny elektriny v 30 európskych krajinách a nájde najlacnejšie okno na spustenie spotrebičov alebo nabíjanie elektromobilu — dokončené do termínu, ak si ho nastavíte. Open source a s dôrazom na súkromie."
 
 [download]
 other = "Stiahnuť z Google Play"
@@ -71,7 +71,19 @@ other = "Sprievodná aplikácia pre Pixel Watch a ďalšie zariadenia Wear OS 3+
 other = "Vlastné spotrebiče"
 
 [feature_appliances_desc]
-other = "Uložte si spotrebiče s vlastnými názvami, ikonami a trvaním pre prístup jedným ťuknutím."
+other = "Uložte si spotrebiče s vlastnými názvami, ikonami, trvaním a voliteľným výkonom, aby odhad nákladov zohľadňoval ich skutočnú spotrebu."
+
+[feature_ev_title]
+other = "Nabíjanie elektromobilu"
+
+[feature_ev_desc]
+other = "Pridajte si auto a zadajte jeho aktuálne a cieľové nabitie. SweetSpot vypočíta čas nabíjania a najlacnejší čas na zapojenie."
+
+[feature_deadline_title]
+other = "Čas „Hotové do“"
+
+[feature_deadline_desc]
+other = "Potrebujete to dokončiť do určitého času? Pridajte termín „hotové do“ a SweetSpot zvolí iba okná, ktoré sa dokončia včas."
 
 [feature_languages_title]
 other = "25 jazykov"
@@ -95,10 +107,10 @@ other = "Kompletný zdrojový kód je dostupný na GitHube pod licenciou GPL v3.
 other = "Ako to funguje"
 
 [step1_title]
-other = "Vyberte si spotrebič"
+other = "Vyberte spotrebič alebo elektromobil"
 
 [step1_desc]
-other = "Zvoľte uložený spotrebič alebo nastavte vlastné trvanie chodu."
+other = "Zvoľte uložený spotrebič alebo svoj elektromobil, prípadne nastavte vlastné trvanie — a voliteľne aj termín „hotové do“."
 
 [step2_title]
 other = "Prehľad cien"
@@ -116,10 +128,10 @@ other = "Presne uvidíte, kedy spustiť spotrebič, s úplným rozpisom náklado
 other = "Začnite šetriť na elektrine"
 
 [cta_desc]
-other = "Stiahnite si SweetSpot z Google Play a nájdite najlacnejší čas na spustenie vašich spotrebičov."
+other = "Stiahnite si SweetSpot z Google Play a nájdite najlacnejší čas na spustenie spotrebičov a nabíjanie elektromobilu."
 
 [footer_tagline]
-other = "Nájdite najlacnejší čas na spustenie vašich spotrebičov."
+other = "Nájdite najlacnejší čas na spustenie spotrebičov a nabíjanie elektromobilu."
 
 [footer_app]
 other = "Aplikácia"
@@ -146,7 +158,7 @@ other = "Úvodná obrazovka so spotrebičmi, výberom trvania a tlačidlom Hľad
 other = "Nadchádzajúce ceny elektriny ako vodorovný stĺpcový graf"
 
 [screenshot_4_alt]
-other = "Obrazovka nastavení s uloženými spotrebičmi, jazykom, krajinou a časovým pásmom"
+other = "Obrazovka nastavení s uloženými spotrebičmi, nabíjaním elektromobilu, jazykom, krajinou a časovým pásmom"
 
 [screenshot_5_alt]
 other = "Nabíjanie elektromobilu: aktuálne a cieľové nabitie s vypočítaným časom nabíjania"

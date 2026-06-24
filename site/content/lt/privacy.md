@@ -21,7 +21,7 @@ SweetSpot gauna kitos dienos elektros kainas iš viešų API:
 
 ## Vietinė saugykla
 
-Kainų duomenys saugomi vietiniame jūsų įrenginyje, kad sumažėtų API užklausų skaičius ir rezultatai būtų rodomi greičiau. Jūsų prietaisų konfigūracija (pavadinimai, trukmės, piktogramos) ir nustatymai (šalis, zona, kalba) taip pat saugomi vietiniame jūsų įrenginyje.
+Kainų duomenys saugomi vietiniame jūsų įrenginyje, kad sumažėtų API užklausų skaičius ir rezultatai būtų rodomi greičiau. Jūsų prietaisų konfigūracija (pavadinimai, trukmės, piktogramos ir neprivalomas galingumas), išsaugoti automobiliai (baterijos talpa ir įkrovimo galia) bei nustatymai (šalis, zona, kalba) taip pat saugomi vietiniame jūsų įrenginyje.
 
 Wear OS įrenginiuose prietaisų duomenys ir nustatymai sinchronizuojami tarp telefono ir laikrodžio naudojant Wearable Data Layer API. Ši komunikacija lieka tarp jūsų vietinių įrenginių ir nepatenka į jokius išorinius serverius.
 
@@ -56,4 +56,4 @@ SweetSpot yra atviro kodo programinė įranga, licencijuota pagal GPL v3. Visą 
 
 Jei turite klausimų dėl šios privatumo politikos, galite sukurti pranešimą [GitHub](https://github.com/jmerhar/sweetspot-android/issues) svetainėje.
 
-*Paskutinį kartą atnaujinta: 2026 m. balandis*
+*Paskutinį kartą atnaujinta: 2026 m. birželis*

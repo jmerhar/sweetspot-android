@@ -21,7 +21,7 @@ Deze API-verzoeken bevatten alleen de biedingszone en het datumbereik. Er worden
 
 ## Lokale opslag
 
-Prijsgegevens worden lokaal op je apparaat opgeslagen om API-aanroepen te verminderen en snellere resultaten mogelijk te maken. Je apparaatconfiguratie (namen, duur, iconen) en instellingen (land, zone, taal) worden ook lokaal op je apparaat opgeslagen.
+Prijsgegevens worden lokaal op je apparaat opgeslagen om API-aanroepen te verminderen en snellere resultaten mogelijk te maken. Je apparaatconfiguratie (namen, duur, iconen en een optioneel vermogen), opgeslagen voertuigen (accucapaciteit en laadvermogen) en instellingen (land, zone, taal) worden ook lokaal op je apparaat opgeslagen.
 
 Op Wear OS worden apparaatgegevens en instellingen gesynchroniseerd tussen telefoon en horloge via de Wearable Data Layer API. Deze communicatie blijft op je lokale apparaten en verloopt niet via een externe server.
 
@@ -56,4 +56,4 @@ SweetSpot is open source en beschikbaar onder de GPL v3-licentie. Je kunt de vol
 
 Als je vragen hebt over dit privacybeleid, kun je een issue openen op [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Laatst bijgewerkt: april 2026*
+*Laatst bijgewerkt: juni 2026*

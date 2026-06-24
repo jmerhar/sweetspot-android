@@ -23,10 +23,10 @@ other = "Privacy"
 other = "Switch language"
 
 [hero_title]
-other = "Find the cheapest time to run your appliances"
+other = "Find the cheapest time to run your appliances and charge your EV"
 
 [hero_subtitle]
-other = "SweetSpot scans dynamic electricity prices across 30 European countries and finds the optimal window to save you money. Open source and private."
+other = "SweetSpot scans dynamic electricity prices across 30 European countries to find the cheapest window to run your appliances or charge your EV — finished by a deadline if you set one. Open source and private."
 
 [download]
 other = "Get it on Google Play"
@@ -74,7 +74,19 @@ other = "Companion app for Pixel Watch and other Wear OS 3+ devices. Check price
 other = "Custom Appliances"
 
 [feature_appliances_desc]
-other = "Save your appliances with custom names, icons, and durations for one-tap access."
+other = "Save your appliances with custom names, icons, durations, and an optional power rating, so the cost estimate reflects what they really use."
+
+[feature_ev_title]
+other = "EV Charging"
+
+[feature_ev_desc]
+other = "Add your car, then enter its current and target charge. SweetSpot works out the charging time and the cheapest time to plug in."
+
+[feature_deadline_title]
+other = "Ready-By Deadline"
+
+[feature_deadline_desc]
+other = "Need it finished by a set time? Add a 'ready by' deadline and SweetSpot only picks windows that complete in time."
 
 [feature_languages_title]
 other = "25 Languages"
@@ -98,10 +110,10 @@ other = "The full source code is available on GitHub under the GPL v3 license."
 other = "How It Works"
 
 [step1_title]
-other = "Choose Your Appliance"
+other = "Choose Appliance or EV"
 
 [step1_desc]
-other = "Pick a saved appliance or set a custom duration for how long it needs to run."
+other = "Pick a saved appliance or your EV, or set a custom duration — and optionally a 'ready by' deadline."
 
 [step2_title]
 other = "Scan Prices"
@@ -119,10 +131,10 @@ other = "See exactly when to start, with a full cost breakdown per time slot."
 other = "Start saving on electricity"
 
 [cta_desc]
-other = "Get SweetSpot on Google Play and find the cheapest time to run your appliances."
+other = "Get SweetSpot on Google Play and find the cheapest time to run your appliances and charge your EV."
 
 [footer_tagline]
-other = "Find the cheapest time to run your appliances."
+other = "Find the cheapest time to run your appliances and charge your EV."
 
 [footer_app]
 other = "App"
@@ -149,7 +161,7 @@ other = "Home screen with appliance chips, duration picker, and Find button"
 other = "Upcoming electricity prices as a horizontal bar chart"
 
 [screenshot_4_alt]
-other = "Settings screen with saved appliances, language, country, and timezone"
+other = "Settings screen with saved appliances, EV charging, language, country, and timezone"
 
 [screenshot_5_alt]
 other = "EV charging: current and target charge with the calculated charging time"

@@ -23,7 +23,19 @@ Andmeallikate prioriteedijärjestust saad seadistada seadetes.
 {{< faq question="Kas hinnad on täpsed?" >}}
 SweetSpot näitab **järgmise päeva börsihinda** — hulgituruhinda, mis määratakse turul tarnepäevale eelneval päeval. Need hinnad **ei sisalda** käibemaksu, energiamakse, võrgutasusid ega müügimarginaale, mis erinevad riigiti ja teenusepakkuja kaupa.
 
-Hinnad on kasulikud ajavahemike omavaheliseks võrdlemiseks (leidmaks, millal on elekter odavaim), mis on rakenduse peamine eesmärk. Homse päeva hinnad on tavaliselt saadaval pärast kella 13:00 CET.
+Hinnad on kasulikud ajavahemike omavaheliseks võrdlemiseks (leidmaks, millal on elekter odavaim), mis on rakenduse peamine eesmärk. Kulud kuvatakse vaikimisi 1 kW koormuse kohta; määra seadme võimsus või lae elektriautot, ja hinnang kajastab tegelikku koormust. Homse päeva hinnad on tavaliselt saadaval pärast kella 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Kas SweetSpot aitab mul oma elektriautot laadida?" >}}
+Jah. Lisa oma sõiduk — vali see umbes 1600 elektri- ja pistikhübriidautost koosnevast sisseehitatud andmebaasist või sisesta aku maht ja laadimisvõimsus käsitsi. Seejärel sisesta praegune ja soovitud laetuse tase ning SweetSpot arvutab, kui kaua laadimine kestab (lähtudes aku mahust ning sinu auto AC-piirangu ja kodulaadija väiksemast väärtusest) ja leiab soodsaima aja laadima panemiseks.
+{{< /faq >}}
+
+{{< faq question="Kas saan tagada, et see on kindlaks ajaks valmis?" >}}
+Jah. Lülita sisse valikuline **„valmis hiljemalt“** tähtaeg ja vali aeg. SweetSpot arvestab seejärel ainult ajavahemikke, mis selleks ajaks lõpevad — mis tahes seadme jaoks või elektriauto laadimiseks (näiteks täis laetud hommikul kella 7:00-ks).
+{{< /faq >}}
+
+{{< faq question="Kas kulud kajastavad seda, kui palju mu seade voolu tarbib?" >}}
+Vaikimisi kuvatakse kulud 1 kW koormuse kohta. Kui annad seadmele **võimsuse** kW-des — või lae elektriautot, mis kasutab oma tegelikku laadimisvõimsust — siis skaleeritakse hinnanguline kulu vastavalt sellele koormusele, nii et see kajastab seadme tegelikku tarbimist.
 {{< /faq >}}
 
 {{< faq question="Kas see töötab võrguühenduseta?" >}}

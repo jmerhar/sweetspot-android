@@ -23,7 +23,19 @@ Poți configura ordinea de prioritate a surselor de date din setări.
 {{< faq question="Sunt prețurile exacte?" >}}
 SweetSpot afișează **prețuri spot pentru ziua următoare** — prețuri angro ale electricității stabilite de piață cu o zi înainte de livrare. Aceste prețuri **nu** includ TVA, taxe pe energie, tarife de rețea sau marja furnizorului, care variază în funcție de țară și furnizor.
 
-Prețurile sunt utile pentru compararea intervalelor orare între ele (pentru a afla când electricitatea este cea mai ieftină), ceea ce este scopul principal al aplicației. Prețurile pentru ziua de mâine sunt de obicei disponibile după ora 13:00 CET.
+Prețurile sunt utile pentru compararea intervalelor orare între ele (pentru a afla când electricitatea este cea mai ieftină), ceea ce este scopul principal al aplicației. Costurile sunt afișate în mod implicit pentru o sarcină de 1 kW; setează puterea unui electrocasnic sau încarcă o mașină electrică, iar estimarea va reflecta sarcina reală. Prețurile pentru ziua de mâine sunt de obicei disponibile după ora 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Mă poate ajuta SweetSpot să-mi încarc mașina electrică?" >}}
+Da. Adaugă-ți mașina — alege-o dintr-o bază de date integrată cu aproximativ 1.600 de mașini electrice și hibride plug-in, sau introdu manual capacitatea bateriei și puterea de încărcare. Apoi introdu nivelul actual și cel dorit al bateriei, iar SweetSpot calculează cât va dura încărcarea (pe baza capacității bateriei și a valorii mai mici dintre limita AC a mașinii și cea a încărcătorului tău de domiciliu) și găsește cel mai ieftin interval pentru a o conecta.
+{{< /faq >}}
+
+{{< faq question="Mă pot asigura că este gata până la o anumită oră?" >}}
+Da. Activează termenul opțional **„gata până la“** și alege o oră. SweetSpot ia atunci în considerare doar intervalele care se termină până atunci — pentru orice electrocasnic sau pentru încărcarea mașinii tale electrice (de exemplu, complet încărcată până la ora 7:00 dimineața).
+{{< /faq >}}
+
+{{< faq question="Costurile reflectă cât de multă energie consumă electrocasnicul meu?" >}}
+În mod implicit, costurile sunt afișate pentru o sarcină de 1 kW. Dacă atribui unui electrocasnic o **putere** în kW — sau încarci o mașină electrică, care folosește puterea sa reală de încărcare — costul estimat este ajustat la acea sarcină, astfel încât reflectă ceea ce consumă efectiv electrocasnicul.
 {{< /faq >}}
 
 {{< faq question="Funcționează offline?" >}}

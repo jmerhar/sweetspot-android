@@ -23,7 +23,19 @@ You can configure the data source priority order in settings.
 {{< faq question="Are the prices accurate?" >}}
 SweetSpot shows **day-ahead spot prices** — the wholesale electricity prices determined by the market the day before delivery. These prices do **not** include VAT, energy taxes, network fees, or supplier margins, which vary by country and provider.
 
-The prices are useful for comparing time slots relative to each other (finding when electricity is cheapest), which is the app's primary purpose. Tomorrow's prices are typically available after 13:00 CET.
+The prices are useful for comparing time slots relative to each other (finding when electricity is cheapest), which is the app's primary purpose. Costs are shown per 1 kW of load by default; set an appliance's power rating, or charge an EV, and the estimate reflects the real load. Tomorrow's prices are typically available after 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Can SweetSpot help me charge my electric car?" >}}
+Yes. Add your vehicle — pick it from a built-in database of around 1,600 EVs and plug-in hybrids, or enter the battery size and charging power manually. Then enter your current and target state of charge, and SweetSpot works out how long charging will take (from the battery size and the lower of your car's AC limit and your home charger) and finds the cheapest window to plug in.
+{{< /faq >}}
+
+{{< faq question="Can I make sure it's ready by a certain time?" >}}
+Yes. Turn on the optional **"ready by"** deadline and pick a time. SweetSpot then only considers windows that finish by then — for any appliance or for charging your EV (for example, fully charged by 7:00 in the morning).
+{{< /faq >}}
+
+{{< faq question="Do the costs reflect how much power my appliance uses?" >}}
+By default, costs are shown per 1 kW of load. If you give an appliance a **power rating** in kW — or charge an EV, which uses its real charging power — the estimated cost is scaled to that load, so it reflects what the appliance actually consumes.
 {{< /faq >}}
 
 {{< faq question="Does it work offline?" >}}

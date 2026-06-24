@@ -23,10 +23,10 @@ other = "Prywatność"
 other = "Zmień język"
 
 [hero_title]
-other = "Znajdź najtańszy czas na uruchomienie swoich urządzeń"
+other = "Znajdź najtańszy czas na uruchomienie urządzeń i ładowanie auta elektrycznego"
 
 [hero_subtitle]
-other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich i znajduje optymalny termin, który pozwoli Ci zaoszczędzić. Otwartoźródłowa i prywatna."
+other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańsze okno na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, jeśli go ustawisz. Otwartoźródłowa i prywatna."
 
 [download]
 other = "Pobierz z Google Play"
@@ -71,7 +71,19 @@ other = "Aplikacja towarzysząca na Pixel Watch i inne urządzenia Wear OS 3+. S
 other = "Własne urządzenia"
 
 [feature_appliances_desc]
-other = "Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania, aby mieć do nich szybki dostęp."
+other = "Zapisz swoje urządzenia z własnymi nazwami, ikonami, czasami trwania i opcjonalną mocą znamionową, aby szacowany koszt odzwierciedlał ich rzeczywiste zużycie."
+
+[feature_ev_title]
+other = "Ładowanie auta elektrycznego"
+
+[feature_ev_desc]
+other = "Dodaj swój samochód, a następnie podaj obecny i docelowy poziom naładowania. SweetSpot obliczy czas ładowania i najtańszą porę na podłączenie."
+
+[feature_deadline_title]
+other = "Termin „Gotowe do“"
+
+[feature_deadline_desc]
+other = "Musi być gotowe na określoną godzinę? Dodaj termin „gotowe do“, a SweetSpot wybierze tylko te okna, które zakończą się na czas."
 
 [feature_languages_title]
 other = "25 języków"
@@ -95,10 +107,10 @@ other = "Pełny kod źródłowy jest dostępny na GitHubie na licencji GPL v3."
 other = "Jak to działa"
 
 [step1_title]
-other = "Wybierz urządzenie"
+other = "Wybierz urządzenie lub auto elektryczne"
 
 [step1_desc]
-other = "Wybierz zapisane urządzenie lub ustaw własny czas trwania."
+other = "Wybierz zapisane urządzenie lub swoje auto elektryczne, albo ustaw własny czas trwania — i opcjonalnie termin „gotowe do“."
 
 [step2_title]
 other = "Skanuj ceny"
@@ -116,10 +128,10 @@ other = "Zobacz dokładnie, kiedy rozpocząć, z pełnym zestawieniem kosztów d
 other = "Zacznij oszczędzać na prądzie"
 
 [cta_desc]
-other = "Pobierz SweetSpot z Google Play i znajdź najtańszy czas na uruchomienie swoich urządzeń."
+other = "Pobierz SweetSpot z Google Play i znajdź najtańszy czas na uruchomienie urządzeń i ładowanie auta elektrycznego."
 
 [footer_tagline]
-other = "Znajdź najtańszy czas na uruchomienie swoich urządzeń."
+other = "Znajdź najtańszy czas na uruchomienie urządzeń i ładowanie auta elektrycznego."
 
 [footer_app]
 other = "Aplikacja"
@@ -146,7 +158,7 @@ other = "Ekran główny z urządzeniami, wyborem czasu trwania i przyciskiem Szu
 other = "Nadchodzące ceny prądu jako poziomy wykres słupkowy"
 
 [screenshot_4_alt]
-other = "Ekran ustawień z zapisanymi urządzeniami, językiem, krajem i strefą czasową"
+other = "Ekran ustawień z zapisanymi urządzeniami, ładowaniem auta elektrycznego, językiem, krajem i strefą czasową"
 
 [screenshot_5_alt]
 other = "Ładowanie auta elektrycznego: obecny i docelowy poziom z obliczonym czasem ładowania"

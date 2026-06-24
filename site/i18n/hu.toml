@@ -23,10 +23,10 @@ other = "Adatvédelem"
 other = "Nyelvváltás"
 
 [hero_title]
-other = "Találja meg a legolcsóbb időpontot készülékei használatához"
+other = "Találja meg a legolcsóbb időpontot készülékei használatához és elektromos autója töltéséhez"
 
 [hero_subtitle]
-other = "A SweetSpot összeveti a dinamikus áramárakat 30 európai országban, és megkeresi az optimális időszakot a spóroláshoz. Nyílt forráskódú és az adatvédelmet szem előtt tartó."
+other = "A SweetSpot összeveti a dinamikus villamosenergia-árakat 30 európai országban, és megkeresi a legolcsóbb időszakot készülékei használatához vagy elektromos autója töltéséhez — ha beállít egy határidőt, akkorra befejezve. Nyílt forráskódú és az adatvédelmet szem előtt tartó."
 
 [download]
 other = "Letöltés a Google Playről"
@@ -71,7 +71,19 @@ other = "Társalkalmazás Pixel Watchhoz és más Wear OS 3+ készülékekhez. N
 other = "Egyéni készülékek"
 
 [feature_appliances_desc]
-other = "Mentse el készülékeit egyéni nevekkel, ikonokkal és időtartamokkal az egyérintéses hozzáféréshez."
+other = "Mentse el készülékeit egyéni nevekkel, ikonokkal, időtartamokkal és opcionális teljesítményértékkel, hogy a költségbecslés a valós fogyasztásukat tükrözze."
+
+[feature_ev_title]
+other = "Elektromos autó töltése"
+
+[feature_ev_desc]
+other = "Adja hozzá autóját, majd adja meg az aktuális és a kívánt töltöttséget. A SweetSpot kiszámítja a töltési időt és a legolcsóbb időpontot a csatlakoztatásra."
+
+[feature_deadline_title]
+other = "„Készen ekkorra“ határidő"
+
+[feature_deadline_desc]
+other = "Egy adott időpontra van rá szüksége? Adjon meg egy „készen ekkorra“ határidőt, és a SweetSpot csak olyan időszakokat választ, amelyek időben befejeződnek."
 
 [feature_languages_title]
 other = "25 nyelv"
@@ -95,10 +107,10 @@ other = "A teljes forráskód elérhető a GitHubon GPL v3 licenc alatt."
 other = "Hogyan működik"
 
 [step1_title]
-other = "Válassza ki a készüléket"
+other = "Válassza ki a készüléket vagy az elektromos autót"
 
 [step1_desc]
-other = "Válasszon egy mentett készüléket, vagy állítson be egyéni időtartamot."
+other = "Válasszon egy mentett készüléket vagy az elektromos autóját, vagy állítson be egyéni időtartamot — és opcionálisan egy „készen ekkorra“ határidőt."
 
 [step2_title]
 other = "Árak lekérdezése"
@@ -116,10 +128,10 @@ other = "Lássa pontosan, mikor érdemes indítani, részletes költségbontáss
 other = "Kezdjen el spórolni az áramon"
 
 [cta_desc]
-other = "Töltse le a SweetSpotot a Google Playről, és találja meg a legolcsóbb időpontot készülékei használatához."
+other = "Töltse le a SweetSpotot a Google Playről, és találja meg a legolcsóbb időpontot készülékei használatához és elektromos autója töltéséhez."
 
 [footer_tagline]
-other = "Találja meg a legolcsóbb időpontot készülékei használatához."
+other = "Találja meg a legolcsóbb időpontot készülékei használatához és elektromos autója töltéséhez."
 
 [footer_app]
 other = "Alkalmazás"
@@ -146,7 +158,7 @@ other = "Kezdőképernyő készülékekkel, időtartam-választóval és Keresé
 other = "Közelgő villamosenergia-árak vízszintes oszlopdiagramon"
 
 [screenshot_4_alt]
-other = "Beállítások mentett készülékekkel, nyelvvel, országgal és időzónával"
+other = "Beállítások mentett készülékekkel, elektromos autó töltésével, nyelvvel, országgal és időzónával"
 
 [screenshot_5_alt]
 other = "Elektromos autó töltése: aktuális és cél töltöttség a kiszámított töltési idővel"

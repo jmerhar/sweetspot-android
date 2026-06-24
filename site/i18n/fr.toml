@@ -23,10 +23,10 @@ other = "Confidentialité"
 other = "Changer de langue"
 
 [hero_title]
-other = "Trouvez le meilleur moment pour faire fonctionner vos appareils"
+other = "Trouvez le moment le moins cher pour faire fonctionner vos appareils et recharger votre VE"
 
 [hero_subtitle]
-other = "SweetSpot analyse les prix dynamiques de l'électricité dans 30 pays européens et trouve le créneau optimal pour économiser. Open source et respectueux de la vie privée."
+other = "SweetSpot analyse les prix dynamiques de l'électricité dans 30 pays européens pour trouver le créneau le moins cher où faire fonctionner vos appareils ou recharger votre VE — terminé avant une échéance si vous en définissez une. Open source et respectueux de la vie privée."
 
 [download]
 other = "Disponible sur Google Play"
@@ -71,7 +71,19 @@ other = "Application compagnon pour Pixel Watch et autres appareils Wear OS 3+. 
 other = "Appareils personnalisés"
 
 [feature_appliances_desc]
-other = "Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide."
+other = "Enregistrez vos appareils avec des noms, icônes et durées personnalisés, ainsi qu'une puissance optionnelle, pour que l'estimation du coût reflète leur consommation réelle."
+
+[feature_ev_title]
+other = "Recharge de VE"
+
+[feature_ev_desc]
+other = "Ajoutez votre voiture, puis indiquez sa charge actuelle et cible. SweetSpot calcule la durée de recharge et le moment le moins cher pour la brancher."
+
+[feature_deadline_title]
+other = "Heure « Prêt à »"
+
+[feature_deadline_desc]
+other = "Vous en avez besoin avant une heure précise ? Ajoutez une échéance « Prêt à » et SweetSpot ne retient que les créneaux qui se terminent à temps."
 
 [feature_languages_title]
 other = "25 langues"
@@ -95,10 +107,10 @@ other = "Le code source complet est disponible sur GitHub sous licence GPL v3."
 other = "Comment ça marche"
 
 [step1_title]
-other = "Choisissez votre appareil"
+other = "Choisissez un appareil ou votre VE"
 
 [step1_desc]
-other = "Sélectionnez un appareil enregistré ou définissez une durée personnalisée."
+other = "Sélectionnez un appareil enregistré ou votre VE, ou définissez une durée personnalisée — et éventuellement une échéance « Prêt à »."
 
 [step2_title]
 other = "Analysez les prix"
@@ -116,10 +128,10 @@ other = "Voyez exactement quand démarrer, avec un détail complet des coûts pa
 other = "Commencez à économiser sur l'électricité"
 
 [cta_desc]
-other = "Téléchargez SweetSpot sur Google Play et trouvez le meilleur moment pour faire fonctionner vos appareils."
+other = "Téléchargez SweetSpot sur Google Play et trouvez le moment le moins cher pour faire fonctionner vos appareils et recharger votre VE."
 
 [footer_tagline]
-other = "Trouvez le meilleur moment pour faire fonctionner vos appareils."
+other = "Trouvez le moment le moins cher pour faire fonctionner vos appareils et recharger votre VE."
 
 [footer_app]
 other = "Application"
@@ -146,7 +158,7 @@ other = "Écran d'accueil avec appareils, sélecteur de durée et bouton Recherc
 other = "Prochains prix de l'électricité sous forme de graphique à barres horizontal"
 
 [screenshot_4_alt]
-other = "Écran des paramètres avec appareils enregistrés, langue, pays et fuseau horaire"
+other = "Écran des paramètres avec appareils enregistrés, recharge de VE, langue, pays et fuseau horaire"
 
 [screenshot_5_alt]
 other = "Recharge de VE : charge actuelle et cible avec le temps de recharge calculé"

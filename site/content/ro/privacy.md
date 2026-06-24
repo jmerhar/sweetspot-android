@@ -21,7 +21,7 @@ Aceste cereri API conțin doar identificatorul zonei de licitație și intervalu
 
 ## Stocare locală
 
-Datele privind prețurile sunt stocate local pe dispozitivul tău pentru a reduce cererile API și a oferi rezultate mai rapide. Configurația electrocasnicelor (nume, durate, pictograme) și setările (țară, zonă, limbă) sunt, de asemenea, stocate local pe dispozitivul tău.
+Datele privind prețurile sunt stocate local pe dispozitivul tău pentru a reduce cererile API și a oferi rezultate mai rapide. Configurația electrocasnicelor (nume, durate, pictograme și puteri opționale), mașinile salvate (capacitatea bateriei și puterea de încărcare) și setările (țară, zonă, limbă) sunt, de asemenea, stocate local pe dispozitivul tău.
 
 Pe Wear OS, datele despre electrocasnice și setările sunt sincronizate între telefon și ceas prin Wearable Data Layer API. Această comunicare rămâne pe dispozitivele tale locale și nu trece prin niciun server extern.
 
@@ -56,4 +56,4 @@ SweetSpot este cu cod deschis și licențiat sub GPL v3. Poți consulta codul su
 
 Dacă ai întrebări despre această politică de confidențialitate, poți deschide o problemă pe [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Ultima actualizare: aprilie 2026*
+*Ultima actualizare: iunie 2026*

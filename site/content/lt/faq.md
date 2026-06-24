@@ -23,7 +23,19 @@ Duomenų šaltinių prioritetų tvarką galite konfigūruoti nustatymuose.
 {{< faq question="Ar kainos tikslios?" >}}
 SweetSpot rodo **kitos dienos spot kainas** — didmenines elektros kainas, kurias nustato rinka dieną prieš pristatymą. Šios kainos **neapima** PVM, energijos mokesčių, tinklo mokesčių ar tiekėjo maržos, kurie skiriasi priklausomai nuo šalies ir tiekėjo.
 
-Kainos naudingos norint palyginti laiko intervalus tarpusavyje (rasti, kada elektra pigiausia) — tai yra pagrindinis programėlės tikslas. Rytojaus kainos paprastai paskelbiamos po 13:00 CET.
+Kainos naudingos norint palyginti laiko intervalus tarpusavyje (rasti, kada elektra pigiausia) — tai yra pagrindinis programėlės tikslas. Pagal numatytuosius nustatymus išlaidos rodomos 1 kW apkrovai; nurodykite prietaiso galingumą arba įkraukite elektromobilį, ir įvertinimas atitiks realią apkrovą. Rytojaus kainos paprastai paskelbiamos po 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Ar SweetSpot gali padėti įkrauti elektromobilį?" >}}
+Taip. Pridėkite savo automobilį — pasirinkite jį iš integruotos maždaug 1 600 elektromobilių ir įkraunamų hibridų duomenų bazės arba rankiniu būdu įveskite baterijos talpą ir įkrovimo galią. Tada įveskite dabartinį ir norimą įkrovos lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas (pagal baterijos talpą ir mažesniąją iš dviejų galių — automobilio AC ribos arba jūsų namų įkroviklio) ir suras pigiausią langą prijungti.
+{{< /faq >}}
+
+{{< faq question="Ar galiu užtikrinti, kad bus paruošta iki tam tikro laiko?" >}}
+Taip. Įjunkite neprivalomą terminą **„baigti iki“** ir pasirinkite laiką. Tada SweetSpot atsižvelgs tik į tuos langus, kurie suspės baigtis iki nurodyto laiko — bet kuriam prietaisui ar elektromobilio įkrovimui (pavyzdžiui, visiškai įkrauta iki 7:00 ryto).
+{{< /faq >}}
+
+{{< faq question="Ar išlaidos atspindi, kiek galios suvartoja mano prietaisas?" >}}
+Pagal numatytuosius nustatymus išlaidos rodomos 1 kW apkrovai. Jei prietaisui nurodysite **galingumą** kW arba įkrausite elektromobilį, kuris naudoja realią įkrovimo galią, įvertinta kaina bus perskaičiuota pagal tą apkrovą, todėl ji atspindės tai, ką prietaisas iš tiesų suvartoja.
 {{< /faq >}}
 
 {{< faq question="Ar veikia be interneto?" >}}

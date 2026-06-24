@@ -21,7 +21,7 @@ Ti API zahtjevi sadrže samo oznaku ponudbene zone i vremenski raspon. Osobni po
 
 ## Lokalna pohrana
 
-Podaci o cijenama pohranjuju se lokalno na vašem uređaju radi smanjenja API poziva i bržih rezultata. Postavke vaših uređaja (imena, trajanja, ikone) i ostale postavke (zemlja, zona, jezik) također se pohranjuju lokalno na vašem uređaju.
+Podaci o cijenama pohranjuju se lokalno na vašem uređaju radi smanjenja API poziva i bržih rezultata. Postavke vaših uređaja (imena, trajanja, ikone i neobvezne snage), spremljena vozila (kapacitet baterije i snaga punjenja) i ostale postavke (zemlja, zona, jezik) također se pohranjuju lokalno na vašem uređaju.
 
 Na Wear OS-u podaci o uređajima i postavke sinkroniziraju se između telefona i sata putem Wearable Data Layer API-ja. Ova komunikacija ostaje na vašim lokalnim uređajima i ne prolazi kroz vanjski poslužitelj.
 
@@ -56,4 +56,4 @@ SweetSpot je otvorenog koda i licenciran pod GPL v3. Cjelokupni izvorni kod mož
 
 Ako imate pitanja o ovim pravilima privatnosti, možete otvoriti upit na [GitHubu](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Zadnje ažuriranje: travanj 2026.*
+*Zadnje ažuriranje: lipanj 2026.*

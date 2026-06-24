@@ -23,10 +23,10 @@ other = "Personvern"
 other = "Bytt språk"
 
 [hero_title]
-other = "Finn det billigste tidspunktet for å kjøre apparatene dine"
+other = "Finn det billigste tidspunktet for å kjøre apparatene dine og lade elbilen"
 
 [hero_subtitle]
-other = "SweetSpot skanner dynamiske strømpriser i 30 europeiske land og finner det optimale tidsvinduet for å spare penger. Åpen kildekode og personvernvennlig."
+other = "SweetSpot skanner dynamiske strømpriser i 30 europeiske land og finner det billigste tidsvinduet for å kjøre apparatene dine eller lade elbilen — ferdig innen en frist hvis du setter en. Åpen kildekode og personvernvennlig."
 
 [download]
 other = "Tilgjengelig på Google Play"
@@ -71,7 +71,19 @@ other = "Følgeapp for Pixel Watch og andre Wear OS 3+-enheter. Sjekk prisene re
 other = "Egendefinerte apparater"
 
 [feature_appliances_desc]
-other = "Lagre apparatene dine med egne navn, ikoner og varigheter for rask tilgang med ett trykk."
+other = "Lagre apparatene dine med egne navn, ikoner, varigheter og en valgfri effekt, slik at kostnadsestimatet gjenspeiler det de faktisk bruker."
+
+[feature_ev_title]
+other = "Elbillading"
+
+[feature_ev_desc]
+other = "Legg til bilen din, og oppgi deretter nåværende og ønsket ladenivå. SweetSpot regner ut ladetiden og det billigste tidspunktet å koble til."
+
+[feature_deadline_title]
+other = "«Ferdig innen»-frist"
+
+[feature_deadline_desc]
+other = "Trenger du det ferdig innen et bestemt tidspunkt? Legg til en «ferdig innen»-frist, så velger SweetSpot bare vinduer som blir ferdige i tide."
 
 [feature_languages_title]
 other = "25 språk"
@@ -95,10 +107,10 @@ other = "Den fullstendige kildekoden er tilgjengelig på GitHub under GPL v3-lis
 other = "Slik fungerer det"
 
 [step1_title]
-other = "Velg apparatet ditt"
+other = "Velg apparat eller elbil"
 
 [step1_desc]
-other = "Velg et lagret apparat, eller angi en egendefinert varighet."
+other = "Velg et lagret apparat eller elbilen din, eller angi en egendefinert varighet — og eventuelt en «ferdig innen»-frist."
 
 [step2_title]
 other = "Skann priser"
@@ -116,10 +128,10 @@ other = "Se nøyaktig når du bør starte, med en fullstendig kostnadsoversikt p
 other = "Begynn å spare på strøm"
 
 [cta_desc]
-other = "Last ned SweetSpot fra Google Play og finn det billigste tidspunktet for å kjøre apparatene dine."
+other = "Last ned SweetSpot fra Google Play og finn det billigste tidspunktet for å kjøre apparatene dine og lade elbilen."
 
 [footer_tagline]
-other = "Finn det billigste tidspunktet for å kjøre apparatene dine."
+other = "Finn det billigste tidspunktet for å kjøre apparatene dine og lade elbilen."
 
 [footer_app]
 other = "App"
@@ -146,7 +158,7 @@ other = "Startskjerm med apparater, varighetsvelger og Finn-knapp"
 other = "Kommende strømpriser som horisontalt søylediagram"
 
 [screenshot_4_alt]
-other = "Innstillinger med lagrede apparater, språk, land og tidssone"
+other = "Innstillinger med lagrede apparater, elbillading, språk, land og tidssone"
 
 [screenshot_5_alt]
 other = "Elbillading: nåværende og ønsket ladenivå med beregnet ladetid"

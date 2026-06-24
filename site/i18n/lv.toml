@@ -23,10 +23,10 @@ other = "Privātums"
 other = "Mainīt valodu"
 
 [hero_title]
-other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai"
+other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei"
 
 [hero_subtitle]
-other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod optimālo laika logu, lai ietaupītu naudu. Atvērtā koda un privātumu respektējoša lietotne."
+other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod izdevīgāko laika logu tavu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestati. Atvērtā koda un privātumu respektējoša lietotne."
 
 [download]
 other = "Iegūt pakalpojumā Google Play"
@@ -71,7 +71,19 @@ other = "Pavadošā lietotne Pixel Watch un citām Wear OS 3+ ierīcēm. Pārbau
 other = "Pielāgotas ierīces"
 
 [feature_appliances_desc]
-other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei ar vienu pieskārienu."
+other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām, ilgumiem un neobligātu jaudu, lai izmaksu aprēķins atbilstu to reālajam patēriņam."
+
+[feature_ev_title]
+other = "Elektromobiļa uzlāde"
+
+[feature_ev_desc]
+other = "Pievieno savu automašīnu un ievadi tās pašreizējo un vēlamo uzlādes līmeni. SweetSpot aprēķinās uzlādes laiku un lētāko brīdi, kad to pieslēgt."
+
+[feature_deadline_title]
+other = "Termiņš „Gatavs līdz“"
+
+[feature_deadline_desc]
+other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot izvēlēsies tikai logus, kas paspēj pabeigt laikā."
 
 [feature_languages_title]
 other = "25 valodas"
@@ -95,10 +107,10 @@ other = "Pilns pirmkods ir pieejams GitHub ar GPL v3 licenci."
 other = "Kā tas darbojas"
 
 [step1_title]
-other = "Izvēlies savu ierīci"
+other = "Izvēlies ierīci vai elektromobili"
 
 [step1_desc]
-other = "Izvēlies saglabātu ierīci vai iestati pielāgotu darbības ilgumu."
+other = "Izvēlies saglabātu ierīci vai savu elektromobili, vai iestati pielāgotu ilgumu — un pēc izvēles arī termiņu „Gatavs līdz“."
 
 [step2_title]
 other = "Analizē cenas"
@@ -116,10 +128,10 @@ other = "Redzi precīzi, kad sākt, ar pilnu izmaksu sadalījumu pa laika interv
 other = "Sāc taupīt elektrību"
 
 [cta_desc]
-other = "Iegūsti SweetSpot no Google Play un atrodi izdevīgāko laiku savu ierīču darbināšanai."
+other = "Iegūsti SweetSpot no Google Play un atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
 
 [footer_tagline]
-other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai."
+other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
 
 [footer_app]
 other = "Lietotne"
@@ -146,7 +158,7 @@ other = "Sākuma ekrāns ar ierīcēm, ilguma izvēli un pogu Meklēt"
 other = "Tuvošās elektrības cenas horizontālā joslu diagrammā"
 
 [screenshot_4_alt]
-other = "Iestatījumu ekrāns ar saglabātām ierīcēm, valodu, valsti un laika joslu"
+other = "Iestatījumu ekrāns ar saglabātām ierīcēm, elektromobiļa uzlādi, valodu, valsti un laika joslu"
 
 [screenshot_5_alt]
 other = "Elektromobiļa uzlāde: pašreizējais un mērķa uzlādes līmenis ar aprēķināto uzlādes laiku"

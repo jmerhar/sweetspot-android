@@ -23,10 +23,10 @@ other = "Privacidade"
 other = "Mudar idioma"
 
 [hero_title]
-other = "Encontre a hora mais barata para ligar os seus eletrodomésticos"
+other = "Encontre a hora mais barata para ligar os seus eletrodomésticos e carregar o seu VE"
 
 [hero_subtitle]
-other = "O SweetSpot analisa os preços dinâmicos da eletricidade em 30 países europeus e encontra o período ideal para poupar dinheiro. Código aberto e privado."
+other = "O SweetSpot analisa os preços dinâmicos da eletricidade em 30 países europeus para encontrar o período mais barato para ligar os seus eletrodomésticos ou carregar o seu VE — concluído antes de um prazo, se definir um. Código aberto e privado."
 
 [download]
 other = "Obter no Google Play"
@@ -71,7 +71,19 @@ other = "Aplicação complementar para Pixel Watch e outros dispositivos Wear OS
 other = "Eletrodomésticos personalizados"
 
 [feature_appliances_desc]
-other = "Guarde os seus eletrodomésticos com nomes, ícones e durações personalizados para acesso rápido com um toque."
+other = "Guarde os seus eletrodomésticos com nomes, ícones e durações personalizados, além de uma potência opcional, para que a estimativa de custo reflita aquilo que realmente consomem."
+
+[feature_ev_title]
+other = "Carregamento de VE"
+
+[feature_ev_desc]
+other = "Adicione o seu carro e indique a carga atual e a pretendida. O SweetSpot calcula o tempo de carregamento e a hora mais barata para ligar."
+
+[feature_deadline_title]
+other = "Hora «Pronto até»"
+
+[feature_deadline_desc]
+other = "Precisa de ter concluído a uma determinada hora? Adicione um prazo 'pronto até' e o SweetSpot escolhe apenas períodos que terminam a tempo."
 
 [feature_languages_title]
 other = "25 idiomas"
@@ -95,10 +107,10 @@ other = "O código-fonte completo está disponível no GitHub sob a licença GPL
 other = "Como funciona"
 
 [step1_title]
-other = "Escolha o seu eletrodoméstico"
+other = "Escolha o eletrodoméstico ou o VE"
 
 [step1_desc]
-other = "Escolha um eletrodoméstico guardado ou defina uma duração personalizada."
+other = "Escolha um eletrodoméstico guardado ou o seu VE, ou defina uma duração personalizada — e, opcionalmente, um prazo 'pronto até'."
 
 [step2_title]
 other = "Analisar preços"
@@ -116,10 +128,10 @@ other = "Veja exatamente quando começar, com uma discriminação completa dos c
 other = "Comece a poupar na eletricidade"
 
 [cta_desc]
-other = "Obtenha o SweetSpot no Google Play e encontre a hora mais barata para ligar os seus eletrodomésticos."
+other = "Obtenha o SweetSpot no Google Play e encontre a hora mais barata para ligar os seus eletrodomésticos e carregar o seu VE."
 
 [footer_tagline]
-other = "Encontre a hora mais barata para ligar os seus eletrodomésticos."
+other = "Encontre a hora mais barata para ligar os seus eletrodomésticos e carregar o seu VE."
 
 [footer_app]
 other = "Aplicação"
@@ -146,7 +158,7 @@ other = "Ecrã inicial com eletrodomésticos, seletor de duração e botão Proc
 other = "Próximos preços de eletricidade como gráfico de barras horizontal"
 
 [screenshot_4_alt]
-other = "Ecrã de definições com eletrodomésticos guardados, idioma, país e fuso horário"
+other = "Ecrã de definições com eletrodomésticos guardados, carregamento de VE, idioma, país e fuso horário"
 
 [screenshot_5_alt]
 other = "Carregamento de VE: carga atual e pretendida com o tempo de carregamento calculado"

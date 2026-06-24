@@ -21,7 +21,7 @@ Ezek az API-kérések kizárólag az ajánlattételi zóna azonosítóját és a
 
 ## Helyi tárolás
 
-Az áradatok helyben, az Ön készülékén kerülnek tárolásra az API-hívások csökkentése és a gyorsabb eredmények érdekében. A készülékbeállítások (nevek, időtartamok, ikonok) és az alkalmazás beállításai (ország, zóna, nyelv) szintén helyben, az Ön készülékén tárolódnak.
+Az áradatok helyben, az Ön készülékén kerülnek tárolásra az API-hívások csökkentése és a gyorsabb eredmények érdekében. A készülékbeállítások (nevek, időtartamok, ikonok és opcionális teljesítményértékek), a mentett járművek (akkumulátorméret és töltési teljesítmény) és az alkalmazás beállításai (ország, zóna, nyelv) szintén helyben, az Ön készülékén tárolódnak.
 
 Wear OS esetén a készülékadatok és beállítások a telefon és az óra között a Wearable Data Layer API segítségével szinkronizálódnak. Ez a kommunikáció a helyi eszközein marad, és nem halad át külső szerveren.
 
@@ -56,4 +56,4 @@ A SweetSpot nyílt forráskódú, és GPL v3 licenc alatt érhető el. A teljes 
 
 Ha kérdése van ezzel az adatvédelmi irányelvvel kapcsolatban, nyithat egy témát a [GitHubon](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Utoljára frissítve: 2026. április*
+*Utoljára frissítve: 2026. június*

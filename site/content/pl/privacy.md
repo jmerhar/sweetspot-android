@@ -21,7 +21,7 @@ Te zapytania API zawierają wyłącznie identyfikator obszaru rynkowego i zakres
 
 ## Lokalne przechowywanie
 
-Dane cenowe są przechowywane lokalnie na Twoim urządzeniu, aby ograniczyć liczbę zapytań API i przyspieszyć działanie. Konfiguracja urządzeń (nazwy, czasy trwania, ikony) oraz ustawienia (kraj, strefa, język) są również przechowywane lokalnie na Twoim urządzeniu.
+Dane cenowe są przechowywane lokalnie na Twoim urządzeniu, aby ograniczyć liczbę zapytań API i przyspieszyć działanie. Konfiguracja urządzeń (nazwy, czasy trwania, ikony oraz opcjonalne moce znamionowe), zapisane pojazdy (pojemność akumulatora i moc ładowania) oraz ustawienia (kraj, strefa, język) są również przechowywane lokalnie na Twoim urządzeniu.
 
 Na Wear OS dane urządzeń i ustawienia są synchronizowane między telefonem a zegarkiem za pomocą Wearable Data Layer API. Komunikacja ta odbywa się wyłącznie między Twoimi urządzeniami lokalnymi i nie przechodzi przez żaden zewnętrzny serwer.
 
@@ -56,4 +56,4 @@ SweetSpot jest oprogramowaniem o otwartym kodzie źródłowym, licencjonowanym n
 
 Jeśli masz pytania dotyczące tej polityki prywatności, możesz zgłosić je na [GitHubie](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Ostatnia aktualizacja: kwiecień 2026*
+*Ostatnia aktualizacja: czerwiec 2026*

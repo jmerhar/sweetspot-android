@@ -23,7 +23,19 @@ Voit määrittää tietolähteiden prioriteettijärjestyksen asetuksissa.
 {{< faq question="Ovatko hinnat tarkkoja?" >}}
 SweetSpot näyttää **seuraavan päivän spot-hintoja** — tukkusähkön hintoja, jotka markkinat määrittävät toimitusta edeltävänä päivänä. Nämä hinnat **eivät sisällä** arvonlisäveroa, energiaveroja, siirtomaksuja tai myyjän marginaaleja, jotka vaihtelevat maittain ja palveluntarjoajan mukaan.
 
-Hinnat ovat hyödyllisiä aikajaksojen vertailuun keskenään (edullisimman ajankohdan löytämiseen), mikä on sovelluksen ensisijainen tarkoitus. Huomisen hinnat ovat yleensä saatavilla kello 13:00 CET jälkeen.
+Hinnat ovat hyödyllisiä aikajaksojen vertailuun keskenään (edullisimman ajankohdan löytämiseen), mikä on sovelluksen ensisijainen tarkoitus. Kustannukset näytetään oletuksena 1 kW:n kuormaa kohden; aseta laitteelle teho tai lataa sähköautoa, niin arvio vastaa todellista kuormaa. Huomisen hinnat ovat yleensä saatavilla kello 13:00 CET jälkeen.
+{{< /faq >}}
+
+{{< faq question="Voiko SweetSpot auttaa sähköautoni lataamisessa?" >}}
+Kyllä. Lisää autosi — valitse se sisäänrakennetusta tietokannasta, jossa on noin 1 600 sähköautoa ja ladattavaa hybridiä, tai syötä akun koko ja latausteho manuaalisesti. Syötä sitten nykyinen ja tavoitevaraus, niin SweetSpot laskee, kuinka kauan lataus kestää (akun koon sekä auton AC-rajan ja kotilaturisi pienemmän arvon perusteella) ja löytää edullisimman hetken kytkeä lataus.
+{{< /faq >}}
+
+{{< faq question="Voinko varmistaa, että se on valmis tiettyyn aikaan mennessä?" >}}
+Kyllä. Ota käyttöön valinnainen **”valmis viimeistään”** -takaraja ja valitse aika. SweetSpot huomioi tällöin vain ajanjaksot, jotka valmistuvat siihen mennessä — mille tahansa laitteelle tai sähköauton lataukselle (esimerkiksi täyteen ladattuna kello 7:00 aamulla).
+{{< /faq >}}
+
+{{< faq question="Vastaavatko kustannukset sitä, kuinka paljon laitteeni kuluttaa tehoa?" >}}
+Oletuksena kustannukset näytetään 1 kW:n kuormaa kohden. Jos annat laitteelle **tehon** kilowatteina (kW) — tai lataat sähköautoa, joka käyttää todellista lataustehoaan — arvioidut kustannukset skaalataan kyseiseen kuormaan, jolloin ne vastaavat laitteen todellista kulutusta.
 {{< /faq >}}
 
 {{< faq question="Toimiiko se ilman verkkoyhteyttä?" >}}

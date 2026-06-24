@@ -21,7 +21,7 @@ Ces requêtes API contiennent uniquement l'identifiant de la zone de prix et la 
 
 ## Stockage local
 
-Les données de prix sont mises en cache localement sur votre appareil pour réduire les appels API et accélérer les résultats. La configuration de vos appareils (noms, durées, icônes) et les paramètres (pays, zone, langue) sont également stockés localement sur votre appareil.
+Les données de prix sont mises en cache localement sur votre appareil pour réduire les appels API et accélérer les résultats. La configuration de vos appareils (noms, durées, icônes et puissances optionnelles), vos véhicules enregistrés (capacité de la batterie et puissance de recharge) et les paramètres (pays, zone, langue) sont également stockés localement sur votre appareil.
 
 Sur Wear OS, les données des appareils et les paramètres sont synchronisés entre le téléphone et la montre via l'API Wearable Data Layer. Cette communication reste sur vos appareils locaux et ne passe par aucun serveur externe.
 
@@ -56,4 +56,4 @@ SweetSpot est open source et sous licence GPL v3. Vous pouvez consulter le code 
 
 Si vous avez des questions concernant cette politique de confidentialité, vous pouvez ouvrir une issue sur [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Dernière mise à jour : avril 2026*
+*Dernière mise à jour : juin 2026*

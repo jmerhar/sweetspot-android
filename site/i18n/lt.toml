@@ -23,10 +23,10 @@ other = "Privatumas"
 other = "Pakeisti kalbą"
 
 [hero_title]
-other = "Raskite pigiausią laiką savo prietaisams paleisti"
+other = "Raskite pigiausią laiką paleisti prietaisus ir įkrauti elektromobilį"
 
 [hero_subtitle]
-other = "SweetSpot analizuoja dinamines elektros kainas 30 Europos šalių ir suranda optimaliausią laiką, kad sutaupytumėte. Atviro kodo ir privatumą gerbianti programėlė."
+other = "SweetSpot analizuoja dinamines elektros kainas 30 Europos šalių ir suranda pigiausią laiką paleisti prietaisus ar įkrauti elektromobilį — baigiant iki termino, jei jį nustatote. Atviro kodo ir privatumą gerbianti programėlė."
 
 [download]
 other = "Gauti iš Google Play"
@@ -71,7 +71,19 @@ other = "Papildoma programėlė Pixel Watch ir kitiems Wear OS 3+ įrenginiams. 
 other = "Tinkinami prietaisai"
 
 [feature_appliances_desc]
-other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai vienu palietimu."
+other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis, trukmėmis ir neprivalomu galingumu, kad išlaidų įvertinimas atitiktų tai, ką jie iš tiesų suvartoja."
+
+[feature_ev_title]
+other = "Elektromobilio įkrovimas"
+
+[feature_ev_desc]
+other = "Pridėkite automobilį, tada įveskite dabartinį ir norimą įkrovos lygį. SweetSpot apskaičiuoja įkrovimo laiką ir suranda pigiausią laiką prijungti."
+
+[feature_deadline_title]
+other = "Terminas „Baigti iki“"
+
+[feature_deadline_desc]
+other = "Reikia, kad būtų baigta iki tam tikro laiko? Nustatykite terminą „baigti iki“, ir SweetSpot parinks tik tuos langus, kurie suspės laiku."
 
 [feature_languages_title]
 other = "25 kalbos"
@@ -95,10 +107,10 @@ other = "Visas šaltinio kodas prieinamas GitHub pagal GPL v3 licenciją."
 other = "Kaip tai veikia"
 
 [step1_title]
-other = "Pasirinkite savo prietaisą"
+other = "Pasirinkite prietaisą arba elektromobilį"
 
 [step1_desc]
-other = "Pasirinkite išsaugotą prietaisą arba nustatykite norimą veikimo trukmę."
+other = "Pasirinkite išsaugotą prietaisą ar savo elektromobilį arba nustatykite norimą trukmę — ir, jei reikia, terminą „baigti iki“."
 
 [step2_title]
 other = "Nuskaitykite kainas"
@@ -116,10 +128,10 @@ other = "Sužinokite tiksliai, kada pradėti, su pilnu išlaidų pasiskirstymu p
 other = "Pradėkite taupyti elektrą"
 
 [cta_desc]
-other = "Atsisiųskite SweetSpot iš Google Play ir raskite pigiausią laiką savo prietaisams paleisti."
+other = "Atsisiųskite SweetSpot iš Google Play ir raskite pigiausią laiką paleisti prietaisus ir įkrauti elektromobilį."
 
 [footer_tagline]
-other = "Raskite pigiausią laiką savo prietaisams paleisti."
+other = "Raskite pigiausią laiką paleisti prietaisus ir įkrauti elektromobilį."
 
 [footer_app]
 other = "Programėlė"
@@ -146,7 +158,7 @@ other = "Pradinis ekranas su prietaisais, trukmės pasirinkimu ir paieškos mygt
 other = "Artėjančios elektros kainos horizontalioje juostinėje diagramoje"
 
 [screenshot_4_alt]
-other = "Nustatymų ekranas su išsaugotais prietaisais, kalba, šalimi ir laiko juosta"
+other = "Nustatymų ekranas su išsaugotais prietaisais, elektromobilio įkrovimu, kalba, šalimi ir laiko juosta"
 
 [screenshot_5_alt]
 other = "Elektromobilio įkrovimas: dabartinis ir norimas įkrovos lygis su apskaičiuotu įkrovimo laiku"

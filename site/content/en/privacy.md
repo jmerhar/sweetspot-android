@@ -21,7 +21,7 @@ These API requests contain only the bidding zone identifier and date range. No p
 
 ## Local Storage
 
-Price data is cached locally on your device to reduce API calls and enable faster results. Your appliance configuration (names, durations, icons) and settings (country, zone, language) are also stored locally on your device.
+Price data is cached locally on your device to reduce API calls and enable faster results. Your appliance configuration (names, durations, icons, and optional power ratings), saved vehicles (battery size and charging power), and settings (country, zone, language) are also stored locally on your device.
 
 On Wear OS, appliance data and settings are synced between phone and watch using the Wearable Data Layer API. This communication stays on your local devices and does not pass through any external server.
 
@@ -56,4 +56,4 @@ SweetSpot is open source and licensed under GPL v3. You can review the complete 
 
 If you have questions about this privacy policy, you can open an issue on [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Last updated: April 2026*
+*Last updated: June 2026*

@@ -23,10 +23,10 @@ other = "Tietosuoja"
 other = "Vaihda kieltä"
 
 [hero_title]
-other = "Löydä edullisin aika laitteidesi käyttöön"
+other = "Löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen"
 
 [hero_subtitle]
-other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajanjakson. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
+other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajanjakson laitteidesi käyttöön tai sähköauton lataukseen — valmiina takarajaan mennessä, jos sellaisen asetat. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
 
 [download]
 other = "Lataa Google Playsta"
@@ -71,7 +71,19 @@ other = "Kumppanisovellus Pixel Watchille ja muille Wear OS 3+ -laitteille. Tark
 other = "Omat laitteet"
 
 [feature_appliances_desc]
-other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten."
+other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla sekä valinnaisella teholla, jotta kustannusarvio vastaa niiden todellista kulutusta."
+
+[feature_ev_title]
+other = "Sähköauton lataus"
+
+[feature_ev_desc]
+other = "Lisää autosi ja syötä sitten sen nykyinen ja tavoitevaraus. SweetSpot laskee latausajan ja edullisimman hetken kytkeä lataus."
+
+[feature_deadline_title]
+other = "Valmis viimeistään -takaraja"
+
+[feature_deadline_desc]
+other = "Pitääkö sen olla valmis tiettyyn aikaan mennessä? Aseta ”valmis viimeistään” -takaraja, niin SweetSpot valitsee vain ajanjaksot, jotka valmistuvat ajoissa."
 
 [feature_languages_title]
 other = "25 kieltä"
@@ -95,10 +107,10 @@ other = "Koko lähdekoodi on saatavilla GitHubissa GPL v3 -lisenssillä."
 other = "Näin se toimii"
 
 [step1_title]
-other = "Valitse laite"
+other = "Valitse laite tai sähköauto"
 
 [step1_desc]
-other = "Valitse tallennettu laite tai aseta mukautettu kesto laitteen käytölle."
+other = "Valitse tallennettu laite tai sähköautosi, tai aseta mukautettu kesto — ja halutessasi ”valmis viimeistään” -takaraja."
 
 [step2_title]
 other = "Hae hinnat"
@@ -116,10 +128,10 @@ other = "Näe tarkalleen milloin aloittaa, yksityiskohtaisella kustannuserittely
 other = "Ala säästää sähkössä"
 
 [cta_desc]
-other = "Lataa SweetSpot Google Playsta ja löydä edullisin aika laitteidesi käyttöön."
+other = "Lataa SweetSpot Google Playsta ja löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen."
 
 [footer_tagline]
-other = "Löydä edullisin aika laitteidesi käyttöön."
+other = "Löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen."
 
 [footer_app]
 other = "Sovellus"
@@ -146,7 +158,7 @@ other = "Aloitusnäyttö laitteilla, keston valitsimella ja Etsi-painikkeella"
 other = "Tulevat sähkön hinnat vaakapalkkikaaviossa"
 
 [screenshot_4_alt]
-other = "Asetukset tallennetuilla laitteilla, kielellä, maalla ja aikavyöhykkeellä"
+other = "Asetukset tallennetuilla laitteilla, sähköauton latauksella, kielellä, maalla ja aikavyöhykkeellä"
 
 [screenshot_5_alt]
 other = "Sähköauton lataus: nykyinen ja tavoitevaraus sekä laskettu latausaika"

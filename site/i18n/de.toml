@@ -23,10 +23,10 @@ other = "Datenschutz"
 other = "Sprache wechseln"
 
 [hero_title]
-other = "Finde den günstigsten Zeitpunkt für deine Geräte"
+other = "Finde den günstigsten Zeitpunkt, um deine Geräte zu betreiben und dein E-Auto zu laden"
 
 [hero_subtitle]
-other = "SweetSpot scannt dynamische Strompreise in 30 europäischen Ländern und findet das optimale Zeitfenster, um Geld zu sparen. Open Source und datenschutzfreundlich."
+other = "SweetSpot scannt dynamische Strompreise in 30 europäischen Ländern und findet das günstigste Zeitfenster, um deine Geräte zu betreiben oder dein E-Auto zu laden — bei Bedarf bis zu einem von dir festgelegten Zeitpunkt fertig. Open Source und datenschutzfreundlich."
 
 [download]
 other = "Jetzt bei Google Play"
@@ -71,7 +71,19 @@ other = "Begleit-App für Pixel Watch und andere Wear OS 3+ Geräte. Preise dire
 other = "Eigene Geräte"
 
 [feature_appliances_desc]
-other = "Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff."
+other = "Speichere deine Geräte mit eigenen Namen, Symbolen, Laufzeiten und einer optionalen Leistungsangabe, damit die Kostenschätzung den tatsächlichen Verbrauch widerspiegelt."
+
+[feature_ev_title]
+other = "E-Auto-Ladung"
+
+[feature_ev_desc]
+other = "Füge dein Auto hinzu und gib den aktuellen und den gewünschten Ladestand ein. SweetSpot berechnet die Ladezeit und den günstigsten Zeitpunkt zum Anstecken."
+
+[feature_deadline_title]
+other = "„Fertig bis“-Zeit"
+
+[feature_deadline_desc]
+other = "Soll es bis zu einem bestimmten Zeitpunkt fertig sein? Lege eine „Fertig bis“-Zeit fest, und SweetSpot wählt nur Zeitfenster, die rechtzeitig abschließen."
 
 [feature_languages_title]
 other = "25 Sprachen"
@@ -95,10 +107,10 @@ other = "Der vollständige Quellcode ist auf GitHub unter der GPL v3-Lizenz verf
 other = "So funktioniert es"
 
 [step1_title]
-other = "Wähle dein Gerät"
+other = "Gerät oder E-Auto wählen"
 
 [step1_desc]
-other = "Wähle ein gespeichertes Gerät oder stelle eine individuelle Laufzeit ein."
+other = "Wähle ein gespeichertes Gerät oder dein E-Auto oder stelle eine individuelle Laufzeit ein — und optional eine „Fertig bis“-Zeit."
 
 [step2_title]
 other = "Preise scannen"
@@ -116,10 +128,10 @@ other = "Sieh genau, wann du starten solltest, mit einer vollständigen Kostenau
 other = "Jetzt Stromkosten sparen"
 
 [cta_desc]
-other = "Lade SweetSpot bei Google Play herunter und finde den günstigsten Zeitpunkt für deine Geräte."
+other = "Lade SweetSpot bei Google Play herunter und finde den günstigsten Zeitpunkt, um deine Geräte zu betreiben und dein E-Auto zu laden."
 
 [footer_tagline]
-other = "Finde den günstigsten Zeitpunkt für deine Geräte."
+other = "Finde den günstigsten Zeitpunkt, um deine Geräte zu betreiben und dein E-Auto zu laden."
 
 [footer_app]
 other = "App"
@@ -146,7 +158,7 @@ other = "Startbildschirm mit Geräten, Dauerauswahl und Suchen-Taste"
 other = "Kommende Strompreise als waagerechtes Balkendiagramm"
 
 [screenshot_4_alt]
-other = "Einstellungen mit gespeicherten Geräten, Sprache, Land und Zeitzone"
+other = "Einstellungen mit gespeicherten Geräten, E-Auto-Ladung, Sprache, Land und Zeitzone"
 
 [screenshot_5_alt]
 other = "E-Auto laden: aktueller und gewünschter Ladestand mit der berechneten Ladezeit"

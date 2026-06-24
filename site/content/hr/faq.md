@@ -23,7 +23,19 @@ Možete konfigurirati redoslijed prioriteta izvora podataka u postavkama.
 {{< faq question="Jesu li cijene točne?" >}}
 SweetSpot prikazuje **dnevne spot cijene** — veleprodajne cijene električne energije koje tržište određuje dan prije isporuke. Te cijene **ne uključuju** PDV, energetske poreze, mrežne naknade ni marže dobavljača, što se razlikuje po zemljama i pružateljima.
 
-Cijene su korisne za usporedbu vremenskih intervala međusobno (pronalaženje najjeftinijeg vremena za struju), što je primarna svrha aplikacije. Sutrašnje cijene su obično dostupne nakon 13:00 CET.
+Cijene su korisne za usporedbu vremenskih intervala međusobno (pronalaženje najjeftinijeg vremena za struju), što je primarna svrha aplikacije. Troškovi se prema zadanim postavkama prikazuju po 1 kW opterećenja; postavite snagu uređaja ili punite električni automobil i procjena će odražavati stvarno opterećenje. Sutrašnje cijene su obično dostupne nakon 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Može li mi SweetSpot pomoći pri punjenju električnog automobila?" >}}
+Da. Dodajte svoje vozilo — odaberite ga iz ugrađene baze od oko 1.600 električnih i priključno-hibridnih vozila ili ručno unesite kapacitet baterije i snagu punjenja. Zatim unesite trenutnu i željenu razinu napunjenosti, a SweetSpot izračunava koliko će punjenje trajati (iz kapaciteta baterije te niže od AC ograničenja vašeg automobila i vašeg kućnog punjača) i pronalazi najjeftinije vrijeme za priključivanje.
+{{< /faq >}}
+
+{{< faq question="Mogu li osigurati da bude gotovo do određenog vremena?" >}}
+Da. Uključite neobvezni rok **„gotovo do“** i odaberite vrijeme. SweetSpot tada uzima u obzir samo termine koji se dovrše do tada — za bilo koji uređaj ili za punjenje električnog automobila (primjerice, potpuno napunjen do 7:00 ujutro).
+{{< /faq >}}
+
+{{< faq question="Odražavaju li troškovi koliko struje moj uređaj troši?" >}}
+Prema zadanim postavkama troškovi se prikazuju po 1 kW opterećenja. Ako uređaju zadate **snagu** u kW — ili punite električni automobil, koji koristi svoju stvarnu snagu punjenja — procijenjeni trošak prilagođava se tom opterećenju, pa odražava ono što uređaj zaista troši.
 {{< /faq >}}
 
 {{< faq question="Radi li aplikacija bez interneta?" >}}

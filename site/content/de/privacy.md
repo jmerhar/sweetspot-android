@@ -21,7 +21,7 @@ Diese API-Anfragen enthalten nur die Gebotszonen-Kennung und den Datumsbereich. 
 
 ## Lokale Speicherung
 
-Preisdaten werden lokal auf dem Gerät zwischengespeichert, um API-Aufrufe zu reduzieren und schnellere Ergebnisse zu ermöglichen. Gerätekonfiguration (Namen, Laufzeiten, Symbole) und Einstellungen (Land, Zone, Sprache) werden ebenfalls lokal auf dem Gerät gespeichert.
+Preisdaten werden lokal auf dem Gerät zwischengespeichert, um API-Aufrufe zu reduzieren und schnellere Ergebnisse zu ermöglichen. Deine Gerätekonfiguration (Namen, Laufzeiten, Symbole und optionale Leistungsangaben), gespeicherte Fahrzeuge (Akkukapazität und Ladeleistung) und Einstellungen (Land, Zone, Sprache) werden ebenfalls lokal auf dem Gerät gespeichert.
 
 Auf Wear OS werden Gerätedaten und Einstellungen zwischen Telefon und Uhr über die Wearable Data Layer API synchronisiert. Diese Kommunikation bleibt auf den lokalen Geräten und wird über keinen externen Server geleitet.
 
@@ -56,4 +56,4 @@ SweetSpot ist Open Source und unter GPL v3 lizenziert. Du kannst den vollständi
 
 Wenn du Fragen zu dieser Datenschutzerklärung hast, kannst du ein Issue auf [GitHub](https://github.com/jmerhar/sweetspot-android/issues) erstellen.
 
-*Letzte Aktualisierung: April 2026*
+*Letzte Aktualisierung: Juni 2026*

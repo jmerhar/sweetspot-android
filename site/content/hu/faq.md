@@ -23,7 +23,19 @@ Az adatforrások prioritási sorrendjét a beállításokban konfigurálhatja.
 {{< faq question="Pontosak az árak?" >}}
 A SweetSpot **másnapi spot-árakat** mutat — azokat a nagykereskedelmi villamosenergia-árakat, amelyeket a piac a szállítás előtti napon határoz meg. Ezek az árak **nem tartalmazzák** az áfát, az energiaadókat, a hálózati díjakat vagy a beszállítói árréseket, amelyek országonként és szolgáltatónként eltérőek.
 
-Az árak az idősávok egymáshoz viszonyított összehasonlítására hasznosak (a legolcsóbb időpont megtalálásához), ami az alkalmazás elsődleges célja. A holnapi árak jellemzően 13:00 CET után válnak elérhetővé.
+Az árak az idősávok egymáshoz viszonyított összehasonlítására hasznosak (a legolcsóbb időpont megtalálásához), ami az alkalmazás elsődleges célja. A költségek alapértelmezetten 1 kW terhelésre vetítve jelennek meg; ha beállítja egy készülék teljesítményét, vagy elektromos autót tölt, a becslés a valós terhelést tükrözi. A holnapi árak jellemzően 13:00 CET után válnak elérhetővé.
+{{< /faq >}}
+
+{{< faq question="Segít a SweetSpot az elektromos autóm töltésében?" >}}
+Igen. Adja hozzá a járművét — válassza ki egy beépített, körülbelül 1600 elektromos és tölthető hibrid autót tartalmazó adatbázisból, vagy adja meg manuálisan az akkumulátor méretét és a töltési teljesítményt. Ezután adja meg az aktuális és a kívánt töltöttséget, a SweetSpot pedig kiszámítja, mennyi ideig tart a töltés (az akkumulátor méretéből, valamint az autó AC-korlátja és az otthoni töltője közül az alacsonyabból), és megkeresi a legolcsóbb időpontot a csatlakoztatásra.
+{{< /faq >}}
+
+{{< faq question="Biztosíthatom, hogy egy adott időpontra elkészüljön?" >}}
+Igen. Kapcsolja be az opcionális **„készen ekkorra“** határidőt, és válasszon egy időpontot. A SweetSpot ezután csak olyan időszakokat vesz figyelembe, amelyek addigra befejeződnek — bármely készülék vagy az elektromos autó töltése esetén (például reggel 7:00-ra teljesen feltöltve).
+{{< /faq >}}
+
+{{< faq question="A költségek tükrözik, mennyi energiát fogyaszt a készülékem?" >}}
+Alapértelmezetten a költségek 1 kW terhelésre vetítve jelennek meg. Ha megad egy készüléknek **teljesítményértéket** kW-ban — vagy elektromos autót tölt, amely a valós töltési teljesítményét használja —, a becsült költség ehhez a terheléshez igazodik, így azt tükrözi, amennyit a készülék valójában fogyaszt.
 {{< /faq >}}
 
 {{< faq question="Működik internetkapcsolat nélkül?" >}}

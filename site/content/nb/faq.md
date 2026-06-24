@@ -23,7 +23,19 @@ Du kan konfigurere prioritetsrekkefølgen for datakildene i innstillingene.
 {{< faq question="Er prisene nøyaktige?" >}}
 SweetSpot viser **day-ahead spotpriser** — engrosstrømpriser som fastsettes av markedet dagen før levering. Disse prisene inkluderer **ikke** mva., energiskatter, nettleie eller leverandørmarginer, som varierer etter land og leverandør.
 
-Prisene er nyttige for å sammenligne tidsluker innbyrdes (finne når strøm er billigst), som er appens hovedformål. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.
+Prisene er nyttige for å sammenligne tidsluker innbyrdes (finne når strøm er billigst), som er appens hovedformål. Kostnadene vises per 1 kW last som standard; angir du et apparats effekt, eller lader en elbil, gjenspeiler estimatet den reelle lasten. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Kan SweetSpot hjelpe meg med å lade elbilen min?" >}}
+Ja. Legg til bilen din — velg den fra en innebygd database med rundt 1 600 elbiler og ladbare hybrider, eller oppgi batteristørrelse og ladeeffekt manuelt. Oppgi deretter nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta (ut fra batteristørrelsen og den laveste av bilens AC-grense og din egen lader) og finner det billigste vinduet å koble til.
+{{< /faq >}}
+
+{{< faq question="Kan jeg sørge for at det er ferdig innen et bestemt tidspunkt?" >}}
+Ja. Slå på den valgfrie **«ferdig innen»**-fristen og velg et tidspunkt. SweetSpot vurderer da bare vinduer som blir ferdige innen den fristen — for et hvilket som helst apparat eller for lading av elbilen din (for eksempel fulladet innen kl. 7:00 om morgenen).
+{{< /faq >}}
+
+{{< faq question="Gjenspeiler kostnadene hvor mye strøm apparatet mitt bruker?" >}}
+Som standard vises kostnadene per 1 kW last. Hvis du gir et apparat en **effekt** i kW — eller lader en elbil, som bruker sin reelle ladeeffekt — skaleres det estimerte kostnadsbeløpet til den lasten, slik at det gjenspeiler hva apparatet faktisk bruker.
 {{< /faq >}}
 
 {{< faq question="Fungerer den uten nett?" >}}

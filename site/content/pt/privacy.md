@@ -21,7 +21,7 @@ Estes pedidos à API contêm apenas o identificador da zona de licitação e o i
 
 ## Armazenamento local
 
-Os dados de preços são guardados localmente no seu dispositivo para reduzir os pedidos à API e proporcionar resultados mais rápidos. A configuração dos seus eletrodomésticos (nomes, durações, ícones) e definições (país, zona, idioma) são também armazenados localmente no seu dispositivo.
+Os dados de preços são guardados localmente no seu dispositivo para reduzir os pedidos à API e proporcionar resultados mais rápidos. A configuração dos seus eletrodomésticos (nomes, durações, ícones e potências opcionais), os veículos guardados (tamanho da bateria e potência de carregamento) e as definições (país, zona, idioma) são também armazenados localmente no seu dispositivo.
 
 No Wear OS, os dados dos eletrodomésticos e definições são sincronizados entre o telemóvel e o relógio através da Wearable Data Layer API. Esta comunicação permanece nos seus dispositivos locais e não passa por nenhum servidor externo.
 
@@ -56,4 +56,4 @@ O SweetSpot é de código aberto e licenciado sob GPL v3. Pode consultar o códi
 
 Se tiver questões sobre esta política de privacidade, pode abrir um pedido no [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Última atualização: abril de 2026*
+*Última atualização: junho de 2026*

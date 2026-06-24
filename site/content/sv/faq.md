@@ -23,7 +23,19 @@ Du kan konfigurera prioritetsordningen för datakällor i inställningarna.
 {{< faq question="Är priserna korrekta?" >}}
 SweetSpot visar **day-ahead spotpriser** — grossistpriser på el som bestäms av marknaden dagen innan leverans. Dessa priser inkluderar **inte** moms, energiskatter, nätavgifter eller leverantörsmarginaler, som varierar beroende på land och leverantör.
 
-Priserna är användbara för att jämföra tidsperioder med varandra (hitta när elen är billigast), vilket är appens huvudsakliga syfte. Morgondagens priser är vanligtvis tillgängliga efter kl. 13:00 CET.
+Priserna är användbara för att jämföra tidsperioder med varandra (hitta när elen är billigast), vilket är appens huvudsakliga syfte. Kostnaderna visas som standard per 1 kW belastning; ange en apparats effekt eller ladda en elbil, så återspeglar uppskattningen den verkliga belastningen. Morgondagens priser är vanligtvis tillgängliga efter kl. 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Kan SweetSpot hjälpa mig att ladda min elbil?" >}}
+Ja. Lägg till ditt fordon — välj det från en inbyggd databas med omkring 1 600 elbilar och laddhybrider, eller ange batterikapacitet och laddeffekt manuellt. Ange sedan din aktuella och önskade laddningsnivå, så räknar SweetSpot ut hur lång tid laddningen tar (utifrån batterikapaciteten och det lägsta av bilens AC-gräns och din laddbox) och hittar det billigaste fönstret att ladda.
+{{< /faq >}}
+
+{{< faq question="Kan jag se till att det är klart till en viss tid?" >}}
+Ja. Aktivera den valfria **”klar senast”**-tiden och välj en tidpunkt. SweetSpot tar då bara med fönster som hinner bli klara till dess — för vilken apparat som helst eller för att ladda din elbil (till exempel fulladdad senast kl. 7:00 på morgonen).
+{{< /faq >}}
+
+{{< faq question="Återspeglar kostnaderna hur mycket effekt min apparat drar?" >}}
+Som standard visas kostnaderna per 1 kW belastning. Om du anger en apparats **effekt** i kW — eller laddar en elbil, som använder sin verkliga laddeffekt — skalas den uppskattade kostnaden till den belastningen, så att den återspeglar vad apparaten faktiskt förbrukar.
 {{< /faq >}}
 
 {{< faq question="Fungerar det offline?" >}}

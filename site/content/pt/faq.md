@@ -23,7 +23,19 @@ Pode configurar a ordem de prioridade das fontes de dados nas definições.
 {{< faq question="Os preços são exatos?" >}}
 O SweetSpot apresenta os **preços spot do dia seguinte** — os preços grossistas da eletricidade determinados pelo mercado no dia anterior à entrega. Estes preços **não** incluem IVA, impostos sobre energia, taxas de rede ou margens do fornecedor, que variam consoante o país e o fornecedor.
 
-Os preços são úteis para comparar intervalos de tempo entre si (encontrar quando a eletricidade é mais barata), que é o objetivo principal da aplicação. Os preços de amanhã ficam normalmente disponíveis após as 13:00 CET.
+Os preços são úteis para comparar intervalos de tempo entre si (encontrar quando a eletricidade é mais barata), que é o objetivo principal da aplicação. Os custos são apresentados por 1 kW de carga por predefinição; defina a potência de um eletrodoméstico, ou carregue um VE, e a estimativa reflete a carga real. Os preços de amanhã ficam normalmente disponíveis após as 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="O SweetSpot pode ajudar-me a carregar o meu carro elétrico?" >}}
+Sim. Adicione o seu veículo — escolha-o numa base de dados integrada com cerca de 1600 VE e híbridos plug-in, ou indique manualmente o tamanho da bateria e a potência de carregamento. Depois, indique o estado de carga atual e pretendido, e o SweetSpot calcula quanto tempo demorará o carregamento (a partir do tamanho da bateria e do menor entre o limite CA do seu carro e o do seu carregador doméstico) e encontra o período mais barato para ligar.
+{{< /faq >}}
+
+{{< faq question="Posso garantir que está pronto a uma determinada hora?" >}}
+Sim. Ative o prazo opcional **«pronto até»** e escolha uma hora. O SweetSpot considera então apenas os períodos que terminam até essa hora — para qualquer eletrodoméstico ou para carregar o seu VE (por exemplo, totalmente carregado às 7:00 da manhã).
+{{< /faq >}}
+
+{{< faq question="Os custos refletem a quantidade de energia que o meu eletrodoméstico consome?" >}}
+Por predefinição, os custos são apresentados por 1 kW de carga. Se atribuir uma **potência** em kW a um eletrodoméstico — ou se carregar um VE, que utiliza a sua potência de carregamento real — o custo estimado é ajustado a essa carga, refletindo assim o que o eletrodoméstico realmente consome.
 {{< /faq >}}
 
 {{< faq question="Funciona sem ligação à internet?" >}}

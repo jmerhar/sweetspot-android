@@ -21,7 +21,7 @@ Nämä rajapintakyselyt sisältävät vain tarjousaluetunnisteen ja päivämää
 
 ## Paikallinen tallennus
 
-Hintatiedot tallennetaan paikallisesti laitteeseesi rajapintakyselyjen vähentämiseksi ja nopeampien tulosten mahdollistamiseksi. Laitekokoonpanosi (nimet, kestot, kuvakkeet) ja asetuksesi (maa, alue, kieli) tallennetaan myös paikallisesti laitteeseesi.
+Hintatiedot tallennetaan paikallisesti laitteeseesi rajapintakyselyjen vähentämiseksi ja nopeampien tulosten mahdollistamiseksi. Laitekokoonpanosi (nimet, kestot, kuvakkeet ja valinnaiset tehot), tallennetut ajoneuvosi (akun koko ja latausteho) sekä asetuksesi (maa, alue, kieli) tallennetaan myös paikallisesti laitteeseesi.
 
 Wear OS:ssä laitetiedot ja asetukset synkronoidaan puhelimen ja kellon välillä Wearable Data Layer API:n kautta. Tämä tiedonsiirto pysyy paikallisissa laitteissasi eikä kulje ulkoisen palvelimen kautta.
 
@@ -56,4 +56,4 @@ SweetSpot on avointa lähdekoodia ja lisensoitu GPL v3 -lisenssillä. Voit tarka
 
 Jos sinulla on kysyttävää tästä tietosuojakäytännöstä, voit avata keskusteluaiheen [GitHubissa](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Päivitetty viimeksi: huhtikuu 2026*
+*Päivitetty viimeksi: kesäkuu 2026*

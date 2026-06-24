@@ -21,7 +21,7 @@ Te zahteve API vsebujejo le identifikator cenovnega območja in datumski obseg. 
 
 ## Lokalna shramba
 
-Podatki o cenah se shranjujejo lokalno na vaši napravi za zmanjšanje klicev API in hitrejše rezultate. Konfiguracija vaših aparatov (imena, trajanja, ikone) in nastavitve (država, območje, jezik) se prav tako shranjujejo lokalno na vaši napravi.
+Podatki o cenah se shranjujejo lokalno na vaši napravi za zmanjšanje klicev API in hitrejše rezultate. Konfiguracija vaših aparatov (imena, trajanja, ikone in neobvezna moč), shranjena vozila (velikost baterije in moč polnjenja) ter nastavitve (država, območje, jezik) se prav tako shranjujejo lokalno na vaši napravi.
 
 Na Wear OS se podatki o aparatih in nastavitve sinhronizirajo med telefonom in uro prek Wearable Data Layer API. Ta komunikacija ostane na vaših lokalnih napravah in ne poteka prek nobenega zunanjega strežnika.
 
@@ -56,4 +56,4 @@ SweetSpot je odprtokoden in licenciran pod GPL v3. Celotno izvorno kodo si lahko
 
 Če imate vprašanja o tej politiki zasebnosti, lahko odprete issue na [GitHubu](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Zadnja posodobitev: april 2026*
+*Zadnja posodobitev: junij 2026*

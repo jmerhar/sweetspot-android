@@ -23,7 +23,19 @@ Du kannst die Prioritätsreihenfolge der Datenquellen in den Einstellungen konfi
 {{< faq question="Sind die Preise genau?" >}}
 SweetSpot zeigt **Day-Ahead-Spotpreise** — die Großhandelspreise für Strom, die am Vortag vom Markt bestimmt werden. Diese Preise **beinhalten keine** MwSt., Energiesteuer, Netzentgelte oder Lieferantenmargen, die je nach Land und Anbieter variieren.
 
-Die Preise sind nützlich, um Zeitslots miteinander zu vergleichen (herauszufinden, wann Strom am günstigsten ist), was der Hauptzweck der App ist. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.
+Die Preise sind nützlich, um Zeitslots miteinander zu vergleichen (herauszufinden, wann Strom am günstigsten ist), was der Hauptzweck der App ist. Die Kosten werden standardmäßig pro 1 kW Last angezeigt; lege die Leistung eines Geräts fest oder lade ein E-Auto, und die Schätzung spiegelt die tatsächliche Last wider. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.
+{{< /faq >}}
+
+{{< faq question="Kann SweetSpot mir beim Laden meines Elektroautos helfen?" >}}
+Ja. Füge dein Fahrzeug hinzu — wähle es aus einer integrierten Datenbank mit rund 1.600 E-Autos und Plug-in-Hybriden oder gib die Akkukapazität und Ladeleistung manuell ein. Gib dann den aktuellen und den gewünschten Ladestand ein, und SweetSpot berechnet, wie lange das Laden dauert (anhand der Akkukapazität und des niedrigeren Werts aus dem AC-Limit deines Autos und deiner Wallbox), und findet das günstigste Zeitfenster zum Anstecken.
+{{< /faq >}}
+
+{{< faq question="Kann ich sicherstellen, dass es bis zu einem bestimmten Zeitpunkt fertig ist?" >}}
+Ja. Aktiviere die optionale **„Fertig bis“**-Zeit und wähle einen Zeitpunkt. SweetSpot berücksichtigt dann nur Zeitfenster, die bis dahin abschließen — für jedes Gerät oder zum Laden deines E-Autos (zum Beispiel vollständig geladen bis 7:00 Uhr morgens).
+{{< /faq >}}
+
+{{< faq question="Spiegeln die Kosten wider, wie viel Strom mein Gerät verbraucht?" >}}
+Standardmäßig werden die Kosten pro 1 kW Last angezeigt. Wenn du einem Gerät eine **Leistungsangabe** in kW zuweist — oder ein E-Auto lädst, das seine tatsächliche Ladeleistung nutzt — wird die geschätzte Kostensumme auf diese Last skaliert, sodass sie den tatsächlichen Verbrauch des Geräts widerspiegelt.
 {{< /faq >}}
 
 {{< faq question="Funktioniert es offline?" >}}

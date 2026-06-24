@@ -23,10 +23,10 @@ other = "Privatnost"
 other = "Promijeni jezik"
 
 [hero_title]
-other = "Pronađite najjeftinije vrijeme za vaše uređaje"
+other = "Pronađite najjeftinije vrijeme za vaše uređaje i punjenje električnog automobila"
 
 [hero_subtitle]
-other = "SweetSpot pretražuje dinamične cijene struje u 30 europskih zemalja i pronalazi optimalan termin za uštedu. Otvorenog koda i bez prikupljanja podataka."
+other = "SweetSpot pretražuje dinamične cijene struje u 30 europskih zemalja i pronalazi najjeftiniji termin za pokretanje uređaja ili punjenje električnog automobila — dovršen do roka ako ga zadate. Otvorenog koda i bez prikupljanja podataka."
 
 [download]
 other = "Preuzmite na Google Playu"
@@ -71,7 +71,19 @@ other = "Popratna aplikacija za Pixel Watch i druge Wear OS 3+ uređaje. Provjer
 other = "Prilagođeni uređaji"
 
 [feature_appliances_desc]
-other = "Spremite svoje uređaje s prilagođenim imenima, ikonama i trajanjima za pristup jednim dodirom."
+other = "Spremite svoje uređaje s prilagođenim imenima, ikonama, trajanjima i neobveznom snagom, kako bi procjena troška odražavala njihovu stvarnu potrošnju."
+
+[feature_ev_title]
+other = "Punjenje električnog automobila"
+
+[feature_ev_desc]
+other = "Dodajte svoj automobil pa unesite trenutnu i željenu razinu napunjenosti. SweetSpot izračunava vrijeme punjenja i najjeftinije vrijeme za priključivanje."
+
+[feature_deadline_title]
+other = "Vrijeme „Gotovo do“"
+
+[feature_deadline_desc]
+other = "Treba biti gotovo do određenog vremena? Dodajte rok „gotovo do“ i SweetSpot bira samo termine koji se dovrše na vrijeme."
 
 [feature_languages_title]
 other = "25 jezika"
@@ -95,10 +107,10 @@ other = "Cjelokupni izvorni kod dostupan je na GitHubu pod licencom GPL v3."
 other = "Kako funkcionira"
 
 [step1_title]
-other = "Odaberite svoj uređaj"
+other = "Odaberite uređaj ili automobil"
 
 [step1_desc]
-other = "Odaberite spremljeni uređaj ili postavite prilagođeno trajanje rada."
+other = "Odaberite spremljeni uređaj ili svoj automobil, ili postavite prilagođeno trajanje — i po želji rok „gotovo do“."
 
 [step2_title]
 other = "Pretraži cijene"
@@ -116,10 +128,10 @@ other = "Vidite točno kada pokrenuti uređaj, uz potpunu raščlambu troškova 
 other = "Počnite štedjeti na struji"
 
 [cta_desc]
-other = "Preuzmite SweetSpot na Google Playu i pronađite najjeftinije vrijeme za vaše uređaje."
+other = "Preuzmite SweetSpot na Google Playu i pronađite najjeftinije vrijeme za vaše uređaje i punjenje električnog automobila."
 
 [footer_tagline]
-other = "Pronađite najjeftinije vrijeme za vaše uređaje."
+other = "Pronađite najjeftinije vrijeme za vaše uređaje i punjenje električnog automobila."
 
 [footer_app]
 other = "Aplikacija"
@@ -146,7 +158,7 @@ other = "Početni zaslon s uređajima, odabirom trajanja i gumbom Traži"
 other = "Nadolazeće cijene struje kao vodoravni stupčasti grafikon"
 
 [screenshot_4_alt]
-other = "Zaslon postavki sa spremljenim uređajima, jezikom, državom i vremenskom zonom"
+other = "Zaslon postavki sa spremljenim uređajima, punjenjem električnog automobila, jezikom, državom i vremenskom zonom"
 
 [screenshot_5_alt]
 other = "Punjenje električnog automobila: trenutna i ciljana napunjenost s izračunatim vremenom punjenja"

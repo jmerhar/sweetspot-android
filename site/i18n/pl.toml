@@ -71,7 +71,7 @@ other = "Aplikacja towarzysząca na Pixel Watch i inne urządzenia Wear OS 3+. S
 other = "Własne urządzenia"
 
 [feature_appliances_desc]
-other = "Zapisz swoje urządzenia z własnymi nazwami, ikonami, czasami trwania i opcjonalną mocą znamionową, aby szacowany koszt odzwierciedlał ich rzeczywiste zużycie."
+other = "Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania, aby mieć do nich szybki dostęp."
 
 [feature_ev_title]
 other = "Ładowanie auta elektrycznego"
@@ -84,6 +84,12 @@ other = "Termin „Gotowe do“"
 
 [feature_deadline_desc]
 other = "Musi być gotowe na określoną godzinę? Dodaj termin „gotowe do“, a SweetSpot wybierze tylko te okna, które zakończą się na czas."
+
+[feature_power_title]
+other = "Moc znamionowa"
+
+[feature_power_desc]
+other = "Podaj moc urządzenia w kW, a szacowany koszt odzwierciedli jego rzeczywiste zużycie, zamiast stałego 1 kW."
 
 [feature_languages_title]
 other = "25 języków"

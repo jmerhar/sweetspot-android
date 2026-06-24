@@ -74,7 +74,7 @@ other = "Companion app for Pixel Watch and other Wear OS 3+ devices. Check price
 other = "Custom Appliances"
 
 [feature_appliances_desc]
-other = "Save your appliances with custom names, icons, durations, and an optional power rating, so the cost estimate reflects what they really use."
+other = "Save your appliances with custom names, icons, and durations for one-tap access."
 
 [feature_ev_title]
 other = "EV Charging"
@@ -87,6 +87,12 @@ other = "Ready-By Deadline"
 
 [feature_deadline_desc]
 other = "Need it finished by a set time? Add a 'ready by' deadline and SweetSpot only picks windows that complete in time."
+
+[feature_power_title]
+other = "Power Rating"
+
+[feature_power_desc]
+other = "Give an appliance its power in kW and the cost estimate reflects what it really uses, instead of a flat 1 kW."
 
 [feature_languages_title]
 other = "25 Languages"

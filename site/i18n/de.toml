@@ -71,7 +71,7 @@ other = "Begleit-App für Pixel Watch und andere Wear OS 3+ Geräte. Preise dire
 other = "Eigene Geräte"
 
 [feature_appliances_desc]
-other = "Speichere deine Geräte mit eigenen Namen, Symbolen, Laufzeiten und einer optionalen Leistungsangabe, damit die Kostenschätzung den tatsächlichen Verbrauch widerspiegelt."
+other = "Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff."
 
 [feature_ev_title]
 other = "E-Auto-Ladung"
@@ -84,6 +84,12 @@ other = "„Fertig bis“-Zeit"
 
 [feature_deadline_desc]
 other = "Soll es bis zu einem bestimmten Zeitpunkt fertig sein? Lege eine „Fertig bis“-Zeit fest, und SweetSpot wählt nur Zeitfenster, die rechtzeitig abschließen."
+
+[feature_power_title]
+other = "Leistung"
+
+[feature_power_desc]
+other = "Gib deinem Gerät seine Leistung in kW an, und die Kostenschätzung berücksichtigt den tatsächlichen Verbrauch statt pauschal 1 kW."
 
 [feature_languages_title]
 other = "25 Sprachen"

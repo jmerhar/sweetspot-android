@@ -71,7 +71,7 @@ other = "Papildoma programėlė Pixel Watch ir kitiems Wear OS 3+ įrenginiams. 
 other = "Tinkinami prietaisai"
 
 [feature_appliances_desc]
-other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis, trukmėmis ir neprivalomu galingumu, kad išlaidų įvertinimas atitiktų tai, ką jie iš tiesų suvartoja."
+other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai vienu palietimu."
 
 [feature_ev_title]
 other = "Elektromobilio įkrovimas"
@@ -84,6 +84,12 @@ other = "Terminas „Baigti iki“"
 
 [feature_deadline_desc]
 other = "Reikia, kad būtų baigta iki tam tikro laiko? Nustatykite terminą „baigti iki“, ir SweetSpot parinks tik tuos langus, kurie suspės laiku."
+
+[feature_power_title]
+other = "Galios vertė"
+
+[feature_power_desc]
+other = "Nurodykite prietaiso galią kilovatais, ir išlaidų sąmata atspindės tai, ką jis iš tikrųjų naudoja, o ne vienodą 1 kW vertę."
 
 [feature_languages_title]
 other = "25 kalbos"

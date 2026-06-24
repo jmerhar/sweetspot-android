@@ -71,7 +71,7 @@ other = "Kaasrakendus Pixel Watchile ja teistele Wear OS 3+ seadmetele. Vaata hi
 other = "Kohandatud seadmed"
 
 [feature_appliances_desc]
-other = "Salvesta oma seadmed kohandatud nimede, ikoonide, kestuste ja valikulise võimsusega, et kuluhinnang kajastaks nende tegelikku tarbimist."
+other = "Salvesta oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks ühe puutega ligipääsuks."
 
 [feature_ev_title]
 other = "Elektriauto laadimine"
@@ -84,6 +84,12 @@ other = "Valmis hiljemalt"
 
 [feature_deadline_desc]
 other = "Vajad seda valmis kindlaks ajaks? Lisa „valmis hiljemalt“ tähtaeg ja SweetSpot valib ainult ajavahemikud, mis õigeks ajaks lõpevad."
+
+[feature_power_title]
+other = "Võimsus"
+
+[feature_power_desc]
+other = "Määra seadmele selle võimsus kilovattides ja kuluhinnang kajastab tegelikku tarbimist, mitte ühtlast 1 kW."
 
 [feature_languages_title]
 other = "25 keelt"

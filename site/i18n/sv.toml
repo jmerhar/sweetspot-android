@@ -71,7 +71,7 @@ other = "Kompletterande app för Pixel Watch och andra Wear OS 3+-enheter. Kolla
 other = "Egna apparater"
 
 [feature_appliances_desc]
-other = "Spara dina apparater med egna namn, ikoner, körtider och en valfri effekt, så att kostnadsberäkningen återspeglar vad de verkligen förbrukar."
+other = "Spara dina apparater med egna namn, ikoner och körtider för snabb åtkomst med ett tryck."
 
 [feature_ev_title]
 other = "Elbilsladdning"
@@ -84,6 +84,12 @@ other = "”Klar senast”-tid"
 
 [feature_deadline_desc]
 other = "Behöver det vara klart till en viss tid? Lägg till en ”klar senast”-tid så väljer SweetSpot bara fönster som hinner bli klara i tid."
+
+[feature_power_title]
+other = "Effekt"
+
+[feature_power_desc]
+other = "Ange en apparats effekt i kW så återspeglar kostnadsuppskattningen vad den verkligen drar, i stället för fasta 1 kW."
 
 [feature_languages_title]
 other = "25 språk"

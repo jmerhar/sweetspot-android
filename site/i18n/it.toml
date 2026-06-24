@@ -71,7 +71,7 @@ other = "App companion per Pixel Watch e altri dispositivi Wear OS 3+. Controlla
 other = "Elettrodomestici personalizzati"
 
 [feature_appliances_desc]
-other = "Salva i tuoi elettrodomestici con nomi, icone, durate personalizzati e una potenza nominale opzionale, così la stima dei costi rispecchia il consumo reale."
+other = "Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido."
 
 [feature_ev_title]
 other = "Ricarica auto elettrica"
@@ -84,6 +84,12 @@ other = "Orario «Pronto entro»"
 
 [feature_deadline_desc]
 other = "Ti serve pronto entro un certo orario? Imposta una scadenza «Pronto entro» e SweetSpot sceglie solo le fasce che terminano in tempo."
+
+[feature_power_title]
+other = "Potenza nominale"
+
+[feature_power_desc]
+other = "Indica la potenza in kW di un elettrodomestico e la stima dei costi rifletterà il consumo reale, invece di un valore fisso di 1 kW."
 
 [feature_languages_title]
 other = "25 lingue"

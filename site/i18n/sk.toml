@@ -71,7 +71,7 @@ other = "Sprievodná aplikácia pre Pixel Watch a ďalšie zariadenia Wear OS 3+
 other = "Vlastné spotrebiče"
 
 [feature_appliances_desc]
-other = "Uložte si spotrebiče s vlastnými názvami, ikonami, trvaním a voliteľným výkonom, aby odhad nákladov zohľadňoval ich skutočnú spotrebu."
+other = "Uložte si spotrebiče s vlastnými názvami, ikonami a trvaním pre prístup jedným ťuknutím."
 
 [feature_ev_title]
 other = "Nabíjanie elektromobilu"
@@ -84,6 +84,12 @@ other = "Čas „Hotové do“"
 
 [feature_deadline_desc]
 other = "Potrebujete to dokončiť do určitého času? Pridajte termín „hotové do“ a SweetSpot zvolí iba okná, ktoré sa dokončia včas."
+
+[feature_power_title]
+other = "Výkon spotrebiča"
+
+[feature_power_desc]
+other = "Zadajte spotrebiču jeho výkon v kW a odhad nákladov bude zodpovedať jeho skutočnej spotrebe namiesto paušálneho 1 kW."
 
 [feature_languages_title]
 other = "25 jazykov"

@@ -71,7 +71,7 @@ other = "Horloge-app voor Pixel Watch en andere Wear OS 3+ apparaten. Bekijk pri
 other = "Eigen apparaten"
 
 [feature_appliances_desc]
-other = "Sla je apparaten op met eigen namen, iconen, duur en een optioneel vermogen, zodat de kostenraming overeenkomt met wat ze werkelijk verbruiken."
+other = "Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang met één tik."
 
 [feature_ev_title]
 other = "Elektrisch laden"
@@ -84,6 +84,12 @@ other = "'Klaar om'-deadline"
 
 [feature_deadline_desc]
 other = "Moet het klaar zijn op een bepaald moment? Stel een 'klaar om'-deadline in en SweetSpot kiest alleen periodes die op tijd klaar zijn."
+
+[feature_power_title]
+other = "Vermogen"
+
+[feature_power_desc]
+other = "Geef een apparaat zijn vermogen in kW en de kostenraming weerspiegelt wat het echt verbruikt, in plaats van een vast vermogen van 1 kW."
 
 [feature_languages_title]
 other = "25 talen"

@@ -71,7 +71,7 @@ other = "App complementaria para Pixel Watch y otros dispositivos Wear OS 3+. Co
 other = "Electrodomésticos personalizados"
 
 [feature_appliances_desc]
-other = "Guarda tus electrodomésticos con nombres, iconos y duraciones personalizados, y una potencia opcional, para que la estimación de coste refleje lo que realmente consumen."
+other = "Guarda tus electrodomésticos con nombres, iconos y duraciones personalizados para acceso con un solo toque."
 
 [feature_ev_title]
 other = "Carga de VE"
@@ -84,6 +84,12 @@ other = "Hora límite «Listo a las»"
 
 [feature_deadline_desc]
 other = "¿Necesitas que termine a una hora concreta? Añade una hora límite «Listo a las» y SweetSpot solo elige franjas que terminan a tiempo."
+
+[feature_power_title]
+other = "Potencia nominal"
+
+[feature_power_desc]
+other = "Indica la potencia de un electrodoméstico en kW y la estimación de coste reflejará lo que consume realmente, en lugar de un valor fijo de 1 kW."
 
 [feature_languages_title]
 other = "25 idiomas"

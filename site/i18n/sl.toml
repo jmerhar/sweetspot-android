@@ -71,7 +71,7 @@ other = "Spremljevalna aplikacija za Pixel Watch in druge naprave Wear OS 3+. Pr
 other = "Lastni aparati"
 
 [feature_appliances_desc]
-other = "Shranite svoje aparate z lastnimi imeni, ikonami, trajanji in neobvezno močjo, da ocena stroškov upošteva njihovo dejansko porabo."
+other = "Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop z enim dotikom."
 
 [feature_ev_title]
 other = "Polnjenje električnega vozila"
@@ -84,6 +84,12 @@ other = "Čas »Pripravljeno do«"
 
 [feature_deadline_desc]
 other = "Mora biti končano do določenega časa? Dodajte rok »pripravljeno do« in SweetSpot izbere le termine, ki se končajo pravočasno."
+
+[feature_power_title]
+other = "Moč"
+
+[feature_power_desc]
+other = "Aparatu določite moč v kW in ocena stroškov upošteva dejansko porabo namesto enakomernega 1 kW."
 
 [feature_languages_title]
 other = "25 jezikov"

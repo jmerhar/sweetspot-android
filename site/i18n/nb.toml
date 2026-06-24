@@ -71,7 +71,7 @@ other = "Følgeapp for Pixel Watch og andre Wear OS 3+-enheter. Sjekk prisene re
 other = "Egendefinerte apparater"
 
 [feature_appliances_desc]
-other = "Lagre apparatene dine med egne navn, ikoner, varigheter og en valgfri effekt, slik at kostnadsestimatet gjenspeiler det de faktisk bruker."
+other = "Lagre apparatene dine med egne navn, ikoner og varigheter for rask tilgang med ett trykk."
 
 [feature_ev_title]
 other = "Elbillading"
@@ -84,6 +84,12 @@ other = "«Ferdig innen»-frist"
 
 [feature_deadline_desc]
 other = "Trenger du det ferdig innen et bestemt tidspunkt? Legg til en «ferdig innen»-frist, så velger SweetSpot bare vinduer som blir ferdige i tide."
+
+[feature_power_title]
+other = "Effekt"
+
+[feature_power_desc]
+other = "Oppgi effekten til et apparat i kW, så gjenspeiler kostnadsestimatet det apparatet faktisk bruker, i stedet for en fast verdi på 1 kW."
 
 [feature_languages_title]
 other = "25 språk"

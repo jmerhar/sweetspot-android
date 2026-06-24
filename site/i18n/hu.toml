@@ -71,7 +71,7 @@ other = "Társalkalmazás Pixel Watchhoz és más Wear OS 3+ készülékekhez. N
 other = "Egyéni készülékek"
 
 [feature_appliances_desc]
-other = "Mentse el készülékeit egyéni nevekkel, ikonokkal, időtartamokkal és opcionális teljesítményértékkel, hogy a költségbecslés a valós fogyasztásukat tükrözze."
+other = "Mentse el készülékeit egyéni nevekkel, ikonokkal és időtartamokkal az egyérintéses hozzáféréshez."
 
 [feature_ev_title]
 other = "Elektromos autó töltése"
@@ -84,6 +84,12 @@ other = "„Készen ekkorra“ határidő"
 
 [feature_deadline_desc]
 other = "Egy adott időpontra van rá szüksége? Adjon meg egy „készen ekkorra“ határidőt, és a SweetSpot csak olyan időszakokat választ, amelyek időben befejeződnek."
+
+[feature_power_title]
+other = "Teljesítmény"
+
+[feature_power_desc]
+other = "Adja meg a készülék teljesítményét kW-ban, és a költségbecslés a tényleges fogyasztást tükrözi a fix 1 kW helyett."
 
 [feature_languages_title]
 other = "25 nyelv"

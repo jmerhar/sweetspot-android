@@ -71,7 +71,7 @@ other = "Aplicație complementară pentru Pixel Watch și alte dispozitive Wear 
 other = "Electrocasnice personalizate"
 
 [feature_appliances_desc]
-other = "Salvează electrocasnicele cu nume, pictograme și durate personalizate și o putere opțională, astfel încât estimarea costului să reflecte consumul lor real."
+other = "Salvează electrocasnicele cu nume, pictograme și durate personalizate pentru acces rapid dintr-o singură atingere."
 
 [feature_ev_title]
 other = "Încărcare mașină electrică"
@@ -84,6 +84,12 @@ other = "Termen „Gata până la“"
 
 [feature_deadline_desc]
 other = "Ai nevoie să fie gata la o anumită oră? Adaugă un termen 'gata până la' și SweetSpot alege doar intervalele care se termină la timp."
+
+[feature_power_title]
+other = "Putere nominală"
+
+[feature_power_desc]
+other = "Indică puterea unui electrocasnic în kW, iar estimarea costului reflectă consumul real, în loc de o valoare fixă de 1 kW."
 
 [feature_languages_title]
 other = "25 de limbi"

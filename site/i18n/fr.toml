@@ -71,7 +71,7 @@ other = "Application compagnon pour Pixel Watch et autres appareils Wear OS 3+. 
 other = "Appareils personnalisés"
 
 [feature_appliances_desc]
-other = "Enregistrez vos appareils avec des noms, icônes et durées personnalisés, ainsi qu'une puissance optionnelle, pour que l'estimation du coût reflète leur consommation réelle."
+other = "Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide."
 
 [feature_ev_title]
 other = "Recharge de VE"
@@ -84,6 +84,12 @@ other = "Heure « Prêt à »"
 
 [feature_deadline_desc]
 other = "Vous en avez besoin avant une heure précise ? Ajoutez une échéance « Prêt à » et SweetSpot ne retient que les créneaux qui se terminent à temps."
+
+[feature_power_title]
+other = "Puissance nominale"
+
+[feature_power_desc]
+other = "Indiquez la puissance d'un appareil en kW et l'estimation du coût reflète sa consommation réelle, au lieu d'un forfait de 1 kW."
 
 [feature_languages_title]
 other = "25 langues"

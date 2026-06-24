@@ -71,7 +71,7 @@ other = "Ledsagerapp til Pixel Watch og andre Wear OS 3+-enheder. Tjek priserne 
 other = "Brugerdefinerede apparater"
 
 [feature_appliances_desc]
-other = "Gem dine apparater med navne, ikoner, varigheder og en valgfri effekt, så omkostningsestimatet afspejler deres reelle forbrug."
+other = "Gem dine apparater med navne, ikoner og varigheder for hurtig adgang med ét tryk."
 
 [feature_ev_title]
 other = "Opladning af elbil"
@@ -84,6 +84,12 @@ other = "„Klar senest“-tidspunkt"
 
 [feature_deadline_desc]
 other = "Skal det være færdigt på et bestemt tidspunkt? Tilføj en „klar senest“-frist, så vælger SweetSpot kun vinduer, der bliver færdige til tiden."
+
+[feature_power_title]
+other = "Effekt"
+
+[feature_power_desc]
+other = "Angiv et apparats effekt i kW, så afspejler prisoverslaget det reelle forbrug i stedet for et fast forbrug på 1 kW."
 
 [feature_languages_title]
 other = "25 sprog"

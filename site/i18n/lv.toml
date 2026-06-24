@@ -71,7 +71,7 @@ other = "Pavadošā lietotne Pixel Watch un citām Wear OS 3+ ierīcēm. Pārbau
 other = "Pielāgotas ierīces"
 
 [feature_appliances_desc]
-other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām, ilgumiem un neobligātu jaudu, lai izmaksu aprēķins atbilstu to reālajam patēriņam."
+other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei ar vienu pieskārienu."
 
 [feature_ev_title]
 other = "Elektromobiļa uzlāde"
@@ -84,6 +84,12 @@ other = "Termiņš „Gatavs līdz“"
 
 [feature_deadline_desc]
 other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot izvēlēsies tikai logus, kas paspēj pabeigt laikā."
+
+[feature_power_title]
+other = "Jaudas norāde"
+
+[feature_power_desc]
+other = "Norādi ierīces jaudu kilovatos, un izmaksu aprēķins atspoguļos tās patieso patēriņu, nevis nemainīgu 1 kW."
 
 [feature_languages_title]
 other = "25 valodas"

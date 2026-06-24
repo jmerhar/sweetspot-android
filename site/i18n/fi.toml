@@ -71,7 +71,7 @@ other = "Kumppanisovellus Pixel Watchille ja muille Wear OS 3+ -laitteille. Tark
 other = "Omat laitteet"
 
 [feature_appliances_desc]
-other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla sekä valinnaisella teholla, jotta kustannusarvio vastaa niiden todellista kulutusta."
+other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten."
 
 [feature_ev_title]
 other = "Sähköauton lataus"
@@ -84,6 +84,12 @@ other = "Valmis viimeistään -takaraja"
 
 [feature_deadline_desc]
 other = "Pitääkö sen olla valmis tiettyyn aikaan mennessä? Aseta ”valmis viimeistään” -takaraja, niin SweetSpot valitsee vain ajanjaksot, jotka valmistuvat ajoissa."
+
+[feature_power_title]
+other = "Teholuokitus"
+
+[feature_power_desc]
+other = "Anna laitteelle sen teho kilowatteina, niin kustannusarvio vastaa sen todellista kulutusta tasaisen 1 kW:n sijaan."
 
 [feature_languages_title]
 other = "25 kieltä"

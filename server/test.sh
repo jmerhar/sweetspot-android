@@ -62,13 +62,17 @@ echo
 
 echo "Valid payload:"
 
+# Test traffic uses the synthetic marker (s="test", z="ZZ", app="0.0.0") so
+# successful writes are excluded from the Grafana dashboard automatically — see
+# the "Stats Backend & Monitoring" section in CLAUDE.md. Never use a real source
+# id here, or these smoke-test writes would pollute the analytics.
 CODE=$(post '{
   "v": 1,
-  "app": "4.0",
+  "app": "0.0.0",
   "records": [
     {
-      "z": "NL",
-      "s": "entsoe",
+      "z": "ZZ",
+      "s": "test",
       "d": "phone",
       "r": [
         {"t": 1711700000, "ok": true},
@@ -76,14 +80,14 @@ CODE=$(post '{
       ]
     },
     {
-      "z": "DE_LU",
-      "s": "energycharts",
+      "z": "ZZ",
+      "s": "test",
       "d": "watch",
       "r": [{"t": 1711700000, "ok": false, "e": "TIMEOUT"}]
     },
     {
-      "z": "FI",
-      "s": "spothinta",
+      "z": "ZZ",
+      "s": "test",
       "d": "phone",
       "r": [{"t": 1711701000, "ok": true}]
     }
@@ -160,8 +164,8 @@ echo
 
 echo "Rate limiting:"
 
-post '{"v":1,"app":"4.0","records":[{"z":"NL","s":"entsoe","d":"phone","r":[{"t":1711700000,"ok":true}]}]}' > /dev/null 2>&1
-CODE=$(post '{"v":1,"app":"4.0","records":[{"z":"NL","s":"entsoe","d":"phone","r":[{"t":1711700000,"ok":true}]}]}')
+post '{"v":1,"app":"0.0.0","records":[{"z":"ZZ","s":"test","d":"phone","r":[{"t":1711700000,"ok":true}]}]}' > /dev/null 2>&1
+CODE=$(post '{"v":1,"app":"0.0.0","records":[{"z":"ZZ","s":"test","d":"phone","r":[{"t":1711700000,"ok":true}]}]}')
 assert_code "repeated request rate-limited" 429 "$CODE"
 
 echo

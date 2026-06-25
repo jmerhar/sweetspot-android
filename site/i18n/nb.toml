@@ -26,7 +26,7 @@ other = "Bytt språk"
 other = "Finn det billigste tidspunktet for å kjøre apparatene dine og lade elbilen"
 
 [hero_subtitle]
-other = "SweetSpot skanner dynamiske strømpriser i 30 europeiske land og finner det billigste tidsvinduet for å kjøre apparatene dine eller lade elbilen — ferdig innen en frist hvis du setter en. Åpen kildekode og personvernvennlig."
+other = "SweetSpot skanner dynamiske strømpriser i 30 europeiske land og finner den billigste perioden for å kjøre apparatene dine eller lade elbilen — ferdig innen en frist hvis du setter en. Åpen kildekode og personvernvennlig."
 
 [download]
 other = "Tilgjengelig på Google Play"
@@ -53,7 +53,7 @@ other = "Day-ahead-strømpriser fra ENTSO-E Transparency Platform, oppdatert dag
 other = "Smart algoritme"
 
 [feature_algorithm_desc]
-other = "En smart algoritme finner den billigste sammenhengende perioden for hvilken som helst varighet du velger."
+other = "En smart søkealgoritme finner den billigste sammenhengende perioden for hvilken som helst varighet du velger."
 
 [feature_fallback_title]
 other = "Pålitelige data"
@@ -83,7 +83,7 @@ other = "Legg til bilen din, og oppgi deretter nåværende og ønsket ladenivå.
 other = "«Ferdig innen»-frist"
 
 [feature_deadline_desc]
-other = "Trenger du det ferdig innen et bestemt tidspunkt? Legg til en «ferdig innen»-frist, så velger SweetSpot bare vinduer som blir ferdige i tide."
+other = "Trenger du det ferdig innen et bestemt tidspunkt? Legg til en «ferdig innen»-frist, så velger SweetSpot bare perioder som blir ferdige i tide."
 
 [feature_power_title]
 other = "Effekt"

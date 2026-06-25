@@ -53,7 +53,7 @@ other = "Elektros kainos kitai dienai iš ENTSO-E Transparency Platform, atnauji
 other = "Išmanusis algoritmas"
 
 [feature_algorithm_desc]
-other = "Slenkančio lango algoritmas suranda pigiausią nepertraukiamą laikotarpį bet kokiai pasirinktai trukmei."
+other = "Slankiojantis paieškos algoritmas suranda pigiausią nepertraukiamą laikotarpį bet kokiai pasirinktai trukmei."
 
 [feature_fallback_title]
 other = "Patikimi duomenys"
@@ -83,7 +83,7 @@ other = "Pridėkite automobilį, tada įveskite dabartinį ir norimą įkrovos l
 other = "Terminas „Baigti iki“"
 
 [feature_deadline_desc]
-other = "Reikia, kad būtų baigta iki tam tikro laiko? Nustatykite terminą „baigti iki“, ir SweetSpot parinks tik tuos langus, kurie suspės laiku."
+other = "Reikia, kad būtų baigta iki tam tikro laiko? Nustatykite terminą „baigti iki“, ir SweetSpot parinks tik tuos laikotarpius, kurie suspės laiku."
 
 [feature_power_title]
 other = "Galios vertė"

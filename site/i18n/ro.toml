@@ -53,7 +53,7 @@ other = "Prețuri de electricitate pentru ziua următoare de pe platforma ENTSO-
 other = "Algoritm inteligent"
 
 [feature_algorithm_desc]
-other = "Un algoritm cu fereastră glisantă găsește cea mai ieftină perioadă continuă pentru orice durată alegi."
+other = "Un algoritm care parcurge glisant intervalul de timp găsește cea mai ieftină perioadă continuă pentru orice durată alegi."
 
 [feature_fallback_title]
 other = "Date fiabile"
@@ -80,10 +80,10 @@ other = "Încărcare mașină electrică"
 other = "Adaugă-ți mașina, apoi introdu nivelul actual și cel dorit al bateriei. SweetSpot calculează timpul de încărcare și cel mai ieftin moment pentru a o conecta."
 
 [feature_deadline_title]
-other = "Termen „Gata până la“"
+other = "Termen „Gata până la”"
 
 [feature_deadline_desc]
-other = "Ai nevoie să fie gata la o anumită oră? Adaugă un termen 'gata până la' și SweetSpot alege doar intervalele care se termină la timp."
+other = "Ai nevoie să fie gata la o anumită oră? Adaugă un termen „gata până la” și SweetSpot alege doar intervalele care se termină la timp."
 
 [feature_power_title]
 other = "Putere nominală"
@@ -116,7 +116,7 @@ other = "Cum funcționează"
 other = "Alege electrocasnicul sau mașina electrică"
 
 [step1_desc]
-other = "Alege un electrocasnic salvat sau mașina ta electrică, ori setează o durată personalizată — și, opțional, un termen 'gata până la'."
+other = "Alege un electrocasnic salvat sau mașina ta electrică, ori setează o durată personalizată — și, opțional, un termen „gata până la”."
 
 [step2_title]
 other = "Analizează prețurile"

@@ -53,7 +53,7 @@ other = "Prezzi dell'energia elettrica day-ahead dalla piattaforma ENTSO-E Trans
 other = "Algoritmo intelligente"
 
 [feature_algorithm_desc]
-other = "Un algoritmo a finestra scorrevole trova il periodo contiguo più economico per qualsiasi durata scelta."
+other = "Un algoritmo a scorrimento trova la fascia contigua più economica per qualsiasi durata scelta."
 
 [feature_fallback_title]
 other = "Dati affidabili"

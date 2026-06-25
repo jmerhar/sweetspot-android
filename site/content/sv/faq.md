@@ -27,11 +27,11 @@ Priserna är användbara för att jämföra tidsperioder med varandra (hitta nä
 {{< /faq >}}
 
 {{< faq question="Kan SweetSpot hjälpa mig att ladda min elbil?" >}}
-Ja. Lägg till ditt fordon — välj det från en inbyggd databas med omkring 1 600 elbilar och laddhybrider, eller ange batterikapacitet och laddeffekt manuellt. Ange sedan din aktuella och önskade laddningsnivå, så räknar SweetSpot ut hur lång tid laddningen tar (utifrån batterikapaciteten och det lägsta av bilens AC-gräns och din laddbox) och hittar det billigaste fönstret att ladda.
+Ja. Lägg till ditt fordon — välj det från en inbyggd databas med omkring 1 600 elbilar och laddhybrider, eller ange batterikapacitet och laddeffekt manuellt. Ange sedan din aktuella och önskade laddningsnivå, så räknar SweetSpot ut hur lång tid laddningen tar (utifrån batterikapaciteten och det lägsta av bilens AC-gräns och din laddbox) och hittar den billigaste tidsperioden att ladda.
 {{< /faq >}}
 
 {{< faq question="Kan jag se till att det är klart till en viss tid?" >}}
-Ja. Aktivera den valfria **”klar senast”**-tiden och välj en tidpunkt. SweetSpot tar då bara med fönster som hinner bli klara till dess — för vilken apparat som helst eller för att ladda din elbil (till exempel fulladdad senast kl. 7:00 på morgonen).
+Ja. Aktivera den valfria **”klar senast”**-tiden och välj en tidpunkt. SweetSpot tar då bara med perioder som hinner bli klara till dess — för vilken apparat som helst eller för att ladda din elbil (till exempel fulladdad senast kl. 7:00 på morgonen).
 {{< /faq >}}
 
 {{< faq question="Återspeglar kostnaderna hur mycket effekt min apparat drar?" >}}
@@ -53,7 +53,7 @@ SweetSpot finns på [Google Play](https://play.google.com/store/apps/details?id=
 {{< /faq >}}
 
 {{< faq question="Vilka språk stöds?" >}}
-SweetSpot finns på 25 europeiska språk: bulgariska, danska, engelska, estniska, finska, franska, grekiska, italienska, kroatiska, lettiska, litauiska, makedonska, nederländska, norska (bokmal), polska, portugisiska, rumänska, serbiska, slovakiska, slovenska, spanska, svenska, tjeckiska, tyska och ungerska.
+SweetSpot finns på 25 europeiska språk: bulgariska, danska, engelska, estniska, finska, franska, grekiska, italienska, kroatiska, lettiska, litauiska, makedonska, nederländska, norska (bokmål), polska, portugisiska, rumänska, serbiska, slovakiska, slovenska, spanska, svenska, tjeckiska, tyska och ungerska.
 
 Appen använder systemspråket som standard. Du kan också ställa in språket manuellt under Inställningar.
 {{< /faq >}}

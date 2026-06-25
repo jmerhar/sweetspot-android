@@ -31,7 +31,7 @@ Igen. Adja hozzá a járművét — válassza ki egy beépített, körülbelül 
 {{< /faq >}}
 
 {{< faq question="Biztosíthatom, hogy egy adott időpontra elkészüljön?" >}}
-Igen. Kapcsolja be az opcionális **„készen ekkorra“** határidőt, és válasszon egy időpontot. A SweetSpot ezután csak olyan időszakokat vesz figyelembe, amelyek addigra befejeződnek — bármely készülék vagy az elektromos autó töltése esetén (például reggel 7:00-ra teljesen feltöltve).
+Igen. Kapcsolja be az opcionális **„készen ekkorra”** határidőt, és válasszon egy időpontot. A SweetSpot ezután csak olyan időszakokat vesz figyelembe, amelyek addigra befejeződnek — bármely készülék vagy az elektromos autó töltése esetén (például reggel 7:00-ra teljesen feltöltve).
 {{< /faq >}}
 
 {{< faq question="A költségek tükrözik, mennyi energiát fogyaszt a készülékem?" >}}

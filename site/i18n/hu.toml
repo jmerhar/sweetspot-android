@@ -53,7 +53,7 @@ other = "Másnapi villamosenergia-árak az ENTSO-E Transparency Platformról, na
 other = "Okos algoritmus"
 
 [feature_algorithm_desc]
-other = "Egy csúszó ablak algoritmus megtalálja a legolcsóbb összefüggő időszakot bármelyik választott időtartamhoz."
+other = "Egy mozgó időablakos algoritmus végigpásztázza az árakat, és megtalálja a legolcsóbb összefüggő időszakot bármelyik választott időtartamhoz."
 
 [feature_fallback_title]
 other = "Megbízható adatok"
@@ -80,10 +80,10 @@ other = "Elektromos autó töltése"
 other = "Adja hozzá autóját, majd adja meg az aktuális és a kívánt töltöttséget. A SweetSpot kiszámítja a töltési időt és a legolcsóbb időpontot a csatlakoztatásra."
 
 [feature_deadline_title]
-other = "„Készen ekkorra“ határidő"
+other = "„Készen ekkorra” határidő"
 
 [feature_deadline_desc]
-other = "Egy adott időpontra van rá szüksége? Adjon meg egy „készen ekkorra“ határidőt, és a SweetSpot csak olyan időszakokat választ, amelyek időben befejeződnek."
+other = "Egy adott időpontra van rá szüksége? Adjon meg egy „készen ekkorra” határidőt, és a SweetSpot csak olyan időszakokat választ, amelyek időben befejeződnek."
 
 [feature_power_title]
 other = "Teljesítmény"
@@ -116,7 +116,7 @@ other = "Hogyan működik"
 other = "Válassza ki a készüléket vagy az elektromos autót"
 
 [step1_desc]
-other = "Válasszon egy mentett készüléket vagy az elektromos autóját, vagy állítson be egyéni időtartamot — és opcionálisan egy „készen ekkorra“ határidőt."
+other = "Válasszon egy mentett készüléket vagy az elektromos autóját, vagy állítson be egyéni időtartamot — és opcionálisan egy „készen ekkorra” határidőt."
 
 [step2_title]
 other = "Árak lekérdezése"

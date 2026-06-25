@@ -27,11 +27,11 @@ Cenas ir noderīgas, lai salīdzinātu laika intervālus savā starpā (atrastu,
 {{< /faq >}}
 
 {{< faq question="Vai SweetSpot var palīdzēt uzlādēt manu elektromobili?" >}}
-Jā. Pievieno savu automašīnu — izvēlies to no iebūvētas datubāzes ar aptuveni 1600 elektromobiļiem un uzlādējamiem hibrīdiem, vai ievadi akumulatora ietilpību un uzlādes jaudu manuāli. Pēc tam ievadi pašreizējo un vēlamo uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde aizņems (no akumulatora ietilpības un mazākās no tava auto AC ierobežojuma un mājas lādētāja), kā arī atradīs lētāko logu, kad to pieslēgt.
+Jā. Pievieno savu automašīnu — izvēlies to no iebūvētas datubāzes ar aptuveni 1600 elektromobiļiem un uzlādējamiem hibrīdiem, vai ievadi akumulatora ietilpību un uzlādes jaudu manuāli. Pēc tam ievadi pašreizējo un vēlamo uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde aizņems (no akumulatora ietilpības un mazākās no tava auto AC ierobežojuma un mājas lādētāja), kā arī atradīs lētāko periodu, kad to pieslēgt.
 {{< /faq >}}
 
 {{< faq question="Vai varu nodrošināt, ka tas ir gatavs līdz noteiktam laikam?" >}}
-Jā. Ieslēdz neobligāto termiņu **„Gatavs līdz“** un izvēlies laiku. SweetSpot tad ņem vērā tikai logus, kas pabeidz darbu līdz tam — jebkurai ierīcei vai elektromobiļa uzlādei (piemēram, pilnībā uzlādēts līdz pulksten 7:00 no rīta).
+Jā. Ieslēdz neobligāto termiņu **„Gatavs līdz“** un izvēlies laiku. SweetSpot tad ņem vērā tikai periodus, kas pabeidz darbu līdz tam — jebkurai ierīcei vai elektromobiļa uzlādei (piemēram, pilnībā uzlādēts līdz pulksten 7:00 no rīta).
 {{< /faq >}}
 
 {{< faq question="Vai izmaksas atspoguļo, cik daudz jaudas patērē mana ierīce?" >}}

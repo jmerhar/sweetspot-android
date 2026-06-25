@@ -34,19 +34,19 @@ SweetSpot neobsahuje žiadne analytické SDK, hlásenie chýb ani sledovanie pou
 Môžete sa rozhodnúť zdieľať anonymné štatistiky spoľahlivosti API. Keď je to povolené, aplikácia pravidelne odosiela jednotlivé záznamy požiadaviek pre každý zdroj údajov a cenovú zónu na náš server. Tieto údaje obsahujú:
 
 - Časovú značku API požiadavky
-- Identifikátor cenovej zóny (napr. „NL", „DE-LU")
-- Názov zdroja údajov (napr. „ENTSO-E", „EnergyZero")
+- Identifikátor cenovej zóny (napr. „NL“, „DE-LU“)
+- Názov zdroja údajov (napr. „ENTSO-E“, „EnergyZero“)
 - Typ zariadenia (telefón alebo hodinky)
 - Či bola požiadavka úspešná alebo neúspešná
-- Kategóriu chyby pri neúspechu (napr. „timeout", „chyba servera")
+- Kategóriu chyby pri neúspechu (napr. „timeout“, „chyba servera“)
 - Číslo verzie aplikácie
-- Jazyk aplikácie (napr. „en", „nl")
+- Jazyk aplikácie (napr. „en“, „nl“)
 - Stav platby (skúšobné obdobie, predplatené alebo vypršané)
 - Dobu trvania požiadavky v milisekundách
 
 Tieto údaje **neobsahujú** identifikátory zariadenia, polohu, cenové údaje ani žiadne iné osobné informácie. Slúžia výhradne na zlepšenie spoľahlivosti zdrojov údajov a predvoleného poradia.
 
-Táto funkcia je predvolene vypnutá. Môžete ju kedykoľvek zapnúť alebo vypnúť v Nastavenia.
+Táto funkcia je predvolene vypnutá. Môžete ju kedykoľvek zapnúť alebo vypnúť v Nastaveniach.
 
 ## Open source
 

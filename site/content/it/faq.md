@@ -6,7 +6,7 @@ description: "Domande frequenti su SweetSpot."
 {{< faq question="Quali paesi sono supportati?" >}}
 SweetSpot supporta 30 paesi europei con 43 zone di offerta:
 
-Austria, Belgio, Bulgaria, Croazia, Danimarca (DK1, DK2), Estonia, Finlandia, Francia, Germania, Grecia, Irlanda, Italia (7 zone), Lettonia, Lituania, Lussemburgo, Macedonia del Nord, Montenegro, Norvegia (NO1–NO5), Paesi Bassi, Polonia, Portogallo, Repubblica Ceca, Romania, Serbia, Slovacchia, Slovenia, Spagna, Svezia (SE1–SE4), Svizzera e Ungheria.
+Austria, Belgio, Bulgaria, Cechia, Croazia, Danimarca (DK1, DK2), Estonia, Finlandia, Francia, Germania, Grecia, Irlanda, Italia (7 zone), Lettonia, Lituania, Lussemburgo, Macedonia del Nord, Montenegro, Norvegia (NO1–NO5), Paesi Bassi, Polonia, Portogallo, Romania, Serbia, Slovacchia, Slovenia, Spagna, Svezia (SE1–SE4), Svizzera e Ungheria.
 {{< /faq >}}
 
 {{< faq question="Da dove provengono i prezzi?" >}}

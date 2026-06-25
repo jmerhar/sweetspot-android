@@ -27,11 +27,11 @@ Priserne er nyttige til at sammenligne tidsintervaller indbyrdes (finde ud af, h
 {{< /faq >}}
 
 {{< faq question="Kan SweetSpot hjælpe mig med at oplade min elbil?" >}}
-Ja. Tilføj din bil — vælg den fra en indbygget database med omkring 1.600 elbiler og plug-in-hybrider, eller indtast batteristørrelsen og opladningseffekten manuelt. Indtast derefter din nuværende og ønskede opladningstilstand, så beregner SweetSpot, hvor lang tid opladningen vil tage (ud fra batteristørrelsen og den laveste af bilens AC-grænse og din hjemmelader) og finder det billigste vindue at sætte til opladning.
+Ja. Tilføj din bil — vælg den fra en indbygget database med omkring 1.600 elbiler og plug-in-hybrider, eller indtast batteristørrelsen og opladningseffekten manuelt. Indtast derefter din nuværende og ønskede opladningstilstand, så beregner SweetSpot, hvor lang tid opladningen vil tage (ud fra batteristørrelsen og den laveste af bilens AC-grænse og din hjemmelader) og finder det billigste tidsrum at sætte til opladning.
 {{< /faq >}}
 
 {{< faq question="Kan jeg sikre, at det er klar på et bestemt tidspunkt?" >}}
-Ja. Slå den valgfrie **„klar senest“**-frist til, og vælg et tidspunkt. SweetSpot tager så kun vinduer i betragtning, der bliver færdige inden da — for ethvert apparat eller til opladning af din elbil (for eksempel fuldt opladet kl. 7:00 om morgenen).
+Ja. Slå den valgfrie **„klar senest“**-frist til, og vælg et tidspunkt. SweetSpot tager så kun tidsrum i betragtning, der bliver færdige inden da — for ethvert apparat eller til opladning af din elbil (for eksempel fuldt opladet kl. 7:00 om morgenen).
 {{< /faq >}}
 
 {{< faq question="Afspejler omkostningerne, hvor meget strøm mit apparat bruger?" >}}

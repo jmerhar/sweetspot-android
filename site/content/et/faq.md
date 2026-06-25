@@ -6,7 +6,7 @@ description: "Korduma kippuvad küsimused SweetSpoti kohta."
 {{< faq question="Milliseid riike toetatakse?" >}}
 SweetSpot toetab 30 Euroopa riiki, mis hõlmavad 43 pakkumistsooni:
 
-Austria, Belgia, Bulgaaria, Eesti, Hispaania, Holland, Horvaatia, Iirimaa, Itaalia (7 tsooni), Kreeka, Leedu, Luksemburg, Läti, Makedoonia, Montenegro, Norra (NO1–NO5), Poola, Portugal, Prantsusmaa, Rootsi (SE1–SE4), Rumeenia, Saksamaa, Serbia, Slovakkia, Sloveenia, Soome, Šveits, Taani (DK1, DK2), Tšehhi ja Ungari.
+Austria, Belgia, Bulgaaria, Eesti, Hispaania, Horvaatia, Iirimaa, Itaalia (7 tsooni), Kreeka, Leedu, Luksemburg, Läti, Madalmaad, Montenegro, Norra (NO1–NO5), Poola, Portugal, Prantsusmaa, Põhja-Makedoonia, Rootsi (SE1–SE4), Rumeenia, Saksamaa, Serbia, Slovakkia, Sloveenia, Soome, Šveits, Taani (DK1, DK2), Tšehhi ja Ungari.
 {{< /faq >}}
 
 {{< faq question="Kust hinnad tulevad?" >}}
@@ -14,7 +14,7 @@ Hinnad pärinevad **ENTSO-E Transparency Platformilt**, mis avaldab järgmise p�
 
 - **Spot-Hinta.fi** Põhja- ja Baltimaade tsoonidele (15 tsooni)
 - **Energy-Charts** 15 Euroopa tsoonile
-- **EnergyZero** Madalmadele
+- **EnergyZero** Madalmaadele
 - **aWATTar** Austriale ja Saksamaale
 
 Andmeallikate prioriteedijärjestust saad seadistada seadetes.

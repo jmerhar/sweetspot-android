@@ -26,7 +26,7 @@ other = "Byt språk"
 other = "Hitta den billigaste tiden att köra dina apparater och ladda din elbil"
 
 [hero_subtitle]
-other = "SweetSpot analyserar dynamiska elpriser i 30 europeiska länder och hittar det billigaste tidsfönstret för att köra dina apparater eller ladda din elbil — klart till en tidsgräns om du anger en. Öppen källkod och privat."
+other = "SweetSpot analyserar dynamiska elpriser i 30 europeiska länder och hittar den billigaste tidsperioden för att köra dina apparater eller ladda din elbil — klart till en tidsgräns om du anger en. Öppen källkod och privat."
 
 [download]
 other = "Ladda ned på Google Play"
@@ -47,13 +47,13 @@ other = "Täcker 43 elområden i hela Europa, från Portugal till Finland och fr
 other = "Aktuella priser"
 
 [feature_prices_desc]
-other = "Dagliga elpriser från ENTSO-E Transparency Platform, uppdaterade dagligen."
+other = "Day-ahead-elpriser från ENTSO-E Transparency Platform, uppdaterade dagligen."
 
 [feature_algorithm_title]
 other = "Smart algoritm"
 
 [feature_algorithm_desc]
-other = "En glidande fönsteralgoritm hittar den billigaste sammanhängande perioden för valfri längd."
+other = "En algoritm med glidande tidsperiod hittar den billigaste sammanhängande perioden för valfri längd."
 
 [feature_fallback_title]
 other = "Tillförlitliga data"
@@ -83,7 +83,7 @@ other = "Lägg till din bil och ange aktuell och önskad laddningsnivå. SweetSp
 other = "”Klar senast”-tid"
 
 [feature_deadline_desc]
-other = "Behöver det vara klart till en viss tid? Lägg till en ”klar senast”-tid så väljer SweetSpot bara fönster som hinner bli klara i tid."
+other = "Behöver det vara klart till en viss tid? Lägg till en ”klar senast”-tid så väljer SweetSpot bara perioder som hinner bli klara i tid."
 
 [feature_power_title]
 other = "Effekt"

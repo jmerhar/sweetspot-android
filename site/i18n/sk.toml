@@ -26,7 +26,7 @@ other = "Zmeniť jazyk"
 other = "Nájdite najlacnejší čas na spustenie spotrebičov a nabíjanie elektromobilu"
 
 [hero_subtitle]
-other = "SweetSpot analyzuje dynamické ceny elektriny v 30 európskych krajinách a nájde najlacnejšie okno na spustenie spotrebičov alebo nabíjanie elektromobilu — dokončené do termínu, ak si ho nastavíte. Open source a s dôrazom na súkromie."
+other = "SweetSpot analyzuje dynamické ceny elektriny v 30 európskych krajinách a nájde najlacnejšie obdobie na spustenie spotrebičov alebo nabíjanie elektromobilu — dokončené do termínu, ak si ho nastavíte. Open source a s dôrazom na súkromie."
 
 [download]
 other = "Stiahnuť z Google Play"
@@ -53,7 +53,7 @@ other = "Denné ceny elektriny z platformy ENTSO-E Transparency Platform, aktual
 other = "Inteligentný algoritmus"
 
 [feature_algorithm_desc]
-other = "Algoritmus posuvného okna nájde najlacnejšie súvislé obdobie pre ľubovoľné zvolené trvanie."
+other = "Inteligentný algoritmus prejde celý časový rozsah a nájde najlacnejšie súvislé obdobie pre ľubovoľné zvolené trvanie."
 
 [feature_fallback_title]
 other = "Spoľahlivé dáta"
@@ -83,7 +83,7 @@ other = "Pridajte si auto a zadajte jeho aktuálne a cieľové nabitie. SweetSpo
 other = "Čas „Hotové do“"
 
 [feature_deadline_desc]
-other = "Potrebujete to dokončiť do určitého času? Pridajte termín „hotové do“ a SweetSpot zvolí iba okná, ktoré sa dokončia včas."
+other = "Potrebujete to dokončiť do určitého času? Pridajte termín „hotové do“ a SweetSpot zvolí iba obdobia, ktoré sa dokončia včas."
 
 [feature_power_title]
 other = "Výkon spotrebiča"

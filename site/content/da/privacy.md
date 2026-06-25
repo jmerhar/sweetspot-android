@@ -34,13 +34,13 @@ SweetSpot indeholder ingen SDK'er til analyse, fejlrapportering eller sporing af
 Du kan tilmelde dig deling af anonym API-pålidelighedsstatistik. Når funktionen er aktiveret, sender appen med jævne mellemrum individuelle poster for hver forespørgsel til en datakilde og et budområde til vores server. Disse data indeholder:
 
 - Tidsstempel for API-forespørgslen
-- Budområdets identifikator (f.eks. „NL", „DE-LU")
-- Datakildens navn (f.eks. „ENTSO-E", „EnergyZero")
+- Budområdets identifikator (f.eks. „NL“, „DE-LU“)
+- Datakildens navn (f.eks. „ENTSO-E“, „EnergyZero“)
 - Enhedstype (telefon eller ur)
 - Om forespørgslen lykkedes eller fejlede
-- Fejlkategori ved fejl (f.eks. „timeout", „server error")
+- Fejlkategori ved fejl (f.eks. „timeout“, „server error“)
 - Appens versionsnummer
-- Appens sprog (f.eks. „en", „nl")
+- Appens sprog (f.eks. „en“, „nl“)
 - Betalingsstatus (prøveperiode, abonneret eller udløbet)
 - Forespørgslens varighed i millisekunder
 

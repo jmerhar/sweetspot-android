@@ -53,7 +53,7 @@ other = "Preços de eletricidade do dia seguinte da plataforma ENTSO-E Transpare
 other = "Algoritmo inteligente"
 
 [feature_algorithm_desc]
-other = "Um algoritmo de janela deslizante encontra o período contíguo mais barato para qualquer duração que escolher."
+other = "Um algoritmo deslizante percorre o tempo e encontra o período contíguo mais barato para qualquer duração que escolher."
 
 [feature_fallback_title]
 other = "Dados fiáveis"

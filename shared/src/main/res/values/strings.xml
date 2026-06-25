@@ -129,6 +129,6 @@
     <string name="icon_light">Light</string>
     <string name="icon_device">Device</string>
     <string name="icon_home">Home</string>
-    <string name="icon_favorite">Favorite</string>
+    <string name="icon_favorite">Favourite</string>
     <string name="icon_other">Other</string>
 </resources>

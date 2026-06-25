@@ -34,13 +34,13 @@ SweetSpot neobsahuje žádné SDK pro analytiku, hlášení chyb ani sledování
 Můžete se přihlásit ke sdílení anonymní statistiky spolehlivosti API. Po aktivaci aplikace pravidelně odesílá jednotlivé záznamy o každém požadavku na zdroj dat a obchodní zónu na náš server. Tato data obsahují:
 
 - Časové razítko API požadavku
-- Identifikátor obchodní zóny (např. „NL", „DE-LU")
-- Název zdroje dat (např. „ENTSO-E", „EnergyZero")
+- Identifikátor obchodní zóny (např. „NL“, „DE-LU“)
+- Název zdroje dat (např. „ENTSO-E“, „EnergyZero“)
 - Typ zařízení (telefon nebo hodinky)
 - Zda požadavek uspěl, či selhal
-- Kategorii chyby při selhání (např. „timeout", „server error")
+- Kategorii chyby při selhání (např. „timeout“, „server error“)
 - Verzi aplikace
-- Jazyk aplikace (např. „en", „nl")
+- Jazyk aplikace (např. „en“, „nl“)
 - Stav platby (zkušební období, předplaceno nebo vypršelo)
 - Dobu trvání požadavku v milisekundách
 

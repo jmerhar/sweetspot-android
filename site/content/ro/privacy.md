@@ -34,13 +34,13 @@ SweetSpot nu include niciun SDK de analiză, raportare a erorilor sau urmărire 
 Poți opta pentru partajarea statisticilor anonime de fiabilitate API. Când este activată, aplicația trimite periodic înregistrări individuale ale cererilor pentru fiecare sursă de date și zonă de licitație către serverul nostru. Aceste date conțin:
 
 - Marca temporală a cererii API
-- Identificatorul zonei de licitație (de ex. „NL", „DE-LU")
-- Numele sursei de date (de ex. „ENTSO-E", „EnergyZero")
+- Identificatorul zonei de licitație (de ex. „NL”, „DE-LU”)
+- Numele sursei de date (de ex. „ENTSO-E”, „EnergyZero”)
 - Tipul dispozitivului (telefon sau ceas)
 - Dacă cererea a reușit sau a eșuat
-- Categoria erorii în caz de eșec (de ex. „expirare timp", „eroare server")
+- Categoria erorii în caz de eșec (de ex. „expirare timp”, „eroare server”)
 - Numărul versiunii aplicației
-- Limba aplicației (de ex. „en", „nl")
+- Limba aplicației (de ex. „en”, „nl”)
 - Starea plății (perioadă de probă, abonat sau expirat)
 - Durata cererii în milisecunde
 

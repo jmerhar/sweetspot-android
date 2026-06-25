@@ -27,11 +27,11 @@ Prisene er nyttige for å sammenligne tidsluker innbyrdes (finne når strøm er 
 {{< /faq >}}
 
 {{< faq question="Kan SweetSpot hjelpe meg med å lade elbilen min?" >}}
-Ja. Legg til bilen din — velg den fra en innebygd database med rundt 1 600 elbiler og ladbare hybrider, eller oppgi batteristørrelse og ladeeffekt manuelt. Oppgi deretter nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta (ut fra batteristørrelsen og den laveste av bilens AC-grense og din egen lader) og finner det billigste vinduet å koble til.
+Ja. Legg til bilen din — velg den fra en innebygd database med rundt 1 600 elbiler og ladbare hybrider, eller oppgi batteristørrelse og ladeeffekt manuelt. Oppgi deretter nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta (ut fra batteristørrelsen og den laveste av bilens AC-grense og din egen lader) og finner den billigste perioden å koble til.
 {{< /faq >}}
 
 {{< faq question="Kan jeg sørge for at det er ferdig innen et bestemt tidspunkt?" >}}
-Ja. Slå på den valgfrie **«ferdig innen»**-fristen og velg et tidspunkt. SweetSpot vurderer da bare vinduer som blir ferdige innen den fristen — for et hvilket som helst apparat eller for lading av elbilen din (for eksempel fulladet innen kl. 7:00 om morgenen).
+Ja. Slå på den valgfrie **«ferdig innen»**-fristen og velg et tidspunkt. SweetSpot vurderer da bare perioder som blir ferdige innen den fristen — for et hvilket som helst apparat eller for lading av elbilen din (for eksempel fulladet innen kl. 7:00 om morgenen).
 {{< /faq >}}
 
 {{< faq question="Gjenspeiler kostnadene hvor mye strøm apparatet mitt bruker?" >}}

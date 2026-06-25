@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Iestatījumi</string>
     <string name="cd_back">Atpakaļ</string>
-    <string name="main_description">SweetSpot palīdz taupīt naudu, atrodot lētāko laiku jūsu ierīču darbināšanai. Viēnkārši norādiet, cik ilgi jūsu ierīcei jādarbojas, un lietotne pārskatīs nākamo 24 stundu dinamiskās elektrības cenas, lai atrastu labāko periodu. Varat arī saglabāt iecienītākās ierīces iestatījumos ātrai piekļuvei.</string>
+    <string name="main_description">SweetSpot palīdz taupīt naudu, atrodot lētāko laiku jūsu ierīču darbināšanai. Vienkārši norādiet, cik ilgi jūsu ierīcei jādarbojas, un lietotne pārskatīs nākamo 24 stundu dinamiskās elektrības cenas, lai atrastu labāko periodu. Varat arī saglabāt iecienītākās ierīces iestatījumos ātrai piekļuvei.</string>
     <string name="main_find_button">Atrast lētāko periodu</string>
     <string name="main_searching">Meklē…</string>
     <string name="main_add_appliances">Pievienojiet savas ierīces</string>
@@ -24,7 +24,7 @@
     <string name="result_cost_breakdown">Izmaksu sadalījums</string>
     <string name="cd_collapse">Savērt</string>
     <string name="cd_expand">Izvērst</string>
-    <string name="result_upcoming_prices">Tuvošās cenas</string>
+    <string name="result_upcoming_prices">Gaidāmās cenas</string>
     <string name="result_disclaimer">Izmaksas ir norādītas 1 kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="result_data_source">\nDatu avots: %s</string>
     <string name="result_price_zone">\nCenu zona: %s</string>

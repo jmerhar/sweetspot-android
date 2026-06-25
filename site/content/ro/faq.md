@@ -31,7 +31,7 @@ Da. Adaugă-ți mașina — alege-o dintr-o bază de date integrată cu aproxima
 {{< /faq >}}
 
 {{< faq question="Mă pot asigura că este gata până la o anumită oră?" >}}
-Da. Activează termenul opțional **„gata până la“** și alege o oră. SweetSpot ia atunci în considerare doar intervalele care se termină până atunci — pentru orice electrocasnic sau pentru încărcarea mașinii tale electrice (de exemplu, complet încărcată până la ora 7:00 dimineața).
+Da. Activează termenul opțional **„gata până la”** și alege o oră. SweetSpot ia atunci în considerare doar intervalele care se termină până atunci — pentru orice electrocasnic sau pentru încărcarea mașinii tale electrice (de exemplu, complet încărcată până la ora 7:00 dimineața).
 {{< /faq >}}
 
 {{< faq question="Costurile reflectă cât de multă energie consumă electrocasnicul meu?" >}}

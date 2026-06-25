@@ -53,7 +53,7 @@ other = "Järgmise päeva elektrihinnad ENTSO-E Transparency Platformilt, igapä
 other = "Nutikas algoritm"
 
 [feature_algorithm_desc]
-other = "Libiseva akna algoritm leiab soodsaima järjestikuse perioodi mis tahes valitud kestuse jaoks."
+other = "Liuguv algoritm libiseb üle ajatelje ja leiab soodsaima järjestikuse ajavahemiku mis tahes valitud kestuse jaoks."
 
 [feature_fallback_title]
 other = "Usaldusväärsed andmed"

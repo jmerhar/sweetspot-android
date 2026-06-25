@@ -27,11 +27,11 @@ Ceny jsou užitečné pro vzájemné srovnání časových úseků (zjištění,
 {{< /faq >}}
 
 {{< faq question="Může mi SweetSpot pomoci s nabíjením elektromobilu?" >}}
-Ano. Přidejte své vozidlo — vyberte je z vestavěné databáze přibližně 1 600 elektromobilů a plug-in hybridů, nebo ručně zadejte kapacitu baterie a nabíjecí výkon. Poté zadejte aktuální a cílovou úroveň nabití a SweetSpot vypočítá, jak dlouho bude nabíjení trvat (z kapacity baterie a z nižší z hodnot AC limitu vašeho auta a vaší domácí nabíječky), a najde nejlevnější okno pro zapojení.
+Ano. Přidejte své vozidlo — vyberte je z vestavěné databáze přibližně 1 600 elektromobilů a plug-in hybridů, nebo ručně zadejte kapacitu baterie a nabíjecí výkon. Poté zadejte aktuální a cílovou úroveň nabití a SweetSpot vypočítá, jak dlouho bude nabíjení trvat (z kapacity baterie a z nižší z hodnot AC limitu vašeho auta a vaší domácí nabíječky), a najde nejlevnější období pro zapojení.
 {{< /faq >}}
 
 {{< faq question="Mohu zajistit, aby to bylo hotové do určité doby?" >}}
-Ano. Zapněte volitelný termín **„hotovo do“** a vyberte čas. SweetSpot pak zváží pouze ta okna, která se do té doby dokončí — pro libovolný spotřebič nebo pro nabíjení elektromobilu (například plně nabito do 7:00 ráno).
+Ano. Zapněte volitelný termín **„hotovo do“** a vyberte čas. SweetSpot pak zváží pouze ta období, která se do té doby dokončí — pro libovolný spotřebič nebo pro nabíjení elektromobilu (například plně nabito do 7:00 ráno).
 {{< /faq >}}
 
 {{< faq question="Odrážejí náklady, kolik energie můj spotřebič spotřebuje?" >}}
@@ -53,7 +53,7 @@ SweetSpot je k dispozici na [Google Play](https://play.google.com/store/apps/det
 {{< /faq >}}
 
 {{< faq question="Které jazyky jsou podporovány?" >}}
-SweetSpot je k dispozici ve 25 evropských jazycích: angličtina, bulharština, čeština, dánština, estonština, finština, francouzština, chorvatština, italština, litevština, lotyština, maďarština, makedonština, němčina, nizozemština, norština (bokmal), polština, portugalština, rumunština, řečtina, slovenčina, slovinština, srbština, španělština a švédština.
+SweetSpot je k dispozici ve 25 evropských jazycích: angličtina, bulharština, čeština, dánština, estonština, finština, francouzština, chorvatština, italština, litevština, lotyština, maďarština, makedonština, němčina, nizozemština, norština (bokmål), polština, portugalština, rumunština, řečtina, slovenština, slovinština, srbština, španělština a švédština.
 
 Aplikace ve výchozím nastavení používá jazyk vašeho systému. Jazyk můžete také ručně změnit v Nastavení.
 {{< /faq >}}

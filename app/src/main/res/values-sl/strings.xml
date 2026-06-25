@@ -114,10 +114,10 @@
     <string name="cd_refresh">Osveži</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Deli API statistike</string>
-    <string name="settings_stats_description">Pomagajte izboljšati zanesljivost podatkovnih virov z deljenjem anonimnih statistik uspehov/napak API. Osebni podatki se ne zbirajo.</string>
+    <string name="settings_stats_title">Deljenje statistike API-jev</string>
+    <string name="settings_stats_description">Pomagajte izboljšati zanesljivost virov podatkov z deljenjem anonimne statistike uspehov in napak API-jev. Osebni podatki se ne zbirajo.</string>
     <string name="stats_prompt_title">Pomagajte izboljšati SweetSpot?</string>
-    <string name="stats_prompt_message">Delite anonimno API statistiko za izboljšanje zanesljivosti virov podatkov. Deljeni so samo števci uspešnih/neuspešnih zahtevkov po viru — brez osebnih podatkov. To lahko kadar koli spremenite v nastavitvah.</string>
+    <string name="stats_prompt_message">Delite anonimno statistiko API-jev za izboljšanje zanesljivosti virov podatkov. Deljeni so samo števci uspešnih in neuspešnih zahtevkov po viru — brez osebnih podatkov. To lahko kadar koli spremenite v nastavitvah.</string>
     <string name="stats_prompt_enable">Vklopi</string>
     <string name="stats_prompt_dismiss">Ne, hvala</string>
 
@@ -127,14 +127,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Preizkusno obdobje se je končalo</string>
-    <string name="paywall_description">SweetSpot najde najcenejši čas za uporabo vaših naprav z uporabo cen električne energije v realnem času v 30 evropskih državah. Naročite se, da boste še naprej iskali najugodnejši čas za vaše naprave.</string>
+    <string name="paywall_description">SweetSpot najde najcenejši čas za uporabo vaših aparatov z uporabo cen električne energije v realnem času v 30 evropskih državah. Naročite se, da boste še naprej iskali najugodnejši čas za svoje aparate.</string>
     <string name="paywall_unlock">Naroči se na SweetSpot</string>
     <string name="paywall_unlock_price">Naročnina za %s/leto</string>
     <string name="paywall_restore">Obnovi naročnino</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Hvala!</string>
-    <string name="thank_you_message">Vaša naročnina je zdaj aktivna. Uživajte v iskanju najugodnejšega časa za vaše naprave!</string>
+    <string name="thank_you_message">Vaša naročnina je zdaj aktivna. Uživajte v iskanju najugodnejšega časa za svoje aparate!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Preizkusno obdobje: še %d dan</item>

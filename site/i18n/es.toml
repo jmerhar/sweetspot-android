@@ -53,7 +53,7 @@ other = "Precios diarios de electricidad de la plataforma ENTSO-E Transparency P
 other = "Algoritmo inteligente"
 
 [feature_algorithm_desc]
-other = "Un algoritmo de ventana deslizante encuentra el periodo continuo más barato para cualquier duración que elijas."
+other = "Un algoritmo de desplazamiento temporal encuentra el periodo continuo más barato para cualquier duración que elijas."
 
 [feature_fallback_title]
 other = "Datos fiables"

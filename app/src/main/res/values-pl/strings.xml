@@ -18,7 +18,7 @@
     <string name="result_total_cost">Koszt całkowity</string>
     <string name="result_avg_price">Śr. cena</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s więcej niż najtańsze</string>
+    <string name="result_cost_above_cheapest">o %1$s więcej niż najtańsza opcja</string>
     <string name="result_earlier">Wcześniej</string>
     <string name="result_cheaper">Taniej</string>
     <string name="result_cost_breakdown">Podział kosztów</string>
@@ -50,7 +50,7 @@
     <string name="cd_move_down">Przesuń w dół</string>
     <string name="settings_reset_defaults">Przywróć domyślne</string>
     <string name="settings_appliances">Urządzenia</string>
-    <string name="settings_appliances_description">Dodaj tutaj swoje urządzenia domowe dla szybkiego dostępu. Możesz też dodać konkretne programy, np. Zmywarka Eco, Zmywarka Szybki, Pralka Bawełna.</string>
+    <string name="settings_appliances_description">Dodaj tutaj swoje urządzenia domowe dla szybkiego dostępu. Możesz też dodać konkretne programy, np. Zmywarka Eco, Zmywarka Szybka, Pralka Bawełna.</string>
     <string name="settings_add_appliance">Dodaj urządzenie</string>
     <string name="settings_timezone">Strefa czasowa</string>
     <string name="settings_theme">Motyw</string>
@@ -152,7 +152,7 @@
     <string name="ev_battery_label">Pojemność akumulatora</string>
     <string name="ev_power_label">Maks. moc ładowania AC</string>
     <string name="ev_home_charger">Ładowarka domowa</string>
-    <string name="ev_home_charger_description">Moc Twojej ścianki lub ładowarki. Ładowanie odbywa się z niższej z dwóch wartości — tej lub maksymalnej mocy auta.</string>
+    <string name="ev_home_charger_description">Moc Twojej ładowarki ściennej (wallboxa). Ładowanie odbywa się z niższej z dwóch wartości — tej lub maksymalnej mocy auta.</string>
     <string name="ev_charger_custom">Własna</string>
     <string name="ev_default_target">Domyślny poziom docelowy: %d%%</string>
     <string name="ev_current_soc">Obecny poziom: %d%%</string>

@@ -153,8 +153,8 @@
     <string name="ev_default_target">Carga objetivo predeterminada: %d%%</string>
     <string name="ev_current_soc">Carga actual: %d%%</string>
     <string name="ev_target_soc">Carga objetivo: %d%%</string>
-    <string name="ev_deadline_toggle">Listo para</string>
-    <string name="ev_deadline_hint">Listo para las %s</string>
+    <string name="ev_deadline_toggle">Listo a las</string>
+    <string name="ev_deadline_hint">Listo a las %s</string>
     <string name="ev_charging_estimate">Tiempo de carga: %1$s a %2$s kW</string>
     <string name="dialog_add_vehicle">Añadir vehículo</string>
     <string name="dialog_edit_vehicle">Editar vehículo</string>

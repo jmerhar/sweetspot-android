@@ -34,19 +34,19 @@ SweetSpot ne uključuje SDK-ove za analitiku, prijavu grešaka ni praćenje kori
 Možete se uključiti u dijeljenje anonimne statistike pouzdanosti API-ja. Kada je uključeno, aplikacija povremeno šalje pojedinačne zapise za svaki zahtjev prema izvoru podataka i ponudbenoj zoni na naš poslužitelj. Ti podaci sadrže:
 
 - Vremensku oznaku API zahtjeva
-- Oznaku ponudbene zone (npr. „NL", „DE-LU")
-- Naziv izvora podataka (npr. „ENTSO-E", „EnergyZero")
+- Oznaku ponudbene zone (npr. „NL“, „DE-LU“)
+- Naziv izvora podataka (npr. „ENTSO-E“, „EnergyZero“)
 - Vrstu uređaja (telefon ili sat)
 - Je li zahtjev uspio ili nije
-- Kategoriju greške u slučaju neuspjeha (npr. „timeout", „server error")
+- Kategoriju greške u slučaju neuspjeha (npr. „timeout“, „server error“)
 - Verziju aplikacije
-- Jezik aplikacije (npr. „en", „nl")
+- Jezik aplikacije (npr. „en“, „nl“)
 - Status plaćanja (probno razdoblje, pretplaćeno ili isteklo)
 - Trajanje zahtjeva u milisekundama
 
 Ti podaci **ne** sadrže identifikatore uređaja, lokaciju, podatke o cijenama ni bilo koje druge osobne podatke. Koriste se isključivo za poboljšanje pouzdanosti izvora podataka i njihovog zadanog redoslijeda.
 
-Ova značajka je prema zadanim postavkama isključena. Možete je uključiti ili isključiti u bilo kojem trenutku u Postavke.
+Ova značajka je prema zadanim postavkama isključena. Možete je uključiti ili isključiti u bilo kojem trenutku u Postavkama.
 
 ## Otvoreni kod
 

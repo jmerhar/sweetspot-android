@@ -27,11 +27,11 @@ Kainos naudingos norint palyginti laiko intervalus tarpusavyje (rasti, kada elek
 {{< /faq >}}
 
 {{< faq question="Ar SweetSpot gali padėti įkrauti elektromobilį?" >}}
-Taip. Pridėkite savo automobilį — pasirinkite jį iš integruotos maždaug 1 600 elektromobilių ir įkraunamų hibridų duomenų bazės arba rankiniu būdu įveskite baterijos talpą ir įkrovimo galią. Tada įveskite dabartinį ir norimą įkrovos lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas (pagal baterijos talpą ir mažesniąją iš dviejų galių — automobilio AC ribos arba jūsų namų įkroviklio) ir suras pigiausią langą prijungti.
+Taip. Pridėkite savo automobilį — pasirinkite jį iš integruotos maždaug 1 600 elektromobilių ir įkraunamų hibridų duomenų bazės arba rankiniu būdu įveskite baterijos talpą ir įkrovimo galią. Tada įveskite dabartinį ir norimą įkrovos lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas (pagal baterijos talpą ir mažesniąją iš dviejų galių — automobilio AC ribos arba jūsų namų įkroviklio) ir suras pigiausią laikotarpį prijungti.
 {{< /faq >}}
 
 {{< faq question="Ar galiu užtikrinti, kad bus paruošta iki tam tikro laiko?" >}}
-Taip. Įjunkite neprivalomą terminą **„baigti iki“** ir pasirinkite laiką. Tada SweetSpot atsižvelgs tik į tuos langus, kurie suspės baigtis iki nurodyto laiko — bet kuriam prietaisui ar elektromobilio įkrovimui (pavyzdžiui, visiškai įkrauta iki 7:00 ryto).
+Taip. Įjunkite neprivalomą terminą **„baigti iki“** ir pasirinkite laiką. Tada SweetSpot atsižvelgs tik į tuos laikotarpius, kurie suspės baigtis iki nurodyto laiko — bet kuriam prietaisui ar elektromobilio įkrovimui (pavyzdžiui, visiškai įkrauta iki 7:00 ryto).
 {{< /faq >}}
 
 {{< faq question="Ar išlaidos atspindi, kiek galios suvartoja mano prietaisas?" >}}

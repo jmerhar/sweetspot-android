@@ -27,11 +27,11 @@ Ceny sú užitočné na vzájomné porovnanie časových úsekov (zistenie, kedy
 {{< /faq >}}
 
 {{< faq question="Pomôže mi SweetSpot nabíjať elektromobil?" >}}
-Áno. Pridajte si vozidlo — vyberte ho z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov alebo ručne zadajte kapacitu batérie a nabíjací výkon. Potom zadajte aktuálnu a cieľovú úroveň nabitia a SweetSpot vypočíta, ako dlho bude nabíjanie trvať (z kapacity batérie a nižšej z hodnôt AC limitu vášho auta a vašej domácej nabíjačky), a nájde najlacnejšie okno na zapojenie.
+Áno. Pridajte si vozidlo — vyberte ho z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov alebo ručne zadajte kapacitu batérie a nabíjací výkon. Potom zadajte aktuálnu a cieľovú úroveň nabitia a SweetSpot vypočíta, ako dlho bude nabíjanie trvať (z kapacity batérie a nižšej z hodnôt AC limitu vášho auta a vašej domácej nabíjačky), a nájde najlacnejšie obdobie na zapojenie.
 {{< /faq >}}
 
 {{< faq question="Môžem zaistiť, aby to bolo hotové do určitého času?" >}}
-Áno. Zapnite voliteľný termín **„hotové do“** a vyberte čas. SweetSpot potom zohľadní iba okná, ktoré sa dovtedy dokončia — pre ľubovoľný spotrebič alebo pri nabíjaní elektromobilu (napríklad plne nabité do 7:00 ráno).
+Áno. Zapnite voliteľný termín **„hotové do“** a vyberte čas. SweetSpot potom zohľadní iba obdobia, ktoré sa dovtedy dokončia — pre ľubovoľný spotrebič alebo pri nabíjaní elektromobilu (napríklad plne nabité do 7:00 ráno).
 {{< /faq >}}
 
 {{< faq question="Zohľadňujú náklady, koľko energie môj spotrebič spotrebuje?" >}}

@@ -53,7 +53,7 @@ other = "Dnevne cijene električne energije s platforme ENTSO-E Transparency Pla
 other = "Pametan algoritam"
 
 [feature_algorithm_desc]
-other = "Algoritam s klizajućim prozorom pronalazi najjeftinije neprekinuto razdoblje za bilo koje trajanje."
+other = "Klizni algoritam pronalazi najjeftinije neprekinuto razdoblje za bilo koje trajanje."
 
 [feature_fallback_title]
 other = "Pouzdani podaci"

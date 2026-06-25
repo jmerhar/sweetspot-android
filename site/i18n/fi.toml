@@ -53,7 +53,7 @@ other = "Seuraavan päivän sähköhinnat ENTSO-E Transparency Platformilta, pä
 other = "Älykäs algoritmi"
 
 [feature_algorithm_desc]
-other = "Liukuvan ikkunan algoritmi löytää edullisimman yhtenäisen jakson mille tahansa valitsemallesi kestolle."
+other = "Aikajanaa läpikäyvä algoritmi löytää edullisimman yhtenäisen ajanjakson mille tahansa valitsemallesi kestolle."
 
 [feature_fallback_title]
 other = "Luotettavaa dataa"

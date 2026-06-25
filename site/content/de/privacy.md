@@ -34,13 +34,13 @@ SweetSpot enthält keine Analytics-SDKs, Absturzberichte oder Nutzungsverfolgung
 Du kannst dich dafür entscheiden, anonyme API-Zuverlässigkeitsstatistiken zu teilen. Wenn aktiviert, sendet die App in regelmäßigen Abständen individuelle Anfrage-Datensätze für jede Datenquelle und Gebotszone an unseren Server. Diese Daten enthalten:
 
 - Zeitstempel der API-Anfrage
-- Gebotszonen-Kennung (z.B. „NL", „DE-LU")
-- Name der Datenquelle (z.B. „ENTSO-E", „EnergyZero")
+- Gebotszonen-Kennung (z.B. „NL“, „DE-LU“)
+- Name der Datenquelle (z.B. „ENTSO-E“, „EnergyZero“)
 - Gerätetyp (Telefon oder Uhr)
 - Ob die Anfrage erfolgreich war oder fehlgeschlagen ist
-- Fehlerkategorie bei Fehlschlag (z.B. „Timeout", „Serverfehler")
+- Fehlerkategorie bei Fehlschlag (z.B. „Timeout“, „Serverfehler“)
 - App-Versionsnummer
-- App-Sprache (z.B. „en", „nl")
+- App-Sprache (z.B. „en“, „nl“)
 - Zahlungsstatus (Testphase, Abonnement oder abgelaufen)
 - Anfragedauer in Millisekunden
 

@@ -45,7 +45,7 @@
     <string name="settings_country">Pays</string>
     <string name="settings_select_zone">Sélectionner une zone</string>
     <string name="settings_data_sources">Sources de données</string>
-    <string name="settings_data_sources_description">Les prix sont récupérés dans cet ordre. Si l\'une échoue, la suivante est essayée.</string>
+    <string name="settings_data_sources_description">Les prix sont récupérés dans cet ordre. Si l\'une échoue, la suivante est utilisée.</string>
     <string name="cd_move_up">Monter</string>
     <string name="cd_move_down">Descendre</string>
     <string name="settings_reset_defaults">Rétablir les valeurs par défaut</string>

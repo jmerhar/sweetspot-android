@@ -21,7 +21,7 @@ Je kunt de prioriteitsvolgorde van gegevensbronnen instellen via de instellingen
 {{< /faq >}}
 
 {{< faq question="Zijn de prijzen nauwkeurig?" >}}
-SweetSpot toont **day-ahead spotprijzen** — de groothandelprijzen voor elektriciteit die de dag ervoor door de markt worden bepaald. Deze prijzen zijn **exclusief** btw, energiebelasting, netwerkkosten en leveranciersmarge, die per land en aanbieder verschillen.
+SweetSpot toont **day-ahead spotprijzen** — de groothandelsprijzen voor elektriciteit die de dag ervoor door de markt worden bepaald. Deze prijzen zijn **exclusief** btw, energiebelasting, netwerkkosten en leveranciersmarge, die per land en aanbieder verschillen.
 
 De prijzen zijn nuttig om tijdsloten met elkaar te vergelijken (vinden wanneer stroom het goedkoopst is), wat het primaire doel van de app is. De kosten worden standaard per 1 kW belasting getoond; stel het vermogen van een apparaat in, of laad een elektrische auto, en de raming weerspiegelt de werkelijke belasting. Prijzen van morgen zijn doorgaans beschikbaar na 13:00 CET.
 {{< /faq >}}
@@ -53,7 +53,7 @@ SweetSpot is beschikbaar op [Google Play](https://play.google.com/store/apps/det
 {{< /faq >}}
 
 {{< faq question="Welke talen worden ondersteund?" >}}
-SweetSpot is beschikbaar in 25 Europese talen: Bulgaars, Tsjechisch, Deens, Duits, Grieks, Engels, Spaans, Estlands, Fins, Frans, Kroatisch, Hongaars, Italiaans, Litouws, Lets, Macedonisch, Noors (Bokmål), Nederlands, Pools, Portugees, Roemeens, Slowaaks, Sloveens, Servisch en Zweeds.
+SweetSpot is beschikbaar in 25 Europese talen: Bulgaars, Tsjechisch, Deens, Duits, Grieks, Engels, Spaans, Ests, Fins, Frans, Kroatisch, Hongaars, Italiaans, Litouws, Lets, Macedonisch, Noors (Bokmål), Nederlands, Pools, Portugees, Roemeens, Slowaaks, Sloveens, Servisch en Zweeds.
 
 De app gebruikt standaard je systeemtaal. Je kunt de taal ook handmatig instellen via Instellingen.
 {{< /faq >}}

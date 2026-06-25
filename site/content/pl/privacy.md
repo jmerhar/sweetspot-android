@@ -34,13 +34,13 @@ SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów a
 Możesz wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności API. Po włączeniu tej funkcji aplikacja okresowo wysyła na nasz serwer indywidualne rekordy zapytań dla każdego źródła danych i obszaru rynkowego. Dane te zawierają:
 
 - Znacznik czasu zapytania API
-- Identyfikator obszaru rynkowego (np. „NL", „DE-LU")
-- Nazwę źródła danych (np. „ENTSO-E", „EnergyZero")
+- Identyfikator obszaru rynkowego (np. „NL”, „DE-LU”)
+- Nazwę źródła danych (np. „ENTSO-E”, „EnergyZero”)
 - Typ urządzenia (telefon lub zegarek)
 - Czy zapytanie zakończyło się sukcesem czy błędem
-- Kategorię błędu w przypadku niepowodzenia (np. „przekroczenie czasu", „błąd serwera")
+- Kategorię błędu w przypadku niepowodzenia (np. „przekroczenie czasu”, „błąd serwera”)
 - Numer wersji aplikacji
-- Język aplikacji (np. „en", „nl")
+- Język aplikacji (np. „en”, „nl”)
 - Status płatności (okres próbny, subskrypcja lub wygasły)
 - Czas trwania zapytania w milisekundach
 

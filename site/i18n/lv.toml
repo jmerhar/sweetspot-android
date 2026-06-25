@@ -1,8 +1,8 @@
 [skip_to_content]
-other = "Pariet uz saturu"
+other = "Pāriet uz saturu"
 
 [nav_home]
-other = "Sakums"
+other = "Sākums"
 
 [nav_menu]
 other = "Izvēlne"
@@ -26,7 +26,7 @@ other = "Mainīt valodu"
 other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei"
 
 [hero_subtitle]
-other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod izdevīgāko laika logu tavu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestati. Atvērtā koda un privātumu respektējoša lietotne."
+other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod izdevīgāko laika periodu tavu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestati. Atvērtā koda un privātumu respektējoša lietotne."
 
 [download]
 other = "Iegūt pakalpojumā Google Play"
@@ -53,7 +53,7 @@ other = "Nākamās dienas elektrības cenas no ENTSO-E Transparency Platform, at
 other = "Viedais algoritms"
 
 [feature_algorithm_desc]
-other = "Slīdošā loga algoritms atrod lētāko nepārtraukto periodu jebkuram izvēlētajam ilgumam."
+other = "Slīdošās analīzes algoritms atrod lētāko nepārtraukto periodu jebkuram izvēlētajam ilgumam."
 
 [feature_fallback_title]
 other = "Uzticami dati"
@@ -83,7 +83,7 @@ other = "Pievieno savu automašīnu un ievadi tās pašreizējo un vēlamo uzlā
 other = "Termiņš „Gatavs līdz“"
 
 [feature_deadline_desc]
-other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot izvēlēsies tikai logus, kas paspēj pabeigt laikā."
+other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot izvēlēsies tikai periodus, kas paspēj pabeigt laikā."
 
 [feature_power_title]
 other = "Jaudas norāde"
@@ -161,7 +161,7 @@ other = "Lētākā perioda rezultāts ar sākuma laiku, kopējām izmaksām un i
 other = "Sākuma ekrāns ar ierīcēm, ilguma izvēli un pogu Meklēt"
 
 [screenshot_3_alt]
-other = "Tuvošās elektrības cenas horizontālā joslu diagrammā"
+other = "Gaidāmās elektrības cenas horizontālā joslu diagrammā"
 
 [screenshot_4_alt]
 other = "Iestatījumu ekrāns ar saglabātām ierīcēm, elektromobiļa uzlādi, valodu, valsti un laika joslu"

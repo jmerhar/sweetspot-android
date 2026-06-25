@@ -26,7 +26,7 @@ other = "Zmień język"
 other = "Znajdź najtańszy czas na uruchomienie urządzeń i ładowanie auta elektrycznego"
 
 [hero_subtitle]
-other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańsze okno na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, jeśli go ustawisz. Otwartoźródłowa i prywatna."
+other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańszy okres na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, jeśli go ustawisz. Otwartoźródłowa i prywatna."
 
 [download]
 other = "Pobierz z Google Play"
@@ -53,7 +53,7 @@ other = "Ceny dnia następnego z platformy ENTSO-E Transparency Platform, aktual
 other = "Inteligentny algorytm"
 
 [feature_algorithm_desc]
-other = "Algorytm okna przesuwnego znajduje najtańszy ciągły okres dla dowolnie wybranego czasu trwania."
+other = "Algorytm przesuwający się po osi czasu znajduje najtańszy ciągły okres dla dowolnie wybranego czasu trwania."
 
 [feature_fallback_title]
 other = "Niezawodne dane"
@@ -80,10 +80,10 @@ other = "Ładowanie auta elektrycznego"
 other = "Dodaj swój samochód, a następnie podaj obecny i docelowy poziom naładowania. SweetSpot obliczy czas ładowania i najtańszą porę na podłączenie."
 
 [feature_deadline_title]
-other = "Termin „Gotowe do“"
+other = "Termin „Gotowe do”"
 
 [feature_deadline_desc]
-other = "Musi być gotowe na określoną godzinę? Dodaj termin „gotowe do“, a SweetSpot wybierze tylko te okna, które zakończą się na czas."
+other = "Musi być gotowe na określoną godzinę? Dodaj termin „gotowe do”, a SweetSpot wybierze tylko te okresy, które zakończą się na czas."
 
 [feature_power_title]
 other = "Moc znamionowa"
@@ -116,7 +116,7 @@ other = "Jak to działa"
 other = "Wybierz urządzenie lub auto elektryczne"
 
 [step1_desc]
-other = "Wybierz zapisane urządzenie lub swoje auto elektryczne, albo ustaw własny czas trwania — i opcjonalnie termin „gotowe do“."
+other = "Wybierz zapisane urządzenie lub swoje auto elektryczne, albo ustaw własny czas trwania — i opcjonalnie termin „gotowe do”."
 
 [step2_title]
 other = "Skanuj ceny"

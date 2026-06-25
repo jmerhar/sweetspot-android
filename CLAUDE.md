@@ -294,6 +294,7 @@ Icons use [Material Symbols](https://fonts.google.com/icons?icon.set=Material+Sy
 - Default country (NL) is defined in one place only: `Countries.defaultCountry()`
 - Duration is stored as `durationHours: Int` + `durationMinutes: Int` (no string parsing on the main flow)
 - UI text is localised via Android string resources (`strings.xml`) in 25 European languages (bg, cs, da, de, el, es, et, fi, fr, hr, hu, it, lt, lv, mk, nb, nl, pl, pt, ro, sk, sl, sr, sv + English). Montenegrin (cnr) translations exist in the source but are excluded from bundles via `localeFilters` because the Play Console rejects the `cnr` language code. Per-app language setting via AppCompat. Defaults to system locale. Strings containing numbers that affect grammar (e.g. "%d minutes") must use `<plurals>` with the correct CLDR plural categories for each language — use `getQuantityString()` / `pluralStringResource()` instead of `getString()` / `stringResource()`.
+- **Translation terminology must match across the app (`strings.xml`), Play Store metadata, and website (`site/`)**, and prefer semantic over literal translations. Canonical example: "cheapest window" / "time window" means a **period of time**, not an architectural window — never translate it literally (English "window" → `okno` / `fönster` / `παράθυρο` / `vindue` etc. is wrong; use the period/slot term, e.g. Slovenian `termin`). The app's semantic term is the reference; correct the website to match. Genuine UI-dialog "window" uses and the "sliding window algorithm" name are separate, judged by context. Watch for inflected forms (case/gender/number) when substituting.
 - All classes and functions have KDoc comments — always add KDoc when creating new functions or classes
 
 ## Post-Change Checklist
@@ -410,6 +411,17 @@ When releasing a new app version, add a new entry at the **top** of `site/conten
 Date format varies by language (e.g., "March 28, 2026" in English, "28. marec 2026" in Slovenian). The `version` attribute must match the app's `versionName` exactly — `bin/deploy.sh` verifies this before uploading.
 
 **Important:** Each changelog entry is extracted by `bin/deploy.sh` and uploaded as Play Store "What's New" text, which has a **500-character limit**. Keep entries concise — Romance languages (Portuguese, Spanish, French) tend to run longest. The deploy script will refuse to upload if any translation exceeds 500 characters.
+
+## Stats Backend & Monitoring (aurora)
+
+The opt-in API reliability stats (see `StatsReporter`) are received and stored server-side on the `aurora` host:
+
+- **Endpoint** — `server/stats.php`, deployed to `aurora:/var/www/stats.sweetspot.today/` via `make deploy-stats` (`bin/deploy-stats.sh`, scp + the `clear-rate-limit.sh` helper). Behind Cloudflare; the Apache vhost (`stats.sweetspot.today.conf`) rewrites `POST /report` → `stats.php` and denies every other path (so a dashboard pinging `/` logs harmless 403s). It validates the JSON payload, rate-limits per IP (5 min), converts to line protocol, and writes to **InfluxDB 3 Core** (`db=sweetspot`, measurement `api_fetch`) on `localhost:8181`.
+- **Config** — via `SetEnv` in the webroot `.htaccess` (not in the repo): `INFLUX_TOKEN` (write auth) and `KUMA_PUSH_URL` (optional heartbeat target). `.htaccess` is read per request, so changes are live without an Apache reload.
+- **Keep `status` values in sync** — `stats.php` validates the `status` field against a whitelist. The app sends `subscribed` for unlocked users (changed from `unlocked` in the billing migration); a stale whitelist silently rejected every report with `400` from Apr–Jun 2026 (the app discards 4xx as corrupt and never retries). When the app's payment-status strings change, update the whitelist too.
+- **Monitoring** — an Uptime Kuma **push** monitor "SweetSpot stats ingestion" (id 122, group Infrastructure) is heartbeated by `ping_kuma()` in `stats.php` after every successful InfluxDB write. 3-day heartbeat interval → alerts (via the shared infra notification channel) if no successful ingestion happens for ~3 days, catching silent pipeline breakage. Inherent limitation: it also alarms if reporting traffic legitimately dries up.
+- **Managing Kuma** — no REST API exists; use the socket.io CLI: `docker exec kuma-api python /app/kuma_client.py <list|get|add|clone|edit|...>` (lives at `aurora:/opt/uptime-kuma`). Creating a push monitor via the API does **not** auto-generate a `pushToken` — set it explicitly with `edit`.
+- **InfluxDB 3 Core has no row/predicate `DELETE`** ("DML not supported: Delete"; `influxdb3 delete` only drops whole databases/tables/caches). To remove specific rows you must drop and rebuild the table, or exclude them at query time (e.g. `WHERE source != 'test'`).
 
 ## Commit Messages
 

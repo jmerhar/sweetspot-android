@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.0.1" date="2026 m. birželio 25 d." >}}
+- Patobulinti ir pataisyti vertimai visomis palaikomomis kalbomis, kad formuluotės būtų aiškesnės ir natūralesnės.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="2026 m. birželio 23 d." >}}
 - Elektromobilio įkrovimas: pridėkite automobilį, įveskite dabartinį ir norimą įkrovos lygį, o SweetSpot suras pigiausią laiką prijungti ir parodys, kiek tai užtruks.
 - Laikas „Baigti iki“: bet kuris prietaisas ar įkrovimas bus baigtas iki jūsų nustatyto termino.
@@ -10,7 +14,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="2026 m. birželio 22 d." >}}
-- Nauji mygtukai „Anksčiau“ ir „Pigiau“ leidžia pasirinkti ankstesnį laiką, kai pigiausias langas nepatogus, ir parodo, kiek brangiau.
+- Nauji mygtukai „Anksčiau“ ir „Pigiau“ leidžia pasirinkti ankstesnį laiką, kai pigiausias laikotarpis nepatogus, ir parodo, kiek brangiau.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="2026 m. balandžio 9 d." >}}
@@ -66,7 +70,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 
 {{< changelog version="4.1" date="2026 m. kovo 30 d." >}}
 - Neprivaloma anoniminė API patikimumo statistika duomenų šaltinių kokybei gerinti
-- Pagerinta klaidų apdorojimas visuose penkiuose duomenų šaltiniuose
+- Pagerintas klaidų apdorojimas visuose penkiuose duomenų šaltiniuose
 {{< /changelog >}}
 
 {{< changelog version="4.0" date="2026 m. kovo 28 d." >}}
@@ -138,7 +142,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2026 m. kovo 2 d." >}}
-- Ištaisyta laiko problema, kai pigiausias langas prasideda iš karto
+- Ištaisyta laiko problema, kai pigiausias laikotarpis prasideda iš karto
 - Pridėta spot kainų pastaba
 {{< /changelog >}}
 

@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.0.1" date="2026. gada 25. jūnijs" >}}
+- Uzlaboti un izlaboti tulkojumi visās atbalstītajās valodās, lai formulējumi būtu skaidrāki un dabiskāki.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="2026. gada 23. jūnijs" >}}
 - Elektromobiļa uzlāde: pievienojiet savu automašīnu, ievadiet pašreizējo un vēlamo uzlādes līmeni, un SweetSpot atradīs lētāko laiku, kad pieslēgt to lādēšanai, un cik ilgi tas aizņems.
 - Laiks „Gatavs līdz“: pabeidziet jebkuras ierīces darbu vai uzlādi līdz noteiktam termiņam.
@@ -10,7 +14,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="2026. gada 22. jūnijs" >}}
-- Jaunas pogas „Agrāk“ un „Lētāk“ ļauj izvēlēties agrāku laiku, kad lētākais logs neder, un parāda, cik daudz dārgāk tas izmaksā.
+- Jaunas pogas „Agrāk“ un „Lētāk“ ļauj izvēlēties agrāku laiku, kad lētākais periods neder, un parāda, cik daudz dārgāk tas izmaksā.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="2026. gada 9. aprīlis" >}}
@@ -138,7 +142,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2026. gada 2. marts" >}}
-- Novērsta laika problēma, kad lētākais logs sākas nekavējoties
+- Novērsta laika problēma, kad lētākais periods sākas nekavējoties
 - Pievienota spot cenu atruna
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 - Ritināmais ilguma izvēlētājs ar ātrās izvēles pogām (1–6 stundas)
 - Konfigurējamas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem
 - Rezultātu ekrāns ar izmaksu sadalījumu pa laika intervāliem
-- Joslu diagramma ar gaidāmajām cenām un izceltu lētāko logu
+- Joslu diagramma ar gaidāmajām cenām un izceltu lētāko periodu
 {{< /changelog >}}

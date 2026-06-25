@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.0.1" date="25. Juni 2026" >}}
+- Verbesserte und korrigierte Übersetzungen in allen unterstützten Sprachen für klarere und natürlichere Formulierungen.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. Juni 2026" >}}
 - E-Auto-Ladung: Füge dein Auto hinzu, gib den aktuellen und den gewünschten Ladestand ein, und SweetSpot findet den günstigsten Zeitpunkt zum Anstecken sowie die benötigte Dauer.
 - „Fertig bis“-Zeit: Lass jedes Gerät oder jede Ladung bis zu einem von dir festgelegten Zeitpunkt abschließen.

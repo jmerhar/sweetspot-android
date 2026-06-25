@@ -1,15 +1,20 @@
-SweetSpot trova il momento più economico per usare i tuoi elettrodomestici. Scegli semplicemente per quanto tempo deve funzionare il tuo apparecchio e SweetSpot analizza le prossime 24 ore di prezzi dinamici dell'energia per trovare la finestra migliore.
+SweetSpot trova il momento più economico per usare i tuoi elettrodomestici e ricaricare la tua auto elettrica. Scegli per quanto tempo deve funzionare un apparecchio — oppure scegli la tua auto elettrica e la carica che desideri — e SweetSpot analizza le prossime 24 ore di prezzi dinamici dell'energia per trovare la fascia più economica.
 
-Che si tratti di lavatrice, lavastoviglie, asciugatrice o auto elettrica — avviala al momento giusto e paga meno per la stessa elettricità.
+Che si tratti di lavatrice, lavastoviglie, asciugatrice, pompa di calore o caricatore per auto elettrica — avviala al momento giusto e paga meno per la stessa elettricità.
 
 COME FUNZIONA
-1. Scegli un elettrodomestico o imposta una durata personalizzata
+1. Scegli un elettrodomestico o la tua auto elettrica, oppure imposta una durata personalizzata — e una scadenza opzionale "pronta entro"
 2. SweetSpot recupera gli ultimi prezzi dell'energia day-ahead per la tua zona
 3. Vedi esattamente quando avviare, con un dettaglio completo dei costi per fascia oraria
+
+RICARICA AUTO ELETTRICA
+Aggiungi la tua auto da un database integrato di circa 1.600 auto elettriche e ibride plug-in — oppure inserisci tu stesso la capacità della batteria e la potenza di ricarica. Imposta la carica attuale e quella obiettivo, e SweetSpot calcola quanto durerà la ricarica e il momento più economico per collegare l'auto.
 
 FUNZIONALITÀ
 - 30 paesi europei, 43 zone di prezzo — dal Portogallo alla Finlandia, dalla Norvegia alla Grecia
 - 5 fonti di dati con fallback automatico (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Scadenza "pronta entro" — sceglie solo una fascia che termina in tempo
+- Potenza nominale — imposta la potenza in kW di un elettrodomestico per una stima dei costi che riflette il consumo reale
 - Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido
 - App Wear OS per Pixel Watch e altri dispositivi Wear OS 3+
 - Disponibile in 25 lingue europee

@@ -1,16 +1,21 @@
-SweetSpot hittar den billigaste tiden att köra dina apparater. Välj bara hur länge din apparat behöver köra och SweetSpot söker igenom de närmaste 24 timmarnas dynamiska elpriser för att hitta det bästa tidsfönstret.
+SweetSpot hittar den billigaste tiden att köra dina apparater och ladda din elbil. Välj hur länge en apparat behöver köra — eller välj din elbil och den laddning du vill ha — så söker SweetSpot igenom de närmaste 24 timmarnas dynamiska elpriser för att hitta den billigaste tidsperioden.
 
-Oavsett om det är en tvättmaskin, diskmaskin, torktumlare eller elbil — starta vid rätt tidpunkt och betala mindre för samma el.
+Oavsett om det är en tvättmaskin, diskmaskin, torktumlare, värmepump eller elbilsladdare — starta vid rätt tidpunkt och betala mindre för samma el.
 
 SÅ FUNGERAR DET
-1. Välj en apparat eller ställ in en anpassad varaktighet
+1. Välj en apparat eller din elbil, eller ställ in en anpassad varaktighet — och en valfri "Klar senast"-deadline
 2. SweetSpot hämtar de senaste day-ahead elpriserna för din region
 3. Se exakt när du bör starta, med en fullständig kostnadsuppdelning per tidslucka
+
+LADDNING AV ELBIL
+Lägg till din bil från en inbyggd databas med omkring 1 600 elbilar och laddhybrider — eller ange batterikapacitet och laddeffekt själv. Ställ in nuvarande och önskad laddning, så räknar SweetSpot ut hur lång tid laddningen tar och den billigaste tiden att koppla in.
 
 FUNKTIONER
 - 30 europeiska länder, 43 budområden — från Portugal till Finland, Norge till Grekland
 - 5 datakällor med automatisk reserv (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Spara dina apparater med egna namn, ikoner och varaktigheter för snabb åtkomst
+- "Klar senast"-deadline — väljer bara en tidsperiod som hinner bli klar i tid
+- Effektangivelse — ange en apparats effekt i kW för en kostnadsuppskattning som speglar vad den verkligen drar
+- Spara dina apparater med egna namn, ikoner och varaktigheter för åtkomst med ett tryck
 - Wear OS-app för Pixel Watch och andra Wear OS 3+-enheter
 - Tillgänglig på 25 europeiska språk
 - Inga konton, ingen analys, ingen spårning — priserna lagras lokalt på din enhet

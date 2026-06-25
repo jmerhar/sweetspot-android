@@ -1,15 +1,20 @@
-SweetSpot finner det billigste tidspunktet for å kjøre apparatene dine. Velg bare hvor lenge apparatet ditt trenger å kjøre, og SweetSpot skanner de neste 24 timene med dynamiske strømpriser for å finne det beste tidsvinduet.
+SweetSpot finner det billigste tidspunktet for å kjøre apparatene dine og lade elbilen din. Velg hvor lenge en enhet trenger å kjøre — eller velg elbilen din og ladenivået du ønsker — og SweetSpot skanner de neste 24 timene med dynamiske strømpriser for å finne den billigste perioden.
 
-Enten det er en vaskemaskin, oppvaskmaskin, tørketrommel eller elbil — start på rett tidspunkt og betal mindre for den samme strømmen.
+Enten det er en vaskemaskin, oppvaskmaskin, tørketrommel, varmepumpe eller elbillader — start på rett tidspunkt og betal mindre for den samme strømmen.
 
 SLIK FUNGERER DET
-1. Velg et apparat eller sett en egendefinert varighet
+1. Velg et apparat eller elbilen din, eller sett en egendefinert varighet — og en valgfri «klar innen»-frist
 2. SweetSpot henter de nyeste day-ahead strømprisene for din region
-3. Se nøyaktig når du bør starte, med en fullstendig kostnadsoversikt per tidsluke
+3. Se nøyaktig når du bør starte, med en fullstendig kostnadsfordeling per tidsluke
+
+ELBILLADING
+Legg til bilen din fra en innebygd database med rundt 1 600 elbiler og ladbare hybrider — eller fyll inn batteristørrelsen og ladeeffekten selv. Angi nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta og det billigste tidspunktet å koble til.
 
 FUNKSJONER
 - 30 europeiske land, 43 budområder — fra Portugal til Finland, Norge til Hellas
 - 5 datakilder med automatisk fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- «Klar innen»-frist — velger bare en periode som blir ferdig i tide
+- Effekt — angi et apparats effekt i kW for et kostnadsestimat som gjenspeiler det faktiske forbruket
 - Lagre apparatene dine med egne navn, ikoner og varigheter for rask tilgang
 - Wear OS-app for Pixel Watch og andre Wear OS 3+ enheter
 - Tilgjengelig på 25 europeiske språk

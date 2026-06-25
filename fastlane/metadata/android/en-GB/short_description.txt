@@ -1,1 +1,1 @@
-Find the cheapest time to run your appliances with dynamic electricity prices.
+Find the cheapest time to run appliances or charge your EV with dynamic prices.

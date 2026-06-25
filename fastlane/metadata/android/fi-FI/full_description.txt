@@ -1,15 +1,20 @@
-SweetSpot löytää halvimman ajan kodinkoneidesi käyttöön. Valitse vain, kuinka kauan laitteesi tarvitsee toimia, ja SweetSpot etsii seuraavien 24 tunnin dynaamisista sähkön hinnoista parhaan ajankohdan.
+SweetSpot löytää halvimman ajan kodinkoneidesi käyttöön ja sähköautosi lataukseen. Valitse, kuinka kauan laitteesi tarvitsee toimia — tai valitse sähköautosi ja haluamasi lataustaso — ja SweetSpot käy läpi seuraavien 24 tunnin dynaamiset sähkön hinnat löytääkseen halvimman ajanjakson.
 
-Olipa kyseessä pesukone, astianpesukone, kuivausrumpu tai sähköauto — käynnistä oikeaan aikaan ja maksa vähemmän samasta sähköstä.
+Olipa kyseessä pesukone, astianpesukone, kuivausrumpu, lämpöpumppu tai sähköauton laturi — käynnistä se oikeaan aikaan ja maksa vähemmän samasta sähköstä.
 
 NÄIN SE TOIMII
-1. Valitse laite tai aseta mukautettu kesto
+1. Valitse laite tai sähköautosi, tai aseta mukautettu kesto — ja halutessasi "valmis viimeistään" -määräaika
 2. SweetSpot hakee alueesi uusimmat day-ahead-sähköhinnat
 3. Näe tarkalleen, milloin aloittaa, täydellisellä kustannuserittelyllä aikaväleittäin
+
+SÄHKÖAUTON LATAUS
+Lisää autosi sisäänrakennetusta tietokannasta, jossa on noin 1 600 sähköautoa ja ladattavaa hybridiä — tai syötä akun kapasiteetti ja latausteho itse. Aseta nykyinen ja tavoiteltu lataustaso, ja SweetSpot laskee, kuinka kauan lataus kestää ja milloin auto kannattaa kytkeä lataukseen halvimmalla.
 
 OMINAISUUDET
 - 30 Euroopan maata, 43 hinnoittelualuetta — Portugalista Suomeen, Norjasta Kreikkaan
 - 5 tietolähdettä automaattisella varayhteydellä (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- "Valmis viimeistään" -määräaika — valitsee vain ajanjakson, joka ehtii valmistua ajoissa
+- Tehoarvot — aseta laitteen teho kilowatteina, niin kustannusarvio vastaa sen todellista kulutusta
 - Tallenna laitteesi mukautetuilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten
 - Wear OS -sovellus Pixel Watchille ja muille Wear OS 3+ -laitteille
 - Saatavilla 25 eurooppalaisella kielellä

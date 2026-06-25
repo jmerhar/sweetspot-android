@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25. lipnja 2026." >}}
+- Dotjerani i ispravljeni prijevodi na svim podržanim jezicima radi jasnijeg i prirodnijeg izričaja.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. lipnja 2026." >}}
 - Punjenje električnog automobila: dodajte svoj automobil, unesite trenutnu i željenu razinu napunjenosti, a SweetSpot pronalazi najjeftinije vrijeme za priključivanje i koliko će trajati.
 - Vrijeme „Gotovo do“: bilo koji uređaj ili punjenje neka budu dovršeni do roka koji odredite.
@@ -138,7 +142,7 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. ožujka 2026." >}}
-- Ispravljen problem s vremenom kada najjeftiniji prozor počinje odmah
+- Ispravljen problem s vremenom kada najjeftiniji period počinje odmah
 - Dodano upozorenje o spot cijenama
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 - Birač trajanja s rotirajućim kotačićem i gumbima za brzi odabir (1–6 sati)
 - Prilagodljivi uređaji s vlastitim imenima, ikonama i trajanjima
 - Zaslon s rezultatima s raščlambom troškova po vremenskim intervalima
-- Stupčasti grafikon nadolazećih cijena s istaknutim najjeftinijim prozorom
+- Stupčasti grafikon nadolazećih cijena s istaknutim najjeftinijim periodom
 {{< /changelog >}}

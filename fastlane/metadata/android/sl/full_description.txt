@@ -1,15 +1,20 @@
-SweetSpot poišče najcenejši čas za uporabo vaših aparatov. Izberite trajanje delovanja in SweetSpot pregleda naslednjih 24 ur dinamičnih cen električne energije ter poišče optimalni termin.
+SweetSpot poišče najcenejši čas za uporabo vaših aparatov in polnjenje električnega avtomobila. Izberite, koliko časa mora naprava delovati — ali izberite svoje električno vozilo in želeno napolnjenost — in SweetSpot pregleda naslednjih 24 ur dinamičnih cen električne energije ter poišče najcenejši termin.
 
-Bodisi pralni stroj, pomivalni stroj, sušilec ali električni avtomobil — zaženite ob pravem času in plačajte manj za isto elektriko.
+Bodisi pralni stroj, pomivalni stroj, sušilec, toplotna črpalka ali polnilnik za električni avtomobil — zaženite ob pravem času in plačajte manj za isto elektriko.
 
 KAKO DELUJE
-1. Izberite aparat ali nastavite poljubno trajanje
+1. Izberite aparat ali svoje električno vozilo, ali nastavite poljubno trajanje — in izbirni rok »Pripravljeno do«
 2. SweetSpot pridobi najnovejše dnevne cene električne energije za vašo regijo
 3. Natanko poglejte, kdaj začeti, s podrobno razčlenitvijo stroškov po časovnih intervalih
+
+POLNJENJE ELEKTRIČNEGA VOZILA
+Dodajte svoj avto iz vgrajene zbirke okoli 1.600 električnih in priključnih hibridnih vozil — ali sami vnesite zmogljivost baterije in moč polnjenja. Nastavite trenutno in ciljno napolnjenost, SweetSpot pa izračuna, kako dolgo bo polnjenje trajalo in kdaj je najceneje priklopiti.
 
 FUNKCIJE
 - 30 evropskih držav, 43 cenovnih območij — od Portugalske do Finske, od Norveške do Grčije
 - 5 virov podatkov s samodejnim preklopom (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Rok »Pripravljeno do« — izbere le termin, ki se pravočasno konča
+- Moč aparatov — nastavite moč aparata v kW za oceno stroškov, ki odraža njegovo dejansko porabo
 - Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop
 - Wear OS aplikacija za Pixel Watch in druge naprave Wear OS 3+
 - Na voljo v 25 evropskih jezikih

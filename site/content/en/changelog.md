@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.0.1" date="June 25, 2026" >}}
+- Refined and corrected translations across all supported languages for clearer, more natural wording.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="June 23, 2026" >}}
 - EV charging: add your car, enter your current and target charge, and SweetSpot finds the cheapest time to plug in and how long it will take.
 - "Ready by" time: have any appliance or charge finished by a deadline you set.

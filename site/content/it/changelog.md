@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25 giugno 2026" >}}
+- Traduzioni rifinite e corrette in tutte le lingue supportate, per testi più chiari e naturali.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23 giugno 2026" >}}
 - Ricarica auto elettrica: aggiungi la tua auto, indica la carica attuale e quella desiderata e SweetSpot trova l'orario più economico per collegarla e quanto tempo ci vorrà.
 - Orario «Pronto entro»: fai terminare qualsiasi elettrodomestico o ricarica entro una scadenza che imposti tu.
@@ -138,7 +142,7 @@ description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 marzo 2026" >}}
-- Corretto un problema di temporizzazione quando la finestra più economica inizia immediatamente
+- Corretto un problema di temporizzazione quando la fascia più economica inizia immediatamente
 - Aggiunta nota informativa sui prezzi spot
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 - Selettore di durata a rotella con pulsanti rapidi (1–6 ore)
 - Elettrodomestici configurabili con nomi, icone e durate personalizzati
 - Schermata dei risultati con dettaglio costi per fascia oraria
-- Grafico a barre con i prezzi futuri e la finestra più economica evidenziata
+- Grafico a barre con i prezzi futuri e la fascia più economica evidenziata
 {{< /changelog >}}

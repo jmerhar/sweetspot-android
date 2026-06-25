@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25 juin 2026" >}}
+- Traductions affinées et corrigées dans toutes les langues prises en charge, pour une formulation plus claire et plus naturelle.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23 juin 2026" >}}
 - Recharge de véhicule électrique : ajoutez votre voiture, indiquez sa charge actuelle et cible, et SweetSpot trouve le moment le moins cher pour la brancher et la durée nécessaire.
 - Heure « Prêt à » : faites en sorte qu'un appareil ou une recharge soit terminé avant une échéance que vous définissez.

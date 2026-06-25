@@ -3,6 +3,10 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="6.0.1" date="25 juni 2026" >}}
+- Förbättrade och korrigerade översättningar på alla språk som stöds för tydligare och mer naturligt språk.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23 juni 2026" >}}
 - Elbilsladdning: lägg till din bil, ange aktuell och önskad laddningsnivå, så hittar SweetSpot den billigaste tiden att ladda och hur lång tid det tar.
 - ”Klar senast”-tid: få vilken apparat eller laddning som helst färdig till en tidsgräns du anger.
@@ -10,7 +14,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 juni 2026" >}}
-- Nya knappar ”Tidigare” och ”Billigare” låter dig välja en tidigare tid när det billigaste fönstret inte passar, och visar hur mycket mer det kostar.
+- Nya knappar ”Tidigare” och ”Billigare” låter dig välja en tidigare tid när den billigaste tidsperioden inte passar, och visar hur mycket mer det kostar.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9 april 2026" >}}
@@ -138,7 +142,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 mars 2026" >}}
-- Åtgärdat ett tidsproblem när det billigaste fönstret börjar omedelbart
+- Åtgärdat ett tidsproblem när den billigaste tidsperioden börjar omedelbart
 - Lagt till ansvarsfriskrivning om spotpriser
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 - Rullhjulsväljare för körtid med snabbknappar (1–6 timmar)
 - Konfigurerbara apparater med egna namn, ikoner och körtider
 - Resultatskärm med kostnadsuppdelning per tidslucka
-- Stapeldiagram med kommande priser och det billigaste fönstret markerat
+- Stapeldiagram med kommande priser och den billigaste tidsperioden markerad
 {{< /changelog >}}

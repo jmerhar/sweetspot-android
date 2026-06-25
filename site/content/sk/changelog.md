@@ -3,6 +3,10 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25. júna 2026" >}}
+- Vylepšené a opravené preklady vo všetkých podporovaných jazykoch pre jasnejšie a prirodzenejšie znenie.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. júna 2026" >}}
 - Nabíjanie elektromobilu: pridajte svoje auto, zadajte aktuálnu a cieľovú úroveň nabitia a SweetSpot nájde najlacnejší čas na zapojenie a vypočíta, ako dlho to potrvá.
 - Čas „Hotové do“: nechajte ľubovoľný spotrebič alebo nabíjanie dokončiť do termínu, ktorý si nastavíte.
@@ -10,7 +14,7 @@ description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. júna 2026" >}}
-- Nové tlačidlá „Skôr“ a „Lacnejšie“ umožňujú zvoliť skorší čas, keď najlacnejšie okno nevyhovuje, a ukážu, o koľko je to drahšie.
+- Nové tlačidlá „Skôr“ a „Lacnejšie“ umožňujú zvoliť skorší čas, keď najlacnejšie obdobie nevyhovuje, a ukážu, o koľko je to drahšie.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. apríla 2026" >}}

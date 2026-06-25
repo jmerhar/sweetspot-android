@@ -1,1 +1,1 @@
-Találja meg a legolcsóbb időpontot készülékeihez dinamikus áramárakkal.
+Találd meg a legolcsóbb időt a készülékek és az elektromos autó töltéséhez.

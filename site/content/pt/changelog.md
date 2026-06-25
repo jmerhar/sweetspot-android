@@ -3,9 +3,13 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25 de junho de 2026" >}}
+- Traduções revistas e corrigidas em todos os idiomas suportados, para uma formulação mais clara e natural.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23 de junho de 2026" >}}
 - Carregamento de VE: adicione o seu carro, indique a carga atual e a pretendida, e o SweetSpot encontra a hora mais barata para ligar e quanto tempo demora.
-- Hora «Pronto até»: tenha qualquer eletrodoméstico ou carga concluído antes do prazo que definir.
+- Hora «Pronto até»: tenha qualquer eletrodoméstico ou carregamento concluído antes do prazo que definir.
 - Potência: defina a potência de um eletrodoméstico em kW para que a estimativa de custo reflita o seu consumo real.
 {{< /changelog >}}
 
@@ -38,7 +42,7 @@ description: "Histórico de versões e notas de lançamento do SweetSpot."
 
 {{< changelog version="5.1.4" date="1 de abril de 2026" >}}
 - Confirmação de agradecimento após desbloquear o SweetSpot
-- Corrigido um flash do idioma antigo ao alterar o idioma do app nas configurações
+- Corrigido um flash do idioma antigo ao alterar o idioma da aplicação nas definições
 {{< /changelog >}}
 
 {{< changelog version="5.1.3" date="1 de abril de 2026" >}}

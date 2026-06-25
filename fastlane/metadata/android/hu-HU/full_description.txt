@@ -1,19 +1,24 @@
-A SweetSpot megtalálja a legolcsóbb időpontot készülékei használatához. Egyszerűen válassza ki, mennyi ideig kell működnie a készüléknek, és a SweetSpot átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legjobb időablakot.
+A SweetSpot megtalálja a legolcsóbb időpontot a készülékeid használatához és az elektromos autód töltéséhez. Add meg, mennyi ideig kell működnie egy készüléknek — vagy válaszd ki az autódat és a kívánt töltöttséget —, és a SweetSpot átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legolcsóbb időablakot.
 
-Legyen szó mosógépről, mosogatógépről, szárítógépről vagy elektromos autóról — indítsa a megfelelő időpontban, és fizessen kevesebbet ugyanazért az áramért.
+Legyen szó mosógépről, mosogatógépről, szárítógépről, hőszivattyúról vagy autótöltőről — indítsd a megfelelő időpontban, és fizess kevesebbet ugyanazért az áramért.
 
 HOGYAN MŰKÖDIK
-1. Válasszon készüléket vagy állítson be egyéni időtartamot
-2. A SweetSpot lekéri a legfrissebb day-ahead villamosenergia-árakat az Ön régiójához
-3. Pontosan láthatja, mikor érdemes indítani, részletes költségbontással időszakonként
+1. Válassz egy készüléket vagy az elektromos autódat, vagy állíts be egyéni időtartamot — és egy opcionális „készen legyen ekkorra” határidőt
+2. A SweetSpot lekéri a legfrissebb day-ahead villamosenergia-árakat a régiódhoz
+3. Pontosan láthatod, mikor érdemes indítani, részletes költségbontással időszakonként
+
+ELEKTROMOS AUTÓ TÖLTÉSE
+Add hozzá az autódat egy beépített adatbázisból, amely körülbelül 1600 elektromos és plug-in hibrid járművet tartalmaz — vagy add meg magad az akkumulátor kapacitását és a töltési teljesítményt. Állítsd be a jelenlegi és a céltöltöttséget, és a SweetSpot kiszámítja, mennyi ideig tart a töltés, és mikor a legolcsóbb csatlakoztatni.
 
 FUNKCIÓK
 - 30 európai ország, 43 árazási zóna — Portugáliától Finnországig, Norvégiától Görögországig
 - 5 adatforrás automatikus váltással (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Mentse el készülékeit egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
+- „Készen legyen ekkorra” határidő — csak olyan időablakot választ, amely időben befejeződik
+- Teljesítmény megadása — add meg a készülék teljesítményét kW-ban, hogy a költségbecslés a tényleges fogyasztást tükrözze
+- Mentsd el készülékeidet egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
 - Wear OS alkalmazás Pixel Watchhoz és más Wear OS 3+ eszközökhöz
 - 25 európai nyelven elérhető
-- Nincs fiók, nincs elemzés, nincs követés — az árak helyileg tárolódnak az eszközén
+- Nincs fiók, nincs elemzés, nincs követés — az árak helyileg tárolódnak az eszközödön
 - Nyílt forráskód (GPL v3) — teljes forráskód a GitHubon
 - 14 napos ingyenes próbaidőszak, utána éves előfizetés az alkalmazás további használatához
 

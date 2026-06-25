@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.0.1" date="25. juuni 2026" >}}
+- Täpsustatud ja parandatud tõlkeid kõigis toetatud keeltes selgema ja loomulikuma sõnastuse jaoks.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. juuni 2026" >}}
 - Elektriauto laadimine: lisa oma auto, sisesta praegune ja soovitud laetuse tase ning SweetSpot leiab soodsaima aja laadima panemiseks ja arvutab, kui kaua see kestab.
 - „Valmis hiljemalt“ aeg: lase mis tahes seadmel või laadimisel valmis saada sinu määratud tähtajaks.
@@ -10,7 +14,7 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. juuni 2026" >}}
-- Uued nupud „Varem“ ja „Odavam“ võimaldavad valida varasema aja, kui odavaim aken ei sobi, ja näitavad, kui palju rohkem see maksab.
+- Uued nupud „Varem“ ja „Odavam“ võimaldavad valida varasema aja, kui soodsaim ajavahemik ei sobi, ja näitavad, kui palju rohkem see maksab.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. aprill 2026" >}}
@@ -103,7 +107,7 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 
 {{< changelog version="3.1" date="4. märts 2026" >}}
 - ENTSO-E on nüüd Madalmaade peamine allikas (EnergyZero varuallikana)
-- Tunni-alane (15-minutiline) hinna eraldusvõime tugi
+- Tunnisisese (15-minutilise) hinnaeraldusvõime tugi
 {{< /changelog >}}
 
 {{< changelog version="3.0" date="3. märts 2026" >}}

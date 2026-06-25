@@ -1,15 +1,20 @@
-SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils. Choisissez simplement la durée de fonctionnement et SweetSpot analyse les prochaines 24 heures de prix dynamiques de l'électricité pour trouver le créneau optimal.
+SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils et recharger votre voiture électrique. Choisissez la durée de fonctionnement d'un appareil — ou sélectionnez votre véhicule électrique et la charge souhaitée — et SweetSpot analyse les prochaines 24 heures de prix dynamiques de l'électricité pour trouver la période la moins chère.
 
-Que ce soit un lave-linge, lave-vaisselle, sèche-linge ou une voiture électrique — démarrez au bon moment et payez moins pour la même électricité.
+Que ce soit un lave-linge, lave-vaisselle, sèche-linge, pompe à chaleur ou une borne de recharge — démarrez au bon moment et payez moins pour la même électricité.
 
 COMMENT ÇA MARCHE
-1. Choisissez un appareil ou définissez une durée personnalisée
+1. Choisissez un appareil ou votre véhicule électrique, ou définissez une durée personnalisée — et une échéance « Prêt à » facultative
 2. SweetSpot récupère les derniers prix day-ahead de l'électricité pour votre région
 3. Voyez exactement quand démarrer, avec un détail complet des coûts par créneau horaire
+
+RECHARGE DE VÉHICULE ÉLECTRIQUE
+Ajoutez votre voiture depuis une base intégrée d'environ 1 600 véhicules électriques et hybrides rechargeables — ou saisissez vous-même la capacité de la batterie et la puissance de recharge. Indiquez votre charge actuelle et cible, et SweetSpot calcule la durée de recharge et le moment le moins cher pour brancher.
 
 FONCTIONNALITÉS
 - 30 pays européens, 43 zones de prix — du Portugal à la Finlande, de la Norvège à la Grèce
 - 5 sources de données avec basculement automatique (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Échéance « Prêt à » — ne retient qu'une période qui se termine à temps
+- Puissances en kW — définissez la puissance d'un appareil pour une estimation de coût qui reflète sa consommation réelle
 - Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide
 - Application Wear OS pour Pixel Watch et autres appareils Wear OS 3+
 - Disponible en 25 langues européennes

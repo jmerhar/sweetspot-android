@@ -1,15 +1,20 @@
-SweetSpot znajduje najtańszy czas na uruchomienie Twoich urządzeń. Po prostu wybierz, jak długo ma działać urządzenie, a SweetSpot przeszuka kolejne 24 godziny dynamicznych cen prądu, aby znaleźć najlepsze okno czasowe.
+SweetSpot znajduje najtańszy czas na uruchomienie urządzeń i naładowanie auta elektrycznego. Wybierz, jak długo ma działać urządzenie — albo wskaż swoje auto elektryczne i poziom naładowania, jaki chcesz osiągnąć — a SweetSpot przeszuka kolejne 24 godziny dynamicznych cen prądu, aby znaleźć najtańszy okres.
 
-Czy to pralka, zmywarka, suszarka czy samochód elektryczny — uruchom we właściwym momencie i zapłać mniej za ten sam prąd.
+Czy to pralka, zmywarka, suszarka, pompa ciepła czy ładowarka auta elektrycznego — uruchom we właściwym momencie i zapłać mniej za ten sam prąd.
 
 JAK TO DZIAŁA
-1. Wybierz urządzenie lub ustaw własny czas trwania
+1. Wybierz urządzenie lub swoje auto elektryczne albo ustaw własny czas trwania — oraz opcjonalny termin „Gotowe do”
 2. SweetSpot pobiera najnowsze ceny prądu day-ahead dla Twojego regionu
 3. Zobacz dokładnie, kiedy uruchomić, z pełnym rozbiciem kosztów na przedziały czasowe
+
+ŁADOWANIE AUTA ELEKTRYCZNEGO
+Dodaj swoje auto z wbudowanej bazy około 1600 aut elektrycznych i hybryd plug-in — albo samodzielnie wpisz pojemność akumulatora i moc ładowania. Ustaw obecny i docelowy poziom naładowania, a SweetSpot obliczy, jak długo potrwa ładowanie i kiedy najtaniej podłączyć auto.
 
 FUNKCJE
 - 30 krajów europejskich, 43 strefy cenowe — od Portugalii do Finlandii, od Norwegii do Grecji
 - 5 źródeł danych z automatycznym przełączaniem (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Termin „Gotowe do” — wybiera tylko okres, który zakończy się na czas
+- Moc urządzeń — ustaw moc urządzenia w kW, aby szacunek kosztów odzwierciedlał jego rzeczywiste zużycie
 - Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania dla szybkiego dostępu
 - Aplikacja Wear OS na Pixel Watch i inne urządzenia Wear OS 3+
 - Dostępna w 25 językach europejskich

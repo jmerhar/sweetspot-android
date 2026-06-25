@@ -3,6 +3,10 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25. června 2026" >}}
+- Vylepšené a opravené překlady ve všech podporovaných jazycích pro srozumitelnější a přirozenější formulace.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. června 2026" >}}
 - Nabíjení elektromobilu: přidejte své auto, zadejte aktuální a cílovou úroveň nabití a SweetSpot najde nejlevnější čas zapojení i to, jak dlouho bude nabíjení trvat.
 - Čas „Hotovo do“: nechte libovolný spotřebič nebo nabíjení dokončit do termínu, který si nastavíte.
@@ -10,7 +14,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. června 2026" >}}
-- Nová tlačítka „Dříve“ a „Levněji“ umožňují zvolit dřívější čas, když nejlevnější okno nevyhovuje, a ukážou, o kolik je to dražší.
+- Nová tlačítka „Dříve“ a „Levněji“ umožňují zvolit dřívější čas, když nejlevnější období nevyhovuje, a ukážou, o kolik je to dražší.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. dubna 2026" >}}
@@ -138,7 +142,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. března 2026" >}}
-- Opraven problém s načasováním, když nejlevnější okno začíná okamžitě
+- Opraven problém s načasováním, když nejlevnější období začíná okamžitě
 - Přidáno upozornění o spotových cenách
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 - Výběr doby běhu otočným kolečkem a tlačítky pro rychlý výběr (1–6 hodin)
 - Nastavitelné spotřebiče s vlastními názvy, ikonami a dobami běhu
 - Obrazovka výsledků s rozpisem nákladů po časových úsecích
-- Sloupcový graf nadcházejících cen s vyznačeným nejlevnějším oknem
+- Sloupcový graf nadcházejících cen s vyznačeným nejlevnějším obdobím
 {{< /changelog >}}

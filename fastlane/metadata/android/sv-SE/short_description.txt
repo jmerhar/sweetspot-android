@@ -1,1 +1,1 @@
-Hitta billigaste tiden för dina apparater med dynamiska elpriser.
+Hitta billigaste tiden för apparater och elbilsladdning med dynamiska elpriser.

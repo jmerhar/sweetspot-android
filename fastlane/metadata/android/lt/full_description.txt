@@ -1,20 +1,25 @@
-SweetSpot randa pigiausią laiką jūsų prietaisams naudoti. Tiesiog pasirinkite, kiek laiko turi veikti jūsų prietaisas, ir SweetSpot peržiūri artimiausias 24 valandas dinaminių elektros kainų, kad rastų geriausią laiko langą.
+SweetSpot randa pigiausią laiką jūsų buitinei technikai naudoti ir elektromobiliui įkrauti. Pasirinkite, kiek laiko turi veikti prietaisas – arba pasirinkite savo elektromobilį ir norimą įkrovimo lygį – ir SweetSpot peržiūri artimiausių 24 valandų dinamines elektros kainas, kad rastų pigiausią laikotarpį.
 
-Nesvarbu, ar tai skalbyklė, indaplovė, džiovyklė ar elektrinis automobilis — paleiskite tinkamu metu ir mokėkite mažiau už tą pačią elektros energiją.
+Nesvarbu, ar tai skalbyklė, indaplovė, džiovyklė, šilumos siurblys ar elektromobilio įkroviklis – paleiskite tinkamu metu ir mokėkite mažiau už tą pačią elektros energiją.
 
 KAIP TAI VEIKIA
-1. Pasirinkite prietaisą arba nustatykite norimą trukmę
+1. Pasirinkite prietaisą arba savo elektromobilį, arba nustatykite norimą trukmę – ir, jei reikia, terminą „Paruošti iki“
 2. SweetSpot gauna naujausias kitos dienos elektros kainas jūsų regionui
 3. Tiksliai matysite, kada pradėti, su pilnu išlaidų suskirstymu pagal laiko intervalus
 
+ELEKTROMOBILIO ĮKROVIMAS
+Pridėkite savo automobilį iš įmontuotos maždaug 1 600 elektromobilių ir prijungiamųjų hibridų duomenų bazės – arba patys įveskite baterijos talpą ir įkrovimo galią. Nurodykite dabartinį ir norimą įkrovimo lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas ir koks pigiausias laikas prijungti automobilį.
+
 FUNKCIJOS
-- 30 Europos šalių, 43 kainų zonos — nuo Portugalijos iki Suomijos, nuo Norvegijos iki Graikijos
+- 30 Europos šalių, 43 kainų zonos – nuo Portugalijos iki Suomijos, nuo Norvegijos iki Graikijos
 - 5 duomenų šaltiniai su automatiniu perjungimu (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Terminas „Paruošti iki“ – parenkamas tik toks laikotarpis, kuris baigiasi laiku
+- Galios nustatymas – nurodykite prietaiso galią kilovatais (kW), kad išlaidų sąmata atspindėtų realų suvartojimą
 - Išsaugokite savo prietaisus su savo pavadinimais, piktogramomis ir trukmėmis greitai prieigai
 - Wear OS programėlė skirta Pixel Watch ir kitiems Wear OS 3+ įrenginiams
 - Prieinama 25 Europos kalbomis
-- Jokių paskyrų, jokios analitikos, jokio sekimo — kainos saugomos vietinėje jūsų įrenginio atmintyje
-- Atviras kodas (GPL v3) — pilnas išeities kodas GitHub platformoje
+- Jokių paskyrų, jokios analitikos, jokio sekimo – kainos saugomos vietinėje jūsų įrenginio atmintyje
+- Atviras kodas (GPL v3) – pilnas išeities kodas GitHub platformoje
 - 14 dienų nemokamas bandomasis laikotarpis, po to metinė prenumerata tolesniam naudojimui
 
 PALAIKOMOS ŠALYS

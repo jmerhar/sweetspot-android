@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25. junij 2026" >}}
+- Izpopolnjeni in popravljeni prevodi v vseh podprtih jezikih za jasnejše in bolj naravno izražanje.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. junij 2026" >}}
 - Polnjenje električnih vozil: dodajte svoj avto, vnesite trenutno in želeno napolnjenost, SweetSpot pa poišče najcenejši čas za priklop in koliko časa bo trajalo.
 - Čas »Pripravljeno do«: poskrbite, da je katera koli naprava ali polnjenje končano do roka, ki ga določite.
@@ -18,7 +22,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.3.1" date="5. april 2026" >}}
-- Odpravljena sesutje ob zagonu, ki ga je povzročila nezdružljivost s knjižnico Play Billing
+- Odpravljeno sesutje ob zagonu, ki ga je povzročila nezdružljivost s knjižnico Play Billing
 {{< /changelog >}}
 
 {{< changelog version="5.3" date="5. april 2026" >}}
@@ -38,7 +42,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 
 {{< changelog version="5.1.4" date="1. april 2026" >}}
 - Potrditveno okno z zahvalo po odklenitvi SweetSpot
-- Odpravljen blic stare jezike ob spremembi jezika aplikacije v nastavitvah
+- Odpravljen kratek prikaz starega jezika ob spremembi jezika aplikacije v nastavitvah
 {{< /changelog >}}
 
 {{< changelog version="5.1.3" date="1. april 2026" >}}
@@ -152,5 +156,5 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 - Izbirnik trajanja z vrtečim koleščkom in gumbi za hitro izbiro (1–6 ur)
 - Nastavljivi aparati z lastnimi imeni, ikonami in trajanji
 - Zaslon z rezultati z razčlenitvijo stroškov po časovnih intervalih
-- Stolpični grafikon prihodnjih cen z označenim najcenejšim oknom
+- Stolpični grafikon prihodnjih cen z označenim najcenejšim terminom
 {{< /changelog >}}

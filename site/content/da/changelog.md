@@ -3,6 +3,10 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="6.0.1" date="25. juni 2026" >}}
+- Forbedrede og rettede oversættelser på tværs af alle understøttede sprog for tydeligere og mere naturlig formulering.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. juni 2026" >}}
 - Opladning af elbil: tilføj din bil, indtast din nuværende og ønskede opladning, og SweetSpot finder det billigste tidspunkt at sætte til opladning og hvor lang tid det tager.
 - „Klar senest“-tidspunkt: få ethvert apparat eller enhver opladning færdig inden en frist, du selv vælger.
@@ -10,7 +14,7 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. juni 2026" >}}
-- Nye knapper „Tidligere“ og „Billigere“ lader dig vælge et tidligere tidspunkt, når det billigste vindue ikke passer, og viser hvor meget mere det koster.
+- Nye knapper „Tidligere“ og „Billigere“ lader dig vælge et tidligere tidspunkt, når det billigste tidsrum ikke passer, og viser hvor meget mere det koster.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. april 2026" >}}
@@ -138,7 +142,7 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. marts 2026" >}}
-- Rettet et tidsproblem, når det billigste vindue starter med det samme
+- Rettet et tidsproblem, når det billigste tidsrum starter med det samme
 - Tilføjet bemærkning om spotpriser
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 - Rullehjuls-varighedsvælger med hurtigknapper (1–6 timer)
 - Brugerdefinerede apparater med egne navne, ikoner og varigheder
 - Resultatskærm med omkostningsopdeling pr. tidsinterval
-- Søjlediagram over kommende priser med det billigste vindue fremhævet
+- Søjlediagram over kommende priser med det billigste tidsrum fremhævet
 {{< /changelog >}}

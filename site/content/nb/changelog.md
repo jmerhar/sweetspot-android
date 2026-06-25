@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.0.1" date="25. juni 2026" >}}
+- Forbedrede og korrigerte oversettelser på alle støttede språk for klarere og mer naturlig ordlyd.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. juni 2026" >}}
 - Elbillading: legg til bilen din, oppgi nåværende og ønsket ladenivå, så finner SweetSpot det billigste tidspunktet å koble til og hvor lang tid det tar.
 - «Ferdig innen»-tidspunkt: få et hvilket som helst apparat eller en lading ferdig innen en frist du selv setter.
@@ -10,7 +14,7 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. juni 2026" >}}
-- Nye knapper «Tidligere» og «Billigere» lar deg velge et tidligere tidspunkt når det billigste vinduet ikke passer, og viser hvor mye mer det koster.
+- Nye knapper «Tidligere» og «Billigere» lar deg velge et tidligere tidspunkt når den billigste perioden ikke passer, og viser hvor mye mer det koster.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. april 2026" >}}
@@ -138,7 +142,7 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. mars 2026" >}}
-- Fikset et tidsproblem når det billigste vinduet starter umiddelbart
+- Fikset et tidsproblem når den billigste perioden starter umiddelbart
 - Lagt til ansvarsfraskrivelse for spotpriser
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 - Rullhjul for varighetsvelger med hurtigknapper (1–6 timer)
 - Konfigurerbare apparater med egne navn, ikoner og varigheter
 - Resultatskjerm med kostnadsfordeling per tidsluke
-- Stolpediagram som viser kommende priser med billigste vindu uthevet
+- Stolpediagram som viser kommende priser med billigste periode uthevet
 {{< /changelog >}}

@@ -1,1 +1,1 @@
-Najděte nejlevnější čas pro vaše spotřebiče s dynamickými cenami elektřiny.
+Nejlevnější čas pro spotřebiče a nabíjení elektromobilu z dynamických cen.

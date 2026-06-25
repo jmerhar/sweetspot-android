@@ -1,15 +1,20 @@
-SweetSpot finder det billigste tidspunkt til at køre dine apparater. Vælg blot hvor længe dit apparat skal køre, og SweetSpot scanner de næste 24 timers dynamiske elpriser for at finde det bedste tidsvindue.
+SweetSpot finder det billigste tidspunkt til at køre dine apparater og oplade din elbil. Vælg hvor længe et apparat skal køre — eller vælg din elbil og den opladning, du ønsker — og SweetSpot scanner de næste 24 timers dynamiske elpriser for at finde det billigste tidsrum.
 
-Uanset om det er en vaskemaskine, opvaskemaskine, tørretumbler eller elbil — start på det rigtige tidspunkt og betal mindre for den samme strøm.
+Uanset om det er en vaskemaskine, opvaskemaskine, tørretumbler, varmepumpe eller elbiloplader — start på det rigtige tidspunkt og betal mindre for den samme strøm.
 
 SÅDAN VIRKER DET
-1. Vælg et apparat eller indstil en brugerdefineret varighed
+1. Vælg et apparat eller din elbil, eller indstil en brugerdefineret varighed — og en valgfri "klar senest"-frist
 2. SweetSpot henter de seneste day-ahead elpriser for din region
 3. Se præcis hvornår du skal starte, med en fuld omkostningsoversigt pr. tidsslot
+
+OPLADNING AF ELBIL
+Tilføj din bil fra en indbygget database med omkring 1.600 elbiler og plug-in-hybrider — eller indtast selv batterikapaciteten og opladningseffekten. Angiv din aktuelle opladning og dit mål, så regner SweetSpot ud, hvor lang tid opladningen tager, og hvornår det er billigst at sætte til.
 
 FUNKTIONER
 - 30 europæiske lande, 43 budområder — fra Portugal til Finland, Norge til Grækenland
 - 5 datakilder med automatisk fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- "Klar senest"-frist — vælger kun et tidsrum, der bliver færdigt i tide
+- Effektangivelser — angiv et apparats effekt i kW for et omkostningsoverslag, der afspejler det faktiske forbrug
 - Gem dine apparater med egne navne, ikoner og varigheder for hurtig adgang
 - Wear OS-app til Pixel Watch og andre Wear OS 3+ enheder
 - Tilgængelig på 25 europæiske sprog

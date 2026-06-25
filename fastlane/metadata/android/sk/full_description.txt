@@ -1,15 +1,20 @@
-SweetSpot nájde najlacnejší čas na prevádzku vašich spotrebičov. Jednoducho zvoľte dobu behu a SweetSpot prehľadá nasledujúcich 24 hodín dynamických cien elektriny, aby našiel najlepšie časové okno.
+SweetSpot nájde najlacnejší čas na prevádzku vašich spotrebičov a nabíjanie elektromobilu. Zvoľte, ako dlho má spotrebič bežať — alebo vyberte svoj elektromobil a požadované nabitie — a SweetSpot prehľadá nasledujúcich 24 hodín dynamických cien elektriny, aby našiel najlacnejšie obdobie.
 
-Či už ide o práčku, umývačku, sušičku alebo elektromobil — spustite ich v správny čas a plaťte menej za rovnakú elektrinu.
+Či už ide o práčku, umývačku, sušičku, tepelné čerpadlo alebo nabíjačku elektromobilu — spustite ich v správny čas a plaťte menej za rovnakú elektrinu.
 
 AKO TO FUNGUJE
-1. Vyberte spotrebič alebo nastavte vlastnú dobu trvania
+1. Vyberte spotrebič alebo svoj elektromobil, prípadne nastavte vlastnú dobu trvania — a voliteľne termín „Pripravené do“
 2. SweetSpot stiahne najnovšie denné ceny elektriny pre váš región
 3. Presne uvidíte, kedy spustiť, s podrobným rozpisom nákladov po časových úsekoch
+
+NABÍJANIE ELEKTROMOBILU
+Pridajte si auto z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov — alebo zadajte kapacitu batérie a nabíjací výkon sami. Nastavte aktuálne a cieľové nabitie a SweetSpot vypočíta, ako dlho bude nabíjanie trvať a kedy je najlacnejšie zapojiť vozidlo.
 
 FUNKCIE
 - 30 európskych krajín, 43 cenových zón — od Portugalska po Fínsko, od Nórska po Grécko
 - 5 zdrojov dát s automatickým prepínaním (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Termín „Pripravené do“ — vyberie len obdobie, ktoré sa stihne dokončiť včas
+- Výkon spotrebiča — zadajte výkon spotrebiča v kW pre odhad nákladov, ktorý zodpovedá jeho skutočnej spotrebe
 - Uložte si spotrebiče s vlastnými názvami, ikonami a dobami trvania pre rýchly prístup
 - Wear OS aplikácia pre Pixel Watch a ďalšie Wear OS 3+ zariadenia
 - K dispozícii v 25 európskych jazykoch

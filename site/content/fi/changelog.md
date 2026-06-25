@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.0.1" date="25. kesäkuuta 2026" >}}
+- Hiottuja ja korjattuja käännöksiä kaikilla tuetuilla kielillä selkeämmän ja luonnollisemman sanamuodon vuoksi.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23. kesäkuuta 2026" >}}
 - Sähköauton lataus: lisää autosi, syötä nykyinen ja tavoitevaraus, niin SweetSpot löytää halvimman hetken kytkeä lataus ja kertoo, kuinka kauan se kestää.
 - ”Valmis viimeistään” -aika: saa mikä tahansa laite tai lataus valmiiksi asettamaasi takarajaan mennessä.

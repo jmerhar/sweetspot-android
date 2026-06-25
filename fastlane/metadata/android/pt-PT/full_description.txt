@@ -1,15 +1,20 @@
-O SweetSpot encontra o momento mais barato para utilizar os seus aparelhos. Basta escolher quanto tempo o seu aparelho precisa de funcionar e o SweetSpot analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar a melhor janela de tempo.
+O SweetSpot encontra o momento mais barato para utilizar os seus aparelhos e carregar o seu carro elétrico. Escolha durante quanto tempo um aparelho precisa de funcionar — ou selecione o seu VE e a carga que pretende — e o SweetSpot analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar o período mais barato.
 
-Seja uma máquina de lavar, máquina de lavar louça, secador ou carro elétrico — ligue no momento certo e pague menos pela mesma eletricidade.
+Seja uma máquina de lavar, máquina de lavar louça, secador, bomba de calor ou carregador de VE — ligue no momento certo e pague menos pela mesma eletricidade.
 
 COMO FUNCIONA
-1. Escolha um aparelho ou defina uma duração personalizada
+1. Escolha um aparelho ou o seu VE, ou defina uma duração personalizada — e um prazo opcional de "pronto até"
 2. O SweetSpot obtém os preços de eletricidade day-ahead mais recentes para a sua região
 3. Veja exatamente quando ligar, com uma discriminação completa de custos por intervalo de tempo
+
+CARREGAMENTO DE VE
+Adicione o seu carro a partir de uma base de dados integrada de cerca de 1600 VE e híbridos plug-in — ou introduza você mesmo a capacidade da bateria e a potência de carregamento. Defina a carga atual e a carga-alvo, e o SweetSpot calcula quanto tempo demorará o carregamento e o momento mais barato para ligar à tomada.
 
 FUNCIONALIDADES
 - 30 países europeus, 43 zonas de preços — de Portugal à Finlândia, da Noruega à Grécia
 - 5 fontes de dados com alternância automática (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Prazo "pronto até" — escolhe apenas um período que termina a tempo
+- Potência dos aparelhos — defina a potência de um aparelho em kW para uma estimativa de custo que reflete o consumo real
 - Guarde os seus aparelhos com nomes, ícones e durações personalizados para acesso rápido
 - Aplicação Wear OS para Pixel Watch e outros dispositivos Wear OS 3+
 - Disponível em 25 idiomas europeus

@@ -3,14 +3,18 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.0.1" date="25 czerwca 2026" >}}
+- Dopracowane i poprawione tłumaczenia we wszystkich obsługiwanych językach, aby sformułowania były jaśniejsze i bardziej naturalne.
+{{< /changelog >}}
+
 {{< changelog version="6.0" date="23 czerwca 2026" >}}
 - Ładowanie pojazdu elektrycznego: dodaj swój samochód, podaj obecny i docelowy poziom naładowania, a SweetSpot znajdzie najtańszą porę na podłączenie i obliczy, ile to potrwa.
-- Termin „Gotowe do“: spraw, by dowolne urządzenie lub ładowanie zakończyło się przed wyznaczonym przez Ciebie terminem.
+- Termin „Gotowe do”: spraw, by dowolne urządzenie lub ładowanie zakończyło się przed wyznaczonym przez Ciebie terminem.
 - Moc znamionowa: ustaw moc urządzenia w kW, aby szacowany koszt odzwierciedlał jego rzeczywiste zużycie.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 czerwca 2026" >}}
-- Nowe przyciski „Wcześniej“ i „Taniej“ pozwalają wybrać wcześniejszą porę, gdy najtańsze okno jest niewygodne, i pokazują, o ile więcej kosztuje.
+- Nowe przyciski „Wcześniej” i „Taniej” pozwalają wybrać wcześniejszą porę, gdy najtańszy okres jest niewygodny, i pokazują, o ile więcej kosztuje.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9 kwietnia 2026" >}}
@@ -138,7 +142,7 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 marca 2026" >}}
-- Naprawiono problem z czasem, gdy najtańsze okno zaczyna się natychmiast
+- Naprawiono problem z czasem, gdy najtańszy okres zaczyna się natychmiast
 - Dodano zastrzeżenie dotyczące cen spot
 {{< /changelog >}}
 
@@ -152,5 +156,5 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 - Kółko przewijania do wyboru czasu trwania z przyciskami szybkiego wyboru (1–6 godzin)
 - Konfigurowalne urządzenia z własnymi nazwami, ikonami i czasami trwania
 - Ekran wyników z podziałem kosztów na przedziały czasowe
-- Wykres słupkowy pokazujący nadchodzące ceny z wyróżnionym najtańszym oknem
+- Wykres słupkowy pokazujący nadchodzące ceny z wyróżnionym najtańszym okresem
 {{< /changelog >}}

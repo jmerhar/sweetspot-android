@@ -32,6 +32,10 @@
 // --- Configuration ---
 define('INFLUXDB_URL', 'http://localhost:8181/api/v3/write_lp?db=sweetspot&precision=second');
 define('INFLUXDB_TOKEN', getenv('INFLUX_TOKEN') ?: ($_SERVER['INFLUX_TOKEN'] ?? ''));
+// Optional Uptime Kuma push monitor URL. When set (via SetEnv in .htaccess),
+// each successful ingestion pings this URL so Kuma alerts on missing heartbeats.
+// Empty disables the feature. Any query string is ignored; only the base is used.
+define('KUMA_PUSH_URL', getenv('KUMA_PUSH_URL') ?: ($_SERVER['KUMA_PUSH_URL'] ?? ''));
 define('RATE_LIMIT_DIR', '/tmp/sweetspot_rate');
 define('RATE_LIMIT_SECONDS', 300); // 5 minutes per IP
 define('MAX_BODY_SIZE', 65536); // 64 KB
@@ -174,6 +178,41 @@ function write_to_influxdb(string $lineProtocol): array {
     return ['ok' => $httpCode === 204, 'http_code' => $httpCode, 'curl_error' => $curlError, 'response' => $response ?: ''];
 }
 
+/**
+ * Sends a best-effort heartbeat to an Uptime Kuma push monitor.
+ *
+ * Called after a successful InfluxDB write so Kuma can alert if no successful
+ * stats ingestion occurs within its configured heartbeat window — catching
+ * silent pipeline breakage (validation rejects, write failures, app-side bugs).
+ *
+ * Deliberately fault-tolerant: a short timeout caps added latency, and all
+ * errors (Kuma down, bad URL) are swallowed so the heartbeat can never affect
+ * the response returned to the app. No-op when KUMA_PUSH_URL is unset.
+ *
+ * @param int $records Number of records ingested, sent as the Kuma status message.
+ */
+function ping_kuma(int $records): void {
+    if (KUMA_PUSH_URL === '') {
+        return;
+    }
+
+    // Normalise to the bare push URL and build our own query, so a pasted
+    // default Kuma URL (which includes ?status=up&msg=OK&ping=) doesn't produce
+    // duplicate query parameters.
+    $base = strtok(KUMA_PUSH_URL, '?');
+    $url = $base . '?status=up&msg=' . rawurlencode("ingested {$records} records");
+
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 2,
+        CURLOPT_TIMEOUT => 3,
+        CURLOPT_NOSIGNAL => true,
+    ]);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
 // --- Main ---
 
 // Only accept POST
@@ -280,6 +319,9 @@ if (!$writeResult['ok']) {
         . ($writeResult['response'] ? ', response: ' . $writeResult['response'] : ''));
     error_response(502, 'Storage write failed');
 }
+
+// Heartbeat: signal a successful ingestion to the Uptime Kuma push monitor.
+ping_kuma($totalRecords);
 
 // Success
 http_response_code(200);

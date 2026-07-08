@@ -1,7 +1,7 @@
 # SweetSpot for Android
 
 [![Test](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml/badge.svg)](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/jmerhar/sweetspot-android/graph/badge.svg)](https://codecov.io/gh/jmerhar/sweetspot-android)
+[![codecov (shared)](https://codecov.io/gh/jmerhar/sweetspot-android/graph/badge.svg?flag=shared)](https://app.codecov.io/gh/jmerhar/sweetspot-android/flags)
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries. Website: [sweetspot.today](https://sweetspot.today)
 

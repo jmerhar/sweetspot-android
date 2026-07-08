@@ -69,12 +69,16 @@ jobs:
           disable_search: true
           fail_ci_if_error: false
       # Codecov Test Analytics — flaky-test detection, failure history, and slowest tests.
-      # `if: !cancelled()` so results upload even when the test step failed (the point is to
-      # capture failures). Gradle writes JUnit XML as TEST-*.xml, so the paths are given explicitly
-      # rather than relying on the action's default `*junit.xml` search.
+      # Uses the unified codecov-action with report_type: test_results (the standalone
+      # test-results-action is deprecated). `if: !cancelled()` so results upload even when the
+      # test step failed (the point is to capture failures). Gradle writes JUnit XML as TEST-*.xml,
+      # so the paths are given explicitly rather than relying on the default `*junit.xml` search.
       - name: Upload test results to Codecov
         if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          report_type: test_results
           files: shared/build/test-results/testDebugUnitTest/*.xml,app/build/test-results/testDebugUnitTest/*.xml,wear/build/test-results/testDebugUnitTest/*.xml
+          disable_search: true
+          fail_ci_if_error: false

@@ -22,7 +22,9 @@ jobs:
       # Run the debug unit tests and generate a separate Kover coverage report per module.
       # The unprefixed task names run in all three modules; the Debug variant matches the unit
       # tests (the "all code" variant would also pull in release and skew the numbers).
-      - run: ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug
+      # --continue so every module's tests run even if one fails — Test Analytics (below) needs
+      # the complete JUnit results to detect flakes and track failures.
+      - run: ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug --continue
       # At-a-glance per-module coverage table, rendered on the run's summary page (no download).
       - name: Coverage summary
         run: |
@@ -66,3 +68,13 @@ jobs:
           name: wear
           disable_search: true
           fail_ci_if_error: false
+      # Codecov Test Analytics — flaky-test detection, failure history, and slowest tests.
+      # `if: !cancelled()` so results upload even when the test step failed (the point is to
+      # capture failures). Gradle writes JUnit XML as TEST-*.xml, so the paths are given explicitly
+      # rather than relying on the action's default `*junit.xml` search.
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: shared/build/test-results/testDebugUnitTest/*.xml,app/build/test-results/testDebugUnitTest/*.xml,wear/build/test-results/testDebugUnitTest/*.xml

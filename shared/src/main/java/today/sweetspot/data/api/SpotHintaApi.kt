@@ -3,6 +3,7 @@ package today.sweetspot.data.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import today.sweetspot.model.PriceSlot
 import java.time.Instant
@@ -33,7 +34,10 @@ internal data class SpotHintaPriceEntry(
  *
  * @param region Spot-Hinta.fi region code (matches SweetSpot zone IDs exactly).
  */
-class SpotHintaApi(private val region: String) : PriceFetcher {
+class SpotHintaApi(
+    private val region: String,
+    private val client: OkHttpClient = sharedHttpClient
+) : PriceFetcher {
 
     companion object {
         /** Zone IDs covered by the Spot-Hinta.fi API (region codes match zone IDs directly). */
@@ -70,7 +74,7 @@ class SpotHintaApi(private val region: String) : PriceFetcher {
         val url = "https://api.spot-hinta.fi/TodayAndDayForward?region=$region"
 
         val request = Request.Builder().url(url).get().build()
-        return sharedHttpClient.newCall(request).execute().use { response ->
+        return client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw HttpException(response.code, "Spot-Hinta.fi API returned ${response.code}")
             }

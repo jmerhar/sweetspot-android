@@ -13,7 +13,7 @@ import java.time.ZoneId
  * @throws IllegalArgumentException if [fetchers] is empty.
  */
 class FallbackPriceFetcher(
-    private val fetchers: List<PriceFetcher>
+    internal val fetchers: List<PriceFetcher>
 ) : PriceFetcher {
 
     init {

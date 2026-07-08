@@ -3,6 +3,7 @@ package today.sweetspot.data.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import today.sweetspot.model.PriceSlot
 import java.time.Instant
@@ -40,7 +41,10 @@ internal data class AwattarEntry(
  *
  * @param zoneId SweetSpot zone ID (`"AT"` or `"DE_LU"`).
  */
-class AwattarApi(zoneId: String) : PriceFetcher {
+class AwattarApi(
+    zoneId: String,
+    private val client: OkHttpClient = sharedHttpClient
+) : PriceFetcher {
 
     private val baseUrl = ZONE_TO_BASE_URL[zoneId]
         ?: error("No aWATTar mapping for zone: $zoneId")
@@ -74,7 +78,7 @@ class AwattarApi(zoneId: String) : PriceFetcher {
             "&end=${to.toEpochMilli()}"
 
         val request = Request.Builder().url(url).get().build()
-        return sharedHttpClient.newCall(request).execute().use { response ->
+        return client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw HttpException(response.code, "aWATTar API returned ${response.code}")
             }

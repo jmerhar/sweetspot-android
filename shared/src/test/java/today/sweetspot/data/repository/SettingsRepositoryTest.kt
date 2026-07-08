@@ -1,0 +1,215 @@
+package today.sweetspot.data.repository
+
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
+import today.sweetspot.model.Appliance
+import today.sweetspot.model.Countries
+import today.sweetspot.model.EvSpec
+import java.time.ZoneId
+
+/**
+ * Tests for [SettingsRepository]: trial/unlock logic, source-order and disabled-source
+ * persistence (incl. the country-change reset), appliance/EV serialization, price-zone
+ * resolution, timezone precedence, and the developer time override. Robolectric supplies a
+ * real [Context] (SharedPreferences).
+ */
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [33])
+class SettingsRepositoryTest {
+
+    private lateinit var repo: SettingsRepository
+
+    private companion object {
+        const val DAY_MS = 24 * 60 * 60 * 1000L
+    }
+
+    @Before
+    fun setUp() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE).edit().clear().commit()
+        repo = SettingsRepository(context)
+    }
+
+    // --- Trial & unlock ---
+
+    @Test
+    fun `fresh install has the full trial and is not expired`() {
+        assertEquals(14, repo.trialDaysRemaining())
+        assertFalse(repo.isTrialExpired())
+    }
+
+    @Test
+    fun `trial expires after the trial window elapses`() {
+        val firstLaunch = repo.getFirstLaunchMs()
+        repo.setTimeOverrideMs(firstLaunch + 15 * DAY_MS)
+        assertEquals(0, repo.trialDaysRemaining())
+        assertTrue(repo.isTrialExpired())
+    }
+
+    @Test
+    fun `unlock keeps an elapsed trial from being expired`() {
+        val firstLaunch = repo.getFirstLaunchMs()
+        repo.setTimeOverrideMs(firstLaunch + 15 * DAY_MS)
+        repo.setUnlocked(true)
+        assertTrue(repo.isUnlocked())
+        assertFalse(repo.isTrialExpired())
+    }
+
+    @Test
+    fun `developer unlock bypasses an elapsed trial`() {
+        val firstLaunch = repo.getFirstLaunchMs()
+        repo.setTimeOverrideMs(firstLaunch + 15 * DAY_MS)
+        repo.setDevUnlocked(true)
+        assertFalse(repo.isTrialExpired())
+    }
+
+    @Test
+    fun `trial days remaining is clamped to the trial length`() {
+        // Override "now" to before first launch → elapsed is negative, must clamp to the max.
+        val firstLaunch = repo.getFirstLaunchMs()
+        repo.setTimeOverrideMs(firstLaunch - 5 * DAY_MS)
+        assertEquals(14, repo.trialDaysRemaining())
+    }
+
+    // --- Source order & disabled sources ---
+
+    @Test
+    fun `source order defaults to null and round-trips`() {
+        assertNull(repo.getSourceOrder())
+        repo.setSourceOrder(listOf("energyzero", "entsoe"))
+        assertEquals(listOf("energyzero", "entsoe"), repo.getSourceOrder())
+    }
+
+    @Test
+    fun `changing country clears the custom source order and disabled sources`() {
+        repo.setSourceOrder(listOf("energyzero", "entsoe"))
+        repo.setDisabledSources(setOf("entsoe"))
+        repo.setCountryCode("DE")
+        assertNull(repo.getSourceOrder())
+        assertTrue(repo.getDisabledSources().isEmpty())
+    }
+
+    @Test
+    fun `disabled sources round-trip and an empty set is cleared`() {
+        assertTrue(repo.getDisabledSources().isEmpty())
+        repo.setDisabledSources(setOf("entsoe", "awattar"))
+        assertEquals(setOf("entsoe", "awattar"), repo.getDisabledSources())
+        repo.setDisabledSources(emptySet())
+        assertTrue(repo.getDisabledSources().isEmpty())
+    }
+
+    // --- Appliances ---
+
+    @Test
+    fun `appliances default to empty and round-trip including EV specs`() {
+        assertTrue(repo.getAppliances().isEmpty())
+        val appliances = listOf(
+            Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 30, icon = "laundry"),
+            Appliance(id = "2", name = "Car", durationHours = 0, durationMinutes = 0, icon = "ev_charger", ev = EvSpec(60.0, 11.0))
+        )
+        repo.setAppliances(appliances)
+        val read = repo.getAppliances()
+        assertEquals(appliances, read)
+        assertTrue(read[1].isEv)
+    }
+
+    // --- Price zone resolution ---
+
+    @Test
+    fun `single-zone country resolves to its only zone automatically`() {
+        repo.setCountryCode("NL")
+        assertEquals(Countries.findPriceZoneById("NL"), repo.getResolvedPriceZone())
+    }
+
+    @Test
+    fun `multi-zone country resolves to null until a zone is chosen`() {
+        val multi = Countries.all.first { it.zones.size > 1 }
+        repo.setCountryCode(multi.code)
+        assertNull(repo.getResolvedPriceZone())
+        repo.setPriceZoneId(multi.zones[1].id)
+        assertEquals(multi.zones[1], repo.getResolvedPriceZone())
+    }
+
+    // --- Timezone ---
+
+    @Test
+    fun `timezone defaults to the resolved zone's timezone`() {
+        repo.setCountryCode("NL")
+        assertTrue(repo.isUsingDefaultTimezone())
+        assertEquals(ZoneId.of("Europe/Amsterdam"), repo.getTimeZoneId())
+    }
+
+    @Test
+    fun `a custom timezone overrides the default and can be cleared`() {
+        repo.setCountryCode("NL")
+        repo.setTimeZoneId(ZoneId.of("Asia/Tokyo"))
+        assertFalse(repo.isUsingDefaultTimezone())
+        assertEquals(ZoneId.of("Asia/Tokyo"), repo.getTimeZoneId())
+        repo.clearTimeZoneId()
+        assertTrue(repo.isUsingDefaultTimezone())
+        assertEquals(ZoneId.of("Europe/Amsterdam"), repo.getTimeZoneId())
+    }
+
+    // --- EV settings ---
+
+    @Test
+    fun `EV settings expose defaults and persist changes`() {
+        assertEquals(11.0, repo.getEvHomeChargerKw(), 0.001)
+        assertEquals(80, repo.getEvDefaultTargetSoc())
+        assertEquals(20, repo.getEvLastCurrentSoc())
+        repo.setEvHomeChargerKw(7.4)
+        repo.setEvDefaultTargetSoc(90)
+        repo.setEvLastCurrentSoc(35)
+        assertEquals(7.4, repo.getEvHomeChargerKw(), 0.001)
+        assertEquals(90, repo.getEvDefaultTargetSoc())
+        assertEquals(35, repo.getEvLastCurrentSoc())
+    }
+
+    // --- Stats prefs ---
+
+    @Test
+    fun `stats prefs default off and persist`() {
+        assertFalse(repo.isStatsEnabled())
+        assertFalse(repo.isStatsPromptShown())
+        repo.setStatsEnabled(true)
+        repo.setStatsPromptShown()
+        assertTrue(repo.isStatsEnabled())
+        assertTrue(repo.isStatsPromptShown())
+    }
+
+    // --- Time override & clock ---
+
+    @Test
+    fun `time override is stored and cleared`() {
+        assertNull(repo.getTimeOverrideMs())
+        repo.setTimeOverrideMs(1_700_000_000_000L)
+        assertEquals(1_700_000_000_000L, repo.getTimeOverrideMs())
+        repo.setTimeOverrideMs(null)
+        assertNull(repo.getTimeOverrideMs())
+    }
+
+    @Test
+    fun `devClock is fixed at the override instant when set`() {
+        repo.setTimeOverrideMs(1_700_000_000_000L)
+        val clock = repo.devClock(ZoneId.of("UTC"))
+        assertEquals(1_700_000_000_000L, clock.instant().toEpochMilli())
+    }
+
+    // --- Theme ---
+
+    @Test
+    fun `theme mode defaults to system and persists`() {
+        assertEquals("system", repo.getThemeMode())
+        repo.setThemeMode("dark")
+        assertEquals("dark", repo.getThemeMode())
+    }
+}

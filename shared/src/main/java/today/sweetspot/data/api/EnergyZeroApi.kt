@@ -4,6 +4,7 @@ import today.sweetspot.model.PriceSlot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.time.Instant
 import java.time.ZoneId
@@ -37,7 +38,7 @@ internal data class EnergyZeroResponse(
  * Fetches hourly electricity prices for today and tomorrow. The raw JSON
  * can be cached by [PriceCache] to avoid redundant network requests.
  */
-class EnergyZeroApi : PriceFetcher {
+class EnergyZeroApi(private val client: OkHttpClient = sharedHttpClient) : PriceFetcher {
 
     private val json = Json { ignoreUnknownKeys = true }
 
@@ -69,7 +70,7 @@ class EnergyZeroApi : PriceFetcher {
             "&interval=4&usageType=1"
 
         val request = Request.Builder().url(url).get().build()
-        return sharedHttpClient.newCall(request).execute().use { response ->
+        return client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw HttpException(response.code, "EnergyZero API returned ${response.code}")
             }

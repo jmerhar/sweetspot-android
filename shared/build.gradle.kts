@@ -24,6 +24,24 @@ android {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
     }
+
+    testOptions {
+        // Robolectric needs merged Android resources to spin up a Context.
+        unitTests.isIncludeAndroidResources = true
+    }
+}
+
+kover {
+    reports {
+        filters {
+            excludes {
+                // Compiler-generated code with no meaningful logic to test: kotlinx-serialization
+                // serializers / data-class members on @Serializable types, and BuildConfig.
+                annotatedBy("kotlinx.serialization.Serializable")
+                classes("*.BuildConfig")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -39,4 +57,7 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.serialization.json)
     testImplementation(libs.kxml2)
+    // Robolectric — for the Context-backed data classes (FilePriceCache, SettingsRepository)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.test.core)
 }

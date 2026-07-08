@@ -1,5 +1,6 @@
 package today.sweetspot.data.api
 
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
@@ -28,7 +29,8 @@ import java.time.format.DateTimeFormatterBuilder
  */
 class EntsoeApi(
     private val token: String,
-    private val biddingZone: String
+    private val biddingZone: String,
+    private val client: OkHttpClient = sharedHttpClient
 ) : PriceFetcher {
 
     /**
@@ -76,7 +78,7 @@ class EntsoeApi(
             "&periodEnd=${fmt.format(to)}"
 
         val request = Request.Builder().url(url).get().build()
-        val body = sharedHttpClient.newCall(request).execute().use { response ->
+        val body = client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw HttpException(response.code, "ENTSO-E API returned ${response.code}")
             }

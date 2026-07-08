@@ -18,17 +18,28 @@ Code coverage is reported in CI via **Kover** (`org.jetbrains.kotlinx.kover` 0.9
 
 ## Baseline (at implementation)
 
-Each module's own debug unit tests:
+Each module's own debug unit tests. `:shared` was subsequently raised from its initial 71.3% by a targeted gap-closing pass (see below):
 
 | Module | Line | Instruction | Branch | Class |
 |---|---|---|---|---|
-| **`:shared`** | **71.3%** | 64.2% | 48.2% | 83.6% |
+| **`:shared`** | **97.2%** | 94.0% | 77.3% | 95.9% |
 | `:app` | 15.7% | 12.1% | 6.8% | 21.6% |
 | `:wear` | 25.9% | 20.9% | 12.3% | 26.3% |
 
 `:shared` (pure logic/parsing/algorithms) carries the real coverage; `:app`/`:wear` are mostly Compose UI that unit tests don't touch.
 
-**Note on the `:shared` number.** A per-module report counts only coverage from that module's *own* tests. An earlier aggregated experiment showed `:shared` at ~85% line because it also counted `:shared` classes exercised by `:app`/`:wear` ViewModel tests (which call into shared repositories/finders). 71.3% is the honest "does `:shared`'s own suite cover `:shared`" figure — the right one to gate on.
+**Note on the `:shared` number.** A per-module report counts only coverage from that module's *own* tests. An earlier aggregated experiment showed `:shared` higher because it also counted `:shared` classes exercised by `:app`/`:wear` ViewModel tests (which call into shared repositories/finders). The per-module figure is the honest "does `:shared`'s own suite cover `:shared`" number — the right one to gate on.
+
+### `:shared` gap-closing pass
+
+Before considering a gate, the real gaps were addressed (71.3% → 97.2% line):
+
+- **Added Robolectric to `:shared`** (previously pure JUnit) to test the `Context`-backed data classes.
+- New tests: `FilePriceCacheTest` (v3 format/migration/corruption/cooldown → `data/cache` 16%→100%), `SettingsRepositoryTest` (trial/source-order/appliance/zone/timezone logic), `CountryDetectorTest` (detection fallback chain → `data/repository` 31%→93%), `PriceFetcherFactoryTest` (chain composition, was untested anywhere), `StatsRecordTest` (`data/stats`→100%), and `ApiHttpTest` (the five clients' HTTP paths → `data/api` 74%→99%).
+- **Kover filters** exclude generated boilerplate (`@Serializable` types, `BuildConfig`) so the number reflects real logic — see `shared/build.gradle.kts`.
+- To support real assertions: `FallbackPriceFetcher.fetchers` and `InstrumentedPriceFetcher.delegate`/`sourceId` were widened `private` → `internal`, and each API client gained an injectable `OkHttpClient` param (default `sharedHttpClient`) so a canned-response interceptor can drive `fetchRaw`/`fetchPrices` without a network.
+
+Remaining `:shared` gaps are minor: a few API-parser edge branches, and `util/UiTextKt.resolve()` (shows 0% in `:shared` but is fully tested in `:app`'s `UiTextResolveTest` — a cross-module artifact, not a real gap).
 
 ## Decisions
 
@@ -44,7 +55,7 @@ Each module's own debug unit tests:
       reports {
           verify {
               rule {
-                  bound { minValue = 70 } // set just under the :shared baseline
+                  bound { minValue = 90 } // set just under the :shared baseline (~91%)
               }
           }
       }

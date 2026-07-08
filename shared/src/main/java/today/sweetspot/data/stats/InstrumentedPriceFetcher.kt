@@ -24,8 +24,8 @@ import java.time.ZoneId
  * @param clock Clock for timestamps (injectable for testing).
  */
 class InstrumentedPriceFetcher(
-    private val delegate: PriceFetcher,
-    private val sourceId: String,
+    internal val delegate: PriceFetcher,
+    internal val sourceId: String,
     private val priceZoneId: String,
     private val device: String,
     private val collector: StatsCollector,

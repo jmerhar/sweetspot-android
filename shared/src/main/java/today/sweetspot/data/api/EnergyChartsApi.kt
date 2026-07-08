@@ -3,6 +3,7 @@ package today.sweetspot.data.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import okhttp3.OkHttpClient
 import okhttp3.Request
 import today.sweetspot.model.PriceSlot
 import java.time.Instant
@@ -37,7 +38,10 @@ internal data class EnergyChartsResponse(
  *
  * @param zoneId SweetSpot zone ID (e.g. `"DE_LU"`, `"AT"`, `"IT_NORD"`).
  */
-class EnergyChartsApi(zoneId: String) : PriceFetcher {
+class EnergyChartsApi(
+    zoneId: String,
+    private val client: OkHttpClient = sharedHttpClient
+) : PriceFetcher {
 
     private val bzn = ZONE_TO_BZN[zoneId]
         ?: error("No Energy-Charts mapping for zone: $zoneId")
@@ -72,7 +76,7 @@ class EnergyChartsApi(zoneId: String) : PriceFetcher {
             "&end=${DateTimeFormatter.ISO_INSTANT.format(to)}"
 
         val request = Request.Builder().url(url).get().build()
-        return sharedHttpClient.newCall(request).execute().use { response ->
+        return client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) {
                 throw HttpException(response.code, "Energy-Charts API returned ${response.code}")
             }

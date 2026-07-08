@@ -82,3 +82,8 @@ jobs:
           files: shared/build/test-results/testDebugUnitTest/*.xml,app/build/test-results/testDebugUnitTest/*.xml,wear/build/test-results/testDebugUnitTest/*.xml
           disable_search: true
           fail_ci_if_error: false
+      # Coverage gate: fail the build if :shared line coverage regresses below the bound configured
+      # in shared/build.gradle.kts. Runs last so coverage + test-analytics data is still uploaded
+      # even when the gate fails. (Only :shared has a verify rule; :app/:wear are ungated.)
+      - name: Verify :shared coverage
+        run: ./gradlew :shared:koverVerifyDebug

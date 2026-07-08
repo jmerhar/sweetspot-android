@@ -48,21 +48,9 @@ The only remaining uncovered **lines** are three defensive `error(...)` guards t
 
 - **Per-module reports** (not aggregated) — separate, persistent HTML per module, one Codecov flag each.
 - **Surfacing:** Codecov (browsable web report + badge) plus a run-page summary table. No PR comment (this repo doesn't use PRs).
-- **No gate yet** — baseline established first; Codecov status is `informational`.
+- **Gate on `:shared`** — after the gap-closing passes took it to ~99.6%, a Kover verify rule (`shared/build.gradle.kts`) requires **≥95% line coverage**; CI runs `./gradlew :shared:koverVerifyDebug` as the final step (after the uploads, so coverage/test data is still captured when the gate fails). Chosen over a Codecov status target because this repo pushes straight to `main` — a Codecov status has nothing to block, whereas the Kover rule fails the build itself, locally and in CI. `:app`/`:wear` are ungated (mostly untested Compose UI). The 95% bound sits ~4.6 points under the real number: headroom for the defensive/edge lines, tight enough to catch a new untested subsystem. Raise it toward the actual coverage to ratchet the floor up.
 
 ## Follow-ups (deliberately deferred)
 
-- **Gating:** add a rule to the target module(s) and run the verify task. In `shared/build.gradle.kts`:
-  ```kotlin
-  kover {
-      reports {
-          verify {
-              rule {
-                  bound { minValue = 90 } // set just under the :shared baseline (~91%)
-              }
-          }
-      }
-  }
-  ```
-  Then `./gradlew :shared:koverVerifyDebug` in CI. Scope the gate to `:shared` so the low-signal UI coverage in `:app`/`:wear` doesn't dictate the threshold. (Alternatively, flip `codecov.yml`'s `informational: true` to a target once a baseline is trusted.)
-- **Filters:** consider excluding generated/UI classes (`*.BuildConfig`, `*ComposableSingletons*`, `R`) if the `:app`/`:wear` numbers are ever gated.
+- **Tighten / extend the gate:** raise the `:shared` line bound (currently 95) as coverage stays high, and/or add a branch bound. Codecov's flag status could also be flipped from `informational` to a target if PR-based workflows are ever adopted.
+- **Filters:** consider excluding generated/UI classes (`*.BuildConfig`, `*ComposableSingletons*`, `R`) if the `:app`/`:wear` numbers are ever gated. The three defensive `error()`-guard lines could be excluded too if the `:shared` line gate is ever pushed to ~100%.

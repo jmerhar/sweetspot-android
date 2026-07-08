@@ -41,6 +41,16 @@ kover {
                 classes("*.BuildConfig")
             }
         }
+        // Coverage gate for :shared (the logic module). Fails `koverVerifyDebug` if line coverage
+        // drops below the bound. Set with headroom below the current ~99.6% so it catches real
+        // regressions (e.g. a new untested subsystem) without flapping on defensive/edge lines.
+        verify {
+            rule("Line coverage of :shared") {
+                bound {
+                    minValue = 95
+                }
+            }
+        }
     }
 }
 

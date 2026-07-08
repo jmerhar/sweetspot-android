@@ -100,6 +100,8 @@ make test
 
 371 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
 
+Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug` and uploads a separate HTML report artifact for each module. The `:shared` logic module sits at ~71% line coverage (its own test suite).
+
 ## Data attribution
 
 The bundled EV database is built from two open datasets, merged into a normalised schema by

@@ -19,4 +19,21 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew testDebugUnitTest
+      # Run the debug unit tests and generate a separate Kover coverage report per module.
+      # The unprefixed task names run in all three modules; the Debug variant matches the unit
+      # tests (the "all code" variant would also pull in release and skew the numbers).
+      - run: ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug
+      # One downloadable HTML artifact per module. Each module also produces reportDebug.xml,
+      # so Codecov can be wired in later per module (upload each XML under its own flag).
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-shared
+          path: shared/build/reports/kover/htmlDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-app
+          path: app/build/reports/kover/htmlDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-wear
+          path: wear/build/reports/kover/htmlDebug

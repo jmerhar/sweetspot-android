@@ -82,8 +82,8 @@ RELEASE_KEY_PASSWORD=...
 
 - **`release.md`** — Current release notes (used by the release script)
 - **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
-- **`ideas/`** — Feature ideas (mix of done and pending): website, low price alerts, all-in pricing, widget, test coverage CI, API reliability stats
-- **`ideas/done/`** — Implemented features: localisation, cache management, data source preferences, car charging, appliance power rating, ViewModel locale bug
+- **`ideas/`** — Feature ideas (mix of done and pending): website, low price alerts, all-in pricing, widget, API reliability stats
+- **`ideas/done/`** — Implemented features: localisation, cache management, data source preferences, car charging, appliance power rating, ViewModel locale bug, test coverage CI
 - **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide, country & language coverage audit
 
 `docs/entsoe/` contains ENTSO-E API documentation and sample XML responses.
@@ -94,6 +94,17 @@ RELEASE_KEY_PASSWORD=...
 ./gradlew test                   # Run all unit tests (371 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
+
+### Coverage
+
+Code coverage uses **Kover** (`org.jetbrains.kotlinx.kover`), applied per module (`:shared`, `:app`, `:wear`) so each gets its own report — not the aggregated/merging variant. Use the `Debug` variant tasks (unit tests run on debug); an unqualified task name runs in all three modules:
+
+```bash
+./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug   # all modules, separate reports
+./gradlew :shared:koverHtmlReportDebug                                # one module
+```
+
+Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads three artifacts (`coverage-shared`, `coverage-app`, `coverage-wear`). Baseline (each module's own tests): `:shared` ~71% line, `:app` ~16%, `:wear` ~26% — `:shared` holds the logic; `:app`/`:wear` are largely untested Compose UI. Per-module gating (`koverVerifyDebug`) and Codecov are deferred — see `docs/notes/ideas/done/test-coverage-ci.md`.
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)

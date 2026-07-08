@@ -1,5 +1,6 @@
 plugins {
     id("sweetspot-app")
+    alias(libs.plugins.kover)
 }
 
 base.archivesName = "sweetspot"

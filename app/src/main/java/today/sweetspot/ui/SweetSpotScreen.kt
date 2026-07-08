@@ -48,6 +48,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
@@ -61,7 +62,8 @@ import today.sweetspot.ui.components.ResultSummary
 import today.sweetspot.ui.components.SocDialog
 import today.sweetspot.ui.components.formatHhMm
 import today.sweetspot.ui.components.formatKw
-import today.sweetspot.util.formatDuration
+import today.sweetspot.util.UiText
+import today.sweetspot.util.resolve
 
 /**
  * Top-level screen that delegates to [FormScreen] or [ResultScreen] based on whether
@@ -72,6 +74,7 @@ import today.sweetspot.util.formatDuration
 @Composable
 fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier) {
     val state by viewModel.uiState.collectAsState()
+    val resources = LocalContext.current.resources
     val snackbarHostState = remember { SnackbarHostState() }
     val hasResults = state.result != null
 
@@ -82,7 +85,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
     LaunchedEffect(state.error) {
         val error = state.error
         if (error is AppError.Network) {
-            snackbarHostState.showSnackbar(error.message)
+            snackbarHostState.showSnackbar(error.message.resolve(resources))
         }
     }
 
@@ -100,7 +103,7 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
         ResultScreen(
             result = state.result!!,
             allPrices = state.allPrices,
-            resultLabel = state.resultLabel ?: formatDuration(state.durationHours, state.durationMinutes),
+            resultLabel = (state.resultLabel ?: UiText.duration(state.durationHours, state.durationMinutes)).resolve(resources),
             now = state.now,
             priceSource = state.priceSource,
             priceZoneName = priceZoneName,
@@ -135,6 +138,7 @@ private fun FormScreen(
     modifier: Modifier = Modifier
 ) {
     val state by viewModel.uiState.collectAsState()
+    val resources = LocalContext.current.resources
     var socDialogFor by remember { mutableStateOf<today.sweetspot.model.Appliance?>(null) }
 
     socDialogFor?.let { appliance ->
@@ -238,7 +242,7 @@ private fun FormScreen(
             val validationError = state.error as? AppError.Validation
             if (validationError != null) {
                 Spacer(modifier = Modifier.height(12.dp))
-                ErrorBox(message = validationError.message)
+                ErrorBox(message = validationError.message.resolve(resources))
             }
 
             Spacer(modifier = Modifier.height(24.dp))

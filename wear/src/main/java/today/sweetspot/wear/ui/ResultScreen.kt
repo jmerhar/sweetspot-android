@@ -16,6 +16,7 @@ import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import today.sweetspot.util.formatRelative
+import today.sweetspot.util.resolve
 import today.sweetspot.util.shortTimeFormatter
 import today.sweetspot.wear.R
 import today.sweetspot.wear.WearUiState
@@ -35,6 +36,8 @@ import java.time.ZonedDateTime
 fun ResultScreen(
     state: WearUiState
 ) {
+    val resources = LocalContext.current.resources
+
     if (state.isLoading) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
@@ -45,7 +48,7 @@ fun ResultScreen(
     if (state.error != null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(
-                text = state.error,
+                text = state.error.resolve(resources),
                 color = MaterialTheme.colors.error,
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center
@@ -66,7 +69,6 @@ fun ResultScreen(
         return
     }
 
-    val resources = LocalContext.current.resources
     val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone!!.timeZoneId) }
     val now = ZonedDateTime.now(timeZoneId)
     // Centre on the label item (index 3: Start caption, time, relative, then label)
@@ -104,7 +106,7 @@ fun ResultScreen(
         if (state.resultLabel != null) {
             item {
                 Text(
-                    text = state.resultLabel,
+                    text = state.resultLabel.resolve(resources),
                     style = MaterialTheme.typography.caption1,
                     color = MaterialTheme.colors.onSurfaceVariant,
                     textAlign = TextAlign.Center

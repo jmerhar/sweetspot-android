@@ -34,8 +34,8 @@ import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.PriceZone
 import today.sweetspot.model.WindowResult
+import today.sweetspot.util.UiText
 import today.sweetspot.util.findWindowAlternatives
-import today.sweetspot.util.formatDuration
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -57,13 +57,13 @@ import java.util.UUID
  * transient network errors (shown as a snackbar).
  */
 sealed interface AppError {
-    val message: String
+    val message: UiText
 
     /** Validation or data error shown inline below the form. */
-    data class Validation(override val message: String) : AppError
+    data class Validation(override val message: UiText) : AppError
 
     /** Network or fetch error shown as a snackbar. Unique [id] ensures consecutive identical messages still trigger the snackbar. */
-    data class Network(override val message: String, val id: Long = System.nanoTime()) : AppError
+    data class Network(override val message: UiText, val id: Long = System.nanoTime()) : AppError
 }
 
 /** Maximum number of vehicle picker results shown at once. */
@@ -79,7 +79,8 @@ private const val EV_SEARCH_LIMIT = 50
  * @property result The currently-displayed window, or `null` if no search has been performed.
  *           This is the cheapest window initially, but the "earlier"/"cheaper" buttons can move
  *           it to an earlier (and costlier) alternative — see [windowAlternatives].
- * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m").
+ * @property resultLabel Label shown in the results screen top bar (e.g. "Washing machine · 2h 30m"),
+ *           as deferred [UiText] resolved by the UI in the current locale.
  * @property windowAlternatives Progressively-earlier window options, cheapest first (index 0).
  *           [result] is `windowAlternatives[windowOffset]`. Empty when there is no result.
  * @property windowOffset Index into [windowAlternatives] of the currently-displayed window
@@ -125,7 +126,7 @@ data class UiState(
     val isLoading: Boolean = false,
     val error: AppError? = null,
     val result: WindowResult? = null,
-    val resultLabel: String? = null,
+    val resultLabel: UiText? = null,
     val windowAlternatives: List<WindowResult> = emptyList(),
     val windowOffset: Int = 0,
     val allPrices: List<PriceSlot> = emptyList(),
@@ -464,21 +465,20 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param targetSoc Target state of charge (0–100).
      */
     fun onEvApplianceFind(appliance: Appliance, currentSoc: Int, targetSoc: Int) {
-        val app = getApplication<Application>()
         val spec = appliance.ev ?: return
 
         if (targetSoc <= currentSoc) {
-            _uiState.update { it.copy(error = AppError.Validation(app.getString(R.string.ev_error_invalid_soc))) }
+            _uiState.update { it.copy(error = AppError.Validation(UiText.Res(R.string.ev_error_invalid_soc))) }
             return
         }
         val priceZone = _uiState.value.priceZone
         if (priceZone == null) {
-            _uiState.update { it.copy(error = AppError.Validation(app.getString(R.string.error_no_zone))) }
+            _uiState.update { it.copy(error = AppError.Validation(UiText.Res(R.string.error_no_zone))) }
             return
         }
         val effectivePowerKw = minOf(spec.acMaxPowerKw, _uiState.value.evHomeChargerKw)
         if (effectivePowerKw <= 0.0) {
-            _uiState.update { it.copy(error = AppError.Validation(app.getString(R.string.ev_error_invalid_charger))) }
+            _uiState.update { it.copy(error = AppError.Validation(UiText.Res(R.string.ev_error_invalid_charger))) }
             return
         }
 
@@ -493,7 +493,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         // Remember the current SoC to prefill the prompt next time.
         settingsRepository.setEvLastCurrentSoc(currentSoc)
 
-        val label = "${appliance.name} · ${currentSoc}→${targetSoc}%"
+        val label = UiText.Raw("${appliance.name} · ${currentSoc}→${targetSoc}%")
 
         _uiState.update {
             it.copy(
@@ -619,12 +619,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param minutes Minutes component of the quick duration.
      */
     fun onQuickDuration(hours: Int, minutes: Int) {
-        val res = getApplication<Application>().resources
         _uiState.update {
             it.copy(
                 durationHours = hours,
                 durationMinutes = minutes,
-                resultLabel = formatDuration(hours, minutes, res)
+                resultLabel = UiText.duration(hours, minutes)
             )
         }
         onFindClicked()
@@ -637,8 +636,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param appliance The tapped appliance.
      */
     fun onApplianceDuration(appliance: Appliance) {
-        val res = getApplication<Application>().resources
-        val label = "${appliance.name} \u00b7 ${formatDuration(appliance.durationHours, appliance.durationMinutes, res)}"
+        val label = UiText.applianceLabel(appliance.name, appliance.durationHours, appliance.durationMinutes)
         _uiState.update {
             it.copy(
                 durationHours = appliance.durationHours,
@@ -773,18 +771,17 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /**
      * Clears all cached price data if the API cooldown has elapsed.
      *
-     * @return A user-facing message: confirmation if cleared, or cooldown warning.
+     * @return A user-facing message ([UiText], resolved by the UI): confirmation if cleared, or cooldown warning.
      */
-    fun onClearCache(): String {
+    fun onClearCache(): UiText {
         val cooldownDisabled = settingsRepository.isCooldownDisabled()
         val remaining = if (cooldownDisabled) 0L else priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
-        val app = getApplication<Application>()
         return if (remaining > 0) {
             val minutes = (remaining / 60_000).toInt() + 1
-            app.resources.getQuantityString(R.plurals.error_cooldown, minutes, minutes)
+            UiText.Plural(R.plurals.error_cooldown, minutes, listOf(minutes))
         } else {
             priceCache.clear()
-            app.getString(R.string.snackbar_cache_cleared)
+            UiText.Res(R.string.snackbar_cache_cleared)
         }
     }
 
@@ -798,10 +795,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onRefreshResults() {
         val cooldownDisabled = settingsRepository.isCooldownDisabled()
         val remaining = if (cooldownDisabled) 0L else priceCache.cooldownRemainingMs(PriceRepository.COOLDOWN_MS)
-        val app = getApplication<Application>()
         if (remaining > 0) {
             val minutes = (remaining / 60_000).toInt() + 1
-            _uiState.update { it.copy(error = AppError.Network(app.resources.getQuantityString(R.plurals.error_cooldown, minutes, minutes))) }
+            _uiState.update { it.copy(error = AppError.Network(UiText.Plural(R.plurals.error_cooldown, minutes, listOf(minutes)))) }
             return
         }
 
@@ -812,7 +808,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val h = state.durationHours
         val m = state.durationMinutes
         val durationHours = h + m / 60.0
-        val durationLabel = formatDuration(h, m, app.resources)
+        val durationText = UiText.duration(h, m)
 
         _uiState.update { it.copy(isLoading = true, error = null) }
 
@@ -820,7 +816,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         stopResultRefresh()
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(ioDispatcher) {
-            fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)
+            fetchAndFind(durationHours, durationText, timeZoneId, priceZone)
         }
     }
 
@@ -973,7 +969,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (h == 0 && m == 0) {
             _uiState.update {
                 it.copy(
-                    error = AppError.Validation(getApplication<Application>().getString(R.string.error_zero_duration)),
+                    error = AppError.Validation(UiText.Res(R.string.error_zero_duration)),
                     result = null,
                     allPrices = emptyList()
                 )
@@ -985,7 +981,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (priceZone == null) {
             _uiState.update {
                 it.copy(
-                    error = AppError.Validation(getApplication<Application>().getString(R.string.error_no_zone)),
+                    error = AppError.Validation(UiText.Res(R.string.error_no_zone)),
                     result = null,
                     allPrices = emptyList()
                 )
@@ -994,14 +990,14 @@ class SweetSpotViewModel @JvmOverloads constructor(
         }
 
         val durationHours = h + m / 60.0
-        val durationLabel = formatDuration(h, m, getApplication<Application>().resources)
+        val durationText = UiText.duration(h, m)
 
         _uiState.update {
             it.copy(
                 isLoading = true,
                 error = null,
                 result = null,
-                resultLabel = it.resultLabel ?: durationLabel,
+                resultLabel = it.resultLabel ?: durationText,
                 searchDeadline = resolveDeadline(currentNow(it.timeZoneId)),
                 searchPowerKw = powerKw
             )
@@ -1011,7 +1007,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         stopResultRefresh()
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch(ioDispatcher) {
-            fetchAndFind(durationHours, durationLabel, timeZoneId, priceZone)
+            fetchAndFind(durationHours, durationText, timeZoneId, priceZone)
         }
     }
 
@@ -1022,11 +1018,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * On success, starts the periodic refresh via [startResultRefresh].
      *
      * @param durationHours Duration in decimal hours.
-     * @param durationLabel Human-readable duration label for error messages.
+     * @param durationText Human-readable duration label ([UiText]) used in the "not enough data" error.
      * @param timeZoneId Timezone snapshot captured before the IO dispatch.
      * @param priceZone The price zone to fetch data for.
      */
-    private fun fetchAndFind(durationHours: Double, durationLabel: String, timeZoneId: ZoneId, priceZone: PriceZone) {
+    private fun fetchAndFind(durationHours: Double, durationText: UiText, timeZoneId: ZoneId, priceZone: PriceZone) {
         try {
             val state = _uiState.value
             val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
@@ -1043,7 +1039,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = AppError.Validation(getApplication<Application>().getString(R.string.error_no_data)),
+                        error = AppError.Validation(UiText.Res(R.string.error_no_data)),
                         allPrices = emptyList(),
                         priceSource = null
                     )
@@ -1056,12 +1052,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
             val alternatives = findWindowAlternatives(prices, durationHours, now, deadline)
 
             if (alternatives.isEmpty()) {
-                val app = getApplication<Application>()
                 val message = if (deadline != null) {
-                    app.getString(R.string.ev_error_deadline_unreachable)
+                    UiText.Res(R.string.ev_error_deadline_unreachable)
                 } else {
                     val coverageHours = prices.sumOf { it.durationMinutes.toLong() } / 60
-                    app.resources.getQuantityString(R.plurals.error_not_enough_data, coverageHours.toInt(), durationLabel, coverageHours)
+                    UiText.Plural(R.plurals.error_not_enough_data, coverageHours.toInt(), listOf(durationText, coverageHours))
                 }
                 _uiState.update {
                     it.copy(
@@ -1091,7 +1086,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             _uiState.update {
                 it.copy(
                     isLoading = false,
-                    error = AppError.Network(getApplication<Application>().getString(R.string.error_network, e.message ?: "")),
+                    error = AppError.Network(UiText.Res(R.string.error_network, listOf(e.message ?: ""))),
                     allPrices = emptyList(),
                     priceSource = null
                 )

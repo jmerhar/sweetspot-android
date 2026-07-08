@@ -26,11 +26,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import today.sweetspot.R
 import today.sweetspot.data.api.DataSource
+import today.sweetspot.util.UiText
+import today.sweetspot.util.resolve
 import java.time.ZoneId
 
 /**
@@ -43,7 +46,7 @@ import java.time.ZoneId
  * @param onSourceOrderChanged Called when the user reorders data sources.
  * @param onDisabledSourcesChanged Called when the user toggles a data source.
  * @param onResetSourceOrder Called when the user resets to default source order.
- * @param onClearCache Called when the user taps "Clear cache". Returns a snackbar message.
+ * @param onClearCache Called when the user taps "Clear cache". Returns a [UiText] snackbar message.
  * @param devOptionsEnabled Whether developer options are unlocked.
  * @param isCooldownDisabled Whether the API fetch cooldown is currently bypassed.
  * @param onDevCooldownDisabledChanged Called when the cooldown toggle changes.
@@ -67,7 +70,7 @@ internal fun AdvancedSettingsScreen(
     onSourceOrderChanged: (List<String>) -> Unit,
     onDisabledSourcesChanged: (Set<String>) -> Unit,
     onResetSourceOrder: () -> Unit,
-    onClearCache: () -> String,
+    onClearCache: () -> UiText,
     devOptionsEnabled: Boolean,
     isCooldownDisabled: Boolean,
     onDevCooldownDisabledChanged: (Boolean) -> Unit,
@@ -84,6 +87,7 @@ internal fun AdvancedSettingsScreen(
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+    val resources = LocalContext.current.resources
 
     Scaffold(
         topBar = {
@@ -128,7 +132,7 @@ internal fun AdvancedSettingsScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable(onClick = {
-                        val message = onClearCache()
+                        val message = onClearCache().resolve(resources)
                         coroutineScope.launch { snackbarHostState.showSnackbar(message) }
                     })
                     .padding(horizontal = 16.dp, vertical = 12.dp),

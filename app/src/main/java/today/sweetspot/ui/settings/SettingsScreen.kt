@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import today.sweetspot.BuildConfig
 import kotlinx.coroutines.launch
 import today.sweetspot.R
+import today.sweetspot.util.UiText
 import today.sweetspot.ThemeMode
 import today.sweetspot.data.api.DataSource
 import today.sweetspot.model.Appliance
@@ -84,7 +85,7 @@ fun SettingsScreen(
     onDisabledSourcesChanged: (Set<String>) -> Unit,
     onResetSourceOrder: () -> Unit,
     onLanguageChanged: (String) -> Unit,
-    onClearCache: () -> String,
+    onClearCache: () -> UiText,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
     isUnlocked: Boolean,

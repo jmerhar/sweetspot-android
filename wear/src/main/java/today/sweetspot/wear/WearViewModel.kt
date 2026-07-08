@@ -35,8 +35,8 @@ import today.sweetspot.model.Countries
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.PriceZone
 import today.sweetspot.model.WindowResult
+import today.sweetspot.util.UiText
 import today.sweetspot.util.findCheapestWindow
-import today.sweetspot.util.formatDuration
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -45,9 +45,9 @@ import java.time.ZonedDateTime
  *
  * @property appliances Appliance list synced from the phone via the Wearable Data Layer.
  * @property isLoading Whether a price fetch is in progress.
- * @property error Error message to display, or `null` if none.
+ * @property error Error message to display ([UiText], resolved by the UI in the current locale), or `null` if none.
  * @property result The cheapest-window result, or `null` if no search has been performed.
- * @property resultLabel Label shown on the result screen (e.g. "Washer · 2h 30m").
+ * @property resultLabel Label shown on the result screen (e.g. "Washer · 2h 30m"), as deferred [UiText].
  * @property priceZone The resolved price zone synced from the phone, or `null` if not yet configured.
  * @property sourceOrder Ordered list of all source IDs synced from the phone, or `null` for zone defaults.
  * @property disabledSources Set of disabled source IDs synced from the phone.
@@ -56,9 +56,9 @@ import java.time.ZonedDateTime
 data class WearUiState(
     val appliances: List<Appliance> = emptyList(),
     val isLoading: Boolean = false,
-    val error: String? = null,
+    val error: UiText? = null,
     val result: WindowResult? = null,
-    val resultLabel: String? = null,
+    val resultLabel: UiText? = null,
     val priceZone: PriceZone? = Countries.defaultCountry().zones.first(),
     val sourceOrder: List<String>? = null,
     val disabledSources: Set<String> = emptySet(),
@@ -206,13 +206,12 @@ class WearViewModel @JvmOverloads constructor(
         val h = appliance.durationHours
         val m = appliance.durationMinutes
         val durationHours = h + m / 60.0
-        val res = getApplication<Application>().resources
-        val label = "${appliance.name} \u00b7 ${formatDuration(h, m, res)}"
+        val label = UiText.applianceLabel(appliance.name, h, m)
 
         val priceZone = _uiState.value.priceZone
         if (priceZone == null) {
             _uiState.update {
-                it.copy(error = getApplication<Application>().getString(R.string.wear_error_no_zone))
+                it.copy(error = UiText.Res(R.string.wear_error_no_zone))
             }
             return
         }
@@ -239,7 +238,7 @@ class WearViewModel @JvmOverloads constructor(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = getApplication<Application>().getString(R.string.wear_error_no_data)
+                            error = UiText.Res(R.string.wear_error_no_data)
                         )
                     }
                     return@launch
@@ -252,7 +251,7 @@ class WearViewModel @JvmOverloads constructor(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = getApplication<Application>().getString(R.string.wear_error_not_enough_data, formatDuration(h, m, res))
+                            error = UiText.Res(R.string.wear_error_not_enough_data, listOf(UiText.duration(h, m)))
                         )
                     }
                     return@launch
@@ -276,7 +275,7 @@ class WearViewModel @JvmOverloads constructor(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        error = getApplication<Application>().getString(R.string.wear_error_network)
+                        error = UiText.Res(R.string.wear_error_network)
                     )
                 }
                 syncStatsToPhone()

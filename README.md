@@ -98,7 +98,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-358 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
+371 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
 
 ## Data attribution
 

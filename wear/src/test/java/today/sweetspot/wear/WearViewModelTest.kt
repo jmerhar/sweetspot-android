@@ -28,6 +28,7 @@ import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
+import today.sweetspot.util.UiText
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.PriceSlot
 import java.time.Instant
@@ -136,7 +137,7 @@ class WearViewModelTest {
 
         val state = viewModel.uiState.value
         assertTrue(state.isLoading)
-        assertEquals("Washer \u00b7 2h 30m", state.resultLabel)
+        assertEquals(UiText.applianceLabel("Washer", 2, 30), state.resultLabel)
         assertNull(state.result)
         assertNull(state.error)
     }
@@ -178,7 +179,7 @@ class WearViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.error)
-        assertTrue(state.error!!.contains("No price data"))
+        assertEquals(UiText.Res(R.string.wear_error_no_data), state.error)
     }
 
     @Test
@@ -191,7 +192,8 @@ class WearViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.error)
-        assertTrue(state.error!!.contains("Not enough data"))
+        val notEnough = state.error
+        assertTrue(notEnough is UiText.Res && notEnough.id == R.string.wear_error_not_enough_data)
     }
 
     @Test
@@ -206,7 +208,7 @@ class WearViewModelTest {
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
-        assertEquals("Second \u00b7 2h", state.resultLabel)
+        assertEquals(UiText.applianceLabel("Second", 2, 0), state.resultLabel)
         assertNotNull(state.result)
         viewModel.onClearResult()
     }

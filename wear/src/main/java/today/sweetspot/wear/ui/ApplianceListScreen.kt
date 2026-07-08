@@ -30,6 +30,7 @@ import androidx.wear.compose.material.scrollAway
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.applianceIconFor
 import today.sweetspot.util.formatDuration
+import today.sweetspot.util.resolve
 import today.sweetspot.wear.R
 import today.sweetspot.wear.WearUiState
 
@@ -103,10 +104,11 @@ fun ApplianceListScreen(
                     }
                 }
 
-                if (state.error != null) {
+                val errorText = state.error
+                if (errorText != null) {
                     item {
                         Text(
-                            text = state.error,
+                            text = errorText.resolve(resources),
                             color = MaterialTheme.colors.error,
                             style = MaterialTheme.typography.body2,
                             textAlign = TextAlign.Center,

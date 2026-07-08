@@ -33,6 +33,7 @@ import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.PriceSlot
+import today.sweetspot.util.UiText
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -189,14 +190,14 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertEquals(2, state.durationHours)
         assertEquals(0, state.durationMinutes)
-        assertEquals("2h", state.resultLabel)
+        assertEquals(UiText.duration(2, 0), state.resultLabel)
     }
 
     @Test
     fun `onQuickDuration with minutes sets correct label`() {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onQuickDuration(1, 30)
-        assertEquals("1h 30m", viewModel.uiState.value.resultLabel)
+        assertEquals(UiText.duration(1, 30), viewModel.uiState.value.resultLabel)
     }
 
     // --- Appliance duration ---
@@ -209,7 +210,7 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertEquals(2, state.durationHours)
         assertEquals(30, state.durationMinutes)
-        assertEquals("Washer \u00b7 2h 30m", state.resultLabel)
+        assertEquals(UiText.applianceLabel("Washer", 2, 30), state.resultLabel)
     }
 
     // --- Validation ---
@@ -222,7 +223,7 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertNotNull(state.error)
         assertTrue(state.error is AppError.Validation)
-        assertTrue(state.error!!.message.contains("duration greater than zero"))
+        assertEquals(UiText.Res(R.string.error_zero_duration), state.error!!.message)
         assertNull(state.result)
     }
 
@@ -367,7 +368,8 @@ class SweetSpotViewModelTest {
         assertFalse(state.isLoading)
         assertNotNull(state.error)
         assertTrue(state.error is AppError.Network)
-        assertTrue(state.error!!.message.contains("Could not fetch prices"))
+        val networkMsg = state.error!!.message
+        assertTrue(networkMsg is UiText.Res && networkMsg.id == R.string.error_network)
         assertNull(state.result)
     }
 
@@ -382,7 +384,7 @@ class SweetSpotViewModelTest {
         assertFalse(state.isLoading)
         assertNotNull(state.error)
         assertTrue(state.error is AppError.Validation)
-        assertTrue(state.error!!.message.contains("No price data"))
+        assertEquals(UiText.Res(R.string.error_no_data), state.error!!.message)
     }
 
     @Test
@@ -396,7 +398,8 @@ class SweetSpotViewModelTest {
         assertFalse(state.isLoading)
         assertNotNull(state.error)
         assertTrue(state.error is AppError.Validation)
-        assertTrue(state.error!!.message.contains("Not enough price data"))
+        val notEnoughMsg = state.error!!.message
+        assertTrue(notEnoughMsg is UiText.Plural && notEnoughMsg.id == R.plurals.error_not_enough_data)
     }
 
     @Test
@@ -425,7 +428,7 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.result)
-        assertEquals("1h", state.resultLabel)
+        assertEquals(UiText.duration(1, 0), state.resultLabel)
         viewModel.onClearResult()
     }
 
@@ -439,7 +442,7 @@ class SweetSpotViewModelTest {
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.result)
-        assertEquals("Washer \u00b7 2h", state.resultLabel)
+        assertEquals(UiText.applianceLabel("Washer", 2, 0), state.resultLabel)
         viewModel.onClearResult()
     }
 
@@ -452,7 +455,7 @@ class SweetSpotViewModelTest {
 
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
-        assertEquals("3h", state.resultLabel)
+        assertEquals(UiText.duration(3, 0), state.resultLabel)
         assertNotNull(state.result)
         viewModel.onClearResult()
     }
@@ -511,7 +514,7 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
         val message = viewModel.onClearCache()
         assertEquals(1, cache.clearCount)
-        assertTrue(message.contains("cleared", ignoreCase = true))
+        assertEquals(UiText.Res(R.string.snackbar_cache_cleared), message)
     }
 
     @Test
@@ -520,7 +523,7 @@ class SweetSpotViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
         val message = viewModel.onClearCache()
         assertEquals(0, cache.clearCount)
-        assertTrue(message.contains("minutes", ignoreCase = true))
+        assertTrue(message is UiText.Plural && message.id == R.plurals.error_cooldown)
     }
 
     // --- Refresh results ---
@@ -536,7 +539,8 @@ class SweetSpotViewModelTest {
         assertFalse(state.isLoading)
         assertNotNull(state.error)
         assertTrue(state.error is AppError.Network)
-        assertTrue(state.error!!.message.contains("minutes", ignoreCase = true))
+        val cooldownMsg = state.error!!.message
+        assertTrue(cooldownMsg is UiText.Plural && cooldownMsg.id == R.plurals.error_cooldown)
     }
 
     @Test
@@ -913,7 +917,7 @@ class SweetSpotViewModelTest {
 
         val message = viewModel.onClearCache()
         assertEquals(1, cache.clearCount)
-        assertTrue(message.contains("cleared", ignoreCase = true))
+        assertEquals(UiText.Res(R.string.snackbar_cache_cleared), message)
     }
 
     @Test
@@ -1135,7 +1139,7 @@ class SweetSpotViewModelTest {
         assertEquals(3, state.durationHours)
         assertEquals(16, state.durationMinutes)
         assertNotNull(state.result)
-        assertTrue(state.resultLabel!!.contains("→"))
+        assertTrue((state.resultLabel as UiText.Raw).value.contains("→"))
         viewModel.onClearResult()
     }
 

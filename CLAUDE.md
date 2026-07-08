@@ -91,7 +91,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (429 tests)
+./gradlew test                   # Run all unit tests (459 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -104,21 +104,21 @@ Code coverage uses **Kover** (`org.jetbrains.kotlinx.kover`), applied per module
 ./gradlew :shared:koverHtmlReportDebug                                # one module
 ```
 
-Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`) — browsable at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android) — and also renders an at-a-glance per-module table on the run's summary page. Requires the `CODECOV_TOKEN` repo secret; `codecov.yml` sets the flags, marks status informational (no gate), and disables PR comments. Coverage (each module's own tests): `:shared` ~97% line, `:app` ~16%, `:wear` ~26% — `:shared` holds the logic; `:app`/`:wear` are largely untested Compose UI. `:shared`'s Kover config excludes generated boilerplate (kotlinx-serialization `@Serializable` types, `BuildConfig`) so the number reflects real logic. Per-module gating (`koverVerifyDebug`) is deferred — see `docs/notes/ideas/done/test-coverage-ci.md`.
+Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`) — browsable at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android) — and also renders an at-a-glance per-module table on the run's summary page. Requires the `CODECOV_TOKEN` repo secret; `codecov.yml` sets the flags, marks status informational (no gate), and disables PR comments. Coverage (each module's own tests): `:shared` ~99% line, `:app` ~16%, `:wear` ~26% — `:shared` holds the logic; `:app`/`:wear` are largely untested Compose UI. `:shared`'s Kover config excludes generated boilerplate (kotlinx-serialization `@Serializable` types, `BuildConfig`) so the number reflects real logic. Per-module gating (`koverVerifyDebug`) is deferred — see `docs/notes/ideas/done/test-coverage-ci.md`.
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
-- `data/repository/SettingsRepositoryTest` — trial/unlock logic, source-order + disabled-source persistence (incl. country-change reset), appliance/EV serialization, price-zone resolution, timezone precedence, time override (18 tests, Robolectric, in shared)
-- `data/repository/CountryDetectorTest` — SIM → network → timezone → locale → NL fallback chain (6 tests, Robolectric, in shared)
+- `data/repository/SettingsRepositoryTest` — trial/unlock logic, source-order + disabled-source persistence (incl. country-change reset), appliance/EV serialization, price-zone resolution, timezone precedence, time override, developer options (27 tests, Robolectric, in shared)
+- `data/repository/CountryDetectorTest` — SIM → network → timezone → locale → NL fallback chain (7 tests, Robolectric, in shared)
 - `data/cache/FilePriceCacheTest` — v3 binary format round-trip, version-migration/corruption → null, per-zone/global clear, fetch cooldown (9 tests, Robolectric, in shared)
 - `data/api/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
 - `data/api/PriceFetcherFactoryTest` — `defaultPriceFetcherFactory` chain composition: zone defaults, custom order, non-applicable/partial filtering, instrumented wrapping (8 tests, in shared)
-- `data/api/ApiHttpTest` — HTTP paths of all five API clients via a canned-response `OkHttpClient`: success → `FetchResult`, non-200 → `HttpException` with code, ENTSO-E acknowledgement → `EntsoeException` (12 tests, in shared)
+- `data/api/ApiHttpTest` — HTTP paths of all five API clients via a canned-response `OkHttpClient`: success → `FetchResult`, non-200 → `HttpException` with code, ENTSO-E acknowledgement → `EntsoeException` (13 tests, in shared)
 - `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone ID validation against Countries registry (12 tests, in shared)
 - `data/api/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
 - `data/api/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
 - `data/api/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `data/api/EntsoeApiParseTest` — ENTSO-E XML parsing: PT60M, PT15M native resolution, A03 gaps, multi-TimeSeries, overlapping TimeSeries dedup, errors, DST (14 tests, in shared)
+- `data/api/EntsoeApiParseTest` — ENTSO-E XML parsing: PT60M, PT15M native resolution, A03 gaps, multi-TimeSeries, overlapping TimeSeries dedup, errors, DST, and malformed-XML edge cases (missing price/resolution, out-of-context tags) (18 tests, in shared)
 - `data/api/SpotHintaApiParseTest` — Spot-Hinta.fi JSON parsing, timezone conversion, 15-min slots (7 tests, in shared)
 - `data/api/SpotHintaApiMalformedTest` — malformed/invalid JSON handling for Spot-Hinta.fi (7 tests, in shared)
 - `data/api/SpotHintaApiDstTest` — DST transition parsing with Europe/Helsinki: winter, summer, spring-forward, fall-back (5 tests, in shared)
@@ -132,6 +132,8 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (12 tests, in shared)
 - `util/UiTextTest` — `UiText` construction/mapping: duration resource selection, appliance-label composition, locale-independent structure (5 tests, pure JUnit — no Robolectric, in shared)
+- `util/UiTextResolveTest` — `UiText.resolve()` against `:shared` resources: Raw/Res/Plural/Composite, empty-vs-args branches, nested-`UiText` arg (7 tests, Robolectric, in shared)
+- `util/ResourceFormattingTest` — the localised (non-null `Resources`) branches of `formatDuration`/`formatRelative` (8 tests, Robolectric, in shared)
 - `util/UiTextResolveTest` — `UiText.resolve()` against real string resources: Raw/Res/Plural/Composite, empty-vs-args branches, nested-`UiText` argument resolution (8 tests, Robolectric, in app)
 - `model/ApplianceIconTest` — icon resolution and unknown-ID fallback (3 tests, in shared)
 - `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
@@ -169,7 +171,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (429 tests)
+- JUnit 4 + Robolectric for unit tests (459 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - No frameworks, no DI, no database — SharedPreferences + file cache only (plus one bundled read-only JSON asset, `ev-vehicles.json`, for the EV database)

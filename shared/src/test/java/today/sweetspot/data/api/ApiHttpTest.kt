@@ -162,4 +162,19 @@ class ApiHttpTest {
         }
         assertEquals("No matching data found", e.reason)
     }
+
+    @Test
+    fun `entsoe acknowledgement without reason text yields Unknown error`() {
+        // An acknowledgement whose Reason has no (non-empty) text → the extractor's fallback.
+        val ack = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <Acknowledgement_MarketDocument>
+              <Reason><code>999</code></Reason>
+            </Acknowledgement_MarketDocument>
+        """.trimIndent()
+        val e = assertThrows(EntsoeException::class.java) {
+            EntsoeApi("token", "zone", cannedClient(200, ack)).fetchPrices(from, to, tz)
+        }
+        assertEquals("Unknown error", e.reason)
+    }
 }

@@ -81,4 +81,11 @@ class CountryDetectorTest {
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"))
         assertEquals("DE", CountryDetector.detect(context).code)
     }
+
+    @Test
+    fun `a locale without a country region falls through to the fallback`() {
+        TimeZone.setDefault(TimeZone.getTimeZone("America/New_York")) // unmapped
+        Locale.setDefault(Locale.forLanguageTag("sv")) // language only, no region → empty country
+        assertEquals("NL", CountryDetector.detect(context).code)
+    }
 }

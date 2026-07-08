@@ -22,7 +22,7 @@ Each module's own debug unit tests. `:shared` was subsequently raised from its i
 
 | Module | Line | Instruction | Branch | Class |
 |---|---|---|---|---|
-| **`:shared`** | **97.2%** | 94.0% | 77.3% | 95.9% |
+| **`:shared`** | **99.6%** | 99.1% | 88.8% | 98.0% |
 | `:app` | 15.7% | 12.1% | 6.8% | 21.6% |
 | `:wear` | 25.9% | 20.9% | 12.3% | 26.3% |
 
@@ -39,7 +39,9 @@ Before considering a gate, the real gaps were addressed (71.3% → 97.2% line):
 - **Kover filters** exclude generated boilerplate (`@Serializable` types, `BuildConfig`) so the number reflects real logic — see `shared/build.gradle.kts`.
 - To support real assertions: `FallbackPriceFetcher.fetchers` and `InstrumentedPriceFetcher.delegate`/`sourceId` were widened `private` → `internal`, and each API client gained an injectable `OkHttpClient` param (default `sharedHttpClient`) so a canned-response interceptor can drive `fetchRaw`/`fetchPrices` without a network.
 
-Remaining `:shared` gaps are minor: a few API-parser edge branches, and `util/UiTextKt.resolve()` (shows 0% in `:shared` but is fully tested in `:app`'s `UiTextResolveTest` — a cross-module artifact, not a real gap).
+A second pass then took `:shared` to **99.6% line / 88.8% branch**: added a `:shared` `UiTextResolveTest` (so `resolve()` is covered in its own module too), `ResourceFormattingTest` (the localised branches of `formatDuration`/`formatRelative`), more `SettingsRepositoryTest` cases (developer options, invalid-timezone fallback, auto-detect), a `CountryDetector` locale-region case, and ENTSO-E parser edge cases (missing price/resolution, A03 with no position 1, out-of-context tags).
+
+The only remaining uncovered **lines** are three defensive `error(...)` guards that are unreachable in practice (`PriceFetcherFactory` unknown-source `else`, `EnergyChartsApi`/`AwattarApi` "no mapping for zone"). The remaining unhit **branches** are all defensive/unreachable too: null-safe `?.` sides (`listFiles()` etc.), the null-`TelephonyManager` path, compound short-circuits the upstream guards make unreachable, and Kotlin `when`-on-`String` hashCode artifacts. These aren't worth contriving tests for; if a gate ever needs a round number, exclude the `error()`-guard lines via a Kover filter.
 
 ## Decisions
 

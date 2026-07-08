@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -27,6 +28,7 @@ import java.time.ZoneId
 class SettingsRepositoryTest {
 
     private lateinit var repo: SettingsRepository
+    private lateinit var context: Context
 
     private companion object {
         const val DAY_MS = 24 * 60 * 60 * 1000L
@@ -34,7 +36,7 @@ class SettingsRepositoryTest {
 
     @Before
     fun setUp() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
+        context = ApplicationProvider.getApplicationContext()
         context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE).edit().clear().commit()
         repo = SettingsRepository(context)
     }
@@ -211,5 +213,73 @@ class SettingsRepositoryTest {
         assertEquals("system", repo.getThemeMode())
         repo.setThemeMode("dark")
         assertEquals("dark", repo.getThemeMode())
+    }
+
+    // --- Developer options ---
+
+    @Test
+    fun `dev options default off and persist`() {
+        assertFalse(repo.isDevOptionsEnabled())
+        repo.setDevOptionsEnabled()
+        assertTrue(repo.isDevOptionsEnabled())
+    }
+
+    @Test
+    fun `cooldown-disabled defaults off and persists`() {
+        assertFalse(repo.isCooldownDisabled())
+        repo.setCooldownDisabled(true)
+        assertTrue(repo.isCooldownDisabled())
+    }
+
+    @Test
+    fun `production-logo override defaults off and persists`() {
+        assertFalse(repo.isUseProductionLogo())
+        repo.setUseProductionLogo(true)
+        assertTrue(repo.isUseProductionLogo())
+    }
+
+    @Test
+    fun `price zone id can be set and cleared`() {
+        repo.setPriceZoneId("SE1")
+        assertEquals("SE1", repo.getPriceZoneId())
+        repo.setPriceZoneId(null)
+        assertNull(repo.getPriceZoneId())
+    }
+
+    @Test
+    fun `devClock uses the system clock when no override is set`() {
+        val clock = repo.devClock(ZoneId.of("UTC"))
+        assertTrue(kotlin.math.abs(clock.millis() - System.currentTimeMillis()) < 5_000)
+    }
+
+    @Test
+    fun `country code is auto-detected and persisted on first access`() {
+        // No country set → detection runs, returns a supported code, and persists it.
+        val detected = repo.getCountryCode()
+        assertNotNull(Countries.findByCode(detected))
+        assertEquals(detected, repo.getCountryCode()) // second read is the persisted value
+    }
+
+    @Test
+    fun `an invalid stored timezone falls back to the zone default`() {
+        repo.setCountryCode("NL")
+        context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+            .edit().putString("zone_id", "Not/AZone").commit()
+        assertEquals(ZoneId.of("Europe/Amsterdam"), repo.getTimeZoneId())
+    }
+
+    @Test
+    fun `timezone falls back to system default when no zone resolves`() {
+        val multi = Countries.all.first { it.zones.size > 1 }
+        repo.setCountryCode(multi.code) // multi-zone, no selection → no resolved zone
+        assertEquals(ZoneId.systemDefault(), repo.getTimeZoneId())
+    }
+
+    @Test
+    fun `resolved price zone ignores an unknown stored zone id`() {
+        repo.setCountryCode("NL")
+        repo.setPriceZoneId("BOGUS")
+        // Single-zone NL still resolves to its only zone despite the bad stored id.
+        assertEquals(Countries.findPriceZoneById("NL"), repo.getResolvedPriceZone())
     }
 }

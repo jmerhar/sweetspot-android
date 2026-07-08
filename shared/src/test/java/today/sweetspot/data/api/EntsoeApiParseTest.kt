@@ -527,6 +527,72 @@ class EntsoeApiParseTest {
         assertEquals(-0.00525, prices[1].price, 0.00001)
     }
 
+    @Test
+    fun `a Point without a price amount is skipped`() {
+        val xml = """
+            <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+              <TimeSeries><curveType>A01</curveType>
+                <Period>
+                  <timeInterval><start>2026-03-02T23:00Z</start><end>2026-03-03T23:00Z</end></timeInterval>
+                  <resolution>PT60M</resolution>
+                  <Point><position>1</position><price.amount>50.00</price.amount></Point>
+                  <Point><position>2</position></Point>
+                </Period>
+              </TimeSeries>
+            </Publication_MarketDocument>
+        """.trimIndent()
+        val prices = api.parse(xml, timeZone)
+        assertEquals(1, prices.size) // the price-less point contributes nothing
+        assertEquals(0.050, prices[0].price, 0.0001)
+    }
+
+    @Test
+    fun `a Period without a resolution yields no prices`() {
+        // No <resolution> and no points: the Period-end A03 fill is skipped and nothing is produced.
+        val xml = """
+            <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+              <TimeSeries><curveType>A01</curveType>
+                <Period>
+                  <timeInterval><start>2026-03-02T23:00Z</start><end>2026-03-03T23:00Z</end></timeInterval>
+                </Period>
+              </TimeSeries>
+            </Publication_MarketDocument>
+        """.trimIndent()
+        assertTrue(api.parse(xml, timeZone).isEmpty())
+    }
+
+    @Test
+    fun `A03 gaps are not filled when position 1 is missing`() {
+        // Two points but neither is position 1 → gap-filling bails out; only the present points remain.
+        val xml = """
+            <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+              <TimeSeries><curveType>A03</curveType>
+                <Period>
+                  <timeInterval><start>2026-03-02T23:00Z</start><end>2026-03-03T23:00Z</end></timeInterval>
+                  <resolution>PT60M</resolution>
+                  <Point><position>2</position><price.amount>45.00</price.amount></Point>
+                  <Point><position>3</position><price.amount>40.00</price.amount></Point>
+                </Period>
+              </TimeSeries>
+            </Publication_MarketDocument>
+        """.trimIndent()
+        assertEquals(2, api.parse(xml, timeZone).size) // no synthesized position-1 slot
+    }
+
+    @Test
+    fun `tags outside their expected parent produce no prices`() {
+        // Period not in a TimeSeries, timeInterval/Point not in a Period → all guards take the
+        // false branch and nothing is parsed.
+        val xml = """
+            <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+              <timeInterval><start>2026-03-02T23:00Z</start></timeInterval>
+              <Point><position>1</position><price.amount>50.00</price.amount></Point>
+              <Period><resolution>PT60M</resolution></Period>
+            </Publication_MarketDocument>
+        """.trimIndent()
+        assertTrue(api.parse(xml, timeZone).isEmpty())
+    }
+
     /**
      * Builds a minimal ENTSO-E Publication_MarketDocument XML string.
      * Avoids trimIndent issues when points are generated dynamically.

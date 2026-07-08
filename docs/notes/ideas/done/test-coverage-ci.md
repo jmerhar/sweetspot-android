@@ -13,7 +13,8 @@ Code coverage is reported in CI via **Kover** (`org.jetbrains.kotlinx.kover` 0.9
   ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug
   ```
   Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml` (both gitignored under `build/`). All three exist simultaneously.
-- **CI** (`.github/workflows/test.yml`): runs the command above and uploads three artifacts — `coverage-shared`, `coverage-app`, `coverage-wear`.
+- **CI** (`.github/workflows/test.yml`): runs the command above, renders an at-a-glance per-module coverage table on the run's summary page (via `$GITHUB_STEP_SUMMARY`), and uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`).
+- **Codecov:** browsable per-module report + README badge at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android). Config in `codecov.yml` (per-module flags, status `informational` = no gate, `comment: false` since there are no PRs). Needs the `CODECOV_TOKEN` repo secret; uploads use `fail_ci_if_error: false` so a Codecov hiccup never fails the build. Chosen over downloadable HTML artifacts (which required download-unzip-hunt) for a one-click browsable report; the HTML is still reproducible locally.
 
 ## Baseline (at implementation)
 
@@ -31,9 +32,9 @@ Each module's own debug unit tests:
 
 ## Decisions
 
-- **Per-module reports** (not aggregated) — separate, persistent HTML per module; per-module gating and Codecov flags are natural follow-ups.
-- **Surfacing:** HTML artifacts only — no PR comment (this repo doesn't use PRs) and no Codecov (avoid an external SaaS/token for a solo repo).
-- **No gate yet** — baseline established first.
+- **Per-module reports** (not aggregated) — separate, persistent HTML per module, one Codecov flag each.
+- **Surfacing:** Codecov (browsable web report + badge) plus a run-page summary table. No PR comment (this repo doesn't use PRs).
+- **No gate yet** — baseline established first; Codecov status is `informational`.
 
 ## Follow-ups (deliberately deferred)
 
@@ -49,6 +50,5 @@ Each module's own debug unit tests:
       }
   }
   ```
-  Then `./gradlew :shared:koverVerifyDebug` in CI. Scope the gate to `:shared` so the low-signal UI coverage in `:app`/`:wear` doesn't dictate the threshold.
-- **Codecov:** upload each module's `reportDebug.xml` under its own flag for independent per-module trends.
+  Then `./gradlew :shared:koverVerifyDebug` in CI. Scope the gate to `:shared` so the low-signal UI coverage in `:app`/`:wear` doesn't dictate the threshold. (Alternatively, flip `codecov.yml`'s `informational: true` to a target once a baseline is trusted.)
 - **Filters:** consider excluding generated/UI classes (`*.BuildConfig`, `*ComposableSingletons*`, `R`) if the `:app`/`:wear` numbers are ever gated.

@@ -1,6 +1,7 @@
 # SweetSpot for Android
 
 [![Test](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml/badge.svg)](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/jmerhar/sweetspot-android/graph/badge.svg)](https://codecov.io/gh/jmerhar/sweetspot-android)
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries. Website: [sweetspot.today](https://sweetspot.today)
 
@@ -100,7 +101,7 @@ make test
 
 371 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
 
-Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug` and uploads a separate HTML report artifact for each module. The `:shared` logic module sits at ~71% line coverage (its own test suite).
+Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) and uploaded to [Codecov](https://codecov.io/gh/jmerhar/sweetspot-android) (one flag per module) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug`. The `:shared` logic module sits at ~71% line coverage (its own test suite).
 
 ## Data attribution
 

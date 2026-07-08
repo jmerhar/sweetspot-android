@@ -1,0 +1,29 @@
+# Codecov configuration. Coverage is uploaded per module (see .github/workflows/test.yml),
+# each under its own flag, so the web UI is browsable per module.
+coverage:
+  status:
+    project:
+      default:
+        # Report coverage without failing commit status — no gate yet (baseline first).
+        informational: true
+    patch:
+      default:
+        informational: true
+
+# This repo pushes straight to main and does not use pull requests.
+comment: false
+
+# Per-module flags, scoped to each module's sources.
+flags:
+  shared:
+    paths:
+      - shared/
+    carryforward: true
+  app:
+    paths:
+      - app/
+    carryforward: true
+  wear:
+    paths:
+      - wear/
+    carryforward: true

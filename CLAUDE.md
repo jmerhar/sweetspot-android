@@ -104,7 +104,7 @@ Code coverage uses **Kover** (`org.jetbrains.kotlinx.kover`), applied per module
 ./gradlew :shared:koverHtmlReportDebug                                # one module
 ```
 
-Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads three artifacts (`coverage-shared`, `coverage-app`, `coverage-wear`). Baseline (each module's own tests): `:shared` ~71% line, `:app` ~16%, `:wear` ~26% — `:shared` holds the logic; `:app`/`:wear` are largely untested Compose UI. Per-module gating (`koverVerifyDebug`) and Codecov are deferred — see `docs/notes/ideas/done/test-coverage-ci.md`.
+Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`) — browsable at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android) — and also renders an at-a-glance per-module table on the run's summary page. Requires the `CODECOV_TOKEN` repo secret; `codecov.yml` sets the flags, marks status informational (no gate), and disables PR comments. Baseline (each module's own tests): `:shared` ~71% line, `:app` ~16%, `:wear` ~26% — `:shared` holds the logic; `:app`/`:wear` are largely untested Compose UI. Per-module gating (`koverVerifyDebug`) is deferred — see `docs/notes/ideas/done/test-coverage-ci.md`.
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)

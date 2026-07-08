@@ -23,17 +23,46 @@ jobs:
       # The unprefixed task names run in all three modules; the Debug variant matches the unit
       # tests (the "all code" variant would also pull in release and skew the numbers).
       - run: ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug
-      # One downloadable HTML artifact per module. Each module also produces reportDebug.xml,
-      # so Codecov can be wired in later per module (upload each XML under its own flag).
-      - uses: actions/upload-artifact@v4
+      # At-a-glance per-module coverage table, rendered on the run's summary page (no download).
+      - name: Coverage summary
+        run: |
+          python3 - >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import xml.etree.ElementTree as ET
+          print("## Coverage (debug unit tests)\n")
+          print("| Module | Line | Instruction | Branch |")
+          print("|---|---|---|---|")
+          for mod in ("shared", "app", "wear"):
+              d = {c.get("type"): c for c in ET.parse(f"{mod}/build/reports/kover/reportDebug.xml").getroot().findall("counter")}
+              def pct(t):
+                  c = d.get(t)
+                  if c is None: return "n/a"
+                  cov, miss = int(c.get("covered")), int(c.get("missed"))
+                  return f"{cov / (cov + miss) * 100:.1f}%" if cov + miss else "n/a"
+              print(f"| `:{mod}` | {pct('LINE')} | {pct('INSTRUCTION')} | {pct('BRANCH')} |")
+          PY
+      # Upload each module's XML to Codecov under its own flag, so coverage is browsable per
+      # module in the web UI. fail_ci_if_error stays false so a Codecov hiccup never fails the build.
+      - uses: codecov/codecov-action@v5
         with:
-          name: coverage-shared
-          path: shared/build/reports/kover/htmlDebug
-      - uses: actions/upload-artifact@v4
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: shared/build/reports/kover/reportDebug.xml
+          flags: shared
+          name: shared
+          disable_search: true
+          fail_ci_if_error: false
+      - uses: codecov/codecov-action@v5
         with:
-          name: coverage-app
-          path: app/build/reports/kover/htmlDebug
-      - uses: actions/upload-artifact@v4
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: app/build/reports/kover/reportDebug.xml
+          flags: app
+          name: app
+          disable_search: true
+          fail_ci_if_error: false
+      - uses: codecov/codecov-action@v5
         with:
-          name: coverage-wear
-          path: wear/build/reports/kover/htmlDebug
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: wear/build/reports/kover/reportDebug.xml
+          flags: wear
+          name: wear
+          disable_search: true
+          fail_ci_if_error: false

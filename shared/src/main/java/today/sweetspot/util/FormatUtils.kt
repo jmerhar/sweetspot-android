@@ -65,9 +65,21 @@ fun formatPrice(price: Double, decimals: Int): String {
  *         Returns "0m" when both hours and minutes are zero.
  */
 fun formatDuration(hours: Int, minutes: Int, resources: Resources? = null): String {
-    return when {
-        hours == 0 -> resources?.getString(R.string.duration_minutes_only, minutes) ?: "${minutes}m"
-        minutes == 0 -> resources?.getQuantityString(R.plurals.duration_hours_only, hours, hours) ?: "${hours}h"
-        else -> resources?.getQuantityString(R.plurals.duration_hours_minutes, hours, hours, minutes) ?: "${hours}h ${minutes}m"
+    // Branch on the localisation mode once, rather than per line: `resources?.getX(...) ?: english`
+    // on every arm would add an unreachable "resources non-null but getX returned null" branch to
+    // each line. This keeps the English fallback for pure (non-Robolectric) tests while leaving only
+    // real, coverable branches.
+    return if (resources != null) {
+        when {
+            hours == 0 -> resources.getString(R.string.duration_minutes_only, minutes)
+            minutes == 0 -> resources.getQuantityString(R.plurals.duration_hours_only, hours, hours)
+            else -> resources.getQuantityString(R.plurals.duration_hours_minutes, hours, hours, minutes)
+        }
+    } else {
+        when {
+            hours == 0 -> "${minutes}m"
+            minutes == 0 -> "${hours}h"
+            else -> "${hours}h ${minutes}m"
+        }
     }
 }

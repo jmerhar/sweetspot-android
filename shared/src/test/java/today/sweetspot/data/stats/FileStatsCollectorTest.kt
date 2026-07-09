@@ -2,6 +2,7 @@ package today.sweetspot.data.stats
 
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -100,5 +101,16 @@ class FileStatsCollectorTest {
         file.writeBytes(byteArrayOf(0, 1, 2, 3))
 
         assertTrue(collector.readAll().isEmpty())
+    }
+
+    @Test
+    fun `init deletes an incompatible v1 stats file`() {
+        val legacy = File(tempDir, "api_stats.bin")
+        legacy.writeBytes(byteArrayOf(1, 2, 3))
+        assertTrue(legacy.exists())
+
+        FileStatsCollector(tempDir) // init should delete the legacy file
+
+        assertFalse(legacy.exists())
     }
 }

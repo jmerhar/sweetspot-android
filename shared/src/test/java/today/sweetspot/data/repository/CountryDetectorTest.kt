@@ -88,4 +88,25 @@ class CountryDetectorTest {
         Locale.setDefault(Locale.forLanguageTag("sv")) // language only, no region → empty country
         assertEquals("NL", CountryDetector.detect(context).code)
     }
+
+    @Test
+    fun `a device without telephony skips SIM and network and uses the timezone`() {
+        // A context with no TelephonyManager (tm == null) must skip the SIM/network signals
+        // and fall through to the timezone mapping.
+        val noTelephony = object : android.content.ContextWrapper(context) {
+            override fun getSystemService(name: String): Any? =
+                if (name == Context.TELEPHONY_SERVICE) null else super.getSystemService(name)
+        }
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"))
+        assertEquals("DE", CountryDetector.detect(noTelephony).code)
+    }
+
+    @Test
+    fun `an empty SIM country falls through to network`() {
+        // Empty (not null) SIM ISO → ifEmpty maps it to null → the network signal is consulted.
+        shadowOf(telephony).setSimCountryIso("")
+        shadowOf(telephony).setNetworkCountryIso("fr")
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Stockholm"))
+        assertEquals("FR", CountryDetector.detect(context).code)
+    }
 }

@@ -19,14 +19,26 @@ import java.time.Duration
  */
 fun formatRelative(target: ZonedDateTime, now: ZonedDateTime, resources: Resources? = null): String {
     val seconds = Duration.between(now, target).seconds
-    if (seconds <= 0) return resources?.getString(R.string.relative_now) ?: "now"
-    val totalMinutes = (seconds + 30) / 60
-    if (totalMinutes <= 0) return resources?.getString(R.string.relative_now) ?: "now"
-    val h = totalMinutes / 60
-    val m = totalMinutes % 60
-    return when {
-        h > 0 && m > 0 -> resources?.getQuantityString(R.plurals.relative_in_hours_minutes, h.toInt(), h.toInt(), m.toInt()) ?: "in ${h}h ${m}m"
-        h > 0 -> resources?.getQuantityString(R.plurals.relative_in_hours, h.toInt(), h.toInt()) ?: "in ${h}h"
-        else -> resources?.getString(R.string.relative_in_minutes, m.toInt()) ?: "in ${m}m"
+    val totalMinutes = if (seconds > 0) (seconds + 30) / 60 else 0L
+    val h = (totalMinutes / 60).toInt()
+    val m = (totalMinutes % 60).toInt()
+    // Branch on the localisation mode once, rather than per line: `resources?.getX(...) ?: english`
+    // on every arm would add an unreachable "resources non-null but getX returned null" branch to
+    // each line, which can never be covered. This keeps the English fallback for pure (non-Robolectric)
+    // tests while leaving only real, coverable branches.
+    return if (resources != null) {
+        when {
+            totalMinutes <= 0 -> resources.getString(R.string.relative_now)
+            h > 0 && m > 0 -> resources.getQuantityString(R.plurals.relative_in_hours_minutes, h, h, m)
+            h > 0 -> resources.getQuantityString(R.plurals.relative_in_hours, h, h)
+            else -> resources.getString(R.string.relative_in_minutes, m)
+        }
+    } else {
+        when {
+            totalMinutes <= 0 -> "now"
+            h > 0 && m > 0 -> "in ${h}h ${m}m"
+            h > 0 -> "in ${h}h"
+            else -> "in ${m}m"
+        }
     }
 }

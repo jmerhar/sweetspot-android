@@ -282,4 +282,27 @@ class SettingsRepositoryTest {
         // Single-zone NL still resolves to its only zone despite the bad stored id.
         assertEquals(Countries.findPriceZoneById("NL"), repo.getResolvedPriceZone())
     }
+
+    @Test
+    fun `resolved price zone falls back to the default country when the code is unknown`() {
+        repo.setCountryCode("ZZ") // not a supported country
+        assertEquals(Countries.defaultCountry().zones.first(), repo.getResolvedPriceZone())
+    }
+
+    @Test
+    fun `an invalid stored timezone falls back to the resolved zone`() {
+        repo.setCountryCode("NL")
+        context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+            .edit().putString("zone_id", "Invalid/Zone").commit()
+        assertEquals(ZoneId.of(Countries.findPriceZoneById("NL")!!.timeZoneId), repo.getTimeZoneId())
+    }
+
+    @Test
+    fun `an invalid stored timezone with no resolvable zone falls back to system default`() {
+        val multi = Countries.all.first { it.zones.size > 1 }
+        repo.setCountryCode(multi.code) // multi-zone, no selection → no resolved zone
+        context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+            .edit().putString("zone_id", "Invalid/Zone").commit()
+        assertEquals(ZoneId.systemDefault(), repo.getTimeZoneId())
+    }
 }

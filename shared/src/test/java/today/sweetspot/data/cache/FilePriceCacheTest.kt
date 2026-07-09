@@ -111,4 +111,17 @@ class FilePriceCacheTest {
         assertTrue(cache.isCooldownElapsed(60_000L))
         assertEquals(0L, cache.cooldownRemainingMs(60_000L))
     }
+
+    @Test
+    fun `clear removes only price cache bin files, leaving others untouched`() {
+        cache.write("NL", data(60)) // creates prices_NL.bin
+        val unrelated = File(context.cacheDir, "other.txt").apply { writeText("keep") }
+        val wrongExt = File(context.cacheDir, "prices_NL.txt").apply { writeText("keep") }
+
+        cache.clear()
+
+        assertFalse("price cache .bin should be cleared", file("NL").exists())
+        assertTrue("unrelated file (wrong prefix) kept", unrelated.exists())
+        assertTrue("prefix match but wrong extension kept", wrongExt.exists())
+    }
 }

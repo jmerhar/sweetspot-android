@@ -93,7 +93,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (499 tests)
+./gradlew test                   # Run all unit tests (512 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -124,9 +124,9 @@ Coverage excludes presentation/framework code that JVM unit tests can't exercise
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
-- `data/repository/SettingsRepositoryTest` — trial/unlock logic, source-order + disabled-source persistence (incl. country-change reset), appliance/EV serialization, price-zone resolution, timezone precedence, time override, developer options (27 tests, Robolectric, in shared)
-- `data/repository/CountryDetectorTest` — SIM → network → timezone → locale → NL fallback chain (7 tests, Robolectric, in shared)
-- `data/cache/FilePriceCacheTest` — v3 binary format round-trip, version-migration/corruption → null, per-zone/global clear, fetch cooldown (9 tests, Robolectric, in shared)
+- `data/repository/SettingsRepositoryTest` — trial/unlock logic, source-order + disabled-source persistence (incl. country-change reset), appliance/EV serialization, price-zone resolution, timezone precedence, time override, developer options (30 tests, Robolectric, in shared)
+- `data/repository/CountryDetectorTest` — SIM → network → timezone → locale → NL fallback chain (9 tests, Robolectric, in shared)
+- `data/cache/FilePriceCacheTest` — v3 binary format round-trip, version-migration/corruption → null, per-zone/global clear, fetch cooldown (10 tests, Robolectric, in shared)
 - `data/api/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
 - `data/api/PriceFetcherFactoryTest` — `defaultPriceFetcherFactory` chain composition: zone defaults, custom order, non-applicable/partial filtering, instrumented wrapping (8 tests, in shared)
 - `data/api/ApiHttpTest` — HTTP paths of all five API clients via a canned-response `OkHttpClient`: success → `FetchResult`, non-200 → `HttpException` with code, ENTSO-E acknowledgement → `EntsoeException` (13 tests, in shared)
@@ -144,7 +144,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/api/AwattarApiParseTest` — aWATTar JSON parsing, EUR/MWh→kWh conversion, timestamp conversion, duration computation (9 tests, in shared)
 - `data/api/AwattarApiMalformedTest` — malformed/invalid JSON handling for aWATTar (6 tests, in shared)
 - `data/api/AwattarApiDstTest` — DST transition parsing with Europe/Vienna: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives + optional "ready by" deadline (43 tests, in shared)
+- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives + optional "ready by" deadline (49 tests, in shared)
 - `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
 - `util/FormatUtilsTest` — duration formatting, locale-aware price formatting, kW formatting (`formatKw`), 24h `HH:mm` formatting (`formatHhMm`) (15 tests, in shared)
 - `util/UiTextTest` — `UiText` construction/mapping: duration resource selection, appliance-label composition, locale-independent structure (5 tests, pure JUnit — no Robolectric, in shared)
@@ -159,7 +159,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/stats/StatsRecordTest` — binary encode/decode round-trip, empty, garbage, partial-corruption handling (5 tests, in shared)
 - `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
-- `data/stats/FileStatsCollectorTest` — record, read, clear, append, persistence, corruption (8 tests, in shared)
+- `data/stats/FileStatsCollectorTest` — record, read, clear, append, persistence, corruption (9 tests, in shared)
 - `data/stats/StatsReporterTest` — JSON format, grouping, version field, error field presence, default args, response-code policy (`reportOutcomeFor`), and `reportIfDue` outcomes (200 clears+stamps, 4xx clears, 429/5xx/network keep, rate-limit interval) via a fake `StatsPoster` (15 tests, in app)
 
 ## Inspections
@@ -187,7 +187,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (499 tests)
+- JUnit 4 + Robolectric for unit tests (512 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - No frameworks, no DI, no database — SharedPreferences + file cache only (plus one bundled read-only JSON asset, `ev-vehicles.json`, for the EV database)

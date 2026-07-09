@@ -581,4 +581,65 @@ class CheapestWindowFinderTest {
         val deadline = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
         assertTrue(findWindowAlternatives(prices, 1.0, earlyNow, deadline).isEmpty())
     }
+
+    // --- Branch coverage: minima, deadline cap, sub-slot, clamped breakdown ---
+
+    @Test
+    fun `ascending prices pick the first window (later windows are not new minima)`() {
+        val prices = pricesAt(10, 0.10, 0.20, 0.30)
+        val result = findCheapestWindow(prices, 2.0, earlyNow)
+        assertNotNull(result)
+        assertEquals(prices[0].time, result!!.startTime)
+    }
+
+    @Test
+    fun `alternatives with a fractional duration and ascending prices yield only the cheapest`() {
+        // fractionalSlot > 0 on the alternatives path; ascending costs keep index 0 the minimum.
+        val prices = pricesAt(10, 0.10, 0.20, 0.30, 0.40)
+        val alts = findWindowAlternatives(prices, 1.5, earlyNow)
+        assertEquals(1, alts.size)
+        assertEquals(prices[0].time, alts[0].startTime)
+    }
+
+    @Test
+    fun `a deadline caps the latest usable window mid-scan`() {
+        // 2h windows: 10→12 and 11→13 finish by 13:00; 12→14 overruns, so the scan breaks at index 2.
+        val prices = pricesAt(10, 0.40, 0.10, 0.20, 0.30) // 10:00..13:00
+        val deadline = ZonedDateTime.of(2025, 6, 15, 13, 0, 0, 0, timeZone)
+        val result = findCheapestWindow(prices, 2.0, earlyNow, deadline)
+        assertNotNull(result)
+        assertEquals(prices[1].time, result!!.startTime) // 11:00 (0.10+0.20) is the cheapest allowed
+    }
+
+    @Test
+    fun `a sub-slot duration uses only a fraction of one slot`() {
+        // durationInSlots < 1 → fullSlots == 0, so the full-slot cost loop runs zero times.
+        val prices = pricesAt(10, 0.10, 0.40, 0.20)
+        val result = findCheapestWindow(prices, 0.5, earlyNow)
+        assertNotNull(result)
+        assertEquals(prices[0].time, result!!.startTime)
+        assertEquals(0.5 * 0.10, result.totalCost, 1e-9)
+    }
+
+    @Test
+    fun `a clamped window builds partial-first and partial-last breakdown slots`() {
+        // now falls mid-first-slot → the window start clamps and a fractional tail lands in-range.
+        val prices = pricesAt(10, 0.10, 0.20, 0.90, 0.90)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
+        val result = findCheapestWindow(prices, 2.0, now)
+        assertNotNull(result)
+        // 0.5*slot0 + slot1 + 0.5*slot2 = 0.05 + 0.20 + 0.45
+        assertEquals(0.5 * 0.10 + 0.20 + 0.5 * 0.90, result!!.totalCost, 1e-9)
+    }
+
+    @Test
+    fun `a clamped window whose tail runs past the last slot still returns`() {
+        // Only two slots; clamping leaves a fractional remainder with no slot left to fill it.
+        val prices = pricesAt(10, 0.10, 0.20)
+        val now = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
+        val result = findCheapestWindow(prices, 2.0, now)
+        assertNotNull(result)
+        // 0.5*slot0 + slot1 = 0.05 + 0.20 (the missing tail slot is simply omitted)
+        assertEquals(0.5 * 0.10 + 0.20, result!!.totalCost, 1e-9)
+    }
 }

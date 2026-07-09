@@ -42,12 +42,12 @@ kover {
             }
         }
         // Coverage gate for :shared (the logic module). Fails `koverVerifyDebug` if line coverage
-        // drops below the bound. Set with headroom below the current ~99.6% so it catches real
-        // regressions (e.g. a new untested subsystem) without flapping on defensive/edge lines.
+        // drops below the bound. Currently ~99.6%, so 98 leaves a small buffer for defensive/edge
+        // lines while still catching real regressions (e.g. a new untested subsystem).
         verify {
             rule("Line coverage of :shared") {
                 bound {
-                    minValue = 95
+                    minValue = 98
                 }
             }
         }

@@ -16,6 +16,16 @@ Code coverage is reported in CI via **Kover** (`org.jetbrains.kotlinx.kover` 0.9
 - **CI** (`.github/workflows/test.yml`): runs the command above, renders an at-a-glance per-module coverage table on the run's summary page (via `$GITHUB_STEP_SUMMARY`), and uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`).
 - **Codecov:** browsable per-module report + README badge at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android). Config in `codecov.yml` (per-module flags, status `informational` = no gate, `comment: false` since there are no PRs). Needs the `CODECOV_TOKEN` repo secret; uploads use `fail_ci_if_error: false` so a Codecov hiccup never fails the build. Chosen over downloadable HTML artifacts (which required download-unzip-hunt) for a one-click browsable report; the HTML is still reproducible locally.
 - **Test Analytics:** CI also uploads JUnit results (`codecov-action@v5` with `report_type: test_results`, `if: !cancelled()` — the standalone `test-results-action` is deprecated) so Codecov tracks flaky tests, failure history, and slowest tests. Gradle writes `TEST-*.xml`, so the three modules' `build/test-results/testDebugUnitTest/*.xml` paths are passed explicitly (the action's default search is `*junit.xml`); the test step runs with `--continue` so all modules report even when one fails. Caveat: the PR-comment side of Test Analytics (failed/flaky tests on a PR) is inert since this repo pushes straight to `main` — the dashboard (flaky detection, run history, slowest tests on `main`) still works.
+- **HTML reports on GitHub Pages:** Codecov's line-by-line view is fine, but Kover's own HTML report is richer, so on green pushes to `main` CI publishes it to a **shared, multi-project** Pages repo, **`jmerhar/coverage`** → `https://jmerhar.github.io/coverage/sweetspot-android/<module>/`. It assembles the three modules' `htmlDebug` dirs plus a generated landing `index.html` (per-module line/branch %) into `coverage-site/`, then `peaceiris/actions-gh-pages@v4` pushes it to the `gh-pages` branch under `destination_dir: sweetspot-android` with **`keep_files: true`** so sibling projects are preserved. Guarded by `if: success() && push && main && env.COVERAGE_PAGES_TOKEN != ''`, so it's skipped (not failed) until the token exists.
+
+### Adding another project to `jmerhar/coverage`
+
+The layout is `/<project>/…` — language-agnostic (any static HTML report: Kover, JaCoCo, lcov, coverage.py, …). For a new project:
+1. Generate the report(s) in that project's CI and assemble the static HTML into a directory.
+2. Add the same `COVERAGE_PAGES_TOKEN` secret (fine-grained PAT, Contents:write on `jmerhar/coverage`) to that repo.
+3. Publish with `peaceiris/actions-gh-pages@v4`: `external_repository: jmerhar/coverage`, `destination_dir: <project>`, `keep_files: true`. It lands at `jmerhar.github.io/coverage/<project>/`.
+
+One-time setup for the `coverage` repo: enable Pages (Settings → Pages → Deploy from a branch → `gh-pages` / root). A root `index.html` listing projects is optional and left to the repo owner (each project only writes its own subtree, so nothing maintains the root).
 
 ## Baseline (at implementation)
 

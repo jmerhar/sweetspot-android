@@ -15,7 +15,14 @@ kover {
                 classes(
                     "*ComposableSingletons*",                        // generated Compose lambda holders
                     "*.BuildConfig",
-                    "today.sweetspot.ui.*",                          // all Compose screens, components, theme
+                    // Compose screens, components, theme. Each sub-package is listed explicitly: the
+                    // `koverVerifyDebug` gate treats `*` as not crossing package dots (unlike report
+                    // generation), so a single `today.sweetspot.ui.*` would leak sub-package
+                    // non-@Composable code (theme/colour/config constants) into the verified number.
+                    "today.sweetspot.ui.*",
+                    "today.sweetspot.ui.components.*",
+                    "today.sweetspot.ui.settings.*",
+                    "today.sweetspot.ui.theme.*",
                     "today.sweetspot.MainActivity",                  // Compose host / navigation
                     "today.sweetspot.MainActivity\$*",
                     "today.sweetspot.MainActivityKt",                // its @Composable dialogs
@@ -25,6 +32,15 @@ kover {
                     "today.sweetspot.data.billing.PlayBillingRepository\$*",
                     "today.sweetspot.data.stats.HttpStatsPoster",    // real HTTP POST plumbing
                 )
+            }
+        }
+        // Coverage gate for :app. Currently ~99% line, so 97 leaves a small buffer for defensive/DI
+        // lines while still catching a real regression. Verification inherits the excludes above.
+        verify {
+            rule("Line coverage of :app") {
+                bound {
+                    minValue = 97
+                }
             }
         }
     }

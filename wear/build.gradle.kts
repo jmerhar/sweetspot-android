@@ -21,6 +21,16 @@ kover {
                 )
             }
         }
+        // Coverage gate for :wear (after the presentation/glue exclusions above). Fails
+        // `koverVerifyDebug` if line coverage drops below the bound. Currently ~95%, so 93 leaves a
+        // small buffer for the lifecycle/refresh-loop framework glue while catching a real regression.
+        verify {
+            rule("Line coverage of :wear") {
+                bound {
+                    minValue = 93
+                }
+            }
+        }
     }
 }
 

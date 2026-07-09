@@ -1,7 +1,7 @@
 # SweetSpot for Android
 
 [![Test](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml/badge.svg)](https://github.com/jmerhar/sweetspot-android/actions/workflows/test.yml)
-[![codecov (shared)](https://codecov.io/gh/jmerhar/sweetspot-android/graph/badge.svg?flag=shared)](https://app.codecov.io/gh/jmerhar/sweetspot-android/flags)
+[![codecov](https://codecov.io/gh/jmerhar/sweetspot-android/graph/badge.svg)](https://app.codecov.io/gh/jmerhar/sweetspot-android)
 
 Find the cheapest time to run your appliance, based on dynamic electricity prices across 30 European countries. Website: [sweetspot.today](https://sweetspot.today)
 
@@ -101,7 +101,7 @@ make test
 
 512 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, icon resolution, the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, and ViewModel state management including EV charging (via Robolectric).
 
-Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) and uploaded to [Codecov](https://codecov.io/gh/jmerhar/sweetspot-android) (one flag per module) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug`. The `:shared` logic module sits at ~99% line coverage (its own test suite) and CI gates it at ≥98%; the `:app` and `:wear` modules are also high (~99% and ~95% line) once Compose UI and thin SDK wrappers are excluded. The full per-module Kover HTML report is also published for every commit to the shared coverage site: **[jmerhar.github.io/coverage/sweetspot-android](https://jmerhar.github.io/coverage/sweetspot-android/)**.
+Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) and uploaded to [Codecov](https://codecov.io/gh/jmerhar/sweetspot-android) (one flag per module) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug`. All three modules are high once Compose UI and thin SDK wrappers are excluded (`:shared` ~99.6%, `:app` ~99%, `:wear` ~95% line), and CI gates each with a Kover verify rule (`:shared` ≥98, `:app` ≥97, `:wear` ≥93). The badge above shows the combined Codecov total across all three. The full per-module Kover HTML report is also published for every commit to the shared coverage site: **[jmerhar.github.io/coverage/sweetspot-android](https://jmerhar.github.io/coverage/sweetspot-android/)**.
 
 ## Data attribution
 

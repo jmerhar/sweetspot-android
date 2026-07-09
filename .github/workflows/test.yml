@@ -76,11 +76,12 @@ jobs:
           files: shared/build/test-results/testDebugUnitTest/*.xml,app/build/test-results/testDebugUnitTest/*.xml,wear/build/test-results/testDebugUnitTest/*.xml
           disable_search: true
           fail_ci_if_error: false
-      # Coverage gate: fail the build if :shared line coverage regresses below the bound configured
-      # in shared/build.gradle.kts. Runs last so coverage + test-analytics data is still uploaded
-      # even when the gate fails. (Only :shared has a verify rule; :app/:wear are ungated.)
-      - name: Verify :shared coverage
-        run: ./gradlew :shared:koverVerifyDebug
+      # Coverage gates: fail the build if any module's line coverage regresses below the bound
+      # configured in its build.gradle.kts (:shared ≥98, :app ≥97, :wear ≥93). Runs last so coverage
+      # + test-analytics data is still uploaded even when a gate fails. The unqualified task name runs
+      # the verify rule in all three modules; --continue reports every failing module, not just the first.
+      - name: Verify coverage gates
+        run: ./gradlew koverVerifyDebug --continue
       # Publish this commit's per-module Kover HTML to the shared jmerhar/coverage site. The site
       # (project/commit indexes, cross-links) is built there; here we only push the raw report.
       # Only on green pushes to main, and only once COVERAGE_PAGES_TOKEN exists (so the workflow

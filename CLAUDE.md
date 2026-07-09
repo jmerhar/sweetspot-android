@@ -93,7 +93,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (459 tests)
+./gradlew test                   # Run all unit tests (467 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -106,7 +106,20 @@ Code coverage uses **Kover** (`org.jetbrains.kotlinx.kover`), applied per module
 ./gradlew :shared:koverHtmlReportDebug                                # one module
 ```
 
-Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`) — browsable at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android) — and also renders an at-a-glance per-module table on the run's summary page. Requires the `CODECOV_TOKEN` repo secret; `codecov.yml` sets the flags, marks status informational (no gate), and disables PR comments. Coverage (each module's own tests): `:shared` ~99% line, `:app` ~16%, `:wear` ~26% — `:shared` holds the logic; `:app`/`:wear` are largely untested Compose UI. `:shared`'s Kover config excludes generated boilerplate (kotlinx-serialization `@Serializable` types, `BuildConfig`) so the number reflects real logic. CI also uploads JUnit results to **Codecov Test Analytics** (`codecov-action@v5` with `report_type: test_results`; tests run with `--continue` so all modules report) for flaky-test detection and failure/slowest-test history. **CI gates `:shared` at ≥98% line coverage** via `./gradlew :shared:koverVerifyDebug` (rule in `shared/build.gradle.kts`); `:app`/`:wear` are ungated. On green pushes to `main`, CI also publishes the per-module Kover HTML to the shared, source-agnostic **`jmerhar/coverage`** GitHub Pages site, **one report per commit, kept forever**: `bin/collect-coverage.sh` assembles the reports + `reports.json`, then that repo's `bin/add-report.sh` (run from a checkout) drops them under `reports/sweetspot-android/<sha>/` and pushes; the coverage repo's own workflow builds the browsable indexes (project list, commit list, cross-links) and deploys. Browse at `jmerhar.github.io/coverage/sweetspot-android/`; each commit also gets a `coverage/report` commit status linking to its report. Needs the `COVERAGE_PAGES_TOKEN` secret (fine-grained PAT, Contents:write on `jmerhar/coverage`); the publish steps are skipped, not failed, when the secret is absent. See `docs/notes/ideas/done/test-coverage-ci.md` and the `jmerhar/coverage` README.
+Per module: HTML → `<module>/build/reports/kover/htmlDebug/index.html`, XML → `<module>/build/reports/kover/reportDebug.xml`. CI (`test.yml`) uploads each module's XML to **Codecov** under its own flag (`shared`/`app`/`wear`) — browsable at [codecov.io/gh/jmerhar/sweetspot-android](https://codecov.io/gh/jmerhar/sweetspot-android) — and also renders an at-a-glance per-module table on the run's summary page. Requires the `CODECOV_TOKEN` repo secret; `codecov.yml` sets the flags, marks status informational (no gate), and disables PR comments. Coverage (each module's own tests): `:shared` ~99% line, `:app` ~16%, `:wear` ~95% — the numbers reflect testable logic because each module's Kover config **excludes presentation/framework code** (see the rule below): `:shared` excludes kotlinx-serialization `@Serializable` types + `BuildConfig`; `:app`/`:wear` also exclude `@Composable` functions, `*ComposableSingletons*`, Activities, and thin SDK wrappers (`PlayBillingRepository`, `WearableSync`). CI also uploads JUnit results to **Codecov Test Analytics** (`codecov-action@v5` with `report_type: test_results`; tests run with `--continue` so all modules report) for flaky-test detection and failure/slowest-test history. **CI gates `:shared` at ≥98% line coverage** via `./gradlew :shared:koverVerifyDebug` (rule in `shared/build.gradle.kts`); `:app`/`:wear` are ungated. On green pushes to `main`, CI also publishes the per-module Kover HTML to the shared, source-agnostic **`jmerhar/coverage`** GitHub Pages site, **one report per commit, kept forever**: `bin/collect-coverage.sh` assembles the reports + `reports.json`, then that repo's `bin/add-report.sh` (run from a checkout) drops them under `reports/sweetspot-android/<sha>/` and pushes; the coverage repo's own workflow builds the browsable indexes (project list, commit list, cross-links) and deploys. Browse at `jmerhar.github.io/coverage/sweetspot-android/`; each commit also gets a `coverage/report` commit status linking to its report. Needs the `COVERAGE_PAGES_TOKEN` secret (fine-grained PAT, Contents:write on `jmerhar/coverage`); the publish steps are skipped, not failed, when the secret is absent. See `docs/notes/ideas/done/test-coverage-ci.md` and the `jmerhar/coverage` README.
+
+### Presentation vs. logic — keep logic testable
+
+Coverage excludes presentation/framework code that JVM unit tests can't exercise. **This makes it dangerously easy to hide logic from coverage by putting it in an excluded class.** To prevent that:
+
+- **Logic goes in testable classes** — ViewModels (`SweetSpotViewModel`, `WearViewModel`), repositories, `:shared` (`data`/`model`/`util`), or dedicated helpers. All of these are covered and expected to stay high.
+- **Excluded classes must contain no logic** — only presentation or thin framework glue. What's excluded (per module `kover { reports { filters { excludes } } }`):
+  - `@Composable` functions (`annotatedBy("androidx.compose.runtime.Composable")`) and `*ComposableSingletons*` — all Compose UI.
+  - Android entry points — `MainActivity`, `WearActivity`.
+  - Thin wrappers over untestable SDKs — `PlayBillingRepository` (Play Billing), `WearableSync` (Wearable Data Layer). Their SDK boundary is isolated behind an interface (`BillingRepository`, `WearSync`) with a **fake used in ViewModel tests**, so the decision logic stays in the covered ViewModel.
+  - Generated/data-only: `@Serializable` types, `BuildConfig`.
+- **When you catch yourself writing logic in a Composable/Activity/SDK-wrapper, extract it** — a computation, formatting, branching, or state derivation belongs in a ViewModel or a pure function (ideally in `:shared`), where it is tested. A composable should only lay out state the ViewModel already produced; an SDK wrapper should only translate calls, not decide anything.
+- Rule of thumb: if a change adds an `if`/`when`, a calculation, or parsing to an excluded class, it's in the wrong place — move it to a covered class and test it.
 
 Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering (10 tests, in shared)
@@ -141,7 +154,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
 - `data/repository/EvVehicleRepositoryTest` — EV database parsing, brand/model filtering, free-text search, displayName, malformed JSON (13 tests, in shared)
 - `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options, earlier/cheaper window navigation, EV charging (vehicle add, SoC→duration computation, universal deadline), and appliance power rating / cost-scaling load (99 tests, Robolectric, in app)
-- `WearViewModelTest` — Wear ViewModel state, appliance tap, source order, async fetch, rapid-tap cancellation, JSON parsing, locked state (18 tests, Robolectric, in wear)
+- `WearViewModelTest` — Wear ViewModel: appliance tap, async fetch, rapid-tap cancellation, `onAppliancesReceived`/`onSettingsReceived` (zone resolution, source order, disabled sources, locked state, language), recalculation, and stats push (via a fake `WearSync`) (26 tests, Robolectric, in wear)
 - `data/stats/StatsRecordTest` — binary encode/decode round-trip, empty, garbage, partial-corruption handling (5 tests, in shared)
 - `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
 - `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
@@ -173,7 +186,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (459 tests)
+- JUnit 4 + Robolectric for unit tests (467 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - No frameworks, no DI, no database — SharedPreferences + file cache only (plus one bundled read-only JSON asset, `ev-vehicles.json`, for the EV database)
@@ -246,7 +259,8 @@ The data layer is organised into four subpackages under `data/`:
 
 ### Wear app (`:wear`)
 
-- **`WearViewModel`** — Reads appliances, zone settings, source order, stats opt-in, and trial/subscription state from Data Layer on init, listens for live updates. Computes `isLocked` from `is_trial_expired && !is_unlocked`. On appliance tap, creates `PriceFetcherFactory` dynamically from source order (with stats instrumentation when enabled), fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch. After each fetch, syncs accumulated stats to phone via `/stats` Data Layer path (awaits delivery before clearing local stats).
+- **`WearViewModel`** — Receives appliances and settings from the phone via a **`WearSync`** (injected; production impl `WearableSync`). `onAppliancesReceived`/`onSettingsReceived` are testable `internal` handlers that resolve the price zone, source order, disabled sources, stats opt-in, per-app language, and `isLocked` (`is_trial_expired && !is_unlocked`). On appliance tap, creates `PriceFetcherFactory` dynamically from source order (with stats instrumentation when enabled), fetches prices via `PriceRepository` (using the phone's zone) and runs `findCheapestWindow()`. Prices are cached locally on the watch. After each fetch, pushes accumulated stats to the phone via `WearSync.pushStats`.
+- **`WearSync`** (interface) / **`WearableSync`** — Abstraction over the Wearable Data Layer (observe appliances/settings, push stats), so `WearViewModel` is testable with a fake. `WearableSync` is the thin production impl (listener + initial read + `putDataItem`); it holds no logic and is excluded from coverage.
 - **`WearActivity`** — `SwipeDismissableNavHost` with two routes: `"appliances"` (start) and `"result"`. When `state.isLocked`, shows `WearLockedScreen` instead of the appliance list.
 - **`ui/ApplianceListScreen`** — `Scaffold` with `PositionIndicator`, `TimeText`, `ScalingLazyColumn` of appliance `Chip`s (icon + name + duration), empty state, loading overlay.
 - **`ui/ResultScreen`** — `ScalingLazyColumn` centered on the appliance label, with start/end times in HH:mm and relative display that auto-refreshes every 60 seconds. Scrollable for long labels on round watch faces.

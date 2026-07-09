@@ -20,26 +20,24 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
-import kotlinx.serialization.json.Json
 import today.sweetspot.data.api.FetchResult
 import today.sweetspot.data.api.PriceFetcher
-
 import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
-import today.sweetspot.util.UiText
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.Countries
 import today.sweetspot.model.PriceSlot
+import today.sweetspot.util.UiText
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
 /**
- * Tests for [WearViewModel] state management and async price fetching.
- *
- * Uses injected fakes for [PriceFetcher] and [PriceCache], and a test dispatcher
- * so coroutines complete deterministically via [runCurrent].
+ * Tests for [WearViewModel] state management, settings/appliance handling, and async price
+ * fetching. Uses injected fakes for [PriceFetcher], [PriceCache], [StatsCollector], and [WearSync]
+ * (so no Play Services), and a test dispatcher so coroutines complete deterministically.
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -49,7 +47,6 @@ class WearViewModelTest {
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var app: Application
 
-    /** In-memory [PriceCache] that never triggers re-fetch. */
     private class FakeCache : PriceCache {
         override fun isCooldownElapsed(cooldownMs: Long) = true
         override fun readCached(key: String): CachedPriceData? = null
@@ -60,24 +57,39 @@ class WearViewModelTest {
         override fun resetCooldown() {}
     }
 
-    /** [PriceFetcher] that returns configurable prices or throws. */
     private class FakeFetcher(private val prices: List<PriceSlot>? = null) : PriceFetcher {
-        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
-            return FetchResult(prices ?: throw RuntimeException("Network error"), "Test")
-        }
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult =
+            FetchResult(prices ?: throw RuntimeException("Network error"), "Test")
     }
 
-    /** Generates hourly price slots starting from the current hour. */
+    private class FakeStatsCollector : StatsCollector {
+        val records = mutableListOf<StatsRecord>()
+        override fun record(record: StatsRecord) { records.add(record) }
+        override fun readAll(): List<StatsRecord> = records.toList()
+        override fun clear() { records.clear() }
+    }
+
+    /** Captures pushed stats; observe() callbacks are unused (tests call the handlers directly). */
+    private class FakeWearSync : WearSync {
+        val pushed = mutableListOf<ByteArray>()
+        override fun observe(onAppliances: (String) -> Unit, onSettings: (WearSettings) -> Unit) {}
+        override fun stop() {}
+        override suspend fun pushStats(bytes: ByteArray) { pushed.add(bytes) }
+    }
+
+    /** Hourly price slots starting from the current hour. */
     private fun fakePrices(count: Int, basePrice: Double = 0.10): List<PriceSlot> {
         val base = ZonedDateTime.now().withMinute(0).withSecond(0).withNano(0)
         return (0 until count).map { i ->
-            PriceSlot(
-                time = base.plusHours(i.toLong()),
-                price = basePrice + i * 0.01,
-                durationMinutes = 60
-            )
+            PriceSlot(time = base.plusHours(i.toLong()), price = basePrice + i * 0.01, durationMinutes = 60)
         }
     }
+
+    private fun settings(
+        country: String? = null, zoneId: String? = null, order: String? = null,
+        disabled: String? = null, language: String? = null,
+        stats: Boolean = false, expired: Boolean = false, unlocked: Boolean = false,
+    ) = WearSettings(country, zoneId, order, disabled, language, stats, expired, unlocked)
 
     @Before
     fun setUp() {
@@ -90,20 +102,13 @@ class WearViewModelTest {
         Dispatchers.resetMain()
     }
 
-    /** In-memory [StatsCollector] for testing. */
-    private class FakeStatsCollector : StatsCollector {
-        val records = mutableListOf<StatsRecord>()
-        override fun record(record: StatsRecord) { records.add(record) }
-        override fun readAll(): List<StatsRecord> = records.toList()
-        override fun clear() { records.clear() }
+    private fun testViewModel(
+        fetcher: FakeFetcher,
+        collector: StatsCollector = FakeStatsCollector(),
+        sync: WearSync = FakeWearSync(),
+    ) = WearViewModel(app, { _ -> fetcher }, FakeCache(), collector, testDispatcher, sync).also {
+        testDispatcher.scheduler.advanceUntilIdle()
     }
-
-    /** Creates a WearViewModel with injected fakes and the test dispatcher. */
-    private fun testViewModel(fetcher: FakeFetcher) =
-        WearViewModel(app, { _ -> fetcher }, FakeCache(), FakeStatsCollector(), testDispatcher).also {
-            // Advance past the init block's loadAppliancesFromDataLayer coroutine
-            testDispatcher.scheduler.advanceUntilIdle()
-        }
 
     // --- Initial state ---
 
@@ -113,18 +118,13 @@ class WearViewModelTest {
     }
 
     @Test
-    fun `initial state is not loading`() {
-        assertFalse(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.isLoading)
-    }
-
-    @Test
-    fun `initial state has no error`() {
-        assertNull(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.error)
-    }
-
-    @Test
-    fun `initial state has no result`() {
-        assertNull(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.result)
+    fun `initial state is not loading, no error, no result, source order null, unlocked`() {
+        val s = testViewModel(FakeFetcher(fakePrices(24))).uiState.value
+        assertFalse(s.isLoading)
+        assertNull(s.error)
+        assertNull(s.result)
+        assertNull(s.sourceOrder)
+        assertFalse(s.isLocked)
     }
 
     // --- onApplianceTapped ---
@@ -132,9 +132,7 @@ class WearViewModelTest {
     @Test
     fun `onApplianceTapped sets loading and label immediately`() {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        val appliance = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 30, icon = "laundry")
-        viewModel.onApplianceTapped(appliance)
-
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 30, "laundry"))
         val state = viewModel.uiState.value
         assertTrue(state.isLoading)
         assertEquals(UiText.applianceLabel("Washer", 2, 30), state.resultLabel)
@@ -145,10 +143,8 @@ class WearViewModelTest {
     @Test
     fun `onApplianceTapped with prices produces a result`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        val appliance = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 0, icon = "laundry")
-        viewModel.onApplianceTapped(appliance)
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry"))
         runCurrent()
-
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNull(state.error)
@@ -159,10 +155,8 @@ class WearViewModelTest {
     @Test
     fun `onApplianceTapped with network error sets error`() = runTest {
         val viewModel = testViewModel(FakeFetcher(prices = null))
-        val appliance = Appliance(id = "1", name = "Dryer", durationHours = 1, durationMinutes = 0, icon = "dryer")
-        viewModel.onApplianceTapped(appliance)
+        viewModel.onApplianceTapped(Appliance("1", "Dryer", 1, 0, "dryer"))
         runCurrent()
-
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertNotNull(state.error)
@@ -172,40 +166,36 @@ class WearViewModelTest {
     @Test
     fun `onApplianceTapped with empty prices sets no data error`() = runTest {
         val viewModel = testViewModel(FakeFetcher(emptyList()))
-        val appliance = Appliance(id = "1", name = "Dryer", durationHours = 1, durationMinutes = 0, icon = "dryer")
-        viewModel.onApplianceTapped(appliance)
+        viewModel.onApplianceTapped(Appliance("1", "Dryer", 1, 0, "dryer"))
         runCurrent()
-
-        val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertNotNull(state.error)
-        assertEquals(UiText.Res(R.string.wear_error_no_data), state.error)
+        assertEquals(UiText.Res(R.string.wear_error_no_data), viewModel.uiState.value.error)
     }
 
     @Test
     fun `onApplianceTapped with insufficient prices sets not enough data error`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(2)))
-        val appliance = Appliance(id = "1", name = "Dryer", durationHours = 5, durationMinutes = 0, icon = "dryer")
-        viewModel.onApplianceTapped(appliance)
+        viewModel.onApplianceTapped(Appliance("1", "Dryer", 5, 0, "dryer"))
         runCurrent()
-
-        val state = viewModel.uiState.value
-        assertFalse(state.isLoading)
-        assertNotNull(state.error)
-        val notEnough = state.error
+        val notEnough = viewModel.uiState.value.error
         assertTrue(notEnough is UiText.Res && notEnough.id == R.string.wear_error_not_enough_data)
+    }
+
+    @Test
+    fun `onApplianceTapped with no resolved zone sets no-zone error`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        // A multi-zone country with no selection resolves to a null zone.
+        val multi = Countries.all.first { it.zones.size > 1 }
+        viewModel.onSettingsReceived(settings(country = multi.code))
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 1, 0, "laundry"))
+        assertEquals(UiText.Res(R.string.wear_error_no_zone), viewModel.uiState.value.error)
     }
 
     @Test
     fun `rapid taps cancel previous fetch and keep last result`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        val first = Appliance(id = "1", name = "First", durationHours = 1, durationMinutes = 0, icon = "electricity")
-        val second = Appliance(id = "2", name = "Second", durationHours = 2, durationMinutes = 0, icon = "electricity")
-
-        viewModel.onApplianceTapped(first)
-        viewModel.onApplianceTapped(second)
+        viewModel.onApplianceTapped(Appliance("1", "First", 1, 0, "electricity"))
+        viewModel.onApplianceTapped(Appliance("2", "Second", 2, 0, "electricity"))
         runCurrent()
-
         val state = viewModel.uiState.value
         assertFalse(state.isLoading)
         assertEquals(UiText.applianceLabel("Second", 2, 0), state.resultLabel)
@@ -218,81 +208,173 @@ class WearViewModelTest {
     @Test
     fun `onClearResult clears result label and error`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        val appliance = Appliance(id = "1", name = "Washer", durationHours = 1, durationMinutes = 0, icon = "laundry")
-        viewModel.onApplianceTapped(appliance)
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 1, 0, "laundry"))
         runCurrent()
-
         viewModel.onClearResult()
-
         val state = viewModel.uiState.value
         assertNull(state.result)
         assertNull(state.resultLabel)
         assertNull(state.error)
     }
 
-    // --- parseAppliances (JSON parsing behaviour) ---
-
-    /**
-     * Mirrors [WearViewModel.parseAppliances] to test the JSON parsing contract:
-     * valid JSON returns appliances, invalid JSON returns an empty list.
-     */
-    private fun parseAppliances(json: String): List<Appliance> {
-        return try {
-            Json.decodeFromString<List<Appliance>>(json)
-        } catch (e: Exception) {
-            emptyList()
-        }
-    }
+    // --- recalculateResult ---
 
     @Test
-    fun `parseAppliances with valid JSON returns appliance list`() {
-        val json = """[{"id":"1","name":"Washer","durationHours":2,"durationMinutes":30,"icon":"laundry"}]"""
-        val result = parseAppliances(json)
-        assertEquals(1, result.size)
-        assertEquals("Washer", result[0].name)
-        assertEquals(2, result[0].durationHours)
-        assertEquals(30, result[0].durationMinutes)
-        assertEquals("laundry", result[0].icon)
-    }
-
-    @Test
-    fun `parseAppliances with empty array returns empty list`() {
-        assertEquals(emptyList<Appliance>(), parseAppliances("[]"))
-    }
-
-    @Test
-    fun `parseAppliances with malformed JSON returns empty list`() {
-        assertEquals(emptyList<Appliance>(), parseAppliances("not json"))
-    }
-
-    @Test
-    fun `parseAppliances with missing fields uses defaults`() {
-        val json = """[{"id":"1","name":"Test"}]"""
-        val result = parseAppliances(json)
-        assertEquals(1, result.size)
-        assertEquals(1, result[0].durationHours)
-        assertEquals(0, result[0].durationMinutes)
-        assertEquals("electricity", result[0].icon)
-    }
-
-    // --- Source order ---
-
-    @Test
-    fun `initial state has null source order`() {
-        assertNull(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.sourceOrder)
-    }
-
-    // --- isLocked ---
-
-    @Test
-    fun `initial state has isLocked false`() {
-        assertFalse(testViewModel(FakeFetcher(fakePrices(24))).uiState.value.isLocked)
-    }
-
-    @Test
-    fun `isLocked remains false when isTrialExpired and isUnlocked both false`() {
+    fun `recalculateResult keeps a still-valid result`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        // Default Data Layer values: isTrialExpired=false, isUnlocked=false
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry"))
+        runCurrent()
+        assertNotNull(viewModel.uiState.value.result)
+        viewModel.recalculateResult() // prices still cover the future window
+        assertNotNull(viewModel.uiState.value.result)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `recalculateResult is a no-op with no prior result`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.recalculateResult()
+        assertNull(viewModel.uiState.value.result)
+    }
+
+    // --- onAppliancesReceived (real JSON parsing) ---
+
+    @Test
+    fun `onAppliancesReceived with valid JSON populates appliances`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAppliancesReceived("""[{"id":"1","name":"Washer","durationHours":2,"durationMinutes":30,"icon":"laundry"}]""")
+        val a = viewModel.uiState.value.appliances
+        assertEquals(1, a.size)
+        assertEquals("Washer", a[0].name)
+        assertEquals(2, a[0].durationHours)
+        assertEquals(30, a[0].durationMinutes)
+        assertEquals("laundry", a[0].icon)
+    }
+
+    @Test
+    fun `onAppliancesReceived with empty array clears the list`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAppliancesReceived("[]")
+        assertTrue(viewModel.uiState.value.appliances.isEmpty())
+    }
+
+    @Test
+    fun `onAppliancesReceived with malformed JSON yields empty list`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAppliancesReceived("not json")
+        assertTrue(viewModel.uiState.value.appliances.isEmpty())
+    }
+
+    @Test
+    fun `onAppliancesReceived fills missing appliance fields with defaults`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onAppliancesReceived("""[{"id":"1","name":"Test"}]""")
+        val a = viewModel.uiState.value.appliances
+        assertEquals(1, a.size)
+        assertEquals(1, a[0].durationHours)
+        assertEquals(0, a[0].durationMinutes)
+        assertEquals("electricity", a[0].icon)
+    }
+
+    // --- onSettingsReceived ---
+
+    @Test
+    fun `single-zone country resolves to its only zone`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onSettingsReceived(settings(country = "NL"))
+        assertEquals(Countries.findPriceZoneById("NL"), viewModel.uiState.value.priceZone)
+    }
+
+    @Test
+    fun `multi-zone country without a selection resolves to null`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        val multi = Countries.all.first { it.zones.size > 1 }
+        viewModel.onSettingsReceived(settings(country = multi.code))
+        assertNull(viewModel.uiState.value.priceZone)
+    }
+
+    @Test
+    fun `an explicit price zone id resolves to that zone`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        val multi = Countries.all.first { it.zones.size > 1 }
+        viewModel.onSettingsReceived(settings(zoneId = multi.zones[1].id))
+        assertEquals(multi.zones[1], viewModel.uiState.value.priceZone)
+    }
+
+    @Test
+    fun `an unknown country resolves to null`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onSettingsReceived(settings(country = "ZZ"))
+        assertNull(viewModel.uiState.value.priceZone)
+    }
+
+    @Test
+    fun `source order and disabled sources round-trip, blank means defaults`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onSettingsReceived(settings(country = "NL", order = """["energyzero","entsoe"]""", disabled = """["entsoe"]"""))
+        assertEquals(listOf("energyzero", "entsoe"), viewModel.uiState.value.sourceOrder)
+        assertEquals(setOf("entsoe"), viewModel.uiState.value.disabledSources)
+
+        viewModel.onSettingsReceived(settings(country = "NL", order = "", disabled = ""))
+        assertNull(viewModel.uiState.value.sourceOrder)
+        assertTrue(viewModel.uiState.value.disabledSources.isEmpty())
+    }
+
+    @Test
+    fun `malformed source order and disabled sources fall back to defaults`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onSettingsReceived(settings(country = "NL", order = "not json", disabled = "not json"))
+        assertNull(viewModel.uiState.value.sourceOrder)
+        assertTrue(viewModel.uiState.value.disabledSources.isEmpty())
+    }
+
+    @Test
+    fun `isLocked is true only when the trial is expired and not unlocked`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onSettingsReceived(settings(expired = true, unlocked = false))
+        assertTrue(viewModel.uiState.value.isLocked)
+        viewModel.onSettingsReceived(settings(expired = true, unlocked = true))
         assertFalse(viewModel.uiState.value.isLocked)
+        viewModel.onSettingsReceived(settings(expired = false, unlocked = false))
+        assertFalse(viewModel.uiState.value.isLocked)
+    }
+
+    @Test
+    fun `a language tag is applied without error`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onSettingsReceived(settings(country = "NL", language = "de"))
+        // No crash; zone still resolved alongside the language.
+        assertEquals(Countries.findPriceZoneById("NL"), viewModel.uiState.value.priceZone)
+    }
+
+    // --- Stats sync ---
+
+    @Test
+    fun `stats are pushed to the phone and cleared when enabled`() = runTest {
+        val collector = FakeStatsCollector().apply {
+            record(StatsRecord(1000L, "NL", "entsoe", "watch", true, "", 5))
+        }
+        val sync = FakeWearSync()
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), collector, sync)
+        viewModel.onSettingsReceived(settings(country = "NL", stats = true))
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry"))
+        runCurrent()
+        assertEquals(1, sync.pushed.size)
+        assertTrue(collector.readAll().isEmpty())
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `stats are not pushed when disabled`() = runTest {
+        val collector = FakeStatsCollector().apply {
+            record(StatsRecord(1000L, "NL", "entsoe", "watch", true, "", 5))
+        }
+        val sync = FakeWearSync()
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), collector, sync)
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry")) // stats default off
+        runCurrent()
+        assertTrue(sync.pushed.isEmpty())
+        assertEquals(1, collector.readAll().size)
+        viewModel.onClearResult()
     }
 }

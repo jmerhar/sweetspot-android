@@ -6,11 +6,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.wearable.DataClient
-import com.google.android.gms.wearable.DataEvent
-import com.google.android.gms.wearable.DataEventBuffer
-import com.google.android.gms.wearable.DataMapItem
-import com.google.android.gms.wearable.Wearable
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -20,7 +15,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import kotlinx.serialization.json.Json
 import today.sweetspot.data.api.PriceFetcherFactory
 import today.sweetspot.data.api.defaultPriceFetcherFactory
@@ -68,9 +62,9 @@ data class WearUiState(
 /**
  * ViewModel for the Wear OS SweetSpot app.
  *
- * Reads appliances and zone settings from the Wearable Data Layer (pushed by the phone app),
- * fetches electricity prices via [PriceRepository], and runs the cheapest-window
- * algorithm from the shared module.
+ * Receives appliances and zone settings from the phone via a [WearSync] (the Wearable Data Layer),
+ * fetches electricity prices via [PriceRepository], and runs the cheapest-window algorithm from the
+ * shared module. All Data Layer plumbing is isolated in [WearSync] so this class stays testable.
  *
  * @param application Application context.
  * @param priceFetcherFactory Optional factory override for testing. When `null` (production),
@@ -78,15 +72,20 @@ data class WearUiState(
  * @param priceCache Cache for raw price JSON.
  * @param statsCollector Optional stats collector override for testing.
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
+ * @param wearSyncOverride Optional [WearSync] override for testing. When `null` (production), a
+ *   real [WearableSync] backed by Google Play Services is used.
  */
 class WearViewModel @JvmOverloads constructor(
     application: Application,
     private val priceFetcherFactory: PriceFetcherFactory? = null,
     private val priceCache: PriceCache = FilePriceCache(application),
     private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : AndroidViewModel(application),
-    DataClient.OnDataChangedListener {
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    wearSyncOverride: WearSync? = null
+) : AndroidViewModel(application) {
+
+    private val wearSync: WearSync =
+        wearSyncOverride ?: WearableSync(application, viewModelScope, ioDispatcher)
 
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
@@ -109,91 +108,43 @@ class WearViewModel @JvmOverloads constructor(
     val uiState: StateFlow<WearUiState> = _uiState.asStateFlow()
 
     init {
-        Wearable.getDataClient(application).addListener(this)
-        loadFromDataLayer()
+        wearSync.observe(::onAppliancesReceived, ::onSettingsReceived)
     }
 
     override fun onCleared() {
         super.onCleared()
         stopResultRefresh()
-        Wearable.getDataClient(getApplication()).removeListener(this)
+        wearSync.stop()
     }
 
     /**
-     * Called when the phone pushes data updates via the Data Layer.
-     * Handles both `/appliances` and `/settings` paths.
+     * Applies an appliance list received from the phone.
+     *
+     * @param json JSON-encoded appliance list from the Data Layer.
      */
-    override fun onDataChanged(events: DataEventBuffer) {
-        try {
-            for (event in events) {
-                if (event.type != DataEvent.TYPE_CHANGED) continue
-                val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
-
-                when (event.dataItem.uri.path) {
-                    "/appliances" -> {
-                        val json = dataMap.getString("json") ?: continue
-                        val appliances = parseAppliances(json)
-                        _uiState.update { it.copy(appliances = appliances) }
-                    }
-                    "/settings" -> {
-                        val zone = resolveZone(
-                            dataMap.getString("country_code"),
-                            dataMap.getString("price_zone_id")
-                        )
-                        val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
-                        val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
-                        statsEnabled = dataMap.getBoolean("stats_enabled", false)
-                        val isTrialExpired = dataMap.getBoolean("is_trial_expired", false)
-                        val isUnlocked = dataMap.getBoolean("is_unlocked", false)
-                        applyLanguage(dataMap.getString("language"))
-                        _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources, isLocked = isTrialExpired && !isUnlocked) }
-                    }
-                }
-            }
-        } finally {
-            events.release()
-        }
+    internal fun onAppliancesReceived(json: String) {
+        _uiState.update { it.copy(appliances = parseAppliances(json)) }
     }
 
     /**
-     * Loads the current appliance list and zone settings from the Data Layer on startup.
+     * Applies settings received from the phone: resolves the price zone, source order, disabled
+     * sources, stats opt-in, per-app language, and the locked state.
+     *
+     * @param settings Raw settings pushed from the phone.
      */
-    private fun loadFromDataLayer() {
-        viewModelScope.launch(ioDispatcher) {
-            var dataItems: com.google.android.gms.wearable.DataItemBuffer? = null
-            try {
-                dataItems = Wearable.getDataClient(getApplication())
-                    .dataItems.await()
-
-                for (item in dataItems) {
-                    val dataMap = DataMapItem.fromDataItem(item).dataMap
-
-                    when (item.uri.path) {
-                        "/appliances" -> {
-                            val json = dataMap.getString("json") ?: continue
-                            val appliances = parseAppliances(json)
-                            _uiState.update { it.copy(appliances = appliances) }
-                        }
-                        "/settings" -> {
-                            val zone = resolveZone(
-                                dataMap.getString("country_code"),
-                                dataMap.getString("price_zone_id")
-                            )
-                            val sourceOrder = parseSourceOrder(dataMap.getString("source_order"))
-                            val disabledSources = parseDisabledSources(dataMap.getString("disabled_sources"))
-                            statsEnabled = dataMap.getBoolean("stats_enabled", false)
-                            val isTrialExpired = dataMap.getBoolean("is_trial_expired", false)
-                            val isUnlocked = dataMap.getBoolean("is_unlocked", false)
-                            applyLanguage(dataMap.getString("language"))
-                            _uiState.update { it.copy(priceZone = zone, sourceOrder = sourceOrder, disabledSources = disabledSources, isLocked = isTrialExpired && !isUnlocked) }
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                Log.w("WearViewModel", "Could not read from Data Layer", e)
-            } finally {
-                dataItems?.release()
-            }
+    internal fun onSettingsReceived(settings: WearSettings) {
+        val zone = resolveZone(settings.countryCode, settings.priceZoneId)
+        val sourceOrder = parseSourceOrder(settings.sourceOrder)
+        val disabledSources = parseDisabledSources(settings.disabledSources)
+        statsEnabled = settings.statsEnabled
+        applyLanguage(settings.language)
+        _uiState.update {
+            it.copy(
+                priceZone = zone,
+                sourceOrder = sourceOrder,
+                disabledSources = disabledSources,
+                isLocked = settings.isTrialExpired && !settings.isUnlocked
+            )
         }
     }
 
@@ -319,7 +270,7 @@ class WearViewModel @JvmOverloads constructor(
      * Filters [lastPrices] to exclude elapsed slots, then re-runs [findCheapestWindow].
      * Updates [WearUiState.result] so the result screen stays current.
      */
-    private fun recalculateResult() {
+    internal fun recalculateResult() {
         val prices = lastPrices
         if (prices.isEmpty() || _uiState.value.result == null) return
         val timeZoneId = lastTimeZoneId ?: return
@@ -419,32 +370,21 @@ class WearViewModel @JvmOverloads constructor(
     }
 
     /**
-     * Pushes accumulated stats to the phone via the Wearable Data Layer.
+     * Pushes accumulated stats to the phone via [WearSync].
      *
-     * Encodes stats records to the same binary format used by [FileStatsCollector] and
-     * sends them to the `/stats` path. The phone merges these into its local stats file
-     * and includes them in the next report.
-     *
-     * Only runs when stats collection is enabled. Awaits the Data Layer put before
-     * clearing local stats to prevent data loss on failed transfers.
-     *
-     * Silently ignores failures since stats sync is best-effort.
+     * Encodes stats records to the binary format used by [FileStatsCollector] and sends them; the
+     * phone merges them into its local stats file. Only runs when stats collection is enabled, and
+     * awaits delivery before clearing local stats to avoid loss. Best-effort — failures are ignored.
      */
     private suspend fun syncStatsToPhone() {
         if (!statsEnabled) return
         try {
             val records = statsCollector.readAll()
             if (records.isEmpty()) return
-            val bytes = StatsRecord.encodeToBytes(records)
-            val request = com.google.android.gms.wearable.PutDataMapRequest.create("/stats").apply {
-                dataMap.putByteArray("data", bytes)
-                dataMap.putLong("ts", System.currentTimeMillis())
-            }.asPutDataRequest().setUrgent()
-            Wearable.getDataClient(getApplication()).putDataItem(request).await()
+            wearSync.pushStats(StatsRecord.encodeToBytes(records))
             statsCollector.clear()
         } catch (_: Exception) {
             // Best-effort: stats sync should not crash the watch app
         }
     }
-
 }

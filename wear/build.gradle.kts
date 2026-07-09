@@ -5,6 +5,25 @@ plugins {
 
 base.archivesName = "sweetspot-wear"
 
+kover {
+    reports {
+        filters {
+            excludes {
+                // Presentation & framework glue that unit tests can't exercise. Any real logic must
+                // live outside these (e.g. in WearViewModel / WearSync) — see CLAUDE.md.
+                annotatedBy("androidx.compose.runtime.Composable")   // all Wear Compose UI
+                classes(
+                    "*ComposableSingletons*",                        // generated Compose lambda holders
+                    "*.BuildConfig",
+                    "today.sweetspot.wear.WearActivity",             // Compose host / navigation
+                    "today.sweetspot.wear.WearableSync",             // real Wearable Data Layer plumbing
+                    "today.sweetspot.wear.WearableSync\$*",          // …and its nested lambda classes
+                )
+            }
+        }
+    }
+}
+
 android {
     namespace = "today.sweetspot.wear"
 

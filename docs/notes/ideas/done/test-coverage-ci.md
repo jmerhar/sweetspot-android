@@ -30,7 +30,8 @@ Each module's own debug unit tests. `:shared` was subsequently raised from its i
 |---|---|---|---|---|
 | **`:shared`** | **99.6%** | 99.1% | 88.8% | 98.0% |
 | `:app` | 15.7% | 12.1% | 6.8% | 21.6% |
-| `:wear` | 25.9% | 20.9% | 12.3% | 26.3% |
+| `:wear` (initial) | 25.9% | 20.9% | 12.3% | 26.3% |
+| **`:wear` (after pass)** | **~95%** | ~89% | ~73% | — |
 
 `:shared` (pure logic/parsing/algorithms) carries the real coverage; `:app`/`:wear` are mostly Compose UI that unit tests don't touch.
 
@@ -48,6 +49,12 @@ Before considering a gate, the real gaps were addressed (71.3% → 97.2% line):
 A second pass then took `:shared` to **99.6% line / 88.8% branch**: added a `:shared` `UiTextResolveTest` (so `resolve()` is covered in its own module too), `ResourceFormattingTest` (the localised branches of `formatDuration`/`formatRelative`), more `SettingsRepositoryTest` cases (developer options, invalid-timezone fallback, auto-detect), a `CountryDetector` locale-region case, and ENTSO-E parser edge cases (missing price/resolution, A03 with no position 1, out-of-context tags).
 
 The only remaining uncovered **lines** are three defensive `error(...)` guards that are unreachable in practice (`PriceFetcherFactory` unknown-source `else`, `EnergyChartsApi`/`AwattarApi` "no mapping for zone"). The remaining unhit **branches** are all defensive/unreachable too: null-safe `?.` sides (`listFiles()` etc.), the null-`TelephonyManager` path, compound short-circuits the upstream guards make unreachable, and Kotlin `when`-on-`String` hashCode artifacts. These aren't worth contriving tests for; if a gate ever needs a round number, exclude the `error()`-guard lines via a Kover filter.
+
+### `:app` / `:wear` — presentation vs. logic pass
+
+The UI modules were dominated by Compose UI (unit-untestable). The approach (documented as a rule in `CLAUDE.md` → "Presentation vs. logic"): **extract any real logic out of presentation/framework classes into testable units, then exclude only the presentation/glue.** Excludes per module: `@Composable` functions, `*ComposableSingletons*`, Activities, `BuildConfig`, and thin SDK wrappers.
+
+`:wear` (25.9% → ~95%): the UI (`ResultScreen`, `ApplianceListScreen`, `WearLockedScreen`, `WearTheme`, `WearActivity`) had no extractable logic — it all delegated to tested `:shared` utilities. `WearViewModel`'s Wearable Data Layer plumbing (previously inline and duplicated across `onDataChanged`/`loadFromDataLayer`) was isolated behind a **`WearSync`** interface (real impl `WearableSync`, excluded); the mapping/zone/parse logic moved into testable `internal` handlers (`onAppliancesReceived`/`onSettingsReceived`), driven in tests by a fake `WearSync`. `:app` follows the same pattern (`BillingRepository` was already an interface; UI logic extracted to `SweetSpotViewModel`).
 
 ## Decisions
 

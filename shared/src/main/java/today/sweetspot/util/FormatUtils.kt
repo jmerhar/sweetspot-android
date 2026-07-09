@@ -11,6 +11,28 @@ import java.util.Locale
 val shortTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm")
 
 /**
+ * Formats a kW value, dropping the decimal for whole numbers (11.0 → "11", 7.4 → "7.4").
+ *
+ * Uses the device locale for the decimal separator.
+ *
+ * @param value Power in kW.
+ * @return Formatted kW string without a unit suffix.
+ */
+fun formatKw(value: Double): String =
+    if (value == value.toLong().toDouble()) value.toLong().toString()
+    else String.format(Locale.getDefault(), "%.1f", value)
+
+/**
+ * Formats an hour/minute pair as a 24-hour "HH:mm" label (e.g. 7, 5 → "07:05").
+ *
+ * @param hour Hour of day (0–23).
+ * @param minute Minute (0–59).
+ * @return Zero-padded "HH:mm" string.
+ */
+fun formatHhMm(hour: Int, minute: Int): String =
+    String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
+
+/**
  * Formats a EUR price using the device locale's currency conventions.
  *
  * Handles symbol placement (before/after), decimal separator, thousands separator,

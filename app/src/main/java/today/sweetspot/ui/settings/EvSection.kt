@@ -39,7 +39,7 @@ import today.sweetspot.R
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.applianceIconFor
-import today.sweetspot.ui.components.formatKw
+import today.sweetspot.util.formatKw
 
 /** Common home charger power presets (kW). */
 private val CHARGER_PRESETS = listOf(3.7, 7.4, 11.0, 22.0)

@@ -5,6 +5,31 @@ plugins {
 
 base.archivesName = "sweetspot"
 
+kover {
+    reports {
+        filters {
+            excludes {
+                // Presentation & framework glue that unit tests can't exercise. Any real logic must
+                // live outside these (e.g. in SweetSpotViewModel / shared util) — see CLAUDE.md.
+                annotatedBy("androidx.compose.runtime.Composable")   // all Compose UI
+                classes(
+                    "*ComposableSingletons*",                        // generated Compose lambda holders
+                    "*.BuildConfig",
+                    "today.sweetspot.ui.*",                          // all Compose screens, components, theme
+                    "today.sweetspot.MainActivity",                  // Compose host / navigation
+                    "today.sweetspot.MainActivity\$*",
+                    "today.sweetspot.MainActivityKt",                // its @Composable dialogs
+                    "today.sweetspot.WearableStatsBridge",           // real Wearable Data Layer plumbing
+                    "today.sweetspot.WearableStatsBridge\$*",
+                    "today.sweetspot.data.billing.PlayBillingRepository",     // real Play Billing wrapper
+                    "today.sweetspot.data.billing.PlayBillingRepository\$*",
+                    "today.sweetspot.data.stats.HttpStatsPoster",    // real HTTP POST plumbing
+                )
+            }
+        }
+    }
+}
+
 android {
     namespace = "today.sweetspot"
 

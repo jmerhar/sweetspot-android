@@ -60,8 +60,8 @@ import today.sweetspot.ui.components.ErrorBox
 import today.sweetspot.ui.components.PriceBarChart
 import today.sweetspot.ui.components.ResultSummary
 import today.sweetspot.ui.components.SocDialog
-import today.sweetspot.ui.components.formatHhMm
-import today.sweetspot.ui.components.formatKw
+import today.sweetspot.util.formatHhMm
+import today.sweetspot.util.formatKw
 import today.sweetspot.util.UiText
 import today.sweetspot.util.resolve
 

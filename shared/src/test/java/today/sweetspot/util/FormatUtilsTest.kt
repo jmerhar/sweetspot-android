@@ -82,4 +82,29 @@ class FormatUtilsTest {
         assertTrue("Expected minus sign in '$result'", result.contains("-") || result.contains("\u2212"))
         assertTrue("Expected '0300' in '$result'", result.contains("0300"))
     }
+
+    // --- formatKw ---
+
+    @Test
+    fun `formatKw drops the decimal for whole numbers`() {
+        assertEquals("11", formatKw(11.0))
+        assertEquals("22", formatKw(22.0))
+        assertEquals("0", formatKw(0.0))
+    }
+
+    @Test
+    fun `formatKw keeps one decimal for fractional values`() {
+        // Digit sequence check to stay locale-agnostic on the decimal separator.
+        assertTrue("Expected '7' and '4' in '${formatKw(7.4)}'", formatKw(7.4).contains("7") && formatKw(7.4).contains("4"))
+        assertEquals(3, formatKw(7.4).length) // "7.4" or "7,4"
+    }
+
+    // --- formatHhMm ---
+
+    @Test
+    fun `formatHhMm zero-pads hours and minutes`() {
+        assertEquals("07:05", formatHhMm(7, 5))
+        assertEquals("00:00", formatHhMm(0, 0))
+        assertEquals("23:59", formatHhMm(23, 59))
+    }
 }

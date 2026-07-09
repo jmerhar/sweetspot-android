@@ -29,7 +29,8 @@ Each module's own debug unit tests. `:shared` was subsequently raised from its i
 | Module | Line | Instruction | Branch | Class |
 |---|---|---|---|---|
 | **`:shared`** | **99.6%** | 99.1% | 88.8% | 98.0% |
-| `:app` | 15.7% | 12.1% | 6.8% | 21.6% |
+| `:app` (initial) | 15.7% | 12.1% | 6.8% | 21.6% |
+| **`:app` (after pass)** | **99.0%** | 98.7% | 83.0% | 100% |
 | `:wear` (initial) | 25.9% | 20.9% | 12.3% | 26.3% |
 | **`:wear` (after pass)** | **~95%** | ~89% | ~73% | — |
 
@@ -54,7 +55,14 @@ The only remaining uncovered **lines** are three defensive `error(...)` guards t
 
 The UI modules were dominated by Compose UI (unit-untestable). The approach (documented as a rule in `CLAUDE.md` → "Presentation vs. logic"): **extract any real logic out of presentation/framework classes into testable units, then exclude only the presentation/glue.** Excludes per module: `@Composable` functions, `*ComposableSingletons*`, Activities, `BuildConfig`, and thin SDK wrappers.
 
-`:wear` (25.9% → ~95%): the UI (`ResultScreen`, `ApplianceListScreen`, `WearLockedScreen`, `WearTheme`, `WearActivity`) had no extractable logic — it all delegated to tested `:shared` utilities. `WearViewModel`'s Wearable Data Layer plumbing (previously inline and duplicated across `onDataChanged`/`loadFromDataLayer`) was isolated behind a **`WearSync`** interface (real impl `WearableSync`, excluded); the mapping/zone/parse logic moved into testable `internal` handlers (`onAppliancesReceived`/`onSettingsReceived`), driven in tests by a fake `WearSync`. `:app` follows the same pattern (`BillingRepository` was already an interface; UI logic extracted to `SweetSpotViewModel`).
+`:wear` (25.9% → ~95%): the UI (`ResultScreen`, `ApplianceListScreen`, `WearLockedScreen`, `WearTheme`, `WearActivity`) had no extractable logic — it all delegated to tested `:shared` utilities. `WearViewModel`'s Wearable Data Layer plumbing (previously inline and duplicated across `onDataChanged`/`loadFromDataLayer`) was isolated behind a **`WearSync`** interface (real impl `WearableSync`, excluded); the mapping/zone/parse logic moved into testable `internal` handlers (`onAppliancesReceived`/`onSettingsReceived`), driven in tests by a fake `WearSync`.
+
+`:app` (15.7% → ~99%): the extractions were —
+- `formatKw` / `formatHhMm` moved from the `EvChargingComponents` Compose file into `:shared` `FormatUtils` (pure formatting, now unit-tested there).
+- The paywall decision (5 duplicated `!BuildConfig.DEBUG && …` expressions, unreachable in debug unit tests) became the pure `shouldShowPaywall(isDebug, trialExpired, unlocked)`, tested for both build types.
+- `StatsReporter`'s HTTP send was isolated behind a **`StatsPoster`** interface (real impl `HttpStatsPoster`, excluded); the response-code policy became the pure `reportOutcomeFor(code)`, so `reportIfDue`'s branches (200/4xx/429/5xx/network) are driven by a fake poster.
+- The phone's inbound Data Layer glue (the `DataClient.OnDataChangedListener` + `onDataChanged` decode) moved behind a **`WatchStatsBridge`** interface (real impl `WearableStatsBridge`, excluded), leaving the tested `onWatchStatsReceived`.
+- `SweetSpotViewModel` (already the logic home) gained a `statsPoster`/`watchStatsBridge` injection point and fill-in tests for the previously-uncovered branches (stats reporting with each payment status, EV no-zone/zero-charger, find no-zone, unreachable deadline, dev time-override, purchase forwarding, `recalculateResult` when all slots elapsed). Excludes: `@Composable`, `*ComposableSingletons*`, `today.sweetspot.ui.*`, `MainActivity`, `PlayBillingRepository`, `WearableStatsBridge`, `HttpStatsPoster`, `BuildConfig`. The ~6 residual uncovered lines are DI wiring and defensive `?:` guards (the release-only `PlayBillingRepository` construction, the default fetcher factory, a null-zone early return).
 
 ## Decisions
 

@@ -44,7 +44,7 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.applianceIconFor
 import today.sweetspot.model.applianceIcons
 import today.sweetspot.ui.components.DurationPicker
-import today.sweetspot.ui.components.formatKw
+import today.sweetspot.util.formatKw
 import today.sweetspot.util.formatDuration
 
 /** Appliances settings section with description, appliance list, and add button. */

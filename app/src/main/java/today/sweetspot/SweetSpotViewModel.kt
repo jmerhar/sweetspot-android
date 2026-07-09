@@ -6,10 +6,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.wearable.DataClient
-import com.google.android.gms.wearable.DataEvent
-import com.google.android.gms.wearable.DataEventBuffer
-import com.google.android.gms.wearable.DataMapItem
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
 import today.sweetspot.data.api.PriceFetcherFactory
@@ -23,7 +19,9 @@ import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.repository.PriceRepository
 import today.sweetspot.data.repository.SettingsRepository
 import today.sweetspot.data.stats.FileStatsCollector
+import today.sweetspot.data.stats.HttpStatsPoster
 import today.sweetspot.data.stats.StatsCollector
+import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.data.stats.StatsReporter
 import today.sweetspot.model.Appliance
@@ -194,6 +192,10 @@ data class UiState(
  *   creates a [PlayBillingRepository]. Pass a fake for tests.
  * @param evVehicleRepositoryOverride Optional EV database override for testing. When `null`
  *   (production), the bundled `ev-vehicles.json` asset is loaded lazily on first use.
+ * @param statsPoster Optional stats HTTP poster override for testing. When `null` (production),
+ *   the real [HttpStatsPoster] is used. A fake lets tests drive stats reporting without a network.
+ * @param watchStatsBridgeOverride Optional [WatchStatsBridge] override for testing. When `null`
+ *   (production), a real [WearableStatsBridge] backed by Google Play Services is used.
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
@@ -202,9 +204,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val billingRepository: BillingRepository? = null,
-    private val evVehicleRepositoryOverride: EvVehicleRepository? = null
-) : AndroidViewModel(application),
-    DataClient.OnDataChangedListener {
+    private val evVehicleRepositoryOverride: EvVehicleRepository? = null,
+    statsPoster: StatsPoster? = null,
+    watchStatsBridgeOverride: WatchStatsBridge? = null
+) : AndroidViewModel(application) {
 
     private val settingsRepository = SettingsRepository(application)
     private val statsReporter = StatsReporter(
@@ -221,8 +224,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 settingsRepository.isTrialExpired() -> "expired"
                 else -> "trial"
             }
-        }
+        },
+        poster = statsPoster ?: HttpStatsPoster(BuildConfig.VERSION_NAME)
     )
+
+    /** Receives watch API-reliability stats via the Data Layer (real impl, or a fake in tests). */
+    private val watchStatsBridge: WatchStatsBridge =
+        watchStatsBridgeOverride ?: WearableStatsBridge(application)
 
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
@@ -257,7 +265,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             isTrialExpired = settingsRepository.isTrialExpired(),
             isUnlocked = settingsRepository.isUnlocked(),
             trialDaysRemaining = settingsRepository.trialDaysRemaining(),
-            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired(),
+            showPaywall = shouldShowPaywall(BuildConfig.DEBUG, settingsRepository.isTrialExpired(), settingsRepository.isUnlocked()),
             devOptionsEnabled = settingsRepository.isDevOptionsEnabled(),
             isDevUnlocked = settingsRepository.isDevUnlocked(),
             isCooldownDisabled = settingsRepository.isCooldownDisabled(),
@@ -298,7 +306,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     _uiState.update {
                         it.copy(
                             isUnlocked = unlocked,
-                            showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !unlocked,
+                            showPaywall = shouldShowPaywall(BuildConfig.DEBUG, settingsRepository.isTrialExpired(), unlocked),
                             showThankYou = it.showThankYou || (unlocked && !it.isUnlocked)
                         )
                     }
@@ -311,23 +319,15 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 }
             }
         }
-        // Listen for watch stats via Data Layer
-        try {
-            Wearable.getDataClient(application).addListener(this)
-        } catch (_: Exception) {
-            // Play Services unavailable — watch sync not supported
-        }
+        // Listen for watch stats via the Data Layer
+        watchStatsBridge.observe(::onWatchStatsReceived)
     }
 
     override fun onCleared() {
         super.onCleared()
         stopResultRefresh()
         activeBilling?.disconnect()
-        try {
-            Wearable.getDataClient(getApplication()).removeListener(this)
-        } catch (_: Exception) {
-            // Play Services unavailable
-        }
+        watchStatsBridge.stop()
     }
 
     /**
@@ -726,7 +726,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * Updates [UiState.result], [UiState.windowAlternatives], [UiState.windowOffset], and
      * [UiState.allPrices] so the chart and summary stay current.
      */
-    private fun recalculateResult() {
+    internal fun recalculateResult() {
         val state = _uiState.value
         val prices = state.allPrices
         if (prices.isEmpty() || state.result == null) return
@@ -1207,6 +1207,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     // --- Developer options ---
+    // (Watch stats arrive via [watchStatsBridge]; the decoded records are handled by
+    //  [onWatchStatsReceived]. The Data Layer plumbing lives in [WearableStatsBridge].)
 
     /**
      * Persistently enables hidden developer options (triggered by 7-tap on version number).
@@ -1227,7 +1229,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         _uiState.update {
             it.copy(
                 isUnlocked = false,
-                showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired()
+                showPaywall = shouldShowPaywall(BuildConfig.DEBUG, settingsRepository.isTrialExpired(), settingsRepository.isUnlocked())
             )
         }
         syncSettingsToWear()
@@ -1249,7 +1251,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             it.copy(
                 isDevUnlocked = enabled,
                 isTrialExpired = settingsRepository.isTrialExpired(),
-                showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !settingsRepository.isUnlocked()
+                showPaywall = shouldShowPaywall(BuildConfig.DEBUG, settingsRepository.isTrialExpired(), settingsRepository.isUnlocked())
             )
         }
         syncSettingsToWear()
@@ -1285,7 +1287,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 now = currentNow(timeZoneId),
                 isTrialExpired = settingsRepository.isTrialExpired(),
                 trialDaysRemaining = settingsRepository.trialDaysRemaining(),
-                showPaywall = !BuildConfig.DEBUG && settingsRepository.isTrialExpired() && !settingsRepository.isUnlocked()
+                showPaywall = shouldShowPaywall(BuildConfig.DEBUG, settingsRepository.isTrialExpired(), settingsRepository.isUnlocked())
             )
         }
     }
@@ -1306,27 +1308,21 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onDevResetStatsTimer() {
         statsReporter.resetReportTimer()
     }
-
-    /**
-     * Called when the watch pushes data updates via the Data Layer.
-     *
-     * Handles the `/stats` path to receive watch API reliability stats.
-     */
-    override fun onDataChanged(events: DataEventBuffer) {
-        try {
-            for (event in events) {
-                if (event.type != DataEvent.TYPE_CHANGED) continue
-                if (event.dataItem.uri.path != "/stats") continue
-                val dataMap = DataMapItem.fromDataItem(event.dataItem).dataMap
-                val bytes = dataMap.getByteArray("data") ?: continue
-                val records = StatsRecord.decodeFromBytes(bytes)
-                onWatchStatsReceived(records)
-            }
-        } finally {
-            events.release()
-        }
-    }
 }
+
+/**
+ * Decides whether the subscription paywall should block the app.
+ *
+ * Pure so the rule is unit-testable for both build types (release unit tests always run with
+ * `BuildConfig.DEBUG == true`, so the debug-skip branch is otherwise unreachable in tests).
+ *
+ * @param isDebug Whether this is a debug build (paywall is always skipped in debug).
+ * @param trialExpired Whether the free trial has expired.
+ * @param unlocked Whether the app has been unlocked via subscription.
+ * @return `true` only for a release build with an expired trial and no active unlock.
+ */
+internal fun shouldShowPaywall(isDebug: Boolean, trialExpired: Boolean, unlocked: Boolean): Boolean =
+    !isDebug && trialExpired && !unlocked
 
 /**
  * Returns the country list with the auto-detected country moved to the top.

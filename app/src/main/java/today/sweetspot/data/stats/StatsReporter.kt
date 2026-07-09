@@ -25,13 +25,16 @@ import java.net.URL
  * @param appVersion App version string for the report payload.
  * @param languageProvider Returns the current app language tag (e.g. "en", "nl", "" for system default).
  * @param statusProvider Returns the current payment status ("trial", "unlocked", or "expired").
+ * @param poster Sends the JSON payload and returns the HTTP status code. Defaults to the real
+ *   [HttpStatsPoster]; tests inject a fake to drive the response-handling branches without a network.
  */
 class StatsReporter(
     private val collector: StatsCollector,
     private val prefs: SharedPreferences,
     private val appVersion: String,
     private val languageProvider: () -> String = { "" },
-    private val statusProvider: () -> String = { "trial" }
+    private val statusProvider: () -> String = { "trial" },
+    private val poster: StatsPoster = HttpStatsPoster(appVersion)
 ) {
 
     companion object {
@@ -63,32 +66,19 @@ class StatsReporter(
         val records = collector.readAll()
         if (records.isEmpty()) return
 
-        try {
-            val json = buildReportJson(records, appVersion, languageProvider(), statusProvider())
-            val connection = (URL(REPORT_URL).openConnection() as HttpURLConnection).apply {
-                requestMethod = "POST"
-                setRequestProperty("Content-Type", "application/json")
-                setRequestProperty("User-Agent", "SweetSpot/$appVersion")
-                connectTimeout = 10_000
-                readTimeout = 10_000
-                doOutput = true
-            }
-            try {
-                connection.outputStream.use { it.write(json.toByteArray(Charsets.UTF_8)) }
-                when (val code = connection.responseCode) {
-                    HttpURLConnection.HTTP_OK -> {
-                        collector.clear()
-                        prefs.edit { putLong(KEY_LAST_REPORT_MS, System.currentTimeMillis()) }
-                    }
-                    // 4xx (except 429 rate limit): payload is invalid, drop it
-                    in 400..499 -> if (code != 429) collector.clear()
-                    // 429 or 5xx: keep data, retry next day
-                }
-            } finally {
-                connection.disconnect()
-            }
+        val json = buildReportJson(records, appVersion, languageProvider(), statusProvider())
+        val code = try {
+            poster.post(json)
         } catch (_: Exception) {
-            // Network error — keep data, retry next day
+            return // Network error — keep data, retry next day
+        }
+        when (reportOutcomeFor(code)) {
+            ReportOutcome.CLEAR_AND_STAMP -> {
+                collector.clear()
+                prefs.edit { putLong(KEY_LAST_REPORT_MS, System.currentTimeMillis()) }
+            }
+            ReportOutcome.CLEAR -> collector.clear()
+            ReportOutcome.KEEP -> {} // 429 or 5xx: keep data, retry next day
         }
     }
 
@@ -160,4 +150,73 @@ internal fun buildReportJson(
         "status" to JsonPrimitive(status),
         "records" to recordsArray
     )).toString()
+}
+
+/**
+ * Sends a JSON stats payload to the reporting endpoint and returns the HTTP status code.
+ *
+ * Isolated behind an interface so [StatsReporter]'s response-handling logic can be exercised in
+ * tests with a fake, without a real network call. The production implementation is [HttpStatsPoster].
+ */
+fun interface StatsPoster {
+    /**
+     * POSTs [json] to the stats endpoint.
+     *
+     * @param json The report payload.
+     * @return The HTTP response code.
+     * @throws Exception on any network/IO failure (the caller treats this as "keep data, retry").
+     */
+    fun post(json: String): Int
+}
+
+/**
+ * Production [StatsPoster] using [HttpURLConnection]. Thin IO glue with no decision logic (the
+ * response-code handling lives in [reportOutcomeFor]), so it is excluded from coverage — it can
+ * only be exercised against a real network.
+ *
+ * @param appVersion App version string, sent in the User-Agent header.
+ */
+class HttpStatsPoster(private val appVersion: String) : StatsPoster {
+    override fun post(json: String): Int {
+        val connection = (URL(StatsReporter.REPORT_URL).openConnection() as HttpURLConnection).apply {
+            requestMethod = "POST"
+            setRequestProperty("Content-Type", "application/json")
+            setRequestProperty("User-Agent", "SweetSpot/$appVersion")
+            connectTimeout = 10_000
+            readTimeout = 10_000
+            doOutput = true
+        }
+        return try {
+            connection.outputStream.use { it.write(json.toByteArray(Charsets.UTF_8)) }
+            connection.responseCode
+        } finally {
+            connection.disconnect()
+        }
+    }
+}
+
+/** The action to take on the local stats buffer after a report attempt. */
+internal enum class ReportOutcome {
+    /** HTTP 200: report accepted — clear the buffer and record the timestamp. */
+    CLEAR_AND_STAMP,
+
+    /** 4xx (except 429): payload is permanently invalid — clear it so it isn't retried forever. */
+    CLEAR,
+
+    /** 429 (rate limit) or 5xx: transient — keep the buffer for the next daily retry. */
+    KEEP
+}
+
+/**
+ * Maps an HTTP response code to the action to take on the local stats buffer.
+ *
+ * Pure and Android-free so the reporting policy is unit-testable without a network or prefs.
+ *
+ * @param code HTTP status code returned by [StatsPoster.post].
+ * @return The [ReportOutcome] to apply.
+ */
+internal fun reportOutcomeFor(code: Int): ReportOutcome = when {
+    code == HttpURLConnection.HTTP_OK -> ReportOutcome.CLEAR_AND_STAMP
+    code in 400..499 && code != 429 -> ReportOutcome.CLEAR
+    else -> ReportOutcome.KEEP
 }

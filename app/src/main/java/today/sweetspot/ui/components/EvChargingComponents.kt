@@ -31,18 +31,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.util.formatDuration
-import java.util.Locale
+import today.sweetspot.util.formatHhMm
+import today.sweetspot.util.formatKw
 import kotlin.math.max
 import kotlin.math.roundToInt
-
-/** Formats a kW value, dropping the decimal for whole numbers (11.0 → "11", 7.4 → "7.4"). */
-internal fun formatKw(value: Double): String =
-    if (value == value.toLong().toDouble()) value.toLong().toString()
-    else String.format(Locale.getDefault(), "%.1f", value)
-
-/** Formats an hour/minute pair as a 24-hour "HH:mm" label. */
-internal fun formatHhMm(hour: Int, minute: Int): String =
-    String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
 
 /**
  * A universal "ready by" deadline control: a switch plus a tappable time chip. Tapping the chip

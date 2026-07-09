@@ -30,6 +30,7 @@ import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.stats.StatsCollector
+import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.PriceSlot
@@ -42,6 +43,7 @@ import android.app.Activity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import org.robolectric.Robolectric
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -115,12 +117,25 @@ class SweetSpotViewModelTest {
         override val productPrice: StateFlow<String?> = MutableStateFlow(null)
         var resumeCount = 0
             private set
+        var launchCount = 0
+            private set
+        var queryCount = 0
+            private set
         override fun connect() {}
         override fun disconnect() {}
-        override fun launchPurchaseFlow(activity: Activity) {}
-        override fun queryPurchases() {}
+        override fun launchPurchaseFlow(activity: Activity) { launchCount++ }
+        override fun queryPurchases() { queryCount++ }
         override fun onResume() { resumeCount++ }
         fun setUnlocked(value: Boolean) { _isUnlocked.value = value }
+    }
+
+    /** [StatsPoster] that records the payload and returns a fixed code. */
+    private class FakePoster : StatsPoster {
+        var lastJson: String? = null
+            private set
+        var callCount = 0
+            private set
+        override fun post(json: String): Int { callCount++; lastJson = json; return 200 }
     }
 
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
@@ -1290,5 +1305,261 @@ class SweetSpotViewModelTest {
         runCurrent()
         viewModel.onClearResult()
         assertNull(viewModel.uiState.value.searchPowerKw)
+    }
+
+    // --- Paywall decision (pure) ---
+
+    @Test
+    fun `shouldShowPaywall only blocks a release build with an expired unpaid trial`() {
+        assertTrue(shouldShowPaywall(isDebug = false, trialExpired = true, unlocked = false))
+        assertFalse(shouldShowPaywall(isDebug = true, trialExpired = true, unlocked = false))  // debug always skips
+        assertFalse(shouldShowPaywall(isDebug = false, trialExpired = false, unlocked = false)) // trial live
+        assertFalse(shouldShowPaywall(isDebug = false, trialExpired = true, unlocked = true))   // subscribed
+    }
+
+    // --- Stats reporting (provider + poster wiring) ---
+
+    /** Creates a ViewModel with an injected stats poster and pre-seeded collector. */
+    private fun reportingViewModel(poster: StatsPoster, collector: FakeStatsCollector) =
+        SweetSpotViewModel(app, { _ -> FakeFetcher(fakePrices(24)) }, FakeCache(), collector, testDispatcher, null, null, poster)
+
+    @Test
+    fun `successful fetch reports stats with the trial status`() = runTest {
+        val collector = FakeStatsCollector().apply { record(StatsRecord(1000L, "NL", "entsoe", "phone", true, "", 5)) }
+        val poster = FakePoster()
+        val viewModel = reportingViewModel(poster, collector)
+        viewModel.onStatsEnabledChanged(true)
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+
+        assertEquals(1, poster.callCount)
+        assertTrue(poster.lastJson!!.contains("\"status\":\"trial\""))
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `stats report carries the subscribed status when unlocked`() = runTest {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        prefs.edit().putBoolean("unlocked", true).commit()
+        val collector = FakeStatsCollector().apply { record(StatsRecord(1000L, "NL", "entsoe", "phone", true, "", 5)) }
+        val poster = FakePoster()
+        val viewModel = reportingViewModel(poster, collector)
+        viewModel.onStatsEnabledChanged(true)
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+
+        assertTrue(poster.lastJson!!.contains("\"status\":\"subscribed\""))
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `stats report carries the expired status when the trial has lapsed`() = runTest {
+        val prefs = app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE)
+        val fifteenDaysAgo = System.currentTimeMillis() - (15 * 24 * 60 * 60 * 1000L)
+        prefs.edit().putLong("first_launch_ms", fifteenDaysAgo).putBoolean("unlocked", false).commit()
+        val collector = FakeStatsCollector().apply { record(StatsRecord(1000L, "NL", "entsoe", "phone", true, "", 5)) }
+        val poster = FakePoster()
+        val viewModel = reportingViewModel(poster, collector)
+        viewModel.onStatsEnabledChanged(true)
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+
+        assertTrue(poster.lastJson!!.contains("\"status\":\"expired\""))
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `stats are not reported when opt-in is disabled`() = runTest {
+        val collector = FakeStatsCollector().apply { record(StatsRecord(1000L, "NL", "entsoe", "phone", true, "", 5)) }
+        val poster = FakePoster()
+        val viewModel = reportingViewModel(poster, collector)
+        // stats disabled by default
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+
+        assertEquals(0, poster.callCount)
+        viewModel.onClearResult()
+    }
+
+    // --- EV database lazy load (real asset) ---
+
+    @Test
+    fun `real vehicle database loads and powers the search`() = runTest {
+        // No EV repo override → the bundled ev-vehicles.json asset is parsed in init.
+        val viewModel = SweetSpotViewModel(app, { _ -> FakeFetcher(fakePrices(24)) }, FakeCache(), FakeStatsCollector(), testDispatcher)
+        runCurrent() // let the eager load finish
+        assertTrue(viewModel.searchEvVehicles("").isEmpty())      // blank query short-circuits
+        assertTrue(viewModel.searchEvVehicles("a").isNotEmpty())  // some vehicle matches "a"
+    }
+
+    // --- EV find edge cases ---
+
+    @Test
+    fun `onEvApplianceFind ignores a non-EV appliance`() {
+        val viewModel = evViewModel()
+        val notEv = Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 0, icon = "laundry")
+        viewModel.onEvApplianceFind(notEv, 20, 80)
+        val state = viewModel.uiState.value
+        assertNull(state.result)
+        assertNull(state.error)
+        assertFalse(state.isLoading)
+    }
+
+    @Test
+    fun `onEvApplianceFind with no resolved zone sets a validation error`() {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel)
+        val multi = today.sweetspot.model.Countries.all.first { it.zones.size > 1 }
+        viewModel.onCountrySelected(multi.code) // multi-zone country, no zone selected → null zone
+        assertNull(viewModel.uiState.value.priceZone)
+
+        viewModel.onEvApplianceFind(vehicle, 20, 80)
+        assertTrue(viewModel.uiState.value.error is AppError.Validation)
+        assertNull(viewModel.uiState.value.result)
+    }
+
+    @Test
+    fun `onEvApplianceFind with a zero-power charger sets a validation error`() {
+        val viewModel = evViewModel()
+        val vehicle = addTestVehicle(viewModel)
+        viewModel.onEvHomeChargerChanged(0.0) // effective power = min(11, 0) = 0
+        viewModel.onEvApplianceFind(vehicle, 20, 80)
+        assertTrue(viewModel.uiState.value.error is AppError.Validation)
+        assertNull(viewModel.uiState.value.result)
+    }
+
+    // --- Find validation: no zone ---
+
+    @Test
+    fun `onFindClicked with no resolved zone sets a validation error`() {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        val multi = today.sweetspot.model.Countries.all.first { it.zones.size > 1 }
+        viewModel.onCountrySelected(multi.code)
+        assertNull(viewModel.uiState.value.priceZone)
+
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        val state = viewModel.uiState.value
+        assertTrue(state.error is AppError.Validation)
+        assertEquals(UiText.Res(R.string.error_no_zone), state.error!!.message)
+    }
+
+    // --- Deadline unreachable ---
+
+    @Test
+    fun `an unreachable deadline yields the deadline error`() = runTest {
+        // 24h of prices, but a deadline ~1h out and a 10h duration → no window fits by the deadline.
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        val now = ZonedDateTime.now()
+        viewModel.onDeadlineEnabledChanged(true)
+        viewModel.onDeadlineChanged(now.plusHours(1).hour, 0)
+        viewModel.onDurationChanged(10, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+
+        val err = viewModel.uiState.value.error
+        assertTrue(err is AppError.Validation)
+        assertEquals(UiText.Res(R.string.ev_error_deadline_unreachable), (err as AppError.Validation).message)
+        viewModel.onClearResult()
+    }
+
+    // --- Zone selection ---
+
+    @Test
+    fun `onPriceZoneSelected resolves and applies the chosen zone`() {
+        val viewModel = defaultViewModel()
+        val multi = today.sweetspot.model.Countries.all.first { it.zones.size > 1 }
+        viewModel.onCountrySelected(multi.code)
+        val zone = multi.zones[1]
+        viewModel.onPriceZoneSelected(zone.id)
+        assertEquals(zone, viewModel.uiState.value.priceZone)
+    }
+
+    // --- Language & theme ---
+
+    @Test
+    fun `onLanguageChanged applies without error`() {
+        val viewModel = defaultViewModel()
+        viewModel.onLanguageChanged("de")
+        // No crash; state unchanged (locale switch is a framework side effect).
+        assertNotNull(viewModel.uiState.value)
+    }
+
+    @Test
+    fun `onThemeModeChanged updates and persists the theme`() {
+        val viewModel = defaultViewModel()
+        viewModel.onThemeModeChanged(ThemeMode.DARK)
+        assertEquals(ThemeMode.DARK, viewModel.uiState.value.themeMode)
+
+        val reloaded = SweetSpotViewModel(app)
+        assertEquals(ThemeMode.DARK, reloaded.uiState.value.themeMode)
+    }
+
+    // --- Developer options (remaining) ---
+
+    @Test
+    fun `onDevTimeOverrideChanged sets the override and clears the cache`() {
+        val cache = FakeCache()
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+        val future = System.currentTimeMillis() + (2 * 24 * 60 * 60 * 1000L)
+        viewModel.onDevTimeOverrideChanged(future)
+        assertEquals(future, viewModel.uiState.value.timeOverrideMs)
+        assertTrue(cache.clearCount > 0)
+
+        viewModel.onDevTimeOverrideChanged(null)
+        assertNull(viewModel.uiState.value.timeOverrideMs)
+    }
+
+    @Test
+    fun `onDevUseProductionLogoChanged toggles the flag`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevUseProductionLogoChanged(true)
+        assertTrue(viewModel.uiState.value.useProductionLogo)
+    }
+
+    @Test
+    fun `onDevResetStatsTimer does not crash`() {
+        val viewModel = defaultViewModel()
+        viewModel.onDevResetStatsTimer()
+    }
+
+    // --- Purchase forwarding ---
+
+    @Test
+    fun `onPurchaseClicked and onRestorePurchases forward to billing`() = runTest {
+        val billing = FakeBillingRepository(initialUnlocked = false)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), billing = billing)
+        runCurrent()
+
+        val activity = Robolectric.buildActivity(Activity::class.java).get()
+        viewModel.onPurchaseClicked(activity)
+        viewModel.onRestorePurchases()
+
+        assertEquals(1, billing.launchCount)
+        assertEquals(1, billing.queryCount)
+    }
+
+    // --- recalculateResult: no window fits ---
+
+    @Test
+    fun `recalculateResult keeps the last result when every slot has elapsed`() = runTest {
+        val cache = FakeCache()
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), cache)
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+        assertNotNull(viewModel.uiState.value.result)
+        val kept = viewModel.uiState.value.result
+
+        // Jump "now" two days ahead so all fetched slots are in the past.
+        viewModel.onDevTimeOverrideChanged(System.currentTimeMillis() + (2 * 24 * 60 * 60 * 1000L))
+        viewModel.recalculateResult()
+
+        // Result is preserved (not nulled) even though no future window remains.
+        assertEquals(kept, viewModel.uiState.value.result)
+        viewModel.onClearResult()
     }
 }

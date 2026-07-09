@@ -41,16 +41,8 @@ kover {
                 classes("*.BuildConfig")
             }
         }
-        // Coverage gate for :shared (the logic module). Fails `koverVerifyDebug` if line coverage
-        // drops below the bound. Currently ~99.6%, so 98 leaves a small buffer for defensive/edge
-        // lines while still catching real regressions (e.g. a new untested subsystem).
-        verify {
-            rule("Line coverage of :shared") {
-                bound {
-                    minValue = 98
-                }
-            }
-        }
+        // NB: the CI coverage gate is `bin/coverage-report.py --gate` (reads this filtered XML
+        // report), not `koverVerifyDebug` — see the script's docstring and app/build.gradle.kts.
     }
 }
 

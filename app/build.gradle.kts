@@ -15,10 +15,10 @@ kover {
                 classes(
                     "*ComposableSingletons*",                        // generated Compose lambda holders
                     "*.BuildConfig",
-                    // Compose screens, components, theme. Each sub-package is listed explicitly: the
-                    // `koverVerifyDebug` gate treats `*` as not crossing package dots (unlike report
-                    // generation), so a single `today.sweetspot.ui.*` would leak sub-package
-                    // non-@Composable code (theme/colour/config constants) into the verified number.
+                    // All Compose screens, components, theme. Every sub-package is listed explicitly
+                    // rather than relying on `today.sweetspot.ui.*` to cross package dots: whether a
+                    // single `*` matches nested packages varies by Kover/JDK, so on some JDKs a lone
+                    // `ui.*` leaks sub-package non-@Composable code (theme/colour/config constants).
                     "today.sweetspot.ui.*",
                     "today.sweetspot.ui.components.*",
                     "today.sweetspot.ui.settings.*",
@@ -34,15 +34,9 @@ kover {
                 )
             }
         }
-        // Coverage gate for :app. Currently ~99% line, so 97 leaves a small buffer for defensive/DI
-        // lines while still catching a real regression. Verification inherits the excludes above.
-        verify {
-            rule("Line coverage of :app") {
-                bound {
-                    minValue = 97
-                }
-            }
-        }
+        // NB: the CI coverage gate is `bin/coverage-report.py --gate` (reads these filtered XML
+        // reports), not `koverVerifyDebug` — Kover 0.9.8's verification does not reliably apply the
+        // wildcard `classes(...)` excludes above (and differs by JDK). See the script's docstring.
     }
 }
 

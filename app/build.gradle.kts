@@ -39,6 +39,13 @@ android {
     }
 }
 
+// DIAGNOSTIC (temporary): log every test as it starts so a hung CI run names the culprit,
+// and cap the task so the job fails fast instead of hanging for hours.
+tasks.withType<Test>().configureEach {
+    testLogging { events("started", "passed", "skipped", "failed") }
+    timeout.set(java.time.Duration.ofMinutes(6))
+}
+
 dependencies {
     // Shared module (data, model, util layers)
     implementation(project(":shared"))

@@ -1,3 +1,5 @@
+import java.time.Duration
+
 plugins {
     id("sweetspot-app")
     alias(libs.plugins.kover)
@@ -43,7 +45,7 @@ android {
 // and cap the task so the job fails fast instead of hanging for hours.
 tasks.withType<Test>().configureEach {
     testLogging { events("started", "passed", "skipped", "failed") }
-    timeout.set(java.time.Duration.ofMinutes(6))
+    timeout.set(Duration.ofMinutes(6L))
 }
 
 dependencies {

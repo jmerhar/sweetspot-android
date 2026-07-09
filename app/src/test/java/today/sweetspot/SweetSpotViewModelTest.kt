@@ -1452,11 +1452,15 @@ class SweetSpotViewModelTest {
 
     @Test
     fun `an unreachable deadline yields the deadline error`() = runTest {
-        // 24h of prices, but a deadline ~1h out and a 10h duration → no window fits by the deadline.
-        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
-        val now = ZonedDateTime.now()
+        // Only 5h of data but 10h needed, so no window ever fits — deterministically forcing the
+        // "no window + deadline set" branch (ev_error_deadline_unreachable). This deliberately avoids
+        // a wall-clock-relative deadline: the "ready by" time resolves to its next occurrence (always
+        // <24h out) in the *price zone*, so a duration-vs-deadline setup would be timezone-dependent
+        // and could take the success path on a UTC CI runner — leaking the periodic-refresh loop and
+        // hanging runTest's virtual-time drain.
+        val viewModel = testViewModel(FakeFetcher(fakePrices(5)))
         viewModel.onDeadlineEnabledChanged(true)
-        viewModel.onDeadlineChanged(now.plusHours(1).hour, 0)
+        viewModel.onDeadlineChanged(7, 0)
         viewModel.onDurationChanged(10, 0)
         viewModel.onFindClicked()
         runCurrent()

@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """Summarise per-module Kover coverage for CI.
 
-Reads each module's Kover XML report (``<module>/build/reports/kover/reportDebug.xml``) and prints
-a per-module coverage table in one of two formats:
+Reads each module's Kover XML report (``<module>/build/reports/kover/reportDebug.xml``) and prints,
+depending on ``--format``:
 
-  --format md    GitHub-flavored Markdown, for the Actions run summary ($GITHUB_STEP_SUMMARY).
-  --format html  A standalone HTML landing page, for the GitHub Pages site (links each module).
+  --format md         GitHub-flavored Markdown table, for the Actions run summary
+                      ($GITHUB_STEP_SUMMARY).
+  --format reports    A JSON "reports" array (the manifest consumed by the jmerhar/coverage site's
+                      bin/make-meta.py): one entry per module with its line/branch coverage. The
+                      site build itself lives in the coverage repo — this only emits the numbers.
 
 Modules whose report is missing are skipped. Run from the repo root after
-``./gradlew koverXmlReportDebug`` (and, for the HTML links to resolve, ``koverHtmlReportDebug``).
+``./gradlew koverXmlReportDebug``.
 """
 import argparse
+import json
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
 
 MODULES = ("shared", "app", "wear")
 
@@ -51,31 +54,20 @@ def render_markdown():
     return "\n".join(lines)
 
 
-def render_html():
-    rows = "".join(
-        '<tr><td><a href="%s/index.html">:%s</a></td><td>%s</td><td>%s</td></tr>'
-        % (module, module, s["LINE"], s["BRANCH"])
+def render_reports():
+    """The manifest for the coverage site: one entry per module, path = module subdirectory."""
+    reports = [
+        {"name": module, "path": module, "metrics": {"line": s["LINE"], "branch": s["BRANCH"]}}
         for module, s in _rows()
-    )
-    ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    return (
-        "<!doctype html><html lang=en><meta charset=utf-8>"
-        "<title>sweetspot-android coverage</title>"
-        "<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:3rem auto;padding:0 1rem}"
-        "table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.5rem .75rem;border-bottom:1px solid #ddd}"
-        "a{color:#4A90D9}small{color:#666}</style>"
-        "<h1>sweetspot-android — Kover coverage</h1>"
-        "<p>Per-module line-by-line reports (debug unit tests).</p>"
-        "<table><tr><th>Module</th><th>Line</th><th>Branch</th></tr>" + rows + "</table>"
-        "<p><small>Generated " + ts + "</small></p>"
-    )
+    ]
+    return json.dumps(reports, indent=2)
 
 
 def main():
     parser = argparse.ArgumentParser(description="Print a per-module Kover coverage summary.")
-    parser.add_argument("--format", choices=("md", "html"), default="md")
+    parser.add_argument("--format", choices=("md", "reports"), default="md")
     args = parser.parse_args()
-    print(render_markdown() if args.format == "md" else render_html())
+    print(render_markdown() if args.format == "md" else render_reports())
 
 
 if __name__ == "__main__":

@@ -36,3 +36,7 @@ fastlane/screenshots/**/images/
 fastlane/screenshots/screenshots.html
 fastlane/metadata/android/*/changelogs/
 vendor/
+
+# Local coverage upload staging (CI publishes to jmerhar/coverage)
+coverage-upload/
+coverage-repo/

@@ -1,217 +1,301 @@
-# All-In Electricity Pricing Research
+# All-In Electricity Pricing — Feasibility Across All 30 Markets
 
-## Context
+> Research refreshed **July 2026** (7 parallel market-research passes, sourced from national
+> regulators / tax authorities / Eurostat). Supersedes the original ~15-country note. Figures are
+> mid-2026; non-euro values converted at the rates noted. Treat every number as "good enough to
+> display, verify before hardcoding".
 
-SweetSpot currently shows day-ahead spot prices. Users pay more than the spot price — their total includes energy tax, VAT, supplier surcharge, and grid fees. This note explores what it would take to show approximate all-in consumer prices.
+## What this feature is
 
-## Price Components
+SweetSpot shows day-ahead **spot** prices. Consumers actually pay more: spot + energy tax/excise +
+supplier surcharge + grid fees, with VAT on top. This feature would optionally show an approximate
+**all-in** consumer price — e.g. "Running your dishwasher costs €0.87" instead of the bare spot cost.
 
-| Component | Varies by hour? | Notes |
+## The two principles that make this tractable
+
+1. **Flat *and* percentage components are display-only — they never change which hour is cheapest.**
+   - A fixed per-kWh adder (excise, most grid fees, a supplier's ct/kWh margin) shifts every hour's
+     cost by the same constant → the minimum-cost window is unchanged.
+   - A percentage component (VAT everywhere; **Spain's 5.11% excise**) is *multiplicative* → it
+     scales all hours proportionally → the ranking is **also** unchanged.
+   - ⇒ For the large majority of markets, all-in is a pure **display** layer bolted onto the existing
+     algorithm. No change to the recommendation engine.
+
+2. **The *only* thing that reorders hours is a time-of-use (ToU) per-kWh *grid* toll.** These exist
+   in a minority of markets and are the sole reason to touch the window-selection logic. Everything
+   else is cosmetic.
+
+## The gating question the original note under-weighted: *does a consumer dynamic tariff even exist?*
+
+The app's entire premise — "run your load in the cheapest hour" — only pays off for households whose
+price actually **tracks the wholesale curve** (a spot/dynamic/indexed tariff). In much of SE-Europe
+and the Western Balkans, households are on **regulated or subsidised fixed prices**, so neither the
+core feature nor all-in pricing has real-world value there, even though ENTSO-E gives us the spot
+curve. This splits the 30 markets into three applicability tiers (see matrix).
+
+## Master feasibility matrix (all 30 countries / 43 zones)
+
+Legend — **Applies?**: ✅ dynamic tariffs mainstream · 🟡 legal but thin uptake · ❌ regulated/no consumer dynamic tariff.
+**Grid**: flat (display-only) · ToU (reorders hours). **API**: free public all-in retail feed.
+
+| Country | Applies? | VAT 2026 | Excise (EUR ct/kWh, type) | Grid | All-in API | Verdict |
+|---|---|---|---|---|---|---|
+| **NL** Netherlands | ✅ | 21% | **8.794** flat (cut from 10.15) | flat (capacity) | **EnergyZero `allIn`** (no auth) | **Tier-1 — pilot #1** |
+| **ES** Spain | ✅ | 21% (brief 10% Mar–Jun'26) | **5.11%** *percentage* | ToU peajes (in PVPC) | **ESIOS ind. 1001** (free token) | **Tier-1 — pilot #2 (regulated all-in feed)** |
+| **IT** Italy (7 zones) | ✅ | 10% | 2.27 flat + flat system charges | ToU only in *energy* (=spot) ⇒ flat-equiv | — | **Tier-1** |
+| **FI** Finland | ✅ | 25.5% | 2.325 flat | mostly flat | — | **Tier-1 (cleanest Nordic)** |
+| **SE** Sweden (4 zones) | ✅ | 25% | ~3.2 flat (north −0.85) | fragmented; effekttariff mandate **revoked Jun'26** ⇒ treat flat | — | **Tier-1** |
+| **EE** Estonia | ✅ | 24% | 0.31 flat (from May'26) | flat default | — | **Tier-1 (börsipakett is majority)** |
+| **LT** Lithuania | ✅ | 21% | **0** (household exempt) | multi-zone ToU *opt-in* + seasonal'26 | — | **Tier-1** |
+| **IE** Ireland | ✅ | 9% (to 2030) | **0** (household exempt) | day/night + smart peak 17–19 | — (SEMOpx spot free) | **Tier-1 (dynamic live Jun'26)** |
+| **AT** Austria | ✅ | 20% | **0.1** flat (cut for households'26) | flat **now → ToU 1 Sep'26** (−20% 10–16) | — (aWATTar spot) | **Tier-1 now; ToU from Sep'26** |
+| **LV** Latvia | 🟡 | 21% | **0** (household exempt) | flat default | — | **Tier-1 (audience ~15%)** |
+| **PL** Poland | 🟡 | 23% | ~0.36 flat (akcyza+OZE+cogen) | G12/G12w day-night *opt-in* | — | **Tier-1 (dynamic niche ~4.8k hh)** |
+| **CZ** Czechia | 🟡 | 21% | 0.11 flat | VT/NT two-tariff *opt-in* (not spot) | — | **Tier-1 (dynamic growing, Tibber)** |
+| **RO** Romania | 🟡 | 21% (↑ from 19% Aug'25) | **0** (household exempt) | mostly flat | — | **Tier-1 (cap ended Jul'25; fixed offers dominate)** |
+| **DK** Denmark (2 zones) | ✅ | 25% | ~0 (elafgift near-abolished'26–27) | **ToU strong** (peak 17–21 ≈4×) | grid: **Energi Data Service** (free) | **Needs ToU grid — worth building (automatable)** |
+| **DE** Germany | ✅ | 19% | ~6.6 bundle flat (Stromsteuer 2.05, *not* cut for hh) | **§14a ToU** (mandatory-offer Apr'25; ~850 DSOs, no free API) | — | **Needs ToU grid (else Tier-1 display)** |
+| **FR** France | ✅ | 20% (unified Aug'25) | 3.085 flat | **ToU-dominant** (HP/HC + Tempo) | RTE Tempo calendar (free) | **Needs ToU grid** |
+| **SI** Slovenia | ✅ | 22% | low flat (temp. reduced) | **ToU** (VT/MT/ET seasonal, since'24) | — | **Needs ToU grid (GEN-I/NGEN dynamic real)** |
+| **PT** Portugal | 🟡 | 6% energy / 23% power | ~0.1 flat (ISP) | bi/tri-horário ToU *opt-in* (ERSE-fixed) | — | **Needs ToU grid; dynamic weak** |
+| **GR** Greece | 🟡 | 6% | 0.5 flat (EFK) | narrow day/night 02–05 | — | **Needs ToU grid (minor); dynamic nascent** |
+| **NO** Norway (5 zones) | ✅ | 25% (north exempt) | 0.62 flat (north exempt) | capacity+energy, modest ToU | — | **Special — subsidy distorts spot signal** |
+| **BE** Belgium | 🟡 | 6% | ~2.36 flat (tiered) | capacity-kW (Flanders); **Wallonia hourly slots'26** | — | **Special — Flanders flat; Wallonia ToU'26** |
+| **HR** Croatia | 🟡 | 25% | low flat | ToU (VT/NT); new items Jan'26 | — | **Special — gov price measure to Sep'26** |
+| **CH** Switzerland | ❌ | 8.1% | ~2.4 flat grid surcharge (no excise) | ToU per-DSO (~600+) | ElCom (annual, not hourly) | **N/A — captive market, no consumer spot** |
+| **LU** Luxembourg | ❌ | 8% | ~0.1 flat (subsidised) | — | — | **N/A — no dynamic-tariff market** |
+| **SK** Slovakia | ❌→'27 | 23% | ~0 household | regulated ToU | — | **N/A until supplier obligation 1 Jan 2027** |
+| **HU** Hungary | ❌ | 27% (EU-highest) | **exempt** (household) | A2/B day-night | — | **N/A — subsidised regulated "rezsicsökkentés"** |
+| **BG** Bulgaria | ❌ | 20% | low flat | regulated day/night ToU | — | **N/A — household market still regulated; €uro since 1 Jan'26** |
+| **RS** Serbia | ❌ | 20% | 0.68 (RES fee) + new excise'26 | 2-tariff day/night | — | **N/A — regulated (EPS)** |
+| **ME** Montenegro | ❌ | 21% | small (RES + excise) | 2-tariff (day 6.76 / night 3.38) | — | **N/A — regulated (EPCG)** |
+| **MK** North Macedonia | ❌ | **5%** (elec) | **exempt** | 2-tariff blocks | — | **N/A — regulated (EVN Home)** |
+
+**Applicability tally:** ✅/🟡 ~**22 markets** where the feature is meaningful (≈15 clearly, ≈7 emerging); **❌ 8 markets** where household prices are regulated/subsidised and *both* all-in pricing and the app's core hourly-optimization premise are of little value (CH, LU, SK-until-2027, HU, BG, RS, ME, MK).
+
+## What's doable vs. what isn't
+
+### Doable now, cheaply — flat "all-in" display (no algorithm change)
+For every ✅/🟡 market whose grid is flat (or whose ToU is opt-in and off by default), all-in is just:
+`all_in(hour) = (spot(hour) + excise + supplier_surcharge) × (1 + VAT)` (Spain: multiply by
+`(1+0.0511)` instead of adding excise). Covers **NL, ES, IT, FI, SE, EE, LT, LV, PL, CZ, IE, AT, RO**
+immediately, and DE/SI/PT/GR/FR as a *labelled estimate* if we don't model their ToU grid.
+
+### Doable but needs real work — ToU grid modelling (reorders hours)
+Only worth it where a ToU grid toll is (a) large enough to actually beat intra-day spot spreads and
+(b) obtainable programmatically:
+- **Denmark — do it.** Peak 17–21 up to ~4× the valley; seasonal. Cleanly automatable via the free,
+  no-auth **Energi Data Service** `DatahubPricelist` (per-DSO hourly tariffs) + `Elspotprices`.
+  Requires mapping the user → DSO (GLN). This is the single best ToU investment.
+- **France** — HP/HC + Tempo dominate. RTE publishes the Tempo day-colour calendar; off-peak bands
+  are semi-standardised. Moderate effort.
+- **Germany §14a** — real from Apr 2025 but ~850 DSOs each set their own HT/NT/ST bands annually and
+  there's **no free national API** → not automatable at scale. Ship DE as flat display estimate.
+- **Slovenia** — VT/MT/ET seasonal blocks (Agencija za energijo, PDF). Small market; defer ToU.
+- **Spain** — the peajes P1/P2/P3 ToU *is* already baked into the regulated **PVPC**, so consuming
+  the ESIOS all-in feed gives correct ToU-aware pricing **for free** — no modelling needed.
+- **Austria** — flat until the 1 Sep 2026 network ToU (−20% 10:00–16:00); add then.
+- **Portugal / Greece** — bi/tri-horário and 02–05 night bands are opt-in and small; skip modelling.
+
+### Not doable / not worth it
+- **Per-user grid fees in general** (25–35% of the bill, hundreds of DSOs in DE/CH/NO/SE): impractical
+  to source per user; excluded (flat ones don't affect the window anyway). UI must say "excludes grid fees".
+- **The 8 ❌ regulated markets**: don't ship all-in; ideally flag in-app that hourly optimization has
+  no effect there.
+
+## Automation strategy (maximise, minimise manual upkeep)
+
+| Layer | Source | Automation |
 |---|---|---|
-| **Spot price** | Yes | Already have this from ENTSO-E / EnergyZero |
-| **Energy tax / excise** | No (fixed per kWh, set annually) | Per country, sometimes per region |
-| **VAT** | Proportional to total | Per country |
-| **Supplier surcharge** | No (fixed per kWh per contract) | Per supplier |
-| **Grid / transmission fees** | Usually no | Per grid operator. **Denmark and Sweden are exceptions** — time-of-use grid tariffs |
-| **Renewable / CHP levies** | No (fixed per kWh) | Per country, varies by year |
+| **VAT + flat excise** (all EU + NO + candidate RS/ME/MK) | **Eurostat `nrg_pc_204_c`** (price components, bi-annual, ~6–12 mo lag) | Good for *defaults/sanity*; too lagged & averaged for precise per-kWh excise. **Hardcode a ~30-row country table** (VAT, excise, type, `lastUpdated`), refreshed annually (most change only on Jan 1 / Feb 1). |
+| **Precise excise / VAT** | National tax authorities (Belastingdienst, BMF, DGFiP, Skatteverket, EMTA, …) | Manual once/year; values are stable. |
+| **True all-in hourly** | **NL EnergyZero** (`allIn`, no auth) · **ES ESIOS** ind. 1001 (free token) | Consume directly — zero tax modelling. These two are the only free regulated/public all-in feeds. |
+| **ToU grid** | **DK Energi Data Service** (free) · FR RTE Tempo calendar | Automatable for DK/FR; elsewhere PDF/manual → skip. |
+| **Supplier surcharge** | No pan-EU API exists | Two parts per supplier — a fixed **vastrecht** (€/month) *and* a per-kWh **opslag/inkoopkosten** — see "Automating the supplier surcharge" below. Curated preset table + picker; live API where available. |
 
-**Key insight: adding fixed per-kWh surcharges does NOT change which time window is cheapest.** The sliding window algorithm finds the minimum-cost window based on relative price differences. Adding a constant to every hour shifts all costs equally. All-in pricing is therefore a **display-only feature** — it affects the total cost shown ("Running your dishwasher costs €0.87") but not the recommendation of when to run it.
+**Recommended mechanism:** hardcode the country tax table + supplier presets in-app for v1, then move
+them to a **remote JSON on GitHub** the app fetches periodically — so annual tax changes and new
+supplier presets don't require an app release.
 
-The exception is Denmark and Sweden, where grid tariffs vary by time of day (see Grid Fees below).
+## Design decision: all-in = *marginal* running cost (exclude all fixed costs)
 
-## VAT Rates on Electricity
+The all-in figure exists to answer **"what will it *add* to my bill to run this appliance now, for
+this long?"** — a **marginal** cost. So the rule is: **include only per-kWh components; exclude
+everything fixed** (a fixed cost is paid whether or not the appliance runs, so it's not part of the
+run's cost — and folding it into a €/kWh number would require dividing by an arbitrary assumed
+monthly kWh).
 
-| Country | VAT | Notes |
-|---|---|---|
-| NL | 21% | Standard rate |
-| BE | 6% | Reduced from 21% since Apr 2022 (extended repeatedly) |
-| FR | 20% | Unified to 20% in Aug 2025 (was 5.5% on subscription portion) |
-| DE | 19% | Applied to both consumption and basic price |
-| AT | 20% | |
-| CH | 8.1% | Increased from 7.7% Jan 2024 |
-| PL | 23% | Was temporarily 5% (2024) |
-| ES | 21% | Returned from temporary 10% rate on 1 Jan 2025 |
-| PT | 23% | |
-| DK | 25% | |
-| NO | 25% | |
-| SE | 25% | |
-| FI | 25.5% | Increased from 24% Sep 2024 |
-| HU | 27% | Highest VAT rate in the EU |
-| LU | 8% | Significantly lower than neighbors |
+**Excluded (fixed):** supplier `vastrecht` (€/mo), the NL fixed energy-tax rebate
+(`belastingvermindering`, ~€520/yr/connection — it lowers *average* but not *marginal* tax), and grid
+standing charges (`netbeheerkosten`; grid is excluded anyway). Keep `vastrecht` *stored* in the
+supplier preset for a possible future "monthly bill / what-if" view, but out of the per-run figure.
 
-Changes rarely (years between changes, except energy crisis temporary measures). VAT is
-almost universally applied last — it's a tax on top of other taxes and grid fees.
-
-## Energy Tax / Excise Duty
-
-Updated rates from Gemini research (2025/2026) and Eurostat data:
-
-| Country | Energy tax (ct/kWh) | Notes |
-|---|---|---|
-| NL | ~10.88 | Energiebelasting (€108.80/MWh). Highest in EU for small consumers. Offset by ~€600/year tax reduction per connection — marginal cost is high but average cost can look low |
-| DK | ~9.37 | Elafgift (€93.73/MWh). Reduced for some heat pump users |
-| FR | ~3.09 | Accise/TICFE (€30.85/MWh). Jumped from €1/MWh in 2022 to €30+/MWh in 2025 as crisis measures expired |
-| SE | ~3.70 | Energiskatt (~42.8 öre/kWh). Varies slightly by region (lower in north) |
-| DE | ~2.05 | Stromsteuer (€20.50/MWh). Plus KWKG, offshore, §19 NEV, Konzessionsabgabe totaling ~5.5 ct |
-| BE | ~4.94 | Bijdrage energiefonds. Varies by region |
-| AT | ~1.50 | Elektrizitätsabgabe |
-| CH | ~2.30 | |
-| PL | ~2.00 | Akcyza + RES + CHP levies |
-| ES | 5.11% | **Percentage-based** on the sum of power + energy costs (unlike per-kWh everywhere else) |
-| NO | ~1.25 | Elavgift + Enova levy. Note: Norway has a government spot-price subsidy — state covers costs above ~73 öre/kWh+VAT, effectively a negative surcharge during price spikes |
-| FI | ~2.24 | Sähkövero class I |
-
-Excise duties typically change once a year (Jan 1 in NL, Feb 1 in FR). Spain is unique
-with its percentage-based model — requires different calculation logic.
-
-## Grid Fees
-
-Grid fees are the **most problematic component**:
-- 25–35% of total consumer price
-- Fixed per kWh in most countries (doesn't affect cheapest window)
-- Massive regional variation: Germany has **800+ grid operators**, Norway ~130, Sweden ~170
-- Not feasible to include without per-user grid operator selection
-
-**Recommendation:** Exclude grid fees from the all-in calculation for most countries. They
-don't affect the cheapest window (except DK and SE), and sourcing them per-user is
-impractical. Mention this in the UI ("excludes grid fees").
-
-### Countries with time-of-use grid tariffs
-
-These countries have grid fees that vary by time of day, which **does** affect the cheapest
-window and should ideally be integrated:
-
-**Denmark (Energinet):**
-- Summer (Apr–Sep) and Winter (Oct–Mar) seasons
-- Three daily zones: Peak (17:00–21:00), High (06:00–17:00 + 21:00–24:00), Low (00:00–06:00)
-- Winter peak fee can be **10x** the summer low fee
-- Data available via Energi Data Service API (`api.energidataservice.dk/dataset/DatahubPricelist`)
-
-**Sweden (Ellevio and other DSOs):**
-- Power-based tariffs: charged on average of 3 highest consumption hours per month
-- Grid fees halved between 22:00 and 06:00 to incentivize nighttime EV charging
-- Varies by DSO
-
-## Supplier Surcharges
-
-**No public centralized API or database exists** listing supplier surcharges across Europe.
-
-### Known dynamic tariff suppliers and approximate surcharges
-
-| Supplier | Markets | Monthly fee | Variable surcharge |
-|---|---|---|---|
-| Tibber | SE, NO, DE, NL | 49 SEK / €3.99–4.99 | ~0–2.5 ct/kWh |
-| Frank Energie | NL, BE, ES | €6.00 | ~1.8 ct/kWh |
-| EnergyZero | NL | — | ~0.5 ct/kWh |
-| EasyEnergy | NL | — | ~0 ct/kWh |
-| Zonneplan | NL | — | ~0 ct/kWh |
-| Vandebron | NL | — | ~2–3 ct/kWh |
-| ANWB Energie | NL | — | ~1.5–3.0 ct/kWh |
-| aWATTar | AT, DE | <€5.00 | ~0.3 ct/kWh (>10 MWh/yr) |
-| smartENERGY | AT | €1.20–2.50 | ~1.44 ct/kWh |
-| 1KOMMA5° | DE | — | ~1 ct/kWh |
-| Rabot Charge | DE | — | ~0.5 ct/kWh |
-| Octopus Energy | GB, DE, ES | Variable | Agile ToU formulas |
-| Barry | DK | — | — |
-
-Dynamic suppliers typically don't profit on high usage — their revenue comes from the
-fixed monthly fee. This aligns their interests with the consumer's desire to shift load.
-
-### Supplier APIs that provide all-in rates directly
-
-| API | Coverage | Auth? | Returns |
-|---|---|---|---|
-| EnergyZero public API | NL | No | `base`, `all_in`, `all_in_with_vat` |
-| EasyEnergy | NL | No | Spot + their markup |
-| Octopus Energy | GB (14 regions) | No | `value_inc_vat` (true all-in) |
-| Tibber GraphQL | Multi-country | Token (customers only) | `total`, `energy`, `tax` |
-| aWATTar | AT, DE | No | Spot only |
-
-## How Other Apps Handle This
-
-- **Tibber app:** All-in prices, but only for Tibber customers (uses their own API)
-- **EPEX Spot app / Electricity Maps:** Spot only
-- **Stroomprijzen (NL):** Users select supplier to add markup
-- **Home Assistant (ha_epex_spot):** Users configure percentage surcharge, absolute surcharge, and VAT. Community shares presets for smartENERGY.at, aWATTar, etc.
-- **evcc:** Time-dependent grid fee formulas for DK, NL, DE, CH. Good reference for implementation patterns.
-- **No app successfully shows all-in prices across multiple countries for arbitrary suppliers**
-
-## Price Formula
-
-Standard model for total retail price per kWh:
+**Included (per-kWh / marginal):** spot, supplier `opslag`, per-kWh energy tax/excise, then VAT (×).
 
 ```
-total = (spot × (1 + margin_pct) + margin_abs + grid_fee + excise) × (1 + vat) + fixed_fees_prorated
+marginal(h) = ( spot(h) + opslag + energy_tax ) × (1 + VAT)      // NL: ( spot + opslag + 0.08794 ) × 1.21
 ```
 
-Where:
-- `spot` = wholesale day-ahead price
-- `margin_pct` = supplier's percentage-based margin (usually 0)
-- `margin_abs` = supplier's fixed per-kWh surcharge
-- `grid_fee` = grid/network charge (usually flat, time-varying in DK/SE)
-- `excise` = energy tax / excise duty
-- `vat` = value-added tax rate (applied last, on everything including other taxes)
-- `fixed_fees_prorated` = monthly service fees divided by estimated monthly kWh
+### Negative-price cutoff — the second purpose, done honestly
+Spot-negative does **not** mean "you're paid to consume": the per-kWh energy tax + opslag usually keep
+the marginal price positive. The truthful "you actually get paid" condition is `marginal(h) < 0` ⇔
+`spot(h) < −(opslag + energy_tax)`. VAT is a multiplier and never flips the sign.
+- **NL:** cutoff ≈ `spot < −(2.0 + 8.794) ≈ −10.8 ct/kWh` (≈ −€108/MWh) — deeply negative, so the
+  "getting paid" state is **rare** in NL (high per-kWh energy tax). That rarity is the honest result.
+- **Zero-per-kWh-tax markets (IE, LT, LV — excise 0):** cutoff ≈ `spot < −opslag ≈ −2 ct/kWh`, so the
+  state triggers far more often. The high-tax vs zero-tax split is exactly why spot-only is misleading.
 
-For Spain, replace `excise` with `(spot + grid_fee) × 0.0511` since it's percentage-based.
+## Automating the supplier surcharge (NL pilot)
 
-### Negative price caveat
+### The surcharge is always two components — model both
+Verified against a NL dynamic-tariff comparison (energievergelijk.nl, July 2026, 2,500 kWh/yr basis):
+**every** dynamic supplier charges *both*:
+- **`vastrecht`** — a fixed supplier fee in **€/month** (observed range **€4.83–€8.50**). Separate from
+  the grid operator's own fixed `netbeheerkosten` (~€30–40/mo), which we exclude.
+- **`opslag`** (a.k.a. `inkoopkosten` / `inkoopvergoeding`) — a per-kWh markup over spot, in
+  **ct/kWh** (observed range **0.90–3.40 ct/kWh**).
 
-During negative spot price events (e.g. Finland had negative prices ~8% of hours in 2024),
-the spot component can be negative. But once excise (e.g. NL €0.1088) + grid fees + VAT
-are added, the complete price almost always stays positive. Showing only spot prices is
-misleading during these events — users may think they're being paid to consume, but their
-actual cost is still above zero.
+Both are material — e.g. EnergyZero's 3.40 ct/kWh ≈ €85/yr at 2,500 kWh, on top of its €7.51/mo
+(≈€90/yr) vastrecht. (Note: this corrects earlier stale figures that put EnergyZero's opslag near
+0.5 ct/kWh and implied some suppliers rely only on a monthly fee.)
 
-## Recommended Approach
+**What affects what:**
+- **`opslag`** enters the per-hour price → it's part of the all-in figure, but being flat per-kWh it's
+  still **display-only** (doesn't change the cheapest window).
+- **`vastrecht`** is a monthly constant → only relevant if we show a **prorated total**; irrelevant to
+  the hourly view and the recommendation. Keep it as a separate optional field.
 
-### Tier 1: Hardcoded taxes + user-input surcharge (start here)
-
-Hardcode VAT + energy tax per country (~12 entries). One settings field for "Supplier surcharge (ct/kWh)" defaulting to 0.
-
-Formula: `all_in = (spot + energy_tax + supplier_surcharge) × (1 + vat_rate)`
-
+Data model:
 ```kotlin
-data class CountryTaxConfig(
-    val vatRate: Double,         // e.g. 0.21
-    val energyTaxPerKwh: Double, // EUR/kWh, e.g. 0.0916
-    val lastUpdated: String      // "2026-01-01"
+data class SupplierTariff(
+    val id: String,                 // "energyzero", "tibber", …
+    val name: String,
+    val opslagCtPerKwh: Double,     // per-kWh markup over spot (pre-VAT)
+    val vastrechtEurPerMonth: Double,
+    val allInApi: String? = null,   // if the supplier exposes a live all-in feed (e.g. EnergyZero)
+    val lastUpdated: String
 )
 ```
 
-**Pros:** Simple, covers ~60–90% of non-spot costs, changes at most once/year.
-**Cons:** Grid fees excluded. Surcharge requires user input.
+### Ideas for populating it automatically (best → worst for NL)
 
-### Tier 2: Supplier presets (future)
+1. **Live from the supplier's own public all-in API (exact, zero upkeep — where it exists).**
+   EnergyZero's public API returns `base` / `all_in` / `all_in_with_vat` with its opslag + tax + VAT
+   already baked in — and EnergyZero *white-labels* for several brands (ANWB, Mijndomein, …), so one
+   integration covers several. EasyEnergy is similar. **Caveat:** the API gives the per-kWh all-in
+   only; the monthly `vastrecht` still comes from the preset table.
+2. **Auto-derive the opslag by differencing** a supplier's public all-in feed against our spot:
+   `opslag = supplier_all_in(h) − spot(h) − energy_tax − VAT`. Self-calibrating; also a way to detect
+   when a preset has drifted. Same coverage limit as (1).
+3. **Supplier picker + curated preset table (the pragmatic default).** ~20 NL dynamic suppliers is a
+   small, stable set. User taps their supplier → app applies `{opslag, vastrecht}`. From the user's
+   side it's fully automated (no arithmetic). Store in the remote JSON; prefer the live value from (1)
+   when the chosen supplier has an API.
+4. **Controlled scraper feeding the preset JSON.** A comparison site
+   (energievergelijk.nl / stroomprijzen.nl / gaslicht.com) already publishes structured `vastrecht` +
+   `inkoopkosten` per supplier, refreshed monthly. Run a **server-side job you control** that refreshes
+   the preset JSON; the app just fetches clean data. Caveat: ToS/fragility — treat as "refresh &
+   verify", not authoritative; prefer official supplier APIs where available.
+5. **Sensible default + manual override.** If the user skips picking, apply a median default
+   (≈2.0 ct/kWh opslag, ≈€6.50/mo vastrecht from the July-2026 spread) and let power users override.
 
-Curated list of ~5–10 suppliers per country with their surcharge. User picks from dropdown or enters custom value. Updated with each app release.
+**Recommended hybrid:** supplier picker (3) backed by remote JSON, refreshed by a controlled scraper
+(4) and/or the difference method (2); use the live supplier API (1) for EnergyZero-family & EasyEnergy;
+fall back to a median default (5). Because the opslag is display-only, "close enough" never misleads
+the recommendation — precision only affects the cost label.
 
-### Tier 3: Remote config (optional)
+### Seed data — NL dynamic suppliers, July 2026 (electricity, from energievergelijk.nl)
 
-Host tax + supplier tables in a JSON file on GitHub. App fetches periodically. Avoids requiring app updates for annual tax rate changes.
+| Supplier | Vastrecht €/mo | Opslag ct/kWh | Notes |
+|---|---|---|---|
+| Powerpeers | 6.25 | 0.90 | cheapest opslag |
+| Budget Thuis | 5.99 | 1.70 | |
+| Zonneplan | 6.25 | 2.00 | own platform/app |
+| Frank Energie | 7.00 | 1.80 | own API (account) |
+| ANWB energie | 8.50 | 1.80 | EnergyZero white-label |
+| Tibber | 5.99 | 2.50 | customer-token API |
+| easyEnergy | 7.00 | 2.20 | public spot+markup API |
+| Vandebron | 7.00 | 2.60 | |
+| EnergyZero | 7.51 | 3.40 | public `all_in` API |
+| Samsam | 7.99 | 3.40 | |
 
-## Data Sources
+(Full list ~20 suppliers on the source page. Vastrecht is supplier-only, excludes grid `netbeheerkosten`.)
+
+## Recommended rollout
+
+1. **NL pilot (now).** Compute `(spot + 0.08794 + opslag) × 1.21` from the hardcoded tax table plus
+   the supplier's per-kWh `opslag` (from the picker/preset — see "Automating the supplier surcharge").
+   Prefer this over calling EnergyZero's `allIn` directly — it's supplier-agnostic, works offline with
+   cached spot data, and reuses the same path every other market will use (use the live EnergyZero /
+   EasyEnergy feed only as an exactness upgrade for those suppliers). Grid is flat/capacity ⇒ all-in is
+   display-only, window unchanged. UI: a **supplier picker** (sets `opslag` + `vastrecht`), an optional
+   manual `opslag` override, and a "prices exclude grid fees" disclaimer. Fold `vastrecht` in only if/
+   when a prorated **total** is shown; it doesn't affect the hourly view.
+2. **ES second.** Cleanest validation of the tax-table path *and* the only other free regulated
+   all-in feed (ESIOS PVPC, ToU-correct out of the box). Handle the percentage excise branch.
+3. **Flat-overlay wave.** IT, FI, SE, EE, LT, LV, PL, CZ, IE, AT, RO — pure table entries, no new logic.
+4. **ToU wave (optional, high-value first).** DK (build it — automatable & impactful), then FR; DE/SI
+   /PT/GR shipped as labelled flat estimates until/unless their ToU data becomes automatable.
+5. **Caveat wave.** NO (warn: strømstøtte/Norgespris cap the effective price), BE (Flanders flat now,
+   Wallonia ToU in 2026), HR (semi-regulated to Sep 2026).
+6. **Skip / defer.** CH, LU, HU, BG, RS, ME, MK (regulated); SK until its 2027 dynamic-tariff obligation.
+
+## Price formula (unchanged core, with the Spain branch)
+
+```
+all_in(hour) = ( spot(hour) + grid_fee(hour) + excise + margin_abs ) × (1 + margin_pct) × (1 + vat)
+             + fixed_fees_prorated
+```
+- `grid_fee(hour)` is a per-hour constant **only** in ToU markets (DK/FR/…); flat elsewhere.
+- **Spain:** replace `+ excise` with `× (1 + 0.0511)` (percentage excise on energy+power), applied
+  before VAT. Both are multiplicative ⇒ window unchanged.
+- `fixed_fees_prorated` (monthly standing charge ÷ estimated monthly kWh) is **excluded** from the
+  headline all-in run-cost — it's a fixed cost, not marginal (see "Design decision" above). Reserve it
+  only for a possible future "monthly total / what-if bill" view.
+
+### Negative-price caveat (unchanged, still relevant)
+During negative spot events (common in FI/NL/DE), spot can go below zero, but once excise + grid +
+VAT are added the all-in price almost always stays positive. Showing only spot is misleading — users
+may think they're paid to consume. All-in display fixes this.
+
+## What changed since the original (≈2024/25) note
+
+- **NL** energy tax cut **10.154 → 8.794 ct/kWh** for 2026.
+- **AT** electricity tax slashed to **0.1 ct/kWh** for households (was 1.5); **time-of-use network
+  charge arrives 1 Sep 2026** (−20% 10:00–16:00) — a *new* reason to add ToU there later.
+- **DK** elafgift **near-abolished for 2026–27** (~0.8 øre) — all-in there is now almost pure spot+VAT+grid.
+- **FR** VAT **unified to 20%** (Aug 2025); accise settled at **3.085 ct/kWh**; midday off-peak (11–14)
+  reintroduced under TURPE 7.
+- **DE** the Stromsteuer cut to the EU minimum was applied to **industry only — households still pay
+  2.05 ct/kWh**; **§14a** time-variable grid tariffs now mandatory-to-offer and enforced.
+- **SE** the 2027 effekttariff mandate was **revoked (Jun 2026)** — grid stays flat/fragmented for now.
+- **RO** VAT raised **19 → 21%** (Aug 2025); price cap ended (Jul 2025); market liberalised but fixed offers dominate.
+- **FI** VAT confirmed at **25.5%** (from 24%, Sep 2024).
+- **BG** **adopted the euro on 1 Jan 2026**; household market still regulated (liberalisation delayed).
+- **IE** dynamic household tariffs **went live June 2026**; 9% VAT extended to 2030; electricity tax exempt.
+- **EE** VAT **24%** (from Jul 2025); small excise from May 2026.
+- **SK** dynamic-tariff supplier obligation slated for **1 Jan 2027** — not applicable before then.
+- New coverage vs. the old note for **BG, HR, CZ, EE, GR, IE, IT, LV, LT, ME, MK, RO, RS, SI, SK**.
+
+## Data sources
 
 | Source | URL | What |
 |---|---|---|
-| Eurostat API | `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_pc_204_c` | Tax components, all EU + NO, annual |
-| VAT Sense API | `https://vatsense.com/vat-rates-api` | Current VAT/GST rates, EU + UK, by country code |
-| API-Ninjas VAT API | `https://api-ninjas.com/api/vat` | Historical + current VAT rates, all EU countries |
-| EnergyZero public | `https://public.api.energyzero.nl/public/v1/prices` | NL all-in hourly |
-| Octopus Energy | `https://api.octopus.energy/v1/products/` | GB all-in half-hourly |
-| Danish Energi Data Service | `https://api.energidataservice.dk/dataset/DatahubPricelist` | DK hourly grid tariffs |
-| Prezio | `https://www.prezio.eu/` | Commercial: standardized tariffs for 10K+ European tariffs, JSON with subtotal breakdowns (retailer, grid, taxes, VAT) |
-| BDEW Strompreisanalyse | `https://www.bdew.de/service/daten-und-grafiken/bdew-strompreisanalyse/` | DE breakdown (PDF) |
-| evcc tariff docs | `https://docs.evcc.io/en/docs/tariffs` | Community-maintained Go formulas for DK, NL, DE, CH grid fees |
-| ha_epex_spot | `https://github.com/mampfes/ha_epex_spot` | Home Assistant integration with configurable surcharges |
+| Eurostat price components | `ec.europa.eu/eurostat/…/nrg_pc_204_c` | VAT + tax/network components, all EU + NO + candidate countries, bi-annual |
+| EnergyZero public | `public.api.energyzero.nl/public/v1/prices` | **NL all-in hourly** (`allIn`, no auth) |
+| ESIOS / REE | `api.esios.ree.es/indicators/1001` | **ES regulated all-in hourly PVPC** (free token) |
+| Danish Energi Data Service | `api.energidataservice.dk/dataset/DatahubPricelist` | **DK per-DSO hourly grid tariffs** (no auth) + `Elspotprices` |
+| RTE data | `data.rte-france.net` | FR EPEX spot + **Tempo day-colour calendar** |
+| SEMOpx | `sem-o.com/market-data` | IE/all-island I-SEM day-ahead (free CSV) |
+| ElCom | `strompreis.elcom.admin.ch` | CH tariffs (annual, per-commune/DSO — not hourly) |
+| Prezio (commercial) | `prezio.eu` | Standardised 10k+ EU tariffs w/ subtotal breakdowns |
+| evcc / ha_epex_spot | `docs.evcc.io/en/docs/tariffs` · `github.com/mampfes/ha_epex_spot` | Reference formulas for DK/NL/DE/CH grid fees & configurable surcharges |
 
-## Open Questions
+## Open questions
 
-- Should we show spot + all-in side by side, or let the user toggle?
-- How prominent should the "excludes grid fees" disclaimer be?
-- Should the NL implementation use the EnergyZero public API's `all_in_with_vat` field directly instead of computing it?
-- Worth integrating Danish hourly grid tariffs and Swedish ToU rates? These are the only countries where grid fees affect the cheapest window.
-- Spain's percentage-based excise needs special calculation logic — worth the complexity for one country?
-- Should the Norwegian spot-price subsidy be modeled? It effectively caps consumer costs during price spikes.
-- Remote config from the start, or hardcode first and add remote later?
-- Use VAT Sense / API-Ninjas for automated VAT lookups, or hardcode (simpler, fewer dependencies)?
+- Show spot + all-in side by side, or a toggle? (Lean: toggle, spot default.)
+- NL pilot — hardcoded table vs EnergyZero `allIn` field? (Lean: table, for a reusable path.)
+- Supplier surcharge — free-text ct/kWh, curated presets, or both? (Lean: both; presets per country.)
+- Remote-config the tax/supplier tables from v1, or hardcode first? (Lean: hardcode v1 → remote JSON soon.)
+- Build DK ToU grid in the first ToU wave? (Lean: yes — it's the highest-value, fully-automatable case.)
+- For the 8 regulated markets, actively flag "hourly optimization doesn't affect your bill", or stay silent?

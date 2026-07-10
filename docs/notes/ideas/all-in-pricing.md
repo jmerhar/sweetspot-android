@@ -40,7 +40,7 @@ Legend — **Applies?**: ✅ dynamic tariffs mainstream · 🟡 legal but thin u
 
 | Country | Applies? | VAT 2026 | Excise (EUR ct/kWh, type) | Grid | All-in API | Verdict |
 |---|---|---|---|---|---|---|
-| **NL** Netherlands | ✅ | 21% | **8.794** flat (cut from 10.15) | flat (capacity) | **EnergyZero `allIn`** (no auth) | **Tier-1 — pilot #1** |
+| **NL** Netherlands | ✅ | 21% | **9.161** flat ex-VAT (official 2026) | flat (capacity) | **EnergyZero `allIn`** (no auth) | **Tier-1 — pilot #1** |
 | **ES** Spain | ✅ | 21% (brief 10% Mar–Jun'26) | **5.11%** *percentage* | ToU peajes (in PVPC) | **ESIOS ind. 1001** (free token) | **Tier-1 — pilot #2 (regulated all-in feed)** |
 | **IT** Italy (7 zones) | ✅ | 10% | 2.27 flat + flat system charges | ToU only in *energy* (=spot) ⇒ flat-equiv | — | **Tier-1** |
 | **FI** Finland | ✅ | 25.5% | 2.325 flat | mostly flat | — | **Tier-1 (cleanest Nordic)** |
@@ -133,14 +133,14 @@ supplier preset for a possible future "monthly bill / what-if" view, but out of 
 **Included (per-kWh / marginal):** spot, supplier `opslag`, per-kWh energy tax/excise, then VAT (×).
 
 ```
-marginal(h) = ( spot(h) + opslag + energy_tax ) × (1 + VAT)      // NL: ( spot + opslag + 0.08794 ) × 1.21
+marginal(h) = ( spot(h) + opslag + energy_tax ) × (1 + VAT)      // NL: ( spot + opslag + 0.09161 ) × 1.21
 ```
 
 ### Negative-price cutoff — the second purpose, done honestly
 Spot-negative does **not** mean "you're paid to consume": the per-kWh energy tax + opslag usually keep
 the marginal price positive. The truthful "you actually get paid" condition is `marginal(h) < 0` ⇔
 `spot(h) < −(opslag + energy_tax)`. VAT is a multiplier and never flips the sign.
-- **NL:** cutoff ≈ `spot < −(2.0 + 8.794) ≈ −10.8 ct/kWh` (≈ −€108/MWh) — deeply negative, so the
+- **NL:** cutoff ≈ `spot < −(2.0 + 9.161) ≈ −11.2 ct/kWh` (≈ −€112/MWh) — deeply negative, so the
   "getting paid" state is **rare** in NL (high per-kWh energy tax). That rarity is the honest result.
 - **Zero-per-kWh-tax markets (IE, LT, LV — excise 0):** cutoff ≈ `spot < −opslag ≈ −2 ct/kWh`, so the
   state triggers far more often. The high-tax vs zero-tax split is exactly why spot-only is misleading.
@@ -325,7 +325,7 @@ covers `vastrecht` and the long tail; ACM/HA are supporting references only.
 
 ## Recommended rollout
 
-1. **NL pilot (now).** Compute `(spot + 0.08794 + opslag) × 1.21` from the hardcoded tax table plus
+1. **NL pilot (now).** Compute `(spot + 0.09161 + opslag) × 1.21` from the hardcoded tax table plus
    the supplier's per-kWh `opslag` (from the picker/preset — see "Automating the supplier surcharge").
    Prefer this over calling EnergyZero's `allIn` directly — it's supplier-agnostic, works offline with
    cached spot data, and reuses the same path every other market will use (use the live EnergyZero /
@@ -362,7 +362,7 @@ may think they're paid to consume. All-in display fixes this.
 
 ## What changed since the original (≈2024/25) note
 
-- **NL** energy tax cut **10.154 → 8.794 ct/kWh** for 2026.
+- **NL** energy tax (energiebelasting, 1st bracket) is **9.161 ct/kWh** ex-VAT for 2026 (official Belastingdienst; the earlier draft's 8.794 was wrong — verified against Frank Energie's live feed).
 - **AT** electricity tax slashed to **0.1 ct/kWh** for households (was 1.5); **time-of-use network
   charge arrives 1 Sep 2026** (−20% 10:00–16:00) — a *new* reason to add ToU there later.
 - **DK** elafgift **near-abolished for 2026–27** (~0.8 øre) — all-in there is now almost pure spot+VAT+grid.

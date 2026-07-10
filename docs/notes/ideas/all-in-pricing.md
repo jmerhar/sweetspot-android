@@ -221,6 +221,108 @@ the recommendation — precision only affects the cost label.
 
 (Full list ~20 suppliers on the source page. Vastrecht is supplier-only, excludes grid `netbeheerkosten`.)
 
+## Deep-dive: automating the NL supplier-tariff feed (source options for idea #4)
+
+**Goal:** a small **backend job** (e.g. a daily GitHub Action) refreshes the preset JSON the app
+downloads — so the client never scrapes anything, respects third-party rate limits/ToS, and stays
+dumb. We need, per dynamic supplier: the per-kWh **`opslag`** (required — it's the marginal component)
+and, optionally, the **`vastrecht`** (only for a future monthly-total view). Below, ranked by how
+cleanly automatable they are (a JSON endpoint beats a spreadsheet beats HTML scraping).
+
+### The trick that makes this easy: derive `opslag` by differencing
+We already have the hourly **spot** curve in-app. Any public *all-in* feed lets us back out a
+supplier's opslag, because every NL dynamic price is built as
+`all_in(h) = (spot(h) + opslag + energy_tax) × (1 + VAT)` (no vastrecht in the per-kWh price):
+
+```
+opslag = all_in(h) / (1 + VAT) − spot(h) − energy_tax
+```
+
+`opslag` is a constant, so **one hour per day per supplier is enough** to solve for it. This means we
+don't need a feed that names the opslag explicitly — any all-in feed yields it.
+
+### Source options
+
+| Source | Format | Coverage | Gives `opslag`? | `vastrecht`? | Auth / cost | Freshness | Reliability | Scrape difficulty | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| **enever.nl** price feeds | **JSON** | ~15 suppliers | ✅ (all-in per supplier → difference) | ❌ | free **token** (email), 250 req/mo (10k as Supporter) | daily | community/hobby, but proven (evcc, Home Assistant) | **easiest** | **Primary — backend only** |
+| **Frank Energie** GraphQL | **JSON** | Frank only | ✅ **explicit** (`sourcingMarkupPrice`) | partial | none for market prices | daily | 1st-party (via HA integration) | easy | Authoritative cross-check |
+| **EnergyZero** public API | **JSON** | EnergyZero + white-labels (ANWB, Mijndomein…) | ✅ (all-in → difference) | ❌ | none | daily | 1st-party, stable | easy | Authoritative cross-check |
+| **EasyEnergy** public API | **JSON** | EasyEnergy | ✅ (spot+markup) | on tariff docs | none | daily | 1st-party | easy | Authoritative cross-check |
+| **overstappen.nl** Energy API | **JSON** | ~all suppliers | ✅ (`opslag stroom p/kWh`) | ✅ (`vastrecht stroom p/m`) | **partner-only** (Bearer + IP whitelist, "Partner worden") | — | commercial/official | easy data, **hard access** | Best data *if* you want an affiliate deal |
+| **energievergelijk.nl** | **XLSX/PDF** + HTML table | ~20 suppliers | ✅ | ✅ | none (public file) | monthly-ish | comparison site | medium (parse XLSX) / fragile (HTML) | Good for `vastrecht` + long tail |
+| **HA / open-source** const files | code/JSON | varies | ✅ (hardcoded lists) | some | none | manual | community | n/a (bootstrap) | Seed + validate |
+| **ACM** (regulator) | PDF | — | ❌ (no per-supplier opslag) | grid only | none | per beschikking | official | n/a | Grid `netbeheerkosten` + reference tariff only |
+
+### The candidates in detail
+
+**enever.nl — the primary automatable source.** Endpoints `stroomprijs_vandaag.php` /
+`stroomprijs_morgen.php` (+ gas) return hourly JSON with a **per-supplier all-in column**: `prijsAA`
+(market average), `prijsANWB`, `prijsEE` (EnergyZero), `prijsFR` (Frank), `prijsTI` (Tibber), `prijsZP`
+(Zonneplan), … (~15 provider fields; full list on their page). **Supplier prices include energy tax +
+VAT + that supplier's opslag** (exchange price is ex-VAT), and **exclude vastrecht** — i.e. exactly the
+marginal component we want. Access: **free personal token** (`enever.nl/token-aanmaken`), **250
+requests/month** (resets monthly; 10,000/mo as a paid Supporter); feeds **update once/day**. It's a
+one-maintainer hobby service (token-gated after past abuse), so: **use it from our backend with a
+single token** (a daily fetch is ~30 req/mo — well inside the free tier), cache aggressively, tolerate
+staleness, and for a commercial app either become a Supporter or ask permission + attribute. Do **not**
+call it from the client (thousands of installs would blow any limit and violate the personal-use terms).
+
+**Supplier-direct public APIs — authoritative, per supplier.** Best for cross-checking enever and for
+the highest-value suppliers:
+- **Frank Energie** GraphQL (the endpoint the `home-assistant-frank_energie` integration uses) returns
+  per-hour `marketPrice`, `marketPriceTax`, **`sourcingMarkupPrice` (= opslag)**, `energyTaxPrice` — so
+  it exposes the opslag *explicitly*, no differencing needed, no auth for market prices.
+- **EnergyZero** public API `GET https://public.api.energyzero.nl/public/v1/prices?date=…&interval=…`
+  (no auth) — market prices; its all-in/`inkoopvergoeding` (which changes each **1 Jan**) can be
+  differenced out. EnergyZero powers several white-labels, so one integration ≈ several brands. (There's
+  also a GraphQL **Customer API** at `customer.api.energyzero.nl` behind auth for a logged-in account's
+  true all-in — not needed for us.)
+- **EasyEnergy** exposes a public tariff API (market price + inkoopvergoeding); verify the exact path.
+- **Tibber** GraphQL needs a customer OAuth token → not usable for a general feed.
+
+**overstappen.nl Energy API — the only official *aggregated* API, but gated.** Docs at
+`docs.energy.api.overstappen.nl`: Basic-Auth/Bearer (`GET /authentication/token`), **requires IP
+whitelisting** and a partner ("Partner worden") relationship → not self-serve. Its comparison objects
+carry exactly `vastrecht stroom p/m` + `opslag stroom p/kWh` per supplier, so if you ever pursue an
+affiliate/partner deal it's the cleanest single source (includes vastrecht too). Otherwise skip.
+
+**energievergelijk.nl — no JSON, but a usable spreadsheet.** No public API/XHR endpoint; the comparator
+is an internal dataset. However they publish a downloadable **XLSX** (`Kosten-dynamische-energiebedrijven`)
+and the on-page HTML table (what we already have) carries `vastrecht` + `inkoopkosten` for ~20 suppliers.
+Parse the **XLSX server-side** (more stable than the HTML DOM) for the `vastrecht` column and the long
+tail. Comparison-site scraping is a ToS grey area → low volume, resilient parsing, attribute, verify.
+
+**Home Assistant / open-source — bootstrap & validation.** The `energyzero`, `frank_energie`, and
+`zonneplan` HA integrations (and community write-ups on doe-duurzaam.nl) contain per-supplier opslag
+values. Not a live feed, but a free way to seed and sanity-check the preset table.
+
+**ACM (regulator) — not a surcharge source.** No open dataset/API for per-supplier `opslag`/`vastrecht`.
+ACM publishes max **grid** tariffs (`netbeheerkosten`), the modelcontract, and the periodic **variabel
+gebruikstarief** beschikking (a regulated reference price) — useful for the grid layer and a fallback
+reference, not for supplier surcharges.
+
+### Recommended architecture
+1. **Backend cron (daily GitHub Action)** builds `nl-suppliers.json`:
+   - **Primary:** fetch enever's per-supplier all-in feed (one token) → derive each supplier's `opslag`
+     by differencing against our spot + energy_tax + VAT (one hour/day suffices).
+   - **Cross-check / fill:** hit the first-party public APIs (Frank `sourcingMarkupPrice`, EnergyZero,
+     EasyEnergy) for those suppliers; prefer first-party where it disagrees with enever.
+   - **`vastrecht` (optional):** parse the energievergelijk XLSX (or the overstappen partner API if you
+     go that route). Low priority — excluded from the run-cost per the design decision.
+   - Write the merged, verified table to the **remote preset JSON on GitHub** the app already fetches.
+2. **App** downloads only our JSON. Supplier picker resolves `{opslag, vastrecht}`; default + manual
+   override remain. No third-party calls from the client.
+3. **Fallbacks:** if the backend feed is stale/unreachable, the app keeps the last preset; if a supplier
+   is missing, it uses the median default. Because `opslag` is display-only, staleness never misleads
+   the recommendation — only the cost label drifts slightly.
+
+**Bottom line:** the cleanest fully-automated path is **enever (JSON, difference→opslag) as the backend
+primary, cross-checked by the first-party Frank/EnergyZero/EasyEnergy APIs**, republished to our own
+JSON. It's a JSON-endpoint pipeline (the easiest tier), free, and updates daily. overstappen is the
+"official aggregated" upgrade if an affiliate partnership is ever worthwhile; energievergelijk's XLSX
+covers `vastrecht` and the long tail; ACM/HA are supporting references only.
+
 ## Recommended rollout
 
 1. **NL pilot (now).** Compute `(spot + 0.08794 + opslag) × 1.21` from the hardcoded tax table plus

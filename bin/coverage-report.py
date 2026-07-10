@@ -59,6 +59,32 @@ def _rows():
             yield module, stats
 
 
+def _counts(module, kind):
+    """Return (covered, missed) for one coverage kind of a module, or None if no report/counter."""
+    path = f"{module}/build/reports/kover/reportDebug.xml"
+    try:
+        counters = {c.get("type"): c for c in ET.parse(path).getroot().findall("counter")}
+    except (FileNotFoundError, ET.ParseError):
+        return None
+    c = counters.get(kind)
+    return (int(c.get("covered")), int(c.get("missed"))) if c is not None else None
+
+
+def total_metrics():
+    """Combined LINE/BRANCH coverage across all modules that have a report (covered/total summed)."""
+    metrics = {}
+    for kind, label in (("LINE", "line"), ("BRANCH", "branch")):
+        covered = total = 0
+        for module in MODULES:
+            counts = _counts(module, kind)
+            if counts is not None:
+                covered += counts[0]
+                total += counts[0] + counts[1]
+        if total:
+            metrics[label] = f"{covered / total * 100:.1f}%"
+    return metrics
+
+
 def render_markdown():
     lines = ["## Coverage (debug unit tests)", "", "| Module | Line | Instruction | Branch |", "|---|---|---|---|"]
     for module, s in _rows():
@@ -67,11 +93,17 @@ def render_markdown():
 
 
 def render_reports():
-    """The manifest for the coverage site: one entry per module, path = module subdirectory."""
-    reports = [
+    """The manifest for the coverage site.
+
+    A leading "total" entry (combined coverage across all modules, no `path`) so the site's project
+    index shows the overall number as the headline; then one linkable entry per module.
+    """
+    modules = [
         {"name": module, "path": module, "metrics": {"line": s["LINE"], "branch": s["BRANCH"]}}
         for module, s in _rows()
     ]
+    total = total_metrics()
+    reports = ([{"name": "total", "metrics": total}] if total else []) + modules
     return json.dumps(reports, indent=2)
 
 

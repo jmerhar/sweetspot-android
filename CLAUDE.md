@@ -21,6 +21,7 @@ make inspect                      # Summarise inspection XML files (see Inspecti
 make site-validate                # Validate Hugo site (build, pages, links, i18n)
 make site-screenshots             # Generate per-language website screenshots (WebP) from framed images
 make ev-db                        # Rebuild the bundled EV vehicle database from open data sources
+make suppliers                    # Rebuild all-in tariff feeds (site/static/data/suppliers/*.json) — needs ENEVER_TOKEN
 make screenshots                  # Capture localized screenshots via Screengrab (LOCALE=xx-XX for one)
 make frames                       # Frame screenshots with marketing text (LOCALE=xx-XX for one)
 make feature-graphic              # Generate localised Play Store feature graphics (LOCALE=xx-XX for one)
@@ -32,6 +33,7 @@ make clean                        # Remove all build outputs
 A `Makefile` wraps common tasks. Helper scripts live in `bin/`:
 - **`bin/install.sh`** — Finds a connected phone or watch via ADB and installs the latest release APK. Called by `make install-phone` and `make install-watch`.
 - **`bin/build-ev-db.py`** — Builds the bundled EV vehicle database (`app/src/main/assets/ev-vehicles.json`) by merging two open datasets via per-source adapters into a normalised schema. Cars only; source #2 wins on collision (newer data). Called by `make ev-db`. Both the script and the generated asset are committed.
+- **`bin/build-suppliers.py`** — Builds the per-country **all-in tariff feeds** (`site/static/data/suppliers/<cc>.json`, served at `https://sweetspot.today/data/suppliers/<cc>.json`) for the all-in-pricing feature. Country-agnostic (a `COUNTRIES` registry drives it; NL only for now). For NL it fetches **Frank Energie** GraphQL (no auth — authoritative VAT + energy tax, and Frank's own surcharge) and **enever.nl** (`ENEVER_TOKEN`, from env or `local.properties` — ~25 NL suppliers' surcharge recovered by differencing their VAT-inclusive all-in against enever's exchange price + Frank's tax block; supplier columns are discovered from the feed, and their ids/names come from enever's live "Legenda" **persisted to a committed registry** `site/static/data/enever-suppliers.json` which is the offline fallback — no supplier codes/names are hardcoded in the script). **No baked-in numbers**: every value carries a `source`; if a country's essentials (currency, per-kWh energy tax, VAT multiplier) can't be sourced it is marked `usable:false`, **no file is written** (last-good kept), and the script exits non-zero. Per-supplier surcharges are best-effort (missing → omitted + `warnings`). Skips rewriting when only the `generated` timestamp would change (no daily-churn commits). Called by `make suppliers` and the `build-suppliers` workflow. Its pure logic (legend parsing, tax derivation, registry merge, surcharge differencing, normalisation) is unit-tested in `bin/test_build_suppliers.py` (`make test-suppliers`; also run by the workflow). See `docs/notes/ideas/all-in-pricing-nl-pilot.md` for the schema + formula.
 - **`bin/install-hugo.sh`** — Downloads and installs the latest Hugo extended binary from GitHub. Used by CI workflows (`deploy-site`, `site-validate`).
 - **`bin/release.sh`** — Bumps version, builds, tags, pushes, and creates a GitHub Release.
 - **`bin/inspect.sh`** — Summarises inspection XML files exported from Android Studio. Does **not** run inspections itself. Called by `make inspect`.
@@ -190,6 +192,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - JUnit 4 + Robolectric for unit tests (512 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
+- GitHub Actions CI (`.github/workflows/build-suppliers.yml`) is a **scheduled cron** (daily) + `workflow_dispatch` that runs the `bin/test_build_suppliers.py` unit tests, then `bin/build-suppliers.py`, and commits any change under `site/static/data/` (tariff feeds + the enever registry), pushing with the `SITE_COMMIT_TOKEN` PAT (a `GITHUB_TOKEN` push wouldn't trigger `deploy-site`) so the updated all-in tariff feed reaches `sweetspot.today`. Requires the `ENEVER_TOKEN` and `SITE_COMMIT_TOKEN` repo secrets; a failed build (essentials unsourceable) fails the run and commits nothing.
 - No frameworks, no DI, no database — SharedPreferences + file cache only (plus one bundled read-only JSON asset, `ev-vehicles.json`, for the EV database)
 - Licensed under GPL v3
 

@@ -40,3 +40,7 @@ vendor/
 # Local coverage upload staging (CI publishes to jmerhar/coverage)
 coverage-upload/
 coverage-repo/
+
+# Python bytecode (build scripts)
+__pycache__/
+*.pyc

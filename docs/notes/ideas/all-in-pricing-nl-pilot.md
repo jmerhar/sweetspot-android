@@ -161,3 +161,60 @@ which also serves NL 15-min but isn't needed here). **15-min data starts ~1 Oct 
 go-live; verified: 30 Sep = hourly, 1 Oct = 96/day); older dates return empty at `PT15M`, so **query `PT15M`
 and fall back to `PT60M`** — or pick resolution by date. This makes the app's own ENTSO-E spot sufficient
 for the pilot (it's already 15-min-aware for NL), with Frank supplying opslag + tax.
+
+### Update (2026-07-11): backend cron shipped (implementation step 5 ✅)
+
+The daily data pipeline is built and live. It is **country-agnostic** — one script/target/workflow
+builds every country (NL only for now), so future markets are a data-file (+ maybe a source adapter),
+not new code. Details:
+
+- **Script** `bin/build-suppliers.py` (stdlib Python, mirrors `bin/build-ev-db.py`). A `COUNTRIES`
+  registry maps each country to its `currency`, a `tax_source`, and `supplier_sources`. For NL:
+  - **Frank GraphQL** (`marketPrices(date){ electricityPrices{ marketPrice marketPriceTax
+    sourcingMarkupPrice energyTaxPrice allInPrice } }`, no auth) is the **essentials** source:
+    `vat = marketPriceTax/marketPrice` (≈0.21), `energyTax = energyTaxPrice/(1+vat)` (≈0.09161,
+    stored ex-VAT), and Frank's own surcharge = `sourcingMarkupPrice/(1+vat)` (≈0.015 — note
+    `sourcingMarkupPrice` is **VAT-inclusive** at 0.01815, corrected from the earlier assumption it
+    was ex-VAT).
+  - **enever.nl** (`ENEVER_TOKEN` from env or `local.properties`) supplies ~25 NL suppliers, surcharge
+    recovered by **differencing**: `surcharge = allin/(1+vat) − spot − energyTax` (enever supplier
+    columns are VAT-inclusive; `prijs` is the ex-VAT exchange price). Supplier columns are discovered
+    from the feed (new suppliers auto-included), and their ids/names come from enever's **live
+    "Legenda"**, merged over and **persisted to a committed registry** `site/static/data/enever-suppliers.json`
+    (existing ids kept stable across renames; new codes get a slug id). That registry is the offline
+    fallback when the live page is down — so **no supplier codes/names/ids are hardcoded in the
+    script**. First-party Frank (code `FR`) wins over enever's differenced value on collision.
+  - **EnergyZero** first-party adapter deferred: its `/v1/energyprices` gives market-only (no all-in to
+    difference), and enever already covers EnergyZero + its white-labels (`prijsEZ`, `prijsANWB`, …). A
+    future cross-check.
+- **Schema** (`site/static/data/suppliers/<cc>.json`, served at
+  `https://sweetspot.today/data/suppliers/<cc>.json`) — English, generic, no `opslag`/`vastrecht`:
+  ```json
+  { "schemaVersion":1, "country":"NL", "currency":"EUR", "generated":"…Z",
+    "usable":true, "errors":[], "warnings":[],
+    "taxes":[ {"id":"energyTax","type":"perKwh","value":0.09161,"source":"frank"},
+              {"id":"vat","type":"percentage","value":0.21,"source":"frank"} ],
+    "suppliers":[ {"id":"frank","name":"Frank Energie","surchargePerKwh":0.015,
+                   "fixedMonthlyFee":null,"source":"frank"} ] }
+  ```
+  All values EUR/kWh ex-VAT. The app computes
+  `allIn = (spot + Σ perKwh-tax + surcharge) × Π(1 + percentage-tax)` — the generic `taxes` model
+  handles NL and future percentage-excise markets (e.g. Spain) with no code change. "Getting paid"
+  cutoff: `spot < −(Σ perKwh-tax + surcharge)`.
+- **No baked-in numbers / honest failure.** Every figure has a `source`. If a country's essentials
+  can't be fetched → `usable:false`, **no file written** (last-good kept), script exits non-zero (the
+  workflow fails as an alert). Per-supplier surcharges are best-effort (missing → omitted + `warnings`).
+  `fixedMonthlyFee` is `null` (no source yet; excluded from the marginal cost regardless).
+- **History (Principle 5):** the file is a snapshot as of `generated`; we never record a claimed
+  effective date (unsourceable). Daily git commits are the truthful observation-dated log; enever
+  Supporters can also download historical hourly prices if a real history dataset is needed later
+  (for `low-price-alerts.md`).
+- **Publish:** `.github/workflows/build-suppliers.yml` — daily cron + `workflow_dispatch`; runs the
+  script with the `ENEVER_TOKEN` secret; commits changes under `site/static/data/suppliers/` and pushes
+  with the `SITE_COMMIT_TOKEN` PAT (so `deploy-site` fires). Skips rewriting when only the timestamp
+  would change (no churn).
+
+**Next: the app side** — a generic `@Serializable` tariff model, remote-fetch-with-freshness in
+`:shared` that **refuses all-in when the feed is unfetchable/stale**, a Settings supplier picker +
+manual surcharge override, the `marginal()`/negative-cutoff helpers, and the spot↔all-in toggle +
+"getting paid" UI.

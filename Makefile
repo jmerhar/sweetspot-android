@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats clean site site-validate site-screenshots ev-db screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -28,6 +28,9 @@ clean: ## Remove all build outputs
 
 test: ## Run all unit tests
 	./gradlew test
+
+test-suppliers: ## Run unit tests for the supplier tariff build script (bin/build-suppliers.py)
+	python3 bin/test_build_suppliers.py
 
 inspect: ## Summarise Android Studio inspection XML files
 	./bin/inspect.sh
@@ -76,6 +79,9 @@ site-validate: site-screenshots ## Validate Hugo site: build, check pages, links
 
 ev-db: ## Rebuild the bundled EV vehicle database from upstream open data sources
 	./bin/build-ev-db.py
+
+suppliers: ## Rebuild all-in tariff feeds (site/static/data/suppliers/*.json) — needs ENEVER_TOKEN
+	./bin/build-suppliers.py
 
 ##@ Play Store
 

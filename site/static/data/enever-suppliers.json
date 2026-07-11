@@ -1,0 +1,110 @@
+{
+  "source": "enever",
+  "suppliers": {
+    "ANWB": {
+      "id": "anwbenergie",
+      "name": "ANWB Energie"
+    },
+    "BE": {
+      "id": "budgetenergie",
+      "name": "Budget Energie"
+    },
+    "CB": {
+      "id": "coolblueenergie",
+      "name": "Coolblue Energie"
+    },
+    "ED": {
+      "id": "energiedirect",
+      "name": "Energiedirect"
+    },
+    "EE": {
+      "id": "easyenergy",
+      "name": "EasyEnergy"
+    },
+    "EG": {
+      "id": "energiek",
+      "name": "Energiek"
+    },
+    "EN": {
+      "id": "eneco",
+      "name": "Eneco"
+    },
+    "ES": {
+      "id": "essent",
+      "name": "Essent"
+    },
+    "EVO": {
+      "id": "energievanons",
+      "name": "Energie van Ons"
+    },
+    "EZ": {
+      "id": "energyzero",
+      "name": "Energy Zero"
+    },
+    "FR": {
+      "id": "frankenergie",
+      "name": "Frank Energie"
+    },
+    "GSL": {
+      "id": "groenestroomlokaal",
+      "name": "Groenestroom Lokaal"
+    },
+    "HE": {
+      "id": "heggenergy",
+      "name": "Hegg Energy"
+    },
+    "IN": {
+      "id": "innovaenergie",
+      "name": "Innova Energie"
+    },
+    "MDE": {
+      "id": "mijndomeinenergie",
+      "name": "Mijndomein Energie"
+    },
+    "NE": {
+      "id": "nextenergy",
+      "name": "NextEnergy"
+    },
+    "PE": {
+      "id": "pureenergie",
+      "name": "Pure Energie"
+    },
+    "QU": {
+      "id": "quatt",
+      "name": "Quatt"
+    },
+    "SS": {
+      "id": "samsam",
+      "name": "SamSam"
+    },
+    "TI": {
+      "id": "tibber",
+      "name": "Tibber"
+    },
+    "VDB": {
+      "id": "vandebron",
+      "name": "Vandebron"
+    },
+    "VF": {
+      "id": "vattenfall",
+      "name": "Vattenfall"
+    },
+    "VON": {
+      "id": "vrijopnaam",
+      "name": "Vrij op naam"
+    },
+    "WE": {
+      "id": "woutenergie",
+      "name": "Wout Energie"
+    },
+    "ZG": {
+      "id": "zondergas",
+      "name": "ZonderGas"
+    },
+    "ZP": {
+      "id": "zonneplan",
+      "name": "Zonneplan"
+    }
+  },
+  "updated": "2026-07-11T15:11:19Z"
+}

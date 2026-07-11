@@ -1,0 +1,45 @@
+name: Build Suppliers
+
+# Rebuilds the per-country all-in tariff feeds (site/static/data/suppliers/*.json) from live
+# sources and commits any change, which triggers Deploy Site to publish them to sweetspot.today.
+on:
+  schedule:
+    - cron: "17 4 * * *"  # daily, off-peak UTC (deliberately not on the :00 mark)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-suppliers
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Push with a PAT so the commit triggers the Deploy Site workflow — a push made with the
+          # default GITHUB_TOKEN does not fire other workflows, so the feed would never reach the CDN.
+          token: ${{ secrets.SITE_COMMIT_TOKEN }}
+
+      - name: Test build-suppliers logic
+        run: python3 bin/test_build_suppliers.py  # pure-logic unit tests (no network)
+
+      - name: Build all-in tariff feeds
+        env:
+          ENEVER_TOKEN: ${{ secrets.ENEVER_TOKEN }}
+        run: python3 bin/build-suppliers.py  # exits non-zero if a country's essentials can't be sourced
+
+      - name: Commit & push if changed
+        run: |
+          if [ -z "$(git status --porcelain -- site/static/data/)" ]; then
+            echo "No tariff changes; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/static/data/
+          git commit -m "chore(data): refresh all-in tariff feeds"
+          git push

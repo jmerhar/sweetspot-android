@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "country": "NL",
+  "currency": "EUR",
+  "generated": "2026-07-11T15:11:19Z",
+  "usable": true,
+  "errors": [],
+  "warnings": [],
+  "taxes": [
+    {
+      "id": "energyTax",
+      "name": "Energy tax",
+      "type": "perKwh",
+      "value": 0.09161,
+      "source": "frank"
+    },
+    {
+      "id": "vat",
+      "name": "VAT",
+      "type": "percentage",
+      "value": 0.21,
+      "source": "frank"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "anwbenergie",
+      "name": "ANWB Energie",
+      "surchargePerKwh": 0.01488,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "budgetenergie",
+      "name": "Budget Energie",
+      "surchargePerKwh": 0.01488,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "coolblueenergie",
+      "name": "Coolblue Energie",
+      "surchargePerKwh": 0.01876,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "easyenergy",
+      "name": "EasyEnergy",
+      "surchargePerKwh": 0.018,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "eneco",
+      "name": "Eneco",
+      "surchargePerKwh": 0.01994,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "energiedirect",
+      "name": "Energiedirect",
+      "surchargePerKwh": 0.01694,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "energiek",
+      "name": "Energiek",
+      "surchargePerKwh": 0.0149,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "energievanons",
+      "name": "Energie van Ons",
+      "surchargePerKwh": 0.01981,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "energyzero",
+      "name": "Energy Zero",
+      "surchargePerKwh": 0.01853,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "essent",
+      "name": "Essent",
+      "surchargePerKwh": 0.02089,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "frankenergie",
+      "name": "Frank Energie",
+      "surchargePerKwh": 0.015,
+      "fixedMonthlyFee": null,
+      "source": "frank"
+    },
+    {
+      "id": "groenestroomlokaal",
+      "name": "Groenestroom Lokaal",
+      "surchargePerKwh": 0.028,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "heggenergy",
+      "name": "Hegg Energy",
+      "surchargePerKwh": 0.01853,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "innovaenergie",
+      "name": "Innova Energie",
+      "surchargePerKwh": 0.01027,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "mijndomeinenergie",
+      "name": "Mijndomein Energie",
+      "surchargePerKwh": 0.04,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "nextenergy",
+      "name": "NextEnergy",
+      "surchargePerKwh": 0.0181,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "pureenergie",
+      "name": "Pure Energie",
+      "surchargePerKwh": 0.01404,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "quatt",
+      "name": "Quatt",
+      "surchargePerKwh": 0.015,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "samsam",
+      "name": "SamSam",
+      "surchargePerKwh": 0.01853,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "tibber",
+      "name": "Tibber",
+      "surchargePerKwh": 0.02125,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "vandebron",
+      "name": "Vandebron",
+      "surchargePerKwh": 0.02125,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "vattenfall",
+      "name": "Vattenfall",
+      "surchargePerKwh": 0.02107,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "vrijopnaam",
+      "name": "Vrij op naam",
+      "surchargePerKwh": 0.01653,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "woutenergie",
+      "name": "Wout Energie",
+      "surchargePerKwh": 0.02058,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    },
+    {
+      "id": "zonneplan",
+      "name": "Zonneplan",
+      "surchargePerKwh": 0.01653,
+      "fixedMonthlyFee": null,
+      "source": "enever"
+    }
+  ]
+}

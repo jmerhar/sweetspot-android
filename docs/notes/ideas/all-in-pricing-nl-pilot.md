@@ -133,8 +133,10 @@ Median ≈ **2.0 ct/kWh opslag**, **€6.50/mo vastrecht** → default when the 
 ## Validation (feasibility check) — 2026-07-10, ran the cron's fetch + cross-check
 
 **Reachability (plain HTTPS, no key needed):**
-- **EnergyZero market:** `GET https://api.energyzero.nl/v1/energyprices?fromDate=…&tillDate=…&interval=4&usageType=1&inclBtw=false` → `{Prices:[{readingDate,price}]}`. Market/spot only, and **rounded to whole cents** (0.17, 0.18) — too coarse to difference against.
-- **Frank Energie GraphQL:** `POST https://graphql.frankenergie.nl/` with `marketPricesElectricity(startDate,endDate){ from marketPrice marketPriceTax sourcingMarkupPrice energyTaxPrice }` → full per-hour decomposition at 5-decimal precision, with **opslag explicit** (`sourcingMarkupPrice`). Best first-party source for NL.
+- **EnergyZero market:** `GET https://api.energyzero.nl/v1/energyprices?fromDate=…&tillDate=…&interval=4&usageType=1&inclBtw=false` → `{Prices:[{readingDate,price}]}`. Market/spot only, **hourly**; the ex-VAT `price` is full precision (e.g. 0.140855) — only the `inclBtw=true` convenience value is rounded to cents.
+- **Frank Energie GraphQL** (`POST https://graphql.frankenergie.nl/`, no auth) — two queries:
+  - `marketPricesElectricity(startDate,endDate){ from marketPrice marketPriceTax sourcingMarkupPrice energyTaxPrice }` → **hourly** range, ≥2y history.
+  - **`marketPrices(date, resolution){ electricityPrices{ from till resolution marketPrice marketPriceTax sourcingMarkupPrice energyTaxPrice allInPrice } }`** → single date at **`PT15M` (96/day) or `PT60M`**, with a ready-made **`allInPrice`**. This is the best NL source: 15-min all-in, opslag + tax explicit, no auth, no differencing.
 - **enever:** not testable here — **token-gated** (free, but requires an email signup). Backend-only as planned; couldn't exercise it live, but Frank fully validates the approach.
 - **EnergyZero all-in** (`public.api.energyzero.nl/public/v1/prices`): rejected every `interval` value I tried (needs a specific proto enum). The market endpoint above suffices.
 - **EasyEnergy** `getapxtariffs`: 404 — the current path needs verifying.
@@ -146,6 +148,16 @@ Median ≈ **2.0 ct/kWh opslag**, **€6.50/mo vastrecht** → default when the 
 **Corrections the live data forced:**
 1. **Energy tax was wrong.** Official Belastingdienst 2026 first-bracket electricity = **€0.09161/kWh**, confirmed by Frank's live `energyTaxPrice` (0.11085 incl VAT ÷ 1.21 = 0.09161). The earlier **8.794** figure was incorrect — fixed throughout both notes.
 2. **opslag VAT convention.** Frank's true opslag is **1.5 ct/kWh ex-VAT** (1.815 incl VAT). The energievergelijk seed value (1.80) is ≈ VAT-*inclusive*, so that column is likely incl-VAT. **Store opslag ex-VAT** (formula applies ×1.21 last); divide comparison-site values by 1.21 or verify each source. Getting this wrong inflates opslag by 21%.
-3. **Spot precision & alignment.** EnergyZero's market feed rounds to whole cents, and suppliers' "market price" differs slightly (Frank 0.14086 vs EZ ≈0.1405). Difference against the app's own full-precision **ENTSO-E** spot (same NL zone) — and **prefer explicit-opslag sources (Frank) over differencing** where available, since differencing conflates opslag with any spot mismatch.
+3. **Spot precision & alignment.** Suppliers' "market price" differs very slightly (Frank 0.14086 vs EZ 0.140855 — same EPEX day-ahead, rounding only). Prefer Frank's own components (or the app's ENTSO-E spot) so opslag isn't conflated with a cross-source mismatch.
 
 **Verdict: the plan is feasible.** First-party feeds are reachable, precise, and no-auth; the marginal formula is exact; differencing recovers opslag correctly. Notably, **Frank's `sourcingMarkupPrice` gives opslag directly** — a cleaner primary than enever for the suppliers it covers (and EnergyZero powers ANWB & other white-labels). The real risks are data-hygiene (energy-tax value, opslag VAT convention, spot alignment), not the architecture. Refinement to the backend plan: use **first-party APIs (Frank explicit; EnergyZero/EasyEnergy) as the primary**, with **enever as the broad fallback** for suppliers without their own API — rather than enever-first.
+
+### Update (2026-07-11): Frank does 15-minute resolution
+The `marketPrices(date, resolution: PT15M)` query returns **96 slots/day** (15-min), each with the full
+decomposition **plus a ready-made `allInPrice`** — verified live (e.g. a PT15M slot: marketPrice 0.17131,
+marketPriceTax 0.03598, sourcingMarkupPrice 0.01815, energyTaxPrice 0.11085, allInPrice 0.33628). So a
+single Frank source yields 15-min all-in — no need to pair a separate 15-min spot feed (e.g. Energy-Charts,
+which also serves NL 15-min but isn't needed here). **15-min data starts ~1 Oct 2025** (NL 15-min market
+go-live; verified: 30 Sep = hourly, 1 Oct = 96/day); older dates return empty at `PT15M`, so **query `PT15M`
+and fall back to `PT60M`** — or pick resolution by date. This makes the app's own ENTSO-E spot sufficient
+for the pilot (it's already 15-min-aware for NL), with Frank supplying opslag + tax.

@@ -246,7 +246,7 @@ don't need a feed that names the opslag explicitly — any all-in feed yields it
 | Source | Format | Coverage | Gives `opslag`? | `vastrecht`? | Auth / cost | Freshness | Reliability | Scrape difficulty | Verdict |
 |---|---|---|---|---|---|---|---|---|---|
 | **enever.nl** price feeds | **JSON** | ~15 suppliers | ✅ (all-in per supplier → difference) | ❌ | free **token** (email), 250 req/mo (10k as Supporter) | daily | community/hobby, but proven (evcc, Home Assistant) | **easiest** | **Primary — backend only** |
-| **Frank Energie** GraphQL | **JSON** | Frank only | ✅ **explicit** (`sourcingMarkupPrice`) | partial | none for market prices | daily | 1st-party (via HA integration) | easy | Authoritative cross-check |
+| **Frank Energie** GraphQL | **JSON** | Frank only | ✅ **explicit** (`sourcingMarkupPrice`) + ready-made `allInPrice` | partial | none for market prices | daily; **15-min or hourly** (`resolution: PT15M`/`PT60M`) | 1st-party (via HA integration) | easy | **Best NL first-party source** |
 | **EnergyZero** public API | **JSON** | EnergyZero + white-labels (ANWB, Mijndomein…) | ✅ (all-in → difference) | ❌ | none | daily | 1st-party, stable | easy | Authoritative cross-check |
 | **EasyEnergy** public API | **JSON** | EasyEnergy | ✅ (spot+markup) | on tariff docs | none | daily | 1st-party | easy | Authoritative cross-check |
 | **overstappen.nl** Energy API | **JSON** | ~all suppliers | ✅ (`opslag stroom p/kWh`) | ✅ (`vastrecht stroom p/m`) | **partner-only** (Bearer + IP whitelist, "Partner worden") | — | commercial/official | easy data, **hard access** | Best data *if* you want an affiliate deal |
@@ -270,9 +270,14 @@ call it from the client (thousands of installs would blow any limit and violate 
 
 **Supplier-direct public APIs — authoritative, per supplier.** Best for cross-checking enever and for
 the highest-value suppliers:
-- **Frank Energie** GraphQL (the endpoint the `home-assistant-frank_energie` integration uses) returns
-  per-hour `marketPrice`, `marketPriceTax`, **`sourcingMarkupPrice` (= opslag)**, `energyTaxPrice` — so
-  it exposes the opslag *explicitly*, no differencing needed, no auth for market prices.
+- **Frank Energie** GraphQL (`https://graphql.frankenergie.nl/`, no auth) — two queries:
+  - legacy `marketPricesElectricity(startDate,endDate)` → **hourly** range, history ≥2 years.
+  - **`marketPrices(date, resolution)`** → single date at **`PT15M` (15-min, 96/day) or `PT60M`**,
+    returning per-slot `marketPrice`, `marketPriceTax`, **`sourcingMarkupPrice` (= opslag, explicit)**,
+    `energyTaxPrice`, and a ready-made **`allInPrice`** (incl-VAT total). No differencing needed. 15-min
+    data exists from **~1 Oct 2025** (the NL 15-min market go-live); older dates return empty at `PT15M`
+    → fall back to `PT60M`. (The app's hourly/quarter *contract* toggle is a separate authed per-account
+    mutation and doesn't gate reading public `PT15M` market data.)
 - **EnergyZero** public API `GET https://public.api.energyzero.nl/public/v1/prices?date=…&interval=…`
   (no auth) — market prices; its all-in/`inkoopvergoeding` (which changes each **1 Jan**) can be
   differenced out. EnergyZero powers several white-labels, so one integration ≈ several brands. (There's

@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.1" date="July 12, 2026" >}}
+- All-in price (Netherlands): optionally show the full consumer price — the spot price plus energy tax, your supplier's surcharge, and VAT — instead of the bare market price. Pick your supplier or enter your own surcharge under "Total price" in Settings. It never changes which window is cheapest; it just shows a realistic run cost.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="June 25, 2026" >}}
 - Refined and corrected translations across all supported languages for clearer, more natural wording.
 {{< /changelog >}}

@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12 luglio 2026" >}}
+- Prezzo totale (Paesi Bassi): puoi scegliere di mostrare il prezzo finale al consumatore — il prezzo spot più le accise sull'energia, il sovrapprezzo del tuo fornitore e l'IVA — anziché il solo prezzo di mercato. Scegli il tuo fornitore o inserisci il tuo sovrapprezzo in «Prezzo totale» nelle Impostazioni. Non cambia mai quale orario è il più economico; mostra solo un costo di utilizzo realistico.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 giugno 2026" >}}
 - Traduzioni rifinite e corrette in tutte le lingue supportate, per testi più chiari e naturali.
 {{< /changelog >}}

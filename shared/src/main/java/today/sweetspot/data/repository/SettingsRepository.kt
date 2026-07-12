@@ -44,6 +44,9 @@ class SettingsRepository(private val context: Context) {
         const val KEY_TIME_OVERRIDE = "time_override"
         const val KEY_USE_PRODUCTION_LOGO = "use_production_logo"
         const val KEY_THEME_MODE = "theme_mode"
+        const val KEY_ALL_IN_ENABLED = "all_in_enabled"
+        const val KEY_SUPPLIER_ID = "all_in_supplier_id"
+        const val KEY_MANUAL_SURCHARGE = "all_in_manual_surcharge"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -89,6 +92,49 @@ class SettingsRepository(private val context: Context) {
         prefs.edit { putString(KEY_COUNTRY_CODE, code) }
         clearSourceOrder()
         clearDisabledSources()
+        // The chosen supplier and any manual surcharge belong to the previous country's tariff feed
+        // (different suppliers, currency, and price magnitude); reset both.
+        setSupplierId(null)
+        setManualSurcharge(null)
+    }
+
+    // --- All-in price ---
+
+    /** Whether the user has enabled the approximate all-in consumer price display. */
+    fun isAllInEnabled(): Boolean = prefs.getBoolean(KEY_ALL_IN_ENABLED, false)
+
+    /** Persists the all-in enabled preference. */
+    fun setAllInEnabled(enabled: Boolean) {
+        prefs.edit { putBoolean(KEY_ALL_IN_ENABLED, enabled) }
+    }
+
+    /** Returns the chosen supplier id (from the tariff feed), or `null` if none is selected. */
+    fun getSupplierId(): String? = prefs.getString(KEY_SUPPLIER_ID, null)
+
+    /** Persists the chosen supplier id, or clears it when `null`. */
+    fun setSupplierId(id: String?) {
+        if (id == null) {
+            prefs.edit { remove(KEY_SUPPLIER_ID) }
+        } else {
+            prefs.edit { putString(KEY_SUPPLIER_ID, id) }
+        }
+    }
+
+    /**
+     * Returns the manual per-kWh surcharge override (ex-VAT), or `null` when unset.
+     *
+     * A manual override, when present, takes precedence over the chosen supplier's surcharge.
+     */
+    fun getManualSurcharge(): Double? =
+        prefs.getString(KEY_MANUAL_SURCHARGE, null)?.toDoubleOrNull()
+
+    /** Persists the manual surcharge override, or clears it when `null`. */
+    fun setManualSurcharge(value: Double?) {
+        if (value == null) {
+            prefs.edit { remove(KEY_MANUAL_SURCHARGE) }
+        } else {
+            prefs.edit { putString(KEY_MANUAL_SURCHARGE, value.toString()) }
+        }
     }
 
     /**

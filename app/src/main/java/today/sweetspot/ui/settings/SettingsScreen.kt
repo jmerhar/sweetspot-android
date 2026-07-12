@@ -78,6 +78,14 @@ fun SettingsScreen(
     countries: List<Country>,
     onCountrySelected: (String) -> Unit,
     onPriceZoneSelected: (String) -> Unit,
+    allInSupported: Boolean,
+    allInEnabled: Boolean,
+    allInSuppliers: List<today.sweetspot.model.SupplierTariff>,
+    selectedSupplierId: String?,
+    manualSurcharge: Double?,
+    onAllInEnabledChanged: (Boolean) -> Unit,
+    onSupplierSelected: (String) -> Unit,
+    onManualSurchargeChanged: (Double?) -> Unit,
     sourceOrder: List<String>?,
     disabledSources: Set<String>,
     availableSources: List<DataSource>,
@@ -112,6 +120,7 @@ fun SettingsScreen(
     var showTimezonePicker by rememberSaveable { mutableStateOf(false) }
     var showCountryPicker by rememberSaveable { mutableStateOf(false) }
     var showZonePicker by rememberSaveable { mutableStateOf(false) }
+    var showSupplierPicker by rememberSaveable { mutableStateOf(false) }
     var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
     var showAddDialog by rememberSaveable { mutableStateOf(false) }
     var editingVehicle by remember { mutableStateOf<Appliance?>(null) }
@@ -212,6 +221,20 @@ fun SettingsScreen(
         } else {
             showZonePicker = false
         }
+    }
+
+    if (showSupplierPicker) {
+        BackHandler { showSupplierPicker = false }
+        SupplierPickerScreen(
+            suppliers = allInSuppliers,
+            selectedSupplierId = selectedSupplierId,
+            onSupplierSelected = { id ->
+                onSupplierSelected(id)
+                showSupplierPicker = false
+            },
+            onBack = { showSupplierPicker = false }
+        )
+        return
     }
 
     if (showAddDialog) {
@@ -353,6 +376,21 @@ fun SettingsScreen(
                 PriceZoneSection(
                     zoneLabel = priceZone?.let { stringResource(it.labelRes) },
                     onClick = { showZonePicker = true }
+                )
+            }
+
+            // All-in price — only for countries with a usable tariff feed.
+            if (allInSupported) {
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+
+                AllInSection(
+                    enabled = allInEnabled,
+                    suppliers = allInSuppliers,
+                    selectedSupplierId = selectedSupplierId,
+                    manualSurcharge = manualSurcharge,
+                    onEnabledChange = onAllInEnabledChanged,
+                    onSupplierClick = { showSupplierPicker = true },
+                    onManualSurchargeChange = onManualSurchargeChanged
                 )
             }
 

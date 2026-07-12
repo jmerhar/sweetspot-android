@@ -25,10 +25,15 @@ import org.robolectric.annotation.Config
 import today.sweetspot.data.api.FetchResult
 import today.sweetspot.data.api.PriceFetcher
 
+import today.sweetspot.data.api.TariffFetcher
 import today.sweetspot.data.billing.BillingRepository
 import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
+import today.sweetspot.data.cache.RawTariff
+import today.sweetspot.data.cache.TariffCache
 import today.sweetspot.data.repository.EvVehicleRepository
+import today.sweetspot.data.repository.TariffRepository
+import java.time.Clock
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
@@ -92,6 +97,9 @@ class SweetSpotViewModelTest {
     fun setUp() {
         Dispatchers.setMain(testDispatcher)
         app = ApplicationProvider.getApplicationContext()
+        // Isolate tests: start from clean settings so persisted prefs (e.g. all-in enabled/supplier)
+        // don't leak between tests.
+        app.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE).edit().clear().commit()
     }
 
     @After
@@ -99,8 +107,12 @@ class SweetSpotViewModelTest {
         Dispatchers.resetMain()
     }
 
+    /** A [TariffRepository] that never touches the network (empty cache + a throwing fetcher). */
+    private fun noNetworkTariffRepo() =
+        TariffRepository(FakeTariffCache(), CountingTariffFetcher(null, RuntimeException("no network in tests")), Clock.systemUTC())
+
     /** Creates a ViewModel with default (real) dependencies for non-async tests. */
-    private fun defaultViewModel() = SweetSpotViewModel(app)
+    private fun defaultViewModel() = SweetSpotViewModel(app, tariffRepositoryOverride = noNetworkTariffRepo())
 
     /** In-memory [StatsCollector] for testing. */
     private class FakeStatsCollector : StatsCollector {
@@ -144,7 +156,8 @@ class SweetSpotViewModelTest {
         cache: FakeCache = FakeCache(),
         billing: BillingRepository? = null
     ) =
-        SweetSpotViewModel(app, { _ -> fetcher }, cache, FakeStatsCollector(), testDispatcher, billing)
+        SweetSpotViewModel(app, { _ -> fetcher }, cache, FakeStatsCollector(), testDispatcher, billing,
+            tariffRepositoryOverride = noNetworkTariffRepo())
 
     // --- Initial state ---
 
@@ -1565,5 +1578,208 @@ class SweetSpotViewModelTest {
         // Result is preserved (not nulled) even though no future window remains.
         assertEquals(kept, viewModel.uiState.value.result)
         viewModel.onClearResult()
+    }
+
+    // --- All-in price ---
+
+    /** In-memory [TariffCache] optionally seeded for the current country ("NL"). */
+    private class FakeTariffCache(seed: RawTariff? = null) : TariffCache {
+        val store = mutableMapOf<String, RawTariff>()
+        init { if (seed != null) store["nl"] = seed }
+        override fun read(countryCode: String) = store[countryCode.lowercase()]
+        override fun write(countryCode: String, raw: String, fetchedAtMs: Long) {
+            store[countryCode.lowercase()] = RawTariff(raw, fetchedAtMs)
+        }
+        override fun clear() { store.clear() }
+    }
+
+    /** Tariff fetcher returning a fixed feed (or throwing), counting calls. */
+    private class CountingTariffFetcher(private val raw: String?, private val error: Exception? = null) : TariffFetcher {
+        var count = 0
+            private set
+        override fun fetchRaw(countryCode: String): String {
+            count++
+            error?.let { throw it }
+            return raw!!
+        }
+    }
+
+    private fun feedJson(usable: Boolean = true, surcharge: Double = 0.10) =
+        """{"country":"NL","currency":"EUR","usable":$usable,""" +
+        """"taxes":[{"id":"vat","type":"percentage","value":0.21},{"id":"e","type":"perKwh","value":0.05}],""" +
+        """"suppliers":[{"id":"acme","name":"Acme","surchargePerKwh":$surcharge}]}"""
+
+    private fun allInViewModel(fetcher: FakeFetcher, tariffRepo: TariffRepository): SweetSpotViewModel {
+        // Pin the country to NL so the seeded tariff (keyed "nl") loads regardless of detected locale.
+        today.sweetspot.data.repository.SettingsRepository(app).setCountryCode("NL")
+        return SweetSpotViewModel(app, { _ -> fetcher }, FakeCache(), FakeStatsCollector(), testDispatcher,
+            tariffRepositoryOverride = tariffRepo)
+    }
+
+    @Test
+    fun `all-in is off by default and enabling plus picking a supplier persists`() {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson()), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        assertFalse(vm.uiState.value.allInEnabled)
+
+        vm.onAllInEnabledChanged(true)
+        vm.onSupplierSelected("acme")
+
+        // A fresh ViewModel reads the persisted preferences (built directly so it doesn't reset country/supplier).
+        val vm2 = SweetSpotViewModel(app, { _ -> FakeFetcher(fakePrices(24)) }, FakeCache(), FakeStatsCollector(),
+            testDispatcher, tariffRepositoryOverride = repo)
+        assertTrue(vm2.uiState.value.allInEnabled)
+        assertEquals("acme", vm2.uiState.value.supplierId)
+    }
+
+    @Test
+    fun `all-in supported reflects the loaded tariff usable flag`() = runTest {
+        val supported = allInViewModel(FakeFetcher(fakePrices(24)),
+            TariffRepository(FakeTariffCache(RawTariff(feedJson(usable = true), System.currentTimeMillis())),
+                CountingTariffFetcher(feedJson()), Clock.systemUTC()))
+        runCurrent()
+        assertTrue(supported.uiState.value.allInSupported)
+
+        val unsupported = allInViewModel(FakeFetcher(fakePrices(24)),
+            TariffRepository(FakeTariffCache(), CountingTariffFetcher(null, RuntimeException("offline")), Clock.systemUTC()))
+        unsupported.onAllInEnabledChanged(true)
+        runCurrent()
+        assertFalse(unsupported.uiState.value.allInSupported)
+    }
+
+    @Test
+    fun `all-in applied raises the cost above spot and keeps the same window`() = runTest {
+        val prices = fakePrices(24)
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.10)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(prices), repo)
+
+        // Spot baseline (all-in still off).
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val spot = vm.uiState.value.result!!
+        assertFalse(vm.uiState.value.allInApplied)
+        vm.onClearResult()
+
+        // Enable all-in and re-run.
+        vm.onAllInEnabledChanged(true)
+        vm.onSupplierSelected("acme")
+        runCurrent()
+        vm.onFindClicked()
+        runCurrent()
+        val allIn = vm.uiState.value
+        vm.onClearResult()  // stop the periodic refresh BEFORE asserting so a failure surfaces cleanly
+
+        val allInResult = allIn.result!!
+        assertTrue(allIn.allInApplied)
+        assertEquals("Acme", allIn.allInSupplierName)
+        assertTrue(allInResult.totalCost > spot.totalCost)     // costs more all-in
+        // Same recommended window (start clamps to "now", so compare the slot, not the exact instant;
+        // the monotonic ordering-invariance itself is covered by AllInPricingTest).
+        assertEquals(
+            spot.startTime.truncatedTo(java.time.temporal.ChronoUnit.HOURS),
+            allInResult.startTime.truncatedTo(java.time.temporal.ChronoUnit.HOURS)
+        )
+    }
+
+    @Test
+    fun `all-in enabled without a surcharge is not applied`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson()), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)   // enabled, but no supplier and no manual surcharge
+        runCurrent()
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val applied = vm.uiState.value.allInApplied
+        vm.onClearResult()
+        assertFalse(applied)
+    }
+
+    @Test
+    fun `custom surcharge without a supplier applies all-in with no supplier name`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.10)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        vm.onManualSurchargeChanged(0.20)  // typed a custom value, no supplier picked
+        runCurrent()
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val s = vm.uiState.value
+        vm.onClearResult()
+        assertTrue(s.allInApplied)
+        assertNull(s.supplierId)          // editing the field clears any picked supplier
+        assertNull(s.allInSupplierName)   // custom value → no supplier name shown
+    }
+
+    @Test
+    fun `picking a supplier fills the surcharge from that supplier`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.037), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.037)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        runCurrent()
+        vm.onSupplierSelected("acme")     // should prefill the surcharge field with acme's value
+        assertEquals(0.037, vm.uiState.value.manualSurcharge!!, 1e-9)
+        assertEquals("acme", vm.uiState.value.supplierId)
+    }
+
+    @Test
+    fun `stale tariff marks the result as stale`() = runTest {
+        val old = System.currentTimeMillis() - 15L * 24 * 60 * 60 * 1000
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(), old)),
+            CountingTariffFetcher(feedJson()), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        runCurrent()                  // load the tariff so the supplier pick can read its surcharge
+        vm.onSupplierSelected("acme")
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val s = vm.uiState.value
+        vm.onClearResult()
+        assertTrue(s.allInApplied)
+        assertTrue(s.allInStale)
+    }
+
+    @Test
+    fun `a network price fetch piggybacks a tariff refresh`() = runTest {
+        // Seed the tariff cache so enabling does not fetch; the search's network price fetch should.
+        val fetcher = CountingTariffFetcher(feedJson())
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(), System.currentTimeMillis())), fetcher, Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        vm.onSupplierSelected("acme")
+        runCurrent()
+        val before = fetcher.count      // cache seeded → no fetch to enable
+
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()               // FakeCache always misses → price hits the network → piggyback refresh
+        runCurrent()
+        val after = fetcher.count
+        vm.onClearResult()
+        assertTrue(after > before)
+    }
+
+    @Test
+    fun `country change resets the chosen supplier and manual surcharge`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson()), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        vm.onSupplierSelected("acme")
+        vm.onManualSurchargeChanged(0.02)
+        runCurrent()
+        assertEquals(0.02, vm.uiState.value.manualSurcharge!!, 1e-9)
+
+        vm.onCountrySelected("DE")
+        runCurrent()
+        assertNull(vm.uiState.value.supplierId)
+        assertNull(vm.uiState.value.manualSurcharge)
     }
 }

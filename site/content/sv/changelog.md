@@ -3,6 +3,10 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="6.1" date="12 juli 2026" >}}
+- Totalpris (Nederländerna): visa valfritt hela konsumentpriset — spotpriset plus energiskatt, din leverantörs påslag och moms — i stället för enbart marknadspriset. Välj din leverantör eller ange ett eget påslag under ”Totalpris” i inställningarna. Det ändrar aldrig vilken tidsperiod som är billigast — det visar bara en realistisk körkostnad.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 juni 2026" >}}
 - Förbättrade och korrigerade översättningar på alla språk som stöds för tydligare och mer naturligt språk.
 {{< /changelog >}}

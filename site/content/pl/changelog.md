@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12 lipca 2026" >}}
+- Cena całkowita (Holandia): opcjonalnie pokazuj pełną cenę dla konsumenta — cenę rynkową powiększoną o podatek energetyczny, marżę dostawcy i VAT — zamiast samej ceny rynkowej. Wybierz swojego dostawcę lub wpisz własną marżę w sekcji „Cena całkowita” w ustawieniach. Nigdy nie zmienia to, który okres jest najtańszy; pokazuje tylko realny koszt zużycia.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 czerwca 2026" >}}
 - Dopracowane i poprawione tłumaczenia we wszystkich obsługiwanych językach, aby sformułowania były jaśniejsze i bardziej naturalne.
 {{< /changelog >}}

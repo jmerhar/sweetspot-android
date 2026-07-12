@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.1" date="2026 m. liepos 12 d." >}}
+- Galutinė kaina (Nyderlandai): pasirinktinai rodykite visą vartotojo kainą — biržos kainą su energijos mokesčiu, tiekėjo antkainiu ir PVM — vietoj vien rinkos kainos. Nustatymuose ties „Galutinė kaina“ pasirinkite savo tiekėją arba įveskite savo antkainį. Tai niekada nepakeičia, kuris laikotarpis pigiausias; tik parodo realias naudojimo išlaidas.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="2026 m. birželio 25 d." >}}
 - Patobulinti ir pataisyti vertimai visomis palaikomomis kalbomis, kad formuluotės būtų aiškesnės ir natūralesnės.
 {{< /changelog >}}

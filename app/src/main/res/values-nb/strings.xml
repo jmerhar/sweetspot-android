@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Ladingen kan ikke bli ferdig innen fristen din. Prøv et lavere ladenivå eller et senere tidspunkt.</string>
     <string name="result_disclaimer_power">Kostnadene er vist for en last på %s kW. Prisene inkluderer ikke MVA, energiavgift og leverandørgebyr. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.</string>
     <string name="dialog_power">Effekt (kW, valgfritt)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Totalpris</string>
+    <string name="settings_all_in_toggle">Vis totalpris</string>
+    <string name="settings_all_in_desc">Vis den estimerte totale forbrukerprisen (spotpris + energiavgift + leverandørpåslag + MVA) i stedet for den rene markedsprisen.</string>
+    <string name="all_in_supplier">Leverandør</string>
+    <string name="all_in_supplier_prompt">Velg leverandøren din</string>
+    <string name="all_in_supplier_custom">Egendefinert påslag</string>
+    <string name="all_in_no_supplier">Fant ingen leverandør. Legg inn et egendefinert påslag nedenfor i stedet.</string>
+    <string name="all_in_surcharge_custom">Egendefinert påslag (eks. MVA)</string>
+    <string name="picker_supplier_title">Leverandør</string>
+    <string name="picker_supplier_search">Søk etter leverandører</string>
+    <string name="result_disclaimer_all_in">Kostnadene er vist per 1 kW last, til den estimerte totalprisen (spotpris + energiavgift + leverandørpåslag + MVA). Nettleie og faste månedlige avgifter er ikke inkludert. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Kostnadene er vist for en last på %s kW, til den estimerte totalprisen (spotpris + energiavgift + leverandørpåslag + MVA). Nettleie og faste månedlige avgifter er ikke inkludert. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nLeverandør: %s</string>
+    <string name="result_all_in_stale">Tariffdataene er mer enn 14 dager gamle og kan være utdaterte.</string>
 </resources>

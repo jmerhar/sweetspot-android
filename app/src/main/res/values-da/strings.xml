@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Opladningen kan ikke nå at blive færdig inden din frist. Prøv et lavere opladningsmål eller et senere tidspunkt.</string>
     <string name="result_disclaimer_power">Omkostningerne er for en belastning på %s kW. Priserne inkluderer ikke moms, energiafgift og leverandørgebyr. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
     <string name="dialog_power">Effekt (kW, valgfrit)</string>
+
+    <!-- Total price (all-in) -->
+    <string name="settings_all_in_title">Totalpris</string>
+    <string name="settings_all_in_toggle">Vis totalpris</string>
+    <string name="settings_all_in_desc">Vis den anslåede fulde forbrugerpris (spot + energiafgift + leverandørtillæg + moms) i stedet for den rene markedspris.</string>
+    <string name="all_in_supplier">Leverandør</string>
+    <string name="all_in_supplier_prompt">Vælg din leverandør</string>
+    <string name="all_in_supplier_custom">Brugerdefineret tillæg</string>
+    <string name="all_in_no_supplier">Ingen leverandør fundet. Indtast et brugerdefineret tillæg nedenfor i stedet.</string>
+    <string name="all_in_surcharge_custom">Brugerdefineret tillæg (ekskl. moms)</string>
+    <string name="picker_supplier_title">Leverandør</string>
+    <string name="picker_supplier_search">Søg leverandører</string>
+    <string name="result_disclaimer_all_in">De viste omkostninger er pr. 1 kW belastning, ved den anslåede totalpris (spot + energiafgift + leverandørtillæg + moms). Ekskl. nettarif og faste månedlige gebyrer. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">De viste omkostninger er for en belastning på %s kW, ved den anslåede totalpris (spot + energiafgift + leverandørtillæg + moms). Ekskl. nettarif og faste månedlige gebyrer. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nLeverandør: %s</string>
+    <string name="result_all_in_stale">Tarifdata er mere end 14 dage gamle og er muligvis forældede.</string>
 </resources>

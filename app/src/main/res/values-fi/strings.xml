@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua määräaikaan mennessä. Kokeile alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
     <string name="result_disclaimer_power">Kustannukset on laskettu %s kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä toimittajan palkkiota. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="dialog_power">Teho (kW, valinnainen)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Kokonaishinta</string>
+    <string name="settings_all_in_toggle">Näytä kokonaishinta</string>
+    <string name="settings_all_in_desc">Näytä arvioitu kuluttajan kokonaishinta (pörssihinta + sähkövero + myyjän marginaali + ALV) pelkän markkinahinnan sijaan.</string>
+    <string name="all_in_supplier">Sähkönmyyjä</string>
+    <string name="all_in_supplier_prompt">Valitse sähkönmyyjäsi</string>
+    <string name="all_in_supplier_custom">Mukautettu marginaali</string>
+    <string name="all_in_no_supplier">Sähkönmyyjää ei löytynyt. Syötä sen sijaan mukautettu marginaali alle.</string>
+    <string name="all_in_surcharge_custom">Mukautettu marginaali (ilman ALV:a)</string>
+    <string name="picker_supplier_title">Sähkönmyyjä</string>
+    <string name="picker_supplier_search">Hae sähkönmyyjiä</string>
+    <string name="result_disclaimer_all_in">Kustannukset on laskettu 1 kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
+    <string name="result_disclaimer_power_all_in">Kustannukset on laskettu %s kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
+    <string name="result_all_in_supplier">\nSähkönmyyjä: %s</string>
+    <string name="result_all_in_stale">Tariffitiedot ovat yli 14 päivää vanhoja ja voivat olla vanhentuneita.</string>
 </resources>

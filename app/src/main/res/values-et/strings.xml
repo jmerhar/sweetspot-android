@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Laadimine ei jõua sinu tähtajaks valmis. Proovi madalamat laetuse eesmärki või hilisemat aega.</string>
     <string name="result_disclaimer_power">Kulud on arvutatud %s kW koormuse kohta. Hinnad ei sisalda käibemaksu, energiamaksu ega tarnija tasu. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="dialog_power">Võimsus (kW, valikuline)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Koguhind</string>
+    <string name="settings_all_in_toggle">Näita koguhinda</string>
+    <string name="settings_all_in_desc">Näita hinnangulist täielikku tarbijahinda (börsihind + energiamaks + tarnija juurdehindlus + käibemaks) pelga turuhinna asemel.</string>
+    <string name="all_in_supplier">Tarnija</string>
+    <string name="all_in_supplier_prompt">Vali oma tarnija</string>
+    <string name="all_in_supplier_custom">Kohandatud juurdehindlus</string>
+    <string name="all_in_no_supplier">Tarnijat ei leitud. Sisesta selle asemel allpool kohandatud juurdehindlus.</string>
+    <string name="all_in_surcharge_custom">Kohandatud juurdehindlus (ilma käibemaksuta)</string>
+    <string name="picker_supplier_title">Tarnija</string>
+    <string name="picker_supplier_search">Otsi tarnijaid</string>
+    <string name="result_disclaimer_all_in">Kulud on arvutatud 1 kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Kulud on arvutatud %s kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nTarnija: %s</string>
+    <string name="result_all_in_stale">Tariifiandmed on üle 14 päeva vanad ja võivad olla aegunud.</string>
 </resources>

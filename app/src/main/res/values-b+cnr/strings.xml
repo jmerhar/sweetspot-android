@@ -166,4 +166,20 @@
     <!-- Power -->
     <string name="result_disclaimer_power">Troškovi su prikazani za opterećenje od %s kW. Cijene ne uključuju PDV, porez na energiju i naknadu dobavljača. Sutrašnje cijene su obično dostupne nakon 13:00 CET.</string>
     <string name="dialog_power">Snaga (kW, opciono)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Ukupna cijena</string>
+    <string name="settings_all_in_toggle">Prikaži ukupnu cijenu</string>
+    <string name="settings_all_in_desc">Prikazuje procijenjenu konačnu cijenu za potrošača (tržišna cijena + porez na energiju + naknada dobavljača + PDV) umjesto same tržišne cijene.</string>
+    <string name="all_in_supplier">Dobavljač</string>
+    <string name="all_in_supplier_prompt">Izaberite svog dobavljača</string>
+    <string name="all_in_supplier_custom">Prilagođena naknada</string>
+    <string name="all_in_no_supplier">Dobavljač nije pronađen. Umjesto toga unesite prilagođenu naknadu ispod.</string>
+    <string name="all_in_surcharge_custom">Prilagođena naknada (bez PDV-a)</string>
+    <string name="picker_supplier_title">Dobavljač</string>
+    <string name="picker_supplier_search">Pretraži dobavljače</string>
+    <string name="result_disclaimer_all_in">Troškovi su prikazani za opterećenje od 1 kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + naknada dobavljača + PDV). Ne uključuju mrežne naknade ni fiksne mjesečne troškove. Sutrašnje cijene su obično dostupne nakon 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Troškovi su prikazani za opterećenje od %s kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + naknada dobavljača + PDV). Ne uključuju mrežne naknade ni fiksne mjesečne troškove. Sutrašnje cijene su obično dostupne nakon 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nDobavljač: %s</string>
+    <string name="result_all_in_stale">Podaci o tarifama su stariji od 14 dana i možda više nisu aktuelni.</string>
 </resources>

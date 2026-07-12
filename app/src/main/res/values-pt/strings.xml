@@ -164,4 +164,20 @@
     <string name="ev_error_deadline_unreachable">O carregamento não consegue terminar até ao prazo definido. Experimente uma carga-alvo mais baixa ou uma hora mais tardia.</string>
     <string name="result_disclaimer_power">Os custos apresentados referem-se a uma carga de %s kW. IVA, imposto sobre energia e taxa do fornecedor não estão incluídos. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
     <string name="dialog_power">Potência (kW, opcional)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Preço total</string>
+    <string name="settings_all_in_toggle">Mostrar preço total</string>
+    <string name="settings_all_in_desc">Mostrar o preço total estimado para o consumidor (preço de mercado + imposto sobre energia + margem do fornecedor + IVA) em vez do preço de mercado simples.</string>
+    <string name="all_in_supplier">Fornecedor</string>
+    <string name="all_in_supplier_prompt">Selecione o seu fornecedor</string>
+    <string name="all_in_supplier_custom">Margem personalizada</string>
+    <string name="all_in_no_supplier">Nenhum fornecedor encontrado. Em alternativa, introduza uma margem personalizada abaixo.</string>
+    <string name="all_in_surcharge_custom">Margem personalizada (sem IVA)</string>
+    <string name="picker_supplier_title">Fornecedor</string>
+    <string name="picker_supplier_search">Pesquisar fornecedores</string>
+    <string name="result_disclaimer_all_in">Os custos apresentados referem-se a uma carga de 1 kW, ao preço total estimado (preço de mercado + imposto sobre energia + margem do fornecedor + IVA). Não incluem tarifas de rede nem encargos fixos mensais. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Os custos apresentados referem-se a uma carga de %s kW, ao preço total estimado (preço de mercado + imposto sobre energia + margem do fornecedor + IVA). Não incluem tarifas de rede nem encargos fixos mensais. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nFornecedor: %s</string>
+    <string name="result_all_in_stale">Os dados tarifários têm mais de 14 dias e podem estar desatualizados.</string>
 </resources>

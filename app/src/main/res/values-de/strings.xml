@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Das Laden kann nicht bis zu deinem Zeitpunkt abgeschlossen werden. Versuche ein niedrigeres Ladeziel oder einen späteren Zeitpunkt.</string>
     <string name="result_disclaimer_power">Kosten gelten für eine Last von %s kW. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantengebühr. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
     <string name="dialog_power">Leistung (kW, optional)</string>
+
+    <!-- Total price (all-in) -->
+    <string name="settings_all_in_title">Gesamtpreis</string>
+    <string name="settings_all_in_toggle">Gesamtpreis anzeigen</string>
+    <string name="settings_all_in_desc">Zeige den geschätzten vollen Verbraucherpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.) statt des reinen Marktpreises.</string>
+    <string name="all_in_supplier">Lieferant</string>
+    <string name="all_in_supplier_prompt">Wähle deinen Lieferanten</string>
+    <string name="all_in_supplier_custom">Eigener Aufschlag</string>
+    <string name="all_in_no_supplier">Kein Lieferant gefunden. Gib stattdessen unten einen eigenen Aufschlag ein.</string>
+    <string name="all_in_surcharge_custom">Eigener Aufschlag (ohne MwSt.)</string>
+    <string name="picker_supplier_title">Lieferant</string>
+    <string name="picker_supplier_search">Lieferanten suchen</string>
+    <string name="result_disclaimer_all_in">Die angezeigten Kosten gelten für 1 kW Leistung, zum geschätzten Gesamtpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="result_disclaimer_power_all_in">Die angezeigten Kosten gelten für eine Last von %s kW, zum geschätzten Gesamtpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="result_all_in_supplier">\nLieferant: %s</string>
+    <string name="result_all_in_stale">Die Tarifdaten sind über 14 Tage alt und möglicherweise veraltet.</string>
 </resources>

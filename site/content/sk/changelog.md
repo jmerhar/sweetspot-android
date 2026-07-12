@@ -3,6 +3,10 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12. júla 2026" >}}
+- Celková cena (Holandsko): voliteľne zobrazte konečnú spotrebiteľskú cenu — spotovú cenu plus daň z energie, prirážku vášho dodávateľa a DPH — namiesto samotnej trhovej ceny. V nastaveniach v časti „Celková cena“ vyberte svojho dodávateľa alebo zadajte vlastnú prirážku. Nikdy nemení, ktoré obdobie je najlacnejšie — len ukáže reálne náklady na spustenie.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25. júna 2026" >}}
 - Vylepšené a opravené preklady vo všetkých podporovaných jazykoch pre jasnejšie a prirodzenejšie znenie.
 {{< /changelog >}}

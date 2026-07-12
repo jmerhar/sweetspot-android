@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12. julij 2026" >}}
+- Skupna cena (Nizozemska): izbirno prikažite končno ceno za potrošnika — tržno ceno ter davek na energijo, pribitek vašega dobavitelja in DDV — namesto same tržne cene. V nastavitvah v razdelku »Skupna cena« izberite svojega dobavitelja ali vnesite lasten pribitek. Nikoli ne spremeni, kateri termin je najcenejši — le pokaže realne stroške delovanja.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25. junij 2026" >}}
 - Izpopolnjeni in popravljeni prevodi v vseh podprtih jezikih za jasnejše in bolj naravno izražanje.
 {{< /changelog >}}

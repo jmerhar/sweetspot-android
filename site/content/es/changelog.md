@@ -3,6 +3,10 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12 de julio de 2026" >}}
+- Precio total (Países Bajos): muestra opcionalmente el precio final al consumidor —el precio spot más el impuesto energético, el recargo de tu proveedor y el IVA— en lugar del precio de mercado sin más. Elige tu proveedor o introduce tu propio recargo en «Precio total», dentro de Ajustes. Nunca cambia qué momento es el más barato; solo muestra un coste de uso realista.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 de junio de 2026" >}}
 - Traducciones revisadas y corregidas en todos los idiomas disponibles para que los textos sean más claros y naturales.
 {{< /changelog >}}

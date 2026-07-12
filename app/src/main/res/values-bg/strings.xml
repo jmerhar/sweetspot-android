@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Зареждането не може да приключи до зададения краен срок. Опитайте с по-ниско целево ниво или по-късно време.</string>
     <string name="result_disclaimer_power">Разходите са за %s kW натоварване. Цените не включват ДДС, данък върху енергията и такса на доставчика. Цените за утре обикновено са налични след 13:00 CET.</string>
     <string name="dialog_power">Мощност (kW, по избор)</string>
+
+    <!-- Total price (all-in) -->
+    <string name="settings_all_in_title">Крайна цена</string>
+    <string name="settings_all_in_toggle">Показване на крайната цена</string>
+    <string name="settings_all_in_desc">Показвайте прогнозната пълна крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС) вместо голата пазарна цена.</string>
+    <string name="all_in_supplier">Доставчик</string>
+    <string name="all_in_supplier_prompt">Изберете вашия доставчик</string>
+    <string name="all_in_supplier_custom">Персонализирана надценка</string>
+    <string name="all_in_no_supplier">Няма намерен доставчик. Вместо това въведете персонализирана надценка по-долу.</string>
+    <string name="all_in_surcharge_custom">Персонализирана надценка (без ДДС)</string>
+    <string name="picker_supplier_title">Доставчик</string>
+    <string name="picker_supplier_search">Търсене на доставчици</string>
+    <string name="result_disclaimer_all_in">Показаните разходи са за 1 kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Показаните разходи са за %s kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nДоставчик: %s</string>
+    <string name="result_all_in_stale">Данните за тарифите са на повече от 14 дни и може да са остарели.</string>
 </resources>

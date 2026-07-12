@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Полнењето не може да заврши до вашиот краен рок. Пробајте со пониска целна наполнетост или подоцнежно време.</string>
     <string name="result_disclaimer_power">Трошоците се прикажани за оптоварување од %s kW. Цените не вклучуваат ДДВ, данок на енергија и провизија на добавувачот. Цените за утре обично се достапни по 13:00 CET.</string>
     <string name="dialog_power">Моќност (kW, опционално)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Крајна цена</string>
+    <string name="settings_all_in_toggle">Прикажи ја крајната цена</string>
+    <string name="settings_all_in_desc">Прикажи ја проценетата крајна цена за потрошувачот (спот + данок на енергија + провизија на добавувачот + ДДВ) наместо само пазарната цена.</string>
+    <string name="all_in_supplier">Добавувач</string>
+    <string name="all_in_supplier_prompt">Изберете го вашиот добавувач</string>
+    <string name="all_in_supplier_custom">Прилагоден надоместок</string>
+    <string name="all_in_no_supplier">Не е пронајден добавувач. Наместо тоа, внесете прилагоден надоместок подолу.</string>
+    <string name="all_in_surcharge_custom">Прилагоден надоместок (без ДДВ)</string>
+    <string name="picker_supplier_title">Добавувач</string>
+    <string name="picker_supplier_search">Пребарај добавувачи</string>
+    <string name="result_disclaimer_all_in">Трошоците се прикажани за оптоварување од 1 kW, по проценетата крајна цена (спот + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Трошоците се прикажани за оптоварување од %s kW, по проценетата крајна цена (спот + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nДобавувач: %s</string>
+    <string name="result_all_in_stale">Податоците за тарифата се постари од 14 дена и можеби се застарени.</string>
 </resources>

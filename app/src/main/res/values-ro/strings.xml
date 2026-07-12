@@ -164,4 +164,20 @@
     <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încearcă un nivel dorit mai mic sau o oră mai târzie.</string>
     <string name="result_disclaimer_power">Costurile sunt calculate pentru o sarcină de %s kW. Prețurile nu includ TVA, taxa pe energie și taxa furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="dialog_power">Putere (kW, opțional)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Preț total</string>
+    <string name="settings_all_in_toggle">Afișează prețul total</string>
+    <string name="settings_all_in_desc">Afișează prețul total estimat pentru consumator (preț de piață + taxa pe energie + adaosul furnizorului + TVA) în locul prețului de piață simplu.</string>
+    <string name="all_in_supplier">Furnizor</string>
+    <string name="all_in_supplier_prompt">Selectează furnizorul tău</string>
+    <string name="all_in_supplier_custom">Adaos personalizat</string>
+    <string name="all_in_no_supplier">Nu s-a găsit niciun furnizor. Introdu în schimb un adaos personalizat mai jos.</string>
+    <string name="all_in_surcharge_custom">Adaos personalizat (fără TVA)</string>
+    <string name="picker_supplier_title">Furnizor</string>
+    <string name="picker_supplier_search">Caută furnizori</string>
+    <string name="result_disclaimer_all_in">Costurile sunt calculate pentru o sarcină de 1 kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Costurile sunt calculate pentru o sarcină de %s kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nFurnizor: %s</string>
+    <string name="result_all_in_stale">Datele tarifare sunt mai vechi de 14 zile și pot fi depășite.</string>
 </resources>

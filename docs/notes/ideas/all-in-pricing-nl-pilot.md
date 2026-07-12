@@ -218,3 +218,24 @@ not new code. Details:
 `:shared` that **refuses all-in when the feed is unfetchable/stale**, a Settings supplier picker +
 manual surcharge override, the `marginal()`/negative-cutoff helpers, and the spot↔all-in toggle +
 "getting paid" UI.
+
+### Update (2026-07-11): app side shipped (phone)
+Implemented and tested (549 unit tests, all coverage gates green). Notable decisions/deviations from
+the sketch above:
+- **`:shared`** — `model/SupplierTariffs` (generic `taxes` list + `suppliers`), pure `util/AllInPricing`
+  (`marginal`/`applyAllIn`/`gettingPaidBelowSpot`), and `data/{api,cache,repository}` `TariffApi` +
+  `FileTariffCache` + `TariffRepository`. The transform is applied to the `PriceSlot` list in the
+  ViewModel *before* `findWindowAlternatives`, so the whole results screen (cost cards, chart,
+  breakdown) reflects all-in and the recommendation is provably unchanged (monotonic).
+- **Toggle lives in Settings only** (not a results-screen toggle), and the whole all-in section is
+  **shown only when the selected country has a usable tariff feed** — currently NL, auto-extends when a
+  new `<cc>.json` is published. Requires an explicit surcharge (supplier pick or manual override); no
+  baked default.
+- **Stale = warn, not refuse.** A cached tariff of any age is still used; the results page shows a
+  warning once it's >14 days old. All-in is unavailable only when nothing is cached. Refresh is
+  **piggybacked on the spot-price fetch** (`PriceResult.fromCache`) + bootstrap-on-open + on country
+  change — no separate freshness timers.
+- **"Getting paid" is free** — the chart's existing negative-price colour branch becomes the honest
+  marginal-below-zero indicator once all-in slots are fed in.
+- **Scope:** phone only (the watch shows no price); English strings now (25-language translation is a
+  follow-up before release).

@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12. srpnja 2026." >}}
+- Ukupna cijena (Nizozemska): po želji prikažite punu potrošačku cijenu — burzovnu cijenu uvećanu za porez na energiju, maržu vašeg dobavljača i PDV — umjesto gole tržišne cijene. Odaberite dobavljača ili unesite vlastitu maržu pod „Ukupna cijena“ u Postavkama. Nikada ne mijenja koji je termin najjeftiniji; samo prikazuje realan trošak korištenja.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25. lipnja 2026." >}}
 - Dotjerani i ispravljeni prijevodi na svim podržanim jezicima radi jasnijeg i prirodnijeg izričaja.
 {{< /changelog >}}

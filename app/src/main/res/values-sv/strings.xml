@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din deadline. Prova ett lägre laddningsmål eller en senare tidpunkt.</string>
     <string name="result_disclaimer_power">Kostnader visas för en last på %s kW. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="dialog_power">Effekt (kW, valfritt)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Totalpris</string>
+    <string name="settings_all_in_toggle">Visa totalpris</string>
+    <string name="settings_all_in_desc">Visa det uppskattade totala konsumentpriset (spotpris + energiskatt + leverantörspåslag + moms) i stället för enbart marknadspriset.</string>
+    <string name="all_in_supplier">Leverantör</string>
+    <string name="all_in_supplier_prompt">Välj din leverantör</string>
+    <string name="all_in_supplier_custom">Anpassat påslag</string>
+    <string name="all_in_no_supplier">Ingen leverantör hittades. Ange ett anpassat påslag nedan i stället.</string>
+    <string name="all_in_surcharge_custom">Anpassat påslag (exkl. moms)</string>
+    <string name="picker_supplier_title">Leverantör</string>
+    <string name="picker_supplier_search">Sök leverantörer</string>
+    <string name="result_disclaimer_all_in">Kostnader visas per 1 kW last, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Kostnader visas för en last på %s kW, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nLeverantör: %s</string>
+    <string name="result_all_in_stale">Tariffuppgifterna är äldre än 14 dagar och kan vara inaktuella.</string>
 </resources>

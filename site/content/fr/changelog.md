@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12 juillet 2026" >}}
+- Prix total (Pays-Bas) : affichez si vous le souhaitez le prix total pour le consommateur — le prix spot plus la taxe sur l'énergie, la marge de votre fournisseur et la TVA — au lieu du seul prix du marché. Choisissez votre fournisseur ou saisissez votre propre marge sous « Prix total », dans les Paramètres. Cela ne change jamais quel créneau est le moins cher ; cela montre simplement un coût d'utilisation réaliste.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 juin 2026" >}}
 - Traductions affinées et corrigées dans toutes les langues prises en charge, pour une formulation plus claire et plus naturelle.
 {{< /changelog >}}

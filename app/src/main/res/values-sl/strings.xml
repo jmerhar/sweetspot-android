@@ -168,4 +168,20 @@
     <string name="ev_error_deadline_unreachable">Polnjenje se ne more končati do vašega roka. Poskusite z nižjo ciljno napolnjenostjo ali poznejšim časom.</string>
     <string name="result_disclaimer_power">Stroški so prikazani za %s kW obremenitev. Cene ne vključujejo DDV, davka na energijo in dobaviteljske pristojbine. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="dialog_power">Moč (kW, izbirno)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Skupna cena</string>
+    <string name="settings_all_in_toggle">Prikaži skupno ceno</string>
+    <string name="settings_all_in_desc">Prikaže ocenjeno končno ceno za potrošnika (tržna cena + davek na energijo + pribitek dobavitelja + DDV) namesto same tržne cene.</string>
+    <string name="all_in_supplier">Dobavitelj</string>
+    <string name="all_in_supplier_prompt">Izberite svojega dobavitelja</string>
+    <string name="all_in_supplier_custom">Pribitek po meri</string>
+    <string name="all_in_no_supplier">Dobavitelja ni bilo mogoče najti. Namesto tega spodaj vnesite pribitek po meri.</string>
+    <string name="all_in_surcharge_custom">Pribitek po meri (brez DDV)</string>
+    <string name="picker_supplier_title">Dobavitelj</string>
+    <string name="picker_supplier_search">Išči dobavitelje</string>
+    <string name="result_disclaimer_all_in">Stroški so prikazani za 1 kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Stroški so prikazani za %s kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nDobavitelj: %s</string>
+    <string name="result_all_in_stale">Podatki o tarifah so starejši od 14 dni in morda niso več aktualni.</string>
 </resources>

@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.1" date="12 juli 2026" >}}
+- Totaalprijs (Nederland): toon desgewenst de volledige consumentenprijs — de marktprijs plus energiebelasting, leveranciersopslag en btw — in plaats van alleen de kale marktprijs. Kies je leverancier of vul je eigen opslag in onder 'Totaalprijs' in de instellingen. Het verandert nooit welke periode het goedkoopst is; het toont alleen realistischere kosten.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 juni 2026" >}}
 - Vertalingen in alle ondersteunde talen verfijnd en gecorrigeerd voor duidelijkere en natuurlijkere formuleringen.
 {{< /changelog >}}

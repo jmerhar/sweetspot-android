@@ -246,6 +246,42 @@ class SettingsRepositoryTest {
         assertNull(repo.getPriceZoneId())
     }
 
+    // --- All-in price ---
+
+    @Test
+    fun `all-in enabled defaults off and persists`() {
+        assertFalse(repo.isAllInEnabled())
+        repo.setAllInEnabled(true)
+        assertTrue(repo.isAllInEnabled())
+    }
+
+    @Test
+    fun `supplier id can be set and cleared`() {
+        assertNull(repo.getSupplierId())
+        repo.setSupplierId("frankenergie")
+        assertEquals("frankenergie", repo.getSupplierId())
+        repo.setSupplierId(null)
+        assertNull(repo.getSupplierId())
+    }
+
+    @Test
+    fun `manual surcharge can be set and cleared`() {
+        assertNull(repo.getManualSurcharge())
+        repo.setManualSurcharge(0.0185)
+        assertEquals(0.0185, repo.getManualSurcharge()!!, 1e-9)
+        repo.setManualSurcharge(null)
+        assertNull(repo.getManualSurcharge())
+    }
+
+    @Test
+    fun `changing country clears the chosen supplier and manual surcharge`() {
+        repo.setSupplierId("frankenergie")
+        repo.setManualSurcharge(0.02)
+        repo.setCountryCode("DE")
+        assertNull(repo.getSupplierId())
+        assertNull(repo.getManualSurcharge())
+    }
+
     @Test
     fun `devClock uses the system clock when no override is set`() {
         val clock = repo.devClock(ZoneId.of("UTC"))

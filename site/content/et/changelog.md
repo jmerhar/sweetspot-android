@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.1" date="12. juuli 2026" >}}
+- Koguhind (Holland): soovi korral kuva paljas turuhinna asemel täielik tarbijahind — börsihind pluss energiamaks, sinu tarnija juurdehindlus ja käibemaks. Vali oma tarnija või sisesta oma juurdehindlus Seadetes jaotises „Koguhind“. See ei muuda kunagi seda, milline ajavahemik on soodsaim; see näitab lihtsalt realistlikku kasutuskulu.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25. juuni 2026" >}}
 - Täpsustatud ja parandatud tõlkeid kõigis toetatud keeltes selgema ja loomulikuma sõnastuse jaoks.
 {{< /changelog >}}

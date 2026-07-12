@@ -168,4 +168,20 @@
     <string name="ev_error_deadline_unreachable">Nabíjanie sa nestihne dokončiť do vášho termínu. Skúste nižšie cieľové nabitie alebo neskorší čas.</string>
     <string name="result_disclaimer_power">Náklady sú uvedené pre záťaž %s kW. Ceny nezahŕňajú DPH, daň z energie a poplatok dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
     <string name="dialog_power">Výkon (kW, voliteľné)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Celková cena</string>
+    <string name="settings_all_in_toggle">Zobraziť celkovú cenu</string>
+    <string name="settings_all_in_desc">Zobrazí odhadovanú konečnú spotrebiteľskú cenu (spotová cena + daň z energie + prirážka dodávateľa + DPH) namiesto samotnej trhovej ceny.</string>
+    <string name="all_in_supplier">Dodávateľ</string>
+    <string name="all_in_supplier_prompt">Vyberte svojho dodávateľa</string>
+    <string name="all_in_supplier_custom">Vlastná prirážka</string>
+    <string name="all_in_no_supplier">Nenašiel sa žiadny dodávateľ. Namiesto toho zadajte vlastnú prirážku nižšie.</string>
+    <string name="all_in_surcharge_custom">Vlastná prirážka (bez DPH)</string>
+    <string name="picker_supplier_title">Dodávateľ</string>
+    <string name="picker_supplier_search">Hľadať dodávateľov</string>
+    <string name="result_disclaimer_all_in">Náklady sú uvedené pre záťaž 1 kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Náklady sú uvedené pre záťaž %s kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nDodávateľ: %s</string>
+    <string name="result_all_in_stale">Údaje o tarifách sú staršie ako 14 dní a môžu byť neaktuálne.</string>
 </resources>

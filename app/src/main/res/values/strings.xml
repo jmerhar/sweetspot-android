@@ -29,6 +29,10 @@
     <string name="result_disclaimer_power">Costs shown are for a %s kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow’s prices are usually available after 13:00 CET.</string>
     <string name="result_data_source">\nData source: %s</string>
     <string name="result_price_zone">\nPrice zone: %s</string>
+    <string name="result_disclaimer_all_in">Costs shown are per 1 kW load, at the estimated total price (spot + energy tax + supplier surcharge + VAT). Excludes grid fees and fixed monthly charges. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Costs shown are for a %s kW load, at the estimated total price (spot + energy tax + supplier surcharge + VAT). Excludes grid fees and fixed monthly charges. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nSupplier: %s</string>
+    <string name="result_all_in_stale">Tariff data is more than 14 days old and may be out of date.</string>
     <string name="cd_cheapest_window">cheapest window</string>
 
     <!-- Duration picker -->
@@ -78,6 +82,16 @@
     <string name="picker_timezone_search">Search timezones</string>
     <string name="picker_country_title">Country</string>
     <string name="picker_country_search">Search countries</string>
+    <string name="picker_supplier_title">Supplier</string>
+    <string name="picker_supplier_search">Search suppliers</string>
+    <string name="settings_all_in_title">Total price</string>
+    <string name="settings_all_in_toggle">Show total price</string>
+    <string name="settings_all_in_desc">Show the estimated full consumer price (spot + energy tax + supplier surcharge + VAT) instead of the bare market price.</string>
+    <string name="all_in_supplier">Supplier</string>
+    <string name="all_in_supplier_prompt">Select your supplier</string>
+    <string name="all_in_supplier_custom">Custom surcharge</string>
+    <string name="all_in_no_supplier">No supplier found. Enter a custom surcharge below instead.</string>
+    <string name="all_in_surcharge_custom">Custom surcharge (excl. VAT)</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d zone</item>
         <item quantity="other">%d zones</item>

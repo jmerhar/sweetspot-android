@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.1" date="12. heinäkuuta 2026" >}}
+- Kokonaishinta (Alankomaat): näytä halutessasi pelkän markkinahinnan sijaan täysi kuluttajahinta — pörssihinta plus sähkövero, myyjäsi marginaali ja ALV. Valitse myyjäsi tai syötä oma marginaalisi Asetusten kohdassa ”Kokonaishinta”. Se ei koskaan muuta sitä, mikä ajankohta on halvin; se vain näyttää realistisen käyttökustannuksen.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25. kesäkuuta 2026" >}}
 - Hiottuja ja korjattuja käännöksiä kaikilla tuetuilla kielillä selkeämmän ja luonnollisemman sanamuodon vuoksi.
 {{< /changelog >}}

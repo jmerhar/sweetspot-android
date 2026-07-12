@@ -164,4 +164,20 @@
     <string name="ev_error_deadline_unreachable">Пуњење не може да се заврши до задатог рока. Покушајте са нижом циљном напуњеношћу или каснијим временом.</string>
     <string name="result_disclaimer_power">Трошкови су приказани за оптерећење од %s kW. Цене не укључују ПДВ, порез на енергију и накнаду добављача. Сутрашње цене су обично доступне након 13:00 CET.</string>
     <string name="dialog_power">Снага (kW, опционо)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Укупна цена</string>
+    <string name="settings_all_in_toggle">Прикажи укупну цену</string>
+    <string name="settings_all_in_desc">Приказује процењену коначну цену за потрошача (тржишна цена + порез на енергију + накнада добављача + ПДВ) уместо саме тржишне цене.</string>
+    <string name="all_in_supplier">Добављач</string>
+    <string name="all_in_supplier_prompt">Изаберите свог добављача</string>
+    <string name="all_in_supplier_custom">Прилагођена накнада</string>
+    <string name="all_in_no_supplier">Добављач није пронађен. Уместо тога унесите прилагођену накнаду испод.</string>
+    <string name="all_in_surcharge_custom">Прилагођена накнада (без ПДВ-а)</string>
+    <string name="picker_supplier_title">Добављач</string>
+    <string name="picker_supplier_search">Претражи добављаче</string>
+    <string name="result_disclaimer_all_in">Трошкови су приказани за оптерећење од 1 kW, по процењеној укупној цени (тржишна цена + порез на енергију + накнада добављача + ПДВ). Не укључују мрежне накнаде ни фиксне месечне трошкове. Сутрашње цене су обично доступне након 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Трошкови су приказани за оптерећење од %s kW, по процењеној укупној цени (тржишна цена + порез на енергију + накнада добављача + ПДВ). Не укључују мрежне накнаде ни фиксне месечне трошкове. Сутрашње цене су обично доступне након 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nДобављач: %s</string>
+    <string name="result_all_in_stale">Подаци о тарифама су старији од 14 дана и можда више нису ажурни.</string>
 </resources>

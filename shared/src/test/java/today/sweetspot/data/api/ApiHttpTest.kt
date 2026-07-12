@@ -177,4 +177,23 @@ class ApiHttpTest {
         }
         assertEquals("Unknown error", e.reason)
     }
+
+    // --- Tariff feed ---
+
+    @Test
+    fun `tariff fetchRaw returns the body on success and builds the per-country URL`() {
+        var url = ""
+        val body = """{"country":"NL","usable":true}"""
+        val raw = TariffApi(cannedClient(200, body) { url = it }).fetchRaw("NL")
+        assertEquals(body, raw)
+        assertTrue(url, url.contains("sweetspot.today/data/suppliers/nl.json"))
+    }
+
+    @Test
+    fun `tariff fetchRaw maps a 404 to HttpException with the status code`() {
+        val e = assertThrows(HttpException::class.java) {
+            TariffApi(cannedClient(404, "")).fetchRaw("ZZ")
+        }
+        assertEquals(404, e.code)
+    }
 }

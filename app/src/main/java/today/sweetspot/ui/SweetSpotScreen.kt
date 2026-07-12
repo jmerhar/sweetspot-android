@@ -113,6 +113,9 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             costDelta = state.windowAlternatives.firstOrNull()
                 ?.let { state.result!!.totalCost - it.totalCost },
             powerKw = state.searchPowerKw,
+            allInApplied = state.allInApplied,
+            allInSupplierName = state.allInSupplierName,
+            allInStale = state.allInStale,
             onEarlier = viewModel::onEarlierWindow,
             onCheaper = viewModel::onCheaperWindow,
             onRefresh = viewModel::onRefreshResults,
@@ -285,6 +288,9 @@ private fun ResultScreen(
     canGoCheaper: Boolean,
     costDelta: Double?,
     powerKw: Double?,
+    allInApplied: Boolean,
+    allInSupplierName: String?,
+    allInStale: Boolean,
     onEarlier: () -> Unit,
     onCheaper: () -> Unit,
     onRefresh: () -> Unit,
@@ -387,14 +393,29 @@ private fun ResultScreen(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
+                val baseDisclaimer = when {
+                    allInApplied && powerKw != null -> stringResource(R.string.result_disclaimer_power_all_in, formatKw(powerKw))
+                    allInApplied -> stringResource(R.string.result_disclaimer_all_in)
+                    powerKw != null -> stringResource(R.string.result_disclaimer_power, formatKw(powerKw))
+                    else -> stringResource(R.string.result_disclaimer)
+                }
                 Text(
-                    text = (if (powerKw != null) stringResource(R.string.result_disclaimer_power, formatKw(powerKw))
-                            else stringResource(R.string.result_disclaimer)) +
+                    text = baseDisclaimer +
+                        (if (allInApplied && allInSupplierName != null) stringResource(R.string.result_all_in_supplier, allInSupplierName) else "") +
                         (if (priceSource != null) stringResource(R.string.result_data_source, priceSource) else "") +
                         (if (priceZoneName != null) stringResource(R.string.result_price_zone, priceZoneName) else ""),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+
+                if (allInApplied && allInStale) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = stringResource(R.string.result_all_in_stale),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
             }

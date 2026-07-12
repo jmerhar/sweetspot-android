@@ -164,4 +164,20 @@
     <string name="ev_error_deadline_unreachable">Uzlādi nevar pabeigt līdz norādītajam laikam. Mēģiniet zemāku mērķa uzlādes līmeni vai vēlāku laiku.</string>
     <string name="result_disclaimer_power">Izmaksas ir norādītas %s kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="dialog_power">Jauda (kW, neobligāti)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Pilnā cena</string>
+    <string name="settings_all_in_toggle">Rādīt pilno cenu</string>
+    <string name="settings_all_in_desc">Rādīt aptuveno pilno patērētāja cenu (biržas cena + enerģijas nodoklis + piegādātāja uzcenojums + PVN), nevis tikai biržas cenu.</string>
+    <string name="all_in_supplier">Piegādātājs</string>
+    <string name="all_in_supplier_prompt">Izvēlieties savu piegādātāju</string>
+    <string name="all_in_supplier_custom">Pielāgots uzcenojums</string>
+    <string name="all_in_no_supplier">Nav atrasts neviens piegādātājs. Tā vietā ievadiet pielāgotu uzcenojumu zemāk.</string>
+    <string name="all_in_surcharge_custom">Pielāgots uzcenojums (bez PVN)</string>
+    <string name="picker_supplier_title">Piegādātājs</string>
+    <string name="picker_supplier_search">Meklēt piegādātājus</string>
+    <string name="result_disclaimer_all_in">Izmaksas ir norādītas 1 kW slodzei, ar aptuveno pilno cenu (biržas cena + enerģijas nodoklis + piegādātāja uzcenojums + PVN). Neietver tīkla maksas un fiksētās ikmēneša maksas. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Izmaksas ir norādītas %s kW slodzei, ar aptuveno pilno cenu (biržas cena + enerģijas nodoklis + piegādātāja uzcenojums + PVN). Neietver tīkla maksas un fiksētās ikmēneša maksas. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nPiegādātājs: %s</string>
+    <string name="result_all_in_stale">Tarifu dati ir vecāki par 14 dienām un var būt novecojuši.</string>
 </resources>

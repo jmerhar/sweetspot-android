@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.1" date="2026. gada 12. jūlijs" >}}
+- Pilnā cena (Nīderlande): pēc izvēles rādiet pilno patērētāja cenu — biržas cenu plus enerģijas nodoklis, piegādātāja uzcenojums un PVN — nevis tikai tirgus cenu. Iestatījumos sadaļā „Pilnā cena“ izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Tas nekad nemaina, kurš periods ir lētākais; tas tikai parāda reālas lietošanas izmaksas.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="2026. gada 25. jūnijs" >}}
 - Uzlaboti un izlaboti tulkojumi visās atbalstītajās valodās, lai formulējumi būtu skaidrāki un dabiskāki.
 {{< /changelog >}}

@@ -13,11 +13,13 @@ import today.sweetspot.data.api.defaultPriceFetcherFactory
 import today.sweetspot.data.billing.BillingRepository
 import today.sweetspot.data.billing.PlayBillingRepository
 import today.sweetspot.data.cache.FilePriceCache
+import today.sweetspot.data.cache.FileTariffCache
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.repository.CountryDetector
 import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.repository.PriceRepository
 import today.sweetspot.data.repository.SettingsRepository
+import today.sweetspot.data.repository.TariffRepository
 import today.sweetspot.data.stats.FileStatsCollector
 import today.sweetspot.data.stats.HttpStatsPoster
 import today.sweetspot.data.stats.StatsCollector
@@ -31,7 +33,9 @@ import today.sweetspot.model.EvSpec
 import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.PriceZone
+import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
+import today.sweetspot.util.AllInPricing
 import today.sweetspot.util.UiText
 import today.sweetspot.util.findWindowAlternatives
 import kotlinx.coroutines.CoroutineDispatcher
@@ -66,6 +70,9 @@ sealed interface AppError {
 
 /** Maximum number of vehicle picker results shown at once. */
 private const val EV_SEARCH_LIMIT = 50
+
+/** A cached tariff older than this is still used, but the results page flags it as possibly out of date. */
+private const val TARIFF_STALENESS_MS = 14L * 24 * 60 * 60 * 1000
 
 /**
  * UI state for the main screen.
@@ -172,8 +179,28 @@ data class UiState(
      * per-1-kW behaviour (and disclaimer). Set from an appliance's [Appliance.powerKw] or, for EV
      * charging, the effective charging power.
      */
-    val searchPowerKw: Double? = null
-)
+    val searchPowerKw: Double? = null,
+    // --- All-in price ---
+    /** Whether the user has enabled the approximate all-in consumer price display. */
+    val allInEnabled: Boolean = false,
+    /** Chosen supplier id (from [allInTariff]), or `null` if none selected. */
+    val supplierId: String? = null,
+    /** Manual per-kWh surcharge override (ex-VAT); when set, takes precedence over the chosen supplier. */
+    val manualSurcharge: Double? = null,
+    /** The loaded tariff feed for the current country (cached or freshly fetched), or `null`. */
+    val allInTariff: SupplierTariffs? = null,
+    /** Epoch millis when [allInTariff] was fetched; drives the stale warning. */
+    val tariffFetchedAtMs: Long? = null,
+    /** True when the current result was computed with the all-in transform applied. */
+    val allInApplied: Boolean = false,
+    /** Name of the supplier whose surcharge was applied (null for a manual override or when not applied). */
+    val allInSupplierName: String? = null,
+    /** True when the applied tariff is older than the staleness cutoff (shows an "out of date" warning). */
+    val allInStale: Boolean = false
+) {
+    /** Whether all-in pricing is offered for the selected country (a usable tariff feed exists). */
+    val allInSupported: Boolean get() = allInTariff?.usable == true
+}
 
 /**
  * ViewModel for the SweetSpot app.
@@ -196,6 +223,8 @@ data class UiState(
  *   the real [HttpStatsPoster] is used. A fake lets tests drive stats reporting without a network.
  * @param watchStatsBridgeOverride Optional [WatchStatsBridge] override for testing. When `null`
  *   (production), a real [WearableStatsBridge] backed by Google Play Services is used.
+ * @param tariffRepositoryOverride Optional [TariffRepository] override for testing. When `null`
+ *   (production), a real one backed by [FileTariffCache] and the remote tariff feed is used.
  */
 class SweetSpotViewModel @JvmOverloads constructor(
     application: Application,
@@ -206,10 +235,15 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private val billingRepository: BillingRepository? = null,
     private val evVehicleRepositoryOverride: EvVehicleRepository? = null,
     statsPoster: StatsPoster? = null,
-    watchStatsBridgeOverride: WatchStatsBridge? = null
+    watchStatsBridgeOverride: WatchStatsBridge? = null,
+    tariffRepositoryOverride: TariffRepository? = null
 ) : AndroidViewModel(application) {
 
     private val settingsRepository = SettingsRepository(application)
+
+    /** Provides the all-in tariff feed for the current country (real impl, or a fake in tests). */
+    private val tariffRepository: TariffRepository =
+        tariffRepositoryOverride ?: TariffRepository(FileTariffCache(application))
     private val statsReporter = StatsReporter(
         statsCollector,
         application.getSharedPreferences("sweetspot_stats", android.content.Context.MODE_PRIVATE),
@@ -275,7 +309,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
             themeMode = ThemeMode.fromKey(settingsRepository.getThemeMode()),
             evHomeChargerKw = settingsRepository.getEvHomeChargerKw(),
             evDefaultTargetSoc = settingsRepository.getEvDefaultTargetSoc(),
-            evLastCurrentSoc = settingsRepository.getEvLastCurrentSoc()
+            evLastCurrentSoc = settingsRepository.getEvLastCurrentSoc(),
+            allInEnabled = settingsRepository.isAllInEnabled(),
+            supplierId = settingsRepository.getSupplierId(),
+            manualSurcharge = settingsRepository.getManualSurcharge()
         )
     )
 
@@ -298,6 +335,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             evVehicleRepository.vehicles
             evDbReady = true
         }
+        // Load the all-in tariff for the current country. Cache-only unless all-in is already enabled,
+        // in which case bootstrap-fetch when nothing is cached so results can apply it immediately.
+        loadTariffAsync(_uiState.value.countryCode, allowNetwork = _uiState.value.allInEnabled)
         // Connect billing and observe unlock state
         activeBilling?.let { billing ->
             billing.connect()
@@ -357,6 +397,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /** Opens the settings screen. */
     fun onShowSettings() {
         _uiState.update { it.copy(showSettings = true) }
+        // Bootstrap the tariff (only fetches if nothing is cached) so the all-in section can decide
+        // whether the country is supported and populate the supplier picker.
+        loadTariffAsync(_uiState.value.countryCode, allowNetwork = true)
     }
 
     /** Closes the settings screen and refreshes the appliance list from storage. */
@@ -364,6 +407,73 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val appliances = settingsRepository.getAppliances()
         _uiState.update { it.copy(showSettings = false, appliances = appliances) }
         syncAppliancesToWear(appliances)
+    }
+
+    // --- All-in price ---
+
+    /**
+     * Enables/disables the all-in price display. When turning it on without a loaded tariff, kicks a
+     * background fetch so the results screen can apply it.
+     */
+    fun onAllInEnabledChanged(enabled: Boolean) {
+        settingsRepository.setAllInEnabled(enabled)
+        _uiState.update { it.copy(allInEnabled = enabled) }
+        if (enabled && _uiState.value.allInTariff == null) {
+            loadTariffAsync(_uiState.value.countryCode, allowNetwork = true)
+        }
+    }
+
+    /**
+     * Selects the user's supplier and **prefills the surcharge field** with that supplier's per-kWh
+     * surcharge (like the home-charger presets) — the surcharge field is the effective value, so the
+     * user can then tweak it. Records the supplier id for display until the field is edited.
+     *
+     * @param id The chosen [today.sweetspot.model.SupplierTariff.id].
+     */
+    fun onSupplierSelected(id: String) {
+        val surcharge = _uiState.value.allInTariff?.suppliers?.firstOrNull { it.id == id }?.surchargePerKwh
+        settingsRepository.setSupplierId(id)
+        settingsRepository.setManualSurcharge(surcharge)
+        _uiState.update { it.copy(supplierId = id, manualSurcharge = surcharge) }
+    }
+
+    /**
+     * Sets or clears the per-kWh surcharge (ex-VAT) from the custom field. Editing it means the value
+     * is no longer "the supplier's", so the chosen supplier is cleared (the field is the source of truth).
+     *
+     * @param value Surcharge in the feed's currency per kWh, or `null` to clear it.
+     */
+    fun onManualSurchargeChanged(value: Double?) {
+        settingsRepository.setManualSurcharge(value)
+        settingsRepository.setSupplierId(null)
+        _uiState.update { it.copy(manualSurcharge = value, supplierId = null) }
+    }
+
+    /**
+     * Loads the all-in tariff for a country into state, off the main thread.
+     *
+     * @param countryCode Country whose feed to load.
+     * @param allowNetwork When false, only a cached copy is used (no fetch). When true, a cached copy
+     *   is served if present and only fetched when absent — unless [force] is set.
+     * @param force When true (with [allowNetwork]), always re-fetch (used on an explicit country change).
+     */
+    private fun loadTariffAsync(countryCode: String, allowNetwork: Boolean, force: Boolean = false) {
+        viewModelScope.launch(ioDispatcher) {
+            val resolved = when {
+                allowNetwork && force -> tariffRepository.refresh(countryCode)
+                allowNetwork -> tariffRepository.cached(countryCode) ?: tariffRepository.refresh(countryCode)
+                else -> tariffRepository.cached(countryCode)
+            }
+            // Guard against a late load landing after the user switched countries: only apply if the
+            // selected country still matches the one we loaded for.
+            _uiState.update {
+                if (it.countryCode == countryCode) {
+                    it.copy(allInTariff = resolved?.tariff, tariffFetchedAtMs = resolved?.fetchedAtMs)
+                } else {
+                    it
+                }
+            }
+        }
     }
 
     // --- EV charging ---
@@ -553,10 +663,18 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 priceZone = zone,
                 timeZoneId = timeZoneId,
                 sourceOrder = null,
-                disabledSources = emptySet()
+                disabledSources = emptySet(),
+                // Reset the chosen supplier, manual surcharge, and tariff — they belong to the
+                // previous country's feed (different suppliers/currency/magnitude).
+                supplierId = null,
+                manualSurcharge = null,
+                allInTariff = null,
+                tariffFetchedAtMs = null
             )
         }
         syncSettingsToWear()
+        // A country change is an explicit action selecting a different feed — always re-fetch.
+        loadTariffAsync(code, allowNetwork = true, force = true)
     }
 
     /**
@@ -1033,7 +1151,32 @@ class SweetSpotViewModel @JvmOverloads constructor(
             if (settingsRepository.isCooldownDisabled()) priceCache.resetCooldown()
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, clock = settingsRepository.devClock(timeZoneId), cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
-            val prices = priceResult.prices
+
+            // Piggyback: when all-in is in use and prices were fetched from the network, refresh the
+            // tariff too. Gated on `allInEnabled` so we never fetch tariff data for users who don't use
+            // all-in (and so unit tests without it make no tariff network calls).
+            if (state.allInEnabled && !priceResult.fromCache) {
+                loadTariffAsync(state.countryCode, allowNetwork = true, force = true)
+            }
+
+            // Apply the display-only all-in transform when enabled and a surcharge is set. The surcharge
+            // field is the source of truth (supplier picks prefill it); ranking is unchanged (monotonic).
+            val tariff = state.allInTariff
+            val surcharge = state.manualSurcharge
+            // Non-null only when all-in should be applied (enabled + usable tariff + a surcharge value).
+            val allInTariff = if (state.allInEnabled && tariff != null && tariff.usable && surcharge != null) tariff else null
+            val allInApplied = allInTariff != null
+            val prices = if (allInTariff != null && surcharge != null) {
+                AllInPricing.applyAllIn(priceResult.prices, allInTariff.taxes, surcharge)
+            } else {
+                priceResult.prices
+            }
+            // Name the supplier only while its picked value is unchanged (editing the field clears supplierId).
+            val allInSupplierName = if (allInTariff != null && state.supplierId != null) {
+                allInTariff.suppliers.firstOrNull { it.id == state.supplierId }?.name
+            } else {
+                null
+            }
 
             if (prices.isEmpty()) {
                 _uiState.update {
@@ -1068,6 +1211,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 return
             }
 
+            val allInStale = allInApplied && state.tariffFetchedAtMs?.let {
+                now.toInstant().toEpochMilli() - it > TARIFF_STALENESS_MS
+            } == true
             _uiState.update {
                 it.copy(
                     isLoading = false,
@@ -1077,7 +1223,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     allPrices = prices,
                     priceSource = priceResult.source,
                     error = null,
-                    now = now
+                    now = now,
+                    allInApplied = allInApplied,
+                    allInSupplierName = allInSupplierName,
+                    allInStale = allInStale
                 )
             }
             startResultRefresh()

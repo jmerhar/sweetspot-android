@@ -232,6 +232,20 @@ class PriceRepositoryTest {
         assertEquals(8, result.prices.size)
     }
 
+    @Test
+    fun `result is marked fromCache on a cache hit and not on a network fetch`() {
+        // Cache hit with good coverage: served from cache → fromCache true.
+        val cached = prices(startHour = 14, count = 20).toCachedData()
+        val cacheHit = PriceRepository(FakeCache(initialData = cached), timeZone, FakeFetcher(), fixedClock)
+        assertEquals(true, cacheHit.getPrices().fromCache)
+
+        // No cache: fetched from the network → fromCache false.
+        val networked = PriceRepository(
+            FakeCache(initialData = null), timeZone, FakeFetcher(prices(startHour = 14, count = 20)), fixedClock
+        )
+        assertEquals(false, networked.getPrices().fromCache)
+    }
+
     @Test(expected = RuntimeException::class)
     fun `re-fetch failure with no stale data propagates error`() {
         // Cache has all-past data — filtered list will be empty

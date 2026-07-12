@@ -3,6 +3,10 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.1" date="12 de julho de 2026" >}}
+- Preço total (Países Baixos): mostre opcionalmente o preço total ao consumidor — o preço de mercado mais o imposto sobre energia, a margem do fornecedor e o IVA — em vez do preço de mercado simples. Escolha o seu fornecedor ou indique a sua própria margem em «Preço total» nas definições. Nunca altera qual é o período mais barato; apenas mostra um custo real de utilização.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25 de junho de 2026" >}}
 - Traduções revistas e corrigidas em todos os idiomas suportados, para uma formulação mais clara e natural.
 {{< /changelog >}}

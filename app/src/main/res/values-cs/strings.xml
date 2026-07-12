@@ -168,4 +168,20 @@
     <string name="ev_error_deadline_unreachable">Nabíjení nelze dokončit do zadaného termínu. Zkuste nižší cílové nabití nebo pozdější čas.</string>
     <string name="result_disclaimer_power">Náklady jsou uvedeny pro zátěž %s kW. Ceny nezahrnují DPH, daň z energie a poplatek dodavatele. Ceny na zítřek jsou obvykle k dispozici po 13:00 SEČ.</string>
     <string name="dialog_power">Výkon (kW, volitelné)</string>
+
+    <!-- Total price (all-in) -->
+    <string name="settings_all_in_title">Konečná cena</string>
+    <string name="settings_all_in_toggle">Zobrazovat konečnou cenu</string>
+    <string name="settings_all_in_desc">Zobrazte odhadovanou plnou spotřebitelskou cenu (spotová + daň z energie + přirážka dodavatele + DPH) místo holé tržní ceny.</string>
+    <string name="all_in_supplier">Dodavatel</string>
+    <string name="all_in_supplier_prompt">Vyberte svého dodavatele</string>
+    <string name="all_in_supplier_custom">Vlastní přirážka</string>
+    <string name="all_in_no_supplier">Nenalezen žádný dodavatel. Zadejte místo toho vlastní přirážku níže.</string>
+    <string name="all_in_surcharge_custom">Vlastní přirážka (bez DPH)</string>
+    <string name="picker_supplier_title">Dodavatel</string>
+    <string name="picker_supplier_search">Hledat dodavatele</string>
+    <string name="result_disclaimer_all_in">Uvedené náklady jsou pro zátěž 1 kW při odhadované konečné ceně (spotová + daň z energie + přirážka dodavatele + DPH). Nezahrnují poplatky za distribuci ani pevné měsíční poplatky. Ceny na zítřek jsou obvykle k dispozici po 13:00 SEČ.</string>
+    <string name="result_disclaimer_power_all_in">Uvedené náklady jsou pro zátěž %s kW při odhadované konečné ceně (spotová + daň z energie + přirážka dodavatele + DPH). Nezahrnují poplatky za distribuci ani pevné měsíční poplatky. Ceny na zítřek jsou obvykle k dispozici po 13:00 SEČ.</string>
+    <string name="result_all_in_supplier">\nDodavatel: %s</string>
+    <string name="result_all_in_stale">Údaje o tarifu jsou starší než 14 dní a mohou být neaktuální.</string>
 </resources>

@@ -164,4 +164,20 @@
     <string name="ev_error_deadline_unreachable">La ricarica non può terminare entro la scadenza impostata. Prova con una carica obiettivo più bassa o un orario più tardi.</string>
     <string name="result_disclaimer_power">I costi indicati sono per un carico di %s kW. I prezzi non includono IVA, accise sull\'energia e costi del fornitore. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
     <string name="dialog_power">Potenza (kW, opzionale)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Prezzo totale</string>
+    <string name="settings_all_in_toggle">Mostra il prezzo totale</string>
+    <string name="settings_all_in_desc">Mostra il prezzo totale stimato per il consumatore (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA) invece del solo prezzo di mercato.</string>
+    <string name="all_in_supplier">Fornitore</string>
+    <string name="all_in_supplier_prompt">Seleziona il tuo fornitore</string>
+    <string name="all_in_supplier_custom">Sovrapprezzo personalizzato</string>
+    <string name="all_in_no_supplier">Nessun fornitore trovato. Inserisci invece un sovrapprezzo personalizzato qui sotto.</string>
+    <string name="all_in_surcharge_custom">Sovrapprezzo personalizzato (IVA esclusa)</string>
+    <string name="picker_supplier_title">Fornitore</string>
+    <string name="picker_supplier_search">Cerca fornitori</string>
+    <string name="result_disclaimer_all_in">I costi indicati sono per un carico di 1 kW, al prezzo totale stimato (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">I costi indicati sono per un carico di %s kW, al prezzo totale stimato (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nFornitore: %s</string>
+    <string name="result_all_in_stale">I dati tariffari risalgono a più di 14 giorni fa e potrebbero non essere aggiornati.</string>
 </resources>

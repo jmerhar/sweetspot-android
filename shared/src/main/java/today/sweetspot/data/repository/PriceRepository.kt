@@ -18,10 +18,13 @@ import java.time.ZonedDateTime
  *
  * @property prices Chronologically sorted list of future [PriceSlot] entries.
  * @property source Human-readable name of the data source (e.g. "ENTSO-E", "EnergyZero").
+ * @property fromCache True when this result was served entirely from cache (no network fetch this
+ *   call). The ViewModel uses it to piggyback a tariff refresh only when prices actually hit the network.
  */
 data class PriceResult(
     val prices: List<PriceSlot>,
-    val source: String
+    val source: String,
+    val fromCache: Boolean = false
 )
 
 /**
@@ -70,6 +73,7 @@ class PriceRepository(
 
         val cached = cache.readCached(cacheKey)
         var source = cached?.source ?: "Unknown"
+        var fetchedFromNetwork = false
         var allPrices = if (cached != null) {
             cached.prices.map { entry ->
                 PriceSlot(
@@ -81,6 +85,7 @@ class PriceRepository(
         } else {
             val result = fetchAndCache()
             source = result.source
+            fetchedFromNetwork = true
             result.prices
         }
 
@@ -96,6 +101,7 @@ class PriceRepository(
                 source = result.source
                 allPrices = result.prices
                 filtered = filterFuture(allPrices, now)
+                fetchedFromNetwork = true
             } catch (e: Exception) {
                 // If we have some stale data, show it rather than crashing.
                 // If we have nothing, let the error propagate.
@@ -103,7 +109,7 @@ class PriceRepository(
             }
         }
 
-        return PriceResult(filtered, source)
+        return PriceResult(filtered, source, fromCache = !fetchedFromNetwork)
     }
 
     /**

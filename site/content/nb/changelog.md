@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.1" date="12. juli 2026" >}}
+- Totalpris (Nederland): vis om ønskelig hele forbrukerprisen — spotprisen pluss energiavgift, leverandørpåslag og MVA — i stedet for bare spotprisen. Velg leverandøren din eller angi ditt eget påslag under «Totalpris» i innstillingene. Det endrer aldri hvilken periode som er billigst; det viser bare en mer realistisk kostnad.
+{{< /changelog >}}
+
 {{< changelog version="6.0.1" date="25. juni 2026" >}}
 - Forbedrede og korrigerte oversettelser på alle støttede språk for klarere og mer naturlig ordlyd.
 {{< /changelog >}}

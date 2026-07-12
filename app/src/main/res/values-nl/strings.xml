@@ -160,4 +160,20 @@
     <string name="ev_error_deadline_unreachable">Het laden kan niet voor je deadline klaar zijn. Probeer een lager streefniveau of een later tijdstip.</string>
     <string name="result_disclaimer_power">Kosten zijn voor een belasting van %s kW. Prijzen zijn exclusief btw, energiebelasting en leverancierskosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
     <string name="dialog_power">Vermogen (kW, optioneel)</string>
+
+    <!-- All-in pricing -->
+    <string name="settings_all_in_title">Totaalprijs</string>
+    <string name="settings_all_in_toggle">Totaalprijs tonen</string>
+    <string name="settings_all_in_desc">Toon de geschatte totale consumentenprijs (marktprijs + energiebelasting + leveranciersopslag + btw) in plaats van de kale marktprijs.</string>
+    <string name="all_in_supplier">Leverancier</string>
+    <string name="all_in_supplier_prompt">Selecteer je leverancier</string>
+    <string name="all_in_supplier_custom">Aangepaste opslag</string>
+    <string name="all_in_no_supplier">Geen leverancier gevonden. Voer hieronder in plaats daarvan een eigen opslag in.</string>
+    <string name="all_in_surcharge_custom">Aangepaste opslag (excl. btw)</string>
+    <string name="picker_supplier_title">Leverancier</string>
+    <string name="picker_supplier_search">Zoek leveranciers</string>
+    <string name="result_disclaimer_all_in">Kosten zijn per 1 kW vermogen, tegen de geschatte totaalprijs (marktprijs + energiebelasting + leveranciersopslag + btw). Exclusief netbeheerkosten en vaste maandelijkse kosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Kosten zijn voor een belasting van %s kW, tegen de geschatte totaalprijs (marktprijs + energiebelasting + leveranciersopslag + btw). Exclusief netbeheerkosten en vaste maandelijkse kosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
+    <string name="result_all_in_supplier">\nLeverancier: %s</string>
+    <string name="result_all_in_stale">De tariefgegevens zijn meer dan 14 dagen oud en zijn mogelijk verouderd.</string>
 </resources>

@@ -28,9 +28,9 @@ import tools.fastlane.screengrab.locale.LocaleTestRule
  * 1. Result screen (cheapest window for washing machine)
  * 2. Home screen (form with translated appliance chips, incl. an EV)
  * 3. Price chart (scrolled to show "Upcoming Prices" title + chart)
- * 4. Settings screen
- * 5. EV charging (state-of-charge dialog)
- * 6. Language picker
+ * 4. Appliances settings sub-screen (saved appliances) — opened from the settings menu
+ * 5. EV charging settings sub-screen (home charger, target charge, saved vehicles)
+ * 6. Language picker (opened via the Appearance sub-screen)
  *
  * Test data is pre-populated via [ScreenshotTestData] with a fixed time override, 15-minute
  * resolution prices, and a seeded EV vehicle. Appliance names are translated per locale.
@@ -60,9 +60,6 @@ class ScreenshotTest {
     /** Localized title for the "Upcoming Prices" chart section. */
     private lateinit var labelUpcomingPrices: String
 
-    /** Localized "Cancel" label, used to dismiss the EV state-of-charge dialog. */
-    private lateinit var cancelLabel: String
-
     @Before
     fun setUp() {
         // 1. Populate SharedPreferences and cache BEFORE launching.
@@ -84,7 +81,6 @@ class ScreenshotTest {
             cdSettings = activity.getString(R.string.cd_settings)
             cdBack = activity.getString(R.string.cd_back)
             labelUpcomingPrices = activity.getString(R.string.result_upcoming_prices)
-            cancelLabel = activity.getString(R.string.action_cancel)
         }
     }
 
@@ -95,17 +91,7 @@ class ScreenshotTest {
         composeTestRule.waitUntilAtLeastOneExists(hasText(washerName), timeoutMillis = 10_000)
         Screengrab.screenshot("2_home")
 
-        // 2. EV charging — tap the EV chip to open the state-of-charge dialog
-        composeTestRule.onNodeWithText(ScreenshotTestData.EV_VEHICLE_NAME).performClick()
-        composeTestRule.waitUntilAtLeastOneExists(hasText(cancelLabel), timeoutMillis = 5_000)
-        composeTestRule.waitForIdle()
-        Thread.sleep(1_000)
-        Screengrab.screenshot("5_ev_charging")
-        // Dismiss the dialog so the home screen is restored for the next steps.
-        composeTestRule.onNodeWithText(cancelLabel).performClick()
-        composeTestRule.waitForIdle()
-
-        // 3. Result screen — tap washing machine to trigger search
+        // 2. Result screen — tap washing machine to trigger search
         composeTestRule.onNodeWithText(washerName).performClick()
         composeTestRule.waitUntilAtLeastOneExists(hasText(washerName, substring = true), timeoutMillis = 15_000)
         composeTestRule.waitForIdle()
@@ -123,16 +109,34 @@ class ScreenshotTest {
         Thread.sleep(1_000)
         Screengrab.screenshot("3_prices")
 
-        // 4. Settings screen
+        // Back to the home form, then open Settings (a category menu).
         composeTestRule.onNodeWithContentDescription(cdBack).performClick()
         composeTestRule.waitForIdle()
         composeTestRule.onNodeWithContentDescription(cdSettings).performClick()
         composeTestRule.waitForIdle()
+
+        // 4. Appliances sub-screen — opened from the menu, showing the saved appliances.
+        composeTestRule.onNodeWithTag("menu_appliances").performClick()
+        composeTestRule.waitUntilAtLeastOneExists(hasText(washerName), timeoutMillis = 5_000)
+        composeTestRule.waitForIdle()
         Thread.sleep(1_000)
         Screengrab.screenshot("4_settings")
+        composeTestRule.onNodeWithContentDescription(cdBack).performClick()  // back to the menu
+        composeTestRule.waitForIdle()
 
-        // 5. Language picker — click the language row (identified by testTag,
-        //    since the "Language" header text is a non-clickable label above it)
+        // 5. EV charging sub-screen — home charger, target charge, and the saved vehicle.
+        composeTestRule.onNodeWithTag("menu_ev").performClick()
+        composeTestRule.waitUntilAtLeastOneExists(hasText(ScreenshotTestData.EV_VEHICLE_NAME), timeoutMillis = 5_000)
+        composeTestRule.waitForIdle()
+        Thread.sleep(1_000)
+        Screengrab.screenshot("5_ev_charging")
+        composeTestRule.onNodeWithContentDescription(cdBack).performClick()  // back to the menu
+        composeTestRule.waitForIdle()
+
+        // 6. Language picker — via the Appearance sub-screen, then its language row (testTag,
+        //    since the "Language" header text is a non-clickable label above it).
+        composeTestRule.onNodeWithTag("menu_appearance").performClick()
+        composeTestRule.waitForIdle()
         composeTestRule.onNodeWithTag("language_row")
             .performScrollTo()
             .performClick()

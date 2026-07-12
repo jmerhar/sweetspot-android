@@ -1,6 +1,6 @@
 # Screengrabfile — Configuration for Fastlane Screengrab.
 #
-# Captures 5 screenshots per locale (125 total) via the ScreenshotTest
+# Captures 6 screenshots per locale (150 total) via the ScreenshotTest
 # instrumented test. Requires a connected device or running emulator.
 
 app_package_name('today.sweetspot.debug')

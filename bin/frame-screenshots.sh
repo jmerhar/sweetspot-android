@@ -10,7 +10,7 @@ set -euo pipefail
 #   Image 1 — Title text + large rotated result phone (extends past right edge)
 #   Image 2 — No title. Two phones: home screen (background, upright, higher)
 #             + continuation of rotated result phone from image 1 (foreground)
-#   Images 3–5 — Title text + single upright phone, centred
+#   Images 3–6 — Title text + single upright phone, centred
 #
 # Requires ImageMagick 7 (magick) and fonts in fastlane/screenshots/fonts/.
 
@@ -68,34 +68,6 @@ SINGLE_GAP=80            # Gap between bottom of title text and top of phone (px
 
 # ──────────────────────────────────────────────
 # Helper: prepare a phone image (scale → round corners → shadow)
-# ──────────────────────────────────────────────
-# Crops the top off a centred-dialog screenshot so the dialog sits high in the frame.
-#
-# Detects the bright modal dialog card (near-white over the dimmed background) and crops the
-# image down to a fixed margin above it, keeping everything below. Falls back to copying the
-# raw unchanged if the dialog can't be located.
-# ──────────────────────────────────────────────
-DIALOG_MARGIN_ABOVE=170   # px of dimmed scrim kept above the dialog after cropping
-
-crop_above_dialog() {
-    local raw="$1" out="$2"
-    local w h top crop_y
-    w=$(magick identify -format "%w" "$raw")
-    h=$(magick identify -format "%h" "$raw")
-    # Find the first row whose mean brightness exceeds 60% — the top edge of the white modal
-    # dialog. A row profile (image squashed to 1px wide) cleanly distinguishes the bright dialog
-    # (~75%) from the thin status bar and the dimmed app behind it (both <45%), unlike a plain
-    # white-pixel bounding box, which would latch onto the status-bar icons at the very top.
-    top=$(magick "$raw" -colorspace Gray -resize "1x${h}!" txt:- 2>/dev/null \
-        | sed -n 's/^0,\([0-9]*\):.*[Gg]r[ae]y(\([0-9.]*\)%).*/\1 \2/p' \
-        | awk '$2 > 60 && f == 0 { print $1; f = 1 }') || true
-    if [[ -z "$top" ]]; then
-        cp "$raw" "$out"; return
-    fi
-    crop_y=$(( top > DIALOG_MARGIN_ABOVE ? top - DIALOG_MARGIN_ABOVE : 0 ))
-    magick "$raw" -crop "${w}x$(( h - crop_y ))+0+${crop_y}" +repage "$out"
-}
-
 # ──────────────────────────────────────────────
 prepare_phone() {
     local raw="$1" output="$2" scale_pct="$3"
@@ -343,23 +315,13 @@ main() {
         # Clean up spanning phone
         [[ -n "$spanning_phone" ]] && rm -f "$spanning_phone"
 
-        # The EV charging screenshot is a centred modal dialog. Crop the phone's top down to
-        # just above the dialog so it sits high in the frame instead of being pushed to the
-        # bottom (and clipped) when the caption wraps to several lines.
-        local raw_ev_cropped="" ev_tmp_dir=""
-        if [[ -n "$raw_ev_charging" && -f "$raw_ev_charging" ]]; then
-            ev_tmp_dir=$(mktemp -d)
-            raw_ev_cropped="$ev_tmp_dir/ev.png"
-            crop_above_dialog "$raw_ev_charging" "$raw_ev_cropped"
-        fi
-
-        # --- Images 3–6: single phone ---
+        # --- Images 3–6: single phone (all full settings/app screens now) ---
         local filter raw bg text
         for filter in 3_prices 4_settings 5_ev_charging 6_languages; do
             case "$filter" in
                 3_prices)      raw="$raw_prices";      bg="$BG_3" ;;
                 4_settings)    raw="$raw_settings";    bg="$BG_4" ;;
-                5_ev_charging) raw="$raw_ev_cropped";  bg="$BG_6" ;;
+                5_ev_charging) raw="$raw_ev_charging"; bg="$BG_6" ;;
                 6_languages)   raw="$raw_languages";   bg="$BG_5" ;;
             esac
             [[ -n "$raw" && -f "$raw" ]] || continue
@@ -368,8 +330,6 @@ main() {
             frame_single "$raw" "$text" "$bg" "$out_dir/${filter}.png"
             count=$((count + 1))
         done
-
-        [[ -n "$ev_tmp_dir" ]] && rm -rf "$ev_tmp_dir"
     done
 
     generate_html

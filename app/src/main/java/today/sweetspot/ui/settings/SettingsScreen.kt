@@ -31,6 +31,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -279,13 +280,15 @@ private fun SettingsMenu(
                 iconRes = SharedR.drawable.ic_device,
                 title = stringResource(R.string.settings_appliances),
                 description = stringResource(R.string.settings_appliances_menu_desc),
-                onClick = { onOpen(SettingsRoute.Appliances) }
+                onClick = { onOpen(SettingsRoute.Appliances) },
+                modifier = Modifier.testTag("menu_appliances")
             )
             SettingsMenuRow(
                 iconRes = SharedR.drawable.ic_ev_charger,
                 title = stringResource(R.string.settings_ev_title),
                 description = stringResource(R.string.settings_ev_menu_desc),
-                onClick = { onOpen(SettingsRoute.Ev) }
+                onClick = { onOpen(SettingsRoute.Ev) },
+                modifier = Modifier.testTag("menu_ev")
             )
             if (allInSupported) {
                 SettingsMenuRow(
@@ -305,7 +308,8 @@ private fun SettingsMenu(
                 iconRes = SharedR.drawable.ic_appearance,
                 title = stringResource(R.string.settings_appearance_title),
                 description = stringResource(R.string.settings_appearance_desc),
-                onClick = { onOpen(SettingsRoute.Appearance) }
+                onClick = { onOpen(SettingsRoute.Appearance) },
+                modifier = Modifier.testTag("menu_appearance")
             )
 
             // Statistics opt-in stays inline on the menu (toggle row).

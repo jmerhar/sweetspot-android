@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.1.1" date="12 juli 2026" >}}
+- Totaalprijs verbeterd: het opslagveld toont nu je valuta (bijv. €/kWh), de instellingen onthouden je scrollpositie wanneer je terugkomt van een keuzelijst, en als de totaalprijs is ingeschakeld herinnert de app je eraan een leverancier te kiezen of een opslag in te voeren voordat je de instellingen sluit.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12 juli 2026" >}}
 - Totaalprijs (Nederland): toon desgewenst de volledige consumentenprijs — de marktprijs plus energiebelasting, leveranciersopslag en btw — in plaats van alleen de kale marktprijs. Kies je leverancier of vul je eigen opslag in onder 'Totaalprijs' in de instellingen. Het verandert nooit welke periode het goedkoopst is; het toont alleen realistischere kosten.
 {{< /changelog >}}

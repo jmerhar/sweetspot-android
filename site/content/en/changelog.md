@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.1.1" date="July 12, 2026" >}}
+- All-in price polish: the surcharge field now shows your currency (e.g. €/kWh), Settings keeps your scroll position when you return from a picker, and it reminds you to choose a supplier or enter a surcharge before leaving if the total price is switched on.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="July 12, 2026" >}}
 - All-in price (Netherlands): optionally show the full consumer price — the spot price plus energy tax, your supplier's surcharge, and VAT — instead of the bare market price. Pick your supplier or enter your own surcharge under "Total price" in Settings. It never changes which window is cheapest; it just shows a realistic run cost.
 {{< /changelog >}}

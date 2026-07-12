@@ -92,6 +92,7 @@
     <string name="all_in_supplier_custom">Custom surcharge</string>
     <string name="all_in_no_supplier">No supplier found. Enter a custom surcharge below instead.</string>
     <string name="all_in_surcharge_custom">Custom surcharge (excl. VAT)</string>
+    <string name="all_in_incomplete">Select a supplier or enter a surcharge, or turn off the total price.</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d zone</item>
         <item quantity="other">%d zones</item>

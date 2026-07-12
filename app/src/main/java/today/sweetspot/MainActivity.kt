@@ -1,7 +1,6 @@
 package today.sweetspot
 
 import android.os.Bundle
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -56,7 +55,8 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
                     state.showSettings -> {
-                        BackHandler { vm.onHideSettings() }
+                        // System back is handled inside SettingsScreen so it can gate leaving (e.g. an
+                        // incomplete all-in setup) and close its own picker sub-screens first.
                         SettingsScreen(
                             themeMode = state.themeMode,
                             onThemeModeChanged = vm::onThemeModeChanged,
@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
                             allInSuppliers = state.allInTariff?.suppliers ?: emptyList(),
                             selectedSupplierId = state.supplierId,
                             manualSurcharge = state.manualSurcharge,
+                            allInCurrency = state.allInCurrency,
                             onAllInEnabledChanged = vm::onAllInEnabledChanged,
                             onSupplierSelected = vm::onSupplierSelected,
                             onManualSurchargeChanged = vm::onManualSurchargeChanged,

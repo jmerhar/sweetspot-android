@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.1.1" date="12. juli 2026" >}}
+- Totalpris forbedret: påslagsfeltet viser nå valutaen din (f.eks. €/kWh), innstillingene beholder rulleposisjonen når du kommer tilbake fra en velger, og hvis totalprisen er slått på, minner appen deg om å velge en leverandør eller angi et påslag før du forlater innstillingene.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. juli 2026" >}}
 - Totalpris (Nederland): vis om ønskelig hele forbrukerprisen — spotprisen pluss energiavgift, leverandørpåslag og MVA — i stedet for bare spotprisen. Velg leverandøren din eller angi ditt eget påslag under «Totalpris» i innstillingene. Det endrer aldri hvilken periode som er billigst; det viser bare en mer realistisk kostnad.
 {{< /changelog >}}

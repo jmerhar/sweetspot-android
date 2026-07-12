@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Eigener Aufschlag</string>
     <string name="all_in_no_supplier">Kein Lieferant gefunden. Gib stattdessen unten einen eigenen Aufschlag ein.</string>
     <string name="all_in_surcharge_custom">Eigener Aufschlag (ohne MwSt.)</string>
+    <string name="all_in_incomplete">Wähle einen Lieferanten oder gib einen Aufschlag ein, oder schalte den Gesamtpreis aus.</string>
     <string name="picker_supplier_title">Lieferant</string>
     <string name="picker_supplier_search">Lieferanten suchen</string>
     <string name="result_disclaimer_all_in">Die angezeigten Kosten gelten für 1 kW Leistung, zum geschätzten Gesamtpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>

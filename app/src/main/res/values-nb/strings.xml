@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Egendefinert påslag</string>
     <string name="all_in_no_supplier">Fant ingen leverandør. Legg inn et egendefinert påslag nedenfor i stedet.</string>
     <string name="all_in_surcharge_custom">Egendefinert påslag (eks. MVA)</string>
+    <string name="all_in_incomplete">Velg en leverandør eller legg inn et påslag, eller slå av totalprisen.</string>
     <string name="picker_supplier_title">Leverandør</string>
     <string name="picker_supplier_search">Søk etter leverandører</string>
     <string name="result_disclaimer_all_in">Kostnadene er vist per 1 kW last, til den estimerte totalprisen (spotpris + energiavgift + leverandørpåslag + MVA). Nettleie og faste månedlige avgifter er ikke inkludert. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.</string>

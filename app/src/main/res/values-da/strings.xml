@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Brugerdefineret tillæg</string>
     <string name="all_in_no_supplier">Ingen leverandør fundet. Indtast et brugerdefineret tillæg nedenfor i stedet.</string>
     <string name="all_in_surcharge_custom">Brugerdefineret tillæg (ekskl. moms)</string>
+    <string name="all_in_incomplete">Vælg en leverandør eller indtast et tillæg, eller slå totalprisen fra.</string>
     <string name="picker_supplier_title">Leverandør</string>
     <string name="picker_supplier_search">Søg leverandører</string>
     <string name="result_disclaimer_all_in">De viste omkostninger er pr. 1 kW belastning, ved den anslåede totalpris (spot + energiafgift + leverandørtillæg + moms). Ekskl. nettarif og faste månedlige gebyrer. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>

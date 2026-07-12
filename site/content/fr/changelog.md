@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12 juillet 2026" >}}
+- Améliorations du prix total : le champ de marge affiche désormais votre devise (p. ex. €/kWh), les Paramètres conservent votre position de défilement au retour d'un sélecteur, et ils vous rappellent de choisir un fournisseur ou de saisir une marge avant de quitter si le prix total est activé.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12 juillet 2026" >}}
 - Prix total (Pays-Bas) : affichez si vous le souhaitez le prix total pour le consommateur — le prix spot plus la taxe sur l'énergie, la marge de votre fournisseur et la TVA — au lieu du seul prix du marché. Choisissez votre fournisseur ou saisissez votre propre marge sous « Prix total », dans les Paramètres. Cela ne change jamais quel créneau est le moins cher ; cela montre simplement un coût d'utilisation réaliste.
 {{< /changelog >}}

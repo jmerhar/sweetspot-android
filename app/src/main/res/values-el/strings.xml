@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Προσαρμοσμένη προσαύξηση</string>
     <string name="all_in_no_supplier">Δεν βρέθηκε προμηθευτής. Εισαγάγετε μια προσαρμοσμένη προσαύξηση παρακάτω.</string>
     <string name="all_in_surcharge_custom">Προσαρμοσμένη προσαύξηση (χωρίς ΦΠΑ)</string>
+    <string name="all_in_incomplete">Επιλέξτε έναν προμηθευτή ή εισαγάγετε μια προσαύξηση, ή απενεργοποιήστε την τελική τιμή.</string>
     <string name="picker_supplier_title">Προμηθευτής</string>
     <string name="picker_supplier_search">Αναζήτηση προμηθευτών</string>
     <string name="result_disclaimer_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο 1 kW, στην εκτιμώμενη τελική τιμή (χονδρική + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>

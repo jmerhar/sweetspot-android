@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12. srpnja 2026." >}}
+- Poboljšanja ukupne cijene: polje marže sada prikazuje vašu valutu (npr. €/kWh), Postavke zadržavaju položaj klizanja kad se vratite iz birača te vas podsjećaju da odaberete dobavljača ili unesete maržu prije izlaska ako je ukupna cijena uključena.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. srpnja 2026." >}}
 - Ukupna cijena (Nizozemska): po želji prikažite punu potrošačku cijenu — burzovnu cijenu uvećanu za porez na energiju, maržu vašeg dobavljača i PDV — umjesto gole tržišne cijene. Odaberite dobavljača ili unesite vlastitu maržu pod „Ukupna cijena“ u Postavkama. Nikada ne mijenja koji je termin najjeftiniji; samo prikazuje realan trošak korištenja.
 {{< /changelog >}}

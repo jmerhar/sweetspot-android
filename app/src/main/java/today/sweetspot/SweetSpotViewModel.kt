@@ -75,6 +75,15 @@ private const val EV_SEARCH_LIMIT = 50
 private const val TARIFF_STALENESS_MS = 14L * 24 * 60 * 60 * 1000
 
 /**
+ * The currency all spot prices are expressed in. The entire price pipeline (every [PriceFetcher],
+ * [today.sweetspot.model.PriceSlot], and [today.sweetspot.util.formatPrice]) assumes EUR. The all-in
+ * transform adds the feed's surcharge and taxes to the spot price, so it is only valid — and only
+ * offered — when the feed's currency matches this. A feed in any other currency is gated off until the
+ * app gains end-to-end multi-currency support (a spot price would need to carry its own currency).
+ */
+private const val SPOT_CURRENCY = "EUR"
+
+/**
  * UI state for the main screen.
  *
  * @property durationHours Selected hours component of the duration (0–24).
@@ -198,8 +207,15 @@ data class UiState(
     /** True when the applied tariff is older than the staleness cutoff (shows an "out of date" warning). */
     val allInStale: Boolean = false
 ) {
-    /** Whether all-in pricing is offered for the selected country (a usable tariff feed exists). */
-    val allInSupported: Boolean get() = allInTariff?.usable == true
+    /**
+     * Whether all-in pricing is offered for the selected country: a usable tariff feed exists **and**
+     * its currency matches the spot-price currency ([SPOT_CURRENCY]). A feed in another currency can't
+     * be combined with EUR spot prices, so it is gated off (section hidden) rather than shown wrong.
+     */
+    val allInSupported: Boolean get() = allInTariff?.let { it.usable && it.currency == SPOT_CURRENCY } == true
+
+    /** Currency of the loaded tariff (for labelling the surcharge field); falls back to the spot currency. */
+    val allInCurrency: String get() = allInTariff?.currency ?: SPOT_CURRENCY
 }
 
 /**
@@ -1163,8 +1179,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
             // field is the source of truth (supplier picks prefill it); ranking is unchanged (monotonic).
             val tariff = state.allInTariff
             val surcharge = state.manualSurcharge
-            // Non-null only when all-in should be applied (enabled + usable tariff + a surcharge value).
-            val allInTariff = if (state.allInEnabled && tariff != null && tariff.usable && surcharge != null) tariff else null
+            // Non-null only when all-in should be applied (enabled + usable, same-currency tariff + a
+            // surcharge value). The currency guard mirrors `allInSupported` — never add a non-EUR feed's
+            // surcharge to EUR spot prices.
+            val allInTariff = if (state.allInEnabled && tariff != null && tariff.usable && tariff.currency == SPOT_CURRENCY && surcharge != null) tariff else null
             val allInApplied = allInTariff != null
             val prices = if (allInTariff != null && surcharge != null) {
                 AllInPricing.applyAllIn(priceResult.prices, allInTariff.taxes, surcharge)

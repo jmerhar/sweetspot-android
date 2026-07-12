@@ -3,6 +3,10 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="6.1.1" date="12. juli 2026" >}}
+- Finpudsning af totalprisen: tillægsfeltet viser nu din valuta (f.eks. €/kWh), indstillingerne bevarer din scroll-position, når du vender tilbage fra en vælger, og hvis totalprisen er slået til, minder appen dig om at vælge en leverandør eller indtaste et tillæg, før du forlader siden.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. juli 2026" >}}
 - Totalpris (Holland): vis eventuelt den fulde forbrugerpris — spotprisen plus energiafgift, din leverandørs tillæg og moms — i stedet for den rene markedspris. Vælg din leverandør eller indtast dit eget tillæg under „Totalpris“ i indstillingerne. Det ændrer aldrig, hvilket tidsrum der er billigst; det viser blot en realistisk driftsomkostning.
 {{< /changelog >}}

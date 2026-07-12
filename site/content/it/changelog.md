@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12 luglio 2026" >}}
+- Prezzo totale, rifiniture: il campo del sovrapprezzo ora mostra la tua valuta (es. €/kWh), le Impostazioni mantengono la posizione di scorrimento quando torni da un selettore e, se il Prezzo totale è attivo, ti ricorda di scegliere un fornitore o inserire un sovrapprezzo prima di uscire.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12 luglio 2026" >}}
 - Prezzo totale (Paesi Bassi): puoi scegliere di mostrare il prezzo finale al consumatore — il prezzo spot più le accise sull'energia, il sovrapprezzo del tuo fornitore e l'IVA — anziché il solo prezzo di mercato. Scegli il tuo fornitore o inserisci il tuo sovrapprezzo in «Prezzo totale» nelle Impostazioni. Non cambia mai quale orario è il più economico; mostra solo un costo di utilizzo realistico.
 {{< /changelog >}}

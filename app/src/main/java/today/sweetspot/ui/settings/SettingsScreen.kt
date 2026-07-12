@@ -83,6 +83,7 @@ fun SettingsScreen(
     allInSuppliers: List<today.sweetspot.model.SupplierTariff>,
     selectedSupplierId: String?,
     manualSurcharge: Double?,
+    allInCurrency: String,
     onAllInEnabledChanged: (Boolean) -> Unit,
     onSupplierSelected: (String) -> Unit,
     onManualSurchargeChanged: (Double?) -> Unit,
@@ -127,6 +128,22 @@ fun SettingsScreen(
     var showAddVehicleDialog by rememberSaveable { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+
+    // Hoisted above the picker early-returns below so scroll position survives opening a picker and
+    // coming back (the main content leaves composition while a picker is shown).
+    val scrollState = rememberScrollState()
+
+    // All-in is enabled but has neither a supplier nor a manual surcharge — there's nothing to apply, so
+    // block leaving until the user resolves it (or turns all-in off). Only when the section is shown.
+    val allInIncomplete = allInSupported && allInEnabled && selectedSupplierId == null && manualSurcharge == null
+    val allInIncompleteMessage = stringResource(R.string.all_in_incomplete)
+    val attemptBack: () -> Unit = {
+        if (allInIncomplete) {
+            coroutineScope.launch { snackbarHostState.showSnackbar(allInIncompleteMessage) }
+        } else {
+            onBack()
+        }
+    }
 
     val defaultTimeZoneId = remember(priceZone) {
         priceZone?.timeZoneId?.let { ZoneId.of(it) } ?: ZoneId.systemDefault()
@@ -228,6 +245,7 @@ fun SettingsScreen(
         SupplierPickerScreen(
             suppliers = allInSuppliers,
             selectedSupplierId = selectedSupplierId,
+            currencyCode = allInCurrency,
             onSupplierSelected = { id ->
                 onSupplierSelected(id)
                 showSupplierPicker = false
@@ -298,13 +316,17 @@ fun SettingsScreen(
     val currentCountry = remember(countryCode) { Countries.findByCode(countryCode) }
     val isMultiZone = (currentCountry?.zones?.size ?: 0) > 1
 
+    // System back at the settings root (only composed when no picker is open — pickers return early
+    // above with their own BackHandler). Routes through the same gate as the top-bar arrow.
+    BackHandler { attemptBack() }
+
     Scaffold(
         modifier = modifier,
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.settings_title)) },
                 navigationIcon = {
-                    IconButton(onClick = onBack) {
+                    IconButton(onClick = attemptBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.cd_back)
@@ -323,7 +345,7 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
         ) {
             if (!isUnlocked) {
                 UnlockSection(
@@ -388,6 +410,7 @@ fun SettingsScreen(
                     suppliers = allInSuppliers,
                     selectedSupplierId = selectedSupplierId,
                     manualSurcharge = manualSurcharge,
+                    currencyCode = allInCurrency,
                     onEnabledChange = onAllInEnabledChanged,
                     onSupplierClick = { showSupplierPicker = true },
                     onManualSurchargeChange = onManualSurchargeChanged

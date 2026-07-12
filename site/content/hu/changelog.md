@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.1.1" date="2026. július 12." >}}
+- Teljes ár – finomítások: a felár mezője mostantól a pénznemedet mutatja (pl. €/kWh), a Beállítások megőrzi a görgetési pozíciót, amikor visszatérsz egy választóból, és ha a Teljes ár be van kapcsolva, kilépés előtt emlékeztet, hogy válassz szolgáltatót vagy adj meg felárat.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="2026. július 12." >}}
 - Teljes ár (Hollandia): tetszés szerint megjelenítheted a teljes fogyasztói árat — a tőzsdei ár plusz az energiaadó, a szolgáltatói díj és az ÁFA — a puszta piaci ár helyett. Válaszd ki a szolgáltatódat, vagy add meg a saját díjadat a Beállítások „Teljes ár” pontjában. Ez soha nem változtatja meg, melyik időszak a legolcsóbb; csak reálisabb futási költséget mutat.
 {{< /changelog >}}

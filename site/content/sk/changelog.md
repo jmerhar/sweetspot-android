@@ -3,6 +3,10 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12. júla 2026" >}}
+- Vylepšenia celkovej ceny: pole prirážky teraz zobrazuje vašu menu (napr. €/kWh), nastavenia si po návrate z výberu zapamätajú miesto, kde ste skončili, a ak je zapnutá celková cena, pripomenú vám, aby ste pred odchodom vybrali dodávateľa alebo zadali prirážku.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. júla 2026" >}}
 - Celková cena (Holandsko): voliteľne zobrazte konečnú spotrebiteľskú cenu — spotovú cenu plus daň z energie, prirážku vášho dodávateľa a DPH — namiesto samotnej trhovej ceny. V nastaveniach v časti „Celková cena“ vyberte svojho dodávateľa alebo zadajte vlastnú prirážku. Nikdy nemení, ktoré obdobie je najlacnejšie — len ukáže reálne náklady na spustenie.
 {{< /changelog >}}

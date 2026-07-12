@@ -178,6 +178,7 @@
     <string name="all_in_supplier_custom">Pribitek po meri</string>
     <string name="all_in_no_supplier">Dobavitelja ni bilo mogoče najti. Namesto tega spodaj vnesite pribitek po meri.</string>
     <string name="all_in_surcharge_custom">Pribitek po meri (brez DDV)</string>
+    <string name="all_in_incomplete">Izberite dobavitelja ali vnesite pribitek, sicer pa izklopite skupno ceno.</string>
     <string name="picker_supplier_title">Dobavitelj</string>
     <string name="picker_supplier_search">Išči dobavitelje</string>
     <string name="result_disclaimer_all_in">Stroški so prikazani za 1 kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>

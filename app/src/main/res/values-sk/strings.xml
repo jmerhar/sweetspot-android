@@ -178,6 +178,7 @@
     <string name="all_in_supplier_custom">Vlastná prirážka</string>
     <string name="all_in_no_supplier">Nenašiel sa žiadny dodávateľ. Namiesto toho zadajte vlastnú prirážku nižšie.</string>
     <string name="all_in_surcharge_custom">Vlastná prirážka (bez DPH)</string>
+    <string name="all_in_incomplete">Vyberte dodávateľa alebo zadajte prirážku, prípadne vypnite celkovú cenu.</string>
     <string name="picker_supplier_title">Dodávateľ</string>
     <string name="picker_supplier_search">Hľadať dodávateľov</string>
     <string name="result_disclaimer_all_in">Náklady sú uvedené pre záťaž 1 kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>

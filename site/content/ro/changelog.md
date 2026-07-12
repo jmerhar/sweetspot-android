@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12 iulie 2026" >}}
+- Preț total îmbunătățit: câmpul de adaos afișează acum moneda ta (de ex. €/kWh), setările păstrează poziția de derulare când revii dintr-un selector, iar dacă prețul total este activat, aplicația îți amintește să alegi un furnizor sau să introduci un adaos înainte de a ieși.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12 iulie 2026" >}}
 - Preț total (Țările de Jos): afișează opțional prețul total pentru consumator — prețul de piață plus taxa pe energie, adaosul furnizorului și TVA — în locul prețului de piață simplu. Alege-ți furnizorul sau introdu propriul adaos la „Preț total” în setări. Nu schimbă niciodată care perioadă este cea mai ieftină; arată doar un cost real de utilizare.
 {{< /changelog >}}

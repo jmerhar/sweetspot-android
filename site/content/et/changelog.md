@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.1.1" date="12. juuli 2026" >}}
+- Koguhinna täiustused: juurdehindluse väli näitab nüüd sinu vääringut (nt €/kWh), Seaded säilitavad kerimiskoha, kui valijast tagasi tuled, ning tuletavad meelde valida tarnija või sisestada juurdehindlus enne lahkumist, kui koguhind on sisse lülitatud.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. juuli 2026" >}}
 - Koguhind (Holland): soovi korral kuva paljas turuhinna asemel täielik tarbijahind — börsihind pluss energiamaks, sinu tarnija juurdehindlus ja käibemaks. Vali oma tarnija või sisesta oma juurdehindlus Seadetes jaotises „Koguhind“. See ei muuda kunagi seda, milline ajavahemik on soodsaim; see näitab lihtsalt realistlikku kasutuskulu.
 {{< /changelog >}}

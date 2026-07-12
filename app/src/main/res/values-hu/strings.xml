@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Egyéni felár</string>
     <string name="all_in_no_supplier">Nem található szolgáltató. Add meg alább az egyéni felárat.</string>
     <string name="all_in_surcharge_custom">Egyéni felár (ÁFA nélkül)</string>
+    <string name="all_in_incomplete">Válassz szolgáltatót vagy adj meg egy felárat, vagy kapcsold ki a teljes árat.</string>
     <string name="picker_supplier_title">Szolgáltató</string>
     <string name="picker_supplier_search">Szolgáltatók keresése</string>
     <string name="result_disclaimer_all_in">A költségek 1 kW terhelésre vonatkoznak, a becsült teljes áron (tőzsdei ár + energiaadó + szolgáltatói díj + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>

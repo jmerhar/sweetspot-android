@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Aangepaste opslag</string>
     <string name="all_in_no_supplier">Geen leverancier gevonden. Voer hieronder in plaats daarvan een eigen opslag in.</string>
     <string name="all_in_surcharge_custom">Aangepaste opslag (excl. btw)</string>
+    <string name="all_in_incomplete">Selecteer een leverancier of voer een opslag in, of schakel de totaalprijs uit.</string>
     <string name="picker_supplier_title">Leverancier</string>
     <string name="picker_supplier_search">Zoek leveranciers</string>
     <string name="result_disclaimer_all_in">Kosten zijn per 1 kW vermogen, tegen de geschatte totaalprijs (marktprijs + energiebelasting + leveranciersopslag + btw). Exclusief netbeheerkosten en vaste maandelijkse kosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>

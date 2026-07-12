@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.1.1" date="12. Juli 2026" >}}
+- Feinschliff beim Gesamtpreis: Das Aufschlag-Feld zeigt jetzt deine Währung an (z. B. €/kWh), die Einstellungen behalten beim Zurückkehren aus einer Auswahl die Scroll-Position, und bei aktiviertem Gesamtpreis wirst du erinnert, einen Lieferanten zu wählen oder einen Aufschlag einzugeben, bevor du die Seite verlässt.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. Juli 2026" >}}
 - Gesamtpreis (Niederlande): Zeige optional den vollen Verbraucherpreis — den Börsenpreis plus Energiesteuer, den Aufschlag deines Lieferanten und MwSt. — statt des reinen Marktpreises. Wähle deinen Lieferanten oder gib deinen eigenen Aufschlag unter „Gesamtpreis“ in den Einstellungen ein. Er ändert nie, welcher Zeitraum am günstigsten ist; er zeigt nur realistische Betriebskosten.
 {{< /changelog >}}

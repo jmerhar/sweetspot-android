@@ -178,6 +178,7 @@
     <string name="all_in_supplier_custom">Własna marża</string>
     <string name="all_in_no_supplier">Nie znaleziono dostawcy. Zamiast tego wpisz własną marżę poniżej.</string>
     <string name="all_in_surcharge_custom">Własna marża (bez VAT)</string>
+    <string name="all_in_incomplete">Wybierz dostawcę lub wpisz marżę albo wyłącz cenę całkowitą.</string>
     <string name="picker_supplier_title">Dostawca</string>
     <string name="picker_supplier_search">Szukaj dostawców</string>
     <string name="result_disclaimer_all_in">Koszty są podane dla obciążenia 1 kW, według szacunkowej ceny całkowitej (cena rynkowa + podatek energetyczny + marża dostawcy + VAT). Nie obejmują opłat dystrybucyjnych ani stałych opłat miesięcznych. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>

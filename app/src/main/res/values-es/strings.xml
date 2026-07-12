@@ -174,6 +174,7 @@
     <string name="all_in_supplier_custom">Recargo personalizado</string>
     <string name="all_in_no_supplier">No se encontró ningún proveedor. Introduce un recargo personalizado a continuación.</string>
     <string name="all_in_surcharge_custom">Recargo personalizado (sin IVA)</string>
+    <string name="all_in_incomplete">Selecciona un proveedor o introduce un recargo, o desactiva el precio total.</string>
     <string name="picker_supplier_title">Proveedor</string>
     <string name="picker_supplier_search">Buscar proveedores</string>
     <string name="result_disclaimer_all_in">Los costes se muestran para una carga de 1 kW, al precio total estimado (precio spot + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>

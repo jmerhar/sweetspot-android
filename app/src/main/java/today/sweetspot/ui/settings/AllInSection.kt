@@ -36,6 +36,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.model.SupplierTariff
+import today.sweetspot.util.currencySymbol
 import today.sweetspot.util.formatPrice
 
 /**
@@ -50,6 +51,7 @@ import today.sweetspot.util.formatPrice
  * @param suppliers Suppliers from the tariff feed (for the picker and to resolve the selected name).
  * @param selectedSupplierId The chosen supplier id, or null.
  * @param manualSurcharge Manual per-kWh surcharge override (ex-VAT), or null. Overrides the supplier.
+ * @param currencyCode ISO 4217 currency of the tariff feed, used to label the surcharge field.
  * @param onEnabledChange Called when the toggle flips.
  * @param onSupplierClick Called to open the supplier picker.
  * @param onManualSurchargeChange Called with the parsed override, or null when cleared.
@@ -60,6 +62,7 @@ internal fun AllInSection(
     suppliers: List<SupplierTariff>,
     selectedSupplierId: String?,
     manualSurcharge: Double?,
+    currencyCode: String,
     onEnabledChange: (Boolean) -> Unit,
     onSupplierClick: () -> Unit,
     onManualSurchargeChange: (Double?) -> Unit
@@ -137,7 +140,8 @@ internal fun AllInSection(
                     }
                 },
                 label = { Text(stringResource(R.string.all_in_surcharge_custom)) },
-                suffix = { Text(stringResource(R.string.result_per_kwh)) },
+                // Currency comes from the feed (e.g. "€/kWh") so the unit is unambiguous.
+                suffix = { Text("${currencySymbol(currencyCode)}${stringResource(R.string.result_per_kwh)}") },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                 modifier = Modifier.fillMaxWidth()
@@ -147,12 +151,17 @@ internal fun AllInSection(
     }
 }
 
-/** Full-screen supplier picker: search + a list showing each supplier's per-kWh surcharge. */
+/**
+ * Full-screen supplier picker: search + a list showing each supplier's per-kWh surcharge.
+ *
+ * @param currencyCode ISO 4217 currency of the feed, used to format each supplier's surcharge.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SupplierPickerScreen(
     suppliers: List<SupplierTariff>,
     selectedSupplierId: String?,
+    currencyCode: String,
     onSupplierSelected: (String) -> Unit,
     onBack: () -> Unit
 ) {
@@ -214,7 +223,7 @@ internal fun SupplierPickerScreen(
                 items(filtered) { supplier ->
                     PickerRow(
                         label = supplier.name,
-                        subtitle = "${formatPrice(supplier.surchargePerKwh, 4)}$perKwh",
+                        subtitle = "${formatPrice(supplier.surchargePerKwh, 4, currencyCode)}$perKwh",
                         isSelected = supplier.id == selectedSupplierId,
                         onClick = { onSupplierSelected(supplier.id) }
                     )

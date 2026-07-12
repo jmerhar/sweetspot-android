@@ -174,6 +174,7 @@
     <string name="all_in_supplier_custom">Margem personalizada</string>
     <string name="all_in_no_supplier">Nenhum fornecedor encontrado. Em alternativa, introduza uma margem personalizada abaixo.</string>
     <string name="all_in_surcharge_custom">Margem personalizada (sem IVA)</string>
+    <string name="all_in_incomplete">Selecione um fornecedor ou introduza uma margem, ou desative o preço total.</string>
     <string name="picker_supplier_title">Fornecedor</string>
     <string name="picker_supplier_search">Pesquisar fornecedores</string>
     <string name="result_disclaimer_all_in">Os custos apresentados referem-se a uma carga de 1 kW, ao preço total estimado (preço de mercado + imposto sobre energia + margem do fornecedor + IVA). Não incluem tarifas de rede nem encargos fixos mensais. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>

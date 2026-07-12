@@ -33,24 +33,36 @@ fun formatHhMm(hour: Int, minute: Int): String =
     String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
 
 /**
- * Formats a EUR price using the device locale's currency conventions.
+ * Formats a price using the device locale's currency conventions.
  *
  * Handles symbol placement (before/after), decimal separator, thousands separator,
  * and spacing automatically per locale. For example, `formatPrice(0.0877, 4)` produces
  * `"€ 0,0877"` in Dutch but `"0,0877 €"` in German.
  *
- * @param price Price in EUR.
+ * @param price Price amount.
  * @param decimals Number of decimal places to display.
+ * @param currencyCode ISO 4217 currency code (defaults to EUR, the spot-price currency). An
+ *   unrecognised code falls back to EUR so a bad feed never crashes formatting.
  * @return Locale-formatted currency string.
  */
-fun formatPrice(price: Double, decimals: Int): String {
+fun formatPrice(price: Double, decimals: Int, currencyCode: String = "EUR"): String {
     val formatter = NumberFormat.getCurrencyInstance(Locale.getDefault()).apply {
-        currency = Currency.getInstance("EUR")
+        currency = runCatching { Currency.getInstance(currencyCode) }.getOrDefault(Currency.getInstance("EUR"))
         minimumFractionDigits = decimals
         maximumFractionDigits = decimals
     }
     return formatter.format(price)
 }
+
+/**
+ * Returns the display symbol for a currency code (e.g. "EUR" → "€"), in the device locale.
+ * Falls back to the code itself if it isn't a recognised ISO 4217 currency.
+ *
+ * @param currencyCode ISO 4217 currency code.
+ * @return The locale-specific currency symbol, or the code on failure.
+ */
+fun currencySymbol(currencyCode: String): String =
+    runCatching { Currency.getInstance(currencyCode).getSymbol(Locale.getDefault()) }.getOrDefault(currencyCode)
 
 /**
  * Formats a duration as a human-readable string.

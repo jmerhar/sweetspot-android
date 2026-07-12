@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Mukautettu marginaali</string>
     <string name="all_in_no_supplier">Sähkönmyyjää ei löytynyt. Syötä sen sijaan mukautettu marginaali alle.</string>
     <string name="all_in_surcharge_custom">Mukautettu marginaali (ilman ALV:a)</string>
+    <string name="all_in_incomplete">Valitse sähkönmyyjä tai syötä marginaali tai poista kokonaishinta käytöstä.</string>
     <string name="picker_supplier_title">Sähkönmyyjä</string>
     <string name="picker_supplier_search">Hae sähkönmyyjiä</string>
     <string name="result_disclaimer_all_in">Kustannukset on laskettu 1 kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>

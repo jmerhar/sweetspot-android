@@ -1604,8 +1604,8 @@ class SweetSpotViewModelTest {
         }
     }
 
-    private fun feedJson(usable: Boolean = true, surcharge: Double = 0.10) =
-        """{"country":"NL","currency":"EUR","usable":$usable,""" +
+    private fun feedJson(usable: Boolean = true, surcharge: Double = 0.10, currency: String = "EUR") =
+        """{"country":"NL","currency":"$currency","usable":$usable,""" +
         """"taxes":[{"id":"vat","type":"percentage","value":0.21},{"id":"e","type":"perKwh","value":0.05}],""" +
         """"suppliers":[{"id":"acme","name":"Acme","surchargePerKwh":$surcharge}]}"""
 
@@ -1781,5 +1781,53 @@ class SweetSpotViewModelTest {
         runCurrent()
         assertNull(vm.uiState.value.supplierId)
         assertNull(vm.uiState.value.manualSurcharge)
+    }
+
+    @Test
+    fun `a failing tariff refresh does not break the price results`() = runTest {
+        // Cached usable feed so all-in applies, but the network fetcher always throws. The price fetch
+        // hits the network (FakeCache misses), so the piggyback tariff refresh runs and fails — the
+        // results and the all-in transform (from the cached feed) must be unaffected.
+        val repo = TariffRepository(
+            FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(null, RuntimeException("tariff offline")),
+            Clock.systemUTC()
+        )
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        runCurrent()                      // load the cached tariff before picking a supplier
+        vm.onSupplierSelected("acme")
+        runCurrent()
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val s = vm.uiState.value
+        vm.onClearResult()
+
+        assertTrue(s.result != null)      // results rendered despite the failing tariff fetch
+        assertNull(s.error)               // no error surfaced by the failed refresh
+        assertTrue(s.allInApplied)        // all-in still applied from the cached feed
+    }
+
+    @Test
+    fun `a non-EUR tariff is not offered for all-in`() = runTest {
+        // The whole price pipeline is EUR; a feed in another currency can't be combined with EUR spot
+        // prices, so it must be gated off (not supported) and never applied even if enabled.
+        val repo = TariffRepository(
+            FakeTariffCache(RawTariff(feedJson(currency = "PLN"), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(currency = "PLN")), Clock.systemUTC()
+        )
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        runCurrent()
+        assertFalse(vm.uiState.value.allInSupported)   // gated off despite usable:true
+
+        vm.onManualSurchargeChanged(0.10)
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val applied = vm.uiState.value.allInApplied
+        vm.onClearResult()
+        assertFalse(applied)                            // never mixes a PLN surcharge into EUR prices
     }
 }

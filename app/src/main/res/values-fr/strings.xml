@@ -174,6 +174,7 @@
     <string name="all_in_supplier_custom">Marge personnalisée</string>
     <string name="all_in_no_supplier">Aucun fournisseur trouvé. Saisissez plutôt une marge personnalisée ci-dessous.</string>
     <string name="all_in_surcharge_custom">Marge personnalisée (hors TVA)</string>
+    <string name="all_in_incomplete">Veuillez sélectionner un fournisseur ou saisir une marge, ou désactiver le prix total.</string>
     <string name="picker_supplier_title">Fournisseur</string>
     <string name="picker_supplier_search">Rechercher des fournisseurs</string>
     <string name="result_disclaimer_all_in">Les coûts sont indiqués pour une charge de 1 kW, au prix total estimé (prix spot + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>

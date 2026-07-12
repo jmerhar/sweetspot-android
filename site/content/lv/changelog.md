@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.1.1" date="2026. gada 12. jūlijs" >}}
+- Pilnās cenas uzlabojumi: uzcenojuma laukā tagad redzama jūsu valūta (piem., €/kWh), Iestatījumi saglabā ritināšanas pozīciju, kad atgriežaties no izvēlnes, un, ja Pilnā cena ir ieslēgta, pirms iziešanas tie atgādina izvēlēties piegādātāju vai ievadīt uzcenojumu.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="2026. gada 12. jūlijs" >}}
 - Pilnā cena (Nīderlande): pēc izvēles rādiet pilno patērētāja cenu — biržas cenu plus enerģijas nodoklis, piegādātāja uzcenojums un PVN — nevis tikai tirgus cenu. Iestatījumos sadaļā „Pilnā cena“ izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Tas nekad nemaina, kurš periods ir lētākais; tas tikai parāda reālas lietošanas izmaksas.
 {{< /changelog >}}

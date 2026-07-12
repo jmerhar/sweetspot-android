@@ -3,6 +3,10 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12. července 2026" >}}
+- Vylepšení konečné ceny: pole přirážky nyní zobrazuje vaši měnu (např. €/kWh), nastavení si při návratu z výběru zachová pozici posuvníku a při zapnuté konečné ceně vám před odchodem připomene, abyste vybrali dodavatele nebo zadali přirážku.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. července 2026" >}}
 - Konečná cena (Nizozemsko): volitelně zobrazte plnou spotřebitelskou cenu — spotovou cenu plus daň z energie, přirážku vašeho dodavatele a DPH — místo holé tržní ceny. Vyberte svého dodavatele nebo zadejte vlastní přirážku v části „Konečná cena“ v nastavení. Nikdy nemění, které období je nejlevnější; jen ukazuje reálnou cenu provozu.
 {{< /changelog >}}

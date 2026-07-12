@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.1.1" date="12 lipca 2026" >}}
+- Cena całkowita dopracowana: pole marży pokazuje teraz Twoją walutę (np. €/kWh), ustawienia zachowują pozycję przewijania po powrocie z listy wyboru, a gdy cena całkowita jest włączona, aplikacja przypomina o wybraniu dostawcy lub wpisaniu marży przed opuszczeniem ustawień.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12 lipca 2026" >}}
 - Cena całkowita (Holandia): opcjonalnie pokazuj pełną cenę dla konsumenta — cenę rynkową powiększoną o podatek energetyczny, marżę dostawcy i VAT — zamiast samej ceny rynkowej. Wybierz swojego dostawcę lub wpisz własną marżę w sekcji „Cena całkowita” w ustawieniach. Nigdy nie zmienia to, który okres jest najtańszy; pokazuje tylko realny koszt zużycia.
 {{< /changelog >}}

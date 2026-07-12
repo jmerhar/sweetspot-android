@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Anpassat påslag</string>
     <string name="all_in_no_supplier">Ingen leverantör hittades. Ange ett anpassat påslag nedan i stället.</string>
     <string name="all_in_surcharge_custom">Anpassat påslag (exkl. moms)</string>
+    <string name="all_in_incomplete">Välj en leverantör eller ange ett påslag, eller stäng av totalpriset.</string>
     <string name="picker_supplier_title">Leverantör</string>
     <string name="picker_supplier_search">Sök leverantörer</string>
     <string name="result_disclaimer_all_in">Kostnader visas per 1 kW last, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>

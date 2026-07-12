@@ -83,6 +83,33 @@ class FormatUtilsTest {
         assertTrue("Expected '0300' in '$result'", result.contains("0300"))
     }
 
+    @Test
+    fun `formatPrice uses the given currency`() {
+        // A non-EUR code should not render the euro symbol; USD renders '$' or the 'USD' code.
+        val usd = formatPrice(0.0877, 4, "USD")
+        assertTrue("Expected USD marker in '$usd'", usd.contains("$") || usd.contains("USD"))
+    }
+
+    @Test
+    fun `formatPrice falls back to EUR for an unknown currency`() {
+        val bad = formatPrice(0.0877, 4, "ZZZ")
+        assertTrue("Expected EUR fallback in '$bad'", bad.contains("\u20ac") || bad.contains("EUR"))
+    }
+
+    // --- currencySymbol ---
+
+    @Test
+    fun `currencySymbol resolves known codes`() {
+        // "\u20ac" in most locales; some render the "EUR" code \u2014 accept either.
+        val sym = currencySymbol("EUR")
+        assertTrue("Expected \u20ac or EUR, got '$sym'", sym == "\u20ac" || sym == "EUR")
+    }
+
+    @Test
+    fun `currencySymbol falls back to the code when unknown`() {
+        assertEquals("ZZZ", currencySymbol("ZZZ"))
+    }
+
     // --- formatKw ---
 
     @Test

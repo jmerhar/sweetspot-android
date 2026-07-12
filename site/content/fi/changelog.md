@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.1.1" date="12. heinäkuuta 2026" >}}
+- Kokonaishinnan hienosäätöä: marginaalikenttä näyttää nyt valuuttasi (esim. €/kWh), Asetukset säilyttää vierityskohdan, kun palaat valitsimesta, ja muistuttaa valitsemaan sähkönmyyjän tai syöttämään marginaalin ennen poistumista, jos kokonaishinta on käytössä.
+{{< /changelog >}}
+
 {{< changelog version="6.1" date="12. heinäkuuta 2026" >}}
 - Kokonaishinta (Alankomaat): näytä halutessasi pelkän markkinahinnan sijaan täysi kuluttajahinta — pörssihinta plus sähkövero, myyjäsi marginaali ja ALV. Valitse myyjäsi tai syötä oma marginaalisi Asetusten kohdassa ”Kokonaishinta”. Se ei koskaan muuta sitä, mikä ajankohta on halvin; se vain näyttää realistisen käyttökustannuksen.
 {{< /changelog >}}

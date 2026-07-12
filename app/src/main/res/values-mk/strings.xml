@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Прилагоден надоместок</string>
     <string name="all_in_no_supplier">Не е пронајден добавувач. Наместо тоа, внесете прилагоден надоместок подолу.</string>
     <string name="all_in_surcharge_custom">Прилагоден надоместок (без ДДВ)</string>
+    <string name="all_in_incomplete">Изберете добавувач или внесете надоместок, или исклучете ја крајната цена.</string>
     <string name="picker_supplier_title">Добавувач</string>
     <string name="picker_supplier_search">Пребарај добавувачи</string>
     <string name="result_disclaimer_all_in">Трошоците се прикажани за оптоварување од 1 kW, по проценетата крајна цена (спот + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>

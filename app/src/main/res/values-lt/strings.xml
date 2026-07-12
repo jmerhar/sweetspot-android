@@ -178,6 +178,7 @@
     <string name="all_in_supplier_custom">Pasirinktinis antkainis</string>
     <string name="all_in_no_supplier">Tiekėjų nerasta. Vietoj to įveskite pasirinktinį antkainį žemiau.</string>
     <string name="all_in_surcharge_custom">Pasirinktinis antkainis (be PVM)</string>
+    <string name="all_in_incomplete">Pasirinkite tiekėją arba įveskite antkainį, arba išjunkite galutinę kainą.</string>
     <string name="picker_supplier_title">Tiekėjas</string>
     <string name="picker_supplier_search">Ieškoti tiekėjų</string>
     <string name="result_disclaimer_all_in">Kainos nurodytos 1 kW apkrovai, taikant apytikslę galutinę kainą (biržos kaina + energijos mokestis + tiekėjo antkainis + PVM). Neįskaičiuoti tinklo mokesčiai ir fiksuoti mėnesio mokesčiai. Rytojaus kainos paprastai skelbiamos po 13:00 CET.</string>

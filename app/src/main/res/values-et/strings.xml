@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Kohandatud juurdehindlus</string>
     <string name="all_in_no_supplier">Tarnijat ei leitud. Sisesta selle asemel allpool kohandatud juurdehindlus.</string>
     <string name="all_in_surcharge_custom">Kohandatud juurdehindlus (ilma käibemaksuta)</string>
+    <string name="all_in_incomplete">Valige tarnija või sisestage juurdehindlus või lülitage koguhind välja.</string>
     <string name="picker_supplier_title">Tarnija</string>
     <string name="picker_supplier_search">Otsi tarnijaid</string>
     <string name="result_disclaimer_all_in">Kulud on arvutatud 1 kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>

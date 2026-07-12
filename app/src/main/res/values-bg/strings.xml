@@ -170,6 +170,7 @@
     <string name="all_in_supplier_custom">Персонализирана надценка</string>
     <string name="all_in_no_supplier">Няма намерен доставчик. Вместо това въведете персонализирана надценка по-долу.</string>
     <string name="all_in_surcharge_custom">Персонализирана надценка (без ДДС)</string>
+    <string name="all_in_incomplete">Изберете доставчик или въведете надценка, или изключете крайната цена.</string>
     <string name="picker_supplier_title">Доставчик</string>
     <string name="picker_supplier_search">Търсене на доставчици</string>
     <string name="result_disclaimer_all_in">Показаните разходи са за 1 kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>

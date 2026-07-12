@@ -3,6 +3,10 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12. července 2026" >}}
+- Přepracované nastavení: přehledná nabídka kategorií, každá s vlastní ikonou a obrazovkou — Spotřebiče, Nabíjení elektromobilu, Konečná cena, Region (země, cenová zóna, časová zóna), Vzhled (jazyk, motiv) a Pokročilé. Vše se hledá snáz než v dřívějším jednom dlouhém seznamu a po návratu z výběru zůstanete tam, kde jste byli.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. července 2026" >}}
 - Vylepšení konečné ceny: pole přirážky nyní zobrazuje vaši měnu (např. €/kWh), nastavení si při návratu z výběru zachová pozici posuvníku a při zapnuté konečné ceně vám před odchodem připomene, abyste vybrali dodavatele nebo zadali přirážku.
 {{< /changelog >}}

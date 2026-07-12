@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Автоматично (от държавата)</string>
     <string name="settings_custom_timezone">Персонализирана часова зона</string>
     <string name="settings_unknown_country">Неизвестна</string>
+    <string name="settings_region_title">Регион</string>
+    <string name="settings_region_desc">Държава, ценова зона и часова зона</string>
+    <string name="settings_appearance_title">Външен вид</string>
+    <string name="settings_appearance_desc">Език и тема</string>
+    <string name="settings_appliances_menu_desc">Вашите запазени уреди</string>
+    <string name="settings_ev_menu_desc">Зарядно, целево зареждане и превозни средства</string>
+    <string name="settings_all_in_menu_desc">Показвайте пълната крайна цена</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Добавяне на уред</string>

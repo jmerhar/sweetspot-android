@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12 juillet 2026" >}}
+- Paramètres repensés : un menu de catégories bien rangé, chacune avec une icône et son propre écran — Appareils, Recharge de véhicule électrique, Prix total, Région (pays, zone tarifaire, fuseau horaire), Apparence (langue, thème) et Avancé. Tout se trouve plus facilement qu'avec l'ancienne longue liste unique, et au retour d'un sélecteur votre position est conservée.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 juillet 2026" >}}
 - Améliorations du prix total : le champ de marge affiche désormais votre devise (p. ex. €/kWh), les Paramètres conservent votre position de défilement au retour d'un sélecteur, et ils vous rappellent de choisir un fournisseur ou de saisir une marge avant de quitter si le prix total est activé.
 {{< /changelog >}}

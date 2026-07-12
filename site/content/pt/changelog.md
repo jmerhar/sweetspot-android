@@ -3,6 +3,10 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12 de julho de 2026" >}}
+- Definições renovadas: um menu organizado de categorias, cada uma com o seu ícone e ecrã — Eletrodomésticos, Carregamento de VE, Preço total, Região (país, zona de preços, fuso horário), Aspeto (idioma, tema) e Avançado. É tudo mais fácil de encontrar do que na antiga lista longa e, ao regressar de um seletor, mantém a sua posição.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 de julho de 2026" >}}
 - Preço total aprimorado: o campo de margem mostra agora a sua moeda (ex.: €/kWh), as definições mantêm a posição de deslocamento ao regressar de um seletor e, se o preço total estiver ativado, a app lembra-o de escolher um fornecedor ou indicar uma margem antes de sair.
 {{< /changelog >}}

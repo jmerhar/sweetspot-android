@@ -1767,7 +1767,7 @@ class SweetSpotViewModelTest {
     }
 
     @Test
-    fun `country change resets the chosen supplier and manual surcharge`() = runTest {
+    fun `country change resets all-in enabled, supplier, and manual surcharge`() = runTest {
         val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(), System.currentTimeMillis())),
             CountingTariffFetcher(feedJson()), Clock.systemUTC())
         val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
@@ -1779,6 +1779,9 @@ class SweetSpotViewModelTest {
 
         vm.onCountrySelected("DE")
         runCurrent()
+        // All-in is turned off (not left enabled-but-inert) and its supplier/surcharge cleared, since
+        // they belonged to the previous country's feed.
+        assertFalse(vm.uiState.value.allInEnabled)
         assertNull(vm.uiState.value.supplierId)
         assertNull(vm.uiState.value.manualSurcharge)
     }

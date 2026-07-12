@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.2" date="12. juuli 2026" >}}
+- Ümberkujundatud Seaded: korrastatud kategooriate menüü, igaühel oma ikoon ja eraldi ekraan — Seadmed, Elektriauto laadimine, Koguhind, Piirkond (riik, hinnatsoon, ajavöönd), Välimus (keel, teema) ja Täpsemalt. Kõike on lihtsam leida kui varasemast ühest pikast loendist ning valijast naastes säilib sinu koht.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. juuli 2026" >}}
 - Koguhinna täiustused: juurdehindluse väli näitab nüüd sinu vääringut (nt €/kWh), Seaded säilitavad kerimiskoha, kui valijast tagasi tuled, ning tuletavad meelde valida tarnija või sisestada juurdehindlus enne lahkumist, kui koguhind on sisse lülitatud.
 {{< /changelog >}}

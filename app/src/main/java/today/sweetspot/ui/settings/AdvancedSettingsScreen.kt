@@ -1,5 +1,6 @@
 package today.sweetspot.ui.settings
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -88,6 +89,9 @@ internal fun AdvancedSettingsScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
     val resources = LocalContext.current.resources
+
+    // System back returns to the settings menu (previously supplied by the old call site).
+    BackHandler { onBack() }
 
     Scaffold(
         topBar = {

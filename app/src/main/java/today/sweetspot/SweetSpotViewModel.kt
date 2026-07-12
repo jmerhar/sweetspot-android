@@ -671,6 +671,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onCountrySelected(code: String) {
         settingsRepository.setCountryCode(code)
         settingsRepository.setPriceZoneId(null)
+        // Turn all-in off: the chosen supplier/surcharge belonged to the previous country's feed and
+        // are cleared, so leaving it "enabled" would be an inert, half-configured state (the user must
+        // re-pick a supplier for the new country anyway).
+        settingsRepository.setAllInEnabled(false)
         val zone = settingsRepository.getResolvedPriceZone()
         val timeZoneId = settingsRepository.getTimeZoneId()
         _uiState.update {
@@ -680,8 +684,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 timeZoneId = timeZoneId,
                 sourceOrder = null,
                 disabledSources = emptySet(),
-                // Reset the chosen supplier, manual surcharge, and tariff — they belong to the
-                // previous country's feed (different suppliers/currency/magnitude).
+                // Reset all-in — the supplier, manual surcharge, and tariff belong to the previous
+                // country's feed (different suppliers/currency/magnitude), and the toggle with them.
+                allInEnabled = false,
                 supplierId = null,
                 manualSurcharge = null,
                 allInTariff = null,

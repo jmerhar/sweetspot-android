@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatique (du pays)</string>
     <string name="settings_custom_timezone">Fuseau horaire personnalisé</string>
     <string name="settings_unknown_country">Inconnu</string>
+    <string name="settings_region_title">Région</string>
+    <string name="settings_region_desc">Pays, zone tarifaire et fuseau horaire</string>
+    <string name="settings_appearance_title">Apparence</string>
+    <string name="settings_appearance_desc">Langue et thème</string>
+    <string name="settings_appliances_menu_desc">Vos appareils enregistrés</string>
+    <string name="settings_ev_menu_desc">Borne, charge cible et véhicules</string>
+    <string name="settings_all_in_menu_desc">Afficher le prix total au consommateur</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Ajouter un appareil</string>

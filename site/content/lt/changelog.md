@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.2" date="2026 m. liepos 12 d." >}}
+- Pertvarkyti Nustatymai: tvarkingas kategorijų meniu, kiekviena su piktograma ir atskiru ekranu — Prietaisai, Elektromobilio įkrovimas, Galutinė kaina, Regionas (šalis, kainų zona, laiko juosta), Išvaizda (kalba, tema) ir Išplėstiniai. Viską lengviau rasti nei ankstesniame viename ilgame sąraše, o grįžus iš parinkiklio išsaugoma jūsų vieta.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="2026 m. liepos 12 d." >}}
 - Galutinės kainos patobulinimai: antkainio laukelyje dabar rodoma jūsų valiuta (pvz., €/kWh), Nustatymai išsaugo slinkties vietą, kai grįžtate iš parinkiklio, o jei Galutinė kaina įjungta, prieš išeinant primenama pasirinkti tiekėją arba įvesti antkainį.
 {{< /changelog >}}

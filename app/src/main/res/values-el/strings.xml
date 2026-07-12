@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Αυτόματη (από τη χώρα)</string>
     <string name="settings_custom_timezone">Προσαρμοσμένη ζώνη ώρας</string>
     <string name="settings_unknown_country">Άγνωστη</string>
+    <string name="settings_region_title">Περιοχή</string>
+    <string name="settings_region_desc">Χώρα, ζώνη τιμών και ζώνη ώρας</string>
+    <string name="settings_appearance_title">Εμφάνιση</string>
+    <string name="settings_appearance_desc">Γλώσσα και θέμα</string>
+    <string name="settings_appliances_menu_desc">Οι αποθηκευμένες συσκευές σας</string>
+    <string name="settings_ev_menu_desc">Φορτιστής, στόχος φόρτισης και οχήματα</string>
+    <string name="settings_all_in_menu_desc">Εμφάνιση της πλήρους τιμής καταναλωτή</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Προσθήκη συσκευής</string>

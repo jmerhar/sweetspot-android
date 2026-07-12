@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12 lipca 2026" >}}
+- Odświeżone ustawienia: przejrzyste menu kategorii, każda z własną ikoną i ekranem — Urządzenia, Ładowanie auta elektrycznego, Cena całkowita, Region (kraj, strefa cenowa, strefa czasowa), Wygląd (język, motyw) i Zaawansowane. Wszystko łatwiej znaleźć niż na dawnej długiej liście, a po powrocie z listy wyboru zachowujesz swoje miejsce.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 lipca 2026" >}}
 - Cena całkowita dopracowana: pole marży pokazuje teraz Twoją walutę (np. €/kWh), ustawienia zachowują pozycję przewijania po powrocie z listy wyboru, a gdy cena całkowita jest włączona, aplikacja przypomina o wybraniu dostawcy lub wpisaniu marży przed opuszczeniem ustawień.
 {{< /changelog >}}

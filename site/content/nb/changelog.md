@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.2" date="12. juli 2026" >}}
+- Fornyede innstillinger: en ryddig meny med kategorier, hver med et eget ikon og skjermbilde — Apparater, Elbillading, Totalpris, Region (land, prisområde, tidssone), Utseende (språk, tema) og Avansert. Alt er lettere å finne enn i den forrige lange listen, og når du kommer tilbake fra en velger, beholder du plassen din.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. juli 2026" >}}
 - Totalpris forbedret: påslagsfeltet viser nå valutaen din (f.eks. €/kWh), innstillingene beholder rulleposisjonen når du kommer tilbake fra en velger, og hvis totalprisen er slått på, minner appen deg om å velge en leverandør eller angi et påslag før du forlater innstillingene.
 {{< /changelog >}}

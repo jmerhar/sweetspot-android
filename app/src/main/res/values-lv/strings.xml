@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automātiski (no valsts)</string>
     <string name="settings_custom_timezone">Pielāgota laika josla</string>
     <string name="settings_unknown_country">Nezināma</string>
+    <string name="settings_region_title">Reģions</string>
+    <string name="settings_region_desc">Valsts, cenu zona un laika josla</string>
+    <string name="settings_appearance_title">Izskats</string>
+    <string name="settings_appearance_desc">Valoda un motīvs</string>
+    <string name="settings_appliances_menu_desc">Jūsu saglabātās ierīces</string>
+    <string name="settings_ev_menu_desc">Lādētājs, uzlādes mērķis un transportlīdzekļi</string>
+    <string name="settings_all_in_menu_desc">Rādīt pilno patērētāja cenu</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Pievienot ierīci</string>

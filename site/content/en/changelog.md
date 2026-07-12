@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.2" date="July 12, 2026" >}}
+- Redesigned Settings: a tidy menu of categories, each with an icon and its own screen — Appliances, EV charging, Total price, Region (country, price zone, timezone), Appearance (language, theme), and Advanced. Everything is easier to find than the previous single long list, and returning from a picker keeps your place.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="July 12, 2026" >}}
 - All-in price polish: the surcharge field now shows your currency (e.g. €/kWh), Settings keeps your scroll position when you return from a picker, and it reminds you to choose a supplier or enter a surcharge before leaving if the total price is switched on.
 {{< /changelog >}}

@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.2" date="2026. gada 12. jūlijs" >}}
+- Pārveidoti Iestatījumi: kārtīga kategoriju izvēlne, katrai sava ikona un savs ekrāns — Ierīces, Elektroauto uzlāde, Pilnā cena, Reģions (valsts, cenu zona, laika josla), Izskats (valoda, motīvs) un Papildu. Visu ir vieglāk atrast nekā iepriekšējā vienā garā sarakstā, un, atgriežoties no izvēlnes, tiek saglabāta jūsu atrašanās vieta.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="2026. gada 12. jūlijs" >}}
 - Pilnās cenas uzlabojumi: uzcenojuma laukā tagad redzama jūsu valūta (piem., €/kWh), Iestatījumi saglabā ritināšanas pozīciju, kad atgriežaties no izvēlnes, un, ja Pilnā cena ir ieslēgta, pirms iziešanas tie atgādina izvēlēties piegādātāju vai ievadīt uzcenojumu.
 {{< /changelog >}}

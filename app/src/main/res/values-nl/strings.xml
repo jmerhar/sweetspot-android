@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatisch (van land)</string>
     <string name="settings_custom_timezone">Aangepaste tijdzone</string>
     <string name="settings_unknown_country">Onbekend</string>
+    <string name="settings_region_title">Regio</string>
+    <string name="settings_region_desc">Land, prijszone en tijdzone</string>
+    <string name="settings_appearance_title">Weergave</string>
+    <string name="settings_appearance_desc">Taal en thema</string>
+    <string name="settings_appliances_menu_desc">Je opgeslagen apparaten</string>
+    <string name="settings_ev_menu_desc">Lader, streefniveau en voertuigen</string>
+    <string name="settings_all_in_menu_desc">Toon de volledige consumentenprijs</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Apparaat toevoegen</string>

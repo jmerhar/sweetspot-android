@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12 luglio 2026" >}}
+- Impostazioni ridisegnate: un menu ordinato di categorie, ciascuna con la propria icona e la propria schermata — Elettrodomestici, Ricarica auto elettrica, Prezzo totale, Regione (paese, zona di prezzo, fuso orario), Aspetto (lingua, tema) e Avanzate. Tutto è più facile da trovare rispetto al precedente unico lungo elenco, e tornando da un selettore mantieni la tua posizione.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 luglio 2026" >}}
 - Prezzo totale, rifiniture: il campo del sovrapprezzo ora mostra la tua valuta (es. €/kWh), le Impostazioni mantengono la posizione di scorrimento quando torni da un selettore e, se il Prezzo totale è attivo, ti ricorda di scegliere un fornitore o inserire un sovrapprezzo prima di uscire.
 {{< /changelog >}}

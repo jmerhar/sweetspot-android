@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12. srpnja 2026." >}}
+- Redizajnirane Postavke: uredan izbornik kategorija, svaka sa svojom ikonom i vlastitim zaslonom — Uređaji, Punjenje električnog vozila, Ukupna cijena, Regija (država, cjenovna zona, vremenska zona), Izgled (jezik, tema) i Napredno. Sve je lakše pronaći nego u prijašnjem jednom dugom popisu, a povratkom iz birača zadržava se vaš položaj.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. srpnja 2026." >}}
 - Poboljšanja ukupne cijene: polje marže sada prikazuje vašu valutu (npr. €/kWh), Postavke zadržavaju položaj klizanja kad se vratite iz birača te vas podsjećaju da odaberete dobavljača ili unesete maržu prije izlaska ako je ukupna cijena uključena.
 {{< /changelog >}}

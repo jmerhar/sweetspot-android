@@ -3,6 +3,10 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12 de julio de 2026" >}}
+- Ajustes rediseñados: un menú ordenado de categorías, cada una con su icono y su propia pantalla — Electrodomésticos, Carga de vehículo eléctrico, Precio total, Región (país, zona de precios, zona horaria), Apariencia (idioma, tema) y Avanzado. Todo se encuentra más fácilmente que en la antigua lista única y larga, y al volver de un selector se conserva tu posición.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 de julio de 2026" >}}
 - Mejoras en el precio total: el campo de recargo ahora muestra tu moneda (p. ej. €/kWh), Ajustes conserva la posición de desplazamiento al volver de un selector y te recuerda elegir un proveedor o introducir un recargo antes de salir si el precio total está activado.
 {{< /changelog >}}

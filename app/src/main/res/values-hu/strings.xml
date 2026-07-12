@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatikus (ország alapján)</string>
     <string name="settings_custom_timezone">Egyéni időzóna</string>
     <string name="settings_unknown_country">Ismeretlen</string>
+    <string name="settings_region_title">Régió</string>
+    <string name="settings_region_desc">Ország, árzóna és időzóna</string>
+    <string name="settings_appearance_title">Megjelenés</string>
+    <string name="settings_appearance_desc">Nyelv és téma</string>
+    <string name="settings_appliances_menu_desc">Mentett készülékeid</string>
+    <string name="settings_ev_menu_desc">Töltő, céltöltöttség és járművek</string>
+    <string name="settings_all_in_menu_desc">A teljes fogyasztói ár megjelenítése</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Készülék hozzáadása</string>

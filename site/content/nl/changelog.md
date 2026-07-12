@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.2" date="12 juli 2026" >}}
+- Vernieuwde instellingen: een overzichtelijk menu met categorieën, elk met een eigen pictogram en scherm — Apparaten, Elektrisch laden, Totaalprijs, Regio (land, prijszone, tijdzone), Weergave (taal, thema) en Geavanceerd. Alles is makkelijker te vinden dan in de vorige lange lijst, en wanneer je terugkeert van een keuzelijst blijf je op dezelfde plek.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 juli 2026" >}}
 - Totaalprijs verbeterd: het opslagveld toont nu je valuta (bijv. €/kWh), de instellingen onthouden je scrollpositie wanneer je terugkomt van een keuzelijst, en als de totaalprijs is ingeschakeld herinnert de app je eraan een leverancier te kiezen of een opslag in te voeren voordat je de instellingen sluit.
 {{< /changelog >}}

@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automaattinen (maasta)</string>
     <string name="settings_custom_timezone">Mukautettu aikavyöhyke</string>
     <string name="settings_unknown_country">Tuntematon</string>
+    <string name="settings_region_title">Alue</string>
+    <string name="settings_region_desc">Maa, hinta-alue ja aikavyöhyke</string>
+    <string name="settings_appearance_title">Ulkoasu</string>
+    <string name="settings_appearance_desc">Kieli ja teema</string>
+    <string name="settings_appliances_menu_desc">Tallennetut laitteesi</string>
+    <string name="settings_ev_menu_desc">Latauslaite, lataustavoite ja ajoneuvot</string>
+    <string name="settings_all_in_menu_desc">Näytä kuluttajan kokonaishinta</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Lisää laite</string>

@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12. julij 2026" >}}
+- Prenovljene nastavitve: pregleden meni kategorij, vsaka s svojo ikono in ločenim zaslonom — Aparati, Polnjenje električnega vozila, Skupna cena, Regija (država, cenovno območje, časovni pas), Videz (jezik, tema) in Napredno. Vse je lažje najti kot v prejšnjem enem samem dolgem seznamu, ob vrnitvi z izbirnika pa ohranite svoje mesto.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. julij 2026" >}}
 - Izboljšave skupne cene: polje pribitka zdaj prikazuje vašo valuto (npr. €/kWh), nastavitve ob vrnitvi z izbirnika ohranijo mesto drsenja, in če je skupna cena vklopljena, vas opomnijo, da pred izhodom izberete dobavitelja ali vnesete pribitek.
 {{< /changelog >}}

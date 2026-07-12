@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automaticky (ze země)</string>
     <string name="settings_custom_timezone">Vlastní časová zóna</string>
     <string name="settings_unknown_country">Neznámá</string>
+    <string name="settings_region_title">Region</string>
+    <string name="settings_region_desc">Země, cenová zóna a časová zóna</string>
+    <string name="settings_appearance_title">Vzhled</string>
+    <string name="settings_appearance_desc">Jazyk a motiv</string>
+    <string name="settings_appliances_menu_desc">Vaše uložené spotřebiče</string>
+    <string name="settings_ev_menu_desc">Nabíječka, cílové nabití a vozidla</string>
+    <string name="settings_all_in_menu_desc">Zobrazte plnou spotřebitelskou cenu</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Přidat spotřebič</string>

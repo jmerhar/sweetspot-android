@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatyczna (z kraju)</string>
     <string name="settings_custom_timezone">Własna strefa czasowa</string>
     <string name="settings_unknown_country">Nieznany</string>
+    <string name="settings_region_title">Region</string>
+    <string name="settings_region_desc">Kraj, strefa cenowa i strefa czasowa</string>
+    <string name="settings_appearance_title">Wygląd</string>
+    <string name="settings_appearance_desc">Język i motyw</string>
+    <string name="settings_appliances_menu_desc">Twoje zapisane urządzenia</string>
+    <string name="settings_ev_menu_desc">Ładowarka, poziom docelowy i pojazdy</string>
+    <string name="settings_all_in_menu_desc">Pokaż pełną cenę dla konsumenta</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj urządzenie</string>

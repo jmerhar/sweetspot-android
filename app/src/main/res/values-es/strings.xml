@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automática (del país)</string>
     <string name="settings_custom_timezone">Zona horaria personalizada</string>
     <string name="settings_unknown_country">Desconocido</string>
+    <string name="settings_region_title">Región</string>
+    <string name="settings_region_desc">País, zona de precios y zona horaria</string>
+    <string name="settings_appearance_title">Apariencia</string>
+    <string name="settings_appearance_desc">Idioma y tema</string>
+    <string name="settings_appliances_menu_desc">Tus electrodomésticos guardados</string>
+    <string name="settings_ev_menu_desc">Cargador, carga objetivo y vehículos</string>
+    <string name="settings_all_in_menu_desc">Muestra el precio total al consumidor</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Añadir electrodoméstico</string>

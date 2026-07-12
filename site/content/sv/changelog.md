@@ -3,6 +3,10 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="6.2" date="12 juli 2026" >}}
+- Omgjorda inställningar: en prydlig meny med kategorier, var och en med en ikon och en egen skärm — Apparater, Laddning av elbil, Totalpris, Region (land, prisområde, tidszon), Utseende (språk, tema) och Avancerat. Allt är lättare att hitta än i den tidigare enda långa listan, och när du kommer tillbaka från en väljare behåller du din plats.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 juli 2026" >}}
 - Förbättringar av totalpriset: påslagsfältet visar nu din valuta (t.ex. €/kWh), inställningarna behåller din rullningsposition när du kommer tillbaka från en väljare, och om totalpriset är påslaget påminns du om att välja en leverantör eller ange ett påslag innan du lämnar.
 {{< /changelog >}}

@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Samodejno (iz države)</string>
     <string name="settings_custom_timezone">Časovni pas po meri</string>
     <string name="settings_unknown_country">Neznana</string>
+    <string name="settings_region_title">Regija</string>
+    <string name="settings_region_desc">Država, cenovno območje in časovni pas</string>
+    <string name="settings_appearance_title">Videz</string>
+    <string name="settings_appearance_desc">Jezik in tema</string>
+    <string name="settings_appliances_menu_desc">Vaši shranjeni aparati</string>
+    <string name="settings_ev_menu_desc">Polnilnik, ciljna napolnjenost in vozila</string>
+    <string name="settings_all_in_menu_desc">Prikaži celotno ceno za potrošnika</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj aparat</string>

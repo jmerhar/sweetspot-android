@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatisch (vom Land)</string>
     <string name="settings_custom_timezone">Benutzerdefinierte Zeitzone</string>
     <string name="settings_unknown_country">Unbekannt</string>
+    <string name="settings_region_title">Region</string>
+    <string name="settings_region_desc">Land, Preiszone und Zeitzone</string>
+    <string name="settings_appearance_title">Darstellung</string>
+    <string name="settings_appearance_desc">Sprache und Design</string>
+    <string name="settings_appliances_menu_desc">Deine gespeicherten Geräte</string>
+    <string name="settings_ev_menu_desc">Ladegerät, Zielladung und Fahrzeuge</string>
+    <string name="settings_all_in_menu_desc">Zeige den vollen Verbraucherpreis</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Gerät hinzufügen</string>

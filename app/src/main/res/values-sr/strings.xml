@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Аутоматски (из државе)</string>
     <string name="settings_custom_timezone">Прилагођена временска зона</string>
     <string name="settings_unknown_country">Непозната</string>
+    <string name="settings_region_title">Регион</string>
+    <string name="settings_region_desc">Држава, ценовна зона и временска зона</string>
+    <string name="settings_appearance_title">Изглед</string>
+    <string name="settings_appearance_desc">Језик и тема</string>
+    <string name="settings_appliances_menu_desc">Ваши сачувани апарати</string>
+    <string name="settings_ev_menu_desc">Пуњач, циљна напуњеност и возила</string>
+    <string name="settings_all_in_menu_desc">Прикажи пуну цену за потрошача</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Додај апарат</string>

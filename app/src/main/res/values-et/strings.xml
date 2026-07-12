@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automaatne (riigi järgi)</string>
     <string name="settings_custom_timezone">Kohandatud ajavöönd</string>
     <string name="settings_unknown_country">Tundmatu</string>
+    <string name="settings_region_title">Piirkond</string>
+    <string name="settings_region_desc">Riik, hinnatsoon ja ajavöönd</string>
+    <string name="settings_appearance_title">Välimus</string>
+    <string name="settings_appearance_desc">Keel ja teema</string>
+    <string name="settings_appliances_menu_desc">Sinu salvestatud seadmed</string>
+    <string name="settings_ev_menu_desc">Laadija, laetuse eesmärk ja sõidukid</string>
+    <string name="settings_all_in_menu_desc">Näita täielikku tarbijahinda</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Lisa seade</string>

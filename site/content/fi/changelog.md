@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.2" date="12. heinäkuuta 2026" >}}
+- Uudistetut Asetukset: siisti luokkavalikko, jossa jokaisella on oma kuvake ja oma näyttö — Laitteet, Sähköauton lataus, Kokonaishinta, Alue (maa, hinta-alue, aikavyöhyke), Ulkoasu (kieli, teema) ja Lisäasetukset. Kaikki löytyy helpommin kuin aiemmasta yhdestä pitkästä luettelosta, ja valitsimesta palatessa vierityskohtasi säilyy.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. heinäkuuta 2026" >}}
 - Kokonaishinnan hienosäätöä: marginaalikenttä näyttää nyt valuuttasi (esim. €/kWh), Asetukset säilyttää vierityskohdan, kun palaat valitsimesta, ja muistuttaa valitsemaan sähkönmyyjän tai syöttämään marginaalin ennen poistumista, jos kokonaishinta on käytössä.
 {{< /changelog >}}

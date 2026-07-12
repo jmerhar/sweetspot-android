@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.2" date="2026. július 12." >}}
+- Újratervezett Beállítások: kategóriák letisztult menüje, mindegyik saját ikonnal és külön képernyővel — Készülékek, Elektromos autó töltése, Teljes ár, Régió (ország, árzóna, időzóna), Megjelenés (nyelv, téma) és Haladó. Minden könnyebben megtalálható, mint a korábbi egyetlen hosszú listában, és egy választóból visszatérve megőrzi a helyed.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="2026. július 12." >}}
 - Teljes ár – finomítások: a felár mezője mostantól a pénznemedet mutatja (pl. €/kWh), a Beállítások megőrzi a görgetési pozíciót, amikor visszatérsz egy választóból, és ha a Teljes ár be van kapcsolva, kilépés előtt emlékeztet, hogy válassz szolgáltatót vagy adj meg felárat.
 {{< /changelog >}}

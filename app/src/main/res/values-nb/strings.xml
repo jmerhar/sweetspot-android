@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatisk (fra land)</string>
     <string name="settings_custom_timezone">Egendefinert tidssone</string>
     <string name="settings_unknown_country">Ukjent</string>
+    <string name="settings_region_title">Region</string>
+    <string name="settings_region_desc">Land, prisområde og tidssone</string>
+    <string name="settings_appearance_title">Utseende</string>
+    <string name="settings_appearance_desc">Språk og tema</string>
+    <string name="settings_appliances_menu_desc">Dine lagrede apparater</string>
+    <string name="settings_ev_menu_desc">Lader, ladenivå og kjøretøy</string>
+    <string name="settings_all_in_menu_desc">Vis den fulle forbrukerprisen</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Legg til apparat</string>

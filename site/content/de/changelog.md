@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.2" date="12. Juli 2026" >}}
+- Neu gestaltete Einstellungen: ein übersichtliches Menü aus Kategorien, jede mit eigenem Symbol und eigener Seite — Geräte, E-Auto laden, Gesamtpreis, Region (Land, Preiszone, Zeitzone), Darstellung (Sprache, Design) und Erweitert. Alles ist leichter zu finden als in der früheren einen langen Liste, und beim Zurückkehren aus einer Auswahl bleibt deine Position erhalten.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12. Juli 2026" >}}
 - Feinschliff beim Gesamtpreis: Das Aufschlag-Feld zeigt jetzt deine Währung an (z. B. €/kWh), die Einstellungen behalten beim Zurückkehren aus einer Auswahl die Scroll-Position, und bei aktiviertem Gesamtpreis wirst du erinnert, einen Lieferanten zu wählen oder einen Aufschlag einzugeben, bevor du die Seite verlässt.
 {{< /changelog >}}

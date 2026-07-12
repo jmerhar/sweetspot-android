@@ -60,6 +60,13 @@
     <string name="settings_auto_timezone">Automatinė (pagal šalį)</string>
     <string name="settings_custom_timezone">Pasirinktinė laiko juosta</string>
     <string name="settings_unknown_country">Nežinoma</string>
+    <string name="settings_region_title">Regionas</string>
+    <string name="settings_region_desc">Šalis, kainų zona ir laiko juosta</string>
+    <string name="settings_appearance_title">Išvaizda</string>
+    <string name="settings_appearance_desc">Kalba ir tema</string>
+    <string name="settings_appliances_menu_desc">Jūsų išsaugoti prietaisai</string>
+    <string name="settings_ev_menu_desc">Įkroviklis, įkrovimo tikslas ir automobiliai</string>
+    <string name="settings_all_in_menu_desc">Rodyti galutinę vartotojo kainą</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Pridėti prietaisą</string>

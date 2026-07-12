@@ -1,11 +1,8 @@
-@file:Suppress("AssignedValueIsNeverRead")
-
 package today.sweetspot.ui.settings
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,27 +30,35 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import today.sweetspot.BuildConfig
 import kotlinx.coroutines.launch
+import today.sweetspot.BuildConfig
 import today.sweetspot.R
-import today.sweetspot.util.UiText
 import today.sweetspot.ThemeMode
 import today.sweetspot.data.api.DataSource
 import today.sweetspot.model.Appliance
-import today.sweetspot.model.Countries
 import today.sweetspot.model.Country
 import today.sweetspot.model.PriceZone
+import today.sweetspot.shared.R as SharedR
+import today.sweetspot.util.UiText
 import java.time.ZoneId
 
+/** The settings sub-screen currently shown: the root menu, or one grouped category screen. */
+private enum class SettingsRoute { Menu, Appliances, Ev, TotalPrice, Region, Appearance, Advanced }
+
 /**
- * Settings screen with appliance management, language selection, country/zone selection,
- * data source preferences, and timezone selection. Manages its own sub-navigation: tapping rows
- * opens picker screens for country, zone, or timezone.
+ * Settings root. Shows a short menu of category rows (icon + title + description); each opens a focused
+ * sub-screen (appliances, EV charging, total price, region, appearance, advanced). The active screen is
+ * tracked by a single [SettingsRoute] rather than a navigation library, matching the app's state-based
+ * navigation. The statistics opt-in stays as an inline toggle row on the menu, and the version footer
+ * (7-tap developer-options unlock) stays at the bottom.
+ *
+ * The parameter list is unchanged from the previous single-screen version — [today.sweetspot.MainActivity]
+ * still passes the full set and this composable distributes each slice to the relevant sub-screen.
+ * [modifier] applies to the root menu (each category sub-screen supplies its own Scaffold).
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -116,42 +121,63 @@ fun SettingsScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var showAdvancedSettings by rememberSaveable { mutableStateOf(false) }
-    var showLanguagePicker by rememberSaveable { mutableStateOf(false) }
-    var showTimezonePicker by rememberSaveable { mutableStateOf(false) }
-    var showCountryPicker by rememberSaveable { mutableStateOf(false) }
-    var showZonePicker by rememberSaveable { mutableStateOf(false) }
-    var showSupplierPicker by rememberSaveable { mutableStateOf(false) }
-    var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
-    var showAddDialog by rememberSaveable { mutableStateOf(false) }
-    var editingVehicle by remember { mutableStateOf<Appliance?>(null) }
-    var showAddVehicleDialog by rememberSaveable { mutableStateOf(false) }
-    val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
+    var route by rememberSaveable { mutableStateOf(SettingsRoute.Menu) }
+    val toMenu = { route = SettingsRoute.Menu }
 
-    // Hoisted above the picker early-returns below so scroll position survives opening a picker and
-    // coming back (the main content leaves composition while a picker is shown).
-    val scrollState = rememberScrollState()
+    when (route) {
+        SettingsRoute.Appliances -> AppliancesSettingsScreen(
+            appliances = appliances,
+            onAddAppliance = onAddAppliance,
+            onUpdateAppliance = onUpdateAppliance,
+            onDeleteAppliance = onDeleteAppliance,
+            onBack = toMenu
+        )
 
-    // All-in is enabled but has neither a supplier nor a manual surcharge — there's nothing to apply, so
-    // block leaving until the user resolves it (or turns all-in off). Only when the section is shown.
-    val allInIncomplete = allInSupported && allInEnabled && selectedSupplierId == null && manualSurcharge == null
-    val allInIncompleteMessage = stringResource(R.string.all_in_incomplete)
-    val attemptBack: () -> Unit = {
-        if (allInIncomplete) {
-            coroutineScope.launch { snackbarHostState.showSnackbar(allInIncompleteMessage) }
-        } else {
-            onBack()
-        }
-    }
+        SettingsRoute.Ev -> EvSettingsScreen(
+            vehicles = appliances.filter { it.isEv },
+            homeChargerKw = evHomeChargerKw,
+            defaultTargetSoc = evDefaultTargetSoc,
+            onHomeChargerChanged = onEvHomeChargerChanged,
+            onDefaultTargetChanged = onEvDefaultTargetChanged,
+            searchVehicles = searchVehicles,
+            onAddVehicle = onAddVehicle,
+            onUpdateAppliance = onUpdateAppliance,
+            onDeleteAppliance = onDeleteAppliance,
+            onBack = toMenu
+        )
 
-    val defaultTimeZoneId = remember(priceZone) {
-        priceZone?.timeZoneId?.let { ZoneId.of(it) } ?: ZoneId.systemDefault()
-    }
+        SettingsRoute.TotalPrice -> TotalPriceSettingsScreen(
+            enabled = allInEnabled,
+            suppliers = allInSuppliers,
+            selectedSupplierId = selectedSupplierId,
+            manualSurcharge = manualSurcharge,
+            currencyCode = allInCurrency,
+            onEnabledChange = onAllInEnabledChanged,
+            onSupplierSelected = onSupplierSelected,
+            onManualSurchargeChanged = onManualSurchargeChanged,
+            onBack = toMenu
+        )
 
-    if (showAdvancedSettings) {
-        BackHandler { showAdvancedSettings = false }
-        AdvancedSettingsScreen(
+        SettingsRoute.Region -> RegionSettingsScreen(
+            countryCode = countryCode,
+            priceZone = priceZone,
+            countries = countries,
+            onCountrySelected = onCountrySelected,
+            onPriceZoneSelected = onPriceZoneSelected,
+            currentTimeZoneId = currentTimeZoneId,
+            isUsingDefaultTimezone = isUsingDefaultTimezone,
+            onTimezoneSelected = onTimezoneSelected,
+            onBack = toMenu
+        )
+
+        SettingsRoute.Appearance -> AppearanceSettingsScreen(
+            themeMode = themeMode,
+            onThemeModeChanged = onThemeModeChanged,
+            onLanguageChanged = onLanguageChanged,
+            onBack = toMenu
+        )
+
+        SettingsRoute.Advanced -> AdvancedSettingsScreen(
             sourceOrder = sourceOrder,
             disabledSources = disabledSources,
             availableSources = availableSources,
@@ -171,154 +197,47 @@ fun SettingsScreen(
             timeZoneId = currentTimeZoneId,
             useProductionLogo = useProductionLogo,
             onDevUseProductionLogoChanged = onDevUseProductionLogoChanged,
-            onBack = { showAdvancedSettings = false }
+            onBack = toMenu
         )
-        return
-    }
 
-    if (showLanguagePicker) {
-        BackHandler { showLanguagePicker = false }
-        LanguagePickerScreen(
-            onLanguageChanged = { tag ->
-                onLanguageChanged(tag)
-                showLanguagePicker = false
-            },
-            onBack = { showLanguagePicker = false }
-        )
-        return
-    }
-
-    if (showTimezonePicker) {
-        BackHandler { showTimezonePicker = false }
-        TimezonePickerScreen(
-            currentTimeZoneId = currentTimeZoneId,
-            defaultTimeZoneId = defaultTimeZoneId,
-            isUsingDefaultTimezone = isUsingDefaultTimezone,
-            onTimezoneSelected = { timeZoneId ->
-                onTimezoneSelected(timeZoneId)
-                showTimezonePicker = false
-            },
-            onBack = { showTimezonePicker = false }
-        )
-        return
-    }
-
-    if (showCountryPicker) {
-        BackHandler { showCountryPicker = false }
-        CountryPickerScreen(
-            countries = countries,
-            currentCountryCode = countryCode,
-            onCountrySelected = { code ->
-                onCountrySelected(code)
-                showCountryPicker = false
-                val selected = Countries.findByCode(code)
-                if (selected != null && selected.zones.size > 1) {
-                    showZonePicker = true
-                }
-            },
-            onBack = { showCountryPicker = false }
-        )
-        return
-    }
-
-    if (showZonePicker) {
-        BackHandler { showZonePicker = false }
-        val country = Countries.findByCode(countryCode)
-        if (country != null && country.zones.size > 1) {
-            PriceZonePickerScreen(
-                zones = country.zones,
-                currentPriceZoneId = priceZone?.id ?: "",
-                onPriceZoneSelected = { priceZoneId ->
-                    onPriceZoneSelected(priceZoneId)
-                    showZonePicker = false
-                },
-                onBack = { showZonePicker = false }
-            )
-            return
-        } else {
-            showZonePicker = false
-        }
-    }
-
-    if (showSupplierPicker) {
-        BackHandler { showSupplierPicker = false }
-        SupplierPickerScreen(
-            suppliers = allInSuppliers,
-            selectedSupplierId = selectedSupplierId,
-            currencyCode = allInCurrency,
-            onSupplierSelected = { id ->
-                onSupplierSelected(id)
-                showSupplierPicker = false
-            },
-            onBack = { showSupplierPicker = false }
-        )
-        return
-    }
-
-    if (showAddDialog) {
-        ApplianceDialog(
-            appliance = null,
-            onSave = { name, durationHours, durationMinutes, icon, powerKw ->
-                onAddAppliance(name, durationHours, durationMinutes, icon, powerKw)
-                showAddDialog = false
-            },
-            onDelete = null,
-            onDismiss = { showAddDialog = false }
+        SettingsRoute.Menu -> SettingsMenu(
+            modifier = modifier,
+            isUnlocked = isUnlocked,
+            trialDaysRemaining = trialDaysRemaining,
+            productPrice = productPrice,
+            onPurchaseClicked = onPurchaseClicked,
+            allInSupported = allInSupported,
+            isStatsEnabled = isStatsEnabled,
+            onStatsEnabledChanged = onStatsEnabledChanged,
+            devOptionsEnabled = devOptionsEnabled,
+            onDevOptionsUnlocked = onDevOptionsUnlocked,
+            onOpen = { route = it },
+            onBack = onBack
         )
     }
+}
 
-    editingAppliance?.let { appliance ->
-        ApplianceDialog(
-            appliance = appliance,
-            onSave = { name, durationHours, durationMinutes, icon, powerKw ->
-                onUpdateAppliance(appliance.copy(name = name, durationHours = durationHours, durationMinutes = durationMinutes, icon = icon, powerKw = powerKw))
-                editingAppliance = null
-            },
-            onDelete = {
-                onDeleteAppliance(appliance.id)
-                editingAppliance = null
-            },
-            onDismiss = { editingAppliance = null }
-        )
-    }
+/** The root settings menu: subscribe card, category rows, stats toggle, and the version footer. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SettingsMenu(
+    modifier: Modifier,
+    isUnlocked: Boolean,
+    trialDaysRemaining: Int,
+    productPrice: String?,
+    onPurchaseClicked: () -> Unit,
+    allInSupported: Boolean,
+    isStatsEnabled: Boolean,
+    onStatsEnabledChanged: (Boolean) -> Unit,
+    devOptionsEnabled: Boolean,
+    onDevOptionsUnlocked: () -> Unit,
+    onOpen: (SettingsRoute) -> Unit,
+    onBack: () -> Unit
+) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
 
-    if (showAddVehicleDialog) {
-        VehicleDialog(
-            vehicle = null,
-            searchVehicles = searchVehicles,
-            onSave = { name, batteryKwh, acPowerKw ->
-                onAddVehicle(name, batteryKwh, acPowerKw)
-                showAddVehicleDialog = false
-            },
-            onDelete = null,
-            onDismiss = { showAddVehicleDialog = false }
-        )
-    }
-
-    editingVehicle?.let { vehicle ->
-        VehicleDialog(
-            vehicle = vehicle,
-            searchVehicles = searchVehicles,
-            onSave = { name, batteryKwh, acPowerKw ->
-                onUpdateAppliance(
-                    vehicle.copy(name = name, ev = today.sweetspot.model.EvSpec(batteryKwh, acPowerKw))
-                )
-                editingVehicle = null
-            },
-            onDelete = {
-                onDeleteAppliance(vehicle.id)
-                editingVehicle = null
-            },
-            onDismiss = { editingVehicle = null }
-        )
-    }
-
-    val currentCountry = remember(countryCode) { Countries.findByCode(countryCode) }
-    val isMultiZone = (currentCountry?.zones?.size ?: 0) > 1
-
-    // System back at the settings root (only composed when no picker is open — pickers return early
-    // above with their own BackHandler). Routes through the same gate as the top-bar arrow.
-    BackHandler { attemptBack() }
+    BackHandler { onBack() }
 
     Scaffold(
         modifier = modifier,
@@ -326,7 +245,7 @@ fun SettingsScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.settings_title)) },
                 navigationIcon = {
-                    IconButton(onClick = attemptBack) {
+                    IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.cd_back)
@@ -345,7 +264,7 @@ fun SettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(scrollState)
+                .verticalScroll(rememberScrollState())
         ) {
             if (!isUnlocked) {
                 UnlockSection(
@@ -353,130 +272,61 @@ fun SettingsScreen(
                     productPrice = productPrice,
                     onPurchaseClicked = onPurchaseClicked
                 )
-
                 HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
             }
 
-            AppliancesSection(
-                appliances = appliances.filterNot { it.isEv },
-                onApplianceClick = { editingAppliance = it },
-                onAddClick = { showAddDialog = true }
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_device,
+                title = stringResource(R.string.settings_appliances),
+                description = stringResource(R.string.settings_appliances_menu_desc),
+                onClick = { onOpen(SettingsRoute.Appliances) }
             )
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            EvSection(
-                vehicles = appliances.filter { it.isEv },
-                homeChargerKw = evHomeChargerKw,
-                defaultTargetSoc = evDefaultTargetSoc,
-                onHomeChargerChanged = onEvHomeChargerChanged,
-                onDefaultTargetChanged = onEvDefaultTargetChanged,
-                onVehicleClick = { editingVehicle = it },
-                onAddVehicleClick = { showAddVehicleDialog = true }
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_ev_charger,
+                title = stringResource(R.string.settings_ev_title),
+                description = stringResource(R.string.settings_ev_menu_desc),
+                onClick = { onOpen(SettingsRoute.Ev) }
             )
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            LanguageSection(onClick = { showLanguagePicker = true })
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            ThemeSection(
-                themeMode = themeMode,
-                onThemeModeChanged = onThemeModeChanged
-            )
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            CountrySection(
-                countryName = currentCountry?.let { stringResource(it.nameRes) }
-                    ?: stringResource(R.string.settings_unknown_country),
-                onClick = { showCountryPicker = true }
-            )
-
-            if (isMultiZone) {
-                PriceZoneSection(
-                    zoneLabel = priceZone?.let { stringResource(it.labelRes) },
-                    onClick = { showZonePicker = true }
-                )
-            }
-
-            // All-in price — only for countries with a usable tariff feed.
             if (allInSupported) {
-                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-                AllInSection(
-                    enabled = allInEnabled,
-                    suppliers = allInSuppliers,
-                    selectedSupplierId = selectedSupplierId,
-                    manualSurcharge = manualSurcharge,
-                    currencyCode = allInCurrency,
-                    onEnabledChange = onAllInEnabledChanged,
-                    onSupplierClick = { showSupplierPicker = true },
-                    onManualSurchargeChange = onManualSurchargeChanged
+                SettingsMenuRow(
+                    iconRes = SharedR.drawable.ic_price,
+                    title = stringResource(R.string.settings_all_in_title),
+                    description = stringResource(R.string.settings_all_in_menu_desc),
+                    onClick = { onOpen(SettingsRoute.TotalPrice) }
                 )
             }
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            TimezoneSection(
-                currentTimeZoneId = currentTimeZoneId,
-                isUsingDefaultTimezone = isUsingDefaultTimezone,
-                onClick = { showTimezonePicker = true }
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_region,
+                title = stringResource(R.string.settings_region_title),
+                description = stringResource(R.string.settings_region_desc),
+                onClick = { onOpen(SettingsRoute.Region) }
+            )
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_appearance,
+                title = stringResource(R.string.settings_appearance_title),
+                description = stringResource(R.string.settings_appearance_desc),
+                onClick = { onOpen(SettingsRoute.Appearance) }
             )
 
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+            // Statistics opt-in stays inline on the menu (toggle row).
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_stats,
+                title = stringResource(R.string.settings_stats_title),
+                description = stringResource(R.string.settings_stats_description),
+                onClick = { onStatsEnabledChanged(!isStatsEnabled) },
+                trailing = { Switch(checked = isStatsEnabled, onCheckedChange = onStatsEnabledChanged) }
+            )
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(onClick = { onStatsEnabledChanged(!isStatsEnabled) })
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.settings_stats_title),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_stats_description),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-                Switch(
-                    checked = isStatsEnabled,
-                    onCheckedChange = onStatsEnabledChanged
-                )
-            }
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(onClick = { showAdvancedSettings = true })
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = stringResource(R.string.settings_advanced),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_advanced_description),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_advanced,
+                title = stringResource(R.string.settings_advanced),
+                description = stringResource(R.string.settings_advanced_description),
+                onClick = { onOpen(SettingsRoute.Advanced) }
+            )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
 
             var versionTapCount by remember { mutableIntStateOf(0) }
-
             Text(
                 text = "SweetSpot v${BuildConfig.VERSION_NAME}",
                 style = MaterialTheme.typography.bodySmall,

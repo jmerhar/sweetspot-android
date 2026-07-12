@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.2" date="12 iulie 2026" >}}
+- Setări reproiectate: un meniu ordonat de categorii, fiecare cu propria pictogramă și propriul ecran — Aparate electrocasnice, Încărcare mașină electrică, Preț total, Regiune (țară, zonă de preț, fus orar), Aspect (limbă, temă) și Avansat. Totul se găsește mai ușor decât în vechea listă lungă, iar la revenirea dintr-un selector îți păstrezi locul.
+{{< /changelog >}}
+
 {{< changelog version="6.1.1" date="12 iulie 2026" >}}
 - Preț total îmbunătățit: câmpul de adaos afișează acum moneda ta (de ex. €/kWh), setările păstrează poziția de derulare când revii dintr-un selector, iar dacă prețul total este activat, aplicația îți amintește să alegi un furnizor sau să introduci un adaos înainte de a ieși.
 {{< /changelog >}}

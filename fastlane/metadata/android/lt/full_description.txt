@@ -5,27 +5,29 @@ Nesvarbu, ar tai skalbyklė, indaplovė, džiovyklė, šilumos siurblys ar elekt
 KAIP TAI VEIKIA
 1. Pasirinkite prietaisą arba savo elektromobilį, arba nustatykite norimą trukmę – ir, jei reikia, terminą „Paruošti iki“
 2. SweetSpot gauna naujausias kitos dienos elektros kainas jūsų regionui
-3. Tiksliai matysite, kada pradėti, su pilnu išlaidų suskirstymu pagal laiko intervalus
+3. Tiksliai matysite, kada pradėti, su spalvomis pažymėta 24 valandų kainų diagrama ir pilnu išlaidų suskirstymu pagal laiko intervalus
 
 ELEKTROMOBILIO ĮKROVIMAS
-Pridėkite savo automobilį iš įmontuotos maždaug 1 600 elektromobilių ir prijungiamųjų hibridų duomenų bazės – arba patys įveskite baterijos talpą ir įkrovimo galią. Nurodykite dabartinį ir norimą įkrovimo lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas ir koks pigiausias laikas prijungti automobilį.
+Pridėkite savo automobilį iš integruotos maždaug 1 600 elektromobilių ir prijungiamųjų hibridų duomenų bazės – arba patys įveskite baterijos talpą ir įkrovimo galią. Nurodykite dabartinį ir norimą įkrovimo lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas ir koks pigiausias laikas prijungti automobilį.
 
 FUNKCIJOS
 - 30 Europos šalių, 43 kainų zonos – nuo Portugalijos iki Suomijos, nuo Norvegijos iki Graikijos
 - 5 duomenų šaltiniai su automatiniu perjungimu (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Galutinė kaina (Nyderlandai) – vietoj vien biržos kainos galite matyti visą galutinę vartotojo kainą (biržos kaina + energijos mokestis + jūsų tiekėjo antkainis + PVM); pasirinkite savo tiekėją arba įveskite savo antkainį. Netrukus – daugiau šalių
 - Terminas „Paruošti iki“ – parenkamas tik toks laikotarpis, kuris baigiasi laiku
+- Anksčiau arba pigiau – kai pigiausias laikotarpis nepatogus, pereikite prie ankstesnio ir pamatykite, kiek tiksliai daugiau jis kainuoja
 - Galios nustatymas – nurodykite prietaiso galią kilovatais (kW), kad išlaidų sąmata atspindėtų realų suvartojimą
-- Išsaugokite savo prietaisus su savo pavadinimais, piktogramomis ir trukmėmis greitai prieigai
+- Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai
 - Wear OS programėlė skirta Pixel Watch ir kitiems Wear OS 3+ įrenginiams
 - Prieinama 25 Europos kalbomis
-- Jokių paskyrų, jokios analitikos, jokio sekimo – kainos saugomos vietinėje jūsų įrenginio atmintyje
+- Jokių paskyrų, jokių reklamų, jokio trečiųjų šalių sekimo – kainos saugomos vietinėje jūsų įrenginio atmintyje; nustatymuose galima įjungti neprivalomą anoniminę patikimumo statistiką
 - Atviras kodas (GPL v3) – pilnas išeities kodas GitHub platformoje
 - 14 dienų nemokamas bandomasis laikotarpis, po to metinė prenumerata tolesniam naudojimui
 
 PALAIKOMOS ŠALYS
-Airija, Austrija, Belgija, Bulgarija, Čekija, Danija, Estija, Graikija, Ispanija, Italija, Juodkalnija, Kroatija, Latvija, Lenkija, Lietuva, Liuksemburgas, Nyderlandai, Norvegija, Portugalija, Prancūzija, Rumunija, Serbija, Slovakija, Slovenija, Suomija, Šiaurės Makedonija, Švedija, Šveicarija, Vengrija, Vokietija.
+Airija, Austrija, Belgija, Bulgarija, Čekija, Danija, Estija, Graikija, Ispanija, Italija, Juodkalnija, Kroatija, Latvija, Lenkija, Lietuva, Liuksemburgas, Nyderlandai, Norvegija, Portugalija, Prancūzija, Rumunija, Serbija, Slovakija, Slovėnija, Suomija, Šiaurės Makedonija, Švedija, Šveicarija, Vengrija, Vokietija.
 
 PASTABA
-Rodomos kainos yra didmeninės kitos dienos kainos ir neapima PVM, energijos mokesčių ar tiekėjo mokesčių. Rytojaus kainos paprastai prieinamos po 13:00 CET. Norint pasinaudoti kainų skirtumais, reikalinga dinaminio elektros energijos tarifų sutartis.
+Pagal numatytuosius nustatymus rodomos kainos yra didmeninės kitos dienos biržos kainos ir neapima PVM, energijos mokesčių ar tiekėjo mokesčių. Nyderlanduose galite pasirinktinai įjungti Galutinę kainą, kuri prideda energijos mokestį, jūsų tiekėjo antkainį ir PVM, kad matytumėte realią veikimo kainą. Rytojaus kainos paprastai prieinamos po 13:00 CET. Norint pasinaudoti kainų skirtumais, reikalinga dinaminio elektros energijos tarifo sutartis.
 
 Privatumo politika: https://sweetspot.today/lt/privacy/

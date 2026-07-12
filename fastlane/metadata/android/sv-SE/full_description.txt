@@ -5,7 +5,7 @@ Oavsett om det är en tvättmaskin, diskmaskin, torktumlare, värmepump eller el
 SÅ FUNGERAR DET
 1. Välj en apparat eller din elbil, eller ställ in en anpassad varaktighet — och en valfri "Klar senast"-deadline
 2. SweetSpot hämtar de senaste day-ahead elpriserna för din region
-3. Se exakt när du bör starta, med en fullständig kostnadsuppdelning per tidslucka
+3. Se exakt när du bör starta, med ett färgkodat 24-timmars prisdiagram och en fullständig kostnadsuppdelning per tidslucka
 
 LADDNING AV ELBIL
 Lägg till din bil från en inbyggd databas med omkring 1 600 elbilar och laddhybrider — eller ange batterikapacitet och laddeffekt själv. Ställ in nuvarande och önskad laddning, så räknar SweetSpot ut hur lång tid laddningen tar och den billigaste tiden att koppla in.
@@ -13,12 +13,14 @@ Lägg till din bil från en inbyggd databas med omkring 1 600 elbilar och laddhy
 FUNKTIONER
 - 30 europeiska länder, 43 budområden — från Portugal till Finland, Norge till Grekland
 - 5 datakällor med automatisk reserv (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Totalpris (Nederländerna) — visa valfritt hela slutkonsumentpriset (spotpris + energiskatt + din leverantörs påslag + moms) i stället för enbart marknadspriset; välj din leverantör eller ange ditt eget påslag. Fler länder tillkommer
 - "Klar senast"-deadline — väljer bara en tidsperiod som hinner bli klar i tid
+- Tidigare eller billigare — när den billigaste tidsperioden är obekväm kan du hoppa till en tidigare och se exakt hur mycket mer den kostar
 - Effektangivelse — ange en apparats effekt i kW för en kostnadsuppskattning som speglar vad den verkligen drar
 - Spara dina apparater med egna namn, ikoner och varaktigheter för åtkomst med ett tryck
 - Wear OS-app för Pixel Watch och andra Wear OS 3+-enheter
 - Tillgänglig på 25 europeiska språk
-- Inga konton, ingen analys, ingen spårning — priserna lagras lokalt på din enhet
+- Inga konton, inga annonser, ingen tredjepartsspårning — priserna cachas lokalt; valfri anonym tillförlitlighetsstatistik kan slås på i inställningarna
 - Öppen källkod (GPL v3) — fullständig källkod på GitHub
 - 14 dagars gratis provperiod, sedan en årsprenumeration för fortsatt användning
 
@@ -26,6 +28,6 @@ LÄNDER SOM STÖDS
 Belgien, Bulgarien, Danmark, Estland, Finland, Frankrike, Grekland, Irland, Italien, Kroatien, Lettland, Litauen, Luxemburg, Montenegro, Nederländerna, Nordmakedonien, Norge, Polen, Portugal, Rumänien, Schweiz, Serbien, Slovakien, Slovenien, Spanien, Sverige, Tjeckien, Tyskland, Ungern, Österrike.
 
 NOTERA
-Priserna som visas är day-ahead spotpriser på grossistnivå och inkluderar inte moms, energiskatter eller leverantörsavgifter. Morgondagens priser är vanligtvis tillgängliga efter kl. 13:00 CET. Ett dynamiskt elavtal krävs för att dra nytta av prisskillnaderna.
+Som standard är priserna som visas day-ahead spotpriser på grossistnivå och inkluderar inte moms, energiskatt eller leverantörsavgifter. I Nederländerna kan du valfritt slå på Totalpris, som lägger till energiskatt, din leverantörs påslag och moms för en realistisk driftskostnad. Morgondagens priser är vanligtvis tillgängliga efter kl. 13:00 CET. Ett dynamiskt elavtal krävs för att dra nytta av prisskillnaderna.
 
 Integritetspolicy: https://sweetspot.today/sv/privacy/

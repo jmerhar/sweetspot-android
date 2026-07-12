@@ -1,11 +1,11 @@
-SweetSpot pronalazi najjeftinije vrijeme za korištenje vaših uređaja i punjenje električnog automobila. Odaberite koliko dugo uređaj treba raditi — ili odaberite svoje vozilo i željenu napunjenost — i SweetSpot pretražuje sljedećih 24 sata dinamičnih cijena električne energije kako bi pronašao najjeftiniji period.
+SweetSpot pronalazi najjeftinije vrijeme za korištenje vaših uređaja i punjenje električnog automobila. Odaberite koliko dugo uređaj treba raditi — ili odaberite svoje vozilo i željenu napunjenost — i SweetSpot pretražuje sljedeća 24 sata dinamičnih cijena električne energije kako bi pronašao najjeftiniji period.
 
 Bilo da se radi o perilici rublja, perilici posuđa, sušilici, dizalici topline ili punjaču električnog automobila — pokrenite u pravo vrijeme i platite manje za istu struju.
 
 KAKO FUNKCIONIRA
 1. Odaberite uređaj ili svoje vozilo, ili postavite prilagođeno trajanje — i neobavezni rok "spremno do"
 2. SweetSpot dohvaća najnovije day-ahead cijene električne energije za vašu regiju
-3. Pogledajte točno kada pokrenuti, s potpunim pregledom troškova po vremenskim intervalima
+3. Pogledajte točno kada pokrenuti, uz 24-satni grafikon cijena u bojama i potpuni pregled troškova po vremenskim intervalima
 
 PUNJENJE ELEKTRIČNOG VOZILA
 Dodajte svoj automobil iz ugrađene baze od oko 1.600 električnih i plug-in hibridnih vozila — ili sami unesite kapacitet baterije i snagu punjenja. Postavite trenutnu i ciljanu napunjenost, a SweetSpot izračunava koliko će punjenje trajati i najjeftinije vrijeme za priključivanje.
@@ -13,12 +13,14 @@ Dodajte svoj automobil iz ugrađene baze od oko 1.600 električnih i plug-in hib
 ZNAČAJKE
 - 30 europskih država, 43 cjenovne zone — od Portugala do Finske, od Norveške do Grčke
 - 5 izvora podataka s automatskim prebacivanjem (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Ukupna cijena (Nizozemska) — po želji prikažite punu potrošačku cijenu (burzovna cijena + porez na energiju + marža vašeg dobavljača + PDV) umjesto puke tržišne cijene; odaberite svog dobavljača ili unesite vlastitu maržu. Slijede i druge države
 - Rok "spremno do" — bira samo period koji završava na vrijeme
+- Ranije ili jeftinije — kada vam najjeftiniji period ne odgovara, prijeđite na raniji i vidite točno koliko više košta
 - Snaga uređaja — postavite snagu uređaja u kW za procjenu troška koja odražava stvarnu potrošnju
 - Spremite svoje uređaje s prilagođenim imenima, ikonama i trajanjima za brzi pristup
 - Wear OS aplikacija za Pixel Watch i druge Wear OS 3+ uređaje
 - Dostupno na 25 europskih jezika
-- Bez računa, bez analitike, bez praćenja — cijene se pohranjuju lokalno na vašem uređaju
+- Bez računa, bez oglasa, bez praćenja trećih strana — cijene se spremaju lokalno; neobavezne anonimne statistike pouzdanosti mogu se uključiti u postavkama
 - Otvoreni kod (GPL v3) — potpuni izvorni kod na GitHubu
 - 14 dana besplatnog probnog razdoblja, zatim godišnja pretplata za nastavak korištenja
 
@@ -26,6 +28,6 @@ PODRŽANE DRŽAVE
 Austrija, Belgija, Bugarska, Crna Gora, Češka, Danska, Estonija, Finska, Francuska, Grčka, Hrvatska, Irska, Italija, Latvija, Litva, Luksemburg, Mađarska, Nizozemska, Norveška, Njemačka, Poljska, Portugal, Rumunjska, Sjeverna Makedonija, Slovačka, Slovenija, Srbija, Španjolska, Švedska, Švicarska.
 
 NAPOMENA
-Prikazane cijene su veleprodajne day-ahead cijene i ne uključuju PDV, energetske poreze ili naknade dobavljača. Sutrašnje cijene su obično dostupne nakon 13:00 CET. Za iskorištavanje cjenovnih razlika potreban je ugovor s dinamičnom cijenom električne energije.
+Prema zadanim postavkama, prikazane cijene su veleprodajne day-ahead cijene i ne uključuju PDV, energetske poreze ili naknade dobavljača. U Nizozemskoj možete po želji uključiti Ukupnu cijenu, koja dodaje porez na energiju, maržu vašeg dobavljača i PDV za realan trošak korištenja. Sutrašnje cijene su obično dostupne nakon 13:00 CET. Za iskorištavanje cjenovnih razlika potreban je ugovor s dinamičnom cijenom električne energije.
 
 Pravila privatnosti: https://sweetspot.today/hr/privacy/

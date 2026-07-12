@@ -3,9 +3,9 @@ SweetSpot nájde najlacnejší čas na prevádzku vašich spotrebičov a nabíja
 Či už ide o práčku, umývačku, sušičku, tepelné čerpadlo alebo nabíjačku elektromobilu — spustite ich v správny čas a plaťte menej za rovnakú elektrinu.
 
 AKO TO FUNGUJE
-1. Vyberte spotrebič alebo svoj elektromobil, prípadne nastavte vlastnú dobu trvania — a voliteľne termín „Pripravené do“
+1. Vyberte spotrebič alebo svoj elektromobil, prípadne nastavte vlastnú dobu trvania — a voliteľný termín „Pripravené do“
 2. SweetSpot stiahne najnovšie denné ceny elektriny pre váš región
-3. Presne uvidíte, kedy spustiť, s podrobným rozpisom nákladov po časových úsekoch
+3. Presne uvidíte, kedy spustiť, s farebne rozlíšeným 24-hodinovým grafom cien a podrobným rozpisom nákladov po jednotlivých časových úsekoch
 
 NABÍJANIE ELEKTROMOBILU
 Pridajte si auto z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov — alebo zadajte kapacitu batérie a nabíjací výkon sami. Nastavte aktuálne a cieľové nabitie a SweetSpot vypočíta, ako dlho bude nabíjanie trvať a kedy je najlacnejšie zapojiť vozidlo.
@@ -13,12 +13,14 @@ Pridajte si auto z vstavanej databázy približne 1 600 elektromobilov a plug-in
 FUNKCIE
 - 30 európskych krajín, 43 cenových zón — od Portugalska po Fínsko, od Nórska po Grécko
 - 5 zdrojov dát s automatickým prepínaním (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Celková cena (Holandsko) — voliteľne zobrazí úplnú konečnú spotrebiteľskú cenu (spotová cena + daň z energie + prirážka dodávateľa + DPH) namiesto samotnej trhovej ceny; vyberte si dodávateľa alebo zadajte vlastnú prirážku. Ďalšie krajiny pribudnú
 - Termín „Pripravené do“ — vyberie len obdobie, ktoré sa stihne dokončiť včas
+- Skôr alebo lacnejšie — keď najlacnejšie obdobie nevyhovuje, prejdite na skoršie a presne uvidíte, o koľko viac stojí
 - Výkon spotrebiča — zadajte výkon spotrebiča v kW pre odhad nákladov, ktorý zodpovedá jeho skutočnej spotrebe
 - Uložte si spotrebiče s vlastnými názvami, ikonami a dobami trvania pre rýchly prístup
 - Wear OS aplikácia pre Pixel Watch a ďalšie Wear OS 3+ zariadenia
 - K dispozícii v 25 európskych jazykoch
-- Žiadne účty, žiadna analytika, žiadne sledovanie — ceny sa ukladajú lokálne na vašom zariadení
+- Žiadne účty, žiadne reklamy, žiadne sledovanie tretími stranami — ceny sa ukladajú lokálne; voliteľnú anonymnú štatistiku spoľahlivosti možno zapnúť v nastaveniach
 - Open source (GPL v3) — kompletný zdrojový kód na GitHube
 - 14 dní zadarmo na vyskúšanie, potom ročné predplatné na ďalšie používanie
 
@@ -26,6 +28,6 @@ PODPOROVANÉ KRAJINY
 Belgicko, Bulharsko, Česko, Čierna Hora, Dánsko, Estónsko, Fínsko, Francúzsko, Grécko, Holandsko, Chorvátsko, Írsko, Litva, Lotyšsko, Luxembursko, Maďarsko, Nemecko, Nórsko, Poľsko, Portugalsko, Rakúsko, Rumunsko, Severné Macedónsko, Slovensko, Slovinsko, Srbsko, Španielsko, Švajčiarsko, Švédsko, Taliansko.
 
 POZNÁMKA
-Zobrazené ceny sú veľkoobchodné denné ceny a nezahŕňajú DPH, daň z energie ani poplatky dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET. Na využitie cenových rozdielov je potrebná zmluva s dynamickou cenou elektriny.
+V predvolenom nastavení sú zobrazené ceny veľkoobchodné denné (day-ahead) spotové ceny a nezahŕňajú DPH, daň z energie ani poplatky dodávateľa. V Holandsku môžete voliteľne zapnúť Celkovú cenu, ktorá pridá daň z energie, prirážku dodávateľa a DPH pre realistický odhad nákladov na prevádzku. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET. Na využitie cenových rozdielov je potrebná zmluva s dynamickou cenou elektriny.
 
 Zásady ochrany súkromia: https://sweetspot.today/sk/privacy/

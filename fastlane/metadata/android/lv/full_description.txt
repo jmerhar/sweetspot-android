@@ -5,27 +5,29 @@ Vai tā būtu veļas mašīna, trauku mazgājamā mašīna, žāvētājs, siltum
 KĀ TAS DARBOJAS
 1. Izvēlieties ierīci vai savu elektroauto, vai iestatiet pielāgotu ilgumu — un neobligātu termiņu "gatavs līdz"
 2. SweetSpot iegūst jaunākās nākamās dienas elektroenerģijas cenas jūsu reģionam
-3. Skatiet precīzi, kad sākt, ar pilnīgu izmaksu sadalījumu pa laika intervāliem
+3. Skatiet precīzi, kad sākt, ar krāsu kodētu 24 stundu cenu diagrammu un pilnīgu izmaksu sadalījumu pa laika intervāliem
 
 ELEKTROAUTO UZLĀDE
-Pievienojiet savu automašīnu no iebūvētas datubāzes ar aptuveni 1600 elektroauto un uzlādējamiem hibrīdiem — vai ievadiet akumulatora ietilpību un uzlādes jaudu pats. Iestatiet pašreizējo un mērķa uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde notiks un kurš ir lētākais laiks pieslēgties.
+Pievienojiet savu automašīnu no iebūvētas datubāzes ar aptuveni 1600 elektroauto un uzlādējamiem hibrīdiem — vai ievadiet akumulatora ietilpību un uzlādes jaudu paši. Iestatiet pašreizējo un mērķa uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde notiks un kurš ir lētākais laiks pieslēgties.
 
 FUNKCIJAS
 - 30 Eiropas valstis, 43 cenu zonas — no Portugāles līdz Somijai, no Norvēģijas līdz Grieķijai
 - 5 datu avoti ar automātisku pārslēgšanos (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Termiņš "gatavs līdz" — izvēlas tikai tādu periodu, kas paspēj pabeigt laikā
+- Pilnā cena (Nīderlande) — tā vietā, lai redzētu tikai tirgus cenu, pēc izvēles varat redzēt pilno patērētāja cenu (biržas cena + enerģijas nodoklis + jūsu piegādātāja uzcenojums + PVN); izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Drīzumā vairāk valstu
+- Termiņš "gatavs līdz" — izvēlas tikai tādu periodu, kas beidzas laikā
+- Agrāk vai lētāk — ja lētākais periods nav ērts, pārejiet uz agrāku un redziet, cik tieši vairāk tas maksā
 - Jaudas norādīšana — iestatiet ierīces jaudu kW, lai izmaksu aprēķins atbilstu reālajam patēriņam
 - Saglabājiet savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei
 - Wear OS lietotne Pixel Watch un citām Wear OS 3+ ierīcēm
 - Pieejama 25 Eiropas valodās
-- Bez kontiem, bez analītikas, bez izsekošanas — cenas tiek glabātas lokāli jūsu ierīcē
+- Bez kontiem, bez reklāmām, bez trešo pušu izsekošanas — cenas tiek glabātas lokāli jūsu ierīcē; iestatījumos var ieslēgt neobligātu anonīmu uzticamības statistiku
 - Atvērtais kods (GPL v3) — pilns pirmkods GitHub platformā
 - 14 dienu bezmaksas izmēģinājuma periods, pēc tam gada abonements turpmākai lietošanai
 
 ATBALSTĪTĀS VALSTIS
-Austrija, Beļģija, Bulgārija, Čehija, Dānija, Francija, Grieķija, Horvātija, Igaunija, Itālija, Īrija, Latvija, Lietuva, Luksemburga, Melnkalne, Nīderlande, Norvēģija, Polija, Portugāle, Rumānija, Serbija, Slovākija, Slovenija, Somija, Spānija, Šveice, Ungārija, Vācija, Ziemeļmakedonija, Zviedrija.
+Austrija, Beļģija, Bulgārija, Čehija, Dānija, Francija, Grieķija, Horvātija, Igaunija, Itālija, Īrija, Latvija, Lietuva, Luksemburga, Melnkalne, Nīderlande, Norvēģija, Polija, Portugāle, Rumānija, Serbija, Slovākija, Slovenija, Somija, Spānija, Šveice, Ungārija, Vācija, Ziemeļmaķedonija, Zviedrija.
 
 PIEZĪME
-Rādītās cenas ir vairumtirdzniecības nākamās dienas cenas un neietver PVN, enerģijas nodokļus vai piegādātāja maksas. Rītdienas cenas parasti ir pieejamas pēc plkst. 13:00 CET. Lai gūtu labumu no cenu atšķirībām, nepieciešams dinamiskā elektroenerģijas tarifa līgums.
+Pēc noklusējuma rādītās cenas ir vairumtirdzniecības nākamās dienas biržas cenas un neietver PVN, enerģijas nodokli vai piegādātāja maksas. Nīderlandē varat pēc izvēles ieslēgt Pilno cenu, kas pievieno enerģijas nodokli, jūsu piegādātāja uzcenojumu un PVN, lai iegūtu reālas darbības izmaksas. Rītdienas cenas parasti ir pieejamas pēc plkst. 13:00 CET. Lai gūtu labumu no cenu atšķirībām, nepieciešams dinamiskā elektroenerģijas tarifa līgums.
 
 Privātuma politika: https://sweetspot.today/lv/privacy/

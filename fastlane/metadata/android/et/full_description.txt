@@ -5,7 +5,7 @@ Olgu selleks pesumasin, nõudepesumasin, kuivati, soojuspump või elektriauto la
 KUIDAS SEE TÖÖTAB
 1. Valige seade või oma elektriauto, või määrake kohandatud kestus — ja soovi korral „valmis hiljemalt“ tähtaeg
 2. SweetSpot hangib teie piirkonna värskeimad järgmise päeva elektrihinnad
-3. Näete täpselt, millal alustada, koos täieliku kulude jaotusega ajavahemike kaupa
+3. Näete täpselt, millal alustada, koos värvikoodiga 24 tunni hinnagraafiku ja täieliku kulude jaotusega ajavahemike kaupa
 
 ELEKTRIAUTO LAADIMINE
 Lisage oma auto sisseehitatud andmebaasist, mis sisaldab umbes 1600 elektriautot ja pistikhübriidi — või sisestage aku mahtuvus ja laadimisvõimsus ise. Määrake praegune ja soovitud laetus ning SweetSpot arvutab, kui kaua laadimine kestab ja millal on kõige soodsam aeg laadima panna.
@@ -13,12 +13,14 @@ Lisage oma auto sisseehitatud andmebaasist, mis sisaldab umbes 1600 elektriautot
 FUNKTSIOONID
 - 30 Euroopa riiki, 43 hinnatsooni — Portugalist Soomeni, Norrast Kreekani
 - 5 andmeallikat automaatse ümberlülitusega (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Koguhind (Madalmaad) — soovi korral näete täielikku tarbijahinda (börsihind + energiamaks + tarnija juurdehindlus + käibemaks) pelga turuhinna asemel; valige oma tarnija või sisestage oma juurdehindlus. Rohkem riike on tulekul
 - „Valmis hiljemalt“ tähtaeg — valib ainult ajavahemiku, mis jõuab õigeks ajaks valmis
-- Võimsuse määrang — seadke seadme võimsus kilovattides, et kulu hinnang vastaks tegelikule tarbimisele
+- Varem või soodsamalt — kui soodsaim ajavahemik ei sobi, liikuge varasemale ja näete täpselt, kui palju see rohkem maksab
+- Võimsuse määrang — seadke seadme võimsus kilovattides, et kuluhinnang vastaks tegelikule tarbimisele
 - Salvestage oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks juurdepääsuks
 - Wear OS rakendus Pixel Watchi ja teiste Wear OS 3+ seadmete jaoks
 - Saadaval 25 Euroopa keeles
-- Ilma kontodeta, ilma analüütiketa, ilma jälgimiseta — hinnad salvestatakse kohalikult teie seadmesse
+- Ilma kontodeta, ilma reklaamideta, ilma kolmandate osapoolte jälgimiseta — hinnad salvestatakse kohalikult; soovi korral saab seadetes sisse lülitada anonüümse töökindluse statistika
 - Avatud lähtekood (GPL v3) — täielik lähtekood GitHubis
 - 14-päevane tasuta proovperiood, seejärel aastatellimus rakenduse edasiseks kasutamiseks
 
@@ -26,6 +28,6 @@ TOETATUD RIIGID
 Austria, Belgia, Bulgaaria, Eesti, Hispaania, Horvaatia, Iirimaa, Itaalia, Kreeka, Leedu, Luksemburg, Läti, Madalmaad, Montenegro, Norra, Poola, Portugal, Prantsusmaa, Põhja-Makedoonia, Rootsi, Rumeenia, Saksamaa, Serbia, Slovakkia, Sloveenia, Soome, Šveits, Taani, Tšehhi, Ungari.
 
 MÄRKUS
-Näidatud hinnad on hulgimüügi järgmise päeva börsihinnad ega sisalda käibemaksu, energiamaksu ega tarnija tasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET. Hinnaerinevustest kasu saamiseks on vajalik dünaamilise hinnaga elektrileping.
+Vaikimisi on näidatud hinnad hulgimüügi järgmise päeva börsihinnad ega sisalda käibemaksu, energiamaksu ega tarnija tasusid. Madalmaades saab soovi korral sisse lülitada Koguhinna, mis lisab energiamaksu, teie tarnija juurdehindluse ja käibemaksu, andes realistliku kasutuskulu. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET. Hinnaerinevustest kasu saamiseks on vajalik dünaamilise hinnaga elektrileping.
 
 Privaatsuspoliitika: https://sweetspot.today/et/privacy/

@@ -5,7 +5,7 @@ Whether it's a washing machine, dishwasher, dryer, heat pump, or EV charger — 
 HOW IT WORKS
 1. Choose an appliance or your EV, or set a custom duration — and an optional "ready by" deadline
 2. SweetSpot fetches the latest day-ahead electricity prices for your region
-3. See exactly when to start, with a full cost breakdown per time slot
+3. See exactly when to start, with a colour-coded 24-hour price chart and a full cost breakdown per time slot
 
 EV CHARGING
 Add your car from a built-in database of around 1,600 EVs and plug-in hybrids — or enter the battery size and charging power yourself. Set your current and target charge, and SweetSpot works out how long charging will take and the cheapest time to plug in.
@@ -13,12 +13,14 @@ Add your car from a built-in database of around 1,600 EVs and plug-in hybrids �
 FEATURES
 - 30 European countries, 43 bidding zones — from Portugal to Finland, Norway to Greece
 - 5 data sources with automatic fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Total price (Netherlands) — optionally see the full, all-in consumer price (spot + energy tax + your supplier's surcharge + VAT) instead of the bare market price; pick your supplier or enter your own surcharge. More countries to follow
 - "Ready by" deadline — only picks a window that finishes in time
+- Earlier or cheaper — when the cheapest window is inconvenient, step to a sooner one and see exactly how much more it costs
 - Power ratings — set an appliance's power in kW for a cost estimate that reflects what it really uses
 - Save your appliances with custom names, icons, and durations for one-tap access
 - Wear OS companion app for Pixel Watch and other Wear OS 3+ devices
 - Available in 25 European languages
-- No accounts, no analytics, no tracking — prices are cached locally on your device
+- No accounts, no ads, no third-party tracking — prices are cached locally; optional anonymous reliability stats can be turned on in Settings
 - Open source (GPL v3) — full source code on GitHub
 - Free 14-day trial, then a yearly subscription to keep using the app
 
@@ -26,6 +28,6 @@ SUPPORTED COUNTRIES
 Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Montenegro, Netherlands, North Macedonia, Norway, Poland, Portugal, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland.
 
 NOTE
-Prices shown are wholesale day-ahead spot prices and do not include VAT, energy tax, or supplier fees. Tomorrow's prices are typically available after 13:00 CET. A dynamic electricity contract is required to benefit from price differences.
+By default, the prices shown are wholesale day-ahead spot prices and don't include VAT, energy tax, or supplier fees. In the Netherlands you can optionally switch on Total price, which adds energy tax, your supplier's surcharge, and VAT for a realistic run cost. Tomorrow's prices are typically available after 13:00 CET. A dynamic electricity contract is required to benefit from price differences.
 
 Privacy policy: https://sweetspot.today/privacy/

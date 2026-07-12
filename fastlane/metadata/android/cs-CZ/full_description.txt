@@ -5,7 +5,7 @@ Ať už jde o pračku, myčku, sušičku, tepelné čerpadlo nebo nabíječku el
 JAK TO FUNGUJE
 1. Vyberte spotřebič nebo svůj elektromobil, případně nastavte vlastní dobu trvání — a volitelně termín „Hotovo do“
 2. SweetSpot stáhne nejnovější denní ceny elektřiny pro váš region
-3. Přesně uvidíte, kdy spustit, s podrobným rozpisem nákladů po časových úsecích
+3. Přesně uvidíte, kdy spustit, s barevně rozlišeným 24hodinovým grafem cen a podrobným rozpisem nákladů po časových úsecích
 
 NABÍJENÍ ELEKTROMOBILU
 Přidejte své auto z vestavěné databáze přibližně 1 600 elektromobilů a plug-in hybridů — nebo zadejte kapacitu baterie a nabíjecí výkon sami. Nastavte aktuální a cílové nabití a SweetSpot spočítá, jak dlouho bude nabíjení trvat a kdy je nejlevnější ho zapojit.
@@ -13,12 +13,14 @@ Přidejte své auto z vestavěné databáze přibližně 1 600 elektromobilů a 
 FUNKCE
 - 30 evropských zemí, 43 cenových zón — od Portugalska po Finsko, od Norska po Řecko
 - 5 zdrojů dat s automatickým přepínáním (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Konečná cena (Nizozemsko) — volitelně zobrazte plnou konečnou spotřebitelskou cenu (spotová + daň z energie + přirážka dodavatele + DPH) místo holé tržní ceny; vyberte svého dodavatele nebo zadejte vlastní přirážku. Další země budou následovat
 - Termín „Hotovo do“ — vybere pouze období, které stihne skončit včas
+- Dříve nebo levněji — když je nejlevnější období nevhodné, přejděte na dřívější a uvidíte přesně, o kolik je dražší
 - Výkon spotřebičů — zadejte výkon spotřebiče v kW pro odhad nákladů, který odpovídá jeho skutečné spotřebě
 - Uložte si spotřebiče s vlastními názvy, ikonami a dobami trvání pro rychlý přístup
 - Wear OS aplikace pro Pixel Watch a další Wear OS 3+ zařízení
 - K dispozici ve 25 evropských jazycích
-- Žádné účty, žádná analytika, žádné sledování — ceny se ukládají lokálně na vašem zařízení
+- Žádné účty, žádné reklamy, žádné sledování třetími stranami — ceny se ukládají lokálně; volitelnou anonymní statistiku spolehlivosti lze zapnout v nastavení
 - Open source (GPL v3) — kompletní zdrojový kód na GitHubu
 - 14 dní zdarma na vyzkoušení, poté roční předplatné pro další používání
 
@@ -26,6 +28,6 @@ PODPOROVANÉ ZEMĚ
 Belgie, Bulharsko, Česko, Černá Hora, Dánsko, Estonsko, Finsko, Francie, Chorvatsko, Irsko, Itálie, Litva, Lotyšsko, Lucembursko, Maďarsko, Německo, Nizozemsko, Norsko, Polsko, Portugalsko, Rakousko, Rumunsko, Řecko, Severní Makedonie, Slovensko, Slovinsko, Srbsko, Španělsko, Švédsko, Švýcarsko.
 
 POZNÁMKA
-Zobrazené ceny jsou velkoobchodní denní ceny a nezahrnují DPH, daň z energie ani poplatky dodavatele. Zítřejší ceny jsou obvykle dostupné po 13:00 CET. K využití cenových rozdílů je potřeba smlouva s dynamickou cenou elektřiny.
+Ve výchozím nastavení jsou zobrazené ceny velkoobchodní denní spotové ceny a nezahrnují DPH, daň z energie ani poplatky dodavatele. V Nizozemsku můžete volitelně zapnout Konečnou cenu, která přidává daň z energie, přirážku vašeho dodavatele a DPH pro realistické náklady na provoz. Zítřejší ceny jsou obvykle dostupné po 13:00 CET. K využití cenových rozdílů je potřeba smlouva s dynamickou cenou elektřiny.
 
 Zásady ochrany soukromí: https://sweetspot.today/cs/privacy/

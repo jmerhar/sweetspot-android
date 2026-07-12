@@ -5,7 +5,7 @@ Que ce soit un lave-linge, lave-vaisselle, sèche-linge, pompe à chaleur ou une
 COMMENT ÇA MARCHE
 1. Choisissez un appareil ou votre véhicule électrique, ou définissez une durée personnalisée — et une échéance « Prêt à » facultative
 2. SweetSpot récupère les derniers prix day-ahead de l'électricité pour votre région
-3. Voyez exactement quand démarrer, avec un détail complet des coûts par créneau horaire
+3. Voyez exactement quand démarrer, avec un graphique des prix sur 24 heures à code couleur et un détail complet des coûts par créneau horaire
 
 RECHARGE DE VÉHICULE ÉLECTRIQUE
 Ajoutez votre voiture depuis une base intégrée d'environ 1 600 véhicules électriques et hybrides rechargeables — ou saisissez vous-même la capacité de la batterie et la puissance de recharge. Indiquez votre charge actuelle et cible, et SweetSpot calcule la durée de recharge et le moment le moins cher pour brancher.
@@ -13,12 +13,14 @@ Ajoutez votre voiture depuis une base intégrée d'environ 1 600 véhicules éle
 FONCTIONNALITÉS
 - 30 pays européens, 43 zones de prix — du Portugal à la Finlande, de la Norvège à la Grèce
 - 5 sources de données avec basculement automatique (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Prix total (Pays-Bas) — affichez si vous le souhaitez le prix total pour le consommateur (prix spot + taxe sur l'énergie + marge de votre fournisseur + TVA) au lieu du seul prix du marché ; choisissez votre fournisseur ou saisissez votre propre marge. D'autres pays à venir
 - Échéance « Prêt à » — ne retient qu'une période qui se termine à temps
+- Plus tôt ou moins cher — quand la période la moins chère ne vous convient pas, passez à une période plus proche et voyez exactement combien elle coûte en plus
 - Puissances en kW — définissez la puissance d'un appareil pour une estimation de coût qui reflète sa consommation réelle
 - Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide
 - Application Wear OS pour Pixel Watch et autres appareils Wear OS 3+
 - Disponible en 25 langues européennes
-- Pas de comptes, aucune collecte de données, aucun suivi — les prix sont stockés localement sur votre appareil
+- Pas de comptes, pas de publicités, aucun suivi par des tiers — les prix sont mis en cache localement ; des statistiques de fiabilité anonymes facultatives peuvent être activées dans les réglages
 - Open source (GPL v3) — code source complet sur GitHub
 - Essai gratuit de 14 jours, puis un abonnement annuel pour continuer à utiliser l'application
 
@@ -26,6 +28,6 @@ PAYS PRIS EN CHARGE
 Allemagne, Autriche, Belgique, Bulgarie, Croatie, Danemark, Espagne, Estonie, Finlande, France, Grèce, Hongrie, Irlande, Italie, Lettonie, Lituanie, Luxembourg, Macédoine du Nord, Monténégro, Norvège, Pays-Bas, Pologne, Portugal, République tchèque, Roumanie, Serbie, Slovaquie, Slovénie, Suède, Suisse.
 
 REMARQUE
-Les prix affichés sont des prix spot day-ahead et ne comprennent pas la TVA, les taxes sur l'énergie ni les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET. Un contrat d'électricité dynamique est nécessaire pour bénéficier des différences de prix.
+Par défaut, les prix affichés sont des prix spot day-ahead de gros et ne comprennent pas la TVA, les taxes sur l'énergie ni les frais du fournisseur. Aux Pays-Bas, vous pouvez activer si vous le souhaitez le Prix total, qui ajoute la taxe sur l'énergie, la marge de votre fournisseur et la TVA pour un coût d'utilisation réaliste. Les prix de demain sont généralement disponibles après 13h00 CET. Un contrat d'électricité dynamique est nécessaire pour bénéficier des différences de prix.
 
 Politique de confidentialité : https://sweetspot.today/fr/privacy/

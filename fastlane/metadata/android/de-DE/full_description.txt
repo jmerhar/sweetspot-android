@@ -5,7 +5,7 @@ Ob Waschmaschine, Geschirrspüler, Trockner, Wärmepumpe oder E-Auto-Ladegerät 
 SO FUNKTIONIERT ES
 1. Wähle ein Gerät oder dein E-Auto, oder stelle eine individuelle Laufzeit ein — und einen optionalen „Fertig bis“-Zeitpunkt
 2. SweetSpot ruft die aktuellen Day-Ahead-Strompreise für deine Region ab
-3. Sieh genau, wann du starten solltest, mit einer vollständigen Kostenaufschlüsselung pro Zeitslot
+3. Sieh genau, wann du starten solltest, mit einem farbcodierten 24-Stunden-Preisdiagramm und einer vollständigen Kostenaufschlüsselung pro Zeitslot
 
 E-AUTO LADEN
 Füge dein Auto aus einer integrierten Datenbank mit rund 1.600 E-Autos und Plug-in-Hybriden hinzu — oder gib Akkukapazität und Ladeleistung selbst ein. Lege deinen aktuellen Ladestand und dein Ladeziel fest, und SweetSpot berechnet, wie lange das Laden dauert und wann der günstigste Zeitpunkt zum Anstecken ist.
@@ -13,12 +13,14 @@ Füge dein Auto aus einer integrierten Datenbank mit rund 1.600 E-Autos und Plug
 FUNKTIONEN
 - 30 europäische Länder, 43 Gebotszonen — von Portugal bis Finnland, Norwegen bis Griechenland
 - 5 Datenquellen mit automatischem Fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Gesamtpreis (Niederlande) — sieh optional den vollen Verbraucherpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.) statt des reinen Marktpreises; wähle deinen Anbieter oder gib deinen eigenen Aufschlag ein. Weitere Länder folgen
 - „Fertig bis“-Zeitpunkt — wählt nur ein Zeitfenster, das rechtzeitig endet
+- Früher oder günstiger — wenn das günstigste Zeitfenster ungelegen ist, wechsle zu einem früheren und sieh genau, wie viel mehr es kostet
 - Leistungsangaben — lege die Leistung eines Geräts in kW fest, für eine Kostenschätzung, die den tatsächlichen Verbrauch widerspiegelt
 - Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff
 - Wear OS Begleit-App für Pixel Watch und andere Wear OS 3+ Geräte
 - Verfügbar in 25 europäischen Sprachen
-- Keine Konten, keine Nutzeranalyse, kein Tracking — Preise werden lokal auf dem Gerät gespeichert
+- Keine Konten, keine Werbung, kein Tracking durch Dritte — Preise werden lokal zwischengespeichert; optionale anonyme Zuverlässigkeitsstatistiken lassen sich in den Einstellungen aktivieren
 - Open Source (GPL v3) — vollständiger Quellcode auf GitHub
 - 14 Tage kostenlos testen, danach ein Jahresabo zur weiteren Nutzung
 
@@ -26,6 +28,6 @@ UNTERSTÜTZTE LÄNDER
 Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, Irland, Italien, Kroatien, Lettland, Litauen, Luxemburg, Montenegro, Niederlande, Nordmazedonien, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Serbien, Slowakei, Slowenien, Spanien, Tschechien, Ungarn.
 
 HINWEIS
-Die angezeigten Preise sind Day-Ahead-Spotpreise und enthalten keine MwSt., Energiesteuern oder Lieferantengebühren. Die Preise für morgen sind in der Regel nach 13:00 Uhr MEZ verfügbar. Ein dynamischer Stromvertrag ist erforderlich, um von Preisunterschieden zu profitieren.
+Standardmäßig sind die angezeigten Preise Day-Ahead-Spotpreise im Großhandel und enthalten keine MwSt., Energiesteuern oder Lieferantengebühren. In den Niederlanden kannst du optional den Gesamtpreis aktivieren, der Energiesteuer, den Aufschlag deines Anbieters und MwSt. für realistische Betriebskosten hinzufügt. Die Preise für morgen sind in der Regel nach 13:00 Uhr MEZ verfügbar. Ein dynamischer Stromvertrag ist erforderlich, um von Preisunterschieden zu profitieren.
 
 Datenschutzerklärung: https://sweetspot.today/de/privacy/

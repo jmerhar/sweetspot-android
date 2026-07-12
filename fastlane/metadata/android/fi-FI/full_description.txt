@@ -5,7 +5,7 @@ Olipa kyseessä pesukone, astianpesukone, kuivausrumpu, lämpöpumppu tai sähk�
 NÄIN SE TOIMII
 1. Valitse laite tai sähköautosi, tai aseta mukautettu kesto — ja halutessasi "valmis viimeistään" -määräaika
 2. SweetSpot hakee alueesi uusimmat day-ahead-sähköhinnat
-3. Näe tarkalleen, milloin aloittaa, täydellisellä kustannuserittelyllä aikaväleittäin
+3. Näe tarkalleen, milloin aloittaa, värikoodatun 24 tunnin hintakaavion ja täydellisen kustannuserittelyn avulla aikaväleittäin
 
 SÄHKÖAUTON LATAUS
 Lisää autosi sisäänrakennetusta tietokannasta, jossa on noin 1 600 sähköautoa ja ladattavaa hybridiä — tai syötä akun kapasiteetti ja latausteho itse. Aseta nykyinen ja tavoiteltu lataustaso, ja SweetSpot laskee, kuinka kauan lataus kestää ja milloin auto kannattaa kytkeä lataukseen halvimmalla.
@@ -13,12 +13,14 @@ Lisää autosi sisäänrakennetusta tietokannasta, jossa on noin 1 600 sähköau
 OMINAISUUDET
 - 30 Euroopan maata, 43 hinnoittelualuetta — Portugalista Suomeen, Norjasta Kreikkaan
 - 5 tietolähdettä automaattisella varayhteydellä (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Kokonaishinta (Alankomaat) — näe halutessasi kuluttajan täysi kokonaishinta (pörssihinta + sähkövero + myyjän marginaali + ALV) pelkän markkinahinnan sijaan; valitse myyjäsi tai syötä oma marginaalisi. Lisää maita tulossa
 - "Valmis viimeistään" -määräaika — valitsee vain ajanjakson, joka ehtii valmistua ajoissa
+- Aiemmin tai halvemmalla — kun halvin ajanjakso ei sovi, siirry aiempaan ja näe tarkalleen, kuinka paljon enemmän se maksaa
 - Tehoarvot — aseta laitteen teho kilowatteina, niin kustannusarvio vastaa sen todellista kulutusta
 - Tallenna laitteesi mukautetuilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten
 - Wear OS -sovellus Pixel Watchille ja muille Wear OS 3+ -laitteille
 - Saatavilla 25 eurooppalaisella kielellä
-- Ei tilejä, ei analytiikkaa, ei seurantaa — hinnat tallennetaan paikallisesti laitteeseesi
+- Ei tilejä, ei mainoksia, ei kolmannen osapuolen seurantaa — hinnat tallennetaan paikallisesti; halutessasi voit ottaa asetuksista käyttöön anonyymit luotettavuustilastot
 - Avoin lähdekoodi (GPL v3) — koko lähdekoodi GitHubissa
 - 14 päivän ilmainen kokeilujakso, sen jälkeen vuositilaus sovelluksen jatkuvaan käyttöön
 
@@ -26,6 +28,6 @@ TUETUT MAAT
 Alankomaat, Belgia, Bulgaria, Espanja, Irlanti, Italia, Itävalta, Kreikka, Kroatia, Latvia, Liettua, Luxemburg, Montenegro, Norja, Pohjois-Makedonia, Portugali, Puola, Ranska, Romania, Ruotsi, Saksa, Serbia, Slovakia, Slovenia, Suomi, Sveitsi, Tanska, Tšekki, Unkari, Viro.
 
 HUOMAUTUS
-Näytetyt hinnat ovat tukkumarkkinoiden day-ahead-hintoja eivätkä sisällä arvonlisäveroa, energiaveroja tai toimittajan maksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen. Hintaeroista hyötyminen edellyttää dynaamista sähkösopimusta.
+Oletuksena näytetyt hinnat ovat tukkumarkkinoiden day-ahead-hintoja eivätkä sisällä arvonlisäveroa, energiaveroja tai toimittajan maksuja. Alankomaissa voit halutessasi ottaa käyttöön Kokonaishinnan, joka lisää sähköveron, myyjäsi marginaalin ja ALV:n realistista käyttökustannusta varten. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen. Hintaeroista hyötyminen edellyttää dynaamista sähkösopimusta.
 
 Tietosuojakäytäntö: https://sweetspot.today/fi/privacy/

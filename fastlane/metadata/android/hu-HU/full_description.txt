@@ -5,7 +5,7 @@ Legyen szó mosógépről, mosogatógépről, szárítógépről, hőszivattyúr
 HOGYAN MŰKÖDIK
 1. Válassz egy készüléket vagy az elektromos autódat, vagy állíts be egyéni időtartamot — és egy opcionális „készen legyen ekkorra” határidőt
 2. A SweetSpot lekéri a legfrissebb day-ahead villamosenergia-árakat a régiódhoz
-3. Pontosan láthatod, mikor érdemes indítani, részletes költségbontással időszakonként
+3. Pontosan láthatod, mikor érdemes indítani, egy színkódolt, 24 órás árdiagrammal és részletes költségbontással időszakonként
 
 ELEKTROMOS AUTÓ TÖLTÉSE
 Add hozzá az autódat egy beépített adatbázisból, amely körülbelül 1600 elektromos és plug-in hibrid járművet tartalmaz — vagy add meg magad az akkumulátor kapacitását és a töltési teljesítményt. Állítsd be a jelenlegi és a céltöltöttséget, és a SweetSpot kiszámítja, mennyi ideig tart a töltés, és mikor a legolcsóbb csatlakoztatni.
@@ -13,12 +13,14 @@ Add hozzá az autódat egy beépített adatbázisból, amely körülbelül 1600 
 FUNKCIÓK
 - 30 európai ország, 43 árazási zóna — Portugáliától Finnországig, Norvégiától Görögországig
 - 5 adatforrás automatikus váltással (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Teljes ár (Hollandia) — a puszta piaci ár helyett tetszés szerint láthatod a teljes, mindent tartalmazó fogyasztói árat (tőzsdei ár + energiaadó + a szolgáltatód díja + ÁFA); válaszd ki a szolgáltatódat, vagy add meg saját díjadat. További országok hamarosan
 - „Készen legyen ekkorra” határidő — csak olyan időablakot választ, amely időben befejeződik
+- Korábban vagy olcsóbban — ha a legolcsóbb időablak nem alkalmas, lépj egy korábbira, és nézd meg pontosan, mennyivel kerül többe
 - Teljesítmény megadása — add meg a készülék teljesítményét kW-ban, hogy a költségbecslés a tényleges fogyasztást tükrözze
 - Mentsd el készülékeidet egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
 - Wear OS alkalmazás Pixel Watchhoz és más Wear OS 3+ eszközökhöz
 - 25 európai nyelven elérhető
-- Nincs fiók, nincs elemzés, nincs követés — az árak helyileg tárolódnak az eszközödön
+- Nincs fiók, nincsenek hirdetések, nincs harmadik féltől származó követés — az árak helyileg tárolódnak; a Beállításokban bekapcsolható egy opcionális, névtelen megbízhatósági statisztika
 - Nyílt forráskód (GPL v3) — teljes forráskód a GitHubon
 - 14 napos ingyenes próbaidőszak, utána éves előfizetés az alkalmazás további használatához
 
@@ -26,6 +28,6 @@ TÁMOGATOTT ORSZÁGOK
 Ausztria, Belgium, Bulgária, Csehország, Dánia, Észak-Macedónia, Észtország, Finnország, Franciaország, Görögország, Hollandia, Horvátország, Írország, Lengyelország, Lettország, Litvánia, Luxemburg, Magyarország, Montenegró, Németország, Norvégia, Olaszország, Portugália, Románia, Spanyolország, Svájc, Svédország, Szerbia, Szlovákia, Szlovénia.
 
 MEGJEGYZÉS
-A megjelenített árak nagykereskedelmi day-ahead árak, és nem tartalmazzák az ÁFÁ-t, az energiaadókat vagy a szolgáltatói díjakat. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
+Alapértelmezés szerint a megjelenített árak nagykereskedelmi day-ahead tőzsdei árak, és nem tartalmazzák az ÁFÁ-t, az energiaadót vagy a szolgáltatói díjakat. Hollandiában opcionálisan bekapcsolhatod a Teljes árat, amely hozzáadja az energiaadót, a szolgáltatód díját és az ÁFÁ-t a valósághű üzemeltetési költséghez. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
 
 Adatvédelmi irányelvek: https://sweetspot.today/hu/privacy/

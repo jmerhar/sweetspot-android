@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Odaberite zonu</string>
     <string name="settings_data_sources">Izvori podataka</string>
     <string name="settings_data_sources_description">Cijene se dohvaćaju ovim redoslijedom. Ako jedan izvor ne uspije, pokušava se sljedeći.</string>
-    <string name="cd_move_up">Pomakni gore</string>
-    <string name="cd_move_down">Pomakni dolje</string>
     <string name="settings_reset_defaults">Vrati na zadano</string>
     <string name="settings_appliances">Uređaji</string>
     <string name="settings_appliances_description">Ovdje dodajte svoje kućanske uređaje za brzi pristup. Možete dodati i određene programe, npr. Perilica posuđa Eco, Perilica posuđa Brzi, Perilica rublja Pamuk.</string>

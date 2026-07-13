@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Изаберите зону</string>
     <string name="settings_data_sources">Извори података</string>
     <string name="settings_data_sources_description">Цене се преузимају овим редоследом. Ако један не успе, покушава се следећи.</string>
-    <string name="cd_move_up">Помери горе</string>
-    <string name="cd_move_down">Помери доле</string>
     <string name="settings_reset_defaults">Врати на подразумевано</string>
     <string name="settings_appliances">Апарати</string>
     <string name="settings_appliances_description">Овде додајте своје кућне апарате за брз приступ. Можете додати и одређене програме, нпр. Машина за судове Еко, Машина за судове Брзи, Веш машина Памук.</string>

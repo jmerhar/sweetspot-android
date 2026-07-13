@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Sélectionner une zone</string>
     <string name="settings_data_sources">Sources de données</string>
     <string name="settings_data_sources_description">Les prix sont récupérés dans cet ordre. Si l\'une échoue, la suivante est utilisée.</string>
-    <string name="cd_move_up">Monter</string>
-    <string name="cd_move_down">Descendre</string>
     <string name="settings_reset_defaults">Rétablir les valeurs par défaut</string>
     <string name="settings_appliances">Appareils</string>
     <string name="settings_appliances_description">Ajoutez ici vos appareils électroménagers pour un accès rapide. Vous pouvez aussi ajouter des programmes spécifiques, par ex. Lave-vaisselle Eco, Lave-vaisselle Rapide, Lave-linge Coton.</string>

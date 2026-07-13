@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Välj en zon</string>
     <string name="settings_data_sources">Datakällor</string>
     <string name="settings_data_sources_description">Priser hämtas i denna ordning. Om en källa misslyckas prövas nästa.</string>
-    <string name="cd_move_up">Flytta upp</string>
-    <string name="cd_move_down">Flytta ner</string>
     <string name="settings_reset_defaults">Återställ till standard</string>
     <string name="settings_appliances">Apparater</string>
     <string name="settings_appliances_description">Lägg till dina hushållsapparater här för snabb åtkomst. Du kan också lägga till specifika program, t.ex. Diskmaskin Eco, Diskmaskin Snabb, Tvättmaskin Bomull.</string>

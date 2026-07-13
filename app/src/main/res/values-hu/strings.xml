@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Válassz zónát</string>
     <string name="settings_data_sources">Adatforrások</string>
     <string name="settings_data_sources_description">Az árak ebben a sorrendben kerülnek lekérésre. Ha az egyik nem sikerül, a következő kerül sorra.</string>
-    <string name="cd_move_up">Mozgatás felfelé</string>
-    <string name="cd_move_down">Mozgatás lefelé</string>
     <string name="settings_reset_defaults">Alapértékek visszaállítása</string>
     <string name="settings_appliances">Készülékek</string>
     <string name="settings_appliances_description">Add hozzá háztartási készülékeidet a gyors elérés érdekében. Konkrét programokat is hozzáadhatsz, pl. Mosogatógép Eco, Mosogatógép Gyors, Mosógép Pamut.</string>

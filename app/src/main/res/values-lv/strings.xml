@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Izvēlieties zonu</string>
     <string name="settings_data_sources">Datu avoti</string>
     <string name="settings_data_sources_description">Cenas tiek iegūtas šādā secībā. Ja viens avots nedarbojas, tiek mēģināts nākamais.</string>
-    <string name="cd_move_up">Pārvietot augšup</string>
-    <string name="cd_move_down">Pārvietot lejup</string>
     <string name="settings_reset_defaults">Atjaunot noklusējumus</string>
     <string name="settings_appliances">Ierīces</string>
     <string name="settings_appliances_description">Pievienojiet savas mājas ierīces ātrai piekļuvei. Varat pievienot arī konkrētas programmas, piem. Trauku mazgājamā mašīna Eco, Trauku mazgājamā mašīna Ātrā, Veļas mašīna Kokvilna.</string>

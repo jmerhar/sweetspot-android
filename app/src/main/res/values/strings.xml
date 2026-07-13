@@ -51,8 +51,6 @@
     <string name="settings_select_zone">Select a zone</string>
     <string name="settings_data_sources">Data sources</string>
     <string name="settings_data_sources_description">Prices are fetched in this order. If one fails, the next is tried.</string>
-    <string name="cd_move_up">Move up</string>
-    <string name="cd_move_down">Move down</string>
     <string name="settings_reset_defaults">Reset to defaults</string>
     <string name="settings_appliances">Appliances</string>
     <string name="settings_appliances_description">Add your home appliances here for easy access. You can also add specific programmes, e.g. Dishwasher Eco, Dishwasher Quick, Washing Machine Cotton.</string>

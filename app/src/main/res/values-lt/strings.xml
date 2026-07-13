@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Pasirinkite zoną</string>
     <string name="settings_data_sources">Duomenų šaltiniai</string>
     <string name="settings_data_sources_description">Kainos gaunamos šia tvarka. Jei vienas šaltinis neveikia, bandomas kitas.</string>
-    <string name="cd_move_up">Perkelti aukštyn</string>
-    <string name="cd_move_down">Perkelti žemyn</string>
     <string name="settings_reset_defaults">Atkurti numatytuosius</string>
     <string name="settings_appliances">Prietaisai</string>
     <string name="settings_appliances_description">Pridėkite savo buitinius prietaisus čia greitai prieigai. Taip pat galite pridėti konkrečias programas, pvz. Indaplovė Eco, Indaplovė Greita, Skalbyklė Medvilnė.</string>

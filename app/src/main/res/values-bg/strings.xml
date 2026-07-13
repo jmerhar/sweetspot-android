@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Изберете зона</string>
     <string name="settings_data_sources">Източници на данни</string>
     <string name="settings_data_sources_description">Цените се извличат в този ред. Ако един източник се провали, се опитва следващият.</string>
-    <string name="cd_move_up">Преместване нагоре</string>
-    <string name="cd_move_down">Преместване надолу</string>
     <string name="settings_reset_defaults">Възстановяване по подразбиране</string>
     <string name="settings_appliances">Уреди</string>
     <string name="settings_appliances_description">Добавете домашните си уреди тук за бърз достъп. Можете също да добавите конкретни програми, напр. Съдомиялна Еко, Съдомиялна Бърза, Пералня Памук.</string>

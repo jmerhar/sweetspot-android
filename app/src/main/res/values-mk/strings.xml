@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Изберете зона</string>
     <string name="settings_data_sources">Извори на податоци</string>
     <string name="settings_data_sources_description">Цените се преземаат по овој редослед. Ако еден не успее, се обидува следниот.</string>
-    <string name="cd_move_up">Премести нагоре</string>
-    <string name="cd_move_down">Премести надолу</string>
     <string name="settings_reset_defaults">Врати на стандардни</string>
     <string name="settings_appliances">Апарати</string>
     <string name="settings_appliances_description">Додајте ги вашите домашни апарати тука за брз пристап. Можете и да додадете конкретни програми, на пр. Машина за садови Еко, Машина за садови Брза, Машина за перење Памук.</string>

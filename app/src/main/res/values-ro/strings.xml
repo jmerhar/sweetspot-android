@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Selectează o zonă</string>
     <string name="settings_data_sources">Surse de date</string>
     <string name="settings_data_sources_description">Prețurile sunt preluate în această ordine. Dacă una eșuează, se încearcă următoarea.</string>
-    <string name="cd_move_up">Mută sus</string>
-    <string name="cd_move_down">Mută jos</string>
     <string name="settings_reset_defaults">Resetează la valorile implicite</string>
     <string name="settings_appliances">Aparate electrocasnice</string>
     <string name="settings_appliances_description">Adaugă aici aparatele electrocasnice pentru acces rapid. Poți adăuga și programe specifice, de ex. Mașină de spălat vase Eco, Mașină de spălat vase Rapid, Mașină de spălat rufe Bumbac.</string>

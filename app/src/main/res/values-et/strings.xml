@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Valige tsoon</string>
     <string name="settings_data_sources">Andmeallikad</string>
     <string name="settings_data_sources_description">Hinnad tuuakse selles järjekorras. Kui üks ebaõnnestub, proovitakse järgmist.</string>
-    <string name="cd_move_up">Liiguta üles</string>
-    <string name="cd_move_down">Liiguta alla</string>
     <string name="settings_reset_defaults">Taasta vaikeväärtused</string>
     <string name="settings_appliances">Seadmed</string>
     <string name="settings_appliances_description">Lisage siia oma koduseadmed kiireks ligipääsuks. Saate lisada ka konkreetseid programme, nt nõudepesumasin Eco, nõudepesumasin kiire, pesumasin puuvillane.</string>

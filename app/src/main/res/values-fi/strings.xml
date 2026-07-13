@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Valitse alue</string>
     <string name="settings_data_sources">Tietolähteet</string>
     <string name="settings_data_sources_description">Hinnat haetaan tässä järjestyksessä. Jos yksi epäonnistuu, seuraavaa kokeillaan.</string>
-    <string name="cd_move_up">Siirrä ylös</string>
-    <string name="cd_move_down">Siirrä alas</string>
     <string name="settings_reset_defaults">Palauta oletukset</string>
     <string name="settings_appliances">Laitteet</string>
     <string name="settings_appliances_description">Lisää kodinkoneet tänne nopeaa käyttöä varten. Voit myös lisätä tiettyjä ohjelmia, esim. Astianpesukone Eco, Astianpesukone Pika, Pyykinpesukone Puuvilla.</string>

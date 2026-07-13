@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Vyberte zónu</string>
     <string name="settings_data_sources">Zdroje dát</string>
     <string name="settings_data_sources_description">Ceny sa načítavajú v tomto poradí. Ak jeden zdroj zlyhá, skúsi sa ďalší.</string>
-    <string name="cd_move_up">Posunúť hore</string>
-    <string name="cd_move_down">Posunúť dole</string>
     <string name="settings_reset_defaults">Obnoviť predvolené</string>
     <string name="settings_appliances">Spotrebiče</string>
     <string name="settings_appliances_description">Pridajte sem svoje domáce spotrebiče pre rýchly prístup. Môžete pridať aj konkrétne programy, napr. Umývačka Eco, Umývačka Rýchly, Práčka Bavlna.</string>

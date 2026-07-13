@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Vælg en zone</string>
     <string name="settings_data_sources">Datakilder</string>
     <string name="settings_data_sources_description">Priser hentes i denne rækkefølge. Hvis en fejler, prøves den næste.</string>
-    <string name="cd_move_up">Flyt op</string>
-    <string name="cd_move_down">Flyt ned</string>
     <string name="settings_reset_defaults">Nulstil til standard</string>
     <string name="settings_appliances">Apparater</string>
     <string name="settings_appliances_description">Tilføj dine husholdningsapparater her for hurtig adgang. Du kan også tilføje specifikke programmer, f.eks. Opvaskemaskine Eco, Opvaskemaskine Hurtig, Vaskemaskine Bomuld.</string>

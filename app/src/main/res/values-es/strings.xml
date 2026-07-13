@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Selecciona una zona</string>
     <string name="settings_data_sources">Fuentes de datos</string>
     <string name="settings_data_sources_description">Los precios se obtienen en este orden. Si una fuente falla, se intenta la siguiente.</string>
-    <string name="cd_move_up">Subir</string>
-    <string name="cd_move_down">Bajar</string>
     <string name="settings_reset_defaults">Restablecer valores predeterminados</string>
     <string name="settings_appliances">Electrodomésticos</string>
     <string name="settings_appliances_description">Añade aquí tus electrodomésticos para un acceso rápido. También puedes añadir programas específicos, p. ej. Lavavajillas Eco, Lavavajillas Rápido, Lavadora Algodón.</string>

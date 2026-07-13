@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Izberite cono</string>
     <string name="settings_data_sources">Viri podatkov</string>
     <string name="settings_data_sources_description">Cene se pridobivajo v tem vrstnem redu. Če eden ne uspe, se poskusi naslednji.</string>
-    <string name="cd_move_up">Premakni gor</string>
-    <string name="cd_move_down">Premakni dol</string>
     <string name="settings_reset_defaults">Ponastavi na privzeto</string>
     <string name="settings_appliances">Aparati</string>
     <string name="settings_appliances_description">Tukaj dodajte svoje gospodinjske aparate za hiter dostop. Dodate lahko tudi določene programe, npr. Pomivalni stroj Eco, Pomivalni stroj Hitri, Pralni stroj Bombaž.</string>

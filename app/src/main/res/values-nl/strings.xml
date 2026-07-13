@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Selecteer een zone</string>
     <string name="settings_data_sources">Gegevensbronnen</string>
     <string name="settings_data_sources_description">Prijzen worden in deze volgorde opgehaald. Als er een faalt, wordt de volgende geprobeerd.</string>
-    <string name="cd_move_up">Omhoog</string>
-    <string name="cd_move_down">Omlaag</string>
     <string name="settings_reset_defaults">Standaard herstellen</string>
     <string name="settings_appliances">Apparaten</string>
     <string name="settings_appliances_description">Voeg hier je huishoudelijke apparaten toe voor snelle toegang. Je kunt ook specifieke programma\'s toevoegen, bijv. Vaatwasser Eco, Vaatwasser Snel, Wasmachine Katoen.</string>

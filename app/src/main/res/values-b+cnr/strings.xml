@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Izaberite zonu</string>
     <string name="settings_data_sources">Izvori podataka</string>
     <string name="settings_data_sources_description">Cijene se preuzimaju ovim redosljedom. Ako jedan ne uspije, pokušava se sljedeći.</string>
-    <string name="cd_move_up">Pomjeri gore</string>
-    <string name="cd_move_down">Pomjeri dolje</string>
     <string name="settings_reset_defaults">Vrati na podrazumijevano</string>
     <string name="settings_appliances">Aparati</string>
     <string name="settings_appliances_description">Ovdje dodajte svoje kućne aparate za brz pristup. Možete dodati i određene programe, npr. Mašina za sudove Eko, Mašina za sudove Brzi, Veš mašina Pamuk.</string>

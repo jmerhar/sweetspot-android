@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Wybierz strefę</string>
     <string name="settings_data_sources">Źródła danych</string>
     <string name="settings_data_sources_description">Ceny są pobierane w tej kolejności. Jeśli jedno źródło zawiedzie, próbowane jest następne.</string>
-    <string name="cd_move_up">Przesuń w górę</string>
-    <string name="cd_move_down">Przesuń w dół</string>
     <string name="settings_reset_defaults">Przywróć domyślne</string>
     <string name="settings_appliances">Urządzenia</string>
     <string name="settings_appliances_description">Dodaj tutaj swoje urządzenia domowe dla szybkiego dostępu. Możesz też dodać konkretne programy, np. Zmywarka Eco, Zmywarka Szybka, Pralka Bawełna.</string>

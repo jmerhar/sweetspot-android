@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Vyberte zónu</string>
     <string name="settings_data_sources">Zdroje dat</string>
     <string name="settings_data_sources_description">Ceny se stahují v tomto pořadí. Pokud jeden selže, zkusí se další.</string>
-    <string name="cd_move_up">Přesunout nahoru</string>
-    <string name="cd_move_down">Přesunout dolů</string>
     <string name="settings_reset_defaults">Obnovit výchozí</string>
     <string name="settings_appliances">Spotřebiče</string>
     <string name="settings_appliances_description">Přidejte si zde své domácí spotřebiče pro rychlý přístup. Můžete přidat i konkrétní programy, např. Myčka Eko, Myčka Rychlá, Pračka Bavlna.</string>

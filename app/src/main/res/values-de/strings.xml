@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Zone auswählen</string>
     <string name="settings_data_sources">Datenquellen</string>
     <string name="settings_data_sources_description">Preise werden in dieser Reihenfolge abgerufen. Wenn eine fehlschlägt, wird die nächste versucht.</string>
-    <string name="cd_move_up">Nach oben</string>
-    <string name="cd_move_down">Nach unten</string>
     <string name="settings_reset_defaults">Auf Standard zurücksetzen</string>
     <string name="settings_appliances">Geräte</string>
     <string name="settings_appliances_description">Füge hier deine Haushaltsgeräte hinzu für schnellen Zugriff. Du kannst auch bestimmte Programme hinzufügen, z.B. Spülmaschine Eco, Spülmaschine Schnell, Waschmaschine Baumwolle.</string>

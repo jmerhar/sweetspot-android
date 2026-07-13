@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Selecione uma zona</string>
     <string name="settings_data_sources">Fontes de dados</string>
     <string name="settings_data_sources_description">Os preços são obtidos por esta ordem. Se uma fonte falhar, é tentada a seguinte.</string>
-    <string name="cd_move_up">Mover para cima</string>
-    <string name="cd_move_down">Mover para baixo</string>
     <string name="settings_reset_defaults">Repor predefinições</string>
     <string name="settings_appliances">Eletrodomésticos</string>
     <string name="settings_appliances_description">Adicione aqui os seus eletrodomésticos para acesso rápido. Também pode adicionar programas específicos, por ex. Máquina de lavar loiça Eco, Máquina de lavar loiça Rápido, Máquina de lavar roupa Algodão.</string>

@@ -46,8 +46,6 @@
     <string name="settings_select_zone">Seleziona una zona</string>
     <string name="settings_data_sources">Fonti dati</string>
     <string name="settings_data_sources_description">I prezzi vengono recuperati in questo ordine. Se una fonte non funziona, viene provata la successiva.</string>
-    <string name="cd_move_up">Sposta su</string>
-    <string name="cd_move_down">Sposta giù</string>
     <string name="settings_reset_defaults">Ripristina predefiniti</string>
     <string name="settings_appliances">Elettrodomestici</string>
     <string name="settings_appliances_description">Aggiungi qui i tuoi elettrodomestici per un accesso rapido. Puoi anche aggiungere programmi specifici, ad es. Lavastoviglie Eco, Lavastoviglie Rapida, Lavatrice Cotone.</string>

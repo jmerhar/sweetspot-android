@@ -3,6 +3,13 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.3" date="13. juuli 2026" >}}
+- Sorteeri ja korrasta seadmeid: lohista need oma järjekorda või sorteeri Enim kasutatud, Hiljuti kasutatud, Nimi, Kestus või Tüüp järgi.
+- „Enim kasutatud“ ja „Hiljuti kasutatud“ arvestavad nii telefonis kui kellas tehtud puudutusi.
+- Vali, kus autod seadmete seas kuvatakse: Segamini, Esimesena, Viimasena või Eraldi jaotis.
+- Autodel on nüüd autoikoon ning ka andmeallikaid saab lohistades ümber järjestada.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. juuli 2026" >}}
 - Ümberkujundatud Seaded: korrastatud kategooriate menüü, igaühel oma ikoon ja eraldi ekraan — Seadmed, Elektriauto laadimine, Koguhind, Piirkond (riik, hinnatsoon, ajavöönd), Välimus (keel, teema) ja Täpsemalt. Kõike on lihtsam leida kui varasemast ühest pikast loendist ning valijast naastes säilib sinu koht.
 {{< /changelog >}}

@@ -3,6 +3,13 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.3" date="2026 m. liepos 13 d." >}}
+- Rikiuokite ir pertvarkykite prietaisus: vilkite juos sava tvarka arba rikiuokite pagal „Dažniausiai naudoti“, „Neseniai naudoti“, pavadinimą, trukmę ar tipą.
+- „Dažniausiai naudoti“ ir „Neseniai naudoti“ skaičiuoja palietimus telefone ir laikrodyje.
+- Pasirinkite, kur tarp prietaisų rodomi automobiliai: „Sumaišyti“, „Pradžioje“, „Pabaigoje“ ar „Atskira dalis“.
+- Automobiliai dabar rodomi su mašinos piktograma, o duomenų šaltinius taip pat galima pertvarkyti vilkant.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="2026 m. liepos 12 d." >}}
 - Pertvarkyti Nustatymai: tvarkingas kategorijų meniu, kiekviena su piktograma ir atskiru ekranu — Prietaisai, Elektromobilio įkrovimas, Galutinė kaina, Regionas (šalis, kainų zona, laiko juosta), Išvaizda (kalba, tema) ir Išplėstiniai. Viską lengviau rasti nei ankstesniame viename ilgame sąraše, o grįžus iš parinkiklio išsaugoma jūsų vieta.
 {{< /changelog >}}

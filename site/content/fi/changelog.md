@@ -3,6 +3,13 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.3" date="13. heinäkuuta 2026" >}}
+- Järjestä ja lajittele laitteesi: vedä ne haluamaasi järjestykseen tai lajittele käytetyimmän, viimeksi käytetyn, nimen, keston tai tyypin mukaan.
+- ”Käytetyin” ja ”Viimeksi käytetty” laskevat napautukset sekä puhelimessa että kellossa.
+- Valitse, missä autot näkyvät laitteiden joukossa: sekoitettuna, ensimmäisenä, viimeisenä tai erillisessä osiossa.
+- Autot näkyvät nyt auton kuvakkeella, ja myös tietolähteet voi järjestää vetämällä.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. heinäkuuta 2026" >}}
 - Uudistetut Asetukset: siisti luokkavalikko, jossa jokaisella on oma kuvake ja oma näyttö — Laitteet, Sähköauton lataus, Kokonaishinta, Alue (maa, hinta-alue, aikavyöhyke), Ulkoasu (kieli, teema) ja Lisäasetukset. Kaikki löytyy helpommin kuin aiemmasta yhdestä pitkästä luettelosta, ja valitsimesta palatessa vierityskohtasi säilyy.
 {{< /changelog >}}

@@ -3,6 +3,13 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.3" date="13. Juli 2026" >}}
+- Geräte sortieren und neu anordnen: Zieh sie in deine eigene Reihenfolge oder sortiere nach Meistgenutzt, Zuletzt genutzt, Name, Dauer oder Typ.
+- „Meistgenutzt“ und „Zuletzt genutzt“ zählen Tipps auf Handy und Uhr.
+- Wähle, wo Autos zwischen den Geräten erscheinen: Gemischt, Zuerst, Zuletzt oder Eigener Bereich.
+- Autos zeigen jetzt ein Auto-Symbol, und auch Datenquellen lassen sich per Ziehen neu anordnen.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. Juli 2026" >}}
 - Neu gestaltete Einstellungen: ein übersichtliches Menü aus Kategorien, jede mit eigenem Symbol und eigener Seite — Geräte, E-Auto laden, Gesamtpreis, Region (Land, Preiszone, Zeitzone), Darstellung (Sprache, Design) und Erweitert. Alles ist leichter zu finden als in der früheren einen langen Liste, und beim Zurückkehren aus einer Auswahl bleibt deine Position erhalten.
 {{< /changelog >}}

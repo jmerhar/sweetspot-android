@@ -3,6 +3,13 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="6.3" date="13 juli 2026" >}}
+- Sortera och ordna om dina apparater: dra dem i egen ordning eller sortera efter Mest använda, Senast använda, Namn, Varaktighet eller Typ.
+- ”Mest använda” och ”Senast använda” räknar tryck på både telefon och klocka.
+- Välj var fordon visas bland apparaterna: Blandat, Först, Sist eller Egen sektion.
+- Fordon visas nu med en bilikon, och datakällor kan också ordnas om genom att dra.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12 juli 2026" >}}
 - Omgjorda inställningar: en prydlig meny med kategorier, var och en med en ikon och en egen skärm — Apparater, Laddning av elbil, Totalpris, Region (land, prisområde, tidszon), Utseende (språk, tema) och Avancerat. Allt är lättare att hitta än i den tidigare enda långa listan, och när du kommer tillbaka från en väljare behåller du din plats.
 {{< /changelog >}}

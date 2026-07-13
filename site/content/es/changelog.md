@@ -3,6 +3,13 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13 de julio de 2026" >}}
+- Ordena y reorganiza tus electrodomésticos: arrástralos a tu gusto u ordénalos por «Más usados», «Usados recientemente», nombre, duración o tipo.
+- «Más usados» y «Usados recientemente» cuentan los toques en el móvil y en el reloj.
+- Elige dónde aparecen los vehículos entre los electrodomésticos: Mezclados, Primero, Último o Sección aparte.
+- Los vehículos ahora muestran un icono de coche, y las fuentes de datos también se reordenan arrastrando.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12 de julio de 2026" >}}
 - Ajustes rediseñados: un menú ordenado de categorías, cada una con su icono y su propia pantalla — Electrodomésticos, Carga de vehículo eléctrico, Precio total, Región (país, zona de precios, zona horaria), Apariencia (idioma, tema) y Avanzado. Todo se encuentra más fácilmente que en la antigua lista única y larga, y al volver de un selector se conserva tu posición.
 {{< /changelog >}}

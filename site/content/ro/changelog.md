@@ -3,6 +3,13 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13 iulie 2026" >}}
+- Sortează și reordonează electrocasnicele: trage-le în ordinea dorită sau sortează-le după cele mai folosite, folosite recent, nume, durată sau tip.
+- „Cele mai folosite” și „Folosite recent” numără atingerile atât pe telefon, cât și pe ceas.
+- Alege unde apar mașinile printre electrocasnice: amestecate, primele, ultimele sau într-o secțiune separată.
+- Mașinile afișează acum o pictogramă de mașină, iar sursele de date pot fi reordonate tot prin tragere.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12 iulie 2026" >}}
 - Setări reproiectate: un meniu ordonat de categorii, fiecare cu propria pictogramă și propriul ecran — Aparate electrocasnice, Încărcare mașină electrică, Preț total, Regiune (țară, zonă de preț, fus orar), Aspect (limbă, temă) și Avansat. Totul se găsește mai ușor decât în vechea listă lungă, iar la revenirea dintr-un selector îți păstrezi locul.
 {{< /changelog >}}

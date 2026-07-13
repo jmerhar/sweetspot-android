@@ -3,6 +3,13 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13 lipca 2026" >}}
+- Sortuj i porządkuj urządzenia: przeciągnij je we własnej kolejności lub sortuj wg opcji Najczęściej używane, Ostatnio używane, Nazwa, Czas trwania lub Typ.
+- „Najczęściej używane” i „Ostatnio używane” liczą kliknięcia zarówno w telefonie, jak i na zegarku.
+- Wybierz, gdzie pojazdy pojawiają się wśród urządzeń: Wymieszane, Na początku, Na końcu lub Osobna sekcja.
+- Pojazdy mają teraz ikonę samochodu, a źródła danych też można przeciągać, by zmienić ich kolejność.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12 lipca 2026" >}}
 - Odświeżone ustawienia: przejrzyste menu kategorii, każda z własną ikoną i ekranem — Urządzenia, Ładowanie auta elektrycznego, Cena całkowita, Region (kraj, strefa cenowa, strefa czasowa), Wygląd (język, motyw) i Zaawansowane. Wszystko łatwiej znaleźć niż na dawnej długiej liście, a po powrocie z listy wyboru zachowujesz swoje miejsce.
 {{< /changelog >}}

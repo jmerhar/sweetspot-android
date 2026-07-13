@@ -3,6 +3,13 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.3" date="2026. gada 13. jūlijs" >}}
+- Kārtojiet un pārkārtojiet ierīces: velciet tās vēlamajā secībā vai kārtojiet pēc Visbiežāk lietotās, Nesen lietotās, Nosaukums, Ilgums vai Tips.
+- „Visbiežāk lietotās“ un „Nesen lietotās“ ņem vērā pieskārienus gan telefonā, gan pulkstenī.
+- Izvēlieties, kur ierīču sarakstā parādās automašīnas: Sajaukti kopā, Sākumā, Beigās vai Atsevišķa sadaļa.
+- Automašīnām tagad ir auto ikona, un datu avotus arī var pārkārtot, tos velkot.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="2026. gada 12. jūlijs" >}}
 - Pārveidoti Iestatījumi: kārtīga kategoriju izvēlne, katrai sava ikona un savs ekrāns — Ierīces, Elektroauto uzlāde, Pilnā cena, Reģions (valsts, cenu zona, laika josla), Izskats (valoda, motīvs) un Papildu. Visu ir vieglāk atrast nekā iepriekšējā vienā garā sarakstā, un, atgriežoties no izvēlnes, tiek saglabāta jūsu atrašanās vieta.
 {{< /changelog >}}

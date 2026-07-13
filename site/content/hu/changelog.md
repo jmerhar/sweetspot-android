@@ -3,6 +3,13 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.3" date="2026. július 13." >}}
+- Rendezd át a készülékeidet: húzd őket saját sorrendbe, vagy rendezd Leggyakrabban használt, Legutóbb használt, név, időtartam vagy típus szerint.
+- A „Leggyakrabban használt” és a „Legutóbb használt” a telefonon és az órán történő koppintásokat is számolja.
+- Válaszd ki, hol jelenjenek meg az autók a készülékek között: Vegyesen, Elöl, Hátul vagy Külön szakaszban.
+- Az autók mostantól autó ikont mutatnak, és az adatforrások is átrendezhetők húzással.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="2026. július 12." >}}
 - Újratervezett Beállítások: kategóriák letisztult menüje, mindegyik saját ikonnal és külön képernyővel — Készülékek, Elektromos autó töltése, Teljes ár, Régió (ország, árzóna, időzóna), Megjelenés (nyelv, téma) és Haladó. Minden könnyebben megtalálható, mint a korábbi egyetlen hosszú listában, és egy választóból visszatérve megőrzi a helyed.
 {{< /changelog >}}

@@ -3,6 +3,13 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.3" date="July 13, 2026" >}}
+- Sort and reorder your appliances: drag them into your own order, or sort by most used, recently used, name, duration, or type.
+- "Most used" and "Recently used" count taps on both your phone and watch.
+- Choose where vehicles appear among the appliances: mixed in, first, last, or a separate section.
+- Vehicles now show a car icon, and data sources can be reordered by dragging too.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="July 12, 2026" >}}
 - Redesigned Settings: a tidy menu of categories, each with an icon and its own screen — Appliances, EV charging, Total price, Region (country, price zone, timezone), Appearance (language, theme), and Advanced. Everything is easier to find than the previous single long list, and returning from a picker keeps your place.
 {{< /changelog >}}

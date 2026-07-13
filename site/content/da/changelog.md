@@ -3,6 +3,13 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="6.3" date="13. juli 2026" >}}
+- Sortér og omorganiser dine apparater: træk dem i din egen rækkefølge, eller sortér efter Mest brugte, Senest brugte, navn, varighed eller type.
+- „Mest brugte“ og „Senest brugte“ tæller tryk på både telefon og ur.
+- Vælg, hvor køretøjer vises blandt apparaterne: Blandet ind, Først, Sidst eller Separat sektion.
+- Køretøjer viser nu et bilikon, og datakilder kan også omorganiseres ved at trække.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. juli 2026" >}}
 - Nydesignede indstillinger: en overskuelig menu af kategorier, hver med sit eget ikon og sin egen skærm — Apparater, Opladning af elbil, Totalpris, Region (land, prisområde, tidszone), Udseende (sprog, tema) og Avanceret. Alt er nemmere at finde end den tidligere lange liste, og når du vender tilbage fra en vælger, bevares din plads.
 {{< /changelog >}}

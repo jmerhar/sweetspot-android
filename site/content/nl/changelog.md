@@ -3,6 +3,13 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.3" date="13 juli 2026" >}}
+- Sorteer en herschik je apparaten: sleep ze in je eigen volgorde of sorteer op Meest gebruikt, Recent gebruikt, Naam, Duur of Type.
+- 'Meest gebruikt' en 'Recent gebruikt' tellen tikken op zowel je telefoon als je horloge.
+- Kies waar voertuigen tussen de apparaten verschijnen: Ertussen, Eerst, Laatst of een Apart gedeelte.
+- Voertuigen tonen nu een autopictogram, en gegevensbronnen kun je ook slepend herschikken.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12 juli 2026" >}}
 - Vernieuwde instellingen: een overzichtelijk menu met categorieën, elk met een eigen pictogram en scherm — Apparaten, Elektrisch laden, Totaalprijs, Regio (land, prijszone, tijdzone), Weergave (taal, thema) en Geavanceerd. Alles is makkelijker te vinden dan in de vorige lange lijst, en wanneer je terugkeert van een keuzelijst blijf je op dezelfde plek.
 {{< /changelog >}}

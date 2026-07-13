@@ -3,6 +3,13 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13. srpnja 2026." >}}
+- Poredajte i preraspodijelite uređaje: povucite ih u vlastiti redoslijed ili sortirajte po Najčešće korišteni, Nedavno korišteni, Naziv, Trajanje ili Vrsta.
+- „Najčešće korišteni“ i „Nedavno korišteni“ broje dodire i na telefonu i na satu.
+- Odaberite gdje se vozila prikazuju među uređajima: Izmiješano, Prvo, Zadnje ili Zaseban odjeljak.
+- Vozila sada prikazuju ikonu automobila, a izvori podataka također se mogu preraspoređivati povlačenjem.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. srpnja 2026." >}}
 - Redizajnirane Postavke: uredan izbornik kategorija, svaka sa svojom ikonom i vlastitim zaslonom — Uređaji, Punjenje električnog vozila, Ukupna cijena, Regija (država, cjenovna zona, vremenska zona), Izgled (jezik, tema) i Napredno. Sve je lakše pronaći nego u prijašnjem jednom dugom popisu, a povratkom iz birača zadržava se vaš položaj.
 {{< /changelog >}}

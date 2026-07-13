@@ -3,6 +3,13 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13. julij 2026" >}}
+- Razvrščanje in preurejanje aparatov: povlecite jih v svoj vrstni red ali razvrstite po Najpogosteje uporabljeni, Nedavno uporabljeni, imenu, trajanju ali vrsti.
+- »Najpogosteje uporabljeni« in »Nedavno uporabljeni« štejeta dotike na telefonu in uri.
+- Izberite, kje se med aparati pojavijo vozila: Pomešano, Na začetku, Na koncu ali Ločen razdelek.
+- Vozila zdaj prikažejo ikono avta, tudi vire podatkov lahko preuredite z vlečenjem.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. julij 2026" >}}
 - Prenovljene nastavitve: pregleden meni kategorij, vsaka s svojo ikono in ločenim zaslonom — Aparati, Polnjenje električnega vozila, Skupna cena, Regija (država, cenovno območje, časovni pas), Videz (jezik, tema) in Napredno. Vse je lažje najti kot v prejšnjem enem samem dolgem seznamu, ob vrnitvi z izbirnika pa ohranite svoje mesto.
 {{< /changelog >}}

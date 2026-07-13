@@ -3,6 +3,13 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13. júla 2026" >}}
+- Zoraďte a preusporiadajte svoje spotrebiče: presúvajte ich do vlastného poradia alebo zoraďte podľa možností Najpoužívanejšie, Nedávno použité, názvu, trvania alebo typu.
+- Možnosti Najpoužívanejšie a Nedávno použité počítajú klepnutia v telefóne aj v hodinkách.
+- Zvoľte, kde sa vozidlá zobrazia medzi spotrebičmi: Premiešané, Na začiatku, Na konci alebo Samostatná sekcia.
+- Vozidlá teraz majú ikonu auta a dátové zdroje sa dajú preusporiadať tiež presúvaním.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12. júla 2026" >}}
 - Prepracované nastavenia: prehľadné menu kategórií, každá s ikonou a vlastnou obrazovkou — Spotrebiče, Nabíjanie elektromobilu, Celková cena, Región (krajina, cenové pásmo, časové pásmo), Vzhľad (jazyk, motív) a Pokročilé. Všetko nájdete ľahšie než v predchádzajúcom jednom dlhom zozname a po návrate z výberu zostanete na svojom mieste.
 {{< /changelog >}}

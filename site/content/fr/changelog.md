@@ -3,6 +3,13 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.3" date="13 juillet 2026" >}}
+- Triez et réorganisez vos appareils : faites-les glisser dans l’ordre voulu, ou triez par Les plus utilisés, Utilisés récemment, Nom, Durée ou Type.
+- « Les plus utilisés » et « Utilisés récemment » comptent les appuis sur téléphone et sur montre.
+- Choisissez où placer les véhicules parmi les appareils : Mélangés, En premier, En dernier ou Section séparée.
+- Les véhicules affichent une icône de voiture, et les sources de données se réorganisent aussi par glisser-déposer.
+{{< /changelog >}}
+
 {{< changelog version="6.2" date="12 juillet 2026" >}}
 - Paramètres repensés : un menu de catégories bien rangé, chacune avec une icône et son propre écran — Appareils, Recharge de véhicule électrique, Prix total, Région (pays, zone tarifaire, fuseau horaire), Apparence (langue, thème) et Avancé. Tout se trouve plus facilement qu'avec l'ancienne longue liste unique, et au retour d'un sélecteur votre position est conservée.
 {{< /changelog >}}

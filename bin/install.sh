@@ -27,7 +27,8 @@ fi
 case "$TARGET" in
     phone)
         if [[ "$VARIANT" == "--debug" ]]; then
-            APK_PATTERN="app/build/outputs/apk/debug/app-debug.apk"
+            APK_PATTERN="app/build/outputs/apk/debug/sweetspot-*.apk"
+            APK_FALLBACK="app/build/outputs/apk/debug/app-debug.apk"
         else
             APK_PATTERN="app/build/outputs/apk/release/sweetspot-*.apk"
             APK_FALLBACK="app/build/outputs/apk/release/app-release.apk"
@@ -38,7 +39,8 @@ case "$TARGET" in
         ;;
     watch)
         if [[ "$VARIANT" == "--debug" ]]; then
-            APK_PATTERN="wear/build/outputs/apk/debug/wear-debug.apk"
+            APK_PATTERN="wear/build/outputs/apk/debug/sweetspot-wear-*.apk"
+            APK_FALLBACK="wear/build/outputs/apk/debug/wear-debug.apk"
         else
             APK_PATTERN="wear/build/outputs/apk/release/sweetspot-wear-*.apk"
             APK_FALLBACK="wear/build/outputs/apk/release/wear-release.apk"

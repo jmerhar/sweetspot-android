@@ -21,6 +21,9 @@ import java.time.ZoneId
  * Stores country/zone selection, timezone preference, and appliance list in SharedPreferences.
  * Appliances are JSON-serialized via kotlinx-serialization.
  *
+ * The repeated get/put boilerplate is funnelled through the small typed helpers at the bottom
+ * (`putBool`/`putStr`/`getJson`/…), so each accessor stays a one-liner over one prefs file.
+ *
  * @param context Android context for SharedPreferences access.
  */
 class SettingsRepository(private val context: Context) {
@@ -86,7 +89,7 @@ class SettingsRepository(private val context: Context) {
         if (stored != null) return stored
 
         val detected = CountryDetector.detect(context)
-        prefs.edit { putString(KEY_COUNTRY_CODE, detected.code) }
+        putStr(KEY_COUNTRY_CODE, detected.code)
         return detected.code
     }
 
@@ -98,7 +101,7 @@ class SettingsRepository(private val context: Context) {
      * @param code ISO 3166-1 alpha-2 country code.
      */
     fun setCountryCode(code: String) {
-        prefs.edit { putString(KEY_COUNTRY_CODE, code) }
+        putStr(KEY_COUNTRY_CODE, code)
         clearSourceOrder()
         clearDisabledSources()
         // The chosen supplier and any manual surcharge belong to the previous country's tariff feed
@@ -113,21 +116,13 @@ class SettingsRepository(private val context: Context) {
     fun isAllInEnabled(): Boolean = prefs.getBoolean(KEY_ALL_IN_ENABLED, false)
 
     /** Persists the all-in enabled preference. */
-    fun setAllInEnabled(enabled: Boolean) {
-        prefs.edit { putBoolean(KEY_ALL_IN_ENABLED, enabled) }
-    }
+    fun setAllInEnabled(enabled: Boolean) = putBool(KEY_ALL_IN_ENABLED, enabled)
 
     /** Returns the chosen supplier id (from the tariff feed), or `null` if none is selected. */
     fun getSupplierId(): String? = prefs.getString(KEY_SUPPLIER_ID, null)
 
     /** Persists the chosen supplier id, or clears it when `null`. */
-    fun setSupplierId(id: String?) {
-        if (id == null) {
-            prefs.edit { remove(KEY_SUPPLIER_ID) }
-        } else {
-            prefs.edit { putString(KEY_SUPPLIER_ID, id) }
-        }
-    }
+    fun setSupplierId(id: String?) = putStr(KEY_SUPPLIER_ID, id)
 
     /**
      * Returns the manual per-kWh surcharge override (ex-VAT), or `null` when unset.
@@ -138,33 +133,19 @@ class SettingsRepository(private val context: Context) {
         prefs.getString(KEY_MANUAL_SURCHARGE, null)?.toDoubleOrNull()
 
     /** Persists the manual surcharge override, or clears it when `null`. */
-    fun setManualSurcharge(value: Double?) {
-        if (value == null) {
-            prefs.edit { remove(KEY_MANUAL_SURCHARGE) }
-        } else {
-            prefs.edit { putString(KEY_MANUAL_SURCHARGE, value.toString()) }
-        }
-    }
+    fun setManualSurcharge(value: Double?) = putStr(KEY_MANUAL_SURCHARGE, value?.toString())
 
     /**
      * Returns the stored price zone ID within the current country, or `null` if using the default (first zone).
      */
-    fun getPriceZoneId(): String? {
-        return prefs.getString(KEY_PRICE_ZONE_ID, null)
-    }
+    fun getPriceZoneId(): String? = prefs.getString(KEY_PRICE_ZONE_ID, null)
 
     /**
      * Persists the selected price zone ID.
      *
      * @param id The [PriceZone.id], or `null` to use the country's first zone.
      */
-    fun setPriceZoneId(id: String?) {
-        if (id == null) {
-            prefs.edit { remove(KEY_PRICE_ZONE_ID) }
-        } else {
-            prefs.edit { putString(KEY_PRICE_ZONE_ID, id) }
-        }
-    }
+    fun setPriceZoneId(id: String?) = putStr(KEY_PRICE_ZONE_ID, id)
 
     /**
      * Resolves the current country and zone settings to a concrete [PriceZone].
@@ -211,19 +192,13 @@ class SettingsRepository(private val context: Context) {
      *
      * @param timeZoneId The timezone to store.
      */
-    fun setTimeZoneId(timeZoneId: ZoneId) {
-        prefs.edit { putString(KEY_TIMEZONE_ID, timeZoneId.id) }
-    }
+    fun setTimeZoneId(timeZoneId: ZoneId) = putStr(KEY_TIMEZONE_ID, timeZoneId.id)
 
     /** Removes the custom timezone, reverting to zone-derived default. */
-    fun clearTimeZoneId() {
-        prefs.edit { remove(KEY_TIMEZONE_ID) }
-    }
+    fun clearTimeZoneId() = removeKey(KEY_TIMEZONE_ID)
 
     /** Returns `true` if no custom timezone has been set (using zone-derived default). */
-    fun isUsingDefaultTimezone(): Boolean {
-        return prefs.getString(KEY_TIMEZONE_ID, null) == null
-    }
+    fun isUsingDefaultTimezone(): Boolean = prefs.getString(KEY_TIMEZONE_ID, null) == null
 
     // --- Data Source Order ---
 
@@ -232,42 +207,24 @@ class SettingsRepository(private val context: Context) {
      *
      * The list contains all source IDs in display/priority order (both enabled and disabled).
      */
-    fun getSourceOrder(): List<String>? {
-        val stored = prefs.getString(KEY_SOURCE_ORDER, null) ?: return null
-        return try {
-            json.decodeFromString<List<String>>(stored)
-        } catch (_: Exception) {
-            null
-        }
-    }
+    fun getSourceOrder(): List<String>? = getJson<List<String>?>(KEY_SOURCE_ORDER, null)
 
     /**
      * Persists the user's preferred source display order.
      *
      * @param order Ordered list of all source IDs (enabled and disabled).
      */
-    fun setSourceOrder(order: List<String>) {
-        prefs.edit { putString(KEY_SOURCE_ORDER, json.encodeToString(order)) }
-    }
+    fun setSourceOrder(order: List<String>) = putJson(KEY_SOURCE_ORDER, order)
 
     /** Removes the custom source order, reverting to zone-specific defaults. */
-    fun clearSourceOrder() {
-        prefs.edit { remove(KEY_SOURCE_ORDER) }
-    }
+    fun clearSourceOrder() = removeKey(KEY_SOURCE_ORDER)
 
     /**
      * Returns the set of disabled source IDs.
      *
      * @return Set of disabled source IDs, or empty set if all enabled.
      */
-    fun getDisabledSources(): Set<String> {
-        val stored = prefs.getString(KEY_DISABLED_SOURCES, null) ?: return emptySet()
-        return try {
-            json.decodeFromString<Set<String>>(stored)
-        } catch (_: Exception) {
-            emptySet()
-        }
-    }
+    fun getDisabledSources(): Set<String> = getJson(KEY_DISABLED_SOURCES, emptySet())
 
     /**
      * Persists the set of disabled source IDs.
@@ -275,17 +232,11 @@ class SettingsRepository(private val context: Context) {
      * @param disabled Set of source IDs to disable.
      */
     fun setDisabledSources(disabled: Set<String>) {
-        if (disabled.isEmpty()) {
-            prefs.edit { remove(KEY_DISABLED_SOURCES) }
-        } else {
-            prefs.edit { putString(KEY_DISABLED_SOURCES, json.encodeToString(disabled)) }
-        }
+        if (disabled.isEmpty()) removeKey(KEY_DISABLED_SOURCES) else putJson(KEY_DISABLED_SOURCES, disabled)
     }
 
     /** Removes all disabled sources, re-enabling everything. */
-    fun clearDisabledSources() {
-        prefs.edit { remove(KEY_DISABLED_SOURCES) }
-    }
+    fun clearDisabledSources() = removeKey(KEY_DISABLED_SOURCES)
 
     // --- Appliances ---
 
@@ -294,56 +245,34 @@ class SettingsRepository(private val context: Context) {
      *
      * @return List of appliances, or empty list if none saved or on parse error.
      */
-    fun getAppliances(): List<Appliance> {
-        val stored = prefs.getString(KEY_APPLIANCES, null) ?: return emptyList()
-        return try {
-            json.decodeFromString<List<Appliance>>(stored)
-        } catch (_: Exception) {
-            emptyList()
-        }
-    }
+    fun getAppliances(): List<Appliance> = getJson(KEY_APPLIANCES, emptyList())
 
     /**
      * Persists the full appliance list, replacing any previously stored list.
      *
      * @param appliances The appliances to store.
      */
-    fun setAppliances(appliances: List<Appliance>) {
-        prefs.edit { putString(KEY_APPLIANCES, json.encodeToString(appliances)) }
-    }
+    fun setAppliances(appliances: List<Appliance>) = putJson(KEY_APPLIANCES, appliances)
 
     // --- Appliance sorting, EV placement & usage ---
 
     /** Returns the chosen appliance ordering, defaulting to manual (custom) order. */
-    fun getApplianceSort(): ApplianceSort {
-        val stored = prefs.getString(KEY_APPLIANCE_SORT, null) ?: return ApplianceSort()
-        return try {
-            json.decodeFromString<ApplianceSort>(stored)
-        } catch (_: Exception) {
-            ApplianceSort()
-        }
-    }
+    fun getApplianceSort(): ApplianceSort = getJson(KEY_APPLIANCE_SORT, ApplianceSort())
 
     /** Persists the chosen appliance ordering. */
-    fun setApplianceSort(sort: ApplianceSort) {
-        prefs.edit { putString(KEY_APPLIANCE_SORT, json.encodeToString(sort)) }
-    }
+    fun setApplianceSort(sort: ApplianceSort) = putJson(KEY_APPLIANCE_SORT, sort)
 
     /** Returns where vehicles are placed on the home screen (default [EvPosition.INTERLEAVED]). */
     fun getEvPosition(): EvPosition = EvPosition.fromKey(prefs.getString(KEY_EV_POSITION, null))
 
     /** Persists the vehicle placement. */
-    fun setEvPosition(position: EvPosition) {
-        prefs.edit { putString(KEY_EV_POSITION, position.key) }
-    }
+    fun setEvPosition(position: EvPosition) = putStr(KEY_EV_POSITION, position.key)
 
     /** Whether a First/Last vehicle block is drawn as its own section (default false). */
     fun isEvSeparateSection(): Boolean = prefs.getBoolean(KEY_EV_SEPARATE, false)
 
     /** Persists the separate-section preference. */
-    fun setEvSeparateSection(separate: Boolean) {
-        prefs.edit { putBoolean(KEY_EV_SEPARATE, separate) }
-    }
+    fun setEvSeparateSection(separate: Boolean) = putBool(KEY_EV_SEPARATE, separate)
 
     /** Returns phone-local per-appliance tap usage. */
     fun getApplianceUsage(): Map<String, ApplianceUsage> = readUsage(KEY_APPLIANCE_USAGE)
@@ -356,45 +285,22 @@ class SettingsRepository(private val context: Context) {
     }
 
     /** Clears phone-local usage. */
-    fun clearApplianceUsage() {
-        prefs.edit { remove(KEY_APPLIANCE_USAGE) }
-    }
+    fun clearApplianceUsage() = removeKey(KEY_APPLIANCE_USAGE)
 
     /** Returns the last usage snapshot received from the watch (stored separately to avoid double-counting). */
     fun getWatchUsage(): Map<String, ApplianceUsage> = readUsage(KEY_WATCH_USAGE)
 
     /** Persists the latest watch usage snapshot. */
-    fun setWatchUsage(usage: Map<String, ApplianceUsage>) {
-        writeUsage(KEY_WATCH_USAGE, usage)
-    }
+    fun setWatchUsage(usage: Map<String, ApplianceUsage>) = writeUsage(KEY_WATCH_USAGE, usage)
 
     /** Clears the stored watch usage snapshot. */
-    fun clearWatchUsage() {
-        prefs.edit { remove(KEY_WATCH_USAGE) }
-    }
+    fun clearWatchUsage() = removeKey(KEY_WATCH_USAGE)
 
     /** The current usage reset token, bumped on purge and propagated to the watch. */
     fun getUsageResetToken(): Long = prefs.getLong(KEY_USAGE_RESET_TOKEN, 0L)
 
     /** Advances the reset token so the watch zeroes its own usage on next sync. */
-    fun bumpUsageResetToken() {
-        prefs.edit { putLong(KEY_USAGE_RESET_TOKEN, getUsageResetToken() + 1) }
-    }
-
-    private fun readUsage(key: String): Map<String, ApplianceUsage> {
-        val stored = prefs.getString(key, null) ?: return emptyMap()
-        return try {
-            json.decodeFromString<Map<String, ApplianceUsage>>(stored)
-        } catch (_: Exception) {
-            emptyMap()
-        }
-    }
-
-    private fun writeUsage(key: String, usage: Map<String, ApplianceUsage>) {
-        prefs.edit {
-            if (usage.isEmpty()) remove(key) else putString(key, json.encodeToString(usage))
-        }
-    }
+    fun bumpUsageResetToken() = putLong(KEY_USAGE_RESET_TOKEN, getUsageResetToken() + 1)
 
     // --- EV charging ---
 
@@ -407,9 +313,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param kw Charger output in kW.
      */
-    fun setEvHomeChargerKw(kw: Double) {
-        prefs.edit { putFloat(KEY_EV_HOME_CHARGER_KW, kw.toFloat()) }
-    }
+    fun setEvHomeChargerKw(kw: Double) = putFloat(KEY_EV_HOME_CHARGER_KW, kw.toFloat())
 
     /** Returns the default target state of charge (0–100) used to prefill the charge prompt. Defaults to 80. */
     fun getEvDefaultTargetSoc(): Int = prefs.getInt(KEY_EV_DEFAULT_TARGET_SOC, DEFAULT_TARGET_SOC)
@@ -419,9 +323,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param soc Target SoC (0–100).
      */
-    fun setEvDefaultTargetSoc(soc: Int) {
-        prefs.edit { putInt(KEY_EV_DEFAULT_TARGET_SOC, soc) }
-    }
+    fun setEvDefaultTargetSoc(soc: Int) = putInt(KEY_EV_DEFAULT_TARGET_SOC, soc)
 
     /** Returns the last-used current state of charge (0–100), used to prefill the prompt. Defaults to 20. */
     fun getEvLastCurrentSoc(): Int = prefs.getInt(KEY_EV_LAST_CURRENT_SOC, DEFAULT_CURRENT_SOC)
@@ -431,9 +333,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param soc Current SoC (0–100).
      */
-    fun setEvLastCurrentSoc(soc: Int) {
-        prefs.edit { putInt(KEY_EV_LAST_CURRENT_SOC, soc) }
-    }
+    fun setEvLastCurrentSoc(soc: Int) = putInt(KEY_EV_LAST_CURRENT_SOC, soc)
 
     // --- Stats ---
 
@@ -445,17 +345,13 @@ class SettingsRepository(private val context: Context) {
      *
      * @param enabled `true` to enable stats collection.
      */
-    fun setStatsEnabled(enabled: Boolean) {
-        prefs.edit { putBoolean(KEY_STATS_ENABLED, enabled) }
-    }
+    fun setStatsEnabled(enabled: Boolean) = putBool(KEY_STATS_ENABLED, enabled)
 
     /** Returns whether the one-time stats opt-in prompt has been shown. */
     fun isStatsPromptShown(): Boolean = prefs.getBoolean(KEY_STATS_PROMPT_SHOWN, false)
 
     /** Marks the stats opt-in prompt as shown so it is never displayed again. */
-    fun setStatsPromptShown() {
-        prefs.edit { putBoolean(KEY_STATS_PROMPT_SHOWN, true) }
-    }
+    fun setStatsPromptShown() = putBool(KEY_STATS_PROMPT_SHOWN, true)
 
     /**
      * Returns the timestamp of the app's first launch, recording it if not yet set.
@@ -468,7 +364,7 @@ class SettingsRepository(private val context: Context) {
         val stored = prefs.getLong(KEY_FIRST_LAUNCH_MS, 0L)
         if (stored != 0L) return stored
         val now = System.currentTimeMillis()
-        prefs.edit { putLong(KEY_FIRST_LAUNCH_MS, now) }
+        putLong(KEY_FIRST_LAUNCH_MS, now)
         return now
     }
 
@@ -511,9 +407,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param unlocked `true` if the user has a valid purchase, `false` if revoked (e.g. refund).
      */
-    fun setUnlocked(unlocked: Boolean) {
-        prefs.edit { putBoolean(KEY_UNLOCKED, unlocked) }
-    }
+    fun setUnlocked(unlocked: Boolean) = putBool(KEY_UNLOCKED, unlocked)
 
     // --- Developer Options ---
 
@@ -521,9 +415,7 @@ class SettingsRepository(private val context: Context) {
     fun isDevOptionsEnabled(): Boolean = prefs.getBoolean(KEY_DEV_OPTIONS, false)
 
     /** Persistently enables hidden developer options. */
-    fun setDevOptionsEnabled() {
-        prefs.edit { putBoolean(KEY_DEV_OPTIONS, true) }
-    }
+    fun setDevOptionsEnabled() = putBool(KEY_DEV_OPTIONS, true)
 
     /**
      * Returns whether the developer-only subscription bypass is enabled.
@@ -539,9 +431,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param unlocked `true` to bypass the paywall locally, `false` to restore normal trial/paywall behaviour.
      */
-    fun setDevUnlocked(unlocked: Boolean) {
-        prefs.edit { putBoolean(KEY_DEV_UNLOCK, unlocked) }
-    }
+    fun setDevUnlocked(unlocked: Boolean) = putBool(KEY_DEV_UNLOCK, unlocked)
 
     /** Returns whether the API fetch cooldown is disabled (developer option). */
     fun isCooldownDisabled(): Boolean = prefs.getBoolean(KEY_COOLDOWN_DISABLED, false)
@@ -551,9 +441,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param disabled `true` to skip the cooldown between API requests.
      */
-    fun setCooldownDisabled(disabled: Boolean) {
-        prefs.edit { putBoolean(KEY_COOLDOWN_DISABLED, disabled) }
-    }
+    fun setCooldownDisabled(disabled: Boolean) = putBool(KEY_COOLDOWN_DISABLED, disabled)
 
     /**
      * Returns the stored time override as epoch milliseconds, or `null` if no override is set.
@@ -572,11 +460,7 @@ class SettingsRepository(private val context: Context) {
      * @param ms Epoch milliseconds to use as the fake "now", or `null` to clear.
      */
     fun setTimeOverrideMs(ms: Long?) {
-        if (ms == null) {
-            prefs.edit { remove(KEY_TIME_OVERRIDE) }
-        } else {
-            prefs.edit { putLong(KEY_TIME_OVERRIDE, ms) }
-        }
+        if (ms == null) removeKey(KEY_TIME_OVERRIDE) else putLong(KEY_TIME_OVERRIDE, ms)
     }
 
     /**
@@ -604,9 +488,7 @@ class SettingsRepository(private val context: Context) {
      *
      * @param use `true` to show the production logo in debug builds.
      */
-    fun setUseProductionLogo(use: Boolean) {
-        prefs.edit { putBoolean(KEY_USE_PRODUCTION_LOGO, use) }
-    }
+    fun setUseProductionLogo(use: Boolean) = putBool(KEY_USE_PRODUCTION_LOGO, use)
 
     // --- Theme ---
 
@@ -615,16 +497,50 @@ class SettingsRepository(private val context: Context) {
      *
      * @return One of `"system"`, `"light"`, or `"dark"`. Defaults to `"system"`.
      */
-    fun getThemeMode(): String {
-        return prefs.getString(KEY_THEME_MODE, "system") ?: "system"
-    }
+    fun getThemeMode(): String = prefs.getString(KEY_THEME_MODE, "system") ?: "system"
 
     /**
      * Persists the user's preferred theme mode key.
      *
      * @param mode One of `"system"`, `"light"`, or `"dark"`.
      */
-    fun setThemeMode(mode: String) {
-        prefs.edit { putString(KEY_THEME_MODE, mode) }
+    fun setThemeMode(mode: String) = putStr(KEY_THEME_MODE, mode)
+
+    // --- Typed SharedPreferences helpers ---
+    // One place for the repetitive edit/serialize boilerplate; every accessor above is a one-liner
+    // over these. String writes follow the app's convention: a null value removes the key.
+
+    private fun putBool(key: String, value: Boolean) = prefs.edit { putBoolean(key, value) }
+
+    private fun putInt(key: String, value: Int) = prefs.edit { putInt(key, value) }
+
+    private fun putLong(key: String, value: Long) = prefs.edit { putLong(key, value) }
+
+    private fun putFloat(key: String, value: Float) = prefs.edit { putFloat(key, value) }
+
+    private fun putStr(key: String, value: String?) =
+        prefs.edit { if (value == null) remove(key) else putString(key, value) }
+
+    private fun removeKey(key: String) = prefs.edit { remove(key) }
+
+    /** Decodes the JSON stored at [key], returning [default] when absent or malformed. */
+    private inline fun <reified T> getJson(key: String, default: T): T {
+        val stored = prefs.getString(key, null) ?: return default
+        return try {
+            json.decodeFromString<T>(stored)
+        } catch (_: Exception) {
+            default
+        }
+    }
+
+    private inline fun <reified T> putJson(key: String, value: T) =
+        prefs.edit { putString(key, json.encodeToString(value)) }
+
+    /** Reads a per-appliance usage map, defaulting to empty. */
+    private fun readUsage(key: String): Map<String, ApplianceUsage> = getJson(key, emptyMap())
+
+    /** Persists a usage map, removing the key when the map is empty. */
+    private fun writeUsage(key: String, usage: Map<String, ApplianceUsage>) {
+        if (usage.isEmpty()) removeKey(key) else putJson(key, usage)
     }
 }

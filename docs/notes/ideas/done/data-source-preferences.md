@@ -4,7 +4,7 @@
 
 Users can configure which data sources are used and in what priority order per zone.
 The "Data sources" section in Settings shows available sources for the current zone with
-toggle switches and up/down reorder buttons. At least one source must remain enabled.
+toggle switches and a drag handle for reordering. At least one source must remain enabled.
 Country changes reset to defaults. Source order syncs to the watch via the Data Layer.
 
 Source health indicators are deferred as a future improvement.

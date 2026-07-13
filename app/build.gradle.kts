@@ -71,7 +71,7 @@ dependencies {
     implementation(libs.compose.material.icons.core)
     implementation(libs.lifecycle.viewmodel.compose)
 
-    // Drag-to-reorder for the appliance custom order
+    // Drag-to-reorder for the appliance and data-source lists
     implementation(libs.reorderable)
 
     // Wearable Data Layer (sync appliances to watch)

@@ -38,7 +38,13 @@ import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceSort
+import today.sweetspot.model.ApplianceUsage
+import today.sweetspot.model.EvPosition
 import today.sweetspot.model.PriceSlot
+import today.sweetspot.model.SortCriterion
+import today.sweetspot.model.SortKey
+import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.UiText
 import java.time.Instant
 import java.time.ZoneId
@@ -1832,5 +1838,67 @@ class SweetSpotViewModelTest {
         val applied = vm.uiState.value.allInApplied
         vm.onClearResult()
         assertFalse(applied)                            // never mixes a PLN surcharge into EUR prices
+    }
+
+    // --- Appliance sorting, reordering & usage ---
+
+    @Test
+    fun `changing sort reorders sortedAppliances`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("Zeta", 1, 0, "device")
+        vm.onAddAppliance("Alpha", 1, 0, "device")
+        vm.onApplianceSortChanged(ApplianceSort(listOf(SortCriterion(SortKey.NAME))))
+        assertEquals(listOf("Alpha", "Zeta"), vm.uiState.value.sortedAppliances.map { it.name })
+    }
+
+    @Test
+    fun `reorder persists non-EV order and keeps vehicles`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("A", 1, 0, "device")
+        vm.onAddAppliance("B", 1, 0, "device")
+        vm.onAddVehicle("Kia", 60.0, 11.0)
+        val nonEv = vm.uiState.value.appliances.filterNot { it.isEv }
+        vm.onReorderAppliances(nonEv.reversed())
+        assertEquals(listOf("B", "A"), vm.uiState.value.sortedAppliances.map { it.name })
+        assertTrue(vm.uiState.value.appliances.any { it.isEv })
+    }
+
+    @Test
+    fun `ev placement drives the home layout`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("A", 1, 0, "device")
+        vm.onAddVehicle("Kia", 60.0, 11.0)
+        assertTrue(vm.uiState.value.homeLayout is HomeChipLayout.Flat) // custom + interleaved → flat
+        vm.onEvPositionChanged(EvPosition.LAST)
+        vm.onEvSeparateChanged(true)
+        val layout = vm.uiState.value.homeLayout
+        assertTrue(layout is HomeChipLayout.Sectioned)
+        layout as HomeChipLayout.Sectioned
+        assertFalse(layout.vehiclesFirst)
+        assertEquals(listOf("A"), layout.first.map { it.name })
+        assertEquals(listOf("Kia"), layout.second.map { it.name })
+    }
+
+    @Test
+    fun `tapping an appliance records usage`() {
+        val vm = testViewModel(FakeFetcher(fakePrices(24)))
+        vm.onAddAppliance("Wash", 2, 0, "washing_machine")
+        val appliance = vm.uiState.value.appliances.first()
+        vm.onApplianceDuration(appliance)
+        assertEquals(1, vm.uiState.value.usage[appliance.id]?.count)
+        vm.onClearResult()
+    }
+
+    @Test
+    fun `watch usage merges on matching token and is ignored after a purge`() {
+        val vm = defaultViewModel()
+        vm.onWatchUsageReceived(mapOf("x" to ApplianceUsage(3, 50)), token = 0)
+        assertEquals(3, vm.uiState.value.usage["x"]?.count)
+        vm.onPurgeUsage()
+        assertTrue(vm.uiState.value.usage.isEmpty())
+        vm.onWatchUsageReceived(mapOf("x" to ApplianceUsage(3, 50)), token = 0) // stale token
+        assertNull(vm.uiState.value.usage["x"])
+        vm.onWatchUsageReceived(mapOf("x" to ApplianceUsage(2, 60)), token = 1) // current token
+        assertEquals(2, vm.uiState.value.usage["x"]?.count)
     }
 }

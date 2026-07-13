@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -37,6 +38,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import kotlin.math.roundToInt
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.applianceIconFor
 import today.sweetspot.util.formatKw
@@ -56,6 +58,11 @@ private val CHARGER_PRESETS = listOf(3.7, 7.4, 11.0, 22.0)
  * @param onDefaultTargetChanged Called when the default target changes.
  * @param onVehicleClick Called when a vehicle row is tapped (to edit).
  * @param onAddVehicleClick Called when "Add vehicle" is tapped.
+ * @param evPosition Where vehicles are placed among appliances on the home screen.
+ * @param evSeparate Whether the First/Last vehicle block is drawn as its own section.
+ * @param sortIsCustom Whether the appliance sort is manual; disables Interleaved (no manual slot).
+ * @param onEvPositionChanged Called when the placement changes.
+ * @param onEvSeparateChanged Called when the separate-section toggle changes.
  */
 @Composable
 internal fun EvSection(
@@ -65,7 +72,12 @@ internal fun EvSection(
     onHomeChargerChanged: (Double) -> Unit,
     onDefaultTargetChanged: (Int) -> Unit,
     onVehicleClick: (Appliance) -> Unit,
-    onAddVehicleClick: () -> Unit
+    onAddVehicleClick: () -> Unit,
+    evPosition: EvPosition,
+    evSeparate: Boolean,
+    sortIsCustom: Boolean,
+    onEvPositionChanged: (EvPosition) -> Unit,
+    onEvSeparateChanged: (Boolean) -> Unit
 ) {
     Text(
         text = stringResource(R.string.settings_ev_title),
@@ -121,6 +133,50 @@ internal fun EvSection(
             valueRange = 0f..100f,
             steps = 19
         )
+    }
+
+    // Placement on the home screen
+    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+        Text(stringResource(R.string.ev_placement_title), style = MaterialTheme.typography.bodyLarge)
+        Text(
+            text = stringResource(R.string.ev_placement_description),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(8.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FilterChip(
+                selected = evPosition == EvPosition.INTERLEAVED,
+                enabled = !sortIsCustom,
+                onClick = { onEvPositionChanged(EvPosition.INTERLEAVED) },
+                label = { Text(stringResource(R.string.ev_position_interleaved)) }
+            )
+            FilterChip(
+                selected = evPosition == EvPosition.FIRST,
+                onClick = { onEvPositionChanged(EvPosition.FIRST) },
+                label = { Text(stringResource(R.string.ev_position_first)) }
+            )
+            FilterChip(
+                selected = evPosition == EvPosition.LAST,
+                onClick = { onEvPositionChanged(EvPosition.LAST) },
+                label = { Text(stringResource(R.string.ev_position_last)) }
+            )
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = stringResource(R.string.ev_separate_section),
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.weight(1f)
+            )
+            Switch(
+                checked = evSeparate,
+                enabled = evPosition != EvPosition.INTERLEAVED,
+                onCheckedChange = onEvSeparateChanged
+            )
+        }
     }
 
     // Saved vehicles

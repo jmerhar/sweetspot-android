@@ -184,4 +184,35 @@
     <string name="ev_error_invalid_soc">Target charge must be higher than the current charge.</string>
     <string name="ev_error_invalid_charger">Set a charger power greater than zero.</string>
     <string name="ev_error_deadline_unreachable">Charging can\'t finish by your deadline. Try a lower target charge or a later time.</string>
+
+    <!-- Appliance sorting & reordering -->
+    <string name="settings_sort_title">Order</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_then_by">then by</string>
+    <string name="sort_key_custom">Custom order</string>
+    <string name="sort_key_frequency">Most used</string>
+    <string name="sort_key_recency">Recently used</string>
+    <string name="sort_key_name">Name</string>
+    <string name="sort_key_duration">Duration</string>
+    <string name="sort_key_type">Type</string>
+    <string name="sort_direction_ascending">Ascending</string>
+    <string name="sort_direction_descending">Descending</string>
+    <string name="sort_add_tiebreaker">Add tie-breaker</string>
+    <string name="cd_sort_remove_level">Remove this sort level</string>
+    <string name="cd_drag_handle">Drag to reorder</string>
+    <string name="settings_reset_usage">Reset usage data</string>
+    <string name="settings_reset_usage_description">Clear the tap history used to order by Most used and Recently used.</string>
+    <string name="reset_usage_confirm_title">Reset usage data?</string>
+    <string name="reset_usage_confirm_message">This clears the tap history used to order appliances by Most used and Recently used. It can\'t be undone.</string>
+    <string name="action_reset">Reset</string>
+
+    <!-- EV placement on the home screen -->
+    <string name="ev_placement_title">Placement on home screen</string>
+    <string name="ev_placement_description">Where your vehicles appear among the appliance buttons.</string>
+    <string name="ev_position_interleaved">Mixed in</string>
+    <string name="ev_position_first">First</string>
+    <string name="ev_position_last">Last</string>
+    <string name="ev_separate_section">Separate section</string>
+    <string name="home_section_vehicles">Vehicles</string>
+    <string name="home_section_appliances">Appliances</string>
 </resources>

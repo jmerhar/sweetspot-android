@@ -27,8 +27,11 @@ import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.data.stats.StatsReporter
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceSort
+import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
 import today.sweetspot.model.Country
+import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
 import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.PriceSlot
@@ -36,8 +39,12 @@ import today.sweetspot.model.PriceZone
 import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.AllInPricing
+import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.UiText
+import today.sweetspot.util.combineUsage
 import today.sweetspot.util.findWindowAlternatives
+import today.sweetspot.util.mergeForHome
+import today.sweetspot.util.sortAppliances
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -133,6 +140,12 @@ private const val SPOT_CURRENCY = "EUR"
  * @property deadlineMinute Minute component of the "ready by" deadline (0–59).
  * @property searchDeadline The deadline resolved at search time, or `null` when disabled.
  * @property searchPowerKw Load power (kW) used to scale displayed costs, or `null` for per-1-kW.
+ * @property applianceSort The active appliance ordering (default manual/custom).
+ * @property evPosition Where vehicles are placed relative to appliances on the home screen.
+ * @property evSeparate Whether a First/Last vehicle block is drawn as its own section.
+ * @property usage Combined phone+watch per-appliance tap statistics feeding Frequency/Recency.
+ * @property sortedAppliances Non-EV appliances in the active sort order (for the Settings list).
+ * @property homeLayout The merged appliance/vehicle chip layout for the home screen.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -205,7 +218,14 @@ data class UiState(
     /** Name of the supplier whose surcharge was applied (null for a manual override or when not applied). */
     val allInSupplierName: String? = null,
     /** True when the applied tariff is older than the staleness cutoff (shows an "out of date" warning). */
-    val allInStale: Boolean = false
+    val allInStale: Boolean = false,
+    // --- Appliance sorting & usage ---
+    val applianceSort: ApplianceSort = ApplianceSort(),
+    val evPosition: EvPosition = EvPosition.INTERLEAVED,
+    val evSeparate: Boolean = false,
+    val usage: Map<String, ApplianceUsage> = emptyMap(),
+    val sortedAppliances: List<Appliance> = emptyList(),
+    val homeLayout: HomeChipLayout = HomeChipLayout.Flat(emptyList())
 ) {
     /**
      * Whether all-in pricing is offered for the selected country: a usable tariff feed exists **and**
@@ -252,6 +272,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private val evVehicleRepositoryOverride: EvVehicleRepository? = null,
     statsPoster: StatsPoster? = null,
     watchStatsBridgeOverride: WatchStatsBridge? = null,
+    watchUsageBridgeOverride: WatchUsageBridge? = null,
     tariffRepositoryOverride: TariffRepository? = null
 ) : AndroidViewModel(application) {
 
@@ -281,6 +302,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /** Receives watch API-reliability stats via the Data Layer (real impl, or a fake in tests). */
     private val watchStatsBridge: WatchStatsBridge =
         watchStatsBridgeOverride ?: WearableStatsBridge(application)
+
+    /** Receives watch per-appliance usage via the Data Layer (real impl, or a fake in tests). */
+    private val watchUsageBridge: WatchUsageBridge =
+        watchUsageBridgeOverride ?: WearableUsageBridge(application)
 
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
@@ -328,8 +353,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
             evLastCurrentSoc = settingsRepository.getEvLastCurrentSoc(),
             allInEnabled = settingsRepository.isAllInEnabled(),
             supplierId = settingsRepository.getSupplierId(),
-            manualSurcharge = settingsRepository.getManualSurcharge()
-        )
+            manualSurcharge = settingsRepository.getManualSurcharge(),
+            applianceSort = settingsRepository.getApplianceSort(),
+            evPosition = settingsRepository.getEvPosition(),
+            evSeparate = settingsRepository.isEvSeparateSection()
+        ).withApplianceViews()
     )
 
     /** Observable UI state. */
@@ -375,8 +403,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 }
             }
         }
-        // Listen for watch stats via the Data Layer
+        // Listen for watch stats and usage via the Data Layer
         watchStatsBridge.observe(::onWatchStatsReceived)
+        watchUsageBridge.observe(::onWatchUsageReceived)
     }
 
     override fun onCleared() {
@@ -384,6 +413,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         stopResultRefresh()
         activeBilling?.disconnect()
         watchStatsBridge.stop()
+        watchUsageBridge.stop()
     }
 
     /**
@@ -398,6 +428,23 @@ class SweetSpotViewModel @JvmOverloads constructor(
         } else {
             ZonedDateTime.now(timeZoneId)
         }
+    }
+
+    /** Current effective time in epoch millis, honouring any developer time override. */
+    private fun nowMs(): Long = currentNow(_uiState.value.timeZoneId).toInstant().toEpochMilli()
+
+    /**
+     * Recomputes the derived appliance views ([UiState.usage], [UiState.sortedAppliances], and
+     * [UiState.homeLayout]) from the current appliances, sort, EV placement, and stored usage.
+     * Applied after any change to those inputs so the home screen and Settings list stay in order.
+     */
+    private fun UiState.withApplianceViews(): UiState {
+        val usage = combineUsage(settingsRepository.getApplianceUsage(), settingsRepository.getWatchUsage())
+        return copy(
+            usage = usage,
+            sortedAppliances = sortAppliances(appliances.filterNot { it.isEv }, applianceSort, usage),
+            homeLayout = mergeForHome(appliances, applianceSort, usage, evPosition, evSeparate),
+        )
     }
 
     /**
@@ -418,11 +465,18 @@ class SweetSpotViewModel @JvmOverloads constructor(
         loadTariffAsync(_uiState.value.countryCode, allowNetwork = true)
     }
 
-    /** Closes the settings screen and refreshes the appliance list from storage. */
+    /** Closes the settings screen and refreshes the appliance list and ordering from storage. */
     fun onHideSettings() {
-        val appliances = settingsRepository.getAppliances()
-        _uiState.update { it.copy(showSettings = false, appliances = appliances) }
-        syncAppliancesToWear(appliances)
+        _uiState.update {
+            it.copy(
+                showSettings = false,
+                appliances = settingsRepository.getAppliances(),
+                applianceSort = settingsRepository.getApplianceSort(),
+                evPosition = settingsRepository.getEvPosition(),
+                evSeparate = settingsRepository.isEvSeparateSection()
+            ).withApplianceViews()
+        }
+        syncAppliancesToWear()
     }
 
     // --- All-in price ---
@@ -527,8 +581,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
         )
         val updated = _uiState.value.appliances + vehicle
         settingsRepository.setAppliances(updated)
-        _uiState.update { it.copy(appliances = updated) }
-        syncAppliancesToWear(updated)
+        _uiState.update { it.copy(appliances = updated).withApplianceViews() }
+        syncAppliancesToWear()
     }
 
     /**
@@ -615,8 +669,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val timeZoneId = _uiState.value.timeZoneId
         val deadline = resolveDeadline(currentNow(timeZoneId))
 
-        // Remember the current SoC to prefill the prompt next time.
+        // Remember the current SoC to prefill the prompt next time, and record the tap.
         settingsRepository.setEvLastCurrentSoc(currentSoc)
+        settingsRepository.recordApplianceUsage(appliance.id, nowMs())
 
         val label = UiText.Raw("${appliance.name} · ${currentSoc}→${targetSoc}%")
 
@@ -631,7 +686,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 resultLabel = label,
                 searchDeadline = deadline,
                 searchPowerKw = effectivePowerKw
-            )
+            ).withApplianceViews()
         }
 
         stopResultRefresh()
@@ -774,13 +829,14 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param appliance The tapped appliance.
      */
     fun onApplianceDuration(appliance: Appliance) {
+        settingsRepository.recordApplianceUsage(appliance.id, nowMs())
         val label = UiText.applianceLabel(appliance.name, appliance.durationHours, appliance.durationMinutes)
         _uiState.update {
             it.copy(
                 durationHours = appliance.durationHours,
                 durationMinutes = appliance.durationMinutes,
                 resultLabel = label
-            )
+            ).withApplianceViews()
         }
         onFindClicked(appliance.powerKw)
     }
@@ -978,8 +1034,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
         )
         val updated = _uiState.value.appliances + appliance
         settingsRepository.setAppliances(updated)
-        _uiState.update { it.copy(appliances = updated) }
-        syncAppliancesToWear(updated)
+        _uiState.update { it.copy(appliances = updated).withApplianceViews() }
+        syncAppliancesToWear()
     }
 
     /**
@@ -992,8 +1048,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             if (it.id == appliance.id) appliance else it
         }
         settingsRepository.setAppliances(updated)
-        _uiState.update { it.copy(appliances = updated) }
-        syncAppliancesToWear(updated)
+        _uiState.update { it.copy(appliances = updated).withApplianceViews() }
+        syncAppliancesToWear()
     }
 
     /**
@@ -1004,8 +1060,78 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onDeleteAppliance(id: String) {
         val updated = _uiState.value.appliances.filter { it.id != id }
         settingsRepository.setAppliances(updated)
-        _uiState.update { it.copy(appliances = updated) }
-        syncAppliancesToWear(updated)
+        _uiState.update { it.copy(appliances = updated).withApplianceViews() }
+        syncAppliancesToWear()
+    }
+
+    /**
+     * Sets the appliance ordering (sort mode + tie-breakers, or custom) and persists it.
+     *
+     * @param sort The new ordering.
+     */
+    fun onApplianceSortChanged(sort: ApplianceSort) {
+        settingsRepository.setApplianceSort(sort)
+        _uiState.update { it.copy(applianceSort = sort).withApplianceViews() }
+        syncAppliancesToWear()
+    }
+
+    /**
+     * Reorders the manual (custom) appliance order. Only the non-EV appliances are draggable;
+     * vehicles keep their stored entries and are placed by [EvPosition].
+     *
+     * @param newOrder The non-EV appliances in their new order.
+     */
+    fun onReorderAppliances(newOrder: List<Appliance>) {
+        val evs = _uiState.value.appliances.filter { it.isEv }
+        val updated = newOrder + evs
+        settingsRepository.setAppliances(updated)
+        _uiState.update { it.copy(appliances = updated).withApplianceViews() }
+        syncAppliancesToWear()
+    }
+
+    /**
+     * Sets where vehicles are placed relative to appliances on the home screen.
+     *
+     * @param position The new placement.
+     */
+    fun onEvPositionChanged(position: EvPosition) {
+        settingsRepository.setEvPosition(position)
+        _uiState.update { it.copy(evPosition = position).withApplianceViews() }
+    }
+
+    /**
+     * Sets whether a First/Last vehicle block is drawn as its own section.
+     *
+     * @param separate Whether to draw a separate section.
+     */
+    fun onEvSeparateChanged(separate: Boolean) {
+        settingsRepository.setEvSeparateSection(separate)
+        _uiState.update { it.copy(evSeparate = separate).withApplianceViews() }
+    }
+
+    /**
+     * Clears all tap-usage history (phone and the last watch snapshot) and bumps the reset token
+     * so the watch zeroes its own store on next sync.
+     */
+    fun onPurgeUsage() {
+        settingsRepository.clearApplianceUsage()
+        settingsRepository.clearWatchUsage()
+        settingsRepository.bumpUsageResetToken()
+        _uiState.update { it.withApplianceViews() }
+        syncSettingsToWear()
+    }
+
+    /**
+     * Handles a cumulative usage snapshot pushed from the watch. Ignores snapshots stamped with a
+     * stale reset token (sent before the watch saw a purge), so a purge can't be undone.
+     *
+     * @param snapshot The watch's cumulative per-appliance usage.
+     * @param token The reset token the watch held when it sent the snapshot.
+     */
+    internal fun onWatchUsageReceived(snapshot: Map<String, ApplianceUsage>, token: Long) {
+        if (token != settingsRepository.getUsageResetToken()) return
+        settingsRepository.setWatchUsage(snapshot)
+        _uiState.update { it.withApplianceViews() }
     }
 
     /**
@@ -1015,13 +1141,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * Silently ignores failures (e.g. Play Services unavailable) since
      * watch sync is best-effort and should never crash the phone app.
      *
-     * EV-type appliances are excluded — the watch has no state-of-charge UI in this version.
-     *
-     * @param appliances The appliance list to sync (EV appliances are filtered out).
+     * Pushes the non-EV appliances in the active sort order ([UiState.sortedAppliances]) so the
+     * watch renders the same order as the phone. EV-type appliances are excluded — the watch has
+     * no state-of-charge UI in this version.
      */
-    private fun syncAppliancesToWear(appliances: List<Appliance>) {
+    private fun syncAppliancesToWear() {
         try {
-            val json = Json.encodeToString(appliances.filterNot { it.isEv })
+            val json = Json.encodeToString(_uiState.value.sortedAppliances)
             val request = PutDataMapRequest.create("/appliances").apply {
                 dataMap.putString("json", json)
                 dataMap.putLong("ts", System.currentTimeMillis())
@@ -1083,6 +1209,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 dataMap.putBoolean("stats_enabled", settingsRepository.isStatsEnabled())
                 dataMap.putBoolean("is_trial_expired", settingsRepository.isTrialExpired())
                 dataMap.putBoolean("is_unlocked", settingsRepository.isUnlocked())
+                dataMap.putLong("usage_reset_token", settingsRepository.getUsageResetToken())
                 dataMap.putLong("ts", System.currentTimeMillis())
             }.asPutDataRequest().setUrgent()
             Wearable.getDataClient(getApplication()).putDataItem(request)

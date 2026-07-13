@@ -24,6 +24,9 @@ import today.sweetspot.data.repository.PriceRepository
 import today.sweetspot.data.stats.FileStatsCollector
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
+import today.sweetspot.data.usage.FileUsageStore
+import today.sweetspot.data.usage.UsageSnapshot
+import today.sweetspot.data.usage.UsageStore
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.Countries
 import today.sweetspot.model.PriceSlot
@@ -74,6 +77,7 @@ data class WearUiState(
  * @param ioDispatcher Dispatcher for IO-bound work (injectable for testing).
  * @param wearSyncOverride Optional [WearSync] override for testing. When `null` (production), a
  *   real [WearableSync] backed by Google Play Services is used.
+ * @param usageStore Local cumulative tap store reported back to the phone (injectable for tests).
  */
 class WearViewModel @JvmOverloads constructor(
     application: Application,
@@ -81,7 +85,8 @@ class WearViewModel @JvmOverloads constructor(
     private val priceCache: PriceCache = FilePriceCache(application),
     private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
-    wearSyncOverride: WearSync? = null
+    wearSyncOverride: WearSync? = null,
+    private val usageStore: UsageStore = FileUsageStore(application.cacheDir)
 ) : AndroidViewModel(application) {
 
     private val wearSync: WearSync =
@@ -137,6 +142,8 @@ class WearViewModel @JvmOverloads constructor(
         val sourceOrder = parseSourceOrder(settings.sourceOrder)
         val disabledSources = parseDisabledSources(settings.disabledSources)
         statsEnabled = settings.statsEnabled
+        // Honour a phone-side usage purge: a newer reset token zeroes our local store.
+        if (settings.usageResetToken > usageStore.token()) usageStore.reset(settings.usageResetToken)
         applyLanguage(settings.language)
         _uiState.update {
             it.copy(
@@ -154,6 +161,7 @@ class WearViewModel @JvmOverloads constructor(
      * @param appliance The tapped appliance.
      */
     fun onApplianceTapped(appliance: Appliance) {
+        usageStore.record(appliance.id, System.currentTimeMillis())
         val h = appliance.durationHours
         val m = appliance.durationMinutes
         val durationHours = h + m / 60.0
@@ -221,6 +229,7 @@ class WearViewModel @JvmOverloads constructor(
                 }
                 startResultRefresh()
                 syncStatsToPhone()
+                syncUsageToPhone()
             } catch (e: Exception) {
                 Log.w("WearViewModel", "Could not fetch prices", e)
                 _uiState.update {
@@ -230,6 +239,7 @@ class WearViewModel @JvmOverloads constructor(
                     )
                 }
                 syncStatsToPhone()
+                syncUsageToPhone()
             }
         }
     }
@@ -385,6 +395,21 @@ class WearViewModel @JvmOverloads constructor(
             statsCollector.clear()
         } catch (_: Exception) {
             // Best-effort: stats sync should not crash the watch app
+        }
+    }
+
+    /**
+     * Pushes the watch's cumulative tap usage to the phone via [WearSync].
+     *
+     * The snapshot is cumulative (not a delta) and stamped with the reset token it was recorded
+     * under, so re-delivery is harmless and a phone-side purge is honoured. Best-effort — failures
+     * are ignored, and the local store is never cleared (the phone keeps only the latest snapshot).
+     */
+    private suspend fun syncUsageToPhone() {
+        try {
+            wearSync.pushUsage(UsageSnapshot.encodeToBytes(usageStore.snapshot()), usageStore.token())
+        } catch (_: Exception) {
+            // Best-effort: usage sync should not crash the watch app
         }
     }
 }

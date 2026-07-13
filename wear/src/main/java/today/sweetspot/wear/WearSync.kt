@@ -14,6 +14,8 @@ package today.sweetspot.wear
  * @property statsEnabled Whether API stats collection is enabled.
  * @property isTrialExpired Whether the phone's trial has expired.
  * @property isUnlocked Whether the app is unlocked via subscription.
+ * @property usageResetToken The phone's current usage reset token; a newer value tells the watch
+ *           to zero its local usage store.
  */
 data class WearSettings(
     val countryCode: String?,
@@ -24,6 +26,7 @@ data class WearSettings(
     val statsEnabled: Boolean,
     val isTrialExpired: Boolean,
     val isUnlocked: Boolean,
+    val usageResetToken: Long,
 )
 
 /**
@@ -50,4 +53,12 @@ interface WearSync {
      * @param bytes Encoded [today.sweetspot.data.stats.StatsRecord] list.
      */
     suspend fun pushStats(bytes: ByteArray)
+
+    /**
+     * Pushes the watch's cumulative usage snapshot to the phone via the `/usage` path.
+     *
+     * @param bytes Encoded [today.sweetspot.model.ApplianceUsage] map (see [today.sweetspot.data.usage.UsageSnapshot]).
+     * @param token The reset token this snapshot was recorded under.
+     */
+    suspend fun pushUsage(bytes: ByteArray, token: Long)
 }

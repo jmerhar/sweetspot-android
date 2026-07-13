@@ -18,6 +18,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -26,8 +28,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -39,22 +43,43 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import sh.calvin.reorderable.ReorderableColumn
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceSort
+import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.applianceIconFor
 import today.sweetspot.model.applianceIcons
 import today.sweetspot.ui.components.DurationPicker
 import today.sweetspot.util.formatKw
 import today.sweetspot.util.formatDuration
 
-/** Appliances settings section with description, appliance list, and add button. */
+/**
+ * Appliances settings section: description, sort control, the appliance list (drag-to-reorder in
+ * Custom mode, else read-only in the active order), an add button, and a reset-usage action.
+ *
+ * @param appliances Non-EV appliances already in the active sort order.
+ * @param sort The active ordering.
+ * @param usage Combined tap statistics (for collision-gated tie-breakers).
+ * @param onApplianceClick Opens the edit dialog for an appliance.
+ * @param onAddClick Opens the add dialog.
+ * @param onSortChanged Persists a changed ordering.
+ * @param onReorder Persists a manual (Custom) reorder of the non-EV list.
+ * @param onResetUsage Clears tap-usage history.
+ */
 @Composable
 internal fun AppliancesSection(
     appliances: List<Appliance>,
+    sort: ApplianceSort,
+    usage: Map<String, ApplianceUsage>,
     onApplianceClick: (Appliance) -> Unit,
-    onAddClick: () -> Unit
+    onAddClick: () -> Unit,
+    onSortChanged: (ApplianceSort) -> Unit,
+    onReorder: (List<Appliance>) -> Unit,
+    onResetUsage: () -> Unit
 ) {
     val resources = LocalContext.current.resources
+    var showResetConfirm by rememberSaveable { mutableStateOf(false) }
 
     Text(
         text = stringResource(R.string.settings_appliances),
@@ -70,33 +95,47 @@ internal fun AppliancesSection(
         modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp)
     )
 
-    appliances.forEach { appliance ->
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .semantics(mergeDescendants = true) {}
-                .clickable { onApplianceClick(appliance) }
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                painter = painterResource(applianceIconFor(appliance)),
-                contentDescription = null,
-                modifier = Modifier.size(24.dp),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = appliance.name,
-                    style = MaterialTheme.typography.bodyLarge
-                )
-                Text(
-                    text = formatDuration(appliance.durationHours, appliance.durationMinutes, resources),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+    if (appliances.isNotEmpty()) {
+        ApplianceSortControl(sort, appliances, usage, onSortChanged)
+    }
+
+    if (sort.isCustom && appliances.isNotEmpty()) {
+        // Manual order: drag to reorder. Local state animates the drag; onSettle persists it.
+        var items by remember(appliances) { mutableStateOf(appliances) }
+        ReorderableColumn(
+            list = items,
+            onSettle = { from, to ->
+                items = items.toMutableList().apply { add(to, removeAt(from)) }
+                onReorder(items)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) { _, appliance, _ ->
+            key(appliance.id) {
+                ReorderableItem {
+                    ApplianceRow(
+                        appliance = appliance,
+                        resources = resources,
+                        onClick = { onApplianceClick(appliance) },
+                        dragHandle = {
+                            Icon(
+                                imageVector = Icons.Default.Menu,
+                                contentDescription = stringResource(R.string.cd_drag_handle),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.draggableHandle()
+                            )
+                        }
+                    )
+                }
             }
+        }
+    } else {
+        appliances.forEach { appliance ->
+            ApplianceRow(
+                appliance = appliance,
+                resources = resources,
+                onClick = { onApplianceClick(appliance) },
+                dragHandle = null
+            )
         }
     }
 
@@ -118,6 +157,89 @@ internal fun AppliancesSection(
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.primary
         )
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { showResetConfirm = true }
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = Icons.Default.Refresh,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = stringResource(R.string.settings_reset_usage),
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = stringResource(R.string.settings_reset_usage_description),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+
+    if (showResetConfirm) {
+        AlertDialog(
+            onDismissRequest = { showResetConfirm = false },
+            title = { Text(stringResource(R.string.reset_usage_confirm_title)) },
+            text = { Text(stringResource(R.string.reset_usage_confirm_message)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    onResetUsage()
+                    showResetConfirm = false
+                }) { Text(stringResource(R.string.action_reset)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showResetConfirm = false }) {
+                    Text(stringResource(R.string.action_cancel))
+                }
+            }
+        )
+    }
+}
+
+/** A single appliance row: icon, name, duration, and an optional trailing drag handle. */
+@Composable
+private fun ApplianceRow(
+    appliance: Appliance,
+    resources: android.content.res.Resources,
+    onClick: () -> Unit,
+    dragHandle: (@Composable () -> Unit)?
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .semantics(mergeDescendants = true) {}
+            .clickable { onClick() }
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            painter = painterResource(applianceIconFor(appliance)),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.width(16.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = appliance.name,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Text(
+                text = formatDuration(appliance.durationHours, appliance.durationMinutes, resources),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        dragHandle?.invoke()
     }
 }
 

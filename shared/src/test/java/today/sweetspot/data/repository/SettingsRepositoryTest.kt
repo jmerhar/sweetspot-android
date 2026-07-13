@@ -13,8 +13,13 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceSort
+import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
+import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
+import today.sweetspot.model.SortCriterion
+import today.sweetspot.model.SortKey
 import java.time.ZoneId
 
 /**
@@ -123,6 +128,55 @@ class SettingsRepositoryTest {
         assertEquals(appliances, read)
         assertTrue(read[1].isEv)
         assertNull(read[1].icon)
+    }
+
+    // --- Appliance sorting, EV placement & usage ---
+
+    @Test
+    fun `appliance sort defaults to custom and round-trips`() {
+        assertTrue(repo.getApplianceSort().isCustom)
+        val sort = ApplianceSort(listOf(SortCriterion(SortKey.TYPE), SortCriterion(SortKey.FREQUENCY, descending = true)))
+        repo.setApplianceSort(sort)
+        assertEquals(sort, repo.getApplianceSort())
+    }
+
+    @Test
+    fun `ev position and separate section default and round-trip`() {
+        assertEquals(EvPosition.INTERLEAVED, repo.getEvPosition())
+        assertFalse(repo.isEvSeparateSection())
+        repo.setEvPosition(EvPosition.LAST)
+        repo.setEvSeparateSection(true)
+        assertEquals(EvPosition.LAST, repo.getEvPosition())
+        assertTrue(repo.isEvSeparateSection())
+    }
+
+    @Test
+    fun `appliance usage records, accumulates and clears`() {
+        assertTrue(repo.getApplianceUsage().isEmpty())
+        repo.recordApplianceUsage("a", 100)
+        repo.recordApplianceUsage("a", 250)
+        repo.recordApplianceUsage("b", 300)
+        assertEquals(ApplianceUsage(2, 250), repo.getApplianceUsage()["a"])
+        assertEquals(ApplianceUsage(1, 300), repo.getApplianceUsage()["b"])
+        repo.clearApplianceUsage()
+        assertTrue(repo.getApplianceUsage().isEmpty())
+    }
+
+    @Test
+    fun `watch usage snapshot round-trips and clears`() {
+        assertTrue(repo.getWatchUsage().isEmpty())
+        repo.setWatchUsage(mapOf("x" to ApplianceUsage(4, 999)))
+        assertEquals(ApplianceUsage(4, 999), repo.getWatchUsage()["x"])
+        repo.setWatchUsage(emptyMap())
+        assertTrue(repo.getWatchUsage().isEmpty())
+    }
+
+    @Test
+    fun `usage reset token starts at zero and bumps monotonically`() {
+        assertEquals(0L, repo.getUsageResetToken())
+        repo.bumpUsageResetToken()
+        repo.bumpUsageResetToken()
+        assertEquals(2L, repo.getUsageResetToken())
     }
 
     // --- Price zone resolution ---

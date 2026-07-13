@@ -70,15 +70,25 @@ fun SettingsScreen(
     isUsingDefaultTimezone: Boolean,
     onTimezoneSelected: (ZoneId?) -> Unit,
     appliances: List<Appliance>,
+    sortedAppliances: List<Appliance>,
+    applianceSort: today.sweetspot.model.ApplianceSort,
+    usage: Map<String, today.sweetspot.model.ApplianceUsage>,
     onAddAppliance: (name: String, durationHours: Int, durationMinutes: Int, icon: String, powerKw: Double?) -> Unit,
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
+    onApplianceSortChanged: (today.sweetspot.model.ApplianceSort) -> Unit,
+    onReorderAppliances: (List<Appliance>) -> Unit,
+    onResetUsage: () -> Unit,
     evHomeChargerKw: Double,
     evDefaultTargetSoc: Int,
     onEvHomeChargerChanged: (Double) -> Unit,
     onEvDefaultTargetChanged: (Int) -> Unit,
     searchVehicles: (String) -> List<today.sweetspot.model.EvVehicle>,
     onAddVehicle: (name: String, batteryKwh: Double, acPowerKw: Double) -> Unit,
+    evPosition: today.sweetspot.model.EvPosition,
+    evSeparate: Boolean,
+    onEvPositionChanged: (today.sweetspot.model.EvPosition) -> Unit,
+    onEvSeparateChanged: (Boolean) -> Unit,
     countryCode: String,
     priceZone: PriceZone?,
     countries: List<Country>,
@@ -127,10 +137,15 @@ fun SettingsScreen(
 
     when (route) {
         SettingsRoute.Appliances -> AppliancesSettingsScreen(
-            appliances = appliances,
+            appliances = sortedAppliances,
+            sort = applianceSort,
+            usage = usage,
             onAddAppliance = onAddAppliance,
             onUpdateAppliance = onUpdateAppliance,
             onDeleteAppliance = onDeleteAppliance,
+            onSortChanged = onApplianceSortChanged,
+            onReorder = onReorderAppliances,
+            onResetUsage = onResetUsage,
             onBack = toMenu
         )
 
@@ -144,6 +159,11 @@ fun SettingsScreen(
             onAddVehicle = onAddVehicle,
             onUpdateAppliance = onUpdateAppliance,
             onDeleteAppliance = onDeleteAppliance,
+            evPosition = evPosition,
+            evSeparate = evSeparate,
+            sortIsCustom = applianceSort.isCustom,
+            onEvPositionChanged = onEvPositionChanged,
+            onEvSeparateChanged = onEvSeparateChanged,
             onBack = toMenu
         )
 

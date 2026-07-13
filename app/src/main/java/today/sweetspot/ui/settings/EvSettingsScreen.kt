@@ -9,12 +9,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
 import today.sweetspot.model.EvVehicle
 
 /**
- * Sub-screen for EV charging: home charger power, default target charge, and the list of saved
- * vehicles, with add/edit/delete via [VehicleDialog].
+ * Sub-screen for EV charging: home charger power, default target charge, home-screen placement,
+ * and the list of saved vehicles, with add/edit/delete via [VehicleDialog].
  *
  * @param vehicles The EV-type appliances.
  * @param homeChargerKw Configured home charger power.
@@ -25,6 +26,11 @@ import today.sweetspot.model.EvVehicle
  * @param onAddVehicle Called to save a new vehicle.
  * @param onUpdateAppliance Called to persist edits to an existing vehicle.
  * @param onDeleteAppliance Called with a vehicle id to delete it.
+ * @param evPosition Where vehicles are placed on the home screen.
+ * @param evSeparate Whether the vehicle block is drawn as its own section.
+ * @param sortIsCustom Whether the appliance sort is manual (disables Interleaved).
+ * @param onEvPositionChanged Called when the placement changes.
+ * @param onEvSeparateChanged Called when the separate-section toggle changes.
  * @param onBack Called to return to the settings menu.
  */
 @Composable
@@ -38,6 +44,11 @@ internal fun EvSettingsScreen(
     onAddVehicle: (name: String, batteryKwh: Double, acPowerKw: Double) -> Unit,
     onUpdateAppliance: (Appliance) -> Unit,
     onDeleteAppliance: (id: String) -> Unit,
+    evPosition: EvPosition,
+    evSeparate: Boolean,
+    sortIsCustom: Boolean,
+    onEvPositionChanged: (EvPosition) -> Unit,
+    onEvSeparateChanged: (Boolean) -> Unit,
     onBack: () -> Unit
 ) {
     var editingVehicle by remember { mutableStateOf<Appliance?>(null) }
@@ -80,7 +91,12 @@ internal fun EvSettingsScreen(
             onHomeChargerChanged = onHomeChargerChanged,
             onDefaultTargetChanged = onDefaultTargetChanged,
             onVehicleClick = { editingVehicle = it },
-            onAddVehicleClick = { showAddVehicleDialog = true }
+            onAddVehicleClick = { showAddVehicleDialog = true },
+            evPosition = evPosition,
+            evSeparate = evSeparate,
+            sortIsCustom = sortIsCustom,
+            onEvPositionChanged = onEvPositionChanged,
+            onEvSeparateChanged = onEvSeparateChanged
         )
     }
 }

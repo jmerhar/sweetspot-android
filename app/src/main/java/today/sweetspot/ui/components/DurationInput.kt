@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.applianceIconFor
+import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.formatDuration
 
 private data class QuickDuration(val hours: Int, val minutes: Int)
@@ -58,7 +59,7 @@ fun DurationInput(
     onDurationChanged: (Int, Int) -> Unit,
     onFind: () -> Unit,
     onQuickDuration: (Int, Int) -> Unit,
-    appliances: List<Appliance>,
+    homeLayout: HomeChipLayout,
     onApplianceTap: (Appliance) -> Unit,
     onAddAppliancesTap: () -> Unit,
     isLoading: Boolean,
@@ -87,41 +88,30 @@ fun DurationInput(
             )
 
             // Appliance buttons or CTA
-            if (appliances.isNotEmpty()) {
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    appliances.forEach { appliance ->
-                        AssistChip(
-                            onClick = { onApplianceTap(appliance) },
-                            label = {
-                                Text(
-                                    text = appliance.name,
-                                    modifier = Modifier.padding(vertical = 4.dp)
-                                )
-                            },
-                            leadingIcon = {
-                                Icon(
-                                    painter = painterResource(applianceIconFor(appliance)),
-                                    contentDescription = null,
-                                    modifier = Modifier.size(AssistChipDefaults.IconSize)
-                                )
-                            }
+            when (val layout = homeLayout) {
+                is HomeChipLayout.Flat -> if (layout.items.isNotEmpty()) {
+                    ApplianceChipFlow(layout.items, onApplianceTap)
+                    Spacer(modifier = Modifier.height(4.dp))
+                } else {
+                    TextButton(onClick = onAddAppliancesTap) {
+                        Icon(
+                            imageVector = Icons.Outlined.Add,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
                         )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(stringResource(R.string.main_add_appliances))
                     }
                 }
-                Spacer(modifier = Modifier.height(4.dp))
-            } else {
-                TextButton(onClick = onAddAppliancesTap) {
-                    Icon(
-                        imageVector = Icons.Outlined.Add,
-                        contentDescription = null,
-                        modifier = Modifier.size(18.dp)
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(stringResource(R.string.main_add_appliances))
+                is HomeChipLayout.Sectioned -> {
+                    val firstLabel = if (layout.vehiclesFirst) R.string.home_section_vehicles else R.string.home_section_appliances
+                    val secondLabel = if (layout.vehiclesFirst) R.string.home_section_appliances else R.string.home_section_vehicles
+                    HomeSectionLabel(stringResource(firstLabel))
+                    ApplianceChipFlow(layout.first, onApplianceTap)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    HomeSectionLabel(stringResource(secondLabel))
+                    ApplianceChipFlow(layout.second, onApplianceTap)
+                    Spacer(modifier = Modifier.height(4.dp))
                 }
             }
 
@@ -183,4 +173,45 @@ fun DurationInput(
             }
         }
     }
+}
+
+/** A wrapping row of appliance chips; each fills its duration and searches on tap. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ApplianceChipFlow(appliances: List<Appliance>, onApplianceTap: (Appliance) -> Unit) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        appliances.forEach { appliance ->
+            AssistChip(
+                onClick = { onApplianceTap(appliance) },
+                label = {
+                    Text(
+                        text = appliance.name,
+                        modifier = Modifier.padding(vertical = 4.dp)
+                    )
+                },
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(applianceIconFor(appliance)),
+                        contentDescription = null,
+                        modifier = Modifier.size(AssistChipDefaults.IconSize)
+                    )
+                }
+            )
+        }
+    }
+}
+
+/** Small caption above a home-screen chip section (vehicles / appliances). */
+@Composable
+private fun HomeSectionLabel(text: String) {
+    Text(
+        text = text,
+        style = MaterialTheme.typography.labelMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(bottom = 4.dp)
+    )
 }

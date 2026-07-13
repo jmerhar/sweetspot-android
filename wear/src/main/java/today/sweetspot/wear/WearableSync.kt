@@ -78,6 +78,7 @@ class WearableSync(
                     statsEnabled = map.getBoolean("stats_enabled", false),
                     isTrialExpired = map.getBoolean("is_trial_expired", false),
                     isUnlocked = map.getBoolean("is_unlocked", false),
+                    usageResetToken = map.getLong("usage_reset_token", 0L),
                 )
             )
         }
@@ -90,6 +91,15 @@ class WearableSync(
     override suspend fun pushStats(bytes: ByteArray) {
         val request = PutDataMapRequest.create("/stats").apply {
             dataMap.putByteArray("data", bytes)
+            dataMap.putLong("ts", System.currentTimeMillis())
+        }.asPutDataRequest().setUrgent()
+        Wearable.getDataClient(context).putDataItem(request).await()
+    }
+
+    override suspend fun pushUsage(bytes: ByteArray, token: Long) {
+        val request = PutDataMapRequest.create("/usage").apply {
+            dataMap.putByteArray("data", bytes)
+            dataMap.putLong("token", token)
             dataMap.putLong("ts", System.currentTimeMillis())
         }.asPutDataRequest().setUrgent()
         Wearable.getDataClient(context).putDataItem(request).await()

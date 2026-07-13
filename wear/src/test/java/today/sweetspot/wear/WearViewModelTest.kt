@@ -26,7 +26,10 @@ import today.sweetspot.data.cache.CachedPriceData
 import today.sweetspot.data.cache.PriceCache
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
+import today.sweetspot.data.usage.UsageSnapshot
+import today.sweetspot.data.usage.UsageStore
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.util.UiText
@@ -69,12 +72,25 @@ class WearViewModelTest {
         override fun clear() { records.clear() }
     }
 
-    /** Captures pushed stats; observe() callbacks are unused (tests call the handlers directly). */
+    /** Captures pushed stats/usage; observe() callbacks are unused (tests call handlers directly). */
     private class FakeWearSync : WearSync {
         val pushed = mutableListOf<ByteArray>()
+        val pushedUsage = mutableListOf<Pair<ByteArray, Long>>()
         override fun observe(onAppliances: (String) -> Unit, onSettings: (WearSettings) -> Unit) {}
         override fun stop() {}
         override suspend fun pushStats(bytes: ByteArray) { pushed.add(bytes) }
+        override suspend fun pushUsage(bytes: ByteArray, token: Long) { pushedUsage.add(bytes to token) }
+    }
+
+    /** In-memory [UsageStore] for asserting record/reset behaviour. */
+    private class FakeUsageStore(private var tokenValue: Long = 0) : UsageStore {
+        val map = mutableMapOf<String, ApplianceUsage>()
+        override fun record(id: String, nowMs: Long) {
+            map[id] = ApplianceUsage((map[id]?.count ?: 0) + 1, nowMs)
+        }
+        override fun snapshot(): Map<String, ApplianceUsage> = map.toMap()
+        override fun reset(token: Long) { map.clear(); tokenValue = token }
+        override fun token(): Long = tokenValue
     }
 
     /** Hourly price slots starting from the current hour. */
@@ -89,7 +105,8 @@ class WearViewModelTest {
         country: String? = null, zoneId: String? = null, order: String? = null,
         disabled: String? = null, language: String? = null,
         stats: Boolean = false, expired: Boolean = false, unlocked: Boolean = false,
-    ) = WearSettings(country, zoneId, order, disabled, language, stats, expired, unlocked)
+        resetToken: Long = 0,
+    ) = WearSettings(country, zoneId, order, disabled, language, stats, expired, unlocked, resetToken)
 
     @Before
     fun setUp() {
@@ -106,7 +123,8 @@ class WearViewModelTest {
         fetcher: FakeFetcher,
         collector: StatsCollector = FakeStatsCollector(),
         sync: WearSync = FakeWearSync(),
-    ) = WearViewModel(app, { _ -> fetcher }, FakeCache(), collector, testDispatcher, sync).also {
+        usageStore: UsageStore = FakeUsageStore(),
+    ) = WearViewModel(app, { _ -> fetcher }, FakeCache(), collector, testDispatcher, sync, usageStore).also {
         testDispatcher.scheduler.advanceUntilIdle()
     }
 
@@ -376,5 +394,31 @@ class WearViewModelTest {
         assertTrue(sync.pushed.isEmpty())
         assertEquals(1, collector.readAll().size)
         viewModel.onClearResult()
+    }
+
+    // --- Usage sync ---
+
+    @Test
+    fun `tapping records usage and pushes the cumulative snapshot`() = runTest {
+        val sync = FakeWearSync()
+        val store = FakeUsageStore()
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), sync = sync, usageStore = store)
+        viewModel.onSettingsReceived(settings(country = "NL"))
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry"))
+        runCurrent()
+        assertEquals(1, store.snapshot()["1"]!!.count)
+        assertEquals(1, sync.pushedUsage.size)
+        assertEquals(mapOf("1" to store.snapshot()["1"]!!), UsageSnapshot.decodeFromBytes(sync.pushedUsage.first().first))
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `a newer reset token zeroes the usage store`() {
+        val store = FakeUsageStore()
+        store.record("1", 100)
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), usageStore = store)
+        viewModel.onSettingsReceived(settings(country = "NL", resetToken = 5))
+        assertTrue(store.snapshot().isEmpty())
+        assertEquals(5L, store.token())
     }
 }

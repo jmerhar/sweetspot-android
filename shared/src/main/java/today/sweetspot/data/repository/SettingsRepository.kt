@@ -5,7 +5,10 @@ import androidx.core.content.edit
 
 import kotlinx.serialization.json.Json
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceSort
+import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
+import today.sweetspot.model.EvPosition
 
 import today.sweetspot.model.PriceZone
 import java.time.Clock
@@ -47,6 +50,12 @@ class SettingsRepository(private val context: Context) {
         const val KEY_ALL_IN_ENABLED = "all_in_enabled"
         const val KEY_SUPPLIER_ID = "all_in_supplier_id"
         const val KEY_MANUAL_SURCHARGE = "all_in_manual_surcharge"
+        const val KEY_APPLIANCE_SORT = "appliance_sort"
+        const val KEY_EV_POSITION = "ev_position"
+        const val KEY_EV_SEPARATE = "ev_separate"
+        const val KEY_APPLIANCE_USAGE = "appliance_usage"
+        const val KEY_WATCH_USAGE = "watch_usage"
+        const val KEY_USAGE_RESET_TOKEN = "usage_reset_token"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -301,6 +310,90 @@ class SettingsRepository(private val context: Context) {
      */
     fun setAppliances(appliances: List<Appliance>) {
         prefs.edit { putString(KEY_APPLIANCES, json.encodeToString(appliances)) }
+    }
+
+    // --- Appliance sorting, EV placement & usage ---
+
+    /** Returns the chosen appliance ordering, defaulting to manual (custom) order. */
+    fun getApplianceSort(): ApplianceSort {
+        val stored = prefs.getString(KEY_APPLIANCE_SORT, null) ?: return ApplianceSort()
+        return try {
+            json.decodeFromString<ApplianceSort>(stored)
+        } catch (_: Exception) {
+            ApplianceSort()
+        }
+    }
+
+    /** Persists the chosen appliance ordering. */
+    fun setApplianceSort(sort: ApplianceSort) {
+        prefs.edit { putString(KEY_APPLIANCE_SORT, json.encodeToString(sort)) }
+    }
+
+    /** Returns where vehicles are placed on the home screen (default [EvPosition.INTERLEAVED]). */
+    fun getEvPosition(): EvPosition = EvPosition.fromKey(prefs.getString(KEY_EV_POSITION, null))
+
+    /** Persists the vehicle placement. */
+    fun setEvPosition(position: EvPosition) {
+        prefs.edit { putString(KEY_EV_POSITION, position.key) }
+    }
+
+    /** Whether a First/Last vehicle block is drawn as its own section (default false). */
+    fun isEvSeparateSection(): Boolean = prefs.getBoolean(KEY_EV_SEPARATE, false)
+
+    /** Persists the separate-section preference. */
+    fun setEvSeparateSection(separate: Boolean) {
+        prefs.edit { putBoolean(KEY_EV_SEPARATE, separate) }
+    }
+
+    /** Returns phone-local per-appliance tap usage. */
+    fun getApplianceUsage(): Map<String, ApplianceUsage> = readUsage(KEY_APPLIANCE_USAGE)
+
+    /** Records one tap for [id] at [nowMs], incrementing its count and last-used time. */
+    fun recordApplianceUsage(id: String, nowMs: Long) {
+        val current = getApplianceUsage()
+        val existing = current[id]
+        writeUsage(KEY_APPLIANCE_USAGE, current + (id to ApplianceUsage((existing?.count ?: 0) + 1, nowMs)))
+    }
+
+    /** Clears phone-local usage. */
+    fun clearApplianceUsage() {
+        prefs.edit { remove(KEY_APPLIANCE_USAGE) }
+    }
+
+    /** Returns the last usage snapshot received from the watch (stored separately to avoid double-counting). */
+    fun getWatchUsage(): Map<String, ApplianceUsage> = readUsage(KEY_WATCH_USAGE)
+
+    /** Persists the latest watch usage snapshot. */
+    fun setWatchUsage(usage: Map<String, ApplianceUsage>) {
+        writeUsage(KEY_WATCH_USAGE, usage)
+    }
+
+    /** Clears the stored watch usage snapshot. */
+    fun clearWatchUsage() {
+        prefs.edit { remove(KEY_WATCH_USAGE) }
+    }
+
+    /** The current usage reset token, bumped on purge and propagated to the watch. */
+    fun getUsageResetToken(): Long = prefs.getLong(KEY_USAGE_RESET_TOKEN, 0L)
+
+    /** Advances the reset token so the watch zeroes its own usage on next sync. */
+    fun bumpUsageResetToken() {
+        prefs.edit { putLong(KEY_USAGE_RESET_TOKEN, getUsageResetToken() + 1) }
+    }
+
+    private fun readUsage(key: String): Map<String, ApplianceUsage> {
+        val stored = prefs.getString(key, null) ?: return emptyMap()
+        return try {
+            json.decodeFromString<Map<String, ApplianceUsage>>(stored)
+        } catch (_: Exception) {
+            emptyMap()
+        }
+    }
+
+    private fun writeUsage(key: String, usage: Map<String, ApplianceUsage>) {
+        prefs.edit {
+            if (usage.isEmpty()) remove(key) else putString(key, json.encodeToString(usage))
+        }
     }
 
     // --- EV charging ---

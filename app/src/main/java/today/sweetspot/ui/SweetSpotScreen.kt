@@ -220,7 +220,7 @@ private fun FormScreen(
                 onDurationChanged = viewModel::onDurationChanged,
                 onFind = viewModel::onFindClicked,
                 onQuickDuration = viewModel::onQuickDuration,
-                appliances = state.appliances,
+                homeLayout = state.homeLayout,
                 onApplianceTap = { appliance ->
                     if (appliance.isEv) socDialogFor = appliance
                     else viewModel.onApplianceDuration(appliance)

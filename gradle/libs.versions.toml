@@ -23,6 +23,7 @@ arch-core-testing = "2.2.0"
 espresso = "3.7.0"
 screengrab = "2.1.1"
 kxml2 = "2.3.0"
+reorderable = "3.1.0"
 
 [libraries]
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
@@ -58,6 +59,7 @@ test-rules = { group = "androidx.test", name = "rules", version.ref = "test-rule
 screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "screengrab" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 kxml2 = { group = "net.sf.kxml", name = "kxml2", version.ref = "kxml2" }
+reorderable = { group = "sh.calvin.reorderable", name = "reorderable", version.ref = "reorderable" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

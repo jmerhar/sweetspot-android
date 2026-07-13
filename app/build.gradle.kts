@@ -28,6 +28,8 @@ kover {
                     "today.sweetspot.MainActivityKt",                // its @Composable dialogs
                     "today.sweetspot.WearableStatsBridge",           // real Wearable Data Layer plumbing
                     "today.sweetspot.WearableStatsBridge\$*",
+                    "today.sweetspot.WearableUsageBridge",           // real Wearable Data Layer plumbing
+                    "today.sweetspot.WearableUsageBridge\$*",
                     "today.sweetspot.data.billing.PlayBillingRepository",     // real Play Billing wrapper
                     "today.sweetspot.data.billing.PlayBillingRepository\$*",
                     "today.sweetspot.data.stats.HttpStatsPoster",    // real HTTP POST plumbing
@@ -68,6 +70,9 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.compose.material.icons.core)
     implementation(libs.lifecycle.viewmodel.compose)
+
+    // Drag-to-reorder for the appliance custom order
+    implementation(libs.reorderable)
 
     // Wearable Data Layer (sync appliances to watch)
     implementation(libs.play.services.wearable)

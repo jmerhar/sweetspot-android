@@ -108,8 +108,9 @@ Interleaved *does* work for the computed keys, because EVs also have a value for
 
 - **Name / Frequency / Recency** — EVs have a name and get tapped, so they interleave
   cleanly on their own value.
-- **Type** — an EV's icon is the charger icon, so "interleaved by Type" naturally clusters
-  EVs together anyway — close to *Separate* in practice.
+- **Type** — a vehicle has no stored icon id (it always renders as a car, decided at
+  display time), so under a Type-by-icon sort EVs share the same (empty) key and cluster
+  together anyway — close to *Separate* in practice.
 - **Duration** — an EV has no fixed duration (it's computed per-search from SoC), so **EVs
   are always treated as longer than any appliance** (duration key = +∞). That just makes
   sense — a car charge is the long job — so under Duration ascending EVs sort to the end,

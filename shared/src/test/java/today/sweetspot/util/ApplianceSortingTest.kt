@@ -181,6 +181,14 @@ class ApplianceSortingTest {
     }
 
     @Test
+    fun `mergeForHome with only vehicles stays flat even when separate`() {
+        val all = listOf(ev("c1", "Ariya"), ev("c2", "Zoe"))
+        val layout = mergeForHome(all, sort(SortCriterion(SortKey.NAME)), noUsage, EvPosition.LAST, separate = true)
+        assertTrue(layout is HomeChipLayout.Flat) // no empty "appliances" section
+        assertEquals(listOf("c1", "c2"), ids((layout as HomeChipLayout.Flat).items))
+    }
+
+    @Test
     fun `mergeForHome custom with interleaved falls through to appending vehicles last`() {
         val all = listOf(ev("car", "Kia"), app("b"), app("a"))
         val layout = mergeForHome(all, ApplianceSort(), noUsage, EvPosition.INTERLEAVED, separate = false)
@@ -191,17 +199,37 @@ class ApplianceSortingTest {
     // --- Sort-control edit helpers ---
 
     @Test
-    fun `withPrimary resets to a single criterion and drops tie-breakers`() {
+    fun `withPrimary resets to a single criterion with the key's default direction`() {
         val start = sort(SortCriterion(SortKey.TYPE), SortCriterion(SortKey.NAME))
-        assertEquals(listOf(SortCriterion(SortKey.FREQUENCY)), start.withPrimary(SortKey.FREQUENCY).criteria)
+        // Usage keys default to descending (most-used / most-recent first); others ascending.
+        assertEquals(listOf(SortCriterion(SortKey.FREQUENCY, descending = true)), start.withPrimary(SortKey.FREQUENCY).criteria)
+        assertEquals(listOf(SortCriterion(SortKey.NAME, descending = false)), start.withPrimary(SortKey.NAME).criteria)
         assertTrue(start.withPrimary(SortKey.CUSTOM).isCustom)
     }
 
     @Test
-    fun `withLevelKey replaces key and keeps direction`() {
+    fun `default direction is descending only for usage keys`() {
+        assertTrue(defaultDescending(SortKey.FREQUENCY))
+        assertTrue(defaultDescending(SortKey.RECENCY))
+        assertFalse(defaultDescending(SortKey.NAME))
+        assertFalse(defaultDescending(SortKey.DURATION))
+        assertFalse(defaultDescending(SortKey.TYPE))
+    }
+
+    @Test
+    fun `picking Most used as primary orders most-used first`() {
+        val list = listOf(app("a"), app("b"), app("c"))
+        val usage = mapOf("a" to ApplianceUsage(2, 0), "b" to ApplianceUsage(9, 0), "c" to ApplianceUsage(5, 0))
+        val chosen = ApplianceSort().withPrimary(SortKey.FREQUENCY)
+        assertEquals(listOf("b", "c", "a"), ids(sortAppliances(list, chosen, usage)))
+    }
+
+    @Test
+    fun `withLevelKey and withAddedTiebreaker apply the key's default direction`() {
         val start = sort(SortCriterion(SortKey.TYPE), SortCriterion(SortKey.NAME, descending = true))
-        val edited = start.withLevelKey(1, SortKey.DURATION)
-        assertEquals(SortCriterion(SortKey.DURATION, descending = true), edited.criteria[1])
+        assertEquals(SortCriterion(SortKey.DURATION, descending = false), start.withLevelKey(1, SortKey.DURATION).criteria[1])
+        assertEquals(SortCriterion(SortKey.RECENCY, descending = true), start.withLevelKey(1, SortKey.RECENCY).criteria[1])
+        assertEquals(SortCriterion(SortKey.RECENCY, descending = true), start.withAddedTiebreaker(SortKey.RECENCY).criteria.last())
     }
 
     @Test

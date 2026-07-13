@@ -1129,6 +1129,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param token The reset token the watch held when it sent the snapshot.
      */
     internal fun onWatchUsageReceived(snapshot: Map<String, ApplianceUsage>, token: Long) {
+        // Accept only snapshots stamped with the current token. The token is monotonic per phone
+        // install, so if the phone's data is cleared/reinstalled (token back to 0) while the watch
+        // holds a higher token, watch usage won't merge until the phone's token catches up — a rare
+        // desync with no worse effect than temporarily missing watch taps.
         if (token != settingsRepository.getUsageResetToken()) return
         settingsRepository.setWatchUsage(snapshot)
         _uiState.update { it.withApplianceViews() }

@@ -108,22 +108,30 @@ fun nextAssignableKeys(criteria: List<SortCriterion>): List<SortKey> {
 // --- Pure edits driving the sort-control UI (kept here, not in the composable, so they are tested) ---
 
 /**
- * Sets the primary key, discarding any tie-breakers (a new primary starts a fresh chain, and
- * [SortKey.CUSTOM] is terminal).
+ * The natural default direction for a freshly-picked [key]: descending for the usage keys, whose
+ * labels ("Most used", "Recently used") imply high-to-low, and ascending for the rest (A→Z,
+ * shortest-first, etc.). The user can still flip it afterwards.
  */
-fun ApplianceSort.withPrimary(key: SortKey): ApplianceSort = ApplianceSort(listOf(SortCriterion(key)))
+fun defaultDescending(key: SortKey): Boolean = key == SortKey.FREQUENCY || key == SortKey.RECENCY
 
-/** Replaces the key at [index], preserving that level's direction. */
+/**
+ * Sets the primary key with its default direction, discarding any tie-breakers (a new primary
+ * starts a fresh chain, and [SortKey.CUSTOM] is terminal).
+ */
+fun ApplianceSort.withPrimary(key: SortKey): ApplianceSort =
+    ApplianceSort(listOf(SortCriterion(key, defaultDescending(key))))
+
+/** Replaces the key at [index], resetting that level to the new key's default direction. */
 fun ApplianceSort.withLevelKey(index: Int, key: SortKey): ApplianceSort =
-    ApplianceSort(criteria.mapIndexed { i, c -> if (i == index) c.copy(key = key) else c })
+    ApplianceSort(criteria.mapIndexed { i, c -> if (i == index) SortCriterion(key, defaultDescending(key)) else c })
 
 /** Flips the direction of the level at [index]. */
 fun ApplianceSort.withToggledDirection(index: Int): ApplianceSort =
     ApplianceSort(criteria.mapIndexed { i, c -> if (i == index) c.copy(descending = !c.descending) else c })
 
-/** Appends [key] as a new tie-breaker level. */
+/** Appends [key] as a new tie-breaker level with its default direction. */
 fun ApplianceSort.withAddedTiebreaker(key: SortKey): ApplianceSort =
-    ApplianceSort(criteria + SortCriterion(key))
+    ApplianceSort(criteria + SortCriterion(key, defaultDescending(key)))
 
 /** Removes the level at [index] (used only for tie-breakers, never the primary). */
 fun ApplianceSort.withoutLevel(index: Int): ApplianceSort =
@@ -174,7 +182,9 @@ fun mergeForHome(
     }
     val apps = sortAppliances(all.filterNot { it.isEv }, sort, usage)
     val vehicles = all.filter { it.isEv }.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name })
+    // With only one kind present there is nothing to separate — stay flat (avoids an empty section).
     if (vehicles.isEmpty()) return HomeChipLayout.Flat(apps)
+    if (apps.isEmpty()) return HomeChipLayout.Flat(vehicles)
     val vehiclesFirst = position == EvPosition.FIRST
     return if (separate) {
         if (vehiclesFirst) HomeChipLayout.Sectioned(vehicles, apps, vehiclesFirst = true)

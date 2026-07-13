@@ -95,7 +95,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (604 tests)
+./gradlew test                   # Run all unit tests (607 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -151,7 +151,7 @@ Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
 - `data/api/AwattarApiMalformedTest` — malformed/invalid JSON handling for aWATTar (6 tests, in shared)
 - `data/api/AwattarApiDstTest` — DST transition parsing with Europe/Vienna: winter, summer, spring-forward, fall-back (5 tests, in shared)
 - `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives + optional "ready by" deadline (49 tests, in shared)
-- `util/ApplianceSortingTest` — pure sorting (each key asc/desc, EV Duration=+∞, stable/custom tie-break), `hasCollisions`, `nextAssignableKeys`, `combineUsage`, `mergeForHome` (interleaved/first/last/separate, EVs-by-name, custom fallback), and the sort-control edit helpers (22 tests, in shared)
+- `util/ApplianceSortingTest` — pure sorting (each key asc/desc, EV Duration=+∞, stable/custom tie-break), `hasCollisions`, `nextAssignableKeys`, `combineUsage`, `mergeForHome` (interleaved/first/last/separate, EVs-by-name, custom fallback), and the sort-control edit helpers incl. default directions (25 tests, in shared)
 - `model/EvPositionTest` — `EvPosition.fromKey` resolution/fallback (2 tests, in shared)
 - `data/usage/UsageSnapshotTest` — usage-map byte encode/decode round-trip + malformed → empty (3 tests, in shared)
 - `data/usage/FileUsageStoreTest` — record/accumulate, persistence, reset-token adoption, corruption fallback (5 tests, in shared)
@@ -197,7 +197,7 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 - Wearable Data Layer API for phone-to-watch appliance and settings sync
 - Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
 - Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (604 tests)
+- JUnit 4 + Robolectric for unit tests (607 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - GitHub Actions CI (`.github/workflows/build-suppliers.yml`) is a **scheduled cron** (daily) + `workflow_dispatch` that runs the `bin/test_build_suppliers.py` unit tests, then `bin/build-suppliers.py`, and commits any change under `site/static/data/` (tariff feeds + the enever registry), pushing with the `SITE_COMMIT_TOKEN` PAT (a `GITHUB_TOKEN` push wouldn't trigger `deploy-site`) so the updated all-in tariff feed reaches `sweetspot.today`. Requires the `ENEVER_TOKEN` and `SITE_COMMIT_TOKEN` repo secrets; a failed build (essentials unsourceable) fails the run and commits nothing.

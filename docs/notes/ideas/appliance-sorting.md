@@ -70,22 +70,31 @@ appear twice in the chain, and **Custom** can't appear below the primary (nor ca
 primary that then offers further levels). In practice the depth is small because most keys
 disambiguate quickly, but there's no fixed cap.
 
-## EVs: merge policy
+## EVs: merge position & sectioning
 
 EVs live on their own Settings screen (`EvSettingsScreen`); the Appliances screen already
 shows `filterNot { it.isEv }`. The mixing only happens on the **home screen** chip flow.
-So how EVs fold into the appliance order is a distinct choice, made on the EV screen:
+So how EVs fold into the appliance order is a distinct choice, made on the EV screen, split
+into two orthogonal controls:
+
+**Position** — where the EVs go:
 
 - **Interleaved** — EVs are sorted into the same stream by the *same active sort criteria*.
 - **First** — EVs as a block ahead of appliances.
 - **Last** — EVs as a block after appliances.
-- **Separate** — EVs in their own section (subtle divider/label), appliances in theirs.
 
-Within a block (First / Last / Separate — and to keep it simple, wherever EVs cluster),
-**EVs are always ordered among themselves by name**, regardless of the active appliance
-sort. Having more than two or three vehicles is a vanishing edge case, so there's no point
-threading the full sort machinery through the EV block — name order is predictable and
-enough.
+**Separate section** — an additional on/off option: render the EV block in its own
+visually-distinct section (subtle divider/label) rather than flowing straight into the
+appliance chips. It is only meaningful for a *block*, so it is **disabled when Interleaved
+is selected** (there's no block to set apart). The position (First / Last) already answers
+"before or after"; the Separate toggle only adds the sectioning treatment on top. So
+"EVs in their own section before appliances" is *First + Separate*, and after is
+*Last + Separate*.
+
+Within the EV block (First or Last, with or without the Separate section), **EVs are always
+ordered among themselves by name**, regardless of the active appliance sort. Having more
+than two or three vehicles is a vanishing edge case, so there's no point threading the full
+sort machinery through the EV block — name order is predictable and enough.
 
 ### Reconciling "interleaved" with Custom order
 
@@ -132,15 +141,18 @@ data class ApplianceSort(val criteria: List<SortCriterion> = listOf(SortCriterio
 - **Custom order** stays the stored list order itself (`getAppliances()`/`setAppliances()`
   reorder it) — the source of truth for Custom mode and the stable final tie-break for
   every derived sort. No separate order list needed.
-- **Merge policy** persists on the EV side, e.g. `ev_merge_policy` →
-  `enum EvMergePolicy { INTERLEAVED, FIRST, LAST, SEPARATE }`.
+- **EV merge** persists on the EV side as two values: a position
+  `enum EvPosition { INTERLEAVED, FIRST, LAST }` (`ev_position`) and a boolean
+  `ev_separate_section` (ignored/false under `INTERLEAVED`).
 - **Usage tracking** is new local data feeding both the Frequency and Recency keys. Keep it
   *off* the `Appliance` model (which is synced to the watch and should stay pure) — store a
   separate map keyed by appliance id, e.g. `appliance_usage` →
   `{ id: { count: Int, lastUsedMs: Long } }`, updated in the ViewModel whenever a chip tap
   triggers a search (`count++`, `lastUsedMs = now`). Frequency sorts by all-time `count`;
-  Recency sorts by `lastUsedMs`. A **"purge frequency data"** settings action clears the
-  map (a reset for when historical taps no longer reflect current habits).
+  Recency sorts by `lastUsedMs`. The phone also stores the **last watch usage snapshot** and
+  a **`usageResetToken`** for cross-device sync (see Watch). A **"purge frequency data"**
+  settings action clears the phone map and the watch snapshot and bumps the reset token (a
+  reset for when historical taps no longer reflect current habits).
 
 ### Sorting logic (pure, `:shared`, unit-tested)
 
@@ -161,12 +173,13 @@ fun hasCollisions(
     usage: Map<String, ApplianceUsage>,
 ): Boolean
 
-/** Folds EVs into the appliance ordering per [policy]. */
+/** Folds EVs into the appliance ordering per [position]; sections them off if [separate]. */
 fun mergeForHome(
     sortedAppliances: List<Appliance>,
-    sortedEvs: List<Appliance>,
-    policy: EvMergePolicy,
-): HomeApplianceLayout   // flat list, or sectioned for SEPARATE
+    sortedEvs: List<Appliance>,        // always name-ordered
+    position: EvPosition,
+    separate: Boolean,                 // ignored when position == INTERLEAVED
+): HomeApplianceLayout   // flat list, or two labelled sections when separate
 ```
 
 `sortAppliances` builds a `Comparator` chain from `criteria` (respecting per-criterion
@@ -177,10 +190,13 @@ Both are trivially testable with fixed lists — no Android, no Robolectric.
 ### ViewModel (`:app`)
 
 - Expose the sorted appliance list (and, for the home screen, the merged EV layout) in
-  `UiState`, recomputed when appliances, sort spec, usage, or merge policy change.
-- Increment usage on tap in `onApplianceDuration` / `onEvApplianceFind`.
+  `UiState`, recomputed when appliances, sort spec, usage, or EV merge settings change.
+- Increment phone usage on tap in `onApplianceDuration` / `onEvApplianceFind`; receive watch
+  usage via the `/usage` bridge and fold it in with `combineUsage(phone, watch)` before
+  sorting.
 - New handlers: `onSetApplianceSort(ApplianceSort)`, `onMoveAppliance(from, to)` (Custom
-  drag), `onSetEvMergePolicy(EvMergePolicy)` — each persists and re-syncs to the watch.
+  drag), `onSetEvPosition(EvPosition)`, `onSetEvSeparateSection(Boolean)` — each persists
+  and re-syncs to the watch.
 
 ### Settings UI (`:app`)
 
@@ -190,20 +206,55 @@ Both are trivially testable with fixed lists — no Android, no Robolectric.
   turns the list into a drag-to-reorder list (long-press + drag; either a small
   reorderable-list dependency or a hand-rolled `detectDragGesturesAfterLongPress` + swap —
   the swap logic lives in the ViewModel/pure helper, not the composable).
-- **EV screen** — a merge-policy selector (segmented control / radio rows). The
-  **Interleaved** option is disabled with a hint when the appliance sort is Custom.
+- **EV screen** — a position selector (segmented control / radio rows:
+  Interleaved / First / Last) plus a "Separate section" toggle. Two disable rules:
+  **Interleaved** is disabled (with a hint) when the appliance sort is Custom; the
+  **Separate section** toggle is disabled when the position is Interleaved.
 
 ### Home screen (`:app`)
 
-Chips laid out per the merged layout. **Separate** policy renders a subtle section break
-(or label) between vehicles and appliances; the other policies stay a single flat flow.
+Chips laid out per the merged layout. When the **Separate section** option is on (First or
+Last position), render a subtle section break (or label) between vehicles and appliances;
+otherwise the chips stay a single flat flow.
 
 ### Watch (`:wear`)
 
-EVs are already filtered out of the wear sync, so the watch only needs the appliance order.
-Simplest: the phone pushes the already-sorted appliance list (watch stays dumb — no sort
-spec or usage logic on the watch). Watch-side taps wouldn't feed phone usage counts in this
-version; note the limitation and revisit only if it matters.
+EVs are already filtered out of the wear sync, so for *ordering* the watch only needs the
+sorted appliance list: the phone pushes the already-sorted list (watch stays dumb — no sort
+spec on the watch). But watch taps must still feed the phone's Frequency/Recency counters
+(see below), so the watch does track and report its own usage.
+
+### Cross-device usage sync
+
+A tap on the watch has to count toward the same Frequency/Recency as a phone tap, so the
+watch reports usage back. This reuses the existing watch→phone Data Layer pattern (the
+`/stats` path): add a `/usage` path handled the same way, behind a small bridge interface
+like `WatchStatsBridge`, so the phone-side merge stays a unit-tested pure function and the
+Data Layer plumbing stays excluded from coverage.
+
+The robust shape is **cumulative snapshots, not deltas**:
+
+- The watch keeps its *own* all-time usage map (`{ id: { count, lastUsedMs } }`),
+  incremented on each watch tap, and after a tap pushes the **entire map** to `/usage` via
+  `PutDataMapRequest`. Because the payload is the watch's cumulative total (not an
+  increment), the Data Layer's replace-and-at-least-once delivery is naturally idempotent:
+  the phone stores "latest known watch totals" and a re-delivered item changes nothing.
+- The phone keeps its phone-side map and the last-received watch snapshot **separately**.
+  Effective usage for sorting is a pure `combineUsage(phone, watch)`:
+  `count = phone.count + watch.count`, `lastUsedMs = max(phone.lastUsedMs, watch.lastUsedMs)`,
+  per id. Nothing merges into a shared counter, so nothing can double-count.
+- **Purge** must reset both sides, or the next watch snapshot re-inflates the totals. The
+  phone bumps a `usageResetToken` (an epoch stamp) carried in the existing `/settings`
+  DataMap; the watch zeroes its local map when it sees a new token and stamps every `/usage`
+  push with the token it last honoured. The phone ignores any snapshot carrying a stale
+  token, closing the reset race, and on purge clears its own map and the stored watch
+  snapshot too.
+
+Deltas (watch pushes increments, clears on put-success, phone adds) are simpler but fragile
+— a re-delivered or replayed delta double-counts, and a delta lost to a failed put is gone.
+The cumulative snapshot avoids both, for the price of one small per-appliance map crossing
+the wire (trivial payload). Clock skew between devices can make `max(lastUsedMs)` off by a
+few seconds — irrelevant for ordering.
 
 ## Considerations
 
@@ -231,3 +282,9 @@ version; note the limitation and revisit only if it matters.
 - **Duration + EVs** — EVs are always treated as longer than any appliance (+∞).
 - **EV block order** — always by name; more than two or three vehicles is a vanishing edge
   case not worth further machinery.
+- **EV merge = position + separate flag** — position is Interleaved / First / Last; a
+  distinct "Separate section" toggle adds the sectioning treatment and is disabled under
+  Interleaved.
+- **Watch usage counts** — watch taps feed the phone's Frequency/Recency via a `/usage`
+  Data Layer path using idempotent cumulative snapshots, combined on the phone as
+  phone + watch (count) and max (recency).

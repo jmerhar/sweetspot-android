@@ -192,4 +192,37 @@
     <string name="result_disclaimer_power_all_in">Koszty są podane dla obciążenia %s kW, według szacunkowej ceny całkowitej (cena rynkowa + podatek energetyczny + marża dostawcy + VAT). Nie obejmują opłat dystrybucyjnych ani stałych opłat miesięcznych. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDostawca: %s</string>
     <string name="result_all_in_stale">Dane taryfowe mają ponad 14 dni i mogą być nieaktualne.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Kolejność</string>
+    <string name="sort_by">Sortuj według</string>
+    <string name="sort_then_by">następnie według</string>
+    <string name="sort_key_custom">Własna kolejność</string>
+    <string name="sort_key_frequency">Najczęściej używane</string>
+    <string name="sort_key_recency">Ostatnio używane</string>
+    <string name="sort_key_name">Nazwa</string>
+    <string name="sort_key_duration">Czas trwania</string>
+    <string name="sort_key_type">Typ</string>
+    <string name="sort_direction_ascending">Rosnąco</string>
+    <string name="sort_direction_descending">Malejąco</string>
+    <string name="sort_add_tiebreaker">Dodaj kryterium pomocnicze</string>
+    <string name="cd_sort_remove_level">Usuń ten poziom sortowania</string>
+    <string name="cd_drag_handle">Przeciągnij, aby zmienić kolejność</string>
+    <string name="usage_count_format">Użyto %d×</string>
+    <string name="usage_never">Nigdy nieużywane</string>
+    <string name="settings_reset_usage">Resetuj dane użycia</string>
+    <string name="settings_reset_usage_description">Wyczyść historię użycia stosowaną do sortowania według Najczęściej i Ostatnio używanych.</string>
+    <string name="reset_usage_confirm_title">Zresetować dane użycia?</string>
+    <string name="reset_usage_confirm_message">Spowoduje to wyczyszczenie historii użycia stosowanej do sortowania urządzeń według Najczęściej i Ostatnio używanych. Nie można tego cofnąć.</string>
+    <string name="action_reset">Resetuj</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Rozmieszczenie na ekranie głównym</string>
+    <string name="ev_placement_description">Gdzie pojazdy pojawiają się wśród przycisków urządzeń.</string>
+    <string name="ev_position_interleaved">Wymieszane</string>
+    <string name="ev_position_first">Na początku</string>
+    <string name="ev_position_last">Na końcu</string>
+    <string name="ev_separate_section">Osobna sekcja</string>
+    <string name="home_section_vehicles">Pojazdy</string>
+    <string name="home_section_appliances">Urządzenia</string>
 </resources>

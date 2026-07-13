@@ -184,4 +184,37 @@
     <string name="result_disclaimer_power_all_in">Kosten zijn voor een belasting van %s kW, tegen de geschatte totaalprijs (marktprijs + energiebelasting + leveranciersopslag + btw). Exclusief netbeheerkosten en vaste maandelijkse kosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverancier: %s</string>
     <string name="result_all_in_stale">De tariefgegevens zijn meer dan 14 dagen oud en zijn mogelijk verouderd.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Volgorde</string>
+    <string name="sort_by">Sorteren op</string>
+    <string name="sort_then_by">daarna op</string>
+    <string name="sort_key_custom">Aangepaste volgorde</string>
+    <string name="sort_key_frequency">Meest gebruikt</string>
+    <string name="sort_key_recency">Recent gebruikt</string>
+    <string name="sort_key_name">Naam</string>
+    <string name="sort_key_duration">Duur</string>
+    <string name="sort_key_type">Type</string>
+    <string name="sort_direction_ascending">Oplopend</string>
+    <string name="sort_direction_descending">Aflopend</string>
+    <string name="sort_add_tiebreaker">Extra sortering toevoegen</string>
+    <string name="cd_sort_remove_level">Deze sorteerlaag verwijderen</string>
+    <string name="cd_drag_handle">Sleep om te herschikken</string>
+    <string name="usage_count_format">%d× gebruikt</string>
+    <string name="usage_never">Nooit gebruikt</string>
+    <string name="settings_reset_usage">Gebruiksgegevens resetten</string>
+    <string name="settings_reset_usage_description">Wis de tikgeschiedenis die wordt gebruikt om te sorteren op Meest gebruikt en Recent gebruikt.</string>
+    <string name="reset_usage_confirm_title">Gebruiksgegevens resetten?</string>
+    <string name="reset_usage_confirm_message">Dit wist de tikgeschiedenis die wordt gebruikt om apparaten te sorteren op Meest gebruikt en Recent gebruikt. Dit kan niet ongedaan worden gemaakt.</string>
+    <string name="action_reset">Resetten</string>
+
+    <!-- EV placement on home screen -->
+    <string name="ev_placement_title">Plaatsing op startscherm</string>
+    <string name="ev_placement_description">Waar je voertuigen tussen de apparaatknoppen verschijnen.</string>
+    <string name="ev_position_interleaved">Ertussen</string>
+    <string name="ev_position_first">Eerst</string>
+    <string name="ev_position_last">Laatst</string>
+    <string name="ev_separate_section">Apart gedeelte</string>
+    <string name="home_section_vehicles">Voertuigen</string>
+    <string name="home_section_appliances">Apparaten</string>
 </resources>

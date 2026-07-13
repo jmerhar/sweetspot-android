@@ -184,4 +184,35 @@
     <string name="result_disclaimer_power_all_in">A költségek %s kW terhelésre vonatkoznak, a becsült teljes áron (tőzsdei ár + energiaadó + szolgáltatói díj + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
     <string name="result_all_in_supplier">\nSzolgáltató: %s</string>
     <string name="result_all_in_stale">A tarifaadatok több mint 14 naposak, és elavultak lehetnek.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Sorrend</string>
+    <string name="sort_by">Rendezés</string>
+    <string name="sort_then_by">majd</string>
+    <string name="sort_key_custom">Egyéni sorrend</string>
+    <string name="sort_key_frequency">Leggyakrabban használt</string>
+    <string name="sort_key_recency">Legutóbb használt</string>
+    <string name="sort_key_name">Név</string>
+    <string name="sort_key_duration">Időtartam</string>
+    <string name="sort_key_type">Típus</string>
+    <string name="sort_direction_ascending">Növekvő</string>
+    <string name="sort_direction_descending">Csökkenő</string>
+    <string name="sort_add_tiebreaker">Rendezési szint hozzáadása</string>
+    <string name="cd_sort_remove_level">Rendezési szint eltávolítása</string>
+    <string name="cd_drag_handle">Húzással átrendezhető</string>
+    <string name="usage_count_format">%d× használva</string>
+    <string name="usage_never">Sosem használt</string>
+    <string name="settings_reset_usage">Használati adatok visszaállítása</string>
+    <string name="settings_reset_usage_description">Törli a Leggyakrabban használt és Legutóbb használt rendezéshez használt koppintási előzményeket.</string>
+    <string name="reset_usage_confirm_title">Visszaállítod a használati adatokat?</string>
+    <string name="reset_usage_confirm_message">Ez törli a készülékek Leggyakrabban használt és Legutóbb használt szerinti rendezéséhez használt koppintási előzményeket. A művelet nem vonható vissza.</string>
+    <string name="action_reset">Visszaállítás</string>
+    <string name="ev_placement_title">Elhelyezés a főképernyőn</string>
+    <string name="ev_placement_description">Hol jelenjenek meg a járműveid a készülékgombok között.</string>
+    <string name="ev_position_interleaved">Vegyesen</string>
+    <string name="ev_position_first">Elöl</string>
+    <string name="ev_position_last">Hátul</string>
+    <string name="ev_separate_section">Külön szakasz</string>
+    <string name="home_section_vehicles">Járművek</string>
+    <string name="home_section_appliances">Készülékek</string>
 </resources>

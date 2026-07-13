@@ -192,4 +192,39 @@
     <string name="result_disclaimer_power_all_in">Stroški so prikazani za %s kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavitelj: %s</string>
     <string name="result_all_in_stale">Podatki o tarifah so starejši od 14 dni in morda niso več aktualni.</string>
+
+    <!-- Sorting & ordering -->
+    <string name="settings_sort_title">Razvrščanje</string>
+    <string name="sort_by">Razvrsti po</string>
+    <string name="sort_then_by">nato po</string>
+    <string name="sort_key_custom">Vrstni red po meri</string>
+    <string name="sort_key_frequency">Najpogosteje uporabljeni</string>
+    <string name="sort_key_recency">Nedavno uporabljeni</string>
+    <string name="sort_key_name">Ime</string>
+    <string name="sort_key_duration">Trajanje</string>
+    <string name="sort_key_type">Vrsta</string>
+    <string name="sort_direction_ascending">Naraščajoče</string>
+    <string name="sort_direction_descending">Padajoče</string>
+    <string name="sort_add_tiebreaker">Dodaj dodatno merilo</string>
+    <string name="cd_sort_remove_level">Odstrani to raven razvrščanja</string>
+    <string name="cd_drag_handle">Povlecite za razvrstitev</string>
+
+    <!-- Usage data -->
+    <string name="usage_count_format">Uporabljeno %d×</string>
+    <string name="usage_never">Nikoli uporabljeno</string>
+    <string name="settings_reset_usage">Ponastavi podatke o uporabi</string>
+    <string name="settings_reset_usage_description">Počisti zgodovino dotikov, ki se uporablja za razvrščanje po najpogosteje in nedavno uporabljenih.</string>
+    <string name="reset_usage_confirm_title">Ponastavim podatke o uporabi?</string>
+    <string name="reset_usage_confirm_message">S tem počistite zgodovino dotikov, ki se uporablja za razvrščanje aparatov po najpogosteje in nedavno uporabljenih. Tega ni mogoče razveljaviti.</string>
+    <string name="action_reset">Ponastavi</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Postavitev na začetnem zaslonu</string>
+    <string name="ev_placement_description">Kje se vaša vozila prikažejo med gumbi za aparate.</string>
+    <string name="ev_position_interleaved">Pomešano</string>
+    <string name="ev_position_first">Na začetku</string>
+    <string name="ev_position_last">Na koncu</string>
+    <string name="ev_separate_section">Ločen razdelek</string>
+    <string name="home_section_vehicles">Vozila</string>
+    <string name="home_section_appliances">Aparati</string>
 </resources>

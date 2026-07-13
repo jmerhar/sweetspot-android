@@ -184,4 +184,37 @@
     <string name="result_disclaimer_power_all_in">Показаните разходи са за %s kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
     <string name="result_all_in_supplier">\nДоставчик: %s</string>
     <string name="result_all_in_stale">Данните за тарифите са на повече от 14 дни и може да са остарели.</string>
+
+    <!-- Sorting & ordering -->
+    <string name="settings_sort_title">Подредба</string>
+    <string name="sort_by">Сортиране по</string>
+    <string name="sort_then_by">след това по</string>
+    <string name="sort_key_custom">Собствена подредба</string>
+    <string name="sort_key_frequency">Най-използвани</string>
+    <string name="sort_key_recency">Наскоро използвани</string>
+    <string name="sort_key_name">Име</string>
+    <string name="sort_key_duration">Продължителност</string>
+    <string name="sort_key_type">Тип</string>
+    <string name="sort_direction_ascending">Възходящо</string>
+    <string name="sort_direction_descending">Низходящо</string>
+    <string name="sort_add_tiebreaker">Добавяне на критерий</string>
+    <string name="cd_sort_remove_level">Премахване на това ниво на сортиране</string>
+    <string name="cd_drag_handle">Плъзнете за пренареждане</string>
+    <string name="usage_count_format">Използван %d×</string>
+    <string name="usage_never">Никога не е използван</string>
+    <string name="settings_reset_usage">Нулиране на данните за употреба</string>
+    <string name="settings_reset_usage_description">Изчистване на историята на докосванията, използвана за подреждане по Най-използвани и Наскоро използвани.</string>
+    <string name="reset_usage_confirm_title">Нулиране на данните за употреба?</string>
+    <string name="reset_usage_confirm_message">Това изчиства историята на докосванията, използвана за подреждане на уредите по Най-използвани и Наскоро използвани. Действието не може да бъде отменено.</string>
+    <string name="action_reset">Нулиране</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Разположение на началния екран</string>
+    <string name="ev_placement_description">Къде да се показват превозните средства сред бутоните за уреди.</string>
+    <string name="ev_position_interleaved">Смесено</string>
+    <string name="ev_position_first">В началото</string>
+    <string name="ev_position_last">В края</string>
+    <string name="ev_separate_section">Отделен раздел</string>
+    <string name="home_section_vehicles">Превозни средства</string>
+    <string name="home_section_appliances">Уреди</string>
 </resources>

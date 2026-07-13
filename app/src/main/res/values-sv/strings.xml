@@ -184,4 +184,35 @@
     <string name="result_disclaimer_power_all_in">Kostnader visas för en last på %s kW, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverantör: %s</string>
     <string name="result_all_in_stale">Tariffuppgifterna är äldre än 14 dagar och kan vara inaktuella.</string>
+
+    <!-- Appliance ordering -->
+    <string name="settings_sort_title">Sortering</string>
+    <string name="sort_by">Sortera efter</string>
+    <string name="sort_then_by">sedan efter</string>
+    <string name="sort_key_custom">Egen ordning</string>
+    <string name="sort_key_frequency">Mest använda</string>
+    <string name="sort_key_recency">Senast använda</string>
+    <string name="sort_key_name">Namn</string>
+    <string name="sort_key_duration">Varaktighet</string>
+    <string name="sort_key_type">Typ</string>
+    <string name="sort_direction_ascending">Stigande</string>
+    <string name="sort_direction_descending">Fallande</string>
+    <string name="sort_add_tiebreaker">Lägg till sekundär sortering</string>
+    <string name="cd_sort_remove_level">Ta bort denna sorteringsnivå</string>
+    <string name="cd_drag_handle">Dra för att ändra ordning</string>
+    <string name="usage_count_format">Använd %d×</string>
+    <string name="usage_never">Aldrig använd</string>
+    <string name="settings_reset_usage">Återställ användningsdata</string>
+    <string name="settings_reset_usage_description">Rensa tryckhistoriken som används för att sortera efter Mest använda och Senast använda.</string>
+    <string name="reset_usage_confirm_title">Återställ användningsdata?</string>
+    <string name="reset_usage_confirm_message">Detta rensar tryckhistoriken som används för att sortera apparater efter Mest använda och Senast använda. Det kan inte ångras.</string>
+    <string name="action_reset">Återställ</string>
+    <string name="ev_placement_title">Placering på startskärmen</string>
+    <string name="ev_placement_description">Var dina fordon visas bland apparatknapparna.</string>
+    <string name="ev_position_interleaved">Blandat</string>
+    <string name="ev_position_first">Först</string>
+    <string name="ev_position_last">Sist</string>
+    <string name="ev_separate_section">Egen sektion</string>
+    <string name="home_section_vehicles">Fordon</string>
+    <string name="home_section_appliances">Apparater</string>
 </resources>

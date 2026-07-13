@@ -188,4 +188,37 @@
     <string name="result_disclaimer_power_all_in">Costurile sunt calculate pentru o sarcină de %s kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFurnizor: %s</string>
     <string name="result_all_in_stale">Datele tarifare sunt mai vechi de 14 zile și pot fi depășite.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Ordine</string>
+    <string name="sort_by">Sortează după</string>
+    <string name="sort_then_by">apoi după</string>
+    <string name="sort_key_custom">Ordine personalizată</string>
+    <string name="sort_key_frequency">Cele mai folosite</string>
+    <string name="sort_key_recency">Folosite recent</string>
+    <string name="sort_key_name">Nume</string>
+    <string name="sort_key_duration">Durată</string>
+    <string name="sort_key_type">Tip</string>
+    <string name="sort_direction_ascending">Crescător</string>
+    <string name="sort_direction_descending">Descrescător</string>
+    <string name="sort_add_tiebreaker">Adaugă criteriu suplimentar</string>
+    <string name="cd_sort_remove_level">Elimină acest nivel de sortare</string>
+    <string name="cd_drag_handle">Trage pentru reordonare</string>
+    <string name="usage_count_format">Folosit %d×</string>
+    <string name="usage_never">Niciodată folosit</string>
+    <string name="settings_reset_usage">Resetează datele de utilizare</string>
+    <string name="settings_reset_usage_description">Șterge istoricul de atingeri folosit pentru sortarea după Cele mai folosite și Folosite recent.</string>
+    <string name="reset_usage_confirm_title">Resetezi datele de utilizare?</string>
+    <string name="reset_usage_confirm_message">Aceasta șterge istoricul de atingeri folosit pentru a sorta aparatele după Cele mai folosite și Folosite recent. Nu poate fi anulată.</string>
+    <string name="action_reset">Resetează</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Poziționare pe ecranul principal</string>
+    <string name="ev_placement_description">Unde apar vehiculele tale printre butoanele aparatelor.</string>
+    <string name="ev_position_interleaved">Amestecate</string>
+    <string name="ev_position_first">Primele</string>
+    <string name="ev_position_last">Ultimele</string>
+    <string name="ev_separate_section">Secțiune separată</string>
+    <string name="home_section_vehicles">Vehicule</string>
+    <string name="home_section_appliances">Aparate</string>
 </resources>

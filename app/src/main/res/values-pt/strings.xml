@@ -188,4 +188,37 @@
     <string name="result_disclaimer_power_all_in">Os custos apresentados referem-se a uma carga de %s kW, ao preço total estimado (preço de mercado + imposto sobre energia + margem do fornecedor + IVA). Não incluem tarifas de rede nem encargos fixos mensais. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFornecedor: %s</string>
     <string name="result_all_in_stale">Os dados tarifários têm mais de 14 dias e podem estar desatualizados.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Ordem</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="sort_then_by">depois por</string>
+    <string name="sort_key_custom">Ordem personalizada</string>
+    <string name="sort_key_frequency">Mais usados</string>
+    <string name="sort_key_recency">Usados recentemente</string>
+    <string name="sort_key_name">Nome</string>
+    <string name="sort_key_duration">Duração</string>
+    <string name="sort_key_type">Tipo</string>
+    <string name="sort_direction_ascending">Crescente</string>
+    <string name="sort_direction_descending">Decrescente</string>
+    <string name="sort_add_tiebreaker">Adicionar desempate</string>
+    <string name="cd_sort_remove_level">Remover este critério de ordenação</string>
+    <string name="cd_drag_handle">Arraste para reordenar</string>
+    <string name="usage_count_format">Usado %d×</string>
+    <string name="usage_never">Nunca usado</string>
+    <string name="settings_reset_usage">Repor dados de utilização</string>
+    <string name="settings_reset_usage_description">Limpar o histórico de toques usado para ordenar por Mais usados e Usados recentemente.</string>
+    <string name="reset_usage_confirm_title">Repor dados de utilização?</string>
+    <string name="reset_usage_confirm_message">Isto limpa o histórico de toques usado para ordenar os eletrodomésticos por Mais usados e Usados recentemente. Não pode ser anulado.</string>
+    <string name="action_reset">Repor</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Posição no ecrã inicial</string>
+    <string name="ev_placement_description">Onde os seus veículos aparecem entre os botões de eletrodomésticos.</string>
+    <string name="ev_position_interleaved">Misturados</string>
+    <string name="ev_position_first">Primeiro</string>
+    <string name="ev_position_last">Último</string>
+    <string name="ev_separate_section">Secção separada</string>
+    <string name="home_section_vehicles">Veículos</string>
+    <string name="home_section_appliances">Eletrodomésticos</string>
 </resources>

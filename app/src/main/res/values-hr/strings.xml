@@ -188,4 +188,35 @@
     <string name="result_disclaimer_power_all_in">Troškovi su prikazani za opterećenje od %s kW, po procijenjenoj ukupnoj cijeni (burzovna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavljač: %s</string>
     <string name="result_all_in_stale">Podaci o tarifama stariji su od 14 dana i možda su zastarjeli.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Redoslijed</string>
+    <string name="sort_by">Poredaj po</string>
+    <string name="sort_then_by">zatim po</string>
+    <string name="sort_key_custom">Prilagođeni redoslijed</string>
+    <string name="sort_key_frequency">Najčešće korišteni</string>
+    <string name="sort_key_recency">Nedavno korišteni</string>
+    <string name="sort_key_name">Naziv</string>
+    <string name="sort_key_duration">Trajanje</string>
+    <string name="sort_key_type">Vrsta</string>
+    <string name="sort_direction_ascending">Uzlazno</string>
+    <string name="sort_direction_descending">Silazno</string>
+    <string name="sort_add_tiebreaker">Dodaj sljedeći kriterij</string>
+    <string name="cd_sort_remove_level">Ukloni ovu razinu sortiranja</string>
+    <string name="cd_drag_handle">Povucite za promjenu redoslijeda</string>
+    <string name="usage_count_format">Korišteno %d×</string>
+    <string name="usage_never">Nikad korišteno</string>
+    <string name="settings_reset_usage">Poništi podatke o korištenju</string>
+    <string name="settings_reset_usage_description">Izbrišite povijest dodira koja se koristi za razvrstavanje po Najčešće korištenima i Nedavno korištenima.</string>
+    <string name="reset_usage_confirm_title">Poništiti podatke o korištenju?</string>
+    <string name="reset_usage_confirm_message">Time se briše povijest dodira koja se koristi za razvrstavanje uređaja po Najčešće korištenima i Nedavno korištenima. To se ne može poništiti.</string>
+    <string name="action_reset">Poništi</string>
+    <string name="ev_placement_title">Položaj na početnom zaslonu</string>
+    <string name="ev_placement_description">Gdje se vaša vozila pojavljuju među gumbima uređaja.</string>
+    <string name="ev_position_interleaved">Izmiješano</string>
+    <string name="ev_position_first">Prvo</string>
+    <string name="ev_position_last">Zadnje</string>
+    <string name="ev_separate_section">Zaseban odjeljak</string>
+    <string name="home_section_vehicles">Vozila</string>
+    <string name="home_section_appliances">Uređaji</string>
 </resources>

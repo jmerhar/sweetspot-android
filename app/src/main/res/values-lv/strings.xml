@@ -188,4 +188,37 @@
     <string name="result_disclaimer_power_all_in">Izmaksas ir norādītas %s kW slodzei, ar aptuveno pilno cenu (biržas cena + enerģijas nodoklis + piegādātāja uzcenojums + PVN). Neietver tīkla maksas un fiksētās ikmēneša maksas. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="result_all_in_supplier">\nPiegādātājs: %s</string>
     <string name="result_all_in_stale">Tarifu dati ir vecāki par 14 dienām un var būt novecojuši.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Kārtošana</string>
+    <string name="sort_by">Kārtot pēc</string>
+    <string name="sort_then_by">pēc tam pēc</string>
+    <string name="sort_key_custom">Pielāgota secība</string>
+    <string name="sort_key_frequency">Visbiežāk lietotās</string>
+    <string name="sort_key_recency">Nesen lietotās</string>
+    <string name="sort_key_name">Nosaukums</string>
+    <string name="sort_key_duration">Ilgums</string>
+    <string name="sort_key_type">Tips</string>
+    <string name="sort_direction_ascending">Augoša</string>
+    <string name="sort_direction_descending">Dilstoša</string>
+    <string name="sort_add_tiebreaker">Pievienot papildu kritēriju</string>
+    <string name="cd_sort_remove_level">Noņemt šo kārtošanas līmeni</string>
+    <string name="cd_drag_handle">Velciet, lai pārkārtotu</string>
+    <string name="usage_count_format">Lietots %d×</string>
+    <string name="usage_never">Nekad nav lietots</string>
+    <string name="settings_reset_usage">Atiestatīt lietojuma datus</string>
+    <string name="settings_reset_usage_description">Notīrīt pieskārienu vēsturi, kas izmantota kārtošanai pēc Visbiežāk lietotās un Nesen lietotās.</string>
+    <string name="reset_usage_confirm_title">Atiestatīt lietojuma datus?</string>
+    <string name="reset_usage_confirm_message">Tas notīrīs pieskārienu vēsturi, kas izmantota ierīču kārtošanai pēc Visbiežāk lietotās un Nesen lietotās. To nevar atsaukt.</string>
+    <string name="action_reset">Atiestatīt</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Novietojums sākuma ekrānā</string>
+    <string name="ev_placement_description">Kur jūsu transportlīdzekļi parādās starp ierīču pogām.</string>
+    <string name="ev_position_interleaved">Sajaukti kopā</string>
+    <string name="ev_position_first">Sākumā</string>
+    <string name="ev_position_last">Beigās</string>
+    <string name="ev_separate_section">Atsevišķa sadaļa</string>
+    <string name="home_section_vehicles">Transportlīdzekļi</string>
+    <string name="home_section_appliances">Ierīces</string>
 </resources>

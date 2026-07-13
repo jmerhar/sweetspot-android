@@ -192,4 +192,37 @@
     <string name="result_disclaimer_power_all_in">Náklady sú uvedené pre záťaž %s kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDodávateľ: %s</string>
     <string name="result_all_in_stale">Údaje o tarifách sú staršie ako 14 dní a môžu byť neaktuálne.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Poradie</string>
+    <string name="sort_by">Zoradiť podľa</string>
+    <string name="sort_then_by">potom podľa</string>
+    <string name="sort_key_custom">Vlastné poradie</string>
+    <string name="sort_key_frequency">Najpoužívanejšie</string>
+    <string name="sort_key_recency">Nedávno použité</string>
+    <string name="sort_key_name">Názov</string>
+    <string name="sort_key_duration">Trvanie</string>
+    <string name="sort_key_type">Typ</string>
+    <string name="sort_direction_ascending">Vzostupne</string>
+    <string name="sort_direction_descending">Zostupne</string>
+    <string name="sort_add_tiebreaker">Pridať ďalšie kritérium</string>
+    <string name="cd_sort_remove_level">Odstrániť toto kritérium zoradenia</string>
+    <string name="cd_drag_handle">Potiahnutím zmeníte poradie</string>
+    <string name="usage_count_format">Použité %d×</string>
+    <string name="usage_never">Nikdy nepoužité</string>
+    <string name="settings_reset_usage">Vynulovať štatistiky používania</string>
+    <string name="settings_reset_usage_description">Vymaže históriu klepnutí použitú na zoradenie podľa Najpoužívanejšie a Nedávno použité.</string>
+    <string name="reset_usage_confirm_title">Vynulovať štatistiky používania?</string>
+    <string name="reset_usage_confirm_message">Vymaže sa história klepnutí použitá na zoradenie spotrebičov podľa Najpoužívanejšie a Nedávno použité. Túto akciu nie je možné vrátiť späť.</string>
+    <string name="action_reset">Vynulovať</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Umiestnenie na domovskej obrazovke</string>
+    <string name="ev_placement_description">Kde sa vaše vozidlá zobrazujú medzi tlačidlami spotrebičov.</string>
+    <string name="ev_position_interleaved">Premiešané</string>
+    <string name="ev_position_first">Na začiatku</string>
+    <string name="ev_position_last">Na konci</string>
+    <string name="ev_separate_section">Samostatná sekcia</string>
+    <string name="home_section_vehicles">Vozidlá</string>
+    <string name="home_section_appliances">Spotrebiče</string>
 </resources>

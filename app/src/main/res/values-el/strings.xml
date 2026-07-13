@@ -184,4 +184,35 @@
     <string name="result_disclaimer_power_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο %s kW, στην εκτιμώμενη τελική τιμή (χονδρική + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
     <string name="result_all_in_supplier">\nΠρομηθευτής: %s</string>
     <string name="result_all_in_stale">Τα δεδομένα τιμολογίου είναι παλαιότερα των 14 ημερών και ενδέχεται να είναι παρωχημένα.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Σειρά</string>
+    <string name="sort_by">Ταξινόμηση κατά</string>
+    <string name="sort_then_by">έπειτα κατά</string>
+    <string name="sort_key_custom">Προσαρμοσμένη σειρά</string>
+    <string name="sort_key_frequency">Πιο συχνά</string>
+    <string name="sort_key_recency">Πιο πρόσφατα</string>
+    <string name="sort_key_name">Όνομα</string>
+    <string name="sort_key_duration">Διάρκεια</string>
+    <string name="sort_key_type">Τύπος</string>
+    <string name="sort_direction_ascending">Αύξουσα</string>
+    <string name="sort_direction_descending">Φθίνουσα</string>
+    <string name="sort_add_tiebreaker">Προσθήκη κριτηρίου</string>
+    <string name="cd_sort_remove_level">Αφαίρεση αυτού του κριτηρίου ταξινόμησης</string>
+    <string name="cd_drag_handle">Σύρετε για αναδιάταξη</string>
+    <string name="usage_count_format">Χρήσεις %d×</string>
+    <string name="usage_never">Καμία χρήση</string>
+    <string name="settings_reset_usage">Επαναφορά δεδομένων χρήσης</string>
+    <string name="settings_reset_usage_description">Διαγράφει το ιστορικό χρήσης που χρησιμοποιείται για ταξινόμηση κατά «Πιο συχνά» και «Πιο πρόσφατα».</string>
+    <string name="reset_usage_confirm_title">Επαναφορά δεδομένων χρήσης;</string>
+    <string name="reset_usage_confirm_message">Αυτό διαγράφει το ιστορικό χρήσης που χρησιμοποιείται για την ταξινόμηση των συσκευών κατά «Πιο συχνά» και «Πιο πρόσφατα». Δεν μπορεί να αναιρεθεί.</string>
+    <string name="action_reset">Επαναφορά</string>
+    <string name="ev_placement_title">Τοποθέτηση στην αρχική οθόνη</string>
+    <string name="ev_placement_description">Πού εμφανίζονται τα οχήματά σας ανάμεσα στα κουμπιά συσκευών.</string>
+    <string name="ev_position_interleaved">Ανάμεικτα</string>
+    <string name="ev_position_first">Πρώτα</string>
+    <string name="ev_position_last">Τελευταία</string>
+    <string name="ev_separate_section">Ξεχωριστή ενότητα</string>
+    <string name="home_section_vehicles">Οχήματα</string>
+    <string name="home_section_appliances">Συσκευές</string>
 </resources>

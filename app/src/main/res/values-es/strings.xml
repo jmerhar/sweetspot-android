@@ -188,4 +188,37 @@
     <string name="result_disclaimer_power_all_in">Los costes se muestran para una carga de %s kW, al precio total estimado (precio spot + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
     <string name="result_all_in_supplier">\nProveedor: %s</string>
     <string name="result_all_in_stale">Los datos de tarifas tienen más de 14 días y pueden estar desactualizados.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Orden</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="sort_then_by">luego por</string>
+    <string name="sort_key_custom">Orden personalizado</string>
+    <string name="sort_key_frequency">Más usados</string>
+    <string name="sort_key_recency">Usados recientemente</string>
+    <string name="sort_key_name">Nombre</string>
+    <string name="sort_key_duration">Duración</string>
+    <string name="sort_key_type">Tipo</string>
+    <string name="sort_direction_ascending">Ascendente</string>
+    <string name="sort_direction_descending">Descendente</string>
+    <string name="sort_add_tiebreaker">Añadir desempate</string>
+    <string name="cd_sort_remove_level">Quitar este nivel de orden</string>
+    <string name="cd_drag_handle">Arrastra para reordenar</string>
+    <string name="usage_count_format">Usado %d×</string>
+    <string name="usage_never">Nunca usado</string>
+    <string name="settings_reset_usage">Restablecer datos de uso</string>
+    <string name="settings_reset_usage_description">Borra el historial de uso empleado para ordenar por Más usados y Usados recientemente.</string>
+    <string name="reset_usage_confirm_title">¿Restablecer datos de uso?</string>
+    <string name="reset_usage_confirm_message">Esto borra el historial de uso empleado para ordenar los electrodomésticos por Más usados y Usados recientemente. No se puede deshacer.</string>
+    <string name="action_reset">Restablecer</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Ubicación en la pantalla de inicio</string>
+    <string name="ev_placement_description">Dónde aparecen tus vehículos entre los botones de electrodomésticos.</string>
+    <string name="ev_position_interleaved">Mezclados</string>
+    <string name="ev_position_first">Primero</string>
+    <string name="ev_position_last">Último</string>
+    <string name="ev_separate_section">Sección aparte</string>
+    <string name="home_section_vehicles">Vehículos</string>
+    <string name="home_section_appliances">Electrodomésticos</string>
 </resources>

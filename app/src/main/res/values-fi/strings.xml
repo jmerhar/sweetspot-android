@@ -184,4 +184,37 @@
     <string name="result_disclaimer_power_all_in">Kustannukset on laskettu %s kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="result_all_in_supplier">\nSähkönmyyjä: %s</string>
     <string name="result_all_in_stale">Tariffitiedot ovat yli 14 päivää vanhoja ja voivat olla vanhentuneita.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Järjestys</string>
+    <string name="sort_by">Lajitteluperuste</string>
+    <string name="sort_then_by">sitten</string>
+    <string name="sort_key_custom">Mukautettu järjestys</string>
+    <string name="sort_key_frequency">Käytetyin</string>
+    <string name="sort_key_recency">Viimeksi käytetty</string>
+    <string name="sort_key_name">Nimi</string>
+    <string name="sort_key_duration">Kesto</string>
+    <string name="sort_key_type">Tyyppi</string>
+    <string name="sort_direction_ascending">Nouseva</string>
+    <string name="sort_direction_descending">Laskeva</string>
+    <string name="sort_add_tiebreaker">Lisää lajitteluperuste</string>
+    <string name="cd_sort_remove_level">Poista tämä lajittelutaso</string>
+    <string name="cd_drag_handle">Vedä järjestääksesi uudelleen</string>
+    <string name="usage_count_format">Käytetty %d×</string>
+    <string name="usage_never">Ei koskaan käytetty</string>
+    <string name="settings_reset_usage">Nollaa käyttötiedot</string>
+    <string name="settings_reset_usage_description">Tyhjennä napautushistoria, jota käytetään Käytetyin- ja Viimeksi käytetty -järjestyksissä.</string>
+    <string name="reset_usage_confirm_title">Nollataanko käyttötiedot?</string>
+    <string name="reset_usage_confirm_message">Tämä tyhjentää napautushistorian, jota käytetään laitteiden järjestämiseen Käytetyin- ja Viimeksi käytetty -perusteilla. Toimintoa ei voi kumota.</string>
+    <string name="action_reset">Nollaa</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Sijainti aloitusnäytöllä</string>
+    <string name="ev_placement_description">Missä ajoneuvosi näkyvät laitepainikkeiden joukossa.</string>
+    <string name="ev_position_interleaved">Sekoitettuna</string>
+    <string name="ev_position_first">Ensimmäisenä</string>
+    <string name="ev_position_last">Viimeisenä</string>
+    <string name="ev_separate_section">Erillinen osio</string>
+    <string name="home_section_vehicles">Ajoneuvot</string>
+    <string name="home_section_appliances">Laitteet</string>
 </resources>

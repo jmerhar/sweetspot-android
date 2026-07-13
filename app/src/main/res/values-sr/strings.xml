@@ -188,4 +188,37 @@
     <string name="result_disclaimer_power_all_in">Трошкови су приказани за оптерећење од %s kW, по процењеној укупној цени (тржишна цена + порез на енергију + накнада добављача + ПДВ). Не укључују мрежне накнаде ни фиксне месечне трошкове. Сутрашње цене су обично доступне након 13:00 CET.</string>
     <string name="result_all_in_supplier">\nДобављач: %s</string>
     <string name="result_all_in_stale">Подаци о тарифама су старији од 14 дана и можда више нису ажурни.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Редослед</string>
+    <string name="sort_by">Сортирај по</string>
+    <string name="sort_then_by">затим по</string>
+    <string name="sort_key_custom">Прилагођени редослед</string>
+    <string name="sort_key_frequency">Најчешће коришћено</string>
+    <string name="sort_key_recency">Недавно коришћено</string>
+    <string name="sort_key_name">Назив</string>
+    <string name="sort_key_duration">Трајање</string>
+    <string name="sort_key_type">Тип</string>
+    <string name="sort_direction_ascending">Растуће</string>
+    <string name="sort_direction_descending">Опадајуће</string>
+    <string name="sort_add_tiebreaker">Додај критеријум</string>
+    <string name="cd_sort_remove_level">Уклони овај ниво сортирања</string>
+    <string name="cd_drag_handle">Превуците за промену редоследа</string>
+    <string name="usage_count_format">Коришћено %d×</string>
+    <string name="usage_never">Никад коришћено</string>
+    <string name="settings_reset_usage">Ресетуј податке о коришћењу</string>
+    <string name="settings_reset_usage_description">Обриши историју додира која се користи за сортирање по критеријумима Најчешће коришћено и Недавно коришћено.</string>
+    <string name="reset_usage_confirm_title">Ресетовати податке о коришћењу?</string>
+    <string name="reset_usage_confirm_message">Ово брише историју додира која се користи за сортирање апарата по критеријумима Најчешће коришћено и Недавно коришћено. Не може се опозвати.</string>
+    <string name="action_reset">Ресетуј</string>
+
+    <!-- EV placement on home screen -->
+    <string name="ev_placement_title">Положај на почетном екрану</string>
+    <string name="ev_placement_description">Где се возила појављују међу дугмадима апарата.</string>
+    <string name="ev_position_interleaved">Помешано</string>
+    <string name="ev_position_first">На почетку</string>
+    <string name="ev_position_last">На крају</string>
+    <string name="ev_separate_section">Засебан одељак</string>
+    <string name="home_section_vehicles">Возила</string>
+    <string name="home_section_appliances">Апарати</string>
 </resources>

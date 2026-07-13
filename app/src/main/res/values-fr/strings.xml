@@ -188,4 +188,37 @@
     <string name="result_disclaimer_power_all_in">Les coûts sont indiqués pour une charge de %s kW, au prix total estimé (prix spot + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
     <string name="result_all_in_supplier">\nFournisseur : %s</string>
     <string name="result_all_in_stale">Les données tarifaires datent de plus de 14 jours et peuvent être obsolètes.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Ordre</string>
+    <string name="sort_by">Trier par</string>
+    <string name="sort_then_by">puis par</string>
+    <string name="sort_key_custom">Ordre personnalisé</string>
+    <string name="sort_key_frequency">Les plus utilisés</string>
+    <string name="sort_key_recency">Utilisés récemment</string>
+    <string name="sort_key_name">Nom</string>
+    <string name="sort_key_duration">Durée</string>
+    <string name="sort_key_type">Type</string>
+    <string name="sort_direction_ascending">Croissant</string>
+    <string name="sort_direction_descending">Décroissant</string>
+    <string name="sort_add_tiebreaker">Ajouter un critère</string>
+    <string name="cd_sort_remove_level">Supprimer ce critère de tri</string>
+    <string name="cd_drag_handle">Faire glisser pour réordonner</string>
+    <string name="usage_count_format">Utilisé %d×</string>
+    <string name="usage_never">Jamais utilisé</string>
+    <string name="settings_reset_usage">Réinitialiser les données d\'utilisation</string>
+    <string name="settings_reset_usage_description">Efface l\'historique d\'utilisation servant au tri par Les plus utilisés et Utilisés récemment.</string>
+    <string name="reset_usage_confirm_title">Réinitialiser les données d\'utilisation ?</string>
+    <string name="reset_usage_confirm_message">Cela efface l\'historique d\'utilisation servant à trier les appareils par Les plus utilisés et Utilisés récemment. Cette action est irréversible.</string>
+    <string name="action_reset">Réinitialiser</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Position sur l\'écran d\'accueil</string>
+    <string name="ev_placement_description">Où vos véhicules apparaissent parmi les boutons d\'appareils.</string>
+    <string name="ev_position_interleaved">Mélangés</string>
+    <string name="ev_position_first">En premier</string>
+    <string name="ev_position_last">En dernier</string>
+    <string name="ev_separate_section">Section séparée</string>
+    <string name="home_section_vehicles">Véhicules</string>
+    <string name="home_section_appliances">Appareils</string>
 </resources>

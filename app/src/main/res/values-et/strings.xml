@@ -184,4 +184,37 @@
     <string name="result_disclaimer_power_all_in">Kulud on arvutatud %s kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="result_all_in_supplier">\nTarnija: %s</string>
     <string name="result_all_in_stale">Tariifiandmed on üle 14 päeva vanad ja võivad olla aegunud.</string>
+
+    <!-- Sorting & usage -->
+    <string name="settings_sort_title">Järjestus</string>
+    <string name="sort_by">Sorteeri</string>
+    <string name="sort_then_by">seejärel</string>
+    <string name="sort_key_custom">Kohandatud järjestus</string>
+    <string name="sort_key_frequency">Enim kasutatud</string>
+    <string name="sort_key_recency">Hiljuti kasutatud</string>
+    <string name="sort_key_name">Nimi</string>
+    <string name="sort_key_duration">Kestus</string>
+    <string name="sort_key_type">Tüüp</string>
+    <string name="sort_direction_ascending">Kasvav</string>
+    <string name="sort_direction_descending">Kahanev</string>
+    <string name="sort_add_tiebreaker">Lisa lisakriteerium</string>
+    <string name="cd_sort_remove_level">Eemalda see sorteerimistasand</string>
+    <string name="cd_drag_handle">Lohista ümberjärjestamiseks</string>
+    <string name="usage_count_format">Kasutatud %d×</string>
+    <string name="usage_never">Pole kasutatud</string>
+    <string name="settings_reset_usage">Lähtesta kasutusandmed</string>
+    <string name="settings_reset_usage_description">Kustuta puudutuste ajalugu, mille alusel sorteeritakse Enim kasutatud ja Hiljuti kasutatud järgi.</string>
+    <string name="reset_usage_confirm_title">Lähtestada kasutusandmed?</string>
+    <string name="reset_usage_confirm_message">See kustutab puudutuste ajaloo, mille alusel seadmeid sorteeritakse Enim kasutatud ja Hiljuti kasutatud järgi. Seda ei saa tagasi võtta.</string>
+    <string name="action_reset">Lähtesta</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Paigutus avakuval</string>
+    <string name="ev_placement_description">Kus sinu sõidukid seadmenuppude seas kuvatakse.</string>
+    <string name="ev_position_interleaved">Segamini</string>
+    <string name="ev_position_first">Esimesena</string>
+    <string name="ev_position_last">Viimasena</string>
+    <string name="ev_separate_section">Eraldi jaotis</string>
+    <string name="home_section_vehicles">Sõidukid</string>
+    <string name="home_section_appliances">Seadmed</string>
 </resources>

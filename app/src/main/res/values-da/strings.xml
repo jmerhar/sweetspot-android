@@ -184,4 +184,37 @@
     <string name="result_disclaimer_power_all_in">De viste omkostninger er for en belastning på %s kW, ved den anslåede totalpris (spot + energiafgift + leverandørtillæg + moms). Ekskl. nettarif og faste månedlige gebyrer. Morgendagens priser er normalt tilgængelige efter kl. 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverandør: %s</string>
     <string name="result_all_in_stale">Tarifdata er mere end 14 dage gamle og er muligvis forældede.</string>
+
+    <!-- Sorting & ordering -->
+    <string name="settings_sort_title">Rækkefølge</string>
+    <string name="sort_by">Sortér efter</string>
+    <string name="sort_then_by">derefter efter</string>
+    <string name="sort_key_custom">Egen rækkefølge</string>
+    <string name="sort_key_frequency">Mest brugte</string>
+    <string name="sort_key_recency">Senest brugte</string>
+    <string name="sort_key_name">Navn</string>
+    <string name="sort_key_duration">Varighed</string>
+    <string name="sort_key_type">Type</string>
+    <string name="sort_direction_ascending">Stigende</string>
+    <string name="sort_direction_descending">Faldende</string>
+    <string name="sort_add_tiebreaker">Tilføj ekstra niveau</string>
+    <string name="cd_sort_remove_level">Fjern dette sorteringsniveau</string>
+    <string name="cd_drag_handle">Træk for at ændre rækkefølge</string>
+    <string name="usage_count_format">Brugt %d×</string>
+    <string name="usage_never">Aldrig brugt</string>
+    <string name="settings_reset_usage">Nulstil brugsdata</string>
+    <string name="settings_reset_usage_description">Ryd den historik, der bruges til at sortere efter Mest brugte og Senest brugte.</string>
+    <string name="reset_usage_confirm_title">Nulstil brugsdata?</string>
+    <string name="reset_usage_confirm_message">Dette rydder den historik, der bruges til at sortere apparater efter Mest brugte og Senest brugte. Det kan ikke fortrydes.</string>
+    <string name="action_reset">Nulstil</string>
+
+    <!-- EV placement on home screen -->
+    <string name="ev_placement_title">Placering på startskærmen</string>
+    <string name="ev_placement_description">Hvor dine køretøjer vises blandt apparatknapperne.</string>
+    <string name="ev_position_interleaved">Blandet ind</string>
+    <string name="ev_position_first">Først</string>
+    <string name="ev_position_last">Sidst</string>
+    <string name="ev_separate_section">Separat sektion</string>
+    <string name="home_section_vehicles">Køretøjer</string>
+    <string name="home_section_appliances">Apparater</string>
 </resources>

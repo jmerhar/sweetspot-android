@@ -192,4 +192,35 @@
     <string name="result_disclaimer_power_all_in">Kainos nurodytos %s kW apkrovai, taikant apytikslę galutinę kainą (biržos kaina + energijos mokestis + tiekėjo antkainis + PVM). Neįskaičiuoti tinklo mokesčiai ir fiksuoti mėnesio mokesčiai. Rytojaus kainos paprastai skelbiamos po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nTiekėjas: %s</string>
     <string name="result_all_in_stale">Tarifų duomenys senesni nei 14 dienų ir gali būti pasenę.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Rikiavimas</string>
+    <string name="sort_by">Rikiuoti pagal</string>
+    <string name="sort_then_by">tada pagal</string>
+    <string name="sort_key_custom">Pasirinktinė tvarka</string>
+    <string name="sort_key_frequency">Dažniausiai naudoti</string>
+    <string name="sort_key_recency">Neseniai naudoti</string>
+    <string name="sort_key_name">Pavadinimas</string>
+    <string name="sort_key_duration">Trukmė</string>
+    <string name="sort_key_type">Tipas</string>
+    <string name="sort_direction_ascending">Didėjančiai</string>
+    <string name="sort_direction_descending">Mažėjančiai</string>
+    <string name="sort_add_tiebreaker">Pridėti kriterijų</string>
+    <string name="cd_sort_remove_level">Pašalinti šį rikiavimo lygį</string>
+    <string name="cd_drag_handle">Vilkite, kad pertvarkytumėte</string>
+    <string name="usage_count_format">Naudota %d×</string>
+    <string name="usage_never">Niekada nenaudota</string>
+    <string name="settings_reset_usage">Atstatyti naudojimo duomenis</string>
+    <string name="settings_reset_usage_description">Išvalyti paspaudimų istoriją, naudojamą rikiuoti pagal „Dažniausiai naudoti“ ir „Neseniai naudoti“.</string>
+    <string name="reset_usage_confirm_title">Atstatyti naudojimo duomenis?</string>
+    <string name="reset_usage_confirm_message">Bus išvalyta paspaudimų istorija, naudojama rikiuoti prietaisus pagal „Dažniausiai naudoti“ ir „Neseniai naudoti“. Šio veiksmo nebus galima atšaukti.</string>
+    <string name="action_reset">Atstatyti</string>
+    <string name="ev_placement_title">Vieta pradžios ekrane</string>
+    <string name="ev_placement_description">Kur automobiliai rodomi tarp prietaisų mygtukų.</string>
+    <string name="ev_position_interleaved">Sumaišyti</string>
+    <string name="ev_position_first">Pradžioje</string>
+    <string name="ev_position_last">Pabaigoje</string>
+    <string name="ev_separate_section">Atskira dalis</string>
+    <string name="home_section_vehicles">Automobiliai</string>
+    <string name="home_section_appliances">Prietaisai</string>
 </resources>

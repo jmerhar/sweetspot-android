@@ -192,4 +192,37 @@
     <string name="result_disclaimer_power_all_in">Uvedené náklady jsou pro zátěž %s kW při odhadované konečné ceně (spotová + daň z energie + přirážka dodavatele + DPH). Nezahrnují poplatky za distribuci ani pevné měsíční poplatky. Ceny na zítřek jsou obvykle k dispozici po 13:00 SEČ.</string>
     <string name="result_all_in_supplier">\nDodavatel: %s</string>
     <string name="result_all_in_stale">Údaje o tarifu jsou starší než 14 dní a mohou být neaktuální.</string>
+
+    <!-- Sorting -->
+    <string name="settings_sort_title">Řazení</string>
+    <string name="sort_by">Řadit podle</string>
+    <string name="sort_then_by">poté podle</string>
+    <string name="sort_key_custom">Vlastní pořadí</string>
+    <string name="sort_key_frequency">Nejčastěji používané</string>
+    <string name="sort_key_recency">Naposledy použité</string>
+    <string name="sort_key_name">Název</string>
+    <string name="sort_key_duration">Doba trvání</string>
+    <string name="sort_key_type">Typ</string>
+    <string name="sort_direction_ascending">Vzestupně</string>
+    <string name="sort_direction_descending">Sestupně</string>
+    <string name="sort_add_tiebreaker">Přidat další kritérium</string>
+    <string name="cd_sort_remove_level">Odebrat toto kritérium řazení</string>
+    <string name="cd_drag_handle">Přetažením změníte pořadí</string>
+    <string name="usage_count_format">Použito %d×</string>
+    <string name="usage_never">Nepoužito</string>
+    <string name="settings_reset_usage">Vymazat data o používání</string>
+    <string name="settings_reset_usage_description">Vymaže historii použití, podle které se řadí Nejčastěji používané a Naposledy použité.</string>
+    <string name="reset_usage_confirm_title">Vymazat data o používání?</string>
+    <string name="reset_usage_confirm_message">Tímto se vymaže historie použití, podle které se spotřebiče řadí podle Nejčastěji používaných a Naposledy použitých. Akci nelze vrátit zpět.</string>
+    <string name="action_reset">Vymazat</string>
+
+    <!-- EV placement -->
+    <string name="ev_placement_title">Umístění na hlavní obrazovce</string>
+    <string name="ev_placement_description">Kde se vaše vozidla zobrazují mezi tlačítky spotřebičů.</string>
+    <string name="ev_position_interleaved">Mezi spotřebiči</string>
+    <string name="ev_position_first">Na začátku</string>
+    <string name="ev_position_last">Na konci</string>
+    <string name="ev_separate_section">Samostatná sekce</string>
+    <string name="home_section_vehicles">Vozidla</string>
+    <string name="home_section_appliances">Spotřebiče</string>
 </resources>

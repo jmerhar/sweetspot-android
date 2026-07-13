@@ -116,12 +116,13 @@ class SettingsRepositoryTest {
         assertTrue(repo.getAppliances().isEmpty())
         val appliances = listOf(
             Appliance(id = "1", name = "Washer", durationHours = 2, durationMinutes = 30, icon = "laundry"),
-            Appliance(id = "2", name = "Car", durationHours = 0, durationMinutes = 0, icon = "ev_charger", ev = EvSpec(60.0, 11.0))
+            Appliance(id = "2", name = "Car", durationHours = 0, durationMinutes = 0, ev = EvSpec(60.0, 11.0))
         )
         repo.setAppliances(appliances)
         val read = repo.getAppliances()
         assertEquals(appliances, read)
         assertTrue(read[1].isEv)
+        assertNull(read[1].icon)
     }
 
     // --- Price zone resolution ---

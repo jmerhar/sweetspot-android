@@ -104,7 +104,7 @@ fun DurationInput(
                             },
                             leadingIcon = {
                                 Icon(
-                                    painter = painterResource(applianceIconFor(appliance.icon)),
+                                    painter = painterResource(applianceIconFor(appliance)),
                                     contentDescription = null,
                                     modifier = Modifier.size(AssistChipDefaults.IconSize)
                                 )

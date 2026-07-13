@@ -523,7 +523,6 @@ class SweetSpotViewModel @JvmOverloads constructor(
             name = name,
             durationHours = 0,
             durationMinutes = 0,
-            icon = "ev_charger",
             ev = EvSpec(batteryKwh, acMaxPowerKw)
         )
         val updated = _uiState.value.appliances + vehicle

@@ -134,7 +134,7 @@ internal fun EvSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                painter = painterResource(applianceIconFor(vehicle.icon)),
+                painter = painterResource(applianceIconFor(vehicle)),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant

@@ -94,7 +94,7 @@ fun ApplianceListScreen(
                             },
                             icon = {
                                 Icon(
-                                    painter = painterResource(applianceIconFor(appliance.icon)),
+                                    painter = painterResource(applianceIconFor(appliance)),
                                     contentDescription = appliance.name,
                                     modifier = Modifier.size(ChipDefaults.IconSize)
                                 )

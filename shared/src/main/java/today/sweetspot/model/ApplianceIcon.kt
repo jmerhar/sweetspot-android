@@ -64,3 +64,18 @@ private val iconMap: Map<String, Int> = applianceIcons.associate { it.id to it.i
  */
 @DrawableRes
 fun applianceIconFor(id: String): Int = iconMap[id] ?: R.drawable.ic_electricity
+
+/**
+ * Resolves the icon to display for an [appliance].
+ *
+ * An electric vehicle always shows a car: the choice is derived here, not stored, so a
+ * vehicle's [Appliance.icon] is null. Every other appliance resolves its configured icon id,
+ * falling back to the "electricity" icon when none is set.
+ *
+ * @param appliance The appliance whose icon to display.
+ * @return The drawable resource ID to display.
+ */
+@DrawableRes
+fun applianceIconFor(appliance: Appliance): Int =
+    if (appliance.isEv) R.drawable.ic_car
+    else appliance.icon?.let(::applianceIconFor) ?: R.drawable.ic_electricity

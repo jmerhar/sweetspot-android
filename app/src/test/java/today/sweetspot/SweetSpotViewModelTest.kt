@@ -1151,7 +1151,7 @@ class SweetSpotViewModelTest {
         assertEquals(1, vehicles.size)
         assertEquals("Test EV", vehicles.first().name)
         assertEquals(60.0, vehicles.first().ev!!.batteryKwh, 0.001)
-        assertEquals("ev_charger", vehicles.first().icon)
+        assertNull(vehicles.first().icon)
     }
 
     @Test

@@ -128,7 +128,7 @@ object ScreenshotTestData {
         // Escape for JSON — handle quotes in translated names
         fun esc(s: String) = s.replace("\\", "\\\\").replace("\"", "\\\"")
 
-        val appliancesJson = """[{"id":"a1","name":"${esc(washer)}","durationHours":2,"durationMinutes":30,"icon":"washing_machine"},{"id":"a2","name":"${esc(dishEco)}","durationHours":4,"durationMinutes":0,"icon":"dishwasher"},{"id":"a3","name":"${esc(dishQuick)}","durationHours":1,"durationMinutes":15,"icon":"dishwasher"},{"id":"a4","name":"$EV_VEHICLE_NAME","durationHours":0,"durationMinutes":0,"icon":"ev_charger","ev":{"batteryKwh":58.0,"acMaxPowerKw":11.0}}]"""
+        val appliancesJson = """[{"id":"a1","name":"${esc(washer)}","durationHours":2,"durationMinutes":30,"icon":"washing_machine"},{"id":"a2","name":"${esc(dishEco)}","durationHours":4,"durationMinutes":0,"icon":"dishwasher"},{"id":"a3","name":"${esc(dishQuick)}","durationHours":1,"durationMinutes":15,"icon":"dishwasher"},{"id":"a4","name":"$EV_VEHICLE_NAME","durationHours":0,"durationMinutes":0,"ev":{"batteryKwh":58.0,"acMaxPowerKw":11.0}}]"""
 
         context.getSharedPreferences("sweetspot_settings", Context.MODE_PRIVATE).edit {
             putString("country_code", "NL")

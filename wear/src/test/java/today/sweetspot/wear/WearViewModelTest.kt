@@ -273,7 +273,7 @@ class WearViewModelTest {
         assertEquals(1, a.size)
         assertEquals(1, a[0].durationHours)
         assertEquals(0, a[0].durationMinutes)
-        assertEquals("electricity", a[0].icon)
+        assertNull(a[0].icon)
     }
 
     // --- onSettingsReceived ---

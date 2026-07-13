@@ -200,6 +200,8 @@
     <string name="sort_add_tiebreaker">Add tie-breaker</string>
     <string name="cd_sort_remove_level">Remove this sort level</string>
     <string name="cd_drag_handle">Drag to reorder</string>
+    <string name="usage_count_format">Used %d×</string>
+    <string name="usage_never">Never used</string>
     <string name="settings_reset_usage">Reset usage data</string>
     <string name="settings_reset_usage_description">Clear the tap history used to order by Most used and Recently used.</string>
     <string name="reset_usage_confirm_title">Reset usage data?</string>

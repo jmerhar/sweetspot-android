@@ -1,5 +1,6 @@
 package today.sweetspot.ui.settings
 
+import android.text.format.DateUtils
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -48,6 +49,7 @@ import today.sweetspot.R
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
+import today.sweetspot.model.SortKey
 import today.sweetspot.model.applianceIconFor
 import today.sweetspot.model.applianceIcons
 import today.sweetspot.ui.components.DurationPicker
@@ -80,6 +82,9 @@ internal fun AppliancesSection(
 ) {
     val resources = LocalContext.current.resources
     var showResetConfirm by rememberSaveable { mutableStateOf(false) }
+    // Usage figures only make sense when a usage-based order is active (never in Custom, which
+    // can't be paired with another key and shows drag handles instead).
+    val showUsage = sort.criteria.any { it.key == SortKey.FREQUENCY || it.key == SortKey.RECENCY }
 
     Text(
         text = stringResource(R.string.settings_appliances),
@@ -94,10 +99,6 @@ internal fun AppliancesSection(
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 8.dp)
     )
-
-    if (appliances.isNotEmpty()) {
-        ApplianceSortControl(sort, appliances, usage, onSortChanged)
-    }
 
     if (sort.isCustom && appliances.isNotEmpty()) {
         // Manual order: drag to reorder. Local state animates the drag; onSettle persists it.
@@ -114,6 +115,8 @@ internal fun AppliancesSection(
                 ReorderableItem {
                     ApplianceRow(
                         appliance = appliance,
+                        usage = usage[appliance.id],
+                        showUsage = showUsage,
                         resources = resources,
                         onClick = { onApplianceClick(appliance) },
                         dragHandle = {
@@ -132,6 +135,8 @@ internal fun AppliancesSection(
         appliances.forEach { appliance ->
             ApplianceRow(
                 appliance = appliance,
+                usage = usage[appliance.id],
+                showUsage = showUsage,
                 resources = resources,
                 onClick = { onApplianceClick(appliance) },
                 dragHandle = null
@@ -157,6 +162,10 @@ internal fun AppliancesSection(
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.primary
         )
+    }
+
+    if (appliances.isNotEmpty()) {
+        ApplianceSortControl(sort, appliances, usage, onSortChanged)
     }
 
     Row(
@@ -205,10 +214,15 @@ internal fun AppliancesSection(
     }
 }
 
-/** A single appliance row: icon, name, duration, and an optional trailing drag handle. */
+/**
+ * A single appliance row: icon, name, duration, right-aligned usage (tap count + last used), and
+ * an optional trailing drag handle.
+ */
 @Composable
 private fun ApplianceRow(
     appliance: Appliance,
+    usage: ApplianceUsage?,
+    showUsage: Boolean,
     resources: android.content.res.Resources,
     onClick: () -> Unit,
     dragHandle: (@Composable () -> Unit)?
@@ -239,7 +253,34 @@ private fun ApplianceRow(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+        if (showUsage) UsageStats(usage)
         dragHandle?.invoke()
+    }
+}
+
+/** Right-aligned tap statistics for an appliance: frequency (count) over recency (last used). */
+@Composable
+private fun UsageStats(usage: ApplianceUsage?) {
+    val lastUsedMs = usage?.lastUsedMs ?: 0L
+    val recency = if (lastUsedMs <= 0L) {
+        stringResource(R.string.usage_never)
+    } else {
+        DateUtils.getRelativeTimeSpanString(lastUsedMs, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS).toString()
+    }
+    Column(
+        horizontalAlignment = Alignment.End,
+        modifier = Modifier.padding(start = 8.dp)
+    ) {
+        Text(
+            text = stringResource(R.string.usage_count_format, usage?.count ?: 0),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            text = recency,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 

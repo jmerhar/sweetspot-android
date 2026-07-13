@@ -86,6 +86,9 @@ internal fun EvSection(
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
     )
 
+    // Saved vehicles (kept at the top, mirroring the appliance screen)
+    VehicleList(vehicles, onVehicleClick, onAddVehicleClick)
+
     // Home charger power
     Column(modifier = Modifier.padding(horizontal = 16.dp)) {
         Text(stringResource(R.string.ev_home_charger), style = MaterialTheme.typography.bodyLarge)
@@ -179,7 +182,21 @@ internal fun EvSection(
         }
     }
 
-    // Saved vehicles
+    Text(
+        text = stringResource(R.string.ev_attribution),
+        style = MaterialTheme.typography.labelSmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+    )
+}
+
+/** The saved-vehicle rows (tap to edit) plus the "Add vehicle" row. */
+@Composable
+private fun VehicleList(
+    vehicles: List<Appliance>,
+    onVehicleClick: (Appliance) -> Unit,
+    onAddVehicleClick: () -> Unit
+) {
     vehicles.forEach { vehicle ->
         val spec = vehicle.ev ?: return@forEach
         Row(
@@ -230,13 +247,6 @@ internal fun EvSection(
             color = MaterialTheme.colorScheme.primary
         )
     }
-
-    Text(
-        text = stringResource(R.string.ev_attribution),
-        style = MaterialTheme.typography.labelSmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-    )
 }
 
 /**

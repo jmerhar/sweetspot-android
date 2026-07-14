@@ -65,6 +65,41 @@
     <string name="settings_appliances_menu_desc">Mentett készülékeid</string>
     <string name="settings_ev_menu_desc">Töltő, céltöltöttség és járművek</string>
     <string name="settings_all_in_menu_desc">A teljes fogyasztói ár megjelenítése</string>
+    <string name="settings_share_title">Beállításaim megosztása</string>
+    <string name="settings_share_menu_desc">Másold át készülékeidet és elektromos autó beállításaidat egy másik eszközre</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Olvasd be ezt a kódot egy másik telefon kamerájával, vagy küldd el a linket. Készülékeid, azok sorrendje és az elektromos autó beállításaid átmásolódnak az adott eszközre.</string>
+    <string name="share_setup_button">Link megosztása</string>
+    <string name="share_setup_chooser_title">Beállításaid megosztása</string>
+    <string name="share_setup_qr_unavailable">A beállításaid túl nagyok egy QR-kódhoz. Használd helyette a megosztási linket.</string>
+    <string name="cd_qr_code">QR-kód a beállításaidhoz</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Beállítások importálása</string>
+    <string name="import_mode_add">Hozzáadás a sajátjaimhoz</string>
+    <string name="import_mode_add_desc">Megtartja a készülékeimet, és hozzáadja az újakat</string>
+    <string name="import_mode_replace">A sajátjaim cseréje</string>
+    <string name="import_mode_replace_desc">A megosztott készülékek, sorrend és elektromos autó beállítások használata</string>
+    <string name="import_mode_pick">Válaszd ki, melyiket</string>
+    <string name="import_mode_pick_desc">Válaszd ki a hozzáadandó készülékeket</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d készülék</item>
+        <item quantity="other">%d készülék</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">%d járművet tartalmaz</item>
+        <item quantity="other">%d járművet tartalmaz</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">%d készülék importálása</item>
+        <item quantity="other">%d készülék importálása</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Nem sikerült importálni</string>
+    <string name="import_error_too_new">Ezt a beállítást a SweetSpot egy újabb verziójából osztották meg. Frissítsd az alkalmazást az importáláshoz.</string>
+    <string name="import_error_malformed">Ezt a linket nem sikerült beolvasni. Kérj egy újat.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Készülék hozzáadása</string>

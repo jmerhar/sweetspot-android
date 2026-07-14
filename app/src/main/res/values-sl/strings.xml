@@ -65,6 +65,47 @@
     <string name="settings_appliances_menu_desc">Vaši shranjeni aparati</string>
     <string name="settings_ev_menu_desc">Polnilnik, ciljna napolnjenost in vozila</string>
     <string name="settings_all_in_menu_desc">Prikaži celotno ceno za potrošnika</string>
+    <string name="settings_share_title">Deli mojo nastavitev</string>
+    <string name="settings_share_menu_desc">Kopirajte svoje aparate in nastavitve električnega vozila v drugo napravo</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Skenirajte to kodo s kamero drugega telefona ali pošljite povezavo. Vaši aparati, njihov vrstni red in nastavitve električnega vozila bodo kopirani v to napravo.</string>
+    <string name="share_setup_button">Deli povezavo</string>
+    <string name="share_setup_chooser_title">Delite svojo nastavitev</string>
+    <string name="share_setup_qr_unavailable">Vaša nastavitev je prevelika za QR kodo. Namesto tega uporabite povezavo za deljenje.</string>
+    <string name="cd_qr_code">QR koda za vašo nastavitev</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Uvozi nastavitev</string>
+    <string name="import_mode_add">Dodaj k mojim</string>
+    <string name="import_mode_add_desc">Ohrani moje aparate in dodaj nove</string>
+    <string name="import_mode_replace">Zamenjaj moje</string>
+    <string name="import_mode_replace_desc">Uporabi deljene aparate, vrstni red in nastavitve električnega vozila</string>
+    <string name="import_mode_pick">Izberi katere</string>
+    <string name="import_mode_pick_desc">Izberi aparate za dodajanje</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d aparat</item>
+        <item quantity="two">%d aparata</item>
+        <item quantity="few">%d aparati</item>
+        <item quantity="other">%d aparatov</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Vključuje %d vozilo</item>
+        <item quantity="two">Vključuje %d vozili</item>
+        <item quantity="few">Vključuje %d vozila</item>
+        <item quantity="other">Vključuje %d vozil</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Uvozi %d aparat</item>
+        <item quantity="two">Uvozi %d aparata</item>
+        <item quantity="few">Uvozi %d aparate</item>
+        <item quantity="other">Uvozi %d aparatov</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Uvoz ni uspel</string>
+    <string name="import_error_too_new">Ta nastavitev je bila deljena iz novejše različice aplikacije SweetSpot. Za uvoz posodobite aplikacijo.</string>
+    <string name="import_error_malformed">Te povezave ni bilo mogoče prebrati. Prosite za novo.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj aparat</string>

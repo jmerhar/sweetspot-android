@@ -22,6 +22,7 @@ kover {
                     "today.sweetspot.ui.*",
                     "today.sweetspot.ui.components.*",
                     "today.sweetspot.ui.settings.*",
+                    "today.sweetspot.ui.share.*",
                     "today.sweetspot.ui.theme.*",
                     "today.sweetspot.MainActivity",                  // Compose host / navigation
                     "today.sweetspot.MainActivity\$*",
@@ -73,6 +74,9 @@ dependencies {
 
     // Drag-to-reorder for the appliance and data-source lists
     implementation(libs.reorderable)
+
+    // QR code generation for sharing a setup (pure-Java, no camera)
+    implementation(libs.zxing.core)
 
     // Wearable Data Layer (sync appliances to watch)
     implementation(libs.play.services.wearable)

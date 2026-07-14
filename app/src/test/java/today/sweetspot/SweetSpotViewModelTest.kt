@@ -33,6 +33,8 @@ import today.sweetspot.data.cache.RawTariff
 import today.sweetspot.data.cache.TariffCache
 import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.repository.TariffRepository
+import today.sweetspot.data.share.DecodeResult
+import today.sweetspot.data.share.SetupShare
 import java.time.Clock
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
@@ -41,7 +43,9 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.EvPosition
+import today.sweetspot.model.EvSpec
 import today.sweetspot.model.PriceSlot
+import today.sweetspot.model.SharedSetup
 import today.sweetspot.model.SortCriterion
 import today.sweetspot.model.SortKey
 import today.sweetspot.util.HomeChipLayout
@@ -51,6 +55,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 import android.app.Activity
+import android.net.Uri
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -1900,5 +1905,123 @@ class SweetSpotViewModelTest {
         assertNull(vm.uiState.value.usage["x"])
         vm.onWatchUsageReceived(mapOf("x" to ApplianceUsage(2, 60)), token = 1) // current token
         assertEquals(2, vm.uiState.value.usage["x"]?.count)
+    }
+
+    // --- Household sharing ---
+
+    /** A representative incoming setup used across the import tests. */
+    private fun incomingSetup() = SharedSetup(
+        appliances = listOf(
+            Appliance("s1", "Oven", 1, 30, icon = "oven"),
+            Appliance("s2", "Van", ev = EvSpec(80.0, 22.0)),
+        ),
+        sort = ApplianceSort(listOf(SortCriterion(SortKey.NAME))),
+        evHomeChargerKw = 7.4,
+        evDefaultTargetSoc = 90,
+        evPosition = EvPosition.LAST.key,
+        evSeparate = true,
+    )
+
+    @Test
+    fun `onShareSetup produces a link that decodes back to the current setup`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("Dryer", 2, 0, "dryer")
+        vm.onEvHomeChargerChanged(7.4)
+
+        val result = SetupShare.fromLink(Uri.parse(vm.onShareSetup()).fragment)
+        assertTrue(result is DecodeResult.Success)
+        val setup = (result as DecodeResult.Success).setup
+        assertEquals(listOf("Dryer"), setup.appliances.map { it.name })
+        assertEquals(7.4, setup.evHomeChargerKw, 0.001)
+    }
+
+    @Test
+    fun `onImportLink sets the preview for a valid link`() {
+        val vm = defaultViewModel()
+        vm.onImportLink(Uri.parse(SetupShare.toLink(incomingSetup())))
+        val preview = vm.uiState.value.importPreview
+        assertNotNull(preview)
+        assertEquals(listOf("Oven", "Van"), preview!!.appliances.map { it.name })
+        assertNull(vm.uiState.value.importError)
+    }
+
+    @Test
+    fun `onImportLink ignores a bare link with no payload`() {
+        val vm = defaultViewModel()
+        vm.onImportLink(Uri.parse("https://sweetspot.today/import"))
+        assertNull(vm.uiState.value.importPreview)
+        assertNull(vm.uiState.value.importError)
+    }
+
+    @Test
+    fun `onImportLink reports a malformed link`() {
+        val vm = defaultViewModel()
+        vm.onImportLink(Uri.parse("https://sweetspot.today/import#not-a-payload"))
+        assertNull(vm.uiState.value.importPreview)
+        assertEquals(ImportError.MALFORMED, vm.uiState.value.importError)
+    }
+
+    @Test
+    fun `onImportLink reports a newer schema as too new`() {
+        val vm = defaultViewModel()
+        val future = incomingSetup().copy(schemaVersion = SetupShare.CURRENT_SCHEMA + 1)
+        vm.onImportLink(Uri.parse(SetupShare.toLink(future)))
+        assertNull(vm.uiState.value.importPreview)
+        assertEquals(ImportError.TOO_NEW, vm.uiState.value.importError)
+    }
+
+    @Test
+    fun `onImportConfirmed REPLACE adopts appliances sort and EV settings`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("Fridge", 1, 0, "fridge")
+        vm.onImportLink(Uri.parse(SetupShare.toLink(incomingSetup())))
+        vm.onImportConfirmed(ImportMode.REPLACE, emptySet())
+
+        val state = vm.uiState.value
+        assertEquals(listOf("Oven", "Van"), state.appliances.map { it.name })
+        // Ids are re-minted, never the sender's.
+        assertFalse(state.appliances.any { it.id == "s1" || it.id == "s2" })
+        assertEquals(ApplianceSort(listOf(SortCriterion(SortKey.NAME))), state.applianceSort)
+        assertEquals(7.4, state.evHomeChargerKw, 0.001)
+        assertEquals(90, state.evDefaultTargetSoc)
+        assertEquals(EvPosition.LAST, state.evPosition)
+        assertTrue(state.evSeparate)
+        // Derived views refreshed: the non-EV "Oven" is in the sorted list.
+        assertEquals(listOf("Oven"), state.sortedAppliances.map { it.name })
+        assertNull(state.importPreview)
+    }
+
+    @Test
+    fun `onImportConfirmed ADD appends without touching sort or EV settings`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("Fridge", 1, 0, "fridge")
+        vm.onImportLink(Uri.parse(SetupShare.toLink(incomingSetup())))
+        vm.onImportConfirmed(ImportMode.ADD, emptySet())
+
+        val state = vm.uiState.value
+        assertEquals(listOf("Fridge", "Oven", "Van"), state.appliances.map { it.name })
+        // Receiver's own sort and charger are untouched.
+        assertTrue(state.applianceSort.isCustom)
+        assertEquals(11.0, state.evHomeChargerKw, 0.001)
+        assertNull(state.importPreview)
+    }
+
+    @Test
+    fun `onImportConfirmed PICK imports only the selected appliances`() {
+        val vm = defaultViewModel()
+        vm.onImportLink(Uri.parse(SetupShare.toLink(incomingSetup())))
+        // Keep only "Oven" (sender id s1).
+        vm.onImportConfirmed(ImportMode.PICK, setOf("s1"))
+
+        assertEquals(listOf("Oven"), vm.uiState.value.appliances.map { it.name })
+    }
+
+    @Test
+    fun `onDismissImport clears the preview and error`() {
+        val vm = defaultViewModel()
+        vm.onImportLink(Uri.parse(SetupShare.toLink(incomingSetup())))
+        vm.onDismissImport()
+        assertNull(vm.uiState.value.importPreview)
+        assertNull(vm.uiState.value.importError)
     }
 }

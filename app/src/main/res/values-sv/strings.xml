@@ -65,6 +65,41 @@
     <string name="settings_appliances_menu_desc">Dina sparade apparater</string>
     <string name="settings_ev_menu_desc">Laddare, laddningsmål och fordon</string>
     <string name="settings_all_in_menu_desc">Visa hela konsumentpriset</string>
+    <string name="settings_share_title">Dela min konfiguration</string>
+    <string name="settings_share_menu_desc">Kopiera dina apparater och elbilsinställningar till en annan enhet</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Skanna den här koden med en annan telefons kamera, eller skicka länken. Dina apparater, deras ordning och dina elbilsinställningar kopieras till den enheten.</string>
+    <string name="share_setup_button">Dela länk</string>
+    <string name="share_setup_chooser_title">Dela din konfiguration</string>
+    <string name="share_setup_qr_unavailable">Din konfiguration är för stor för en QR-kod. Använd delningslänken i stället.</string>
+    <string name="cd_qr_code">QR-kod för din konfiguration</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importera konfiguration</string>
+    <string name="import_mode_add">Lägg till i mina</string>
+    <string name="import_mode_add_desc">Behåll mina apparater och lägg till de nya</string>
+    <string name="import_mode_replace">Ersätt mina</string>
+    <string name="import_mode_replace_desc">Använd de delade apparaterna, ordningen och elbilsinställningarna</string>
+    <string name="import_mode_pick">Välj vilka</string>
+    <string name="import_mode_pick_desc">Välj de apparater du vill lägga till</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d apparat</item>
+        <item quantity="other">%d apparater</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Inkluderar %d fordon</item>
+        <item quantity="other">Inkluderar %d fordon</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Importera %d apparat</item>
+        <item quantity="other">Importera %d apparater</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Kunde inte importera</string>
+    <string name="import_error_too_new">Den här konfigurationen delades från en nyare version av SweetSpot. Uppdatera appen för att importera den.</string>
+    <string name="import_error_malformed">Länken kunde inte läsas. Be om en ny.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Lägg till apparat</string>

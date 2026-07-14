@@ -2,6 +2,7 @@ package today.sweetspot
 
 import android.app.Activity
 import android.app.Application
+import android.net.Uri
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
@@ -20,6 +21,8 @@ import today.sweetspot.data.repository.EvVehicleRepository
 import today.sweetspot.data.repository.PriceRepository
 import today.sweetspot.data.repository.SettingsRepository
 import today.sweetspot.data.repository.TariffRepository
+import today.sweetspot.data.share.DecodeResult
+import today.sweetspot.data.share.SetupShare
 import today.sweetspot.data.stats.FileStatsCollector
 import today.sweetspot.data.stats.HttpStatsPoster
 import today.sweetspot.data.stats.StatsCollector
@@ -36,6 +39,7 @@ import today.sweetspot.model.EvSpec
 import today.sweetspot.model.EvVehicle
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.PriceZone
+import today.sweetspot.model.SharedSetup
 import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.AllInPricing
@@ -89,6 +93,22 @@ private const val TARIFF_STALENESS_MS = 14L * 24 * 60 * 60 * 1000
  * app gains end-to-end multi-currency support (a spot price would need to carry its own currency).
  */
 private const val SPOT_CURRENCY = "EUR"
+
+/**
+ * How an incoming shared setup is merged into the receiver's own.
+ *
+ * [REPLACE] adopts the incoming appliances, sort, and EV settings wholesale; [ADD] appends the
+ * incoming appliances (skipping content-duplicates) while keeping the receiver's own sort and EV
+ * settings; [PICK] is [ADD] restricted to the appliances the user ticked.
+ */
+enum class ImportMode { ADD, REPLACE, PICK }
+
+/**
+ * Why a scanned/tapped setup link couldn't be imported.
+ *
+ * [TOO_NEW] — the payload was written by a newer app version; [MALFORMED] — it was unreadable.
+ */
+enum class ImportError { TOO_NEW, MALFORMED }
 
 /**
  * UI state for the main screen.
@@ -146,6 +166,8 @@ private const val SPOT_CURRENCY = "EUR"
  * @property usage Combined phone+watch per-appliance tap statistics feeding Frequency/Recency.
  * @property sortedAppliances Non-EV appliances in the active sort order (for the Settings list).
  * @property homeLayout The merged appliance/vehicle chip layout for the home screen.
+ * @property importPreview A decoded incoming setup awaiting confirmation, or `null`.
+ * @property importError Why a scanned/tapped setup link couldn't be imported, or `null`.
  */
 data class UiState(
     val durationHours: Int = 1,
@@ -225,7 +247,12 @@ data class UiState(
     val evSeparate: Boolean = false,
     val usage: Map<String, ApplianceUsage> = emptyMap(),
     val sortedAppliances: List<Appliance> = emptyList(),
-    val homeLayout: HomeChipLayout = HomeChipLayout.Flat(emptyList())
+    val homeLayout: HomeChipLayout = HomeChipLayout.Flat(emptyList()),
+    // --- Household sharing / import ---
+    /** A decoded incoming setup awaiting the user's confirmation on the import-preview screen. */
+    val importPreview: SharedSetup? = null,
+    /** Set when a scanned/tapped setup link couldn't be imported (newer schema or corrupt). */
+    val importError: ImportError? = null
 ) {
     /**
      * Whether all-in pricing is offered for the selected country: a usable tariff feed exists **and**
@@ -474,6 +501,96 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 applianceSort = settingsRepository.getApplianceSort(),
                 evPosition = settingsRepository.getEvPosition(),
                 evSeparate = settingsRepository.isEvSeparateSection()
+            ).withApplianceViews()
+        }
+        syncAppliancesToWear()
+    }
+
+    // --- Household sharing ---
+
+    /**
+     * Builds a shareable deep link (for the QR code and the sharesheet) encoding the current
+     * appliances, their sort order, and the EV device settings. Excludes usage and everything else.
+     */
+    fun onShareSetup(): String = SetupShare.toLink(
+        SharedSetup(
+            appliances = settingsRepository.getAppliances(),
+            sort = settingsRepository.getApplianceSort(),
+            evHomeChargerKw = settingsRepository.getEvHomeChargerKw(),
+            evDefaultTargetSoc = settingsRepository.getEvDefaultTargetSoc(),
+            evPosition = settingsRepository.getEvPosition().key,
+            evSeparate = settingsRepository.isEvSeparateSection()
+        )
+    )
+
+    /**
+     * Decodes a scanned/tapped setup link, showing the import preview on success or a friendly
+     * error otherwise. The payload rides in the URI fragment, which never reaches the server.
+     *
+     * @param uri The incoming `https://sweetspot.today/import#…` link, or `null`.
+     */
+    fun onImportLink(uri: Uri?) {
+        // A bare `/import` link with no payload fragment carries nothing to import — ignore it
+        // silently rather than showing a "couldn't read" error.
+        val fragment = uri?.fragment
+        if (fragment.isNullOrBlank()) return
+        when (val result = SetupShare.decode(fragment)) {
+            is DecodeResult.Success ->
+                _uiState.update { it.copy(importPreview = result.setup, importError = null) }
+            is DecodeResult.TooNew ->
+                _uiState.update { it.copy(importPreview = null, importError = ImportError.TOO_NEW) }
+            DecodeResult.Malformed ->
+                _uiState.update { it.copy(importPreview = null, importError = ImportError.MALFORMED) }
+        }
+    }
+
+    /** Dismisses the import preview or error without changing anything. */
+    fun onDismissImport() {
+        _uiState.update { it.copy(importPreview = null, importError = null) }
+    }
+
+    /**
+     * Applies the pending import per [mode]: persists the merged appliances (each with a fresh id)
+     * and, for [ImportMode.REPLACE], the incoming sort and EV settings too; then refreshes the
+     * derived views and syncs to the watch. No-op if there is no pending preview.
+     *
+     * @param mode How to combine the incoming setup with the current one.
+     * @param selectedIds For [ImportMode.PICK], the ids of the incoming appliances to keep (the
+     *        sender's ids as seen in the preview); ignored for other modes.
+     */
+    fun onImportConfirmed(mode: ImportMode, selectedIds: Set<String>) {
+        val setup = _uiState.value.importPreview ?: return
+        val incoming = if (mode == ImportMode.PICK) {
+            setup.appliances.filter { it.id in selectedIds }
+        } else {
+            setup.appliances
+        }
+        val merged = SetupShare.mergeAppliances(
+            existing = settingsRepository.getAppliances(),
+            incoming = incoming,
+            replace = mode == ImportMode.REPLACE,
+            newId = { UUID.randomUUID().toString() }
+        )
+        settingsRepository.setAppliances(merged)
+
+        if (mode == ImportMode.REPLACE) {
+            settingsRepository.setApplianceSort(setup.sort)
+            settingsRepository.setEvHomeChargerKw(setup.evHomeChargerKw)
+            settingsRepository.setEvDefaultTargetSoc(setup.evDefaultTargetSoc)
+            settingsRepository.setEvPosition(EvPosition.fromKey(setup.evPosition))
+            settingsRepository.setEvSeparateSection(setup.evSeparate)
+        }
+
+        _uiState.update {
+            it.copy(
+                appliances = merged,
+                applianceSort = settingsRepository.getApplianceSort(),
+                evHomeChargerKw = settingsRepository.getEvHomeChargerKw(),
+                evDefaultTargetSoc = settingsRepository.getEvDefaultTargetSoc(),
+                evPosition = settingsRepository.getEvPosition(),
+                evSeparate = settingsRepository.isEvSeparateSection(),
+                importPreview = null,
+                importError = null
             ).withApplianceViews()
         }
         syncAppliancesToWear()

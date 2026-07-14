@@ -42,7 +42,7 @@ echo ""
 echo "==> Checking expected pages and assets..."
 
 LANGUAGES="en bg cs da de el es et fi fr hr hu it lt lv mk nb nl pl pt ro sk sl sr sv"
-PAGES="index.html faq/index.html changelog/index.html privacy/index.html"
+PAGES="index.html faq/index.html changelog/index.html privacy/index.html import/index.html"
 
 # English pages live at the root (default language, no subdirectory)
 for page in $PAGES; do

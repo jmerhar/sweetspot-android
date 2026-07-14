@@ -65,6 +65,41 @@
     <string name="settings_appliances_menu_desc">I tuoi elettrodomestici salvati</string>
     <string name="settings_ev_menu_desc">Caricatore, carica obiettivo e veicoli</string>
     <string name="settings_all_in_menu_desc">Mostra il prezzo totale al consumatore</string>
+    <string name="settings_share_title">Condividi la mia configurazione</string>
+    <string name="settings_share_menu_desc">Copia i tuoi elettrodomestici e le impostazioni dell\'auto elettrica su un altro dispositivo</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Scansiona questo codice con la fotocamera di un altro telefono, oppure invia il link. I tuoi elettrodomestici, il loro ordine e le impostazioni dell\'auto elettrica verranno copiati su quel dispositivo.</string>
+    <string name="share_setup_button">Condividi link</string>
+    <string name="share_setup_chooser_title">Condividi la tua configurazione</string>
+    <string name="share_setup_qr_unavailable">La tua configurazione è troppo grande per un codice QR. Usa invece il link di condivisione.</string>
+    <string name="cd_qr_code">Codice QR della tua configurazione</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importa configurazione</string>
+    <string name="import_mode_add">Aggiungi ai miei</string>
+    <string name="import_mode_add_desc">Mantieni i miei elettrodomestici e aggiungi quelli nuovi</string>
+    <string name="import_mode_replace">Sostituisci i miei</string>
+    <string name="import_mode_replace_desc">Usa gli elettrodomestici, l\'ordine e le impostazioni dell\'auto elettrica condivisi</string>
+    <string name="import_mode_pick">Scegli quali</string>
+    <string name="import_mode_pick_desc">Scegli gli elettrodomestici da aggiungere</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d elettrodomestico</item>
+        <item quantity="other">%d elettrodomestici</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Include %d veicolo</item>
+        <item quantity="other">Include %d veicoli</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Importa %d elettrodomestico</item>
+        <item quantity="other">Importa %d elettrodomestici</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Impossibile importare</string>
+    <string name="import_error_too_new">Questa configurazione è stata condivisa da una versione più recente di SweetSpot. Aggiorna l\'app per importarla.</string>
+    <string name="import_error_malformed">Impossibile leggere questo link. Chiedine uno nuovo.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Aggiungi elettrodomestico</string>

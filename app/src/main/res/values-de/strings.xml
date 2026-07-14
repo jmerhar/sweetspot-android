@@ -66,6 +66,43 @@
     <string name="settings_ev_menu_desc">Ladegerät, Zielladung und Fahrzeuge</string>
     <string name="settings_all_in_menu_desc">Zeige den vollen Verbraucherpreis</string>
 
+    <!-- Household sharing -->
+    <string name="settings_share_title">Meine Einrichtung teilen</string>
+    <string name="settings_share_menu_desc">Kopiere deine Geräte und E-Auto-Einstellungen auf ein anderes Gerät</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Scanne diesen Code mit der Kamera eines anderen Telefons oder sende den Link. Deine Geräte, ihre Reihenfolge und deine E-Auto-Einstellungen werden auf dieses Gerät kopiert.</string>
+    <string name="share_setup_button">Link teilen</string>
+    <string name="share_setup_chooser_title">Teile deine Einrichtung</string>
+    <string name="share_setup_qr_unavailable">Deine Einrichtung ist zu groß für einen QR-Code. Verwende stattdessen den Teilen-Link.</string>
+    <string name="cd_qr_code">QR-Code für deine Einrichtung</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Einrichtung importieren</string>
+    <string name="import_mode_add">Zu meinen hinzufügen</string>
+    <string name="import_mode_add_desc">Meine Geräte behalten und die neuen hinzufügen</string>
+    <string name="import_mode_replace">Meine ersetzen</string>
+    <string name="import_mode_replace_desc">Die geteilten Geräte, Reihenfolge und E-Auto-Einstellungen verwenden</string>
+    <string name="import_mode_pick">Auswählen</string>
+    <string name="import_mode_pick_desc">Wähle die Geräte zum Hinzufügen</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d Gerät</item>
+        <item quantity="other">%d Geräte</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Enthält %d Fahrzeug</item>
+        <item quantity="other">Enthält %d Fahrzeuge</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">%d Gerät importieren</item>
+        <item quantity="other">%d Geräte importieren</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Import fehlgeschlagen</string>
+    <string name="import_error_too_new">Diese Einrichtung wurde von einer neueren Version von SweetSpot geteilt. Aktualisiere die App, um sie zu importieren.</string>
+    <string name="import_error_malformed">Dieser Link konnte nicht gelesen werden. Bitte um einen neuen.</string>
+
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Gerät hinzufügen</string>
     <string name="dialog_edit_appliance">Gerät bearbeiten</string>

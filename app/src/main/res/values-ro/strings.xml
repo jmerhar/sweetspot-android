@@ -65,6 +65,44 @@
     <string name="settings_appliances_menu_desc">Aparatele tale salvate</string>
     <string name="settings_ev_menu_desc">Încărcător, nivel dorit și vehicule</string>
     <string name="settings_all_in_menu_desc">Afișează prețul total pentru consumator</string>
+    <string name="settings_share_title">Partajează configurația mea</string>
+    <string name="settings_share_menu_desc">Copiază aparatele și setările vehiculului electric pe alt dispozitiv</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Scanează acest cod cu camera altui telefon sau trimite linkul. Aparatele tale, ordinea lor și setările vehiculului electric vor fi copiate pe acel dispozitiv.</string>
+    <string name="share_setup_button">Partajează linkul</string>
+    <string name="share_setup_chooser_title">Partajează configurația ta</string>
+    <string name="share_setup_qr_unavailable">Configurația ta este prea mare pentru un cod QR. Folosește în schimb linkul de partajare.</string>
+    <string name="cd_qr_code">Cod QR pentru configurația ta</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importă configurația</string>
+    <string name="import_mode_add">Adaugă la ale mele</string>
+    <string name="import_mode_add_desc">Păstrează aparatele mele și adaugă-le pe cele noi</string>
+    <string name="import_mode_replace">Înlocuiește-le pe ale mele</string>
+    <string name="import_mode_replace_desc">Folosește aparatele, ordinea și setările vehiculului electric partajate</string>
+    <string name="import_mode_pick">Alege care</string>
+    <string name="import_mode_pick_desc">Alege aparatele de adăugat</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d aparat</item>
+        <item quantity="few">%d aparate</item>
+        <item quantity="other">%d de aparate</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Include %d vehicul</item>
+        <item quantity="few">Include %d vehicule</item>
+        <item quantity="other">Include %d de vehicule</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Importă %d aparat</item>
+        <item quantity="few">Importă %d aparate</item>
+        <item quantity="other">Importă %d de aparate</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Importul nu a reușit</string>
+    <string name="import_error_too_new">Această configurație a fost partajată dintr-o versiune mai nouă a SweetSpot. Actualizează aplicația pentru a o importa.</string>
+    <string name="import_error_malformed">Acest link nu a putut fi citit. Cere unul nou.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Adaugă aparat</string>

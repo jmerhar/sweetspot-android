@@ -65,6 +65,47 @@
     <string name="settings_appliances_menu_desc">Jūsų išsaugoti prietaisai</string>
     <string name="settings_ev_menu_desc">Įkroviklis, įkrovimo tikslas ir automobiliai</string>
     <string name="settings_all_in_menu_desc">Rodyti galutinę vartotojo kainą</string>
+    <string name="settings_share_title">Dalytis mano sąranka</string>
+    <string name="settings_share_menu_desc">Nukopijuokite savo prietaisus ir elektromobilio nustatymus į kitą įrenginį</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Nuskaitykite šį kodą kito telefono kamera arba nusiųskite nuorodą. Jūsų prietaisai, jų tvarka ir elektromobilio nustatymai bus nukopijuoti į tą įrenginį.</string>
+    <string name="share_setup_button">Dalytis nuoroda</string>
+    <string name="share_setup_chooser_title">Dalytis savo sąranka</string>
+    <string name="share_setup_qr_unavailable">Jūsų sąranka per didelė QR kodui. Vietoj to naudokite dalijimosi nuorodą.</string>
+    <string name="cd_qr_code">Jūsų sąrankos QR kodas</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importuoti sąranką</string>
+    <string name="import_mode_add">Pridėti prie mano</string>
+    <string name="import_mode_add_desc">Palikti mano prietaisus ir pridėti naujus</string>
+    <string name="import_mode_replace">Pakeisti mano</string>
+    <string name="import_mode_replace_desc">Naudoti gautus prietaisus, tvarką ir elektromobilio nustatymus</string>
+    <string name="import_mode_pick">Pasirinkti, kuriuos</string>
+    <string name="import_mode_pick_desc">Pasirinkti pridedamus prietaisus</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d prietaisas</item>
+        <item quantity="few">%d prietaisai</item>
+        <item quantity="many">%d prietaiso</item>
+        <item quantity="other">%d prietaisų</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Iš jų %d automobilis</item>
+        <item quantity="few">Iš jų %d automobiliai</item>
+        <item quantity="many">Iš jų %d automobilio</item>
+        <item quantity="other">Iš jų %d automobilių</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Importuoti %d prietaisą</item>
+        <item quantity="few">Importuoti %d prietaisus</item>
+        <item quantity="many">Importuoti %d prietaiso</item>
+        <item quantity="other">Importuoti %d prietaisų</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Nepavyko importuoti</string>
+    <string name="import_error_too_new">Šia sąranka pasidalinta iš naujesnės SweetSpot versijos. Norėdami ją importuoti, atnaujinkite programėlę.</string>
+    <string name="import_error_malformed">Šios nuorodos nepavyko nuskaityti. Paprašykite naujos.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Pridėti prietaisą</string>

@@ -65,6 +65,47 @@
     <string name="settings_appliances_menu_desc">Twoje zapisane urządzenia</string>
     <string name="settings_ev_menu_desc">Ładowarka, poziom docelowy i pojazdy</string>
     <string name="settings_all_in_menu_desc">Pokaż pełną cenę dla konsumenta</string>
+    <string name="settings_share_title">Udostępnij moją konfigurację</string>
+    <string name="settings_share_menu_desc">Skopiuj swoje urządzenia i ustawienia pojazdu elektrycznego na inne urządzenie</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Zeskanuj ten kod aparatem innego telefonu lub wyślij link. Twoje urządzenia, ich kolejność oraz ustawienia pojazdu elektrycznego zostaną skopiowane na to urządzenie.</string>
+    <string name="share_setup_button">Udostępnij link</string>
+    <string name="share_setup_chooser_title">Udostępnij swoją konfigurację</string>
+    <string name="share_setup_qr_unavailable">Twoja konfiguracja jest za duża na kod QR. Użyj zamiast tego linku do udostępniania.</string>
+    <string name="cd_qr_code">Kod QR z twoją konfiguracją</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importuj konfigurację</string>
+    <string name="import_mode_add">Dodaj do moich</string>
+    <string name="import_mode_add_desc">Zachowaj moje urządzenia i dodaj nowe</string>
+    <string name="import_mode_replace">Zastąp moje</string>
+    <string name="import_mode_replace_desc">Użyj udostępnionych urządzeń, kolejności i ustawień pojazdu elektrycznego</string>
+    <string name="import_mode_pick">Wybierz które</string>
+    <string name="import_mode_pick_desc">Wybierz urządzenia do dodania</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d urządzenie</item>
+        <item quantity="few">%d urządzenia</item>
+        <item quantity="many">%d urządzeń</item>
+        <item quantity="other">%d urządzenia</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Zawiera %d pojazd</item>
+        <item quantity="few">Zawiera %d pojazdy</item>
+        <item quantity="many">Zawiera %d pojazdów</item>
+        <item quantity="other">Zawiera %d pojazdu</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Importuj %d urządzenie</item>
+        <item quantity="few">Importuj %d urządzenia</item>
+        <item quantity="many">Importuj %d urządzeń</item>
+        <item quantity="other">Importuj %d urządzenia</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Nie udało się zaimportować</string>
+    <string name="import_error_too_new">Ta konfiguracja została udostępniona z nowszej wersji SweetSpot. Zaktualizuj aplikację, aby ją zaimportować.</string>
+    <string name="import_error_malformed">Nie udało się odczytać tego linku. Poproś o nowy.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj urządzenie</string>

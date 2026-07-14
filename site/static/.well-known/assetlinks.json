@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "today.sweetspot",
+      "sha256_cert_fingerprints":
+        ["6B:23:B5:C9:1B:91:58:A5:70:22:07:E8:36:10:BB:76:DA:62:6C:DC:38:61:EF:A3:63:8D:64:BB:EA:38:D3:8C"]
+    }
+  }
+]

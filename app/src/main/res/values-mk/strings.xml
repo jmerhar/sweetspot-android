@@ -65,6 +65,41 @@
     <string name="settings_appliances_menu_desc">Вашите зачувани апарати</string>
     <string name="settings_ev_menu_desc">Полнач, цел на полнење и возила</string>
     <string name="settings_all_in_menu_desc">Прикажи ја крајната цена за потрошувачот</string>
+    <string name="settings_share_title">Сподели ги моите поставки</string>
+    <string name="settings_share_menu_desc">Копирајте ги вашите апарати и поставките за електричниот автомобил на друг уред</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Скенирајте го овој код со камерата на друг телефон или испратете ја врската. Вашите апарати, нивниот редослед и поставките за електричниот автомобил ќе се копираат на тој уред.</string>
+    <string name="share_setup_button">Сподели врска</string>
+    <string name="share_setup_chooser_title">Споделете ги вашите поставки</string>
+    <string name="share_setup_qr_unavailable">Вашите поставки се преголеми за QR-код. Наместо тоа, користете ја врската за споделување.</string>
+    <string name="cd_qr_code">QR-код за вашите поставки</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Увези поставки</string>
+    <string name="import_mode_add">Додај на моите</string>
+    <string name="import_mode_add_desc">Задржете ги моите апарати и додадете ги новите</string>
+    <string name="import_mode_replace">Замени ги моите</string>
+    <string name="import_mode_replace_desc">Користете ги споделените апарати, редослед и поставки за електричниот автомобил</string>
+    <string name="import_mode_pick">Избери кои</string>
+    <string name="import_mode_pick_desc">Изберете ги апаратите за додавање</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d апарат</item>
+        <item quantity="other">%d апарата</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Вклучува %d возило</item>
+        <item quantity="other">Вклучува %d возила</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Увези %d апарат</item>
+        <item quantity="other">Увези %d апарата</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Не можеше да се увезе</string>
+    <string name="import_error_too_new">Овие поставки беа споделени од понова верзија на SweetSpot. Ажурирајте ја апликацијата за да ги увезете.</string>
+    <string name="import_error_malformed">Оваа врска не можеше да се прочита. Побарајте нова.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Додај апарат</string>

@@ -72,6 +72,41 @@
     <string name="settings_appliances_menu_desc">Your saved appliances</string>
     <string name="settings_ev_menu_desc">Charger, target charge, and vehicles</string>
     <string name="settings_all_in_menu_desc">Show the full consumer price</string>
+    <string name="settings_share_title">Share my setup</string>
+    <string name="settings_share_menu_desc">Copy your appliances and EV settings to another device</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Scan this code with another phone\'s camera, or send the link. Your appliances, their order, and your EV settings will be copied to that device.</string>
+    <string name="share_setup_button">Share link</string>
+    <string name="share_setup_chooser_title">Share your setup</string>
+    <string name="share_setup_qr_unavailable">Your setup is too large for a QR code. Use the share link instead.</string>
+    <string name="cd_qr_code">QR code for your setup</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Import setup</string>
+    <string name="import_mode_add">Add to mine</string>
+    <string name="import_mode_add_desc">Keep my appliances and add the new ones</string>
+    <string name="import_mode_replace">Replace mine</string>
+    <string name="import_mode_replace_desc">Use the shared appliances, order, and EV settings</string>
+    <string name="import_mode_pick">Choose which</string>
+    <string name="import_mode_pick_desc">Pick the appliances to add</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d appliance</item>
+        <item quantity="other">%d appliances</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Includes %d vehicle</item>
+        <item quantity="other">Includes %d vehicles</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Import %d appliance</item>
+        <item quantity="other">Import %d appliances</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Couldn\'t import</string>
+    <string name="import_error_too_new">This setup was shared from a newer version of SweetSpot. Update the app to import it.</string>
+    <string name="import_error_malformed">This link couldn\'t be read. Ask for a fresh one.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Add appliance</string>

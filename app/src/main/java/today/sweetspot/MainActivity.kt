@@ -1,5 +1,6 @@
 package today.sweetspot
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -17,6 +18,7 @@ import today.sweetspot.data.api.DataSources
 import today.sweetspot.ui.PaywallScreen
 import today.sweetspot.ui.settings.SettingsScreen
 import today.sweetspot.ui.SweetSpotScreen
+import today.sweetspot.ui.share.ImportPreviewScreen
 import today.sweetspot.ui.theme.SweetSpotTheme
 import today.sweetspot.data.repository.SettingsRepository
 
@@ -41,12 +43,22 @@ class MainActivity : AppCompatActivity() {
         val themeMode = ThemeMode.fromKey(SettingsRepository(this).getThemeMode())
         AppCompatDelegate.setDefaultNightMode(themeMode.nightMode)
 
+        // A cold start from a scanned/tapped setup link arrives as the launch intent.
+        handleImportIntent(intent)
+
         setContent {
             SweetSpotTheme {
                 val vm = viewModel
                 val state by vm.uiState.collectAsState()
 
                 when {
+                    state.importPreview != null -> {
+                        ImportPreviewScreen(
+                            setup = state.importPreview!!,
+                            onImport = vm::onImportConfirmed,
+                            onCancel = vm::onDismissImport
+                        )
+                    }
                     state.showPaywall -> {
                         PaywallScreen(
                             productPrice = state.productPrice,
@@ -104,6 +116,7 @@ class MainActivity : AppCompatActivity() {
                             onDisabledSourcesChanged = vm::onDisabledSourcesChanged,
                             onResetSourceOrder = vm::onResetSourceOrder,
                             onLanguageChanged = vm::onLanguageChanged,
+                            onShareSetup = vm::onShareSetup,
                             onClearCache = vm::onClearCache,
                             isStatsEnabled = state.isStatsEnabled,
                             onStatsEnabledChanged = vm::onStatsEnabledChanged,
@@ -135,6 +148,7 @@ class MainActivity : AppCompatActivity() {
                 if (!state.showPaywall) {
                     ThankYouDialog(state, vm)
                     StatsPromptDialog(state, vm)
+                    ImportErrorDialog(state, vm)
                 }
             }
         }
@@ -143,6 +157,26 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.onResume()
+    }
+
+    /**
+     * A warm start from a scanned/tapped setup link delivers the new intent here (the activity is
+     * `singleTask`). Update the retained intent and forward it to the import handler.
+     */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleImportIntent(intent)
+    }
+
+    /**
+     * Forwards a `VIEW` intent carrying a setup deep link to the ViewModel for decoding. Ignores the
+     * plain `MAIN`/`LAUNCHER` launch (no data), so a normal open never triggers an import.
+     */
+    private fun handleImportIntent(intent: Intent?) {
+        if (intent?.action == Intent.ACTION_VIEW && intent.data != null) {
+            viewModel.onImportLink(intent.data)
+        }
     }
 }
 
@@ -156,6 +190,29 @@ private fun ThankYouDialog(state: UiState, vm: SweetSpotViewModel) {
         text = { Text(stringResource(R.string.thank_you_message)) },
         confirmButton = {
             TextButton(onClick = vm::onThankYouDismissed) {
+                Text(stringResource(android.R.string.ok))
+            }
+        }
+    )
+}
+
+/**
+ * Shows a friendly dialog when a scanned/tapped setup link couldn't be imported: a prompt to
+ * update the app for a newer payload, or a "couldn't read this" message for a corrupt one.
+ */
+@Composable
+private fun ImportErrorDialog(state: UiState, vm: SweetSpotViewModel) {
+    val error = state.importError ?: return
+    val message = when (error) {
+        ImportError.TOO_NEW -> R.string.import_error_too_new
+        ImportError.MALFORMED -> R.string.import_error_malformed
+    }
+    AlertDialog(
+        onDismissRequest = vm::onDismissImport,
+        title = { Text(stringResource(R.string.import_error_title)) },
+        text = { Text(stringResource(message)) },
+        confirmButton = {
+            TextButton(onClick = vm::onDismissImport) {
                 Text(stringResource(android.R.string.ok))
             }
         }

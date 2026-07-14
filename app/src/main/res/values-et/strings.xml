@@ -66,6 +66,42 @@
     <string name="settings_ev_menu_desc">Laadija, laetuse eesmärk ja sõidukid</string>
     <string name="settings_all_in_menu_desc">Näita täielikku tarbijahinda</string>
 
+    <string name="settings_share_title">Jaga oma seadistust</string>
+    <string name="settings_share_menu_desc">Kopeeri oma seadmed ja laadimisseaded teise seadmesse</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Skaneeri see kood teise telefoni kaameraga või saada link. Sinu seadmed, nende järjekord ja laadimisseaded kopeeritakse sellesse seadmesse.</string>
+    <string name="share_setup_button">Jaga linki</string>
+    <string name="share_setup_chooser_title">Jaga oma seadistust</string>
+    <string name="share_setup_qr_unavailable">Sinu seadistus on QR-koodi jaoks liiga suur. Kasuta selle asemel jagamislinki.</string>
+    <string name="cd_qr_code">Sinu seadistuse QR-kood</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Impordi seadistus</string>
+    <string name="import_mode_add">Lisa minu omadele</string>
+    <string name="import_mode_add_desc">Säilita minu seadmed ja lisa uued</string>
+    <string name="import_mode_replace">Asenda minu omad</string>
+    <string name="import_mode_replace_desc">Kasuta jagatud seadmeid, järjekorda ja laadimisseadeid</string>
+    <string name="import_mode_pick">Vali, millised</string>
+    <string name="import_mode_pick_desc">Vali lisatavad seadmed</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d seade</item>
+        <item quantity="other">%d seadet</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Sisaldab %d sõidukit</item>
+        <item quantity="other">Sisaldab %d sõidukit</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Impordi %d seade</item>
+        <item quantity="other">Impordi %d seadet</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Importimine ebaõnnestus</string>
+    <string name="import_error_too_new">See seadistus jagati SweetSpoti uuemast versioonist. Selle importimiseks uuenda rakendust.</string>
+    <string name="import_error_malformed">Seda linki ei õnnestunud lugeda. Küsi uus.</string>
+
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Lisa seade</string>
     <string name="dialog_edit_appliance">Muuda seadet</string>

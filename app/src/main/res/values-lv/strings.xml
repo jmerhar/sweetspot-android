@@ -65,6 +65,44 @@
     <string name="settings_appliances_menu_desc">Jūsu saglabātās ierīces</string>
     <string name="settings_ev_menu_desc">Lādētājs, uzlādes mērķis un transportlīdzekļi</string>
     <string name="settings_all_in_menu_desc">Rādīt pilno patērētāja cenu</string>
+    <string name="settings_share_title">Kopīgot manus iestatījumus</string>
+    <string name="settings_share_menu_desc">Kopējiet savas ierīces un elektroauto iestatījumus uz citu ierīci</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Skenējiet šo kodu ar cita tālruņa kameru vai nosūtiet saiti. Jūsu ierīces, to secība un elektroauto iestatījumi tiks kopēti uz šo ierīci.</string>
+    <string name="share_setup_button">Kopīgot saiti</string>
+    <string name="share_setup_chooser_title">Kopīgojiet savus iestatījumus</string>
+    <string name="share_setup_qr_unavailable">Jūsu iestatījumi ir pārāk lieli QR kodam. Tā vietā izmantojiet kopīgošanas saiti.</string>
+    <string name="cd_qr_code">Jūsu iestatījumu QR kods</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importēt iestatījumus</string>
+    <string name="import_mode_add">Pievienot manējiem</string>
+    <string name="import_mode_add_desc">Paturēt manas ierīces un pievienot jaunās</string>
+    <string name="import_mode_replace">Aizstāt manējos</string>
+    <string name="import_mode_replace_desc">Izmantot kopīgotās ierīces, secību un elektroauto iestatījumus</string>
+    <string name="import_mode_pick">Izvēlēties, kuras</string>
+    <string name="import_mode_pick_desc">Izvēlēties pievienojamās ierīces</string>
+    <plurals name="import_appliance_count">
+        <item quantity="zero">%d ierīču</item>
+        <item quantity="one">%d ierīce</item>
+        <item quantity="other">%d ierīces</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="zero">Ietver %d transportlīdzekļu</item>
+        <item quantity="one">Ietver %d transportlīdzekli</item>
+        <item quantity="other">Ietver %d transportlīdzekļus</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="zero">Importēt %d ierīču</item>
+        <item quantity="one">Importēt %d ierīci</item>
+        <item quantity="other">Importēt %d ierīces</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Neizdevās importēt</string>
+    <string name="import_error_too_new">Šie iestatījumi tika kopīgoti no jaunākas SweetSpot versijas. Atjauniniet lietotni, lai tos importētu.</string>
+    <string name="import_error_malformed">Šo saiti nevarēja nolasīt. Palūdziet jaunu.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Pievienot ierīci</string>

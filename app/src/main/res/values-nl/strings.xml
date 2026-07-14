@@ -65,6 +65,41 @@
     <string name="settings_appliances_menu_desc">Je opgeslagen apparaten</string>
     <string name="settings_ev_menu_desc">Lader, streefniveau en voertuigen</string>
     <string name="settings_all_in_menu_desc">Toon de volledige consumentenprijs</string>
+    <string name="settings_share_title">Mijn configuratie delen</string>
+    <string name="settings_share_menu_desc">Kopieer je apparaten en voertuiginstellingen naar een ander apparaat</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Scan deze code met de camera van een andere telefoon of stuur de link. Je apparaten, hun volgorde en je voertuiginstellingen worden naar dat apparaat gekopieerd.</string>
+    <string name="share_setup_button">Link delen</string>
+    <string name="share_setup_chooser_title">Deel je configuratie</string>
+    <string name="share_setup_qr_unavailable">Je configuratie is te groot voor een QR-code. Gebruik in plaats daarvan de deellink.</string>
+    <string name="cd_qr_code">QR-code voor je configuratie</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Configuratie importeren</string>
+    <string name="import_mode_add">Aan die van mij toevoegen</string>
+    <string name="import_mode_add_desc">Behoud mijn apparaten en voeg de nieuwe toe</string>
+    <string name="import_mode_replace">Die van mij vervangen</string>
+    <string name="import_mode_replace_desc">Gebruik de gedeelde apparaten, volgorde en voertuiginstellingen</string>
+    <string name="import_mode_pick">Kiezen welke</string>
+    <string name="import_mode_pick_desc">Kies de apparaten om toe te voegen</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d apparaat</item>
+        <item quantity="other">%d apparaten</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Inclusief %d voertuig</item>
+        <item quantity="other">Inclusief %d voertuigen</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">%d apparaat importeren</item>
+        <item quantity="other">%d apparaten importeren</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Kon niet importeren</string>
+    <string name="import_error_too_new">Deze configuratie is gedeeld vanuit een nieuwere versie van SweetSpot. Werk de app bij om te importeren.</string>
+    <string name="import_error_malformed">Deze link kon niet worden gelezen. Vraag om een nieuwe.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Apparaat toevoegen</string>

@@ -48,7 +48,7 @@ import today.sweetspot.util.UiText
 import java.time.ZoneId
 
 /** The settings sub-screen currently shown: the root menu, or one grouped category screen. */
-private enum class SettingsRoute { Menu, Appliances, Ev, TotalPrice, Region, Appearance, Advanced }
+private enum class SettingsRoute { Menu, Appliances, Ev, TotalPrice, Region, Appearance, Share, Advanced }
 
 /**
  * Settings root. Shows a short menu of category rows (icon + title + description); each opens a focused
@@ -110,6 +110,7 @@ fun SettingsScreen(
     onDisabledSourcesChanged: (Set<String>) -> Unit,
     onResetSourceOrder: () -> Unit,
     onLanguageChanged: (String) -> Unit,
+    onShareSetup: () -> String,
     onClearCache: () -> UiText,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
@@ -195,6 +196,11 @@ fun SettingsScreen(
             themeMode = themeMode,
             onThemeModeChanged = onThemeModeChanged,
             onLanguageChanged = onLanguageChanged,
+            onBack = toMenu
+        )
+
+        SettingsRoute.Share -> today.sweetspot.ui.share.ShareSetupScreen(
+            shareLink = onShareSetup,
             onBack = toMenu
         )
 
@@ -330,6 +336,13 @@ private fun SettingsMenu(
                 description = stringResource(R.string.settings_appearance_desc),
                 onClick = { onOpen(SettingsRoute.Appearance) },
                 modifier = Modifier.testTag("menu_appearance")
+            )
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_share,
+                title = stringResource(R.string.settings_share_title),
+                description = stringResource(R.string.settings_share_menu_desc),
+                onClick = { onOpen(SettingsRoute.Share) },
+                modifier = Modifier.testTag("menu_share")
             )
 
             // Statistics opt-in stays inline on the menu (toggle row).

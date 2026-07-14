@@ -66,6 +66,43 @@
     <string name="settings_ev_menu_desc">Зарядно, целево зареждане и превозни средства</string>
     <string name="settings_all_in_menu_desc">Показвайте пълната крайна цена</string>
 
+    <!-- Household sharing -->
+    <string name="settings_share_title">Споделяне на моята конфигурация</string>
+    <string name="settings_share_menu_desc">Копирайте вашите уреди и настройки за електромобила на друго устройство</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Сканирайте този код с камерата на друг телефон или изпратете връзката. Вашите уреди, тяхната подредба и настройките ви за електромобила ще бъдат копирани на това устройство.</string>
+    <string name="share_setup_button">Споделяне на връзка</string>
+    <string name="share_setup_chooser_title">Споделете вашата конфигурация</string>
+    <string name="share_setup_qr_unavailable">Вашата конфигурация е твърде голяма за QR код. Използвайте вместо това връзката за споделяне.</string>
+    <string name="cd_qr_code">QR код за вашата конфигурация</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Импортиране на конфигурация</string>
+    <string name="import_mode_add">Добавяне към моите</string>
+    <string name="import_mode_add_desc">Запазете моите уреди и добавете новите</string>
+    <string name="import_mode_replace">Замяна на моите</string>
+    <string name="import_mode_replace_desc">Използвайте споделените уреди, подредба и настройки за електромобила</string>
+    <string name="import_mode_pick">Изберете кои</string>
+    <string name="import_mode_pick_desc">Изберете уредите за добавяне</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d уред</item>
+        <item quantity="other">%d уреда</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Включва %d превозно средство</item>
+        <item quantity="other">Включва %d превозни средства</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Импортиране на %d уред</item>
+        <item quantity="other">Импортиране на %d уреда</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Импортирането е неуспешно</string>
+    <string name="import_error_too_new">Тази конфигурация е споделена от по-нова версия на SweetSpot. Актуализирайте приложението, за да я импортирате.</string>
+    <string name="import_error_malformed">Тази връзка не може да бъде прочетена. Поискайте нова.</string>
+
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Добавяне на уред</string>
     <string name="dialog_edit_appliance">Редактиране на уред</string>

@@ -66,6 +66,42 @@
     <string name="settings_ev_menu_desc">Latauslaite, lataustavoite ja ajoneuvot</string>
     <string name="settings_all_in_menu_desc">Näytä kuluttajan kokonaishinta</string>
 
+    <string name="settings_share_title">Jaa kokoonpanoni</string>
+    <string name="settings_share_menu_desc">Kopioi laitteesi ja latausasetuksesi toiseen laitteeseen</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Skannaa tämä koodi toisen puhelimen kameralla tai lähetä linkki. Laitteesi, niiden järjestys ja latausasetuksesi kopioidaan kyseiseen laitteeseen.</string>
+    <string name="share_setup_button">Jaa linkki</string>
+    <string name="share_setup_chooser_title">Jaa kokoonpanosi</string>
+    <string name="share_setup_qr_unavailable">Kokoonpanosi on liian suuri QR-koodiksi. Käytä sen sijaan jakolinkkiä.</string>
+    <string name="cd_qr_code">Kokoonpanosi QR-koodi</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Tuo kokoonpano</string>
+    <string name="import_mode_add">Lisää omiini</string>
+    <string name="import_mode_add_desc">Säilytä laitteeni ja lisää uudet</string>
+    <string name="import_mode_replace">Korvaa omani</string>
+    <string name="import_mode_replace_desc">Käytä jaettuja laitteita, järjestystä ja latausasetuksia</string>
+    <string name="import_mode_pick">Valitse mitkä</string>
+    <string name="import_mode_pick_desc">Valitse lisättävät laitteet</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d laite</item>
+        <item quantity="other">%d laitetta</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Sisältää %d ajoneuvon</item>
+        <item quantity="other">Sisältää %d ajoneuvoa</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Tuo %d laite</item>
+        <item quantity="other">Tuo %d laitetta</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Tuonti epäonnistui</string>
+    <string name="import_error_too_new">Tämä kokoonpano jaettiin SweetSpotin uudemmasta versiosta. Päivitä sovellus tuodaksesi sen.</string>
+    <string name="import_error_malformed">Tätä linkkiä ei voitu lukea. Pyydä uusi.</string>
+
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Lisää laite</string>
     <string name="dialog_edit_appliance">Muokkaa laitetta</string>

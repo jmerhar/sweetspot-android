@@ -66,6 +66,45 @@
     <string name="settings_ev_menu_desc">Punjač, ciljana napunjenost i vozila</string>
     <string name="settings_all_in_menu_desc">Prikaži punu potrošačku cijenu</string>
 
+    <string name="settings_share_title">Podijeli moju postavu</string>
+    <string name="settings_share_menu_desc">Kopiraj svoje uređaje i postavke punjenja na drugi uređaj</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Skenirajte ovaj kod kamerom drugog telefona ili pošaljite poveznicu. Vaši uređaji, njihov redoslijed i postavke punjenja kopirat će se na taj uređaj.</string>
+    <string name="share_setup_button">Podijeli poveznicu</string>
+    <string name="share_setup_chooser_title">Podijeli svoju postavu</string>
+    <string name="share_setup_qr_unavailable">Vaša postava prevelika je za QR kod. Umjesto toga upotrijebite poveznicu za dijeljenje.</string>
+    <string name="cd_qr_code">QR kod vaše postave</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Uvezi postavu</string>
+    <string name="import_mode_add">Dodaj mojima</string>
+    <string name="import_mode_add_desc">Zadrži moje uređaje i dodaj nove</string>
+    <string name="import_mode_replace">Zamijeni moje</string>
+    <string name="import_mode_replace_desc">Upotrijebi zajedničke uređaje, redoslijed i postavke punjenja</string>
+    <string name="import_mode_pick">Odaberi koje</string>
+    <string name="import_mode_pick_desc">Odaberi uređaje za dodavanje</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d uređaj</item>
+        <item quantity="few">%d uređaja</item>
+        <item quantity="other">%d uređaja</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Uključuje %d vozilo</item>
+        <item quantity="few">Uključuje %d vozila</item>
+        <item quantity="other">Uključuje %d vozila</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Uvezi %d uređaj</item>
+        <item quantity="few">Uvezi %d uređaja</item>
+        <item quantity="other">Uvezi %d uređaja</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Uvoz nije uspio</string>
+    <string name="import_error_too_new">Ova postava dijeljena je iz novije verzije SweetSpota. Ažurirajte aplikaciju da biste je uvezli.</string>
+    <string name="import_error_malformed">Ovu poveznicu nije bilo moguće pročitati. Zatražite novu.</string>
+
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Dodaj uređaj</string>
     <string name="dialog_edit_appliance">Uredi uređaj</string>

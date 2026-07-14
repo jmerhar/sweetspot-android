@@ -65,6 +65,47 @@
     <string name="settings_appliances_menu_desc">Vaše uložené spotrebiče</string>
     <string name="settings_ev_menu_desc">Nabíjačka, cieľové nabitie a vozidlá</string>
     <string name="settings_all_in_menu_desc">Zobrazí celú spotrebiteľskú cenu</string>
+    <string name="settings_share_title">Zdieľať moje nastavenie</string>
+    <string name="settings_share_menu_desc">Skopírujte svoje spotrebiče a nastavenia elektromobilu do iného zariadenia</string>
+
+    <!-- Household sharing: share screen -->
+    <string name="share_setup_description">Naskenujte tento kód fotoaparátom iného telefónu alebo odošlite odkaz. Vaše spotrebiče, ich poradie a nastavenia elektromobilu sa skopírujú do daného zariadenia.</string>
+    <string name="share_setup_button">Zdieľať odkaz</string>
+    <string name="share_setup_chooser_title">Zdieľajte svoje nastavenie</string>
+    <string name="share_setup_qr_unavailable">Vaše nastavenie je príliš veľké pre QR kód. Použite radšej odkaz na zdieľanie.</string>
+    <string name="cd_qr_code">QR kód vášho nastavenia</string>
+
+    <!-- Household sharing: import preview -->
+    <string name="import_title">Importovať nastavenie</string>
+    <string name="import_mode_add">Pridať k mojim</string>
+    <string name="import_mode_add_desc">Ponechať moje spotrebiče a pridať nové</string>
+    <string name="import_mode_replace">Nahradiť moje</string>
+    <string name="import_mode_replace_desc">Použiť zdieľané spotrebiče, poradie a nastavenia elektromobilu</string>
+    <string name="import_mode_pick">Vybrať ktoré</string>
+    <string name="import_mode_pick_desc">Vyberte spotrebiče, ktoré chcete pridať</string>
+    <plurals name="import_appliance_count">
+        <item quantity="one">%d spotrebič</item>
+        <item quantity="few">%d spotrebiče</item>
+        <item quantity="many">%d spotrebiča</item>
+        <item quantity="other">%d spotrebičov</item>
+    </plurals>
+    <plurals name="import_vehicle_count">
+        <item quantity="one">Obsahuje %d vozidlo</item>
+        <item quantity="few">Obsahuje %d vozidlá</item>
+        <item quantity="many">Obsahuje %d vozidla</item>
+        <item quantity="other">Obsahuje %d vozidiel</item>
+    </plurals>
+    <plurals name="import_button">
+        <item quantity="one">Importovať %d spotrebič</item>
+        <item quantity="few">Importovať %d spotrebiče</item>
+        <item quantity="many">Importovať %d spotrebiča</item>
+        <item quantity="other">Importovať %d spotrebičov</item>
+    </plurals>
+
+    <!-- Household sharing: import errors -->
+    <string name="import_error_title">Nepodarilo sa importovať</string>
+    <string name="import_error_too_new">Toto nastavenie bolo zdieľané z novšej verzie aplikácie SweetSpot. Aktualizujte aplikáciu, aby ste ho mohli importovať.</string>
+    <string name="import_error_malformed">Tento odkaz sa nepodarilo prečítať. Vyžiadajte si nový.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Pridať spotrebič</string>

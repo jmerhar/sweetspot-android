@@ -24,6 +24,7 @@ espresso = "3.7.0"
 screengrab = "2.1.1"
 kxml2 = "2.3.0"
 reorderable = "3.1.0"
+zxing = "3.5.3"
 
 [libraries]
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
@@ -60,6 +61,7 @@ screengrab = { group = "tools.fastlane", name = "screengrab", version.ref = "scr
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 kxml2 = { group = "net.sf.kxml", name = "kxml2", version.ref = "kxml2" }
 reorderable = { group = "sh.calvin.reorderable", name = "reorderable", version.ref = "reorderable" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -18,6 +18,8 @@ FUNZIONALITÀ
 - Prima o più economica — quando la fascia più economica non è comoda, passa a una più vicina nel tempo e vedi esattamente quanto costa in più
 - Potenza nominale — imposta la potenza in kW di un elettrodomestico per una stima dei costi che riflette il consumo reale
 - Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido
+- Ordina e riordina i tuoi elettrodomestici — trascinali nell'ordine che preferisci, oppure ordinali per più usati, usati di recente, nome, durata o tipo, e scegli dove collocare le tue auto elettriche
+- Condividi la tua configurazione — copia i tuoi elettrodomestici e le impostazioni di ricarica dell'auto elettrica su un altro telefono in casa scansionando un codice QR o inviando un link; funziona offline, senza account
 - App Wear OS per Pixel Watch e altri dispositivi Wear OS 3+
 - Disponibile in 25 lingue europee
 - Nessun account, nessuna pubblicità, nessun tracciamento di terze parti — i prezzi vengono memorizzati localmente; nelle Impostazioni puoi attivare statistiche anonime e facoltative sull'affidabilità

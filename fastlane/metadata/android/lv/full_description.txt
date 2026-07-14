@@ -18,6 +18,8 @@ FUNKCIJAS
 - Agrāk vai lētāk — ja lētākais periods nav ērts, pārejiet uz agrāku un redziet, cik tieši vairāk tas maksā
 - Jaudas norādīšana — iestatiet ierīces jaudu kW, lai izmaksu aprēķins atbilstu reālajam patēriņam
 - Saglabājiet savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei
+- Kārtojiet un pārkārtojiet savas ierīces — velciet tās vēlamajā secībā vai kārtojiet pēc biežāk lietotajām, nesen lietotajām, nosaukuma, ilguma vai veida un izvēlieties, kur atrodas jūsu elektroauto
+- Kopīgojiet savu iestatījumu — kopējiet savas ierīces un elektroauto uzlādes iestatījumus uz citu tālruni jūsu mājsaimniecībā, skenējot QR kodu vai nosūtot saiti; darbojas bezsaistē, bez konta
 - Wear OS lietotne Pixel Watch un citām Wear OS 3+ ierīcēm
 - Pieejama 25 Eiropas valodās
 - Bez kontiem, bez reklāmām, bez trešo pušu izsekošanas — cenas tiek glabātas lokāli jūsu ierīcē; iestatījumos var ieslēgt neobligātu anonīmu uzticamības statistiku

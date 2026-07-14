@@ -18,6 +18,8 @@ OMINAISUUDET
 - Aiemmin tai halvemmalla — kun halvin ajanjakso ei sovi, siirry aiempaan ja näe tarkalleen, kuinka paljon enemmän se maksaa
 - Tehoarvot — aseta laitteen teho kilowatteina, niin kustannusarvio vastaa sen todellista kulutusta
 - Tallenna laitteesi mukautetuilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten
+- Lajittele ja järjestä laitteesi — vedä ne haluamaasi järjestykseen tai lajittele käytetyimpien, viimeksi käytettyjen, nimen, keston tai tyypin mukaan, ja valitse, mihin sähköautosi sijoittuvat
+- Jaa kokoonpanosi — kopioi laitteesi ja sähköauton latausasetukset toiseen kotitaloutesi puhelimeen skannaamalla QR-koodin tai lähettämällä linkin; toimii ilman verkkoyhteyttä eikä vaadi tiliä
 - Wear OS -sovellus Pixel Watchille ja muille Wear OS 3+ -laitteille
 - Saatavilla 25 eurooppalaisella kielellä
 - Ei tilejä, ei mainoksia, ei kolmannen osapuolen seurantaa — hinnat tallennetaan paikallisesti; halutessasi voit ottaa asetuksista käyttöön anonyymit luotettavuustilastot

@@ -18,6 +18,8 @@ FUNKCIJOS
 - Anksčiau arba pigiau – kai pigiausias laikotarpis nepatogus, pereikite prie ankstesnio ir pamatykite, kiek tiksliai daugiau jis kainuoja
 - Galios nustatymas – nurodykite prietaiso galią kilovatais (kW), kad išlaidų sąmata atspindėtų realų suvartojimą
 - Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai
+- Rūšiuokite ir pertvarkykite savo prietaisus – nuvilkite juos į norimą tvarką arba rūšiuokite pagal dažniausiai naudojamus, neseniai naudotus, pavadinimą, trukmę ar tipą ir pasirinkite, kur bus jūsų elektromobiliai
+- Bendrinkite savo sąranką – nukopijuokite savo prietaisus ir elektromobilio įkrovimo nustatymus į kitą namų telefoną nuskaitydami QR kodą arba išsiųsdami nuorodą; veikia neprisijungus, be paskyros
 - Wear OS programėlė skirta Pixel Watch ir kitiems Wear OS 3+ įrenginiams
 - Prieinama 25 Europos kalbomis
 - Jokių paskyrų, jokių reklamų, jokio trečiųjų šalių sekimo – kainos saugomos vietinėje jūsų įrenginio atmintyje; nustatymuose galima įjungti neprivalomą anoniminę patikimumo statistiką

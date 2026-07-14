@@ -18,6 +18,8 @@ ZNAČAJKE
 - Ranije ili jeftinije — kada vam najjeftiniji period ne odgovara, prijeđite na raniji i vidite točno koliko više košta
 - Snaga uređaja — postavite snagu uređaja u kW za procjenu troška koja odražava stvarnu potrošnju
 - Spremite svoje uređaje s prilagođenim imenima, ikonama i trajanjima za brzi pristup
+- Razvrstajte i presložite svoje uređaje — povucite ih u vlastiti redoslijed ili razvrstajte po najčešće korištenima, nedavno korištenima, nazivu, trajanju ili vrsti, te odaberite gdje se nalaze vaša vozila
+- Podijelite svoju postavu — kopirajte svoje uređaje i postavke punjenja električnog automobila na drugi telefon u vašem kućanstvu skeniranjem QR koda ili slanjem poveznice; radi bez interneta i bez računa
 - Wear OS aplikacija za Pixel Watch i druge Wear OS 3+ uređaje
 - Dostupno na 25 europskih jezika
 - Bez računa, bez oglasa, bez praćenja trećih strana — cijene se spremaju lokalno; neobavezne anonimne statistike pouzdanosti mogu se uključiti u postavkama

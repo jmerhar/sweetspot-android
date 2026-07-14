@@ -18,6 +18,8 @@ FONCTIONNALITÉS
 - Plus tôt ou moins cher — quand la période la moins chère ne vous convient pas, passez à une période plus proche et voyez exactement combien elle coûte en plus
 - Puissances en kW — définissez la puissance d'un appareil pour une estimation de coût qui reflète sa consommation réelle
 - Enregistrez vos appareils avec des noms, icônes et durées personnalisés pour un accès rapide
+- Triez et réorganisez vos appareils — glissez-les dans l'ordre de votre choix, ou triez-les par les plus utilisés, récemment utilisés, nom, durée ou type, et choisissez où placer vos véhicules
+- Partagez votre configuration — copiez vos appareils et vos réglages de recharge de véhicule électrique vers un autre téléphone de votre foyer en scannant un code QR ou en envoyant un lien ; fonctionne hors ligne, sans compte
 - Application Wear OS pour Pixel Watch et autres appareils Wear OS 3+
 - Disponible en 25 langues européennes
 - Pas de comptes, pas de publicités, aucun suivi par des tiers — les prix sont mis en cache localement ; des statistiques de fiabilité anonymes facultatives peuvent être activées dans les réglages

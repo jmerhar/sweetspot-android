@@ -18,6 +18,8 @@ FUNKTSIOONID
 - Varem või soodsamalt — kui soodsaim ajavahemik ei sobi, liikuge varasemale ja näete täpselt, kui palju see rohkem maksab
 - Võimsuse määrang — seadke seadme võimsus kilovattides, et kuluhinnang vastaks tegelikule tarbimisele
 - Salvestage oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks juurdepääsuks
+- Sortige ja järjestage oma seadmed — lohistage need enda soovitud järjekorda või sortige enim kasutatud, hiljuti kasutatud, nime, kestuse või tüübi järgi, ning valige, kus teie elektriautod asuvad
+- Jagage oma seadistust — kopeerige oma seadmed ja elektriauto laadimise seaded teise telefoni oma leibkonnas QR-koodi skannides või linki saates; töötab võrguühenduseta ja ilma kontota
 - Wear OS rakendus Pixel Watchi ja teiste Wear OS 3+ seadmete jaoks
 - Saadaval 25 Euroopa keeles
 - Ilma kontodeta, ilma reklaamideta, ilma kolmandate osapoolte jälgimiseta — hinnad salvestatakse kohalikult; soovi korral saab seadetes sisse lülitada anonüümse töökindluse statistika

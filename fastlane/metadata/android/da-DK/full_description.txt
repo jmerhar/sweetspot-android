@@ -18,6 +18,8 @@ FUNKTIONER
 - Tidligere eller billigere — når det billigste tidsrum er ubelejligt, skift til et tidligere og se præcis hvor meget mere det koster
 - Effektangivelser — angiv et apparats effekt i kW for et omkostningsoverslag, der afspejler det faktiske forbrug
 - Gem dine apparater med egne navne, ikoner og varigheder for hurtig adgang
+- Sortér og omarrangér dine apparater — træk dem i din egen rækkefølge, eller sortér efter mest brugte, senest brugte, navn, varighed eller type, og vælg, hvor dine elbiler skal placeres
+- Del din opsætning — kopiér dine apparater og elbil-opladningsindstillinger til en anden telefon i din husstand ved at scanne en QR-kode eller sende et link; virker offline, uden konto
 - Wear OS-app til Pixel Watch og andre Wear OS 3+ enheder
 - Tilgængelig på 25 europæiske sprog
 - Ingen konti, ingen reklamer, ingen tredjepartssporing — priser gemmes lokalt; valgfri anonym pålidelighedsstatistik kan slås til i indstillingerne

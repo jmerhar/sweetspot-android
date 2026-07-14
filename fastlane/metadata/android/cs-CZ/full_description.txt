@@ -18,6 +18,8 @@ FUNKCE
 - Dříve nebo levněji — když je nejlevnější období nevhodné, přejděte na dřívější a uvidíte přesně, o kolik je dražší
 - Výkon spotřebičů — zadejte výkon spotřebiče v kW pro odhad nákladů, který odpovídá jeho skutečné spotřebě
 - Uložte si spotřebiče s vlastními názvy, ikonami a dobami trvání pro rychlý přístup
+- Seřaďte a přeuspořádejte spotřebiče — přetáhněte je do vlastního pořadí nebo je seřaďte podle nejčastěji používaných, naposledy použitých, názvu, doby trvání či typu a zvolte, kde budou vaše elektromobily
+- Sdílejte svou konfiguraci — zkopírujte spotřebiče a nastavení nabíjení elektromobilu do jiného telefonu ve vaší domácnosti naskenováním QR kódu nebo odesláním odkazu; funguje offline, bez účtu
 - Wear OS aplikace pro Pixel Watch a další Wear OS 3+ zařízení
 - K dispozici ve 25 evropských jazycích
 - Žádné účty, žádné reklamy, žádné sledování třetími stranami — ceny se ukládají lokálně; volitelnou anonymní statistiku spolehlivosti lze zapnout v nastavení

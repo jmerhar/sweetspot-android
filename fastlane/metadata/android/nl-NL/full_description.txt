@@ -18,6 +18,8 @@ FUNCTIES
 - Eerder of goedkoper — als de goedkoopste periode niet uitkomt, stap naar een eerdere periode en zie precies hoeveel duurder die is
 - Vermogen — stel het vermogen van een apparaat in kW in voor een kostenraming die laat zien wat het echt verbruikt
 - Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang
+- Sorteer en herschik je apparaten — sleep ze in je eigen volgorde of sorteer op meest gebruikt, recent gebruikt, naam, duur of type, en bepaal waar je auto's staan
+- Deel je instellingen — kopieer je apparaten en laadinstellingen naar een andere telefoon in huis door een QR-code te scannen of een link te sturen; werkt offline, zonder account
 - Wear OS horloge-app voor Pixel Watch en andere Wear OS 3+ apparaten
 - Beschikbaar in 25 Europese talen
 - Geen accounts, geen advertenties, geen tracking door derden — prijzen worden lokaal opgeslagen; optionele anonieme betrouwbaarheidsstatistieken kun je aanzetten in Instellingen

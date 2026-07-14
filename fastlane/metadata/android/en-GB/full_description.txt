@@ -18,6 +18,8 @@ FEATURES
 - Earlier or cheaper — when the cheapest window is inconvenient, step to a sooner one and see exactly how much more it costs
 - Power ratings — set an appliance's power in kW for a cost estimate that reflects what it really uses
 - Save your appliances with custom names, icons, and durations for one-tap access
+- Sort and reorder your appliances — drag them into your own order, or sort by most used, recently used, name, duration, or type, and choose where your vehicles sit
+- Share your setup — copy your appliances and EV charging settings to another phone in your household by scanning a QR code or sending a link; works offline, with no account
 - Wear OS companion app for Pixel Watch and other Wear OS 3+ devices
 - Available in 25 European languages
 - No accounts, no ads, no third-party tracking — prices are cached locally; optional anonymous reliability stats can be turned on in Settings

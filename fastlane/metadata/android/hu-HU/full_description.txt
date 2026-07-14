@@ -18,6 +18,8 @@ FUNKCIÓK
 - Korábban vagy olcsóbban — ha a legolcsóbb időablak nem alkalmas, lépj egy korábbira, és nézd meg pontosan, mennyivel kerül többe
 - Teljesítmény megadása — add meg a készülék teljesítményét kW-ban, hogy a költségbecslés a tényleges fogyasztást tükrözze
 - Mentsd el készülékeidet egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
+- Készülékek rendezése és átrendezése — húzd őket a saját sorrendedbe, vagy rendezz gyakoriság, legutóbbi használat, név, időtartam vagy típus szerint, és válaszd ki, hol legyenek a járműveid
+- Oszd meg a beállításaidat — másold át a készülékeidet és az elektromos autó töltési beállításaidat egy másik telefonra a háztartásodban QR-kód beolvasásával vagy link küldésével; internet nélkül is működik, fiók nélkül
 - Wear OS alkalmazás Pixel Watchhoz és más Wear OS 3+ eszközökhöz
 - 25 európai nyelven elérhető
 - Nincs fiók, nincsenek hirdetések, nincs harmadik féltől származó követés — az árak helyileg tárolódnak; a Beállításokban bekapcsolható egy opcionális, névtelen megbízhatósági statisztika

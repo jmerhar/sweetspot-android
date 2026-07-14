@@ -18,6 +18,8 @@ FUNKCIJE
 - Prej ali ceneje — kadar najcenejši termin ne ustreza, se pomaknite na zgodnejšega in natanko vidite, koliko več stane
 - Moč aparatov — nastavite moč aparata v kW za oceno stroškov, ki odraža njegovo dejansko porabo
 - Shranite svoje aparate z lastnimi imeni, ikonami in trajanji za hiter dostop
+- Razvrstite in preuredite svoje aparate — povlecite jih v lasten vrstni red ali razvrstite po najpogosteje uporabljenih, nedavno uporabljenih, imenu, trajanju ali vrsti in izberite, kam sodijo vaša vozila
+- Delite svojo nastavitev — kopirajte svoje aparate in nastavitve polnjenja električnega vozila v drug telefon v gospodinjstvu s skeniranjem QR kode ali pošiljanjem povezave; deluje brez povezave, brez računa
 - Wear OS aplikacija za Pixel Watch in druge naprave Wear OS 3+
 - Na voljo v 25 evropskih jezikih
 - Brez računov, brez oglasov, brez sledenja tretjih oseb — cene se shranjujejo lokalno; izbirno anonimno statistiko zanesljivosti lahko vklopite v nastavitvah

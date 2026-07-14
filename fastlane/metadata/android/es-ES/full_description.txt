@@ -18,6 +18,8 @@ CARACTERÍSTICAS
 - Antes o más barato — cuando la franja más barata no te conviene, pasa a una más temprana y ve exactamente cuánto más cuesta
 - Potencia — establece la potencia de un aparato en kW para una estimación de coste que refleje lo que consume de verdad
 - Guarda tus aparatos con nombres, iconos y duraciones personalizados para acceso rápido
+- Ordena y reordena tus aparatos — arrástralos a tu propio orden, u ordénalos por más usados, usados recientemente, nombre, duración o tipo, y elige dónde se colocan tus vehículos
+- Comparte tu configuración — copia tus aparatos y los ajustes de carga del vehículo eléctrico a otro teléfono de tu hogar escaneando un código QR o enviando un enlace; funciona sin conexión y sin cuenta
 - App Wear OS para Pixel Watch y otros dispositivos Wear OS 3+
 - Disponible en 25 idiomas europeos
 - Sin cuentas, sin anuncios, sin rastreo de terceros — los precios se almacenan localmente; puedes activar estadísticas anónimas de fiabilidad en los ajustes

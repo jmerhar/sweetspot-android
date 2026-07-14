@@ -18,6 +18,8 @@ FUNKCJE
 - Wcześniej lub taniej — gdy najtańszy okres jest niewygodny, przejdź do wcześniejszego i zobacz dokładnie, o ile jest droższy
 - Moc urządzeń — ustaw moc urządzenia w kW, aby szacunek kosztów odzwierciedlał jego rzeczywiste zużycie
 - Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania dla szybkiego dostępu
+- Sortuj i porządkuj swoje urządzenia — przeciągnij je we własnej kolejności albo posortuj według najczęściej używanych, ostatnio używanych, nazwy, czasu trwania lub typu, i wybierz, gdzie mają być Twoje auta elektryczne
+- Udostępnij swoją konfigurację — skopiuj urządzenia i ustawienia ładowania na inny telefon w domu, skanując kod QR lub wysyłając link; działa offline, bez konta
 - Aplikacja Wear OS na Pixel Watch i inne urządzenia Wear OS 3+
 - Dostępna w 25 językach europejskich
 - Bez kont, bez reklam, bez śledzenia przez podmioty trzecie — ceny są przechowywane lokalnie; opcjonalne anonimowe statystyki niezawodności można włączyć w Ustawieniach

@@ -18,6 +18,8 @@ FUNCȚIONALITĂȚI
 - Mai devreme sau mai ieftin — când cea mai ieftină perioadă nu îți convine, treci la una mai devreme și vezi exact cu cât este mai scumpă
 - Putere nominală — setează puterea unui aparat în kW pentru o estimare a costurilor care reflectă consumul real
 - Salvează aparatele cu nume, pictograme și durate personalizate pentru acces rapid
+- Sortează și rearanjează aparatele — trage-le în ordinea dorită sau sortează după cele mai folosite, folosite recent, nume, durată sau tip, și alege unde stau vehiculele tale
+- Partajează-ți configurația — copiază aparatele și setările de încărcare pe alt telefon din casă, scanând un cod QR sau trimițând un link; funcționează offline, fără cont
 - Aplicație Wear OS pentru Pixel Watch și alte dispozitive Wear OS 3+
 - Disponibilă în 25 de limbi europene
 - Fără conturi, fără reclame, fără urmărire de la terți — prețurile sunt stocate local; statisticile anonime opționale privind fiabilitatea pot fi activate în Setări

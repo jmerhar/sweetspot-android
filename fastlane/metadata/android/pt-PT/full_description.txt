@@ -18,6 +18,8 @@ FUNCIONALIDADES
 - Mais cedo ou mais barato — quando o período mais barato não é conveniente, avance para um mais cedo e veja exatamente quanto fica mais caro
 - Potência dos aparelhos — defina a potência de um aparelho em kW para uma estimativa de custo que reflete o consumo real
 - Guarde os seus aparelhos com nomes, ícones e durações personalizados para acesso rápido
+- Ordene e reorganize os seus aparelhos — arraste-os para a ordem que quiser, ou ordene por mais usados, usados recentemente, nome, duração ou tipo, e escolha onde ficam os seus VE
+- Partilhe a sua configuração — copie os aparelhos e as definições de carregamento para outro telemóvel em casa, lendo um código QR ou enviando uma ligação; funciona offline, sem conta
 - Aplicação Wear OS para Pixel Watch e outros dispositivos Wear OS 3+
 - Disponível em 25 idiomas europeus
 - Sem contas, sem anúncios, sem rastreamento de terceiros — os preços são guardados localmente; estatísticas de fiabilidade anónimas e opcionais podem ser ativadas nas Definições

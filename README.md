@@ -57,6 +57,46 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - Optional anonymous API reliability stats (opt-in via Settings > Advanced)
 - **14-day free trial** with a yearly subscription to keep using the app
 
+## Development workflow
+
+A typical loop for working on the app:
+
+1. **Set up once.** Install a JDK (17+) and the Android SDK — Android Studio is the easiest way to get both. Add your free [ENTSO-E API token](https://transparency.entsoe.eu/) to `local.properties` so prices can be fetched:
+   ```
+   ENTSOE_API_TOKEN=your-token
+   ```
+   Signed release builds also need the release-signing keys in `local.properties` (see [Releasing](#releasing)), and the Fastlane tasks (screenshots, publish, deploy) need Ruby 3.3 via rbenv (pinned in `.ruby-version`).
+
+2. **Code.** The project is three Gradle modules — `:shared` (data/model/util), `:app` (phone), `:wear` (watch). Keep logic in `:shared`, in the ViewModels, or in pure helpers where it is unit-tested; keep Composables, Activities, and SDK wrappers thin (they are excluded from coverage). See [CLAUDE.md](CLAUDE.md) for the full architecture and conventions.
+
+3. **Test as you go.**
+   ```bash
+   make test                              # all modules (Robolectric + JUnit)
+   ./gradlew :shared:testDebugUnitTest    # a single module — faster inner loop
+   ```
+   CI gates per-module line coverage, so add or update tests alongside your change.
+
+4. **Run it on a device or emulator.**
+   ```bash
+   make debug-phone     # build + install the debug app on a connected phone/emulator
+   make debug-watch     # same for a Wear OS device (see "Installing the Wear OS app")
+   ```
+
+5. **Before committing.** Run `make test`; if you touched the website, run `make site-validate`; update `README.md` / `CLAUDE.md` if behaviour changed. Use [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`). Pushing to `main` runs the test + coverage workflow.
+
+6. **Release** (see [Releasing](#releasing)): write user-facing notes in `docs/notes/release.md` and add a changelog entry for every language under `site/content/<lang>/changelog.md`, then:
+   ```bash
+   make release VERSION=x.y             # bump version, build, tag, push, GitHub Release
+   make deploy TRACK=alpha APP=phone    # upload the AAB + localized release notes to Play Store
+   ```
+
+7. **Refresh store assets** when the UI changes:
+   ```bash
+   make screenshots && make frames      # capture localized screenshots and frame them
+   make publish                         # upload metadata, screenshots, and images
+   ```
+   Changes under `fastlane/metadata/android/**` also auto-publish via CI on push to `main`, and changes under `site/**` redeploy [sweetspot.today](https://sweetspot.today).
+
 ## Building
 
 ```bash

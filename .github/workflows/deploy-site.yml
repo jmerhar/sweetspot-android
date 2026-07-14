@@ -7,6 +7,7 @@ on:
       - 'site/**'
       - 'fastlane/metadata/android/**'
       - 'bin/site-screenshots.sh'
+      - '.github/workflows/deploy-site.yml'
 
 permissions:
   contents: read
@@ -26,9 +27,24 @@ jobs:
       - run: ./bin/site-screenshots.sh
       - run: ./bin/install-hugo.sh
       - run: hugo --source site --minify
-      - uses: actions/upload-pages-artifact@v4
+      # Build the Pages tarball ourselves. actions/upload-pages-artifact tars with
+      # --exclude=".[^/]*", which drops every top-level dotfile/dir — including
+      # /.well-known/, where the App Links assetlinks.json must be served from. We mirror
+      # its tar (same Pages artifact format) but keep dot-directories.
+      - name: Archive Pages artifact (keep .well-known)
+        run: |
+          tar \
+            --dereference --hard-dereference \
+            --exclude=.git \
+            --exclude=.github \
+            -cf "${RUNNER_TEMP}/artifact.tar" \
+            -C site/public .
+      - uses: actions/upload-artifact@v4
         with:
-          path: site/public
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          include-hidden-files: true
+          retention-days: 1
 
   deploy:
     needs: build

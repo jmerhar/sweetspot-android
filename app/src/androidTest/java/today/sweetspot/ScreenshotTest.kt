@@ -98,12 +98,13 @@ class ScreenshotTest {
         Thread.sleep(2_000)
         Screengrab.screenshot("1_result")
 
-        // 3. Price chart — scroll "Upcoming Prices" into view, then swipe up
-        //    so the title sits near the top with the chart visible below it.
+        // 3. Price chart — scroll "Upcoming Prices" into view, then swipe up far enough that the
+        //    bottom edge of the Earlier/Cheaper buttons is pushed off the top, leaving a clean
+        //    "Cost Breakdown"/"Upcoming Prices" header with the chart below it.
         composeTestRule.onNodeWithText(labelUpcomingPrices).performScrollTo()
         composeTestRule.waitForIdle()
         composeTestRule.onRoot().performTouchInput {
-            swipeUp(startY = bottom * 0.5f, endY = bottom * 0.3f, durationMillis = 400)
+            swipeUp(startY = bottom * 0.6f, endY = bottom * 0.28f, durationMillis = 400)
         }
         composeTestRule.waitForIdle()
         Thread.sleep(1_000)

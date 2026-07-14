@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.4" date="2026. július 14." >}}
+- Oszd meg a beállításaidat: másold át a készülékeidet, azok sorrendjét és az elektromos autó töltési beállításait egy másik telefonra QR-kód beolvasásával vagy egy link elküldésével — fiók nélkül, offline is működik. A másik telefon egy előnézetet mutat, ahol hozzáadhatod, lecserélheted vagy kiválaszthatod, mit importálsz.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="2026. július 13." >}}
 - Rendezd át a készülékeidet: húzd őket saját sorrendbe, vagy rendezd Leggyakrabban használt, Legutóbb használt, név, időtartam vagy típus szerint.
 - A „Leggyakrabban használt” és a „Legutóbb használt” a telefonon és az órán történő koppintásokat is számolja.

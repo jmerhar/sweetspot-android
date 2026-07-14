@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.4" date="14. Juli 2026" >}}
+- Teile deine Konfiguration: Übertrage deine Geräte, ihre Reihenfolge und die Einstellungen zum E-Auto-Laden auf ein anderes Handy, indem du einen QR-Code scannst oder einen Link sendest — ohne Konto, offline nutzbar. Das andere Handy zeigt eine Vorschau, in der du hinzufügen, ersetzen oder auswählen kannst, was importiert wird.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13. Juli 2026" >}}
 - Geräte sortieren und neu anordnen: Zieh sie in deine eigene Reihenfolge oder sortiere nach Meistgenutzt, Zuletzt genutzt, Name, Dauer oder Typ.
 - „Meistgenutzt“ und „Zuletzt genutzt“ zählen Tipps auf Handy und Uhr.

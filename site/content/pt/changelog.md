@@ -3,6 +3,10 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.4" date="14 de julho de 2026" >}}
+- Partilhe a sua configuração: copie os eletrodomésticos, a sua ordem e as definições de carregamento de VE para outro telemóvel lendo um código QR ou enviando uma ligação — sem conta, funciona offline. O outro telemóvel mostra uma pré-visualização onde pode adicionar, substituir ou escolher o que importar.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13 de julho de 2026" >}}
 - Ordene e reorganize os eletrodomésticos: arraste-os para a ordem que quiser, ou ordene por Mais usados, Usados recentemente, nome, duração ou tipo.
 - «Mais usados» e «Usados recentemente» contam os toques no telemóvel e no relógio.

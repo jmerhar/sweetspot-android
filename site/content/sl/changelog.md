@@ -3,6 +3,10 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.4" date="14. julij 2026" >}}
+- Delite svojo konfiguracijo: aparate, njihov vrstni red in nastavitve polnjenja električnega vozila prekopirajte v drug telefon s skeniranjem QR kode ali deljenjem povezave — brez računa, deluje brez interneta. Drugi telefon prikaže predogled, kjer lahko dodate, zamenjate ali izberete, kaj uvoziti.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13. julij 2026" >}}
 - Razvrščanje in preurejanje aparatov: povlecite jih v svoj vrstni red ali razvrstite po Najpogosteje uporabljeni, Nedavno uporabljeni, imenu, trajanju ali vrsti.
 - »Najpogosteje uporabljeni« in »Nedavno uporabljeni« štejeta dotike na telefonu in uri.

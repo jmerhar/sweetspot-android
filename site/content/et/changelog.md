@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.4" date="14. juuli 2026" >}}
+- Jaga oma seadistust: kopeeri oma seadmed, nende järjekord ja elektriauto laadimise sätted teise telefoni QR-koodi skannides või linki saates — kontot pole vaja, töötab võrguühenduseta. Teine telefon näitab eelvaadet, kus saad lisada, asendada või valida, mida importida.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13. juuli 2026" >}}
 - Sorteeri ja korrasta seadmeid: lohista need oma järjekorda või sorteeri Enim kasutatud, Hiljuti kasutatud, Nimi, Kestus või Tüüp järgi.
 - „Enim kasutatud“ ja „Hiljuti kasutatud“ arvestavad nii telefonis kui kellas tehtud puudutusi.

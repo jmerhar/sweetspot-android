@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.4" date="14 juillet 2026" >}}
+- Partagez votre configuration : copiez vos appareils, leur ordre et vos réglages de recharge de véhicule électrique vers un autre téléphone en scannant un code QR ou en envoyant un lien — sans compte, fonctionne hors ligne. L'autre téléphone affiche un aperçu où vous pouvez ajouter, remplacer ou choisir ce qu'il faut importer.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13 juillet 2026" >}}
 - Triez et réorganisez vos appareils : faites-les glisser dans l’ordre voulu, ou triez par Les plus utilisés, Utilisés récemment, Nom, Durée ou Type.
 - « Les plus utilisés » et « Utilisés récemment » comptent les appuis sur téléphone et sur montre.

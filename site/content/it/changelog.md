@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.4" date="14 luglio 2026" >}}
+- Condividi la tua configurazione: copia i tuoi elettrodomestici, il loro ordine e le impostazioni di ricarica dell'auto elettrica su un altro telefono scansionando un codice QR o inviando un link — senza account, funziona offline. L'altro telefono mostra un'anteprima dove puoi aggiungere, sostituire o scegliere cosa importare.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13 luglio 2026" >}}
 - Ordina e riordina gli elettrodomestici: trascinali nel tuo ordine, oppure ordina per Più usati, Usati di recente, Nome, Durata o Tipo.
 - «Più usati» e «Usati di recente» contano i tocchi sia sul telefono che sull'orologio.

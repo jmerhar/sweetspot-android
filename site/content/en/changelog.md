@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.4" date="July 14, 2026" >}}
+- Share your setup: copy your appliances, their order, and EV charging settings to another phone by scanning a QR code or sending a link — no account, works offline. The other phone shows a preview where you can add, replace, or pick what to import.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="July 13, 2026" >}}
 - Sort and reorder your appliances: drag them into your own order, or sort by most used, recently used, name, duration, or type.
 - "Most used" and "Recently used" count taps on both your phone and watch.

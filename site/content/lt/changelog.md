@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.4" date="2026 m. liepos 14 d." >}}
+- Bendrinkite savo sąranką: nukopijuokite savo prietaisus, jų tvarką ir elektromobilio įkrovimo nustatymus į kitą telefoną nuskaitydami QR kodą arba nusiųsdami nuorodą — be paskyros, veikia neprisijungus. Kitas telefonas rodo peržiūrą, kurioje galite pridėti, pakeisti arba pasirinkti, ką importuoti.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="2026 m. liepos 13 d." >}}
 - Rikiuokite ir pertvarkykite prietaisus: vilkite juos sava tvarka arba rikiuokite pagal „Dažniausiai naudoti“, „Neseniai naudoti“, pavadinimą, trukmę ar tipą.
 - „Dažniausiai naudoti“ ir „Neseniai naudoti“ skaičiuoja palietimus telefone ir laikrodyje.

@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.4" date="14 lipca 2026" >}}
+- Udostępnij swoją konfigurację: skopiuj urządzenia, ich kolejność i ustawienia ładowania auta elektrycznego na inny telefon, skanując kod QR lub wysyłając link — bez konta, działa offline. Drugi telefon pokazuje podgląd, w którym możesz dodać, zastąpić lub wybrać, co zaimportować.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13 lipca 2026" >}}
 - Sortuj i porządkuj urządzenia: przeciągnij je we własnej kolejności lub sortuj wg opcji Najczęściej używane, Ostatnio używane, Nazwa, Czas trwania lub Typ.
 - „Najczęściej używane” i „Ostatnio używane” liczą kliknięcia zarówno w telefonie, jak i na zegarku.

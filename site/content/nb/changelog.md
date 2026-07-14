@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.4" date="14. juli 2026" >}}
+- Del oppsettet ditt: kopier apparatene dine, rekkefølgen deres og innstillingene for elbillading til en annen telefon ved å skanne en QR-kode eller sende en lenke — ingen konto, fungerer frakoblet. Den andre telefonen viser en forhåndsvisning der du kan legge til, erstatte eller velge hva du vil importere.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13. juli 2026" >}}
 - Sorter og omorganiser apparatene dine: dra dem i din egen rekkefølge, eller sorter etter mest brukt, nylig brukt, navn, varighet eller type.
 - «Mest brukt» og «Nylig brukt» teller trykk på både telefonen og klokken.

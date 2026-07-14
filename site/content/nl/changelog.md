@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.4" date="14 juli 2026" >}}
+- Deel je configuratie: kopieer je apparaten, hun volgorde en de instellingen voor elektrisch laden naar een andere telefoon door een QR-code te scannen of een link te sturen — geen account, werkt offline. De andere telefoon toont een voorbeeld waarin je kunt toevoegen, vervangen of kiezen wat je importeert.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13 juli 2026" >}}
 - Sorteer en herschik je apparaten: sleep ze in je eigen volgorde of sorteer op Meest gebruikt, Recent gebruikt, Naam, Duur of Type.
 - 'Meest gebruikt' en 'Recent gebruikt' tellen tikken op zowel je telefoon als je horloge.

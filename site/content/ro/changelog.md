@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.4" date="14 iulie 2026" >}}
+- Partajează-ți configurația: copiază electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice pe alt telefon scanând un cod QR sau trimițând un link — fără cont, funcționează offline. Celălalt telefon afișează o previzualizare unde poți adăuga, înlocui sau alege ce să imporți.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13 iulie 2026" >}}
 - Sortează și reordonează electrocasnicele: trage-le în ordinea dorită sau sortează-le după cele mai folosite, folosite recent, nume, durată sau tip.
 - „Cele mai folosite” și „Folosite recent” numără atingerile atât pe telefon, cât și pe ceas.

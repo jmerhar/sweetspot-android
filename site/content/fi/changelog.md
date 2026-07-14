@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.4" date="14. heinäkuuta 2026" >}}
+- Jaa asetuksesi: kopioi laitteesi, niiden järjestys ja sähköauton latausasetukset toiseen puhelimeen skannaamalla QR-koodi tai lähettämällä linkki — ei tiliä, toimii offline-tilassa. Toinen puhelin näyttää esikatselun, jossa voit lisätä, korvata tai valita, mitä tuodaan.
+{{< /changelog >}}
+
 {{< changelog version="6.3" date="13. heinäkuuta 2026" >}}
 - Järjestä ja lajittele laitteesi: vedä ne haluamaasi järjestykseen tai lajittele käytetyimmän, viimeksi käytetyn, nimen, keston tai tyypin mukaan.
 - ”Käytetyin” ja ”Viimeksi käytetty” laskevat napautukset sekä puhelimessa että kellossa.

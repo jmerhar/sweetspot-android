@@ -104,7 +104,7 @@ class ScreenshotTest {
         composeTestRule.onNodeWithText(labelUpcomingPrices).performScrollTo()
         composeTestRule.waitForIdle()
         composeTestRule.onRoot().performTouchInput {
-            swipeUp(startY = bottom * 0.6f, endY = bottom * 0.28f, durationMillis = 400)
+            swipeUp(startY = bottom * 0.5f, endY = bottom * 0.27f, durationMillis = 400)
         }
         composeTestRule.waitForIdle()
         Thread.sleep(1_000)

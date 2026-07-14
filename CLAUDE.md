@@ -124,55 +124,7 @@ Coverage excludes presentation/framework code that JVM unit tests can't exercise
 - **When you catch yourself writing logic in a Composable/Activity/SDK-wrapper, extract it** — a computation, formatting, branching, or state derivation belongs in a ViewModel or a pure function (ideally in `:shared`), where it is tested. A composable should only lay out state the ViewModel already produced; an SDK wrapper should only translate calls, not decide anything.
 - Rule of thumb: if a change adds an `if`/`when`, a calculation, or parsing to an excluded class, it's in the wrong place — move it to a covered class and test it.
 
-Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/`:
-- `data/repository/PriceRepositoryTest` — cache logic, coverage re-fetch, cooldown, filtering, `PriceResult.fromCache` flag (11 tests, in shared)
-- `data/repository/SettingsRepositoryTest` — trial/unlock logic, source-order + disabled-source persistence (incl. country-change reset), appliance/EV serialization, price-zone resolution, timezone precedence, time override, developer options, all-in prefs (enabled/supplier/manual surcharge, supplier reset on country change), appliance sort spec + EV position/separate + usage map/watch-snapshot/reset-token (39 tests, Robolectric, in shared)
-- `util/AllInPricingTest` — `marginal()` formula (per-kWh additive + percentage multiplicative), `applyAllIn` slot mapping + ordering-invariance, getting-paid cutoff (6 tests, in shared)
-- `data/api/TariffApiParseTest` — all-in tariff feed JSON parsing: full schema, unknown-key tolerance, missing-field defaults, malformed input (4 tests, in shared)
-- `data/repository/TariffRepositoryTest` — `cached()`/`refresh()` behaviour: usable-only, keep-last-good on error/404/`usable:false`, null when uncached + fetch fails (7 tests, in shared)
-- `data/cache/FileTariffCacheTest` — raw-JSON + timestamp round-trip, case-insensitive key, missing-timestamp handling, clear (5 tests, Robolectric, in shared)
-- `data/repository/CountryDetectorTest` — SIM → network → timezone → locale → NL fallback chain (9 tests, Robolectric, in shared)
-- `data/cache/FilePriceCacheTest` — v3 binary format round-trip, version-migration/corruption → null, per-zone/global clear, fetch cooldown (10 tests, Robolectric, in shared)
-- `data/api/FallbackPriceFetcherTest` — fallback chain: single, multi, all-fail, empty list (5 tests, in shared)
-- `data/api/PriceFetcherFactoryTest` — `defaultPriceFetcherFactory` chain composition: zone defaults, custom order, non-applicable/partial filtering, instrumented wrapping (8 tests, in shared)
-- `data/api/ApiHttpTest` — HTTP paths of all five price API clients plus the all-in tariff feed via a canned-response `OkHttpClient`: success → `FetchResult`/raw body, non-200 → `HttpException` with code, ENTSO-E acknowledgement → `EntsoeException` (15 tests, in shared)
-- `data/api/DataSourceTest` — source registry: defaults per zone type, unique IDs, zone ID validation against Countries registry (12 tests, in shared)
-- `data/api/EnergyZeroApiParseTest` — JSON parsing and timezone conversion (5 tests, in shared)
-- `data/api/EnergyZeroApiMalformedTest` — malformed/invalid JSON handling (8 tests, in shared)
-- `data/api/EnergyZeroApiDstTest` — DST transition parsing: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `data/api/EntsoeApiParseTest` — ENTSO-E XML parsing: PT60M, PT15M native resolution, A03 gaps, multi-TimeSeries, overlapping TimeSeries dedup, errors, DST, and malformed-XML edge cases (missing price/resolution, out-of-context tags) (18 tests, in shared)
-- `data/api/SpotHintaApiParseTest` — Spot-Hinta.fi JSON parsing, timezone conversion, 15-min slots (7 tests, in shared)
-- `data/api/SpotHintaApiMalformedTest` — malformed/invalid JSON handling for Spot-Hinta.fi (7 tests, in shared)
-- `data/api/SpotHintaApiDstTest` — DST transition parsing with Europe/Helsinki: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `data/api/EnergyChartsApiParseTest` — Energy-Charts JSON parsing, EUR/MWh→kWh conversion, resolution detection, timezone conversion (9 tests, in shared)
-- `data/api/EnergyChartsApiMalformedTest` — malformed/invalid JSON handling for Energy-Charts (8 tests, in shared)
-- `data/api/EnergyChartsApiDstTest` — DST transition parsing with Europe/Berlin: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `data/api/AwattarApiParseTest` — aWATTar JSON parsing, EUR/MWh→kWh conversion, timestamp conversion, duration computation (9 tests, in shared)
-- `data/api/AwattarApiMalformedTest` — malformed/invalid JSON handling for aWATTar (6 tests, in shared)
-- `data/api/AwattarApiDstTest` — DST transition parsing with Europe/Vienna: winter, summer, spring-forward, fall-back (5 tests, in shared)
-- `util/CheapestWindowFinderTest` — sliding window algorithm + breakdown invariants + zero-duration edge case + 15-min slot tests + earlier-window alternatives + optional "ready by" deadline (49 tests, in shared)
-- `util/ApplianceSortingTest` — pure sorting (each key asc/desc, EV Duration=+∞, stable/custom tie-break), `hasCollisions`, `nextAssignableKeys`, `combineUsage`, `mergeForHome` (interleaved/first/last/separate, EVs-by-name, custom fallback), and the sort-control edit helpers incl. default directions (25 tests, in shared)
-- `model/EvPositionTest` — `EvPosition.fromKey` resolution/fallback (2 tests, in shared)
-- `data/usage/UsageSnapshotTest` — usage-map byte encode/decode round-trip + malformed → empty (3 tests, in shared)
-- `data/usage/FileUsageStoreTest` — record/accumulate, persistence, reset-token adoption, corruption fallback (5 tests, in shared)
-- `util/TimeUtilsTest` — relative time formatting (10 tests, in shared)
-- `util/FormatUtilsTest` — duration formatting, locale-aware price formatting (incl. non-EUR currency + unknown-code fallback), `currencySymbol` resolution/fallback, kW formatting (`formatKw`), 24h `HH:mm` formatting (`formatHhMm`) (19 tests, in shared)
-- `util/UiTextTest` — `UiText` construction/mapping: duration resource selection, appliance-label composition, locale-independent structure (5 tests, pure JUnit — no Robolectric, in shared)
-- `util/UiTextResolveTest` — `UiText.resolve()` against `:shared` resources: Raw/Res/Plural/Composite, empty-vs-args branches, nested-`UiText` arg (7 tests, Robolectric, in shared)
-- `util/ResourceFormattingTest` — the localised (non-null `Resources`) branches of `formatDuration`/`formatRelative` (8 tests, Robolectric, in shared)
-- `util/UiTextResolveTest` — `UiText.resolve()` against real string resources: Raw/Res/Plural/Composite, empty-vs-args branches, nested-`UiText` argument resolution (8 tests, Robolectric, in app)
-- `model/ApplianceIconTest` — icon resolution, unknown/empty/null-ID fallback, and EV→car derivation (ignoring any stored icon) (7 tests, in shared)
-- `model/PriceSlotTest` — overlapsWindow interval intersection: inside, before, after, boundary, partial overlap, hourly (8 tests, in shared)
-- `data/repository/EvVehicleRepositoryTest` — EV database parsing, brand/model filtering, free-text search, displayName, malformed JSON (13 tests, in shared)
-- `data/share/SetupShareTest` — household-sharing codec: encode↔decode round-trip, link build/parse (fragment), null/blank/garbage → `Malformed`, newer schema → `TooNew`, unknown-key tolerance (6 tests, in shared)
-- `data/share/SetupMergeTest` — appliance merge: replace adopts + re-mints ids, add appends + re-mints, content-dedupe ignores id, EV specs carried/differentiated, same-name-differ-by-duration/power kept distinct (7 tests, in shared)
-- `SweetSpotViewModelTest` — ViewModel state, duration, appliance CRUD, timezone, source order, async fetch, rapid-tap cancellation, cache management, stats settings and prompt, trial/paywall/billing, developer options, earlier/cheaper window navigation, EV charging (vehicle add, SoC→duration computation, universal deadline, no-zone/zero-charger errors), appliance power rating / cost-scaling load, paywall decision (`shouldShowPaywall`), stats reporting (trial/subscribed/expired status, opt-in gating), watch-stats bridge handling, and all-in pricing (enabled/supplier/surcharge persistence, tariff load + country gating, transform applied → cost above spot with window unchanged, supplier pick prefills the surcharge, custom-surcharge-without-supplier, no-surcharge/no-cache not applied, stale flag, piggyback refresh, all-in enabled+supplier+surcharge reset on country change, failing-tariff-refresh isolation, non-EUR feed gated off), appliance sorting/usage (sort change reorders `sortedAppliances`, tap records usage, custom reorder keeps vehicles, EV placement drives `homeLayout`, purge + reset-token, watch-usage merge/stale-ignore), and household sharing (share link round-trips the current setup, import link → preview / `MALFORMED` / `TOO_NEW` / ignored-when-empty, confirm Replace adopts appliances+sort+EV settings, Add appends without touching settings, Pick imports a subset, dismiss clears) (143 tests, Robolectric, in app)
-- `WearViewModelTest` — Wear ViewModel: appliance tap, async fetch, rapid-tap cancellation, `onAppliancesReceived`/`onSettingsReceived` (zone resolution, source order, disabled sources, locked state, language, usage reset token), recalculation, stats push, and usage push (cumulative snapshot + reset) via a fake `WearSync` (28 tests, Robolectric, in wear)
-- `data/stats/StatsRecordTest` — binary encode/decode round-trip, empty, garbage, partial-corruption handling (5 tests, in shared)
-- `data/stats/ErrorCategoryTest` — exception → category mapping for all supported exception types (13 tests, in shared)
-- `data/stats/InstrumentedPriceFetcherTest` — success/failure/empty recording, delegation, clock, accumulation (6 tests, in shared)
-- `data/stats/FileStatsCollectorTest` — record, read, clear, append, persistence, corruption (9 tests, in shared)
-- `data/stats/StatsReporterTest` — JSON format, grouping, version field, error field presence, default args, response-code policy (`reportOutcomeFor`), and `reportIfDue` outcomes (200 clears+stamps, 4xx clears, 429/5xx/network keep, rate-limit interval) via a fake `StatsPoster` (15 tests, in app)
+Tests live in `shared/src/test/`, `app/src/test/`, and `wear/src/test/` — each `*Test` class documents its own scope in its KDoc/name. Run `./gradlew test` (or a per-module task) to see the current suite; logic belongs in the covered classes above, not the excluded presentation/framework code.
 
 ## Inspections
 
@@ -189,17 +141,6 @@ Inspections are run manually in Android Studio and exported as XML — **not** r
 
 ## Stack
 
-- Kotlin 2.3, AGP 9, Gradle 9.4 with version catalog (`gradle/libs.versions.toml`)
-- minSdk 26 (phone) / 30 (wear), targetSdk 36, compileSdk 36
-- `buildSrc` convention plugin (`sweetspot-app.gradle.kts`) for shared build config across `:app` and `:wear`
-- Jetpack Compose with Material 3 (dynamic colour on SDK 31+)
-- Wear Compose with Material for the watch app
-- MVVM: `SweetSpotViewModel` (phone) and `WearViewModel` (watch) with `StateFlow`
-- OkHttp 5 for HTTP, kotlinx-serialization for JSON
-- Wearable Data Layer API for phone-to-watch appliance and settings sync
-- Material Symbols (Outlined, 24px) as XML vector drawables for appliance icons — downloaded from [google/material-design-icons](https://github.com/google/material-design-icons) `symbols/android/` directory
-- Play Billing Library (`billing-ktx` 8.3.0) for yearly subscription (phone only)
-- JUnit 4 + Robolectric for unit tests (629 tests)
 - GitHub Actions CI (`.github/workflows/test.yml`) runs tests on push and PRs
 - GitHub Actions CI (`.github/workflows/publish-listing.yml`) auto-publishes Play Store listing metadata on pushes to `main` that change `fastlane/metadata/android/**`
 - GitHub Actions CI (`.github/workflows/build-suppliers.yml`) is a **scheduled cron** (daily) + `workflow_dispatch` that runs the `bin/test_build_suppliers.py` unit tests, then `bin/build-suppliers.py`, and commits any change under `site/static/data/` (tariff feeds + the enever registry), pushing with the `SITE_COMMIT_TOKEN` PAT (a `GITHUB_TOKEN` push wouldn't trigger `deploy-site`) so the updated all-in tariff feed reaches `sweetspot.today`. Requires the `ENEVER_TOKEN` and `SITE_COMMIT_TOKEN` repo secrets; a failed build (essentials unsourceable) fails the run and commits nothing.

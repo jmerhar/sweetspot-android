@@ -22,8 +22,8 @@ android {
     defaultConfig {
         applicationId = "today.sweetspot"
         targetSdk = 36
-        versionCode = 35
-        versionName = "6.4"
+        versionCode = 36
+        versionName = "6.5"
 
         // Include only IANA-recognised language codes in bundles.
         // Montenegrin (cnr) is excluded because the Play Console rejects it;

@@ -232,6 +232,11 @@
     <string name="sort_direction_descending">Aflopend</string>
     <string name="sort_add_tiebreaker">Extra sortering toevoegen</string>
     <string name="cd_sort_remove_level">Deze sorteerlaag verwijderen</string>
+    <string name="settings_group_title">Groeperen op type</string>
+    <string name="settings_group_description">Groepeer de knoppen op het startscherm per apparaattype, elk onder een eigen kop.</string>
+    <string name="group_off">Uit</string>
+    <string name="group_rows">Rijen</string>
+    <string name="group_columns">Kolommen</string>
     <string name="cd_drag_handle">Sleep om te herschikken</string>
     <string name="usage_count_format">%d× gebruikt</string>
     <string name="usage_never">Nooit gebruikt</string>

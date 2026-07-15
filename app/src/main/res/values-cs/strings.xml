@@ -248,6 +248,11 @@
     <string name="sort_direction_descending">Sestupně</string>
     <string name="sort_add_tiebreaker">Přidat další kritérium</string>
     <string name="cd_sort_remove_level">Odebrat toto kritérium řazení</string>
+    <string name="settings_group_title">Seskupit podle typu</string>
+    <string name="settings_group_description">Seskupí tlačítka na domovské obrazovce podle typu spotřebiče, každý typ pod vlastním nadpisem.</string>
+    <string name="group_off">Vypnuto</string>
+    <string name="group_rows">Řádky</string>
+    <string name="group_columns">Sloupce</string>
     <string name="cd_drag_handle">Přetažením změníte pořadí</string>
     <string name="usage_count_format">Použito %d×</string>
     <string name="usage_never">Nepoužito</string>

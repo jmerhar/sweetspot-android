@@ -246,6 +246,11 @@
     <string name="sort_direction_descending">Malejąco</string>
     <string name="sort_add_tiebreaker">Dodaj kryterium pomocnicze</string>
     <string name="cd_sort_remove_level">Usuń ten poziom sortowania</string>
+    <string name="settings_group_title">Grupuj według typu</string>
+    <string name="settings_group_description">Grupuj przyciski na ekranie głównym według typu urządzenia — każda grupa pod osobnym nagłówkiem.</string>
+    <string name="group_off">Wyłączone</string>
+    <string name="group_rows">Wiersze</string>
+    <string name="group_columns">Kolumny</string>
     <string name="cd_drag_handle">Przeciągnij, aby zmienić kolejność</string>
     <string name="usage_count_format">Użyto %d×</string>
     <string name="usage_never">Nigdy nieużywane</string>

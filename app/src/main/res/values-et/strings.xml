@@ -233,6 +233,11 @@
     <string name="sort_direction_descending">Kahanev</string>
     <string name="sort_add_tiebreaker">Lisa lisakriteerium</string>
     <string name="cd_sort_remove_level">Eemalda see sorteerimistasand</string>
+    <string name="settings_group_title">Rühmita tüübi järgi</string>
+    <string name="settings_group_description">Rühmita avakuva nupud seadme tüübi järgi, igaüks oma pealkirja alla.</string>
+    <string name="group_off">Väljas</string>
+    <string name="group_rows">Read</string>
+    <string name="group_columns">Veerud</string>
     <string name="cd_drag_handle">Lohista ümberjärjestamiseks</string>
     <string name="usage_count_format">Kasutatud %d×</string>
     <string name="usage_never">Pole kasutatud</string>

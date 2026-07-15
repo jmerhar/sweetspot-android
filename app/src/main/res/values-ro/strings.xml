@@ -239,6 +239,11 @@
     <string name="sort_direction_descending">Descrescător</string>
     <string name="sort_add_tiebreaker">Adaugă criteriu suplimentar</string>
     <string name="cd_sort_remove_level">Elimină acest nivel de sortare</string>
+    <string name="settings_group_title">Grupează după tip</string>
+    <string name="settings_group_description">Grupează butoanele de pe ecranul principal după tipul aparatului, fiecare sub propriul titlu.</string>
+    <string name="group_off">Dezactivat</string>
+    <string name="group_rows">Rânduri</string>
+    <string name="group_columns">Coloane</string>
     <string name="cd_drag_handle">Trage pentru reordonare</string>
     <string name="usage_count_format">Folosit %d×</string>
     <string name="usage_never">Niciodată folosit</string>

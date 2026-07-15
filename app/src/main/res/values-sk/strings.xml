@@ -246,6 +246,11 @@
     <string name="sort_direction_descending">Zostupne</string>
     <string name="sort_add_tiebreaker">Pridať ďalšie kritérium</string>
     <string name="cd_sort_remove_level">Odstrániť toto kritérium zoradenia</string>
+    <string name="settings_group_title">Zoskupiť podľa typu</string>
+    <string name="settings_group_description">Zoskupte tlačidlá na domovskej obrazovke podľa typu spotrebiča, každé pod vlastným nadpisom.</string>
+    <string name="group_off">Vypnuté</string>
+    <string name="group_rows">Riadky</string>
+    <string name="group_columns">Stĺpce</string>
     <string name="cd_drag_handle">Potiahnutím zmeníte poradie</string>
     <string name="usage_count_format">Použité %d×</string>
     <string name="usage_never">Nikdy nepoužité</string>

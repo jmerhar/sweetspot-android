@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.5" date="15. Juli 2026" >}}
+- Gruppiere die Schaltflächen nach Gerätetyp – als Zeilen oder Spalten –, damit die Programme desselben Geräts zusammenbleiben. Fahrzeuge können weiterhin einen eigenen Bereich oben oder unten haben.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14. Juli 2026" >}}
 - Teile deine Konfiguration: Übertrage deine Geräte, ihre Reihenfolge und die Einstellungen zum E-Auto-Laden auf ein anderes Handy, indem du einen QR-Code scannst oder einen Link sendest — ohne Konto, offline nutzbar. Das andere Handy zeigt eine Vorschau, in der du hinzufügen, ersetzen oder auswählen kannst, was importiert wird.
 {{< /changelog >}}

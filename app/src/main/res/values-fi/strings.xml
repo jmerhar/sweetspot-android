@@ -233,6 +233,11 @@
     <string name="sort_direction_descending">Laskeva</string>
     <string name="sort_add_tiebreaker">Lisää lajitteluperuste</string>
     <string name="cd_sort_remove_level">Poista tämä lajittelutaso</string>
+    <string name="settings_group_title">Ryhmittele tyypin mukaan</string>
+    <string name="settings_group_description">Ryhmittele aloitusnäytön painikkeet laitetyypin mukaan, kukin oman otsikkonsa alle.</string>
+    <string name="group_off">Pois</string>
+    <string name="group_rows">Rivit</string>
+    <string name="group_columns">Sarakkeet</string>
     <string name="cd_drag_handle">Vedä järjestääksesi uudelleen</string>
     <string name="usage_count_format">Käytetty %d×</string>
     <string name="usage_never">Ei koskaan käytetty</string>

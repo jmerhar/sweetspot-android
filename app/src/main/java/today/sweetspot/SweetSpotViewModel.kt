@@ -30,6 +30,7 @@ import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.data.stats.StatsReporter
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
@@ -163,6 +164,7 @@ enum class ImportError { TOO_NEW, MALFORMED }
  * @property applianceSort The active appliance ordering (default manual/custom).
  * @property evPosition Where vehicles are placed relative to appliances on the home screen.
  * @property evSeparate Whether a First/Last vehicle block is drawn as its own section.
+ * @property applianceGrouping Whether/how home-screen chips are grouped by type.
  * @property usage Combined phone+watch per-appliance tap statistics feeding Frequency/Recency.
  * @property sortedAppliances Non-EV appliances in the active sort order (for the Settings list).
  * @property homeLayout The merged appliance/vehicle chip layout for the home screen.
@@ -245,6 +247,7 @@ data class UiState(
     val applianceSort: ApplianceSort = ApplianceSort(),
     val evPosition: EvPosition = EvPosition.INTERLEAVED,
     val evSeparate: Boolean = false,
+    val applianceGrouping: ApplianceGrouping = ApplianceGrouping.NONE,
     val usage: Map<String, ApplianceUsage> = emptyMap(),
     val sortedAppliances: List<Appliance> = emptyList(),
     val homeLayout: HomeChipLayout = HomeChipLayout.Flat(emptyList()),
@@ -383,7 +386,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             manualSurcharge = settingsRepository.getManualSurcharge(),
             applianceSort = settingsRepository.getApplianceSort(),
             evPosition = settingsRepository.getEvPosition(),
-            evSeparate = settingsRepository.isEvSeparateSection()
+            evSeparate = settingsRepository.isEvSeparateSection(),
+            applianceGrouping = settingsRepository.getApplianceGrouping()
         ).withApplianceViews()
     )
 
@@ -470,7 +474,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         return copy(
             usage = usage,
             sortedAppliances = sortAppliances(appliances.filterNot { it.isEv }, applianceSort, usage),
-            homeLayout = mergeForHome(appliances, applianceSort, usage, evPosition, evSeparate),
+            homeLayout = mergeForHome(appliances, applianceSort, usage, evPosition, evSeparate, applianceGrouping),
         )
     }
 
@@ -500,7 +504,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 appliances = settingsRepository.getAppliances(),
                 applianceSort = settingsRepository.getApplianceSort(),
                 evPosition = settingsRepository.getEvPosition(),
-                evSeparate = settingsRepository.isEvSeparateSection()
+                evSeparate = settingsRepository.isEvSeparateSection(),
+                applianceGrouping = settingsRepository.getApplianceGrouping()
             ).withApplianceViews()
         }
         syncAppliancesToWear()
@@ -519,7 +524,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             evHomeChargerKw = settingsRepository.getEvHomeChargerKw(),
             evDefaultTargetSoc = settingsRepository.getEvDefaultTargetSoc(),
             evPosition = settingsRepository.getEvPosition().key,
-            evSeparate = settingsRepository.isEvSeparateSection()
+            evSeparate = settingsRepository.isEvSeparateSection(),
+            grouping = settingsRepository.getApplianceGrouping().key
         )
     )
 
@@ -579,6 +585,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             settingsRepository.setEvDefaultTargetSoc(setup.evDefaultTargetSoc)
             settingsRepository.setEvPosition(EvPosition.fromKey(setup.evPosition))
             settingsRepository.setEvSeparateSection(setup.evSeparate)
+            settingsRepository.setApplianceGrouping(ApplianceGrouping.fromKey(setup.grouping))
         }
 
         _uiState.update {
@@ -589,6 +596,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 evDefaultTargetSoc = settingsRepository.getEvDefaultTargetSoc(),
                 evPosition = settingsRepository.getEvPosition(),
                 evSeparate = settingsRepository.isEvSeparateSection(),
+                applianceGrouping = settingsRepository.getApplianceGrouping(),
                 importPreview = null,
                 importError = null
             ).withApplianceViews()
@@ -1224,6 +1232,17 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onEvSeparateChanged(separate: Boolean) {
         settingsRepository.setEvSeparateSection(separate)
         _uiState.update { it.copy(evSeparate = separate).withApplianceViews() }
+    }
+
+    /**
+     * Sets how home-screen chips are grouped by type. When active, appliances cluster by type;
+     * vehicles still honour the EV separate-section preference (see [mergeForHome]).
+     *
+     * @param grouping The new grouping mode.
+     */
+    fun onApplianceGroupingChanged(grouping: ApplianceGrouping) {
+        settingsRepository.setApplianceGrouping(grouping)
+        _uiState.update { it.copy(applianceGrouping = grouping).withApplianceViews() }
     }
 
     /**

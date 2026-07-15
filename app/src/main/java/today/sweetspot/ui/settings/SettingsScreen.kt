@@ -79,6 +79,8 @@ fun SettingsScreen(
     onApplianceSortChanged: (today.sweetspot.model.ApplianceSort) -> Unit,
     onReorderAppliances: (List<Appliance>) -> Unit,
     onResetUsage: () -> Unit,
+    applianceGrouping: today.sweetspot.model.ApplianceGrouping,
+    onApplianceGroupingChanged: (today.sweetspot.model.ApplianceGrouping) -> Unit,
     evHomeChargerKw: Double,
     evDefaultTargetSoc: Int,
     onEvHomeChargerChanged: (Double) -> Unit,
@@ -147,6 +149,8 @@ fun SettingsScreen(
             onSortChanged = onApplianceSortChanged,
             onReorder = onReorderAppliances,
             onResetUsage = onResetUsage,
+            grouping = applianceGrouping,
+            onGroupingChanged = onApplianceGroupingChanged,
             onBack = toMenu
         )
 

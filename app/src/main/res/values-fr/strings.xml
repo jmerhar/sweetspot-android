@@ -237,6 +237,11 @@
     <string name="sort_direction_descending">Décroissant</string>
     <string name="sort_add_tiebreaker">Ajouter un critère</string>
     <string name="cd_sort_remove_level">Supprimer ce critère de tri</string>
+    <string name="settings_group_title">Grouper par type</string>
+    <string name="settings_group_description">Regrouper les boutons de l\'écran d\'accueil par type d\'appareil, chacun sous son propre titre.</string>
+    <string name="group_off">Désactivé</string>
+    <string name="group_rows">Lignes</string>
+    <string name="group_columns">Colonnes</string>
     <string name="cd_drag_handle">Faire glisser pour réordonner</string>
     <string name="usage_count_format">Utilisé %d×</string>
     <string name="usage_never">Jamais utilisé</string>

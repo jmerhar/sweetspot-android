@@ -3,6 +3,10 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="6.5" date="15 juillet 2026" >}}
+- Regroupez les boutons d'appareils par type — en lignes ou en colonnes — pour que les programmes d'un même appareil restent ensemble. Les véhicules peuvent avoir leur propre section au-dessus ou en dessous.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14 juillet 2026" >}}
 - Partagez votre configuration : copiez vos appareils, leur ordre et vos réglages de recharge de véhicule électrique vers un autre téléphone en scannant un code QR ou en envoyant un lien — sans compte, fonctionne hors ligne. L'autre téléphone affiche un aperçu où vous pouvez ajouter, remplacer ou choisir ce qu'il faut importer.
 {{< /changelog >}}

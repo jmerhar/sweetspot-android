@@ -234,6 +234,11 @@
     <string name="sort_direction_descending">Faldende</string>
     <string name="sort_add_tiebreaker">Tilføj ekstra niveau</string>
     <string name="cd_sort_remove_level">Fjern dette sorteringsniveau</string>
+    <string name="settings_group_title">Gruppér efter type</string>
+    <string name="settings_group_description">Gruppér knapperne på startskærmen efter apparattype, hver under sin egen overskrift.</string>
+    <string name="group_off">Fra</string>
+    <string name="group_rows">Rækker</string>
+    <string name="group_columns">Kolonner</string>
     <string name="cd_drag_handle">Træk for at ændre rækkefølge</string>
     <string name="usage_count_format">Brugt %d×</string>
     <string name="usage_never">Aldrig brugt</string>

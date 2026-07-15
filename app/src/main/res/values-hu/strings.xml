@@ -232,6 +232,11 @@
     <string name="sort_direction_descending">Csökkenő</string>
     <string name="sort_add_tiebreaker">Rendezési szint hozzáadása</string>
     <string name="cd_sort_remove_level">Rendezési szint eltávolítása</string>
+    <string name="settings_group_title">Csoportosítás típus szerint</string>
+    <string name="settings_group_description">Csoportosítja a kezdőképernyő gombjait készüléktípus szerint, mindegyiket saját cím alatt.</string>
+    <string name="group_off">Ki</string>
+    <string name="group_rows">Sorok</string>
+    <string name="group_columns">Oszlopok</string>
     <string name="cd_drag_handle">Húzással átrendezhető</string>
     <string name="usage_count_format">%d× használva</string>
     <string name="usage_never">Sosem használt</string>

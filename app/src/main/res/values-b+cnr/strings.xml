@@ -241,6 +241,11 @@
     <string name="sort_direction_descending">Opadajuće</string>
     <string name="sort_add_tiebreaker">Dodaj kriterijum</string>
     <string name="cd_sort_remove_level">Ukloni ovaj nivo sortiranja</string>
+    <string name="settings_group_title">Grupisanje po vrsti</string>
+    <string name="settings_group_description">Grupišite dugmad na početnom ekranu prema vrsti aparata, svako pod svojim naslovom.</string>
+    <string name="group_off">Isključeno</string>
+    <string name="group_rows">Redovi</string>
+    <string name="group_columns">Kolone</string>
     <string name="cd_drag_handle">Prevucite za promjenu redosljeda</string>
     <string name="usage_count_format">Korišćeno %d×</string>
     <string name="usage_never">Nikad korišćeno</string>

@@ -16,6 +16,7 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
 import today.sweetspot.model.SortCriterion
@@ -148,6 +149,13 @@ class SettingsRepositoryTest {
         repo.setEvSeparateSection(true)
         assertEquals(EvPosition.LAST, repo.getEvPosition())
         assertTrue(repo.isEvSeparateSection())
+    }
+
+    @Test
+    fun `appliance grouping defaults to none and round-trips`() {
+        assertEquals(ApplianceGrouping.NONE, repo.getApplianceGrouping())
+        repo.setApplianceGrouping(ApplianceGrouping.COLUMNS)
+        assertEquals(ApplianceGrouping.COLUMNS, repo.getApplianceGrouping())
     }
 
     @Test

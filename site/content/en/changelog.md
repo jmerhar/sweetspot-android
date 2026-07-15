@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.5" date="July 15, 2026" >}}
+- Group your appliance buttons by type — shown as rows or columns — so the programmes for the same machine stay together. Vehicles can still have their own section above or below.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="July 14, 2026" >}}
 - Share your setup: copy your appliances, their order, and EV charging settings to another phone by scanning a QR code or sending a link — no account, works offline. The other phone shows a preview where you can add, replace, or pick what to import.
 {{< /changelog >}}

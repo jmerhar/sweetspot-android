@@ -8,6 +8,7 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.EvPosition
 
 import today.sweetspot.model.PriceZone
@@ -56,6 +57,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_APPLIANCE_SORT = "appliance_sort"
         const val KEY_EV_POSITION = "ev_position"
         const val KEY_EV_SEPARATE = "ev_separate"
+        const val KEY_APPLIANCE_GROUPING = "appliance_grouping"
         const val KEY_APPLIANCE_USAGE = "appliance_usage"
         const val KEY_WATCH_USAGE = "watch_usage"
         const val KEY_USAGE_RESET_TOKEN = "usage_reset_token"
@@ -273,6 +275,13 @@ class SettingsRepository(private val context: Context) {
 
     /** Persists the separate-section preference. */
     fun setEvSeparateSection(separate: Boolean) = putBool(KEY_EV_SEPARATE, separate)
+
+    /** Returns how home-screen chips are grouped by type (default [ApplianceGrouping.NONE]). */
+    fun getApplianceGrouping(): ApplianceGrouping =
+        ApplianceGrouping.fromKey(prefs.getString(KEY_APPLIANCE_GROUPING, null))
+
+    /** Persists the chip grouping preference. */
+    fun setApplianceGrouping(grouping: ApplianceGrouping) = putStr(KEY_APPLIANCE_GROUPING, grouping.key)
 
     /** Returns phone-local per-appliance tap usage. */
     fun getApplianceUsage(): Map<String, ApplianceUsage> = readUsage(KEY_APPLIANCE_USAGE)

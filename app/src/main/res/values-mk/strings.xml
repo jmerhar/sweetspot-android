@@ -232,6 +232,11 @@
     <string name="sort_direction_descending">Опаѓачки</string>
     <string name="sort_add_tiebreaker">Додај дополнителен критериум</string>
     <string name="cd_sort_remove_level">Отстрани го ова ниво на подредување</string>
+    <string name="settings_group_title">Групирај по тип</string>
+    <string name="settings_group_description">Групирајте ги копчињата на почетниот екран според типот на уредот, секое под свој наслов.</string>
+    <string name="group_off">Исклучено</string>
+    <string name="group_rows">Редови</string>
+    <string name="group_columns">Колони</string>
     <string name="cd_drag_handle">Влечете за менување редослед</string>
     <string name="usage_count_format">Користено %d×</string>
     <string name="usage_never">Никогаш користено</string>

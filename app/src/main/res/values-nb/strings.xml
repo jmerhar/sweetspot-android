@@ -232,6 +232,11 @@
     <string name="sort_direction_descending">Synkende</string>
     <string name="sort_add_tiebreaker">Legg til sortering</string>
     <string name="cd_sort_remove_level">Fjern dette sorteringsnivået</string>
+    <string name="settings_group_title">Grupper etter type</string>
+    <string name="settings_group_description">Grupper knappene på startskjermen etter apparattype, hver under sin egen overskrift.</string>
+    <string name="group_off">Av</string>
+    <string name="group_rows">Rader</string>
+    <string name="group_columns">Kolonner</string>
     <string name="cd_drag_handle">Dra for å endre rekkefølge</string>
     <string name="usage_count_format">Brukt %d×</string>
     <string name="usage_never">Aldri brukt</string>

@@ -237,6 +237,11 @@
     <string name="sort_direction_descending">Descendente</string>
     <string name="sort_add_tiebreaker">Añadir desempate</string>
     <string name="cd_sort_remove_level">Quitar este nivel de orden</string>
+    <string name="settings_group_title">Agrupar por tipo</string>
+    <string name="settings_group_description">Agrupa los botones de la pantalla de inicio por tipo de electrodoméstico, cada uno bajo su propio encabezado.</string>
+    <string name="group_off">Desactivado</string>
+    <string name="group_rows">Filas</string>
+    <string name="group_columns">Columnas</string>
     <string name="cd_drag_handle">Arrastra para reordenar</string>
     <string name="usage_count_format">Usado %d×</string>
     <string name="usage_never">Nunca usado</string>

@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -47,6 +48,7 @@ import androidx.compose.ui.unit.dp
 import sh.calvin.reorderable.ReorderableColumn
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.SortKey
@@ -68,6 +70,8 @@ import today.sweetspot.util.formatDuration
  * @param onSortChanged Persists a changed ordering.
  * @param onReorder Persists a manual (Custom) reorder of the non-EV list.
  * @param onResetUsage Clears tap-usage history.
+ * @param grouping How home-screen chips are grouped by type.
+ * @param onGroupingChanged Persists a changed grouping.
  */
 @Composable
 internal fun AppliancesSection(
@@ -78,7 +82,9 @@ internal fun AppliancesSection(
     onAddClick: () -> Unit,
     onSortChanged: (ApplianceSort) -> Unit,
     onReorder: (List<Appliance>) -> Unit,
-    onResetUsage: () -> Unit
+    onResetUsage: () -> Unit,
+    grouping: ApplianceGrouping,
+    onGroupingChanged: (ApplianceGrouping) -> Unit
 ) {
     val resources = LocalContext.current.resources
     var showResetConfirm by rememberSaveable { mutableStateOf(false) }
@@ -166,6 +172,7 @@ internal fun AppliancesSection(
 
     if (appliances.isNotEmpty()) {
         ApplianceSortControl(sort, appliances, usage, onSortChanged)
+        ApplianceGroupingControl(grouping, onGroupingChanged)
     }
 
     Row(
@@ -211,6 +218,47 @@ internal fun AppliancesSection(
                 }
             }
         )
+    }
+}
+
+/**
+ * The chip-grouping control: title, description, and Off / Rows / Columns choices. Grouping
+ * clusters home-screen chips by appliance type and overrides vehicle placement while active.
+ */
+@Composable
+private fun ApplianceGroupingControl(
+    grouping: ApplianceGrouping,
+    onGroupingChanged: (ApplianceGrouping) -> Unit
+) {
+    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+        Text(
+            text = stringResource(R.string.settings_group_title),
+            style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Text(
+            text = stringResource(R.string.settings_group_description),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(8.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FilterChip(
+                selected = grouping == ApplianceGrouping.NONE,
+                onClick = { onGroupingChanged(ApplianceGrouping.NONE) },
+                label = { Text(stringResource(R.string.group_off)) }
+            )
+            FilterChip(
+                selected = grouping == ApplianceGrouping.ROWS,
+                onClick = { onGroupingChanged(ApplianceGrouping.ROWS) },
+                label = { Text(stringResource(R.string.group_rows)) }
+            )
+            FilterChip(
+                selected = grouping == ApplianceGrouping.COLUMNS,
+                onClick = { onGroupingChanged(ApplianceGrouping.COLUMNS) },
+                label = { Text(stringResource(R.string.group_columns)) }
+            )
+        }
     }
 }
 

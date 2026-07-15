@@ -3,6 +3,10 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.5" date="2026 m. liepos 15 d." >}}
+- Grupuokite prietaisų mygtukus pagal tipą — eilutėmis arba stulpeliais — kad to paties prietaiso programos liktų kartu. Automobiliai gali turėti atskirą skiltį viršuje arba apačioje.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="2026 m. liepos 14 d." >}}
 - Bendrinkite savo sąranką: nukopijuokite savo prietaisus, jų tvarką ir elektromobilio įkrovimo nustatymus į kitą telefoną nuskaitydami QR kodą arba nusiųsdami nuorodą — be paskyros, veikia neprisijungus. Kitas telefonas rodo peržiūrą, kurioje galite pridėti, pakeisti arba pasirinkti, ką importuoti.
 {{< /changelog >}}

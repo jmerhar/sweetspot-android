@@ -64,3 +64,23 @@ enum class EvPosition(val key: String) {
         fun fromKey(key: String?): EvPosition = entries.find { it.key == key } ?: INTERLEAVED
     }
 }
+
+/**
+ * How home-screen appliance chips are visually grouped by type (their icon).
+ *
+ * [NONE] keeps a single continuous flow ordered by the active sort (with vehicles placed by
+ * [EvPosition]). [ROWS] and [COLUMNS] instead cluster chips of the same type under a titled
+ * heading — [ROWS] stacks the groups as full-width bands, [COLUMNS] lays them out side by side.
+ * Grouping subsumes [EvPosition]: when active, electric vehicles form their own "Vehicles" group.
+ * Persisted by its [key].
+ */
+enum class ApplianceGrouping(val key: String) {
+    NONE("none"),
+    ROWS("rows"),
+    COLUMNS("columns");
+
+    companion object {
+        /** Resolves a stored [key] to its grouping, defaulting to [NONE] for unknown/null. */
+        fun fromKey(key: String?): ApplianceGrouping = entries.find { it.key == key } ?: NONE
+    }
+}

@@ -85,6 +85,8 @@ class MainActivity : AppCompatActivity() {
                             onApplianceSortChanged = vm::onApplianceSortChanged,
                             onReorderAppliances = vm::onReorderAppliances,
                             onResetUsage = vm::onPurgeUsage,
+                            applianceGrouping = state.applianceGrouping,
+                            onApplianceGroupingChanged = vm::onApplianceGroupingChanged,
                             evHomeChargerKw = state.evHomeChargerKw,
                             evDefaultTargetSoc = state.evDefaultTargetSoc,
                             onEvHomeChargerChanged = vm::onEvHomeChargerChanged,

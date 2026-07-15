@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="6.5" date="15 luglio 2026" >}}
+- Raggruppa i pulsanti degli elettrodomestici per tipo — in righe o colonne — così i programmi dello stesso apparecchio restano insieme. I veicoli possono avere una sezione a parte sopra o sotto.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14 luglio 2026" >}}
 - Condividi la tua configurazione: copia i tuoi elettrodomestici, il loro ordine e le impostazioni di ricarica dell'auto elettrica su un altro telefono scansionando un codice QR o inviando un link — senza account, funziona offline. L'altro telefono mostra un'anteprima dove puoi aggiungere, sostituire o scegliere cosa importare.
 {{< /changelog >}}

@@ -3,6 +3,10 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="6.5" date="15. júla 2026" >}}
+- Zoskupte tlačidlá spotrebičov podľa typu — do riadkov alebo stĺpcov — aby programy toho istého spotrebiča ostali spolu. Vozidlá môžu mať vlastnú sekciu hore alebo dole.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14. júla 2026" >}}
 - Zdieľajte svoje nastavenie: skopírujte spotrebiče, ich poradie a nastavenia nabíjania elektromobilu do iného telefónu naskenovaním QR kódu alebo odoslaním odkazu — bez účtu, funguje offline. Druhý telefón zobrazí náhľad, kde môžete pridať, nahradiť alebo vybrať, čo importovať.
 {{< /changelog >}}

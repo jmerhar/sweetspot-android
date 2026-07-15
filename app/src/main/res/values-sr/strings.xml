@@ -239,6 +239,11 @@
     <string name="sort_direction_descending">Опадајуће</string>
     <string name="sort_add_tiebreaker">Додај критеријум</string>
     <string name="cd_sort_remove_level">Уклони овај ниво сортирања</string>
+    <string name="settings_group_title">Групиши по типу</string>
+    <string name="settings_group_description">Групишите дугмад на почетном екрану према типу апарата, свако под својим насловом.</string>
+    <string name="group_off">Искључено</string>
+    <string name="group_rows">Редови</string>
+    <string name="group_columns">Колоне</string>
     <string name="cd_drag_handle">Превуците за промену редоследа</string>
     <string name="usage_count_format">Коришћено %d×</string>
     <string name="usage_never">Никад коришћено</string>

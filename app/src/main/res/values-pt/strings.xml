@@ -236,6 +236,11 @@
     <string name="sort_direction_descending">Decrescente</string>
     <string name="sort_add_tiebreaker">Adicionar desempate</string>
     <string name="cd_sort_remove_level">Remover este critério de ordenação</string>
+    <string name="settings_group_title">Agrupar por tipo</string>
+    <string name="settings_group_description">Agrupa os botões do ecrã principal por tipo de eletrodoméstico, cada um com o seu próprio título.</string>
+    <string name="group_off">Desativado</string>
+    <string name="group_rows">Linhas</string>
+    <string name="group_columns">Colunas</string>
     <string name="cd_drag_handle">Arraste para reordenar</string>
     <string name="usage_count_format">Usado %d×</string>
     <string name="usage_never">Nunca usado</string>

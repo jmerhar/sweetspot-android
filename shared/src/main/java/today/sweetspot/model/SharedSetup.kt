@@ -20,6 +20,8 @@ import kotlinx.serialization.Serializable
  * @property evPosition Vehicle placement, stored as [EvPosition.key] (resolved via
  *           [EvPosition.fromKey]) to match how [today.sweetspot.data.SettingsRepository] persists it.
  * @property evSeparate Whether vehicles are shown in their own section.
+ * @property grouping Home-screen chip grouping, stored as [ApplianceGrouping.key] (resolved via
+ *           [ApplianceGrouping.fromKey]). Defaulted so payloads from older senders decode unchanged.
  */
 @Serializable
 data class SharedSetup(
@@ -30,4 +32,5 @@ data class SharedSetup(
     val evDefaultTargetSoc: Int = 80,
     val evPosition: String = EvPosition.INTERLEAVED.key,
     val evSeparate: Boolean = false,
+    val grouping: String = ApplianceGrouping.NONE.key,
 )

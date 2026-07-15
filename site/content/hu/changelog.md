@@ -3,6 +3,10 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.5" date="2026. július 15." >}}
+- Csoportosítsd a készülékgombokat típus szerint — sorokba vagy oszlopokba —, hogy egy készülék programjai együtt maradjanak. A járművek külön szakaszba kerülhetnek fölé vagy alá.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="2026. július 14." >}}
 - Oszd meg a beállításaidat: másold át a készülékeidet, azok sorrendjét és az elektromos autó töltési beállításait egy másik telefonra QR-kód beolvasásával vagy egy link elküldésével — fiók nélkül, offline is működik. A másik telefon egy előnézetet mutat, ahol hozzáadhatod, lecserélheted vagy kiválaszthatod, mit importálsz.
 {{< /changelog >}}

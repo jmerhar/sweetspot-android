@@ -239,6 +239,11 @@
     <string name="sort_direction_descending">Dilstoša</string>
     <string name="sort_add_tiebreaker">Pievienot papildu kritēriju</string>
     <string name="cd_sort_remove_level">Noņemt šo kārtošanas līmeni</string>
+    <string name="settings_group_title">Grupēt pēc tipa</string>
+    <string name="settings_group_description">Sagrupē sākuma ekrāna pogas pēc ierīces tipa, katru zem sava virsraksta.</string>
+    <string name="group_off">Izslēgts</string>
+    <string name="group_rows">Rindas</string>
+    <string name="group_columns">Kolonnas</string>
     <string name="cd_drag_handle">Velciet, lai pārkārtotu</string>
     <string name="usage_count_format">Lietots %d×</string>
     <string name="usage_never">Nekad nav lietots</string>

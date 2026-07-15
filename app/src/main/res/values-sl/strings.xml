@@ -246,6 +246,11 @@
     <string name="sort_direction_descending">Padajoče</string>
     <string name="sort_add_tiebreaker">Dodaj dodatno merilo</string>
     <string name="cd_sort_remove_level">Odstrani to raven razvrščanja</string>
+    <string name="settings_group_title">Združi glede na vrsto</string>
+    <string name="settings_group_description">Združi gumbe na začetnem zaslonu glede na vrsto naprave, vsakega pod svojim naslovom.</string>
+    <string name="group_off">Izklop</string>
+    <string name="group_rows">Vrstice</string>
+    <string name="group_columns">Stolpci</string>
     <string name="cd_drag_handle">Povlecite za razvrstitev</string>
 
     <!-- Usage data -->

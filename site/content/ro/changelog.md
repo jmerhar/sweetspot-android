@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.5" date="15 iulie 2026" >}}
+- Grupează butoanele aparatelor după tip — pe rânduri sau coloane — astfel încât programele aceluiași aparat să rămână împreună. Vehiculele pot avea propria secțiune deasupra sau dedesubt.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14 iulie 2026" >}}
 - Partajează-ți configurația: copiază electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice pe alt telefon scanând un cod QR sau trimițând un link — fără cont, funcționează offline. Celălalt telefon afișează o previzualizare unde poți adăuga, înlocui sau alege ce să imporți.
 {{< /changelog >}}

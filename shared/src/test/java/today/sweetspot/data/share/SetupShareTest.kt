@@ -4,6 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
@@ -26,6 +27,7 @@ class SetupShareTest {
         evDefaultTargetSoc = 90,
         evPosition = EvPosition.LAST.key,
         evSeparate = true,
+        grouping = ApplianceGrouping.COLUMNS.key,
     )
 
     @Test

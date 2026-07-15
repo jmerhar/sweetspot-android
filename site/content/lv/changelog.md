@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.5" date="2026. gada 15. jūlijs" >}}
+- Grupējiet ierīču pogas pēc tipa — rindās vai kolonnās —, lai vienas ierīces programmas paliktu kopā. Transportlīdzekļiem var būt sava sadaļa augšpusē vai apakšpusē.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="2026. gada 14. jūlijs" >}}
 - Kopīgojiet savu iestatījumu: kopējiet savas ierīces, to secību un elektroauto uzlādes iestatījumus uz citu tālruni, noskenējot QR kodu vai nosūtot saiti — bez konta, darbojas bezsaistē. Otrs tālrunis rāda priekšskatījumu, kurā varat pievienot, aizstāt vai izvēlēties, ko importēt.
 {{< /changelog >}}

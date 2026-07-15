@@ -3,6 +3,10 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.5" date="15. juuli 2026" >}}
+- Rühmita seadmenupud tüübi järgi — ridade või veergudena — nii et sama seadme programmid püsivad koos. Sõidukid võivad olla eraldi jaotises üleval või all.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14. juuli 2026" >}}
 - Jaga oma seadistust: kopeeri oma seadmed, nende järjekord ja elektriauto laadimise sätted teise telefoni QR-koodi skannides või linki saates — kontot pole vaja, töötab võrguühenduseta. Teine telefon näitab eelvaadet, kus saad lisada, asendada või valida, mida importida.
 {{< /changelog >}}

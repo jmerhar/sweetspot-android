@@ -236,6 +236,11 @@
     <string name="sort_direction_descending">Decrescente</string>
     <string name="sort_add_tiebreaker">Aggiungi criterio secondario</string>
     <string name="cd_sort_remove_level">Rimuovi questo criterio di ordinamento</string>
+    <string name="settings_group_title">Raggruppa per tipo</string>
+    <string name="settings_group_description">Raggruppa i pulsanti della schermata iniziale per tipo di elettrodomestico, ciascuno sotto la propria intestazione.</string>
+    <string name="group_off">Disattivato</string>
+    <string name="group_rows">Righe</string>
+    <string name="group_columns">Colonne</string>
     <string name="cd_drag_handle">Trascina per riordinare</string>
     <string name="usage_count_format">Usato %d×</string>
     <string name="usage_never">Mai usato</string>

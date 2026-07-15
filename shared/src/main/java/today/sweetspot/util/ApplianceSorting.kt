@@ -1,11 +1,15 @@
 package today.sweetspot.util
 
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.SortCriterion
 import today.sweetspot.model.SortKey
+
+/** The type key ordinary appliances group under when their icon is unset, matching the display fallback. */
+private const val DEFAULT_TYPE_KEY = "electricity"
 
 /**
  * How the home screen should lay out appliance and vehicle chips, produced by [mergeForHome].
@@ -26,7 +30,41 @@ sealed interface HomeChipLayout {
         val second: List<Appliance>,
         val vehiclesFirst: Boolean,
     ) : HomeChipLayout
+
+    /**
+     * Chips clustered by type into titled [groups], produced when grouping is enabled.
+     *
+     * When vehicles are shown as their own section (EV separate + First/Last), they are lifted out
+     * of [groups] into [vehicles] and drawn as a full-width block before or after the whole grid;
+     * otherwise they fold in as a vehicles [HomeGroup] and [vehicles] is empty.
+     *
+     * @property groups The appliance type groups, in display order.
+     * @property columns Whether to render the groups side by side (else as stacked bands).
+     * @property vehicles The separate vehicle block, or empty when vehicles fold into [groups].
+     * @property vehiclesFirst Whether the [vehicles] block sits above the groups (else below).
+     */
+    data class Grouped(
+        val groups: List<HomeGroup>,
+        val columns: Boolean,
+        val vehicles: List<Appliance> = emptyList(),
+        val vehiclesFirst: Boolean = false,
+    ) : HomeChipLayout
 }
+
+/**
+ * One type group on the grouped home screen: the chips sharing an appliance type, plus enough
+ * identity for the UI to title it (icon + label). The title text is resolved by the presentation
+ * layer, which owns the string resources.
+ *
+ * @property iconId The shared type/icon id the group is keyed by, or null for the vehicles group.
+ * @property isVehicles Whether this is the electric-vehicles group (titled "Vehicles", car icon).
+ * @property items The chips in the group, in the active sort order.
+ */
+data class HomeGroup(
+    val iconId: String?,
+    val isVehicles: Boolean,
+    val items: List<Appliance>,
+)
 
 /**
  * A comparator for one [SortKey]. Values are derived from the appliance and its [usage];
@@ -163,11 +201,18 @@ fun combineUsage(
  * section. A Custom sort never interleaves (there is no manual position for a vehicle), so it
  * falls through to the block path as if Last.
  *
+ * When [grouping] is [ApplianceGrouping.ROWS] or [ApplianceGrouping.COLUMNS] it takes precedence
+ * over how appliances are ordered: chips are clustered by type via [groupForHome]. The EV
+ * [separate] section is still honoured — a First/Last separate block is lifted above/below the
+ * grid — while [position] otherwise only decides that block's side. [ApplianceGrouping.NONE] uses
+ * the flat/sectioned placement below.
+ *
  * @param all All appliances, vehicles included.
  * @param sort The active appliance ordering.
  * @param usage Combined tap statistics.
  * @param position Where vehicles go relative to appliances.
  * @param separate Whether a First/Last vehicle block is drawn as its own section.
+ * @param grouping Whether and how to group chips by type.
  * @return The chip layout to render.
  */
 fun mergeForHome(
@@ -176,7 +221,11 @@ fun mergeForHome(
     usage: Map<String, ApplianceUsage>,
     position: EvPosition,
     separate: Boolean,
+    grouping: ApplianceGrouping = ApplianceGrouping.NONE,
 ): HomeChipLayout {
+    if (grouping != ApplianceGrouping.NONE) {
+        return groupForHome(all, sort, usage, grouping == ApplianceGrouping.COLUMNS, position, separate)
+    }
     if (position == EvPosition.INTERLEAVED && !sort.isCustom) {
         return HomeChipLayout.Flat(sortAppliances(all, sort, usage))
     }
@@ -193,3 +242,58 @@ fun mergeForHome(
         HomeChipLayout.Flat(if (vehiclesFirst) vehicles + apps else apps + vehicles)
     }
 }
+
+/**
+ * Clusters [all] appliances into [HomeGroup]s by type for the grouped home layout.
+ *
+ * Everything is first ordered by the active [sort] (a single pass, so within-group order matches
+ * what a flat layout would show), then bucketed by type key preserving first appearance — so the
+ * group order follows the sort too (e.g. Name-sorted groups appear in order of their first item).
+ * Ordinary appliances group by their icon id, treating an unset icon as [DEFAULT_TYPE_KEY] to
+ * match the display fallback.
+ *
+ * Vehicles honour the EV section preference: with [separate] and a First/Last [position] they are
+ * lifted out into a name-ordered block placed above ([EvPosition.FIRST]) or below the grid;
+ * otherwise they fold in as a single "Vehicles" group regardless of their (car) icon.
+ *
+ * @param all All appliances, vehicles included.
+ * @param sort The active appliance ordering.
+ * @param usage Combined tap statistics.
+ * @param columns Whether the groups should render side by side.
+ * @param position The EV placement (decides the separate block's side).
+ * @param separate Whether vehicles form their own section rather than folding into a group.
+ * @return A [HomeChipLayout.Grouped] (with no empty groups; empty input yields no groups).
+ */
+fun groupForHome(
+    all: List<Appliance>,
+    sort: ApplianceSort,
+    usage: Map<String, ApplianceUsage>,
+    columns: Boolean,
+    position: EvPosition = EvPosition.INTERLEAVED,
+    separate: Boolean = false,
+): HomeChipLayout.Grouped {
+    // A separate section only makes sense with a First/Last side (Interleaved has no block).
+    val separateEvs = separate && position != EvPosition.INTERLEAVED
+    val toGroup = if (separateEvs) all.filterNot { it.isEv } else all
+    val buckets = LinkedHashMap<String, MutableList<Appliance>>()
+    for (appliance in sortAppliances(toGroup, sort, usage)) {
+        val key = if (appliance.isEv) EV_GROUP_KEY else (appliance.icon ?: DEFAULT_TYPE_KEY)
+        buckets.getOrPut(key) { mutableListOf() }.add(appliance)
+    }
+    val groups = buckets.map { (key, items) ->
+        HomeGroup(
+            iconId = if (key == EV_GROUP_KEY) null else key,
+            isVehicles = key == EV_GROUP_KEY,
+            items = items,
+        )
+    }
+    val vehicles = if (separateEvs) {
+        all.filter { it.isEv }.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name })
+    } else {
+        emptyList()
+    }
+    return HomeChipLayout.Grouped(groups, columns, vehicles, vehiclesFirst = position == EvPosition.FIRST)
+}
+
+/** Bucket key under which electric vehicles collapse into a single "Vehicles" group. */
+private const val EV_GROUP_KEY = " ev"

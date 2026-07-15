@@ -234,6 +234,11 @@
     <string name="sort_direction_descending">Φθίνουσα</string>
     <string name="sort_add_tiebreaker">Προσθήκη κριτηρίου</string>
     <string name="cd_sort_remove_level">Αφαίρεση αυτού του κριτηρίου ταξινόμησης</string>
+    <string name="settings_group_title">Ομαδοποίηση κατά τύπο</string>
+    <string name="settings_group_description">Ομαδοποιήστε τα κουμπιά της αρχικής οθόνης ανά τύπο συσκευής, το καθένα κάτω από τη δική του επικεφαλίδα.</string>
+    <string name="group_off">Ανενεργό</string>
+    <string name="group_rows">Γραμμές</string>
+    <string name="group_columns">Στήλες</string>
     <string name="cd_drag_handle">Σύρετε για αναδιάταξη</string>
     <string name="usage_count_format">Χρήσεις %d×</string>
     <string name="usage_never">Καμία χρήση</string>

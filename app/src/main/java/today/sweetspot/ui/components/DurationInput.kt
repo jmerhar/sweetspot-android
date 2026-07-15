@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,7 @@ import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -33,8 +35,14 @@ import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.applianceIconFor
+import today.sweetspot.model.applianceIcons
+import today.sweetspot.shared.R as SharedR
 import today.sweetspot.util.HomeChipLayout
+import today.sweetspot.util.HomeGroup
 import today.sweetspot.util.formatDuration
+
+/** Maximum number of type columns shown side by side before wrapping to a new row of columns. */
+private const val MAX_GROUP_COLUMNS = 3
 
 private data class QuickDuration(val hours: Int, val minutes: Int)
 
@@ -93,15 +101,7 @@ fun DurationInput(
                     ApplianceChipFlow(layout.items, onApplianceTap)
                     Spacer(modifier = Modifier.height(4.dp))
                 } else {
-                    TextButton(onClick = onAddAppliancesTap) {
-                        Icon(
-                            imageVector = Icons.Outlined.Add,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(stringResource(R.string.main_add_appliances))
-                    }
+                    AddAppliancesButton(onAddAppliancesTap)
                 }
                 is HomeChipLayout.Sectioned -> {
                     val firstLabel = if (layout.vehiclesFirst) R.string.home_section_vehicles else R.string.home_section_appliances
@@ -111,6 +111,12 @@ fun DurationInput(
                     Spacer(modifier = Modifier.height(8.dp))
                     HomeSectionLabel(stringResource(secondLabel))
                     ApplianceChipFlow(layout.second, onApplianceTap)
+                    Spacer(modifier = Modifier.height(4.dp))
+                }
+                is HomeChipLayout.Grouped -> if (layout.groups.isEmpty() && layout.vehicles.isEmpty()) {
+                    AddAppliancesButton(onAddAppliancesTap)
+                } else {
+                    GroupedAppliances(layout, onApplianceTap)
                     Spacer(modifier = Modifier.height(4.dp))
                 }
             }
@@ -185,23 +191,133 @@ private fun ApplianceChipFlow(appliances: List<Appliance>, onApplianceTap: (Appl
         modifier = Modifier.fillMaxWidth()
     ) {
         appliances.forEach { appliance ->
-            AssistChip(
-                onClick = { onApplianceTap(appliance) },
-                label = {
-                    Text(
-                        text = appliance.name,
-                        modifier = Modifier.padding(vertical = 4.dp)
-                    )
-                },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(applianceIconFor(appliance)),
-                        contentDescription = null,
-                        modifier = Modifier.size(AssistChipDefaults.IconSize)
-                    )
-                }
+            ApplianceChip(appliance, onApplianceTap)
+        }
+    }
+}
+
+/** A single appliance chip: type icon + name, running its duration on tap. */
+@Composable
+private fun ApplianceChip(
+    appliance: Appliance,
+    onApplianceTap: (Appliance) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AssistChip(
+        onClick = { onApplianceTap(appliance) },
+        modifier = modifier,
+        label = {
+            Text(
+                text = appliance.name,
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+        },
+        leadingIcon = {
+            Icon(
+                painter = painterResource(applianceIconFor(appliance)),
+                contentDescription = null,
+                modifier = Modifier.size(AssistChipDefaults.IconSize)
             )
         }
+    )
+}
+
+/**
+ * Chips grouped by type. In row mode each group is a full-width band (header + wrapping chips);
+ * in column mode groups sit side by side, capped at [MAX_GROUP_COLUMNS] and wrapping to further
+ * rows of columns, with the chips in each column stacked vertically.
+ */
+@Composable
+private fun GroupedAppliances(layout: HomeChipLayout.Grouped, onApplianceTap: (Appliance) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+        if (layout.vehicles.isNotEmpty() && layout.vehiclesFirst) {
+            VehicleBlock(layout.vehicles, onApplianceTap)
+        }
+        if (layout.groups.isNotEmpty()) {
+            if (layout.columns) GroupColumns(layout.groups, onApplianceTap)
+            else GroupRows(layout.groups, onApplianceTap)
+        }
+        if (layout.vehicles.isNotEmpty() && !layout.vehiclesFirst) {
+            VehicleBlock(layout.vehicles, onApplianceTap)
+        }
+    }
+}
+
+/** Type groups laid out side by side, capped at [MAX_GROUP_COLUMNS] and wrapping to further rows. */
+@Composable
+private fun GroupColumns(groups: List<HomeGroup>, onApplianceTap: (Appliance) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+        groups.chunked(MAX_GROUP_COLUMNS).forEach { rowGroups ->
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                rowGroups.forEach { group ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        HomeGroupHeader(group)
+                        group.items.forEach { appliance ->
+                            ApplianceChip(appliance, onApplianceTap, Modifier.fillMaxWidth())
+                        }
+                    }
+                }
+                // Keep the last (partial) row's columns the same width as full rows.
+                repeat(MAX_GROUP_COLUMNS - rowGroups.size) {
+                    Spacer(modifier = Modifier.weight(1f))
+                }
+            }
+        }
+    }
+}
+
+/** Type groups stacked as full-width bands (header + wrapping chips). */
+@Composable
+private fun GroupRows(groups: List<HomeGroup>, onApplianceTap: (Appliance) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
+        groups.forEach { group ->
+            Column {
+                HomeGroupHeader(group)
+                ApplianceChipFlow(group.items, onApplianceTap)
+            }
+        }
+    }
+}
+
+/** The separate vehicles block drawn above or below the type grid: a "Vehicles" label + chips. */
+@Composable
+private fun VehicleBlock(vehicles: List<Appliance>, onApplianceTap: (Appliance) -> Unit) {
+    Column {
+        HomeSectionLabel(stringResource(R.string.home_section_vehicles))
+        ApplianceChipFlow(vehicles, onApplianceTap)
+    }
+}
+
+/** Caption for a type group: the group's icon plus its type name (or "Vehicles"). */
+@Composable
+private fun HomeGroupHeader(group: HomeGroup) {
+    val title = when {
+        group.isVehicles -> stringResource(R.string.home_section_vehicles)
+        else -> applianceIcons.firstOrNull { it.id == group.iconId }
+            ?.let { stringResource(it.labelRes) } ?: stringResource(SharedR.string.icon_other)
+    }
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(bottom = 2.dp)
+    ) {
+        Icon(
+            painter = painterResource(applianceIconFor(group.items.first())),
+            contentDescription = null,
+            modifier = Modifier.size(16.dp),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 
@@ -214,4 +330,18 @@ private fun HomeSectionLabel(text: String) {
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(bottom = 4.dp)
     )
+}
+
+/** The "add appliances" call-to-action shown when there are no appliance chips yet. */
+@Composable
+private fun AddAppliancesButton(onClick: () -> Unit) {
+    TextButton(onClick = onClick) {
+        Icon(
+            imageVector = Icons.Outlined.Add,
+            contentDescription = null,
+            modifier = Modifier.size(18.dp)
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(stringResource(R.string.main_add_appliances))
+    }
 }

@@ -234,6 +234,11 @@
     <string name="sort_direction_descending">Низходящо</string>
     <string name="sort_add_tiebreaker">Добавяне на критерий</string>
     <string name="cd_sort_remove_level">Премахване на това ниво на сортиране</string>
+    <string name="settings_group_title">Групиране по тип</string>
+    <string name="settings_group_description">Групирайте бутоните на началния екран по вид уред, всеки под собствено заглавие.</string>
+    <string name="group_off">Изкл.</string>
+    <string name="group_rows">Редове</string>
+    <string name="group_columns">Колони</string>
     <string name="cd_drag_handle">Плъзнете за пренареждане</string>
     <string name="usage_count_format">Използван %d×</string>
     <string name="usage_never">Никога не е използван</string>

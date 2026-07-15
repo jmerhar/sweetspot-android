@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.5" date="15 lipca 2026" >}}
+- Grupuj przyciski urządzeń według typu — w wiersze lub kolumny — aby programy tego samego urządzenia były razem. Pojazdy mogą mieć osobną sekcję u góry lub u dołu.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14 lipca 2026" >}}
 - Udostępnij swoją konfigurację: skopiuj urządzenia, ich kolejność i ustawienia ładowania auta elektrycznego na inny telefon, skanując kod QR lub wysyłając link — bez konta, działa offline. Drugi telefon pokazuje podgląd, w którym możesz dodać, zastąpić lub wybrać, co zaimportować.
 {{< /changelog >}}

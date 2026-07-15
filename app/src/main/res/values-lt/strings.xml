@@ -246,6 +246,11 @@
     <string name="sort_direction_descending">Mažėjančiai</string>
     <string name="sort_add_tiebreaker">Pridėti kriterijų</string>
     <string name="cd_sort_remove_level">Pašalinti šį rikiavimo lygį</string>
+    <string name="settings_group_title">Grupuoti pagal tipą</string>
+    <string name="settings_group_description">Grupuoti pradžios ekrano mygtukus pagal prietaiso tipą, kiekvieną po savo antrašte.</string>
+    <string name="group_off">Išjungta</string>
+    <string name="group_rows">Eilutės</string>
+    <string name="group_columns">Stulpeliai</string>
     <string name="cd_drag_handle">Vilkite, kad pertvarkytumėte</string>
     <string name="usage_count_format">Naudota %d×</string>
     <string name="usage_never">Niekada nenaudota</string>

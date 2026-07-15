@@ -95,7 +95,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (629 tests)
+./gradlew test                   # Run all unit tests (639 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 

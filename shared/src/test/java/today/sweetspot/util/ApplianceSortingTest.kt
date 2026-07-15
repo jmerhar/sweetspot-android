@@ -5,6 +5,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.EvPosition
@@ -194,6 +195,81 @@ class ApplianceSortingTest {
         val layout = mergeForHome(all, ApplianceSort(), noUsage, EvPosition.INTERLEAVED, separate = false)
         // Custom keeps appliance order (b, a); interleaved is undefined under custom → vehicles last.
         assertEquals(listOf("b", "a", "car"), ids((layout as HomeChipLayout.Flat).items))
+    }
+
+    // --- Grouping by type ---
+
+    private val grouped = listOf(
+        app("d1", "eco", icon = "dishwasher"),
+        app("w1", "cotton", icon = "washing_machine"),
+        app("d2", "quick", icon = "dishwasher"),
+        ev("car", "Kia"),
+        app("w2", "darks", icon = "washing_machine"),
+    )
+
+    @Test
+    fun `groupForHome buckets by type, group and within-group order follow the sort`() {
+        val layout = groupForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, columns = false)
+        // Name order is cotton, darks, eco, Kia, quick → washing_machine seen first, then dishwasher, then EV.
+        assertEquals(listOf("washing_machine", "dishwasher", null), layout.groups.map { it.iconId })
+        assertEquals(listOf("w1", "w2"), ids(layout.groups[0].items))
+        assertEquals(listOf("d1", "d2"), ids(layout.groups[1].items))
+    }
+
+    @Test
+    fun `groupForHome folds vehicles into a group when not a separate section`() {
+        val layout = groupForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, columns = false)
+        val evGroup = layout.groups.single { it.isVehicles }
+        assertEquals(null, evGroup.iconId)
+        assertEquals(listOf("car"), ids(evGroup.items))
+        assertTrue(layout.vehicles.isEmpty()) // no separate block
+    }
+
+    @Test
+    fun `groupForHome lifts a separate EV section into a block, placed by position`() {
+        val below = groupForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, columns = true, EvPosition.LAST, separate = true)
+        // Vehicles are out of the type groups and in the block, below the grid.
+        assertFalse(below.groups.any { it.isVehicles })
+        assertEquals(listOf("dishwasher", "washing_machine"), below.groups.map { it.iconId }.sortedBy { it })
+        assertEquals(listOf("car"), ids(below.vehicles))
+        assertFalse(below.vehiclesFirst)
+        // FIRST places the same block above the grid.
+        val above = groupForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, columns = true, EvPosition.FIRST, separate = true)
+        assertTrue(above.vehiclesFirst)
+        assertEquals(listOf("car"), ids(above.vehicles))
+    }
+
+    @Test
+    fun `groupForHome ignores a separate section under Interleaved (no block side)`() {
+        val layout = groupForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, columns = true, EvPosition.INTERLEAVED, separate = true)
+        assertTrue(layout.vehicles.isEmpty())
+        assertTrue(layout.groups.any { it.isVehicles }) // folds in instead
+    }
+
+    @Test
+    fun `groupForHome treats an unset icon as the electricity type`() {
+        val layout = groupForHome(listOf(app("x", "X", icon = null)), sort(SortCriterion(SortKey.NAME)), noUsage, columns = false)
+        assertEquals(listOf("electricity"), layout.groups.map { it.iconId })
+    }
+
+    @Test
+    fun `groupForHome on empty input yields no groups`() {
+        assertTrue(groupForHome(emptyList(), ApplianceSort(), noUsage, columns = true).groups.isEmpty())
+    }
+
+    @Test
+    fun `mergeForHome ROWS and COLUMNS group by type and set the columns flag`() {
+        val rows = mergeForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, EvPosition.FIRST, separate = true, ApplianceGrouping.ROWS)
+        assertTrue(rows is HomeChipLayout.Grouped)
+        assertFalse((rows as HomeChipLayout.Grouped).columns)
+        val cols = mergeForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, EvPosition.FIRST, separate = true, ApplianceGrouping.COLUMNS)
+        assertTrue((cols as HomeChipLayout.Grouped).columns)
+    }
+
+    @Test
+    fun `mergeForHome NONE keeps the flat or sectioned placement`() {
+        val layout = mergeForHome(grouped, sort(SortCriterion(SortKey.NAME)), noUsage, EvPosition.INTERLEAVED, separate = false, ApplianceGrouping.NONE)
+        assertFalse(layout is HomeChipLayout.Grouped)
     }
 
     // --- Sort-control edit helpers ---

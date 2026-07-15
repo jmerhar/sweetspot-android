@@ -232,6 +232,11 @@
     <string name="sort_direction_descending">Fallande</string>
     <string name="sort_add_tiebreaker">Lägg till sekundär sortering</string>
     <string name="cd_sort_remove_level">Ta bort denna sorteringsnivå</string>
+    <string name="settings_group_title">Gruppera efter typ</string>
+    <string name="settings_group_description">Gruppera knapparna på startskärmen efter apparattyp, var och en under en egen rubrik.</string>
+    <string name="group_off">Av</string>
+    <string name="group_rows">Rader</string>
+    <string name="group_columns">Kolumner</string>
     <string name="cd_drag_handle">Dra för att ändra ordning</string>
     <string name="usage_count_format">Använd %d×</string>
     <string name="usage_never">Aldrig använd</string>

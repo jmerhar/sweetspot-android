@@ -3,6 +3,10 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.5" date="15 de julho de 2026" >}}
+- Agrupe os botões dos eletrodomésticos por tipo — em linhas ou colunas — para que os programas do mesmo aparelho fiquem juntos. Os veículos podem ter a sua própria secção acima ou abaixo.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14 de julho de 2026" >}}
 - Partilhe a sua configuração: copie os eletrodomésticos, a sua ordem e as definições de carregamento de VE para outro telemóvel lendo um código QR ou enviando uma ligação — sem conta, funciona offline. O outro telemóvel mostra uma pré-visualização onde pode adicionar, substituir ou escolher o que importar.
 {{< /changelog >}}

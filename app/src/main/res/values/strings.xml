@@ -232,6 +232,11 @@
     <string name="sort_direction_descending">Descending</string>
     <string name="sort_add_tiebreaker">Add tie-breaker</string>
     <string name="cd_sort_remove_level">Remove this sort level</string>
+    <string name="settings_group_title">Group by type</string>
+    <string name="settings_group_description">Cluster home-screen buttons by appliance type, each under its own heading.</string>
+    <string name="group_off">Off</string>
+    <string name="group_rows">Rows</string>
+    <string name="group_columns">Columns</string>
     <string name="cd_drag_handle">Drag to reorder</string>
     <string name="usage_count_format">Used %d×</string>
     <string name="usage_never">Never used</string>

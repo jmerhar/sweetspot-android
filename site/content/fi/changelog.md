@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.5" date="15. heinäkuuta 2026" >}}
+- Ryhmittele laitepainikkeet tyypin mukaan — riveiksi tai sarakkeiksi — niin että saman laitteen ohjelmat pysyvät yhdessä. Ajoneuvoilla voi olla oma osio ylä- tai alapuolella.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14. heinäkuuta 2026" >}}
 - Jaa asetuksesi: kopioi laitteesi, niiden järjestys ja sähköauton latausasetukset toiseen puhelimeen skannaamalla QR-koodi tai lähettämällä linkki — ei tiliä, toimii offline-tilassa. Toinen puhelin näyttää esikatselun, jossa voit lisätä, korvata tai valita, mitä tuodaan.
 {{< /changelog >}}

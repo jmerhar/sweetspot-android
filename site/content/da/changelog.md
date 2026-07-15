@@ -3,6 +3,10 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="6.5" date="15. juli 2026" >}}
+- Gruppér apparatknapperne efter type — som rækker eller kolonner — så programmer til samme apparat holdes samlet. Køretøjer kan stadig have deres egen sektion øverst eller nederst.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14. juli 2026" >}}
 - Del din opsætning: kopiér dine apparater, deres rækkefølge og indstillinger for opladning af elbil til en anden telefon ved at scanne en QR-kode eller sende et link — ingen konto, virker offline. Den anden telefon viser en forhåndsvisning, hvor du kan tilføje, erstatte eller vælge, hvad der skal importeres.
 {{< /changelog >}}

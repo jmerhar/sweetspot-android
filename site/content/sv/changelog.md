@@ -3,6 +3,10 @@ title: "Ändringslogg"
 description: "SweetSpots versionshistorik och versionskommentarer."
 ---
 
+{{< changelog version="6.5" date="15 juli 2026" >}}
+- Gruppera apparatknapparna efter typ – som rader eller kolumner – så att program för samma apparat hålls samlade. Fordon kan ha en egen sektion ovanför eller nedanför.
+{{< /changelog >}}
+
 {{< changelog version="6.4" date="14 juli 2026" >}}
 - Dela din uppsättning: kopiera dina apparater, deras ordning och inställningar för laddning av elbil till en annan telefon genom att skanna en QR-kod eller skicka en länk — inget konto, fungerar offline. Den andra telefonen visar en förhandsgranskning där du kan lägga till, ersätta eller välja vad som ska importeras.
 {{< /changelog >}}

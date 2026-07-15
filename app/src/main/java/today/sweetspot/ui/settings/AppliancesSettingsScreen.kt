@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import today.sweetspot.R
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 
@@ -25,6 +26,8 @@ import today.sweetspot.model.ApplianceUsage
  * @param onSortChanged Called to persist a changed ordering.
  * @param onReorder Called with the reordered non-EV list in Custom mode.
  * @param onResetUsage Called to clear tap-usage history.
+ * @param grouping How home-screen chips are grouped by type.
+ * @param onGroupingChanged Called to persist a changed grouping.
  * @param onBack Called to return to the settings menu.
  */
 @Composable
@@ -38,6 +41,8 @@ internal fun AppliancesSettingsScreen(
     onSortChanged: (ApplianceSort) -> Unit,
     onReorder: (List<Appliance>) -> Unit,
     onResetUsage: () -> Unit,
+    grouping: ApplianceGrouping,
+    onGroupingChanged: (ApplianceGrouping) -> Unit,
     onBack: () -> Unit
 ) {
     var editingAppliance by remember { mutableStateOf<Appliance?>(null) }
@@ -79,7 +84,9 @@ internal fun AppliancesSettingsScreen(
             onAddClick = { showAddDialog = true },
             onSortChanged = onSortChanged,
             onReorder = onReorder,
-            onResetUsage = onResetUsage
+            onResetUsage = onResetUsage,
+            grouping = grouping,
+            onGroupingChanged = onGroupingChanged
         )
     }
 }

@@ -240,6 +240,11 @@
     <string name="sort_direction_descending">Silazno</string>
     <string name="sort_add_tiebreaker">Dodaj sljedeći kriterij</string>
     <string name="cd_sort_remove_level">Ukloni ovu razinu sortiranja</string>
+    <string name="settings_group_title">Grupiraj po vrsti</string>
+    <string name="settings_group_description">Grupirajte gumbe na početnom zaslonu prema vrsti uređaja, svaki pod vlastitim naslovom.</string>
+    <string name="group_off">Isključeno</string>
+    <string name="group_rows">Redovi</string>
+    <string name="group_columns">Stupci</string>
     <string name="cd_drag_handle">Povucite za promjenu redoslijeda</string>
     <string name="usage_count_format">Korišteno %d×</string>
     <string name="usage_never">Nikad korišteno</string>

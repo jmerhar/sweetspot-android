@@ -40,6 +40,7 @@ import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Appliance
+import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.EvPosition
@@ -1885,6 +1886,26 @@ class SweetSpotViewModelTest {
     }
 
     @Test
+    fun `grouping change groups the home layout by type and honours the separate EV section`() {
+        val vm = defaultViewModel()
+        vm.onAddAppliance("eco", 1, 0, "dishwasher")
+        vm.onAddAppliance("cotton", 2, 0, "washing_machine")
+        vm.onAddVehicle("Kia", 60.0, 11.0)
+        vm.onEvPositionChanged(EvPosition.LAST)
+        vm.onEvSeparateChanged(true)
+        vm.onApplianceGroupingChanged(ApplianceGrouping.COLUMNS)
+        val layout = vm.uiState.value.homeLayout
+        assertTrue(layout is HomeChipLayout.Grouped)
+        layout as HomeChipLayout.Grouped
+        assertTrue(layout.columns)
+        // Appliances group by type; the separate EV section is lifted out below the grid.
+        assertEquals(setOf("dishwasher", "washing_machine"), layout.groups.map { it.iconId }.toSet())
+        assertFalse(layout.groups.any { it.isVehicles })
+        assertEquals(listOf("Kia"), layout.vehicles.map { it.name })
+        assertFalse(layout.vehiclesFirst) // LAST → below the columns
+    }
+
+    @Test
     fun `tapping an appliance records usage`() {
         val vm = testViewModel(FakeFetcher(fakePrices(24)))
         vm.onAddAppliance("Wash", 2, 0, "washing_machine")
@@ -1920,6 +1941,7 @@ class SweetSpotViewModelTest {
         evDefaultTargetSoc = 90,
         evPosition = EvPosition.LAST.key,
         evSeparate = true,
+        grouping = ApplianceGrouping.ROWS.key,
     )
 
     @Test
@@ -1986,6 +2008,7 @@ class SweetSpotViewModelTest {
         assertEquals(90, state.evDefaultTargetSoc)
         assertEquals(EvPosition.LAST, state.evPosition)
         assertTrue(state.evSeparate)
+        assertEquals(ApplianceGrouping.ROWS, state.applianceGrouping)
         // Derived views refreshed: the non-EV "Oven" is in the sorted list.
         assertEquals(listOf("Oven"), state.sortedAppliances.map { it.name })
         assertNull(state.importPreview)

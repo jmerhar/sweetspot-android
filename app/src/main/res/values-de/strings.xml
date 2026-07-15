@@ -234,6 +234,11 @@
     <string name="sort_direction_descending">Absteigend</string>
     <string name="sort_add_tiebreaker">Weiteres Kriterium</string>
     <string name="cd_sort_remove_level">Diese Sortierebene entfernen</string>
+    <string name="settings_group_title">Nach Typ gruppieren</string>
+    <string name="settings_group_description">Gruppiert die Schaltflächen auf dem Startbildschirm nach Gerätetyp, jeweils unter einer eigenen Überschrift.</string>
+    <string name="group_off">Aus</string>
+    <string name="group_rows">Zeilen</string>
+    <string name="group_columns">Spalten</string>
     <string name="cd_drag_handle">Zum Umsortieren ziehen</string>
     <string name="usage_count_format">%d× genutzt</string>
     <string name="usage_never">Nie genutzt</string>

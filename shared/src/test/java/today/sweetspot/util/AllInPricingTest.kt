@@ -111,6 +111,25 @@ class AllInPricingTest {
     }
 
     @Test
+    fun `breakdown splits the total into spot plus the fixed components`() {
+        val c = AllInPricing.components(nlTaxes, 0.015)  // energyTax 0.09161×1.21, surcharge 0.015×1.21
+        val total = AllInPricing.marginal(0.15066, nlTaxes, 0.015)
+        val b = AllInPricing.breakdown(total, c)
+        assertEquals(0.15066 * 1.21, b.spot, 1e-9)          // spot = total − fixedTotal, VAT-inclusive
+        assertEquals(c.energyTax, b.energyTax, 1e-9)
+        assertEquals(c.surcharge, b.surcharge, 1e-9)
+        assertEquals(total, b.spot + b.energyTax + b.surcharge, 1e-9)  // parts sum to the total
+    }
+
+    @Test
+    fun `breakdown spot goes negative when the total is below the fixed block`() {
+        val c = AllInPricing.components(nlTaxes, 0.015)
+        val b = AllInPricing.breakdown(0.05, c)  // total below fixedTotal
+        assertEquals(true, b.spot < 0)
+        assertEquals(0.05, b.spot + b.energyTax + b.surcharge, 1e-9)
+    }
+
+    @Test
     fun `spot tip goes negative below the fixed block while the fixed block stays constant`() {
         val c = AllInPricing.components(nlTaxes, 0.015)
         // A negative spot yields a negative VAT-inclusive tip, but the fixed block is unchanged.

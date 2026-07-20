@@ -1,6 +1,8 @@
 package today.sweetspot.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,17 +23,30 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntRect
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupPositionProvider
+import androidx.compose.ui.window.PopupProperties
 import today.sweetspot.R
 import today.sweetspot.charting.BarColors
 import today.sweetspot.model.PriceSlot
@@ -42,6 +57,7 @@ import today.sweetspot.ui.theme.LocalBarSurchargeColor
 import today.sweetspot.ui.theme.LocalBarTaxColor
 import today.sweetspot.util.AllInBarSegments
 import today.sweetspot.util.AllInPricing
+import today.sweetspot.util.ChartGeometry
 import today.sweetspot.util.formatPrice
 import today.sweetspot.util.shortTimeFormatter
 import androidx.compose.ui.tooling.preview.Preview
@@ -131,13 +147,57 @@ fun PriceBarChart(
             .toList()
     }
 
+    // Flat top-to-bottom grid of sub-slot cells (one per rendered sub-bar, `null` for the padding
+    // gaps of a partial first/last hour). Press-and-hold maps a pointer position to a cell here.
+    val flatSlots = remember(prices) {
+        hourlyGroups.flatMap { slots ->
+            val byMinute = slots.associateBy { it.time.minute }
+            val dur = slots.first().durationMinutes
+            (0 until slotsPerHour).map { i -> byMinute[i * dur] }
+        }
+    }
+    val present = remember(flatSlots) { flatSlots.map { it != null } }
+    var rowsHeightPx by remember { mutableStateOf(0) }
+    var selectedCell by remember(prices) { mutableStateOf<Int?>(null) }
+    var pointerY by remember { mutableStateOf(0f) }
+    val selectionRowColor = MaterialTheme.colorScheme.secondaryContainer
+
     Column(modifier = modifier.fillMaxWidth()) {
-        hourlyGroups.forEach { slots ->
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onSizeChanged { rowsHeightPx = it.height }
+                    .pointerInput(prices) {
+                        // Long-press first (not an immediate drag), so a plain vertical drag still
+                        // scrolls the results screen while a hold-then-drag scrubs the chart.
+                        detectDragGesturesAfterLongPress(
+                            onDragStart = { offset ->
+                                pointerY = offset.y
+                                selectedCell = ChartGeometry.selectedCell(offset.y, rowsHeightPx, present)
+                            },
+                            onDrag = { change, _ ->
+                                change.consume()
+                                pointerY = change.position.y
+                                selectedCell = ChartGeometry.selectedCell(change.position.y, rowsHeightPx, present)
+                            },
+                            onDragEnd = { selectedCell = null },
+                            onDragCancel = { selectedCell = null }
+                        )
+                    }
+            ) {
+        hourlyGroups.forEachIndexed { hourIndex, slots ->
             val hourTime = slots.first().time.truncatedTo(ChronoUnit.HOURS)
             val avgPrice = slots.map { it.price }.average()
             val anyOptimal = optimalStart != null && optimalEnd != null &&
                 slots.any { it.overlapsWindow(optimalStart, optimalEnd) }
-            val rowBackground = if (anyOptimal) highlightColor else Color.Transparent
+            // The hour holding the pressed sub-slot gets a stronger tint than the cheapest-window tint.
+            val rowSelected = selectedCell?.let { it / slotsPerHour == hourIndex } == true
+            val rowBackground = when {
+                rowSelected -> selectionRowColor
+                anyOptimal -> highlightColor
+                else -> Color.Transparent
+            }
             val timeText = hourTime.format(shortTimeFormatter)
             val priceText = formatPrice(avgPrice, 3)
             val rowDescription = if (anyOptimal) "$timeText, $priceText, $cheapestWindowCd" else "$timeText, $priceText"
@@ -303,6 +363,31 @@ fun PriceBarChart(
                 )
             }
         }
+            }
+            // Press-and-hold tooltip: the pressed sub-slot's time and price (full breakdown when
+            // all-in is on). Rendered in a Popup so it isn't clipped by the results screen's scroll,
+            // and positioned relative to the finger (a few hours above it, flipping below near the
+            // top of the screen) so it stays visible however the chart is scrolled.
+            selectedCell?.let { cell ->
+                flatSlots.getOrNull(cell)?.let { slot ->
+                    // Gap ≈ 3.5 hour-rows above the finger.
+                    val gapPx = if (hourlyGroups.isNotEmpty()) {
+                        3.5f * (rowsHeightPx.toFloat() / hourlyGroups.size)
+                    } else 0f
+                    Popup(
+                        popupPositionProvider = TooltipPositionProvider(pointerY, gapPx),
+                        properties = PopupProperties(focusable = false, clippingEnabled = true)
+                    ) {
+                        // Half the screen width so the highlighted bars stay visible on either side.
+                        ChartTooltip(
+                            slot = slot,
+                            components = components,
+                            modifier = Modifier.fillMaxWidth(0.5f)
+                        )
+                    }
+                }
+            }
+        }
 
         if (stackComponents != null) {
             Spacer(modifier = Modifier.height(8.dp))
@@ -370,6 +455,92 @@ private fun LegendItem(color: Color, label: String) {
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
+    }
+}
+
+/**
+ * Positions the press-and-hold tooltip [Popup] relative to the finger: a [gapPx] gap above the
+ * finger when it fits, flipping below when the finger is near the top of the window, and centred
+ * horizontally over the chart. [fingerYInAnchor] is the finger's y within the chart (the anchor).
+ */
+private class TooltipPositionProvider(
+    private val fingerYInAnchor: Float,
+    private val gapPx: Float
+) : PopupPositionProvider {
+    override fun calculatePosition(
+        anchorBounds: IntRect,
+        windowSize: IntSize,
+        layoutDirection: LayoutDirection,
+        popupContentSize: IntSize
+    ): IntOffset {
+        val fingerWindowY = anchorBounds.top + fingerYInAnchor
+        val y = ChartGeometry.tooltipTopY(fingerWindowY, gapPx, popupContentSize.height, windowSize.height)
+        // Centre on the window (the chart spans the full width, so this centres it over the chart).
+        val x = ((windowSize.width - popupContentSize.width) / 2).coerceAtLeast(0)
+        return IntOffset(x, y)
+    }
+}
+
+/**
+ * Press-and-hold tooltip: the pressed slot's time range and price. When [components] is non-null
+ * (all-in on) it lists the VAT-inclusive spot/energy-tax/surcharge breakdown; otherwise it shows
+ * just the (spot) price.
+ */
+@Composable
+private fun ChartTooltip(
+    slot: PriceSlot,
+    components: AllInPricing.AllInComponents?,
+    modifier: Modifier = Modifier
+) {
+    val end = slot.time.plusMinutes(slot.durationMinutes.toLong())
+    val timeRange = "${slot.time.format(shortTimeFormatter)} – ${end.format(shortTimeFormatter)}"
+    Surface(
+        modifier = modifier,
+        shape = RoundedCornerShape(8.dp),
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        shadowElevation = 4.dp
+    ) {
+        Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
+            Text(text = timeRange, style = MaterialTheme.typography.labelMedium)
+            Text(
+                text = "${formatPrice(slot.price, 3)} ${stringResource(R.string.result_per_kwh)}",
+                style = MaterialTheme.typography.titleMedium
+            )
+            if (components != null) {
+                val breakdown = AllInPricing.breakdown(slot.price, components)
+                Spacer(modifier = Modifier.height(4.dp))
+                TooltipBreakdownLine(stringResource(R.string.chart_legend_spot), breakdown.spot)
+                TooltipBreakdownLine(stringResource(R.string.chart_legend_energy_tax), breakdown.energyTax)
+                TooltipBreakdownLine(stringResource(R.string.chart_legend_surcharge), breakdown.surcharge)
+            }
+        }
+    }
+}
+
+/** One "component … amount" line in the [ChartTooltip] breakdown. */
+@Composable
+private fun TooltipBreakdownLine(label: String, value: Double) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Text(text = label, style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = formatPrice(value, 3), style = MaterialTheme.typography.bodySmall)
+    }
+}
+
+@Preview(showBackground = true, name = "Chart tooltip (all-in and spot-only)")
+@Composable
+private fun ChartTooltipPreview() {
+    val base = ZonedDateTime.now().withHour(10).withMinute(45).withSecond(0).withNano(0)
+    today.sweetspot.ui.theme.SweetSpotTheme {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(16.dp)) {
+            ChartTooltip(
+                slot = PriceSlot(base, 0.176, 15),
+                components = AllInPricing.AllInComponents(energyTax = 0.111, surcharge = 0.018)
+            )
+            ChartTooltip(slot = PriceSlot(base, 0.052, 60), components = null)
+        }
     }
 }
 

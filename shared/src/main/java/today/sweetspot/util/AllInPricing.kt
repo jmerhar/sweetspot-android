@@ -38,6 +38,36 @@ object AllInPricing {
     }
 
     /**
+     * An all-in price split into its VAT-inclusive parts for display (e.g. a chart tooltip).
+     *
+     * The three parts sum to the all-in total: `spot + energyTax + surcharge == total`.
+     *
+     * @property spot Spot portion (VAT-inclusive); negative when the market price is below zero.
+     * @property energyTax Per-kWh taxes (VAT-inclusive).
+     * @property surcharge Supplier surcharge (VAT-inclusive).
+     */
+    data class PriceBreakdown(
+        val spot: Double,
+        val energyTax: Double,
+        val surcharge: Double,
+    )
+
+    /**
+     * Splits an all-in [total] into its display components using the fixed [components]. The spot
+     * part is whatever remains after the constant fixed block (`total − fixedTotal`).
+     *
+     * @param total The all-in price for a slot.
+     * @param components The VAT-inclusive fixed components.
+     * @return The spot/energy-tax/surcharge breakdown summing to [total].
+     */
+    fun breakdown(total: Double, components: AllInComponents): PriceBreakdown =
+        PriceBreakdown(
+            spot = total - components.fixedTotal,
+            energyTax = components.energyTax,
+            surcharge = components.surcharge,
+        )
+
+    /**
      * Decomposes the fixed (spot-independent) part of the all-in price into its VAT-inclusive
      * components, using the same per-kWh/percentage folding as [marginal].
      *

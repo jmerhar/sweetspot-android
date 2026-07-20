@@ -1179,7 +1179,10 @@ class SweetSpotViewModelTest {
         assertEquals(3, state.durationHours)
         assertEquals(16, state.durationMinutes)
         assertNotNull(state.result)
-        assertTrue((state.resultLabel as UiText.Raw).value.contains("→"))
+        // Header = "<vehicle> · 20→80% · <charging time>": SoC range plus the localised duration.
+        val label = state.resultLabel as UiText.Composite
+        assertTrue((label.parts[0] as UiText.Raw).value.contains("20→80%"))
+        assertEquals(UiText.duration(3, 16), label.parts[1])
         viewModel.onClearResult()
     }
 

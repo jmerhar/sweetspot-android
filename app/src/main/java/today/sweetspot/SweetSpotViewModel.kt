@@ -804,7 +804,14 @@ class SweetSpotViewModel @JvmOverloads constructor(
         settingsRepository.setEvLastCurrentSoc(currentSoc)
         settingsRepository.recordApplianceUsage(appliance.id, nowMs())
 
-        val label = UiText.Raw("${appliance.name} · ${currentSoc}→${targetSoc}%")
+        // Header shows the vehicle, the SoC range, and the localised charging time, e.g.
+        // "Tesla · 20→80% · 3h 20m" — the duration isn't visible anywhere else for EV charging.
+        val label = UiText.Composite(
+            listOf(
+                UiText.Raw("${appliance.name} · ${currentSoc}→${targetSoc}% · "),
+                UiText.duration(totalMinutes / 60, totalMinutes % 60)
+            )
+        )
 
         _uiState.update {
             it.copy(

@@ -217,6 +217,11 @@
     <string name="result_disclaimer_power_all_in">Kostnader visas för en last på %s kW, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverantör: %s</string>
     <string name="result_all_in_stale">Tariffuppgifterna är äldre än 14 dagar och kan vara inaktuella.</string>
+    <string name="chart_legend_energy_tax">Energiskatt</string>
+    <string name="chart_legend_surcharge">Påslag</string>
+    <string name="chart_legend_spot">Spotpris</string>
+    <string name="chart_legend_spot_negative">Negativt spotpris</string>
+    <string name="chart_legend_vat_note">Alla priser inkl. moms.</string>
 
     <!-- Appliance ordering -->
     <string name="settings_sort_title">Sortering</string>

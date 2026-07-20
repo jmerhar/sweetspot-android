@@ -221,6 +221,11 @@
     <string name="result_disclaimer_power_all_in">Os custos apresentados referem-se a uma carga de %s kW, ao preço total estimado (preço de mercado + imposto sobre energia + margem do fornecedor + IVA). Não incluem tarifas de rede nem encargos fixos mensais. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFornecedor: %s</string>
     <string name="result_all_in_stale">Os dados tarifários têm mais de 14 dias e podem estar desatualizados.</string>
+    <string name="chart_legend_energy_tax">Imposto sobre energia</string>
+    <string name="chart_legend_surcharge">Margem</string>
+    <string name="chart_legend_spot">Preço de mercado</string>
+    <string name="chart_legend_spot_negative">Preço de mercado negativo</string>
+    <string name="chart_legend_vat_note">Todos os preços incluem IVA.</string>
 
     <!-- Sorting -->
     <string name="settings_sort_title">Ordem</string>

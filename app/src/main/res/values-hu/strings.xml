@@ -217,6 +217,11 @@
     <string name="result_disclaimer_power_all_in">A költségek %s kW terhelésre vonatkoznak, a becsült teljes áron (tőzsdei ár + energiaadó + szolgáltatói díj + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
     <string name="result_all_in_supplier">\nSzolgáltató: %s</string>
     <string name="result_all_in_stale">A tarifaadatok több mint 14 naposak, és elavultak lehetnek.</string>
+    <string name="chart_legend_energy_tax">Energiaadó</string>
+    <string name="chart_legend_surcharge">Felár</string>
+    <string name="chart_legend_spot">Tőzsdei ár</string>
+    <string name="chart_legend_spot_negative">Negatív tőzsdei ár</string>
+    <string name="chart_legend_vat_note">Minden ár tartalmazza az ÁFA-t.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Sorrend</string>

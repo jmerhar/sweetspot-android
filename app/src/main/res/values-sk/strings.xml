@@ -231,6 +231,11 @@
     <string name="result_disclaimer_power_all_in">Náklady sú uvedené pre záťaž %s kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDodávateľ: %s</string>
     <string name="result_all_in_stale">Údaje o tarifách sú staršie ako 14 dní a môžu byť neaktuálne.</string>
+    <string name="chart_legend_energy_tax">Daň z energie</string>
+    <string name="chart_legend_surcharge">Prirážka</string>
+    <string name="chart_legend_spot">Spotová cena</string>
+    <string name="chart_legend_spot_negative">Záporná spotová cena</string>
+    <string name="chart_legend_vat_note">Všetky ceny vrátane DPH.</string>
 
     <!-- Sorting -->
     <string name="settings_sort_title">Poradie</string>

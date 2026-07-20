@@ -219,6 +219,11 @@
     <string name="result_disclaimer_power_all_in">Показаните разходи са за %s kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
     <string name="result_all_in_supplier">\nДоставчик: %s</string>
     <string name="result_all_in_stale">Данните за тарифите са на повече от 14 дни и може да са остарели.</string>
+    <string name="chart_legend_energy_tax">Данък върху енергията</string>
+    <string name="chart_legend_surcharge">Надценка</string>
+    <string name="chart_legend_spot">Борсова цена</string>
+    <string name="chart_legend_spot_negative">Отрицателна борсова цена</string>
+    <string name="chart_legend_vat_note">Всички цени включват ДДС.</string>
 
     <!-- Sorting & ordering -->
     <string name="settings_sort_title">Подредба</string>

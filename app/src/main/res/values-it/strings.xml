@@ -221,6 +221,11 @@
     <string name="result_disclaimer_power_all_in">I costi indicati sono per un carico di %s kW, al prezzo totale stimato (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFornitore: %s</string>
     <string name="result_all_in_stale">I dati tariffari risalgono a più di 14 giorni fa e potrebbero non essere aggiornati.</string>
+    <string name="chart_legend_energy_tax">Accise sull\'energia</string>
+    <string name="chart_legend_surcharge">Sovrapprezzo</string>
+    <string name="chart_legend_spot">Prezzo spot</string>
+    <string name="chart_legend_spot_negative">Prezzo spot negativo</string>
+    <string name="chart_legend_vat_note">Tutti i prezzi includono l\'IVA.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Ordine</string>

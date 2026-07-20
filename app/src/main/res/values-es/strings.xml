@@ -222,6 +222,11 @@
     <string name="result_disclaimer_power_all_in">Los costes se muestran para una carga de %s kW, al precio total estimado (precio spot + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
     <string name="result_all_in_supplier">\nProveedor: %s</string>
     <string name="result_all_in_stale">Los datos de tarifas tienen más de 14 días y pueden estar desactualizados.</string>
+    <string name="chart_legend_energy_tax">Impuesto energético</string>
+    <string name="chart_legend_surcharge">Recargo</string>
+    <string name="chart_legend_spot">Precio spot</string>
+    <string name="chart_legend_spot_negative">Precio spot negativo</string>
+    <string name="chart_legend_vat_note">Todos los precios incluyen IVA.</string>
 
     <!-- Sorting -->
     <string name="settings_sort_title">Orden</string>

@@ -217,6 +217,11 @@
     <string name="result_disclaimer_power_all_in">Трошоците се прикажани за оптоварување од %s kW, по проценетата крајна цена (спот + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
     <string name="result_all_in_supplier">\nДобавувач: %s</string>
     <string name="result_all_in_stale">Податоците за тарифата се постари од 14 дена и можеби се застарени.</string>
+    <string name="chart_legend_energy_tax">Данок на енергија</string>
+    <string name="chart_legend_surcharge">Провизија</string>
+    <string name="chart_legend_spot">Спот цена</string>
+    <string name="chart_legend_spot_negative">Негативна спот цена</string>
+    <string name="chart_legend_vat_note">Сите цени го вклучуваат ДДВ.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Редослед</string>

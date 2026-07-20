@@ -18,6 +18,49 @@ import today.sweetspot.model.TaxComponent
 object AllInPricing {
 
     /**
+     * The VAT-inclusive fixed portion of the all-in price — the part that does not vary with the
+     * spot price and is therefore identical for every slot in a series.
+     *
+     * Each field is a per-kWh amount with the percentage taxes (e.g. VAT) already folded in, so a
+     * slot's all-in total decomposes cleanly as `energyTax + surcharge + spot × Π(1 + percentage)`.
+     * The chart uses this to draw the constant left-hand block of every bar and derive the
+     * time-varying spot tip as `total − fixedTotal`.
+     *
+     * @property energyTax Per-kWh taxes (summed), VAT-inclusive.
+     * @property surcharge Supplier per-kWh surcharge, VAT-inclusive.
+     */
+    data class AllInComponents(
+        val energyTax: Double,
+        val surcharge: Double,
+    ) {
+        /** Combined VAT-inclusive fixed cost per kWh (energy tax + surcharge). */
+        val fixedTotal: Double get() = energyTax + surcharge
+    }
+
+    /**
+     * Decomposes the fixed (spot-independent) part of the all-in price into its VAT-inclusive
+     * components, using the same per-kWh/percentage folding as [marginal].
+     *
+     * The result satisfies `components(taxes, s).fixedTotal + spot × Π(1 + percentage) ==
+     * marginal(spot, taxes, s)` for any `spot`, so the fixed block plus the VAT-inclusive spot tip
+     * always sums to the all-in total.
+     *
+     * @param taxes Country tax components (per-kWh additive + percentage multipliers).
+     * @param surchargePerKwh Chosen supplier's per-kWh surcharge (ex-VAT).
+     * @return The VAT-inclusive fixed components (energy tax + surcharge).
+     */
+    fun components(taxes: List<TaxComponent>, surchargePerKwh: Double): AllInComponents {
+        val additive = taxes.filter { it.type == TaxComponent.TYPE_PER_KWH }.sumOf { it.value }
+        val multiplier = taxes
+            .filter { it.type == TaxComponent.TYPE_PERCENTAGE }
+            .fold(1.0) { acc, tax -> acc * (1.0 + tax.value) }
+        return AllInComponents(
+            energyTax = additive * multiplier,
+            surcharge = surchargePerKwh * multiplier,
+        )
+    }
+
+    /**
      * Computes the all-in price for a single spot price.
      *
      * @param spot Bare spot price (e.g. EUR/kWh).

@@ -243,6 +243,12 @@ data class UiState(
     val allInSupplierName: String? = null,
     /** True when the applied tariff is older than the staleness cutoff (shows an "out of date" warning). */
     val allInStale: Boolean = false,
+    /**
+     * VAT-inclusive fixed price components (energy tax + surcharge) when the all-in transform is
+     * applied, else `null`. Lets the chart draw each bar's constant fixed block and derive the
+     * time-varying spot tip; `null` keeps the chart in its single-colour rendering.
+     */
+    val allInComponents: AllInPricing.AllInComponents? = null,
     // --- Appliance sorting & usage ---
     val applianceSort: ApplianceSort = ApplianceSort(),
     val evPosition: EvPosition = EvPosition.INTERLEAVED,
@@ -1140,6 +1146,35 @@ class SweetSpotViewModel @JvmOverloads constructor(
     }
 
     /**
+     * Toggles the all-in price display from the results screen and recomputes the current window.
+     *
+     * This is the same `all_in_enabled` setting surfaced on the results screen, so it persists like
+     * the Settings toggle. Unlike [onRefreshResults] it does **not** clear the cache or check the API
+     * cooldown — [fetchAndFind] re-reads prices via [PriceRepository], which serves them from the warm
+     * cache, so the switch is instant and works offline. Because [fetchAndFind] reads `allInEnabled`
+     * at its start and re-applies the transform, the cards, breakdown, and chart all update. The
+     * displayed window resets to the cheapest one (the ranking is identical either way).
+     *
+     * @param enabled Whether to show the all-in (total) price.
+     */
+    fun onAllInEnabledFromResult(enabled: Boolean) {
+        val state = _uiState.value
+        val priceZone = state.priceZone ?: return
+        settingsRepository.setAllInEnabled(enabled)
+        val durationHours = state.durationHours + state.durationMinutes / 60.0
+        val durationText = UiText.duration(state.durationHours, state.durationMinutes)
+        val timeZoneId = state.timeZoneId
+
+        _uiState.update { it.copy(allInEnabled = enabled, isLoading = true, error = null) }
+
+        stopResultRefresh()
+        fetchJob?.cancel()
+        fetchJob = viewModelScope.launch(ioDispatcher) {
+            fetchAndFind(durationHours, durationText, timeZoneId, priceZone)
+        }
+    }
+
+    /**
      * Adds a new appliance and persists it.
      *
      * @param name Display name.
@@ -1466,6 +1501,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
             } else {
                 null
             }
+            // VAT-inclusive fixed components for the stacked chart; null keeps the chart single-colour.
+            val allInComponents = if (allInTariff != null && surcharge != null) {
+                AllInPricing.components(allInTariff.taxes, surcharge)
+            } else {
+                null
+            }
 
             if (prices.isEmpty()) {
                 _uiState.update {
@@ -1473,7 +1514,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
                         isLoading = false,
                         error = AppError.Validation(UiText.Res(R.string.error_no_data)),
                         allPrices = emptyList(),
-                        priceSource = null
+                        priceSource = null,
+                        // Keep the all-in display fields in step with the (empty) prices so a later
+                        // toggle can't leave stale components describing a different pricing mode.
+                        allInApplied = allInApplied,
+                        allInSupplierName = allInSupplierName,
+                        allInComponents = allInComponents
                     )
                 }
                 return
@@ -1494,7 +1540,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     it.copy(
                         isLoading = false,
                         error = AppError.Validation(message),
-                        allPrices = prices
+                        allPrices = prices,
+                        // Match the all-in display fields to these prices so the chart can't render a
+                        // stacked overlay with stale components (e.g. after toggling all-in off).
+                        allInApplied = allInApplied,
+                        allInSupplierName = allInSupplierName,
+                        allInComponents = allInComponents
                     )
                 }
                 return
@@ -1515,7 +1566,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     now = now,
                     allInApplied = allInApplied,
                     allInSupplierName = allInSupplierName,
-                    allInStale = allInStale
+                    allInStale = allInStale,
+                    allInComponents = allInComponents
                 )
             }
             startResultRefresh()

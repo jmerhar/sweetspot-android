@@ -231,6 +231,11 @@
     <string name="result_disclaimer_power_all_in">Stroški so prikazani za %s kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavitelj: %s</string>
     <string name="result_all_in_stale">Podatki o tarifah so starejši od 14 dni in morda niso več aktualni.</string>
+    <string name="chart_legend_energy_tax">Davek na energijo</string>
+    <string name="chart_legend_surcharge">Pribitek</string>
+    <string name="chart_legend_spot">Tržna cena</string>
+    <string name="chart_legend_spot_negative">Negativna tržna cena</string>
+    <string name="chart_legend_vat_note">Vse cene vključujejo DDV.</string>
 
     <!-- Sorting & ordering -->
     <string name="settings_sort_title">Razvrščanje</string>

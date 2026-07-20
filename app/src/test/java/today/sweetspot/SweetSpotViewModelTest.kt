@@ -1846,6 +1846,112 @@ class SweetSpotViewModelTest {
         assertFalse(applied)                            // never mixes a PLN surcharge into EUR prices
     }
 
+    @Test
+    fun `all-in components are populated when applied and null on spot`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.10)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+
+        // Spot result: no component breakdown.
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        assertNull(vm.uiState.value.allInComponents)
+        vm.onClearResult()
+
+        // All-in result: VAT-inclusive fixed components (feed: 0.05 energy tax + 0.10 surcharge, VAT 0.21).
+        vm.onAllInEnabledChanged(true)
+        vm.onSupplierSelected("acme")
+        runCurrent()
+        vm.onFindClicked()
+        runCurrent()
+        val components = vm.uiState.value.allInComponents
+        vm.onClearResult()
+        assertNotNull(components)
+        assertEquals(0.05 * 1.21, components!!.energyTax, 1e-9)
+        assertEquals(0.10 * 1.21, components.surcharge, 1e-9)
+    }
+
+    @Test
+    fun `toggling all-in from the results screen switches between total and spot`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.10)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+
+        // Configure all-in but leave it off, then produce a spot result.
+        vm.onAllInEnabledChanged(true)
+        runCurrent()
+        vm.onSupplierSelected("acme")
+        vm.onAllInEnabledChanged(false)
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        val spotCost = vm.uiState.value.result!!.totalCost
+        assertFalse(vm.uiState.value.allInApplied)
+
+        // Toggle ON from the results screen → recomputes with the all-in transform.
+        vm.onAllInEnabledFromResult(true)
+        runCurrent()
+        val on = vm.uiState.value
+        assertTrue(on.allInApplied)
+        assertNotNull(on.allInComponents)
+        assertTrue(on.result!!.totalCost > spotCost)
+
+        // Toggle OFF again → back to spot, no component breakdown.
+        vm.onAllInEnabledFromResult(false)
+        runCurrent()
+        val off = vm.uiState.value
+        vm.onClearResult()
+        assertFalse(off.allInApplied)
+        assertNull(off.allInComponents)
+        assertEquals(spotCost, off.result!!.totalCost, 1e-9)
+    }
+
+    @Test
+    fun `toggling all-in off does not leave stale components when the re-run finds no window`() = runTest {
+        // Regression: the results-screen toggle keeps the old result while re-fetching, relying on
+        // fetchAndFind to overwrite the derived fields. If the re-run hits an error path (here: a
+        // duration longer than the available coverage), the all-in fields must still be reset so the
+        // chart can't render a stacked overlay (stale components) over now-spot prices.
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.10)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        runCurrent()
+        vm.onSupplierSelected("acme")
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+        assertNotNull(vm.uiState.value.allInComponents)   // all-in applied on the initial result
+
+        // Ask for far more hours than the 24h of cached data, then toggle all-in off from the result.
+        vm.onDurationChanged(100, 0)
+        vm.onAllInEnabledFromResult(false)
+        runCurrent()
+        val s = vm.uiState.value
+        vm.onClearResult()
+        assertFalse(s.allInApplied)
+        assertNull(s.allInComponents)                     // not left stale from the previous all-in result
+    }
+
+    @Test
+    fun `toggling all-in from the results screen persists the setting`() = runTest {
+        val repo = TariffRepository(FakeTariffCache(RawTariff(feedJson(surcharge = 0.10), System.currentTimeMillis())),
+            CountingTariffFetcher(feedJson(surcharge = 0.10)), Clock.systemUTC())
+        val vm = allInViewModel(FakeFetcher(fakePrices(24)), repo)
+        vm.onAllInEnabledChanged(true)
+        runCurrent()
+        vm.onSupplierSelected("acme")
+        vm.onDurationChanged(2, 0)
+        vm.onFindClicked()
+        runCurrent()
+
+        vm.onAllInEnabledFromResult(false)
+        runCurrent()
+        vm.onClearResult()
+        assertFalse(today.sweetspot.data.repository.SettingsRepository(app).isAllInEnabled())
+    }
+
     // --- Appliance sorting, reordering & usage ---
 
     @Test

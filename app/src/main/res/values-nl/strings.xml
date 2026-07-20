@@ -217,6 +217,11 @@
     <string name="result_disclaimer_power_all_in">Kosten zijn voor een belasting van %s kW, tegen de geschatte totaalprijs (marktprijs + energiebelasting + leveranciersopslag + btw). Exclusief netbeheerkosten en vaste maandelijkse kosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverancier: %s</string>
     <string name="result_all_in_stale">De tariefgegevens zijn meer dan 14 dagen oud en zijn mogelijk verouderd.</string>
+    <string name="chart_legend_energy_tax">Energiebelasting</string>
+    <string name="chart_legend_surcharge">Opslag</string>
+    <string name="chart_legend_spot">Marktprijs</string>
+    <string name="chart_legend_spot_negative">Negatieve marktprijs</string>
+    <string name="chart_legend_vat_note">Alle prijzen zijn incl. btw.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Volgorde</string>

@@ -224,6 +224,11 @@
     <string name="result_disclaimer_power_all_in">Costurile sunt calculate pentru o sarcină de %s kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFurnizor: %s</string>
     <string name="result_all_in_stale">Datele tarifare sunt mai vechi de 14 zile și pot fi depășite.</string>
+    <string name="chart_legend_energy_tax">Taxa pe energie</string>
+    <string name="chart_legend_surcharge">Adaos</string>
+    <string name="chart_legend_spot">Preț de piață</string>
+    <string name="chart_legend_spot_negative">Preț de piață negativ</string>
+    <string name="chart_legend_vat_note">Toate prețurile includ TVA.</string>
 
     <!-- Sorting -->
     <string name="settings_sort_title">Ordine</string>

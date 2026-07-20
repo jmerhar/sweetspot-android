@@ -219,6 +219,11 @@
     <string name="result_disclaimer_power_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο %s kW, στην εκτιμώμενη τελική τιμή (χονδρική + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
     <string name="result_all_in_supplier">\nΠρομηθευτής: %s</string>
     <string name="result_all_in_stale">Τα δεδομένα τιμολογίου είναι παλαιότερα των 14 ημερών και ενδέχεται να είναι παρωχημένα.</string>
+    <string name="chart_legend_energy_tax">Ενεργειακός φόρος</string>
+    <string name="chart_legend_surcharge">Προσαύξηση</string>
+    <string name="chart_legend_spot">Χονδρική τιμή</string>
+    <string name="chart_legend_spot_negative">Αρνητική χονδρική τιμή</string>
+    <string name="chart_legend_vat_note">Όλες οι τιμές περιλαμβάνουν ΦΠΑ.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Σειρά</string>

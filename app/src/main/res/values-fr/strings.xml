@@ -222,6 +222,11 @@
     <string name="result_disclaimer_power_all_in">Les coûts sont indiqués pour une charge de %s kW, au prix total estimé (prix spot + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
     <string name="result_all_in_supplier">\nFournisseur : %s</string>
     <string name="result_all_in_stale">Les données tarifaires datent de plus de 14 jours et peuvent être obsolètes.</string>
+    <string name="chart_legend_energy_tax">Taxe sur l\'énergie</string>
+    <string name="chart_legend_surcharge">Marge</string>
+    <string name="chart_legend_spot">Prix spot</string>
+    <string name="chart_legend_spot_negative">Prix spot négatif</string>
+    <string name="chart_legend_vat_note">Tous les prix incluent la TVA.</string>
 
     <!-- Sorting -->
     <string name="settings_sort_title">Ordre</string>

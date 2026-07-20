@@ -231,6 +231,11 @@
     <string name="result_disclaimer_power_all_in">Koszty są podane dla obciążenia %s kW, według szacunkowej ceny całkowitej (cena rynkowa + podatek energetyczny + marża dostawcy + VAT). Nie obejmują opłat dystrybucyjnych ani stałych opłat miesięcznych. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDostawca: %s</string>
     <string name="result_all_in_stale">Dane taryfowe mają ponad 14 dni i mogą być nieaktualne.</string>
+    <string name="chart_legend_energy_tax">Podatek energetyczny</string>
+    <string name="chart_legend_surcharge">Marża</string>
+    <string name="chart_legend_spot">Cena rynkowa</string>
+    <string name="chart_legend_spot_negative">Ujemna cena rynkowa</string>
+    <string name="chart_legend_vat_note">Wszystkie ceny zawierają VAT.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Kolejność</string>

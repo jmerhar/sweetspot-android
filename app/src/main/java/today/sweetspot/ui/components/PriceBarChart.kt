@@ -1,16 +1,24 @@
 package today.sweetspot.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,11 +33,15 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
+import today.sweetspot.charting.BarColors
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.WindowResult
 import today.sweetspot.ui.theme.LocalBarNegativeColor
 import today.sweetspot.ui.theme.LocalBarNormalColor
-import today.sweetspot.ui.theme.LocalBarOptimalColor
+import today.sweetspot.ui.theme.LocalBarSurchargeColor
+import today.sweetspot.ui.theme.LocalBarTaxColor
+import today.sweetspot.util.AllInBarSegments
+import today.sweetspot.util.AllInPricing
 import today.sweetspot.util.formatPrice
 import today.sweetspot.util.shortTimeFormatter
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,29 +61,58 @@ import kotlin.math.abs
  * so that negative bars grow leftward and positive bars grow rightward.
  * Negative bars use a distinct colour to highlight that the price is below zero.
  *
- * @param prices Price slots to display (any resolution, sorted chronologically).
+ * When [components] is supplied (all-in price display), the chart switches to a **fixed-baseline +
+ * spot-deviation** layout: every bar draws the constant fixed block (energy tax + supplier surcharge,
+ * VAT-inclusive), then the spot price as a deviation from the baseline — positive spot extends right,
+ * negative spot draws a band back over the fixed block's tail (and, when the all-in total itself is
+ * below zero, left of the zero reference). A colour legend sits below the chart. The cheapest
+ * window's bars keep their full colour while every other bar is faded toward the background
+ * (lightened on a light theme, darkened on a dark one) so the window stands out (plus the
+ * row-background tint). The single-colour negative-axis rendering is used only when [components] is
+ * null (all-in off) and some price is below zero.
+ *
+ * @param prices Price slots to display (any resolution, sorted chronologically). When [components]
+ *   is set these are the all-in prices (fixed block + spot), so `price − fixedTotal` is the spot.
  * @param result Optional cheapest-window result whose slots are highlighted.
+ * @param components VAT-inclusive fixed price components for the stacked all-in rendering, or `null`
+ *   for the plain single-colour chart.
  * @param modifier Modifier for the outer column.
  */
 @Composable
 fun PriceBarChart(
     prices: List<PriceSlot>,
     result: WindowResult?,
+    components: AllInPricing.AllInComponents? = null,
     modifier: Modifier = Modifier
 ) {
     val optimalStart = remember(result) { result?.startTime?.toEpochSecond() }
     val optimalEnd = remember(result) { result?.endTime?.toEpochSecond() }
     val barNormalColor = LocalBarNormalColor.current
-    val barOptimalColor = LocalBarOptimalColor.current
     val barNegativeColor = LocalBarNegativeColor.current
+    val barTaxColor = LocalBarTaxColor.current
+    val barSurchargeColor = LocalBarSurchargeColor.current
     val highlightColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f)
     val trackColor = MaterialTheme.colorScheme.surfaceVariant
+    // Non-window bars are faded toward the background (theme-aware) so the full-colour window pops.
+    val darkTheme = isSystemInDarkTheme()
 
     val cheapestWindowCd = stringResource(R.string.cd_cheapest_window)
 
     val minPrice = remember(prices) { prices.minOfOrNull { it.price } ?: 0.0 }
     val maxPrice = remember(prices) { prices.maxOfOrNull { it.price } ?: 1.0 }
     val hasNegative = minPrice < 0
+
+    // When a fixed block is known (all-in on), stack into component segments regardless of sign — a
+    // negative spot draws as a band eating back into the fixed block, and a negative all-in total
+    // extends that band left of the zero reference (handled by the [xMin, xMax] range below).
+    val stackComponents = components
+    // The stacked layout's value range. Right extent: the priciest bar, or the fixed baseline if
+    // every bar's spot is negative. Left extent: 0, or the lowest (negative) total so it fits.
+    val xMax = if (stackComponents != null) maxOf(maxPrice, stackComponents.fixedTotal) else maxPrice
+    val xMin = if (stackComponents != null) minOf(0.0, minPrice) else 0.0
+    // Whether any bar's spot is below zero, so the legend explains the negative-spot band.
+    val hasNegativeSpot = stackComponents != null &&
+        prices.any { it.price < stackComponents.fixedTotal - 1e-9 }
     // Where zero falls within the min–max range (0 = left edge, 1 = right edge)
     val zeroFraction = remember(minPrice, maxPrice) {
         if (minPrice < 0 && maxPrice > minPrice) {
@@ -144,7 +185,43 @@ fun PriceBarChart(
                             val isOptimal = optimalStart != null && optimalEnd != null &&
                                 slot.overlapsWindow(optimalStart, optimalEnd)
 
-                            if (hasNegative) {
+                            if (stackComponents != null) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .weight(1f)
+                                        .clip(barShape)
+                                        .background(trackColor)
+                                ) {
+                                    // Fixed-baseline + spot-deviation over the [xMin, xMax] range: the
+                                    // fixed block sits at the same place on every bar, a positive spot
+                                    // extends right of it, and a negative spot's band eats back left —
+                                    // crossing the zero reference when the all-in total is below zero.
+                                    val segments = AllInBarSegments.segmentsFor(slot.price, stackComponents, xMax, xMin)
+                                    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                                        val trackWidth = maxWidth
+                                        segments.forEach { seg ->
+                                            Box(
+                                                modifier = Modifier
+                                                    .offset(x = trackWidth * seg.startFraction)
+                                                    .width(trackWidth * seg.widthFraction)
+                                                    .fillMaxHeight()
+                                                    .background(
+                                                        BarColors.segmentColor(
+                                                            seg.role,
+                                                            dimmed = !isOptimal,
+                                                            dark = darkTheme,
+                                                            taxColor = barTaxColor,
+                                                            surchargeColor = barSurchargeColor,
+                                                            spotColor = barNormalColor,
+                                                            negativeSpotColor = barNegativeColor
+                                                        )
+                                                    )
+                                            )
+                                        }
+                                    }
+                                }
+                            } else if (hasNegative) {
                                 Row(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -160,7 +237,7 @@ fun PriceBarChart(
                                     ) {
                                         if (slot.price < 0) {
                                             val negFraction = (abs(slot.price) / abs(minPrice)).toFloat().coerceIn(0f, 1f)
-                                            val barColor = if (isOptimal) barOptimalColor else barNegativeColor
+                                            val barColor = if (isOptimal) barNegativeColor else BarColors.dim(barNegativeColor, darkTheme)
                                             Box(
                                                 modifier = Modifier
                                                     .fillMaxWidth(negFraction)
@@ -180,7 +257,7 @@ fun PriceBarChart(
                                             val posFraction = if (maxPrice > 0) {
                                                 (slot.price / maxPrice).toFloat().coerceIn(0f, 1f)
                                             } else 0f
-                                            val barColor = if (isOptimal) barOptimalColor else barNormalColor
+                                            val barColor = if (isOptimal) barNormalColor else BarColors.dim(barNormalColor, darkTheme)
                                             Box(
                                                 modifier = Modifier
                                                     .fillMaxWidth(posFraction)
@@ -202,7 +279,7 @@ fun PriceBarChart(
                                     val barFraction = if (maxPrice > 0) {
                                         (slot.price / maxPrice).toFloat().coerceIn(0f, 1f)
                                     } else 0f
-                                    val barColor = if (isOptimal) barOptimalColor else barNormalColor
+                                    val barColor = if (isOptimal) barNormalColor else BarColors.dim(barNormalColor, darkTheme)
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth(barFraction)
@@ -226,6 +303,73 @@ fun PriceBarChart(
                 )
             }
         }
+
+        if (stackComponents != null) {
+            Spacer(modifier = Modifier.height(8.dp))
+            ChartLegend(
+                taxColor = barTaxColor,
+                surchargeColor = barSurchargeColor,
+                spotColor = barNormalColor,
+                negativeSpotColor = barNegativeColor,
+                showNegativeSpot = hasNegativeSpot
+            )
+        }
+    }
+}
+
+/**
+ * Colour key for the all-in stacked bars, shown below the chart. Lists the segment colours (energy
+ * tax, supplier surcharge, spot price, and — when present — the below-zero spot band) plus a note
+ * that every value is VAT-inclusive.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ChartLegend(
+    taxColor: Color,
+    surchargeColor: Color,
+    spotColor: Color,
+    negativeSpotColor: Color,
+    showNegativeSpot: Boolean,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        FlowRow(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            LegendItem(color = taxColor, label = stringResource(R.string.chart_legend_energy_tax))
+            LegendItem(color = surchargeColor, label = stringResource(R.string.chart_legend_surcharge))
+            LegendItem(color = spotColor, label = stringResource(R.string.chart_legend_spot))
+            if (showNegativeSpot) {
+                LegendItem(color = negativeSpotColor, label = stringResource(R.string.chart_legend_spot_negative))
+            }
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.chart_legend_vat_note),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+/** A single legend entry: a small colour dot followed by its label. */
+@Composable
+private fun LegendItem(color: Color, label: String) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier = Modifier
+                .size(10.dp)
+                .clip(CircleShape)
+                .background(color)
+        )
+        Spacer(modifier = Modifier.width(6.dp))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 
@@ -264,6 +408,26 @@ private fun PriceBarChartPositivePreview() {
     )
     today.sweetspot.ui.theme.SweetSpotTheme {
         PriceBarChart(prices = prices, result = null)
+    }
+}
+
+@Preview(showBackground = true, name = "All-in component stack")
+@Composable
+private fun PriceBarChartAllInPreview() {
+    val base = ZonedDateTime.now().withHour(10).withMinute(0).withSecond(0).withNano(0)
+    // Fixed block ≈ 0.129 (energy tax 0.111 + surcharge 0.018, VAT-inclusive); spot deviates around it,
+    // including two hours where the spot is negative (bar pulled back left of the baseline).
+    val components = AllInPricing.AllInComponents(energyTax = 0.111, surcharge = 0.018)
+    val prices = listOf(
+        PriceSlot(base, 0.129 + 0.15, 60),
+        PriceSlot(base.plusHours(1), 0.129 + 0.10, 60),
+        PriceSlot(base.plusHours(2), 0.129 + 0.02, 60),
+        PriceSlot(base.plusHours(3), 0.129 - 0.03, 60),
+        PriceSlot(base.plusHours(4), 0.129 - 0.06, 60),
+        PriceSlot(base.plusHours(5), 0.129 + 0.05, 60),
+    )
+    today.sweetspot.ui.theme.SweetSpotTheme {
+        PriceBarChart(prices = prices, result = null, components = components)
     }
 }
 

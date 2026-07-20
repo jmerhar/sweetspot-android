@@ -218,6 +218,11 @@
     <string name="result_disclaimer_power_all_in">Kulud on arvutatud %s kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="result_all_in_supplier">\nTarnija: %s</string>
     <string name="result_all_in_stale">Tariifiandmed on üle 14 päeva vanad ja võivad olla aegunud.</string>
+    <string name="chart_legend_energy_tax">Energiamaks</string>
+    <string name="chart_legend_surcharge">Juurdehindlus</string>
+    <string name="chart_legend_spot">Börsihind</string>
+    <string name="chart_legend_spot_negative">Negatiivne börsihind</string>
+    <string name="chart_legend_vat_note">Kõik hinnad sisaldavad käibemaksu.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Järjestus</string>

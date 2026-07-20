@@ -4,8 +4,13 @@ import androidx.compose.ui.graphics.Color
 
 // Bar chart colours — always fixed regardless of dynamic colour
 val Blue = Color(0xFF4A90D9)
-val Green = Color(0xFF27AE60)
 val Purple = Color(0xFF9B59B6)
+
+// All-in stacked-bar segment colours (energy tax + supplier surcharge). Chosen to stay distinct
+// from Blue (spot) and Purple (negative) — orange and teal read apart from those and from each
+// other for viewers with common colour-vision deficiencies.
+val BarTax = Color(0xFFE67E22)
+val BarSurcharge = Color(0xFF16A085)
 
 // Light palette
 val md_theme_light_primary = Color(0xFF2C5F9B)

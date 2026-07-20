@@ -226,6 +226,11 @@
     <string name="result_disclaimer_power_all_in">Troškovi su prikazani za opterećenje od %s kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + naknada dobavljača + PDV). Ne uključuju mrežne naknade ni fiksne mjesečne troškove. Sutrašnje cijene su obično dostupne nakon 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavljač: %s</string>
     <string name="result_all_in_stale">Podaci o tarifama su stariji od 14 dana i možda više nisu aktuelni.</string>
+    <string name="chart_legend_energy_tax">Porez na energiju</string>
+    <string name="chart_legend_surcharge">Naknada</string>
+    <string name="chart_legend_spot">Tržišna cijena</string>
+    <string name="chart_legend_spot_negative">Negativna tržišna cijena</string>
+    <string name="chart_legend_vat_note">Sve cijene uključuju PDV.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Redosljed</string>

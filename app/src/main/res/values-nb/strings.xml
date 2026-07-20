@@ -217,6 +217,11 @@
     <string name="result_disclaimer_power_all_in">Kostnadene er vist for en last på %s kW, til den estimerte totalprisen (spotpris + energiavgift + leverandørpåslag + MVA). Nettleie og faste månedlige avgifter er ikke inkludert. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverandør: %s</string>
     <string name="result_all_in_stale">Tariffdataene er mer enn 14 dager gamle og kan være utdaterte.</string>
+    <string name="chart_legend_energy_tax">Energiavgift</string>
+    <string name="chart_legend_surcharge">Påslag</string>
+    <string name="chart_legend_spot">Spotpris</string>
+    <string name="chart_legend_spot_negative">Negativ spotpris</string>
+    <string name="chart_legend_vat_note">Alle priser inkl. MVA.</string>
 
     <!-- Appliance sorting -->
     <string name="settings_sort_title">Rekkefølge</string>

@@ -218,6 +218,11 @@
     <string name="result_disclaimer_power_all_in">Kustannukset on laskettu %s kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="result_all_in_supplier">\nSähkönmyyjä: %s</string>
     <string name="result_all_in_stale">Tariffitiedot ovat yli 14 päivää vanhoja ja voivat olla vanhentuneita.</string>
+    <string name="chart_legend_energy_tax">Sähkövero</string>
+    <string name="chart_legend_surcharge">Marginaali</string>
+    <string name="chart_legend_spot">Pörssihinta</string>
+    <string name="chart_legend_spot_negative">Negatiivinen pörssihinta</string>
+    <string name="chart_legend_vat_note">Kaikki hinnat sisältävät ALV:n.</string>
 
     <!-- Sorting -->
     <string name="settings_sort_title">Järjestys</string>

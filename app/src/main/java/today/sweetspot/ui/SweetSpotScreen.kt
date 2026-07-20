@@ -31,6 +31,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -116,10 +117,14 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             allInApplied = state.allInApplied,
             allInSupplierName = state.allInSupplierName,
             allInStale = state.allInStale,
+            allInComponents = state.allInComponents,
+            allInConfigured = state.allInSupported && state.manualSurcharge != null,
+            allInEnabled = state.allInEnabled,
             onEarlier = viewModel::onEarlierWindow,
             onCheaper = viewModel::onCheaperWindow,
             onRefresh = viewModel::onRefreshResults,
             onBack = viewModel::onClearResult,
+            onAllInEnabledChange = viewModel::onAllInEnabledFromResult,
             snackbarHostState = snackbarHostState,
             modifier = modifier
         )
@@ -291,10 +296,14 @@ private fun ResultScreen(
     allInApplied: Boolean,
     allInSupplierName: String?,
     allInStale: Boolean,
+    allInComponents: today.sweetspot.util.AllInPricing.AllInComponents?,
+    allInConfigured: Boolean,
+    allInEnabled: Boolean,
     onEarlier: () -> Unit,
     onCheaper: () -> Unit,
     onRefresh: () -> Unit,
     onBack: () -> Unit,
+    onAllInEnabledChange: (Boolean) -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier
 ) {
@@ -348,6 +357,25 @@ private fun ResultScreen(
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
+                if (allInConfigured) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.settings_all_in_toggle),
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Switch(
+                            checked = allInEnabled,
+                            onCheckedChange = onAllInEnabledChange
+                        )
+                    }
+                }
+
                 ResultSummary(result = result, now = now, costDelta = costDelta, powerKw = powerKw ?: 1.0)
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -387,7 +415,8 @@ private fun ResultScreen(
 
                     PriceBarChart(
                         prices = allPrices,
-                        result = result
+                        result = result,
+                        components = allInComponents
                     )
                 }
 

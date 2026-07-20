@@ -219,6 +219,11 @@
     <string name="result_disclaimer_power_all_in">Die angezeigten Kosten gelten für eine Last von %s kW, zum geschätzten Gesamtpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
     <string name="result_all_in_supplier">\nLieferant: %s</string>
     <string name="result_all_in_stale">Die Tarifdaten sind über 14 Tage alt und möglicherweise veraltet.</string>
+    <string name="chart_legend_energy_tax">Energiesteuer</string>
+    <string name="chart_legend_surcharge">Aufschlag</string>
+    <string name="chart_legend_spot">Börsenpreis</string>
+    <string name="chart_legend_spot_negative">Negativer Börsenpreis</string>
+    <string name="chart_legend_vat_note">Alle Preise inkl. MwSt.</string>
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Reihenfolge</string>

@@ -3,6 +3,13 @@ title: "História zmien"
 description: "História verzií a poznámky k vydaniam aplikácie SweetSpot."
 ---
 
+{{< changelog version="6.6" date="21. júla 2026" >}}
+- Graf celkovej ceny: každý stĺpec sa teraz delí na trhovú cenu, daň z energie a prirážku dodávateľa, s legendou.
+- Rýchlo prepínajte výsledky medzi celkovou cenou a samotnou trhovou cenou.
+- Podržaním grafu zobrazíte presnú cenu v ľubovoľnom okamihu (úplný rozpis, keď je zapnutá celková cena).
+- Nabíjanie elektromobilu teraz zobrazuje celkový čas nabíjania v hlavičke výsledkov.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. júla 2026" >}}
 - Zoskupte tlačidlá spotrebičov podľa typu — do riadkov alebo stĺpcov — aby programy toho istého spotrebiča ostali spolu. Vozidlá môžu mať vlastnú sekciu hore alebo dole.
 {{< /changelog >}}

@@ -3,6 +3,13 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="6.6" date="21 juli 2026" >}}
+- Totaalprijs-grafiek: elke balk splitst nu op in marktprijs, energiebelasting en leveranciersopslag, met een legenda.
+- Wissel de resultaten snel tussen de totaalprijs en de kale marktprijs.
+- Houd de grafiek ingedrukt om de exacte prijs op elk moment te zien (volledige uitsplitsing als de totaalprijs aanstaat).
+- Elektrisch laden toont nu de totale laadtijd bovenaan de resultaten.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15 juli 2026" >}}
 - Groepeer de apparaatknoppen op type — als rijen of kolommen — zodat programma's van hetzelfde apparaat bij elkaar blijven. Voertuigen kunnen een eigen sectie boven of onder krijgen.
 {{< /changelog >}}

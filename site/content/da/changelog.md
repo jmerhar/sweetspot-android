@@ -3,6 +3,13 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="6.6" date="21. juli 2026" >}}
+- Totalpris-diagram: hver søjle opdeles nu i markedspris, energiafgift og leverandørtillæg, med en signaturforklaring.
+- Skift hurtigt resultaterne mellem totalprisen og den rene markedspris.
+- Tryk og hold på diagrammet for at se den præcise pris på et vilkårligt tidspunkt (fuld opdeling, når totalprisen er slået til).
+- Opladning af elbil viser nu den samlede opladningstid øverst på resultatskærmen.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. juli 2026" >}}
 - Gruppér apparatknapperne efter type — som rækker eller kolonner — så programmer til samme apparat holdes samlet. Køretøjer kan stadig have deres egen sektion øverst eller nederst.
 {{< /changelog >}}

@@ -3,6 +3,13 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="6.6" date="21. srpnja 2026." >}}
+- Grafikon ukupne cijene: svaki stupac sada je podijeljen na tržišnu cijenu, porez na energiju i maržu dobavljača, uz legendu.
+- Brzo prebacite rezultate između ukupne i gole tržišne cijene.
+- Dodirnite i zadržite grafikon za točnu cijenu u bilo kojem trenutku (potpuna raščlamba kada je ukupna cijena uključena).
+- Punjenje električnog vozila sada u zaglavlju rezultata prikazuje ukupno trajanje punjenja.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. srpnja 2026." >}}
 - Grupirajte gumbe uređaja po vrsti — u retke ili stupce — kako bi programi istog uređaja ostali zajedno. Vozila mogu imati vlastiti odjeljak iznad ili ispod.
 {{< /changelog >}}

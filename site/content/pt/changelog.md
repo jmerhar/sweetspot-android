@@ -3,6 +3,13 @@ title: "Histórico de versões"
 description: "Histórico de versões e notas de lançamento do SweetSpot."
 ---
 
+{{< changelog version="6.6" date="21 de julho de 2026" >}}
+- Gráfico do preço total: cada barra divide-se agora em preço de mercado, imposto sobre energia e margem do fornecedor, com legenda.
+- Alterne rapidamente os resultados entre o preço total e o preço de mercado simples.
+- Mantenha o gráfico premido para ver o preço exato em qualquer momento (detalhe completo com o preço total ativado).
+- O carregamento de VE mostra agora o tempo total de carregamento no cabeçalho dos resultados.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15 de julho de 2026" >}}
 - Agrupe os botões dos eletrodomésticos por tipo — em linhas ou colunas — para que os programas do mesmo aparelho fiquem juntos. Os veículos podem ter a sua própria secção acima ou abaixo.
 {{< /changelog >}}

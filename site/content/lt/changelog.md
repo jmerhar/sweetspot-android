@@ -3,6 +3,13 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="6.6" date="2026 m. liepos 21 d." >}}
+- Galutinės kainos grafikas: kiekvienas stulpelis dabar skaidomas į biržos kainą, energijos mokestį ir tiekėjo antkainį, su paaiškinimais.
+- Greitai perjunkite rezultatus tarp galutinės ir vien biržos kainos.
+- Palaikykite grafiką, kad pamatytumėte tikslią kainą bet kuriuo metu (visa sudėtis, kai įjungta galutinė kaina).
+- Elektromobilio įkrovimas dabar rodo bendrą įkrovimo laiką rezultatų antraštėje.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="2026 m. liepos 15 d." >}}
 - Grupuokite prietaisų mygtukus pagal tipą — eilutėmis arba stulpeliais — kad to paties prietaiso programos liktų kartu. Automobiliai gali turėti atskirą skiltį viršuje arba apačioje.
 {{< /changelog >}}

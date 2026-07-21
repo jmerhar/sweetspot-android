@@ -3,6 +3,13 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="6.6" date="2026. július 21." >}}
+- A teljes ár diagramján minden oszlop mostantól tőzsdei árra, energiaadóra és felárra bomlik, jelmagyarázattal.
+- Az eredményekben gyorsan válthatsz a teljes ár és a puszta tőzsdei ár között.
+- Tartsd lenyomva a diagramot bármely pillanat pontos árához (teljes bontással, ha a teljes ár be van kapcsolva).
+- Az elektromos autó töltése mostantól a teljes töltési időt is mutatja az eredmények fejlécében.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="2026. július 15." >}}
 - Csoportosítsd a készülékgombokat típus szerint — sorokba vagy oszlopokba —, hogy egy készülék programjai együtt maradjanak. A járművek külön szakaszba kerülhetnek fölé vagy alá.
 {{< /changelog >}}

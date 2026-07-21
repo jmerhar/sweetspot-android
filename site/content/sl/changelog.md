@@ -3,6 +3,13 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="6.6" date="21. julij 2026" >}}
+- Graf skupne cene: vsak stolpec je zdaj razčlenjen na tržno ceno, davek na energijo in pribitek dobavitelja, z legendo.
+- Med rezultati hitro preklopite med skupno in golo tržno ceno.
+- Pridržite graf, da vidite točno ceno v poljubnem trenutku (celotna razčlenitev, ko je vklopljena skupna cena).
+- Polnjenje električnega vozila zdaj v glavi rezultatov prikaže skupni čas polnjenja.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. julij 2026" >}}
 - Združite gumbe naprav glede na vrsto — v vrstice ali stolpce — da programi iste naprave ostanejo skupaj. Vozila imajo lahko svoj razdelek zgoraj ali spodaj.
 {{< /changelog >}}

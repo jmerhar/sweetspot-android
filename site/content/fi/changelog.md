@@ -3,6 +3,13 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="6.6" date="21. heinäkuuta 2026" >}}
+- Kokonaishinnan kaavio: jokainen palkki jakautuu nyt pörssihintaan, sähköveroon ja myyjän marginaaliin, ja mukana on selite.
+- Vaihda tulokset nopeasti kokonaishinnan ja pelkän pörssihinnan välillä.
+- Näe tarkka hinta millä tahansa hetkellä painamalla kaaviota pitkään (täysi erittely, kun kokonaishinta on käytössä).
+- Sähköauton lataus näyttää nyt kokonaislatausajan tulosnäkymän otsikossa.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. heinäkuuta 2026" >}}
 - Ryhmittele laitepainikkeet tyypin mukaan — riveiksi tai sarakkeiksi — niin että saman laitteen ohjelmat pysyvät yhdessä. Ajoneuvoilla voi olla oma osio ylä- tai alapuolella.
 {{< /changelog >}}

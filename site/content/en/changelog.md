@@ -3,6 +3,13 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="6.6" date="July 21, 2026" >}}
+- Total price chart: each bar now splits into market price, energy tax and supplier surcharge, with a legend.
+- Quickly switch the results between the total and the bare market price.
+- Press and hold the chart to see the exact price at any moment (full breakdown when the total price is on).
+- EV charging now shows the total charging time in the results header.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="July 15, 2026" >}}
 - Group your appliance buttons by type — shown as rows or columns — so the programmes for the same machine stay together. Vehicles can still have their own section above or below.
 {{< /changelog >}}

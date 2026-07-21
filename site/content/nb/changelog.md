@@ -3,6 +3,13 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="6.6" date="21. juli 2026" >}}
+- Totalpris-diagrammet: hver stolpe deles nå i spotpris, energiavgift og leverandørpåslag, med en fargeforklaring.
+- Bytt raskt resultatene mellom totalprisen og ren spotpris.
+- Trykk og hold på diagrammet for å se den nøyaktige prisen i ethvert øyeblikk (full oppdeling når totalprisen er på).
+- Elbillading viser nå den totale ladetiden øverst i resultatene.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. juli 2026" >}}
 - Grupper apparatknappene etter type — som rader eller kolonner — slik at programmer for samme apparat holdes samlet. Kjøretøy kan ha sin egen seksjon over eller under.
 {{< /changelog >}}

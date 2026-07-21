@@ -3,6 +3,13 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="6.6" date="21. juuli 2026" >}}
+- Koguhinna diagramm: iga tulp jaguneb nüüd börsihinnaks, energiamaksuks ja tarnija juurdehindluseks koos legendiga.
+- Vaheta tulemustes kiiresti koguhinna ja palja börsihinna vahel.
+- Hoia diagrammil sõrme, et näha täpset hinda igal hetkel (koguhinna korral kogu jaotus).
+- Elektriauto laadimine näitab nüüd tulemuste päises kogu laadimisaega.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. juuli 2026" >}}
 - Rühmita seadmenupud tüübi järgi — ridade või veergudena — nii et sama seadme programmid püsivad koos. Sõidukid võivad olla eraldi jaotises üleval või all.
 {{< /changelog >}}

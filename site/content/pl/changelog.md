@@ -3,6 +3,13 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="6.6" date="21 lipca 2026" >}}
+- Wykres ceny całkowitej: każdy słupek dzieli się teraz na cenę rynkową, podatek energetyczny i marżę dostawcy, wraz z legendą.
+- Szybko przełączaj wyniki między ceną całkowitą a samą ceną rynkową.
+- Przytrzymaj wykres, aby zobaczyć dokładną cenę w danym momencie (pełny podział przy włączonej cenie całkowitej).
+- Ładowanie auta elektrycznego pokazuje teraz całkowity czas ładowania w nagłówku wyników.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15 lipca 2026" >}}
 - Grupuj przyciski urządzeń według typu — w wiersze lub kolumny — aby programy tego samego urządzenia były razem. Pojazdy mogą mieć osobną sekcję u góry lub u dołu.
 {{< /changelog >}}

@@ -3,6 +3,13 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="6.6" date="2026. gada 21. jūlijs" >}}
+- Pilnās cenas diagramma: katra josla tagad sadalīta biržas cenā, enerģijas nodoklī un piegādātāja uzcenojumā, ar apzīmējumiem.
+- Rezultātos ātri pārslēdzieties starp pilno un tikai tirgus cenu.
+- Turiet diagrammu, lai redzētu precīzu cenu jebkurā brīdī (pilns sadalījums, kad ieslēgta pilnā cena).
+- Elektroauto uzlāde tagad rāda kopējo uzlādes laiku rezultātu virsrakstā.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="2026. gada 15. jūlijs" >}}
 - Grupējiet ierīču pogas pēc tipa — rindās vai kolonnās —, lai vienas ierīces programmas paliktu kopā. Transportlīdzekļiem var būt sava sadaļa augšpusē vai apakšpusē.
 {{< /changelog >}}

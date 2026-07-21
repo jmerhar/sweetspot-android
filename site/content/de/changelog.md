@@ -3,6 +3,13 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="6.6" date="21. Juli 2026" >}}
+- Gesamtpreis-Diagramm: Jeder Balken zeigt jetzt Marktpreis, Energiesteuer und Lieferantenaufschlag getrennt, mit Legende.
+- Wechsle die Ergebnisse schnell zwischen Gesamtpreis und reinem Marktpreis.
+- Halte das Diagramm gedrückt, um den genauen Preis zu jedem Zeitpunkt zu sehen (mit voller Aufschlüsselung bei aktiviertem Gesamtpreis).
+- E-Auto-Laden zeigt jetzt die gesamte Ladedauer oben im Ergebnisbildschirm.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15. Juli 2026" >}}
 - Gruppiere die Schaltflächen nach Gerätetyp – als Zeilen oder Spalten –, damit die Programme desselben Geräts zusammenbleiben. Fahrzeuge können weiterhin einen eigenen Bereich oben oder unten haben.
 {{< /changelog >}}

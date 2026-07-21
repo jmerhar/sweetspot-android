@@ -3,6 +3,13 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="6.6" date="21 iulie 2026" >}}
+- Graficul prețului total: fiecare bară se împarte acum în preț de piață, taxa pe energie și adaosul furnizorului, cu legendă.
+- Comută rapid rezultatele între prețul total și prețul de piață simplu.
+- Apasă lung pe grafic pentru a vedea prețul exact în orice moment (defalcare completă când prețul total este activat).
+- Încărcarea mașinii electrice afișează acum durata totală de încărcare în antetul rezultatelor.
+{{< /changelog >}}
+
 {{< changelog version="6.5" date="15 iulie 2026" >}}
 - Grupează butoanele aparatelor după tip — pe rânduri sau coloane — astfel încât programele aceluiași aparat să rămână împreună. Vehiculele pot avea propria secțiune deasupra sau dedesubt.
 {{< /changelog >}}

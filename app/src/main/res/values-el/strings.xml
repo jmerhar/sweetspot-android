@@ -157,6 +157,19 @@
     <string name="stats_prompt_enable">Ενεργοποίηση</string>
     <string name="stats_prompt_dismiss">Όχι, ευχαριστώ</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Λειτουργήστε τις συσκευές όταν το ρεύμα είναι φθηνότερο</string>
+    <string name="onboarding_body_1">Το SweetSpot εξετάζει τις επερχόμενες τιμές ρεύματος και βρίσκει τη φθηνότερη περίοδο για να λειτουργήσετε μια συσκευή.</string>
+    <string name="onboarding_title_2">Οι συσκευές σας, με ένα άγγιγμα</string>
+    <string name="onboarding_body_2">Αποθηκεύστε μια συσκευή και πατήστε την για να δείτε τη φθηνότερη περίοδό της. Προσθέστε το ηλεκτρικό σας όχημα για να προγραμματίσετε τη φόρτιση με βάση την τρέχουσα και την επιθυμητή φόρτιση.</string>
+    <string name="onboarding_title_3">Προσαρμόστε το στα μέτρα σας</string>
+    <string name="onboarding_body_3">Η χώρα σας εντοπίζεται αυτόματα. Αλλάξτε τη ζώνη, προσθέστε συσκευές ή επιλέξτε τη γλώσσα σας — όλα βρίσκονται στις Ρυθμίσεις.</string>
+    <string name="onboarding_skip">Παράλειψη</string>
+    <string name="onboarding_next">Επόμενο</string>
+    <string name="onboarding_get_started">Ξεκινήστε</string>
+    <string name="settings_how_it_works">Πώς λειτουργεί</string>
+    <string name="settings_how_it_works_desc">Δείτε ξανά την εισαγωγή</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Συνδρομή στο SweetSpot</string>
     <string name="settings_unlock_description">Εγγραφείτε για ένα χρόνο για να συνεχίσετε να χρησιμοποιείτε το SweetSpot.</string>

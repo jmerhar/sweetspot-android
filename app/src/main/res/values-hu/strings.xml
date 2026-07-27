@@ -155,6 +155,19 @@
     <string name="stats_prompt_enable">Engedélyezés</string>
     <string name="stats_prompt_dismiss">Nem, köszönöm</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Használd a készülékeket, amikor az áram a legolcsóbb</string>
+    <string name="onboarding_body_1">A SweetSpot átvizsgálja az elkövetkező villamosenergia-árakat, és megkeresi a legolcsóbb időpontot egy készülék futtatásához.</string>
+    <string name="onboarding_title_2">Készülékeid egyetlen koppintásra</string>
+    <string name="onboarding_body_2">Ments el egy készüléket, és koppints rá a legolcsóbb időpontjáért. Add hozzá az elektromos autódat, hogy a jelenlegi és a céltöltöttség alapján tervezhesd a töltést.</string>
+    <string name="onboarding_title_3">Alakítsd a magadévá</string>
+    <string name="onboarding_body_3">Az országodat automatikusan felismeri az alkalmazás. Módosítsd a zónát, adj hozzá készülékeket, vagy válaszd ki a nyelvet — mindezt a Beállításokban teheted meg.</string>
+    <string name="onboarding_skip">Kihagyás</string>
+    <string name="onboarding_next">Tovább</string>
+    <string name="onboarding_get_started">Kezdés</string>
+    <string name="settings_how_it_works">Hogyan működik</string>
+    <string name="settings_how_it_works_desc">Nézd meg újra a bevezetőt</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Előfizetés a SweetSpotra</string>
     <string name="settings_unlock_description">Fizess elő egy évre, hogy tovább használhasd a SweetSpotot.</string>

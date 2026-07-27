@@ -1,5 +1,10 @@
 # First-Launch Onboarding
 
+> **Status (implemented):** the 3-screen skippable intro is implemented (`OnboardingScreen`, gated by
+> the `onboarding_shown` flag, re-openable from Settings › How it works). The deferred **contextual
+> coach marks** in the "Contextual hints" section below were split out into `ideas/coach-marks.md` and
+> are not yet built.
+
 ## Idea
 
 The app has grown well beyond "pick a duration, see the cheapest window": appliances with power

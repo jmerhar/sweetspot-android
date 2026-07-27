@@ -159,6 +159,19 @@
     <string name="stats_prompt_enable">Activer</string>
     <string name="stats_prompt_dismiss">Non merci</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Faites fonctionner vos appareils quand l\'électricité est la moins chère</string>
+    <string name="onboarding_body_1">SweetSpot analyse les prix de l\'électricité à venir pour trouver la période la moins chère où faire fonctionner un appareil.</string>
+    <string name="onboarding_title_2">Vos appareils, à portée de main</string>
+    <string name="onboarding_body_2">Enregistrez un appareil et appuyez dessus pour voir sa période la moins chère. Ajoutez votre véhicule électrique pour planifier la recharge selon sa charge actuelle et cible.</string>
+    <string name="onboarding_title_3">Personnalisez l\'application</string>
+    <string name="onboarding_body_3">Votre pays est détecté automatiquement. Changez de zone, ajoutez des appareils ou choisissez votre langue — tout est dans les Paramètres.</string>
+    <string name="onboarding_skip">Passer</string>
+    <string name="onboarding_next">Suivant</string>
+    <string name="onboarding_get_started">Commencer</string>
+    <string name="settings_how_it_works">Comment ça marche</string>
+    <string name="settings_how_it_works_desc">Revoir l\'introduction</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">S\'abonner à SweetSpot</string>
     <string name="settings_unlock_description">Abonnez-vous pour un an pour continuer à utiliser SweetSpot.</string>

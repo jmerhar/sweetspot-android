@@ -157,6 +157,19 @@
     <string name="stats_prompt_enable">Включи</string>
     <string name="stats_prompt_dismiss">Не, благодаря</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Пускайте уредите, когато токът е най-евтин</string>
+    <string name="onboarding_body_1">SweetSpot сканира предстоящите цени на електроенергията, за да намери най-евтиното време за работа на вашия уред.</string>
+    <string name="onboarding_title_2">Вашите уреди на едно докосване</string>
+    <string name="onboarding_body_2">Запазете уред и го докоснете, за да видите най-евтиния му период. Добавете електромобила си, за да планирате зареждането според текущото и целевото ниво.</string>
+    <string name="onboarding_title_3">Настройте го по свой вкус</string>
+    <string name="onboarding_body_3">Вашата държава се разпознава автоматично. Сменете зоната, добавете уреди или изберете езика — всичко е в Настройки.</string>
+    <string name="onboarding_skip">Пропусни</string>
+    <string name="onboarding_next">Напред</string>
+    <string name="onboarding_get_started">Започни</string>
+    <string name="settings_how_it_works">Как работи</string>
+    <string name="settings_how_it_works_desc">Вижте въведението отново</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Абонирай се за SweetSpot</string>
     <string name="settings_unlock_description">Абонирайте се за една година, за да продължите да използвате SweetSpot.</string>

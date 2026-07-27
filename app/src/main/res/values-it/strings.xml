@@ -158,6 +158,19 @@
     <string name="stats_prompt_enable">Attiva</string>
     <string name="stats_prompt_dismiss">No grazie</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Usa gli elettrodomestici quando l\'energia costa meno</string>
+    <string name="onboarding_body_1">SweetSpot analizza i prossimi prezzi dell\'elettricità per trovare la fascia più economica in cui usare un elettrodomestico.</string>
+    <string name="onboarding_title_2">I tuoi elettrodomestici, a portata di tocco</string>
+    <string name="onboarding_body_2">Salva un elettrodomestico e toccalo per vedere la sua fascia più economica. Aggiungi la tua auto elettrica per pianificare la ricarica dalla carica attuale a quella obiettivo.</string>
+    <string name="onboarding_title_3">Personalizzalo</string>
+    <string name="onboarding_body_3">Il tuo Paese viene rilevato automaticamente. Cambia la zona, aggiungi elettrodomestici o scegli la lingua — tutto nelle Impostazioni.</string>
+    <string name="onboarding_skip">Salta</string>
+    <string name="onboarding_next">Avanti</string>
+    <string name="onboarding_get_started">Inizia</string>
+    <string name="settings_how_it_works">Come funziona</string>
+    <string name="settings_how_it_works_desc">Rivedi l\'introduzione</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Abbonati a SweetSpot</string>
     <string name="settings_unlock_description">Abbonati per un anno per continuare a usare SweetSpot.</string>

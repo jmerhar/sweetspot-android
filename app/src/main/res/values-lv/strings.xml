@@ -161,6 +161,19 @@
     <string name="stats_prompt_enable">Ieslēgt</string>
     <string name="stats_prompt_dismiss">Nē, paldies</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Darbiniet ierīces, kad elektrība ir vislētākā</string>
+    <string name="onboarding_body_1">SweetSpot pārskata gaidāmās elektrības cenas, lai atrastu lētāko laiku ierīces darbināšanai.</string>
+    <string name="onboarding_title_2">Jūsu ierīces viena pieskāriena attālumā</string>
+    <string name="onboarding_body_2">Saglabājiet ierīci un pieskarieties tai, lai redzētu tās lētāko laiku. Pievienojiet savu elektroauto, lai plānotu uzlādi no pašreizējā līdz mērķa uzlādes līmenim.</string>
+    <string name="onboarding_title_3">Pielāgojiet sev</string>
+    <string name="onboarding_body_3">Jūsu valsts tiek noteikta automātiski. Nomainiet zonu, pievienojiet ierīces vai izvēlieties valodu — tas viss ir iestatījumos.</string>
+    <string name="onboarding_skip">Izlaist</string>
+    <string name="onboarding_next">Tālāk</string>
+    <string name="onboarding_get_started">Sākt</string>
+    <string name="settings_how_it_works">Kā tas darbojas</string>
+    <string name="settings_how_it_works_desc">Skatīt ievadu vēlreiz</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Abonēt SweetSpot</string>
     <string name="settings_unlock_description">Abonējiet uz gadu, lai turpinātu izmantot SweetSpot.</string>

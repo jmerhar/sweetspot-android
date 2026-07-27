@@ -161,6 +161,19 @@
     <string name="stats_prompt_enable">Укључи</string>
     <string name="stats_prompt_dismiss">Не, хвала</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Укључите апарате када је струја најјефтинија</string>
+    <string name="onboarding_body_1">SweetSpot прегледа предстојеће цене струје и проналази најјефтиније време за покретање апарата.</string>
+    <string name="onboarding_title_2">Ваши апарати, на један додир</string>
+    <string name="onboarding_body_2">Сачувајте апарат и додирните га да видите његово најјефтиније време. Додајте своје електрично возило да планирате пуњење на основу тренутне и циљне напуњености.</string>
+    <string name="onboarding_title_3">Прилагодите по свом</string>
+    <string name="onboarding_body_3">Ваша држава се препознаје аутоматски. Промените зону, додајте апарате или изаберите језик — све је у Подешавањима.</string>
+    <string name="onboarding_skip">Прескочи</string>
+    <string name="onboarding_next">Даље</string>
+    <string name="onboarding_get_started">Почни</string>
+    <string name="settings_how_it_works">Како функционише</string>
+    <string name="settings_how_it_works_desc">Погледајте увод поново</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Претплати се на SweetSpot</string>
     <string name="settings_unlock_description">Претплатите се на годину дана да бисте наставили да користите SweetSpot.</string>

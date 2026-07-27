@@ -191,6 +191,8 @@ data class UiState(
     val sourceOrder: List<String>? = null,
     val disabledSources: Set<String> = emptySet(),
     val countries: List<Country> = Countries.all,
+    /** True while the first-launch onboarding intro should take over the screen. */
+    val showOnboarding: Boolean = false,
     val showStatsPrompt: Boolean = false,
     val isStatsEnabled: Boolean = false,
     val isTrialExpired: Boolean = false,
@@ -372,6 +374,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             sourceOrder = settingsRepository.getSourceOrder(),
             disabledSources = settingsRepository.getDisabledSources(),
             countries = countriesWithDetectedFirst(application),
+            showOnboarding = !settingsRepository.isOnboardingShown(),
             isStatsEnabled = settingsRepository.isStatsEnabled(),
             isTrialExpired = settingsRepository.isTrialExpired(),
             isUnlocked = settingsRepository.isUnlocked(),
@@ -1627,6 +1630,22 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onStatsPromptDismissed() {
         settingsRepository.setStatsPromptShown()
         _uiState.update { it.copy(showStatsPrompt = false) }
+    }
+
+    /**
+     * Finishes the first-launch onboarding intro (Get started or Skip).
+     *
+     * Marks it as shown so it isn't shown automatically again, and returns to whatever screen was
+     * behind it (the home screen on first launch, or Settings when replayed via "How it works").
+     */
+    fun onOnboardingComplete() {
+        settingsRepository.setOnboardingShown()
+        _uiState.update { it.copy(showOnboarding = false) }
+    }
+
+    /** Replays the onboarding intro on demand (from Settings › How it works). */
+    fun onReplayOnboarding() {
+        _uiState.update { it.copy(showOnboarding = true) }
     }
 
     /**

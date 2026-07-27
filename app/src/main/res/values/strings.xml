@@ -179,6 +179,19 @@
     <string name="stats_prompt_enable">Enable</string>
     <string name="stats_prompt_dismiss">No thanks</string>
 
+    <!-- First-launch onboarding intro -->
+    <string name="onboarding_title_1">Run appliances when power is cheapest</string>
+    <string name="onboarding_body_1">SweetSpot scans upcoming electricity prices to find the cheapest time to run an appliance.</string>
+    <string name="onboarding_title_2">Your appliances, one tap away</string>
+    <string name="onboarding_body_2">Save an appliance and tap it to see its cheapest time. Add your EV to plan charging from its current and target charge.</string>
+    <string name="onboarding_title_3">Make it yours</string>
+    <string name="onboarding_body_3">Your country is detected automatically. Change your zone, add appliances, or pick your language — it\'s all in Settings.</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get started</string>
+    <string name="settings_how_it_works">How it works</string>
+    <string name="settings_how_it_works_desc">See the intro again</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Subscribe to SweetSpot</string>
     <string name="settings_unlock_description">Subscribe for a year to keep using SweetSpot.</string>

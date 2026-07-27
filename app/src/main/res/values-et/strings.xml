@@ -156,6 +156,19 @@
     <string name="stats_prompt_enable">Luba</string>
     <string name="stats_prompt_dismiss">Ei, aitäh</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Kasuta seadmeid siis, kui elekter on odavaim</string>
+    <string name="onboarding_body_1">SweetSpot uurib tulevasi elektrihindu ja leiab odavaima aja seadme kasutamiseks.</string>
+    <string name="onboarding_title_2">Sinu seadmed ühe puudutuse kaugusel</string>
+    <string name="onboarding_body_2">Salvesta seade ja puuduta seda, et näha selle odavaimat aega. Lisa oma elektriauto, et planeerida laadimist praeguse ja soovitud laetuse järgi.</string>
+    <string name="onboarding_title_3">Kohanda enda järgi</string>
+    <string name="onboarding_body_3">Sinu riik tuvastatakse automaatselt. Muuda tsooni, lisa seadmeid või vali keel — kõik on seadetes.</string>
+    <string name="onboarding_skip">Jäta vahele</string>
+    <string name="onboarding_next">Edasi</string>
+    <string name="onboarding_get_started">Alusta</string>
+    <string name="settings_how_it_works">Kuidas see töötab</string>
+    <string name="settings_how_it_works_desc">Vaata sissejuhatust uuesti</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Telli SweetSpot</string>
     <string name="settings_unlock_description">Tellige aastaks, et jätkata SweetSpoti kasutamist.</string>

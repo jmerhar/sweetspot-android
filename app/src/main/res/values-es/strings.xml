@@ -159,6 +159,19 @@
     <string name="stats_prompt_enable">Activar</string>
     <string name="stats_prompt_dismiss">No, gracias</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Usa los electrodomésticos cuando la luz es más barata</string>
+    <string name="onboarding_body_1">SweetSpot analiza los próximos precios de la electricidad para encontrar la franja más barata para usar un electrodoméstico.</string>
+    <string name="onboarding_title_2">Tus electrodomésticos, a un toque</string>
+    <string name="onboarding_body_2">Guarda un electrodoméstico y tócalo para ver su franja más barata. Añade tu coche eléctrico para planificar la carga según su carga actual y objetivo.</string>
+    <string name="onboarding_title_3">Personalízalo a tu gusto</string>
+    <string name="onboarding_body_3">Tu país se detecta automáticamente. Cambia la zona, añade electrodomésticos o elige tu idioma — todo está en Ajustes.</string>
+    <string name="onboarding_skip">Omitir</string>
+    <string name="onboarding_next">Siguiente</string>
+    <string name="onboarding_get_started">Empezar</string>
+    <string name="settings_how_it_works">Cómo funciona</string>
+    <string name="settings_how_it_works_desc">Ver la introducción de nuevo</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Suscribirse a SweetSpot</string>
     <string name="settings_unlock_description">Suscríbete por un año para seguir usando SweetSpot.</string>

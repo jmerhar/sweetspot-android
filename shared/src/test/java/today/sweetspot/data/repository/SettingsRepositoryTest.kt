@@ -251,6 +251,15 @@ class SettingsRepositoryTest {
         assertTrue(repo.isStatsPromptShown())
     }
 
+    // --- Onboarding prompt ---
+
+    @Test
+    fun `onboarding shown flag defaults off and persists`() {
+        assertFalse(repo.isOnboardingShown())
+        repo.setOnboardingShown()
+        assertTrue(repo.isOnboardingShown())
+    }
+
     // --- Time override & clock ---
 
     @Test

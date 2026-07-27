@@ -158,6 +158,19 @@
     <string name="stats_prompt_enable">Ativar</string>
     <string name="stats_prompt_dismiss">Não, obrigado</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Use os eletrodomésticos quando a energia é mais barata</string>
+    <string name="onboarding_body_1">O SweetSpot analisa os próximos preços de eletricidade para encontrar o período mais barato para utilizar um eletrodoméstico.</string>
+    <string name="onboarding_title_2">Os seus eletrodomésticos, a um toque de distância</string>
+    <string name="onboarding_body_2">Guarde um eletrodoméstico e toque nele para ver o seu período mais barato. Adicione o seu VE para planear o carregamento a partir da carga atual e da carga-alvo.</string>
+    <string name="onboarding_title_3">Personalize-o</string>
+    <string name="onboarding_body_3">O seu país é detetado automaticamente. Altere a zona, adicione eletrodomésticos ou escolha o seu idioma — está tudo nas Definições.</string>
+    <string name="onboarding_skip">Ignorar</string>
+    <string name="onboarding_next">Seguinte</string>
+    <string name="onboarding_get_started">Começar</string>
+    <string name="settings_how_it_works">Como funciona</string>
+    <string name="settings_how_it_works_desc">Ver a introdução novamente</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Subscrever SweetSpot</string>
     <string name="settings_unlock_description">Subscreva por um ano para continuar a usar o SweetSpot.</string>

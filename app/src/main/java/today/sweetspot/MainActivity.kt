@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModelProvider
 import today.sweetspot.data.api.DataSources
 import today.sweetspot.ui.PaywallScreen
+import today.sweetspot.ui.onboarding.OnboardingScreen
 import today.sweetspot.ui.settings.SettingsScreen
 import today.sweetspot.ui.SweetSpotScreen
 import today.sweetspot.ui.share.ImportPreviewScreen
@@ -58,6 +59,9 @@ class MainActivity : AppCompatActivity() {
                             onImport = vm::onImportConfirmed,
                             onCancel = vm::onDismissImport
                         )
+                    }
+                    state.showOnboarding -> {
+                        OnboardingScreen(onFinish = vm::onOnboardingComplete)
                     }
                     state.showPaywall -> {
                         PaywallScreen(
@@ -119,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                             onResetSourceOrder = vm::onResetSourceOrder,
                             onLanguageChanged = vm::onLanguageChanged,
                             onShareSetup = vm::onShareSetup,
+                            onReplayOnboarding = vm::onReplayOnboarding,
                             onClearCache = vm::onClearCache,
                             isStatsEnabled = state.isStatsEnabled,
                             onStatsEnabledChanged = vm::onStatsEnabledChanged,
@@ -146,8 +151,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // Overlay dialogs shown on any screen (except the paywall)
-                if (!state.showPaywall) {
+                // Overlay dialogs shown on any screen (except the paywall and the onboarding intro,
+                // so nothing stacks on top of the first-launch flow).
+                if (!state.showPaywall && !state.showOnboarding) {
                     ThankYouDialog(state, vm)
                     StatsPromptDialog(state, vm)
                     ImportErrorDialog(state, vm)

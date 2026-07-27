@@ -155,6 +155,19 @@
     <string name="stats_prompt_enable">Aktivera</string>
     <string name="stats_prompt_dismiss">Nej tack</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Kör apparater när elen är billigast</string>
+    <string name="onboarding_body_1">SweetSpot skannar kommande elpriser för att hitta den billigaste tiden att köra en apparat.</string>
+    <string name="onboarding_title_2">Dina apparater, ett tryck bort</string>
+    <string name="onboarding_body_2">Spara en apparat och tryck på den för att se dess billigaste tid. Lägg till din elbil för att planera laddningen utifrån nuvarande laddning och laddningsmål.</string>
+    <string name="onboarding_title_3">Gör den till din</string>
+    <string name="onboarding_body_3">Ditt land identifieras automatiskt. Ändra din zon, lägg till apparater eller välj språk — allt finns i Inställningar.</string>
+    <string name="onboarding_skip">Hoppa över</string>
+    <string name="onboarding_next">Nästa</string>
+    <string name="onboarding_get_started">Kom igång</string>
+    <string name="settings_how_it_works">Så fungerar det</string>
+    <string name="settings_how_it_works_desc">Se introduktionen igen</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Prenumerera på SweetSpot</string>
     <string name="settings_unlock_description">Prenumerera för ett år för att fortsätta använda SweetSpot.</string>

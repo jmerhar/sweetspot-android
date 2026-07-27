@@ -637,6 +637,28 @@ class SweetSpotViewModelTest {
     }
 
     @Test
+    fun `onboarding shows on first launch, then not again after completion`() {
+        // Fresh prefs (cleared in setUp) → first launch → intro shows.
+        assertTrue(defaultViewModel().uiState.value.showOnboarding)
+
+        val viewModel = defaultViewModel()
+        viewModel.onOnboardingComplete()
+        assertFalse(viewModel.uiState.value.showOnboarding)
+
+        // A fresh ViewModel reads the persisted flag and no longer shows it.
+        assertFalse(defaultViewModel().uiState.value.showOnboarding)
+    }
+
+    @Test
+    fun `onReplayOnboarding shows the intro again`() {
+        val viewModel = defaultViewModel()
+        viewModel.onOnboardingComplete()
+        assertFalse(viewModel.uiState.value.showOnboarding)
+        viewModel.onReplayOnboarding()
+        assertTrue(viewModel.uiState.value.showOnboarding)
+    }
+
+    @Test
     fun `onStatsEnabledChanged true enables stats`() {
         val viewModel = defaultViewModel()
         viewModel.onStatsEnabledChanged(true)

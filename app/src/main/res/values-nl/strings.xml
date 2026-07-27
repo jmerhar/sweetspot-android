@@ -155,6 +155,19 @@
     <string name="stats_prompt_enable">Inschakelen</string>
     <string name="stats_prompt_dismiss">Nee, bedankt</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Gebruik apparaten wanneer stroom het goedkoopst is</string>
+    <string name="onboarding_body_1">SweetSpot scant de komende stroomprijzen om de goedkoopste periode te vinden om een apparaat te gebruiken.</string>
+    <string name="onboarding_title_2">Je apparaten, met één tik</string>
+    <string name="onboarding_body_2">Sla een apparaat op en tik erop voor de goedkoopste periode. Voeg je elektrische auto toe om het laden van huidig naar streefniveau te plannen.</string>
+    <string name="onboarding_title_3">Maak het je eigen</string>
+    <string name="onboarding_body_3">Je land wordt automatisch herkend. Wijzig je zone, voeg apparaten toe of kies je taal — allemaal in Instellingen.</string>
+    <string name="onboarding_skip">Overslaan</string>
+    <string name="onboarding_next">Volgende</string>
+    <string name="onboarding_get_started">Aan de slag</string>
+    <string name="settings_how_it_works">Hoe het werkt</string>
+    <string name="settings_how_it_works_desc">Bekijk de introductie opnieuw</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Abonneer op SweetSpot</string>
     <string name="settings_unlock_description">Neem een jaarabonnement om SweetSpot te blijven gebruiken.</string>

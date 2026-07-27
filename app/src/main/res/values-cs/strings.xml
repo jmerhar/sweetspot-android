@@ -169,6 +169,19 @@
     <string name="stats_prompt_enable">Povolit</string>
     <string name="stats_prompt_dismiss">Ne, děkuji</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Spouštějte spotřebiče, když je elektřina nejlevnější</string>
+    <string name="onboarding_body_1">SweetSpot prochází nadcházející ceny elektřiny a najde nejlevnější období pro spuštění spotřebiče.</string>
+    <string name="onboarding_title_2">Vaše spotřebiče na jedno klepnutí</string>
+    <string name="onboarding_body_2">Uložte si spotřebič a klepnutím zjistíte jeho nejlevnější období. Přidejte svůj elektromobil a naplánujte nabíjení podle aktuálního a cílového nabití.</string>
+    <string name="onboarding_title_3">Přizpůsobte si to</string>
+    <string name="onboarding_body_3">Vaše země se rozpozná automaticky. Změňte zónu, přidejte spotřebiče nebo si zvolte jazyk — vše najdete v Nastavení.</string>
+    <string name="onboarding_skip">Přeskočit</string>
+    <string name="onboarding_next">Další</string>
+    <string name="onboarding_get_started">Začít</string>
+    <string name="settings_how_it_works">Jak to funguje</string>
+    <string name="settings_how_it_works_desc">Zobrazit úvod znovu</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Předplatit SweetSpot</string>
     <string name="settings_unlock_description">Předplaťte si na rok a pokračujte v používání SweetSpot.</string>

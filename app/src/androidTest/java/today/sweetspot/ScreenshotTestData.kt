@@ -136,6 +136,9 @@ object ScreenshotTestData {
             putString("appliances", appliancesJson)
             putBoolean("unlocked", true)
             putBoolean("stats_prompt_shown", true)
+            // The first-launch intro would otherwise cover the home form on the fresh state Screengrab
+            // launches into, timing out every capture — mark it already seen.
+            putBoolean("onboarding_shown", true)
             putBoolean("dev_options", true)
             putBoolean("use_production_logo", true)
             putLong("first_launch_ms", System.currentTimeMillis())

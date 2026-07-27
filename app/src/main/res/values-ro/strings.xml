@@ -161,6 +161,19 @@
     <string name="stats_prompt_enable">Activează</string>
     <string name="stats_prompt_dismiss">Nu, mulțumesc</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Pornește aparatele când energia e cea mai ieftină</string>
+    <string name="onboarding_body_1">SweetSpot analizează prețurile la energie din următoarele ore și găsește cea mai ieftină perioadă pentru a porni un aparat.</string>
+    <string name="onboarding_title_2">Aparatele tale, la o atingere distanță</string>
+    <string name="onboarding_body_2">Salvează un aparat și atinge-l ca să vezi cea mai ieftină perioadă. Adaugă mașina electrică pentru a planifica încărcarea în funcție de nivelul actual și cel dorit.</string>
+    <string name="onboarding_title_3">Personalizează după preferințe</string>
+    <string name="onboarding_body_3">Țara ta este detectată automat. Schimbă zona, adaugă aparate sau alege-ți limba — totul în Setări.</string>
+    <string name="onboarding_skip">Omite</string>
+    <string name="onboarding_next">Următorul</string>
+    <string name="onboarding_get_started">Începe</string>
+    <string name="settings_how_it_works">Cum funcționează</string>
+    <string name="settings_how_it_works_desc">Vezi din nou introducerea</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Abonează-te la SweetSpot</string>
     <string name="settings_unlock_description">Abonează-te pentru un an ca să continui să folosești SweetSpot.</string>

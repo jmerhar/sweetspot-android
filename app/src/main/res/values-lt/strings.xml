@@ -167,6 +167,19 @@
     <string name="stats_prompt_enable">Įjungti</string>
     <string name="stats_prompt_dismiss">Ne, ačiū</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Naudokite prietaisus, kai elektra pigiausia</string>
+    <string name="onboarding_body_1">SweetSpot peržiūri būsimas elektros kainas ir randa pigiausią laiką prietaisui veikti.</string>
+    <string name="onboarding_title_2">Jūsų prietaisai vienu paspaudimu</string>
+    <string name="onboarding_body_2">Išsaugokite prietaisą ir paspauskite jį, kad pamatytumėte pigiausią laiką. Pridėkite elektromobilį ir suplanuokite įkrovimą nuo dabartinio iki tikslinio įkrovos lygio.</string>
+    <string name="onboarding_title_3">Pritaikykite sau</string>
+    <string name="onboarding_body_3">Jūsų šalis nustatoma automatiškai. Pakeiskite zoną, pridėkite prietaisų ar pasirinkite kalbą — viską rasite Nustatymuose.</string>
+    <string name="onboarding_skip">Praleisti</string>
+    <string name="onboarding_next">Toliau</string>
+    <string name="onboarding_get_started">Pradėti</string>
+    <string name="settings_how_it_works">Kaip tai veikia</string>
+    <string name="settings_how_it_works_desc">Peržiūrėti įvadą dar kartą</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Prenumeruoti SweetSpot</string>
     <string name="settings_unlock_description">Prenumeruokite metams, kad galėtumėte toliau naudoti SweetSpot.</string>

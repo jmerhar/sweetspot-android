@@ -43,6 +43,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_DISABLED_SOURCES = "disabled_sources"
         const val KEY_STATS_ENABLED = "stats_enabled"
         const val KEY_STATS_PROMPT_SHOWN = "stats_prompt_shown"
+        const val KEY_ONBOARDING_SHOWN = "onboarding_shown"
         const val KEY_FIRST_LAUNCH_MS = "first_launch_ms"
         const val KEY_UNLOCKED = "unlocked"
         const val KEY_DEV_OPTIONS = "dev_options"
@@ -361,6 +362,12 @@ class SettingsRepository(private val context: Context) {
 
     /** Marks the stats opt-in prompt as shown so it is never displayed again. */
     fun setStatsPromptShown() = putBool(KEY_STATS_PROMPT_SHOWN, true)
+
+    /** Returns whether the first-launch onboarding intro has been completed/skipped. */
+    fun isOnboardingShown(): Boolean = prefs.getBoolean(KEY_ONBOARDING_SHOWN, false)
+
+    /** Marks the onboarding intro as shown so it isn't shown automatically again. */
+    fun setOnboardingShown() = putBool(KEY_ONBOARDING_SHOWN, true)
 
     /**
      * Returns the timestamp of the app's first launch, recording it if not yet set.

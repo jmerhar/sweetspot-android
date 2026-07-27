@@ -95,7 +95,7 @@ RELEASE_KEY_PASSWORD=...
 ## Testing
 
 ```bash
-./gradlew test                   # Run all unit tests (671 tests)
+./gradlew test                   # Run all unit tests (674 tests)
 ./gradlew testDebugUnitTest      # Run debug variant only
 ```
 
@@ -240,6 +240,7 @@ The data layer is organised into subpackages under `data/` (`api`, `cache`, `sta
 ### Phone navigation
 
 State-based in `MainActivity`, no navigation library:
+- `UiState.showOnboarding` (seeded `!settingsRepository.isOnboardingShown()`) shows the first-launch `OnboardingScreen` (`ui/onboarding/`) — a skippable 3-page value-first intro (`HorizontalPager`) — as a full-screen gate just below the import-preview branch and above the paywall. `onOnboardingComplete()` (Skip/Get started) persists `onboarding_shown` and returns to the screen behind it; `onReplayOnboarding()` re-shows it from **Settings › How it works** (a menu row wired via the `onReplayOnboarding` callback, not a `SettingsRoute`). The overlay dialogs are suppressed while it's showing.
 - `UiState.importPreview != null` takes precedence over every other screen: a scanned/tapped setup App Link opens `ImportPreviewScreen` (`ui/share/`) straight away, even on a cold start. `MainActivity` reads the launch `intent.data` in `onCreate` and, because it is `launchMode="singleTask"`, also handles warm starts in `onNewIntent`/`setIntent`, forwarding any `ACTION_VIEW` link to `vm.onImportLink(uri)`. A decode failure sets `importError` and shows an `ImportErrorDialog` overlay (update-the-app for `TOO_NEW`, "couldn't read" for `MALFORMED`) rather than a screen.
 - `UiState.showSettings` toggles between `SweetSpotScreen` and `SettingsScreen`
 - `SettingsScreen` is itself a small coordinator: a single `SettingsRoute` (rememberSaveable enum, no nav library) switches between a **root menu** of category rows (WhatsApp-style icon + title + one-line description, via `SettingsMenuRow`) and one self-contained category sub-screen — `AppliancesSettingsScreen`, `EvSettingsScreen`, `TotalPriceSettingsScreen`, `RegionSettingsScreen` (country/zone/timezone + the country→zone auto-advance), `AppearanceSettingsScreen` (language/theme), `ShareSetupScreen` (`ui/share/` — the QR + "Share link" sharesheet), and the pre-existing `AdvancedSettingsScreen`. Each sub-screen owns its own pickers/dialogs + `BackHandler` (built on the shared `SettingsSubScreen` scaffold). The statistics opt-in stays an inline toggle row on the menu; the version-footer 7-tap developer-options unlock stays on the menu. The **all-in exit guard** (block leaving with all-in enabled but no supplier/surcharge, showing the `all_in_incomplete` snackbar) lives on `TotalPriceSettingsScreen`. `SettingsScreen` gained one param (`onShareSetup`) threaded from `MainActivity`. Category icons are vector drawables in `shared/src/main/res/drawable/` (`ic_price`/`ic_region`/`ic_appearance`/`ic_advanced`/`ic_stats`/`ic_share`, reusing `ic_device`/`ic_ev_charger`).

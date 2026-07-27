@@ -113,6 +113,7 @@ fun SettingsScreen(
     onResetSourceOrder: () -> Unit,
     onLanguageChanged: (String) -> Unit,
     onShareSetup: () -> String,
+    onReplayOnboarding: () -> Unit,
     onClearCache: () -> UiText,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
@@ -242,6 +243,7 @@ fun SettingsScreen(
             onStatsEnabledChanged = onStatsEnabledChanged,
             devOptionsEnabled = devOptionsEnabled,
             onDevOptionsUnlocked = onDevOptionsUnlocked,
+            onReplayOnboarding = onReplayOnboarding,
             onOpen = { route = it },
             onBack = onBack
         )
@@ -262,6 +264,7 @@ private fun SettingsMenu(
     onStatsEnabledChanged: (Boolean) -> Unit,
     devOptionsEnabled: Boolean,
     onDevOptionsUnlocked: () -> Unit,
+    onReplayOnboarding: () -> Unit,
     onOpen: (SettingsRoute) -> Unit,
     onBack: () -> Unit
 ) {
@@ -363,6 +366,15 @@ private fun SettingsMenu(
                 title = stringResource(R.string.settings_advanced),
                 description = stringResource(R.string.settings_advanced_description),
                 onClick = { onOpen(SettingsRoute.Advanced) }
+            )
+
+            // Replays the first-launch intro (a full-screen overlay, not an in-Settings sub-screen).
+            SettingsMenuRow(
+                iconRes = SharedR.drawable.ic_info,
+                title = stringResource(R.string.settings_how_it_works),
+                description = stringResource(R.string.settings_how_it_works_desc),
+                onClick = onReplayOnboarding,
+                modifier = Modifier.testTag("menu_how_it_works")
             )
 
             HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))

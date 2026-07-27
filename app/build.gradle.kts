@@ -21,6 +21,7 @@ kover {
                     // `ui.*` leaks sub-package non-@Composable code (theme/colour/config constants).
                     "today.sweetspot.ui.*",
                     "today.sweetspot.ui.components.*",
+                    "today.sweetspot.ui.onboarding.*",
                     "today.sweetspot.ui.settings.*",
                     "today.sweetspot.ui.share.*",
                     "today.sweetspot.ui.theme.*",

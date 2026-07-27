@@ -157,6 +157,19 @@
     <string name="stats_prompt_enable">Aktivieren</string>
     <string name="stats_prompt_dismiss">Nein danke</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Geräte laufen lassen, wenn Strom am günstigsten ist</string>
+    <string name="onboarding_body_1">SweetSpot durchsucht die kommenden Strompreise und findet den günstigsten Zeitpunkt, um ein Gerät laufen zu lassen.</string>
+    <string name="onboarding_title_2">Deine Geräte, nur ein Tippen entfernt</string>
+    <string name="onboarding_body_2">Speichere ein Gerät und tippe darauf für seine günstigste Zeit. Füge dein E-Auto hinzu, um das Laden vom aktuellen Ladestand bis zur Zielladung zu planen.</string>
+    <string name="onboarding_title_3">Passe es an dich an</string>
+    <string name="onboarding_body_3">Dein Land wird automatisch erkannt. Ändere die Zone, füge Geräte hinzu oder wähle deine Sprache — alles in den Einstellungen.</string>
+    <string name="onboarding_skip">Überspringen</string>
+    <string name="onboarding_next">Weiter</string>
+    <string name="onboarding_get_started">Loslegen</string>
+    <string name="settings_how_it_works">So funktioniert es</string>
+    <string name="settings_how_it_works_desc">Die Einführung erneut ansehen</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">SweetSpot abonnieren</string>
     <string name="settings_unlock_description">Abonniere für ein Jahr, um SweetSpot weiter zu nutzen.</string>

@@ -156,6 +156,19 @@
     <string name="stats_prompt_enable">Ota käyttöön</string>
     <string name="stats_prompt_dismiss">Ei kiitos</string>
 
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Käytä laitteita, kun sähkö on halvinta</string>
+    <string name="onboarding_body_1">SweetSpot käy läpi tulevat sähköhinnat ja löytää halvimman ajankohdan laitteen käyttöön.</string>
+    <string name="onboarding_title_2">Laitteesi yhden napautuksen päässä</string>
+    <string name="onboarding_body_2">Tallenna laite ja napauta sitä nähdäksesi sen halvimman ajankohdan. Lisää sähköautosi ja suunnittele lataus nykyisen latauksen ja lataustavoitteen mukaan.</string>
+    <string name="onboarding_title_3">Tee siitä omasi</string>
+    <string name="onboarding_body_3">Maasi tunnistetaan automaattisesti. Vaihda alue, lisää laitteita tai valitse kieli — kaikki löytyy asetuksista.</string>
+    <string name="onboarding_skip">Ohita</string>
+    <string name="onboarding_next">Seuraava</string>
+    <string name="onboarding_get_started">Aloita</string>
+    <string name="settings_how_it_works">Näin se toimii</string>
+    <string name="settings_how_it_works_desc">Katso esittely uudelleen</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Tilaa SweetSpot</string>
     <string name="settings_unlock_description">Tilaa vuodeksi jatkaaksesi SweetSpotin käyttöä.</string>

@@ -79,7 +79,6 @@ internal fun AdvancedSettingsScreen(
     onDevUnlockChanged: (Boolean) -> Unit,
     onDevResetUnlock: () -> Unit,
     onDevResetStatsTimer: () -> Unit,
-    onDevResetCoachMarks: () -> Unit,
     timeOverrideMs: Long?,
     onDevTimeOverrideChanged: (Long?) -> Unit,
     timeZoneId: ZoneId,
@@ -171,10 +170,6 @@ internal fun AdvancedSettingsScreen(
                     onResetStatsTimer = {
                         onDevResetStatsTimer()
                         coroutineScope.launch { snackbarHostState.showSnackbar("Stats timer reset") }
-                    },
-                    onResetCoachMarks = {
-                        onDevResetCoachMarks()
-                        coroutineScope.launch { snackbarHostState.showSnackbar("Tips reset") }
                     },
                     timeOverrideMs = timeOverrideMs,
                     onTimeOverrideChanged = onDevTimeOverrideChanged,

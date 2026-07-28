@@ -285,4 +285,68 @@
     <string name="coach_all_in_toggle">Pārslēdzieties starp pilno cenu un tikai biržas cenu.</string>
     <string name="coach_ev_chip">Pieskarieties transportlīdzeklim, lai plānotu uzlādi pēc akumulatora procentiem.</string>
     <string name="coach_got_it">Sapratu</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Palīdzība un atsauksmes</string>
+    <string name="settings_help_desc">Pamācības, atsauksmes un atbalsts</string>
+    <string name="help_section_learn">Uzzināt</string>
+    <string name="help_section_support">Atbalsts</string>
+    <string name="help_section_about">Par lietotni</string>
+    <string name="help_quick_guide_title">Ātrā pamācība</string>
+    <string name="help_quick_guide_desc">Kā lietot SweetSpot</string>
+    <string name="help_reset_tips_title">Atiestatīt padomus</string>
+    <string name="help_reset_tips_desc">Rādīt vienreizējos padomus vēlreiz</string>
+    <string name="help_faq_title">BUJ</string>
+    <string name="help_faq_desc">Biežāk uzdotie jautājumi</string>
+    <string name="help_report_title">Ziņot par problēmu</string>
+    <string name="help_report_desc">Kaut kas nedarbojas</string>
+    <string name="help_feedback_title">Sūtīt atsauksmi</string>
+    <string name="help_feedback_desc">Idejas un ieteikumi</string>
+    <string name="help_my_reports_title">Mani ziņojumi</string>
+    <string name="help_my_reports_desc">Sekojiet līdzi iesniegtajam</string>
+    <string name="help_contact_title">Sazināties ar mums</string>
+    <string name="help_contact_desc">Rakstiet mums e-pastā</string>
+    <string name="help_rate_title">Novērtēt SweetSpot</string>
+    <string name="help_rate_desc">Novērtējiet mūs Google Play</string>
+    <string name="help_whats_new_title">Jaunumi</string>
+    <string name="help_whats_new_desc">Jaunākās izmaiņas</string>
+    <string name="help_privacy_title">Privātuma politika</string>
+    <string name="help_privacy_desc">Kā tiek apstrādāti jūsu dati</string>
+    <string name="help_about_license">GPL v3 · Atklātais pirmkods vietnē GitHub</string>
+    <string name="tips_reset_snackbar">Padomi atiestatīti</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Jūsu ziņojums tiek publicēts kā publisks pieteikums vietnē GitHub — lūdzu, neiekļaujiet personas datus.</string>
+    <string name="report_subject_label">Temats</string>
+    <string name="report_body_label_bug">Kas notika?</string>
+    <string name="report_body_label_feedback">Jūsu atsauksme</string>
+    <string name="report_email_label">Paziņot man pa e-pastu (neobligāti)</string>
+    <string name="report_email_note">Jūsu e-pasts tiek izmantots tikai, lai jums paziņotu — tas nekad netiek rādīts publiskajā pieteikumā.</string>
+    <string name="report_submit">Iesniegt</string>
+    <string name="report_submitting">Sūta…</string>
+    <string name="report_filed">Ziņojums #%1$d iesniegts — paldies!</string>
+    <string name="report_sent">Paldies — jūsu ziņojums ir nosūtīts.</string>
+    <string name="report_error_retry">Pašlaik neizdevās nosūtīt — saglabāts, mēģināsim vēlreiz automātiski.</string>
+    <string name="report_error_permanent">Neizdevās nosūtīt. Lūdzu, pārbaudiet ievadīto un mēģiniet vēlreiz.</string>
+    <string name="report_retry">Mēģināt vēlreiz</string>
+    <string name="report_done">Gatavs</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Jūs vēl neesat iesniedzis nevienu ziņojumu.</string>
+    <string name="my_reports_open">Atvērts</string>
+    <string name="my_reports_closed">Slēgts</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Atrodiet lētāko laiku</string>
+    <string name="guide_find_body">Norādiet, cik ilgi jūsu ierīcei jādarbojas, un pieskarieties Atrast.</string>
+    <string name="guide_appliances_title">Saglabājiet savas ierīces</string>
+    <string name="guide_appliances_body">Pievienojiet ierīces iestatījumos meklēšanai ar vienu pieskārienu.</string>
+    <string name="guide_ev_title">Plānojiet elektroauto uzlādi</string>
+    <string name="guide_ev_body">Pievienojiet savu automašīnu, ievadiet tās pašreizējo un mērķa uzlādes līmeni, un SweetSpot aprēķinās uzlādes laiku.</string>
+    <string name="guide_result_title">Nolasiet rezultātu</string>
+    <string name="guide_result_body">Izmantojiet Agrāk un Lētāk, lai pārbīdītu periodu, un turiet nospiestu diagrammu, lai redzētu jebkura brīža cenu.</string>
+    <string name="guide_allin_title">Pilnā cena</string>
+    <string name="guide_allin_body">Pēc izvēles rādiet pilno patērētāja cenu, nevis tikai biržas cenu.</string>
+    <string name="guide_wear_title">Jūsu pulkstenī</string>
+    <string name="guide_wear_body">Jūsu ierīces sinhronizējas ar Wear OS, tāpēc varat pārbaudīt cenas bez tālruņa.</string>
 </resources>

@@ -289,4 +289,68 @@
     <string name="coach_all_in_toggle">Prebacujte između pune ukupne cijene i same tržišne cijene.</string>
     <string name="coach_ev_chip">Dodirnite vozilo da isplanirate punjenje prema procentu baterije.</string>
     <string name="coach_got_it">U redu</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Pomoć i povratne informacije</string>
+    <string name="settings_help_desc">Vodiči, povratne informacije i podrška</string>
+    <string name="help_section_learn">Naučite</string>
+    <string name="help_section_support">Podrška</string>
+    <string name="help_section_about">O aplikaciji</string>
+    <string name="help_quick_guide_title">Kratki vodič</string>
+    <string name="help_quick_guide_desc">Kako koristiti SweetSpot</string>
+    <string name="help_reset_tips_title">Poništi savjete</string>
+    <string name="help_reset_tips_desc">Ponovo prikaži jednokratne savjete</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Česta pitanja</string>
+    <string name="help_report_title">Prijavi problem</string>
+    <string name="help_report_desc">Nešto ne radi</string>
+    <string name="help_feedback_title">Pošalji povratne informacije</string>
+    <string name="help_feedback_desc">Ideje i prijedlozi</string>
+    <string name="help_my_reports_title">Moje prijave</string>
+    <string name="help_my_reports_desc">Pratite šta ste poslali</string>
+    <string name="help_contact_title">Kontaktirajte nas</string>
+    <string name="help_contact_desc">Pišite nam direktno</string>
+    <string name="help_rate_title">Ocijenite SweetSpot</string>
+    <string name="help_rate_desc">Ocijenite nas na Google Play-u</string>
+    <string name="help_whats_new_title">Šta je novo</string>
+    <string name="help_whats_new_desc">Najnovije promjene</string>
+    <string name="help_privacy_title">Politika privatnosti</string>
+    <string name="help_privacy_desc">Kako se rukuje vašim podacima</string>
+    <string name="help_about_license">GPL v3 · Otvoreni kôd na GitHub-u</string>
+    <string name="tips_reset_snackbar">Savjeti su poništeni</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Vaša prijava se objavljuje kao javni problem na GitHub-u — nemojte uključivati lične podatke.</string>
+    <string name="report_subject_label">Naslov</string>
+    <string name="report_body_label_bug">Šta se dogodilo?</string>
+    <string name="report_body_label_feedback">Vaše povratne informacije</string>
+    <string name="report_email_label">Obavijesti me e-poštom (opciono)</string>
+    <string name="report_email_note">Vaša e-pošta se koristi samo da vas obavijestimo — nikada se ne prikazuje u javnom problemu.</string>
+    <string name="report_submit">Pošalji</string>
+    <string name="report_submitting">Slanje…</string>
+    <string name="report_filed">Prijava #%1$d je poslata — hvala!</string>
+    <string name="report_sent">Hvala — vaša prijava je poslata.</string>
+    <string name="report_error_retry">Trenutno nije moguće poslati — sačuvano, pokušaćemo automatski ponovo.</string>
+    <string name="report_error_permanent">Slanje nije uspjelo. Provjerite unos i pokušajte ponovo.</string>
+    <string name="report_retry">Pokušaj ponovo</string>
+    <string name="report_done">Gotovo</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Još niste poslali nijednu prijavu.</string>
+    <string name="my_reports_open">Otvoreno</string>
+    <string name="my_reports_closed">Zatvoreno</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Pronađite najjeftinije vrijeme</string>
+    <string name="guide_find_body">Izaberite koliko dugo vaš aparat treba da radi, pa dodirnite Pronađi.</string>
+    <string name="guide_appliances_title">Sačuvajte svoje aparate</string>
+    <string name="guide_appliances_body">Dodajte aparate u Podešavanjima za pretragu jednim dodirom.</string>
+    <string name="guide_ev_title">Isplanirajte punjenje električnog vozila</string>
+    <string name="guide_ev_body">Dodajte svoj automobil, unesite trenutnu i ciljnu napunjenost, a SweetSpot izračunava vrijeme punjenja.</string>
+    <string name="guide_result_title">Pročitajte rezultat</string>
+    <string name="guide_result_body">Koristite Ranije i Jeftinije za pomjeranje perioda, a pritisnite i držite grafikon da vidite cijenu za bilo koje vrijeme.</string>
+    <string name="guide_allin_title">Ukupna cijena</string>
+    <string name="guide_allin_body">Po želji prikažite punu cijenu za potrošača umjesto same tržišne cijene.</string>
+    <string name="guide_wear_title">Na vašem satu</string>
+    <string name="guide_wear_body">Vaši aparati se sinhronizuju sa Wear OS-om, pa možete provjeravati cijene bez telefona.</string>
 </resources>

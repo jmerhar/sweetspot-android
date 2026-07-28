@@ -285,4 +285,68 @@
     <string name="ev_separate_section">Secțiune separată</string>
     <string name="home_section_vehicles">Vehicule</string>
     <string name="home_section_appliances">Aparate</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Ajutor &amp; feedback</string>
+    <string name="settings_help_desc">Ghiduri, feedback și asistență</string>
+    <string name="help_section_learn">Învață</string>
+    <string name="help_section_support">Asistență</string>
+    <string name="help_section_about">Despre</string>
+    <string name="help_quick_guide_title">Ghid rapid</string>
+    <string name="help_quick_guide_desc">Cum se folosește SweetSpot</string>
+    <string name="help_reset_tips_title">Resetează sfaturile</string>
+    <string name="help_reset_tips_desc">Afișează din nou sfaturile unice</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Întrebări frecvente</string>
+    <string name="help_report_title">Raportează o problemă</string>
+    <string name="help_report_desc">Ceva nu funcționează</string>
+    <string name="help_feedback_title">Trimite feedback</string>
+    <string name="help_feedback_desc">Idei și sugestii</string>
+    <string name="help_my_reports_title">Rapoartele mele</string>
+    <string name="help_my_reports_desc">Urmărește ce ai trimis</string>
+    <string name="help_contact_title">Contactează-ne</string>
+    <string name="help_contact_desc">Scrie-ne direct pe e-mail</string>
+    <string name="help_rate_title">Evaluează SweetSpot</string>
+    <string name="help_rate_desc">Evaluează-ne pe Google Play</string>
+    <string name="help_whats_new_title">Noutăți</string>
+    <string name="help_whats_new_desc">Ultimele modificări</string>
+    <string name="help_privacy_title">Politica de confidențialitate</string>
+    <string name="help_privacy_desc">Cum sunt gestionate datele tale</string>
+    <string name="help_about_license">GPL v3 · Open source pe GitHub</string>
+    <string name="tips_reset_snackbar">Sfaturile au fost resetate</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Raportul tău este publicat ca problemă publică pe GitHub — te rugăm să nu incluzi date personale.</string>
+    <string name="report_subject_label">Subiect</string>
+    <string name="report_body_label_bug">Ce s-a întâmplat?</string>
+    <string name="report_body_label_feedback">Feedbackul tău</string>
+    <string name="report_email_label">Anunță-mă prin e-mail (opțional)</string>
+    <string name="report_email_note">E-mailul tău este folosit doar pentru a te anunța — nu este afișat niciodată în problema publică.</string>
+    <string name="report_submit">Trimite</string>
+    <string name="report_submitting">Se trimite…</string>
+    <string name="report_filed">Raportul #%1$d a fost înregistrat — mulțumim!</string>
+    <string name="report_sent">Mulțumim — raportul tău a fost trimis.</string>
+    <string name="report_error_retry">Nu s-a putut trimite acum — a fost salvat, vom reîncerca automat.</string>
+    <string name="report_error_permanent">Nu s-a putut trimite. Verifică datele introduse și încearcă din nou.</string>
+    <string name="report_retry">Reîncearcă</string>
+    <string name="report_done">Gata</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Nu ai trimis încă niciun raport.</string>
+    <string name="my_reports_open">Deschis</string>
+    <string name="my_reports_closed">Închis</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Găsește cel mai ieftin moment</string>
+    <string name="guide_find_body">Alege cât timp trebuie să funcționeze aparatul, apoi apasă Găsește.</string>
+    <string name="guide_appliances_title">Salvează-ți aparatele</string>
+    <string name="guide_appliances_body">Adaugă aparate în Setări pentru căutări cu o singură atingere.</string>
+    <string name="guide_ev_title">Planifică încărcarea mașinii electrice</string>
+    <string name="guide_ev_body">Adaugă mașina, introdu nivelul actual și cel dorit, iar SweetSpot calculează timpul de încărcare.</string>
+    <string name="guide_result_title">Citește rezultatul</string>
+    <string name="guide_result_body">Folosește Mai devreme și Mai ieftin pentru a muta perioada și apasă lung pe grafic pentru prețul oricărui interval.</string>
+    <string name="guide_allin_title">Preț total</string>
+    <string name="guide_allin_body">Poți afișa prețul total pentru consumator în locul prețului de piață simplu.</string>
+    <string name="guide_wear_title">Pe ceasul tău</string>
+    <string name="guide_wear_body">Aparatele tale se sincronizează cu Wear OS, ca să poți verifica prețurile fără telefon.</string>
 </resources>

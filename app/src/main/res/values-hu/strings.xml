@@ -276,4 +276,68 @@
     <string name="ev_separate_section">Külön szakasz</string>
     <string name="home_section_vehicles">Járművek</string>
     <string name="home_section_appliances">Készülékek</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Súgó és visszajelzés</string>
+    <string name="settings_help_desc">Útmutatók, visszajelzés és támogatás</string>
+    <string name="help_section_learn">Tudnivalók</string>
+    <string name="help_section_support">Támogatás</string>
+    <string name="help_section_about">Névjegy</string>
+    <string name="help_quick_guide_title">Gyors útmutató</string>
+    <string name="help_quick_guide_desc">A SweetSpot használata</string>
+    <string name="help_reset_tips_title">Tippek visszaállítása</string>
+    <string name="help_reset_tips_desc">Az egyszeri tippek újbóli megjelenítése</string>
+    <string name="help_faq_title">GYIK</string>
+    <string name="help_faq_desc">Gyakori kérdések</string>
+    <string name="help_report_title">Probléma jelentése</string>
+    <string name="help_report_desc">Valami nem működik</string>
+    <string name="help_feedback_title">Visszajelzés küldése</string>
+    <string name="help_feedback_desc">Ötletek és javaslatok</string>
+    <string name="help_my_reports_title">Bejelentéseim</string>
+    <string name="help_my_reports_desc">Kövesd nyomon, mit küldtél be</string>
+    <string name="help_contact_title">Kapcsolatfelvétel</string>
+    <string name="help_contact_desc">Írj nekünk közvetlenül e-mailt</string>
+    <string name="help_rate_title">SweetSpot értékelése</string>
+    <string name="help_rate_desc">Értékelj minket a Google Playen</string>
+    <string name="help_whats_new_title">Újdonságok</string>
+    <string name="help_whats_new_desc">Legújabb változások</string>
+    <string name="help_privacy_title">Adatvédelmi irányelvek</string>
+    <string name="help_privacy_desc">Hogyan kezeljük az adataidat</string>
+    <string name="help_about_license">GPL v3 · Nyílt forráskód a GitHubon</string>
+    <string name="tips_reset_snackbar">Tippek visszaállítva</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">A bejelentésed nyilvános hibajegyként kerül közzétételre a GitHubon — kérjük, ne adj meg személyes adatokat.</string>
+    <string name="report_subject_label">Tárgy</string>
+    <string name="report_body_label_bug">Mi történt?</string>
+    <string name="report_body_label_feedback">Visszajelzésed</string>
+    <string name="report_email_label">Értesíts e-mailben (opcionális)</string>
+    <string name="report_email_note">Az e-mail-címedet csak értesítésre használjuk — soha nem jelenik meg a nyilvános hibajegyben.</string>
+    <string name="report_submit">Küldés</string>
+    <string name="report_submitting">Küldés…</string>
+    <string name="report_filed">#%1$d bejelentés rögzítve — köszönjük!</string>
+    <string name="report_sent">Köszönjük — a bejelentésed elküldve.</string>
+    <string name="report_error_retry">Most nem sikerült elküldeni — elmentve, automatikusan újrapróbáljuk.</string>
+    <string name="report_error_permanent">Nem sikerült elküldeni. Ellenőrizd a bevitt adatokat, és próbáld újra.</string>
+    <string name="report_retry">Újra</string>
+    <string name="report_done">Kész</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Még nem küldtél be bejelentést.</string>
+    <string name="my_reports_open">Nyitott</string>
+    <string name="my_reports_closed">Lezárt</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Találd meg a legolcsóbb időpontot</string>
+    <string name="guide_find_body">Válaszd ki, mennyi ideig kell működnie a készülékednek, majd koppints a Keresés gombra.</string>
+    <string name="guide_appliances_title">Mentsd el készülékeidet</string>
+    <string name="guide_appliances_body">Adj hozzá készülékeket a Beállításokban az egykoppintásos kereséshez.</string>
+    <string name="guide_ev_title">Tervezd az elektromos autó töltését</string>
+    <string name="guide_ev_body">Add hozzá az autódat, add meg a jelenlegi és a céltöltöttségét, a SweetSpot pedig kiszámolja a töltési időt.</string>
+    <string name="guide_result_title">Értelmezd az eredményt</string>
+    <string name="guide_result_body">Használd a Korábban és Olcsóbban gombokat az időablak eltolásához, és tartsd nyomva a diagramot bármely időpont árához.</string>
+    <string name="guide_allin_title">Teljes ár</string>
+    <string name="guide_allin_body">Kívánság szerint a puszta piaci ár helyett a teljes fogyasztói árat is megjelenítheted.</string>
+    <string name="guide_wear_title">Az órádon</string>
+    <string name="guide_wear_body">Készülékeid szinkronizálódnak a Wear OS-re, így telefon nélkül is ellenőrizheted az árakat.</string>
 </resources>

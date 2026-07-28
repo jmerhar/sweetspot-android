@@ -280,4 +280,68 @@
     <string name="coach_all_in_toggle">Εναλλαγή μεταξύ της πλήρους τελικής τιμής και της καθαρής τιμής αγοράς.</string>
     <string name="coach_ev_chip">Πατήστε το όχημά σας για να προγραμματίσετε τη φόρτιση με βάση το ποσοστό μπαταρίας.</string>
     <string name="coach_got_it">Κατάλαβα</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Βοήθεια &amp; σχόλια</string>
+    <string name="settings_help_desc">Οδηγοί, σχόλια και υποστήριξη</string>
+    <string name="help_section_learn">Μάθετε</string>
+    <string name="help_section_support">Υποστήριξη</string>
+    <string name="help_section_about">Σχετικά</string>
+    <string name="help_quick_guide_title">Σύντομος οδηγός</string>
+    <string name="help_quick_guide_desc">Πώς να χρησιμοποιείτε το SweetSpot</string>
+    <string name="help_reset_tips_title">Επαναφορά συμβουλών</string>
+    <string name="help_reset_tips_desc">Εμφάνιση ξανά των εφάπαξ υποδείξεων</string>
+    <string name="help_faq_title">Συχνές ερωτήσεις</string>
+    <string name="help_faq_desc">Συνήθεις ερωτήσεις</string>
+    <string name="help_report_title">Αναφορά προβλήματος</string>
+    <string name="help_report_desc">Κάτι δεν λειτουργεί</string>
+    <string name="help_feedback_title">Αποστολή σχολίων</string>
+    <string name="help_feedback_desc">Ιδέες και προτάσεις</string>
+    <string name="help_my_reports_title">Οι αναφορές μου</string>
+    <string name="help_my_reports_desc">Παρακολουθήστε ό,τι έχετε υποβάλει</string>
+    <string name="help_contact_title">Επικοινωνήστε μαζί μας</string>
+    <string name="help_contact_desc">Στείλτε μας email απευθείας</string>
+    <string name="help_rate_title">Αξιολογήστε το SweetSpot</string>
+    <string name="help_rate_desc">Αξιολογήστε μας στο Google Play</string>
+    <string name="help_whats_new_title">Τι νέο υπάρχει</string>
+    <string name="help_whats_new_desc">Πρόσφατες αλλαγές</string>
+    <string name="help_privacy_title">Πολιτική απορρήτου</string>
+    <string name="help_privacy_desc">Πώς γίνεται η διαχείριση των δεδομένων σας</string>
+    <string name="help_about_license">GPL v3 · Ανοιχτού κώδικα στο GitHub</string>
+    <string name="tips_reset_snackbar">Οι συμβουλές επαναφέρθηκαν</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Η αναφορά σας δημοσιεύεται ως δημόσιο ζήτημα στο GitHub — παρακαλούμε μην συμπεριλάβετε προσωπικά στοιχεία.</string>
+    <string name="report_subject_label">Θέμα</string>
+    <string name="report_body_label_bug">Τι συνέβη;</string>
+    <string name="report_body_label_feedback">Τα σχόλιά σας</string>
+    <string name="report_email_label">Ειδοποιήστε με μέσω email (προαιρετικό)</string>
+    <string name="report_email_note">Το email σας χρησιμοποιείται μόνο για να σας ειδοποιήσουμε — δεν εμφανίζεται ποτέ στο δημόσιο ζήτημα.</string>
+    <string name="report_submit">Υποβολή</string>
+    <string name="report_submitting">Αποστολή…</string>
+    <string name="report_filed">Η αναφορά #%1$d καταχωρήθηκε — ευχαριστούμε!</string>
+    <string name="report_sent">Ευχαριστούμε — η αναφορά σας εστάλη.</string>
+    <string name="report_error_retry">Δεν ήταν δυνατή η αποστολή τώρα — αποθηκεύτηκε, θα προσπαθήσουμε ξανά αυτόματα.</string>
+    <string name="report_error_permanent">Δεν ήταν δυνατή η αποστολή. Ελέγξτε τα στοιχεία σας και δοκιμάστε ξανά.</string>
+    <string name="report_retry">Επανάληψη</string>
+    <string name="report_done">Τέλος</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Δεν έχετε υποβάλει ακόμη καμία αναφορά.</string>
+    <string name="my_reports_open">Ανοιχτή</string>
+    <string name="my_reports_closed">Κλειστή</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Βρείτε τη φθηνότερη ώρα</string>
+    <string name="guide_find_body">Επιλέξτε πόση ώρα χρειάζεται να λειτουργήσει η συσκευή σας και έπειτα πατήστε «Εύρεση».</string>
+    <string name="guide_appliances_title">Αποθηκεύστε τις συσκευές σας</string>
+    <string name="guide_appliances_body">Προσθέστε συσκευές στις Ρυθμίσεις για αναζητήσεις με ένα άγγιγμα.</string>
+    <string name="guide_ev_title">Προγραμματίστε τη φόρτιση ηλεκτρικού οχήματος</string>
+    <string name="guide_ev_body">Προσθέστε το αυτοκίνητό σας, εισαγάγετε την τρέχουσα και την επιθυμητή φόρτιση, και το SweetSpot υπολογίζει τον χρόνο φόρτισης.</string>
+    <string name="guide_result_title">Διαβάστε το αποτέλεσμα</string>
+    <string name="guide_result_body">Χρησιμοποιήστε τα «Νωρίτερα» και «Φθηνότερα» για να μετακινήσετε την περίοδο και πατήστε παρατεταμένα το γράφημα για την τιμή οποιουδήποτε διαστήματος.</string>
+    <string name="guide_allin_title">Τελική τιμή</string>
+    <string name="guide_allin_body">Προαιρετικά, εμφανίστε την πλήρη τιμή καταναλωτή αντί μόνο της τιμής αγοράς.</string>
+    <string name="guide_wear_title">Στο ρολόι σας</string>
+    <string name="guide_wear_body">Οι συσκευές σας συγχρονίζονται με το Wear OS, ώστε να μπορείτε να ελέγχετε τιμές χωρίς το τηλέφωνό σας.</string>
 </resources>

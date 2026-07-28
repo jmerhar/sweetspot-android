@@ -30,6 +30,24 @@
   var saved = localStorage.getItem(KEY);
   var suffix = window.location.search + window.location.hash;
 
+  // Explicit override via ?lang=xx (used by deep links from the app): this asserts the language
+  // regardless of any previously-saved preference. Save it, move to the matching localized path,
+  // and strip the param so it doesn't linger. Then fall through — saved now equals the current
+  // language, so the preference branch below won't redirect away.
+  var explicit = new URLSearchParams(window.location.search).get(KEY);
+  if (explicit) {
+    explicit = (ALIASES[explicit] || explicit).toLowerCase();
+    if (explicit === 'en' || SUPPORTED.indexOf(explicit) !== -1) {
+      localStorage.setItem(KEY, explicit);
+      var params = new URLSearchParams(window.location.search);
+      params.delete(KEY);
+      var qs = params.toString();
+      var cleaned = replaceLang(window.location.pathname, explicit) + (qs ? '?' + qs : '') + window.location.hash;
+      window.location.replace(cleaned);
+      return;
+    }
+  }
+
   if (saved) {
     // Redirect to the saved language if we're not already on it.
     if (saved !== currentLang) {

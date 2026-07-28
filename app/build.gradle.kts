@@ -35,6 +35,8 @@ kover {
                     "today.sweetspot.data.billing.PlayBillingRepository",     // real Play Billing wrapper
                     "today.sweetspot.data.billing.PlayBillingRepository\$*",
                     "today.sweetspot.data.stats.HttpStatsPoster",    // real HTTP POST plumbing
+                    "today.sweetspot.data.support.HttpReportSubmitter", // real HTTP POST plumbing
+                    "today.sweetspot.data.support.HttpReportSubmitter\$*",
                 )
             }
         }
@@ -62,6 +64,9 @@ dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
+
+    // Chrome Custom Tabs — open website links (FAQ/privacy/changelog) in an in-app browser tab
+    implementation(libs.browser)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
 

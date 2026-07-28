@@ -283,4 +283,68 @@
     <string name="ev_separate_section">Section séparée</string>
     <string name="home_section_vehicles">Véhicules</string>
     <string name="home_section_appliances">Appareils</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Aide et commentaires</string>
+    <string name="settings_help_desc">Guides, commentaires et assistance</string>
+    <string name="help_section_learn">Découvrir</string>
+    <string name="help_section_support">Assistance</string>
+    <string name="help_section_about">À propos</string>
+    <string name="help_quick_guide_title">Guide rapide</string>
+    <string name="help_quick_guide_desc">Comment utiliser SweetSpot</string>
+    <string name="help_reset_tips_title">Réinitialiser les astuces</string>
+    <string name="help_reset_tips_desc">Réafficher les astuces ponctuelles</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Questions fréquentes</string>
+    <string name="help_report_title">Signaler un problème</string>
+    <string name="help_report_desc">Quelque chose ne fonctionne pas</string>
+    <string name="help_feedback_title">Envoyer un commentaire</string>
+    <string name="help_feedback_desc">Idées et suggestions</string>
+    <string name="help_my_reports_title">Mes signalements</string>
+    <string name="help_my_reports_desc">Suivez vos envois</string>
+    <string name="help_contact_title">Nous contacter</string>
+    <string name="help_contact_desc">Écrivez-nous directement</string>
+    <string name="help_rate_title">Noter SweetSpot</string>
+    <string name="help_rate_desc">Notez-nous sur Google Play</string>
+    <string name="help_whats_new_title">Nouveautés</string>
+    <string name="help_whats_new_desc">Derniers changements</string>
+    <string name="help_privacy_title">Politique de confidentialité</string>
+    <string name="help_privacy_desc">Comment vos données sont traitées</string>
+    <string name="help_about_license">GPL v3 · Open source sur GitHub</string>
+    <string name="tips_reset_snackbar">Astuces réinitialisées</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Votre signalement est publié comme une issue publique sur GitHub — n\'y indiquez aucune donnée personnelle.</string>
+    <string name="report_subject_label">Sujet</string>
+    <string name="report_body_label_bug">Que s\'est-il passé ?</string>
+    <string name="report_body_label_feedback">Votre commentaire</string>
+    <string name="report_email_label">Me prévenir par e-mail (facultatif)</string>
+    <string name="report_email_note">Votre e-mail sert uniquement à vous prévenir — il n\'apparaît jamais dans l\'issue publique.</string>
+    <string name="report_submit">Envoyer</string>
+    <string name="report_submitting">Envoi…</string>
+    <string name="report_filed">Signalement n° %1$d envoyé — merci !</string>
+    <string name="report_sent">Merci — votre signalement a été envoyé.</string>
+    <string name="report_error_retry">Envoi impossible pour l\'instant — enregistré, nouvel essai automatique.</string>
+    <string name="report_error_permanent">Envoi impossible. Vérifiez votre saisie et réessayez.</string>
+    <string name="report_retry">Réessayer</string>
+    <string name="report_done">Terminé</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Vous n\'avez encore envoyé aucun signalement.</string>
+    <string name="my_reports_open">Ouvert</string>
+    <string name="my_reports_closed">Fermé</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Trouvez le moment le moins cher</string>
+    <string name="guide_find_body">Choisissez la durée de fonctionnement de votre appareil, puis appuyez sur Trouver.</string>
+    <string name="guide_appliances_title">Enregistrez vos appareils</string>
+    <string name="guide_appliances_body">Ajoutez des appareils dans les Paramètres pour des recherches en un appui.</string>
+    <string name="guide_ev_title">Planifiez la recharge électrique</string>
+    <string name="guide_ev_body">Ajoutez votre voiture, saisissez sa charge actuelle et cible, et SweetSpot calcule le temps de recharge.</string>
+    <string name="guide_result_title">Lisez le résultat</string>
+    <string name="guide_result_body">Utilisez Plus tôt et Moins cher pour décaler la période, et appuyez longuement sur le graphique pour voir le prix de chaque créneau.</string>
+    <string name="guide_allin_title">Prix total</string>
+    <string name="guide_allin_body">Affichez si vous le souhaitez le prix total au consommateur au lieu du seul prix du marché.</string>
+    <string name="guide_wear_title">Sur votre montre</string>
+    <string name="guide_wear_body">Vos appareils se synchronisent avec Wear OS pour consulter les prix sans votre téléphone.</string>
 </resources>

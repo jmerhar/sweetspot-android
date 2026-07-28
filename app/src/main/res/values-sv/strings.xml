@@ -278,4 +278,68 @@
     <string name="ev_separate_section">Egen sektion</string>
     <string name="home_section_vehicles">Fordon</string>
     <string name="home_section_appliances">Apparater</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Hjälp &amp; feedback</string>
+    <string name="settings_help_desc">Guider, feedback och support</string>
+    <string name="help_section_learn">Lär dig</string>
+    <string name="help_section_support">Support</string>
+    <string name="help_section_about">Om</string>
+    <string name="help_quick_guide_title">Snabbguide</string>
+    <string name="help_quick_guide_desc">Så använder du SweetSpot</string>
+    <string name="help_reset_tips_title">Återställ tips</string>
+    <string name="help_reset_tips_desc">Visa engångstipsen igen</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Vanliga frågor</string>
+    <string name="help_report_title">Rapportera ett problem</string>
+    <string name="help_report_desc">Något fungerar inte</string>
+    <string name="help_feedback_title">Skicka feedback</string>
+    <string name="help_feedback_desc">Idéer och förslag</string>
+    <string name="help_my_reports_title">Mina rapporter</string>
+    <string name="help_my_reports_desc">Följ det du har skickat in</string>
+    <string name="help_contact_title">Kontakta oss</string>
+    <string name="help_contact_desc">Mejla oss direkt</string>
+    <string name="help_rate_title">Betygsätt SweetSpot</string>
+    <string name="help_rate_desc">Betygsätt oss på Google Play</string>
+    <string name="help_whats_new_title">Nyheter</string>
+    <string name="help_whats_new_desc">Senaste ändringarna</string>
+    <string name="help_privacy_title">Integritetspolicy</string>
+    <string name="help_privacy_desc">Så hanteras dina uppgifter</string>
+    <string name="help_about_license">GPL v3 · Öppen källkod på GitHub</string>
+    <string name="tips_reset_snackbar">Tips återställda</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Din rapport publiceras som ett offentligt ärende på GitHub — ange inga personuppgifter.</string>
+    <string name="report_subject_label">Ämne</string>
+    <string name="report_body_label_bug">Vad hände?</string>
+    <string name="report_body_label_feedback">Din feedback</string>
+    <string name="report_email_label">Meddela mig via e-post (valfritt)</string>
+    <string name="report_email_note">Din e-post används bara för att meddela dig — den visas aldrig i det offentliga ärendet.</string>
+    <string name="report_submit">Skicka</string>
+    <string name="report_submitting">Skickar…</string>
+    <string name="report_filed">Rapport #%1$d skickad — tack!</string>
+    <string name="report_sent">Tack — din rapport har skickats.</string>
+    <string name="report_error_retry">Kunde inte skicka just nu — sparad, vi försöker igen automatiskt.</string>
+    <string name="report_error_permanent">Kunde inte skicka. Kontrollera dina uppgifter och försök igen.</string>
+    <string name="report_retry">Försök igen</string>
+    <string name="report_done">Klar</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Du har inte skickat in några rapporter än.</string>
+    <string name="my_reports_open">Öppen</string>
+    <string name="my_reports_closed">Stängd</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Hitta den billigaste tiden</string>
+    <string name="guide_find_body">Välj hur länge din apparat behöver köras och tryck sedan på Hitta.</string>
+    <string name="guide_appliances_title">Spara dina apparater</string>
+    <string name="guide_appliances_body">Lägg till apparater i Inställningar för sökningar med ett tryck.</string>
+    <string name="guide_ev_title">Planera elbilsladdning</string>
+    <string name="guide_ev_body">Lägg till din bil, ange nuvarande laddning och laddningsmål, så räknar SweetSpot ut laddtiden.</string>
+    <string name="guide_result_title">Läs resultatet</string>
+    <string name="guide_result_body">Använd Tidigare och Billigare för att flytta tidsperioden, och tryck och håll på diagrammet för priset vid valfri tidpunkt.</string>
+    <string name="guide_allin_title">Totalpris</string>
+    <string name="guide_allin_body">Visa vid behov hela konsumentpriset i stället för enbart marknadspriset.</string>
+    <string name="guide_wear_title">På din klocka</string>
+    <string name="guide_wear_body">Dina apparater synkas till Wear OS, så att du kan kolla priser utan din telefon.</string>
 </resources>

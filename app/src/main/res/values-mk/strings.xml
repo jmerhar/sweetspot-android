@@ -280,4 +280,68 @@
     <string name="ev_separate_section">Одделен дел</string>
     <string name="home_section_vehicles">Возила</string>
     <string name="home_section_appliances">Апарати</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Помош и повратни информации</string>
+    <string name="settings_help_desc">Водичи, повратни информации и поддршка</string>
+    <string name="help_section_learn">Научи повеќе</string>
+    <string name="help_section_support">Поддршка</string>
+    <string name="help_section_about">За апликацијата</string>
+    <string name="help_quick_guide_title">Брз водич</string>
+    <string name="help_quick_guide_desc">Како да го користите SweetSpot</string>
+    <string name="help_reset_tips_title">Ресетирај совети</string>
+    <string name="help_reset_tips_desc">Прикажи ги повторно еднократните совети</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Често поставувани прашања</string>
+    <string name="help_report_title">Пријави проблем</string>
+    <string name="help_report_desc">Нешто не работи</string>
+    <string name="help_feedback_title">Испрати повратни информации</string>
+    <string name="help_feedback_desc">Идеи и предлози</string>
+    <string name="help_my_reports_title">Мои пријави</string>
+    <string name="help_my_reports_desc">Следете што сте испратиле</string>
+    <string name="help_contact_title">Контактирајте нѐ</string>
+    <string name="help_contact_desc">Испратете ни е-пошта директно</string>
+    <string name="help_rate_title">Оценете го SweetSpot</string>
+    <string name="help_rate_desc">Оценете нѐ на Google Play</string>
+    <string name="help_whats_new_title">Што е ново</string>
+    <string name="help_whats_new_desc">Најнови промени</string>
+    <string name="help_privacy_title">Политика за приватност</string>
+    <string name="help_privacy_desc">Како се управуваат вашите податоци</string>
+    <string name="help_about_license">GPL v3 · Отворен код на GitHub</string>
+    <string name="tips_reset_snackbar">Советите се ресетирани</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Вашата пријава се објавува како јавен issue на GitHub — ве молиме не вклучувајте лични податоци.</string>
+    <string name="report_subject_label">Тема</string>
+    <string name="report_body_label_bug">Што се случи?</string>
+    <string name="report_body_label_feedback">Вашите повратни информации</string>
+    <string name="report_email_label">Извести ме по е-пошта (опционално)</string>
+    <string name="report_email_note">Вашата е-пошта се користи само за да ве извести — никогаш не се прикажува во јавниот issue.</string>
+    <string name="report_submit">Испрати</string>
+    <string name="report_submitting">Се испраќа…</string>
+    <string name="report_filed">Пријавата #%1$d е поднесена — ви благодариме!</string>
+    <string name="report_sent">Ви благодариме — вашата пријава е испратена.</string>
+    <string name="report_error_retry">Не можеше да се испрати сега — зачувано, ќе се обидеме повторно автоматски.</string>
+    <string name="report_error_permanent">Не можеше да се испрати. Ве молиме проверете го внесеното и обидете се повторно.</string>
+    <string name="report_retry">Обиди се повторно</string>
+    <string name="report_done">Готово</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Сѐ уште немате поднесено ниту една пријава.</string>
+    <string name="my_reports_open">Отворена</string>
+    <string name="my_reports_closed">Затворена</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Најдете го најевтиното време</string>
+    <string name="guide_find_body">Изберете колку долго треба да работи вашиот апарат, потоа допрете „Најди“.</string>
+    <string name="guide_appliances_title">Зачувајте ги вашите апарати</string>
+    <string name="guide_appliances_body">Додајте апарати во Поставки за пребарувања со еден допир.</string>
+    <string name="guide_ev_title">Испланирајте полнење на електричен автомобил</string>
+    <string name="guide_ev_body">Додајте го вашиот автомобил, внесете ја неговата тековна и целна наполнетост, и SweetSpot го пресметува времето на полнење.</string>
+    <string name="guide_result_title">Прочитајте го резултатот</string>
+    <string name="guide_result_body">Користете „Порано“ и „Поевтино“ за да го поместите периодот, и држете го притиснато графиконот за цената во кое било време.</string>
+    <string name="guide_allin_title">Крајна цена</string>
+    <string name="guide_allin_body">Изборно прикажете ја целосната цена за потрошувачот наместо само пазарната цена.</string>
+    <string name="guide_wear_title">На вашиот часовник</string>
+    <string name="guide_wear_body">Вашите апарати се синхронизираат со Wear OS, за да можете да ги проверувате цените без вашиот телефон.</string>
 </resources>

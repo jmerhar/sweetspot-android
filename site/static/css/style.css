@@ -21,6 +21,19 @@
   --radius: 12px;
 }
 
+/* Dark theme — activated by data-theme="dark" on <html> (set from the ?theme= param or a saved
+   preference by the inline script in head.html). Only the surface/text palette flips; the brand
+   colours, the blue hero gradient, and the already-dark footer stay as they are. */
+:root[data-theme="dark"] {
+  --color-bg: #101418;
+  --color-surface: #1A1F25;
+  --color-text: #E3E2E6;
+  --color-muted: #C3C7CF;
+  --color-outline: #8B9198;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
 /* === Typography === */
 html {
   font-size: 16px;

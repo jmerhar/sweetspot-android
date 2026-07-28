@@ -281,4 +281,68 @@
     <string name="coach_all_in_toggle">Vaihda kokonaishinnan ja pelkän markkinahinnan välillä.</string>
     <string name="coach_ev_chip">Napauta ajoneuvoasi suunnitellaksesi latauksen akkuprosentin mukaan.</string>
     <string name="coach_got_it">Selvä</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Ohje &amp; palaute</string>
+    <string name="settings_help_desc">Oppaat, palaute ja tuki</string>
+    <string name="help_section_learn">Opi</string>
+    <string name="help_section_support">Tuki</string>
+    <string name="help_section_about">Tietoja</string>
+    <string name="help_quick_guide_title">Pikaopas</string>
+    <string name="help_quick_guide_desc">Näin käytät SweetSpotia</string>
+    <string name="help_reset_tips_title">Nollaa vinkit</string>
+    <string name="help_reset_tips_desc">Näytä kertaluontoiset vinkit uudelleen</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Yleisiä kysymyksiä</string>
+    <string name="help_report_title">Ilmoita ongelmasta</string>
+    <string name="help_report_desc">Jokin ei toimi</string>
+    <string name="help_feedback_title">Lähetä palautetta</string>
+    <string name="help_feedback_desc">Ideoita ja ehdotuksia</string>
+    <string name="help_my_reports_title">Ilmoitukseni</string>
+    <string name="help_my_reports_desc">Seuraa lähettämiäsi ilmoituksia</string>
+    <string name="help_contact_title">Ota yhteyttä</string>
+    <string name="help_contact_desc">Lähetä meille sähköpostia suoraan</string>
+    <string name="help_rate_title">Arvioi SweetSpot</string>
+    <string name="help_rate_desc">Arvioi meidät Google Playssä</string>
+    <string name="help_whats_new_title">Uutta</string>
+    <string name="help_whats_new_desc">Uusimmat muutokset</string>
+    <string name="help_privacy_title">Tietosuojakäytäntö</string>
+    <string name="help_privacy_desc">Miten tietojasi käsitellään</string>
+    <string name="help_about_license">GPL v3 · Avoin lähdekoodi GitHubissa</string>
+    <string name="tips_reset_snackbar">Vinkit nollattu</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Ilmoituksesi julkaistaan julkisena issuena GitHubissa — älä sisällytä henkilötietoja.</string>
+    <string name="report_subject_label">Aihe</string>
+    <string name="report_body_label_bug">Mitä tapahtui?</string>
+    <string name="report_body_label_feedback">Palautteesi</string>
+    <string name="report_email_label">Ilmoita minulle sähköpostitse (valinnainen)</string>
+    <string name="report_email_note">Sähköpostiosoitettasi käytetään vain sinulle ilmoittamiseen — sitä ei koskaan näytetä julkisessa issuessa.</string>
+    <string name="report_submit">Lähetä</string>
+    <string name="report_submitting">Lähetetään…</string>
+    <string name="report_filed">Ilmoitus #%1$d kirjattu — kiitos!</string>
+    <string name="report_sent">Kiitos — ilmoituksesi lähetettiin.</string>
+    <string name="report_error_retry">Lähetys ei onnistunut juuri nyt — tallennettu, yritämme automaattisesti uudelleen.</string>
+    <string name="report_error_permanent">Lähetys ei onnistunut. Tarkista syötteesi ja yritä uudelleen.</string>
+    <string name="report_retry">Yritä uudelleen</string>
+    <string name="report_done">Valmis</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Et ole vielä lähettänyt yhtään ilmoitusta.</string>
+    <string name="my_reports_open">Avoin</string>
+    <string name="my_reports_closed">Suljettu</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Etsi halvin ajankohta</string>
+    <string name="guide_find_body">Valitse kuinka kauan laitteesi tarvitsee toimia ja napauta Etsi.</string>
+    <string name="guide_appliances_title">Tallenna laitteesi</string>
+    <string name="guide_appliances_body">Lisää laitteita asetuksissa yhden napautuksen hakuja varten.</string>
+    <string name="guide_ev_title">Suunnittele sähköauton lataus</string>
+    <string name="guide_ev_body">Lisää autosi, syötä sen nykyinen lataus ja lataustavoite, niin SweetSpot laskee latausajan.</string>
+    <string name="guide_result_title">Lue tulos</string>
+    <string name="guide_result_body">Siirrä ajanjaksoa Aiemmin- ja Halvemmalla-painikkeilla ja näe minkä tahansa jakson hinta painamalla kaaviota pitkään.</string>
+    <string name="guide_allin_title">Kokonaishinta</string>
+    <string name="guide_allin_body">Näytä halutessasi koko kuluttajahinta pelkän markkinahinnan sijaan.</string>
+    <string name="guide_wear_title">Kellossasi</string>
+    <string name="guide_wear_body">Laitteesi synkronoituvat Wear OS -kelloon, joten voit tarkistaa hinnat ilman puhelintasi.</string>
 </resources>

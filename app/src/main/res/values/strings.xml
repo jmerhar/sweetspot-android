@@ -197,6 +197,70 @@
     <string name="coach_ev_chip">Tap your vehicle to plan charging by battery percentage.</string>
     <string name="coach_got_it">Got it</string>
 
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Help &amp; feedback</string>
+    <string name="settings_help_desc">Guides, feedback, and support</string>
+    <string name="help_section_learn">Learn</string>
+    <string name="help_section_support">Support</string>
+    <string name="help_section_about">About</string>
+    <string name="help_quick_guide_title">Quick guide</string>
+    <string name="help_quick_guide_desc">How to use SweetSpot</string>
+    <string name="help_reset_tips_title">Reset tips</string>
+    <string name="help_reset_tips_desc">Show the one-time hints again</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Common questions</string>
+    <string name="help_report_title">Report a problem</string>
+    <string name="help_report_desc">Something isn\'t working</string>
+    <string name="help_feedback_title">Send feedback</string>
+    <string name="help_feedback_desc">Ideas and suggestions</string>
+    <string name="help_my_reports_title">My reports</string>
+    <string name="help_my_reports_desc">Track what you\'ve submitted</string>
+    <string name="help_contact_title">Contact us</string>
+    <string name="help_contact_desc">Email us directly</string>
+    <string name="help_rate_title">Rate SweetSpot</string>
+    <string name="help_rate_desc">Rate us on Google Play</string>
+    <string name="help_whats_new_title">What\'s new</string>
+    <string name="help_whats_new_desc">Latest changes</string>
+    <string name="help_privacy_title">Privacy policy</string>
+    <string name="help_privacy_desc">How your data is handled</string>
+    <string name="help_about_license">GPL v3 · Open source on GitHub</string>
+    <string name="tips_reset_snackbar">Tips reset</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Your report is posted as a public issue on GitHub — please don\'t include personal details.</string>
+    <string name="report_subject_label">Subject</string>
+    <string name="report_body_label_bug">What happened?</string>
+    <string name="report_body_label_feedback">Your feedback</string>
+    <string name="report_email_label">Notify me by email (optional)</string>
+    <string name="report_email_note">Your email is only used to notify you — it\'s never shown in the public issue.</string>
+    <string name="report_submit">Submit</string>
+    <string name="report_submitting">Sending…</string>
+    <string name="report_filed">Report #%1$d filed — thank you!</string>
+    <string name="report_sent">Thanks — your report was sent.</string>
+    <string name="report_error_retry">Couldn\'t send just now — saved, we\'ll retry automatically.</string>
+    <string name="report_error_permanent">Couldn\'t send. Please check your input and try again.</string>
+    <string name="report_retry">Retry</string>
+    <string name="report_done">Done</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">You haven\'t submitted any reports yet.</string>
+    <string name="my_reports_open">Open</string>
+    <string name="my_reports_closed">Closed</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Find the cheapest time</string>
+    <string name="guide_find_body">Pick how long your appliance needs to run, then tap Find.</string>
+    <string name="guide_appliances_title">Save your appliances</string>
+    <string name="guide_appliances_body">Add appliances in Settings for one-tap searches.</string>
+    <string name="guide_ev_title">Plan EV charging</string>
+    <string name="guide_ev_body">Add your car, enter its current and target charge, and SweetSpot works out the charging time.</string>
+    <string name="guide_result_title">Read the result</string>
+    <string name="guide_result_body">Use Earlier and Cheaper to shift the window, and press and hold the chart for any slot\'s price.</string>
+    <string name="guide_allin_title">All-in price</string>
+    <string name="guide_allin_body">Optionally show the full consumer price instead of just the market rate.</string>
+    <string name="guide_wear_title">On your watch</string>
+    <string name="guide_wear_body">Your appliances sync to Wear OS, so you can check prices without your phone.</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Subscribe to SweetSpot</string>
     <string name="settings_unlock_description">Subscribe for a year to keep using SweetSpot.</string>

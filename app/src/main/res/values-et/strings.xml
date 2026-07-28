@@ -281,4 +281,68 @@
     <string name="coach_all_in_toggle">Vaheta täieliku koguhinna ja pelga turuhinna vahel.</string>
     <string name="coach_ev_chip">Puuduta oma sõidukit, et planeerida laadimist aku laetuse järgi.</string>
     <string name="coach_got_it">Selge</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Abi &amp; tagasiside</string>
+    <string name="settings_help_desc">Juhendid, tagasiside ja tugi</string>
+    <string name="help_section_learn">Õpi</string>
+    <string name="help_section_support">Tugi</string>
+    <string name="help_section_about">Teave</string>
+    <string name="help_quick_guide_title">Kiirjuhend</string>
+    <string name="help_quick_guide_desc">Kuidas SweetSpoti kasutada</string>
+    <string name="help_reset_tips_title">Lähtesta näpunäited</string>
+    <string name="help_reset_tips_desc">Näita ühekordseid vihjeid uuesti</string>
+    <string name="help_faq_title">KKK</string>
+    <string name="help_faq_desc">Levinud küsimused</string>
+    <string name="help_report_title">Teata probleemist</string>
+    <string name="help_report_desc">Midagi ei tööta</string>
+    <string name="help_feedback_title">Saada tagasisidet</string>
+    <string name="help_feedback_desc">Ideed ja ettepanekud</string>
+    <string name="help_my_reports_title">Minu teated</string>
+    <string name="help_my_reports_desc">Jälgi, mida oled esitanud</string>
+    <string name="help_contact_title">Võta ühendust</string>
+    <string name="help_contact_desc">Kirjuta meile otse</string>
+    <string name="help_rate_title">Hinda SweetSpoti</string>
+    <string name="help_rate_desc">Hinda meid Google Plays</string>
+    <string name="help_whats_new_title">Mis on uut</string>
+    <string name="help_whats_new_desc">Viimased muudatused</string>
+    <string name="help_privacy_title">Privaatsuspoliitika</string>
+    <string name="help_privacy_desc">Kuidas sinu andmeid käideldakse</string>
+    <string name="help_about_license">GPL v3 · Avatud lähtekood GitHubis</string>
+    <string name="tips_reset_snackbar">Näpunäited lähtestatud</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Sinu teade avaldatakse avaliku probleemina GitHubis — palun ära lisa isiklikke andmeid.</string>
+    <string name="report_subject_label">Teema</string>
+    <string name="report_body_label_bug">Mis juhtus?</string>
+    <string name="report_body_label_feedback">Sinu tagasiside</string>
+    <string name="report_email_label">Teavita mind e-postiga (valikuline)</string>
+    <string name="report_email_note">Sinu e-posti kasutatakse ainult sinu teavitamiseks — seda ei näidata kunagi avalikus probleemis.</string>
+    <string name="report_submit">Esita</string>
+    <string name="report_submitting">Saatmine…</string>
+    <string name="report_filed">Teade #%1$d esitatud — aitäh!</string>
+    <string name="report_sent">Aitäh — sinu teade saadeti.</string>
+    <string name="report_error_retry">Praegu ei õnnestunud saata — salvestatud, proovime automaatselt uuesti.</string>
+    <string name="report_error_permanent">Saatmine ebaõnnestus. Kontrolli oma sisestust ja proovi uuesti.</string>
+    <string name="report_retry">Proovi uuesti</string>
+    <string name="report_done">Valmis</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Sa pole veel ühtegi teadet esitanud.</string>
+    <string name="my_reports_open">Avatud</string>
+    <string name="my_reports_closed">Suletud</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Leia odavaim aeg</string>
+    <string name="guide_find_body">Vali, kui kaua su seade peab töötama, ja puuduta Otsi.</string>
+    <string name="guide_appliances_title">Salvesta oma seadmed</string>
+    <string name="guide_appliances_body">Lisa seadmed seadetesse, et otsida ühe puudutusega.</string>
+    <string name="guide_ev_title">Planeeri elektriauto laadimine</string>
+    <string name="guide_ev_body">Lisa oma auto, sisesta selle praegune ja soovitud laetus ning SweetSpot arvutab laadimisaja.</string>
+    <string name="guide_result_title">Loe tulemust</string>
+    <string name="guide_result_body">Kasuta nuppe Varem ja Odavam ajavahemiku nihutamiseks ning hoia graafikut all, et näha mis tahes ajapilu hinda.</string>
+    <string name="guide_allin_title">Koguhind</string>
+    <string name="guide_allin_body">Soovi korral näita täielikku tarbijahinda pelga turuhinna asemel.</string>
+    <string name="guide_wear_title">Sinu kellal</string>
+    <string name="guide_wear_body">Sinu seadmed sünkroonitakse Wear OS-iga, nii saad hindu vaadata ka ilma telefonita.</string>
 </resources>

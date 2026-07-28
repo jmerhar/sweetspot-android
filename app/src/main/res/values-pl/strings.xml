@@ -292,4 +292,68 @@
     <string name="coach_all_in_toggle">Przełączaj między pełną ceną całkowitą a samą ceną rynkową.</string>
     <string name="coach_ev_chip">Dotknij pojazd, aby zaplanować ładowanie według poziomu akumulatora.</string>
     <string name="coach_got_it">Rozumiem</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Pomoc i opinie</string>
+    <string name="settings_help_desc">Poradniki, opinie i wsparcie</string>
+    <string name="help_section_learn">Poznaj</string>
+    <string name="help_section_support">Wsparcie</string>
+    <string name="help_section_about">O aplikacji</string>
+    <string name="help_quick_guide_title">Krótki poradnik</string>
+    <string name="help_quick_guide_desc">Jak korzystać z SweetSpot</string>
+    <string name="help_reset_tips_title">Resetuj wskazówki</string>
+    <string name="help_reset_tips_desc">Pokaż jednorazowe wskazówki ponownie</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Częste pytania</string>
+    <string name="help_report_title">Zgłoś problem</string>
+    <string name="help_report_desc">Coś nie działa</string>
+    <string name="help_feedback_title">Wyślij opinię</string>
+    <string name="help_feedback_desc">Pomysły i sugestie</string>
+    <string name="help_my_reports_title">Moje zgłoszenia</string>
+    <string name="help_my_reports_desc">Śledź swoje zgłoszenia</string>
+    <string name="help_contact_title">Skontaktuj się z nami</string>
+    <string name="help_contact_desc">Napisz do nas bezpośrednio</string>
+    <string name="help_rate_title">Oceń SweetSpot</string>
+    <string name="help_rate_desc">Oceń nas w Google Play</string>
+    <string name="help_whats_new_title">Co nowego</string>
+    <string name="help_whats_new_desc">Najnowsze zmiany</string>
+    <string name="help_privacy_title">Polityka prywatności</string>
+    <string name="help_privacy_desc">Jak przetwarzane są Twoje dane</string>
+    <string name="help_about_license">GPL v3 · Otwarty kod na GitHub</string>
+    <string name="tips_reset_snackbar">Zresetowano wskazówki</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Twoje zgłoszenie zostanie opublikowane jako publiczne zgłoszenie na GitHub — nie podawaj danych osobowych.</string>
+    <string name="report_subject_label">Temat</string>
+    <string name="report_body_label_bug">Co się stało?</string>
+    <string name="report_body_label_feedback">Twoja opinia</string>
+    <string name="report_email_label">Powiadom mnie e-mailem (opcjonalnie)</string>
+    <string name="report_email_note">Twój e-mail służy tylko do powiadomienia Cię — nigdy nie jest pokazywany w publicznym zgłoszeniu.</string>
+    <string name="report_submit">Wyślij</string>
+    <string name="report_submitting">Wysyłanie…</string>
+    <string name="report_filed">Zgłoszenie #%1$d przyjęte — dziękujemy!</string>
+    <string name="report_sent">Dziękujemy — Twoje zgłoszenie zostało wysłane.</string>
+    <string name="report_error_retry">Nie udało się teraz wysłać — zapisano, spróbujemy ponownie automatycznie.</string>
+    <string name="report_error_permanent">Nie udało się wysłać. Sprawdź dane i spróbuj ponownie.</string>
+    <string name="report_retry">Ponów</string>
+    <string name="report_done">Gotowe</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Nie wysłałeś jeszcze żadnych zgłoszeń.</string>
+    <string name="my_reports_open">Otwarte</string>
+    <string name="my_reports_closed">Zamknięte</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Znajdź najtańszy czas</string>
+    <string name="guide_find_body">Wybierz, jak długo ma działać urządzenie, a następnie dotknij Znajdź.</string>
+    <string name="guide_appliances_title">Zapisz swoje urządzenia</string>
+    <string name="guide_appliances_body">Dodaj urządzenia w Ustawieniach, aby wyszukiwać jednym dotknięciem.</string>
+    <string name="guide_ev_title">Zaplanuj ładowanie auta elektrycznego</string>
+    <string name="guide_ev_body">Dodaj swój samochód, wpisz jego obecny i docelowy poziom naładowania, a SweetSpot obliczy czas ładowania.</string>
+    <string name="guide_result_title">Odczytaj wynik</string>
+    <string name="guide_result_body">Użyj Wcześniej i Taniej, aby przesunąć okres, a przytrzymaj wykres, aby poznać cenę dowolnego przedziału.</string>
+    <string name="guide_allin_title">Cena całkowita</string>
+    <string name="guide_allin_body">Opcjonalnie pokaż pełną cenę dla konsumenta zamiast samej ceny rynkowej.</string>
+    <string name="guide_wear_title">Na Twoim zegarku</string>
+    <string name="guide_wear_body">Twoje urządzenia synchronizują się z Wear OS, więc możesz sprawdzać ceny bez telefonu.</string>
 </resources>

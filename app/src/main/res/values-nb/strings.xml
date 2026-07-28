@@ -276,4 +276,68 @@
     <string name="coach_all_in_toggle">Veksle mellom den fulle totalprisen og den rene markedsprisen.</string>
     <string name="coach_ev_chip">Trykk på kjøretøyet for å planlegge lading etter ladenivå.</string>
     <string name="coach_got_it">Skjønner</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Hjelp &amp; tilbakemelding</string>
+    <string name="settings_help_desc">Veiledninger, tilbakemelding og støtte</string>
+    <string name="help_section_learn">Lær</string>
+    <string name="help_section_support">Støtte</string>
+    <string name="help_section_about">Om</string>
+    <string name="help_quick_guide_title">Hurtigveiledning</string>
+    <string name="help_quick_guide_desc">Slik bruker du SweetSpot</string>
+    <string name="help_reset_tips_title">Tilbakestill tips</string>
+    <string name="help_reset_tips_desc">Vis engangstipsene på nytt</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Vanlige spørsmål</string>
+    <string name="help_report_title">Rapporter et problem</string>
+    <string name="help_report_desc">Noe fungerer ikke</string>
+    <string name="help_feedback_title">Send tilbakemelding</string>
+    <string name="help_feedback_desc">Ideer og forslag</string>
+    <string name="help_my_reports_title">Rapportene mine</string>
+    <string name="help_my_reports_desc">Følg med på det du har sendt inn</string>
+    <string name="help_contact_title">Kontakt oss</string>
+    <string name="help_contact_desc">Send oss en e-post direkte</string>
+    <string name="help_rate_title">Vurder SweetSpot</string>
+    <string name="help_rate_desc">Vurder oss på Google Play</string>
+    <string name="help_whats_new_title">Hva er nytt</string>
+    <string name="help_whats_new_desc">Siste endringer</string>
+    <string name="help_privacy_title">Personvernerklæring</string>
+    <string name="help_privacy_desc">Hvordan dataene dine håndteres</string>
+    <string name="help_about_license">GPL v3 · Åpen kildekode på GitHub</string>
+    <string name="tips_reset_snackbar">Tips tilbakestilt</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Rapporten din publiseres som en offentlig sak på GitHub — ikke ta med personlige opplysninger.</string>
+    <string name="report_subject_label">Emne</string>
+    <string name="report_body_label_bug">Hva skjedde?</string>
+    <string name="report_body_label_feedback">Din tilbakemelding</string>
+    <string name="report_email_label">Varsle meg på e-post (valgfritt)</string>
+    <string name="report_email_note">E-posten din brukes bare til å varsle deg – den vises aldri i den offentlige saken på GitHub.</string>
+    <string name="report_submit">Send inn</string>
+    <string name="report_submitting">Sender…</string>
+    <string name="report_filed">Rapport #%1$d registrert — takk!</string>
+    <string name="report_sent">Takk — rapporten din ble sendt.</string>
+    <string name="report_error_retry">Kunne ikke sende akkurat nå — lagret, vi prøver igjen automatisk.</string>
+    <string name="report_error_permanent">Kunne ikke sende. Sjekk det du har skrevet, og prøv igjen.</string>
+    <string name="report_retry">Prøv igjen</string>
+    <string name="report_done">Ferdig</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Du har ikke sendt inn noen rapporter ennå.</string>
+    <string name="my_reports_open">Åpen</string>
+    <string name="my_reports_closed">Lukket</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Finn det billigste tidspunktet</string>
+    <string name="guide_find_body">Velg hvor lenge apparatet ditt trenger å kjøre, og trykk deretter Finn.</string>
+    <string name="guide_appliances_title">Lagre apparatene dine</string>
+    <string name="guide_appliances_body">Legg til apparater i Innstillinger for søk med ett trykk.</string>
+    <string name="guide_ev_title">Planlegg elbillading</string>
+    <string name="guide_ev_body">Legg til bilen din, angi nåværende og ønsket ladenivå, så regner SweetSpot ut ladetiden.</string>
+    <string name="guide_result_title">Les resultatet</string>
+    <string name="guide_result_body">Bruk Tidligere og Billigere for å flytte perioden, og trykk og hold på grafen for prisen i et hvilket som helst tidsrom.</string>
+    <string name="guide_allin_title">Totalpris</string>
+    <string name="guide_allin_body">Vis eventuelt den fulle forbrukerprisen i stedet for bare markedsprisen.</string>
+    <string name="guide_wear_title">På klokken din</string>
+    <string name="guide_wear_body">Apparatene dine synkroniseres til Wear OS, så du kan sjekke priser uten telefonen.</string>
 </resources>

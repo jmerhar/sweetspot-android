@@ -25,6 +25,21 @@
 {{ end }}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 
+<!-- Apply light/dark theme before the stylesheet loads (no flash). Driven by an explicit ?theme=
+     param (e.g. deep links from the app). Persisted in sessionStorage — not localStorage — so it
+     stays consistent while navigating within an in-app Custom Tab session, but an app-opened dark
+     link never permanently flips the visitor's normal browsing of the site. -->
+<script>
+  (function () {
+    try {
+      var p = new URLSearchParams(location.search).get('theme');
+      if (p === 'dark' || p === 'light') sessionStorage.setItem('theme', p);
+      var t = (p === 'dark' || p === 'light') ? p : sessionStorage.getItem('theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
 <!-- Google Analytics -->

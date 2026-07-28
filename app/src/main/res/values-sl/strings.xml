@@ -294,4 +294,68 @@
     <string name="ev_separate_section">Ločen razdelek</string>
     <string name="home_section_vehicles">Vozila</string>
     <string name="home_section_appliances">Aparati</string>
+
+    <!-- Help &amp; feedback: menu -->
+    <string name="settings_help_title">Pomoč in povratne informacije</string>
+    <string name="settings_help_desc">Vodiči, povratne informacije in podpora</string>
+    <string name="help_section_learn">Učenje</string>
+    <string name="help_section_support">Podpora</string>
+    <string name="help_section_about">O aplikaciji</string>
+    <string name="help_quick_guide_title">Hitri vodič</string>
+    <string name="help_quick_guide_desc">Kako uporabljati SweetSpot</string>
+    <string name="help_reset_tips_title">Ponastavi namige</string>
+    <string name="help_reset_tips_desc">Znova prikaži enkratne namige</string>
+    <string name="help_faq_title">Pogosta vprašanja</string>
+    <string name="help_faq_desc">Odgovori na pogosta vprašanja</string>
+    <string name="help_report_title">Prijavi težavo</string>
+    <string name="help_report_desc">Nekaj ne deluje</string>
+    <string name="help_feedback_title">Pošlji povratne informacije</string>
+    <string name="help_feedback_desc">Ideje in predlogi</string>
+    <string name="help_my_reports_title">Moje prijave</string>
+    <string name="help_my_reports_desc">Spremljajte, kaj ste oddali</string>
+    <string name="help_contact_title">Stik z nami</string>
+    <string name="help_contact_desc">Pišite nam po e-pošti</string>
+    <string name="help_rate_title">Ocenite SweetSpot</string>
+    <string name="help_rate_desc">Ocenite nas v trgovini Google Play</string>
+    <string name="help_whats_new_title">Novosti</string>
+    <string name="help_whats_new_desc">Najnovejše spremembe</string>
+    <string name="help_privacy_title">Pravilnik o zasebnosti</string>
+    <string name="help_privacy_desc">Kako ravnamo z vašimi podatki</string>
+    <string name="help_about_license">GPL v3 · Odprta koda na GitHub</string>
+    <string name="tips_reset_snackbar">Namigi ponastavljeni</string>
+
+    <!-- Report a problem / feedback -->
+    <string name="report_public_notice">Vaša prijava bo objavljena kot javna težava na GitHub — prosimo, ne vključujte osebnih podatkov.</string>
+    <string name="report_subject_label">Zadeva</string>
+    <string name="report_body_label_bug">Kaj se je zgodilo?</string>
+    <string name="report_body_label_feedback">Vaše povratne informacije</string>
+    <string name="report_email_label">Obvesti me po e-pošti (izbirno)</string>
+    <string name="report_email_note">Vaš e-poštni naslov se uporablja samo za obveščanje — v javni težavi ni nikoli prikazan.</string>
+    <string name="report_submit">Pošlji</string>
+    <string name="report_submitting">Pošiljanje…</string>
+    <string name="report_filed">Prijava #%1$d oddana — hvala!</string>
+    <string name="report_sent">Hvala — vaša prijava je bila poslana.</string>
+    <string name="report_error_retry">Trenutno ni bilo mogoče poslati — shranjeno, samodejno bomo poskusili znova.</string>
+    <string name="report_error_permanent">Pošiljanje ni uspelo. Preverite vnos in poskusite znova.</string>
+    <string name="report_retry">Poskusi znova</string>
+    <string name="report_done">Končano</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Še niste oddali nobene prijave.</string>
+    <string name="my_reports_open">Odprto</string>
+    <string name="my_reports_closed">Zaprto</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Poiščite najcenejši čas</string>
+    <string name="guide_find_body">Izberite, koliko časa mora aparat delovati, nato pritisnite Poišči.</string>
+    <string name="guide_appliances_title">Shranite svoje aparate</string>
+    <string name="guide_appliances_body">Dodajte aparate v nastavitvah za iskanje z enim dotikom.</string>
+    <string name="guide_ev_title">Načrtujte polnjenje električnega vozila</string>
+    <string name="guide_ev_body">Dodajte svoj avto, vnesite njegovo trenutno in ciljno napolnjenost, SweetSpot pa izračuna čas polnjenja.</string>
+    <string name="guide_result_title">Preberite rezultat</string>
+    <string name="guide_result_body">S pritiskom na Prej in Ceneje premaknite termin, graf pa pridržite za ceno poljubnega časovnega intervala.</string>
+    <string name="guide_allin_title">Skupna cena</string>
+    <string name="guide_allin_body">Po želji prikažite celotno ceno za potrošnika namesto samo tržne cene.</string>
+    <string name="guide_wear_title">Na vaši uri</string>
+    <string name="guide_wear_body">Vaši aparati se sinhronizirajo z Wear OS, tako da lahko cene preverite brez telefona.</string>
 </resources>

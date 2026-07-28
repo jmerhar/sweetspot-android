@@ -60,7 +60,6 @@ internal fun DeveloperSection(
     onDevUnlockChanged: (Boolean) -> Unit,
     onResetUnlock: () -> Unit,
     onResetStatsTimer: () -> Unit,
-    onResetCoachMarks: () -> Unit,
     timeOverrideMs: Long?,
     onTimeOverrideChanged: (Long?) -> Unit,
     timeZoneId: ZoneId,
@@ -132,12 +131,6 @@ internal fun DeveloperSection(
         label = "Reset stats timer",
         description = "Allows immediate stats reporting",
         onClick = onResetStatsTimer
-    )
-
-    DevActionRow(
-        label = "Reset tips",
-        description = "Re-arm every one-time contextual hint",
-        onClick = onResetCoachMarks
     )
 
     // --- Time override ---

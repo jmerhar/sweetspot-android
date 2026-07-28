@@ -3,12 +3,15 @@ package today.sweetspot
 import android.app.Activity
 import android.app.Application
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
+import today.sweetspot.data.api.GithubIssueApi
+import today.sweetspot.data.api.IssueStatus
 import today.sweetspot.data.api.PriceFetcherFactory
 import today.sweetspot.data.api.defaultPriceFetcherFactory
 import today.sweetspot.data.billing.BillingRepository
@@ -29,12 +32,22 @@ import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.data.stats.StatsReporter
+import today.sweetspot.data.support.FeedbackCodec
+import today.sweetspot.data.support.HttpReportSubmitter
+import today.sweetspot.data.support.ReportSubmitter
+import today.sweetspot.data.support.SubmitOutcome
+import today.sweetspot.data.support.SubmitResult
+import today.sweetspot.util.Diagnostics
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.CoachMark
 import today.sweetspot.model.Countries
+import today.sweetspot.model.FeedbackReport
+import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReport
+import today.sweetspot.model.ReportCategory
 import today.sweetspot.model.Country
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
@@ -46,6 +59,7 @@ import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.AllInPricing
 import today.sweetspot.util.CoachMarkPolicy
+import today.sweetspot.util.HelpLinks
 import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.UiText
 import today.sweetspot.util.combineUsage
@@ -55,12 +69,17 @@ import today.sweetspot.util.sortAppliances
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 import kotlinx.serialization.json.Json
 import java.time.Instant
@@ -112,6 +131,34 @@ enum class ImportMode { ADD, REPLACE, PICK }
  * [TOO_NEW] — the payload was written by a newer app version; [MALFORMED] — it was unreadable.
  */
 enum class ImportError { TOO_NEW, MALFORMED }
+
+/** State of a report/feedback submission from the Help form. */
+sealed interface ReportSubmission {
+    /** No submission in progress. */
+    data object Idle : ReportSubmission
+
+    /** The submission is being sent. */
+    data object Submitting : ReportSubmission
+
+    /** Delivered. [number]/[url] are null only if the server accepted it but the response was unreadable. */
+    data class Success(val number: Int?, val url: String?) : ReportSubmission
+
+    /**
+     * Not delivered. [retrying] = true when it was queued in the outbox for automatic retry
+     * (transient failure); false for a permanent failure the user must fix.
+     */
+    data class Error(val retrying: Boolean) : ReportSubmission
+}
+
+/** A submitted report plus its live GitHub status (null until fetched / on fetch failure). */
+data class MyReportView(val report: MyReport, val status: IssueStatus? = null)
+
+/**
+ * The URL to open for this report: the issue's own `html_url` when its status has been fetched, else a
+ * URL derived from the issue number (so a not-yet-refreshed report is still tappable).
+ */
+val MyReportView.issueUrl: String
+    get() = status?.htmlUrl?.takeIf { it.isNotBlank() } ?: HelpLinks.issueUrl(report.number)
 
 /**
  * UI state for the main screen.
@@ -197,6 +244,10 @@ data class UiState(
     val showOnboarding: Boolean = false,
     /** The one-time contextual hint to point at on the current screen, or null for none. */
     val activeCoachMark: CoachMark? = null,
+    /** State of the current report/feedback submission (Help form). */
+    val reportSubmission: ReportSubmission = ReportSubmission.Idle,
+    /** Reports this device submitted, with their live GitHub status ("My reports"). */
+    val myReports: List<MyReportView> = emptyList(),
     val showStatsPrompt: Boolean = false,
     val isStatsEnabled: Boolean = false,
     val isTrialExpired: Boolean = false,
@@ -315,10 +366,19 @@ class SweetSpotViewModel @JvmOverloads constructor(
     statsPoster: StatsPoster? = null,
     watchStatsBridgeOverride: WatchStatsBridge? = null,
     watchUsageBridgeOverride: WatchUsageBridge? = null,
-    tariffRepositoryOverride: TariffRepository? = null
+    tariffRepositoryOverride: TariffRepository? = null,
+    reportSubmitterOverride: ReportSubmitter? = null,
+    githubIssueApiOverride: GithubIssueApi? = null
 ) : AndroidViewModel(application) {
 
     private val settingsRepository = SettingsRepository(application)
+
+    /** Sends report/feedback submissions to the feedback Worker (real impl, or a fake in tests). */
+    private val reportSubmitter: ReportSubmitter =
+        reportSubmitterOverride ?: HttpReportSubmitter(BuildConfig.VERSION_NAME)
+
+    /** Reads public GitHub issue status for "My reports" (real impl, or a fake in tests). */
+    private val githubIssueApi: GithubIssueApi = githubIssueApiOverride ?: GithubIssueApi()
 
     /** Provides the all-in tariff feed for the current country (real impl, or a fake in tests). */
     private val tariffRepository: TariffRepository =
@@ -351,6 +411,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
+    private var flushJob: Job? = null
 
     /** Whether [evVehicleRepository] has finished loading (set after the eager load in [init]). */
     @Volatile
@@ -420,6 +481,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
         checkStatsPrompt()
         // Arm the home-screen contextual hint (EV chip) if one is due.
         refreshHomeCoachMark()
+        // Retry any report/feedback submissions that couldn't be delivered earlier.
+        flushOutbox()
         // Parse the bundled EV database off the main thread so the vehicle picker search is instant.
         viewModelScope.launch(ioDispatcher) {
             evVehicleRepository.vehicles
@@ -1711,6 +1774,178 @@ class SweetSpotViewModel @JvmOverloads constructor(
     fun onDevResetCoachMarks() {
         settingsRepository.resetCoachMarks()
         refreshHomeCoachMark()
+    }
+
+    // --- Help & feedback ---
+
+    /** Max delivery attempts before a queued report is dropped from the outbox. */
+    private val maxOutboxAttempts = 5
+
+    /** Upper bound on how many tracked reports have their live GitHub status refreshed per load. */
+    private val maxTrackedStatusFetch = 20
+
+    /**
+     * Serialises read-modify-write access to the persisted report stores (the outbox and the "My
+     * reports" list) so a submit and a concurrent flush — both on the multi-threaded IO dispatcher —
+     * can't clobber each other's `SharedPreferences` update.
+     */
+    private val reportStoreMutex = Mutex()
+
+    /**
+     * Submits a report/feedback to the feedback Worker. On a transient failure the report is queued in
+     * the outbox and resent automatically on the next app/Help open (the form keeps its content but
+     * offers no manual retry — that would duplicate the queued copy); a permanent failure surfaces an
+     * error the user can edit and resend. Bug reports carry a no-PII diagnostics block.
+     */
+    fun onSubmitReport(category: ReportCategory, subject: String, body: String, notifyEmail: String?) {
+        val report = buildReport(category, subject, body, notifyEmail)
+        _uiState.update { it.copy(reportSubmission = ReportSubmission.Submitting) }
+        viewModelScope.launch(ioDispatcher) {
+            when (val attempt = trySubmit(report)) {
+                is SubmitAttempt.Sent -> {
+                    if (attempt.number != null) {
+                        reportStoreMutex.withLock {
+                            settingsRepository.addMyReport(
+                                MyReport(attempt.number, report.subject, report.category, nowMs())
+                            )
+                        }
+                    }
+                    _uiState.update {
+                        it.copy(reportSubmission = ReportSubmission.Success(attempt.number, attempt.url))
+                    }
+                    loadMyReports()
+                }
+                SubmitAttempt.Retryable -> {
+                    reportStoreMutex.withLock {
+                        settingsRepository.setOutbox(settingsRepository.getOutbox() + PendingReport(report, nowMs()))
+                    }
+                    _uiState.update { it.copy(reportSubmission = ReportSubmission.Error(retrying = true)) }
+                }
+                SubmitAttempt.Permanent ->
+                    _uiState.update { it.copy(reportSubmission = ReportSubmission.Error(retrying = false)) }
+            }
+        }
+    }
+
+    /** Clears the submission result (after success is acknowledged or an error dismissed). */
+    fun onDismissReportResult() {
+        _uiState.update { it.copy(reportSubmission = ReportSubmission.Idle) }
+    }
+
+    /**
+     * Re-attempts delivery of every queued report (on app start and when Help opens). Sent reports move
+     * to "My reports"; permanent failures are dropped; transient ones stay, with attempts capped.
+     */
+    fun flushOutbox() {
+        if (flushJob?.isActive == true) return // a flush is already running — avoid double-sending
+        val pending = settingsRepository.getOutbox()
+        if (pending.isEmpty()) return
+        flushJob = viewModelScope.launch(ioDispatcher) {
+            val remaining = mutableListOf<PendingReport>()
+            for (p in pending) {
+                when (val attempt = trySubmit(p.report)) {
+                    is SubmitAttempt.Sent ->
+                        if (attempt.number != null) {
+                            reportStoreMutex.withLock {
+                                settingsRepository.addMyReport(
+                                    MyReport(attempt.number, p.report.subject, p.report.category, p.createdAtMs)
+                                )
+                            }
+                        }
+                    SubmitAttempt.Retryable -> {
+                        val next = p.copy(attempts = p.attempts + 1)
+                        if (next.attempts < maxOutboxAttempts) remaining.add(next)
+                    }
+                    SubmitAttempt.Permanent -> Unit // drop — retrying can't help
+                }
+            }
+            // Rewrite atomically, preserving any reports queued while we were sending: keep the current
+            // outbox minus the snapshot we just processed, then re-add the ones still awaiting retry.
+            reportStoreMutex.withLock {
+                val newcomers = settingsRepository.getOutbox().filterNot { it in pending }
+                settingsRepository.setOutbox(newcomers + remaining)
+            }
+            loadMyReports()
+        }
+    }
+
+    /**
+     * Loads the tracked reports and refreshes their live GitHub status in the background. Only the most
+     * recent [maxTrackedStatusFetch] have their status fetched (in parallel), bounding the unauthenticated
+     * GitHub API fan-out (60 requests/hour per IP); older entries show without a live status.
+     */
+    fun loadMyReports() {
+        val stored = settingsRepository.getMyReports()
+        _uiState.update { state -> state.copy(myReports = stored.map { MyReportView(it) }) }
+        if (stored.isEmpty()) return
+        viewModelScope.launch(ioDispatcher) {
+            val toFetch = stored.takeLast(maxTrackedStatusFetch)
+            val statuses = coroutineScope {
+                toFetch.map { r ->
+                    async { r.number to try { githubIssueApi.fetch(r.number) } catch (_: Exception) { null } }
+                }.awaitAll()
+            }.toMap()
+            _uiState.update { state ->
+                state.copy(myReports = stored.map { MyReportView(it, statuses[it.number]) })
+            }
+        }
+    }
+
+    /** Builds the request payload, attaching a no-PII diagnostics block to bug reports. */
+    private fun buildReport(
+        category: ReportCategory,
+        subject: String,
+        body: String,
+        notifyEmail: String?
+    ): FeedbackReport {
+        val diagnostics = if (category == ReportCategory.BUG) {
+            val locales = AppCompatDelegate.getApplicationLocales()
+            val languageTag = if (locales.isEmpty) "" else locales.toLanguageTags()
+            val state = _uiState.value
+            Diagnostics.build(
+                appVersion = BuildConfig.VERSION_NAME,
+                versionCode = BuildConfig.VERSION_CODE,
+                androidRelease = Build.VERSION.RELEASE ?: "?",
+                sdkInt = Build.VERSION.SDK_INT,
+                device = "${Build.MANUFACTURER} ${Build.MODEL}",
+                languageTag = languageTag,
+                zoneId = state.priceZone?.id,
+                source = state.priceSource
+            )
+        } else {
+            null
+        }
+        return FeedbackReport(
+            category = category.wireValue,
+            subject = subject.trim(),
+            body = body.trim(),
+            diagnostics = diagnostics,
+            email = notifyEmail?.trim()?.ifBlank { null }
+        )
+    }
+
+    /** Submits one report and classifies the outcome; a network exception is treated as retryable. */
+    private fun trySubmit(report: FeedbackReport): SubmitAttempt =
+        try {
+            val result = reportSubmitter.submit(FeedbackCodec.encodeRequest(report))
+            when (FeedbackCodec.submitOutcomeFor(result.code)) {
+                SubmitOutcome.SENT -> when (val parsed = FeedbackCodec.parseSubmitResponse(result.body)) {
+                    is SubmitResult.Success -> SubmitAttempt.Sent(parsed.number, parsed.url)
+                    // Accepted (2xx) but response unreadable — don't re-send (would duplicate); can't track.
+                    SubmitResult.Malformed -> SubmitAttempt.Sent(null, null)
+                }
+                SubmitOutcome.RETRYABLE -> SubmitAttempt.Retryable
+                SubmitOutcome.PERMANENT -> SubmitAttempt.Permanent
+            }
+        } catch (_: Exception) {
+            SubmitAttempt.Retryable
+        }
+
+    /** Internal classification of a single submission attempt. */
+    private sealed interface SubmitAttempt {
+        data class Sent(val number: Int?, val url: String?) : SubmitAttempt
+        data object Retryable : SubmitAttempt
+        data object Permanent : SubmitAttempt
     }
 
     /**

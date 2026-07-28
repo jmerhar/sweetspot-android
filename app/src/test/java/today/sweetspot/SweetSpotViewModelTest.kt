@@ -36,9 +36,14 @@ import today.sweetspot.data.repository.TariffRepository
 import today.sweetspot.data.share.DecodeResult
 import today.sweetspot.data.share.SetupShare
 import java.time.Clock
+import today.sweetspot.data.api.GithubIssueApi
+import today.sweetspot.data.api.IssueStatus
+import today.sweetspot.data.repository.SettingsRepository
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
 import today.sweetspot.data.stats.StatsRecord
+import today.sweetspot.data.support.ReportSubmitter
+import today.sweetspot.data.support.SubmitHttpResult
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
@@ -46,7 +51,11 @@ import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.CoachMark
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
+import today.sweetspot.model.FeedbackReport
+import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReport
 import today.sweetspot.model.PriceSlot
+import today.sweetspot.model.ReportCategory
 import today.sweetspot.model.SharedSetup
 import today.sweetspot.model.SortCriterion
 import today.sweetspot.model.SortKey
@@ -178,6 +187,42 @@ class SweetSpotViewModelTest {
             private set
         override fun post(json: String): Int { callCount++; lastJson = json; return 200 }
     }
+
+    /** [ReportSubmitter] returning a fixed code+body, or throwing to simulate a network error. */
+    private class FakeReportSubmitter(
+        private val code: Int = 201,
+        private val body: String = """{"number":10,"url":"https://x/issues/10"}""",
+        private val throwError: Boolean = false
+    ) : ReportSubmitter {
+        var lastJson: String? = null
+            private set
+        var callCount = 0
+            private set
+        override fun submit(json: String): SubmitHttpResult {
+            callCount++
+            lastJson = json
+            if (throwError) throw java.io.IOException("network down")
+            return SubmitHttpResult(code, body)
+        }
+    }
+
+    /** [GithubIssueApi] that returns a canned status without any network call. */
+    private class FakeGithubIssueApi(private val state: String = "open") : GithubIssueApi() {
+        override fun fetch(number: Int): IssueStatus =
+            IssueStatus(number, state, "title", 0, "https://x/issues/$number")
+    }
+
+    /** Creates a ViewModel wired for report/feedback tests (fake submitter + GitHub API). */
+    private fun reportViewModel(
+        submitter: ReportSubmitter,
+        github: GithubIssueApi = FakeGithubIssueApi()
+    ) = SweetSpotViewModel(
+        app,
+        ioDispatcher = testDispatcher,
+        tariffRepositoryOverride = noNetworkTariffRepo(),
+        reportSubmitterOverride = submitter,
+        githubIssueApiOverride = github
+    )
 
     /** Creates a ViewModel with injected fakes and the test dispatcher. */
     private fun testViewModel(
@@ -757,6 +802,85 @@ class SweetSpotViewModelTest {
 
         viewModel.onDevResetCoachMarks()
         assertEquals(CoachMark.EV_CHIP, viewModel.uiState.value.activeCoachMark)
+    }
+
+    // --- Help & feedback ---
+
+    @Test
+    fun `onSubmitReport success stores a report and sets Success`() = runTest {
+        val submitter = FakeReportSubmitter(code = 201, body = """{"number":10,"url":"https://x/issues/10"}""")
+        val viewModel = reportViewModel(submitter)
+        viewModel.onSubmitReport(ReportCategory.BUG, "Crash", "steps", notifyEmail = null)
+        runCurrent()
+
+        val state = viewModel.uiState.value
+        assertEquals(ReportSubmission.Success(10, "https://x/issues/10"), state.reportSubmission)
+        assertEquals(1, state.myReports.size)
+        assertEquals(10, state.myReports[0].report.number)
+        assertEquals("open", state.myReports[0].status?.state)
+        // A bug report carries the diagnostics block; no name is ever sent.
+        assertTrue(submitter.lastJson!!.contains("diagnostics"))
+        assertFalse(submitter.lastJson!!.contains("\"name\""))
+    }
+
+    @Test
+    fun `onSubmitReport retryable failure queues the report in the outbox`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter(throwError = true)) // network error → retryable
+        viewModel.onSubmitReport(ReportCategory.FEEDBACK, "Idea", "please add X", notifyEmail = "a@b.co")
+        runCurrent()
+
+        assertEquals(ReportSubmission.Error(retrying = true), viewModel.uiState.value.reportSubmission)
+        val prefs = SettingsRepository(app)
+        assertEquals(1, prefs.getOutbox().size)
+        assertTrue(prefs.getMyReports().isEmpty())
+    }
+
+    @Test
+    fun `onSubmitReport permanent failure is not queued`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 400, body = """{"error":"invalid"}"""))
+        viewModel.onSubmitReport(ReportCategory.FEEDBACK, "x", "y", notifyEmail = null)
+        runCurrent()
+
+        assertEquals(ReportSubmission.Error(retrying = false), viewModel.uiState.value.reportSubmission)
+        assertTrue(SettingsRepository(app).getOutbox().isEmpty())
+    }
+
+    @Test
+    fun `flushOutbox delivers queued reports and moves them to My reports`() = runTest {
+        val prefs = SettingsRepository(app)
+        prefs.setOutbox(
+            listOf(PendingReport(FeedbackReport("bug", "Queued", "body"), createdAtMs = 1L))
+        )
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 201, body = """{"number":20,"url":"u"}"""))
+        viewModel.flushOutbox()
+        runCurrent()
+
+        assertTrue(prefs.getOutbox().isEmpty())
+        assertEquals(listOf(20), prefs.getMyReports().map { it.number })
+    }
+
+    @Test
+    fun `onDismissReportResult clears the submission state`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter())
+        viewModel.onSubmitReport(ReportCategory.FEEDBACK, "s", "b", null)
+        runCurrent()
+        viewModel.onDismissReportResult()
+        assertEquals(ReportSubmission.Idle, viewModel.uiState.value.reportSubmission)
+    }
+
+    @Test
+    fun `issueUrl uses the fetched html_url when present, else derives it from the number`() {
+        val fetched = MyReportView(
+            MyReport(7, "s", "bug", 0L),
+            IssueStatus(7, "open", "t", 0, "https://github.com/jmerhar/sweetspot-android/issues/7")
+        )
+        assertEquals("https://github.com/jmerhar/sweetspot-android/issues/7", fetched.issueUrl)
+
+        val blankUrl = MyReportView(MyReport(8, "s", "bug", 0L), IssueStatus(8, "open", "t", 0, "  "))
+        assertEquals("https://github.com/jmerhar/sweetspot-android/issues/8", blankUrl.issueUrl)
+
+        val notFetched = MyReportView(MyReport(9, "s", "bug", 0L))
+        assertEquals("https://github.com/jmerhar/sweetspot-android/issues/9", notFetched.issueUrl)
     }
 
     @Test
@@ -1748,8 +1872,13 @@ class SweetSpotViewModelTest {
         """"suppliers":[{"id":"acme","name":"Acme","surchargePerKwh":$surcharge}]}"""
 
     private fun allInViewModel(fetcher: FakeFetcher, tariffRepo: TariffRepository): SweetSpotViewModel {
+        val repo = today.sweetspot.data.repository.SettingsRepository(app)
         // Pin the country to NL so the seeded tariff (keyed "nl") loads regardless of detected locale.
-        today.sweetspot.data.repository.SettingsRepository(app).setCountryCode("NL")
+        repo.setCountryCode("NL")
+        // Pin "now" so successive searches (e.g. the results-screen all-in toggle re-run) prorate the
+        // current partial slot against an identical instant — otherwise real wall-clock drift between
+        // the two runs makes cost comparisons flaky at ~1e-6.
+        repo.setTimeOverrideMs(System.currentTimeMillis())
         return SweetSpotViewModel(app, { _ -> fetcher }, FakeCache(), FakeStatsCollector(), testDispatcher,
             tariffRepositoryOverride = tariffRepo)
     }

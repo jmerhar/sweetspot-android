@@ -290,4 +290,68 @@
     <string name="coach_all_in_toggle">Perjunkite tarp galutinės kainos ir vien biržos kainos.</string>
     <string name="coach_ev_chip">Spustelėkite automobilį, kad suplanuotumėte įkrovimą pagal baterijos procentus.</string>
     <string name="coach_got_it">Supratau</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Pagalba ir atsiliepimai</string>
+    <string name="settings_help_desc">Vadovai, atsiliepimai ir pagalba</string>
+    <string name="help_section_learn">Sužinoti</string>
+    <string name="help_section_support">Pagalba</string>
+    <string name="help_section_about">Apie</string>
+    <string name="help_quick_guide_title">Trumpas vadovas</string>
+    <string name="help_quick_guide_desc">Kaip naudoti SweetSpot</string>
+    <string name="help_reset_tips_title">Atstatyti patarimus</string>
+    <string name="help_reset_tips_desc">Vėl rodyti vienkartinius patarimus</string>
+    <string name="help_faq_title">DUK</string>
+    <string name="help_faq_desc">Dažni klausimai</string>
+    <string name="help_report_title">Pranešti apie problemą</string>
+    <string name="help_report_desc">Kažkas neveikia</string>
+    <string name="help_feedback_title">Siųsti atsiliepimą</string>
+    <string name="help_feedback_desc">Idėjos ir pasiūlymai</string>
+    <string name="help_my_reports_title">Mano pranešimai</string>
+    <string name="help_my_reports_desc">Stebėkite, ką pateikėte</string>
+    <string name="help_contact_title">Susisiekite su mumis</string>
+    <string name="help_contact_desc">Rašykite mums el. paštu</string>
+    <string name="help_rate_title">Įvertinti SweetSpot</string>
+    <string name="help_rate_desc">Įvertinkite mus Google Play</string>
+    <string name="help_whats_new_title">Kas naujo</string>
+    <string name="help_whats_new_desc">Naujausi pakeitimai</string>
+    <string name="help_privacy_title">Privatumo politika</string>
+    <string name="help_privacy_desc">Kaip tvarkomi jūsų duomenys</string>
+    <string name="help_about_license">GPL v3 · Atviras kodas GitHub</string>
+    <string name="tips_reset_snackbar">Patarimai atstatyti</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Jūsų pranešimas skelbiamas kaip viešas įrašas GitHub — nenurodykite asmeninių duomenų.</string>
+    <string name="report_subject_label">Tema</string>
+    <string name="report_body_label_bug">Kas nutiko?</string>
+    <string name="report_body_label_feedback">Jūsų atsiliepimas</string>
+    <string name="report_email_label">Pranešti man el. paštu (neprivaloma)</string>
+    <string name="report_email_note">Jūsų el. paštas naudojamas tik tam, kad galėtume jums pranešti — jis niekada nerodomas viešame įraše.</string>
+    <string name="report_submit">Pateikti</string>
+    <string name="report_submitting">Siunčiama…</string>
+    <string name="report_filed">Pranešimas #%1$d pateiktas — ačiū!</string>
+    <string name="report_sent">Ačiū — jūsų pranešimas išsiųstas.</string>
+    <string name="report_error_retry">Kol kas nepavyko išsiųsti — išsaugota, pakartosime automatiškai.</string>
+    <string name="report_error_permanent">Nepavyko išsiųsti. Patikrinkite įvestį ir bandykite dar kartą.</string>
+    <string name="report_retry">Bandyti dar kartą</string>
+    <string name="report_done">Atlikta</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Dar nepateikėte jokių pranešimų.</string>
+    <string name="my_reports_open">Atviras</string>
+    <string name="my_reports_closed">Uždarytas</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Raskite pigiausią laiką</string>
+    <string name="guide_find_body">Pasirinkite, kiek laiko turi veikti prietaisas, ir spustelėkite „Rasti“.</string>
+    <string name="guide_appliances_title">Išsaugokite savo prietaisus</string>
+    <string name="guide_appliances_body">Pridėkite prietaisus Nustatymuose paieškai vienu paspaudimu.</string>
+    <string name="guide_ev_title">Planuokite elektromobilio įkrovimą</string>
+    <string name="guide_ev_body">Pridėkite automobilį, įveskite dabartinį ir tikslinį įkrovos lygį, ir SweetSpot apskaičiuos įkrovimo laiką.</string>
+    <string name="guide_result_title">Perskaitykite rezultatą</string>
+    <string name="guide_result_body">Naudokite „Anksčiau“ ir „Pigiau“, kad pakeistumėte laikotarpį, ir palaikykite paspaudę diagramą, kad pamatytumėte bet kurio intervalo kainą.</string>
+    <string name="guide_allin_title">Galutinė kaina</string>
+    <string name="guide_allin_body">Pasirinktinai rodykite galutinę vartotojo kainą vietoj vien biržos kainos.</string>
+    <string name="guide_wear_title">Jūsų laikrodyje</string>
+    <string name="guide_wear_body">Jūsų prietaisai sinchronizuojami su Wear OS, todėl kainas galite tikrinti be telefono.</string>
 </resources>

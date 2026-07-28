@@ -294,4 +294,68 @@
     <string name="coach_all_in_toggle">Prepínajte medzi celkovou cenou a samotnou trhovou cenou.</string>
     <string name="coach_ev_chip">Ťuknite na vozidlo a naplánujte nabíjanie podľa percenta batérie.</string>
     <string name="coach_got_it">Rozumiem</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Pomoc a spätná väzba</string>
+    <string name="settings_help_desc">Návody, spätná väzba a podpora</string>
+    <string name="help_section_learn">Naučte sa</string>
+    <string name="help_section_support">Podpora</string>
+    <string name="help_section_about">O aplikácii</string>
+    <string name="help_quick_guide_title">Stručný návod</string>
+    <string name="help_quick_guide_desc">Ako používať SweetSpot</string>
+    <string name="help_reset_tips_title">Obnoviť tipy</string>
+    <string name="help_reset_tips_desc">Znova zobraziť jednorazové tipy</string>
+    <string name="help_faq_title">Časté otázky</string>
+    <string name="help_faq_desc">Bežné otázky</string>
+    <string name="help_report_title">Nahlásiť problém</string>
+    <string name="help_report_desc">Niečo nefunguje</string>
+    <string name="help_feedback_title">Odoslať spätnú väzbu</string>
+    <string name="help_feedback_desc">Nápady a návrhy</string>
+    <string name="help_my_reports_title">Moje hlásenia</string>
+    <string name="help_my_reports_desc">Sledujte, čo ste odoslali</string>
+    <string name="help_contact_title">Kontaktujte nás</string>
+    <string name="help_contact_desc">Napíšte nám priamo e-mail</string>
+    <string name="help_rate_title">Ohodnoťte SweetSpot</string>
+    <string name="help_rate_desc">Ohodnoťte nás na Google Play</string>
+    <string name="help_whats_new_title">Čo je nové</string>
+    <string name="help_whats_new_desc">Najnovšie zmeny</string>
+    <string name="help_privacy_title">Zásady ochrany súkromia</string>
+    <string name="help_privacy_desc">Ako sa spracúvajú vaše údaje</string>
+    <string name="help_about_license">GPL v3 · Otvorený zdrojový kód na GitHube</string>
+    <string name="tips_reset_snackbar">Tipy obnovené</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Vaše hlásenie sa zverejní ako verejný príspevok na GitHube — neuvádzajte v ňom prosím osobné údaje.</string>
+    <string name="report_subject_label">Predmet</string>
+    <string name="report_body_label_bug">Čo sa stalo?</string>
+    <string name="report_body_label_feedback">Vaša spätná väzba</string>
+    <string name="report_email_label">Upozorniť ma e-mailom (voliteľné)</string>
+    <string name="report_email_note">Váš e-mail sa použije len na to, aby sme vás upozornili — vo verejnom príspevku sa nikdy nezobrazí.</string>
+    <string name="report_submit">Odoslať</string>
+    <string name="report_submitting">Odosiela sa…</string>
+    <string name="report_filed">Hlásenie č. %1$d odoslané — ďakujeme!</string>
+    <string name="report_sent">Ďakujeme — vaše hlásenie bolo odoslané.</string>
+    <string name="report_error_retry">Teraz sa nepodarilo odoslať — uložené, skúsime to znova automaticky.</string>
+    <string name="report_error_permanent">Nepodarilo sa odoslať. Skontrolujte zadané údaje a skúste to znova.</string>
+    <string name="report_retry">Skúsiť znova</string>
+    <string name="report_done">Hotovo</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Zatiaľ ste neodoslali žiadne hlásenia.</string>
+    <string name="my_reports_open">Otvorené</string>
+    <string name="my_reports_closed">Uzavreté</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Nájdite najlacnejší čas</string>
+    <string name="guide_find_body">Zvoľte, ako dlho má spotrebič bežať, a ťuknite na Nájsť.</string>
+    <string name="guide_appliances_title">Uložte si spotrebiče</string>
+    <string name="guide_appliances_body">Pridajte spotrebiče v nastaveniach a vyhľadávajte jedným ťuknutím.</string>
+    <string name="guide_ev_title">Naplánujte nabíjanie elektromobilu</string>
+    <string name="guide_ev_body">Pridajte auto, zadajte jeho aktuálne a cieľové nabitie a SweetSpot vypočíta čas nabíjania.</string>
+    <string name="guide_result_title">Prečítajte si výsledok</string>
+    <string name="guide_result_body">Tlačidlami Skôr a Lacnejšie posuňte obdobie a podržaním prsta na grafe zobrazíte cenu ľubovoľného úseku.</string>
+    <string name="guide_allin_title">Celková cena</string>
+    <string name="guide_allin_body">Voliteľne zobrazte úplnú spotrebiteľskú cenu namiesto samotnej trhovej ceny.</string>
+    <string name="guide_wear_title">Na hodinkách</string>
+    <string name="guide_wear_body">Vaše spotrebiče sa synchronizujú s Wear OS, takže ceny skontrolujete aj bez telefónu.</string>
 </resources>

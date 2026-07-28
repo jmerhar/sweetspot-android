@@ -1,7 +1,6 @@
 package today.sweetspot.ui.settings
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,27 +15,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.launch
-import today.sweetspot.BuildConfig
 import today.sweetspot.R
 import today.sweetspot.ThemeMode
 import today.sweetspot.data.api.DataSource
@@ -48,14 +39,14 @@ import today.sweetspot.util.UiText
 import java.time.ZoneId
 
 /** The settings sub-screen currently shown: the root menu, or one grouped category screen. */
-private enum class SettingsRoute { Menu, Appliances, Ev, TotalPrice, Region, Appearance, Share, Advanced }
+private enum class SettingsRoute { Menu, Appliances, Ev, TotalPrice, Region, Appearance, Share, Advanced, Help }
 
 /**
  * Settings root. Shows a short menu of category rows (icon + title + description); each opens a focused
  * sub-screen (appliances, EV charging, total price, region, appearance, advanced). The active screen is
  * tracked by a single [SettingsRoute] rather than a navigation library, matching the app's state-based
- * navigation. The statistics opt-in stays as an inline toggle row on the menu, and the version footer
- * (7-tap developer-options unlock) stays at the bottom.
+ * navigation. The statistics opt-in stays as an inline toggle row on the menu; the version footer and
+ * its 7-tap developer-options unlock live on the Help & feedback sub-screen (About).
  *
  * The parameter list is unchanged from the previous single-screen version — [today.sweetspot.MainActivity]
  * still passes the full set and this composable distributes each slice to the relevant sub-screen.
@@ -114,6 +105,12 @@ fun SettingsScreen(
     onLanguageChanged: (String) -> Unit,
     onShareSetup: () -> String,
     onReplayOnboarding: () -> Unit,
+    reportSubmission: today.sweetspot.ReportSubmission,
+    myReports: List<today.sweetspot.MyReportView>,
+    onSubmitReport: (today.sweetspot.model.ReportCategory, String, String, String?) -> Unit,
+    onDismissReportResult: () -> Unit,
+    onLoadMyReports: () -> Unit,
+    onFlushOutbox: () -> Unit,
     onClearCache: () -> UiText,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
@@ -225,12 +222,26 @@ fun SettingsScreen(
             onDevUnlockChanged = onDevUnlockChanged,
             onDevResetUnlock = onDevResetUnlock,
             onDevResetStatsTimer = onDevResetStatsTimer,
-            onDevResetCoachMarks = onDevResetCoachMarks,
             timeOverrideMs = timeOverrideMs,
             onDevTimeOverrideChanged = onDevTimeOverrideChanged,
             timeZoneId = currentTimeZoneId,
             useProductionLogo = useProductionLogo,
             onDevUseProductionLogoChanged = onDevUseProductionLogoChanged,
+            onBack = toMenu
+        )
+
+        SettingsRoute.Help -> HelpSettingsScreen(
+            reportSubmission = reportSubmission,
+            myReports = myReports,
+            allInSupported = allInSupported,
+            devOptionsEnabled = devOptionsEnabled,
+            onReplayOnboarding = onReplayOnboarding,
+            onResetCoachMarks = onDevResetCoachMarks,
+            onSubmitReport = onSubmitReport,
+            onDismissReportResult = onDismissReportResult,
+            onLoadMyReports = onLoadMyReports,
+            onFlushOutbox = onFlushOutbox,
+            onDevOptionsUnlocked = onDevOptionsUnlocked,
             onBack = toMenu
         )
 
@@ -243,16 +254,13 @@ fun SettingsScreen(
             allInSupported = allInSupported,
             isStatsEnabled = isStatsEnabled,
             onStatsEnabledChanged = onStatsEnabledChanged,
-            devOptionsEnabled = devOptionsEnabled,
-            onDevOptionsUnlocked = onDevOptionsUnlocked,
-            onReplayOnboarding = onReplayOnboarding,
             onOpen = { route = it },
             onBack = onBack
         )
     }
 }
 
-/** The root settings menu: subscribe card, category rows, stats toggle, and the version footer. */
+/** The root settings menu: subscribe card, category rows (incl. Help & feedback), and the stats toggle. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SettingsMenu(
@@ -264,15 +272,9 @@ private fun SettingsMenu(
     allInSupported: Boolean,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
-    devOptionsEnabled: Boolean,
-    onDevOptionsUnlocked: () -> Unit,
-    onReplayOnboarding: () -> Unit,
     onOpen: (SettingsRoute) -> Unit,
     onBack: () -> Unit
 ) {
-    val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
-
     BackHandler { onBack() }
 
     Scaffold(
@@ -293,8 +295,7 @@ private fun SettingsMenu(
                     titleContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
-        },
-        snackbarHost = { SnackbarHost(snackbarHostState) }
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -370,35 +371,14 @@ private fun SettingsMenu(
                 onClick = { onOpen(SettingsRoute.Advanced) }
             )
 
-            // Replays the first-launch intro (a full-screen overlay, not an in-Settings sub-screen).
+            // Help & feedback hosts the guidance actions (How it works, Reset tips), the report/feedback
+            // form, "My reports", support links, and the version footer + 7-tap developer-options unlock.
             SettingsMenuRow(
-                iconRes = SharedR.drawable.ic_info,
-                title = stringResource(R.string.settings_how_it_works),
-                description = stringResource(R.string.settings_how_it_works_desc),
-                onClick = onReplayOnboarding,
-                modifier = Modifier.testTag("menu_how_it_works")
-            )
-
-            HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
-
-            var versionTapCount by remember { mutableIntStateOf(0) }
-            Text(
-                text = "SweetSpot v${BuildConfig.VERSION_NAME}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        if (!devOptionsEnabled) {
-                            versionTapCount++
-                            if (versionTapCount >= 7) {
-                                onDevOptionsUnlocked()
-                                coroutineScope.launch { snackbarHostState.showSnackbar("Developer options enabled") }
-                            }
-                        }
-                    }
-                    .padding(vertical = 16.dp),
-                textAlign = TextAlign.Center
+                iconRes = SharedR.drawable.ic_help,
+                title = stringResource(R.string.settings_help_title),
+                description = stringResource(R.string.settings_help_desc),
+                onClick = { onOpen(SettingsRoute.Help) },
+                modifier = Modifier.testTag("menu_help")
             )
         }
     }

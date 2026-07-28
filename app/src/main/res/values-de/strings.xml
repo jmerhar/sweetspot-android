@@ -280,4 +280,66 @@
     <string name="coach_all_in_toggle">Wechsle zwischen dem vollen Gesamtpreis und dem reinen Marktpreis.</string>
     <string name="coach_ev_chip">Tippe auf dein Fahrzeug, um das Laden nach Ladestand in Prozent zu planen.</string>
     <string name="coach_got_it">Verstanden</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Hilfe &amp; Feedback</string>
+    <string name="settings_help_desc">Anleitungen, Feedback und Support</string>
+    <string name="help_section_learn">Lernen</string>
+    <string name="help_section_support">Support</string>
+    <string name="help_section_about">Über</string>
+    <string name="help_quick_guide_title">Kurzanleitung</string>
+    <string name="help_quick_guide_desc">So verwendest du SweetSpot</string>
+    <string name="help_reset_tips_title">Tipps zurücksetzen</string>
+    <string name="help_reset_tips_desc">Die einmaligen Hinweise erneut anzeigen</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Häufige Fragen</string>
+    <string name="help_report_title">Problem melden</string>
+    <string name="help_report_desc">Etwas funktioniert nicht</string>
+    <string name="help_feedback_title">Feedback senden</string>
+    <string name="help_feedback_desc">Ideen und Vorschläge</string>
+    <string name="help_my_reports_title">Meine Meldungen</string>
+    <string name="help_my_reports_desc">Verfolge, was du eingereicht hast</string>
+    <string name="help_contact_title">Kontakt</string>
+    <string name="help_contact_desc">Schreib uns direkt eine E-Mail</string>
+    <string name="help_rate_title">SweetSpot bewerten</string>
+    <string name="help_rate_desc">Bewerte uns bei Google Play</string>
+    <string name="help_whats_new_title">Neuigkeiten</string>
+    <string name="help_whats_new_desc">Die neuesten Änderungen</string>
+    <string name="help_privacy_title">Datenschutzerklärung</string>
+    <string name="help_privacy_desc">Wie deine Daten verarbeitet werden</string>
+    <string name="help_about_license">GPL v3 · Open Source auf GitHub</string>
+    <string name="tips_reset_snackbar">Tipps zurückgesetzt</string>
+
+    <!-- Report a problem / feedback -->
+    <string name="report_public_notice">Deine Meldung wird als öffentliches Issue auf GitHub veröffentlicht — bitte gib keine persönlichen Daten an.</string>
+    <string name="report_subject_label">Betreff</string>
+    <string name="report_body_label_bug">Was ist passiert?</string>
+    <string name="report_body_label_feedback">Dein Feedback</string>
+    <string name="report_email_label">Per E-Mail benachrichtigen (optional)</string>
+    <string name="report_email_note">Deine E-Mail wird nur verwendet, um dich zu benachrichtigen — sie wird nie im öffentlichen Issue angezeigt.</string>
+    <string name="report_submit">Absenden</string>
+    <string name="report_submitting">Wird gesendet…</string>
+    <string name="report_filed">Meldung #%1$d eingereicht — vielen Dank!</string>
+    <string name="report_sent">Danke — deine Meldung wurde gesendet.</string>
+    <string name="report_error_retry">Konnte gerade nicht gesendet werden — gespeichert, wir versuchen es automatisch erneut.</string>
+    <string name="report_error_permanent">Konnte nicht gesendet werden. Bitte überprüfe deine Eingabe und versuche es erneut.</string>
+    <string name="report_retry">Erneut versuchen</string>
+    <string name="report_done">Fertig</string>
+    <string name="my_reports_empty">Du hast noch keine Meldungen eingereicht.</string>
+    <string name="my_reports_open">Offen</string>
+    <string name="my_reports_closed">Geschlossen</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Den günstigsten Zeitpunkt finden</string>
+    <string name="guide_find_body">Wähle, wie lange dein Gerät laufen soll, und tippe auf Finden.</string>
+    <string name="guide_appliances_title">Deine Geräte speichern</string>
+    <string name="guide_appliances_body">Füge Geräte in den Einstellungen hinzu, um mit einem Tippen zu suchen.</string>
+    <string name="guide_ev_title">E-Auto-Ladung planen</string>
+    <string name="guide_ev_body">Füge dein Auto hinzu, gib den aktuellen Ladestand und das Ladeziel ein, und SweetSpot berechnet die Ladezeit.</string>
+    <string name="guide_result_title">Das Ergebnis verstehen</string>
+    <string name="guide_result_body">Nutze Früher und Günstiger, um das Zeitfenster zu verschieben, und halte das Diagramm gedrückt, um den Preis zu jedem Zeitpunkt zu sehen.</string>
+    <string name="guide_allin_title">Gesamtpreis</string>
+    <string name="guide_allin_body">Zeige optional den vollen Verbraucherpreis statt nur des reinen Marktpreises an.</string>
+    <string name="guide_wear_title">Auf deiner Uhr</string>
+    <string name="guide_wear_body">Deine Geräte werden mit Wear OS synchronisiert, sodass du Preise auch ohne dein Telefon prüfen kannst.</string>
 </resources>

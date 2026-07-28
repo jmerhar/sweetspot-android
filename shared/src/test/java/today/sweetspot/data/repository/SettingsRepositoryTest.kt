@@ -17,6 +17,9 @@ import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.CoachMark
 import today.sweetspot.model.Countries
+import today.sweetspot.model.FeedbackReport
+import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReport
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
@@ -276,6 +279,37 @@ class SettingsRepositoryTest {
         repo.resetCoachMarks()
         assertFalse(repo.isCoachMarkSeen(CoachMark.CHART_PRESS_HOLD))
         assertFalse(repo.isCoachMarkSeen(CoachMark.EV_CHIP))
+    }
+
+    // --- Help & feedback reports ---
+
+    @Test
+    fun `my reports default empty and append in order`() {
+        assertTrue(repo.getMyReports().isEmpty())
+        repo.addMyReport(MyReport(number = 1, subject = "First", category = "bug", submittedAtMs = 100L))
+        repo.addMyReport(MyReport(number = 2, subject = "Second", category = "feedback", submittedAtMs = 200L))
+        val reports = repo.getMyReports()
+        assertEquals(2, reports.size)
+        assertEquals(1, reports[0].number)
+        assertEquals("Second", reports[1].subject)
+    }
+
+    @Test
+    fun `outbox round-trips and clears`() {
+        assertTrue(repo.getOutbox().isEmpty())
+        val pending = PendingReport(
+            report = FeedbackReport("bug", "s", "b", diagnostics = "App: 1.0"),
+            createdAtMs = 500L,
+            attempts = 1
+        )
+        repo.setOutbox(listOf(pending))
+        val stored = repo.getOutbox()
+        assertEquals(1, stored.size)
+        assertEquals("s", stored[0].report.subject)
+        assertEquals(1, stored[0].attempts)
+
+        repo.setOutbox(emptyList())
+        assertTrue(repo.getOutbox().isEmpty())
     }
 
     // --- Time override & clock ---

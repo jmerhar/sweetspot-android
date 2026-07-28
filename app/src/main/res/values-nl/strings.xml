@@ -280,4 +280,66 @@
     <string name="coach_all_in_toggle">Schakel tussen de volledige totaalprijs en de kale marktprijs.</string>
     <string name="coach_ev_chip">Tik op je voertuig om het laden te plannen op accupercentage.</string>
     <string name="coach_got_it">Begrepen</string>
+
+    <!-- Help & feedback: menu -->
+    <string name="settings_help_title">Help &amp; feedback</string>
+    <string name="settings_help_desc">Handleidingen, feedback en ondersteuning</string>
+    <string name="help_section_learn">Leren</string>
+    <string name="help_section_support">Ondersteuning</string>
+    <string name="help_section_about">Over</string>
+    <string name="help_quick_guide_title">Snelgids</string>
+    <string name="help_quick_guide_desc">SweetSpot gebruiken</string>
+    <string name="help_reset_tips_title">Tips resetten</string>
+    <string name="help_reset_tips_desc">Toon de eenmalige hints opnieuw</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Veelgestelde vragen</string>
+    <string name="help_report_title">Probleem melden</string>
+    <string name="help_report_desc">Er werkt iets niet</string>
+    <string name="help_feedback_title">Feedback sturen</string>
+    <string name="help_feedback_desc">Ideeën en suggesties</string>
+    <string name="help_my_reports_title">Mijn meldingen</string>
+    <string name="help_my_reports_desc">Volg wat je hebt ingediend</string>
+    <string name="help_contact_title">Contact opnemen</string>
+    <string name="help_contact_desc">Mail ons rechtstreeks</string>
+    <string name="help_rate_title">SweetSpot beoordelen</string>
+    <string name="help_rate_desc">Beoordeel ons op Google Play</string>
+    <string name="help_whats_new_title">Wat is er nieuw</string>
+    <string name="help_whats_new_desc">Laatste wijzigingen</string>
+    <string name="help_privacy_title">Privacybeleid</string>
+    <string name="help_privacy_desc">Hoe je gegevens worden verwerkt</string>
+    <string name="help_about_license">GPL v3 · Opensource op GitHub</string>
+    <string name="tips_reset_snackbar">Tips gereset</string>
+
+    <!-- Report a problem / feedback -->
+    <string name="report_public_notice">Je melding wordt als openbaar issue op GitHub geplaatst — vermeld geen persoonlijke gegevens.</string>
+    <string name="report_subject_label">Onderwerp</string>
+    <string name="report_body_label_bug">Wat is er gebeurd?</string>
+    <string name="report_body_label_feedback">Je feedback</string>
+    <string name="report_email_label">Houd me op de hoogte via e-mail (optioneel)</string>
+    <string name="report_email_note">Je e-mail wordt alleen gebruikt om je op de hoogte te houden — het wordt nooit in het openbare issue getoond.</string>
+    <string name="report_submit">Verzenden</string>
+    <string name="report_submitting">Verzenden…</string>
+    <string name="report_filed">Melding #%1$d ingediend — bedankt!</string>
+    <string name="report_sent">Bedankt — je melding is verzonden.</string>
+    <string name="report_error_retry">Kon nu niet verzenden — opgeslagen, we proberen het automatisch opnieuw.</string>
+    <string name="report_error_permanent">Kon niet verzenden. Controleer je invoer en probeer het opnieuw.</string>
+    <string name="report_retry">Opnieuw proberen</string>
+    <string name="report_done">Klaar</string>
+    <string name="my_reports_empty">Je hebt nog geen meldingen ingediend.</string>
+    <string name="my_reports_open">Open</string>
+    <string name="my_reports_closed">Gesloten</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Vind het goedkoopste moment</string>
+    <string name="guide_find_body">Kies hoe lang je apparaat moet draaien en tik op Zoeken.</string>
+    <string name="guide_appliances_title">Sla je apparaten op</string>
+    <string name="guide_appliances_body">Voeg apparaten toe in Instellingen om met één tik te zoeken.</string>
+    <string name="guide_ev_title">Plan het laden van je EV</string>
+    <string name="guide_ev_body">Voeg je auto toe, voer het huidige en streefniveau in, en SweetSpot berekent de laadtijd.</string>
+    <string name="guide_result_title">Lees het resultaat</string>
+    <string name="guide_result_body">Gebruik Eerder en Goedkoper om de periode te verschuiven, en houd de grafiek ingedrukt voor de prijs van elk moment.</string>
+    <string name="guide_allin_title">Totaalprijs</string>
+    <string name="guide_allin_body">Toon optioneel de volledige consumentenprijs in plaats van alleen de marktprijs.</string>
+    <string name="guide_wear_title">Op je horloge</string>
+    <string name="guide_wear_body">Je apparaten synchroniseren met Wear OS, zodat je prijzen kunt bekijken zonder je telefoon.</string>
 </resources>

@@ -9,6 +9,8 @@ import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.CoachMark
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
+import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReport
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.EvPosition
 
@@ -63,6 +65,8 @@ class SettingsRepository(private val context: Context) {
         const val KEY_APPLIANCE_USAGE = "appliance_usage"
         const val KEY_WATCH_USAGE = "watch_usage"
         const val KEY_USAGE_RESET_TOKEN = "usage_reset_token"
+        const val KEY_MY_REPORTS = "my_reports"
+        const val KEY_REPORT_OUTBOX = "report_outbox"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -257,6 +261,20 @@ class SettingsRepository(private val context: Context) {
      * @param appliances The appliances to store.
      */
     fun setAppliances(appliances: List<Appliance>) = putJson(KEY_APPLIANCES, appliances)
+
+    // --- Help & feedback reports ---
+
+    /** Reports this device has submitted (newest last), for the "My reports" tracker. */
+    fun getMyReports(): List<MyReport> = getJson(KEY_MY_REPORTS, emptyList())
+
+    /** Appends a successfully-submitted report to the tracked list. */
+    fun addMyReport(report: MyReport) = putJson(KEY_MY_REPORTS, getMyReports() + report)
+
+    /** Reports submitted but not yet delivered, awaiting retry. */
+    fun getOutbox(): List<PendingReport> = getJson(KEY_REPORT_OUTBOX, emptyList())
+
+    /** Replaces the outbox (empty list removes the key). */
+    fun setOutbox(pending: List<PendingReport>) = putJson(KEY_REPORT_OUTBOX, pending)
 
     // --- Appliance sorting, EV placement & usage ---
 

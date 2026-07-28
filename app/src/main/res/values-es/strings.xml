@@ -285,4 +285,68 @@
     <string name="ev_separate_section">Sección aparte</string>
     <string name="home_section_vehicles">Vehículos</string>
     <string name="home_section_appliances">Electrodomésticos</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Ayuda y opiniones</string>
+    <string name="settings_help_desc">Guías, opiniones y soporte</string>
+    <string name="help_section_learn">Aprender</string>
+    <string name="help_section_support">Soporte</string>
+    <string name="help_section_about">Acerca de</string>
+    <string name="help_quick_guide_title">Guía rápida</string>
+    <string name="help_quick_guide_desc">Cómo usar SweetSpot</string>
+    <string name="help_reset_tips_title">Restablecer consejos</string>
+    <string name="help_reset_tips_desc">Mostrar de nuevo los consejos únicos</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Preguntas frecuentes</string>
+    <string name="help_report_title">Informar de un problema</string>
+    <string name="help_report_desc">Algo no funciona</string>
+    <string name="help_feedback_title">Enviar opinión</string>
+    <string name="help_feedback_desc">Ideas y sugerencias</string>
+    <string name="help_my_reports_title">Mis informes</string>
+    <string name="help_my_reports_desc">Sigue lo que has enviado</string>
+    <string name="help_contact_title">Contáctanos</string>
+    <string name="help_contact_desc">Escríbenos directamente</string>
+    <string name="help_rate_title">Valora SweetSpot</string>
+    <string name="help_rate_desc">Valóranos en Google Play</string>
+    <string name="help_whats_new_title">Novedades</string>
+    <string name="help_whats_new_desc">Últimos cambios</string>
+    <string name="help_privacy_title">Política de privacidad</string>
+    <string name="help_privacy_desc">Cómo se tratan tus datos</string>
+    <string name="help_about_license">GPL v3 · Código abierto en GitHub</string>
+    <string name="tips_reset_snackbar">Consejos restablecidos</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Tu informe se publica como una incidencia pública en GitHub — no incluyas datos personales.</string>
+    <string name="report_subject_label">Asunto</string>
+    <string name="report_body_label_bug">¿Qué ha pasado?</string>
+    <string name="report_body_label_feedback">Tu opinión</string>
+    <string name="report_email_label">Avísame por correo (opcional)</string>
+    <string name="report_email_note">Tu correo solo se usa para avisarte — nunca se muestra en la incidencia pública.</string>
+    <string name="report_submit">Enviar</string>
+    <string name="report_submitting">Enviando…</string>
+    <string name="report_filed">Informe n.º %1$d registrado — ¡gracias!</string>
+    <string name="report_sent">Gracias — tu informe se ha enviado.</string>
+    <string name="report_error_retry">No se pudo enviar ahora mismo — guardado, lo reintentaremos automáticamente.</string>
+    <string name="report_error_permanent">No se pudo enviar. Revisa los datos e inténtalo de nuevo.</string>
+    <string name="report_retry">Reintentar</string>
+    <string name="report_done">Hecho</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Aún no has enviado ningún informe.</string>
+    <string name="my_reports_open">Abierto</string>
+    <string name="my_reports_closed">Cerrado</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Encuentra el momento más barato</string>
+    <string name="guide_find_body">Elige cuánto tiempo necesita funcionar tu electrodoméstico y toca Buscar.</string>
+    <string name="guide_appliances_title">Guarda tus electrodomésticos</string>
+    <string name="guide_appliances_body">Añade electrodomésticos en Ajustes para buscar con un solo toque.</string>
+    <string name="guide_ev_title">Planifica la carga del coche eléctrico</string>
+    <string name="guide_ev_body">Añade tu coche, introduce su carga actual y objetivo, y SweetSpot calcula el tiempo de carga.</string>
+    <string name="guide_result_title">Interpreta el resultado</string>
+    <string name="guide_result_body">Usa Antes y Más barato para mover la franja, y mantén pulsado el gráfico para ver el precio de cada franja horaria.</string>
+    <string name="guide_allin_title">Precio total</string>
+    <string name="guide_allin_body">Muestra opcionalmente el precio total al consumidor en lugar de solo el precio de mercado.</string>
+    <string name="guide_wear_title">En tu reloj</string>
+    <string name="guide_wear_body">Tus electrodomésticos se sincronizan con Wear OS, para que puedas consultar los precios sin tu teléfono.</string>
 </resources>

@@ -284,4 +284,68 @@
     <string name="coach_all_in_toggle">Passa dal prezzo totale al solo prezzo di mercato.</string>
     <string name="coach_ev_chip">Tocca il tuo veicolo per pianificare la ricarica in base alla percentuale della batteria.</string>
     <string name="coach_got_it">Ho capito</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Aiuto e feedback</string>
+    <string name="settings_help_desc">Guide, feedback e assistenza</string>
+    <string name="help_section_learn">Impara</string>
+    <string name="help_section_support">Assistenza</string>
+    <string name="help_section_about">Informazioni</string>
+    <string name="help_quick_guide_title">Guida rapida</string>
+    <string name="help_quick_guide_desc">Come usare SweetSpot</string>
+    <string name="help_reset_tips_title">Reimposta suggerimenti</string>
+    <string name="help_reset_tips_desc">Mostra di nuovo i suggerimenti una tantum</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Domande frequenti</string>
+    <string name="help_report_title">Segnala un problema</string>
+    <string name="help_report_desc">Qualcosa non funziona</string>
+    <string name="help_feedback_title">Invia feedback</string>
+    <string name="help_feedback_desc">Idee e suggerimenti</string>
+    <string name="help_my_reports_title">Le mie segnalazioni</string>
+    <string name="help_my_reports_desc">Tieni traccia di ciò che hai inviato</string>
+    <string name="help_contact_title">Contattaci</string>
+    <string name="help_contact_desc">Scrivici direttamente via email</string>
+    <string name="help_rate_title">Valuta SweetSpot</string>
+    <string name="help_rate_desc">Valutaci su Google Play</string>
+    <string name="help_whats_new_title">Novità</string>
+    <string name="help_whats_new_desc">Ultime modifiche</string>
+    <string name="help_privacy_title">Informativa sulla privacy</string>
+    <string name="help_privacy_desc">Come vengono gestiti i tuoi dati</string>
+    <string name="help_about_license">GPL v3 · Open source su GitHub</string>
+    <string name="tips_reset_snackbar">Suggerimenti reimpostati</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">La tua segnalazione viene pubblicata come issue pubblica su GitHub — non includere dati personali.</string>
+    <string name="report_subject_label">Oggetto</string>
+    <string name="report_body_label_bug">Cosa è successo?</string>
+    <string name="report_body_label_feedback">Il tuo feedback</string>
+    <string name="report_email_label">Avvisami via email (opzionale)</string>
+    <string name="report_email_note">La tua email viene usata solo per avvisarti — non viene mai mostrata nell\'issue pubblica.</string>
+    <string name="report_submit">Invia</string>
+    <string name="report_submitting">Invio in corso…</string>
+    <string name="report_filed">Segnalazione #%1$d inviata — grazie!</string>
+    <string name="report_sent">Grazie — la tua segnalazione è stata inviata.</string>
+    <string name="report_error_retry">Impossibile inviare ora — salvata, riproveremo automaticamente.</string>
+    <string name="report_error_permanent">Impossibile inviare. Controlla i dati inseriti e riprova.</string>
+    <string name="report_retry">Riprova</string>
+    <string name="report_done">Fatto</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Non hai ancora inviato alcuna segnalazione.</string>
+    <string name="my_reports_open">Aperta</string>
+    <string name="my_reports_closed">Chiusa</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Trova il momento più economico</string>
+    <string name="guide_find_body">Scegli la durata di funzionamento dell\'elettrodomestico, poi tocca Trova.</string>
+    <string name="guide_appliances_title">Salva i tuoi elettrodomestici</string>
+    <string name="guide_appliances_body">Aggiungi elettrodomestici nelle Impostazioni per ricerche con un tocco.</string>
+    <string name="guide_ev_title">Pianifica la ricarica dell\'auto elettrica</string>
+    <string name="guide_ev_body">Aggiungi la tua auto, inserisci la carica attuale e quella obiettivo e SweetSpot calcola il tempo di ricarica.</string>
+    <string name="guide_result_title">Leggi il risultato</string>
+    <string name="guide_result_body">Usa Prima e Più economico per spostare la fascia e tieni premuto il grafico per il prezzo di ogni intervallo.</string>
+    <string name="guide_allin_title">Prezzo totale</string>
+    <string name="guide_allin_body">Se vuoi, mostra il prezzo totale al consumatore invece del solo prezzo di mercato.</string>
+    <string name="guide_wear_title">Sul tuo orologio</string>
+    <string name="guide_wear_body">I tuoi elettrodomestici si sincronizzano con Wear OS, così puoi controllare i prezzi senza il telefono.</string>
 </resources>

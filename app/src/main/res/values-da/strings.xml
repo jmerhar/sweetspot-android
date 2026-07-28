@@ -282,4 +282,68 @@
     <string name="ev_separate_section">Separat sektion</string>
     <string name="home_section_vehicles">Køretøjer</string>
     <string name="home_section_appliances">Apparater</string>
+
+    <!-- Help & feedback -->
+    <string name="settings_help_title">Hjælp &amp; feedback</string>
+    <string name="settings_help_desc">Guides, feedback og support</string>
+    <string name="help_section_learn">Lær</string>
+    <string name="help_section_support">Support</string>
+    <string name="help_section_about">Om</string>
+    <string name="help_quick_guide_title">Hurtig guide</string>
+    <string name="help_quick_guide_desc">Sådan bruger du SweetSpot</string>
+    <string name="help_reset_tips_title">Nulstil tips</string>
+    <string name="help_reset_tips_desc">Vis engangstippene igen</string>
+    <string name="help_faq_title">FAQ</string>
+    <string name="help_faq_desc">Almindelige spørgsmål</string>
+    <string name="help_report_title">Rapportér et problem</string>
+    <string name="help_report_desc">Noget virker ikke</string>
+    <string name="help_feedback_title">Send feedback</string>
+    <string name="help_feedback_desc">Idéer og forslag</string>
+    <string name="help_my_reports_title">Mine rapporter</string>
+    <string name="help_my_reports_desc">Følg det, du har indsendt</string>
+    <string name="help_contact_title">Kontakt os</string>
+    <string name="help_contact_desc">Send os en e-mail direkte</string>
+    <string name="help_rate_title">Bedøm SweetSpot</string>
+    <string name="help_rate_desc">Bedøm os på Google Play</string>
+    <string name="help_whats_new_title">Nyheder</string>
+    <string name="help_whats_new_desc">Seneste ændringer</string>
+    <string name="help_privacy_title">Privatlivspolitik</string>
+    <string name="help_privacy_desc">Sådan håndteres dine data</string>
+    <string name="help_about_license">GPL v3 · Open source på GitHub</string>
+    <string name="tips_reset_snackbar">Tips nulstillet</string>
+
+    <!-- Report / feedback form -->
+    <string name="report_public_notice">Din rapport offentliggøres som et offentligt issue på GitHub — undlad venligst at medtage personlige oplysninger.</string>
+    <string name="report_subject_label">Emne</string>
+    <string name="report_body_label_bug">Hvad skete der?</string>
+    <string name="report_body_label_feedback">Din feedback</string>
+    <string name="report_email_label">Underret mig via e-mail (valgfrit)</string>
+    <string name="report_email_note">Din e-mail bruges kun til at underrette dig — den vises aldrig i det offentlige issue.</string>
+    <string name="report_submit">Send</string>
+    <string name="report_submitting">Sender…</string>
+    <string name="report_filed">Rapport #%1$d oprettet — tak!</string>
+    <string name="report_sent">Tak — din rapport blev sendt.</string>
+    <string name="report_error_retry">Kunne ikke sende lige nu — gemt, vi prøver igen automatisk.</string>
+    <string name="report_error_permanent">Kunne ikke sende. Tjek dine oplysninger, og prøv igen.</string>
+    <string name="report_retry">Prøv igen</string>
+    <string name="report_done">Færdig</string>
+
+    <!-- My reports -->
+    <string name="my_reports_empty">Du har endnu ikke indsendt nogen rapporter.</string>
+    <string name="my_reports_open">Åben</string>
+    <string name="my_reports_closed">Lukket</string>
+
+    <!-- Quick guide -->
+    <string name="guide_find_title">Find det billigste tidspunkt</string>
+    <string name="guide_find_body">Vælg hvor længe dit apparat skal køre, og tryk på Find.</string>
+    <string name="guide_appliances_title">Gem dine apparater</string>
+    <string name="guide_appliances_body">Tilføj apparater i Indstillinger for søgninger med ét tryk.</string>
+    <string name="guide_ev_title">Planlæg opladning af elbil</string>
+    <string name="guide_ev_body">Tilføj din bil, indtast dens aktuelle og ønskede opladning, så beregner SweetSpot opladningstiden.</string>
+    <string name="guide_result_title">Læs resultatet</string>
+    <string name="guide_result_body">Brug Tidligere og Billigere til at flytte tidsrummet, og tryk og hold på grafen for at se prisen for et vilkårligt interval.</string>
+    <string name="guide_allin_title">Totalpris</string>
+    <string name="guide_allin_body">Vis eventuelt den fulde forbrugerpris i stedet for kun markedsprisen.</string>
+    <string name="guide_wear_title">På dit ur</string>
+    <string name="guide_wear_body">Dine apparater synkroniseres til Wear OS, så du kan tjekke priser uden din telefon.</string>
 </resources>

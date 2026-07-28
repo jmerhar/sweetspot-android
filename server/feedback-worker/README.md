@@ -2,7 +2,7 @@
 
 Cloudflare Worker behind the app's **Report a problem** / **Send feedback** flow. It turns app
 submissions into **GitHub issues** and (Phase 2) emails the reporter — if they opted in — when their
-issue gets a comment or is closed. Architecture: `../../docs/notes/ideas/help-support-system.md`.
+issue gets a comment or is closed. Architecture: `../../docs/notes/reference/help-support-system.md`.
 
 - `POST /report` — app submits `{category, subject, body, diagnostics?, email?}` → creates a labelled
   issue (`from-app` + `bug`/`enhancement`); returns `{number, url}`.

@@ -1,8 +1,9 @@
 # SweetSpot feedback Worker
 
 Cloudflare Worker behind the app's **Report a problem** / **Send feedback** flow. It turns app
-submissions into **GitHub issues** and (Phase 2) emails the reporter — if they opted in — when their
-issue gets a comment or is closed. Architecture: `../../docs/notes/reference/help-support-system.md`.
+submissions into **GitHub issues** and emails the reporter — if they opted in — when their issue gets a
+comment or is closed (with a one-click unsubscribe link). Architecture:
+`../../docs/notes/reference/help-support-system.md`.
 
 - `POST /report` — app submits `{category, subject, body, diagnostics?, email?}` → creates a labelled
   issue (`from-app` + `bug`/`enhancement`); returns `{number, url}`. If an email is given, it's stored
@@ -45,11 +46,11 @@ cd server/feedback-worker
 wrangler kv namespace create FEEDBACK_KV
 
 # 2. Deploy (creates the Worker + the feedback.sweetspot.today custom domain)
-wrangler deploy
+wrangler deploy          # first time; afterwards just `make deploy-feedback` from the repo root
 
 # 3. Set the three secrets (see above)
 
-# 4. Phase 2 — add the GitHub webhook:
+# 4. Add the GitHub webhook (enables reporter notifications):
 #    repo Settings → Webhooks → Add webhook
 #      Payload URL:  https://feedback.sweetspot.today/webhook
 #      Content type: application/json

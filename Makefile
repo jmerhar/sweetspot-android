@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test test-suppliers inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -65,6 +65,9 @@ deploy: ## Deploy AABs with release notes to Play Store (TRACK=alpha|production 
 
 deploy-stats: ## Deploy stats.php to the stats server
 	./bin/deploy-stats.sh
+
+deploy-feedback: ## Deploy the feedback Worker to Cloudflare (feedback.sweetspot.today)
+	./bin/deploy-feedback.sh
 
 ##@ Website
 

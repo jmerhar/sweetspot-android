@@ -99,6 +99,7 @@ fun PriceBarChart(
     prices: List<PriceSlot>,
     result: WindowResult?,
     components: AllInPricing.AllInComponents? = null,
+    onInspect: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val optimalStart = remember(result) { result?.startTime?.toEpochSecond() }
@@ -173,6 +174,7 @@ fun PriceBarChart(
                         // scrolls the results screen while a hold-then-drag scrubs the chart.
                         detectDragGesturesAfterLongPress(
                             onDragStart = { offset ->
+                                onInspect()
                                 pointerY = offset.y
                                 selectedCell = ChartGeometry.selectedCell(offset.y, rowsHeightPx, present)
                             },

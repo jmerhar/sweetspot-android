@@ -280,4 +280,11 @@
     <string name="ev_separate_section">Засебан одељак</string>
     <string name="home_section_vehicles">Возила</string>
     <string name="home_section_appliances">Апарати</string>
+
+    <!-- Contextual coach hints -->
+    <string name="coach_earlier_cheaper">Није право време? Додирните Раније за ранији почетак или Јефтиније да се вратите на најјефтиније.</string>
+    <string name="coach_chart_press_hold">Притисните и држите графикон да видите цену у било ком тренутку.</string>
+    <string name="coach_all_in_toggle">Пребацујте између укупне цене и саме тржишне цене.</string>
+    <string name="coach_ev_chip">Додирните возило да испланирате пуњење према напуњености батерије.</string>
+    <string name="coach_got_it">Разумем</string>
 </resources>

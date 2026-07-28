@@ -241,6 +241,13 @@
     <string name="chart_legend_spot_negative">Precio spot negativo</string>
     <string name="chart_legend_vat_note">Todos los precios incluyen IVA.</string>
 
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">¿No es buen momento? Toca «Antes» para empezar antes, o «Más barato» para volver al más barato.</string>
+    <string name="coach_chart_press_hold">Mantén pulsado el gráfico para ver el precio en cualquier momento.</string>
+    <string name="coach_all_in_toggle">Cambia entre el precio total y solo el precio de mercado.</string>
+    <string name="coach_ev_chip">Toca tu vehículo para planificar la carga por porcentaje de batería.</string>
+    <string name="coach_got_it">Entendido</string>
+
     <!-- Sorting -->
     <string name="settings_sort_title">Orden</string>
     <string name="sort_by">Ordenar por</string>

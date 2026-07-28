@@ -43,6 +43,7 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
+import today.sweetspot.model.CoachMark
 import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
 import today.sweetspot.model.PriceSlot
@@ -100,6 +101,22 @@ class SweetSpotViewModelTest {
             PriceSlot(
                 time = base.plusHours(i.toLong()),
                 price = basePrice + i * 0.01,
+                durationMinutes = 60
+            )
+        }
+    }
+
+    /**
+     * Hourly prices that DEcrease over time, so the cheapest window is the latest one. This yields
+     * several earlier (costlier) window alternatives — needed for the Earlier/Cheaper coach mark,
+     * which is suppressed when there's only one window.
+     */
+    private fun fakePricesDecreasing(count: Int, basePrice: Double = 0.10): List<PriceSlot> {
+        val base = ZonedDateTime.now().withMinute(0).withSecond(0).withNano(0)
+        return (0 until count).map { i ->
+            PriceSlot(
+                time = base.plusHours(i.toLong()),
+                price = basePrice + (count - 1 - i) * 0.01,
                 durationMinutes = 60
             )
         }
@@ -656,6 +673,90 @@ class SweetSpotViewModelTest {
         assertFalse(viewModel.uiState.value.showOnboarding)
         viewModel.onReplayOnboarding()
         assertTrue(viewModel.uiState.value.showOnboarding)
+    }
+
+    // --- Contextual hints (coach marks) ---
+
+    @Test
+    fun `results coach mark surfaces earlier-cheaper first, then chart after it is dismissed`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePricesDecreasing(24)))
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+        assertEquals(CoachMark.EARLIER_CHEAPER, viewModel.uiState.value.activeCoachMark)
+
+        // Dismissing persists it and clears the bubble.
+        viewModel.onCoachMarkDismissed(CoachMark.EARLIER_CHEAPER)
+        assertNull(viewModel.uiState.value.activeCoachMark)
+
+        // Next results appearance surfaces the next hint (all-in is off in tests, so chart is next).
+        viewModel.onClearResult()
+        viewModel.onFindClicked()
+        runCurrent()
+        assertEquals(CoachMark.CHART_PRESS_HOLD, viewModel.uiState.value.activeCoachMark)
+        viewModel.onClearResult() // stop the periodic refresh so runTest can finish
+    }
+
+    @Test
+    fun `acting on Earlier retires the earlier-cheaper hint`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePricesDecreasing(24)))
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+        assertEquals(CoachMark.EARLIER_CHEAPER, viewModel.uiState.value.activeCoachMark)
+
+        viewModel.onEarlierWindow()
+        assertNull(viewModel.uiState.value.activeCoachMark)
+
+        // The hint stays retired on the next results appearance.
+        viewModel.onClearResult()
+        viewModel.onFindClicked()
+        runCurrent()
+        assertEquals(CoachMark.CHART_PRESS_HOLD, viewModel.uiState.value.activeCoachMark)
+        viewModel.onClearResult() // stop the periodic refresh so runTest can finish
+    }
+
+    @Test
+    fun `onChartInspected retires the chart hint so it is skipped later`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
+        viewModel.onChartInspected()
+        viewModel.onCoachMarkDismissed(CoachMark.EARLIER_CHEAPER)
+
+        viewModel.onDurationChanged(2, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+        // Both results hints seen and all-in off → nothing due.
+        assertNull(viewModel.uiState.value.activeCoachMark)
+        viewModel.onClearResult() // stop the periodic refresh so runTest can finish
+    }
+
+    @Test
+    fun `home EV chip hint arms only with a vehicle and retires once seen`() {
+        val viewModel = defaultViewModel()
+        // No appliances at first launch → no home hint.
+        assertNull(viewModel.uiState.value.activeCoachMark)
+
+        viewModel.onAddVehicle("Tesla", 58.0, 11.0)
+        viewModel.onHideSettings()
+        assertEquals(CoachMark.EV_CHIP, viewModel.uiState.value.activeCoachMark)
+
+        viewModel.onCoachMarkDismissed(CoachMark.EV_CHIP)
+        assertNull(viewModel.uiState.value.activeCoachMark)
+        // Still retired when returning to the home screen again.
+        viewModel.onHideSettings()
+        assertNull(viewModel.uiState.value.activeCoachMark)
+    }
+
+    @Test
+    fun `onDevResetCoachMarks re-arms the hints`() {
+        val viewModel = defaultViewModel()
+        viewModel.onAddVehicle("Tesla", 58.0, 11.0)
+        viewModel.onHideSettings()
+        viewModel.onCoachMarkDismissed(CoachMark.EV_CHIP)
+        assertNull(viewModel.uiState.value.activeCoachMark)
+
+        viewModel.onDevResetCoachMarks()
+        assertEquals(CoachMark.EV_CHIP, viewModel.uiState.value.activeCoachMark)
     }
 
     @Test

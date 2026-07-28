@@ -238,6 +238,13 @@
     <string name="chart_legend_spot_negative">Negativ spotpris</string>
     <string name="chart_legend_vat_note">Alle priser er inkl. moms.</string>
 
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Ikke det rette tidspunkt? Tryk Tidligere for at starte før, eller Billigere for at gå tilbage til det billigste.</string>
+    <string name="coach_chart_press_hold">Tryk og hold på grafen for at se prisen på et hvilket som helst tidspunkt.</string>
+    <string name="coach_all_in_toggle">Skift mellem den fulde totalpris og den rene markedspris.</string>
+    <string name="coach_ev_chip">Tryk på dit køretøj for at planlægge opladning efter batteriprocent.</string>
+    <string name="coach_got_it">Forstået</string>
+
     <!-- Sorting & ordering -->
     <string name="settings_sort_title">Rækkefølge</string>
     <string name="sort_by">Sortér efter</string>

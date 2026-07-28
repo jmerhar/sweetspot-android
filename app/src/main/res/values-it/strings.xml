@@ -277,4 +277,11 @@
     <string name="ev_separate_section">Sezione separata</string>
     <string name="home_section_vehicles">Veicoli</string>
     <string name="home_section_appliances">Elettrodomestici</string>
+
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Non è il momento giusto? Tocca Prima per anticipare l\'avvio, o Più economico per tornare al più conveniente.</string>
+    <string name="coach_chart_press_hold">Tieni premuto il grafico per vedere il prezzo in qualsiasi momento.</string>
+    <string name="coach_all_in_toggle">Passa dal prezzo totale al solo prezzo di mercato.</string>
+    <string name="coach_ev_chip">Tocca il tuo veicolo per pianificare la ricarica in base alla percentuale della batteria.</string>
+    <string name="coach_got_it">Ho capito</string>
 </resources>

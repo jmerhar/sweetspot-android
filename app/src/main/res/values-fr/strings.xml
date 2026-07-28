@@ -169,6 +169,11 @@
     <string name="onboarding_skip">Passer</string>
     <string name="onboarding_next">Suivant</string>
     <string name="onboarding_get_started">Commencer</string>
+    <string name="coach_earlier_cheaper">Pas le bon moment ? Appuyez sur Plus tôt pour un début plus proche, ou sur Moins cher pour revenir au moins cher.</string>
+    <string name="coach_chart_press_hold">Appuyez longuement sur le graphique pour voir le prix à tout moment.</string>
+    <string name="coach_all_in_toggle">Basculez entre le prix total et le seul prix du marché.</string>
+    <string name="coach_ev_chip">Appuyez sur votre véhicule pour planifier la recharge selon le pourcentage de batterie.</string>
+    <string name="coach_got_it">Compris</string>
     <string name="settings_how_it_works">Comment ça marche</string>
     <string name="settings_how_it_works_desc">Revoir l\'introduction</string>
 

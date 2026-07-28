@@ -274,4 +274,11 @@
     <string name="ev_separate_section">Eraldi jaotis</string>
     <string name="home_section_vehicles">Sõidukid</string>
     <string name="home_section_appliances">Seadmed</string>
+
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Vale aeg? Puuduta Varem varasemaks alguseks või Odavam, et pöörduda tagasi kõige odavama juurde.</string>
+    <string name="coach_chart_press_hold">Hoia graafikut all, et näha hinda igal ajahetkel.</string>
+    <string name="coach_all_in_toggle">Vaheta täieliku koguhinna ja pelga turuhinna vahel.</string>
+    <string name="coach_ev_chip">Puuduta oma sõidukit, et planeerida laadimist aku laetuse järgi.</string>
+    <string name="coach_got_it">Selge</string>
 </resources>

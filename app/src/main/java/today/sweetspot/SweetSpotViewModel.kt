@@ -33,6 +33,7 @@ import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
+import today.sweetspot.model.CoachMark
 import today.sweetspot.model.Countries
 import today.sweetspot.model.Country
 import today.sweetspot.model.EvPosition
@@ -44,6 +45,7 @@ import today.sweetspot.model.SharedSetup
 import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.AllInPricing
+import today.sweetspot.util.CoachMarkPolicy
 import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.UiText
 import today.sweetspot.util.combineUsage
@@ -193,6 +195,8 @@ data class UiState(
     val countries: List<Country> = Countries.all,
     /** True while the first-launch onboarding intro should take over the screen. */
     val showOnboarding: Boolean = false,
+    /** The one-time contextual hint to point at on the current screen, or null for none. */
+    val activeCoachMark: CoachMark? = null,
     val showStatsPrompt: Boolean = false,
     val isStatsEnabled: Boolean = false,
     val isTrialExpired: Boolean = false,
@@ -414,6 +418,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
         // Record first launch time for stats prompt delay
         settingsRepository.getFirstLaunchMs()
         checkStatsPrompt()
+        // Arm the home-screen contextual hint (EV chip) if one is due.
+        refreshHomeCoachMark()
         // Parse the bundled EV database off the main thread so the vehicle picker search is instant.
         viewModelScope.launch(ioDispatcher) {
             evVehicleRepository.vehicles
@@ -518,6 +524,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             ).withApplianceViews()
         }
         syncAppliancesToWear()
+        // A vehicle may have just been added in Settings — arm the EV-chip hint for the home screen.
+        refreshHomeCoachMark()
     }
 
     // --- Household sharing ---
@@ -611,6 +619,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
             ).withApplianceViews()
         }
         syncAppliancesToWear()
+        // An imported vehicle may be the first EV — arm the EV-chip hint for the home screen.
+        refreshHomeCoachMark()
     }
 
     // --- All-in price ---
@@ -794,6 +804,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             _uiState.update { it.copy(error = AppError.Validation(UiText.Res(R.string.ev_error_invalid_charger))) }
             return
         }
+
+        // Tapping a vehicle and confirming its charge range is the EV-chip hint's target action.
+        markCoachMarkSeen(CoachMark.EV_CHIP)
 
         // Pure-linear AC charging model: energy needed / effective power.
         val energyKwh = (targetSoc - currentSoc) / 100.0 * spec.batteryKwh
@@ -995,7 +1008,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 priceSource = null,
                 error = null,
                 searchDeadline = null,
-                searchPowerKw = null
+                searchPowerKw = null,
+                activeCoachMark = CoachMarkPolicy.homeDue(
+                    seenCoachMarks(),
+                    hasEvChip = it.appliances.any { a -> a.isEv }
+                )
             )
         }
     }
@@ -1007,6 +1024,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * the earliest available window (the last alternative). Each step is costlier but starts sooner.
      */
     fun onEarlierWindow() {
+        markCoachMarkSeen(CoachMark.EARLIER_CHEAPER)
         _uiState.update { state ->
             val next = state.windowOffset + 1
             if (next >= state.windowAlternatives.size) return@update state
@@ -1021,6 +1039,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * cheapest window (offset 0).
      */
     fun onCheaperWindow() {
+        markCoachMarkSeen(CoachMark.EARLIER_CHEAPER)
         _uiState.update { state ->
             val prev = state.windowOffset - 1
             if (prev < 0) return@update state
@@ -1168,6 +1187,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param enabled Whether to show the all-in (total) price.
      */
     fun onAllInEnabledFromResult(enabled: Boolean) {
+        markCoachMarkSeen(CoachMark.ALL_IN_TOGGLE)
         val state = _uiState.value
         val priceZone = state.priceZone ?: return
         settingsRepository.setAllInEnabled(enabled)
@@ -1577,7 +1597,15 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     allInApplied = allInApplied,
                     allInSupplierName = allInSupplierName,
                     allInStale = allInStale,
-                    allInComponents = allInComponents
+                    allInComponents = allInComponents,
+                    // Surface at most one results-screen hint per appearance (Earlier/Cheaper, then
+                    // press-and-hold chart, then the all-in toggle once configured).
+                    activeCoachMark = CoachMarkPolicy.resultsDue(
+                        seenCoachMarks(),
+                        hasAlternatives = alternatives.size > 1,
+                        allInConfigured = state.allInSupported && state.manualSurcharge != null,
+                        hasChart = prices.isNotEmpty()
+                    )
                 )
             }
             startResultRefresh()
@@ -1646,6 +1674,43 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /** Replays the onboarding intro on demand (from Settings › How it works). */
     fun onReplayOnboarding() {
         _uiState.update { it.copy(showOnboarding = true) }
+    }
+
+    /** The set of contextual hints that have already been shown or acted on. */
+    private fun seenCoachMarks(): Set<CoachMark> =
+        CoachMark.entries.filterTo(mutableSetOf()) { settingsRepository.isCoachMarkSeen(it) }
+
+    /** Recomputes the home-screen contextual hint (the EV chip) from the current appliances. */
+    private fun refreshHomeCoachMark() {
+        _uiState.update {
+            it.copy(
+                activeCoachMark = CoachMarkPolicy.homeDue(
+                    seenCoachMarks(),
+                    hasEvChip = it.appliances.any { a -> a.isEv }
+                )
+            )
+        }
+    }
+
+    /** Persists a hint as seen and clears it if it is the one currently showing. */
+    private fun markCoachMarkSeen(mark: CoachMark) {
+        // Cheap no-op once retired, so repeated feature use (e.g. every chart long-press) doesn't
+        // keep writing prefs.
+        if (settingsRepository.isCoachMarkSeen(mark)) return
+        settingsRepository.setCoachMarkSeen(mark)
+        _uiState.update { if (it.activeCoachMark == mark) it.copy(activeCoachMark = null) else it }
+    }
+
+    /** Dismisses the shown contextual hint via its "Got it" action. */
+    fun onCoachMarkDismissed(mark: CoachMark) = markCoachMarkSeen(mark)
+
+    /** Retires the press-and-hold chart hint once the user actually inspects the chart. */
+    fun onChartInspected() = markCoachMarkSeen(CoachMark.CHART_PRESS_HOLD)
+
+    /** Resets every contextual hint so they all fire again (developer options). */
+    fun onDevResetCoachMarks() {
+        settingsRepository.resetCoachMarks()
+        refreshHomeCoachMark()
     }
 
     /**

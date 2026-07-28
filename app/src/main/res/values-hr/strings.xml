@@ -21,6 +21,11 @@
     <string name="result_cost_above_cheapest">%1$s više od najjeftinijeg</string>
     <string name="result_earlier">Ranije</string>
     <string name="result_cheaper">Jeftinije</string>
+    <string name="coach_earlier_cheaper">Nije pravo vrijeme? Dodirnite Ranije za raniji početak ili Jeftinije za povratak na najjeftinije.</string>
+    <string name="coach_chart_press_hold">Pritisnite i držite grafikon da vidite cijenu u bilo kojem trenutku.</string>
+    <string name="coach_all_in_toggle">Prebacujte između pune ukupne cijene i puke tržišne cijene.</string>
+    <string name="coach_ev_chip">Dodirnite vozilo za planiranje punjenja prema postotku baterije.</string>
+    <string name="coach_got_it">Razumijem</string>
     <string name="result_cost_breakdown">Pregled troškova</string>
     <string name="cd_collapse">Sažmi</string>
     <string name="cd_expand">Proširi</string>

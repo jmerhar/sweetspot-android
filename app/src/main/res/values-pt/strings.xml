@@ -240,6 +240,13 @@
     <string name="chart_legend_spot_negative">Preço de mercado negativo</string>
     <string name="chart_legend_vat_note">Todos os preços incluem IVA.</string>
 
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Não é a melhor altura? Toque em Mais cedo para começar antes, ou Mais barato para voltar ao mais barato.</string>
+    <string name="coach_chart_press_hold">Mantenha o gráfico premido para ver o preço a qualquer hora.</string>
+    <string name="coach_all_in_toggle">Alterne entre o preço total e o preço de mercado simples.</string>
+    <string name="coach_ev_chip">Toque no seu veículo para planear o carregamento pela percentagem da bateria.</string>
+    <string name="coach_got_it">Entendi</string>
+
     <!-- Sorting -->
     <string name="settings_sort_title">Ordem</string>
     <string name="sort_by">Ordenar por</string>

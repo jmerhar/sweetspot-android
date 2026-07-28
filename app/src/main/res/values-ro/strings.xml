@@ -21,6 +21,11 @@
     <string name="result_cost_above_cheapest">%1$s peste minim</string>
     <string name="result_earlier">Mai devreme</string>
     <string name="result_cheaper">Mai ieftin</string>
+    <string name="coach_earlier_cheaper">Nu e momentul potrivit? Apasă Mai devreme pentru un start mai rapid sau Mai ieftin pentru a reveni la cel mai ieftin.</string>
+    <string name="coach_chart_press_hold">Apasă lung pe grafic pentru a vedea prețul la orice oră.</string>
+    <string name="coach_all_in_toggle">Comută între prețul total complet și prețul de piață simplu.</string>
+    <string name="coach_ev_chip">Apasă pe vehicul pentru a planifica încărcarea după procentul bateriei.</string>
+    <string name="coach_got_it">Am înțeles</string>
     <string name="result_cost_breakdown">Detalii costuri</string>
     <string name="cd_collapse">Restrânge</string>
     <string name="cd_expand">Extinde</string>

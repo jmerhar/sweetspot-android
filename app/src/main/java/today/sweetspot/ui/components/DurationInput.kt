@@ -26,8 +26,11 @@ import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,6 +46,15 @@ import today.sweetspot.util.formatDuration
 
 /** Maximum number of type columns shown side by side before wrapping to a new row of columns. */
 private const val MAX_GROUP_COLUMNS = 3
+
+/**
+ * Which appliance chip (if any) should report its bounds for the EV coach mark, and where to report
+ * them. Provided by [DurationInput] and read by each [ApplianceChip] so only the target chip anchors,
+ * without threading a modifier through every grouped/sectioned layout path.
+ */
+private data class EvChipAnchor(val chipId: String?, val onBounds: (Rect) -> Unit)
+
+private val LocalEvChipAnchor = staticCompositionLocalOf { EvChipAnchor(null) {} }
 
 private data class QuickDuration(val hours: Int, val minutes: Int)
 
@@ -76,10 +88,13 @@ fun DurationInput(
     deadlineMinute: Int,
     onDeadlineEnabledChange: (Boolean) -> Unit,
     onDeadlineTimeChange: (Int, Int) -> Unit,
+    evChipAnchorId: String? = null,
+    onEvChipBounds: (Rect) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     val resources = LocalContext.current.resources
 
+    CompositionLocalProvider(LocalEvChipAnchor provides EvChipAnchor(evChipAnchorId, onEvChipBounds)) {
     ElevatedCard(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -179,6 +194,7 @@ fun DurationInput(
             }
         }
     }
+    }
 }
 
 /** A wrapping row of appliance chips; each fills its duration and searches on tap. */
@@ -203,9 +219,13 @@ private fun ApplianceChip(
     onApplianceTap: (Appliance) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val anchor = LocalEvChipAnchor.current
+    val chipModifier = if (appliance.id == anchor.chipId) {
+        modifier.coachMarkAnchor(active = true, onBounds = anchor.onBounds)
+    } else modifier
     AssistChip(
         onClick = { onApplianceTap(appliance) },
-        modifier = modifier,
+        modifier = chipModifier,
         label = {
             Text(
                 text = appliance.name,

@@ -280,4 +280,9 @@
     <string name="ev_separate_section">Atsevišķa sadaļa</string>
     <string name="home_section_vehicles">Transportlīdzekļi</string>
     <string name="home_section_appliances">Ierīces</string>
+    <string name="coach_earlier_cheaper">Neder laiks? Pieskarieties Agrāk, lai sāktu ātrāk, vai Lētāk, lai atgrieztos pie lētākā.</string>
+    <string name="coach_chart_press_hold">Turiet nospiestu diagrammu, lai redzētu cenu jebkurā brīdī.</string>
+    <string name="coach_all_in_toggle">Pārslēdzieties starp pilno cenu un tikai biržas cenu.</string>
+    <string name="coach_ev_chip">Pieskarieties transportlīdzeklim, lai plānotu uzlādi pēc akumulatora procentiem.</string>
+    <string name="coach_got_it">Sapratu</string>
 </resources>

@@ -273,4 +273,11 @@
     <string name="ev_separate_section">Ξεχωριστή ενότητα</string>
     <string name="home_section_vehicles">Οχήματα</string>
     <string name="home_section_appliances">Συσκευές</string>
+
+    <!-- Contextual coach hints -->
+    <string name="coach_earlier_cheaper">Δεν είναι η κατάλληλη ώρα; Πατήστε «Νωρίτερα» για πιο σύντομη έναρξη ή «Φθηνότερα» για να επιστρέψετε στη φθηνότερη.</string>
+    <string name="coach_chart_press_hold">Πατήστε παρατεταμένα το γράφημα για να δείτε την τιμή σε οποιαδήποτε ώρα.</string>
+    <string name="coach_all_in_toggle">Εναλλαγή μεταξύ της πλήρους τελικής τιμής και της καθαρής τιμής αγοράς.</string>
+    <string name="coach_ev_chip">Πατήστε το όχημά σας για να προγραμματίσετε τη φόρτιση με βάση το ποσοστό μπαταρίας.</string>
+    <string name="coach_got_it">Κατάλαβα</string>
 </resources>

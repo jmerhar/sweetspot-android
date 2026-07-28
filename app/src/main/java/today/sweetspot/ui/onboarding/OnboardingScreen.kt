@@ -49,8 +49,8 @@ import today.sweetspot.shared.R as SharedR
  * dynamic Material theme so the first-launch screens are unmistakably on-brand (and legible in white)
  * on every device and in both light and dark mode.
  */
-private val OnboardingGradientTop = Color(0xFF4A90D9)
-private val OnboardingGradientBottom = Color(0xFF274B93)
+internal val OnboardingGradientTop = Color(0xFF4A90D9)
+internal val OnboardingGradientBottom = Color(0xFF274B93)
 
 /** One onboarding page: an icon and a short title + body, all localised. */
 private data class OnboardingPage(

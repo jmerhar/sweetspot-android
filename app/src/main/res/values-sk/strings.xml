@@ -287,4 +287,11 @@
     <string name="ev_separate_section">Samostatná sekcia</string>
     <string name="home_section_vehicles">Vozidlá</string>
     <string name="home_section_appliances">Spotrebiče</string>
+
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Nie je to pravý čas? Ťuknite na Skôr pre skorší začiatok alebo na Lacnejšie pre návrat k najlacnejšiemu.</string>
+    <string name="coach_chart_press_hold">Podržte prst na grafe a zobrazí sa cena v ľubovoľnom čase.</string>
+    <string name="coach_all_in_toggle">Prepínajte medzi celkovou cenou a samotnou trhovou cenou.</string>
+    <string name="coach_ev_chip">Ťuknite na vozidlo a naplánujte nabíjanie podľa percenta batérie.</string>
+    <string name="coach_got_it">Rozumiem</string>
 </resources>

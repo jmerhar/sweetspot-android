@@ -191,6 +191,11 @@
     <string name="onboarding_get_started">Get started</string>
     <string name="settings_how_it_works">How it works</string>
     <string name="settings_how_it_works_desc">See the intro again</string>
+    <string name="coach_earlier_cheaper">Not the right time? Tap Earlier for a sooner start, or Cheaper to head back to the cheapest.</string>
+    <string name="coach_chart_press_hold">Press and hold the chart to see the price at any time.</string>
+    <string name="coach_all_in_toggle">Switch between the full all-in price and the bare market price.</string>
+    <string name="coach_ev_chip">Tap your vehicle to plan charging by battery percentage.</string>
+    <string name="coach_got_it">Got it</string>
 
     <!-- Unlock -->
     <string name="settings_unlock">Subscribe to SweetSpot</string>

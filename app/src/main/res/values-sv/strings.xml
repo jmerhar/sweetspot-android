@@ -236,6 +236,13 @@
     <string name="chart_legend_spot_negative">Negativt spotpris</string>
     <string name="chart_legend_vat_note">Alla priser inkl. moms.</string>
 
+    <!-- Coach hint bubbles -->
+    <string name="coach_earlier_cheaper">Fel tidpunkt? Tryck på Tidigare för en tidigare start, eller Billigare för att gå tillbaka till det billigaste.</string>
+    <string name="coach_chart_press_hold">Tryck och håll på diagrammet för att se priset vid valfri tidpunkt.</string>
+    <string name="coach_all_in_toggle">Växla mellan hela totalpriset och enbart marknadspriset.</string>
+    <string name="coach_ev_chip">Tryck på ditt fordon för att planera laddning efter batteriprocent.</string>
+    <string name="coach_got_it">Uppfattat</string>
+
     <!-- Appliance ordering -->
     <string name="settings_sort_title">Sortering</string>
     <string name="sort_by">Sortera efter</string>

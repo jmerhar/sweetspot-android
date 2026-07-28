@@ -244,6 +244,11 @@
     <string name="result_disclaimer_power_all_in">Stroški so prikazani za %s kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavitelj: %s</string>
     <string name="result_all_in_stale">Podatki o tarifah so starejši od 14 dni in morda niso več aktualni.</string>
+    <string name="coach_earlier_cheaper">Ni pravi čas? Pritisnite Prej za zgodnejši začetek ali Ceneje za vrnitev na najcenejši termin.</string>
+    <string name="coach_chart_press_hold">Pridržite graf, da vidite ceno ob poljubnem času.</string>
+    <string name="coach_all_in_toggle">Preklopite med celotno skupno ceno in golo tržno ceno.</string>
+    <string name="coach_ev_chip">Pritisnite vozilo za načrtovanje polnjenja po odstotku napolnjenosti.</string>
+    <string name="coach_got_it">Razumem</string>
     <string name="chart_legend_energy_tax">Davek na energijo</string>
     <string name="chart_legend_surcharge">Pribitek</string>
     <string name="chart_legend_spot">Tržna cena</string>

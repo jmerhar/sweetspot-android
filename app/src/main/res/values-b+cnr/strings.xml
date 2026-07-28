@@ -282,4 +282,11 @@
     <string name="ev_separate_section">Poseban odjeljak</string>
     <string name="home_section_vehicles">Vozila</string>
     <string name="home_section_appliances">Aparati</string>
+
+    <!-- Coach marks -->
+    <string name="coach_earlier_cheaper">Nije pravi trenutak? Dodirnite Ranije za raniji početak ili Jeftinije da se vratite na najjeftinije.</string>
+    <string name="coach_chart_press_hold">Pritisnite i držite grafikon da vidite cijenu u bilo koje vrijeme.</string>
+    <string name="coach_all_in_toggle">Prebacujte između pune ukupne cijene i same tržišne cijene.</string>
+    <string name="coach_ev_chip">Dodirnite vozilo da isplanirate punjenje prema procentu baterije.</string>
+    <string name="coach_got_it">U redu</string>
 </resources>

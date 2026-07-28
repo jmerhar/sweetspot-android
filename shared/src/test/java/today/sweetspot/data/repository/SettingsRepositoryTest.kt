@@ -15,6 +15,7 @@ import org.robolectric.annotation.Config
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.ApplianceUsage
+import today.sweetspot.model.CoachMark
 import today.sweetspot.model.Countries
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.EvPosition
@@ -258,6 +259,23 @@ class SettingsRepositoryTest {
         assertFalse(repo.isOnboardingShown())
         repo.setOnboardingShown()
         assertTrue(repo.isOnboardingShown())
+    }
+
+    // --- Contextual hints (coach marks) ---
+
+    @Test
+    fun `coach mark seen flag defaults off, persists, and resets`() {
+        assertFalse(repo.isCoachMarkSeen(CoachMark.CHART_PRESS_HOLD))
+        repo.setCoachMarkSeen(CoachMark.CHART_PRESS_HOLD)
+        repo.setCoachMarkSeen(CoachMark.EV_CHIP)
+        assertTrue(repo.isCoachMarkSeen(CoachMark.CHART_PRESS_HOLD))
+        assertTrue(repo.isCoachMarkSeen(CoachMark.EV_CHIP))
+        // A different, untouched hint stays unseen.
+        assertFalse(repo.isCoachMarkSeen(CoachMark.EARLIER_CHEAPER))
+
+        repo.resetCoachMarks()
+        assertFalse(repo.isCoachMarkSeen(CoachMark.CHART_PRESS_HOLD))
+        assertFalse(repo.isCoachMarkSeen(CoachMark.EV_CHIP))
     }
 
     // --- Time override & clock ---

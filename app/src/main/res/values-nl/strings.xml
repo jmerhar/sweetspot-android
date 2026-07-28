@@ -273,4 +273,11 @@
     <string name="ev_separate_section">Apart gedeelte</string>
     <string name="home_section_vehicles">Voertuigen</string>
     <string name="home_section_appliances">Apparaten</string>
+
+    <!-- Contextual coach hint bubbles -->
+    <string name="coach_earlier_cheaper">Niet het juiste moment? Tik op Eerder voor een vroegere start, of Goedkoper om terug te gaan naar de goedkoopste.</string>
+    <string name="coach_chart_press_hold">Houd de grafiek ingedrukt om de prijs op elk moment te zien.</string>
+    <string name="coach_all_in_toggle">Schakel tussen de volledige totaalprijs en de kale marktprijs.</string>
+    <string name="coach_ev_chip">Tik op je voertuig om het laden te plannen op accupercentage.</string>
+    <string name="coach_got_it">Begrepen</string>
 </resources>

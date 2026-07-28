@@ -275,4 +275,9 @@
     <string name="ev_separate_section">Eigener Bereich</string>
     <string name="home_section_vehicles">Fahrzeuge</string>
     <string name="home_section_appliances">Geräte</string>
+    <string name="coach_earlier_cheaper">Nicht der richtige Zeitpunkt? Tippe auf Früher für einen früheren Start oder auf Günstiger, um zum günstigsten zurückzukehren.</string>
+    <string name="coach_chart_press_hold">Halte das Diagramm gedrückt, um den Preis zu jedem Zeitpunkt zu sehen.</string>
+    <string name="coach_all_in_toggle">Wechsle zwischen dem vollen Gesamtpreis und dem reinen Marktpreis.</string>
+    <string name="coach_ev_chip">Tippe auf dein Fahrzeug, um das Laden nach Ladestand in Prozent zu planen.</string>
+    <string name="coach_got_it">Verstanden</string>
 </resources>

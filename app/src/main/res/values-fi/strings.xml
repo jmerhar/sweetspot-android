@@ -274,4 +274,11 @@
     <string name="ev_separate_section">Erillinen osio</string>
     <string name="home_section_vehicles">Ajoneuvot</string>
     <string name="home_section_appliances">Laitteet</string>
+
+    <!-- Coach hint bubbles -->
+    <string name="coach_earlier_cheaper">Väärä hetki? Napauta Aiemmin aikaisempaa aloitusta varten tai Halvemmalla palataksesi halvimpaan.</string>
+    <string name="coach_chart_press_hold">Näet minkä tahansa ajankohdan hinnan painamalla kaaviota pitkään.</string>
+    <string name="coach_all_in_toggle">Vaihda kokonaishinnan ja pelkän markkinahinnan välillä.</string>
+    <string name="coach_ev_chip">Napauta ajoneuvoasi suunnitellaksesi latauksen akkuprosentin mukaan.</string>
+    <string name="coach_got_it">Selvä</string>
 </resources>

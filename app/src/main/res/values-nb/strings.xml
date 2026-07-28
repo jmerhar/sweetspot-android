@@ -271,4 +271,9 @@
     <string name="ev_separate_section">Egen seksjon</string>
     <string name="home_section_vehicles">Kjøretøy</string>
     <string name="home_section_appliances">Apparater</string>
+    <string name="coach_earlier_cheaper">Ikke rett tidspunkt? Trykk Tidligere for en tidligere start, eller Billigere for å gå tilbake til det billigste.</string>
+    <string name="coach_chart_press_hold">Trykk og hold på grafen for å se prisen når som helst.</string>
+    <string name="coach_all_in_toggle">Veksle mellom den fulle totalprisen og den rene markedsprisen.</string>
+    <string name="coach_ev_chip">Trykk på kjøretøyet for å planlegge lading etter ladenivå.</string>
+    <string name="coach_got_it">Skjønner</string>
 </resources>

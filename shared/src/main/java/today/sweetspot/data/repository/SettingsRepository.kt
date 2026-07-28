@@ -6,6 +6,7 @@ import androidx.core.content.edit
 import kotlinx.serialization.json.Json
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
+import today.sweetspot.model.CoachMark
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
 import today.sweetspot.model.ApplianceGrouping
@@ -368,6 +369,15 @@ class SettingsRepository(private val context: Context) {
 
     /** Marks the onboarding intro as shown so it isn't shown automatically again. */
     fun setOnboardingShown() = putBool(KEY_ONBOARDING_SHOWN, true)
+
+    /** Returns whether the given one-time contextual hint (coach mark) has already been shown. */
+    fun isCoachMarkSeen(mark: CoachMark): Boolean = prefs.getBoolean(mark.prefKey, false)
+
+    /** Marks a contextual hint as seen so it isn't shown again. */
+    fun setCoachMarkSeen(mark: CoachMark) = putBool(mark.prefKey, true)
+
+    /** Clears every contextual-hint "seen" flag so all hints fire again (developer options). */
+    fun resetCoachMarks() = prefs.edit { CoachMark.entries.forEach { remove(it.prefKey) } }
 
     /**
      * Returns the timestamp of the app's first launch, recording it if not yet set.

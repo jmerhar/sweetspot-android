@@ -287,4 +287,9 @@
     <string name="ev_separate_section">Osobna sekcja</string>
     <string name="home_section_vehicles">Pojazdy</string>
     <string name="home_section_appliances">Urządzenia</string>
+    <string name="coach_earlier_cheaper">Nie ta pora? Dotknij Wcześniej, aby zacząć szybciej, albo Taniej, aby wrócić do najtańszego terminu.</string>
+    <string name="coach_chart_press_hold">Przytrzymaj wykres, aby zobaczyć cenę o dowolnej porze.</string>
+    <string name="coach_all_in_toggle">Przełączaj między pełną ceną całkowitą a samą ceną rynkową.</string>
+    <string name="coach_ev_chip">Dotknij pojazd, aby zaplanować ładowanie według poziomu akumulatora.</string>
+    <string name="coach_got_it">Rozumiem</string>
 </resources>

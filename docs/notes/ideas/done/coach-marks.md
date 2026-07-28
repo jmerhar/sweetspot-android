@@ -1,5 +1,13 @@
 # Contextual Coach Marks
 
+> **Status (implemented):** anchored, one-time hints ship for the four controls below — the results
+> Earlier/Cheaper buttons, the press-and-hold chart, the all-in total⇄spot toggle, and the home EV
+> chip. Which hint is due is decided by the pure `CoachMarkPolicy` (one per screen appearance, priority
+> order), placed by `CoachMarkGeometry`, persisted per-hint via `SettingsRepository`
+> (`coach_*` flags / `CoachMark` enum), and rendered by the coverage-excluded `CoachMarkCallout`
+> (a `Popup` bubble with a tail). Each hint retires on dismiss ("Got it") or when its feature is used;
+> a developer-options "Reset tips" action re-arms them all.
+
 ## Idea
 
 Follow-up to the first-launch onboarding intro (shipped — see `ideas/done/onboarding.md`). The intro

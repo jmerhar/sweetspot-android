@@ -45,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -55,10 +56,13 @@ import androidx.compose.ui.unit.dp
 import today.sweetspot.R
 import today.sweetspot.AppError
 import today.sweetspot.SweetSpotViewModel
+import today.sweetspot.model.CoachMark
 import today.sweetspot.ui.components.BreakdownTable
+import today.sweetspot.ui.components.CoachMarkCallout
 import today.sweetspot.ui.components.DurationInput
 import today.sweetspot.ui.components.ErrorBox
 import today.sweetspot.ui.components.PriceBarChart
+import today.sweetspot.ui.components.coachMarkAnchor
 import today.sweetspot.ui.components.ResultSummary
 import today.sweetspot.ui.components.SocDialog
 import today.sweetspot.util.formatHhMm
@@ -125,6 +129,12 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             onRefresh = viewModel::onRefreshResults,
             onBack = viewModel::onClearResult,
             onAllInEnabledChange = viewModel::onAllInEnabledFromResult,
+            // Suppress the contextual hint while any overlay dialog is up so they don't stack.
+            activeCoachMark = state.activeCoachMark.takeUnless {
+                state.showStatsPrompt || state.showThankYou || state.importError != null
+            },
+            onCoachMarkDismissed = viewModel::onCoachMarkDismissed,
+            onChartInspected = viewModel::onChartInspected,
             snackbarHostState = snackbarHostState,
             modifier = modifier
         )
@@ -148,6 +158,13 @@ private fun FormScreen(
     val state by viewModel.uiState.collectAsState()
     val resources = LocalContext.current.resources
     var socDialogFor by remember { mutableStateOf<today.sweetspot.model.Appliance?>(null) }
+
+    // The EV-chip hint is due only on the plain home screen (not under any dialog); it anchors to the
+    // first vehicle chip.
+    val evCoachActive = state.activeCoachMark == CoachMark.EV_CHIP &&
+        !state.showStatsPrompt && !state.showThankYou && state.importError == null && socDialogFor == null
+    val evChipAnchorId = if (evCoachActive) state.appliances.firstOrNull { it.isEv }?.id else null
+    var evChipBounds by remember(evChipAnchorId) { mutableStateOf<Rect?>(null) }
 
     socDialogFor?.let { appliance ->
         val ev = appliance.ev
@@ -236,7 +253,9 @@ private fun FormScreen(
                 deadlineHour = state.deadlineHour,
                 deadlineMinute = state.deadlineMinute,
                 onDeadlineEnabledChange = viewModel::onDeadlineEnabledChanged,
-                onDeadlineTimeChange = viewModel::onDeadlineChanged
+                onDeadlineTimeChange = viewModel::onDeadlineChanged,
+                evChipAnchorId = evChipAnchorId,
+                onEvChipBounds = { evChipBounds = it }
             )
 
             if (state.isLoading) {
@@ -274,6 +293,15 @@ private fun FormScreen(
             }
 
             Spacer(modifier = Modifier.height(16.dp))
+
+            val evBounds = evChipBounds
+            if (evCoachActive && evBounds != null) {
+                CoachMarkCallout(
+                    target = evBounds,
+                    text = stringResource(R.string.coach_ev_chip),
+                    onDismiss = { viewModel.onCoachMarkDismissed(CoachMark.EV_CHIP) }
+                )
+            }
         }
     }
 }
@@ -304,9 +332,15 @@ private fun ResultScreen(
     onRefresh: () -> Unit,
     onBack: () -> Unit,
     onAllInEnabledChange: (Boolean) -> Unit,
+    activeCoachMark: CoachMark?,
+    onCoachMarkDismissed: (CoachMark) -> Unit,
+    onChartInspected: () -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier
 ) {
+    // Bounds (window px) of the control the active hint points at; reset when the active hint changes.
+    var coachTarget by remember(activeCoachMark) { mutableStateOf<Rect?>(null) }
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -371,7 +405,10 @@ private fun ResultScreen(
                         )
                         Switch(
                             checked = allInEnabled,
-                            onCheckedChange = onAllInEnabledChange
+                            onCheckedChange = onAllInEnabledChange,
+                            modifier = Modifier.coachMarkAnchor(
+                                active = activeCoachMark == CoachMark.ALL_IN_TOGGLE
+                            ) { coachTarget = it }
                         )
                     }
                 }
@@ -381,7 +418,11 @@ private fun ResultScreen(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .coachMarkAnchor(
+                            active = activeCoachMark == CoachMark.EARLIER_CHEAPER
+                        ) { coachTarget = it },
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OutlinedButton(
@@ -416,7 +457,11 @@ private fun ResultScreen(
                     PriceBarChart(
                         prices = allPrices,
                         result = result,
-                        components = allInComponents
+                        components = allInComponents,
+                        onInspect = onChartInspected,
+                        modifier = Modifier.coachMarkAnchor(
+                            active = activeCoachMark == CoachMark.CHART_PRESS_HOLD
+                        ) { coachTarget = it }
                     )
                 }
 
@@ -447,6 +492,24 @@ private fun ResultScreen(
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
+            }
+
+            // Anchored contextual hint for the active results-screen coach mark. CoachMarkCallout
+            // renders in a Popup (not clipped by the scroll) and shows only once its target control
+            // has reported bounds and is on screen.
+            val coachTargetRect = coachTarget
+            val coachTextRes = when (activeCoachMark) {
+                CoachMark.EARLIER_CHEAPER -> R.string.coach_earlier_cheaper
+                CoachMark.CHART_PRESS_HOLD -> R.string.coach_chart_press_hold
+                CoachMark.ALL_IN_TOGGLE -> R.string.coach_all_in_toggle
+                else -> null
+            }
+            if (activeCoachMark != null && coachTextRes != null && coachTargetRect != null) {
+                CoachMarkCallout(
+                    target = coachTargetRect,
+                    text = stringResource(coachTextRes),
+                    onDismiss = { onCoachMarkDismissed(activeCoachMark) }
+                )
             }
         }
     }

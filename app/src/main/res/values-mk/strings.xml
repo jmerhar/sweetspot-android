@@ -236,6 +236,13 @@
     <string name="chart_legend_spot_negative">Негативна спот цена</string>
     <string name="chart_legend_vat_note">Сите цени го вклучуваат ДДВ.</string>
 
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Не одговара времето? Допрете „Порано“ за поран почеток или „Поевтино“ за враќање кон најевтиното.</string>
+    <string name="coach_chart_press_hold">Држете го притиснато графиконот за да ја видите цената во кое било време.</string>
+    <string name="coach_all_in_toggle">Префрлајте помеѓу целосната крајна цена и самата пазарна цена.</string>
+    <string name="coach_ev_chip">Допрете го возилото за да го испланирате полнењето според процентот на батеријата.</string>
+    <string name="coach_got_it">Во ред</string>
+
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Редослед</string>
     <string name="sort_by">Подреди по</string>

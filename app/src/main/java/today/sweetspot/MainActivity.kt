@@ -139,6 +139,7 @@ class MainActivity : AppCompatActivity() {
                             isDevUnlocked = state.isDevUnlocked,
                             onDevUnlockChanged = vm::onDevUnlockChanged,
                             onDevResetStatsTimer = vm::onDevResetStatsTimer,
+                            onDevResetCoachMarks = vm::onDevResetCoachMarks,
                             timeOverrideMs = state.timeOverrideMs,
                             onDevTimeOverrideChanged = vm::onDevTimeOverrideChanged,
                             useProductionLogo = state.useProductionLogo,

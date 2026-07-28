@@ -21,6 +21,11 @@
     <string name="result_cost_above_cheapest">%1$s több, mint a legolcsóbb</string>
     <string name="result_earlier">Korábban</string>
     <string name="result_cheaper">Olcsóbban</string>
+    <string name="coach_earlier_cheaper">Nem jó az időpont? Koppints a Korábban gombra a hamarabbi kezdéshez, vagy az Olcsóbban gombra a legolcsóbbhoz.</string>
+    <string name="coach_chart_press_hold">Tartsd nyomva a diagramot, hogy bármely időpont árát lásd.</string>
+    <string name="coach_all_in_toggle">Válts a teljes ár és a puszta piaci ár között.</string>
+    <string name="coach_ev_chip">Koppints a járművedre, hogy töltöttség szerint tervezd a töltést.</string>
+    <string name="coach_got_it">Értem</string>
     <string name="result_cost_breakdown">Költségbontás</string>
     <string name="cd_collapse">Összecsukás</string>
     <string name="cd_expand">Kibontás</string>

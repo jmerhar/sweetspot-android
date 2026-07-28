@@ -285,4 +285,9 @@
     <string name="ev_separate_section">Atskira dalis</string>
     <string name="home_section_vehicles">Automobiliai</string>
     <string name="home_section_appliances">Prietaisai</string>
+    <string name="coach_earlier_cheaper">Netinkamas laikas? Spustelėkite „Anksčiau“, kad pradėtumėte greičiau, arba „Pigiau“, kad grįžtumėte prie pigiausio.</string>
+    <string name="coach_chart_press_hold">Palaikykite paspaudę diagramą, kad pamatytumėte kainą bet kuriuo metu.</string>
+    <string name="coach_all_in_toggle">Perjunkite tarp galutinės kainos ir vien biržos kainos.</string>
+    <string name="coach_ev_chip">Spustelėkite automobilį, kad suplanuotumėte įkrovimą pagal baterijos procentus.</string>
+    <string name="coach_got_it">Supratau</string>
 </resources>

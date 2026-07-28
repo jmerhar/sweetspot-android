@@ -170,6 +170,13 @@
     <string name="settings_how_it_works">Как работи</string>
     <string name="settings_how_it_works_desc">Вижте въведението отново</string>
 
+    <!-- Coach hints -->
+    <string name="coach_earlier_cheaper">Не е подходящ момент? Докоснете „По-рано“ за по-ранен старт или „По-евтино“, за да се върнете към най-евтиното.</string>
+    <string name="coach_chart_press_hold">Натиснете и задръжте графиката, за да видите цената във всеки момент.</string>
+    <string name="coach_all_in_toggle">Превключвайте между пълната крайна цена и голата пазарна цена.</string>
+    <string name="coach_ev_chip">Докоснете превозното си средство, за да планирате зареждането по процент на батерията.</string>
+    <string name="coach_got_it">Разбрах</string>
+
     <!-- Unlock -->
     <string name="settings_unlock">Абонирай се за SweetSpot</string>
     <string name="settings_unlock_description">Абонирайте се за една година, за да продължите да използвате SweetSpot.</string>

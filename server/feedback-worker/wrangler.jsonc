@@ -1,0 +1,30 @@
+{
+  // Cloudflare Worker backing the in-app "Report a problem" / "Send feedback" flow.
+  // It turns app submissions into GitHub issues and (Phase 2) emails the reporter on activity.
+  // See README.md for the one-time setup + deploy steps. Secrets are NOT stored here — set them
+  // with `wrangler secret put` (GITHUB_TOKEN, WEBHOOK_SECRET, BREVO_API_KEY).
+  "name": "sweetspot-feedback",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-28",
+  "observability": { "enabled": true },
+
+  // Serves the endpoint the app POSTs to. Requires the zone (sweetspot.today) on this Cloudflare
+  // account; `wrangler deploy` provisions the custom-domain record.
+  "routes": [{ "pattern": "feedback.sweetspot.today", "custom_domain": true }],
+
+  // Rate-limit counters + opt-in {issue -> email} map. Replace the id after `wrangler kv namespace create`.
+  "kv_namespaces": [{ "binding": "FEEDBACK_KV", "id": "0399c4773fe54c3dabcc6b9cc9007c46" }],
+
+  // Non-secret config. Change the sender/limits here without touching code.
+  "vars": {
+    "GITHUB_OWNER": "jmerhar",
+    "GITHUB_REPO": "sweetspot-android",
+    "BOT_LOGIN": "sweetspot-support",
+    "BREVO_SENDER_EMAIL": "notifications@sweetspot.today",
+    "BREVO_SENDER_NAME": "SweetSpot",
+    "REPLY_TO_EMAIL": "hello@sweetspot.today",
+    "RATE_LIMIT_PER_DAY": "5",
+    "MAX_SUBJECT": "120",
+    "MAX_BODY": "4000"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "sweetspot-feedback-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "secret:github": "wrangler secret put GITHUB_TOKEN",
+    "secret:webhook": "wrangler secret put WEBHOOK_SECRET",
+    "secret:brevo": "wrangler secret put BREVO_API_KEY"
+  }
+}

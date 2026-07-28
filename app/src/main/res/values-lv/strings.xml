@@ -349,4 +349,8 @@
     <string name="guide_allin_body">Pēc izvēles rādiet pilno patērētāja cenu, nevis tikai biržas cenu.</string>
     <string name="guide_wear_title">Jūsu pulkstenī</string>
     <string name="guide_wear_body">Jūsu ierīces sinhronizējas ar Wear OS, tāpēc varat pārbaudīt cenas bez tālruņa.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Tu</string>
+    <string name="thread_open_github">Atvērt vietnē GitHub</string>
+    <string name="thread_load_error">Neizdevās ielādēt sarunu. Pārbaudi savienojumu un mēģini vēlreiz.</string>
 </resources>

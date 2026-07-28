@@ -334,6 +334,9 @@
     <string name="my_reports_empty">Još niste poslali nijednu prijavu.</string>
     <string name="my_reports_open">Otvoreno</string>
     <string name="my_reports_closed">Zatvoreno</string>
+    <string name="thread_you">Vi</string>
+    <string name="thread_open_github">Otvori na GitHubu</string>
+    <string name="thread_load_error">Nije bilo moguće učitati razgovor. Provjerite vezu i pokušajte ponovno.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Pronađite najjeftinije vrijeme</string>

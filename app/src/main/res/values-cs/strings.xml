@@ -346,6 +346,9 @@
     <string name="my_reports_empty">Zatím jste neodeslali žádná hlášení.</string>
     <string name="my_reports_open">Otevřené</string>
     <string name="my_reports_closed">Uzavřené</string>
+    <string name="thread_you">Vy</string>
+    <string name="thread_open_github">Otevřít na GitHubu</string>
+    <string name="thread_load_error">Nepodařilo se načíst konverzaci. Zkontrolujte připojení a zkuste to znovu.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Najděte nejlevnější čas</string>

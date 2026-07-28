@@ -247,6 +247,11 @@
     <string name="my_reports_open">Open</string>
     <string name="my_reports_closed">Closed</string>
 
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">You</string>
+    <string name="thread_open_github">Open on GitHub</string>
+    <string name="thread_load_error">Couldn\'t load the conversation. Check your connection and try again.</string>
+
     <!-- Quick guide -->
     <string name="guide_find_title">Find the cheapest time</string>
     <string name="guide_find_body">Pick how long your appliance needs to run, then tap Find.</string>

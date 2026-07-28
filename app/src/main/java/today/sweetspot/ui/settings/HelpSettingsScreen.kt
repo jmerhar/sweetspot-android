@@ -8,6 +8,7 @@ import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,6 +26,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -49,7 +51,7 @@ import today.sweetspot.BuildConfig
 import today.sweetspot.MyReportView
 import today.sweetspot.R
 import today.sweetspot.ReportSubmission
-import today.sweetspot.issueUrl
+import today.sweetspot.ThreadState
 import today.sweetspot.model.ReportCategory
 import today.sweetspot.shared.R as SharedR
 import today.sweetspot.util.HelpLinks
@@ -70,6 +72,7 @@ private enum class HelpRoute { Menu, Form, MyReports, QuickGuide }
 internal fun HelpSettingsScreen(
     reportSubmission: ReportSubmission,
     myReports: List<MyReportView>,
+    thread: ThreadState?,
     allInSupported: Boolean,
     devOptionsEnabled: Boolean,
     onReplayOnboarding: () -> Unit,
@@ -78,6 +81,8 @@ internal fun HelpSettingsScreen(
     onDismissReportResult: () -> Unit,
     onLoadMyReports: () -> Unit,
     onFlushOutbox: () -> Unit,
+    onOpenThread: (Int) -> Unit,
+    onCloseThread: () -> Unit,
     onDevOptionsUnlocked: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
@@ -112,7 +117,12 @@ internal fun HelpSettingsScreen(
             onBack = { onDismissReportResult(); toMenu() }
         )
 
-        HelpRoute.MyReports -> MyReportsScreen(reports = myReports, onBack = toMenu)
+        HelpRoute.MyReports ->
+            if (thread != null) {
+                ThreadScreen(state = thread, onRetry = { onOpenThread(thread.number) }, onBack = onCloseThread)
+            } else {
+                MyReportsScreen(reports = myReports, onOpenReport = onOpenThread, onBack = toMenu)
+            }
 
         HelpRoute.QuickGuide -> QuickGuideScreen(allInSupported = allInSupported, onBack = toMenu)
     }
@@ -365,8 +375,11 @@ private fun ReportFormScreen(
 
 /** In-app tracker: the reports this device submitted, with their live GitHub status. */
 @Composable
-private fun MyReportsScreen(reports: List<MyReportView>, onBack: () -> Unit) {
-    val uriHandler = LocalUriHandler.current
+private fun MyReportsScreen(
+    reports: List<MyReportView>,
+    onOpenReport: (Int) -> Unit,
+    onBack: () -> Unit
+) {
     SettingsSubScreen(title = stringResource(R.string.help_my_reports_title), onBack = onBack) {
         if (reports.isEmpty()) {
             Text(
@@ -378,9 +391,8 @@ private fun MyReportsScreen(reports: List<MyReportView>, onBack: () -> Unit) {
         } else {
             // Newest first.
             reports.asReversed().forEach { view ->
-                val url = view.issueUrl
                 Row(
-                    modifier = Modifier.fillMaxWidth().clickable { uriHandler.openUri(url) }
+                    modifier = Modifier.fillMaxWidth().clickable { onOpenReport(view.report.number) }
                         .padding(horizontal = 16.dp, vertical = 14.dp),
                     verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
                 ) {
@@ -420,6 +432,62 @@ private fun MyReportsScreen(reports: List<MyReportView>, onBack: () -> Unit) {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+/**
+ * In-app conversation for one report: the issue body + comments, read from the public GitHub API.
+ * Entries authored by the bot login are the reporter's own ("You"); anyone else is "SweetSpot"
+ * (the maintainer). An "Open on GitHub" link is always available (and is the fallback on error).
+ */
+@Composable
+private fun ThreadScreen(state: ThreadState, onRetry: () -> Unit, onBack: () -> Unit) {
+    val uriHandler = LocalUriHandler.current
+    SettingsSubScreen(title = "#${state.number}", onBack = onBack) {
+        when (state) {
+            is ThreadState.Loading -> Box(
+                modifier = Modifier.fillMaxWidth().padding(32.dp),
+                contentAlignment = androidx.compose.ui.Alignment.Center
+            ) { CircularProgressIndicator() }
+
+            is ThreadState.Error -> Column(modifier = Modifier.padding(16.dp)) {
+                Text(stringResource(R.string.thread_load_error), color = MaterialTheme.colorScheme.error)
+                Spacer(modifier = Modifier.height(12.dp))
+                OutlinedButton(onClick = onRetry, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.report_retry))
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+                TextButton(
+                    onClick = { uriHandler.openUri(HelpLinks.issueUrl(state.number)) },
+                    modifier = Modifier.fillMaxWidth()
+                ) { Text(stringResource(R.string.thread_open_github)) }
+            }
+
+            is ThreadState.Loaded -> Column(modifier = Modifier.padding(16.dp)) {
+                Text(state.thread.title, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    text = if (state.thread.state == "closed") stringResource(R.string.my_reports_closed)
+                    else stringResource(R.string.my_reports_open),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                state.thread.items.forEach { item ->
+                    Text(
+                        text = if (item.mine) stringResource(R.string.thread_you) else "SweetSpot",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = if (item.mine) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(item.body.ifBlank { "—" }, style = MaterialTheme.typography.bodyMedium)
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+                TextButton(
+                    onClick = { uriHandler.openUri(state.thread.htmlUrl) },
+                    modifier = Modifier.fillMaxWidth()
+                ) { Text(stringResource(R.string.thread_open_github)) }
             }
         }
     }

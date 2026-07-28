@@ -5,6 +5,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import today.sweetspot.util.HelpLinks
+import java.time.Instant
 
 /** Public status of a GitHub issue, for the in-app "My reports" tracker. */
 data class IssueStatus(
@@ -15,6 +17,28 @@ data class IssueStatus(
     val htmlUrl: String
 )
 
+/**
+ * One entry in an issue's public conversation — either the issue body itself (the first item) or a
+ * comment. [author] is the GitHub login. [mine] is true when the author is the feedback bot, i.e. this
+ * entry is the reporter's own (the app posts on their behalf), so the UI labels it "You" rather than
+ * support. [createdAtMs] is 0 when the timestamp is unparseable.
+ */
+data class ThreadItem(
+    val author: String,
+    val body: String,
+    val createdAtMs: Long,
+    val mine: Boolean
+)
+
+/** An issue's full public conversation, for the in-app thread view. */
+data class IssueThread(
+    val number: Int,
+    val title: String,
+    val state: String,
+    val htmlUrl: String,
+    val items: List<ThreadItem>
+)
+
 /** The subset of GitHub's issue JSON that "My reports" needs. */
 @Serializable
 internal data class GithubIssueDto(
@@ -23,6 +47,30 @@ internal data class GithubIssueDto(
     val title: String = "",
     val comments: Int = 0,
     @SerialName("html_url") val htmlUrl: String = ""
+)
+
+/** A GitHub account (only the login is used). */
+@Serializable
+internal data class GithubUserDto(val login: String = "")
+
+/** The fuller issue JSON used for the thread head (adds body, author, and creation time). */
+@Serializable
+internal data class GithubIssueFullDto(
+    val number: Int,
+    val state: String = "",
+    val title: String = "",
+    val body: String? = null,
+    @SerialName("created_at") val createdAt: String = "",
+    @SerialName("html_url") val htmlUrl: String = "",
+    val user: GithubUserDto? = null
+)
+
+/** One issue comment. */
+@Serializable
+internal data class GithubCommentDto(
+    val body: String = "",
+    @SerialName("created_at") val createdAt: String = "",
+    val user: GithubUserDto? = null
 )
 
 /**
@@ -42,9 +90,13 @@ open class GithubIssueApi(
     open fun fetch(number: Int): IssueStatus = parse(fetchRaw(number))
 
     /** Raw issue JSON from the public GitHub REST API. */
-    fun fetchRaw(number: Int): String {
+    fun fetchRaw(number: Int): String =
+        getRaw("https://api.github.com/repos/$repo/issues/$number")
+
+    /** GETs [url] from the public GitHub REST API, throwing [HttpException] on a non-2xx response. */
+    private fun getRaw(url: String): String {
         val request = Request.Builder()
-            .url("https://api.github.com/repos/$repo/issues/$number")
+            .url(url)
             .header("Accept", "application/vnd.github+json")
             .header("User-Agent", "SweetSpot-app")
             .get()
@@ -62,4 +114,35 @@ open class GithubIssueApi(
         val dto = json.decodeFromString<GithubIssueDto>(raw)
         return IssueStatus(dto.number, dto.state, dto.title, dto.comments, dto.htmlUrl)
     }
+
+    /** Fetches and assembles the full public conversation of issue [number]. `open` so tests fake it. */
+    open fun fetchThread(number: Int): IssueThread = parseThread(fetchRaw(number), fetchCommentsRaw(number))
+
+    /** Raw comments JSON (a top-level array) from the public GitHub REST API. */
+    fun fetchCommentsRaw(number: Int): String =
+        getRaw("https://api.github.com/repos/$repo/issues/$number/comments?per_page=100")
+
+    /**
+     * Builds an [IssueThread] from the issue JSON and its comments JSON. The issue body is the first
+     * item, followed by the comments in the order GitHub returns them (chronological).
+     */
+    fun parseThread(issueRaw: String, commentsRaw: String): IssueThread {
+        val issue = json.decodeFromString<GithubIssueFullDto>(issueRaw)
+        val head = toItem(issue.user?.login ?: "", issue.body ?: "", issue.createdAt)
+        val comments = json.decodeFromString<List<GithubCommentDto>>(commentsRaw)
+            .map { toItem(it.user?.login ?: "", it.body, it.createdAt) }
+        return IssueThread(issue.number, issue.title, issue.state, issue.htmlUrl, listOf(head) + comments)
+    }
+
+    /** Builds a [ThreadItem], marking it [ThreadItem.mine] when authored by the feedback bot. */
+    private fun toItem(author: String, body: String, createdAt: String): ThreadItem =
+        ThreadItem(author, body, parseIsoToMs(createdAt), mine = author.equals(HelpLinks.BOT_LOGIN, ignoreCase = true))
+
+    /** Parses an ISO-8601 UTC timestamp (e.g. `2024-01-02T03:04:05Z`) to epoch millis; 0 on failure. */
+    private fun parseIsoToMs(iso: String): Long =
+        try {
+            if (iso.isBlank()) 0L else Instant.parse(iso).toEpochMilli()
+        } catch (_: Exception) {
+            0L
+        }
 }

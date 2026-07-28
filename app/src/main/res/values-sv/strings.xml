@@ -342,4 +342,8 @@
     <string name="guide_allin_body">Visa vid behov hela konsumentpriset i stället för enbart marknadspriset.</string>
     <string name="guide_wear_title">På din klocka</string>
     <string name="guide_wear_body">Dina apparater synkas till Wear OS, så att du kan kolla priser utan din telefon.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Du</string>
+    <string name="thread_open_github">Öppna på GitHub</string>
+    <string name="thread_load_error">Det gick inte att läsa in konversationen. Kontrollera din anslutning och försök igen.</string>
 </resources>

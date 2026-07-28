@@ -356,4 +356,8 @@
     <string name="guide_allin_body">Opcjonalnie pokaż pełną cenę dla konsumenta zamiast samej ceny rynkowej.</string>
     <string name="guide_wear_title">Na Twoim zegarku</string>
     <string name="guide_wear_body">Twoje urządzenia synchronizują się z Wear OS, więc możesz sprawdzać ceny bez telefonu.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Ty</string>
+    <string name="thread_open_github">Otwórz na GitHubie</string>
+    <string name="thread_load_error">Nie udało się załadować rozmowy. Sprawdź połączenie i spróbuj ponownie.</string>
 </resources>

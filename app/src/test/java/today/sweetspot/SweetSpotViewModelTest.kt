@@ -38,6 +38,8 @@ import today.sweetspot.data.share.SetupShare
 import java.time.Clock
 import today.sweetspot.data.api.GithubIssueApi
 import today.sweetspot.data.api.IssueStatus
+import today.sweetspot.data.api.IssueThread
+import today.sweetspot.data.api.ThreadItem
 import today.sweetspot.data.repository.SettingsRepository
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsPoster
@@ -206,10 +208,21 @@ class SweetSpotViewModelTest {
         }
     }
 
-    /** [GithubIssueApi] that returns a canned status without any network call. */
-    private class FakeGithubIssueApi(private val state: String = "open") : GithubIssueApi() {
+    /** [GithubIssueApi] that returns canned data without any network call. */
+    private class FakeGithubIssueApi(
+        private val state: String = "open",
+        private val threadThrows: Boolean = false
+    ) : GithubIssueApi() {
         override fun fetch(number: Int): IssueStatus =
             IssueStatus(number, state, "title", 0, "https://x/issues/$number")
+
+        override fun fetchThread(number: Int): IssueThread {
+            if (threadThrows) throw RuntimeException("boom")
+            return IssueThread(
+                number, "title", state, "https://x/issues/$number",
+                listOf(ThreadItem("sweetspot-support", "the report body", 0L, mine = true))
+            )
+        }
     }
 
     /** Creates a ViewModel wired for report/feedback tests (fake submitter + GitHub API). */
@@ -869,18 +882,31 @@ class SweetSpotViewModelTest {
     }
 
     @Test
-    fun `issueUrl uses the fetched html_url when present, else derives it from the number`() {
-        val fetched = MyReportView(
-            MyReport(7, "s", "bug", 0L),
-            IssueStatus(7, "open", "t", 0, "https://github.com/jmerhar/sweetspot-android/issues/7")
-        )
-        assertEquals("https://github.com/jmerhar/sweetspot-android/issues/7", fetched.issueUrl)
+    fun `onOpenThread loads the conversation`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter(), FakeGithubIssueApi())
+        viewModel.onOpenThread(7)
+        runCurrent()
+        val t = viewModel.uiState.value.thread
+        assertTrue(t is ThreadState.Loaded)
+        assertEquals(7, t!!.number)
+        assertEquals(1, (t as ThreadState.Loaded).thread.items.size)
+    }
 
-        val blankUrl = MyReportView(MyReport(8, "s", "bug", 0L), IssueStatus(8, "open", "t", 0, "  "))
-        assertEquals("https://github.com/jmerhar/sweetspot-android/issues/8", blankUrl.issueUrl)
+    @Test
+    fun `onOpenThread surfaces an error when the fetch fails`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter(), FakeGithubIssueApi(threadThrows = true))
+        viewModel.onOpenThread(9)
+        runCurrent()
+        assertTrue(viewModel.uiState.value.thread is ThreadState.Error)
+    }
 
-        val notFetched = MyReportView(MyReport(9, "s", "bug", 0L))
-        assertEquals("https://github.com/jmerhar/sweetspot-android/issues/9", notFetched.issueUrl)
+    @Test
+    fun `onCloseThread clears the open thread`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter(), FakeGithubIssueApi())
+        viewModel.onOpenThread(7)
+        runCurrent()
+        viewModel.onCloseThread()
+        assertEquals(null, viewModel.uiState.value.thread)
     }
 
     @Test

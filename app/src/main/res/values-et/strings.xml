@@ -332,6 +332,10 @@
     <string name="my_reports_open">Avatud</string>
     <string name="my_reports_closed">Suletud</string>
 
+    <string name="thread_you">Sina</string>
+    <string name="thread_open_github">Ava GitHubis</string>
+    <string name="thread_load_error">Vestlust ei õnnestunud laadida. Kontrolli oma ühendust ja proovi uuesti.</string>
+
     <!-- Quick guide -->
     <string name="guide_find_title">Leia odavaim aeg</string>
     <string name="guide_find_body">Vali, kui kaua su seade peab töötama, ja puuduta Otsi.</string>

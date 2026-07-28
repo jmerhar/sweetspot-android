@@ -39,7 +39,7 @@ LEARN
 SUPPORT
   Report a problem     Something isn't working      → in-app form (category: bug)
   Send feedback        Ideas and suggestions        → in-app form (category: feedback)
-  My reports           Track what you've submitted  → in-app list (public GitHub reads)
+  My reports           Track what you've submitted  → in-app list; tap → in-app conversation thread (public GitHub reads)
   Contact us           Email us directly            → mailto:hello@sweetspot.today
   Rate SweetSpot       Rate us on Google Play       → market://details?id=today.sweetspot (browser fallback)
 
@@ -111,9 +111,12 @@ Three independent flows:
   `localizedUrl(path, languageTag, dark)` → English at root else `/<lang>/`, **always** carrying
   `?lang=<code>&theme=<light|dark>` (region and comma-joined tags reduced to the first 2-letter code);
   `playStoreUri()`/`playStoreUrl()`; `issueUrl(number)`.
-- **`data/api/GithubIssueApi.kt`** — reads **public** issue status (unauthenticated, 60 req/hr per IP).
-  `IssueStatus(number, state, title, comments, htmlUrl)`; three-layer `fetch → fetchRaw + parse`
-  pattern like the price APIs (`HttpException` on non-2xx); `open` so tests fake it.
+- **`data/api/GithubIssueApi.kt`** — reads **public** issue data (unauthenticated, 60 req/hr per IP).
+  `fetch(n)` → `IssueStatus(number, state, title, comments, htmlUrl)` for "My reports"; `fetchThread(n)`
+  → `IssueThread` (title/state/htmlUrl + `ThreadItem`s = the issue body then comments) for the in-app
+  conversation. Follows the three-layer `fetch → fetchRaw + parse` pattern (shared `getRaw`,
+  `HttpException` on non-2xx); `parseThread` marks each `ThreadItem.mine` when authored by the bot.
+  `open` so tests fake it.
 - **`SettingsRepository`** — `getMyReports()`/`addMyReport(...)` and `getOutbox()`/`setOutbox(...)` over
   the existing `getJson`/`putJson` helpers (keys `my_reports`, `report_outbox`).
 

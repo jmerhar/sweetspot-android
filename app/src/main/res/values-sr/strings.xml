@@ -338,6 +338,11 @@
     <string name="my_reports_open">Отворено</string>
     <string name="my_reports_closed">Затворено</string>
 
+    <!-- Report thread -->
+    <string name="thread_you">Ви</string>
+    <string name="thread_open_github">Отвори на GitHub-у</string>
+    <string name="thread_load_error">Није могуће учитати разговор. Проверите везу и покушајте поново.</string>
+
     <!-- Quick guide -->
     <string name="guide_find_title">Пронађите најјефтиније време</string>
     <string name="guide_find_body">Изаберите колико дуго ваш апарат треба да ради, а затим додирните Пронађи.</string>

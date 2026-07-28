@@ -12,6 +12,12 @@ object HelpLinks {
     const val GITHUB_REPO = "jmerhar/sweetspot-android"
 
     /**
+     * The GitHub login the feedback Worker posts as. Reports (and, later, replies) are authored by
+     * this bot on the reporter's behalf, so the in-app thread labels its entries as the user's own.
+     */
+    const val BOT_LOGIN = "sweetspot-support"
+
+    /**
      * Localized website URL for [path] (e.g. `"faq"`, `"privacy"`, `"changelog"`). English is served
      * at the root; every other language lives under `/<lang>/`. [languageTag] is a BCP-47 tag — its
      * region is dropped and, if it is a comma-joined list, only the first entry is used; a blank tag

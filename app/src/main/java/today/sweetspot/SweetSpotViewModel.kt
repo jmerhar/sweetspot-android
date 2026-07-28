@@ -12,6 +12,7 @@ import com.google.android.gms.wearable.PutDataMapRequest
 import com.google.android.gms.wearable.Wearable
 import today.sweetspot.data.api.GithubIssueApi
 import today.sweetspot.data.api.IssueStatus
+import today.sweetspot.data.api.IssueThread
 import today.sweetspot.data.api.PriceFetcherFactory
 import today.sweetspot.data.api.defaultPriceFetcherFactory
 import today.sweetspot.data.billing.BillingRepository
@@ -59,7 +60,6 @@ import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.AllInPricing
 import today.sweetspot.util.CoachMarkPolicy
-import today.sweetspot.util.HelpLinks
 import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.UiText
 import today.sweetspot.util.combineUsage
@@ -154,11 +154,22 @@ sealed interface ReportSubmission {
 data class MyReportView(val report: MyReport, val status: IssueStatus? = null)
 
 /**
- * The URL to open for this report: the issue's own `html_url` when its status has been fetched, else a
- * URL derived from the issue number (so a not-yet-refreshed report is still tappable).
+ * State of the in-app issue-thread view (opened from "My reports"). `null` on [UiState] means no
+ * thread is open. Each state carries the issue [number] so the screen can retry or fall back to
+ * opening the issue on GitHub.
  */
-val MyReportView.issueUrl: String
-    get() = status?.htmlUrl?.takeIf { it.isNotBlank() } ?: HelpLinks.issueUrl(report.number)
+sealed interface ThreadState {
+    val number: Int
+
+    /** Fetching the conversation from the public GitHub API. */
+    data class Loading(override val number: Int) : ThreadState
+
+    /** Loaded — [thread] is the issue body + comments. */
+    data class Loaded(override val number: Int, val thread: IssueThread) : ThreadState
+
+    /** The fetch failed (offline / rate-limited); the screen offers retry + open-on-GitHub. */
+    data class Error(override val number: Int) : ThreadState
+}
 
 /**
  * UI state for the main screen.
@@ -248,6 +259,8 @@ data class UiState(
     val reportSubmission: ReportSubmission = ReportSubmission.Idle,
     /** Reports this device submitted, with their live GitHub status ("My reports"). */
     val myReports: List<MyReportView> = emptyList(),
+    /** The in-app issue thread currently open (from "My reports"), or null when none is. */
+    val thread: ThreadState? = null,
     val showStatsPrompt: Boolean = false,
     val isStatsEnabled: Boolean = false,
     val isTrialExpired: Boolean = false,
@@ -1889,6 +1902,25 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 state.copy(myReports = stored.map { MyReportView(it, statuses[it.number]) })
             }
         }
+    }
+
+    /** Opens the in-app conversation for issue [number], fetching it from the public GitHub API. */
+    fun onOpenThread(number: Int) {
+        _uiState.update { it.copy(thread = ThreadState.Loading(number)) }
+        viewModelScope.launch(ioDispatcher) {
+            val next = try {
+                ThreadState.Loaded(number, githubIssueApi.fetchThread(number))
+            } catch (_: Exception) {
+                ThreadState.Error(number)
+            }
+            // Ignore a stale result if the user has since closed the thread or opened another.
+            _uiState.update { if (it.thread?.number == number) it.copy(thread = next) else it }
+        }
+    }
+
+    /** Closes the in-app thread view, returning to the "My reports" list. */
+    fun onCloseThread() {
+        _uiState.update { it.copy(thread = null) }
     }
 
     /** Builds the request payload, attaching a no-PII diagnostics block to bug reports. */

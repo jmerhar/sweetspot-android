@@ -330,6 +330,9 @@
     <string name="my_reports_empty">Δεν έχετε υποβάλει ακόμη καμία αναφορά.</string>
     <string name="my_reports_open">Ανοιχτή</string>
     <string name="my_reports_closed">Κλειστή</string>
+    <string name="thread_you">Εσείς</string>
+    <string name="thread_open_github">Άνοιγμα στο GitHub</string>
+    <string name="thread_load_error">Δεν ήταν δυνατή η φόρτωση της συνομιλίας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Βρείτε τη φθηνότερη ώρα</string>

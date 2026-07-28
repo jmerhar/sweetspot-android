@@ -345,6 +345,11 @@
     <string name="my_reports_open">Otvorené</string>
     <string name="my_reports_closed">Uzavreté</string>
 
+    <!-- Conversation thread -->
+    <string name="thread_you">Vy</string>
+    <string name="thread_open_github">Otvoriť na GitHube</string>
+    <string name="thread_load_error">Konverzáciu sa nepodarilo načítať. Skontrolujte pripojenie a skúste to znova.</string>
+
     <!-- Quick guide -->
     <string name="guide_find_title">Nájdite najlacnejší čas</string>
     <string name="guide_find_body">Zvoľte, ako dlho má spotrebič bežať, a ťuknite na Nájsť.</string>

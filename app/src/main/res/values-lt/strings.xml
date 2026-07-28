@@ -341,6 +341,11 @@
     <string name="my_reports_open">Atviras</string>
     <string name="my_reports_closed">Uždarytas</string>
 
+    <!-- Report thread -->
+    <string name="thread_you">Jūs</string>
+    <string name="thread_open_github">Atidaryti GitHub</string>
+    <string name="thread_load_error">Nepavyko įkelti pokalbio. Patikrinkite ryšį ir bandykite dar kartą.</string>
+
     <!-- Quick guide -->
     <string name="guide_find_title">Raskite pigiausią laiką</string>
     <string name="guide_find_body">Pasirinkite, kiek laiko turi veikti prietaisas, ir spustelėkite „Rasti“.</string>

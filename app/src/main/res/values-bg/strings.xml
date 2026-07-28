@@ -332,6 +332,9 @@
     <string name="my_reports_empty">Все още не сте подали сигнали.</string>
     <string name="my_reports_open">Отворен</string>
     <string name="my_reports_closed">Затворен</string>
+    <string name="thread_you">Вие</string>
+    <string name="thread_open_github">Отваряне в GitHub</string>
+    <string name="thread_load_error">Разговорът не можа да бъде зареден. Проверете връзката си и опитайте отново.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Намерете най-евтиното време</string>

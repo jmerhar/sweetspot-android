@@ -331,6 +331,9 @@
     <string name="my_reports_empty">Et ole vielä lähettänyt yhtään ilmoitusta.</string>
     <string name="my_reports_open">Avoin</string>
     <string name="my_reports_closed">Suljettu</string>
+    <string name="thread_you">Sinä</string>
+    <string name="thread_open_github">Avaa GitHubissa</string>
+    <string name="thread_load_error">Keskustelun lataaminen ei onnistunut. Tarkista yhteytesi ja yritä uudelleen.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Etsi halvin ajankohta</string>

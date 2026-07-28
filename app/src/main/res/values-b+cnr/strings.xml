@@ -353,4 +353,8 @@
     <string name="guide_allin_body">Po želji prikažite punu cijenu za potrošača umjesto same tržišne cijene.</string>
     <string name="guide_wear_title">Na vašem satu</string>
     <string name="guide_wear_body">Vaši aparati se sinhronizuju sa Wear OS-om, pa možete provjeravati cijene bez telefona.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Vi</string>
+    <string name="thread_open_github">Otvori na GitHubu</string>
+    <string name="thread_load_error">Nije moguće učitati razgovor. Provjerite vezu i pokušajte ponovo.</string>
 </resources>

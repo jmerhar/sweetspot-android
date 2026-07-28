@@ -335,6 +335,9 @@
     <string name="my_reports_empty">Aún no has enviado ningún informe.</string>
     <string name="my_reports_open">Abierto</string>
     <string name="my_reports_closed">Cerrado</string>
+    <string name="thread_you">Tú</string>
+    <string name="thread_open_github">Abrir en GitHub</string>
+    <string name="thread_load_error">No se pudo cargar la conversación. Comprueba tu conexión e inténtalo de nuevo.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Encuentra el momento más barato</string>

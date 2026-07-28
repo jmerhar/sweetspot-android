@@ -326,6 +326,9 @@
     <string name="my_reports_empty">Du har ikke sendt inn noen rapporter ennå.</string>
     <string name="my_reports_open">Åpen</string>
     <string name="my_reports_closed">Lukket</string>
+    <string name="thread_you">Deg</string>
+    <string name="thread_open_github">Åpne på GitHub</string>
+    <string name="thread_load_error">Kunne ikke laste samtalen. Sjekk tilkoblingen din, og prøv igjen.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Finn det billigste tidspunktet</string>

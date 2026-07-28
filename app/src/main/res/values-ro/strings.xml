@@ -349,4 +349,8 @@
     <string name="guide_allin_body">Poți afișa prețul total pentru consumator în locul prețului de piață simplu.</string>
     <string name="guide_wear_title">Pe ceasul tău</string>
     <string name="guide_wear_body">Aparatele tale se sincronizează cu Wear OS, ca să poți verifica prețurile fără telefon.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Tu</string>
+    <string name="thread_open_github">Deschide pe GitHub</string>
+    <string name="thread_load_error">Conversația nu a putut fi încărcată. Verifică conexiunea și încearcă din nou.</string>
 </resources>

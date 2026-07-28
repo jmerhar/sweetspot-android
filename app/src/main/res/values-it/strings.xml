@@ -348,4 +348,8 @@
     <string name="guide_allin_body">Se vuoi, mostra il prezzo totale al consumatore invece del solo prezzo di mercato.</string>
     <string name="guide_wear_title">Sul tuo orologio</string>
     <string name="guide_wear_body">I tuoi elettrodomestici si sincronizzano con Wear OS, così puoi controllare i prezzi senza il telefono.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Tu</string>
+    <string name="thread_open_github">Apri su GitHub</string>
+    <string name="thread_load_error">Impossibile caricare la conversazione. Controlla la connessione e riprova.</string>
 </resources>

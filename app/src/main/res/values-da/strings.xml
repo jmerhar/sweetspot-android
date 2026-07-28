@@ -332,6 +332,9 @@
     <string name="my_reports_empty">Du har endnu ikke indsendt nogen rapporter.</string>
     <string name="my_reports_open">Åben</string>
     <string name="my_reports_closed">Lukket</string>
+    <string name="thread_you">Dig</string>
+    <string name="thread_open_github">Åbn på GitHub</string>
+    <string name="thread_load_error">Kunne ikke indlæse samtalen. Tjek din forbindelse, og prøv igen.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Find det billigste tidspunkt</string>

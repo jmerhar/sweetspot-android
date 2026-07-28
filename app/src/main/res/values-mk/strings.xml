@@ -344,4 +344,8 @@
     <string name="guide_allin_body">Изборно прикажете ја целосната цена за потрошувачот наместо само пазарната цена.</string>
     <string name="guide_wear_title">На вашиот часовник</string>
     <string name="guide_wear_body">Вашите апарати се синхронизираат со Wear OS, за да можете да ги проверувате цените без вашиот телефон.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Вие</string>
+    <string name="thread_open_github">Отвори на GitHub</string>
+    <string name="thread_load_error">Разговорот не можеше да се вчита. Проверете ја врската и обидете се повторно.</string>
 </resources>

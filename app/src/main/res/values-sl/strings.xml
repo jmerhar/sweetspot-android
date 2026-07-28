@@ -345,6 +345,11 @@
     <string name="my_reports_open">Odprto</string>
     <string name="my_reports_closed">Zaprto</string>
 
+    <!-- Conversation thread -->
+    <string name="thread_you">Vi</string>
+    <string name="thread_open_github">Odpri na GitHubu</string>
+    <string name="thread_load_error">Pogovora ni bilo mogoče naložiti. Preverite povezavo in poskusite znova.</string>
+
     <!-- Quick guide -->
     <string name="guide_find_title">Poiščite najcenejši čas</string>
     <string name="guide_find_body">Izberite, koliko časa mora aparat delovati, nato pritisnite Poišči.</string>

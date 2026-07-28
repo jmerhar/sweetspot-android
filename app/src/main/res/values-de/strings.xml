@@ -328,6 +328,9 @@
     <string name="my_reports_empty">Du hast noch keine Meldungen eingereicht.</string>
     <string name="my_reports_open">Offen</string>
     <string name="my_reports_closed">Geschlossen</string>
+    <string name="thread_you">Du</string>
+    <string name="thread_open_github">Auf GitHub öffnen</string>
+    <string name="thread_load_error">Die Unterhaltung konnte nicht geladen werden. Überprüfe deine Verbindung und versuche es erneut.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Den günstigsten Zeitpunkt finden</string>

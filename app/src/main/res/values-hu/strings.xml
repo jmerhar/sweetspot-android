@@ -340,4 +340,8 @@
     <string name="guide_allin_body">Kívánság szerint a puszta piaci ár helyett a teljes fogyasztói árat is megjelenítheted.</string>
     <string name="guide_wear_title">Az órádon</string>
     <string name="guide_wear_body">Készülékeid szinkronizálódnak a Wear OS-re, így telefon nélkül is ellenőrizheted az árakat.</string>
+    <!-- Report conversation (in-app thread) -->
+    <string name="thread_you">Te</string>
+    <string name="thread_open_github">Megnyitás a GitHubon</string>
+    <string name="thread_load_error">Nem sikerült betölteni a beszélgetést. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
 </resources>

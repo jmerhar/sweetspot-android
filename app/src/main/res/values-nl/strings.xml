@@ -328,6 +328,9 @@
     <string name="my_reports_empty">Je hebt nog geen meldingen ingediend.</string>
     <string name="my_reports_open">Open</string>
     <string name="my_reports_closed">Gesloten</string>
+    <string name="thread_you">Jij</string>
+    <string name="thread_open_github">Openen op GitHub</string>
+    <string name="thread_load_error">Kon het gesprek niet laden. Controleer je verbinding en probeer het opnieuw.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Vind het goedkoopste moment</string>

@@ -107,10 +107,13 @@ fun SettingsScreen(
     onReplayOnboarding: () -> Unit,
     reportSubmission: today.sweetspot.ReportSubmission,
     myReports: List<today.sweetspot.MyReportView>,
+    reportThread: today.sweetspot.ThreadState?,
     onSubmitReport: (today.sweetspot.model.ReportCategory, String, String, String?) -> Unit,
     onDismissReportResult: () -> Unit,
     onLoadMyReports: () -> Unit,
     onFlushOutbox: () -> Unit,
+    onOpenThread: (Int) -> Unit,
+    onCloseThread: () -> Unit,
     onClearCache: () -> UiText,
     isStatsEnabled: Boolean,
     onStatsEnabledChanged: (Boolean) -> Unit,
@@ -233,6 +236,7 @@ fun SettingsScreen(
         SettingsRoute.Help -> HelpSettingsScreen(
             reportSubmission = reportSubmission,
             myReports = myReports,
+            thread = reportThread,
             allInSupported = allInSupported,
             devOptionsEnabled = devOptionsEnabled,
             onReplayOnboarding = onReplayOnboarding,
@@ -241,6 +245,8 @@ fun SettingsScreen(
             onDismissReportResult = onDismissReportResult,
             onLoadMyReports = onLoadMyReports,
             onFlushOutbox = onFlushOutbox,
+            onOpenThread = onOpenThread,
+            onCloseThread = onCloseThread,
             onDevOptionsUnlocked = onDevOptionsUnlocked,
             onBack = toMenu
         )

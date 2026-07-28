@@ -27,7 +27,7 @@ Wear OS esetén a készülékadatok és beállítások a telefon és az óra kö
 
 ## Nincs analitika
 
-A SweetSpot nem tartalmaz analitikai SDK-kat, hibajelentést vagy használatkövetést. Az alkalmazás nem végez hálózati kéréseket a fent felsorolt nyilvános API-kból történő árlekérdezésen túl (és az opcionális statisztikajelentésen, ha engedélyezve van).
+A SweetSpot nem tartalmaz analitikai SDK-kat, hibajelentést vagy használatkövetést. Az alkalmazás nem végez hálózati kéréseket a fent felsorolt nyilvános API-kból történő árlekérdezésen túl (és az opcionális statisztikajelentésen, ha engedélyezve van, valamint egy jelentés elküldésén, ha a Súgó és visszajelzés funkciót használja — lásd alább).
 
 ## Opcionális API-statisztika
 
@@ -48,6 +48,14 @@ Ezek az adatok **nem** tartalmaznak eszközazonosítókat, helymeghatározást, 
 
 Ez a funkció alapértelmezetten ki van kapcsolva. Bármikor be- vagy kikapcsolhatja a Beállítások menüpontban.
 
+## Segítség és visszajelzés
+
+Ha problémát jelent vagy visszajelzést küld a **Beállítások › Súgó és visszajelzés** menüpontból, az üzenete a visszajelzési szolgáltatásunkhoz kerül elküldésre, és egy témaként rögzítjük a nyilvános GitHub-tárolónkban. **Az Ön által írt tárgy és leírás nyilvánosan láthatóvá válik** a GitHubon, ezért kérjük, ne tüntessen fel személyes adatokat.
+
+Ha az e-mailben történő értesítést választja, a megadott címet kizárólag a visszajelzési szolgáltatásunk tárolja — az soha nem jelenik meg a nyilvános témában —, és kizárólag arra használjuk, hogy e-mailben tájékoztassuk Önt a saját jelentéséről. Bármikor kérheti annak törlését.
+
+A problémajelentések tartalmaznak egy rövid, nem személyes diagnosztikai blokkot is: az alkalmazás és az Android verzióját, az eszköz modelljét, az alkalmazás nyelvét, a kiválasztott árzónát és az aktív adatforrást. Nem tartalmaz nevet, e-mail-címet, helymeghatározást vagy egyéb személyes információt.
+
 ## Nyílt forráskód
 
 A SweetSpot nyílt forráskódú, és GPL v3 licenc alatt érhető el. A teljes forráskódot megtekintheti a [GitHubon](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ A SweetSpot nyílt forráskódú, és GPL v3 licenc alatt érhető el. A teljes 
 
 Ha kérdése van ezzel az adatvédelmi irányelvvel kapcsolatban, nyithat egy témát a [GitHubon](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Utoljára frissítve: 2026. június*
+*Utoljára frissítve: 2026. július*

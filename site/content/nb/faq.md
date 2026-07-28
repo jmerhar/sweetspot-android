@@ -48,8 +48,20 @@ Wear OS-appen synkroniserer apparater og innstillinger fra telefonappen via Wear
 Klokkeappen krever Wear OS 3 eller nyere (Pixel Watch, Samsung Galaxy Watch 4+ og andre kompatible klokker).
 {{< /faq >}}
 
+{{< faq question="Kan jeg se den fulle prisen jeg faktisk betaler?" >}}
+Som standard viser SweetSpot **spotprisen** for engros. I land som støttes (foreløpig Nederland) kan du slå på **totalpriser** i innstillingene, som legger energiskatt, leverandørens påslag og mva. oppå spotprisen for å vise den omtrentlige fulle forbrukerprisen. Kombinert med et apparats **effekt** gir dette deg et realistisk estimat av hva det faktisk koster å bruke apparatet. Det er kun visning — det endrer aldri hvilken periode som blir billigst.
+{{< /faq >}}
+
+{{< faq question="Kan jeg kopiere apparatene mine til en annen enhet?" >}}
+Ja. I innstillingene kan du dele oppsettet ditt — apparatene dine, rekkefølgen deres og elbil-ladeinnstillingene dine — som en QR-kode eller en lenke. Skann eller åpne den på en annen enhet for å importere alt. Det fungerer helt uten nett, uten konto og uten server: dataene ligger inne i lenken eller QR-koden selv, og du velger om du vil legge til eller erstatte det som allerede finnes.
+{{< /faq >}}
+
+{{< faq question="Hvordan melder jeg fra om et problem eller foreslår en funksjon?" >}}
+Åpne **Innstillinger › Hjelp og tilbakemelding** og velg *Meld fra om et problem* eller *Send tilbakemelding*. Meldingen din sendes direkte fra appen — ingen nettleser eller GitHub-konto er nødvendig — og blir en offentlig sak vi kan følge opp. Du kan eventuelt oppgi en e-postadresse for å bli varslet om svar (den vises aldri offentlig), og følge statusen til alt du har sendt inn under *Mine meldinger*.
+{{< /faq >}}
+
 {{< faq question="Hva koster SweetSpot?" >}}
-SweetSpot er tilgjengelig på [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Kildekoden er tilgjengelig på [GitHub](https://github.com/jmerhar/sweetspot-android) under GPL v3-lisensen.
+SweetSpot kommer med en 14-dagers gratis prøveperiode, hvoretter et valgfritt årsabonnement holder den i gang. Du kan skaffe den på [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Kildekoden er tilgjengelig på [GitHub](https://github.com/jmerhar/sweetspot-android) under GPL v3-lisensen.
 {{< /faq >}}
 
 {{< faq question="Hvilke språk støttes?" >}}

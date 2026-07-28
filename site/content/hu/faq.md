@@ -48,8 +48,20 @@ A Wear OS alkalmazás a Wearable Data Layer API segítségével szinkronizálja 
 Az óra alkalmazás Wear OS 3 vagy újabb verziót igényel (Pixel Watch, Samsung Galaxy Watch 4+ és más kompatibilis órák).
 {{< /faq >}}
 
+{{< faq question="Láthatom a teljes árat, amit valójában fizetek?" >}}
+Alapértelmezetten a SweetSpot a nagykereskedelmi **spot-árat** mutatja. A támogatott országokban (jelenleg Hollandia) a beállításokban bekapcsolhatja a **teljes árakat**, amelyek az energiaadót, a szolgáltatója felárát és az áfát is hozzáadják a spot-árhoz, hogy a hozzávetőleges teljes fogyasztói árat mutassák. Egy készülék **teljesítményértékével** kombinálva ez reális becslést ad arról, mennyibe kerül a készülék tényleges működtetése. Ez csak megjelenítési célú — soha nem befolyásolja, hogy melyik időszak lesz a legolcsóbb.
+{{< /faq >}}
+
+{{< faq question="Átmásolhatom a készülékeimet egy másik eszközre?" >}}
+Igen. A beállításokban megoszthatja a konfigurációját — a készülékeit, azok sorrendjét és az elektromos autó töltési beállításait — QR-kód vagy hivatkozás formájában. Olvassa be vagy nyissa meg egy másik eszközön az összes adat importálásához. Teljesen internetkapcsolat nélkül, fiók és szerver nélkül működik: az adatok magában a hivatkozásban vagy QR-kódban utaznak, és Ön dönti el, hogy hozzáadja a meglévőkhöz vagy lecseréli azokat.
+{{< /faq >}}
+
+{{< faq question="Hogyan jelenthetek egy problémát vagy javasolhatok egy funkciót?" >}}
+Nyissa meg a **Beállítások › Súgó és visszajelzés** menüpontot, és válassza a *Probléma jelentése* vagy a *Visszajelzés küldése* lehetőséget. Az üzenete közvetlenül az alkalmazásból kerül elküldésre — böngésző vagy GitHub-fiók nélkül —, és nyilvános témává válik, amelyet nyomon követhetünk. Opcionálisan megadhat egy e-mail-címet, hogy értesítést kapjon a válaszokról (ez soha nem jelenik meg nyilvánosan), és a *Jelentéseim* menüpontban követheti mindannak az állapotát, amit elküldött.
+{{< /faq >}}
+
 {{< faq question="Mennyibe kerül a SweetSpot?" >}}
-A SweetSpot elérhető a [Google Playen](https://play.google.com/store/apps/details?id=today.sweetspot). A forráskód elérhető a [GitHubon](https://github.com/jmerhar/sweetspot-android) GPL v3 licenc alatt.
+A SweetSpot 14 napos ingyenes próbaidőszakkal érkezik, amely után egy opcionális éves előfizetés tartja működésben. Beszerezheti a [Google Playen](https://play.google.com/store/apps/details?id=today.sweetspot). A forráskód elérhető a [GitHubon](https://github.com/jmerhar/sweetspot-android) GPL v3 licenc alatt.
 {{< /faq >}}
 
 {{< faq question="Milyen nyelvek támogatottak?" >}}

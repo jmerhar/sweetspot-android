@@ -27,7 +27,7 @@ Wear OS:ssä laitetiedot ja asetukset synkronoidaan puhelimen ja kellon välill�
 
 ## Ei analytiikkaa
 
-SweetSpot ei sisällä analytiikka-SDK:ita, kaatumisraportointia eikä käytön seurantaa. Sovellus ei tee verkkokyselyjä sähkön hintojen haun lisäksi yllä mainituista julkisista rajapinnoista (ja valinnaisen tilastoraportoinnin, jos se on käytössä).
+SweetSpot ei sisällä analytiikka-SDK:ita, kaatumisraportointia eikä käytön seurantaa. Sovellus ei tee verkkokyselyjä sähkön hintojen haun lisäksi yllä mainituista julkisista rajapinnoista (ja valinnaisen tilastoraportoinnin, jos se on käytössä, sekä ilmoituksen lähettämisen, jos käytät Ohje ja palaute -toimintoa — katso alta).
 
 ## Valinnainen API-tilastointi
 
@@ -48,6 +48,14 @@ Nämä tiedot **eivät** sisällä laitetunnisteita, sijaintia, hintatietoja tai
 
 Tämä toiminto on oletuksena pois käytöstä. Voit ottaa sen käyttöön tai poistaa sen käytöstä milloin tahansa kohdassa Asetukset.
 
+## Ohje ja palaute
+
+Jos ilmoitat ongelmasta tai lähetät palautetta kohdasta **Asetukset › Ohje ja palaute**, viestisi lähetetään palautepalveluumme ja kirjataan ilmoituksena julkiseen GitHub-arkistoomme. **Kirjoittamasi otsikko ja kuvaus tulevat julkisesti näkyviin** GitHubissa, joten älä sisällytä niihin henkilötietoja.
+
+Jos valitset ilmoitukset sähköpostitse, antamasi osoite tallennetaan vain palautepalveluumme — sitä ei koskaan näytetä julkisessa ilmoituksessa — ja sitä käytetään ainoastaan sähköpostien lähettämiseen omasta ilmoituksestasi. Voit pyytää meitä poistamaan sen milloin tahansa.
+
+Ongelmailmoitukset sisältävät myös lyhyen, ei-henkilökohtaisen diagnostiikkalohkon: sovelluksen ja Android-version, laitemallisi, sovelluksen kielen, valitun tarjousalueen ja aktiivisen tietolähteen. Se ei sisällä nimeä, sähköpostiosoitetta, sijaintia tai muita henkilötietoja.
+
 ## Avoin lähdekoodi
 
 SweetSpot on avointa lähdekoodia ja lisensoitu GPL v3 -lisenssillä. Voit tarkastella koko lähdekoodia [GitHubissa](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot on avointa lähdekoodia ja lisensoitu GPL v3 -lisenssillä. Voit tarka
 
 Jos sinulla on kysyttävää tästä tietosuojakäytännöstä, voit avata keskusteluaiheen [GitHubissa](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Päivitetty viimeksi: kesäkuu 2026*
+*Päivitetty viimeksi: heinäkuu 2026*

@@ -48,8 +48,20 @@ De Wear OS-app synchroniseert apparaten en instellingen van de telefoon-app via 
 De horloge-app vereist Wear OS 3 of nieuwer (Pixel Watch, Samsung Galaxy Watch 4+ en andere compatibele horloges).
 {{< /faq >}}
 
+{{< faq question="Kan ik de volledige prijs zien die ik daadwerkelijk betaal?" >}}
+Standaard toont SweetSpot de groothandels-**spotprijs**. In ondersteunde landen (momenteel Nederland) kun je in de instellingen **all-in prijzen** inschakelen, die energiebelasting, de opslag van je leverancier en btw bovenop de spotprijs optellen om de geschatte volledige consumentenprijs te tonen. In combinatie met het **vermogen** van een apparaat geeft dit je een realistische schatting van wat het daadwerkelijk draaien van dat apparaat kost. Het is alleen ter weergave — het verandert nooit welke periode het goedkoopst uitvalt.
+{{< /faq >}}
+
+{{< faq question="Kan ik mijn apparaten naar een ander apparaat kopiëren?" >}}
+Ja. In de instellingen kun je je configuratie delen — je apparaten, hun volgorde en je laadinstellingen voor elektrische auto's — als QR-code of link. Scan of open die op een ander apparaat om alles te importeren. Het werkt volledig offline, zonder account en zonder server: de gegevens zitten in de link of QR-code zelf, en je kiest of je toevoegt aan of vervangt wat er al staat.
+{{< /faq >}}
+
+{{< faq question="Hoe meld ik een probleem of stel ik een functie voor?" >}}
+Open **Instellingen › Help en feedback** en kies *Een probleem melden* of *Feedback sturen*. Je bericht wordt rechtstreeks vanuit de app verzonden — geen browser of GitHub-account nodig — en wordt een openbare issue die we kunnen volgen. Je kunt optioneel een e-mailadres achterlaten om op de hoogte te worden gebracht van reacties (het wordt nooit openbaar getoond), en de status van alles wat je hebt gestuurd volgen onder *Mijn meldingen*.
+{{< /faq >}}
+
 {{< faq question="Hoeveel kost SweetSpot?" >}}
-SweetSpot is beschikbaar op [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). De broncode is beschikbaar op [GitHub](https://github.com/jmerhar/sweetspot-android) onder de GPL v3-licentie.
+SweetSpot komt met een gratis proefperiode van 14 dagen, waarna een optioneel jaarabonnement de app draaiende houdt. Je kunt het downloaden op [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). De broncode is beschikbaar op [GitHub](https://github.com/jmerhar/sweetspot-android) onder de GPL v3-licentie.
 {{< /faq >}}
 
 {{< faq question="Welke talen worden ondersteund?" >}}

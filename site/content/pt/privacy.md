@@ -27,7 +27,7 @@ No Wear OS, os dados dos eletrodomésticos e definições são sincronizados ent
 
 ## Sem análises
 
-O SweetSpot não inclui quaisquer SDKs de análise, relatórios de erros ou rastreamento de utilização. A aplicação não efetua quaisquer pedidos de rede para além da obtenção de preços de eletricidade das APIs públicas acima indicadas (e do envio opcional de estatísticas, se ativado).
+O SweetSpot não inclui quaisquer SDKs de análise, relatórios de erros ou rastreamento de utilização. A aplicação não efetua quaisquer pedidos de rede para além da obtenção de preços de eletricidade das APIs públicas acima indicadas (e do envio opcional de estatísticas, se ativado, e do envio de um relatório se utilizar a Ajuda e comentários — consulte abaixo).
 
 ## Estatísticas de API opcionais
 
@@ -48,6 +48,14 @@ Estes dados **não** contêm identificadores do dispositivo, localização, dado
 
 Esta funcionalidade está desativada por predefinição. Pode ativá-la ou desativá-la a qualquer momento em Definições.
 
+## Ajuda e comentários
+
+Se comunicar um problema ou enviar comentários a partir de **Definições › Ajuda e comentários**, a sua mensagem é enviada ao nosso serviço de comentários e registada como um pedido no nosso repositório público do GitHub. **O assunto e a descrição que escrever tornam-se publicamente visíveis** no GitHub, por isso não inclua dados pessoais.
+
+Se optar por ser notificado por e-mail, o endereço que fornecer é armazenado apenas pelo nosso serviço de comentários — nunca é mostrado no pedido público — e é utilizado exclusivamente para lhe enviar informações sobre o seu próprio relatório. Pode pedir-nos que o eliminemos a qualquer momento.
+
+Os relatórios de problemas incluem também um pequeno bloco de diagnóstico não pessoal: a versão da aplicação e do Android, o modelo do seu dispositivo, o idioma da aplicação, a zona de preços selecionada e a fonte de dados ativa. Não contém nome, endereço de e-mail, localização ou qualquer outra informação pessoal.
+
 ## Código aberto
 
 O SweetSpot é de código aberto e licenciado sob GPL v3. Pode consultar o código-fonte completo no [GitHub](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ O SweetSpot é de código aberto e licenciado sob GPL v3. Pode consultar o códi
 
 Se tiver questões sobre esta política de privacidade, pode abrir um pedido no [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Última atualização: junho de 2026*
+*Última atualização: julho de 2026*

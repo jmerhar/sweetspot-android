@@ -27,7 +27,7 @@ Na Wear OS dane urządzeń i ustawienia są synchronizowane między telefonem a 
 
 ## Brak analityki
 
-SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone).
+SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone, i przesłaniem zgłoszenia, jeśli skorzystasz z Pomocy i opinii — patrz niżej).
 
 ## Opcjonalne statystyki API
 
@@ -48,6 +48,14 @@ Dane te **nie** zawierają identyfikatorów urządzenia, lokalizacji, danych cen
 
 Funkcja ta jest domyślnie wyłączona. Możesz ją włączyć lub wyłączyć w dowolnym momencie w Ustawieniach.
 
+## Pomoc i opinie
+
+Jeśli zgłosisz problem lub wyślesz opinię z poziomu **Ustawienia › Pomoc i opinie**, Twoja wiadomość jest wysyłana do naszego serwisu opinii i zapisywana jako zgłoszenie w naszym publicznym repozytorium GitHub. **Wpisany przez Ciebie temat i opis stają się publicznie widoczne** na GitHubie, dlatego prosimy nie zamieszczać w nich danych osobowych.
+
+Jeśli zdecydujesz się na powiadomienia e-mail, podany adres jest przechowywany wyłącznie przez nasz serwis opinii — nigdy nie jest pokazywany w publicznym zgłoszeniu — i służy jedynie do wysyłania Ci wiadomości dotyczących Twojego zgłoszenia. W dowolnym momencie możesz poprosić o jego usunięcie.
+
+Zgłoszenia problemów zawierają również krótki, nieosobowy blok diagnostyczny: wersję aplikacji i Androida, model Twojego urządzenia, język aplikacji, wybraną strefę cenową oraz aktywne źródło danych. Nie zawiera on imienia, adresu e-mail, lokalizacji ani innych danych osobowych.
+
 ## Otwarte źródło
 
 SweetSpot jest oprogramowaniem o otwartym kodzie źródłowym, licencjonowanym na warunkach GPL v3. Pełny kod źródłowy możesz przejrzeć na [GitHubie](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot jest oprogramowaniem o otwartym kodzie źródłowym, licencjonowanym n
 
 Jeśli masz pytania dotyczące tej polityki prywatności, możesz zgłosić je na [GitHubie](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Ostatnia aktualizacja: czerwiec 2026*
+*Ostatnia aktualizacja: lipiec 2026*

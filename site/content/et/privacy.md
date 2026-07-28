@@ -27,7 +27,7 @@ Wear OS-is sünkroniseeritakse seadmete andmed ja seaded telefoni ja kella vahel
 
 ## Analüütikat ei ole
 
-SweetSpot ei sisalda analüütika SDK-sid, veaaruandlust ega kasutuse jälgimist. Rakendus ei tee võrgupäringuid peale elektrihinnade pärimise ülalnimetatud avalikest API-dest (ja valikulise statistika saatmise, kui see on lubatud).
+SweetSpot ei sisalda analüütika SDK-sid, veaaruandlust ega kasutuse jälgimist. Rakendus ei tee võrgupäringuid peale elektrihinnade pärimise ülalnimetatud avalikest API-dest (ja valikulise statistika saatmise, kui see on lubatud, ning teate saatmise, kui kasutad jaotist Abi ja tagasiside — vaata allpool).
 
 ## Valikuline API statistika
 
@@ -48,6 +48,14 @@ Need andmed **ei sisalda** seadme identifikaatoreid, asukohta, hinnaandmeid ega 
 
 See funktsioon on vaikimisi keelatud. Saad selle igal ajal sisse või välja lülitada menüüs Seaded.
 
+## Abi ja tagasiside
+
+Kui teatad probleemist või saadad tagasisidet jaotisest **Seaded › Abi ja tagasiside**, saadetakse sinu sõnum meie tagasisideteenusesse ja esitatakse teemana meie avalikus GitHubi hoidlas. **Sinu kirjutatud pealkiri ja kirjeldus muutuvad GitHubis avalikult nähtavaks**, seega palun ära lisa sinna isiklikke andmeid.
+
+Kui valid e-posti teel teavitamise, salvestab sisestatud aadressi ainult meie tagasisideteenus — seda ei kuvata kunagi avalikus teemas — ja seda kasutatakse ainult selleks, et saata sulle e-kirju sinu enda teate kohta. Võid meilt igal ajal paluda selle kustutamist.
+
+Probleemiteated sisaldavad ka lühikest, mitteisiklikku diagnostikaplokki: rakenduse ja Androidi versioon, sinu seadme mudel, rakenduse keel, valitud hinnatsoon ja aktiivne andmeallikas. See ei sisalda nime, e-posti aadressi, asukohta ega muid isikuandmeid.
+
 ## Avatud lähtekood
 
 SweetSpot on avatud lähtekoodiga ja litsentseeritud GPL v3 all. Kogu lähtekoodi saad üle vaadata [GitHubis](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot on avatud lähtekoodiga ja litsentseeritud GPL v3 all. Kogu lähtekood
 
 Kui sul on küsimusi selle privaatsuspoliitika kohta, saad avada teema [GitHubis](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Viimati uuendatud: juuni 2026*
+*Viimati uuendatud: juuli 2026*

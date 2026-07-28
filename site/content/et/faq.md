@@ -48,8 +48,20 @@ Wear OS rakendus sünkroniseerib seadmed ja seaded telefonirakendusest Wearable 
 Kellarakendus nõuab Wear OS 3 või uuemat versiooni (Pixel Watch, Samsung Galaxy Watch 4+ ja muud ühilduvad kellad).
 {{< /faq >}}
 
+{{< faq question="Kas ma näen täishinda, mida tegelikult maksan?" >}}
+Vaikimisi näitab SweetSpot hulgituru **börsihinda**. Toetatud riikides (praegu Madalmaad) saad seadetes sisse lülitada **täishinnad**, mis lisavad börsihinnale energiamaksu, sinu teenusepakkuja lisatasu ja käibemaksu, et näidata ligikaudset täielikku tarbijahinda. Koos seadme **võimsusega** annab see realistliku hinnangu, kui palju selle seadme tegelik kasutamine maksma läheb. See on ainult kuvamiseks — see ei muuda kunagi seda, milline ajavahemik osutub odavaimaks.
+{{< /faq >}}
+
+{{< faq question="Kas saan oma seadmed teise seadmesse kopeerida?" >}}
+Jah. Seadetes saad jagada oma seadistust — oma seadmeid, nende järjestust ja elektriauto laadimise seadeid — QR-koodi või lingina. Skanni või ava see teises seadmes, et kõik importida. See töötab täielikult võrguühenduseta, ilma konto ja serverita: andmed liiguvad lingi või QR-koodi sees endas ning sina valid, kas lisada olemasolevale või see asendada.
+{{< /faq >}}
+
+{{< faq question="Kuidas teatan probleemist või teen ettepaneku uue funktsiooni kohta?" >}}
+Ava **Seaded › Abi ja tagasiside** ning vali *Teata probleemist* või *Saada tagasisidet*. Sinu sõnum saadetakse otse rakendusest — brauserit ega GitHubi kontot pole vaja — ja sellest saab avalik teema, mida saame jälgida. Soovi korral saad jätta e-posti aadressi, et saada teavitusi vastustest (seda ei kuvata kunagi avalikult), ning jälgida kõige saadetu olekut jaotises *Minu teated*.
+{{< /faq >}}
+
 {{< faq question="Kui palju SweetSpot maksab?" >}}
-SweetSpot on saadaval [Google Plays](https://play.google.com/store/apps/details?id=today.sweetspot). Lähtekood on saadaval [GitHubis](https://github.com/jmerhar/sweetspot-android) GPL v3 litsentsi all.
+SweetSpotil on 14-päevane tasuta prooviperiood, mille järel hoiab seda töös valikuline aastatellimus. Selle saad hankida [Google Plays](https://play.google.com/store/apps/details?id=today.sweetspot). Lähtekood on saadaval [GitHubis](https://github.com/jmerhar/sweetspot-android) GPL v3 litsentsi all.
 {{< /faq >}}
 
 {{< faq question="Milliseid keeli toetatakse?" >}}

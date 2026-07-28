@@ -48,8 +48,20 @@ L'application Wear OS synchronise les appareils et les paramètres depuis l'appl
 L'application montre nécessite Wear OS 3 ou ultérieur (Pixel Watch, Samsung Galaxy Watch 4+ et autres montres compatibles).
 {{< /faq >}}
 
+{{< faq question="Puis-je voir le prix complet que je paie réellement ?" >}}
+Par défaut, SweetSpot affiche le **prix spot** de gros. Dans les pays pris en charge (actuellement les Pays-Bas), vous pouvez activer les **prix tout compris** dans les paramètres, qui ajoutent la taxe sur l'énergie, le supplément de votre fournisseur et la TVA au prix spot pour afficher le prix approximatif complet payé par le consommateur. Combiné à la **puissance** d'un appareil, cela vous donne une estimation réaliste de ce que coûtera réellement le fonctionnement de cet appareil. C'est purement informatif — cela ne change jamais quel créneau ressort comme le moins cher.
+{{< /faq >}}
+
+{{< faq question="Puis-je copier mes appareils sur un autre appareil ?" >}}
+Oui. Dans les paramètres, vous pouvez partager votre configuration — vos appareils, leur ordre et vos réglages de recharge VE — sous forme de QR code ou de lien. Scannez-le ou ouvrez-le sur un autre appareil pour tout importer. Cela fonctionne entièrement hors ligne, sans compte ni serveur : les données voyagent à l'intérieur du lien ou du QR code lui-même, et vous choisissez d'ajouter à ce qui existe déjà ou de le remplacer.
+{{< /faq >}}
+
+{{< faq question="Comment signaler un problème ou suggérer une fonctionnalité ?" >}}
+Ouvrez **Paramètres › Aide et commentaires** et choisissez *Signaler un problème* ou *Envoyer un commentaire*. Votre message est envoyé directement depuis l'application — sans navigateur ni compte GitHub — et devient une issue publique que nous pouvons suivre. Vous pouvez éventuellement indiquer une adresse e-mail pour être informé des réponses (elle n'est jamais affichée publiquement) et suivre l'état de tout ce que vous avez envoyé sous *Mes rapports*.
+{{< /faq >}}
+
 {{< faq question="Combien coûte SweetSpot ?" >}}
-SweetSpot est disponible sur [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Le code source est disponible sur [GitHub](https://github.com/jmerhar/sweetspot-android) sous licence GPL v3.
+SweetSpot est proposé avec une période d'essai gratuite de 14 jours, après quoi un abonnement annuel optionnel permet de continuer à l'utiliser. Vous pouvez l'obtenir sur [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Le code source est disponible sur [GitHub](https://github.com/jmerhar/sweetspot-android) sous licence GPL v3.
 {{< /faq >}}
 
 {{< faq question="Quelles langues sont prises en charge ?" >}}

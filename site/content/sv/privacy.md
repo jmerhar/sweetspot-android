@@ -27,7 +27,7 @@ På Wear OS synkroniseras apparatdata och inställningar mellan telefon och kloc
 
 ## Ingen analys
 
-SweetSpot innehåller inga analys-SDK:er, kraschrapportering eller användarspårning. Appen gör inga nätverksförfrågningar utöver att hämta elpriser från de offentliga API:erna ovan (och valfri statistikrapportering om den är aktiverad).
+SweetSpot innehåller inga analys-SDK:er, kraschrapportering eller användarspårning. Appen gör inga nätverksförfrågningar utöver att hämta elpriser från de offentliga API:erna ovan (valfri statistikrapportering om den är aktiverad och att skicka en rapport om du använder Hjälp och feedback — se nedan).
 
 ## Valfri API-statistik
 
@@ -48,6 +48,14 @@ Dessa data innehåller **inte** enhetsidentifierare, plats, prisdata eller någo
 
 Denna funktion är inaktiverad som standard. Du kan aktivera eller inaktivera den när som helst under Inställningar.
 
+## Hjälp och feedback
+
+Om du rapporterar ett problem eller skickar feedback från **Inställningar › Hjälp och feedback** skickas ditt meddelande till vår feedbacktjänst och registreras som ett ärende i vårt offentliga GitHub-repository. **Rubriken och beskrivningen du skriver blir offentligt synliga** på GitHub, så inkludera inga personuppgifter.
+
+Om du väljer att bli aviserad via e-post lagras adressen du anger endast av vår feedbacktjänst — den visas aldrig i det offentliga ärendet — och används enbart för att mejla dig om din egen rapport. Du kan när som helst be oss radera den.
+
+Problemrapporter innehåller också ett kort, opersonligt diagnostikblock: app- och Android-versionen, din enhetsmodell, appspråket, det valda elområdet och den aktiva datakällan. Det innehåller inget namn, ingen e-postadress, ingen plats eller annan personlig information.
+
 ## Öppen källkod
 
 SweetSpot är öppen källkod och licensierad under GPL v3. Du kan granska den fullständiga källkoden på [GitHub](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot är öppen källkod och licensierad under GPL v3. Du kan granska den f
 
 Om du har frågor om denna integritetspolicy kan du öppna ett issue på [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Senast uppdaterad: juni 2026*
+*Senast uppdaterad: juli 2026*

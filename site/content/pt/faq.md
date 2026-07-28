@@ -48,8 +48,20 @@ A aplicação Wear OS sincroniza eletrodomésticos e definições da aplicação
 A aplicação do relógio requer Wear OS 3 ou posterior (Pixel Watch, Samsung Galaxy Watch 4+ e outros relógios compatíveis).
 {{< /faq >}}
 
+{{< faq question="Posso ver o preço total que realmente pago?" >}}
+Por predefinição, o SweetSpot apresenta o **preço spot** grossista. Nos países suportados (atualmente os Países Baixos), pode ativar os **preços tudo incluído** nas definições, que adicionam o imposto sobre energia, a sobretaxa do seu fornecedor e o IVA ao preço spot para mostrar o preço total aproximado para o consumidor. Combinado com a **potência** de um eletrodoméstico, isto dá-lhe uma estimativa realista do que custará realmente utilizar esse eletrodoméstico. É apenas para visualização — nunca altera qual o período que resulta mais barato.
+{{< /faq >}}
+
+{{< faq question="Posso copiar os meus eletrodomésticos para outro dispositivo?" >}}
+Sim. Nas definições, pode partilhar a sua configuração — os seus eletrodomésticos, a sua ordem e as suas definições de carregamento de VE — como um código QR ou uma ligação. Leia-o ou abra-o noutro dispositivo para importar tudo. Funciona totalmente sem ligação à internet, sem conta e sem servidor: os dados viajam dentro da própria ligação ou código QR, e você escolhe se pretende adicionar ao que já existe ou substituí-lo.
+{{< /faq >}}
+
+{{< faq question="Como comunico um problema ou sugiro uma funcionalidade?" >}}
+Abra **Definições › Ajuda e comentários** e escolha *Comunicar um problema* ou *Enviar comentários*. A sua mensagem é enviada diretamente a partir da aplicação — sem necessidade de navegador ou de conta GitHub — e torna-se um pedido público que podemos acompanhar. Pode, opcionalmente, deixar um endereço de e-mail para ser notificado de respostas (nunca é mostrado publicamente) e acompanhar o estado de tudo o que enviou em *Os meus relatórios*.
+{{< /faq >}}
+
 {{< faq question="Quanto custa o SweetSpot?" >}}
-O SweetSpot está disponível no [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). O código-fonte está disponível no [GitHub](https://github.com/jmerhar/sweetspot-android) sob a licença GPL v3.
+O SweetSpot inclui um período de teste gratuito de 14 dias, após o qual uma subscrição anual opcional o mantém a funcionar. Pode obtê-lo no [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). O código-fonte está disponível no [GitHub](https://github.com/jmerhar/sweetspot-android) sob a licença GPL v3.
 {{< /faq >}}
 
 {{< faq question="Que idiomas são suportados?" >}}

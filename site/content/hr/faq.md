@@ -48,8 +48,20 @@ Aplikacija za Wear OS sinkronizira uređaje i postavke iz telefonske aplikacije 
 Aplikacija za sat zahtijeva Wear OS 3 ili noviji (Pixel Watch, Samsung Galaxy Watch 4+ i drugi kompatibilni satovi).
 {{< /faq >}}
 
+{{< faq question="Mogu li vidjeti punu cijenu koju stvarno plaćam?" >}}
+SweetSpot prema zadanim postavkama prikazuje veleprodajnu **spot cijenu**. U podržanim zemljama (trenutačno Nizozemska) u postavkama možete uključiti **sve uključene cijene**, koje na spot cijenu dodaju energetski porez, naknadu vašeg dobavljača i PDV kako bi prikazale približnu punu potrošačku cijenu. U kombinaciji sa **snagom** uređaja to vam daje realnu procjenu koliko će stvarno rad tog uređaja koštati. Riječ je samo o prikazu — nikad ne mijenja koji je vremenski termin najjeftiniji.
+{{< /faq >}}
+
+{{< faq question="Mogu li kopirati svoje uređaje na drugi uređaj?" >}}
+Da. U postavkama možete podijeliti svoju konfiguraciju — svoje uređaje, njihov redoslijed i postavke punjenja električnog automobila — kao QR kod ili poveznicu. Skenirajte ili otvorite to na drugom uređaju kako biste sve uvezli. Radi potpuno bez interneta, bez računa i bez poslužitelja: podaci putuju unutar same poveznice ili QR koda, a vi birate želite li ih dodati postojećima ili ih zamijeniti.
+{{< /faq >}}
+
+{{< faq question="Kako mogu prijaviti problem ili predložiti značajku?" >}}
+Otvorite **Postavke › Pomoć i povratne informacije** i odaberite *Prijavi problem* ili *Pošalji povratnu informaciju*. Vaša se poruka šalje izravno iz aplikacije — bez preglednika ili GitHub računa — i postaje javni upit koji možemo pratiti. Neobvezno možete ostaviti e-mail adresu kako biste bili obaviješteni o odgovorima (nikad se ne prikazuje javno) i pratiti status svega što ste poslali pod *Moji upiti*.
+{{< /faq >}}
+
 {{< faq question="Koliko košta SweetSpot?" >}}
-SweetSpot je dostupan na [Google Playu](https://play.google.com/store/apps/details?id=today.sweetspot). Izvorni kod dostupan je na [GitHubu](https://github.com/jmerhar/sweetspot-android) pod licencom GPL v3.
+SweetSpot dolazi s 14-dnevnim besplatnim probnim razdobljem, nakon kojeg ga neobvezna godišnja pretplata održava u radu. Možete ga nabaviti na [Google Playu](https://play.google.com/store/apps/details?id=today.sweetspot). Izvorni kod dostupan je na [GitHubu](https://github.com/jmerhar/sweetspot-android) pod licencom GPL v3.
 {{< /faq >}}
 
 {{< faq question="Koji su jezici podržani?" >}}

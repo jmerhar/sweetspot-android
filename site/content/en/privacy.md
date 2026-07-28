@@ -27,7 +27,7 @@ On Wear OS, appliance data and settings are synced between phone and watch using
 
 ## No Analytics
 
-SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above (and optional stats reporting if enabled).
+SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above (optional stats reporting if enabled, and submitting a report if you use Help & feedback — see below).
 
 ## Optional API Statistics
 
@@ -48,6 +48,14 @@ This data does **not** contain device identifiers, location, price data, or any 
 
 This feature is disabled by default. You can enable or disable it at any time in Settings.
 
+## Help & Feedback
+
+If you report a problem or send feedback from **Settings › Help & feedback**, your message is sent to our feedback service and filed as an issue in our public GitHub repository. **The subject and description you write become publicly visible** on GitHub, so please don't include personal details.
+
+If you choose to be notified by email, the address you provide is stored only by our feedback service — it is never shown in the public issue — and is used solely to email you about your own report. You can ask us to delete it at any time.
+
+Problem reports also include a short, non-personal diagnostics block: the app and Android version, your device model, the app language, the selected price zone, and the active data source. It contains no name, email address, location, or other personal information.
+
 ## Open Source
 
 SweetSpot is open source and licensed under GPL v3. You can review the complete source code on [GitHub](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot is open source and licensed under GPL v3. You can review the complete 
 
 If you have questions about this privacy policy, you can open an issue on [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Last updated: June 2026*
+*Last updated: July 2026*

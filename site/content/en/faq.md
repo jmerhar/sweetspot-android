@@ -48,8 +48,20 @@ The Wear OS app syncs appliances and settings from the phone app via the Wearabl
 The watch app requires Wear OS 3 or later (Pixel Watch, Samsung Galaxy Watch 4+, and other compatible watches).
 {{< /faq >}}
 
+{{< faq question="Can I see the full price I actually pay?" >}}
+By default SweetSpot shows the wholesale **spot price**. In supported countries (currently the Netherlands) you can turn on **all-in prices** in settings, which add energy tax, your supplier's surcharge, and VAT on top of the spot price to show the approximate full consumer price. Combined with an appliance's **power rating**, this gives you a realistic estimate of what actually running that appliance will cost. It's display-only — it never changes which time window comes out cheapest.
+{{< /faq >}}
+
+{{< faq question="Can I copy my appliances to another device?" >}}
+Yes. In settings you can share your setup — your appliances, their order, and your EV charging settings — as a QR code or a link. Scan or open it on another device to import everything. It works completely offline with no account and no server: the data travels inside the link or QR code itself, and you choose whether to add to or replace what's already there.
+{{< /faq >}}
+
+{{< faq question="How do I report a problem or suggest a feature?" >}}
+Open **Settings › Help & feedback** and choose *Report a problem* or *Send feedback*. Your message is submitted directly from the app — no browser or GitHub account needed — and becomes a public issue we can track. You can optionally leave an email address to be notified of replies (it's never shown publicly), and follow the status of everything you've sent under *My reports*.
+{{< /faq >}}
+
 {{< faq question="How much does SweetSpot cost?" >}}
-SweetSpot is available on [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). The source code is available on [GitHub](https://github.com/jmerhar/sweetspot-android) under the GPL v3 license.
+SweetSpot comes with a 14-day free trial, after which an optional yearly subscription keeps it running. You can get it on [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). The source code is available on [GitHub](https://github.com/jmerhar/sweetspot-android) under the GPL v3 license.
 {{< /faq >}}
 
 {{< faq question="Which languages are supported?" >}}

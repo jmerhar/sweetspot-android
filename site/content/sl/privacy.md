@@ -27,7 +27,7 @@ Na Wear OS se podatki o aparatih in nastavitve sinhronizirajo med telefonom in u
 
 ## Brez analitike
 
-SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev (in neobveznega poročanja statistik, če je omogočeno).
+SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev (in neobveznega poročanja statistik, če je omogočeno, ter pošiljanja prijave, če uporabite Pomoč in povratne informacije — glejte spodaj).
 
 ## Neobvezne API statistike
 
@@ -48,6 +48,14 @@ Ti podatki **ne** vsebujejo identifikatorjev naprave, lokacije, cenovnih podatko
 
 Ta funkcija je privzeto onemogočena. Kadarkoli jo lahko omogočite ali onemogočite v Nastavitvah.
 
+## Pomoč in povratne informacije
+
+Če prijavite težavo ali pošljete povratne informacije prek **Nastavitve › Pomoč in povratne informacije**, se vaše sporočilo pošlje naši storitvi za povratne informacije in vloži kot prijava v našem javnem repozitoriju GitHub. **Naslov in opis, ki ju napišete, postaneta javno vidna** na GitHubu, zato ne vključujte osebnih podatkov.
+
+Če se odločite za obveščanje po e-pošti, se naslov, ki ga navedete, shrani le pri naši storitvi za povratne informacije — nikoli ni prikazan v javni prijavi — in se uporablja izključno za obveščanje o vaši lastni prijavi. Kadarkoli lahko zahtevate njegov izbris.
+
+Prijave težav vključujejo tudi kratek, neoseben diagnostični blok: različico aplikacije in Androida, model vaše naprave, jezik aplikacije, izbrano cenovno območje in aktivni podatkovni vir. Ne vsebuje imena, e-poštnega naslova, lokacije ali drugih osebnih podatkov.
+
 ## Odprta koda
 
 SweetSpot je odprtokoden in licenciran pod GPL v3. Celotno izvorno kodo si lahko ogledate na [GitHubu](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot je odprtokoden in licenciran pod GPL v3. Celotno izvorno kodo si lahko
 
 Če imate vprašanja o tej politiki zasebnosti, lahko odprete issue na [GitHubu](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Zadnja posodobitev: junij 2026*
+*Zadnja posodobitev: julij 2026*

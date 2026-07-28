@@ -48,8 +48,20 @@ Wear OS lietotne sinhronizē ierīces un iestatījumus no tālruņa lietotnes, i
 Pulksteņa lietotnei nepieciešams Wear OS 3 vai jaunāka versija (Pixel Watch, Samsung Galaxy Watch 4+ un citi saderīgi pulksteņi).
 {{< /faq >}}
 
+{{< faq question="Vai varu redzēt pilno cenu, ko patiešām maksāju?" >}}
+Pēc noklusējuma SweetSpot rāda vairumtirdzniecības **spot cenu**. Atbalstītajās valstīs (pašlaik Nīderlandē) iestatījumos var ieslēgt **pilnās cenas**, kas spot cenai pievieno enerģijas nodokli, tava piegādātāja uzcenojumu un PVN, lai parādītu aptuveno pilno patērētāja cenu. Kopā ar ierīces **jaudu** tas sniedz reālistisku aprēķinu tam, cik patiešām izmaksās šīs ierīces darbināšana. Tas ir tikai attēlošanai — tas nekad nemaina to, kurš laika periods izrādās lētākais.
+{{< /faq >}}
+
+{{< faq question="Vai varu nokopēt savas ierīces uz citu ierīci?" >}}
+Jā. Iestatījumos vari kopīgot savu uzstādījumu — savas ierīces, to secību un elektromobiļa uzlādes iestatījumus — kā QR kodu vai saiti. Noskenē vai atver to citā ierīcē, lai importētu visu. Tas darbojas pilnīgi bez interneta, bez konta un bez servera: dati ceļo pašā saitē vai QR kodā, un tu izvēlies, vai pievienot esošajam, vai to aizstāt.
+{{< /faq >}}
+
+{{< faq question="Kā ziņot par problēmu vai ieteikt funkciju?" >}}
+Atver **Iestatījumi › Palīdzība un atsauksmes** un izvēlies *Ziņot par problēmu* vai *Sūtīt atsauksmi*. Tavs ziņojums tiek nosūtīts tieši no lietotnes — nav nepieciešams pārlūks vai GitHub konts — un kļūst par publisku pieteikumu, ko varam izsekot. Vari neobligāti norādīt e-pasta adresi, lai saņemtu paziņojumus par atbildēm (tā nekad netiek rādīta publiski), un sekot līdzi visa nosūtītā statusam sadaļā *Mani pieteikumi*.
+{{< /faq >}}
+
 {{< faq question="Cik maksā SweetSpot?" >}}
-SweetSpot ir pieejams [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot) veikalā. Pirmkods ir pieejams [GitHub](https://github.com/jmerhar/sweetspot-android) ar GPL v3 licenci.
+SweetSpot ietver 14 dienu bezmaksas izmēģinājuma periodu, pēc kura to darbībā uztur neobligāts gada abonements. To var iegūt [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot) veikalā. Pirmkods ir pieejams [GitHub](https://github.com/jmerhar/sweetspot-android) ar GPL v3 licenci.
 {{< /faq >}}
 
 {{< faq question="Kādas valodas tiek atbalstītas?" >}}

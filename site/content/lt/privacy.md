@@ -27,7 +27,7 @@ Wear OS įrenginiuose prietaisų duomenys ir nustatymai sinchronizuojami tarp te
 
 ## Be analitikos
 
-SweetSpot nenaudoja jokių analitikos SDK, klaidų ataskaitų ar naudojimo sekimo. Programėlė nevykdo jokių tinklo užklausų, išskyrus elektros kainų gavimą iš aukščiau išvardytų viešų API (ir neprivalomą statistikos siuntimą, jei jis įjungtas).
+SweetSpot nenaudoja jokių analitikos SDK, klaidų ataskaitų ar naudojimo sekimo. Programėlė nevykdo jokių tinklo užklausų, išskyrus elektros kainų gavimą iš aukščiau išvardytų viešų API (ir neprivalomą statistikos siuntimą, jei jis įjungtas, bei pranešimo pateikimą, jei naudojatės skiltimi Pagalba ir atsiliepimai — žr. žemiau).
 
 ## Neprivaloma API statistika
 
@@ -48,6 +48,14 @@ Galite pasirinkti dalintis anonimine API patikimumo statistika. Kai ši funkcija
 
 Ši funkcija pagal numatytuosius nustatymus yra išjungta. Galite ją įjungti arba išjungti bet kuriuo metu skiltyje Nustatymai.
 
+## Pagalba ir atsiliepimai
+
+Jei pranešate apie problemą arba siunčiate atsiliepimą iš **Nustatymai › Pagalba ir atsiliepimai**, jūsų žinutė siunčiama į mūsų atsiliepimų tarnybą ir užregistruojama kaip problema mūsų viešoje GitHub saugykloje. **Jūsų parašyta tema ir aprašymas tampa viešai matomi** GitHub, todėl neįtraukite asmeninių duomenų.
+
+Jei pasirenkate, kad būtumėte informuoti el. paštu, jūsų nurodytą adresą saugo tik mūsų atsiliepimų tarnyba — jis niekada nerodomas viešoje problemoje — ir naudojamas tik tam, kad galėtume el. paštu pranešti apie jūsų pačių pranešimą. Bet kuriuo metu galite paprašyti mūsų jį ištrinti.
+
+Pranešimuose apie problemas taip pat pateikiamas trumpas, neasmeninis diagnostikos blokas: programėlės ir Android versija, jūsų įrenginio modelis, programėlės kalba, pasirinkta kainų zona ir aktyvus duomenų šaltinis. Jame nėra jokio vardo, el. pašto adreso, vietos ar kitos asmeninės informacijos.
+
 ## Atviras kodas
 
 SweetSpot yra atviro kodo programinė įranga, licencijuota pagal GPL v3. Visą šaltinio kodą galite peržiūrėti [GitHub](https://github.com/jmerhar/sweetspot-android) svetainėje.
@@ -56,4 +64,4 @@ SweetSpot yra atviro kodo programinė įranga, licencijuota pagal GPL v3. Visą 
 
 Jei turite klausimų dėl šios privatumo politikos, galite sukurti pranešimą [GitHub](https://github.com/jmerhar/sweetspot-android/issues) svetainėje.
 
-*Paskutinį kartą atnaujinta: 2026 m. birželis*
+*Paskutinį kartą atnaujinta: 2026 m. liepa*

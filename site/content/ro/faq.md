@@ -48,8 +48,20 @@ Aplicația Wear OS sincronizează electrocasnicele și setările din aplicația 
 Aplicația de pe ceas necesită Wear OS 3 sau mai recent (Pixel Watch, Samsung Galaxy Watch 4+ și alte ceasuri compatibile).
 {{< /faq >}}
 
+{{< faq question="Pot vedea prețul complet pe care îl plătesc de fapt?" >}}
+În mod implicit, SweetSpot afișează **prețul spot** angro. În țările disponibile (momentan Țările de Jos) poți activa din setări **prețurile all-in**, care adaugă taxa pe energie, suprataxa furnizorului tău și TVA peste prețul spot, pentru a afișa prețul aproximativ complet pentru consumator. Combinat cu **puterea** unui electrocasnic, acest lucru îți oferă o estimare realistă a costului real de utilizare a acelui electrocasnic. Este doar informativ — nu schimbă niciodată care interval de timp iese cel mai ieftin.
+{{< /faq >}}
+
+{{< faq question="Pot copia electrocasnicele pe alt dispozitiv?" >}}
+Da. Din setări poți partaja configurația ta — electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice — sub formă de cod QR sau link. Scanează-l sau deschide-l pe alt dispozitiv pentru a importa totul. Funcționează complet offline, fără cont și fără server: datele călătoresc în interiorul linkului sau al codului QR în sine, iar tu alegi dacă adaugi la ceea ce există deja sau înlocuiești.
+{{< /faq >}}
+
+{{< faq question="Cum raportez o problemă sau sugerez o funcție?" >}}
+Deschide **Setări › Ajutor și feedback** și alege *Raportează o problemă* sau *Trimite feedback*. Mesajul tău este trimis direct din aplicație — fără browser sau cont GitHub — și devine o problemă publică pe care o putem urmări. Poți lăsa opțional o adresă de e-mail pentru a fi notificat despre răspunsuri (nu este niciodată afișată public) și poți urmări starea a tot ce ai trimis în *Rapoartele mele*.
+{{< /faq >}}
+
 {{< faq question="Cât costă SweetSpot?" >}}
-SweetSpot este disponibil pe [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Codul sursă este disponibil pe [GitHub](https://github.com/jmerhar/sweetspot-android) sub licența GPL v3.
+SweetSpot vine cu o perioadă de probă gratuită de 14 zile, după care un abonament anual opțional îl menține în funcțiune. Îl poți obține de pe [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Codul sursă este disponibil pe [GitHub](https://github.com/jmerhar/sweetspot-android) sub licența GPL v3.
 {{< /faq >}}
 
 {{< faq question="Ce limbi sunt disponibile?" >}}

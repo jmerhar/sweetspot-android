@@ -48,8 +48,20 @@ Wear OS -sovellus synkronoi laitteet ja asetukset puhelinsovelluksesta Wearable 
 Kellosovellus vaatii Wear OS 3:n tai uudemman (Pixel Watch, Samsung Galaxy Watch 4+ ja muut yhteensopivat kellot).
 {{< /faq >}}
 
+{{< faq question="Voinko nähdä koko hinnan, jonka todella maksan?" >}}
+Oletuksena SweetSpot näyttää tukkusähkön **spot-hinnan**. Tuetuissa maissa (tällä hetkellä Alankomaissa) voit ottaa asetuksissa käyttöön **kokonaishinnat**, jotka lisäävät spot-hinnan päälle energiaveron, myyjäsi lisämaksun ja arvonlisäveron näyttääkseen likimääräisen täyden kuluttajahinnan. Yhdistettynä laitteen **tehoon** tämä antaa realistisen arvion siitä, mitä kyseisen laitteen käyttäminen todella maksaa. Se on vain näyttöä varten — se ei koskaan muuta sitä, mikä ajanjakso on edullisin.
+{{< /faq >}}
+
+{{< faq question="Voinko kopioida laitteeni toiseen laitteeseen?" >}}
+Kyllä. Asetuksissa voit jakaa kokoonpanosi — laitteesi, niiden järjestyksen ja sähköauton latausasetuksesi — QR-koodina tai linkkinä. Skannaa tai avaa se toisella laitteella tuodaksesi kaiken. Se toimii täysin ilman verkkoyhteyttä, ilman tiliä ja ilman palvelinta: tiedot kulkevat itse linkin tai QR-koodin sisällä, ja voit valita, lisätäänkö ne olemassa oleviin vai korvataanko ne.
+{{< /faq >}}
+
+{{< faq question="Miten ilmoitan ongelmasta tai ehdotan ominaisuutta?" >}}
+Avaa **Asetukset › Ohje ja palaute** ja valitse *Ilmoita ongelmasta* tai *Lähetä palautetta*. Viestisi lähetetään suoraan sovelluksesta — selainta tai GitHub-tiliä ei tarvita — ja siitä tulee julkinen ilmoitus, jota voimme seurata. Voit halutessasi jättää sähköpostiosoitteen saadaksesi ilmoituksen vastauksista (sitä ei koskaan näytetä julkisesti), ja seurata kaiken lähettämäsi tilaa kohdassa *Omat ilmoitukseni*.
+{{< /faq >}}
+
 {{< faq question="Paljonko SweetSpot maksaa?" >}}
-SweetSpot on saatavilla [Google Playssa](https://play.google.com/store/apps/details?id=today.sweetspot). Lähdekoodi on saatavilla [GitHubissa](https://github.com/jmerhar/sweetspot-android) GPL v3 -lisenssillä.
+SweetSpotissa on 14 päivän ilmainen kokeilujakso, jonka jälkeen valinnainen vuositilaus pitää sen käynnissä. Voit hankkia sen [Google Playsta](https://play.google.com/store/apps/details?id=today.sweetspot). Lähdekoodi on saatavilla [GitHubissa](https://github.com/jmerhar/sweetspot-android) GPL v3 -lisenssillä.
 {{< /faq >}}
 
 {{< faq question="Mitä kieliä tuetaan?" >}}

@@ -48,8 +48,20 @@ Aplikácia Wear OS synchronizuje spotrebiče a nastavenia z telefónnej aplikác
 Aplikácia pre hodinky vyžaduje Wear OS 3 alebo novší (Pixel Watch, Samsung Galaxy Watch 4+ a ďalšie kompatibilné hodinky).
 {{< /faq >}}
 
+{{< faq question="Môžem vidieť plnú cenu, ktorú skutočne platím?" >}}
+SweetSpot predvolene zobrazuje veľkoobchodnú **spotovú cenu**. V podporovaných krajinách (momentálne Holandsko) môžete v nastaveniach zapnúť **plné ceny**, ktoré k spotovej cene pripočítajú daň z energie, prirážku vášho dodávateľa a DPH, aby zobrazili približnú plnú spotrebiteľskú cenu. V kombinácii s **výkonom** spotrebiča vám to poskytne realistický odhad toho, koľko bude skutočné používanie daného spotrebiča stáť. Slúži iba na zobrazenie — nikdy nemení, ktoré časové obdobie vyjde ako najlacnejšie.
+{{< /faq >}}
+
+{{< faq question="Môžem skopírovať svoje spotrebiče do iného zariadenia?" >}}
+Áno. V nastaveniach môžete zdieľať svoje nastavenie — svoje spotrebiče, ich poradie a nastavenia nabíjania elektromobilu — ako QR kód alebo odkaz. Naskenujte ho alebo otvorte na inom zariadení a importujte všetko. Funguje to úplne offline, bez účtu a bez servera: údaje putujú vnútri samotného odkazu alebo QR kódu a vy si vyberiete, či ich chcete pridať k existujúcim alebo ich nahradiť.
+{{< /faq >}}
+
+{{< faq question="Ako nahlásim problém alebo navrhnem funkciu?" >}}
+Otvorte **Nastavenia › Pomoc a spätná väzba** a vyberte *Nahlásiť problém* alebo *Odoslať spätnú väzbu*. Vaša správa sa odošle priamo z aplikácie — bez prehliadača alebo účtu GitHub — a stane sa verejným issue, ktoré môžeme sledovať. Voliteľne môžete zanechať e-mailovú adresu, aby ste boli upozornení na odpovede (nikdy sa nezobrazuje verejne), a sledovať stav všetkého, čo ste odoslali, v časti *Moje hlásenia*.
+{{< /faq >}}
+
 {{< faq question="Koľko stojí SweetSpot?" >}}
-SweetSpot je dostupný na [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Zdrojový kód je dostupný na [GitHube](https://github.com/jmerhar/sweetspot-android) pod licenciou GPL v3.
+SweetSpot ponúka 14-dňovú bezplatnú skúšobnú verziu, po ktorej ho v prevádzke udrží voliteľné ročné predplatné. Získať ho môžete na [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Zdrojový kód je dostupný na [GitHube](https://github.com/jmerhar/sweetspot-android) pod licenciou GPL v3.
 {{< /faq >}}
 
 {{< faq question="Ktoré jazyky sú podporované?" >}}

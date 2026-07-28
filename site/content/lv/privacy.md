@@ -27,7 +27,7 @@ Wear OS ierīcēs elektroierīču dati un iestatījumi tiek sinhronizēti starp 
 
 ## Bez analītikas
 
-SweetSpot neietver analītikas SDK, kļūdu ziņošanu vai lietošanas izsekošanu. Lietotne neveic citus tīkla pieprasījumus, izņemot elektrības cenu iegūšanu no iepriekš minētajām publiskajām API (un neobligāto statistikas ziņošanu, ja tā ir iespējota).
+SweetSpot neietver analītikas SDK, kļūdu ziņošanu vai lietošanas izsekošanu. Lietotne neveic citus tīkla pieprasījumus, izņemot elektrības cenu iegūšanu no iepriekš minētajām publiskajām API (un neobligāto statistikas ziņošanu, ja tā ir iespējota, kā arī ziņojuma nosūtīšanu, ja izmanto Palīdzību un atsauksmes — skatīt zemāk).
 
 ## Neobligāta API statistika
 
@@ -48,6 +48,14 @@ Jūs varat izvēlēties kopīgot anonīmu API uzticamības statistiku. Kad šī 
 
 Šī funkcija ir izslēgta pēc noklusējuma. Jūs varat to iespējot vai atspējot jebkurā laikā sadaļā Iestatījumi.
 
+## Palīdzība un atsauksmes
+
+Ja ziņo par problēmu vai sūti atsauksmi no sadaļas **Iestatījumi › Palīdzība un atsauksmes**, tavs ziņojums tiek nosūtīts mūsu atsauksmju pakalpojumam un reģistrēts kā pieteikums mūsu publiskajā GitHub repozitorijā. **Tavs uzrakstītais temats un apraksts kļūst publiski redzami** GitHub, tāpēc, lūdzu, neiekļauj personiskus datus.
+
+Ja izvēlies saņemt paziņojumus pa e-pastu, tava norādītā adrese tiek glabāta tikai mūsu atsauksmju pakalpojumā — tā nekad netiek rādīta publiskajā pieteikumā — un tiek izmantota tikai, lai sūtītu tev e-pastus par tavu paša ziņojumu. Tu jebkurā laikā vari lūgt to dzēst.
+
+Problēmu ziņojumi ietver arī īsu, nepersonisku diagnostikas bloku: lietotnes un Android versiju, tavas ierīces modeli, lietotnes valodu, izvēlēto cenu zonu un aktīvo datu avotu. Tas nesatur vārdu, e-pasta adresi, atrašanās vietu vai citu personisko informāciju.
+
 ## Atvērtā koda
 
 SweetSpot ir atvērtā koda programmatūra ar GPL v3 licenci. Pilnu pirmkodu var apskatīt [GitHub](https://github.com/jmerhar/sweetspot-android) vietnē.
@@ -56,4 +64,4 @@ SweetSpot ir atvērtā koda programmatūra ar GPL v3 licenci. Pilnu pirmkodu var
 
 Ja jums ir jautājumi par šo privātuma politiku, varat izveidot pieteikumu [GitHub](https://github.com/jmerhar/sweetspot-android/issues) vietnē.
 
-*Pēdējo reizi atjaunināts: 2026. gada jūnijs*
+*Pēdējo reizi atjaunināts: 2026. gada jūlijs*

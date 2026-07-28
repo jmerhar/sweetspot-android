@@ -48,8 +48,20 @@ Wear OS-appen synkroniserer apparater og indstillinger fra telefonappen via Wear
 Ur-appen kræver Wear OS 3 eller nyere (Pixel Watch, Samsung Galaxy Watch 4+ og andre kompatible ure).
 {{< /faq >}}
 
+{{< faq question="Kan jeg se den fulde pris, jeg reelt betaler?" >}}
+Som standard viser SweetSpot engros-**spotprisen**. I understøttede lande (i øjeblikket Nederlandene) kan du slå **all-in-priser** til i indstillingerne, hvilket lægger energiafgift, din leverandørs tillæg og moms oven i spotprisen for at vise den omtrentlige fulde forbrugerpris. Kombineret med et apparats **effekt** giver det dig et realistisk estimat af, hvad det faktisk koster at køre det pågældende apparat. Det er kun til visning — det ændrer aldrig, hvilket tidsrum der ender med at være billigst.
+{{< /faq >}}
+
+{{< faq question="Kan jeg kopiere mine apparater til en anden enhed?" >}}
+Ja. I indstillingerne kan du dele din opsætning — dine apparater, deres rækkefølge og dine elbil-opladningsindstillinger — som en QR-kode eller et link. Scan eller åbn det på en anden enhed for at importere det hele. Det virker helt offline uden konto og uden server: dataene rejser inde i selve linket eller QR-koden, og du vælger, om du vil føje til eller erstatte det, der allerede er der.
+{{< /faq >}}
+
+{{< faq question="Hvordan rapporterer jeg et problem eller foreslår en funktion?" >}}
+Åbn **Indstillinger › Hjælp og feedback**, og vælg *Rapportér et problem* eller *Send feedback*. Din besked sendes direkte fra appen — uden browser eller GitHub-konto — og bliver til en offentlig sag, som vi kan følge. Du kan valgfrit angive en e-mailadresse for at få besked om svar (den vises aldrig offentligt) og følge status på alt, hvad du har sendt, under *Mine rapporter*.
+{{< /faq >}}
+
 {{< faq question="Hvad koster SweetSpot?" >}}
-SweetSpot er tilgængelig på [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Kildekoden er tilgængelig på [GitHub](https://github.com/jmerhar/sweetspot-android) under GPL v3-licensen.
+SweetSpot leveres med en 14-dages gratis prøveperiode, hvorefter et valgfrit årligt abonnement holder den kørende. Du kan hente den på [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot). Kildekoden er tilgængelig på [GitHub](https://github.com/jmerhar/sweetspot-android) under GPL v3-licensen.
 {{< /faq >}}
 
 {{< faq question="Hvilke sprog er understøttet?" >}}

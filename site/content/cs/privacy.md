@@ -27,7 +27,7 @@ Na Wear OS se data o spotřebičích a nastavení synchronizují mezi telefonem 
 
 ## Žádná analytika
 
-SweetSpot neobsahuje žádné SDK pro analytiku, hlášení chyb ani sledování používání. Aplikace nevykonává žádné síťové požadavky kromě stahování cen elektřiny z výše uvedených veřejných API (a volitelného odesílání statistik, pokud je aktivní).
+SweetSpot neobsahuje žádné SDK pro analytiku, hlášení chyb ani sledování používání. Aplikace nevykonává žádné síťové požadavky kromě stahování cen elektřiny z výše uvedených veřejných API (a volitelného odesílání statistik, pokud je aktivní, a odeslání hlášení, pokud použijete Nápovědu a zpětnou vazbu — viz níže).
 
 ## Volitelná API statistika
 
@@ -48,6 +48,14 @@ Tato data **neobsahují** identifikátory zařízení, polohu, cenová data ani 
 
 Tato funkce je ve výchozím stavu vypnutá. Můžete ji zapnout nebo vypnout kdykoli v Nastavení.
 
+## Nápověda a zpětná vazba
+
+Pokud nahlásíte problém nebo odešlete zpětnou vazbu z **Nastavení › Nápověda a zpětná vazba**, vaše zpráva se odešle naší službě zpětné vazby a založí se jako požadavek v našem veřejném repozitáři na GitHubu. **Předmět a popis, které napíšete, se stanou veřejně viditelnými** na GitHubu, proto prosím neuvádějte osobní údaje.
+
+Pokud si zvolíte, že chcete být informováni e-mailem, adresa, kterou uvedete, je uložena pouze naší službou zpětné vazby — nikdy se nezobrazuje ve veřejném požadavku — a slouží výhradně k tomu, abychom vám napsali o vašem vlastním hlášení. Můžete nás kdykoli požádat o její smazání.
+
+Hlášení problémů také obsahují krátký, neosobní diagnostický blok: verzi aplikace a systému Android, model vašeho zařízení, jazyk aplikace, vybranou cenovou zónu a aktivní zdroj dat. Neobsahuje žádné jméno, e-mailovou adresu, polohu ani jiné osobní údaje.
+
 ## Otevřený zdrojový kód
 
 SweetSpot je open source a licencován pod GPL v3. Kompletní zdrojový kód si můžete prohlédnout na [GitHubu](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot je open source a licencován pod GPL v3. Kompletní zdrojový kód si 
 
 Máte-li dotazy ohledně těchto zásad ochrany soukromí, můžete otevřít požadavek na [GitHubu](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Poslední aktualizace: červen 2026*
+*Poslední aktualizace: červenec 2026*

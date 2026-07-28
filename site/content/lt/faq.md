@@ -48,8 +48,20 @@ Wear OS programėlė sinchronizuoja prietaisus ir nustatymus iš telefono progra
 Laikrodžio programėlei reikalinga Wear OS 3 arba naujesnė versija (Pixel Watch, Samsung Galaxy Watch 4+ ir kiti suderinami laikrodžiai).
 {{< /faq >}}
 
+{{< faq question="Ar galiu matyti visą kainą, kurią iš tikrųjų sumoku?" >}}
+Pagal numatytuosius nustatymus SweetSpot rodo didmeninę **spot kainą**. Palaikomose šalyse (šiuo metu Nyderlanduose) nustatymuose galite įjungti **visą kainą**, kuri prie spot kainos prideda energijos mokestį, jūsų tiekėjo antkainį ir PVM, kad parodytų apytikslę pilną vartotojo kainą. Kartu su prietaiso **galingumu** tai suteikia realistišką įvertinimą, kiek iš tiesų kainuos to prietaiso naudojimas. Tai tik rodymui — tai niekada nekeičia, kuris laikotarpis yra pigiausias.
+{{< /faq >}}
+
+{{< faq question="Ar galiu nukopijuoti savo prietaisus į kitą įrenginį?" >}}
+Taip. Nustatymuose galite bendrinti savo sąranką — savo prietaisus, jų tvarką ir elektromobilio įkrovimo nustatymus — kaip QR kodą arba nuorodą. Nuskenuokite arba atidarykite ją kitame įrenginyje, kad importuotumėte viską. Tai veikia visiškai be interneto, be paskyros ir be serverio: duomenys keliauja pačioje nuorodoje ar QR kode, o jūs pasirenkate, ar pridėti prie esamų, ar juos pakeisti.
+{{< /faq >}}
+
+{{< faq question="Kaip pranešti apie problemą ar pasiūlyti funkciją?" >}}
+Atidarykite **Nustatymai › Pagalba ir atsiliepimai** ir pasirinkite *Pranešti apie problemą* arba *Siųsti atsiliepimą*. Jūsų žinutė pateikiama tiesiai iš programėlės — nereikia naršyklės ar GitHub paskyros — ir tampa vieša problema, kurią galime stebėti. Neprivalomai galite palikti el. pašto adresą, kad būtumėte informuoti apie atsakymus (jis niekada nerodomas viešai), ir sekti visko, ką išsiuntėte, būseną skiltyje *Mano pranešimai*.
+{{< /faq >}}
+
 {{< faq question="Kiek kainuoja SweetSpot?" >}}
-SweetSpot galima rasti [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot) parduotuvėje. Šaltinio kodas prieinamas [GitHub](https://github.com/jmerhar/sweetspot-android) pagal GPL v3 licenciją.
+SweetSpot turi 14 dienų nemokamą bandomąjį laikotarpį, o vėliau ją veikti palaiko neprivaloma metinė prenumerata. Ją galite rasti [Google Play](https://play.google.com/store/apps/details?id=today.sweetspot) parduotuvėje. Šaltinio kodas prieinamas [GitHub](https://github.com/jmerhar/sweetspot-android) pagal GPL v3 licenciją.
 {{< /faq >}}
 
 {{< faq question="Kokios kalbos palaikomos?" >}}

@@ -27,7 +27,7 @@ Pe Wear OS, datele despre electrocasnice și setările sunt sincronizate între 
 
 ## Fără analize
 
-SweetSpot nu include niciun SDK de analiză, raportare a erorilor sau urmărire a utilizării. Aplicația nu efectuează alte cereri de rețea în afara obținerii prețurilor de electricitate de la API-urile publice menționate mai sus (și a raportării opționale de statistici, dacă este activată).
+SweetSpot nu include niciun SDK de analiză, raportare a erorilor sau urmărire a utilizării. Aplicația nu efectuează alte cereri de rețea în afara obținerii prețurilor de electricitate de la API-urile publice menționate mai sus (raportarea opțională de statistici, dacă este activată, și trimiterea unui raport dacă folosești Ajutor și feedback — vezi mai jos).
 
 ## Statistici API opționale
 
@@ -48,6 +48,14 @@ Aceste date **nu** conțin identificatori de dispozitiv, locație, date despre p
 
 Această funcție este dezactivată în mod implicit. O poți activa sau dezactiva oricând din Setări.
 
+## Ajutor și feedback
+
+Dacă raportezi o problemă sau trimiți feedback din **Setări › Ajutor și feedback**, mesajul tău este trimis către serviciul nostru de feedback și înregistrat ca problemă în depozitul nostru public de pe GitHub. **Subiectul și descrierea pe care le scrii devin vizibile public** pe GitHub, așa că te rugăm să nu incluzi date personale.
+
+Dacă alegi să fii notificat prin e-mail, adresa pe care o furnizezi este stocată doar de serviciul nostru de feedback — nu este niciodată afișată în problema publică — și este utilizată exclusiv pentru a-ți trimite e-mailuri despre propriul tău raport. Ne poți cere să o ștergem oricând.
+
+Rapoartele de probleme includ, de asemenea, un bloc scurt și nepersonal de diagnosticare: versiunea aplicației și a Android, modelul dispozitivului tău, limba aplicației, zona de preț selectată și sursa de date activă. Nu conține niciun nume, adresă de e-mail, locație sau alte informații personale.
+
 ## Cod deschis
 
 SweetSpot este cu cod deschis și licențiat sub GPL v3. Poți consulta codul sursă complet pe [GitHub](https://github.com/jmerhar/sweetspot-android).
@@ -56,4 +64,4 @@ SweetSpot este cu cod deschis și licențiat sub GPL v3. Poți consulta codul su
 
 Dacă ai întrebări despre această politică de confidențialitate, poți deschide o problemă pe [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
-*Ultima actualizare: iunie 2026*
+*Ultima actualizare: iulie 2026*

@@ -52,7 +52,7 @@ Cette fonctionnalité est désactivée par défaut. Vous pouvez l'activer ou la 
 
 Si vous signalez un problème ou envoyez un commentaire depuis **Paramètres › Aide et commentaires**, votre message est transmis à notre service de commentaires et enregistré sous forme d'issue dans notre dépôt GitHub public. **Le titre et la description que vous rédigez deviennent visibles publiquement** sur GitHub, alors n'y incluez pas d'informations personnelles.
 
-Si vous choisissez d'être informé par e-mail, l'adresse que vous fournissez est stockée uniquement par notre service de commentaires — elle n'est jamais affichée dans l'issue publique — et sert uniquement à vous envoyer des e-mails au sujet de votre propre rapport. Vous pouvez nous demander de la supprimer à tout moment.
+Si vous choisissez d'être informé par e-mail, l'adresse que vous fournissez est stockée uniquement par notre service de commentaires — elle n'est jamais affichée dans l'issue publique — et sert uniquement à vous envoyer des e-mails au sujet de votre propre rapport. Chaque e-mail de notification comporte un lien de désabonnement en un clic qui supprime l'adresse stockée, et vous pouvez également nous demander de la supprimer à tout moment.
 
 Les rapports de problème incluent également un court bloc de diagnostics non personnel : la version de l'application et d'Android, le modèle de votre appareil, la langue de l'application, la zone de prix sélectionnée et la source de données active. Il ne contient aucun nom, adresse e-mail, localisation ni autre information personnelle.
 

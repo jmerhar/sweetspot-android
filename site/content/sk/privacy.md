@@ -52,7 +52,7 @@ Táto funkcia je predvolene vypnutá. Môžete ju kedykoľvek zapnúť alebo vyp
 
 Ak nahlásite problém alebo odošlete spätnú väzbu z ponuky **Nastavenia › Pomoc a spätná väzba**, vaša správa sa odošle do našej služby spätnej väzby a zaeviduje sa ako issue v našom verejnom GitHub repozitári. **Predmet a popis, ktoré napíšete, sa na GitHube stanú verejne viditeľnými**, preto neuvádzajte osobné údaje.
 
-Ak sa rozhodnete byť upozornení e-mailom, adresa, ktorú zadáte, sa ukladá iba v našej službe spätnej väzby — nikdy sa nezobrazuje vo verejnom issue — a slúži výhradne na to, aby sme vám mohli poslať e-mail o vašom vlastnom hlásení. Kedykoľvek nás môžete požiadať o jej vymazanie.
+Ak sa rozhodnete byť upozornení e-mailom, adresa, ktorú zadáte, sa ukladá iba v našej službe spätnej väzby — nikdy sa nezobrazuje vo verejnom issue — a slúži výhradne na to, aby sme vám mohli poslať e-mail o vašom vlastnom hlásení. Každé e-mailové upozornenie obsahuje odkaz na odhlásenie jedným kliknutím, ktorý odstráni uloženú adresu, a o jej vymazanie nás môžete kedykoľvek aj požiadať.
 
 Hlásenia problémov obsahujú aj krátky, neosobný diagnostický blok: verziu aplikácie a Androidu, model vášho zariadenia, jazyk aplikácie, vybranú cenovú zónu a aktívny zdroj údajov. Neobsahuje žiadne meno, e-mailovú adresu, polohu ani iné osobné údaje.
 

@@ -52,7 +52,7 @@ This feature is disabled by default. You can enable or disable it at any time in
 
 If you report a problem or send feedback from **Settings › Help & feedback**, your message is sent to our feedback service and filed as an issue in our public GitHub repository. **The subject and description you write become publicly visible** on GitHub, so please don't include personal details.
 
-If you choose to be notified by email, the address you provide is stored only by our feedback service — it is never shown in the public issue — and is used solely to email you about your own report. You can ask us to delete it at any time.
+If you choose to be notified by email, the address you provide is stored only by our feedback service — it is never shown in the public issue — and is used solely to email you about your own report. Every notification email includes a one-click unsubscribe link that removes the stored address, and you can also ask us to delete it at any time.
 
 Problem reports also include a short, non-personal diagnostics block: the app and Android version, your device model, the app language, the selected price zone, and the active data source. It contains no name, email address, location, or other personal information.
 

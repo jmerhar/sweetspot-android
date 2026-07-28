@@ -57,7 +57,7 @@ Da. Din setări poți partaja configurația ta — electrocasnicele, ordinea lor
 {{< /faq >}}
 
 {{< faq question="Cum raportez o problemă sau sugerez o funcție?" >}}
-Deschide **Setări › Ajutor și feedback** și alege *Raportează o problemă* sau *Trimite feedback*. Mesajul tău este trimis direct din aplicație — fără browser sau cont GitHub — și devine o problemă publică pe care o putem urmări. Poți lăsa opțional o adresă de e-mail pentru a fi notificat despre răspunsuri (nu este niciodată afișată public) și poți urmări starea a tot ce ai trimis în *Rapoartele mele*.
+Deschide **Setări › Ajutor și feedback** și alege *Raportează o problemă* sau *Trimite feedback*. Mesajul tău este trimis direct din aplicație — fără browser sau cont GitHub — și devine o problemă publică pe care o putem urmări. Poți lăsa opțional o adresă de e-mail pentru a fi notificat despre răspunsuri (nu este niciodată afișată public, iar fiecare notificare are un link de dezabonare cu un singur clic) și poți urmări starea a tot ce ai trimis în *Rapoartele mele*.
 {{< /faq >}}
 
 {{< faq question="Cât costă SweetSpot?" >}}

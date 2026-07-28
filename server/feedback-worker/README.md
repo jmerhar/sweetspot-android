@@ -5,9 +5,14 @@ submissions into **GitHub issues** and (Phase 2) emails the reporter — if they
 issue gets a comment or is closed. Architecture: `../../docs/notes/reference/help-support-system.md`.
 
 - `POST /report` — app submits `{category, subject, body, diagnostics?, email?}` → creates a labelled
-  issue (`from-app` + `bug`/`enhancement`); returns `{number, url}`.
+  issue (`from-app` + `bug`/`enhancement`); returns `{number, url}`. If an email is given, it's stored
+  in KV keyed by issue number, together with a random unsubscribe token.
 - `POST /webhook` — GitHub webhook (`issues`, `issue_comment`), HMAC-verified; emails the opted-in
-  reporter via Brevo.
+  reporter via Brevo. Each notification carries a tokenized unsubscribe link (+ RFC 8058 one-click
+  `List-Unsubscribe` headers).
+- `GET /unsubscribe?issue=N&token=…` — confirmation page (non-mutating, so link prefetchers can't
+  unsubscribe); `POST /unsubscribe` (the form submit, or a one-click `List-Unsubscribe=One-Click` body)
+  clears the stored email when the token matches (constant-time compare).
 - `GET /` — health check.
 
 The app never holds a token: it POSTs here to submit, and reads **public** issue state directly from
@@ -70,7 +75,8 @@ curl -sX POST https://feedback.sweetspot.today/report \
 - **Anti-abuse:** per-IP daily rate limit (`RATE_LIMIT_PER_DAY` in `vars`) + length caps. Add Play
   Integrity later if bots appear (Turnstile is web-only — not usable from a native app).
 - **Privacy:** the reporter's email is stored only in KV keyed by issue number for notifications —
-  never written into the public issue. Disclose in the privacy policy with a removal path.
+  never written into the public issue. Every notification includes a one-click unsubscribe link
+  (tokenized `GET`/`POST /unsubscribe`) that clears the KV entry; disclosed in the privacy policy.
 - **Auth migration:** the classic `public_repo` PAT can later be swapped for a **GitHub App**
   installation token (least privilege, same bot authorship) — a change confined to the GitHub auth
   header in `src/index.js` plus setting the app key as a secret.

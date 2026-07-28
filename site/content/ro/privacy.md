@@ -52,7 +52,7 @@ Această funcție este dezactivată în mod implicit. O poți activa sau dezacti
 
 Dacă raportezi o problemă sau trimiți feedback din **Setări › Ajutor și feedback**, mesajul tău este trimis către serviciul nostru de feedback și înregistrat ca problemă în depozitul nostru public de pe GitHub. **Subiectul și descrierea pe care le scrii devin vizibile public** pe GitHub, așa că te rugăm să nu incluzi date personale.
 
-Dacă alegi să fii notificat prin e-mail, adresa pe care o furnizezi este stocată doar de serviciul nostru de feedback — nu este niciodată afișată în problema publică — și este utilizată exclusiv pentru a-ți trimite e-mailuri despre propriul tău raport. Ne poți cere să o ștergem oricând.
+Dacă alegi să fii notificat prin e-mail, adresa pe care o furnizezi este stocată doar de serviciul nostru de feedback — nu este niciodată afișată în problema publică — și este utilizată exclusiv pentru a-ți trimite e-mailuri despre propriul tău raport. Fiecare e-mail de notificare include un link de dezabonare cu un singur clic care elimină adresa stocată și, în plus, ne poți cere oricând să o ștergem.
 
 Rapoartele de probleme includ, de asemenea, un bloc scurt și nepersonal de diagnosticare: versiunea aplicației și a Android, modelul dispozitivului tău, limba aplicației, zona de preț selectată și sursa de date activă. Nu conține niciun nume, adresă de e-mail, locație sau alte informații personale.
 

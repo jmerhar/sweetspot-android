@@ -52,7 +52,7 @@ Galite pasirinkti dalintis anonimine API patikimumo statistika. Kai ši funkcija
 
 Jei pranešate apie problemą arba siunčiate atsiliepimą iš **Nustatymai › Pagalba ir atsiliepimai**, jūsų žinutė siunčiama į mūsų atsiliepimų tarnybą ir užregistruojama kaip problema mūsų viešoje GitHub saugykloje. **Jūsų parašyta tema ir aprašymas tampa viešai matomi** GitHub, todėl neįtraukite asmeninių duomenų.
 
-Jei pasirenkate, kad būtumėte informuoti el. paštu, jūsų nurodytą adresą saugo tik mūsų atsiliepimų tarnyba — jis niekada nerodomas viešoje problemoje — ir naudojamas tik tam, kad galėtume el. paštu pranešti apie jūsų pačių pranešimą. Bet kuriuo metu galite paprašyti mūsų jį ištrinti.
+Jei pasirenkate, kad būtumėte informuoti el. paštu, jūsų nurodytą adresą saugo tik mūsų atsiliepimų tarnyba — jis niekada nerodomas viešoje problemoje — ir naudojamas tik tam, kad galėtume el. paštu pranešti apie jūsų pačių pranešimą. Kiekviename pranešimų el. laiške yra vieno paspaudimo atsisakymo nuoroda, kuri pašalina išsaugotą adresą, be to, bet kuriuo metu galite paprašyti mūsų jį ištrinti.
 
 Pranešimuose apie problemas taip pat pateikiamas trumpas, neasmeninis diagnostikos blokas: programėlės ir Android versija, jūsų įrenginio modelis, programėlės kalba, pasirinkta kainų zona ir aktyvus duomenų šaltinis. Jame nėra jokio vardo, el. pašto adreso, vietos ar kitos asmeninės informacijos.
 

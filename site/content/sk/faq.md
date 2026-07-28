@@ -57,7 +57,7 @@ SweetSpot predvolene zobrazuje veľkoobchodnú **spotovú cenu**. V podporovaný
 {{< /faq >}}
 
 {{< faq question="Ako nahlásim problém alebo navrhnem funkciu?" >}}
-Otvorte **Nastavenia › Pomoc a spätná väzba** a vyberte *Nahlásiť problém* alebo *Odoslať spätnú väzbu*. Vaša správa sa odošle priamo z aplikácie — bez prehliadača alebo účtu GitHub — a stane sa verejným issue, ktoré môžeme sledovať. Voliteľne môžete zanechať e-mailovú adresu, aby ste boli upozornení na odpovede (nikdy sa nezobrazuje verejne), a sledovať stav všetkého, čo ste odoslali, v časti *Moje hlásenia*.
+Otvorte **Nastavenia › Pomoc a spätná väzba** a vyberte *Nahlásiť problém* alebo *Odoslať spätnú väzbu*. Vaša správa sa odošle priamo z aplikácie — bez prehliadača alebo účtu GitHub — a stane sa verejným issue, ktoré môžeme sledovať. Voliteľne môžete zanechať e-mailovú adresu, aby ste boli upozornení na odpovede (nikdy sa nezobrazuje verejne a každé upozornenie má odkaz na odhlásenie jedným kliknutím), a sledovať stav všetkého, čo ste odoslali, v časti *Moje hlásenia*.
 {{< /faq >}}
 
 {{< faq question="Koľko stojí SweetSpot?" >}}

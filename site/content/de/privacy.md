@@ -52,7 +52,7 @@ Diese Funktion ist standardmäßig deaktiviert. Du kannst sie jederzeit unter Ei
 
 Wenn du unter **Einstellungen › Hilfe & Feedback** ein Problem meldest oder Feedback sendest, wird deine Nachricht an unseren Feedback-Dienst gesendet und als Issue in unserem öffentlichen GitHub-Repository abgelegt. **Der von dir verfasste Betreff und die Beschreibung werden öffentlich sichtbar** auf GitHub, gib daher bitte keine persönlichen Daten an.
 
-Wenn du dich für eine Benachrichtigung per E-Mail entscheidest, wird die von dir angegebene Adresse ausschließlich von unserem Feedback-Dienst gespeichert — sie wird nie im öffentlichen Issue angezeigt — und ausschließlich verwendet, um dich über deine eigene Meldung zu informieren. Du kannst uns jederzeit bitten, sie zu löschen.
+Wenn du dich für eine Benachrichtigung per E-Mail entscheidest, wird die von dir angegebene Adresse ausschließlich von unserem Feedback-Dienst gespeichert — sie wird nie im öffentlichen Issue angezeigt — und ausschließlich verwendet, um dich über deine eigene Meldung zu informieren. Jede Benachrichtigungs-E-Mail enthält einen Ein-Klick-Abmeldelink, der die gespeicherte Adresse entfernt, und du kannst uns außerdem jederzeit bitten, sie zu löschen.
 
 Problemmeldungen enthalten außerdem einen kurzen, nicht personenbezogenen Diagnoseblock: die App- und Android-Version, dein Gerätemodell, die App-Sprache, die ausgewählte Preiszone und die aktive Datenquelle. Er enthält keinen Namen, keine E-Mail-Adresse, keinen Standort und keine anderen persönlichen Informationen.
 

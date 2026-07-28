@@ -52,7 +52,7 @@ Denne funktion er som standard deaktiveret. Du kan aktivere eller deaktivere den
 
 Hvis du rapporterer et problem eller sender feedback fra **Indstillinger › Hjælp og feedback**, sendes din besked til vores feedbacktjeneste og oprettes som en sag i vores offentlige GitHub-repository. **Emnet og beskrivelsen, du skriver, bliver offentligt synlige** på GitHub, så undlad venligst at medtage personlige oplysninger.
 
-Hvis du vælger at få besked via e-mail, gemmes den adresse, du angiver, kun af vores feedbacktjeneste — den vises aldrig i den offentlige sag — og bruges udelukkende til at sende dig e-mail om din egen rapport. Du kan når som helst bede os om at slette den.
+Hvis du vælger at få besked via e-mail, gemmes den adresse, du angiver, kun af vores feedbacktjeneste — den vises aldrig i den offentlige sag — og bruges udelukkende til at sende dig e-mail om din egen rapport. Hver notifikationsmail indeholder et afmeldingslink med ét klik, som fjerner den gemte adresse, og du kan også når som helst bede os om at slette den.
 
 Problemrapporter indeholder også en kort, upersonlig diagnostikblok: app- og Android-versionen, din enhedsmodel, appens sprog, det valgte budområde og den aktive datakilde. Den indeholder ikke navn, e-mailadresse, lokation eller andre personlige oplysninger.
 

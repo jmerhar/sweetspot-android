@@ -202,15 +202,19 @@ Hostname **`feedback.sweetspot.today`** (Workers route). Endpoints:
 ```
 Steps: validate + length caps → per-IP rate-limit via **Workers KV** → create the issue via the GitHub
 API with labels **`from-app`** + **`bug`**/**`enhancement`** → if `email` present, store
-`issue:{n} → email` in KV (opt-in only) → return `{number,url}`.
+`issue:{n} → {email, token}` in KV (opt-in only; the token backs unsubscribe) → return `{number,url}`.
 
 **`POST /webhook`** — GitHub webhook target. Verifies HMAC with `WEBHOOK_SECRET`; on issue activity not
 authored by the bot, looks up the email in KV and sends a notification via the **Brevo transactional
-API**. **`GET /`** — health check.
+API**, including a tokenized unsubscribe link. **`GET /unsubscribe?issue=N&token=…`** — a non-mutating
+confirmation page (so an email link prefetcher can't unsubscribe anyone); **`POST /unsubscribe`** (the
+form submit, or an RFC 8058 one-click `List-Unsubscribe=One-Click` body) deletes the KV entry when the
+token matches (constant-time compare). **`GET /`** — health check.
 
 **Secrets** (Worker, never in app/repo): `GITHUB_TOKEN` (bot classic `public_repo` PAT), `WEBHOOK_SECRET`,
-`BREVO_API_KEY`. **KV** holds the `issue# → email` map and rate-limit counters. Repo owner/name and label
-names are configured in `wrangler.jsonc`.
+`BREVO_API_KEY`. **KV** holds the `issue# → {email, unsubscribe token}` map and rate-limit counters (it
+also tolerates legacy bare-email entries, which simply get no unsubscribe link). Repo owner/name and
+label names are configured in `wrangler.jsonc`.
 
 ---
 
@@ -254,8 +258,15 @@ Opt-in only. The email is provided in the form and stored **only** in Worker KV 
 **never** written into the public issue (public issues get scraped). The form states this explicitly
 (`report_email_note`). Pipeline: GitHub webhook → Worker `/webhook` (HMAC-verified) → look up email by
 issue# → Brevo → email the reporter with the activity + a link to the issue. Verified end-to-end
-(DKIM/SPF/DMARC-aligned). The privacy policy should mention that a provided email is stored to notify the
-reporter and can be removed on request.
+(DKIM/SPF/DMARC-aligned).
+
+**Unsubscribe.** Each stored subscription carries a random `token` (a `crypto.randomUUID()`, the
+capability). Every notification includes an `…/unsubscribe?issue=N&token=…` link and RFC 8058 one-click
+`List-Unsubscribe` headers. `GET /unsubscribe` only renders a confirmation page (never mutates — link
+prefetchers/scanners can't unsubscribe you); the `POST` (form submit or one-click) deletes the KV entry
+after a constant-time token check, and responds identically whether or not an entry existed (no
+enumeration). The privacy policy discloses that a provided email is stored to notify the reporter and can
+be removed via the unsubscribe link in any notification (or on request).
 
 ---
 
@@ -287,7 +298,7 @@ reporter and can be removed on request.
 | Bot classic PAT (`public_repo`) — *or later* GitHub App id + private key | Worker secret (`GITHUB_TOKEN`) | 🔒 never in app/repo |
 | `WEBHOOK_SECRET` (GitHub webhook HMAC) | Worker secret | 🔒 |
 | `BREVO_API_KEY` (transactional email) | Worker secret | 🔒 |
-| `issue# → email` map, rate-limit counters | Workers KV | 🔒 (server-side, not public) |
+| `issue# → {email, unsubscribe token}` map, rate-limit counters | Workers KV | 🔒 (server-side, not public) |
 | Worker URL, repo owner/name, Play Store id, contact email, website base | baked in app (`HelpLinks`) | no |
 
 ---
@@ -320,6 +331,5 @@ reporter and can be removed on request.
 ## Possible future work
 - Migrate issue auth to a **GitHub App** (least privilege).
 - **Play Integrity** anti-abuse if spam appears.
-- Notification **unsubscribe** UX (reply STOP, or a tokenized link that clears the KV entry).
 - In-app **replies** (Worker posts a comment as the bot) — currently out of scope.
 - Website **dark-mode toggle** / `prefers-color-scheme` for direct visitors.

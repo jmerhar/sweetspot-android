@@ -57,7 +57,7 @@ Ano. V nastavení můžete sdílet svou konfiguraci — své spotřebiče, jejic
 {{< /faq >}}
 
 {{< faq question="Jak nahlásím problém nebo navrhnu funkci?" >}}
-Otevřete **Nastavení › Nápověda a zpětná vazba** a zvolte *Nahlásit problém* nebo *Odeslat zpětnou vazbu*. Vaše zpráva se odešle přímo z aplikace — bez prohlížeče nebo účtu na GitHubu — a stane se z ní veřejný požadavek, který můžeme sledovat. Volitelně můžete zanechat e-mailovou adresu, abyste byli informováni o odpovědích (nikdy se nezobrazuje veřejně), a sledovat stav všeho, co jste odeslali, v sekci *Moje hlášení*.
+Otevřete **Nastavení › Nápověda a zpětná vazba** a zvolte *Nahlásit problém* nebo *Odeslat zpětnou vazbu*. Vaše zpráva se odešle přímo z aplikace — bez prohlížeče nebo účtu na GitHubu — a stane se z ní veřejný požadavek, který můžeme sledovat. Volitelně můžete zanechat e-mailovou adresu, abyste byli informováni o odpovědích (nikdy se nezobrazuje veřejně a každé oznámení obsahuje odkaz pro odhlášení jedním kliknutím), a sledovat stav všeho, co jste odeslali, v sekci *Moje hlášení*.
 {{< /faq >}}
 
 {{< faq question="Kolik stojí SweetSpot?" >}}

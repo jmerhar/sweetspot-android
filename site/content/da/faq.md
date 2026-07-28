@@ -57,7 +57,7 @@ Ja. I indstillingerne kan du dele din opsætning — dine apparater, deres rækk
 {{< /faq >}}
 
 {{< faq question="Hvordan rapporterer jeg et problem eller foreslår en funktion?" >}}
-Åbn **Indstillinger › Hjælp og feedback**, og vælg *Rapportér et problem* eller *Send feedback*. Din besked sendes direkte fra appen — uden browser eller GitHub-konto — og bliver til en offentlig sag, som vi kan følge. Du kan valgfrit angive en e-mailadresse for at få besked om svar (den vises aldrig offentligt) og følge status på alt, hvad du har sendt, under *Mine rapporter*.
+Åbn **Indstillinger › Hjælp og feedback**, og vælg *Rapportér et problem* eller *Send feedback*. Din besked sendes direkte fra appen — uden browser eller GitHub-konto — og bliver til en offentlig sag, som vi kan følge. Du kan valgfrit angive en e-mailadresse for at få besked om svar (den vises aldrig offentligt, og hver notifikation har et afmeldingslink med ét klik) og følge status på alt, hvad du har sendt, under *Mine rapporter*.
 {{< /faq >}}
 
 {{< faq question="Hvad koster SweetSpot?" >}}

@@ -52,7 +52,7 @@ Jūs varat izvēlēties kopīgot anonīmu API uzticamības statistiku. Kad šī 
 
 Ja ziņo par problēmu vai sūti atsauksmi no sadaļas **Iestatījumi › Palīdzība un atsauksmes**, tavs ziņojums tiek nosūtīts mūsu atsauksmju pakalpojumam un reģistrēts kā pieteikums mūsu publiskajā GitHub repozitorijā. **Tavs uzrakstītais temats un apraksts kļūst publiski redzami** GitHub, tāpēc, lūdzu, neiekļauj personiskus datus.
 
-Ja izvēlies saņemt paziņojumus pa e-pastu, tava norādītā adrese tiek glabāta tikai mūsu atsauksmju pakalpojumā — tā nekad netiek rādīta publiskajā pieteikumā — un tiek izmantota tikai, lai sūtītu tev e-pastus par tavu paša ziņojumu. Tu jebkurā laikā vari lūgt to dzēst.
+Ja izvēlies saņemt paziņojumus pa e-pastu, tava norādītā adrese tiek glabāta tikai mūsu atsauksmju pakalpojumā — tā nekad netiek rādīta publiskajā pieteikumā — un tiek izmantota tikai, lai sūtītu tev e-pastus par tavu paša ziņojumu. Katrs paziņojuma e-pasts ietver viena klikšķa atrakstīšanās saiti, kas noņem saglabāto adresi, un tu jebkurā laikā vari arī lūgt mums to dzēst.
 
 Problēmu ziņojumi ietver arī īsu, nepersonisku diagnostikas bloku: lietotnes un Android versiju, tavas ierīces modeli, lietotnes valodu, izvēlēto cenu zonu un aktīvo datu avotu. Tas nesatur vārdu, e-pasta adresi, atrašanās vietu vai citu personisko informāciju.
 

@@ -57,7 +57,7 @@ Kyllä. Asetuksissa voit jakaa kokoonpanosi — laitteesi, niiden järjestyksen 
 {{< /faq >}}
 
 {{< faq question="Miten ilmoitan ongelmasta tai ehdotan ominaisuutta?" >}}
-Avaa **Asetukset › Ohje ja palaute** ja valitse *Ilmoita ongelmasta* tai *Lähetä palautetta*. Viestisi lähetetään suoraan sovelluksesta — selainta tai GitHub-tiliä ei tarvita — ja siitä tulee julkinen ilmoitus, jota voimme seurata. Voit halutessasi jättää sähköpostiosoitteen saadaksesi ilmoituksen vastauksista (sitä ei koskaan näytetä julkisesti), ja seurata kaiken lähettämäsi tilaa kohdassa *Omat ilmoitukseni*.
+Avaa **Asetukset › Ohje ja palaute** ja valitse *Ilmoita ongelmasta* tai *Lähetä palautetta*. Viestisi lähetetään suoraan sovelluksesta — selainta tai GitHub-tiliä ei tarvita — ja siitä tulee julkinen ilmoitus, jota voimme seurata. Voit halutessasi jättää sähköpostiosoitteen saadaksesi ilmoituksen vastauksista (sitä ei koskaan näytetä julkisesti, ja jokaisessa ilmoituksessa on yhden napsautuksen peruutuslinkki), ja seurata kaiken lähettämäsi tilaa kohdassa *Omat ilmoitukseni*.
 {{< /faq >}}
 
 {{< faq question="Paljonko SweetSpot maksaa?" >}}

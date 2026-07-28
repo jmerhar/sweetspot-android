@@ -52,7 +52,7 @@ See funktsioon on vaikimisi keelatud. Saad selle igal ajal sisse või välja lü
 
 Kui teatad probleemist või saadad tagasisidet jaotisest **Seaded › Abi ja tagasiside**, saadetakse sinu sõnum meie tagasisideteenusesse ja esitatakse teemana meie avalikus GitHubi hoidlas. **Sinu kirjutatud pealkiri ja kirjeldus muutuvad GitHubis avalikult nähtavaks**, seega palun ära lisa sinna isiklikke andmeid.
 
-Kui valid e-posti teel teavitamise, salvestab sisestatud aadressi ainult meie tagasisideteenus — seda ei kuvata kunagi avalikus teemas — ja seda kasutatakse ainult selleks, et saata sulle e-kirju sinu enda teate kohta. Võid meilt igal ajal paluda selle kustutamist.
+Kui valid e-posti teel teavitamise, salvestab sisestatud aadressi ainult meie tagasisideteenus — seda ei kuvata kunagi avalikus teemas — ja seda kasutatakse ainult selleks, et saata sulle e-kirju sinu enda teate kohta. Iga teavitus-e-kiri sisaldab ühe klõpsuga loobumislinki, mis eemaldab salvestatud aadressi, ja soovi korral võid meilt igal ajal paluda ka selle kustutamist.
 
 Probleemiteated sisaldavad ka lühikest, mitteisiklikku diagnostikaplokki: rakenduse ja Androidi versioon, sinu seadme mudel, rakenduse keel, valitud hinnatsoon ja aktiivne andmeallikas. See ei sisalda nime, e-posti aadressi, asukohta ega muid isikuandmeid.
 

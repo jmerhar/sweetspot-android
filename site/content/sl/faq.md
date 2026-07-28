@@ -57,7 +57,7 @@ Da. V nastavitvah lahko delite svojo konfiguracijo — svoje aparate, njihov vrs
 {{< /faq >}}
 
 {{< faq question="Kako prijavim težavo ali predlagam funkcijo?" >}}
-Odprite **Nastavitve › Pomoč in povratne informacije** ter izberite *Prijavi težavo* ali *Pošlji povratne informacije*. Vaše sporočilo se pošlje neposredno iz aplikacije — brez brskalnika ali računa GitHub — in postane javna prijava, ki jo lahko spremljamo. Neobvezno lahko pustite e-poštni naslov, da vas obvestimo o odgovorih (ta nikoli ni javno prikazan), stanje vsega, kar ste poslali, pa spremljate pod *Moje prijave*.
+Odprite **Nastavitve › Pomoč in povratne informacije** ter izberite *Prijavi težavo* ali *Pošlji povratne informacije*. Vaše sporočilo se pošlje neposredno iz aplikacije — brez brskalnika ali računa GitHub — in postane javna prijava, ki jo lahko spremljamo. Neobvezno lahko pustite e-poštni naslov, da vas obvestimo o odgovorih (ta nikoli ni javno prikazan, vsako obvestilo pa vključuje povezavo za odjavo z enim klikom), stanje vsega, kar ste poslali, pa spremljate pod *Moje prijave*.
 {{< /faq >}}
 
 {{< faq question="Koliko stane SweetSpot?" >}}

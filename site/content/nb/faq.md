@@ -57,7 +57,7 @@ Ja. I innstillingene kan du dele oppsettet ditt — apparatene dine, rekkefølge
 {{< /faq >}}
 
 {{< faq question="Hvordan melder jeg fra om et problem eller foreslår en funksjon?" >}}
-Åpne **Innstillinger › Hjelp og tilbakemelding** og velg *Meld fra om et problem* eller *Send tilbakemelding*. Meldingen din sendes direkte fra appen — ingen nettleser eller GitHub-konto er nødvendig — og blir en offentlig sak vi kan følge opp. Du kan eventuelt oppgi en e-postadresse for å bli varslet om svar (den vises aldri offentlig), og følge statusen til alt du har sendt inn under *Mine meldinger*.
+Åpne **Innstillinger › Hjelp og tilbakemelding** og velg *Meld fra om et problem* eller *Send tilbakemelding*. Meldingen din sendes direkte fra appen — ingen nettleser eller GitHub-konto er nødvendig — og blir en offentlig sak vi kan følge opp. Du kan eventuelt oppgi en e-postadresse for å bli varslet om svar (den vises aldri offentlig, og hver varsling har en avmeldingslenke med ett klikk), og følge statusen til alt du har sendt inn under *Mine meldinger*.
 {{< /faq >}}
 
 {{< faq question="Hva koster SweetSpot?" >}}

@@ -57,7 +57,7 @@ Taip. Nustatymuose galite bendrinti savo sąranką — savo prietaisus, jų tvar
 {{< /faq >}}
 
 {{< faq question="Kaip pranešti apie problemą ar pasiūlyti funkciją?" >}}
-Atidarykite **Nustatymai › Pagalba ir atsiliepimai** ir pasirinkite *Pranešti apie problemą* arba *Siųsti atsiliepimą*. Jūsų žinutė pateikiama tiesiai iš programėlės — nereikia naršyklės ar GitHub paskyros — ir tampa vieša problema, kurią galime stebėti. Neprivalomai galite palikti el. pašto adresą, kad būtumėte informuoti apie atsakymus (jis niekada nerodomas viešai), ir sekti visko, ką išsiuntėte, būseną skiltyje *Mano pranešimai*.
+Atidarykite **Nustatymai › Pagalba ir atsiliepimai** ir pasirinkite *Pranešti apie problemą* arba *Siųsti atsiliepimą*. Jūsų žinutė pateikiama tiesiai iš programėlės — nereikia naršyklės ar GitHub paskyros — ir tampa vieša problema, kurią galime stebėti. Neprivalomai galite palikti el. pašto adresą, kad būtumėte informuoti apie atsakymus (jis niekada nerodomas viešai, o kiekviename pranešime yra vieno paspaudimo atsisakymo nuoroda), ir sekti visko, ką išsiuntėte, būseną skiltyje *Mano pranešimai*.
 {{< /faq >}}
 
 {{< faq question="Kiek kainuoja SweetSpot?" >}}

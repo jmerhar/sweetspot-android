@@ -52,7 +52,7 @@ Ez a funkció alapértelmezetten ki van kapcsolva. Bármikor be- vagy kikapcsolh
 
 Ha problémát jelent vagy visszajelzést küld a **Beállítások › Súgó és visszajelzés** menüpontból, az üzenete a visszajelzési szolgáltatásunkhoz kerül elküldésre, és egy témaként rögzítjük a nyilvános GitHub-tárolónkban. **Az Ön által írt tárgy és leírás nyilvánosan láthatóvá válik** a GitHubon, ezért kérjük, ne tüntessen fel személyes adatokat.
 
-Ha az e-mailben történő értesítést választja, a megadott címet kizárólag a visszajelzési szolgáltatásunk tárolja — az soha nem jelenik meg a nyilvános témában —, és kizárólag arra használjuk, hogy e-mailben tájékoztassuk Önt a saját jelentéséről. Bármikor kérheti annak törlését.
+Ha az e-mailben történő értesítést választja, a megadott címet kizárólag a visszajelzési szolgáltatásunk tárolja — az soha nem jelenik meg a nyilvános témában —, és kizárólag arra használjuk, hogy e-mailben tájékoztassuk Önt a saját jelentéséről. Minden értesítő e-mail tartalmaz egy egykattintásos leiratkozási hivatkozást, amely eltávolítja a tárolt címet, és annak törlését bármikor kérheti tőlünk is.
 
 A problémajelentések tartalmaznak egy rövid, nem személyes diagnosztikai blokkot is: az alkalmazás és az Android verzióját, az eszköz modelljét, az alkalmazás nyelvét, a kiválasztott árzónát és az aktív adatforrást. Nem tartalmaz nevet, e-mail-címet, helymeghatározást vagy egyéb személyes információt.
 

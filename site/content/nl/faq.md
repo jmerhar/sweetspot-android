@@ -57,7 +57,7 @@ Ja. In de instellingen kun je je configuratie delen — je apparaten, hun volgor
 {{< /faq >}}
 
 {{< faq question="Hoe meld ik een probleem of stel ik een functie voor?" >}}
-Open **Instellingen › Help en feedback** en kies *Een probleem melden* of *Feedback sturen*. Je bericht wordt rechtstreeks vanuit de app verzonden — geen browser of GitHub-account nodig — en wordt een openbare issue die we kunnen volgen. Je kunt optioneel een e-mailadres achterlaten om op de hoogte te worden gebracht van reacties (het wordt nooit openbaar getoond), en de status van alles wat je hebt gestuurd volgen onder *Mijn meldingen*.
+Open **Instellingen › Help en feedback** en kies *Een probleem melden* of *Feedback sturen*. Je bericht wordt rechtstreeks vanuit de app verzonden — geen browser of GitHub-account nodig — en wordt een openbare issue die we kunnen volgen. Je kunt optioneel een e-mailadres achterlaten om op de hoogte te worden gebracht van reacties (het wordt nooit openbaar getoond, en elke notificatie heeft een afmeldlink met één klik), en de status van alles wat je hebt gestuurd volgen onder *Mijn meldingen*.
 {{< /faq >}}
 
 {{< faq question="Hoeveel kost SweetSpot?" >}}

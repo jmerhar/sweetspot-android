@@ -12,7 +12,7 @@
   // account; `wrangler deploy` provisions the custom-domain record.
   "routes": [{ "pattern": "feedback.sweetspot.today", "custom_domain": true }],
 
-  // Rate-limit counters + opt-in {issue -> email} map. Replace the id after `wrangler kv namespace create`.
+  // Rate-limit counters + opt-in {issue -> {email, unsubscribe token}} map. Replace the id after `wrangler kv namespace create`.
   "kv_namespaces": [{ "binding": "FEEDBACK_KV", "id": "0399c4773fe54c3dabcc6b9cc9007c46" }],
 
   // Non-secret config. Change the sender/limits here without touching code.

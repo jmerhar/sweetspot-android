@@ -52,7 +52,7 @@ Esta función está desactivada por defecto. Puedes activarla o desactivarla en 
 
 Si informas de un problema o envías comentarios desde **Ajustes › Ayuda y comentarios**, tu mensaje se envía a nuestro servicio de comentarios y se registra como un issue en nuestro repositorio público de GitHub. **El asunto y la descripción que escribas se hacen públicamente visibles** en GitHub, así que no incluyas datos personales.
 
-Si eliges recibir notificaciones por correo electrónico, la dirección que proporciones se almacena únicamente en nuestro servicio de comentarios — nunca se muestra en el issue público — y se utiliza exclusivamente para enviarte correos sobre tu propio informe. Puedes pedirnos que la eliminemos en cualquier momento.
+Si eliges recibir notificaciones por correo electrónico, la dirección que proporciones se almacena únicamente en nuestro servicio de comentarios — nunca se muestra en el issue público — y se utiliza exclusivamente para enviarte correos sobre tu propio informe. Cada correo de notificación incluye un enlace de cancelación de suscripción con un solo clic que elimina la dirección almacenada, y también puedes pedirnos que la eliminemos en cualquier momento.
 
 Los informes de problemas también incluyen un breve bloque de diagnóstico no personal: la versión de la aplicación y de Android, el modelo de tu dispositivo, el idioma de la aplicación, la zona de oferta seleccionada y la fuente de datos activa. No contiene ningún nombre, dirección de correo electrónico, ubicación ni otra información personal.
 

@@ -52,7 +52,7 @@ Tato funkce je ve výchozím stavu vypnutá. Můžete ji zapnout nebo vypnout kd
 
 Pokud nahlásíte problém nebo odešlete zpětnou vazbu z **Nastavení › Nápověda a zpětná vazba**, vaše zpráva se odešle naší službě zpětné vazby a založí se jako požadavek v našem veřejném repozitáři na GitHubu. **Předmět a popis, které napíšete, se stanou veřejně viditelnými** na GitHubu, proto prosím neuvádějte osobní údaje.
 
-Pokud si zvolíte, že chcete být informováni e-mailem, adresa, kterou uvedete, je uložena pouze naší službou zpětné vazby — nikdy se nezobrazuje ve veřejném požadavku — a slouží výhradně k tomu, abychom vám napsali o vašem vlastním hlášení. Můžete nás kdykoli požádat o její smazání.
+Pokud si zvolíte, že chcete být informováni e-mailem, adresa, kterou uvedete, je uložena pouze naší službou zpětné vazby — nikdy se nezobrazuje ve veřejném požadavku — a slouží výhradně k tomu, abychom vám napsali o vašem vlastním hlášení. Každý e-mail s oznámením obsahuje odkaz pro odhlášení jedním kliknutím, který uloženou adresu odstraní, a rovněž nás můžete kdykoli požádat o její smazání.
 
 Hlášení problémů také obsahují krátký, neosobní diagnostický blok: verzi aplikace a systému Android, model vašeho zařízení, jazyk aplikace, vybranou cenovou zónu a aktivní zdroj dat. Neobsahuje žádné jméno, e-mailovou adresu, polohu ani jiné osobní údaje.
 

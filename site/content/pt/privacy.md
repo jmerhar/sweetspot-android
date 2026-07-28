@@ -52,7 +52,7 @@ Esta funcionalidade está desativada por predefinição. Pode ativá-la ou desat
 
 Se comunicar um problema ou enviar comentários a partir de **Definições › Ajuda e comentários**, a sua mensagem é enviada ao nosso serviço de comentários e registada como um pedido no nosso repositório público do GitHub. **O assunto e a descrição que escrever tornam-se publicamente visíveis** no GitHub, por isso não inclua dados pessoais.
 
-Se optar por ser notificado por e-mail, o endereço que fornecer é armazenado apenas pelo nosso serviço de comentários — nunca é mostrado no pedido público — e é utilizado exclusivamente para lhe enviar informações sobre o seu próprio relatório. Pode pedir-nos que o eliminemos a qualquer momento.
+Se optar por ser notificado por e-mail, o endereço que fornecer é armazenado apenas pelo nosso serviço de comentários — nunca é mostrado no pedido público — e é utilizado exclusivamente para lhe enviar informações sobre o seu próprio relatório. Todos os e-mails de notificação incluem uma ligação de cancelamento de subscrição com um clique que remove o endereço armazenado, e também pode pedir-nos que o eliminemos a qualquer momento.
 
 Os relatórios de problemas incluem também um pequeno bloco de diagnóstico não pessoal: a versão da aplicação e do Android, o modelo do seu dispositivo, o idioma da aplicação, a zona de preços selecionada e a fonte de dados ativa. Não contém nome, endereço de e-mail, localização ou qualquer outra informação pessoal.
 

@@ -52,7 +52,7 @@ Ova značajka je prema zadanim postavkama isključena. Možete je uključiti ili
 
 Ako prijavite problem ili pošaljete povratnu informaciju iz izbornika **Postavke › Pomoć i povratne informacije**, vaša se poruka šalje našoj usluzi za povratne informacije i evidentira kao upit u našem javnom GitHub repozitoriju. **Naslov i opis koje napišete postaju javno vidljivi** na GitHubu, stoga nemojte uključivati osobne podatke.
 
-Ako se odlučite za obavijesti e-mailom, adresa koju navedete pohranjuje se samo kod naše usluge za povratne informacije — nikad se ne prikazuje u javnom upitu — i koristi se isključivo za slanje e-pošte o vašem vlastitom upitu. Možete zatražiti njezino brisanje u bilo kojem trenutku.
+Ako se odlučite za obavijesti e-mailom, adresa koju navedete pohranjuje se samo kod naše usluge za povratne informacije — nikad se ne prikazuje u javnom upitu — i koristi se isključivo za slanje e-pošte o vašem vlastitom upitu. Svaka obavijest e-mailom sadrži poveznicu za odjavu jednim klikom koja uklanja pohranjenu adresu, a njezino brisanje možete zatražiti i u bilo kojem trenutku.
 
 Prijave problema također uključuju kratak, neosobni dijagnostički blok: verziju aplikacije i Androida, model vašeg uređaja, jezik aplikacije, odabranu cjenovnu zonu i aktivni izvor podataka. Ne sadrži ime, e-mail adresu, lokaciju ni druge osobne podatke.
 

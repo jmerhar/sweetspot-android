@@ -52,7 +52,7 @@ Denna funktion är inaktiverad som standard. Du kan aktivera eller inaktivera de
 
 Om du rapporterar ett problem eller skickar feedback från **Inställningar › Hjälp och feedback** skickas ditt meddelande till vår feedbacktjänst och registreras som ett ärende i vårt offentliga GitHub-repository. **Rubriken och beskrivningen du skriver blir offentligt synliga** på GitHub, så inkludera inga personuppgifter.
 
-Om du väljer att bli aviserad via e-post lagras adressen du anger endast av vår feedbacktjänst — den visas aldrig i det offentliga ärendet — och används enbart för att mejla dig om din egen rapport. Du kan när som helst be oss radera den.
+Om du väljer att bli aviserad via e-post lagras adressen du anger endast av vår feedbacktjänst — den visas aldrig i det offentliga ärendet — och används enbart för att mejla dig om din egen rapport. Varje aviseringsmejl innehåller en avregistreringslänk med ett klick som tar bort den lagrade adressen, och du kan även när som helst be oss radera den.
 
 Problemrapporter innehåller också ett kort, opersonligt diagnostikblock: app- och Android-versionen, din enhetsmodell, appspråket, det valda elområdet och den aktiva datakällan. Det innehåller inget namn, ingen e-postadress, ingen plats eller annan personlig information.
 

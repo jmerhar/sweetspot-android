@@ -52,7 +52,7 @@ Funkcja ta jest domyślnie wyłączona. Możesz ją włączyć lub wyłączyć w
 
 Jeśli zgłosisz problem lub wyślesz opinię z poziomu **Ustawienia › Pomoc i opinie**, Twoja wiadomość jest wysyłana do naszego serwisu opinii i zapisywana jako zgłoszenie w naszym publicznym repozytorium GitHub. **Wpisany przez Ciebie temat i opis stają się publicznie widoczne** na GitHubie, dlatego prosimy nie zamieszczać w nich danych osobowych.
 
-Jeśli zdecydujesz się na powiadomienia e-mail, podany adres jest przechowywany wyłącznie przez nasz serwis opinii — nigdy nie jest pokazywany w publicznym zgłoszeniu — i służy jedynie do wysyłania Ci wiadomości dotyczących Twojego zgłoszenia. W dowolnym momencie możesz poprosić o jego usunięcie.
+Jeśli zdecydujesz się na powiadomienia e-mail, podany adres jest przechowywany wyłącznie przez nasz serwis opinii — nigdy nie jest pokazywany w publicznym zgłoszeniu — i służy jedynie do wysyłania Ci wiadomości dotyczących Twojego zgłoszenia. Każde powiadomienie e-mail zawiera link do wypisania się jednym kliknięciem, który usuwa zapisany adres, a w dowolnym momencie możesz też poprosić nas o jego usunięcie.
 
 Zgłoszenia problemów zawierają również krótki, nieosobowy blok diagnostyczny: wersję aplikacji i Androida, model Twojego urządzenia, język aplikacji, wybraną strefę cenową oraz aktywne źródło danych. Nie zawiera on imienia, adresu e-mail, lokalizacji ani innych danych osobowych.
 

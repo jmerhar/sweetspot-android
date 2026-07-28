@@ -52,7 +52,7 @@ Questa funzione è disabilitata per impostazione predefinita. Puoi abilitarla o 
 
 Se segnali un problema o invii feedback da **Impostazioni › Aiuto e feedback**, il tuo messaggio viene inviato al nostro servizio di feedback e archiviato come segnalazione nel nostro repository GitHub pubblico. **L'oggetto e la descrizione che scrivi diventano visibili pubblicamente** su GitHub, quindi ti preghiamo di non includere dati personali.
 
-Se scegli di essere avvisato via email, l'indirizzo che fornisci viene conservato solo dal nostro servizio di feedback — non viene mai mostrato nella segnalazione pubblica — e viene utilizzato esclusivamente per inviarti email relative alla tua segnalazione. Puoi chiederci di eliminarlo in qualsiasi momento.
+Se scegli di essere avvisato via email, l'indirizzo che fornisci viene conservato solo dal nostro servizio di feedback — non viene mai mostrato nella segnalazione pubblica — e viene utilizzato esclusivamente per inviarti email relative alla tua segnalazione. Ogni email di notifica include un link di annullamento dell'iscrizione con un clic che rimuove l'indirizzo conservato, e puoi comunque chiederci di eliminarlo in qualsiasi momento.
 
 Le segnalazioni di problemi includono anche un breve blocco diagnostico non personale: la versione dell'app e di Android, il modello del tuo dispositivo, la lingua dell'app, la zona di prezzo selezionata e la fonte di dati attiva. Non contiene nome, indirizzo email, posizione né altre informazioni personali.
 

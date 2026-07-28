@@ -52,7 +52,7 @@ Ta funkcija je privzeto onemogočena. Kadarkoli jo lahko omogočite ali onemogo�
 
 Če prijavite težavo ali pošljete povratne informacije prek **Nastavitve › Pomoč in povratne informacije**, se vaše sporočilo pošlje naši storitvi za povratne informacije in vloži kot prijava v našem javnem repozitoriju GitHub. **Naslov in opis, ki ju napišete, postaneta javno vidna** na GitHubu, zato ne vključujte osebnih podatkov.
 
-Če se odločite za obveščanje po e-pošti, se naslov, ki ga navedete, shrani le pri naši storitvi za povratne informacije — nikoli ni prikazan v javni prijavi — in se uporablja izključno za obveščanje o vaši lastni prijavi. Kadarkoli lahko zahtevate njegov izbris.
+Če se odločite za obveščanje po e-pošti, se naslov, ki ga navedete, shrani le pri naši storitvi za povratne informacije — nikoli ni prikazan v javni prijavi — in se uporablja izključno za obveščanje o vaši lastni prijavi. Vsako obvestilo po e-pošti vključuje povezavo za odjavo z enim klikom, ki shranjeni naslov odstrani, poleg tega pa lahko kadarkoli zahtevate njegov izbris.
 
 Prijave težav vključujejo tudi kratek, neoseben diagnostični blok: različico aplikacije in Androida, model vaše naprave, jezik aplikacije, izbrano cenovno območje in aktivni podatkovni vir. Ne vsebuje imena, e-poštnega naslova, lokacije ali drugih osebnih podatkov.
 

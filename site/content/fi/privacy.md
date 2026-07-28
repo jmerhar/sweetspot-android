@@ -52,7 +52,7 @@ Tämä toiminto on oletuksena pois käytöstä. Voit ottaa sen käyttöön tai p
 
 Jos ilmoitat ongelmasta tai lähetät palautetta kohdasta **Asetukset › Ohje ja palaute**, viestisi lähetetään palautepalveluumme ja kirjataan ilmoituksena julkiseen GitHub-arkistoomme. **Kirjoittamasi otsikko ja kuvaus tulevat julkisesti näkyviin** GitHubissa, joten älä sisällytä niihin henkilötietoja.
 
-Jos valitset ilmoitukset sähköpostitse, antamasi osoite tallennetaan vain palautepalveluumme — sitä ei koskaan näytetä julkisessa ilmoituksessa — ja sitä käytetään ainoastaan sähköpostien lähettämiseen omasta ilmoituksestasi. Voit pyytää meitä poistamaan sen milloin tahansa.
+Jos valitset ilmoitukset sähköpostitse, antamasi osoite tallennetaan vain palautepalveluumme — sitä ei koskaan näytetä julkisessa ilmoituksessa — ja sitä käytetään ainoastaan sähköpostien lähettämiseen omasta ilmoituksestasi. Jokainen ilmoitussähköposti sisältää yhden napsautuksen peruutuslinkin, joka poistaa tallennetun osoitteen, ja voit myös pyytää meitä poistamaan sen milloin tahansa.
 
 Ongelmailmoitukset sisältävät myös lyhyen, ei-henkilökohtaisen diagnostiikkalohkon: sovelluksen ja Android-version, laitemallisi, sovelluksen kielen, valitun tarjousalueen ja aktiivisen tietolähteen. Se ei sisällä nimeä, sähköpostiosoitetta, sijaintia tai muita henkilötietoja.
 

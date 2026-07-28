@@ -52,7 +52,7 @@ Deze functie is standaard uitgeschakeld. Je kunt het op elk moment in- of uitsch
 
 Als je een probleem meldt of feedback stuurt via **Instellingen › Help en feedback**, wordt je bericht naar onze feedbackdienst gestuurd en als issue in onze openbare GitHub-repository geplaatst. **Het onderwerp en de beschrijving die je schrijft worden openbaar zichtbaar** op GitHub, dus vermeld geen persoonlijke gegevens.
 
-Als je ervoor kiest om per e-mail op de hoogte te worden gebracht, wordt het opgegeven adres alleen door onze feedbackdienst bewaard — het wordt nooit in de openbare issue getoond — en uitsluitend gebruikt om je over je eigen melding te e-mailen. Je kunt ons op elk moment vragen het te verwijderen.
+Als je ervoor kiest om per e-mail op de hoogte te worden gebracht, wordt het opgegeven adres alleen door onze feedbackdienst bewaard — het wordt nooit in de openbare issue getoond — en uitsluitend gebruikt om je over je eigen melding te e-mailen. Elke notificatie-e-mail bevat een afmeldlink met één klik die het opgeslagen adres verwijdert, en je kunt ons ook op elk moment vragen het te verwijderen.
 
 Probleemmeldingen bevatten ook een kort, niet-persoonlijk diagnostisch blok: de app- en Android-versie, je apparaatmodel, de app-taal, de geselecteerde biedingszone en de actieve databron. Het bevat geen naam, e-mailadres, locatie of andere persoonlijke informatie.
 

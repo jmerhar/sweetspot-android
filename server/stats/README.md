@@ -5,6 +5,35 @@ InfluxDB 3 Core, behind Apache + Cloudflare) on a home server. Deploy updates wi
 `make deploy-stats` (`bin/deploy-stats.sh`). Architecture overview: `CLAUDE.md` → "Stats Backend &
 Monitoring". (The report/feedback Cloudflare Worker is separate — see `../feedback-worker/`.)
 
+## Current deployment (aurora)
+
+The live setup, so it doesn't have to be rediscovered:
+
+- **Endpoint**: `stats.php` deployed to `aurora:/var/www/stats.sweetspot.today/` (with `clear-rate-limit.sh`
+  and an `.htaccess` holding `SetEnv INFLUX_TOKEN` + `SetEnv KUMA_PUSH_URL`). Push app changes with
+  `make deploy-stats`.
+- **InfluxDB** runs as a **Docker container** named `influxdb` (image `influxdb:3-enterprise`) via
+  `docker compose` in **`aurora:/opt/monitoring/`** (that stack also runs Grafana, an InfluxDB UI
+  `influxdb_ui`, node-red, mosquitto, n8n). The DB is `sweetspot`, measurement `api_fetch`. The write/query
+  token is at `aurora:/opt/monitoring/secrets/influxdb_token`. `influxdb3` is **not** on the host PATH — run
+  it inside the container (see below).
+- **Verify ingestion end-to-end** with a single test-marked POST — a `200 {"ok":true,...}` is returned
+  **only after** InfluxDB acknowledges the write with `204` (`stats.php` gates the 200 on the write result),
+  so an `ok` response *is* proof the row landed:
+  ```bash
+  curl -s -X POST https://stats.sweetspot.today/report -H 'Content-Type: application/json' \
+    -d "{\"v\":1,\"app\":\"0.0.0\",\"records\":[{\"z\":\"ZZ\",\"s\":\"test\",\"d\":\"phone\",\"r\":[{\"t\":$(date +%s),\"ok\":true}]}]}"
+  # -> {"ok":true,"records":1}   (source=test / zone=ZZ / app=0.0.0 → auto-excluded from dashboards)
+  ```
+- **Query InfluxDB** (read-only) via the container + token file:
+  ```bash
+  ssh aurora 'docker exec influxdb influxdb3 query --database sweetspot \
+    --token "$(cat /opt/monitoring/secrets/influxdb_token)" \
+    "SELECT time, zone, source, device, outcome FROM api_fetch WHERE source = '"'"'test'"'"' ORDER BY time DESC LIMIT 5"'
+  ```
+  `api_fetch` fields: `time, zone, source, device, app, outcome` (ok/fail — **not** `success`), `error`,
+  `status`, `duration_ms`, `lang`, `count`. Dashboard/prod queries use `WHERE source != 'test'`.
+
 ## Prerequisites
 
 - Debian/Ubuntu server with root access
@@ -151,11 +180,14 @@ curl -s -X POST https://stats.sweetspot.today/report \
 
 Expected response: `{"ok":true,"records":1}`
 
-Verify the data landed in InfluxDB:
+Verify the data landed in InfluxDB (bare-binary install):
 
 ```bash
 influxdb3 query --database=sweetspot "SELECT * FROM api_fetch ORDER BY time DESC LIMIT 5"
 ```
+
+(On the aurora deployment InfluxDB is containerized — use the container query command in
+[Current deployment](#current-deployment-aurora) instead.)
 
 ## 7. Grafana (optional)
 

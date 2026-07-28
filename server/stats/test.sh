@@ -7,7 +7,7 @@
 #   ./test.sh http://localhost/report       # test against a local instance
 #
 # Before running, clear the rate limiter on the server:
-#   ssh yourserver server/clear-rate-limit.sh
+#   ssh yourserver server/stats/clear-rate-limit.sh
 #
 set -euo pipefail
 

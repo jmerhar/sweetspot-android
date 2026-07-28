@@ -1,6 +1,9 @@
-# Server Setup Guide
+# SweetSpot Stats Endpoint — Server Setup
 
-Step-by-step guide for deploying the SweetSpot stats endpoint on a home server.
+Step-by-step guide for deploying the SweetSpot API-reliability stats endpoint (`stats.php` →
+InfluxDB 3 Core, behind Apache + Cloudflare) on a home server. Deploy updates with
+`make deploy-stats` (`bin/deploy-stats.sh`). Architecture overview: `CLAUDE.md` → "Stats Backend &
+Monitoring". (The report/feedback Cloudflare Worker is separate — see `../feedback-worker/`.)
 
 ## Prerequisites
 
@@ -69,11 +72,16 @@ sudo apache2ctl configtest
 sudo systemctl reload apache2
 ```
 
-The `INFLUX_TOKEN` environment variable must be set for the Apache/PHP process.
-Add it to the Apache envvars or the vhost config:
+`stats.php` reads two environment variables: **`INFLUX_TOKEN`** (required — InfluxDB write auth) and
+**`KUMA_PUSH_URL`** (optional — the Uptime Kuma push-monitor heartbeat URL; when set, `stats.php` pings
+it after every successful InfluxDB write). Provide them with `SetEnv` in the webroot `.htaccess` — it's
+read per request, so changes take effect without an Apache reload. **Do not commit this file** (it holds
+the token):
 
-```bash
-echo 'export INFLUX_TOKEN="your-token-here"' | sudo tee -a /etc/apache2/envvars
+```apache
+# /var/www/stats.sweetspot.today/.htaccess
+SetEnv INFLUX_TOKEN "your-influxdb-token"
+SetEnv KUMA_PUSH_URL "https://uptime.example.com/api/push/XXXXXXXX"   # optional
 ```
 
 ## 5. InfluxDB 3 Core
@@ -162,8 +170,8 @@ sudo systemctl enable --now grafana-server
 Then at `http://your-server:3000` (default admin/admin):
 
 1. **Connections → Data sources → Add data source → InfluxDB**
-   - Query language: **InfluxQL** (or SQL if supported by your Grafana InfluxDB plugin version)
-   - URL: `http://localhost:8086`
+   - Query language: **SQL** (InfluxDB 3 Core's query API is SQL; the committed dashboard uses SQL)
+   - URL: `http://localhost:8181` (InfluxDB 3 Core — **not** 8086, which is the InfluxDB 2.x default)
    - Database: `sweetspot`
 2. **Dashboards → Import → Upload JSON file** → select `grafana-dashboard.json`
 

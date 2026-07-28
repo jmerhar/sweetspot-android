@@ -44,14 +44,14 @@ Watch App                    Phone App                       Home Server
 
 - **`WearViewModel`** — Reads `stats_enabled` from phone via Data Layer. Conditionally instruments fetchers. After each fetch, encodes stats to binary and pushes to `/stats` Data Layer path. Awaits `putDataItem` before clearing local stats to prevent data loss.
 
-### Server (`server/`)
+### Server (`server/stats/`)
 
 - **`stats.php`** — PHP 7.4+ ingestion endpoint. Validates JSON payload, rate-limits per IP (1 req/5 min), sanitises all input with regex whitelists, writes to InfluxDB 3 Core via line protocol (`/api/v3/write_lp`). Behind Apache with Cloudflare proxy.
 - **`stats.sweetspot.today.conf`** — Apache vhost with `RewriteRule /report → stats.php`.
 - **`grafana-dashboard.json`** — 7-panel dashboard: success rate by source, failures by error, requests by zone, failure heatmap by hour, reliability table, phone vs watch, app versions. Uses FlightSQL data source with SQL queries.
 - **`test.sh`** — 14 endpoint tests (1 valid payload, 12 rejected payloads, 1 rate limit).
 - **`clear-rate-limit.sh`** — Clears rate limiter files (handles Apache's PrivateTmp).
-- **`SETUP.md`** — Step-by-step server setup guide.
+- **`README.md`** — Step-by-step server setup guide.
 
 ### Strings and privacy
 

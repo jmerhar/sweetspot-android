@@ -9,7 +9,7 @@ set -euo pipefail
 
 REMOTE="aurora"
 REMOTE_DIR="/var/www/stats.sweetspot.today"
-LOCAL_DIR="server"
+LOCAL_DIR="server/stats"
 
 if [[ ! -f "$LOCAL_DIR/stats.php" ]]; then
     echo "Error: $LOCAL_DIR/stats.php not found" >&2

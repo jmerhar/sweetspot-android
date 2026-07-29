@@ -218,17 +218,17 @@ class SweetSpotViewModelTest {
     /** [GithubIssueApi] that returns canned data without any network call. */
     private class FakeGithubIssueApi(
         private val state: String = "open",
-        private val threadThrows: Boolean = false
+        private val threadThrows: Boolean = false,
+        private val comments: Int = 0
     ) : GithubIssueApi() {
         override fun fetch(number: Int): IssueStatus =
-            IssueStatus(number, state, "title", 0, "https://x/issues/$number")
+            IssueStatus(number, state, "title", comments, "https://x/issues/$number")
 
         override fun fetchThread(number: Int): IssueThread {
             if (threadThrows) throw RuntimeException("boom")
-            return IssueThread(
-                number, "title", state, "https://x/issues/$number",
-                listOf(ThreadItem("sweetspot-support", "the report body", 0L, mine = true))
-            )
+            val head = ThreadItem("sweetspot-support", "the report body", 0L, mine = true)
+            val commentItems = List(comments) { ThreadItem("jmerhar", "reply $it", 0L, mine = false) }
+            return IssueThread(number, "title", state, "https://x/issues/$number", listOf(head) + commentItems)
         }
     }
 
@@ -963,6 +963,27 @@ class SweetSpotViewModelTest {
         viewModel.onSendReply(99, "hi")
         runCurrent()
         assertEquals(ReplyState.IDLE, viewModel.uiState.value.replySubmission)
+    }
+
+    @Test
+    fun `My reports flags unread activity and opening the thread clears it`() = runTest {
+        SettingsRepository(app).addMyReport(MyReport(50, "s", "bug", 0L))
+        val viewModel = reportViewModel(FakeReportSubmitter(), FakeGithubIssueApi(comments = 2))
+        viewModel.loadMyReports()
+        runCurrent()
+        // 2 comments, 0 seen → unread.
+        assertTrue(viewModel.uiState.value.myReports.first { it.report.number == 50 }.hasUnread)
+
+        viewModel.onOpenThread(50)
+        runCurrent()
+        // Opening the thread marks the comments seen and clears the dot.
+        assertFalse(viewModel.uiState.value.myReports.first { it.report.number == 50 }.hasUnread)
+        assertEquals(2, SettingsRepository(app).getSeenComments()[50])
+
+        // A fresh load with seen == comments stays read.
+        viewModel.loadMyReports()
+        runCurrent()
+        assertFalse(viewModel.uiState.value.myReports.first { it.report.number == 50 }.hasUnread)
     }
 
     @Test

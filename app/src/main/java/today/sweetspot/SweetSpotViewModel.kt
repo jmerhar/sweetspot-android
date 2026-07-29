@@ -150,8 +150,11 @@ sealed interface ReportSubmission {
     data class Error(val retrying: Boolean) : ReportSubmission
 }
 
-/** A submitted report plus its live GitHub status (null until fetched / on fetch failure). */
-data class MyReportView(val report: MyReport, val status: IssueStatus? = null)
+/**
+ * A submitted report plus its live GitHub status (null until fetched / on fetch failure). [hasUnread]
+ * is true when the issue has more comments than the user has seen (opened the thread for).
+ */
+data class MyReportView(val report: MyReport, val status: IssueStatus? = null, val hasUnread: Boolean = false)
 
 /**
  * State of the in-app issue-thread view (opened from "My reports"). `null` on [UiState] means no
@@ -1904,8 +1907,13 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     async { r.number to try { githubIssueApi.fetch(r.number) } catch (_: Exception) { null } }
                 }.awaitAll()
             }.toMap()
+            val seen = settingsRepository.getSeenComments()
             _uiState.update { state ->
-                state.copy(myReports = stored.map { MyReportView(it, statuses[it.number]) })
+                state.copy(myReports = stored.map { r ->
+                    val status = statuses[r.number]
+                    val unread = (status?.comments ?: 0) > (seen[r.number] ?: 0)
+                    MyReportView(r, status, hasUnread = unread)
+                })
             }
         }
     }
@@ -1920,8 +1928,21 @@ class SweetSpotViewModel @JvmOverloads constructor(
             } catch (_: Exception) {
                 ThreadState.Error(number)
             }
+            // On a successful load, mark the conversation seen (its comments = items minus the issue
+            // body) and clear this report's unread dot in the list.
+            if (next is ThreadState.Loaded) {
+                settingsRepository.markThreadSeen(number, (next.thread.items.size - 1).coerceAtLeast(0))
+            }
             // Ignore a stale result if the user has since closed the thread or opened another.
-            _uiState.update { if (it.thread?.number == number) it.copy(thread = next) else it }
+            _uiState.update { state ->
+                if (state.thread?.number != number) return@update state
+                val reports = if (next is ThreadState.Loaded) {
+                    state.myReports.map { if (it.report.number == number) it.copy(hasUnread = false) else it }
+                } else {
+                    state.myReports
+                }
+                state.copy(thread = next, myReports = reports)
+            }
         }
     }
 

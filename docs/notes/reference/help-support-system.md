@@ -174,6 +174,12 @@ out of band). Tapping a row opens `issueUrl` in a Custom Tab. `loadMyReports()` 
 parallel**, capped to the most recent `maxTrackedStatusFetch = 20`, to bound the unauthenticated GitHub
 quota; older entries render without a live status.
 
+### Unread indicator
+"My reports" shows an unread dot when an issue has more comments than the user has seen. The seen count
+per report is persisted (`SettingsRepository.getSeenComments`/`markThreadSeen`); `loadMyReports` sets
+`MyReportView.hasUnread = status.comments > seen`, and opening the thread marks it seen (comment count =
+thread items − the issue body) and clears the dot.
+
 ### In-app replies
 `ThreadScreen` shows a reply composer when the open report has a stored `replyToken` (i.e. this device
 submitted it — `MyReportView`/`MyReport.replyToken`). Sending calls the ViewModel's `onSendReply`, which

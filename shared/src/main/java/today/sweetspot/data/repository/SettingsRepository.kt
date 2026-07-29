@@ -67,6 +67,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_USAGE_RESET_TOKEN = "usage_reset_token"
         const val KEY_MY_REPORTS = "my_reports"
         const val KEY_REPORT_OUTBOX = "report_outbox"
+        const val KEY_SEEN_COMMENTS = "seen_comments"
 
         /** Trial duration in days. */
         const val TRIAL_DAYS = 14
@@ -275,6 +276,13 @@ class SettingsRepository(private val context: Context) {
 
     /** Replaces the outbox (empty list removes the key). */
     fun setOutbox(pending: List<PendingReport>) = putJson(KEY_REPORT_OUTBOX, pending)
+
+    /** Per-report count of comments the user has already seen (issue number → seen comment count). */
+    fun getSeenComments(): Map<Int, Int> = getJson(KEY_SEEN_COMMENTS, emptyMap())
+
+    /** Records that the user has seen [count] comments on report [number]. */
+    fun markThreadSeen(number: Int, count: Int) =
+        putJson(KEY_SEEN_COMMENTS, getSeenComments() + (number to count))
 
     // --- Appliance sorting, EV placement & usage ---
 

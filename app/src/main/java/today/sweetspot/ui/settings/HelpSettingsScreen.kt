@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -405,6 +407,15 @@ private fun MyReportsScreen(
                         .padding(horizontal = 16.dp, vertical = 14.dp),
                     verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
                 ) {
+                    // Unread dot: shown when the issue has new comments since the user last opened it.
+                    if (view.hasUnread) {
+                        Box(
+                            modifier = Modifier
+                                .size(8.dp)
+                                .background(MaterialTheme.colorScheme.primary, CircleShape)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                    }
                     Column(modifier = Modifier.weight(1f)) {
                         Text("#${view.report.number} · ${view.report.subject}", style = MaterialTheme.typography.bodyLarge)
                         val statusText = when (view.status?.state) {

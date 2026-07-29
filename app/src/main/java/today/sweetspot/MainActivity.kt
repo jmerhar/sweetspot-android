@@ -132,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                             onDismissReportResult = vm::onDismissReportResult,
                             onLoadMyReports = vm::loadMyReports,
                             onFlushOutbox = vm::flushOutbox,
+                            onFlushReplyOutbox = vm::flushReplyOutbox,
                             onOpenThread = vm::onOpenThread,
                             onCloseThread = vm::onCloseThread,
                             onSendReply = vm::onSendReply,

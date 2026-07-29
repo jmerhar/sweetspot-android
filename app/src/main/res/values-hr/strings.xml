@@ -355,4 +355,5 @@
     <string name="reply_send">Pošalji</string>
     <string name="reply_public_note">Vaš se odgovor javno objavljuje na GitHubu.</string>
     <string name="reply_error">Nije bilo moguće poslati vaš odgovor. Pokušajte ponovno.</string>
+    <string name="reply_queued">Spremljeno — poslat ćemo vaš odgovor kada ponovno budete na mreži.</string>
 </resources>

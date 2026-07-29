@@ -47,6 +47,7 @@ import today.sweetspot.model.CoachMark
 import today.sweetspot.model.Countries
 import today.sweetspot.model.FeedbackReport
 import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReply
 import today.sweetspot.model.PendingReport
 import today.sweetspot.model.ReportCategory
 import today.sweetspot.model.Country
@@ -176,7 +177,19 @@ sealed interface ThreadState {
 }
 
 /** State of an in-app reply being posted to the open thread. */
-enum class ReplyState { IDLE, SENDING, ERROR }
+enum class ReplyState {
+    /** No reply in progress. */
+    IDLE,
+
+    /** The reply is being posted. */
+    SENDING,
+
+    /** A transient failure queued the reply in the outbox; it will be retried automatically. */
+    QUEUED,
+
+    /** A permanent failure (validation) — surface an error. */
+    ERROR
+}
 
 /**
  * UI state for the main screen.
@@ -434,6 +447,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private var fetchJob: Job? = null
     private var refreshJob: Job? = null
     private var flushJob: Job? = null
+    private var replyFlushJob: Job? = null
 
     /** Whether [evVehicleRepository] has finished loading (set after the eager load in [init]). */
     @Volatile
@@ -503,8 +517,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
         checkStatsPrompt()
         // Arm the home-screen contextual hint (EV chip) if one is due.
         refreshHomeCoachMark()
-        // Retry any report/feedback submissions that couldn't be delivered earlier.
+        // Retry any report/feedback submissions and replies that couldn't be delivered earlier.
         flushOutbox()
+        flushReplyOutbox()
         // Parse the bundled EV database off the main thread so the vehicle picker search is instant.
         viewModelScope.launch(ioDispatcher) {
             evVehicleRepository.vehicles
@@ -1953,8 +1968,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     /**
      * Posts an in-app reply to report [number] via the Worker (which comments as the bot on the
-     * reporter's behalf). Authorised by the report's stored reply token; on success the thread is
-     * reloaded so the new comment appears. No-op if we don't hold a token for this report.
+     * reporter's behalf). Authorised by the report's stored reply token. Mirrors the report-submit
+     * retry policy: SENT reloads the thread; a transient failure queues the reply in the reply outbox
+     * for automatic retry (state QUEUED); a permanent failure surfaces an error. No-op without a token.
      */
     fun onSendReply(number: Int, body: String) {
         val text = body.trim()
@@ -1962,22 +1978,65 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (text.isEmpty() || token == null) return
         _uiState.update { it.copy(replySubmission = ReplyState.SENDING) }
         viewModelScope.launch(ioDispatcher) {
-            val sent = try {
-                val result = reportSubmitter.submitReply(FeedbackCodec.encodeReply(number, token, text))
-                FeedbackCodec.submitOutcomeFor(result.code) == SubmitOutcome.SENT
-            } catch (_: Exception) {
-                false
-            }
-            if (sent) {
-                _uiState.update { it.copy(replySubmission = ReplyState.IDLE) }
-                // Reload so the just-posted comment shows — but only if this thread is still open
-                // (the user may have navigated away while the reply was in flight).
-                if (_uiState.value.thread?.number == number) onOpenThread(number)
-            } else {
-                _uiState.update { it.copy(replySubmission = ReplyState.ERROR) }
+            when (trySubmitReply(number, token, text)) {
+                SubmitOutcome.SENT -> {
+                    _uiState.update { it.copy(replySubmission = ReplyState.IDLE) }
+                    // Reload so the just-posted comment shows — only if this thread is still open.
+                    if (_uiState.value.thread?.number == number) onOpenThread(number)
+                }
+                SubmitOutcome.RETRYABLE -> {
+                    reportStoreMutex.withLock {
+                        settingsRepository.setReplyOutbox(
+                            settingsRepository.getReplyOutbox() + PendingReply(number, token, text, nowMs())
+                        )
+                    }
+                    _uiState.update { it.copy(replySubmission = ReplyState.QUEUED) }
+                }
+                SubmitOutcome.PERMANENT ->
+                    _uiState.update { it.copy(replySubmission = ReplyState.ERROR) }
             }
         }
     }
+
+    /**
+     * Re-attempts delivery of every queued reply (on app start and when Help opens). Mirrors
+     * [flushOutbox]: sent replies are dropped, permanent failures dropped, transient ones kept with
+     * attempts capped; the open thread is reloaded if any reply landed.
+     */
+    fun flushReplyOutbox() {
+        if (replyFlushJob?.isActive == true) return
+        val pending = settingsRepository.getReplyOutbox()
+        if (pending.isEmpty()) return
+        replyFlushJob = viewModelScope.launch(ioDispatcher) {
+            val remaining = mutableListOf<PendingReply>()
+            var anyDelivered = false
+            for (p in pending) {
+                when (trySubmitReply(p.issue, p.token, p.body)) {
+                    SubmitOutcome.SENT -> anyDelivered = true
+                    SubmitOutcome.RETRYABLE -> {
+                        val next = p.copy(attempts = p.attempts + 1)
+                        if (next.attempts < maxOutboxAttempts) remaining.add(next)
+                    }
+                    SubmitOutcome.PERMANENT -> Unit // drop — retrying can't help
+                }
+            }
+            reportStoreMutex.withLock {
+                val newcomers = settingsRepository.getReplyOutbox().filterNot { it in pending }
+                settingsRepository.setReplyOutbox(newcomers + remaining)
+            }
+            // If a reply landed and a thread is open, reload it so the new comment shows.
+            val open = _uiState.value.thread?.number
+            if (anyDelivered && open != null) onOpenThread(open)
+        }
+    }
+
+    /** Posts one reply and classifies the outcome; a network exception is treated as retryable. */
+    private fun trySubmitReply(issue: Int, token: String, body: String): SubmitOutcome =
+        try {
+            FeedbackCodec.submitOutcomeFor(reportSubmitter.submitReply(FeedbackCodec.encodeReply(issue, token, body)).code)
+        } catch (_: Exception) {
+            SubmitOutcome.RETRYABLE
+        }
 
     /** The reply token this device holds for report [number] (null if none / older report). */
     private fun replyTokenFor(number: Int): String? =

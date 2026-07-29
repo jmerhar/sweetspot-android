@@ -352,4 +352,5 @@
     <string name="reply_send">Lähetä</string>
     <string name="reply_public_note">Vastauksesi julkaistaan julkisesti GitHubissa.</string>
     <string name="reply_error">Vastauksen lähettäminen ei onnistunut. Yritä uudelleen.</string>
+    <string name="reply_queued">Tallennettu — lähetämme vastauksesi, kun olet taas verkossa.</string>
 </resources>

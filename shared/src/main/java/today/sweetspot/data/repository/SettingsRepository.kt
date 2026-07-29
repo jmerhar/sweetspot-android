@@ -10,6 +10,7 @@ import today.sweetspot.model.CoachMark
 import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
 import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReply
 import today.sweetspot.model.PendingReport
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.EvPosition
@@ -67,6 +68,7 @@ class SettingsRepository(private val context: Context) {
         const val KEY_USAGE_RESET_TOKEN = "usage_reset_token"
         const val KEY_MY_REPORTS = "my_reports"
         const val KEY_REPORT_OUTBOX = "report_outbox"
+        const val KEY_REPLY_OUTBOX = "reply_outbox"
         const val KEY_SEEN_COMMENTS = "seen_comments"
 
         /** Trial duration in days. */
@@ -276,6 +278,12 @@ class SettingsRepository(private val context: Context) {
 
     /** Replaces the outbox (empty list removes the key). */
     fun setOutbox(pending: List<PendingReport>) = putJson(KEY_REPORT_OUTBOX, pending)
+
+    /** Replies submitted but not yet delivered, awaiting retry. */
+    fun getReplyOutbox(): List<PendingReply> = getJson(KEY_REPLY_OUTBOX, emptyList())
+
+    /** Replaces the reply outbox (empty list removes the key). */
+    fun setReplyOutbox(pending: List<PendingReply>) = putJson(KEY_REPLY_OUTBOX, pending)
 
     /** Per-report count of comments the user has already seen (issue number → seen comment count). */
     fun getSeenComments(): Map<Int, Int> = getJson(KEY_SEEN_COMMENTS, emptyMap())

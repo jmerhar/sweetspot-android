@@ -67,6 +67,9 @@ dependencies {
 
     // Chrome Custom Tabs — open website links (FAQ/privacy/changelog) in an in-app browser tab
     implementation(libs.browser)
+
+    // Markdown rendering for in-app report conversation comments
+    implementation(libs.compose.markdown)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
 

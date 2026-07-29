@@ -367,4 +367,5 @@
     <string name="reply_send">Odoslať</string>
     <string name="reply_public_note">Vaša odpoveď sa verejne zverejní na GitHube.</string>
     <string name="reply_error">Odpoveď sa nepodarilo odoslať. Skúste to znova.</string>
+    <string name="reply_queued">Uložené — vašu odpoveď odošleme, keď budete opäť online.</string>
 </resources>

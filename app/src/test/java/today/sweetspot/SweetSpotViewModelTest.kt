@@ -55,6 +55,7 @@ import today.sweetspot.model.EvPosition
 import today.sweetspot.model.EvSpec
 import today.sweetspot.model.FeedbackReport
 import today.sweetspot.model.MyReport
+import today.sweetspot.model.PendingReply
 import today.sweetspot.model.PendingReport
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.model.ReportCategory
@@ -943,9 +944,9 @@ class SweetSpotViewModelTest {
     }
 
     @Test
-    fun `onSendReply sets Error when the post fails`() = runTest {
+    fun `onSendReply sets Error on a permanent failure`() = runTest {
         SettingsRepository(app).addMyReport(MyReport(41, "s", "bug", 0L, "T41"))
-        val viewModel = reportViewModel(FakeReportSubmitter(code = 500, body = "err"))
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 400, body = "err")) // permanent → error
         viewModel.loadMyReports()
         runCurrent()
         viewModel.onOpenThread(41)
@@ -953,6 +954,8 @@ class SweetSpotViewModelTest {
         viewModel.onSendReply(41, "hi")
         runCurrent()
         assertEquals(ReplyState.ERROR, viewModel.uiState.value.replySubmission)
+        // A permanent failure is not queued.
+        assertTrue(SettingsRepository(app).getReplyOutbox().isEmpty())
     }
 
     @Test
@@ -984,6 +987,35 @@ class SweetSpotViewModelTest {
         viewModel.loadMyReports()
         runCurrent()
         assertFalse(viewModel.uiState.value.myReports.first { it.report.number == 50 }.hasUnread)
+    }
+
+    @Test
+    fun `onSendReply queues the reply in the outbox on a transient failure`() = runTest {
+        SettingsRepository(app).addMyReport(MyReport(60, "s", "bug", 0L, "T60"))
+        val viewModel = reportViewModel(FakeReportSubmitter(throwError = true)) // network error → retryable
+        viewModel.loadMyReports()
+        runCurrent()
+        viewModel.onOpenThread(60)
+        runCurrent()
+        viewModel.onSendReply(60, "my reply")
+        runCurrent()
+
+        assertEquals(ReplyState.QUEUED, viewModel.uiState.value.replySubmission)
+        val queued = SettingsRepository(app).getReplyOutbox()
+        assertEquals(1, queued.size)
+        assertEquals(60, queued[0].issue)
+        assertEquals("T60", queued[0].token)
+        assertEquals("my reply", queued[0].body)
+    }
+
+    @Test
+    fun `flushReplyOutbox delivers queued replies and clears them`() = runTest {
+        val prefs = SettingsRepository(app)
+        prefs.setReplyOutbox(listOf(PendingReply(61, "T61", "queued reply", createdAtMs = 1L)))
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 201, body = "{}"))
+        viewModel.flushReplyOutbox()
+        runCurrent()
+        assertTrue(prefs.getReplyOutbox().isEmpty())
     }
 
     @Test

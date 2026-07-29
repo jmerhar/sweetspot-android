@@ -363,4 +363,5 @@
     <string name="reply_send">Siųsti</string>
     <string name="reply_public_note">Jūsų atsakymas viešai skelbiamas GitHub.</string>
     <string name="reply_error">Nepavyko išsiųsti atsakymo. Bandykite dar kartą.</string>
+    <string name="reply_queued">Išsaugota — atsakymą išsiųsime, kai vėl būsite prisijungę.</string>
 </resources>

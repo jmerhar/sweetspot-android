@@ -356,4 +356,5 @@
     <string name="reply_send">Enviar</string>
     <string name="reply_public_note">Tu respuesta se publica públicamente en GitHub.</string>
     <string name="reply_error">No se pudo enviar tu respuesta. Inténtalo de nuevo.</string>
+    <string name="reply_queued">Guardado: enviaremos tu respuesta cuando vuelvas a tener conexión.</string>
 </resources>

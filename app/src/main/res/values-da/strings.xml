@@ -353,4 +353,5 @@
     <string name="reply_send">Send</string>
     <string name="reply_public_note">Dit svar offentliggøres på GitHub.</string>
     <string name="reply_error">Kunne ikke sende dit svar. Prøv igen.</string>
+    <string name="reply_queued">Gemt — vi sender dit svar, når du er online igen.</string>
 </resources>

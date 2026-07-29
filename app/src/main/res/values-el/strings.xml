@@ -351,4 +351,5 @@
     <string name="reply_send">Αποστολή</string>
     <string name="reply_public_note">Η απάντησή σας δημοσιεύεται δημόσια στο GitHub.</string>
     <string name="reply_error">Δεν ήταν δυνατή η αποστολή της απάντησής σας. Δοκιμάστε ξανά.</string>
+    <string name="reply_queued">Αποθηκεύτηκε — θα στείλουμε την απάντησή σας μόλις συνδεθείτε ξανά.</string>
 </resources>

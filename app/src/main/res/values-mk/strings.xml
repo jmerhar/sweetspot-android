@@ -352,4 +352,5 @@
     <string name="reply_send">Испрати</string>
     <string name="reply_public_note">Вашиот одговор се објавува јавно на GitHub.</string>
     <string name="reply_error">Одговорот не можеше да се испрати. Обидете се повторно.</string>
+    <string name="reply_queued">Зачувано — ќе го испратиме вашиот одговор кога повторно ќе бидете онлајн.</string>
 </resources>

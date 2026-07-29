@@ -183,11 +183,19 @@ thread items − the issue body) and clears the dot.
 ### In-app replies
 `ThreadScreen` shows a reply composer when the open report has a stored `replyToken` (i.e. this device
 submitted it — `MyReportView`/`MyReport.replyToken`). Sending calls the ViewModel's `onSendReply`, which
-POSTs `{issue, token, body}` to the Worker `/reply` (via `ReportSubmitter.submitReply`); on success the
-thread reloads so the new (bot-authored) comment appears, and the draft clears only on a successful send
-(`ReplyState.SENDING → IDLE`), so a failure keeps the text with a retry. The composer states plainly that
-the reply is posted publicly. The webhook skips bot-authored comments, so a reporter's own reply doesn't
-email them; a maintainer's reply still does.
+POSTs `{issue, token, body}` to the Worker `/reply` (via `ReportSubmitter.submitReply`). It mirrors the
+report-submit retry policy via `FeedbackCodec.submitOutcomeFor`: **SENT** reloads the thread so the new
+(bot-authored) comment shows; a **transient** failure queues the reply in a **reply outbox**
+(`PendingReply`, `SettingsRepository.get/setReplyOutbox`) and shows `ReplyState.QUEUED`; a **permanent**
+4xx shows `ReplyState.ERROR`. `flushReplyOutbox` (on VM init + Help open, guarded by `replyFlushJob`,
+reconciling under `reportStoreMutex` with the same attempts cap as the report outbox) resends queued
+replies and reloads the open thread if any lands. The draft clears on SENT or QUEUED (kept on error).
+The composer states plainly that the reply is posted publicly. The webhook skips bot-authored comments,
+so a reporter's own reply doesn't email them; a maintainer's reply still does.
+
+Comment bodies (issue body + replies) render as **markdown** via `compose-markdown`
+(`com.github.jeziellago:compose-markdown`, JitPack) so GitHub formatting (bold, lists, links, code)
+shows properly.
 
 ### Website links (Custom Tabs + theming)
 FAQ / privacy / changelog / What's new open in a **Chrome Custom Tab** (`androidx.browser`), toolbar

@@ -46,6 +46,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import dev.jeziellago.compose.markdowntext.MarkdownText
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import kotlinx.coroutines.launch
@@ -85,6 +86,7 @@ internal fun HelpSettingsScreen(
     onDismissReportResult: () -> Unit,
     onLoadMyReports: () -> Unit,
     onFlushOutbox: () -> Unit,
+    onFlushReplyOutbox: () -> Unit,
     onOpenThread: (Int) -> Unit,
     onCloseThread: () -> Unit,
     onSendReply: (Int, String) -> Unit,
@@ -99,6 +101,7 @@ internal fun HelpSettingsScreen(
     LaunchedEffect(Unit) {
         onLoadMyReports()
         onFlushOutbox()
+        onFlushReplyOutbox()
     }
 
     when (route) {
@@ -507,7 +510,10 @@ private fun ThreadScreen(
                         color = if (item.mine) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
                     )
                     Spacer(modifier = Modifier.height(2.dp))
-                    Text(item.body.ifBlank { "—" }, style = MaterialTheme.typography.bodyMedium)
+                    MarkdownText(
+                        markdown = item.body.ifBlank { "—" },
+                        style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurface)
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                 }
                 if (state.canReply) {
@@ -535,7 +541,10 @@ private fun ReplyComposer(submission: ReplyState, onSend: (String) -> Unit) {
     var text by rememberSaveable { mutableStateOf("") }
     var previous by remember { mutableStateOf(submission) }
     LaunchedEffect(submission) {
-        if (previous == ReplyState.SENDING && submission == ReplyState.IDLE) text = ""
+        // Clear the draft once it's safely sent or queued for retry (not on a permanent error).
+        if (previous == ReplyState.SENDING && (submission == ReplyState.IDLE || submission == ReplyState.QUEUED)) {
+            text = ""
+        }
         previous = submission
     }
     val sending = submission == ReplyState.SENDING
@@ -557,6 +566,13 @@ private fun ReplyComposer(submission: ReplyState, onSend: (String) -> Unit) {
             text = stringResource(R.string.reply_error),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.error
+        )
+    } else if (submission == ReplyState.QUEUED) {
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.reply_queued),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
     Spacer(modifier = Modifier.height(8.dp))

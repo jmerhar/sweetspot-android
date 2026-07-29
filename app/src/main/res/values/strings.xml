@@ -255,6 +255,7 @@
     <string name="reply_send">Send</string>
     <string name="reply_public_note">Your reply is posted publicly on GitHub.</string>
     <string name="reply_error">Couldn\'t send your reply. Please try again.</string>
+    <string name="reply_queued">Saved — we\'ll send your reply when you\'re back online.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Find the cheapest time</string>

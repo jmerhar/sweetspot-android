@@ -349,4 +349,5 @@
     <string name="reply_send">Senden</string>
     <string name="reply_public_note">Deine Antwort wird öffentlich auf GitHub veröffentlicht.</string>
     <string name="reply_error">Antwort konnte nicht gesendet werden. Bitte versuche es erneut.</string>
+    <string name="reply_queued">Gespeichert — deine Antwort wird gesendet, sobald du wieder online bist.</string>
 </resources>

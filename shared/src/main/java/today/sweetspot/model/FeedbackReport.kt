@@ -51,3 +51,17 @@ data class PendingReport(
     val createdAtMs: Long,
     val attempts: Int = 0
 )
+
+/**
+ * A reply (comment on an existing report) submitted but not yet delivered, held in the reply outbox
+ * for retry — the reply counterpart of [PendingReport]. Carries the target [issue], the report's
+ * capability [token], and the [body], plus bookkeeping. Flushed on app/Help open until it lands.
+ */
+@Serializable
+data class PendingReply(
+    val issue: Int,
+    val token: String,
+    val body: String,
+    val createdAtMs: Long,
+    val attempts: Int = 0
+)

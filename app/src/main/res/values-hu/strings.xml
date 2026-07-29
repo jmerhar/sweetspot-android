@@ -348,4 +348,5 @@
     <string name="reply_send">Küldés</string>
     <string name="reply_public_note">A válaszod nyilvánosan megjelenik a GitHubon.</string>
     <string name="reply_error">Nem sikerült elküldeni a választ. Próbáld újra.</string>
+    <string name="reply_queued">Mentve — elküldjük a válaszod, amint újra online leszel.</string>
 </resources>

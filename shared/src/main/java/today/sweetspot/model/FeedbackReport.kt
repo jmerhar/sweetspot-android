@@ -35,7 +35,9 @@ data class MyReport(
     val number: Int,
     val subject: String,
     val category: String,
-    val submittedAtMs: Long
+    val submittedAtMs: Long,
+    /** Capability token for posting in-app replies to this report (null for older stored reports). */
+    val replyToken: String? = null
 )
 
 /**

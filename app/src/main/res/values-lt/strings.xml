@@ -359,4 +359,8 @@
     <string name="guide_allin_body">Pasirinktinai rodykite galutinę vartotojo kainą vietoj vien biržos kainos.</string>
     <string name="guide_wear_title">Jūsų laikrodyje</string>
     <string name="guide_wear_body">Jūsų prietaisai sinchronizuojami su Wear OS, todėl kainas galite tikrinti be telefono.</string>
+    <string name="reply_hint">Jūsų atsakymas</string>
+    <string name="reply_send">Siųsti</string>
+    <string name="reply_public_note">Jūsų atsakymas viešai skelbiamas GitHub.</string>
+    <string name="reply_error">Nepavyko išsiųsti atsakymo. Bandykite dar kartą.</string>
 </resources>

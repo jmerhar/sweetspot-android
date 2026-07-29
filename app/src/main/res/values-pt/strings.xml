@@ -352,4 +352,8 @@
     <string name="thread_you">Tu</string>
     <string name="thread_open_github">Abrir no GitHub</string>
     <string name="thread_load_error">Não foi possível carregar a conversa. Verifica a tua ligação e tenta novamente.</string>
+    <string name="reply_hint">A tua resposta</string>
+    <string name="reply_send">Enviar</string>
+    <string name="reply_public_note">A tua resposta é publicada publicamente no GitHub.</string>
+    <string name="reply_error">Não foi possível enviar a tua resposta. Tenta novamente.</string>
 </resources>

@@ -39,7 +39,7 @@ LEARN
 SUPPORT
   Report a problem     Something isn't working      → in-app form (category: bug)
   Send feedback        Ideas and suggestions        → in-app form (category: feedback)
-  My reports           Track what you've submitted  → in-app list; tap → in-app conversation thread (public GitHub reads)
+  My reports           Track what you've submitted  → in-app list; tap → in-app conversation thread (read + reply)
   Contact us           Email us directly            → mailto:hello@sweetspot.today
   Rate SweetSpot       Rate us on Google Play       → market://details?id=today.sweetspot (browser fallback)
 
@@ -174,6 +174,15 @@ out of band). Tapping a row opens `issueUrl` in a Custom Tab. `loadMyReports()` 
 parallel**, capped to the most recent `maxTrackedStatusFetch = 20`, to bound the unauthenticated GitHub
 quota; older entries render without a live status.
 
+### In-app replies
+`ThreadScreen` shows a reply composer when the open report has a stored `replyToken` (i.e. this device
+submitted it — `MyReportView`/`MyReport.replyToken`). Sending calls the ViewModel's `onSendReply`, which
+POSTs `{issue, token, body}` to the Worker `/reply` (via `ReportSubmitter.submitReply`); on success the
+thread reloads so the new (bot-authored) comment appears, and the draft clears only on a successful send
+(`ReplyState.SENDING → IDLE`), so a failure keeps the text with a retry. The composer states plainly that
+the reply is posted publicly. The webhook skips bot-authored comments, so a reporter's own reply doesn't
+email them; a maintainer's reply still does.
+
 ### Website links (Custom Tabs + theming)
 FAQ / privacy / changelog / What's new open in a **Chrome Custom Tab** (`androidx.browser`), toolbar
 themed to `MaterialTheme.colorScheme.surface`, light/dark chrome matching the app; falls back to the
@@ -204,18 +213,25 @@ Hostname **`feedback.sweetspot.today`** (Workers route). Endpoints:
 // 400 invalid · 415 wrong content-type · 429 rate-limited · 5xx upstream
 ```
 Steps: validate + length caps → per-IP rate-limit via **Workers KV** → create the issue via the GitHub
-API with labels **`from-app`** + **`bug`**/**`enhancement`** → if `email` present, store
-`issue:{n} → {email, token}` in KV (opt-in only; the token backs unsubscribe) → return `{number,url}`.
+API with labels **`from-app`** + **`bug`**/**`enhancement`** → always store `issue:{n} → {email?, token}`
+in KV (email only if opted in; the token is the report's capability) → return `{number, url, replyToken}`.
+
+**`POST /reply`** — the app posts a comment on its own report: `{issue, token, body}`. The Worker
+verifies the token (constant-time) against the stored one, then creates a GitHub comment **as the bot**
+(prefixed to mark it's from the reporter), rate-limited per IP (`REPLY_RATE_LIMIT_PER_DAY`). Only a
+device that submitted the report (and thus holds `replyToken`) can reply — the app has no GitHub
+identity, so everything it posts is bot-authored.
 
 **`POST /webhook`** — GitHub webhook target. Verifies HMAC with `WEBHOOK_SECRET`; on issue activity not
 authored by the bot, looks up the email in KV and sends a notification via the **Brevo transactional
 API**, including a tokenized unsubscribe link. **`GET /unsubscribe?issue=N&token=…`** — a non-mutating
 confirmation page (so an email link prefetcher can't unsubscribe anyone); **`POST /unsubscribe`** (the
-form submit, or an RFC 8058 one-click `List-Unsubscribe=One-Click` body) deletes the KV entry when the
-token matches (constant-time compare). **`GET /`** — health check.
+form submit, or an RFC 8058 one-click `List-Unsubscribe=One-Click` body) clears the stored **email**
+when the token matches (constant-time), keeping the token so in-app replies still work. **`GET /`** —
+health check.
 
 **Secrets** (Worker, never in app/repo): `GITHUB_TOKEN` (bot classic `public_repo` PAT), `WEBHOOK_SECRET`,
-`BREVO_API_KEY`. **KV** holds the `issue# → {email, unsubscribe token}` map and rate-limit counters (it
+`BREVO_API_KEY`. **KV** holds the `issue# → {email?, token}` map and rate-limit counters (it
 also tolerates legacy bare-email entries, which simply get no unsubscribe link). Repo owner/name and
 label names are configured in `wrangler.jsonc`.
 
@@ -263,13 +279,14 @@ Opt-in only. The email is provided in the form and stored **only** in Worker KV 
 issue# → Brevo → email the reporter with the activity + a link to the issue. Verified end-to-end
 (DKIM/SPF/DMARC-aligned).
 
-**Unsubscribe.** Each stored subscription carries a random `token` (a `crypto.randomUUID()`, the
-capability). Every notification includes an `…/unsubscribe?issue=N&token=…` link and RFC 8058 one-click
-`List-Unsubscribe` headers. `GET /unsubscribe` only renders a confirmation page (never mutates — link
-prefetchers/scanners can't unsubscribe you); the `POST` (form submit or one-click) deletes the KV entry
-after a constant-time token check, and responds identically whether or not an entry existed (no
-enumeration). The privacy policy discloses that a provided email is stored to notify the reporter and can
-be removed via the unsubscribe link in any notification (or on request).
+**Unsubscribe.** Each report carries a random per-report `token` (a `crypto.randomUUID()`, the
+capability — also the app's `replyToken`). Every notification includes an `…/unsubscribe?issue=N&token=…`
+link and RFC 8058 one-click `List-Unsubscribe` headers. `GET /unsubscribe` only renders a confirmation
+page (never mutates — link prefetchers/scanners can't unsubscribe you); the `POST` (form submit or
+one-click) clears the stored **email** after a constant-time token check (keeping the token, so in-app
+replies still work), and responds identically whether or not an entry existed (no enumeration). The
+privacy policy discloses that a provided email is stored to notify the reporter and can be removed via
+the unsubscribe link in any notification (or on request).
 
 ---
 
@@ -301,7 +318,7 @@ be removed via the unsubscribe link in any notification (or on request).
 | Bot classic PAT (`public_repo`) — *or later* GitHub App id + private key | Worker secret (`GITHUB_TOKEN`) | 🔒 never in app/repo |
 | `WEBHOOK_SECRET` (GitHub webhook HMAC) | Worker secret | 🔒 |
 | `BREVO_API_KEY` (transactional email) | Worker secret | 🔒 |
-| `issue# → {email, unsubscribe token}` map, rate-limit counters | Workers KV | 🔒 (server-side, not public) |
+| `issue# → {email?, token}` map, rate-limit counters | Workers KV | 🔒 (server-side, not public) |
 | Worker URL, repo owner/name, Play Store id, contact email, website base | baked in app (`HelpLinks`) | no |
 
 ---
@@ -334,5 +351,4 @@ be removed via the unsubscribe link in any notification (or on request).
 ## Possible future work
 - Migrate issue auth to a **GitHub App** (least privilege).
 - **Play Integrity** anti-abuse if spam appears.
-- In-app **replies** (Worker posts a comment as the bot) — currently out of scope.
 - Website **dark-mode toggle** / `prefers-color-scheme` for direct visitors.

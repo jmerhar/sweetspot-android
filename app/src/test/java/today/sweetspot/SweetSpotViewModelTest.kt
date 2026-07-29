@@ -200,9 +200,16 @@ class SweetSpotViewModelTest {
             private set
         var callCount = 0
             private set
+        var lastReplyJson: String? = null
+            private set
         override fun submit(json: String): SubmitHttpResult {
             callCount++
             lastJson = json
+            if (throwError) throw java.io.IOException("network down")
+            return SubmitHttpResult(code, body)
+        }
+        override fun submitReply(json: String): SubmitHttpResult {
+            lastReplyJson = json
             if (throwError) throw java.io.IOException("network down")
             return SubmitHttpResult(code, body)
         }
@@ -907,6 +914,55 @@ class SweetSpotViewModelTest {
         runCurrent()
         viewModel.onCloseThread()
         assertEquals(null, viewModel.uiState.value.thread)
+    }
+
+    @Test
+    fun `onSubmitReport stores the reply token from the response`() = runTest {
+        val submitter = FakeReportSubmitter(code = 201, body = """{"number":30,"url":"u","replyToken":"tok-30"}""")
+        val viewModel = reportViewModel(submitter)
+        viewModel.onSubmitReport(ReportCategory.FEEDBACK, "s", "b", null)
+        runCurrent()
+        assertEquals("tok-30", SettingsRepository(app).getMyReports().first { it.number == 30 }.replyToken)
+    }
+
+    @Test
+    fun `onSendReply posts the reply and reloads the thread on success`() = runTest {
+        val submitter = FakeReportSubmitter(code = 201, body = """{"number":40,"url":"u","replyToken":"T40"}""")
+        val viewModel = reportViewModel(submitter)
+        viewModel.onSubmitReport(ReportCategory.BUG, "s", "b", null)
+        runCurrent()
+        viewModel.onOpenThread(40)
+        runCurrent()
+        viewModel.onSendReply(40, "my reply")
+        runCurrent()
+
+        assertEquals(ReplyState.IDLE, viewModel.uiState.value.replySubmission)
+        assertTrue(viewModel.uiState.value.thread is ThreadState.Loaded)
+        assertTrue(submitter.lastReplyJson!!.contains("my reply"))
+        assertTrue(submitter.lastReplyJson!!.contains("T40"))
+    }
+
+    @Test
+    fun `onSendReply sets Error when the post fails`() = runTest {
+        SettingsRepository(app).addMyReport(MyReport(41, "s", "bug", 0L, "T41"))
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 500, body = "err"))
+        viewModel.loadMyReports()
+        runCurrent()
+        viewModel.onOpenThread(41)
+        runCurrent()
+        viewModel.onSendReply(41, "hi")
+        runCurrent()
+        assertEquals(ReplyState.ERROR, viewModel.uiState.value.replySubmission)
+    }
+
+    @Test
+    fun `onSendReply is a no-op without a stored reply token`() = runTest {
+        val viewModel = reportViewModel(FakeReportSubmitter())
+        viewModel.onOpenThread(99) // no stored report for 99 → no token
+        runCurrent()
+        viewModel.onSendReply(99, "hi")
+        runCurrent()
+        assertEquals(ReplyState.IDLE, viewModel.uiState.value.replySubmission)
     }
 
     @Test

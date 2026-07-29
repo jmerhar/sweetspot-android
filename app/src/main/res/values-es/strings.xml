@@ -352,4 +352,8 @@
     <string name="guide_allin_body">Muestra opcionalmente el precio total al consumidor en lugar de solo el precio de mercado.</string>
     <string name="guide_wear_title">En tu reloj</string>
     <string name="guide_wear_body">Tus electrodomésticos se sincronizan con Wear OS, para que puedas consultar los precios sin tu teléfono.</string>
+    <string name="reply_hint">Tu respuesta</string>
+    <string name="reply_send">Enviar</string>
+    <string name="reply_public_note">Tu respuesta se publica públicamente en GitHub.</string>
+    <string name="reply_error">No se pudo enviar tu respuesta. Inténtalo de nuevo.</string>
 </resources>

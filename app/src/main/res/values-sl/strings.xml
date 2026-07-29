@@ -363,4 +363,8 @@
     <string name="guide_allin_body">Po želji prikažite celotno ceno za potrošnika namesto samo tržne cene.</string>
     <string name="guide_wear_title">Na vaši uri</string>
     <string name="guide_wear_body">Vaši aparati se sinhronizirajo z Wear OS, tako da lahko cene preverite brez telefona.</string>
+    <string name="reply_hint">Vaš odgovor</string>
+    <string name="reply_send">Pošlji</string>
+    <string name="reply_public_note">Vaš odgovor je javno objavljen na GitHubu.</string>
+    <string name="reply_error">Odgovora ni bilo mogoče poslati. Poskusite znova.</string>
 </resources>

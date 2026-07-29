@@ -351,4 +351,8 @@
     <string name="guide_allin_body">Po želji prikažite punu potrošačku cijenu umjesto puke tržišne cijene.</string>
     <string name="guide_wear_title">Na vašem satu</string>
     <string name="guide_wear_body">Vaši se uređaji sinkroniziraju s Wear OS-om pa cijene možete provjeriti i bez telefona.</string>
+    <string name="reply_hint">Vaš odgovor</string>
+    <string name="reply_send">Pošalji</string>
+    <string name="reply_public_note">Vaš se odgovor javno objavljuje na GitHubu.</string>
+    <string name="reply_error">Nije bilo moguće poslati vaš odgovor. Pokušajte ponovno.</string>
 </resources>

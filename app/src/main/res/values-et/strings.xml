@@ -349,4 +349,8 @@
     <string name="guide_allin_body">Soovi korral näita täielikku tarbijahinda pelga turuhinna asemel.</string>
     <string name="guide_wear_title">Sinu kellal</string>
     <string name="guide_wear_body">Sinu seadmed sünkroonitakse Wear OS-iga, nii saad hindu vaadata ka ilma telefonita.</string>
+    <string name="reply_hint">Sinu vastus</string>
+    <string name="reply_send">Saada</string>
+    <string name="reply_public_note">Sinu vastus avaldatakse avalikult GitHubis.</string>
+    <string name="reply_error">Vastust ei õnnestunud saata. Proovi uuesti.</string>
 </resources>

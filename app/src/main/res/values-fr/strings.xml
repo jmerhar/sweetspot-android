@@ -350,4 +350,8 @@
     <string name="guide_allin_body">Affichez si vous le souhaitez le prix total au consommateur au lieu du seul prix du marché.</string>
     <string name="guide_wear_title">Sur votre montre</string>
     <string name="guide_wear_body">Vos appareils se synchronisent avec Wear OS pour consulter les prix sans votre téléphone.</string>
+    <string name="reply_hint">Votre réponse</string>
+    <string name="reply_send">Envoyer</string>
+    <string name="reply_public_note">Votre réponse est publiée publiquement sur GitHub.</string>
+    <string name="reply_error">Impossible d\'envoyer votre réponse. Réessayez.</string>
 </resources>

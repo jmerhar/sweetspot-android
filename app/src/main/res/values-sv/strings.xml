@@ -346,4 +346,8 @@
     <string name="thread_you">Du</string>
     <string name="thread_open_github">Öppna på GitHub</string>
     <string name="thread_load_error">Det gick inte att läsa in konversationen. Kontrollera din anslutning och försök igen.</string>
+    <string name="reply_hint">Ditt svar</string>
+    <string name="reply_send">Skicka</string>
+    <string name="reply_public_note">Ditt svar publiceras offentligt på GitHub.</string>
+    <string name="reply_error">Det gick inte att skicka ditt svar. Försök igen.</string>
 </resources>

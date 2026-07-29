@@ -347,4 +347,8 @@
     <string name="guide_allin_body">Προαιρετικά, εμφανίστε την πλήρη τιμή καταναλωτή αντί μόνο της τιμής αγοράς.</string>
     <string name="guide_wear_title">Στο ρολόι σας</string>
     <string name="guide_wear_body">Οι συσκευές σας συγχρονίζονται με το Wear OS, ώστε να μπορείτε να ελέγχετε τιμές χωρίς το τηλέφωνό σας.</string>
+    <string name="reply_hint">Η απάντησή σας</string>
+    <string name="reply_send">Αποστολή</string>
+    <string name="reply_public_note">Η απάντησή σας δημοσιεύεται δημόσια στο GitHub.</string>
+    <string name="reply_error">Δεν ήταν δυνατή η αποστολή της απάντησής σας. Δοκιμάστε ξανά.</string>
 </resources>

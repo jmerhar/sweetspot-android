@@ -360,4 +360,8 @@
     <string name="thread_you">Ty</string>
     <string name="thread_open_github">Otwórz na GitHubie</string>
     <string name="thread_load_error">Nie udało się załadować rozmowy. Sprawdź połączenie i spróbuj ponownie.</string>
+    <string name="reply_hint">Twoja odpowiedź</string>
+    <string name="reply_send">Wyślij</string>
+    <string name="reply_public_note">Twoja odpowiedź jest publikowana publicznie w GitHub.</string>
+    <string name="reply_error">Nie udało się wysłać odpowiedzi. Spróbuj ponownie.</string>
 </resources>

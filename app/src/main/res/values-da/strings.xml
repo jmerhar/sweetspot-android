@@ -349,4 +349,8 @@
     <string name="guide_allin_body">Vis eventuelt den fulde forbrugerpris i stedet for kun markedsprisen.</string>
     <string name="guide_wear_title">På dit ur</string>
     <string name="guide_wear_body">Dine apparater synkroniseres til Wear OS, så du kan tjekke priser uden din telefon.</string>
+    <string name="reply_hint">Dit svar</string>
+    <string name="reply_send">Send</string>
+    <string name="reply_public_note">Dit svar offentliggøres på GitHub.</string>
+    <string name="reply_error">Kunne ikke sende dit svar. Prøv igen.</string>
 </resources>

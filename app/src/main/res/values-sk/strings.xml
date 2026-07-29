@@ -363,4 +363,8 @@
     <string name="guide_allin_body">Voliteľne zobrazte úplnú spotrebiteľskú cenu namiesto samotnej trhovej ceny.</string>
     <string name="guide_wear_title">Na hodinkách</string>
     <string name="guide_wear_body">Vaše spotrebiče sa synchronizujú s Wear OS, takže ceny skontrolujete aj bez telefónu.</string>
+    <string name="reply_hint">Vaša odpoveď</string>
+    <string name="reply_send">Odoslať</string>
+    <string name="reply_public_note">Vaša odpoveď sa verejne zverejní na GitHube.</string>
+    <string name="reply_error">Odpoveď sa nepodarilo odoslať. Skúste to znova.</string>
 </resources>

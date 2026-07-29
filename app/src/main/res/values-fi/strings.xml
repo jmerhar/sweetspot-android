@@ -348,4 +348,8 @@
     <string name="guide_allin_body">Näytä halutessasi koko kuluttajahinta pelkän markkinahinnan sijaan.</string>
     <string name="guide_wear_title">Kellossasi</string>
     <string name="guide_wear_body">Laitteesi synkronoituvat Wear OS -kelloon, joten voit tarkistaa hinnat ilman puhelintasi.</string>
+    <string name="reply_hint">Vastauksesi</string>
+    <string name="reply_send">Lähetä</string>
+    <string name="reply_public_note">Vastauksesi julkaistaan julkisesti GitHubissa.</string>
+    <string name="reply_error">Vastauksen lähettäminen ei onnistunut. Yritä uudelleen.</string>
 </resources>

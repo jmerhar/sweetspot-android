@@ -251,6 +251,10 @@
     <string name="thread_you">You</string>
     <string name="thread_open_github">Open on GitHub</string>
     <string name="thread_load_error">Couldn\'t load the conversation. Check your connection and try again.</string>
+    <string name="reply_hint">Your reply</string>
+    <string name="reply_send">Send</string>
+    <string name="reply_public_note">Your reply is posted publicly on GitHub.</string>
+    <string name="reply_error">Couldn\'t send your reply. Please try again.</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Find the cheapest time</string>

@@ -164,12 +164,16 @@ sealed interface ThreadState {
     /** Fetching the conversation from the public GitHub API. */
     data class Loading(override val number: Int) : ThreadState
 
-    /** Loaded — [thread] is the issue body + comments. */
-    data class Loaded(override val number: Int, val thread: IssueThread) : ThreadState
+    /** Loaded — [thread] is the issue body + comments. [canReply] is true when this device holds the
+     *  report's reply token (so it can post in-app replies). */
+    data class Loaded(override val number: Int, val thread: IssueThread, val canReply: Boolean) : ThreadState
 
     /** The fetch failed (offline / rate-limited); the screen offers retry + open-on-GitHub. */
     data class Error(override val number: Int) : ThreadState
 }
+
+/** State of an in-app reply being posted to the open thread. */
+enum class ReplyState { IDLE, SENDING, ERROR }
 
 /**
  * UI state for the main screen.
@@ -261,6 +265,8 @@ data class UiState(
     val myReports: List<MyReportView> = emptyList(),
     /** The in-app issue thread currently open (from "My reports"), or null when none is. */
     val thread: ThreadState? = null,
+    /** State of an in-app reply being posted to the open thread. */
+    val replySubmission: ReplyState = ReplyState.IDLE,
     val showStatsPrompt: Boolean = false,
     val isStatsEnabled: Boolean = false,
     val isTrialExpired: Boolean = false,
@@ -1819,7 +1825,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                     if (attempt.number != null) {
                         reportStoreMutex.withLock {
                             settingsRepository.addMyReport(
-                                MyReport(attempt.number, report.subject, report.category, nowMs())
+                                MyReport(attempt.number, report.subject, report.category, nowMs(), attempt.replyToken)
                             )
                         }
                     }
@@ -1861,7 +1867,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
                         if (attempt.number != null) {
                             reportStoreMutex.withLock {
                                 settingsRepository.addMyReport(
-                                    MyReport(attempt.number, p.report.subject, p.report.category, p.createdAtMs)
+                                    MyReport(attempt.number, p.report.subject, p.report.category, p.createdAtMs, attempt.replyToken)
                                 )
                             }
                         }
@@ -1906,10 +1912,11 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     /** Opens the in-app conversation for issue [number], fetching it from the public GitHub API. */
     fun onOpenThread(number: Int) {
-        _uiState.update { it.copy(thread = ThreadState.Loading(number)) }
+        val canReply = replyTokenFor(number) != null
+        _uiState.update { it.copy(thread = ThreadState.Loading(number), replySubmission = ReplyState.IDLE) }
         viewModelScope.launch(ioDispatcher) {
             val next = try {
-                ThreadState.Loaded(number, githubIssueApi.fetchThread(number))
+                ThreadState.Loaded(number, githubIssueApi.fetchThread(number), canReply)
             } catch (_: Exception) {
                 ThreadState.Error(number)
             }
@@ -1920,8 +1927,40 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     /** Closes the in-app thread view, returning to the "My reports" list. */
     fun onCloseThread() {
-        _uiState.update { it.copy(thread = null) }
+        _uiState.update { it.copy(thread = null, replySubmission = ReplyState.IDLE) }
     }
+
+    /**
+     * Posts an in-app reply to report [number] via the Worker (which comments as the bot on the
+     * reporter's behalf). Authorised by the report's stored reply token; on success the thread is
+     * reloaded so the new comment appears. No-op if we don't hold a token for this report.
+     */
+    fun onSendReply(number: Int, body: String) {
+        val text = body.trim()
+        val token = replyTokenFor(number)
+        if (text.isEmpty() || token == null) return
+        _uiState.update { it.copy(replySubmission = ReplyState.SENDING) }
+        viewModelScope.launch(ioDispatcher) {
+            val sent = try {
+                val result = reportSubmitter.submitReply(FeedbackCodec.encodeReply(number, token, text))
+                FeedbackCodec.submitOutcomeFor(result.code) == SubmitOutcome.SENT
+            } catch (_: Exception) {
+                false
+            }
+            if (sent) {
+                _uiState.update { it.copy(replySubmission = ReplyState.IDLE) }
+                // Reload so the just-posted comment shows — but only if this thread is still open
+                // (the user may have navigated away while the reply was in flight).
+                if (_uiState.value.thread?.number == number) onOpenThread(number)
+            } else {
+                _uiState.update { it.copy(replySubmission = ReplyState.ERROR) }
+            }
+        }
+    }
+
+    /** The reply token this device holds for report [number] (null if none / older report). */
+    private fun replyTokenFor(number: Int): String? =
+        _uiState.value.myReports.firstOrNull { it.report.number == number }?.report?.replyToken
 
     /** Builds the request payload, attaching a no-PII diagnostics block to bug reports. */
     private fun buildReport(
@@ -1962,9 +2001,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
             val result = reportSubmitter.submit(FeedbackCodec.encodeRequest(report))
             when (FeedbackCodec.submitOutcomeFor(result.code)) {
                 SubmitOutcome.SENT -> when (val parsed = FeedbackCodec.parseSubmitResponse(result.body)) {
-                    is SubmitResult.Success -> SubmitAttempt.Sent(parsed.number, parsed.url)
+                    is SubmitResult.Success -> SubmitAttempt.Sent(parsed.number, parsed.url, parsed.replyToken)
                     // Accepted (2xx) but response unreadable — don't re-send (would duplicate); can't track.
-                    SubmitResult.Malformed -> SubmitAttempt.Sent(null, null)
+                    SubmitResult.Malformed -> SubmitAttempt.Sent(null, null, null)
                 }
                 SubmitOutcome.RETRYABLE -> SubmitAttempt.Retryable
                 SubmitOutcome.PERMANENT -> SubmitAttempt.Permanent
@@ -1975,7 +2014,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
     /** Internal classification of a single submission attempt. */
     private sealed interface SubmitAttempt {
-        data class Sent(val number: Int?, val url: String?) : SubmitAttempt
+        data class Sent(val number: Int?, val url: String?, val replyToken: String?) : SubmitAttempt
         data object Retryable : SubmitAttempt
         data object Permanent : SubmitAttempt
     }

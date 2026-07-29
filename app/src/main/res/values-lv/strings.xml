@@ -353,4 +353,8 @@
     <string name="thread_you">Tu</string>
     <string name="thread_open_github">Atvērt vietnē GitHub</string>
     <string name="thread_load_error">Neizdevās ielādēt sarunu. Pārbaudi savienojumu un mēģini vēlreiz.</string>
+    <string name="reply_hint">Tava atbilde</string>
+    <string name="reply_send">Sūtīt</string>
+    <string name="reply_public_note">Tava atbilde tiek publiski publicēta vietnē GitHub.</string>
+    <string name="reply_error">Neizdevās nosūtīt atbildi. Mēģini vēlreiz.</string>
 </resources>

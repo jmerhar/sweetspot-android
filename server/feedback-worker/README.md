@@ -6,14 +6,20 @@ comment or is closed (with a one-click unsubscribe link). Architecture:
 `../../docs/notes/reference/help-support-system.md`.
 
 - `POST /report` — app submits `{category, subject, body, diagnostics?, email?}` → creates a labelled
-  issue (`from-app` + `bug`/`enhancement`); returns `{number, url}`. If an email is given, it's stored
-  in KV keyed by issue number, together with a random unsubscribe token.
+  issue (`from-app` + `bug`/`enhancement`); returns `{number, url, replyToken}`. A per-report token is
+  always stored in KV keyed by issue number (with the email, if opted in). The token is the report's
+  capability: the app keeps `replyToken` to post replies, and it also backs the emailed unsubscribe link.
+- `POST /reply` — app posts a comment on its own report: `{issue, token, body}` → the Worker comments
+  **as the bot** (prefixed to mark it's from the reporter) once the token matches (constant-time),
+  rate-limited per IP (`REPLY_RATE_LIMIT_PER_DAY`); `201 {ok, url}`.
 - `POST /webhook` — GitHub webhook (`issues`, `issue_comment`), HMAC-verified; emails the opted-in
-  reporter via Brevo. Each notification carries a tokenized unsubscribe link (+ RFC 8058 one-click
-  `List-Unsubscribe` headers).
+  reporter via Brevo (skips the bot's own comments, so a reporter's app reply doesn't self-notify).
+  Each notification carries a tokenized unsubscribe link (+ RFC 8058 one-click `List-Unsubscribe`
+  headers).
 - `GET /unsubscribe?issue=N&token=…` — confirmation page (non-mutating, so link prefetchers can't
   unsubscribe); `POST /unsubscribe` (the form submit, or a one-click `List-Unsubscribe=One-Click` body)
-  clears the stored email when the token matches (constant-time compare).
+  clears the stored **email** when the token matches (constant-time), keeping the token so in-app
+  replies still work.
 - `GET /` — health check.
 
 The app never holds a token: it POSTs here to submit, and reads **public** issue state directly from

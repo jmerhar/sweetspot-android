@@ -353,4 +353,8 @@
     <string name="thread_you">Tu</string>
     <string name="thread_open_github">Deschide pe GitHub</string>
     <string name="thread_load_error">Conversația nu a putut fi încărcată. Verifică conexiunea și încearcă din nou.</string>
+    <string name="reply_hint">Răspunsul tău</string>
+    <string name="reply_send">Trimite</string>
+    <string name="reply_public_note">Răspunsul tău este publicat public pe GitHub.</string>
+    <string name="reply_error">Nu s-a putut trimite răspunsul. Încearcă din nou.</string>
 </resources>

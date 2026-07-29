@@ -7,6 +7,7 @@
  * Routes:
  *   POST /report        — app submits a report/feedback; creates a labelled GitHub issue.
  *   POST /webhook       — GitHub webhook (issues, issue_comment); emails the opted-in reporter via Brevo.
+ *   POST /reply         — app posts a comment on its own report (bot-authored), authorised by the token.
  *   GET  /unsubscribe   — confirmation page for the tokenized unsubscribe link in each notification.
  *   POST /unsubscribe   — clears the reporter's stored email (form submit, or RFC 8058 one-click).
  *   GET  /              — health check.
@@ -34,6 +35,9 @@ export default {
       }
       if (request.method === "POST" && url.pathname === "/webhook") {
         return await handleWebhook(request, env, ctx);
+      }
+      if (request.method === "POST" && url.pathname === "/reply") {
+        return await handleReply(request, env);
       }
       if (request.method === "GET" && url.pathname === "/unsubscribe") {
         return handleUnsubscribeGet(url);
@@ -111,14 +115,15 @@ async function handleReport(request, env) {
 
   // Only now (success) spend the rate-limit slot, and store the opt-in email for notifications.
   await env.FEEDBACK_KV.put(rlKey, String(used + 1), { expirationTtl: 172800 });
-  if (email && email.length > 0) {
-    // Store the email plus a random unsubscribe token (the capability that authorises clearing this
-    // entry via /unsubscribe). 400-day TTL; the reporter can also unsubscribe from any notification.
-    const value = JSON.stringify({ email, token: crypto.randomUUID() });
-    await env.FEEDBACK_KV.put(`issue:${issue.number}`, value, { expirationTtl: 34560000 });
-  }
 
-  return json({ number: issue.number, url: issue.html_url }, 201);
+  // Always store a per-report token (400-day TTL). It's the single capability for this report: the app
+  // holds it (returned below) to post in-app replies via /reply, and it also backs the emailed
+  // unsubscribe link. The email is kept only if the reporter opted into notifications.
+  const token = crypto.randomUUID();
+  const stored = JSON.stringify({ email: email && email.length > 0 ? email : null, token });
+  await env.FEEDBACK_KV.put(`issue:${issue.number}`, stored, { expirationTtl: 34560000 });
+
+  return json({ number: issue.number, url: issue.html_url, replyToken: token }, 201);
 }
 
 /** Assembles the issue body, appending diagnostics (bug reports) in a collapsible block. */
@@ -128,6 +133,66 @@ function buildIssueBody(body, diagnostics) {
     out += `\n\n<details><summary>Diagnostics</summary>\n\n\`\`\`\n${diagnostics.trim()}\n\`\`\`\n</details>`;
   }
   return out;
+}
+
+/**
+ * Posts a comment on an issue as the bot, on behalf of the reporter. Authorised by the report's token
+ * (the same one returned to the app at /report time), so only a device that submitted the report can
+ * reply. The comment is prefixed to mark it as coming from the reporter via the app.
+ */
+async function handleReply(request, env) {
+  if (!request.headers.get("content-type")?.includes("application/json")) {
+    return json({ error: "expected_json" }, 415);
+  }
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    return json({ error: "invalid_json" }, 400);
+  }
+
+  const number = Number.parseInt(String(payload.issue ?? ""), 10);
+  const token = String(payload.token ?? "");
+  const body = String(payload.body ?? "").trim();
+  const maxBody = intVar(env.MAX_BODY, 4000);
+  if (!Number.isInteger(number) || number <= 0) return json({ error: "invalid_issue" }, 400);
+  if (token.length === 0) return json({ error: "invalid_token" }, 400);
+  if (body.length === 0 || body.length > maxBody) return json({ error: "invalid_body" }, 400);
+
+  // Per-IP daily rate limit, separate from /report (replies are token-gated, so a looser cap is fine).
+  const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
+  const limit = intVar(env.REPLY_RATE_LIMIT_PER_DAY, 20);
+  const rlKey = `rlr:${ip}:${new Date().toISOString().slice(0, 10)}`;
+  const used = parseInt((await env.FEEDBACK_KV.get(rlKey)) ?? "0", 10) || 0;
+  if (used >= limit) return json({ error: "rate_limited" }, 429);
+
+  // Authorise: the presented token must match the one stored for this issue (constant-time).
+  const sub = await readSubscription(env, number);
+  if (!sub?.token || !timingSafeEqualStr(token, sub.token)) return json({ error: "forbidden" }, 403);
+
+  const commentBody = `💬 **Reporter (via app):**\n\n${body}`;
+  const ghRes = await fetch(
+    `${GITHUB_API}/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/issues/${number}/comments`,
+    {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${env.GITHUB_TOKEN}`,
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": USER_AGENT,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ body: commentBody }),
+    },
+  );
+  if (ghRes.status !== 201) {
+    console.error(JSON.stringify({ at: "create_comment", status: ghRes.status }));
+    return json({ error: "upstream_error" }, 502);
+  }
+
+  await env.FEEDBACK_KV.put(rlKey, String(used + 1), { expirationTtl: 172800 });
+  const comment = await ghRes.json();
+  return json({ ok: true, url: comment.html_url }, 201);
 }
 
 /** GitHub webhook: notify the opted-in reporter on new comments / issue close. */
@@ -150,7 +215,7 @@ async function handleWebhook(request, env, ctx) {
   if (!notice) return json({ ok: true, skipped: true }, 200);
 
   const sub = await readSubscription(env, notice.number);
-  if (!sub) return json({ ok: true, no_subscriber: true }, 200);
+  if (!sub || !sub.email) return json({ ok: true, no_subscriber: true }, 200);
 
   // A tokenized, per-report unsubscribe link (only for entries that carry a token — legacy
   // plain-email entries fall back to "reply to stop"). The token is the capability, so the link
@@ -299,7 +364,9 @@ async function handleUnsubscribePost(request, url, env) {
   if (/^\d+$/.test(issue) && token.length > 0) {
     const sub = await readSubscription(env, issue);
     if (sub?.token && timingSafeEqualStr(token, sub.token)) {
-      await env.FEEDBACK_KV.delete(`issue:${issue}`);
+      // Clear the email but keep the token, so notifications stop while in-app replies still work.
+      const value = JSON.stringify({ email: null, token: sub.token });
+      await env.FEEDBACK_KV.put(`issue:${issue}`, value, { expirationTtl: 34560000 });
     }
   }
 

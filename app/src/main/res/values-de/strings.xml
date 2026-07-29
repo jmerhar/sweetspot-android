@@ -345,4 +345,8 @@
     <string name="guide_allin_body">Zeige optional den vollen Verbraucherpreis statt nur des reinen Marktpreises an.</string>
     <string name="guide_wear_title">Auf deiner Uhr</string>
     <string name="guide_wear_body">Deine Geräte werden mit Wear OS synchronisiert, sodass du Preise auch ohne dein Telefon prüfen kannst.</string>
+    <string name="reply_hint">Deine Antwort</string>
+    <string name="reply_send">Senden</string>
+    <string name="reply_public_note">Deine Antwort wird öffentlich auf GitHub veröffentlicht.</string>
+    <string name="reply_error">Antwort konnte nicht gesendet werden. Bitte versuche es erneut.</string>
 </resources>

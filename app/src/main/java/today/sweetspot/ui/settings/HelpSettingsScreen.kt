@@ -50,6 +50,7 @@ import kotlinx.coroutines.launch
 import today.sweetspot.BuildConfig
 import today.sweetspot.MyReportView
 import today.sweetspot.R
+import today.sweetspot.ReplyState
 import today.sweetspot.ReportSubmission
 import today.sweetspot.ThreadState
 import today.sweetspot.model.ReportCategory
@@ -73,6 +74,7 @@ internal fun HelpSettingsScreen(
     reportSubmission: ReportSubmission,
     myReports: List<MyReportView>,
     thread: ThreadState?,
+    replySubmission: ReplyState,
     allInSupported: Boolean,
     devOptionsEnabled: Boolean,
     onReplayOnboarding: () -> Unit,
@@ -83,6 +85,7 @@ internal fun HelpSettingsScreen(
     onFlushOutbox: () -> Unit,
     onOpenThread: (Int) -> Unit,
     onCloseThread: () -> Unit,
+    onSendReply: (Int, String) -> Unit,
     onDevOptionsUnlocked: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
@@ -119,7 +122,13 @@ internal fun HelpSettingsScreen(
 
         HelpRoute.MyReports ->
             if (thread != null) {
-                ThreadScreen(state = thread, onRetry = { onOpenThread(thread.number) }, onBack = onCloseThread)
+                ThreadScreen(
+                    state = thread,
+                    replySubmission = replySubmission,
+                    onReply = onSendReply,
+                    onRetry = { onOpenThread(thread.number) },
+                    onBack = onCloseThread
+                )
             } else {
                 MyReportsScreen(reports = myReports, onOpenReport = onOpenThread, onBack = toMenu)
             }
@@ -443,7 +452,13 @@ private fun MyReportsScreen(
  * (the maintainer). An "Open on GitHub" link is always available (and is the fallback on error).
  */
 @Composable
-private fun ThreadScreen(state: ThreadState, onRetry: () -> Unit, onBack: () -> Unit) {
+private fun ThreadScreen(
+    state: ThreadState,
+    replySubmission: ReplyState,
+    onReply: (Int, String) -> Unit,
+    onRetry: () -> Unit,
+    onBack: () -> Unit
+) {
     val uriHandler = LocalUriHandler.current
     SettingsSubScreen(title = "#${state.number}", onBack = onBack) {
         when (state) {
@@ -484,6 +499,12 @@ private fun ThreadScreen(state: ThreadState, onRetry: () -> Unit, onBack: () -> 
                     Text(item.body.ifBlank { "—" }, style = MaterialTheme.typography.bodyMedium)
                     Spacer(modifier = Modifier.height(16.dp))
                 }
+                if (state.canReply) {
+                    ReplyComposer(
+                        submission = replySubmission,
+                        onSend = { text -> onReply(state.number, text) }
+                    )
+                }
                 TextButton(
                     onClick = { uriHandler.openUri(state.thread.htmlUrl) },
                     modifier = Modifier.fillMaxWidth()
@@ -491,6 +512,60 @@ private fun ThreadScreen(state: ThreadState, onRetry: () -> Unit, onBack: () -> 
             }
         }
     }
+}
+
+/**
+ * Reply composer shown under a thread this device can reply to: a public-visibility note, a text box,
+ * and a Send button. The draft clears only after a *successful* send (the submission transitions from
+ * SENDING to IDLE); a failure keeps the text and shows an error so the user can retry.
+ */
+@Composable
+private fun ReplyComposer(submission: ReplyState, onSend: (String) -> Unit) {
+    var text by rememberSaveable { mutableStateOf("") }
+    var previous by remember { mutableStateOf(submission) }
+    LaunchedEffect(submission) {
+        if (previous == ReplyState.SENDING && submission == ReplyState.IDLE) text = ""
+        previous = submission
+    }
+    val sending = submission == ReplyState.SENDING
+
+    Text(
+        text = stringResource(R.string.reply_public_note),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
+    )
+    Spacer(modifier = Modifier.height(4.dp))
+    OutlinedTextField(
+        value = text, onValueChange = { text = it },
+        label = { Text(stringResource(R.string.reply_hint)) },
+        minLines = 2, enabled = !sending, modifier = Modifier.fillMaxWidth()
+    )
+    if (submission == ReplyState.ERROR) {
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.reply_error),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error
+        )
+    }
+    Spacer(modifier = Modifier.height(8.dp))
+    Button(
+        onClick = { onSend(text) },
+        enabled = !sending && text.isNotBlank(),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        if (sending) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(18.dp), strokeWidth = 2.dp,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(stringResource(R.string.report_submitting))
+        } else {
+            Text(stringResource(R.string.reply_send))
+        }
+    }
+    Spacer(modifier = Modifier.height(16.dp))
 }
 
 /** A single quick-guide item: icon + heading + one-line body. */

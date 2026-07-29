@@ -38,6 +38,20 @@ class FeedbackCodecTest {
     }
 
     @Test
+    fun `parseSubmitResponse reads the reply token when present`() {
+        val r = FeedbackCodec.parseSubmitResponse("""{"number":42,"url":"u","replyToken":"tok-xyz"}""")
+        assertEquals(SubmitResult.Success(42, "u", "tok-xyz"), r)
+    }
+
+    @Test
+    fun `encodeReply builds the issue token body payload`() {
+        val json = FeedbackCodec.encodeReply(issue = 7, token = "tok", body = "my reply")
+        assertTrue(json.contains("\"issue\":7"))
+        assertTrue(json.contains("\"token\":\"tok\""))
+        assertTrue(json.contains("\"body\":\"my reply\""))
+    }
+
+    @Test
     fun `parseSubmitResponse returns Malformed on unexpected or invalid bodies`() {
         assertEquals(SubmitResult.Malformed, FeedbackCodec.parseSubmitResponse("""{"url":"x"}"""))
         assertEquals(SubmitResult.Malformed, FeedbackCodec.parseSubmitResponse("""{"error":"bad"}"""))

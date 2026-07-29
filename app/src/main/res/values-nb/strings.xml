@@ -343,4 +343,8 @@
     <string name="guide_allin_body">Vis eventuelt den fulle forbrukerprisen i stedet for bare markedsprisen.</string>
     <string name="guide_wear_title">På klokken din</string>
     <string name="guide_wear_body">Apparatene dine synkroniseres til Wear OS, så du kan sjekke priser uten telefonen.</string>
+    <string name="reply_hint">Svaret ditt</string>
+    <string name="reply_send">Send</string>
+    <string name="reply_public_note">Svaret ditt publiseres offentlig på GitHub.</string>
+    <string name="reply_error">Kunne ikke sende svaret. Prøv igjen.</string>
 </resources>

@@ -345,4 +345,8 @@
     <string name="guide_allin_body">Toon optioneel de volledige consumentenprijs in plaats van alleen de marktprijs.</string>
     <string name="guide_wear_title">Op je horloge</string>
     <string name="guide_wear_body">Je apparaten synchroniseren met Wear OS, zodat je prijzen kunt bekijken zonder je telefoon.</string>
+    <string name="reply_hint">Je antwoord</string>
+    <string name="reply_send">Verzenden</string>
+    <string name="reply_public_note">Je antwoord wordt openbaar op GitHub geplaatst.</string>
+    <string name="reply_error">Kon je antwoord niet verzenden. Probeer het opnieuw.</string>
 </resources>

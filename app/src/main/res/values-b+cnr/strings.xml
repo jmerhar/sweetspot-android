@@ -357,4 +357,8 @@
     <string name="thread_you">Vi</string>
     <string name="thread_open_github">Otvori na GitHubu</string>
     <string name="thread_load_error">Nije moguće učitati razgovor. Provjerite vezu i pokušajte ponovo.</string>
+    <string name="reply_hint">Vaš odgovor</string>
+    <string name="reply_send">Pošalji</string>
+    <string name="reply_public_note">Vaš odgovor se javno objavljuje na GitHubu.</string>
+    <string name="reply_error">Nije moguće poslati vaš odgovor. Pokušajte ponovo.</string>
 </resources>

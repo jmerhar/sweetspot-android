@@ -349,4 +349,8 @@
     <string name="guide_allin_body">По желание показвайте пълната крайна цена вместо само пазарната.</string>
     <string name="guide_wear_title">На вашия часовник</string>
     <string name="guide_wear_body">Вашите уреди се синхронизират с Wear OS, за да проверявате цените без телефона си.</string>
+    <string name="reply_hint">Вашият отговор</string>
+    <string name="reply_send">Изпращане</string>
+    <string name="reply_public_note">Вашият отговор се публикува публично в GitHub.</string>
+    <string name="reply_error">Отговорът не можа да бъде изпратен. Опитайте отново.</string>
 </resources>

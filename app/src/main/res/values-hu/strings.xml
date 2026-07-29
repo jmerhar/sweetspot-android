@@ -344,4 +344,8 @@
     <string name="thread_you">Te</string>
     <string name="thread_open_github">Megnyitás a GitHubon</string>
     <string name="thread_load_error">Nem sikerült betölteni a beszélgetést. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
+    <string name="reply_hint">A válaszod</string>
+    <string name="reply_send">Küldés</string>
+    <string name="reply_public_note">A válaszod nyilvánosan megjelenik a GitHubon.</string>
+    <string name="reply_error">Nem sikerült elküldeni a választ. Próbáld újra.</string>
 </resources>

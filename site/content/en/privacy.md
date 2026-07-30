@@ -5,7 +5,7 @@ description: "SweetSpot privacy policy — privacy-first, no accounts, no analyt
 
 ## Overview
 
-SweetSpot is designed with privacy in mind. The app does not collect or store any personal data. There are no user accounts, no analytics, and no usage tracking. An optional feature lets you share anonymous API statistics — see details below.
+SweetSpot is designed with privacy in mind. The app does not require or collect personal data to work — there are no user accounts, no analytics, and no usage tracking, and it requests only the INTERNET permission (no location, contacts, storage, or device identifiers). Optional features let you share anonymous API statistics or send feedback — see details below.
 
 ## Data Processing
 
@@ -21,9 +21,11 @@ These API requests contain only the bidding zone identifier and date range. No p
 
 ## Local Storage
 
-Price data is cached locally on your device to reduce API calls and enable faster results. Your appliance configuration (names, durations, icons, and optional power ratings), saved vehicles (battery size and charging power), and settings (country, zone, language) are also stored locally on your device.
+Price data is cached locally on your device to reduce API calls and enable faster results. Your appliance configuration (names, durations, icons, and optional power ratings), saved vehicles (battery size and charging power), and settings (country, zone, language) are also stored locally on your device, along with your subscription status (cached so the app keeps working offline) and per-appliance tap counts (used only for the most-used and recently-used sorting).
 
 On Wear OS, appliance data and settings are synced between phone and watch using the Wearable Data Layer API. This communication stays on your local devices and does not pass through any external server.
+
+If you share your setup as a QR code or link, your appliance and EV-charging configuration is encoded **inside the link or QR code itself** — it is never uploaded to a server. Only the person you give the code or link to can import it.
 
 ## No Analytics
 

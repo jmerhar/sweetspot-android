@@ -47,7 +47,7 @@ other = "30 European Countries"
 other = "Covers 43 bidding zones across Europe, from Portugal to Finland and from Norway to Greece."
 
 [feature_prices_title]
-other = "Real-Time Prices"
+other = "Day-Ahead Prices"
 
 [feature_prices_desc]
 other = "Day-ahead electricity prices from the ENTSO-E Transparency Platform, updated daily."
@@ -86,7 +86,7 @@ other = "Add your car, then enter its current and target charge. SweetSpot works
 other = "Ready-By Deadline"
 
 [feature_deadline_desc]
-other = "Need it finished by a set time? Add a 'ready by' deadline and SweetSpot only picks windows that complete in time."
+other = "Need it finished by a set time? Add a 'ready by' deadline and SweetSpot defaults to the cheapest window that finishes in time."
 
 [feature_power_title]
 other = "Power Rating"

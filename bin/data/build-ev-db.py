@@ -124,8 +124,14 @@ SOURCES = [load_kilowatt, load_openev]
 
 
 def dedup_key(v):
-    """Dedup key: brand + model + year, case-insensitive. Distinct years are kept separate."""
-    return (v["brand"].lower(), v["model"].lower(), v["year"])
+    """Dedup key: brand + model + variant + year, case-insensitive.
+
+    Variant is part of the key because different trims of the same model-year carry
+    different battery/AC specs, which drive the charging-time estimate — collapsing them
+    would drop all but one trim and give the user the wrong vehicle. Distinct trims and
+    years are therefore kept separate.
+    """
+    return (v["brand"].lower(), v["model"].lower(), (v["variant"] or "").lower(), v["year"])
 
 
 def main():

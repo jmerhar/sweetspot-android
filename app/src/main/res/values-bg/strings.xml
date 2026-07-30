@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Настройки</string>
     <string name="cd_back">Назад</string>
-    <string name="main_description">SweetSpot ви помага да спестите пари, като намира най-евтиното време за работа на вашите уреди. Просто изберете колко дълго трябва да работи уредът ви и приложението ще сканира следващите 24 часа динамични цени на електричеството, за да намери най-добрия период. Можете също да запазите любимите си уреди в настройките за бърз достъп.</string>
-    <string name="main_find_button">Намери най-евтиния период</string>
+    <string name="main_description">SweetSpot ви помага да спестите пари, като намира най-евтиното време за работа на вашите уреди. Просто изберете колко дълго трябва да работи уредът ви и приложението ще сканира предстоящите динамични цени на електричеството, за да намери най-доброто време. Можете също да запазите любимите си уреди в настройките за бърз достъп.</string>
+    <string name="main_find_button">Намери най-евтиното време</string>
     <string name="main_searching">Търсене…</string>
     <string name="main_add_appliances">Добавете вашите уреди</string>
     <string name="main_card_description">Намерете най-евтиното време за работа на вашия уред</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Препоръчано време</string>
-    <string name="result_after_deadline">Този период завършва след вашето време „Готово до“.</string>
+    <string name="result_after_deadline">Това приключва след вашето време „Готово до“.</string>
     <string name="result_start">Начало</string>
     <string name="result_end">Край</string>
     <string name="result_total_cost">Обща цена</string>
@@ -29,7 +29,7 @@
     <string name="result_disclaimer">Разходите са за 1 kW натоварване. Цените не включват ДДС, данък върху енергията и такса на доставчика. Цените за утре обикновено са налични след 13:00 CET.</string>
     <string name="result_data_source">\nИзточник на данни: %s</string>
     <string name="result_price_zone">\nЦенова зона: %s</string>
-    <string name="cd_cheapest_window">най-евтин период</string>
+    <string name="cd_cheapest_window">най-евтино време</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Продължителност</string>
@@ -151,10 +151,10 @@
     <string name="cd_refresh">Обнови</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Споделяне на API статистики</string>
-    <string name="settings_stats_description">Помогнете за подобряване на надеждността на източниците на данни, като споделяте анонимни статистики за успех/неуспех на API. Не се събират лични данни.</string>
+    <string name="settings_stats_title">Споделяне на статистики за надеждност</string>
+    <string name="settings_stats_description">Помогнете за подобряване на надеждността на източниците на данни, като споделяте анонимни данни за това колко често ценовите данни се зареждат или се провалят. Не се събират лични данни.</string>
     <string name="stats_prompt_title">Помогнете да подобрим SweetSpot?</string>
-    <string name="stats_prompt_message">Споделяйте анонимна API статистика, за да помогнете за подобряване на надеждността на източниците на данни. Споделят се само броят на успешни/неуспешни заявки по източник — без лични данни. Можете да промените това по всяко време в Настройки.</string>
+    <string name="stats_prompt_message">Споделяйте анонимни статистики, за да помогнете за подобряване на надеждността на източниците на данни. Споделя се само колко често всеки източник се зарежда или дава грешка — без лични данни. Можете да промените това по всяко време в Настройки.</string>
     <string name="stats_prompt_enable">Включи</string>
     <string name="stats_prompt_dismiss">Не, благодаря</string>
 
@@ -174,7 +174,7 @@
     <!-- Coach hints -->
     <string name="coach_earlier_cheaper">Не е подходящ момент? Докоснете „По-рано“ за по-ранен старт или „По-евтино“, за да се върнете към най-евтиното.</string>
     <string name="coach_chart_press_hold">Натиснете и задръжте графиката, за да видите цената във всеки момент.</string>
-    <string name="coach_all_in_toggle">Превключвайте между пълната крайна цена и голата пазарна цена.</string>
+    <string name="coach_all_in_toggle">Превключвайте между пълната крайна цена и само пазарната цена.</string>
     <string name="coach_ev_chip">Докоснете превозното си средство, за да планирате зареждането по процент на батерията.</string>
     <string name="coach_got_it">Разбрах</string>
 
@@ -184,7 +184,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Пробният период приключи</string>
-    <string name="paywall_description">SweetSpot намира най-евтиното време за работа на вашите уреди, като използва цени на електроенергия в реално време в 30 европейски държави. Абонирайте се, за да продължите да откривате най-евтиното време за вашите уреди.</string>
+    <string name="paywall_description">SweetSpot намира най-евтиното време за работа на вашите уреди, като използва динамични цени на електроенергията в 30 европейски държави. Абонирайте се, за да продължите да го използвате.</string>
     <string name="paywall_unlock">Абонирай се за SweetSpot</string>
     <string name="paywall_unlock_price">Абонирай се за %s/год.</string>
     <string name="paywall_restore">Възстанови абонамент</string>
@@ -227,7 +227,7 @@
     <!-- Total price (all-in) -->
     <string name="settings_all_in_title">Крайна цена</string>
     <string name="settings_all_in_toggle">Показване на крайната цена</string>
-    <string name="settings_all_in_desc">Показвайте прогнозната пълна крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС) вместо голата пазарна цена.</string>
+    <string name="settings_all_in_desc">Показвайте прогнозната пълна крайна цена (пазарна цена + данък върху енергията + надценка на доставчика + ДДС) вместо само пазарната цена.</string>
     <string name="all_in_supplier">Доставчик</string>
     <string name="all_in_supplier_prompt">Изберете вашия доставчик</string>
     <string name="all_in_supplier_custom">Персонализирана надценка</string>
@@ -236,14 +236,14 @@
     <string name="all_in_incomplete">Изберете доставчик или въведете надценка, или изключете крайната цена.</string>
     <string name="picker_supplier_title">Доставчик</string>
     <string name="picker_supplier_search">Търсене на доставчици</string>
-    <string name="result_disclaimer_all_in">Показаните разходи са за 1 kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Показаните разходи са за %s kW натоварване, по прогнозната крайна цена (борсова + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Показаните разходи са за 1 kW натоварване, по прогнозната крайна цена (пазарна цена + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Показаните разходи са за %s kW натоварване, по прогнозната крайна цена (пазарна цена + данък върху енергията + надценка на доставчика + ДДС). Не включват мрежови такси и фиксирани месечни такси. Цените за утре обикновено са налични след 13:00 CET.</string>
     <string name="result_all_in_supplier">\nДоставчик: %s</string>
     <string name="result_all_in_stale">Данните за тарифите са на повече от 14 дни и може да са остарели.</string>
     <string name="chart_legend_energy_tax">Данък върху енергията</string>
     <string name="chart_legend_surcharge">Надценка</string>
-    <string name="chart_legend_spot">Борсова цена</string>
-    <string name="chart_legend_spot_negative">Отрицателна борсова цена</string>
+    <string name="chart_legend_spot">Пазарна цена</string>
+    <string name="chart_legend_spot_negative">Отрицателна цена</string>
     <string name="chart_legend_vat_note">Всички цени включват ДДС.</string>
 
     <!-- Sorting & ordering -->
@@ -346,7 +346,7 @@
     <string name="guide_ev_title">Планирайте зареждането на електромобил</string>
     <string name="guide_ev_body">Добавете колата си, въведете текущото и целевото ниво на зареждане и SweetSpot изчислява времето за зареждане.</string>
     <string name="guide_result_title">Разчетете резултата</string>
-    <string name="guide_result_body">Използвайте „По-рано“ и „По-евтино“, за да преместите периода, и натиснете и задръжте графиката за цената на всеки интервал.</string>
+    <string name="guide_result_body">Използвайте „По-рано“ и „По-евтино“, за да преместите препоръчаното време, и натиснете и задръжте графиката за цената на всеки интервал.</string>
     <string name="guide_allin_title">Крайна цена</string>
     <string name="guide_allin_body">По желание показвайте пълната крайна цена вместо само пазарната.</string>
     <string name="guide_wear_title">На вашия часовник</string>

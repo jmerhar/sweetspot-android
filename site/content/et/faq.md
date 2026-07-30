@@ -57,7 +57,7 @@ Jah. Seadetes saad jagada oma seadistust — oma seadmeid, nende järjestust ja 
 {{< /faq >}}
 
 {{< faq question="Kuidas teatan probleemist või teen ettepaneku uue funktsiooni kohta?" >}}
-Ava **Seaded › Abi ja tagasiside** ning vali *Teata probleemist* või *Saada tagasisidet*. Sinu sõnum saadetakse otse rakendusest — brauserit ega GitHubi kontot pole vaja — ja sellest saab avalik teema, mida saame jälgida. Soovi korral saad jätta e-posti aadressi, et saada teavitusi vastustest (seda ei kuvata kunagi avalikult ja iga teavitus sisaldab ühe klõpsuga loobumislinki), ning jälgida kõige saadetu olekut jaotises *Minu teated*.
+Ava **Seaded › Abi & tugi** ning vali *Teata probleemist* või *Saada tagasisidet*. Sinu sõnum saadetakse otse rakendusest — brauserit ega GitHubi kontot pole vaja — ja sellest saab avalik teema, mida saame jälgida. Soovi korral saad jätta e-posti aadressi, et saada teavitusi vastustest (seda ei kuvata kunagi avalikult ja iga teavitus sisaldab ühe klõpsuga loobumislinki), ning jälgida kõige saadetu olekut jaotises *Minu teated*.
 {{< /faq >}}
 
 {{< faq question="Kui palju SweetSpot maksab?" >}}

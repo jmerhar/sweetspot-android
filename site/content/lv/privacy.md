@@ -27,7 +27,7 @@ Wear OS ierīcēs elektroierīču dati un iestatījumi tiek sinhronizēti starp 
 
 ## Bez analītikas
 
-SweetSpot neietver analītikas SDK, kļūdu ziņošanu vai lietošanas izsekošanu. Lietotne neveic citus tīkla pieprasījumus, izņemot elektrības cenu iegūšanu no iepriekš minētajām publiskajām API (un neobligāto statistikas ziņošanu, ja tā ir iespējota, kā arī ziņojuma nosūtīšanu, ja izmanto Palīdzību un atsauksmes — skatīt zemāk).
+SweetSpot neietver analītikas SDK, kļūdu ziņošanu vai lietošanas izsekošanu. Lietotne neveic citus tīkla pieprasījumus, izņemot elektrības cenu iegūšanu no iepriekš minētajām publiskajām API (un neobligāto statistikas ziņošanu, ja tā ir iespējota, kā arī ziņojuma nosūtīšanu, ja izmanto Palīdzību un atbalstu — skatīt zemāk).
 
 ## Neobligāta API statistika
 
@@ -48,9 +48,9 @@ Jūs varat izvēlēties kopīgot anonīmu API uzticamības statistiku. Kad šī 
 
 Šī funkcija ir izslēgta pēc noklusējuma. Jūs varat to iespējot vai atspējot jebkurā laikā sadaļā Iestatījumi.
 
-## Palīdzība un atsauksmes
+## Palīdzība un atbalsts
 
-Ja ziņo par problēmu vai sūti atsauksmi no sadaļas **Iestatījumi › Palīdzība un atsauksmes**, tavs ziņojums tiek nosūtīts mūsu atsauksmju pakalpojumam un reģistrēts kā pieteikums mūsu publiskajā GitHub repozitorijā. **Tavs uzrakstītais temats un apraksts kļūst publiski redzami** GitHub, tāpēc, lūdzu, neiekļauj personiskus datus.
+Ja ziņo par problēmu vai sūti atsauksmi no sadaļas **Iestatījumi › Palīdzība un atbalsts**, tavs ziņojums tiek nosūtīts mūsu atsauksmju pakalpojumam un reģistrēts kā pieteikums mūsu publiskajā GitHub repozitorijā. **Tavs uzrakstītais temats un apraksts kļūst publiski redzami** GitHub, tāpēc, lūdzu, neiekļauj personiskus datus.
 
 Ja izvēlies saņemt paziņojumus pa e-pastu, tava norādītā adrese tiek glabāta tikai mūsu atsauksmju pakalpojumā — tā nekad netiek rādīta publiskajā pieteikumā — un tiek izmantota tikai, lai sūtītu tev e-pastus par tavu paša ziņojumu. Katrs paziņojuma e-pasts ietver viena klikšķa atrakstīšanās saiti, kas noņem saglabāto adresi, un tu jebkurā laikā vari arī lūgt mums to dzēst.
 

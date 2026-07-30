@@ -27,7 +27,7 @@ Na Wear OS se podatki o aparatih in nastavitve sinhronizirajo med telefonom in u
 
 ## Brez analitike
 
-SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev (in neobveznega poročanja statistik, če je omogočeno, ter pošiljanja prijave, če uporabite Pomoč in povratne informacije — glejte spodaj).
+SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev (in neobveznega poročanja statistik, če je omogočeno, ter pošiljanja prijave, če uporabite Pomoč in podpora — glejte spodaj).
 
 ## Neobvezne API statistike
 
@@ -48,9 +48,9 @@ Ti podatki **ne** vsebujejo identifikatorjev naprave, lokacije, cenovnih podatko
 
 Ta funkcija je privzeto onemogočena. Kadarkoli jo lahko omogočite ali onemogočite v Nastavitvah.
 
-## Pomoč in povratne informacije
+## Pomoč in podpora
 
-Če prijavite težavo ali pošljete povratne informacije prek **Nastavitve › Pomoč in povratne informacije**, se vaše sporočilo pošlje naši storitvi za povratne informacije in vloži kot prijava v našem javnem repozitoriju GitHub. **Naslov in opis, ki ju napišete, postaneta javno vidna** na GitHubu, zato ne vključujte osebnih podatkov.
+Če prijavite težavo ali pošljete povratne informacije prek **Nastavitve › Pomoč in podpora**, se vaše sporočilo pošlje naši storitvi za povratne informacije in vloži kot prijava v našem javnem repozitoriju GitHub. **Naslov in opis, ki ju napišete, postaneta javno vidna** na GitHubu, zato ne vključujte osebnih podatkov.
 
 Če se odločite za obveščanje po e-pošti, se naslov, ki ga navedete, shrani le pri naši storitvi za povratne informacije — nikoli ni prikazan v javni prijavi — in se uporablja izključno za obveščanje o vaši lastni prijavi. Vsako obvestilo po e-pošti vključuje povezavo za odjavo z enim klikom, ki shranjeni naslov odstrani, poleg tega pa lahko kadarkoli zahtevate njegov izbris.
 

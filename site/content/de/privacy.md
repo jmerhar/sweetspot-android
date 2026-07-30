@@ -27,7 +27,7 @@ Auf Wear OS werden Gerätedaten und Einstellungen zwischen Telefon und Uhr über
 
 ## Keine Nutzeranalyse
 
-SweetSpot enthält keine Analytics-SDKs, Absturzberichte oder Nutzungsverfolgung. Die App stellt keine Netzwerkanfragen außer zum Abruf von Strompreisen von den oben genannten öffentlichen APIs (und optionalen Statistikberichten, wenn aktiviert, sowie dem Übermitteln einer Meldung, wenn du Hilfe & Feedback nutzt — siehe unten).
+SweetSpot enthält keine Analytics-SDKs, Absturzberichte oder Nutzungsverfolgung. Die App stellt keine Netzwerkanfragen außer zum Abruf von Strompreisen von den oben genannten öffentlichen APIs (und optionalen Statistikberichten, wenn aktiviert, sowie dem Übermitteln einer Meldung, wenn du Hilfe & Support nutzt — siehe unten).
 
 ## Optionale API-Statistiken
 
@@ -48,9 +48,9 @@ Diese Daten enthalten **keine** Gerätekennungen, Standort, Preisdaten oder ande
 
 Diese Funktion ist standardmäßig deaktiviert. Du kannst sie jederzeit unter Einstellungen aktivieren oder deaktivieren.
 
-## Hilfe & Feedback
+## Hilfe & Support
 
-Wenn du unter **Einstellungen › Hilfe & Feedback** ein Problem meldest oder Feedback sendest, wird deine Nachricht an unseren Feedback-Dienst gesendet und als Issue in unserem öffentlichen GitHub-Repository abgelegt. **Der von dir verfasste Betreff und die Beschreibung werden öffentlich sichtbar** auf GitHub, gib daher bitte keine persönlichen Daten an.
+Wenn du unter **Einstellungen › Hilfe & Support** ein Problem meldest oder Feedback sendest, wird deine Nachricht an unseren Feedback-Dienst gesendet und als Issue in unserem öffentlichen GitHub-Repository abgelegt. **Der von dir verfasste Betreff und die Beschreibung werden öffentlich sichtbar** auf GitHub, gib daher bitte keine persönlichen Daten an.
 
 Wenn du dich für eine Benachrichtigung per E-Mail entscheidest, wird die von dir angegebene Adresse ausschließlich von unserem Feedback-Dienst gespeichert — sie wird nie im öffentlichen Issue angezeigt — und ausschließlich verwendet, um dich über deine eigene Meldung zu informieren. Jede Benachrichtigungs-E-Mail enthält einen Ein-Klick-Abmeldelink, der die gespeicherte Adresse entfernt, und du kannst uns außerdem jederzeit bitten, sie zu löschen.
 

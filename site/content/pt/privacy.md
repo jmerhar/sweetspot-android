@@ -27,7 +27,7 @@ No Wear OS, os dados dos eletrodomésticos e definições são sincronizados ent
 
 ## Sem análises
 
-O SweetSpot não inclui quaisquer SDKs de análise, relatórios de erros ou rastreamento de utilização. A aplicação não efetua quaisquer pedidos de rede para além da obtenção de preços de eletricidade das APIs públicas acima indicadas (e do envio opcional de estatísticas, se ativado, e do envio de um relatório se utilizar a Ajuda e comentários — consulte abaixo).
+O SweetSpot não inclui quaisquer SDKs de análise, relatórios de erros ou rastreamento de utilização. A aplicação não efetua quaisquer pedidos de rede para além da obtenção de preços de eletricidade das APIs públicas acima indicadas (e do envio opcional de estatísticas, se ativado, e do envio de um relatório se utilizar a Ajuda e suporte — consulte abaixo).
 
 ## Estatísticas de API opcionais
 
@@ -48,9 +48,9 @@ Estes dados **não** contêm identificadores do dispositivo, localização, dado
 
 Esta funcionalidade está desativada por predefinição. Pode ativá-la ou desativá-la a qualquer momento em Definições.
 
-## Ajuda e comentários
+## Ajuda e suporte
 
-Se comunicar um problema ou enviar comentários a partir de **Definições › Ajuda e comentários**, a sua mensagem é enviada ao nosso serviço de comentários e registada como um pedido no nosso repositório público do GitHub. **O assunto e a descrição que escrever tornam-se publicamente visíveis** no GitHub, por isso não inclua dados pessoais.
+Se comunicar um problema ou enviar comentários a partir de **Definições › Ajuda e suporte**, a sua mensagem é enviada ao nosso serviço de comentários e registada como um pedido no nosso repositório público do GitHub. **O assunto e a descrição que escrever tornam-se publicamente visíveis** no GitHub, por isso não inclua dados pessoais.
 
 Se optar por ser notificado por e-mail, o endereço que fornecer é armazenado apenas pelo nosso serviço de comentários — nunca é mostrado no pedido público — e é utilizado exclusivamente para lhe enviar informações sobre o seu próprio relatório. Todos os e-mails de notificação incluem uma ligação de cancelamento de subscrição com um clique que remove o endereço armazenado, e também pode pedir-nos que o eliminemos a qualquer momento.
 

@@ -27,7 +27,7 @@ Wear OS esetén a készülékadatok és beállítások a telefon és az óra kö
 
 ## Nincs analitika
 
-A SweetSpot nem tartalmaz analitikai SDK-kat, hibajelentést vagy használatkövetést. Az alkalmazás nem végez hálózati kéréseket a fent felsorolt nyilvános API-kból történő árlekérdezésen túl (és az opcionális statisztikajelentésen, ha engedélyezve van, valamint egy jelentés elküldésén, ha a Súgó és visszajelzés funkciót használja — lásd alább).
+A SweetSpot nem tartalmaz analitikai SDK-kat, hibajelentést vagy használatkövetést. Az alkalmazás nem végez hálózati kéréseket a fent felsorolt nyilvános API-kból történő árlekérdezésen túl (és az opcionális statisztikajelentésen, ha engedélyezve van, valamint egy jelentés elküldésén, ha a Súgó és támogatás funkciót használja — lásd alább).
 
 ## Opcionális API-statisztika
 
@@ -48,9 +48,9 @@ Ezek az adatok **nem** tartalmaznak eszközazonosítókat, helymeghatározást, 
 
 Ez a funkció alapértelmezetten ki van kapcsolva. Bármikor be- vagy kikapcsolhatja a Beállítások menüpontban.
 
-## Segítség és visszajelzés
+## Súgó és támogatás
 
-Ha problémát jelent vagy visszajelzést küld a **Beállítások › Súgó és visszajelzés** menüpontból, az üzenete a visszajelzési szolgáltatásunkhoz kerül elküldésre, és egy témaként rögzítjük a nyilvános GitHub-tárolónkban. **Az Ön által írt tárgy és leírás nyilvánosan láthatóvá válik** a GitHubon, ezért kérjük, ne tüntessen fel személyes adatokat.
+Ha problémát jelent vagy visszajelzést küld a **Beállítások › Súgó és támogatás** menüpontból, az üzenete a visszajelzési szolgáltatásunkhoz kerül elküldésre, és egy témaként rögzítjük a nyilvános GitHub-tárolónkban. **Az Ön által írt tárgy és leírás nyilvánosan láthatóvá válik** a GitHubon, ezért kérjük, ne tüntessen fel személyes adatokat.
 
 Ha az e-mailben történő értesítést választja, a megadott címet kizárólag a visszajelzési szolgáltatásunk tárolja — az soha nem jelenik meg a nyilvános témában —, és kizárólag arra használjuk, hogy e-mailben tájékoztassuk Önt a saját jelentéséről. Minden értesítő e-mail tartalmaz egy egykattintásos leiratkozási hivatkozást, amely eltávolítja a tárolt címet, és annak törlését bármikor kérheti tőlünk is.
 

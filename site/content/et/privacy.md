@@ -27,7 +27,7 @@ Wear OS-is sünkroniseeritakse seadmete andmed ja seaded telefoni ja kella vahel
 
 ## Analüütikat ei ole
 
-SweetSpot ei sisalda analüütika SDK-sid, veaaruandlust ega kasutuse jälgimist. Rakendus ei tee võrgupäringuid peale elektrihinnade pärimise ülalnimetatud avalikest API-dest (ja valikulise statistika saatmise, kui see on lubatud, ning teate saatmise, kui kasutad jaotist Abi ja tagasiside — vaata allpool).
+SweetSpot ei sisalda analüütika SDK-sid, veaaruandlust ega kasutuse jälgimist. Rakendus ei tee võrgupäringuid peale elektrihinnade pärimise ülalnimetatud avalikest API-dest (ja valikulise statistika saatmise, kui see on lubatud, ning teate saatmise, kui kasutad jaotist Abi & tugi — vaata allpool).
 
 ## Valikuline API statistika
 
@@ -48,9 +48,9 @@ Need andmed **ei sisalda** seadme identifikaatoreid, asukohta, hinnaandmeid ega 
 
 See funktsioon on vaikimisi keelatud. Saad selle igal ajal sisse või välja lülitada menüüs Seaded.
 
-## Abi ja tagasiside
+## Abi & tugi
 
-Kui teatad probleemist või saadad tagasisidet jaotisest **Seaded › Abi ja tagasiside**, saadetakse sinu sõnum meie tagasisideteenusesse ja esitatakse teemana meie avalikus GitHubi hoidlas. **Sinu kirjutatud pealkiri ja kirjeldus muutuvad GitHubis avalikult nähtavaks**, seega palun ära lisa sinna isiklikke andmeid.
+Kui teatad probleemist või saadad tagasisidet jaotisest **Seaded › Abi & tugi**, saadetakse sinu sõnum meie tagasisideteenusesse ja esitatakse teemana meie avalikus GitHubi hoidlas. **Sinu kirjutatud pealkiri ja kirjeldus muutuvad GitHubis avalikult nähtavaks**, seega palun ära lisa sinna isiklikke andmeid.
 
 Kui valid e-posti teel teavitamise, salvestab sisestatud aadressi ainult meie tagasisideteenus — seda ei kuvata kunagi avalikus teemas — ja seda kasutatakse ainult selleks, et saata sulle e-kirju sinu enda teate kohta. Iga teavitus-e-kiri sisaldab ühe klõpsuga loobumislinki, mis eemaldab salvestatud aadressi, ja soovi korral võid meilt igal ajal paluda ka selle kustutamist.
 

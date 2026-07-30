@@ -27,7 +27,7 @@ Na Wear OS sa údaje o spotrebičoch a nastavenia synchronizujú medzi telefóno
 
 ## Žiadna analytika
 
-SweetSpot neobsahuje žiadne analytické SDK, hlásenie chýb ani sledovanie používania. Aplikácia nevykonáva žiadne sieťové požiadavky okrem získavania cien elektriny z vyššie uvedených verejných API (a voliteľného zasielania štatistík, ak je povolené, a odoslania hlásenia, ak použijete Pomoc a spätnú väzbu — pozrite nižšie).
+SweetSpot neobsahuje žiadne analytické SDK, hlásenie chýb ani sledovanie používania. Aplikácia nevykonáva žiadne sieťové požiadavky okrem získavania cien elektriny z vyššie uvedených verejných API (a voliteľného zasielania štatistík, ak je povolené, a odoslania hlásenia, ak použijete Pomoc a podporu — pozrite nižšie).
 
 ## Voliteľné API štatistiky
 
@@ -48,9 +48,9 @@ Tieto údaje **neobsahujú** identifikátory zariadenia, polohu, cenové údaje 
 
 Táto funkcia je predvolene vypnutá. Môžete ju kedykoľvek zapnúť alebo vypnúť v Nastaveniach.
 
-## Pomoc a spätná väzba
+## Pomoc a podpora
 
-Ak nahlásite problém alebo odošlete spätnú väzbu z ponuky **Nastavenia › Pomoc a spätná väzba**, vaša správa sa odošle do našej služby spätnej väzby a zaeviduje sa ako issue v našom verejnom GitHub repozitári. **Predmet a popis, ktoré napíšete, sa na GitHube stanú verejne viditeľnými**, preto neuvádzajte osobné údaje.
+Ak nahlásite problém alebo odošlete spätnú väzbu z ponuky **Nastavenia › Pomoc a podpora**, vaša správa sa odošle do našej služby spätnej väzby a zaeviduje sa ako issue v našom verejnom GitHub repozitári. **Predmet a popis, ktoré napíšete, sa na GitHube stanú verejne viditeľnými**, preto neuvádzajte osobné údaje.
 
 Ak sa rozhodnete byť upozornení e-mailom, adresa, ktorú zadáte, sa ukladá iba v našej službe spätnej väzby — nikdy sa nezobrazuje vo verejnom issue — a slúži výhradne na to, aby sme vám mohli poslať e-mail o vašom vlastnom hlásení. Každé e-mailové upozornenie obsahuje odkaz na odhlásenie jedným kliknutím, ktorý odstráni uloženú adresu, a o jej vymazanie nás môžete kedykoľvek aj požiadať.
 

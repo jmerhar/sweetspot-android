@@ -57,7 +57,7 @@ Oui. Dans les paramètres, vous pouvez partager votre configuration — vos appa
 {{< /faq >}}
 
 {{< faq question="Comment signaler un problème ou suggérer une fonctionnalité ?" >}}
-Ouvrez **Paramètres › Aide et commentaires** et choisissez *Signaler un problème* ou *Envoyer un commentaire*. Votre message est envoyé directement depuis l'application — sans navigateur ni compte GitHub — et devient une issue publique que nous pouvons suivre. Vous pouvez éventuellement indiquer une adresse e-mail pour être informé des réponses (elle n'est jamais affichée publiquement, et chaque notification comporte un lien de désabonnement en un clic) et suivre l'état de tout ce que vous avez envoyé sous *Mes rapports*.
+Ouvrez **Paramètres › Aide et assistance** et choisissez *Signaler un problème* ou *Envoyer un commentaire*. Votre message est envoyé directement depuis l'application — sans navigateur ni compte GitHub — et devient une issue publique que nous pouvons suivre. Vous pouvez éventuellement indiquer une adresse e-mail pour être informé des réponses (elle n'est jamais affichée publiquement, et chaque notification comporte un lien de désabonnement en un clic) et suivre l'état de tout ce que vous avez envoyé sous *Mes rapports*.
 {{< /faq >}}
 
 {{< faq question="Combien coûte SweetSpot ?" >}}

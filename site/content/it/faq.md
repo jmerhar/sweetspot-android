@@ -57,7 +57,7 @@ Sì. Nelle impostazioni puoi condividere la tua configurazione — i tuoi elettr
 {{< /faq >}}
 
 {{< faq question="Come segnalo un problema o suggerisco una funzione?" >}}
-Apri **Impostazioni › Aiuto e feedback** e scegli *Segnala un problema* o *Invia feedback*. Il tuo messaggio viene inviato direttamente dall'app — senza browser né account GitHub — e diventa una segnalazione pubblica che possiamo tracciare. Puoi facoltativamente lasciare un indirizzo email per essere avvisato delle risposte (non viene mai mostrato pubblicamente e ogni notifica include un link di annullamento dell'iscrizione con un clic) e seguire lo stato di tutto ciò che hai inviato in *Le mie segnalazioni*.
+Apri **Impostazioni › Aiuto e assistenza** e scegli *Segnala un problema* o *Invia feedback*. Il tuo messaggio viene inviato direttamente dall'app — senza browser né account GitHub — e diventa una segnalazione pubblica che possiamo tracciare. Puoi facoltativamente lasciare un indirizzo email per essere avvisato delle risposte (non viene mai mostrato pubblicamente e ogni notifica include un link di annullamento dell'iscrizione con un clic) e seguire lo stato di tutto ciò che hai inviato in *Le mie segnalazioni*.
 {{< /faq >}}
 
 {{< faq question="Quanto costa SweetSpot?" >}}

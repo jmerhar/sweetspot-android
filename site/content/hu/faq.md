@@ -57,7 +57,7 @@ Igen. A beállításokban megoszthatja a konfigurációját — a készülékeit
 {{< /faq >}}
 
 {{< faq question="Hogyan jelenthetek egy problémát vagy javasolhatok egy funkciót?" >}}
-Nyissa meg a **Beállítások › Súgó és visszajelzés** menüpontot, és válassza a *Probléma jelentése* vagy a *Visszajelzés küldése* lehetőséget. Az üzenete közvetlenül az alkalmazásból kerül elküldésre — böngésző vagy GitHub-fiók nélkül —, és nyilvános témává válik, amelyet nyomon követhetünk. Opcionálisan megadhat egy e-mail-címet, hogy értesítést kapjon a válaszokról (ez soha nem jelenik meg nyilvánosan, és minden értesítés tartalmaz egy egykattintásos leiratkozási hivatkozást), és a *Jelentéseim* menüpontban követheti mindannak az állapotát, amit elküldött.
+Nyissa meg a **Beállítások › Súgó és támogatás** menüpontot, és válassza a *Probléma jelentése* vagy a *Visszajelzés küldése* lehetőséget. Az üzenete közvetlenül az alkalmazásból kerül elküldésre — böngésző vagy GitHub-fiók nélkül —, és nyilvános témává válik, amelyet nyomon követhetünk. Opcionálisan megadhat egy e-mail-címet, hogy értesítést kapjon a válaszokról (ez soha nem jelenik meg nyilvánosan, és minden értesítés tartalmaz egy egykattintásos leiratkozási hivatkozást), és a *Jelentéseim* menüpontban követheti mindannak az állapotát, amit elküldött.
 {{< /faq >}}
 
 {{< faq question="Mennyibe kerül a SweetSpot?" >}}

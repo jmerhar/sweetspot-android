@@ -27,7 +27,7 @@ Wear OS:ssä laitetiedot ja asetukset synkronoidaan puhelimen ja kellon välill�
 
 ## Ei analytiikkaa
 
-SweetSpot ei sisällä analytiikka-SDK:ita, kaatumisraportointia eikä käytön seurantaa. Sovellus ei tee verkkokyselyjä sähkön hintojen haun lisäksi yllä mainituista julkisista rajapinnoista (ja valinnaisen tilastoraportoinnin, jos se on käytössä, sekä ilmoituksen lähettämisen, jos käytät Ohje ja palaute -toimintoa — katso alta).
+SweetSpot ei sisällä analytiikka-SDK:ita, kaatumisraportointia eikä käytön seurantaa. Sovellus ei tee verkkokyselyjä sähkön hintojen haun lisäksi yllä mainituista julkisista rajapinnoista (ja valinnaisen tilastoraportoinnin, jos se on käytössä, sekä ilmoituksen lähettämisen, jos käytät Ohje & tuki -toimintoa — katso alta).
 
 ## Valinnainen API-tilastointi
 
@@ -48,9 +48,9 @@ Nämä tiedot **eivät** sisällä laitetunnisteita, sijaintia, hintatietoja tai
 
 Tämä toiminto on oletuksena pois käytöstä. Voit ottaa sen käyttöön tai poistaa sen käytöstä milloin tahansa kohdassa Asetukset.
 
-## Ohje ja palaute
+## Ohje & tuki
 
-Jos ilmoitat ongelmasta tai lähetät palautetta kohdasta **Asetukset › Ohje ja palaute**, viestisi lähetetään palautepalveluumme ja kirjataan ilmoituksena julkiseen GitHub-arkistoomme. **Kirjoittamasi otsikko ja kuvaus tulevat julkisesti näkyviin** GitHubissa, joten älä sisällytä niihin henkilötietoja.
+Jos ilmoitat ongelmasta tai lähetät palautetta kohdasta **Asetukset › Ohje & tuki**, viestisi lähetetään palautepalveluumme ja kirjataan ilmoituksena julkiseen GitHub-arkistoomme. **Kirjoittamasi otsikko ja kuvaus tulevat julkisesti näkyviin** GitHubissa, joten älä sisällytä niihin henkilötietoja.
 
 Jos valitset ilmoitukset sähköpostitse, antamasi osoite tallennetaan vain palautepalveluumme — sitä ei koskaan näytetä julkisessa ilmoituksessa — ja sitä käytetään ainoastaan sähköpostien lähettämiseen omasta ilmoituksestasi. Jokainen ilmoitussähköposti sisältää yhden napsautuksen peruutuslinkin, joka poistaa tallennetun osoitteen, ja voit myös pyytää meitä poistamaan sen milloin tahansa.
 

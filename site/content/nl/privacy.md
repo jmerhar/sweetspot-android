@@ -27,7 +27,7 @@ Op Wear OS worden apparaatgegevens en instellingen gesynchroniseerd tussen telef
 
 ## Geen analytics
 
-SweetSpot bevat geen analytics-SDK's, crashrapportage of gebruiksregistratie. De app doet geen netwerkverzoeken buiten het ophalen van stroomprijzen van de hierboven genoemde openbare API's (optionele statistiekrapportage als ingeschakeld, en het versturen van een melding als je Help en feedback gebruikt — zie hieronder).
+SweetSpot bevat geen analytics-SDK's, crashrapportage of gebruiksregistratie. De app doet geen netwerkverzoeken buiten het ophalen van stroomprijzen van de hierboven genoemde openbare API's (optionele statistiekrapportage als ingeschakeld, en het versturen van een melding als je Help & ondersteuning gebruikt — zie hieronder).
 
 ## Optionele API-statistieken
 
@@ -48,9 +48,9 @@ Deze gegevens bevatten **geen** apparaat-ID's, locatie, prijsgegevens of andere 
 
 Deze functie is standaard uitgeschakeld. Je kunt het op elk moment in- of uitschakelen via Instellingen.
 
-## Help en feedback
+## Help & ondersteuning
 
-Als je een probleem meldt of feedback stuurt via **Instellingen › Help en feedback**, wordt je bericht naar onze feedbackdienst gestuurd en als issue in onze openbare GitHub-repository geplaatst. **Het onderwerp en de beschrijving die je schrijft worden openbaar zichtbaar** op GitHub, dus vermeld geen persoonlijke gegevens.
+Als je een probleem meldt of feedback stuurt via **Instellingen › Help & ondersteuning**, wordt je bericht naar onze feedbackdienst gestuurd en als issue in onze openbare GitHub-repository geplaatst. **Het onderwerp en de beschrijving die je schrijft worden openbaar zichtbaar** op GitHub, dus vermeld geen persoonlijke gegevens.
 
 Als je ervoor kiest om per e-mail op de hoogte te worden gebracht, wordt het opgegeven adres alleen door onze feedbackdienst bewaard — het wordt nooit in de openbare issue getoond — en uitsluitend gebruikt om je over je eigen melding te e-mailen. Elke notificatie-e-mail bevat een afmeldlink met één klik die het opgeslagen adres verwijdert, en je kunt ons ook op elk moment vragen het te verwijderen.
 

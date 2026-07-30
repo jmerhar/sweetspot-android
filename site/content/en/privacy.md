@@ -27,7 +27,7 @@ On Wear OS, appliance data and settings are synced between phone and watch using
 
 ## No Analytics
 
-SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above (optional stats reporting if enabled, and submitting a report if you use Help & feedback — see below).
+SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above (optional stats reporting if enabled, and submitting a report if you use Help & support — see below).
 
 ## Optional API Statistics
 
@@ -48,9 +48,9 @@ This data does **not** contain device identifiers, location, price data, or any 
 
 This feature is disabled by default. You can enable or disable it at any time in Settings.
 
-## Help & Feedback
+## Help & Support
 
-If you report a problem or send feedback from **Settings › Help & feedback**, your message is sent to our feedback service and filed as an issue in our public GitHub repository. **The subject and description you write become publicly visible** on GitHub, so please don't include personal details.
+If you report a problem or send feedback from **Settings › Help & support**, your message is sent to our feedback service and filed as an issue in our public GitHub repository. **The subject and description you write become publicly visible** on GitHub, so please don't include personal details.
 
 If you choose to be notified by email, the address you provide is stored only by our feedback service — it is never shown in the public issue — and is used solely to email you about your own report. Every notification email includes a one-click unsubscribe link that removes the stored address, and you can also ask us to delete it at any time.
 

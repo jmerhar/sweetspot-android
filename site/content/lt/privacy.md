@@ -27,7 +27,7 @@ Wear OS įrenginiuose prietaisų duomenys ir nustatymai sinchronizuojami tarp te
 
 ## Be analitikos
 
-SweetSpot nenaudoja jokių analitikos SDK, klaidų ataskaitų ar naudojimo sekimo. Programėlė nevykdo jokių tinklo užklausų, išskyrus elektros kainų gavimą iš aukščiau išvardytų viešų API (ir neprivalomą statistikos siuntimą, jei jis įjungtas, bei pranešimo pateikimą, jei naudojatės skiltimi Pagalba ir atsiliepimai — žr. žemiau).
+SweetSpot nenaudoja jokių analitikos SDK, klaidų ataskaitų ar naudojimo sekimo. Programėlė nevykdo jokių tinklo užklausų, išskyrus elektros kainų gavimą iš aukščiau išvardytų viešų API (ir neprivalomą statistikos siuntimą, jei jis įjungtas, bei pranešimo pateikimą, jei naudojatės skiltimi Pagalba ir palaikymas — žr. žemiau).
 
 ## Neprivaloma API statistika
 
@@ -48,9 +48,9 @@ Galite pasirinkti dalintis anonimine API patikimumo statistika. Kai ši funkcija
 
 Ši funkcija pagal numatytuosius nustatymus yra išjungta. Galite ją įjungti arba išjungti bet kuriuo metu skiltyje Nustatymai.
 
-## Pagalba ir atsiliepimai
+## Pagalba ir palaikymas
 
-Jei pranešate apie problemą arba siunčiate atsiliepimą iš **Nustatymai › Pagalba ir atsiliepimai**, jūsų žinutė siunčiama į mūsų atsiliepimų tarnybą ir užregistruojama kaip problema mūsų viešoje GitHub saugykloje. **Jūsų parašyta tema ir aprašymas tampa viešai matomi** GitHub, todėl neįtraukite asmeninių duomenų.
+Jei pranešate apie problemą arba siunčiate atsiliepimą iš **Nustatymai › Pagalba ir palaikymas**, jūsų žinutė siunčiama į mūsų atsiliepimų tarnybą ir užregistruojama kaip problema mūsų viešoje GitHub saugykloje. **Jūsų parašyta tema ir aprašymas tampa viešai matomi** GitHub, todėl neįtraukite asmeninių duomenų.
 
 Jei pasirenkate, kad būtumėte informuoti el. paštu, jūsų nurodytą adresą saugo tik mūsų atsiliepimų tarnyba — jis niekada nerodomas viešoje problemoje — ir naudojamas tik tam, kad galėtume el. paštu pranešti apie jūsų pačių pranešimą. Kiekviename pranešimų el. laiške yra vieno paspaudimo atsisakymo nuoroda, kuri pašalina išsaugotą adresą, be to, bet kuriuo metu galite paprašyti mūsų jį ištrinti.
 

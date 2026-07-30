@@ -57,7 +57,7 @@ Ja. In den Einstellungen kannst du deine Konfiguration — deine Geräte, ihre R
 {{< /faq >}}
 
 {{< faq question="Wie melde ich ein Problem oder schlage eine Funktion vor?" >}}
-Öffne **Einstellungen › Hilfe & Feedback** und wähle *Problem melden* oder *Feedback senden*. Deine Nachricht wird direkt aus der App übermittelt — ohne Browser oder GitHub-Konto — und wird zu einem öffentlichen Issue, das wir verfolgen können. Du kannst optional eine E-Mail-Adresse hinterlassen, um über Antworten benachrichtigt zu werden (sie wird nie öffentlich angezeigt, und jede Benachrichtigung enthält einen Ein-Klick-Abmeldelink), und unter *Meine Meldungen* den Status von allem verfolgen, was du gesendet hast.
+Öffne **Einstellungen › Hilfe & Support** und wähle *Problem melden* oder *Feedback senden*. Deine Nachricht wird direkt aus der App übermittelt — ohne Browser oder GitHub-Konto — und wird zu einem öffentlichen Issue, das wir verfolgen können. Du kannst optional eine E-Mail-Adresse hinterlassen, um über Antworten benachrichtigt zu werden (sie wird nie öffentlich angezeigt, und jede Benachrichtigung enthält einen Ein-Klick-Abmeldelink), und unter *Meine Meldungen* den Status von allem verfolgen, was du gesendet hast.
 {{< /faq >}}
 
 {{< faq question="Was kostet SweetSpot?" >}}

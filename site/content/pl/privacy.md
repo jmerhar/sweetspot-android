@@ -27,7 +27,7 @@ Na Wear OS dane urządzeń i ustawienia są synchronizowane między telefonem a 
 
 ## Brak analityki
 
-SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone, i przesłaniem zgłoszenia, jeśli skorzystasz z Pomocy i opinii — patrz niżej).
+SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone, i przesłaniem zgłoszenia, jeśli skorzystasz z Pomocy i wsparcia — patrz niżej).
 
 ## Opcjonalne statystyki API
 
@@ -48,9 +48,9 @@ Dane te **nie** zawierają identyfikatorów urządzenia, lokalizacji, danych cen
 
 Funkcja ta jest domyślnie wyłączona. Możesz ją włączyć lub wyłączyć w dowolnym momencie w Ustawieniach.
 
-## Pomoc i opinie
+## Pomoc i wsparcie
 
-Jeśli zgłosisz problem lub wyślesz opinię z poziomu **Ustawienia › Pomoc i opinie**, Twoja wiadomość jest wysyłana do naszego serwisu opinii i zapisywana jako zgłoszenie w naszym publicznym repozytorium GitHub. **Wpisany przez Ciebie temat i opis stają się publicznie widoczne** na GitHubie, dlatego prosimy nie zamieszczać w nich danych osobowych.
+Jeśli zgłosisz problem lub wyślesz opinię z poziomu **Ustawienia › Pomoc i wsparcie**, Twoja wiadomość jest wysyłana do naszego serwisu opinii i zapisywana jako zgłoszenie w naszym publicznym repozytorium GitHub. **Wpisany przez Ciebie temat i opis stają się publicznie widoczne** na GitHubie, dlatego prosimy nie zamieszczać w nich danych osobowych.
 
 Jeśli zdecydujesz się na powiadomienia e-mail, podany adres jest przechowywany wyłącznie przez nasz serwis opinii — nigdy nie jest pokazywany w publicznym zgłoszeniu — i służy jedynie do wysyłania Ci wiadomości dotyczących Twojego zgłoszenia. Każde powiadomienie e-mail zawiera link do wypisania się jednym kliknięciem, który usuwa zapisany adres, a w dowolnym momencie możesz też poprosić nas o jego usunięcie.
 

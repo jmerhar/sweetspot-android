@@ -27,7 +27,7 @@ På Wear OS synkroniseres apparatdata og innstillinger mellom telefon og klokke 
 
 ## Ingen analyse
 
-SweetSpot inneholder ingen analyse-SDK-er, krasjrapportering eller brukssporing. Appen gjør ingen nettverksforespørsler utover å hente strømpriser fra de offentlige API-ene nevnt ovenfor (valgfri statistikkrapportering hvis aktivert, og innsending av en melding hvis du bruker Hjelp og tilbakemelding — se nedenfor).
+SweetSpot inneholder ingen analyse-SDK-er, krasjrapportering eller brukssporing. Appen gjør ingen nettverksforespørsler utover å hente strømpriser fra de offentlige API-ene nevnt ovenfor (valgfri statistikkrapportering hvis aktivert, og innsending av en melding hvis du bruker Hjelp & støtte — se nedenfor).
 
 ## Valgfri API-statistikk
 
@@ -48,9 +48,9 @@ Disse dataene inneholder **ikke** enhetsidentifikatorer, posisjon, prisdata elle
 
 Denne funksjonen er deaktivert som standard. Du kan aktivere eller deaktivere den når som helst under Innstillinger.
 
-## Hjelp og tilbakemelding
+## Hjelp & støtte
 
-Hvis du melder fra om et problem eller sender tilbakemelding fra **Innstillinger › Hjelp og tilbakemelding**, sendes meldingen din til vår tilbakemeldingstjeneste og arkiveres som en sak i vårt offentlige GitHub-repositorium. **Emnet og beskrivelsen du skriver, blir offentlig synlige** på GitHub, så vennligst ikke ta med personopplysninger.
+Hvis du melder fra om et problem eller sender tilbakemelding fra **Innstillinger › Hjelp & støtte**, sendes meldingen din til vår tilbakemeldingstjeneste og arkiveres som en sak i vårt offentlige GitHub-repositorium. **Emnet og beskrivelsen du skriver, blir offentlig synlige** på GitHub, så vennligst ikke ta med personopplysninger.
 
 Hvis du velger å bli varslet på e-post, lagres adressen du oppgir kun av vår tilbakemeldingstjeneste — den vises aldri i den offentlige saken — og brukes utelukkende til å sende deg e-post om din egen melding. Hver varslings-e-post inneholder en avmeldingslenke med ett klikk som fjerner den lagrede adressen, og du kan også når som helst be oss om å slette den.
 

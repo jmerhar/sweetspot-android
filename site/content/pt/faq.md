@@ -57,7 +57,7 @@ Sim. Nas definições, pode partilhar a sua configuração — os seus eletrodom
 {{< /faq >}}
 
 {{< faq question="Como comunico um problema ou sugiro uma funcionalidade?" >}}
-Abra **Definições › Ajuda e comentários** e escolha *Comunicar um problema* ou *Enviar comentários*. A sua mensagem é enviada diretamente a partir da aplicação — sem necessidade de navegador ou de conta GitHub — e torna-se um pedido público que podemos acompanhar. Pode, opcionalmente, deixar um endereço de e-mail para ser notificado de respostas (nunca é mostrado publicamente e todas as notificações têm uma ligação de cancelamento de subscrição com um clique) e acompanhar o estado de tudo o que enviou em *Os meus relatórios*.
+Abra **Definições › Ajuda e suporte** e escolha *Comunicar um problema* ou *Enviar comentários*. A sua mensagem é enviada diretamente a partir da aplicação — sem necessidade de navegador ou de conta GitHub — e torna-se um pedido público que podemos acompanhar. Pode, opcionalmente, deixar um endereço de e-mail para ser notificado de respostas (nunca é mostrado publicamente e todas as notificações têm uma ligação de cancelamento de subscrição com um clique) e acompanhar o estado de tudo o que enviou em *Os meus relatórios*.
 {{< /faq >}}
 
 {{< faq question="Quanto custa o SweetSpot?" >}}

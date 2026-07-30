@@ -27,7 +27,7 @@ Sur Wear OS, les données des appareils et les paramètres sont synchronisés en
 
 ## Pas d'analyse d'utilisation
 
-SweetSpot n'inclut aucun SDK d'analyse, rapport de plantage ou suivi d'utilisation. L'application ne fait aucune requête réseau en dehors de la récupération des prix d'électricité depuis les API publiques mentionnées ci-dessus (les rapports statistiques optionnels si activés, et l'envoi d'un rapport si vous utilisez Aide et commentaires — voir ci-dessous).
+SweetSpot n'inclut aucun SDK d'analyse, rapport de plantage ou suivi d'utilisation. L'application ne fait aucune requête réseau en dehors de la récupération des prix d'électricité depuis les API publiques mentionnées ci-dessus (les rapports statistiques optionnels si activés, et l'envoi d'un rapport si vous utilisez Aide et assistance — voir ci-dessous).
 
 ## Statistiques API optionnelles
 
@@ -48,9 +48,9 @@ Ces données ne contiennent **aucun** identifiant d'appareil, localisation, donn
 
 Cette fonctionnalité est désactivée par défaut. Vous pouvez l'activer ou la désactiver à tout moment dans Paramètres.
 
-## Aide et commentaires
+## Aide et assistance
 
-Si vous signalez un problème ou envoyez un commentaire depuis **Paramètres › Aide et commentaires**, votre message est transmis à notre service de commentaires et enregistré sous forme d'issue dans notre dépôt GitHub public. **Le titre et la description que vous rédigez deviennent visibles publiquement** sur GitHub, alors n'y incluez pas d'informations personnelles.
+Si vous signalez un problème ou envoyez un commentaire depuis **Paramètres › Aide et assistance**, votre message est transmis à notre service de commentaires et enregistré sous forme d'issue dans notre dépôt GitHub public. **Le titre et la description que vous rédigez deviennent visibles publiquement** sur GitHub, alors n'y incluez pas d'informations personnelles.
 
 Si vous choisissez d'être informé par e-mail, l'adresse que vous fournissez est stockée uniquement par notre service de commentaires — elle n'est jamais affichée dans l'issue publique — et sert uniquement à vous envoyer des e-mails au sujet de votre propre rapport. Chaque e-mail de notification comporte un lien de désabonnement en un clic qui supprime l'adresse stockée, et vous pouvez également nous demander de la supprimer à tout moment.
 

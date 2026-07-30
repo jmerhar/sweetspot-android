@@ -1,21 +1,21 @@
-SweetSpot finner det billigste tidspunktet for å kjøre apparatene dine og lade elbilen din. Velg hvor lenge en enhet trenger å kjøre — eller velg elbilen din og ladenivået du ønsker — og SweetSpot skanner de neste 24 timene med dynamiske strømpriser for å finne den billigste perioden.
+SweetSpot finner det billigste tidspunktet for å kjøre apparatene dine og lade elbilen din. Velg hvor lenge en enhet trenger å kjøre — eller velg elbilen din og ladenivået du ønsker — og SweetSpot skanner kommende dynamiske strømpriser for å finne det billigste tidspunktet.
 
 Enten det er en vaskemaskin, oppvaskmaskin, tørketrommel, varmepumpe eller elbillader — start på rett tidspunkt og betal mindre for den samme strømmen.
 
 SLIK FUNGERER DET
 1. Velg et apparat eller elbilen din, eller sett en egendefinert varighet — og en valgfri «klar innen»-frist
-2. SweetSpot henter de nyeste day-ahead strømprisene for din region
+2. SweetSpot henter de nyeste day-ahead-strømprisene for din region
 3. Se nøyaktig når du bør starte, med et fargekodet 24-timers prisdiagram og en fullstendig kostnadsfordeling per tidsluke
 
 ELBILLADING
-Legg til bilen din fra en innebygd database med rundt 1 600 elbiler og ladbare hybrider — eller fyll inn batteristørrelsen og ladeeffekten selv. Angi nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta og det billigste tidspunktet å koble til.
+Legg til bilen din fra en innebygd database med tusenvis av elbiler og ladbare hybrider — eller fyll inn batteristørrelsen og ladeeffekten selv. Angi nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta og det billigste tidspunktet å koble til.
 
 FUNKSJONER
 - 30 europeiske land, 43 budområder — fra Portugal til Finland, Norge til Hellas
-- 5 datakilder med automatisk fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Totalpris (Nederland) — se eventuelt den fullstendige forbrukerprisen (spotpris + energiavgift + leverandørpåslag + MVA) i stedet for den rene markedsprisen; velg leverandøren din eller angi ditt eget påslag. Flere land kommer
-- «Klar innen»-frist — velger bare en periode som blir ferdig i tide
-- Tidligere eller billigere — når den billigste perioden ikke passer, gå til en tidligere periode og se nøyaktig hvor mye mer den koster
+- 5 datakilder med automatisk reserveløsning (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Totalpris (Nederland) — se eventuelt den fullstendige forbrukerprisen (markedspris + energiavgift + leverandørpåslag + MVA) i stedet for bare markedsprisen; velg leverandøren din eller angi ditt eget påslag. Flere land kommer
+- «Klar innen»-frist — velger som standard det billigste tidspunktet som blir ferdig i tide
+- Tidligere eller billigere — når det billigste tidspunktet ikke passer, gå til et tidligere og se nøyaktig hvor mye mer det koster
 - Effekt — angi et apparats effekt i kW for et kostnadsestimat som gjenspeiler det faktiske forbruket
 - Lagre apparatene dine med egne navn, ikoner og varigheter for rask tilgang
 - Sorter og omorganiser apparatene dine — dra dem i din egen rekkefølge, eller sorter etter mest brukt, nylig brukt, navn, varighet eller type, og velg hvor elbilene dine skal stå
@@ -30,6 +30,6 @@ STØTTEDE LAND
 Belgia, Bulgaria, Danmark, Estland, Finland, Frankrike, Hellas, Irland, Italia, Kroatia, Latvia, Litauen, Luxembourg, Montenegro, Nederland, Nord-Makedonia, Norge, Polen, Portugal, Romania, Serbia, Slovakia, Slovenia, Spania, Sveits, Sverige, Tsjekkia, Tyskland, Ungarn, Østerrike.
 
 MERK
-Som standard er prisene som vises day-ahead spotpriser på engrosnivå og inkluderer ikke MVA, energiavgifter eller leverandørgebyrer. I Nederland kan du eventuelt slå på Totalpris, som legger til energiavgift, leverandørens påslag og MVA for en realistisk driftskostnad. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET. En dynamisk strømavtale er nødvendig for å dra nytte av prisforskjellene.
+Som standard er prisene som vises day-ahead-markedspriser på engrosnivå og inkluderer ikke MVA, energiavgifter eller leverandørgebyrer. I Nederland kan du eventuelt slå på Totalpris, som legger til energiavgift, leverandørens påslag og MVA for en realistisk driftskostnad. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET. En dynamisk strømavtale er nødvendig for å dra nytte av prisforskjellene.
 
 Personvernerklæring: https://sweetspot.today/nb/privacy/

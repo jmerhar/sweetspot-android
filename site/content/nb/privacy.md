@@ -5,7 +5,7 @@ description: "Personvernerklæring for SweetSpot — personvern først, ingen ko
 
 ## Oversikt
 
-SweetSpot er utviklet med personvern i fokus. Appen samler ikke inn eller lagrer personopplysninger. Det finnes ingen brukerkontoer, ingen analyse og ingen sporing av bruk. En valgfri funksjon lar deg dele anonyme API-statistikker — se detaljer nedenfor.
+SweetSpot er utviklet med personvern i fokus. Appen krever eller samler ikke inn personopplysninger for å fungere — det finnes ingen brukerkontoer, ingen analyse og ingen sporing av bruk, og den ber bare om INTERNETT-tillatelsen (ingen posisjon, kontakter, lagring eller enhetsidentifikatorer). Valgfrie funksjoner lar deg dele anonym pålitelighetsstatistikk eller sende tilbakemelding — se detaljer nedenfor.
 
 ## Databehandling
 
@@ -21,17 +21,19 @@ Disse API-forespørslene inneholder kun budområde-identifikator og datoperiode.
 
 ## Lokal lagring
 
-Prisdata lagres lokalt på enheten din for å redusere API-kall og gi raskere resultater. Apparatkonfigurasjonen din (navn, varigheter, ikoner og valgfrie effekter), lagrede kjøretøy (batteristørrelse og ladeeffekt) og innstillinger (land, sone, språk) lagres også lokalt på enheten din.
+Prisdata lagres lokalt på enheten din for å redusere API-kall og gi raskere resultater. Apparatkonfigurasjonen din (navn, varigheter, ikoner og valgfrie effekter), lagrede kjøretøy (batteristørrelse og ladeeffekt) og innstillinger (land, sone, språk) lagres også lokalt på enheten din, sammen med abonnementsstatusen din (hurtiglagret slik at appen fortsetter å fungere uten nett) og antall trykk per apparat (brukes bare til sortering etter mest brukt og nylig brukt).
 
 På Wear OS synkroniseres apparatdata og innstillinger mellom telefon og klokke via Wearable Data Layer API. Denne kommunikasjonen foregår kun mellom dine lokale enheter og går ikke via noen ekstern server.
+
+Hvis du deler oppsettet ditt som en QR-kode eller lenke, kodes apparat- og elbil-ladekonfigurasjonen din **inne i selve lenken eller QR-koden** — den lastes aldri opp til en server. Bare personen du gir koden eller lenken til, kan importere den.
 
 ## Ingen analyse
 
 SweetSpot inneholder ingen analyse-SDK-er, krasjrapportering eller brukssporing. Appen gjør ingen nettverksforespørsler utover å hente strømpriser fra de offentlige API-ene nevnt ovenfor (valgfri statistikkrapportering hvis aktivert, og innsending av en melding hvis du bruker Hjelp & støtte — se nedenfor).
 
-## Valgfri API-statistikk
+## Valgfri pålitelighetsstatistikk
 
-Du kan velge å dele anonyme API-pålitelighetsstatistikker. Når dette er aktivert, sender appen jevnlig individuelle forespørselsregistre for hver datakilde og budområde til vår server. Disse dataene inneholder:
+Du kan velge å dele anonym pålitelighetsstatistikk. Når dette er aktivert, sender appen jevnlig individuelle forespørselsregistre for hver datakilde og budområde til vår server. Disse dataene inneholder:
 
 - Tidsstempel for API-forespørselen
 - Budområde-identifikator (f.eks. «NL», «DE-LU»)

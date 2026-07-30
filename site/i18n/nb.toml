@@ -26,7 +26,7 @@ other = "Bytt språk"
 other = "Finn det billigste tidspunktet for å kjøre apparatene dine og lade elbilen"
 
 [hero_subtitle]
-other = "SweetSpot skanner dynamiske strømpriser i 30 europeiske land og finner den billigste perioden for å kjøre apparatene dine eller lade elbilen — ferdig innen en frist hvis du setter en. Åpen kildekode og personvernvennlig."
+other = "SweetSpot skanner dynamiske strømpriser i 30 europeiske land og finner det billigste tidspunktet for å kjøre apparatene dine eller lade elbilen — ferdig innen en frist hvis du setter en. Åpen kildekode og personvernvennlig."
 
 [download]
 other = "Tilgjengelig på Google Play"
@@ -44,7 +44,7 @@ other = "30 europeiske land"
 other = "Dekker 43 budområder i Europa, fra Portugal til Finland og fra Norge til Hellas."
 
 [feature_prices_title]
-other = "Oppdaterte priser"
+other = "Day-ahead-priser"
 
 [feature_prices_desc]
 other = "Day-ahead-strømpriser fra ENTSO-E Transparency Platform, oppdatert daglig."
@@ -59,7 +59,7 @@ other = "En smart søkealgoritme finner den billigste sammenhengende perioden fo
 other = "Pålitelige data"
 
 [feature_fallback_desc]
-other = "Fem datakilder med automatisk reserveløsning sikrer at prisene alltid er tilgjengelige."
+other = "Fem datakilder med automatisk reserveløsning bidrar til å holde prisene tilgjengelige."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Legg til bilen din, og oppgi deretter nåværende og ønsket ladenivå.
 other = "«Ferdig innen»-frist"
 
 [feature_deadline_desc]
-other = "Trenger du det ferdig innen et bestemt tidspunkt? Legg til en «ferdig innen»-frist, så velger SweetSpot bare perioder som blir ferdige i tide."
+other = "Trenger du det ferdig innen et bestemt tidspunkt? Legg til en «ferdig innen»-frist, så velger SweetSpot det billigste tidspunktet som blir ferdig i tide."
 
 [feature_power_title]
 other = "Effekt"
@@ -155,7 +155,7 @@ other = "Siden du leter etter finnes ikke."
 other = "Tilbake til forsiden"
 
 [screenshot_1_alt]
-other = "Resultat for billigste periode med starttid, totalkostnad og kostnadsfordeling"
+other = "Anbefalt tidspunkt med starttid, totalkostnad og kostnadsfordeling"
 
 [screenshot_2_alt]
 other = "Startskjerm med apparater, varighetsvelger og Finn-knapp"

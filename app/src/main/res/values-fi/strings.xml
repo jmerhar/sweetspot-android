@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Asetukset</string>
     <string name="cd_back">Takaisin</string>
-    <string name="main_description">SweetSpot auttaa sinua säästämään rahaa etsimällä halvimman ajankohdan kodinkoneidesi käyttöön. Valitse kuinka kauan laitteesi tarvitsee toimia, ja se etsii seuraavan 24 tunnin dynaamisista sähköhinnoista parhaan ajanjakson. Voit myös tallentaa suosikkilaitteesi asetuksiin nopeaa käyttöä varten.</string>
-    <string name="main_find_button">Etsi halvin ajanjakso</string>
+    <string name="main_description">SweetSpot auttaa sinua säästämään rahaa etsimällä halvimman ajankohdan kodinkoneidesi käyttöön. Valitse vain, kuinka kauan laitteesi tarvitsee toimia, niin se käy läpi tulevat dynaamiset sähköhinnat ja löytää parhaan ajankohdan. Voit myös tallentaa suosikkilaitteesi asetuksiin nopeaa käyttöä varten.</string>
+    <string name="main_find_button">Etsi halvin ajankohta</string>
     <string name="main_searching">Etsitään…</string>
     <string name="main_add_appliances">Lisää laitteesi</string>
     <string name="main_card_description">Etsi halvin ajankohta laitteesi käyttöön</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Suositeltu ajankohta</string>
-    <string name="result_after_deadline">Tämä jakso päättyy Valmis viimeistään -ajan jälkeen.</string>
+    <string name="result_after_deadline">Tämä jakso päättyy Valmis viimeistään -aikasi jälkeen.</string>
     <string name="result_start">Alku</string>
     <string name="result_end">Loppu</string>
     <string name="result_total_cost">Kokonaiskustannus</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Pienennä</string>
     <string name="cd_expand">Laajenna</string>
     <string name="result_upcoming_prices">Tulevat hinnat</string>
-    <string name="result_disclaimer">Kustannukset on laskettu 1 kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä toimittajan palkkiota. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
+    <string name="result_disclaimer">Kustannukset on laskettu 1 kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä myyjän marginaalia. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="result_data_source">\nTietolähde: %s</string>
     <string name="result_price_zone">\nHinta-alue: %s</string>
-    <string name="cd_cheapest_window">halvin ajanjakso</string>
+    <string name="cd_cheapest_window">halvin ajankohta</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Kesto</string>
@@ -150,10 +150,10 @@
     <string name="cd_refresh">Päivitä</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Jaa API-tilastoja</string>
-    <string name="settings_stats_description">Auta parantamaan tietolähteiden luotettavuutta jakamalla nimettömiä API-onnistumis-/virhetilastoja. Henkilötietoja ei kerätä.</string>
+    <string name="settings_stats_title">Jaa luotettavuustilastoja</string>
+    <string name="settings_stats_description">Auta parantamaan tietolähteiden luotettavuutta jakamalla nimettömiä tilastoja siitä, milloin hintatiedot latautuvat tai epäonnistuvat. Henkilötietoja ei kerätä.</string>
     <string name="stats_prompt_title">Auta parantamaan SweetSpotia?</string>
-    <string name="stats_prompt_message">Jaa anonyymiä API-tilastoa tietolähteiden luotettavuuden parantamiseksi. Vain onnistumis-/virhemäärät tietolähteittäin jaetaan — ei henkilötietoja. Voit muuttaa tämän milloin tahansa asetuksissa.</string>
+    <string name="stats_prompt_message">Jaa nimettömiä tilastoja tietolähteiden luotettavuuden parantamiseksi. Vain se, kuinka usein kukin tietolähde latautuu tai epäonnistuu, jaetaan — ei henkilötietoja. Voit muuttaa tämän milloin tahansa asetuksissa.</string>
     <string name="stats_prompt_enable">Ota käyttöön</string>
     <string name="stats_prompt_dismiss">Ei kiitos</string>
 
@@ -176,7 +176,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Kokeilujaksosi on päättynyt</string>
-    <string name="paywall_description">SweetSpot löytää halvimman ajan laitteidesi käytölle reaaliaikaisten sähköhintojen perusteella 30 Euroopan maassa. Tilaa jatkaaksesi edullisimman käyttöajan löytämistä laitteillesi.</string>
+    <string name="paywall_description">SweetSpot löytää halvimman ajan laitteidesi käytölle dynaamisten sähköhintojen perusteella 30 Euroopan maassa. Tilaa jatkaaksesi edullisimman käyttöajan löytämistä laitteillesi.</string>
     <string name="paywall_unlock">Tilaa SweetSpot</string>
     <string name="paywall_unlock_price">Tilaa hintaan %s/vuosi</string>
     <string name="paywall_restore">Palauta tilaus</string>
@@ -212,14 +212,14 @@
     <string name="ev_attribution">Ajoneuvon tiedot: Open EV Data</string>
     <string name="ev_error_invalid_soc">Lataustavoitteen on oltava suurempi kuin nykyinen lataus.</string>
     <string name="ev_error_invalid_charger">Aseta latausteho, joka on suurempi kuin nolla.</string>
-    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua määräaikaan mennessä. Kokeile alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
-    <string name="result_disclaimer_power">Kustannukset on laskettu %s kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä toimittajan palkkiota. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
+    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua takarajaasi mennessä. Kokeile alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
+    <string name="result_disclaimer_power">Kustannukset on laskettu %s kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä myyjän marginaalia. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="dialog_power">Teho (kW, valinnainen)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Kokonaishinta</string>
     <string name="settings_all_in_toggle">Näytä kokonaishinta</string>
-    <string name="settings_all_in_desc">Näytä arvioitu kuluttajan kokonaishinta (pörssihinta + sähkövero + myyjän marginaali + ALV) pelkän markkinahinnan sijaan.</string>
+    <string name="settings_all_in_desc">Näytä arvioitu kuluttajan kokonaishinta (pörssihinta + sähkövero + myyjän marginaali + ALV) pelkän pörssihinnan sijaan.</string>
     <string name="all_in_supplier">Sähkönmyyjä</string>
     <string name="all_in_supplier_prompt">Valitse sähkönmyyjäsi</string>
     <string name="all_in_supplier_custom">Mukautettu marginaali</string>
@@ -279,7 +279,7 @@
     <!-- Coach hint bubbles -->
     <string name="coach_earlier_cheaper">Väärä hetki? Napauta Aiemmin aikaisempaa aloitusta varten tai Halvemmalla palataksesi halvimpaan.</string>
     <string name="coach_chart_press_hold">Näet minkä tahansa ajankohdan hinnan painamalla kaaviota pitkään.</string>
-    <string name="coach_all_in_toggle">Vaihda kokonaishinnan ja pelkän markkinahinnan välillä.</string>
+    <string name="coach_all_in_toggle">Vaihda kokonaishinnan ja pelkän pörssihinnan välillä.</string>
     <string name="coach_ev_chip">Napauta ajoneuvoasi suunnitellaksesi latauksen akkuprosentin mukaan.</string>
     <string name="coach_got_it">Selvä</string>
 
@@ -345,9 +345,9 @@
     <string name="guide_ev_title">Suunnittele sähköauton lataus</string>
     <string name="guide_ev_body">Lisää autosi, syötä sen nykyinen lataus ja lataustavoite, niin SweetSpot laskee latausajan.</string>
     <string name="guide_result_title">Lue tulos</string>
-    <string name="guide_result_body">Siirrä ajanjaksoa Aiemmin- ja Halvemmalla-painikkeilla ja näe minkä tahansa jakson hinta painamalla kaaviota pitkään.</string>
+    <string name="guide_result_body">Siirrä ajankohtaa Aiemmin- ja Halvemmalla-painikkeilla ja näe minkä tahansa ajankohdan hinta painamalla kaaviota pitkään.</string>
     <string name="guide_allin_title">Kokonaishinta</string>
-    <string name="guide_allin_body">Näytä halutessasi koko kuluttajahinta pelkän markkinahinnan sijaan.</string>
+    <string name="guide_allin_body">Näytä halutessasi koko kuluttajahinta pelkän pörssihinnan sijaan.</string>
     <string name="guide_wear_title">Kellossasi</string>
     <string name="guide_wear_body">Laitteesi synkronoituvat Wear OS -kelloon, joten voit tarkistaa hinnat ilman puhelintasi.</string>
     <string name="reply_hint">Vastauksesi</string>

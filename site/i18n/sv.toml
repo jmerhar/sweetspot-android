@@ -26,7 +26,7 @@ other = "Byt språk"
 other = "Hitta den billigaste tiden att köra dina apparater och ladda din elbil"
 
 [hero_subtitle]
-other = "SweetSpot analyserar dynamiska elpriser i 30 europeiska länder och hittar den billigaste tidsperioden för att köra dina apparater eller ladda din elbil — klart till en tidsgräns om du anger en. Öppen källkod och privat."
+other = "SweetSpot analyserar dynamiska elpriser i 30 europeiska länder och hittar den billigaste tiden att köra dina apparater eller ladda din elbil — klart till en tidsgräns om du anger en. Öppen källkod och privat."
 
 [download]
 other = "Ladda ned på Google Play"
@@ -44,7 +44,7 @@ other = "30 europeiska länder"
 other = "Täcker 43 elområden i hela Europa, från Portugal till Finland och från Norge till Grekland."
 
 [feature_prices_title]
-other = "Aktuella priser"
+other = "Day-ahead-priser"
 
 [feature_prices_desc]
 other = "Day-ahead-elpriser från ENTSO-E Transparency Platform, uppdaterade dagligen."
@@ -53,13 +53,13 @@ other = "Day-ahead-elpriser från ENTSO-E Transparency Platform, uppdaterade dag
 other = "Smart algoritm"
 
 [feature_algorithm_desc]
-other = "En algoritm med glidande tidsperiod hittar den billigaste sammanhängande perioden för valfri längd."
+other = "SweetSpot hittar det billigaste sammanhängande tidsblocket för valfri längd du väljer."
 
 [feature_fallback_title]
 other = "Tillförlitliga data"
 
 [feature_fallback_desc]
-other = "Fem datakällor med automatisk reserv säkerställer att priser alltid är tillgängliga."
+other = "Fem datakällor med automatisk reserv hjälper till att hålla priser tillgängliga."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Lägg till din bil och ange aktuell och önskad laddningsnivå. SweetSp
 other = "”Klar senast”-tid"
 
 [feature_deadline_desc]
-other = "Behöver det vara klart till en viss tid? Lägg till en ”klar senast”-tid så väljer SweetSpot bara perioder som hinner bli klara i tid."
+other = "Behöver det vara klart till en viss tid? Lägg till en ”klar senast”-tid så väljer SweetSpot den billigaste tiden som hinner bli klar i tid."
 
 [feature_power_title]
 other = "Effekt"
@@ -122,7 +122,7 @@ other = "Välj en sparad apparat eller din elbil, eller ställ in en egen körti
 other = "Hämta priser"
 
 [step2_desc]
-other = "SweetSpot hämtar de senaste dagliga elpriserna för din region."
+other = "SweetSpot hämtar de senaste day-ahead-elpriserna för din region."
 
 [step3_title]
 other = "Se bästa tiden"
@@ -155,7 +155,7 @@ other = "Sidan du letar efter finns inte."
 other = "Tillbaka till startsidan"
 
 [screenshot_1_alt]
-other = "Resultat för billigaste tidsperioden med starttid, totalkostnad och kostnadsfördelning"
+other = "Rekommenderad tid med starttid, totalkostnad och kostnadsfördelning"
 
 [screenshot_2_alt]
 other = "Startskärm med apparater, varaktighetsväljare och Sök-knapp"

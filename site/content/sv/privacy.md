@@ -5,11 +5,11 @@ description: "SweetSpots integritetspolicy — integritet först, inga konton, i
 
 ## Översikt
 
-SweetSpot är utformat med integritet i fokus. Appen samlar inte in och lagrar inga personuppgifter. Det finns inga användarkonton, ingen analys och ingen användarspårning. En valfri funktion låter dig dela anonym API-statistik — se detaljer nedan.
+SweetSpot är utformat med integritet i fokus. Appen kräver eller samlar inte in några personuppgifter för att fungera — det finns inga användarkonton, ingen analys och ingen användarspårning, och den begär bara behörigheten INTERNET (ingen plats, inga kontakter, ingen lagring och inga enhetsidentifierare). Valfria funktioner låter dig dela anonym tillförlitlighetsstatistik eller skicka feedback — se detaljer nedan.
 
 ## Databehandling
 
-SweetSpot hämtar dagliga elpriser från offentliga API:er:
+SweetSpot hämtar day-ahead-elpriser från offentliga API:er:
 
 - **ENTSO-E Transparency Platform** — primär källa för alla 43 europeiska elområden
 - **Spot-Hinta.fi** — reservkälla för nordiska och baltiska zoner
@@ -21,17 +21,19 @@ Dessa API-förfrågningar innehåller bara elområdesidentifieraren och datumint
 
 ## Lokal lagring
 
-Prisdata lagras lokalt på din enhet för att minska API-anrop och ge snabbare resultat. Din apparatkonfiguration (namn, körtider, ikoner och valfri effekt), sparade fordon (batterikapacitet och laddeffekt) och inställningar (land, zon, språk) lagras också lokalt på din enhet.
+Prisdata lagras lokalt på din enhet för att minska API-anrop och ge snabbare resultat. Din apparatkonfiguration (namn, körtider, ikoner och valfri effekt), sparade fordon (batterikapacitet och laddeffekt) och inställningar (land, zon, språk) lagras också lokalt på din enhet, tillsammans med din prenumerationsstatus (cachad så att appen fortsätter fungera offline) och antalet tryck per apparat (används endast för sorteringen efter mest använda och senast använda).
 
 På Wear OS synkroniseras apparatdata och inställningar mellan telefon och klocka via Wearable Data Layer API. Denna kommunikation stannar på dina lokala enheter och går inte via någon extern server.
+
+Om du delar din uppsättning som en QR-kod eller länk kodas din apparat- och elbilsladdningskonfiguration in **i själva länken eller QR-koden** — den laddas aldrig upp till en server. Bara den du ger koden eller länken till kan importera den.
 
 ## Ingen analys
 
 SweetSpot innehåller inga analys-SDK:er, kraschrapportering eller användarspårning. Appen gör inga nätverksförfrågningar utöver att hämta elpriser från de offentliga API:erna ovan (valfri statistikrapportering om den är aktiverad och att skicka en rapport om du använder Hjälp & support — se nedan).
 
-## Valfri API-statistik
+## Valfri tillförlitlighetsstatistik
 
-Du kan välja att dela anonym statistik över API-tillförlitlighet. När det är aktiverat skickar appen regelbundet enskilda förfrågningsposter för varje datakälla och elområde till vår server. Dessa data innehåller:
+Du kan välja att dela anonym tillförlitlighetsstatistik. När det är aktiverat skickar appen regelbundet enskilda förfrågningsposter för varje datakälla och elområde till vår server. Dessa data innehåller:
 
 - Tidsstämpel för API-förfrågan
 - Elområdesidentifierare (t.ex. "NL", "DE-LU")

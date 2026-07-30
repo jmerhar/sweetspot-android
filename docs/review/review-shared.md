@@ -25,7 +25,7 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 | L7 `formatKw` large values | ➖ | unreachable from real data |
 | L8 cold-start double-fetch test | ⏳ | behaviour correct; test hardening only |
 | C9 broken `@link` | ✅ | `11098c7` |
-| C10 `ApplianceGrouping` doc drift | 📋 | Phase 3 (CLAUDE.md) |
+| C10 `ApplianceGrouping` doc drift | ✅ | CLAUDE.md updated (Phase 3) |
 
 ---
 

@@ -69,13 +69,16 @@ import today.sweetspot.util.combineUsage
 import today.sweetspot.util.findWindowAlternatives
 import today.sweetspot.util.mergeForHome
 import today.sweetspot.util.sortAppliances
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -1637,7 +1640,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
      * @param timeZoneId Timezone snapshot captured before the IO dispatch.
      * @param priceZone The price zone to fetch data for.
      */
-    private fun fetchAndFind(durationHours: Double, durationText: UiText, timeZoneId: ZoneId, priceZone: PriceZone) {
+    private suspend fun fetchAndFind(durationHours: Double, durationText: UiText, timeZoneId: ZoneId, priceZone: PriceZone) {
         try {
             val state = _uiState.value
             val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
@@ -1648,6 +1651,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
             if (settingsRepository.isCooldownDisabled()) priceCache.resetCooldown()
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, clock = settingsRepository.devClock(timeZoneId), cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
+            // getPrices() blocks on network I/O and does not observe cancellation, so a fetch that a
+            // newer tap superseded can resume here after its job was cancelled. Bail before touching
+            // state so a stale result can't clobber the newer one (or restart its refresh loop).
+            currentCoroutineContext().ensureActive()
 
             // Piggyback: when all-in is in use and prices were fetched from the network, refresh the
             // tariff too. Gated on `allInEnabled` so we never fetch tariff data for users who don't use
@@ -1766,6 +1773,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
             }
             startResultRefresh()
             tryReportStats()
+        } catch (e: CancellationException) {
+            // A superseded fetch was cancelled — propagate cleanly rather than surfacing it as a
+            // network error or publishing its stale result.
+            throw e
         } catch (e: Exception) {
             _uiState.update {
                 it.copy(

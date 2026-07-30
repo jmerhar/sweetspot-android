@@ -6,6 +6,7 @@
 # Usage: source "$SCRIPT_DIR/../lib/common.sh"
 
 _lib_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$_lib_dir/log.sh"
 source "$_lib_dir/locale.sh"
 source "$_lib_dir/gallery.sh"
 source "$_lib_dir/require.sh"

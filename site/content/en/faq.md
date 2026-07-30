@@ -26,12 +26,20 @@ SweetSpot shows **day-ahead spot prices** — the wholesale electricity prices d
 The prices are useful for comparing time slots relative to each other (finding when electricity is cheapest), which is the app's primary purpose. Costs are shown per 1 kW of load by default; set an appliance's power rating, or charge an EV, and the estimate reflects the real load. Tomorrow's prices are typically available after 13:00 CET.
 {{< /faq >}}
 
+{{< faq question="Do I need a special electricity contract?" >}}
+Yes — to actually save money you need a **dynamic (spot or hourly) electricity contract**, where the price you pay follows the day-ahead market. SweetSpot shows you when those prices are lowest, but it can't change what your provider charges: on a fixed-rate tariff the price is the same all day, so shifting when you use power won't lower your bill.
+{{< /faq >}}
+
 {{< faq question="Can SweetSpot help me charge my electric car?" >}}
-Yes. Add your vehicle — pick it from a built-in database of around 1,600 EVs and plug-in hybrids, or enter the battery size and charging power manually. Then enter your current and target state of charge, and SweetSpot works out how long charging will take (from the battery size and the lower of your car's AC limit and your home charger) and finds the cheapest window to plug in.
+Yes. Add your vehicle — pick it from a built-in database of thousands of EVs and plug-in hybrids, or enter the battery size and charging power manually. Then enter your current and target state of charge, and SweetSpot works out how long charging will take (from the battery size and the lower of your car's AC limit and your home charger) and finds the cheapest window to plug in.
 {{< /faq >}}
 
 {{< faq question="Can I make sure it's ready by a certain time?" >}}
-Yes. Turn on the optional **"ready by"** deadline and pick a time. SweetSpot then only considers windows that finish by then — for any appliance or for charging your EV (for example, fully charged by 7:00 in the morning).
+Yes. Turn on the optional **"ready by"** deadline and pick a time. SweetSpot then defaults to the cheapest window that finishes by then — for any appliance or for charging your EV (for example, charged by 7:00 in the morning). You can still step to a cheaper window that finishes a little later if you prefer; SweetSpot flags when the shown window ends after your deadline.
+{{< /faq >}}
+
+{{< faq question="Why does the recommended time keep changing?" >}}
+SweetSpot re-checks the prices while a result is open, and slots that are now in the past drop off as time passes, so the recommended window can shift. Use the **Earlier** and **Cheaper** buttons to step between a sooner (slightly costlier) start and the cheapest one — each shows how much more it costs than the recommended window.
 {{< /faq >}}
 
 {{< faq question="Do the costs reflect how much power my appliance uses?" >}}
@@ -53,7 +61,7 @@ By default SweetSpot shows the wholesale **spot price**. In supported countries 
 {{< /faq >}}
 
 {{< faq question="Can I copy my appliances to another device?" >}}
-Yes. In settings you can share your setup — your appliances, their order, and your EV charging settings — as a QR code or a link. Scan or open it on another device to import everything. It works completely offline with no account and no server: the data travels inside the link or QR code itself, and you choose whether to add to or replace what's already there.
+Yes. In settings you can share your setup — your appliances, their order, and your EV charging settings — as a QR code or a link. Scan or open it on another device to import everything. It works completely offline with no account and no server: the data travels inside the link or QR code itself, and you choose whether to add to, replace, or pick individual items from what's already there.
 {{< /faq >}}
 
 {{< faq question="How do I report a problem or suggest a feature?" >}}

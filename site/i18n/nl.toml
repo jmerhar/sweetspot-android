@@ -44,7 +44,7 @@ other = "30 Europese landen"
 other = "Dekt 43 biedingszones in Europa, van Portugal tot Finland en van Noorwegen tot Griekenland."
 
 [feature_prices_title]
-other = "Actuele prijzen"
+other = "Day-ahead prijzen"
 
 [feature_prices_desc]
 other = "Day-ahead stroomprijzen van het ENTSO-E Transparency Platform, dagelijks bijgewerkt."
@@ -53,13 +53,13 @@ other = "Day-ahead stroomprijzen van het ENTSO-E Transparency Platform, dagelijk
 other = "Slim algoritme"
 
 [feature_algorithm_desc]
-other = "Een schuifvenster-algoritme vindt de goedkoopste aaneengesloten periode voor elke duur die je kiest."
+other = "SweetSpot vindt de goedkoopste aaneengesloten periode voor elke duur die je kiest."
 
 [feature_fallback_title]
 other = "Betrouwbare gegevens"
 
 [feature_fallback_desc]
-other = "Vijf gegevensbronnen met automatische terugval zorgen ervoor dat prijzen altijd beschikbaar zijn."
+other = "Vijf gegevensbronnen met automatische terugval helpen prijzen beschikbaar te houden."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -155,7 +155,7 @@ other = "De pagina die je zoekt bestaat niet."
 other = "Terug naar home"
 
 [screenshot_1_alt]
-other = "Resultaat van de goedkoopste periode met starttijd, totale kosten en kostenoverzicht"
+other = "Aanbevolen tijd met starttijd, totale kosten en kostenoverzicht"
 
 [screenshot_2_alt]
 other = "Startscherm met apparaten, duurkiezer en Zoek-knop"

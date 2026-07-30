@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 /**
  * A user-configured appliance with a preset duration.
  *
- * Persisted as JSON in SharedPreferences via [today.sweetspot.data.SettingsRepository].
+ * Persisted as JSON in SharedPreferences via [today.sweetspot.data.repository.SettingsRepository].
  *
  * @property id Unique identifier (UUID).
  * @property name Display name (e.g. "Washing machine").

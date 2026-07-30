@@ -24,7 +24,7 @@ import java.net.URL
  * @param prefs SharedPreferences for tracking the last report timestamp.
  * @param appVersion App version string for the report payload.
  * @param languageProvider Returns the current app language tag (e.g. "en", "nl", "" for system default).
- * @param statusProvider Returns the current payment status ("trial", "unlocked", or "expired").
+ * @param statusProvider Returns the current payment status ("trial", "subscribed", or "expired").
  * @param poster Sends the JSON payload and returns the HTTP status code. Defaults to the real
  *   [HttpStatsPoster]; tests inject a fake to drive the response-handling branches without a network.
  */
@@ -111,7 +111,7 @@ class StatsReporter(
  * @param records The stats records to encode.
  * @param appVersion App version string.
  * @param language Current app language tag (e.g. "en", "nl", "" for system default).
- * @param status Current payment status ("trial", "unlocked", or "expired").
+ * @param status Current payment status ("trial", "subscribed", or "expired").
  * @return JSON string ready for POST.
  */
 internal fun buildReportJson(

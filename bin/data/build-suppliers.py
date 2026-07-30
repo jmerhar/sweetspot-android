@@ -16,8 +16,9 @@ generic `taxes` list of {perKwh|percentage} components), so adding a country is 
 
 No baked-in numbers. Every price/tax/rate comes from a live source, each stamped with its `source`.
 There are NO hardcoded fallback values: if the essentials (currency, a per-kWh energy tax, and the VAT
-multiplier) can't be fetched, the country is marked `usable: false` and NO file is written for it — a
-missing figure must never be silently replaced by a guess, because a wrong price is worse than none.
+multiplier) can't be fetched, the build for that country fails — no file is written (the last good one
+is kept) and the script exits non-zero — a missing figure must never be silently replaced by a guess,
+because a wrong price is worse than none.
 Per-supplier surcharges are best-effort: a supplier we can't price is simply omitted (and noted in
 `warnings`), never defaulted. The plausibility bounds below are sanity gates that reject garbage; they
 are never substituted as values.

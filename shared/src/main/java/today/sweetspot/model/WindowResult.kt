@@ -9,7 +9,7 @@ import java.time.ZonedDateTime
  * @property endTime When the appliance will finish.
  * @property totalCost Total electricity cost in EUR for the window (per 1 kW load).
  * @property avgPrice Average price in EUR/kWh across the window.
- * @property breakdown Per-slot cost breakdown (one entry per hourly slot used).
+ * @property breakdown Per-slot cost breakdown (one entry per price slot used, at the market's resolution).
  */
 data class WindowResult(
     val startTime: ZonedDateTime,

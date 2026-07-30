@@ -108,6 +108,7 @@ internal fun HelpSettingsScreen(
         HelpRoute.Menu -> HelpMenu(
             modifier = modifier,
             devOptionsEnabled = devOptionsEnabled,
+            hasReports = myReports.isNotEmpty(),
             onReplayOnboarding = onReplayOnboarding,
             onResetCoachMarks = onResetCoachMarks,
             onOpenForm = { formCategory = it; route = HelpRoute.Form },
@@ -151,6 +152,7 @@ internal fun HelpSettingsScreen(
 private fun HelpMenu(
     modifier: Modifier,
     devOptionsEnabled: Boolean,
+    hasReports: Boolean,
     onReplayOnboarding: () -> Unit,
     onResetCoachMarks: () -> Unit,
     onOpenForm: (ReportCategory) -> Unit,
@@ -201,8 +203,11 @@ private fun HelpMenu(
             stringResource(R.string.help_report_desc), onClick = { onOpenForm(ReportCategory.BUG) })
         SettingsMenuRow(SharedR.drawable.ic_feedback, stringResource(R.string.help_feedback_title),
             stringResource(R.string.help_feedback_desc), onClick = { onOpenForm(ReportCategory.FEEDBACK) })
-        SettingsMenuRow(SharedR.drawable.ic_receipt_long, stringResource(R.string.help_my_reports_title),
-            stringResource(R.string.help_my_reports_desc), onClick = onOpenMyReports)
+        // "My reports" only appears once there's at least one filed report to show.
+        if (hasReports) {
+            SettingsMenuRow(SharedR.drawable.ic_receipt_long, stringResource(R.string.help_my_reports_title),
+                stringResource(R.string.help_my_reports_desc), onClick = onOpenMyReports)
+        }
         SettingsMenuRow(SharedR.drawable.ic_mail, stringResource(R.string.help_contact_title),
             stringResource(R.string.help_contact_desc), onClick = { sendEmail(context) })
         SettingsMenuRow(SharedR.drawable.ic_star, stringResource(R.string.help_rate_title),

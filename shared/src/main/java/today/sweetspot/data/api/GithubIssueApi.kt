@@ -136,7 +136,15 @@ open class GithubIssueApi(
 
     /** Builds a [ThreadItem], marking it [ThreadItem.mine] when authored by the feedback bot. */
     private fun toItem(author: String, body: String, createdAt: String): ThreadItem =
-        ThreadItem(author, stripReplyPrefix(body), parseIsoToMs(createdAt), mine = author.equals(HelpLinks.BOT_LOGIN, ignoreCase = true))
+        ThreadItem(author, stripReplyPrefix(stripAppFooter(body)), parseIsoToMs(createdAt), mine = author.equals(HelpLinks.BOT_LOGIN, ignoreCase = true))
+
+    /**
+     * Trims the Worker's app footer and the diagnostics block that follows it from an issue body, so
+     * the in-app thread shows only the reporter's own text. A body without the marker (every comment)
+     * is unchanged. The full body — footer and diagnostics included — remains visible on GitHub.
+     */
+    private fun stripAppFooter(body: String): String =
+        body.substringBefore(HelpLinks.ISSUE_BODY_FOOTER).trimEnd()
 
     /**
      * Strips the Worker's reporter-reply prefix from a comment body. The Worker posts a reporter's

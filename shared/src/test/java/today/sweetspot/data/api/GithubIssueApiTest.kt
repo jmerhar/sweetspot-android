@@ -102,6 +102,18 @@ class GithubIssueApiTest {
     }
 
     @Test
+    fun `parseThread strips the app footer and diagnostics block from the issue body`() {
+        // The Worker appends "Submitted from the SweetSpot app." + a collapsible diagnostics code block
+        // to every issue body; the in-app thread shows only the reporter's own text (the code block
+        // also renders with a non-theme-aware background). The full body stays on GitHub.
+        val body = "It crashed on launch.\\n\\n<sub>Submitted from the SweetSpot app.</sub>\\n\\n" +
+            "<details><summary>Diagnostics</summary>\\n\\n```\\nApp: 6.6 (37)\\nZone: NL\\n```\\n</details>"
+        val issue = """{"number":12,"state":"open","title":"x","body":"$body","user":{"login":"sweetspot-support"}}"""
+        val thread = api.parseThread(issue, "[]")
+        assertEquals("It crashed on launch.", thread.items[0].body)
+    }
+
+    @Test
     fun `parseThread tolerates no body and unparseable timestamps`() {
         // Issue with created_at absent (blank branch); comment with a bad timestamp (exception branch).
         val issue = """{"number":8,"state":"open","title":"x"}"""

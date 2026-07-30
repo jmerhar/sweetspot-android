@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test test-suppliers test-feedback inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers test-ev-db test-feedback inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -90,6 +90,9 @@ suppliers: ## Rebuild all-in tariff feeds (site/static/data/suppliers/*.json) â€
 
 test-suppliers: ## Run unit tests for the supplier tariff build script (bin/data/build-suppliers.py)
 	python3 bin/data/test_build_suppliers.py
+
+test-ev-db: ## Run unit tests for the EV database build script (bin/data/build-ev-db.py)
+	python3 bin/data/test_build_ev_db.py
 
 ##@ Play Store
 

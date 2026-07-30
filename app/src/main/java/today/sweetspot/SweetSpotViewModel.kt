@@ -1642,10 +1642,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
     private suspend fun fetchAndFind(durationHours: Double, durationText: UiText, timeZoneId: ZoneId, priceZone: PriceZone) {
         try {
             val state = _uiState.value
-            val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
             val activeCollector = if (settingsRepository.isStatsEnabled()) statsCollector else null
             val factory = priceFetcherFactory
-                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder, activeCollector, "phone")
+                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, state.sourceOrder, activeCollector, "phone", state.disabledSources)
             val fetcher = factory.create(priceZone)
             if (settingsRepository.isCooldownDisabled()) priceCache.resetCooldown()
             val repository = PriceRepository(priceCache, timeZoneId, fetcher, clock = settingsRepository.devClock(timeZoneId), cacheKey = priceZone.id)

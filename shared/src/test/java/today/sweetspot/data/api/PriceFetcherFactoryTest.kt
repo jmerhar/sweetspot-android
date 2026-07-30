@@ -58,6 +58,33 @@ class PriceFetcherFactoryTest {
     }
 
     @Test
+    fun `a disabled source is dropped even with the default order`() {
+        // Regression: disabling a source must take effect without also customising the order.
+        val chain = chain(defaultPriceFetcherFactory(token, disabledSources = setOf("energyzero")).create(nl))
+        assertEquals(listOf(EntsoeApi::class, EnergyChartsApi::class), chain.map { it::class })
+    }
+
+    @Test
+    fun `a disabled source is dropped from a custom order`() {
+        val chain = chain(
+            defaultPriceFetcherFactory(token, listOf("energyzero", "entsoe", "energycharts"), disabledSources = setOf("entsoe")).create(nl)
+        )
+        assertEquals(listOf(EnergyZeroApi::class, EnergyChartsApi::class), chain.map { it::class })
+    }
+
+    @Test
+    fun `disabling every applicable source falls back to the zone defaults`() {
+        // Defensive backstop: never leave a zone with nothing to query.
+        val chain = chain(
+            defaultPriceFetcherFactory(token, disabledSources = setOf("entsoe", "energycharts", "energyzero")).create(nl)
+        )
+        assertEquals(
+            listOf(EntsoeApi::class, EnergyChartsApi::class, EnergyZeroApi::class),
+            chain.map { it::class }
+        )
+    }
+
+    @Test
     fun `no stats collector leaves fetchers unwrapped`() {
         assertTrue(chain(defaultPriceFetcherFactory(token).create(nl)).none { it is InstrumentedPriceFetcher })
     }

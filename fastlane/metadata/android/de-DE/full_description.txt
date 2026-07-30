@@ -1,4 +1,4 @@
-SweetSpot findet den günstigsten Zeitpunkt, um deine Geräte zu betreiben und dein E-Auto zu laden. Wähle, wie lange ein Gerät laufen soll — oder wähle dein E-Auto und den gewünschten Ladestand — und SweetSpot durchsucht die nächsten 24 Stunden dynamischer Strompreise nach dem günstigsten Zeitfenster.
+SweetSpot findet die günstigste Zeit, um deine Geräte zu betreiben und dein E-Auto zu laden. Wähle, wie lange ein Gerät laufen soll — oder wähle dein E-Auto und den gewünschten Ladestand — und SweetSpot durchsucht die kommenden dynamischen Strompreise nach der günstigsten Zeit.
 
 Ob Waschmaschine, Geschirrspüler, Trockner, Wärmepumpe oder E-Auto-Ladegerät — starte zum richtigen Zeitpunkt und zahle weniger für den gleichen Strom.
 
@@ -8,14 +8,14 @@ SO FUNKTIONIERT ES
 3. Sieh genau, wann du starten solltest, mit einem farbcodierten 24-Stunden-Preisdiagramm und einer vollständigen Kostenaufschlüsselung pro Zeitslot
 
 E-AUTO LADEN
-Füge dein Auto aus einer integrierten Datenbank mit rund 1.600 E-Autos und Plug-in-Hybriden hinzu — oder gib Akkukapazität und Ladeleistung selbst ein. Lege deinen aktuellen Ladestand und dein Ladeziel fest, und SweetSpot berechnet, wie lange das Laden dauert und wann der günstigste Zeitpunkt zum Anstecken ist.
+Füge dein Auto aus einer integrierten Datenbank mit Tausenden von E-Autos und Plug-in-Hybriden hinzu — oder gib Akkukapazität und Ladeleistung selbst ein. Lege deinen aktuellen Ladestand und dein Ladeziel fest, und SweetSpot berechnet, wie lange das Laden dauert und wann der günstigste Zeitpunkt zum Anstecken ist.
 
 FUNKTIONEN
 - 30 europäische Länder, 43 Gebotszonen — von Portugal bis Finnland, Norwegen bis Griechenland
 - 5 Datenquellen mit automatischem Fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Gesamtpreis (Niederlande) — sieh optional den vollen Verbraucherpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.) statt des reinen Marktpreises; wähle deinen Anbieter oder gib deinen eigenen Aufschlag ein. Weitere Länder folgen
-- „Fertig bis“-Zeitpunkt — wählt nur ein Zeitfenster, das rechtzeitig endet
-- Früher oder günstiger — wenn das günstigste Zeitfenster ungelegen ist, wechsle zu einem früheren und sieh genau, wie viel mehr es kostet
+- Gesamtpreis (Niederlande) — sieh optional den vollen Verbraucherpreis (Marktpreis + Energiesteuer + Lieferantenaufschlag + MwSt.) statt des reinen Marktpreises; wähle deinen Lieferanten oder gib deinen eigenen Aufschlag ein. Weitere Länder folgen
+- „Fertig bis“-Zeit — landet standardmäßig auf der günstigsten Zeit, die sie einhält
+- Früher oder günstiger — wenn die günstigste Zeit ungelegen ist, wechsle zu einer früheren und sieh genau, wie viel mehr sie kostet
 - Leistungsangaben — lege die Leistung eines Geräts in kW fest, für eine Kostenschätzung, die den tatsächlichen Verbrauch widerspiegelt
 - Speichere deine Geräte mit eigenen Namen, Symbolen und Laufzeiten für schnellen Zugriff
 - Sortiere und ordne deine Geräte neu — zieh sie in deine eigene Reihenfolge oder sortiere nach meistgenutzt, zuletzt genutzt, Name, Laufzeit oder Typ, und lege fest, wo deine E-Autos stehen
@@ -30,6 +30,6 @@ UNTERSTÜTZTE LÄNDER
 Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, Irland, Italien, Kroatien, Lettland, Litauen, Luxemburg, Montenegro, Niederlande, Nordmazedonien, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Serbien, Slowakei, Slowenien, Spanien, Tschechien, Ungarn.
 
 HINWEIS
-Standardmäßig sind die angezeigten Preise Day-Ahead-Spotpreise im Großhandel und enthalten keine MwSt., Energiesteuern oder Lieferantengebühren. In den Niederlanden kannst du optional den Gesamtpreis aktivieren, der Energiesteuer, den Aufschlag deines Anbieters und MwSt. für realistische Betriebskosten hinzufügt. Die Preise für morgen sind in der Regel nach 13:00 Uhr MEZ verfügbar. Ein dynamischer Stromvertrag ist erforderlich, um von Preisunterschieden zu profitieren.
+Standardmäßig sind die angezeigten Preise Day-Ahead-Großhandelspreise und enthalten keine MwSt., Energiesteuern oder Lieferantengebühren. In den Niederlanden kannst du optional den Gesamtpreis aktivieren, der Energiesteuer, den Aufschlag deines Lieferanten und MwSt. für realistische Betriebskosten hinzufügt. Die Preise für morgen sind in der Regel nach 13:00 Uhr MEZ verfügbar. Ein dynamischer Stromvertrag ist erforderlich, um von Preisunterschieden zu profitieren.
 
 Datenschutzerklärung: https://sweetspot.today/de/privacy/

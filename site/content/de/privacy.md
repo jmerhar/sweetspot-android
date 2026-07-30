@@ -5,7 +5,7 @@ description: "SweetSpot Datenschutzerklärung — Datenschutz an erster Stelle, 
 
 ## Überblick
 
-SweetSpot wurde mit Datenschutz im Fokus entwickelt. Die App erhebt und speichert keine persönlichen Daten. Es gibt keine Benutzerkonten, keine Nutzeranalyse und keine Nutzungsverfolgung. Eine optionale Funktion ermöglicht das Teilen anonymer API-Statistiken — siehe Details unten.
+SweetSpot wurde mit Datenschutz im Fokus entwickelt. Die App benötigt oder erhebt keine persönlichen Daten, um zu funktionieren — es gibt keine Benutzerkonten, keine Nutzeranalyse und keine Nutzungsverfolgung, und sie fordert nur die INTERNET-Berechtigung an (keinen Standort, keine Kontakte, keinen Speicher und keine Gerätekennungen). Optionale Funktionen erlauben dir, anonyme Zuverlässigkeitsstatistiken zu teilen oder Feedback zu senden — siehe Details unten.
 
 ## Datenverarbeitung
 
@@ -21,17 +21,19 @@ Diese API-Anfragen enthalten nur die Gebotszonen-Kennung und den Datumsbereich. 
 
 ## Lokale Speicherung
 
-Preisdaten werden lokal auf dem Gerät zwischengespeichert, um API-Aufrufe zu reduzieren und schnellere Ergebnisse zu ermöglichen. Deine Gerätekonfiguration (Namen, Laufzeiten, Symbole und optionale Leistungsangaben), gespeicherte Fahrzeuge (Akkukapazität und Ladeleistung) und Einstellungen (Land, Zone, Sprache) werden ebenfalls lokal auf dem Gerät gespeichert.
+Preisdaten werden lokal auf dem Gerät zwischengespeichert, um API-Aufrufe zu reduzieren und schnellere Ergebnisse zu ermöglichen. Deine Gerätekonfiguration (Namen, Laufzeiten, Symbole und optionale Leistungsangaben), gespeicherte Fahrzeuge (Akkukapazität und Ladeleistung) und Einstellungen (Land, Zone, Sprache) werden ebenfalls lokal auf dem Gerät gespeichert, zusammen mit deinem Abonnementstatus (zwischengespeichert, damit die App offline weiter funktioniert) und den Tippzahlen pro Gerät (nur für die Sortierung nach meistgenutzt und zuletzt genutzt verwendet).
 
 Auf Wear OS werden Gerätedaten und Einstellungen zwischen Telefon und Uhr über die Wearable Data Layer API synchronisiert. Diese Kommunikation bleibt auf den lokalen Geräten und wird über keinen externen Server geleitet.
+
+Wenn du deine Einrichtung als QR-Code oder Link teilst, wird deine Geräte- und E-Auto-Ladekonfiguration **im Link oder QR-Code selbst** codiert — sie wird nie auf einen Server hochgeladen. Nur die Person, der du den Code oder Link gibst, kann sie importieren.
 
 ## Keine Nutzeranalyse
 
 SweetSpot enthält keine Analytics-SDKs, Absturzberichte oder Nutzungsverfolgung. Die App stellt keine Netzwerkanfragen außer zum Abruf von Strompreisen von den oben genannten öffentlichen APIs (und optionalen Statistikberichten, wenn aktiviert, sowie dem Übermitteln einer Meldung, wenn du Hilfe & Support nutzt — siehe unten).
 
-## Optionale API-Statistiken
+## Optionale Zuverlässigkeitsstatistiken
 
-Du kannst dich dafür entscheiden, anonyme API-Zuverlässigkeitsstatistiken zu teilen. Wenn aktiviert, sendet die App in regelmäßigen Abständen individuelle Anfrage-Datensätze für jede Datenquelle und Gebotszone an unseren Server. Diese Daten enthalten:
+Du kannst dich dafür entscheiden, anonyme Zuverlässigkeitsstatistiken zu teilen. Wenn aktiviert, sendet die App in regelmäßigen Abständen individuelle Anfrage-Datensätze für jede Datenquelle und Gebotszone an unseren Server. Diese Daten enthalten:
 
 - Zeitstempel der API-Anfrage
 - Gebotszonen-Kennung (z.B. „NL“, „DE-LU“)

@@ -21,17 +21,25 @@ Du kannst die Prioritätsreihenfolge der Datenquellen in den Einstellungen konfi
 {{< /faq >}}
 
 {{< faq question="Sind die Preise genau?" >}}
-SweetSpot zeigt **Day-Ahead-Spotpreise** — die Großhandelspreise für Strom, die am Vortag vom Markt bestimmt werden. Diese Preise **beinhalten keine** MwSt., Energiesteuer, Netzentgelte oder Lieferantenmargen, die je nach Land und Anbieter variieren.
+SweetSpot zeigt **Day-Ahead-Marktpreise** — die Großhandelspreise für Strom, die am Vortag vom Markt bestimmt werden (auch Spotpreise genannt). Diese Preise **beinhalten keine** MwSt., Energiesteuer, Netzentgelte oder Lieferantenmargen, die je nach Land und Anbieter variieren.
 
-Die Preise sind nützlich, um Zeitslots miteinander zu vergleichen (herauszufinden, wann Strom am günstigsten ist), was der Hauptzweck der App ist. Die Kosten werden standardmäßig pro 1 kW Last angezeigt; lege die Leistung eines Geräts fest oder lade ein E-Auto, und die Schätzung spiegelt die tatsächliche Last wider. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.
+Die Preise sind trotzdem nützlich, um herauszufinden, wann Strom am günstigsten ist — der Hauptzweck der App. Die Kosten werden standardmäßig pro 1 kW Last angezeigt; lege die Leistung eines Geräts fest oder lade ein E-Auto, und die Schätzung spiegelt die tatsächliche Last wider. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.
+{{< /faq >}}
+
+{{< faq question="Brauche ich einen speziellen Stromvertrag?" >}}
+Ja — um wirklich Geld zu sparen, brauchst du einen **dynamischen Stromvertrag** (Spot- oder Stundentarif), bei dem der Preis, den du zahlst, dem Day-Ahead-Markt folgt. SweetSpot zeigt dir, wann diese Preise am niedrigsten sind, kann aber nicht ändern, was dein Anbieter berechnet: Bei einem Festpreistarif ist der Preis den ganzen Tag gleich, sodass sich deine Rechnung nicht verringert, wenn du nur den Zeitpunkt deines Verbrauchs verschiebst.
 {{< /faq >}}
 
 {{< faq question="Kann SweetSpot mir beim Laden meines Elektroautos helfen?" >}}
-Ja. Füge dein Fahrzeug hinzu — wähle es aus einer integrierten Datenbank mit rund 1.600 E-Autos und Plug-in-Hybriden oder gib die Akkukapazität und Ladeleistung manuell ein. Gib dann den aktuellen und den gewünschten Ladestand ein, und SweetSpot berechnet, wie lange das Laden dauert (anhand der Akkukapazität und des niedrigeren Werts aus dem AC-Limit deines Autos und deiner Wallbox), und findet das günstigste Zeitfenster zum Anstecken.
+Ja. Füge dein Fahrzeug hinzu — wähle es aus einer integrierten Datenbank mit Tausenden von E-Autos und Plug-in-Hybriden oder gib die Akkukapazität und Ladeleistung manuell ein. Gib dann den aktuellen und den gewünschten Ladestand ein, und SweetSpot berechnet, wie lange das Laden dauert (anhand der Akkukapazität und des niedrigeren Werts aus dem AC-Limit deines Autos und deiner Wallbox), und findet die günstigste Zeit zum Anstecken.
 {{< /faq >}}
 
 {{< faq question="Kann ich sicherstellen, dass es bis zu einem bestimmten Zeitpunkt fertig ist?" >}}
-Ja. Aktiviere die optionale **„Fertig bis“**-Zeit und wähle einen Zeitpunkt. SweetSpot berücksichtigt dann nur Zeitfenster, die bis dahin abschließen — für jedes Gerät oder zum Laden deines E-Autos (zum Beispiel vollständig geladen bis 7:00 Uhr morgens).
+Ja. Aktiviere die optionale **„Fertig bis“**-Zeit und wähle einen Zeitpunkt. SweetSpot verwendet dann standardmäßig die günstigste Zeit, die bis dahin abschließt — für jedes Gerät oder zum Laden deines E-Autos (zum Beispiel vollständig geladen bis 7:00 Uhr morgens). Du kannst trotzdem zu einer günstigeren Zeit wechseln, die etwas später endet, falls dir das lieber ist; SweetSpot weist darauf hin, wenn die angezeigte Zeit nach deinem Zeitpunkt endet.
+{{< /faq >}}
+
+{{< faq question="Warum ändert sich die empfohlene Zeit ständig?" >}}
+SweetSpot prüft die Preise erneut, während ein Ergebnis geöffnet ist, und Zeitslots, die inzwischen in der Vergangenheit liegen, fallen mit der Zeit weg — daher kann sich die empfohlene Zeit verschieben. Nutze die Schaltflächen **Früher** und **Günstiger**, um zwischen einem früheren (etwas teureren) Start und dem günstigsten zu wechseln — bei jedem wird angezeigt, wie viel mehr er als die empfohlene Zeit kostet.
 {{< /faq >}}
 
 {{< faq question="Spiegeln die Kosten wider, wie viel Strom mein Gerät verbraucht?" >}}
@@ -43,17 +51,17 @@ SweetSpot speichert Preise lokal auf dem Gerät. Wenn du kürzlich Preise abgeru
 {{< /faq >}}
 
 {{< faq question="Funktioniert die Wear OS-App eigenständig?" >}}
-Die Wear OS-App synchronisiert Geräte und Einstellungen von der Telefon-App über die Wearable Data Layer API. Nach der Synchronisierung ruft die Uhr eigenständig Preise ab — sie funktioniert also auch, wenn das Telefon nicht in der Nähe ist, solange die Uhr Internetzugang hat (WLAN oder LTE).
+Die Wear OS-App synchronisiert Geräte und Einstellungen von der Telefon-App. Nach der Synchronisierung ruft die Uhr eigenständig Preise ab — sie funktioniert also auch, wenn das Telefon nicht in der Nähe ist, solange die Uhr Internetzugang hat (WLAN oder LTE).
 
 Die Uhr-App erfordert Wear OS 3 oder neuer (Pixel Watch, Samsung Galaxy Watch 4+ und andere kompatible Uhren).
 {{< /faq >}}
 
 {{< faq question="Kann ich den vollen Preis sehen, den ich tatsächlich zahle?" >}}
-Standardmäßig zeigt SweetSpot den Großhandels-**Spotpreis** an. In unterstützten Ländern (derzeit die Niederlande) kannst du in den Einstellungen **All-in-Preise** aktivieren, die Energiesteuer, den Aufschlag deines Lieferanten und die MwSt. zum Spotpreis hinzurechnen, um den ungefähren vollen Verbraucherpreis anzuzeigen. In Kombination mit der **Leistungsangabe** eines Geräts erhältst du so eine realistische Schätzung dessen, was der Betrieb dieses Geräts tatsächlich kostet. Dies dient nur zur Anzeige — es ändert nie, welches Zeitfenster am günstigsten ausfällt.
+Standardmäßig zeigt SweetSpot den Großhandels-**Marktpreis** an. In unterstützten Ländern (derzeit die Niederlande) kannst du in den Einstellungen den **Gesamtpreis** (den All-in-Preis) aktivieren, der Energiesteuer, den Aufschlag deines Lieferanten und die MwSt. auf den Marktpreis aufschlägt, um den ungefähren vollen Verbraucherpreis anzuzeigen. In Kombination mit der **Leistungsangabe** eines Geräts erhältst du so eine realistische Schätzung dessen, was der Betrieb dieses Geräts tatsächlich kostet. Dies dient nur zur Anzeige — es ändert nie, welche Zeit am günstigsten ausfällt.
 {{< /faq >}}
 
 {{< faq question="Kann ich meine Geräte auf ein anderes Gerät kopieren?" >}}
-Ja. In den Einstellungen kannst du deine Konfiguration — deine Geräte, ihre Reihenfolge und deine Einstellungen zum Laden des E-Autos — als QR-Code oder Link teilen. Scanne oder öffne ihn auf einem anderen Gerät, um alles zu importieren. Es funktioniert vollständig offline, ohne Konto und ohne Server: Die Daten stecken im Link oder QR-Code selbst, und du entscheidest, ob sie zum Vorhandenen hinzugefügt werden oder es ersetzen sollen.
+Ja. In den Einstellungen kannst du deine Konfiguration — deine Geräte, ihre Reihenfolge und deine Einstellungen zum Laden des E-Autos — als QR-Code oder Link teilen. Scanne oder öffne ihn auf einem anderen Gerät, um alles zu importieren. Es funktioniert vollständig offline, ohne Konto und ohne Server: Die Daten stecken im Link oder QR-Code selbst, und du entscheidest, ob du sie zum Vorhandenen hinzufügst, es ersetzt oder einzelne Einträge daraus auswählst.
 {{< /faq >}}
 
 {{< faq question="Wie melde ich ein Problem oder schlage eine Funktion vor?" >}}

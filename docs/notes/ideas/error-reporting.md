@@ -52,7 +52,7 @@ stance, this should be opt-in.
 
 ### Effort vs. value
 
-For a single-developer app with 273 tests and no analytics SDK, the effort is
+For a single-developer app with a large unit-test suite and no analytics SDK, the effort is
 significant relative to the payoff. The API stats feature already captures the most
 common failure mode (API errors). True crashes are rare and often reproducible from
 user reports.

@@ -225,7 +225,7 @@ Hostname **`feedback.sweetspot.today`** (Workers route). Endpoints:
   "diagnostics": "string, optional (bug only)",
   "email":    "string, optional — only if the user opted into notifications" }
 // response 201
-{ "number": 123, "url": "https://github.com/jmerhar/sweetspot-android/issues/123" }
+{ "number": 123, "url": "https://github.com/jmerhar/sweetspot-android/issues/123", "replyToken": "…" }
 // 400 invalid · 415 wrong content-type · 429 rate-limited · 5xx upstream
 ```
 Steps: validate + length caps → per-IP rate-limit via **Workers KV** → create the issue via the GitHub

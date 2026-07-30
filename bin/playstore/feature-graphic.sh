@@ -125,7 +125,7 @@ with open('$AVENIR_NEXT_TTC', 'rb') as f:
     data = f.read()
 
 extract_face(data, 0, '$font_dir/AvenirNextBold.ttf')
-" || { echo "Error: Failed to extract Avenir Next Bold from TTC." >&2; exit 1; }
+" || die "Failed to extract Avenir Next Bold from TTC."
 
     FONT_TITLE="$font_dir/AvenirNextBold.ttf"
 }
@@ -261,10 +261,10 @@ EOF
 main() {
     require_command magick "brew install imagemagick"
     require_command python3
-    [[ -f "$AVENIR_NEXT_TTC" ]] || { echo "Error: Avenir Next font not found: $AVENIR_NEXT_TTC" >&2; exit 1; }
-    [[ -f "$ICON_SRC" ]]       || { echo "Error: Icon not found: $ICON_SRC" >&2; exit 1; }
+    [[ -f "$AVENIR_NEXT_TTC" ]] || die "Avenir Next font not found: $AVENIR_NEXT_TTC"
+    [[ -f "$ICON_SRC" ]]       || die "Icon not found: $ICON_SRC"
 
-    echo "Extracting Avenir Next Bold..."
+    log_info "Extracting Avenir Next Bold..."
     extract_fonts
 
     local count=0
@@ -274,7 +274,7 @@ main() {
         local out_dir="$METADATA_DIR/$locale/images"
         mkdir -p "$out_dir"
 
-        echo "Generating $locale..."
+        log_info "Generating $locale..."
         generate "$locale" "$out_dir/featureGraphic.png"
         count=$((count + 1))
     done
@@ -283,7 +283,7 @@ main() {
     [[ -n "${FONT_DIR:-}" ]] && rm -rf "$FONT_DIR"
 
     generate_html
-    echo "Generated $count feature graphics."
+    log_success "Generated $count feature graphics."
 }
 
 main "$@"

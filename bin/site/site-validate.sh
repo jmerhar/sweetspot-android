@@ -14,6 +14,7 @@
 #   Or:  make site-validate
 
 set -euo pipefail
+source "$(dirname "$0")/../lib/log.sh"
 
 PROJECT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 SITE_DIR="$PROJECT_DIR/site"
@@ -29,17 +30,16 @@ fail() {
 
 # --- 1. Hugo build ---
 
-echo "==> Building site..."
+log_info "==> Building site..."
 if ! hugo --source "$SITE_DIR" --minify; then
     echo ""
-    echo "FAIL: Hugo build failed"
-    exit 1
+    die "Hugo build failed"
 fi
 echo ""
 
 # --- 2. Expected pages and assets exist ---
 
-echo "==> Checking expected pages and assets..."
+log_info "==> Checking expected pages and assets..."
 
 LANGUAGES="en bg cs da de el es et fi fr hr hu it lt lv mk nb nl pl pt ro sk sl sr sv"
 PAGES="index.html faq/index.html changelog/index.html privacy/index.html import/index.html"
@@ -85,7 +85,7 @@ echo ""
 
 # --- 3. Internal links resolve ---
 
-echo "==> Checking internal links..."
+log_info "==> Checking internal links..."
 
 # Extract href="/..." and src="/..." from all HTML files, verify targets exist.
 # Skip external URLs, fragments-only, and data: URIs.
@@ -123,7 +123,7 @@ echo ""
 
 # --- 4. Page size floor ---
 
-echo "==> Checking page sizes..."
+log_info "==> Checking page sizes..."
 
 MIN_SIZE=500
 while IFS= read -r html_file; do
@@ -142,7 +142,7 @@ echo ""
 
 # --- 5. i18n key parity ---
 
-echo "==> Checking i18n key parity..."
+log_info "==> Checking i18n key parity..."
 
 EN_TOML="$I18N_DIR/en.toml"
 if [[ ! -f "$EN_TOML" ]]; then
@@ -179,9 +179,8 @@ echo ""
 # --- Summary ---
 
 if [[ "$FAILURES" -gt 0 ]]; then
-    echo "Validation failed with $FAILURES issue(s)."
-    exit 1
+    die "Validation failed with $FAILURES issue(s)."
 else
-    echo "All checks passed."
+    log_success "All checks passed."
     exit 0
 fi

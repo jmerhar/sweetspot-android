@@ -242,7 +242,7 @@ find_raw() {
 # ──────────────────────────────────────────────
 main() {
     require_command magick "brew install imagemagick"
-    [[ -f "$FONT" ]] || { echo "Error: Font not found: $FONT" >&2; exit 1; }
+    [[ -f "$FONT" ]] || die "Font not found: $FONT"
 
     # Clean existing framed screenshots
     if [[ -n "${LOCALE:-}" ]]; then
@@ -273,7 +273,7 @@ main() {
         local out_dir="$METADATA_DIR/$out_locale/images/phoneScreenshots"
         mkdir -p "$out_dir"
 
-        echo "Framing $locale..."
+        log_info "Framing $locale..."
         CURRENT_LOCALE="$locale"
 
         # Find raw screenshots
@@ -333,7 +333,7 @@ main() {
     done
 
     generate_html
-    echo "Framed $count screenshots in fastlane/metadata/android/"
+    log_success "Framed $count screenshots in fastlane/metadata/android/"
 }
 
 generate_html() {

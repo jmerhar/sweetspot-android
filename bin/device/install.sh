@@ -9,6 +9,7 @@
 #   ./bin/device/install.sh watch --debug      # Install debug watch APK
 #
 set -euo pipefail
+source "$(dirname "$0")/../lib/log.sh"
 
 TARGET="${1:?Usage: ./bin/device/install.sh <phone|watch> [--debug]}"
 VARIANT="${2:-release}"
@@ -19,8 +20,7 @@ if [[ ! -x "$ADB" ]]; then
     ADB=$(command -v adb 2>/dev/null || true)
 fi
 if [[ -z "$ADB" ]]; then
-    echo "ERROR: adb not found. Install Android SDK platform-tools or add adb to PATH."
-    exit 1
+    die "adb not found. Install Android SDK platform-tools or add adb to PATH."
 fi
 
 # Determine APK pattern based on target and variant
@@ -49,8 +49,7 @@ case "$TARGET" in
         DEVICE_LABEL="watch"
         ;;
     *)
-        echo "ERROR: Unknown target '$TARGET'. Use 'phone' or 'watch'."
-        exit 1
+        die "Unknown target '$TARGET'. Use 'phone' or 'watch'."
         ;;
 esac
 
@@ -59,8 +58,7 @@ SERIAL=$(echo "$LINE" | awk '{print $1}')
 MODEL=$(echo "$LINE" | sed -n 's/.*model:\([^ ]*\).*/\1/p' | tr '_' ' ')
 
 if [[ -z "$SERIAL" ]]; then
-    echo "ERROR: No $DEVICE_LABEL found. Connect it via USB or Wi-Fi debugging first."
-    exit 1
+    die "No $DEVICE_LABEL found. Connect it via USB or Wi-Fi debugging first."
 fi
 
 # Find the APK (newest by modification time, with fallback to default name)
@@ -71,9 +69,8 @@ if [[ -z "$APK" && -n "${APK_FALLBACK:-}" && -f "$APK_FALLBACK" ]]; then
     APK="$APK_FALLBACK"
 fi
 if [[ -z "$APK" ]]; then
-    echo "ERROR: No APK found matching $APK_PATTERN. Build first."
-    exit 1
+    die "No APK found matching $APK_PATTERN. Build first."
 fi
 
-echo "Installing $APK on $MODEL..."
+log_info "Installing $APK on $MODEL..."
 "$ADB" -s "$SERIAL" install "$APK"

@@ -15,6 +15,7 @@
 set -euo pipefail
 
 source "$(dirname "$0")/../lib/locale.sh"
+source "$(dirname "$0")/../lib/log.sh"
 
 ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 SRC_DIR="$ROOT_DIR/fastlane/metadata/android"
@@ -53,10 +54,10 @@ for lang in $LANGS; do
             to_webp "$src" "$out_loc/${i}.webp"
             count=$((count + 1))
         else
-            echo "WARNING: missing $src" >&2
+            log_warn "missing $src"
         fi
         i=$((i + 1))
     done
 done
 
-echo "Generated $count website screenshots in site/static/images/screenshots/"
+log_success "Generated $count website screenshots in site/static/images/screenshots/"

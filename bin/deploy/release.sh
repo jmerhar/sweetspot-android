@@ -7,18 +7,17 @@
 #   ./release.sh 1.1 -n notes.md --draft   # same but creates a draft release
 #
 set -euo pipefail
+source "$(dirname "$0")/../lib/log.sh"
 
 # --- Pre-flight checks ---
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [[ "$BRANCH" != "main" ]]; then
-    echo "ERROR: Must be on the main branch to release (currently on '$BRANCH')."
-    exit 1
+    die "Must be on the main branch to release (currently on '$BRANCH')."
 fi
 
 if ! git diff --quiet || ! git diff --cached --quiet; then
-    echo "ERROR: Working tree has uncommitted changes. Commit or stash them first."
-    exit 1
+    die "Working tree has uncommitted changes. Commit or stash them first."
 fi
 
 # Portable in-place sed (macOS needs '' after -i, GNU sed does not)
@@ -39,18 +38,16 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         -n) NOTES_FILE="${2:?-n requires a file path}"; shift 2 ;;
         --draft) DRAFT_FLAG="--draft"; shift ;;
-        *) echo "Unknown option: $1"; exit 1 ;;
+        *) die "Unknown option: $1" ;;
     esac
 done
 
 if [[ -z "$NOTES_FILE" ]]; then
-    echo "ERROR: Release notes file is required. Usage: ./release.sh <version> -n <notes-file> [--draft]"
-    exit 1
+    die "Release notes file is required. Usage: ./release.sh <version> -n <notes-file> [--draft]"
 fi
 
 if [[ ! -f "$NOTES_FILE" ]]; then
-    echo "ERROR: Notes file not found: $NOTES_FILE"
-    exit 1
+    die "Notes file not found: $NOTES_FILE"
 fi
 
 CONVENTION_FILE="buildSrc/src/main/kotlin/sweetspot-app.gradle.kts"
@@ -62,26 +59,24 @@ TAG="v${VERSION}"
 CURRENT_CODE=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' "$CONVENTION_FILE")
 NEW_CODE=$((CURRENT_CODE + 1))
 
-echo "Bumping versionCode $CURRENT_CODE → $NEW_CODE, versionName → $VERSION"
+log_info "Bumping versionCode $CURRENT_CODE → $NEW_CODE, versionName → $VERSION"
 
 sedi "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" "$CONVENTION_FILE"
 sedi "s/versionName = \".*\"/versionName = \"$VERSION\"/" "$CONVENTION_FILE"
 
 # --- Build release APK ---
 
-echo "Building release APK and AAB..."
+log_info "Building release APK and AAB..."
 ./gradlew assembleRelease bundleRelease
 
 APK_PATH="app/build/outputs/apk/release/sweetspot-release.apk"
 if [[ ! -f "$APK_PATH" ]]; then
-    echo "ERROR: Release APK not found at $APK_PATH"
-    exit 1
+    die "Release APK not found at $APK_PATH"
 fi
 
 WEAR_APK_PATH="wear/build/outputs/apk/release/sweetspot-wear-release.apk"
 if [[ ! -f "$WEAR_APK_PATH" ]]; then
-    echo "ERROR: Wear APK not found at $WEAR_APK_PATH"
-    exit 1
+    die "Wear APK not found at $WEAR_APK_PATH"
 fi
 
 # Rename APKs to include version
@@ -102,7 +97,7 @@ git add "$CONVENTION_FILE"
 git commit -m "chore: release v${VERSION}"
 git tag -a "$TAG" -m "Release ${VERSION}"
 
-echo "Pushing commit and tag..."
+log_info "Pushing commit and tag..."
 git push
 git push origin "$TAG"
 
@@ -116,15 +111,15 @@ BODY="${NOTES}
 
 **Full Changelog**: ${REPO_URL}/compare/${PREV_TAG}...${TAG}"
 
-echo "Creating GitHub Release ${TAG}..."
+log_info "Creating GitHub Release ${TAG}..."
 gh release create "$TAG" "$NAMED_APK" "$NAMED_WEAR_APK" \
     --title "SweetSpot ${VERSION}" \
     --notes "$BODY" \
     $DRAFT_FLAG
 
 echo ""
-echo "Done! Release ${TAG} created."
-echo "Phone APK: ${NAMED_APK}"
-echo "Wear APK:  ${NAMED_WEAR_APK}"
-echo "Phone AAB: build/sweetspot-phone.aab"
-echo "Wear AAB:  build/sweetspot-wear.aab"
+log_success "Done! Release ${TAG} created."
+log_info "Phone APK: ${NAMED_APK}"
+log_info "Wear APK:  ${NAMED_WEAR_APK}"
+log_info "Phone AAB: build/sweetspot-phone.aab"
+log_info "Wear AAB:  build/sweetspot-wear.aab"

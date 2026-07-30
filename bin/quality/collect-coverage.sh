@@ -6,6 +6,7 @@
 # Usage: bin/quality/collect-coverage.sh [output-dir]   (default: coverage-upload)
 # Run from the repo root after `./gradlew koverHtmlReportDebug koverXmlReportDebug`.
 set -euo pipefail
+source "$(dirname "$0")/../lib/log.sh"
 
 out="${1:-coverage-upload}"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -17,4 +18,4 @@ for module in shared app wear; do
 done
 python3 "$here/coverage-report.py" --format reports > "$out/reports.json"
 
-echo "Collected coverage upload in $out/ (modules: shared, app, wear)"
+log_success "Collected coverage upload in $out/ (modules: shared, app, wear)"

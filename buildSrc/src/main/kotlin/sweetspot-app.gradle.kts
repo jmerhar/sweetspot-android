@@ -25,9 +25,8 @@ android {
         versionCode = 37
         versionName = "6.6"
 
-        // Include only IANA-recognised language codes in bundles.
-        // Montenegrin (cnr) is excluded because the Play Console rejects it;
-        // Montenegrin speakers fall back to Serbian (sr) or Croatian (hr).
+        // Ship only the translated locales; keeps stray transitive-dependency locales
+        // out of the bundle.
         androidResources.localeFilters += listOf(
             "bg", "cs", "da", "de", "el", "en", "es", "et", "fi", "fr",
             "hr", "hu", "it", "lt", "lv", "mk", "nb", "nl", "pl", "pt",

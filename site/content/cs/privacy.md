@@ -27,7 +27,7 @@ Na Wear OS se data o spotřebičích a nastavení synchronizují mezi telefonem 
 
 ## Žádná analytika
 
-SweetSpot neobsahuje žádné SDK pro analytiku, hlášení chyb ani sledování používání. Aplikace nevykonává žádné síťové požadavky kromě stahování cen elektřiny z výše uvedených veřejných API (a volitelného odesílání statistik, pokud je aktivní, a odeslání hlášení, pokud použijete Nápovědu a zpětnou vazbu — viz níže).
+SweetSpot neobsahuje žádné SDK pro analytiku, hlášení chyb ani sledování používání. Aplikace nevykonává žádné síťové požadavky kromě stahování cen elektřiny z výše uvedených veřejných API (a volitelného odesílání statistik, pokud je aktivní, a odeslání hlášení, pokud použijete Nápovědu a podporu — viz níže).
 
 ## Volitelná API statistika
 
@@ -48,9 +48,9 @@ Tato data **neobsahují** identifikátory zařízení, polohu, cenová data ani 
 
 Tato funkce je ve výchozím stavu vypnutá. Můžete ji zapnout nebo vypnout kdykoli v Nastavení.
 
-## Nápověda a zpětná vazba
+## Nápověda a podpora
 
-Pokud nahlásíte problém nebo odešlete zpětnou vazbu z **Nastavení › Nápověda a zpětná vazba**, vaše zpráva se odešle naší službě zpětné vazby a založí se jako požadavek v našem veřejném repozitáři na GitHubu. **Předmět a popis, které napíšete, se stanou veřejně viditelnými** na GitHubu, proto prosím neuvádějte osobní údaje.
+Pokud nahlásíte problém nebo odešlete zpětnou vazbu z **Nastavení › Nápověda a podpora**, vaše zpráva se odešle naší službě zpětné vazby a založí se jako požadavek v našem veřejném repozitáři na GitHubu. **Předmět a popis, které napíšete, se stanou veřejně viditelnými** na GitHubu, proto prosím neuvádějte osobní údaje.
 
 Pokud si zvolíte, že chcete být informováni e-mailem, adresa, kterou uvedete, je uložena pouze naší službou zpětné vazby — nikdy se nezobrazuje ve veřejném požadavku — a slouží výhradně k tomu, abychom vám napsali o vašem vlastním hlášení. Každý e-mail s oznámením obsahuje odkaz pro odhlášení jedním kliknutím, který uloženou adresu odstraní, a rovněž nás můžete kdykoli požádat o její smazání.
 

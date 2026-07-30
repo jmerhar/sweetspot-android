@@ -57,7 +57,7 @@ Da. U postavkama možete podijeliti svoju konfiguraciju — svoje uređaje, njih
 {{< /faq >}}
 
 {{< faq question="Kako mogu prijaviti problem ili predložiti značajku?" >}}
-Otvorite **Postavke › Pomoć i povratne informacije** i odaberite *Prijavi problem* ili *Pošalji povratnu informaciju*. Vaša se poruka šalje izravno iz aplikacije — bez preglednika ili GitHub računa — i postaje javni upit koji možemo pratiti. Neobvezno možete ostaviti e-mail adresu kako biste bili obaviješteni o odgovorima (nikad se ne prikazuje javno, a svaka obavijest ima poveznicu za odjavu jednim klikom) i pratiti status svega što ste poslali pod *Moji upiti*.
+Otvorite **Postavke › Pomoć i podrška** i odaberite *Prijavi problem* ili *Pošalji povratnu informaciju*. Vaša se poruka šalje izravno iz aplikacije — bez preglednika ili GitHub računa — i postaje javni upit koji možemo pratiti. Neobvezno možete ostaviti e-mail adresu kako biste bili obaviješteni o odgovorima (nikad se ne prikazuje javno, a svaka obavijest ima poveznicu za odjavu jednim klikom) i pratiti status svega što ste poslali pod *Moji upiti*.
 {{< /faq >}}
 
 {{< faq question="Koliko košta SweetSpot?" >}}

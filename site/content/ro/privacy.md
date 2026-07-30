@@ -27,7 +27,7 @@ Pe Wear OS, datele despre electrocasnice și setările sunt sincronizate între 
 
 ## Fără analize
 
-SweetSpot nu include niciun SDK de analiză, raportare a erorilor sau urmărire a utilizării. Aplicația nu efectuează alte cereri de rețea în afara obținerii prețurilor de electricitate de la API-urile publice menționate mai sus (raportarea opțională de statistici, dacă este activată, și trimiterea unui raport dacă folosești Ajutor și feedback — vezi mai jos).
+SweetSpot nu include niciun SDK de analiză, raportare a erorilor sau urmărire a utilizării. Aplicația nu efectuează alte cereri de rețea în afara obținerii prețurilor de electricitate de la API-urile publice menționate mai sus (raportarea opțională de statistici, dacă este activată, și trimiterea unui raport dacă folosești Ajutor & asistență — vezi mai jos).
 
 ## Statistici API opționale
 
@@ -48,9 +48,9 @@ Aceste date **nu** conțin identificatori de dispozitiv, locație, date despre p
 
 Această funcție este dezactivată în mod implicit. O poți activa sau dezactiva oricând din Setări.
 
-## Ajutor și feedback
+## Ajutor & asistență
 
-Dacă raportezi o problemă sau trimiți feedback din **Setări › Ajutor și feedback**, mesajul tău este trimis către serviciul nostru de feedback și înregistrat ca problemă în depozitul nostru public de pe GitHub. **Subiectul și descrierea pe care le scrii devin vizibile public** pe GitHub, așa că te rugăm să nu incluzi date personale.
+Dacă raportezi o problemă sau trimiți feedback din **Setări › Ajutor & asistență**, mesajul tău este trimis către serviciul nostru de feedback și înregistrat ca problemă în depozitul nostru public de pe GitHub. **Subiectul și descrierea pe care le scrii devin vizibile public** pe GitHub, așa că te rugăm să nu incluzi date personale.
 
 Dacă alegi să fii notificat prin e-mail, adresa pe care o furnizezi este stocată doar de serviciul nostru de feedback — nu este niciodată afișată în problema publică — și este utilizată exclusiv pentru a-ți trimite e-mailuri despre propriul tău raport. Fiecare e-mail de notificare include un link de dezabonare cu un singur clic care elimină adresa stocată și, în plus, ne poți cere oricând să o ștergem.
 

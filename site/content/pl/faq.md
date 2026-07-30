@@ -57,7 +57,7 @@ Tak. W ustawieniach możesz udostępnić swoją konfigurację — urządzenia, i
 {{< /faq >}}
 
 {{< faq question="Jak zgłosić problem lub zaproponować funkcję?" >}}
-Otwórz **Ustawienia › Pomoc i opinie** i wybierz *Zgłoś problem* lub *Wyślij opinię*. Twoja wiadomość jest wysyłana bezpośrednio z aplikacji — bez przeglądarki i bez konta GitHub — i staje się publicznym zgłoszeniem, które możemy śledzić. Opcjonalnie możesz podać adres e-mail, aby otrzymać powiadomienie o odpowiedziach (nigdy nie jest on pokazywany publicznie, a każde powiadomienie zawiera link do wypisania się jednym kliknięciem), i śledzić status wszystkiego, co wysłałeś, w sekcji *Moje zgłoszenia*.
+Otwórz **Ustawienia › Pomoc i wsparcie** i wybierz *Zgłoś problem* lub *Wyślij opinię*. Twoja wiadomość jest wysyłana bezpośrednio z aplikacji — bez przeglądarki i bez konta GitHub — i staje się publicznym zgłoszeniem, które możemy śledzić. Opcjonalnie możesz podać adres e-mail, aby otrzymać powiadomienie o odpowiedziach (nigdy nie jest on pokazywany publicznie, a każde powiadomienie zawiera link do wypisania się jednym kliknięciem), i śledzić status wszystkiego, co wysłałeś, w sekcji *Moje zgłoszenia*.
 {{< /faq >}}
 
 {{< faq question="Ile kosztuje SweetSpot?" >}}

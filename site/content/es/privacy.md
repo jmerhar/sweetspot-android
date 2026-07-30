@@ -27,7 +27,7 @@ En Wear OS, los datos de electrodomésticos y ajustes se sincronizan entre el te
 
 ## Sin analítica
 
-SweetSpot no incluye ningún SDK de analítica, informes de errores ni seguimiento del uso. La aplicación no realiza ninguna solicitud de red más allá de obtener precios de electricidad de las APIs públicas mencionadas anteriormente (y el envío opcional de estadísticas, si está activado, y el envío de un informe si usas Ayuda y comentarios — véase más abajo).
+SweetSpot no incluye ningún SDK de analítica, informes de errores ni seguimiento del uso. La aplicación no realiza ninguna solicitud de red más allá de obtener precios de electricidad de las APIs públicas mencionadas anteriormente (y el envío opcional de estadísticas, si está activado, y el envío de un informe si usas Ayuda y soporte — véase más abajo).
 
 ## Estadísticas de API opcionales
 
@@ -48,9 +48,9 @@ Estos datos **no** contienen identificadores de dispositivo, ubicación, datos d
 
 Esta función está desactivada por defecto. Puedes activarla o desactivarla en cualquier momento en Ajustes.
 
-## Ayuda y comentarios
+## Ayuda y soporte
 
-Si informas de un problema o envías comentarios desde **Ajustes › Ayuda y comentarios**, tu mensaje se envía a nuestro servicio de comentarios y se registra como un issue en nuestro repositorio público de GitHub. **El asunto y la descripción que escribas se hacen públicamente visibles** en GitHub, así que no incluyas datos personales.
+Si informas de un problema o envías comentarios desde **Ajustes › Ayuda y soporte**, tu mensaje se envía a nuestro servicio de comentarios y se registra como un issue en nuestro repositorio público de GitHub. **El asunto y la descripción que escribas se hacen públicamente visibles** en GitHub, así que no incluyas datos personales.
 
 Si eliges recibir notificaciones por correo electrónico, la dirección que proporciones se almacena únicamente en nuestro servicio de comentarios — nunca se muestra en el issue público — y se utiliza exclusivamente para enviarte correos sobre tu propio informe. Cada correo de notificación incluye un enlace de cancelación de suscripción con un solo clic que elimina la dirección almacenada, y también puedes pedirnos que la eliminemos en cualquier momento.
 

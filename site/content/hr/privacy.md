@@ -27,7 +27,7 @@ Na Wear OS-u podaci o uređajima i postavke sinkroniziraju se između telefona i
 
 ## Bez analitike
 
-SweetSpot ne uključuje SDK-ove za analitiku, prijavu grešaka ni praćenje korištenja. Aplikacija ne šalje mrežne zahtjeve osim dohvaćanja cijena električne energije s gore navedenih javnih API-ja (neobvezno slanje statistike ako je uključeno te slanje upita ako koristite Pomoć i povratne informacije — vidjeti u nastavku).
+SweetSpot ne uključuje SDK-ove za analitiku, prijavu grešaka ni praćenje korištenja. Aplikacija ne šalje mrežne zahtjeve osim dohvaćanja cijena električne energije s gore navedenih javnih API-ja (neobvezno slanje statistike ako je uključeno te slanje upita ako koristite Pomoć i podrška — vidjeti u nastavku).
 
 ## Neobvezna API statistika
 
@@ -48,9 +48,9 @@ Ti podaci **ne** sadrže identifikatore uređaja, lokaciju, podatke o cijenama n
 
 Ova značajka je prema zadanim postavkama isključena. Možete je uključiti ili isključiti u bilo kojem trenutku u Postavkama.
 
-## Pomoć i povratne informacije
+## Pomoć i podrška
 
-Ako prijavite problem ili pošaljete povratnu informaciju iz izbornika **Postavke › Pomoć i povratne informacije**, vaša se poruka šalje našoj usluzi za povratne informacije i evidentira kao upit u našem javnom GitHub repozitoriju. **Naslov i opis koje napišete postaju javno vidljivi** na GitHubu, stoga nemojte uključivati osobne podatke.
+Ako prijavite problem ili pošaljete povratnu informaciju iz izbornika **Postavke › Pomoć i podrška**, vaša se poruka šalje našoj usluzi za povratne informacije i evidentira kao upit u našem javnom GitHub repozitoriju. **Naslov i opis koje napišete postaju javno vidljivi** na GitHubu, stoga nemojte uključivati osobne podatke.
 
 Ako se odlučite za obavijesti e-mailom, adresa koju navedete pohranjuje se samo kod naše usluge za povratne informacije — nikad se ne prikazuje u javnom upitu — i koristi se isključivo za slanje e-pošte o vašem vlastitom upitu. Svaka obavijest e-mailom sadrži poveznicu za odjavu jednim klikom koja uklanja pohranjenu adresu, a njezino brisanje možete zatražiti i u bilo kojem trenutku.
 

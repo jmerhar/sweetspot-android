@@ -27,7 +27,7 @@ Su Wear OS, i dati degli elettrodomestici e le impostazioni vengono sincronizzat
 
 ## Nessuna analisi dei dati
 
-SweetSpot non include SDK di analisi, segnalazione di errori né tracciamento dell'utilizzo. L'app non effettua richieste di rete diverse dal recupero dei prezzi dell'energia elettrica dalle API pubbliche sopra elencate (e dall'invio opzionale di statistiche, se abilitato, e dall'invio di una segnalazione se usi Aiuto e feedback — vedi sotto).
+SweetSpot non include SDK di analisi, segnalazione di errori né tracciamento dell'utilizzo. L'app non effettua richieste di rete diverse dal recupero dei prezzi dell'energia elettrica dalle API pubbliche sopra elencate (e dall'invio opzionale di statistiche, se abilitato, e dall'invio di una segnalazione se usi Aiuto e assistenza — vedi sotto).
 
 ## Statistiche API opzionali
 
@@ -48,9 +48,9 @@ Questi dati **non** contengono identificativi del dispositivo, posizione, dati s
 
 Questa funzione è disabilitata per impostazione predefinita. Puoi abilitarla o disabilitarla in qualsiasi momento in Impostazioni.
 
-## Aiuto e feedback
+## Aiuto e assistenza
 
-Se segnali un problema o invii feedback da **Impostazioni › Aiuto e feedback**, il tuo messaggio viene inviato al nostro servizio di feedback e archiviato come segnalazione nel nostro repository GitHub pubblico. **L'oggetto e la descrizione che scrivi diventano visibili pubblicamente** su GitHub, quindi ti preghiamo di non includere dati personali.
+Se segnali un problema o invii feedback da **Impostazioni › Aiuto e assistenza**, il tuo messaggio viene inviato al nostro servizio di feedback e archiviato come segnalazione nel nostro repository GitHub pubblico. **L'oggetto e la descrizione che scrivi diventano visibili pubblicamente** su GitHub, quindi ti preghiamo di non includere dati personali.
 
 Se scegli di essere avvisato via email, l'indirizzo che fornisci viene conservato solo dal nostro servizio di feedback — non viene mai mostrato nella segnalazione pubblica — e viene utilizzato esclusivamente per inviarti email relative alla tua segnalazione. Ogni email di notifica include un link di annullamento dell'iscrizione con un clic che rimuove l'indirizzo conservato, e puoi comunque chiederci di eliminarlo in qualsiasi momento.
 

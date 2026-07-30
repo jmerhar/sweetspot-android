@@ -1,6 +1,6 @@
 # Help & Support System — Reference
 
-> **Status: implemented and live.** The in-app **Help & feedback** section, the Cloudflare Worker
+> **Status: implemented and live.** The in-app **Help & support** section, the Cloudflare Worker
 > (`feedback.sweetspot.today`), and the GitHub-webhook → Brevo email notifications are all in place.
 > This note is the permanent under-the-hood reference: what each piece does, how they fit together, the
 > file map, the retry/outbox behaviour, the auth model, and the alternatives considered (kept so the
@@ -8,7 +8,7 @@
 
 ## Goal
 
-A **Help & feedback** section in Settings that:
+A **Help & support** section in Settings that:
 - absorbs the two guidance actions (replay the onboarding intro; reset the contextual coach-mark tips),
 - lets users **report a problem** / **send feedback** from an in-app form (no browser, no GitHub
   account) that lands as a **GitHub issue**,
@@ -25,7 +25,7 @@ the Worker and reads *public* GitHub data.
 
 `SettingsRoute.Help` opens `HelpSettingsScreen` (a self-contained coordinator on the shared
 `SettingsSubScreen` scaffold, its own `rememberSaveable` sub-state: menu / report form / My reports /
-quick guide), from a single **Help & feedback** row on the Settings root menu. The old root "How it
+quick guide), from a single **Help & support** row on the Settings root menu. The old root "How it
 works" row moved *into* Help; "Reset tips" was **promoted out of developer options** into Help; the
 version footer + 7-tap developer-options unlock **moved off the root menu** into Help → About.
 
@@ -184,8 +184,10 @@ thread items − the issue body) and clears the dot.
 `ThreadScreen` shows a reply composer when the open report has a stored `replyToken` (i.e. this device
 submitted it — `MyReportView`/`MyReport.replyToken`). Sending calls the ViewModel's `onSendReply`, which
 POSTs `{issue, token, body}` to the Worker `/reply` (via `ReportSubmitter.submitReply`). It mirrors the
-report-submit retry policy via `FeedbackCodec.submitOutcomeFor`: **SENT** reloads the thread so the new
-(bot-authored) comment shows; a **transient** failure queues the reply in a **reply outbox**
+report-submit retry policy via `FeedbackCodec.submitOutcomeFor`: **SENT** appends the reply to the open
+thread **optimistically** (as the user's own — GitHub's public REST API is edge-cached for unauthenticated
+reads, so an immediate refetch usually wouldn't see the just-posted comment; the next thread open reloads
+canonically); a **transient** failure queues the reply in a **reply outbox**
 (`PendingReply`, `SettingsRepository.get/setReplyOutbox`) and shows `ReplyState.QUEUED`; a **permanent**
 4xx shows `ReplyState.ERROR`. `flushReplyOutbox` (on VM init + Help open, guarded by `replyFlushJob`,
 reconciling under `reportStoreMutex` with the same attempts cap as the report outbox) resends queued
@@ -234,7 +236,10 @@ in KV (email only if opted in; the token is the report's capability) → return 
 verifies the token (constant-time) against the stored one, then creates a GitHub comment **as the bot**
 (prefixed to mark it's from the reporter), rate-limited per IP (`REPLY_RATE_LIMIT_PER_DAY`). Only a
 device that submitted the report (and thus holds `replyToken`) can reply — the app has no GitHub
-identity, so everything it posts is bot-authored.
+identity, so everything it posts is bot-authored. **Gotcha:** `readSubscription` must return the stored
+`token` **regardless of whether an email is present** — the KV entry is `{email:null, token}` for the
+common no-email report, so a guard that only accepts a string `email` would drop the token and 403 every
+reply/unsubscribe for those reports. The token, not the email, is the capability.
 
 **`POST /webhook`** — GitHub webhook target. Verifies HMAC with `WEBHOOK_SECRET`; on issue activity not
 authored by the bot, looks up the email in KV and sends a notification via the **Brevo transactional

@@ -57,7 +57,7 @@ Yes. In settings you can share your setup — your appliances, their order, and 
 {{< /faq >}}
 
 {{< faq question="How do I report a problem or suggest a feature?" >}}
-Open **Settings › Help & feedback** and choose *Report a problem* or *Send feedback*. Your message is submitted directly from the app — no browser or GitHub account needed — and becomes a public issue we can track. You can optionally leave an email address to be notified of replies (it's never shown publicly, and every notification has a one-click unsubscribe link), and follow the status of everything you've sent under *My reports*.
+Open **Settings › Help & support** and choose *Report a problem* or *Send feedback*. Your message is submitted directly from the app — no browser or GitHub account needed — and becomes a public issue we can track. You can optionally leave an email address to be notified of replies (it's never shown publicly, and every notification has a one-click unsubscribe link), and follow the status of everything you've sent under *My reports*.
 {{< /faq >}}
 
 {{< faq question="How much does SweetSpot cost?" >}}

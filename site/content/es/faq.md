@@ -57,7 +57,7 @@ Sí. En los ajustes puedes compartir tu configuración — tus electrodoméstico
 {{< /faq >}}
 
 {{< faq question="¿Cómo informo de un problema o sugiero una función?" >}}
-Abre **Ajustes › Ayuda y comentarios** y elige *Informar de un problema* o *Enviar comentarios*. Tu mensaje se envía directamente desde la aplicación — sin necesidad de navegador ni de una cuenta de GitHub — y se convierte en un issue público que podemos seguir. Puedes dejar opcionalmente una dirección de correo electrónico para recibir notificaciones de las respuestas (nunca se muestra públicamente, y cada notificación tiene un enlace de cancelación de suscripción con un solo clic) y seguir el estado de todo lo que has enviado en *Mis informes*.
+Abre **Ajustes › Ayuda y soporte** y elige *Informar de un problema* o *Enviar comentarios*. Tu mensaje se envía directamente desde la aplicación — sin necesidad de navegador ni de una cuenta de GitHub — y se convierte en un issue público que podemos seguir. Puedes dejar opcionalmente una dirección de correo electrónico para recibir notificaciones de las respuestas (nunca se muestra públicamente, y cada notificación tiene un enlace de cancelación de suscripción con un solo clic) y seguir el estado de todo lo que has enviado en *Mis informes*.
 {{< /faq >}}
 
 {{< faq question="¿Cuánto cuesta SweetSpot?" >}}

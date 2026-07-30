@@ -27,7 +27,7 @@ På Wear OS synkroniseras apparatdata och inställningar mellan telefon och kloc
 
 ## Ingen analys
 
-SweetSpot innehåller inga analys-SDK:er, kraschrapportering eller användarspårning. Appen gör inga nätverksförfrågningar utöver att hämta elpriser från de offentliga API:erna ovan (valfri statistikrapportering om den är aktiverad och att skicka en rapport om du använder Hjälp och feedback — se nedan).
+SweetSpot innehåller inga analys-SDK:er, kraschrapportering eller användarspårning. Appen gör inga nätverksförfrågningar utöver att hämta elpriser från de offentliga API:erna ovan (valfri statistikrapportering om den är aktiverad och att skicka en rapport om du använder Hjälp & support — se nedan).
 
 ## Valfri API-statistik
 
@@ -48,9 +48,9 @@ Dessa data innehåller **inte** enhetsidentifierare, plats, prisdata eller någo
 
 Denna funktion är inaktiverad som standard. Du kan aktivera eller inaktivera den när som helst under Inställningar.
 
-## Hjälp och feedback
+## Hjälp & support
 
-Om du rapporterar ett problem eller skickar feedback från **Inställningar › Hjälp och feedback** skickas ditt meddelande till vår feedbacktjänst och registreras som ett ärende i vårt offentliga GitHub-repository. **Rubriken och beskrivningen du skriver blir offentligt synliga** på GitHub, så inkludera inga personuppgifter.
+Om du rapporterar ett problem eller skickar feedback från **Inställningar › Hjälp & support** skickas ditt meddelande till vår feedbacktjänst och registreras som ett ärende i vårt offentliga GitHub-repository. **Rubriken och beskrivningen du skriver blir offentligt synliga** på GitHub, så inkludera inga personuppgifter.
 
 Om du väljer att bli aviserad via e-post lagras adressen du anger endast av vår feedbacktjänst — den visas aldrig i det offentliga ärendet — och används enbart för att mejla dig om din egen rapport. Varje aviseringsmejl innehåller en avregistreringslänk med ett klick som tar bort den lagrade adressen, och du kan även när som helst be oss radera den.
 

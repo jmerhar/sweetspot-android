@@ -57,7 +57,7 @@ Jā. Iestatījumos vari kopīgot savu uzstādījumu — savas ierīces, to secī
 {{< /faq >}}
 
 {{< faq question="Kā ziņot par problēmu vai ieteikt funkciju?" >}}
-Atver **Iestatījumi › Palīdzība un atsauksmes** un izvēlies *Ziņot par problēmu* vai *Sūtīt atsauksmi*. Tavs ziņojums tiek nosūtīts tieši no lietotnes — nav nepieciešams pārlūks vai GitHub konts — un kļūst par publisku pieteikumu, ko varam izsekot. Vari neobligāti norādīt e-pasta adresi, lai saņemtu paziņojumus par atbildēm (tā nekad netiek rādīta publiski, un katram paziņojumam ir viena klikšķa atrakstīšanās saite), un sekot līdzi visa nosūtītā statusam sadaļā *Mani pieteikumi*.
+Atver **Iestatījumi › Palīdzība un atbalsts** un izvēlies *Ziņot par problēmu* vai *Sūtīt atsauksmi*. Tavs ziņojums tiek nosūtīts tieši no lietotnes — nav nepieciešams pārlūks vai GitHub konts — un kļūst par publisku pieteikumu, ko varam izsekot. Vari neobligāti norādīt e-pasta adresi, lai saņemtu paziņojumus par atbildēm (tā nekad netiek rādīta publiski, un katram paziņojumam ir viena klikšķa atrakstīšanās saite), un sekot līdzi visa nosūtītā statusam sadaļā *Mani pieteikumi*.
 {{< /faq >}}
 
 {{< faq question="Cik maksā SweetSpot?" >}}

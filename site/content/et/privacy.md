@@ -5,7 +5,7 @@ description: "SweetSpoti privaatsuspoliitika — privaatsus ennekõike, kontosid
 
 ## Ülevaade
 
-SweetSpot on loodud privaatsust silmas pidades. Rakendus ei kogu ega salvesta isikuandmeid. Kasutajakontosid, analüütikat ega kasutuse jälgimist ei ole. Valikuline funktsioon võimaldab jagada anonüümset API statistikat — vaata üksikasju allpool.
+SweetSpot on loodud privaatsust silmas pidades. Rakendus ei vaja ega kogu tööks isikuandmeid — kasutajakontosid, analüütikat ega kasutuse jälgimist ei ole ning see küsib ainult INTERNETI-luba (ei mingit asukohta, kontakte, salvestusruumi ega seadme identifikaatoreid). Valikulised funktsioonid võimaldavad jagada anonüümset töökindluse statistikat või saata tagasisidet — vaata üksikasju allpool.
 
 ## Andmetöötlus
 
@@ -21,17 +21,19 @@ Need API päringud sisaldavad ainult pakkumistsooni tunnust ja kuupäevavahemikk
 
 ## Kohalik salvestamine
 
-Hinnaandmed salvestatakse kohalikult sinu seadmesse, et vähendada API päringuid ja kiirendada tulemuste kuvamist. Sinu seadmete konfiguratsioon (nimed, kestused, ikoonid ja valikulised võimsused), salvestatud sõidukid (aku maht ja laadimisvõimsus) ja seaded (riik, tsoon, keel) salvestatakse samuti kohalikult sinu seadmes.
+Hinnaandmed salvestatakse kohalikult sinu seadmesse, et vähendada API päringuid ja kiirendada tulemuste kuvamist. Sinu seadmete konfiguratsioon (nimed, kestused, ikoonid ja valikulised võimsused), salvestatud sõidukid (aku maht ja laadimisvõimsus) ja seaded (riik, tsoon, keel) salvestatakse samuti kohalikult sinu seadmes, koos sinu tellimuse olekuga (vahemällu salvestatud, et rakendus töötaks ka võrguühenduseta) ja seadmepõhiste puudutuste arvuga (kasutatakse ainult enim kasutatud ja hiljuti kasutatud järjestamiseks).
 
 Wear OS-is sünkroniseeritakse seadmete andmed ja seaded telefoni ja kella vahel Wearable Data Layer API kaudu. See suhtlus jääb sinu kohalikesse seadmetesse ega läbi ühtegi välist serverit.
+
+Kui jagad oma seadistust QR-koodi või lingina, kodeeritakse sinu seadmete ja elektriauto laadimise konfiguratsioon **lingi või QR-koodi sisse endasse** — seda ei laadita kunagi serverisse üles. Selle saab importida ainult inimene, kellele sa koodi või lingi annad.
 
 ## Analüütikat ei ole
 
 SweetSpot ei sisalda analüütika SDK-sid, veaaruandlust ega kasutuse jälgimist. Rakendus ei tee võrgupäringuid peale elektrihinnade pärimise ülalnimetatud avalikest API-dest (ja valikulise statistika saatmise, kui see on lubatud, ning teate saatmise, kui kasutad jaotist Abi & tugi — vaata allpool).
 
-## Valikuline API statistika
+## Valikuline töökindluse statistika
 
-Saad nõustuda anonüümse API usaldusväärsuse statistika jagamisega. Lubamise korral saadab rakendus perioodiliselt individuaalseid päringukirjeid iga andmeallika ja pakkumistsooni kohta meie serverisse. Need andmed sisaldavad:
+Saad nõustuda anonüümse töökindluse statistika jagamisega. Lubamise korral saadab rakendus perioodiliselt individuaalseid päringukirjeid iga andmeallika ja pakkumistsooni kohta meie serverisse. Need andmed sisaldavad:
 
 - API päringu ajatempel
 - Pakkumistsooni tunnus (nt „NL", „DE-LU")
@@ -44,7 +46,7 @@ Saad nõustuda anonüümse API usaldusväärsuse statistika jagamisega. Lubamise
 - Maksestaatus (prooviperiood, tellitud või aegunud)
 - Päringu kestus millisekundites
 
-Need andmed **ei sisalda** seadme identifikaatoreid, asukohta, hinnaandmeid ega muid isikuandmeid. Neid kasutatakse ainult andmeallikate usaldusväärsuse ja vaikejärjestuse parandamiseks.
+Need andmed **ei sisalda** seadme identifikaatoreid, asukohta, hinnaandmeid ega muid isikuandmeid. Neid kasutatakse ainult andmeallikate töökindluse ja vaikejärjestuse parandamiseks.
 
 See funktsioon on vaikimisi keelatud. Saad selle igal ajal sisse või välja lülitada menüüs Seaded.
 

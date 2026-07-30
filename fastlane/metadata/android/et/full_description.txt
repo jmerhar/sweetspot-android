@@ -1,4 +1,4 @@
-SweetSpot leiab soodsaima aja teie seadmete kasutamiseks ja elektriauto laadimiseks. Valige, kui kaua seade peab töötama — või valige oma elektriauto ja soovitud laetus — ning SweetSpot otsib järgmise 24 tunni dünaamilistest elektrihindadest soodsaima ajavahemiku.
+SweetSpot leiab soodsaima aja teie seadmete kasutamiseks ja elektriauto laadimiseks. Valige, kui kaua seade peab töötama — või valige oma elektriauto ja soovitud laetus — ning SweetSpot otsib eelseisvatest dünaamilistest elektrihindadest soodsaima aja.
 
 Olgu selleks pesumasin, nõudepesumasin, kuivati, soojuspump või elektriauto laadija — käivitage õigel ajal ja makske sama elektri eest vähem.
 
@@ -8,14 +8,14 @@ KUIDAS SEE TÖÖTAB
 3. Näete täpselt, millal alustada, koos värvikoodiga 24 tunni hinnagraafiku ja täieliku kulude jaotusega ajavahemike kaupa
 
 ELEKTRIAUTO LAADIMINE
-Lisage oma auto sisseehitatud andmebaasist, mis sisaldab umbes 1600 elektriautot ja pistikhübriidi — või sisestage aku mahtuvus ja laadimisvõimsus ise. Määrake praegune ja soovitud laetus ning SweetSpot arvutab, kui kaua laadimine kestab ja millal on kõige soodsam aeg laadima panna.
+Lisage oma auto sisseehitatud andmebaasist, mis sisaldab tuhandeid elektriautosid ja pistikhübriide — või sisestage aku mahtuvus ja laadimisvõimsus ise. Määrake praegune ja soovitud laetus ning SweetSpot arvutab, kui kaua laadimine kestab ja millal on kõige soodsam aeg laadima panna.
 
 FUNKTSIOONID
 - 30 Euroopa riiki, 43 hinnatsooni — Portugalist Soomeni, Norrast Kreekani
 - 5 andmeallikat automaatse ümberlülitusega (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Koguhind (Madalmaad) — soovi korral näete täielikku tarbijahinda (börsihind + energiamaks + tarnija juurdehindlus + käibemaks) pelga turuhinna asemel; valige oma tarnija või sisestage oma juurdehindlus. Rohkem riike on tulekul
-- „Valmis hiljemalt“ tähtaeg — valib ainult ajavahemiku, mis jõuab õigeks ajaks valmis
-- Varem või soodsamalt — kui soodsaim ajavahemik ei sobi, liikuge varasemale ja näete täpselt, kui palju see rohkem maksab
+- Koguhind (Madalmaad) — soovi korral näete täielikku tarbijahinda (börsihind + energiamaks + tarnija juurdehindlus + käibemaks) pelga börsihinna asemel; valige oma tarnija või sisestage oma juurdehindlus. Rohkem riike on tulekul
+- „Valmis hiljemalt“ tähtaeg — vaikimisi soodsaim aeg, mis selleks jõuab
+- Varem või odavam — kui soodsaim aeg ei sobi, liikuge varasemale ja näete täpselt, kui palju see rohkem maksab
 - Võimsuse määrang — seadke seadme võimsus kilovattides, et kuluhinnang vastaks tegelikule tarbimisele
 - Salvestage oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks juurdepääsuks
 - Sortige ja järjestage oma seadmed — lohistage need enda soovitud järjekorda või sortige enim kasutatud, hiljuti kasutatud, nime, kestuse või tüübi järgi, ning valige, kus teie elektriautod asuvad

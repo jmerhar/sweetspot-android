@@ -23,15 +23,23 @@ Andmeallikate prioriteedijärjestust saad seadistada seadetes.
 {{< faq question="Kas hinnad on täpsed?" >}}
 SweetSpot näitab **järgmise päeva börsihinda** — hulgituruhinda, mis määratakse turul tarnepäevale eelneval päeval. Need hinnad **ei sisalda** käibemaksu, energiamakse, võrgutasusid ega müügimarginaale, mis erinevad riigiti ja teenusepakkuja kaupa.
 
-Hinnad on kasulikud ajavahemike omavaheliseks võrdlemiseks (leidmaks, millal on elekter odavaim), mis on rakenduse peamine eesmärk. Kulud kuvatakse vaikimisi 1 kW koormuse kohta; määra seadme võimsus või lae elektriautot, ja hinnang kajastab tegelikku koormust. Homse päeva hinnad on tavaliselt saadaval pärast kella 13:00 CET.
+Hinnad on siiski kasulikud, et leida, millal on elekter kõige odavam — see ongi rakenduse peamine eesmärk. Kulud kuvatakse vaikimisi 1 kW koormuse kohta; määra seadmele võimsus või lae elektriautot, ja hinnang kajastab tegelikku koormust. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Kas mul on vaja spetsiaalset elektrilepingut?" >}}
+Jah — raha säästmiseks on sul vaja **dünaamilise hinnaga (börsi- või tunnipõhist) elektrilepingut**, mille puhul makstav hind järgib järgmise päeva turgu. SweetSpot näitab, millal need hinnad on madalaimad, kuid ei saa muuta seda, mida su teenusepakkuja küsib: fikseeritud tariifi korral on hind terve päeva sama, seega tarbimise ajastamine sinu arvet ei vähenda.
 {{< /faq >}}
 
 {{< faq question="Kas SweetSpot aitab mul oma elektriautot laadida?" >}}
-Jah. Lisa oma sõiduk — vali see umbes 1600 elektri- ja pistikhübriidautost koosnevast sisseehitatud andmebaasist või sisesta aku maht ja laadimisvõimsus käsitsi. Seejärel sisesta praegune ja soovitud laetuse tase ning SweetSpot arvutab, kui kaua laadimine kestab (lähtudes aku mahust ning sinu auto AC-piirangu ja kodulaadija väiksemast väärtusest) ja leiab soodsaima aja laadima panemiseks.
+Jah. Lisa oma sõiduk — vali see sisseehitatud andmebaasist, mis sisaldab tuhandeid elektri- ja pistikhübriidautosid, või sisesta aku maht ja laadimisvõimsus käsitsi. Seejärel sisesta praegune ja soovitud laetuse tase ning SweetSpot arvutab, kui kaua laadimine kestab (lähtudes aku mahust ning sinu auto AC-piirangu ja kodulaadija väiksemast väärtusest) ja leiab soodsaima aja laadima panemiseks.
 {{< /faq >}}
 
 {{< faq question="Kas saan tagada, et see on kindlaks ajaks valmis?" >}}
-Jah. Lülita sisse valikuline **„valmis hiljemalt“** tähtaeg ja vali aeg. SweetSpot arvestab seejärel ainult ajavahemikke, mis selleks ajaks lõpevad — mis tahes seadme jaoks või elektriauto laadimiseks (näiteks täis laetud hommikul kella 7:00-ks).
+Jah. Lülita sisse valikuline **„valmis hiljemalt“** tähtaeg ja vali aeg. Seejärel valib SweetSpot vaikimisi odavaima aja, mis selleks ajaks lõpeb — mis tahes seadme jaoks või elektriauto laadimiseks (näiteks täis laetud hommikul kella 7:00-ks). Kui soovid, saad siiski liikuda odavamale ajale, mis lõpeb veidi hiljem; SweetSpot märgib, kui näidatud aeg lõpeb pärast sinu tähtaega.
+{{< /faq >}}
+
+{{< faq question="Miks soovitatud aeg pidevalt muutub?" >}}
+SweetSpot kontrollib hindu uuesti, kui tulemus on avatud, ja aja möödudes langevad juba möödas olevad ajapilud välja, mistõttu soovitatud aeg võib nihkuda. Kasuta nuppe **Varem** ja **Odavam**, et liikuda varasema (veidi kallima) alguse ja odavaima vahel — kumbki näitab, kui palju see soovitatud ajast rohkem maksab.
 {{< /faq >}}
 
 {{< faq question="Kas kulud kajastavad seda, kui palju mu seade voolu tarbib?" >}}
@@ -43,17 +51,17 @@ SweetSpot salvestab hinnad kohalikult sinu seadmesse. Kui oled hiljuti hindu pä
 {{< /faq >}}
 
 {{< faq question="Kas Wear OS rakendus töötab iseseisvalt?" >}}
-Wear OS rakendus sünkroniseerib seadmed ja seaded telefonirakendusest Wearable Data Layer API kaudu. Pärast sünkroniseerimist pärib kellarakendus hindu iseseisvalt — seega töötab see ka siis, kui telefon ei ole läheduses, tingimusel et kellal on internetiühendus (Wi-Fi või LTE).
+Wear OS rakendus sünkroniseerib seadmed ja seaded telefonirakendusest. Pärast sünkroniseerimist pärib kellarakendus hindu iseseisvalt — seega töötab see ka siis, kui telefon ei ole läheduses, tingimusel et kellal on internetiühendus (Wi-Fi või LTE).
 
 Kellarakendus nõuab Wear OS 3 või uuemat versiooni (Pixel Watch, Samsung Galaxy Watch 4+ ja muud ühilduvad kellad).
 {{< /faq >}}
 
-{{< faq question="Kas ma näen täishinda, mida tegelikult maksan?" >}}
-Vaikimisi näitab SweetSpot hulgituru **börsihinda**. Toetatud riikides (praegu Madalmaad) saad seadetes sisse lülitada **täishinnad**, mis lisavad börsihinnale energiamaksu, sinu teenusepakkuja lisatasu ja käibemaksu, et näidata ligikaudset täielikku tarbijahinda. Koos seadme **võimsusega** annab see realistliku hinnangu, kui palju selle seadme tegelik kasutamine maksma läheb. See on ainult kuvamiseks — see ei muuda kunagi seda, milline ajavahemik osutub odavaimaks.
+{{< faq question="Kas ma näen täielikku hinda, mida tegelikult maksan?" >}}
+Vaikimisi näitab SweetSpot hulgituru **börsihinda**. Toetatud riikides (praegu Madalmaad) saad seadetes sisse lülitada **Koguhinna**, mis lisab börsihinnale energiamaksu, sinu tarnija juurdehindluse ja käibemaksu, et näidata ligikaudset täielikku tarbijahinda. Koos seadme **võimsusega** annab see realistliku hinnangu, kui palju selle seadme tegelik kasutamine maksma läheb. See on ainult kuvamiseks — see ei muuda kunagi seda, milline aeg osutub odavaimaks.
 {{< /faq >}}
 
 {{< faq question="Kas saan oma seadmed teise seadmesse kopeerida?" >}}
-Jah. Seadetes saad jagada oma seadistust — oma seadmeid, nende järjestust ja elektriauto laadimise seadeid — QR-koodi või lingina. Skanni või ava see teises seadmes, et kõik importida. See töötab täielikult võrguühenduseta, ilma konto ja serverita: andmed liiguvad lingi või QR-koodi sees endas ning sina valid, kas lisada olemasolevale või see asendada.
+Jah. Seadetes saad jagada oma seadistust — oma seadmeid, nende järjestust ja elektriauto laadimise seadeid — QR-koodi või lingina. Skanni või ava see teises seadmes, et kõik importida. See töötab täielikult võrguühenduseta, ilma konto ja serverita: andmed liiguvad lingi või QR-koodi sees endas ning sina valid, kas lisada need olemasolevatele, need asendada või valida neist üksikud.
 {{< /faq >}}
 
 {{< faq question="Kuidas teatan probleemist või teen ettepaneku uue funktsiooni kohta?" >}}

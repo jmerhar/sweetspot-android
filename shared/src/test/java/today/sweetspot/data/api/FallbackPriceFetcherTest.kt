@@ -33,6 +33,12 @@ class FallbackPriceFetcherTest {
         }
     }
 
+    /** Creates a [PriceFetcher] that succeeds with an empty price list (e.g. HTTP 200, no data). */
+    private fun emptyFetcher(source: String): PriceFetcher = object : PriceFetcher {
+        override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId) =
+            FetchResult(emptyList(), source)
+    }
+
     @Test
     fun `single fetcher succeeds`() {
         val fetcher = FallbackPriceFetcher(listOf(successFetcher("Primary")))
@@ -71,6 +77,32 @@ class FallbackPriceFetcherTest {
 
         assertEquals("Third", result.source)
         assertEquals(5, result.prices.size)
+    }
+
+    @Test
+    fun `empty result falls through to a fetcher with prices`() {
+        val fetcher = FallbackPriceFetcher(listOf(emptyFetcher("Empty"), successFetcher("Fallback")))
+        val result = fetcher.fetchPrices(from, to, timeZone)
+
+        assertEquals("Fallback", result.source)
+        assertEquals(3, result.prices.size)
+    }
+
+    @Test
+    fun `all empty returns an empty result without throwing`() {
+        val fetcher = FallbackPriceFetcher(listOf(emptyFetcher("A"), emptyFetcher("B")))
+        val result = fetcher.fetchPrices(from, to, timeZone)
+
+        assertEquals(0, result.prices.size)
+    }
+
+    @Test
+    fun `an empty response is preferred over a thrown exception`() {
+        val fetcher = FallbackPriceFetcher(listOf(emptyFetcher("Empty"), failFetcher("Boom")))
+        val result = fetcher.fetchPrices(from, to, timeZone)
+
+        assertEquals(0, result.prices.size)
+        assertEquals("Empty", result.source)
     }
 
     @Test(expected = IllegalArgumentException::class)

@@ -74,8 +74,11 @@ function check_rate_limit(): void {
         mkdir(RATE_LIMIT_DIR, 0755, true);
     }
 
-    // Use CF-Connecting-IP if behind Cloudflare, otherwise REMOTE_ADDR
-    $ip = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    // mod_remoteip rewrites REMOTE_ADDR to the real client IP taken from Cloudflare's
+    // CF-Connecting-IP, but only for connections from Cloudflare's edge (see the
+    // RemoteIPTrustedProxy allowlist in the vhost). Reading REMOTE_ADDR rather than the raw
+    // header means a client reaching the origin directly cannot spoof its IP past the limiter.
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
     $hash = hash('sha256', $ip);
     $file = RATE_LIMIT_DIR . '/' . $hash;
 

@@ -1,21 +1,21 @@
-SweetSpot finder det billigste tidspunkt til at køre dine apparater og oplade din elbil. Vælg hvor længe et apparat skal køre — eller vælg din elbil og den opladning, du ønsker — og SweetSpot scanner de næste 24 timers dynamiske elpriser for at finde det billigste tidsrum.
+SweetSpot finder det billigste tidspunkt til at køre dine apparater og oplade din elbil. Vælg hvor længe et apparat skal køre — eller vælg din elbil og den opladning, du ønsker — og SweetSpot scanner de kommende dynamiske elpriser for at finde det billigste tidspunkt.
 
 Uanset om det er en vaskemaskine, opvaskemaskine, tørretumbler, varmepumpe eller elbiloplader — start på det rigtige tidspunkt og betal mindre for den samme strøm.
 
 SÅDAN VIRKER DET
 1. Vælg et apparat eller din elbil, eller indstil en brugerdefineret varighed — og en valgfri "klar senest"-frist
-2. SweetSpot henter de seneste day-ahead elpriser for din region
-3. Se præcis hvornår du skal starte, med et farvekodet 24-timers prisdiagram og en fuld omkostningsoversigt pr. tidsslot
+2. SweetSpot henter de seneste day-ahead-elpriser for din region
+3. Se præcis hvornår du skal starte, med et farvekodet 24-timers prisdiagram og en fuld omkostningsoversigt pr. tidsinterval
 
 OPLADNING AF ELBIL
-Tilføj din bil fra en indbygget database med omkring 1.600 elbiler og plug-in-hybrider — eller indtast selv batterikapaciteten og opladningseffekten. Angiv din aktuelle opladning og dit mål, så regner SweetSpot ud, hvor lang tid opladningen tager, og hvornår det er billigst at sætte den til opladning.
+Tilføj din bil fra en indbygget database med tusindvis af elbiler og plug-in-hybrider — eller indtast selv batterikapaciteten og opladningseffekten. Angiv din aktuelle og ønskede opladning, så regner SweetSpot ud, hvor lang tid opladningen tager, og hvornår det er billigst at sætte den til opladning.
 
 FUNKTIONER
 - 30 europæiske lande, 43 budområder — fra Portugal til Finland, Norge til Grækenland
 - 5 datakilder med automatisk fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Totalpris (Nederlandene) — se eventuelt den fulde forbrugerpris (spot + energiafgift + leverandørtillæg + moms) i stedet for den rene markedspris; vælg din leverandør eller indtast dit eget tillæg. Flere lande følger
-- "Klar senest"-frist — vælger kun et tidsrum, der bliver færdigt i tide
-- Tidligere eller billigere — når det billigste tidsrum er ubelejligt, skift til et tidligere og se præcis hvor meget mere det koster
+- "Klar senest"-frist — vælger som standard det billigste tidspunkt, der overholder den
+- Tidligere eller billigere — når det billigste tidspunkt er ubelejligt, skift til et tidligere og se præcis hvor meget mere det koster
 - Effektangivelser — angiv et apparats effekt i kW for et omkostningsoverslag, der afspejler det faktiske forbrug
 - Gem dine apparater med egne navne, ikoner og varigheder for hurtig adgang
 - Sortér og omarrangér dine apparater — træk dem i din egen rækkefølge, eller sortér efter mest brugte, senest brugte, navn, varighed eller type, og vælg, hvor dine elbiler skal placeres
@@ -30,6 +30,6 @@ UNDERSTØTTEDE LANDE
 Belgien, Bulgarien, Danmark, Estland, Finland, Frankrig, Grækenland, Irland, Italien, Kroatien, Letland, Litauen, Luxembourg, Montenegro, Nederlandene, Nordmakedonien, Norge, Polen, Portugal, Rumænien, Schweiz, Serbien, Slovakiet, Slovenien, Spanien, Sverige, Tjekkiet, Tyskland, Ungarn, Østrig.
 
 BEMÆRK
-Som standard er de viste priser day-ahead spotpriser og inkluderer ikke moms, energiafgifter eller leverandørgebyrer. I Nederlandene kan du valgfrit slå Totalpris til, som tilføjer energiafgift, dit leverandørtillæg og moms for en realistisk driftsomkostning. Morgendagens priser er typisk tilgængelige efter kl. 13:00 CET. En dynamisk elaftale er nødvendig for at drage fordel af prisforskelle.
+Som standard er de viste priser day-ahead-spotpriser og inkluderer ikke moms, energiafgifter eller leverandørgebyrer. I Nederlandene kan du valgfrit slå Totalpris til, som tilføjer energiafgift, dit leverandørtillæg og moms for en realistisk driftsomkostning. Morgendagens priser er typisk tilgængelige efter kl. 13:00 CET. En dynamisk elaftale er nødvendig for at drage fordel af prisforskelle.
 
 Privatlivspolitik: https://sweetspot.today/da/privacy/

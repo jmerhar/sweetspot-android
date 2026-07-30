@@ -26,7 +26,7 @@ other = "Skift sprog"
 other = "Find det billigste tidspunkt for dine apparater og opladning af din elbil"
 
 [hero_subtitle]
-other = "SweetSpot scanner dynamiske elpriser i 30 europæiske lande og finder det billigste tidsrum til at køre dine apparater eller oplade din elbil — færdig inden en frist, hvis du angiver en. Open source og uden dataindsamling."
+other = "SweetSpot scanner dynamiske elpriser i 30 europæiske lande og finder det billigste tidspunkt til at køre dine apparater eller oplade din elbil — færdig inden en frist, hvis du angiver en. Open source og uden dataindsamling."
 
 [download]
 other = "Hent den på Google Play"
@@ -44,7 +44,7 @@ other = "30 europæiske lande"
 other = "Dækker 43 budområder i Europa, fra Portugal til Finland og fra Norge til Grækenland."
 
 [feature_prices_title]
-other = "Aktuelle priser"
+other = "Day-ahead-priser"
 
 [feature_prices_desc]
 other = "Day-ahead-elpriser fra ENTSO-E Transparency Platform, opdateret dagligt."
@@ -53,13 +53,13 @@ other = "Day-ahead-elpriser fra ENTSO-E Transparency Platform, opdateret dagligt
 other = "Smart algoritme"
 
 [feature_algorithm_desc]
-other = "En glidende søgning gennem priserne finder det billigste sammenhængende tidsrum for enhver varighed."
+other = "SweetSpot finder det billigste sammenhængende tidsrum for enhver varighed, du vælger."
 
 [feature_fallback_title]
 other = "Pålidelige data"
 
 [feature_fallback_desc]
-other = "Fem datakilder med automatisk skift sikrer, at priserne altid er tilgængelige."
+other = "Fem datakilder med automatisk skift hjælper med at holde priserne tilgængelige."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Tilføj din bil, og indtast dens nuværende og ønskede opladning. Swee
 other = "„Klar senest“-tidspunkt"
 
 [feature_deadline_desc]
-other = "Skal det være færdigt på et bestemt tidspunkt? Tilføj en „klar senest“-frist, så vælger SweetSpot kun tidsrum, der bliver færdige til tiden."
+other = "Skal det være færdigt på et bestemt tidspunkt? Tilføj en „klar senest“-frist, så vælger SweetSpot det billigste tidspunkt, der overholder den."
 
 [feature_power_title]
 other = "Effekt"
@@ -155,7 +155,7 @@ other = "Siden, du leder efter, findes ikke."
 other = "Tilbage til forsiden"
 
 [screenshot_1_alt]
-other = "Resultat for billigste tidsrum med starttid, samlet pris og prisfordeling"
+other = "Anbefalet tidspunkt med starttid, samlet pris og prisfordeling"
 
 [screenshot_2_alt]
 other = "Startskærm med apparater, varighedsvælger og Find-knap"

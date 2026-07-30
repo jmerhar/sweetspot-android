@@ -21,17 +21,25 @@ Prioritu zdrojů dat můžete nastavit v nastavení.
 {{< /faq >}}
 
 {{< faq question="Jsou ceny přesné?" >}}
-SweetSpot zobrazuje **denní spotové ceny** — velkoobchodní ceny elektřiny stanovené trhem den předem. Tyto ceny **nezahrnují** DPH, energetické daně, síťové poplatky ani marže dodavatelů, které se liší podle země a poskytovatele.
+SweetSpot zobrazuje **velkoobchodní tržní ceny na dni dopředu** — ceny elektřiny stanovené trhem den před dodáním (označované také jako spotové ceny). Tyto ceny **nezahrnují** DPH, energetické daně, síťové poplatky ani marže dodavatelů, které se liší podle země a poskytovatele.
 
 Ceny jsou užitečné pro vzájemné srovnání časových úseků (zjištění, kdy je elektřina nejlevnější), což je hlavní účel aplikace. Náklady se ve výchozím nastavení zobrazují na 1 kW zátěže; nastavte příkon spotřebiče nebo nabíjejte elektromobil a odhad bude odpovídat skutečné zátěži. Zítřejší ceny jsou obvykle k dispozici po 13:00 CET.
 {{< /faq >}}
 
+{{< faq question="Potřebuji speciální smlouvu na elektřinu?" >}}
+Ano — abyste skutečně ušetřili, potřebujete **smlouvu s dynamickou cenou elektřiny** (spotovou nebo hodinovou), u které se cena, kterou platíte, řídí trhem na dni dopředu. SweetSpot vám ukáže, kdy jsou tyto ceny nejnižší, ale nemůže změnit to, co vám účtuje váš dodavatel: u tarifu s pevnou sazbou je cena po celý den stejná, takže přesunutí doby spotřeby váš účet nesníží.
+{{< /faq >}}
+
 {{< faq question="Může mi SweetSpot pomoci s nabíjením elektromobilu?" >}}
-Ano. Přidejte své vozidlo — vyberte je z vestavěné databáze přibližně 1 600 elektromobilů a plug-in hybridů, nebo ručně zadejte kapacitu baterie a nabíjecí výkon. Poté zadejte aktuální a cílovou úroveň nabití a SweetSpot vypočítá, jak dlouho bude nabíjení trvat (z kapacity baterie a z nižší z hodnot AC limitu vašeho auta a vaší domácí nabíječky), a najde nejlevnější období pro zapojení.
+Ano. Přidejte své vozidlo — vyberte je z vestavěné databáze tisíců elektromobilů a plug-in hybridů, nebo ručně zadejte kapacitu baterie a nabíjecí výkon. Poté zadejte aktuální a cílovou úroveň nabití a SweetSpot vypočítá, jak dlouho bude nabíjení trvat (z kapacity baterie a z nižší z hodnot AC limitu vašeho auta a vaší domácí nabíječky), a najde nejlevnější čas pro zapojení.
 {{< /faq >}}
 
 {{< faq question="Mohu zajistit, aby to bylo hotové do určité doby?" >}}
-Ano. Zapněte volitelný termín **„hotovo do“** a vyberte čas. SweetSpot pak zváží pouze ta období, která se do té doby dokončí — pro libovolný spotřebič nebo pro nabíjení elektromobilu (například plně nabito do 7:00 ráno).
+Ano. Zapněte volitelný termín **„hotovo do“** a vyberte čas. SweetSpot pak ve výchozím nastavení zvolí nejlevnější čas, který se do té doby dokončí — pro libovolný spotřebič nebo pro nabíjení elektromobilu (například nabito do 7:00 ráno). Pokud chcete, můžete se stále přepnout na levnější čas, který skončí o něco později; SweetSpot upozorní, když zobrazený čas končí po vašem termínu.
+{{< /faq >}}
+
+{{< faq question="Proč se doporučený čas stále mění?" >}}
+SweetSpot ceny znovu kontroluje, dokud je výsledek otevřený, a úseky, které už jsou v minulosti, postupně vypadávají, takže se doporučený čas může posouvat. Tlačítky **Dříve** a **Levněji** se přepínáte mezi dřívějším (o něco dražším) začátkem a tím nejlevnějším — u každého se zobrazí, o kolik je dražší než doporučený čas.
 {{< /faq >}}
 
 {{< faq question="Odrážejí náklady, kolik energie můj spotřebič spotřebuje?" >}}
@@ -43,17 +51,17 @@ SweetSpot ukládá ceny lokálně ve vašem zařízení. Pokud jste nedávno st�
 {{< /faq >}}
 
 {{< faq question="Funguje aplikace pro Wear OS samostatně?" >}}
-Aplikace pro Wear OS synchronizuje spotřebiče a nastavení z telefonní aplikace prostřednictvím Wearable Data Layer API. Po synchronizaci hodinky stahují ceny nezávisle — fungují tedy i bez telefonu v dosahu, pokud mají hodinky přístup k internetu (Wi-Fi nebo LTE).
+Aplikace pro Wear OS synchronizuje spotřebiče a nastavení z aplikace v telefonu. Po synchronizaci hodinky stahují ceny nezávisle — fungují tedy i bez telefonu v dosahu, pokud mají hodinky přístup k internetu (Wi-Fi nebo LTE).
 
 Aplikace pro hodinky vyžaduje Wear OS 3 nebo novější (Pixel Watch, Samsung Galaxy Watch 4+ a další kompatibilní hodinky).
 {{< /faq >}}
 
 {{< faq question="Mohu vidět plnou cenu, kterou skutečně platím?" >}}
-Ve výchozím nastavení zobrazuje SweetSpot velkoobchodní **spotovou cenu**. V podporovaných zemích (aktuálně Nizozemsko) můžete v nastavení zapnout **ceny se vším všudy**, které ke spotové ceně připočtou energetickou daň, přirážku vašeho dodavatele a DPH, a zobrazí tak přibližnou plnou spotřebitelskou cenu. Ve spojení s **příkonem** spotřebiče tak získáte realistický odhad toho, kolik skutečné spuštění daného spotřebiče bude stát. Slouží pouze k zobrazení — nikdy nemění, které časové období vyjde nejlevněji.
+Ve výchozím nastavení zobrazuje SweetSpot velkoobchodní **tržní cenu**. V podporovaných zemích (aktuálně Nizozemsko) můžete v nastavení zapnout **Konečnou cenu** (cenu se vším všudy), která k tržní ceně připočte energetickou daň, přirážku vašeho dodavatele a DPH, a zobrazí tak přibližnou plnou spotřebitelskou cenu. Ve spojení s **příkonem** spotřebiče tak získáte realistický odhad toho, kolik skutečné spuštění daného spotřebiče bude stát. Slouží pouze k zobrazení — nikdy nemění, který čas vyjde nejlevněji.
 {{< /faq >}}
 
 {{< faq question="Mohu zkopírovat své spotřebiče do jiného zařízení?" >}}
-Ano. V nastavení můžete sdílet svou konfiguraci — své spotřebiče, jejich pořadí a nastavení nabíjení elektromobilu — jako QR kód nebo odkaz. Naskenujte jej nebo otevřete na jiném zařízení a vše se naimportuje. Funguje to zcela offline, bez účtu a bez serveru: data cestují uvnitř samotného odkazu nebo QR kódu a vy si zvolíte, zda je přidat k tomu, co už tam je, nebo to nahradit.
+Ano. V nastavení můžete sdílet svou konfiguraci — své spotřebiče, jejich pořadí a nastavení nabíjení elektromobilu — jako QR kód nebo odkaz. Naskenujte jej nebo otevřete na jiném zařízení a vše se naimportuje. Funguje to zcela offline, bez účtu a bez serveru: data cestují uvnitř samotného odkazu nebo QR kódu a vy si zvolíte, zda je přidat k tomu, co už tam je, nahradit stávající, nebo vybrat jednotlivé položky.
 {{< /faq >}}
 
 {{< faq question="Jak nahlásím problém nebo navrhnu funkci?" >}}

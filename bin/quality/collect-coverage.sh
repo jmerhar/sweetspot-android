@@ -3,7 +3,7 @@
 # to the jmerhar/coverage site via that repo's bin/add-report.sh. The site itself (indexes,
 # cross-linking) is built in the coverage repo — this only assembles this project's raw report.
 #
-# Usage: bin/collect-coverage.sh [output-dir]   (default: coverage-upload)
+# Usage: bin/quality/collect-coverage.sh [output-dir]   (default: coverage-upload)
 # Run from the repo root after `./gradlew koverHtmlReportDebug koverXmlReportDebug`.
 set -euo pipefail
 

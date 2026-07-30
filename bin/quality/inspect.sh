@@ -11,7 +11,7 @@
 
 set -euo pipefail
 
-PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+PROJECT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 XML_DIR="$PROJECT_DIR/inspect/xml"
 
 if [[ ! -d "$XML_DIR" ]]; then

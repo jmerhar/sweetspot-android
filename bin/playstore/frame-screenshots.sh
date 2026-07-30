@@ -16,7 +16,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-source "$SCRIPT_DIR/lib/common.sh"
+source "$SCRIPT_DIR/../lib/common.sh"
 SCREENSHOTS_DIR="$PROJECT_DIR/fastlane/screenshots"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
 HTML_DIR="$PROJECT_DIR/build"

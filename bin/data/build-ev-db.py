@@ -18,7 +18,7 @@ Sources:
 Output: app/src/main/assets/ev-vehicles.json — a JSON array of normalised vehicles, one
 compact object per line for readable git diffs.
 
-Usage: ./bin/build-ev-db.py   (or: make ev-db)
+Usage: ./bin/data/build-ev-db.py   (or: make ev-db)
 """
 
 import json
@@ -31,7 +31,7 @@ import urllib.request
 KILOWATT_URL = "https://raw.githubusercontent.com/KilowattApp/open-ev-data/master/data/ev-data.json"
 OPENEV_LATEST_API = "https://api.github.com/repos/open-ev-data/open-ev-data-dataset/releases/latest"
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUTPUT_PATH = os.path.join(PROJECT_DIR, "app", "src", "main", "assets", "ev-vehicles.json")
 
 

@@ -11,14 +11,14 @@ set -euo pipefail
 # in white, tagline in light blue-white.
 #
 # Usage:
-#   ./bin/feature-graphic.sh                # Generate for all languages
-#   LOCALE=nl-NL ./bin/feature-graphic.sh   # Generate for one language
+#   ./bin/playstore/feature-graphic.sh                # Generate for all languages
+#   LOCALE=nl-NL ./bin/playstore/feature-graphic.sh   # Generate for one language
 #
 # Requires ImageMagick 7 (magick) and Python 3 (for TTC font extraction).
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-source "$SCRIPT_DIR/lib/common.sh"
+source "$SCRIPT_DIR/../lib/common.sh"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"
 ICON_SRC="$PROJECT_DIR/fastlane/metadata/android/en-GB/images/icon.png"
 

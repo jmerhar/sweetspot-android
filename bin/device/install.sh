@@ -3,14 +3,14 @@
 # Install an APK on a specific connected device via ADB.
 #
 # Usage:
-#   ./bin/install.sh phone              # Install release phone APK
-#   ./bin/install.sh watch              # Install release watch APK
-#   ./bin/install.sh phone --debug      # Install debug phone APK
-#   ./bin/install.sh watch --debug      # Install debug watch APK
+#   ./bin/device/install.sh phone              # Install release phone APK
+#   ./bin/device/install.sh watch              # Install release watch APK
+#   ./bin/device/install.sh phone --debug      # Install debug phone APK
+#   ./bin/device/install.sh watch --debug      # Install debug watch APK
 #
 set -euo pipefail
 
-TARGET="${1:?Usage: ./bin/install.sh <phone|watch> [--debug]}"
+TARGET="${1:?Usage: ./bin/device/install.sh <phone|watch> [--debug]}"
 VARIANT="${2:-release}"
 
 # Find adb: Android SDK default location, then PATH

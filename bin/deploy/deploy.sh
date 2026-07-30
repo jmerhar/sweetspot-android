@@ -6,16 +6,16 @@
 # AABs via the deploy Fastlane lane.
 #
 # Usage:
-#   ./bin/deploy.sh                    # Deploy phone to alpha (default; wear skipped on alpha)
-#   APP=phone ./bin/deploy.sh          # Deploy phone only
-#   APP=wear TRACK=production ./bin/deploy.sh   # Deploy Wear OS to production
-#   TRACK=production ./bin/deploy.sh   # Deploy both to production
+#   ./bin/deploy/deploy.sh                    # Deploy phone to alpha (default; wear skipped on alpha)
+#   APP=phone ./bin/deploy/deploy.sh          # Deploy phone only
+#   APP=wear TRACK=production ./bin/deploy/deploy.sh   # Deploy Wear OS to production
+#   TRACK=production ./bin/deploy/deploy.sh   # Deploy both to production
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-source "$SCRIPT_DIR/lib/common.sh"
+source "$SCRIPT_DIR/../lib/common.sh"
 
 TRACK="${TRACK:-alpha}"
 APP="${APP:-both}"

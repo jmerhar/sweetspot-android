@@ -35,7 +35,7 @@ jobs:
       - run: ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug --continue
       # At-a-glance per-module coverage table, rendered on the run's summary page (no download).
       - name: Coverage summary
-        run: python3 bin/coverage-report.py --format md >> "$GITHUB_STEP_SUMMARY"
+        run: python3 bin/quality/coverage-report.py --format md >> "$GITHUB_STEP_SUMMARY"
       # Upload each module's XML to Codecov under its own flag, so coverage is browsable per
       # module in the web UI. fail_ci_if_error stays false so a Codecov hiccup never fails the build.
       - uses: codecov/codecov-action@v5
@@ -77,19 +77,19 @@ jobs:
           disable_search: true
           fail_ci_if_error: false
       # Coverage gates: fail the build if any module's line coverage regresses below its bound
-      # (:shared ≥98, :app ≥97, :wear ≥93; thresholds in bin/coverage-report.py's GATES). Reads the
+      # (:shared ≥98, :app ≥97, :wear ≥93; thresholds in bin/quality/coverage-report.py's GATES). Reads the
       # Kover XML reports generated above — NOT `koverVerifyDebug`, which does not reliably apply the
       # wildcard `classes(...)` excludes (e.g. today.sweetspot.ui.*) and differs by JDK. Runs last so
       # coverage + test-analytics data is still uploaded even when the gate fails.
       - name: Verify coverage gates
-        run: python3 bin/coverage-report.py --gate
+        run: python3 bin/quality/coverage-report.py --gate
       # Publish this commit's per-module Kover HTML to the shared jmerhar/coverage site. The site
       # (project/commit indexes, cross-links) is built there; here we only push the raw report.
       # Only on green pushes to main, and only once COVERAGE_PAGES_TOKEN exists (so the workflow
       # stays green before it is set up).
       - name: Collect coverage upload
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main' && env.COVERAGE_PAGES_TOKEN != ''
-        run: bin/collect-coverage.sh coverage-upload
+        run: bin/quality/collect-coverage.sh coverage-upload
       - name: Check out the coverage repo
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main' && env.COVERAGE_PAGES_TOKEN != ''
         uses: actions/checkout@v6

@@ -25,12 +25,12 @@ jobs:
           token: ${{ secrets.SITE_COMMIT_TOKEN }}
 
       - name: Test build-suppliers logic
-        run: python3 bin/test_build_suppliers.py  # pure-logic unit tests (no network)
+        run: python3 bin/data/test_build_suppliers.py  # pure-logic unit tests (no network)
 
       - name: Build all-in tariff feeds
         env:
           ENEVER_TOKEN: ${{ secrets.ENEVER_TOKEN }}
-        run: python3 bin/build-suppliers.py  # exits non-zero if a country's essentials can't be sourced
+        run: python3 bin/data/build-suppliers.py  # exits non-zero if a country's essentials can't be sourced
 
       - name: Commit & push if changed
         run: |

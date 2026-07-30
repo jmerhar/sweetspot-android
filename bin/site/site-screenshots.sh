@@ -10,11 +10,11 @@
 # These outputs are NOT committed (see .gitignore) — they are regenerated on demand locally
 # (make site / make site-validate) and in CI (deploy-site workflow) before the Hugo build.
 #
-# Usage: ./bin/site-screenshots.sh   (or: make site-screenshots)
+# Usage: ./bin/site/site-screenshots.sh   (or: make site-screenshots)
 
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 SRC_DIR="$ROOT_DIR/fastlane/metadata/android"
 OUT_DIR="$ROOT_DIR/site/static/images/screenshots"
 

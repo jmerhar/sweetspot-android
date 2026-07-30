@@ -3,7 +3,7 @@
 # Deploy stats.php to the stats server.
 #
 # Usage:
-#   ./bin/deploy-stats.sh
+#   ./bin/deploy/deploy-stats.sh
 #
 set -euo pipefail
 

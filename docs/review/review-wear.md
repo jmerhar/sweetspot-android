@@ -20,7 +20,7 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 |---|---|---|
 | H1 frozen relative-time countdown | ✅ | `b7ae213` (per-minute ticker) |
 | M1 `priceZone!!` NPE | ✅ | `b7ae213` (timezone from the result) |
-| M2 disabled sources ignored when order is default | ❓ | shared phone+wear behaviour — decide if disabling should be independent of a custom order (fix would live in `:shared`) |
+| M2 disabled sources ignored when order is default | ✅ | `7160586` — confirmed a real bug (disabling only worked if you also reordered); fixed in `:shared` for phone + watch |
 | M3 usage recorded for no-fetch taps | ⏳ | minor data-quality |
 | L1 `resolveZone` silent NL fallback | ⏳ | low likelihood |
 | L2 no `TimeText` on result screen | ➖ | minor UX; the ticker now drives recomposition |

@@ -26,7 +26,7 @@ other = "Promijeni jezik"
 other = "Pronađite najjeftinije vrijeme za vaše uređaje i punjenje električnog automobila"
 
 [hero_subtitle]
-other = "SweetSpot pretražuje dinamične cijene struje u 30 europskih zemalja i pronalazi najjeftiniji termin za pokretanje uređaja ili punjenje električnog automobila — dovršen do roka ako ga zadate. Otvorenog koda i bez prikupljanja podataka."
+other = "SweetSpot pretražuje dinamične cijene struje u 30 europskih zemalja i pronalazi najjeftinije vrijeme za pokretanje uređaja ili punjenje električnog automobila — dovršeno do roka ako ga zadate. Otvorenog koda i bez prikupljanja podataka."
 
 [download]
 other = "Preuzmite na Google Playu"
@@ -44,22 +44,22 @@ other = "30 europskih zemalja"
 other = "Pokriva 43 ponudbene zone diljem Europe, od Portugala do Finske i od Norveške do Grčke."
 
 [feature_prices_title]
-other = "Aktualne cijene"
+other = "Day-ahead cijene"
 
 [feature_prices_desc]
-other = "Dnevne cijene električne energije s platforme ENTSO-E Transparency Platform, ažurirane svakodnevno."
+other = "Day-ahead cijene električne energije s platforme ENTSO-E Transparency Platform, ažurirane svakodnevno."
 
 [feature_algorithm_title]
 other = "Pametan algoritam"
 
 [feature_algorithm_desc]
-other = "Klizni algoritam pronalazi najjeftinije neprekinuto razdoblje za bilo koje trajanje."
+other = "SweetSpot pronalazi najjeftinije neprekinuto razdoblje za bilo koje trajanje koje odaberete."
 
 [feature_fallback_title]
 other = "Pouzdani podaci"
 
 [feature_fallback_desc]
-other = "Pet izvora podataka s automatskim prebacivanjem osigurava da su cijene uvijek dostupne."
+other = "Pet izvora podataka s automatskim prebacivanjem pomaže da cijene ostanu dostupne."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -80,10 +80,10 @@ other = "Punjenje električnog automobila"
 other = "Dodajte svoj automobil pa unesite trenutnu i željenu razinu napunjenosti. SweetSpot izračunava vrijeme punjenja i najjeftinije vrijeme za priključivanje."
 
 [feature_deadline_title]
-other = "Vrijeme „Gotovo do“"
+other = "Rok „spremno do“"
 
 [feature_deadline_desc]
-other = "Treba biti gotovo do određenog vremena? Dodajte rok „gotovo do“ i SweetSpot bira samo termine koji se dovrše na vrijeme."
+other = "Treba biti spremno do određenog vremena? Dodajte rok „spremno do“ i SweetSpot bira najjeftinije vrijeme koje završava do tog roka."
 
 [feature_power_title]
 other = "Snaga uređaja"
@@ -116,19 +116,19 @@ other = "Kako funkcionira"
 other = "Odaberite uređaj ili automobil"
 
 [step1_desc]
-other = "Odaberite spremljeni uređaj ili svoj automobil, ili postavite prilagođeno trajanje — i po želji rok „gotovo do“."
+other = "Odaberite spremljeni uređaj ili svoj automobil, ili postavite prilagođeno trajanje — i po želji rok „spremno do“."
 
 [step2_title]
 other = "Pretraži cijene"
 
 [step2_desc]
-other = "SweetSpot dohvaća najnovije dnevne cijene električne energije za vašu regiju."
+other = "SweetSpot dohvaća najnovije day-ahead cijene električne energije za vašu regiju."
 
 [step3_title]
 other = "Saznajte najbolje vrijeme"
 
 [step3_desc]
-other = "Vidite točno kada pokrenuti uređaj, uz potpunu raščlambu troškova po vremenskim intervalima."
+other = "Vidite točno kada pokrenuti uređaj, uz potpuni pregled troškova po vremenskim intervalima."
 
 [cta_title]
 other = "Počnite štedjeti na struji"
@@ -155,7 +155,7 @@ other = "Stranica koju tražite ne postoji."
 other = "Natrag na početnu"
 
 [screenshot_1_alt]
-other = "Rezultat najjeftinijeg perioda s vremenom početka, ukupnim troškom i pregledom troškova"
+other = "Preporučeno vrijeme s vremenom početka, ukupnim troškom i pregledom troškova"
 
 [screenshot_2_alt]
 other = "Početni zaslon s uređajima, odabirom trajanja i gumbom Traži"

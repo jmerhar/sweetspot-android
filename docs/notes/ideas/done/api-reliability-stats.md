@@ -2,6 +2,10 @@
 
 Implemented in v4.1 (March 2026).
 
+> **Snapshot of the v4.1 build.** Some specifics have since moved on (PHP 8.x, a plain SQL Grafana
+> datasource, the v2 stats payload, `api_stats_v2.bin`). For the current server/pipeline shape see
+> CLAUDE.md → "Stats Backend & Monitoring".
+
 ## Overview
 
 Opt-in anonymous API reliability stats collection. Instruments the fetcher chain to record every API request outcome, stores stats locally in a binary file, syncs watch stats to phone via Data Layer, and reports to a self-hosted PHP+InfluxDB endpoint with Grafana dashboards.

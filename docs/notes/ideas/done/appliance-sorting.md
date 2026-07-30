@@ -180,7 +180,7 @@ fun mergeForHome(
     sortedEvs: List<Appliance>,        // always name-ordered
     position: EvPosition,
     separate: Boolean,                 // ignored when position == INTERLEAVED
-): HomeApplianceLayout   // flat list, or two labelled sections when separate
+): HomeChipLayout   // flat list, or two labelled sections when separate
 ```
 
 `sortAppliances` builds a `Comparator` chain from `criteria` (respecting per-criterion

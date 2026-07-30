@@ -5,11 +5,11 @@ description: "Política de privacidad de SweetSpot — privacidad ante todo, sin
 
 ## Resumen
 
-SweetSpot está diseñado con la privacidad como prioridad. La aplicación no recopila ni almacena ningún dato personal. No hay cuentas de usuario, ni analítica, ni seguimiento del uso. Una función opcional permite compartir estadísticas anónimas de API — más detalles a continuación.
+SweetSpot está diseñado con la privacidad como prioridad. La aplicación no necesita ni recopila datos personales para funcionar — no hay cuentas de usuario, ni analítica, ni seguimiento del uso, y solo solicita el permiso de INTERNET (sin ubicación, contactos, almacenamiento ni identificadores del dispositivo). Algunas funciones opcionales te permiten compartir estadísticas anónimas de fiabilidad o enviar comentarios — más detalles a continuación.
 
 ## Procesamiento de datos
 
-SweetSpot obtiene los precios diarios de electricidad de APIs públicas:
+SweetSpot obtiene los precios de electricidad del mercado diario de APIs públicas:
 
 - **ENTSO-E Transparency Platform** — fuente principal para las 43 zonas de oferta europeas
 - **Spot-Hinta.fi** — respaldo para zonas nórdicas y bálticas
@@ -21,17 +21,19 @@ Estas solicitudes de API contienen únicamente el identificador de zona de ofert
 
 ## Almacenamiento local
 
-Los datos de precios se almacenan en la caché local de tu dispositivo para reducir las llamadas a la API y obtener resultados más rápidos. La configuración de tus electrodomésticos (nombres, duraciones, iconos y potencias opcionales), los vehículos guardados (capacidad de la batería y potencia de carga) y los ajustes (país, zona, idioma) también se almacenan localmente en tu dispositivo.
+Los datos de precios se almacenan en la caché local de tu dispositivo para reducir las llamadas a la API y obtener resultados más rápidos. La configuración de tus electrodomésticos (nombres, duraciones, iconos y potencias opcionales), los vehículos guardados (capacidad de la batería y potencia de carga) y los ajustes (país, zona, idioma) también se almacenan localmente en tu dispositivo, junto con tu estado de suscripción (guardado en caché para que la app siga funcionando sin conexión) y el número de pulsaciones por electrodoméstico (usado únicamente para ordenar por más usados y usados recientemente).
 
 En Wear OS, los datos de electrodomésticos y ajustes se sincronizan entre el teléfono y el reloj mediante la Wearable Data Layer API. Esta comunicación permanece en tus dispositivos locales y no pasa por ningún servidor externo.
+
+Si compartes tu configuración como código QR o enlace, la configuración de tus electrodomésticos y de carga del VE se codifica **dentro del propio enlace o código QR** — nunca se sube a un servidor. Solo la persona a la que le des el código o el enlace puede importarla.
 
 ## Sin analítica
 
 SweetSpot no incluye ningún SDK de analítica, informes de errores ni seguimiento del uso. La aplicación no realiza ninguna solicitud de red más allá de obtener precios de electricidad de las APIs públicas mencionadas anteriormente (y el envío opcional de estadísticas, si está activado, y el envío de un informe si usas Ayuda y soporte — véase más abajo).
 
-## Estadísticas de API opcionales
+## Estadísticas de fiabilidad opcionales
 
-Puedes optar por compartir estadísticas anónimas de fiabilidad de la API. Cuando está activado, la aplicación envía periódicamente registros individuales de solicitudes para cada fuente de datos y zona de oferta a nuestro servidor. Estos datos contienen:
+Puedes optar por compartir estadísticas anónimas de fiabilidad. Cuando está activado, la aplicación envía periódicamente registros individuales de solicitudes para cada fuente de datos y zona de oferta a nuestro servidor. Estos datos contienen:
 
 - Marca de tiempo de la solicitud de API
 - Identificador de zona de oferta (p. ej., "NL", "DE-LU")

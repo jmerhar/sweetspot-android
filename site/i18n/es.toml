@@ -44,22 +44,22 @@ other = "30 países europeos"
 other = "Cubre 43 zonas de oferta en toda Europa, desde Portugal hasta Finlandia y desde Noruega hasta Grecia."
 
 [feature_prices_title]
-other = "Precios en tiempo real"
+other = "Precios del mercado diario"
 
 [feature_prices_desc]
-other = "Precios diarios de electricidad de la plataforma ENTSO-E Transparency Platform, actualizados diariamente."
+other = "Precios de electricidad del mercado diario de la plataforma ENTSO-E Transparency Platform, actualizados a diario."
 
 [feature_algorithm_title]
 other = "Algoritmo inteligente"
 
 [feature_algorithm_desc]
-other = "Un algoritmo de desplazamiento temporal encuentra el periodo continuo más barato para cualquier duración que elijas."
+other = "SweetSpot encuentra el bloque continuo de tiempo más barato para cualquier duración que elijas."
 
 [feature_fallback_title]
 other = "Datos fiables"
 
 [feature_fallback_desc]
-other = "Cinco fuentes de datos con respaldo automático garantizan que los precios estén siempre disponibles."
+other = "Cinco fuentes de datos con respaldo automático ayudan a mantener los precios disponibles."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Añade tu coche e indica la carga actual y la deseada. SweetSpot calcul
 other = "Hora límite «Listo a las»"
 
 [feature_deadline_desc]
-other = "¿Necesitas que termine a una hora concreta? Añade una hora límite «Listo a las» y SweetSpot solo elige franjas que terminan a tiempo."
+other = "¿Necesitas que termine a una hora concreta? Añade una hora límite «Listo a las» y SweetSpot elige la franja más barata que la cumple."
 
 [feature_power_title]
 other = "Potencia nominal"
@@ -122,7 +122,7 @@ other = "Selecciona un electrodoméstico guardado o tu VE, o establece una durac
 other = "Consulta los precios"
 
 [step2_desc]
-other = "SweetSpot obtiene los últimos precios diarios de electricidad para tu región."
+other = "SweetSpot obtiene los últimos precios de electricidad del mercado diario para tu región."
 
 [step3_title]
 other = "Obtén el mejor momento"

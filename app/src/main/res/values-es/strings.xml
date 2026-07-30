@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Ajustes</string>
     <string name="cd_back">Atrás</string>
-    <string name="main_description">SweetSpot te ayuda a ahorrar dinero encontrando el momento más barato para usar tus electrodomésticos. Solo elige cuánto tiempo necesita funcionar tu aparato y escaneará las próximas 24 horas de precios dinámicos de electricidad para encontrar la mejor franja. También puedes guardar tus electrodomésticos favoritos en los ajustes para un acceso rápido.</string>
+    <string name="main_description">SweetSpot te ayuda a ahorrar dinero encontrando el momento más barato para usar tus electrodomésticos. Solo elige cuánto tiempo necesita funcionar tu aparato y analizará los próximos precios dinámicos de electricidad para encontrar la mejor franja. También puedes guardar tus electrodomésticos favoritos en los ajustes para un acceso rápido.</string>
     <string name="main_find_button">Buscar franja más barata</string>
     <string name="main_searching">Buscando…</string>
     <string name="main_add_appliances">Añade tus electrodomésticos</string>
@@ -13,7 +13,7 @@
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Hora recomendada</string>
-    <string name="result_after_deadline">Este periodo termina después de tu hora «Listo a las».</string>
+    <string name="result_after_deadline">Esta franja termina después de tu hora «Listo a las».</string>
     <string name="result_start">Inicio</string>
     <string name="result_end">Fin</string>
     <string name="result_total_cost">Coste total</string>
@@ -153,10 +153,10 @@
     <string name="cd_refresh">Actualizar</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Compartir estadísticas de API</string>
-    <string name="settings_stats_description">Ayuda a mejorar la fiabilidad de las fuentes de datos compartiendo estadísticas anónimas de éxito/error de API. No se recopilan datos personales.</string>
+    <string name="settings_stats_title">Compartir estadísticas de fiabilidad</string>
+    <string name="settings_stats_description">Ayuda a mejorar la fiabilidad de las fuentes de datos compartiendo recuentos anónimos de cuándo los precios se cargan o fallan. No se recopilan datos personales.</string>
     <string name="stats_prompt_title">¿Ayudar a mejorar SweetSpot?</string>
-    <string name="stats_prompt_message">Comparte estadísticas anónimas de API para ayudar a mejorar la fiabilidad de las fuentes de datos. Solo se comparten los recuentos de éxito/error por fuente — sin datos personales. Puedes cambiar esto en cualquier momento en Ajustes.</string>
+    <string name="stats_prompt_message">Comparte estadísticas anónimas para ayudar a mejorar la fiabilidad de las fuentes de datos. Solo se comparte con qué frecuencia cada fuente de datos se carga o falla — sin datos personales. Puedes cambiar esto en cualquier momento en Ajustes.</string>
     <string name="stats_prompt_enable">Activar</string>
     <string name="stats_prompt_dismiss">No, gracias</string>
 
@@ -179,7 +179,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Tu período de prueba ha finalizado</string>
-    <string name="paywall_description">SweetSpot encuentra el momento más barato para usar tus electrodomésticos con precios de electricidad en tiempo real en 30 países europeos. Suscríbete para seguir encontrando el momento más barato para tus electrodomésticos.</string>
+    <string name="paywall_description">SweetSpot encuentra el momento más barato para usar tus electrodomésticos con precios dinámicos de electricidad en 30 países europeos. Suscríbete para seguir usándolo.</string>
     <string name="paywall_unlock">Suscribirse a SweetSpot</string>
     <string name="paywall_unlock_price">Suscribirse por %s/año</string>
     <string name="paywall_restore">Restaurar suscripción</string>
@@ -223,7 +223,7 @@
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Precio total</string>
     <string name="settings_all_in_toggle">Mostrar precio total</string>
-    <string name="settings_all_in_desc">Muestra el precio total estimado para el consumidor (precio spot + impuesto energético + recargo del proveedor + IVA) en lugar de solo el precio de mercado.</string>
+    <string name="settings_all_in_desc">Muestra el precio total estimado para el consumidor (precio de mercado + impuesto energético + recargo del proveedor + IVA) en lugar de solo el precio de mercado.</string>
     <string name="all_in_supplier">Proveedor</string>
     <string name="all_in_supplier_prompt">Selecciona tu proveedor</string>
     <string name="all_in_supplier_custom">Recargo personalizado</string>
@@ -232,14 +232,14 @@
     <string name="all_in_incomplete">Selecciona un proveedor o introduce un recargo, o desactiva el precio total.</string>
     <string name="picker_supplier_title">Proveedor</string>
     <string name="picker_supplier_search">Buscar proveedores</string>
-    <string name="result_disclaimer_all_in">Los costes se muestran para una carga de 1 kW, al precio total estimado (precio spot + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Los costes se muestran para una carga de %s kW, al precio total estimado (precio spot + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Los costes se muestran para una carga de 1 kW, al precio total estimado (precio de mercado + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Los costes se muestran para una carga de %s kW, al precio total estimado (precio de mercado + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
     <string name="result_all_in_supplier">\nProveedor: %s</string>
     <string name="result_all_in_stale">Los datos de tarifas tienen más de 14 días y pueden estar desactualizados.</string>
     <string name="chart_legend_energy_tax">Impuesto energético</string>
     <string name="chart_legend_surcharge">Recargo</string>
-    <string name="chart_legend_spot">Precio spot</string>
-    <string name="chart_legend_spot_negative">Precio spot negativo</string>
+    <string name="chart_legend_spot">Precio de mercado</string>
+    <string name="chart_legend_spot_negative">Precio negativo</string>
     <string name="chart_legend_vat_note">Todos los precios incluyen IVA.</string>
 
     <!-- Coach hints -->

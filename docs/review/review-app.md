@@ -13,6 +13,20 @@ Medium logic-duplication-in-excluded-class, and several Low doc/altitude issues.
 
 ---
 
+## Remediation status (audit follow-up)
+
+Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fix · ❓ needs decision.
+
+| Finding | Status | Where / note |
+|---|---|---|
+| M1 `fetchAndFind` cancellation race | ✅ | `dc32ece` |
+| M2 EV formula duplicated in excluded dialog | ✅ | `3a4c821` (shared `EvCharging` + tests) |
+| L1 `StatsReporter` "unlocked" KDoc | ✅ | `11098c7` (→ "subscribed") |
+| L2 "above cheapest" cost wording | 📋 | Phase 5 (user-facing copy) |
+| L3 minor logic in excluded composables | ⏳ | altitude; candidate for later extraction |
+
+---
+
 ## MEDIUM
 
 ### M1 — `fetchAndFind` publishes results with no cancellation check; a superseded fetch can win (suspected)

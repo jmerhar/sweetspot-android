@@ -12,6 +12,31 @@ Positives verified at the end.
 
 ---
 
+## Remediation status (audit follow-up)
+
+Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fix.
+
+| Finding | Status | Where / note |
+|---|---|---|
+| H1 rate-limit bypass | ✅ | `4a931eb` global cap + Cloudflare edge rule (live) |
+| H2 `CF-Connecting-IP` trust | ✅ | `5930d3b`, deployed to aurora |
+| M1 EV variant collapse | ✅ | `b25605e` (regenerated asset) |
+| M2 no tests (build-ev-db, coverage-report) | ✅ | `b25605e`, `8dfaaa8` |
+| M3 build-suppliers orchestration untested | ⏳ | add a `build_country` test with a canned feed |
+| M4 deploy.sh writes changelogs before the 500-char gate; byte char-count | ⏳ | local-only; UTF-8 shell |
+| L1 duplicated locale table | ✅ | `11e3345` |
+| L2 dead `dokka` catalog entry | 📋 | Phase 3 |
+| L3 buildSrc hardcoded AGP/Kotlin versions | 📋 | Phase 3 (or accept — Gradle limitation) |
+| L4 install.sh macOS-only + stale fallback APK names | ⏳ | local dev convenience |
+| L5 diagnostics can break the code fence | ⏳ | cosmetic, low |
+| L6 build-suppliers `usable:false` docstring | ✅ | `11098c7` |
+| L7 release.sh version not validated | ⏳ | trusted local input |
+| L8 per-IP limit vs NAT | ➖ | documented tradeoff |
+| L9 coverage gate rounds to 1 dp | ➖ | intended tolerance |
+| L10 credentials.json in working tree | ✅ | verified gitignored/untracked |
+
+---
+
 ## HIGH
 
 ### H1 — Feedback Worker: KV rate limit is bypassable by concurrency + IP rotation → public GitHub issue spam

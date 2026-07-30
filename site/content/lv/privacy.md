@@ -5,7 +5,7 @@ description: "SweetSpot privātuma politika — privātums pirmajā vietā, bez 
 
 ## Pārskats
 
-SweetSpot ir izstrādāts ar privātumu kā prioritāti. Lietotne nevāc un neuzglabā nekādus personas datus. Nav lietotāju kontu, nav analītikas un nav lietošanas izsekošanas. Neobligāta funkcija ļauj kopīgot anonīmu API statistiku — sīkāka informācija zemāk.
+SweetSpot ir izstrādāts ar privātumu kā prioritāti. Lai darbotos, lietotnei nav nepieciešami personas dati, un tā tos nevāc — nav lietotāju kontu, nav analītikas un nav lietošanas izsekošanas, un tā pieprasa tikai INTERNET atļauju (bez atrašanās vietas, kontaktiem, krātuves vai ierīces identifikatoriem). Neobligātas funkcijas ļauj kopīgot anonīmu uzticamības statistiku vai sūtīt atsauksmes — sīkāka informācija zemāk.
 
 ## Datu apstrāde
 
@@ -21,17 +21,19 @@ SweetSpot iegūst nākamās dienas elektrības cenas no publiskajām API:
 
 ## Lokālā glabāšana
 
-Cenu dati tiek saglabāti lokāli jūsu ierīcē, lai samazinātu API pieprasījumu skaitu un nodrošinātu ātrākus rezultātus. Arī jūsu ierīču konfigurācija (nosaukumi, ilgumi, ikonas un neobligātā jauda), saglabātie transportlīdzekļi (akumulatora ietilpība un uzlādes jauda) un iestatījumi (valsts, zona, valoda) tiek saglabāti lokāli jūsu ierīcē.
+Cenu dati tiek saglabāti lokāli tavā ierīcē, lai samazinātu API pieprasījumu skaitu un nodrošinātu ātrākus rezultātus. Lokāli tavā ierīcē tiek glabāta arī tavu ierīču konfigurācija (nosaukumi, ilgumi, ikonas un neobligātā jauda), saglabātie transportlīdzekļi (akumulatora ietilpība un uzlādes jauda) un iestatījumi (valsts, zona, valoda), kā arī tavs abonementa statuss (kešatmiņā saglabāts, lai lietotne turpinātu darboties bezsaistē) un pieskārienu skaits katrai ierīcei (izmantots tikai kārtošanai pēc visbiežāk un nesen lietotajām).
 
-Wear OS ierīcēs elektroierīču dati un iestatījumi tiek sinhronizēti starp tālruni un pulksteni, izmantojot Wearable Data Layer API. Šī komunikācija paliek starp jūsu lokālajām ierīcēm un neiet caur ārējiem serveriem.
+Wear OS ierīcēs ierīču dati un iestatījumi tiek sinhronizēti starp tālruni un pulksteni, izmantojot Wearable Data Layer API. Šī komunikācija paliek starp tavām lokālajām ierīcēm un neiet caur ārējiem serveriem.
+
+Ja kopīgo savu uzstādījumu kā QR kodu vai saiti, tavu ierīču un elektromobiļa uzlādes konfigurācija tiek iekodēta **pašā saitē vai QR kodā** — tā nekad netiek augšupielādēta serverī. Importēt to var tikai tā persona, kurai iedod kodu vai saiti.
 
 ## Bez analītikas
 
 SweetSpot neietver analītikas SDK, kļūdu ziņošanu vai lietošanas izsekošanu. Lietotne neveic citus tīkla pieprasījumus, izņemot elektrības cenu iegūšanu no iepriekš minētajām publiskajām API (un neobligāto statistikas ziņošanu, ja tā ir iespējota, kā arī ziņojuma nosūtīšanu, ja izmanto Palīdzību un atbalstu — skatīt zemāk).
 
-## Neobligāta API statistika
+## Neobligāta uzticamības statistika
 
-Jūs varat izvēlēties kopīgot anonīmu API uzticamības statistiku. Kad šī funkcija ir iespējota, lietotne periodiski nosūta atsevišķu pieprasījumu ierakstus katram datu avotam un tirdzniecības zonai uz mūsu serveri. Šie dati satur:
+Vari izvēlēties kopīgot anonīmu uzticamības statistiku. Kad šī funkcija ir iespējota, lietotne periodiski nosūta atsevišķu pieprasījumu ierakstus katram datu avotam un tirdzniecības zonai uz mūsu serveri. Šie dati satur:
 
 - API pieprasījuma laika zīmogu
 - Tirdzniecības zonas identifikatoru (piem., "NL", "DE-LU")
@@ -46,7 +48,7 @@ Jūs varat izvēlēties kopīgot anonīmu API uzticamības statistiku. Kad šī 
 
 Šie dati **nesatur** ierīces identifikatorus, atrašanās vietu, cenu datus vai citu personisko informāciju. Tie tiek izmantoti tikai datu avotu uzticamības un noklusējuma secības uzlabošanai.
 
-Šī funkcija ir izslēgta pēc noklusējuma. Jūs varat to iespējot vai atspējot jebkurā laikā sadaļā Iestatījumi.
+Šī funkcija ir izslēgta pēc noklusējuma. Vari to iespējot vai atspējot jebkurā laikā sadaļā Iestatījumi.
 
 ## Palīdzība un atbalsts
 
@@ -62,6 +64,6 @@ SweetSpot ir atvērtā koda programmatūra ar GPL v3 licenci. Pilnu pirmkodu var
 
 ## Kontakti
 
-Ja jums ir jautājumi par šo privātuma politiku, varat izveidot pieteikumu [GitHub](https://github.com/jmerhar/sweetspot-android/issues) vietnē.
+Ja tev ir jautājumi par šo privātuma politiku, vari izveidot pieteikumu [GitHub](https://github.com/jmerhar/sweetspot-android/issues) vietnē.
 
 *Pēdējo reizi atjaunināts: 2026. gada jūlijs*

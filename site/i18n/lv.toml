@@ -23,10 +23,10 @@ other = "Privātums"
 other = "Mainīt valodu"
 
 [hero_title]
-other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei"
+other = "Atrodi lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei"
 
 [hero_subtitle]
-other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod izdevīgāko laika periodu tavu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestati. Atvērtā koda un privātumu respektējoša lietotne."
+other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod lētāko laiku tavu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestati. Atvērtā koda un privātumu respektējoša lietotne."
 
 [download]
 other = "Iegūt pakalpojumā Google Play"
@@ -44,7 +44,7 @@ other = "30 Eiropas valstis"
 other = "Aptver 43 tirdzniecības zonas visā Eiropā — no Portugāles līdz Somijai un no Norvēģijas līdz Grieķijai."
 
 [feature_prices_title]
-other = "Reāllaika cenas"
+other = "Nākamās dienas cenas"
 
 [feature_prices_desc]
 other = "Nākamās dienas elektrības cenas no ENTSO-E Transparency Platform, atjauninātas katru dienu."
@@ -53,13 +53,13 @@ other = "Nākamās dienas elektrības cenas no ENTSO-E Transparency Platform, at
 other = "Viedais algoritms"
 
 [feature_algorithm_desc]
-other = "Slīdošās analīzes algoritms atrod lētāko nepārtraukto periodu jebkuram izvēlētajam ilgumam."
+other = "SweetSpot atrod lētāko nepārtraukto laika posmu jebkuram izvēlētajam ilgumam."
 
 [feature_fallback_title]
 other = "Uzticami dati"
 
 [feature_fallback_desc]
-other = "Pieci datu avoti ar automātisku pārslēgšanos nodrošina, ka cenas vienmēr ir pieejamas."
+other = "Pieci datu avoti ar automātisku pārslēgšanos palīdz nodrošināt cenu pieejamību."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -77,13 +77,13 @@ other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumie
 other = "Elektromobiļa uzlāde"
 
 [feature_ev_desc]
-other = "Pievieno savu automašīnu un ievadi tās pašreizējo un vēlamo uzlādes līmeni. SweetSpot aprēķinās uzlādes laiku un lētāko brīdi, kad to pieslēgt."
+other = "Pievieno savu automašīnu un ievadi tās pašreizējo un vēlamo uzlādes līmeni. SweetSpot aprēķinās uzlādes laiku un lētāko laiku, kad to pieslēgt."
 
 [feature_deadline_title]
 other = "Termiņš „Gatavs līdz“"
 
 [feature_deadline_desc]
-other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot izvēlēsies tikai periodus, kas paspēj pabeigt laikā."
+other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot pēc noklusējuma izvēlēsies lētāko laiku, kas to paspēj."
 
 [feature_power_title]
 other = "Jaudas norāde"
@@ -134,10 +134,10 @@ other = "Redzi precīzi, kad sākt, ar pilnu izmaksu sadalījumu pa laika interv
 other = "Sāc taupīt elektrību"
 
 [cta_desc]
-other = "Iegūsti SweetSpot no Google Play un atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
+other = "Iegūsti SweetSpot no Google Play un atrodi lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
 
 [footer_tagline]
-other = "Atrodi izdevīgāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
+other = "Atrodi lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
 
 [footer_app]
 other = "Lietotne"
@@ -155,7 +155,7 @@ other = "Lapa, kuru meklējat, neeksistē."
 other = "Atpakaļ uz sākumu"
 
 [screenshot_1_alt]
-other = "Lētākā perioda rezultāts ar sākuma laiku, kopējām izmaksām un izmaksu sadalījumu"
+other = "Ieteicamais laiks ar tā sākuma laiku, kopējām izmaksām un izmaksu sadalījumu"
 
 [screenshot_2_alt]
 other = "Sākuma ekrāns ar ierīcēm, ilguma izvēli un pogu Meklēt"

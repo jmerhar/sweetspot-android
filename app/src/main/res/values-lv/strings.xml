@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Iestatījumi</string>
     <string name="cd_back">Atpakaļ</string>
-    <string name="main_description">SweetSpot palīdz taupīt naudu, atrodot lētāko laiku jūsu ierīču darbināšanai. Vienkārši norādiet, cik ilgi jūsu ierīcei jādarbojas, un lietotne pārskatīs nākamo 24 stundu dinamiskās elektrības cenas, lai atrastu labāko periodu. Varat arī saglabāt iecienītākās ierīces iestatījumos ātrai piekļuvei.</string>
-    <string name="main_find_button">Atrast lētāko periodu</string>
+    <string name="main_description">SweetSpot palīdz taupīt naudu, atrodot lētāko laiku jūsu ierīču darbināšanai. Vienkārši norādiet, cik ilgi jūsu ierīcei jādarbojas, un lietotne pārskatīs gaidāmās dinamiskās elektrības cenas, lai atrastu labāko laiku. Varat arī saglabāt iecienītākās ierīces iestatījumos ātrai piekļuvei.</string>
+    <string name="main_find_button">Atrast lētāko laiku</string>
     <string name="main_searching">Meklē…</string>
     <string name="main_add_appliances">Pievienojiet savas ierīces</string>
     <string name="main_card_description">Atrodiet lētāko laiku savai ierīcei</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Ieteicamais laiks</string>
-    <string name="result_after_deadline">Šis periods beidzas pēc tava “Gatavs līdz” laika.</string>
+    <string name="result_after_deadline">Tas beidzas pēc tava “Gatavs līdz” laika.</string>
     <string name="result_start">Sākums</string>
     <string name="result_end">Beigas</string>
     <string name="result_total_cost">Kopējās izmaksas</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Savērt</string>
     <string name="cd_expand">Izvērst</string>
     <string name="result_upcoming_prices">Gaidāmās cenas</string>
-    <string name="result_disclaimer">Izmaksas ir norādītas 1 kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
+    <string name="result_disclaimer">Izmaksas ir norādītas 1 kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja uzcenojumu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="result_data_source">\nDatu avots: %s</string>
     <string name="result_price_zone">\nCenu zona: %s</string>
-    <string name="cd_cheapest_window">lētākais periods</string>
+    <string name="cd_cheapest_window">lētākais laiks</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Ilgums</string>
@@ -155,10 +155,10 @@
     <string name="cd_refresh">Atjaunināt</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Kopīgot API statistiku</string>
-    <string name="settings_stats_description">Palīdziet uzlabot datu avotu uzticamību, kopīgojot anonīmu API veiksmes/kļūdu statistiku. Personiskie dati netiek vākti.</string>
+    <string name="settings_stats_title">Kopīgot uzticamības statistiku</string>
+    <string name="settings_stats_description">Palīdziet uzlabot datu avotu uzticamību, kopīgojot anonīmu statistiku par to, kad cenu dati ielādējas vai neizdodas. Personas dati netiek vākti.</string>
     <string name="stats_prompt_title">Palīdzēt uzlabot SweetSpot?</string>
-    <string name="stats_prompt_message">Kopīgojiet anonīmu API statistiku, lai palīdzētu uzlabot datu avotu uzticamību. Tiek kopīgoti tikai veiksmes/kļūdu skaiti pa avotiem — bez personas datiem. To var mainīt jebkurā laikā iestatījumos.</string>
+    <string name="stats_prompt_message">Kopīgojiet anonīmu statistiku, lai palīdzētu uzlabot datu avotu uzticamību. Tiek kopīgots tikai tas, cik bieži katrs datu avots ielādējas vai neizdodas — bez personas datiem. To var mainīt jebkurā laikā iestatījumos.</string>
     <string name="stats_prompt_enable">Ieslēgt</string>
     <string name="stats_prompt_dismiss">Nē, paldies</string>
 
@@ -181,7 +181,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Jūsu izmēģinājuma periods ir beidzies</string>
-    <string name="paywall_description">SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai, izmantojot reāllaika elektrības cenas 30 Eiropas valstīs. Abonējiet, lai turpinātu atrast lētāko laiku savām ierīcēm.</string>
+    <string name="paywall_description">SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai, izmantojot dinamiskās elektrības cenas 30 Eiropas valstīs. Abonējiet, lai turpinātu atrast lētāko laiku savām ierīcēm.</string>
     <string name="paywall_unlock">Abonēt SweetSpot</string>
     <string name="paywall_unlock_price">Abonēt par %s/gadā</string>
     <string name="paywall_restore">Atjaunot abonementu</string>
@@ -219,7 +219,7 @@
     <string name="ev_error_invalid_soc">Mērķa uzlādes līmenim jābūt augstākam par pašreizējo.</string>
     <string name="ev_error_invalid_charger">Iestatiet lādētāja jaudu, kas lielāka par nulli.</string>
     <string name="ev_error_deadline_unreachable">Uzlādi nevar pabeigt līdz norādītajam laikam. Mēģiniet zemāku mērķa uzlādes līmeni vai vēlāku laiku.</string>
-    <string name="result_disclaimer_power">Izmaksas ir norādītas %s kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja maksu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
+    <string name="result_disclaimer_power">Izmaksas ir norādītas %s kW slodzei. Cenas neietver PVN, enerģijas nodokli un piegādātāja uzcenojumu. Rītdienas cenas parasti ir pieejamas pēc 13:00 CET.</string>
     <string name="dialog_power">Jauda (kW, neobligāti)</string>
 
     <!-- All-in pricing -->
@@ -241,7 +241,7 @@
     <string name="chart_legend_energy_tax">Enerģijas nodoklis</string>
     <string name="chart_legend_surcharge">Uzcenojums</string>
     <string name="chart_legend_spot">Biržas cena</string>
-    <string name="chart_legend_spot_negative">Negatīva biržas cena</string>
+    <string name="chart_legend_spot_negative">Negatīva cena</string>
     <string name="chart_legend_vat_note">Visās cenās iekļauts PVN.</string>
 
     <!-- Sorting -->
@@ -345,7 +345,7 @@
     <string name="guide_ev_title">Plānojiet elektroauto uzlādi</string>
     <string name="guide_ev_body">Pievienojiet savu automašīnu, ievadiet tās pašreizējo un mērķa uzlādes līmeni, un SweetSpot aprēķinās uzlādes laiku.</string>
     <string name="guide_result_title">Nolasiet rezultātu</string>
-    <string name="guide_result_body">Izmantojiet Agrāk un Lētāk, lai pārbīdītu periodu, un turiet nospiestu diagrammu, lai redzētu jebkura brīža cenu.</string>
+    <string name="guide_result_body">Izmantojiet Agrāk un Lētāk, lai pārbīdītu ieteicamo laiku, un turiet nospiestu diagrammu, lai redzētu jebkura brīža cenu.</string>
     <string name="guide_allin_title">Pilnā cena</string>
     <string name="guide_allin_body">Pēc izvēles rādiet pilno patērētāja cenu, nevis tikai biržas cenu.</string>
     <string name="guide_wear_title">Jūsu pulkstenī</string>

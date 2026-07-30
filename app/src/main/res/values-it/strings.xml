@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Impostazioni</string>
     <string name="cd_back">Indietro</string>
-    <string name="main_description">SweetSpot ti aiuta a risparmiare trovando il momento più economico per utilizzare i tuoi elettrodomestici. Basta scegliere la durata di funzionamento e l\'app analizzerà le prossime 24 ore di prezzi dinamici dell\'elettricità per trovare la fascia migliore. Puoi anche salvare i tuoi elettrodomestici preferiti nelle impostazioni per un accesso rapido.</string>
+    <string name="main_description">SweetSpot ti aiuta a risparmiare trovando la fascia più economica per usare i tuoi elettrodomestici. Basta scegliere la durata di funzionamento e l\'app analizzerà i prossimi prezzi dinamici dell\'elettricità per trovare la fascia migliore. Puoi anche salvare i tuoi elettrodomestici preferiti nelle impostazioni per un accesso rapido.</string>
     <string name="main_find_button">Trova la fascia più economica</string>
     <string name="main_searching">Ricerca in corso…</string>
     <string name="main_add_appliances">Aggiungi i tuoi elettrodomestici</string>
-    <string name="main_card_description">Trova il momento più economico per il tuo elettrodomestico</string>
+    <string name="main_card_description">Trova la fascia più economica per il tuo elettrodomestico</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Orario consigliato</string>
-    <string name="result_after_deadline">Questo intervallo termina dopo l\'orario «Pronta entro».</string>
+    <string name="result_cheapest_window">Fascia consigliata</string>
+    <string name="result_after_deadline">Questa fascia termina dopo l\'orario «Pronto entro».</string>
     <string name="result_start">Inizio</string>
     <string name="result_end">Fine</string>
     <string name="result_total_cost">Costo totale</string>
@@ -26,7 +26,7 @@
     <string name="cd_collapse">Comprimi</string>
     <string name="cd_expand">Espandi</string>
     <string name="result_upcoming_prices">Prossimi prezzi</string>
-    <string name="result_disclaimer">I costi indicati sono per un carico di 1 kW. I prezzi non includono IVA, accise sull\'energia e costi del fornitore. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
+    <string name="result_disclaimer">I costi indicati sono per un carico di 1 kW. I prezzi non includono IVA, accise sull\'energia e sovrapprezzo del fornitore. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
     <string name="result_data_source">\nFonte dati: %s</string>
     <string name="result_price_zone">\nZona di prezzo: %s</string>
     <string name="cd_cheapest_window">fascia più economica</string>
@@ -152,10 +152,10 @@
     <string name="cd_refresh">Aggiorna</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Condividi statistiche API</string>
-    <string name="settings_stats_description">Aiuta a migliorare l\'affidabilità delle fonti dati condividendo statistiche anonime di successo/errore API. Non vengono raccolti dati personali.</string>
+    <string name="settings_stats_title">Condividi statistiche di affidabilità</string>
+    <string name="settings_stats_description">Aiuta a migliorare l\'affidabilità delle fonti dati condividendo conteggi anonimi di quando i dati sui prezzi si caricano o falliscono. Non vengono raccolti dati personali.</string>
     <string name="stats_prompt_title">Aiutare a migliorare SweetSpot?</string>
-    <string name="stats_prompt_message">Condividi statistiche API anonime per migliorare l\'affidabilità delle fonti dati. Vengono condivisi solo i conteggi di successo/errore per fonte — nessun dato personale. Puoi modificare questa scelta in qualsiasi momento nelle Impostazioni.</string>
+    <string name="stats_prompt_message">Condividi statistiche anonime per migliorare l\'affidabilità delle fonti dati. Viene condiviso solo con quale frequenza ciascuna fonte si carica o fallisce — nessun dato personale. Puoi modificare questa scelta in qualsiasi momento nelle Impostazioni.</string>
     <string name="stats_prompt_enable">Attiva</string>
     <string name="stats_prompt_dismiss">No grazie</string>
 
@@ -178,14 +178,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Il tuo periodo di prova è terminato</string>
-    <string name="paywall_description">SweetSpot trova il momento più economico per utilizzare i tuoi elettrodomestici usando i prezzi dell\'elettricità in tempo reale in 30 paesi europei. Abbonati per continuare a trovare il momento più economico per i tuoi elettrodomestici.</string>
+    <string name="paywall_description">SweetSpot trova la fascia più economica per usare i tuoi elettrodomestici usando i prezzi dinamici dell\'elettricità in 30 paesi europei. Abbonati per continuare a usarlo.</string>
     <string name="paywall_unlock">Abbonati a SweetSpot</string>
     <string name="paywall_unlock_price">Abbonati per %s/anno</string>
     <string name="paywall_restore">Ripristina abbonamento</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Grazie!</string>
-    <string name="thank_you_message">Il tuo abbonamento è ora attivo. Divertiti a trovare il momento più economico per i tuoi elettrodomestici!</string>
+    <string name="thank_you_message">Il tuo abbonamento è ora attivo. Divertiti a trovare la fascia più economica per i tuoi elettrodomestici!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Prova: %d giorno rimanente</item>
@@ -207,8 +207,8 @@
     <string name="ev_default_target">Carica obiettivo predefinita: %d%%</string>
     <string name="ev_current_soc">Carica attuale: %d%%</string>
     <string name="ev_target_soc">Carica obiettivo: %d%%</string>
-    <string name="ev_deadline_toggle">Pronta entro</string>
-    <string name="ev_deadline_hint">Pronta entro le %s</string>
+    <string name="ev_deadline_toggle">Pronto entro</string>
+    <string name="ev_deadline_hint">Pronto entro le %s</string>
     <string name="ev_charging_estimate">Tempo di ricarica: %1$s a %2$s kW</string>
     <string name="dialog_add_vehicle">Aggiungi veicolo</string>
     <string name="dialog_edit_vehicle">Modifica veicolo</string>
@@ -216,13 +216,13 @@
     <string name="ev_error_invalid_soc">La carica obiettivo deve essere superiore a quella attuale.</string>
     <string name="ev_error_invalid_charger">Imposta una potenza del caricatore maggiore di zero.</string>
     <string name="ev_error_deadline_unreachable">La ricarica non può terminare entro la scadenza impostata. Prova con una carica obiettivo più bassa o un orario più tardi.</string>
-    <string name="result_disclaimer_power">I costi indicati sono per un carico di %s kW. I prezzi non includono IVA, accise sull\'energia e costi del fornitore. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
+    <string name="result_disclaimer_power">I costi indicati sono per un carico di %s kW. I prezzi non includono IVA, accise sull\'energia e sovrapprezzo del fornitore. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
     <string name="dialog_power">Potenza (kW, opzionale)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Prezzo totale</string>
     <string name="settings_all_in_toggle">Mostra il prezzo totale</string>
-    <string name="settings_all_in_desc">Mostra il prezzo totale stimato per il consumatore (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA) invece del solo prezzo di mercato.</string>
+    <string name="settings_all_in_desc">Mostra il prezzo totale stimato per il consumatore (prezzo di mercato + accise sull\'energia + sovrapprezzo del fornitore + IVA) invece del solo prezzo di mercato.</string>
     <string name="all_in_supplier">Fornitore</string>
     <string name="all_in_supplier_prompt">Seleziona il tuo fornitore</string>
     <string name="all_in_supplier_custom">Sovrapprezzo personalizzato</string>
@@ -231,14 +231,14 @@
     <string name="all_in_incomplete">Seleziona un fornitore o inserisci un sovrapprezzo, oppure disattiva il prezzo totale.</string>
     <string name="picker_supplier_title">Fornitore</string>
     <string name="picker_supplier_search">Cerca fornitori</string>
-    <string name="result_disclaimer_all_in">I costi indicati sono per un carico di 1 kW, al prezzo totale stimato (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">I costi indicati sono per un carico di %s kW, al prezzo totale stimato (spot + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">I costi indicati sono per un carico di 1 kW, al prezzo totale stimato (prezzo di mercato + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">I costi indicati sono per un carico di %s kW, al prezzo totale stimato (prezzo di mercato + accise sull\'energia + sovrapprezzo del fornitore + IVA). Escludono gli oneri di rete e i costi fissi mensili. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFornitore: %s</string>
     <string name="result_all_in_stale">I dati tariffari risalgono a più di 14 giorni fa e potrebbero non essere aggiornati.</string>
     <string name="chart_legend_energy_tax">Accise sull\'energia</string>
     <string name="chart_legend_surcharge">Sovrapprezzo</string>
-    <string name="chart_legend_spot">Prezzo spot</string>
-    <string name="chart_legend_spot_negative">Prezzo spot negativo</string>
+    <string name="chart_legend_spot">Prezzo di mercato</string>
+    <string name="chart_legend_spot_negative">Prezzo negativo</string>
     <string name="chart_legend_vat_note">Tutti i prezzi includono l\'IVA.</string>
 
     <!-- Sorting & usage -->
@@ -280,7 +280,7 @@
     <string name="home_section_appliances">Elettrodomestici</string>
 
     <!-- Coach hints -->
-    <string name="coach_earlier_cheaper">Non è il momento giusto? Tocca Prima per anticipare l\'avvio, o Più economico per tornare al più conveniente.</string>
+    <string name="coach_earlier_cheaper">Non è il momento giusto? Tocca Prima per anticipare l\'avvio, o Più economico per tornare alla fascia più economica.</string>
     <string name="coach_chart_press_hold">Tieni premuto il grafico per vedere il prezzo in qualsiasi momento.</string>
     <string name="coach_all_in_toggle">Passa dal prezzo totale al solo prezzo di mercato.</string>
     <string name="coach_ev_chip">Tocca il tuo veicolo per pianificare la ricarica in base alla percentuale della batteria.</string>
@@ -337,7 +337,7 @@
     <string name="my_reports_closed">Chiusa</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Trova il momento più economico</string>
+    <string name="guide_find_title">Trova la fascia più economica</string>
     <string name="guide_find_body">Scegli la durata di funzionamento dell\'elettrodomestico, poi tocca Trova.</string>
     <string name="guide_appliances_title">Salva i tuoi elettrodomestici</string>
     <string name="guide_appliances_body">Aggiungi elettrodomestici nelle Impostazioni per ricerche con un tocco.</string>

@@ -10,7 +10,7 @@ Austria, Belgio, Bulgaria, Cechia, Croazia, Danimarca (DK1, DK2), Estonia, Finla
 {{< /faq >}}
 
 {{< faq question="Da dove provengono i prezzi?" >}}
-I prezzi provengono dalla **ENTSO-E Transparency Platform**, che pubblica i prezzi dell'energia elettrica del giorno successivo per tutte le zone di offerta europee. SweetSpot supporta anche quattro fonti di fallback per una maggiore affidabilità:
+I prezzi provengono dalla **ENTSO-E Transparency Platform**, che pubblica i prezzi dell'energia elettrica del giorno prima per tutte le zone di offerta europee. SweetSpot supporta anche quattro fonti di fallback per una maggiore affidabilità:
 
 - **Spot-Hinta.fi** per le zone nordiche e baltiche (15 zone)
 - **Energy-Charts** per 15 zone europee
@@ -21,17 +21,25 @@ Puoi configurare l'ordine di priorità delle fonti di dati nelle impostazioni.
 {{< /faq >}}
 
 {{< faq question="I prezzi sono accurati?" >}}
-SweetSpot mostra i **prezzi spot day-ahead** — i prezzi all'ingrosso dell'energia elettrica determinati dal mercato il giorno prima della consegna. Questi prezzi **non** includono IVA, accise sull'energia, costi di rete o margini del fornitore, che variano in base al paese e al fornitore.
+SweetSpot mostra i **prezzi di mercato del giorno prima** — i prezzi all'ingrosso dell'energia elettrica determinati dal mercato il giorno prima della consegna (detti anche prezzi spot). Questi prezzi **non** includono IVA, accise sull'energia, costi di rete o margini del fornitore, che variano in base al paese e al fornitore.
 
-I prezzi sono utili per confrontare le fasce orarie tra loro (trovare quando l'elettricità costa meno), che è lo scopo principale dell'app. I costi sono mostrati per impostazione predefinita per 1 kW di carico; imposta la potenza nominale di un elettrodomestico, o ricarica un'auto elettrica, e la stima rispecchia il carico reale. I prezzi del giorno successivo sono generalmente disponibili dopo le 13:00 CET.
+I prezzi restano comunque utili per trovare quando l'elettricità costa meno — lo scopo principale dell'app. Per impostazione predefinita i costi sono mostrati per 1 kW di carico; imposta la potenza nominale di un elettrodomestico, o ricarica un'auto elettrica, e la stima rispecchia il carico reale. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Ho bisogno di un contratto elettrico speciale?" >}}
+Sì — per risparmiare davvero serve un **contratto elettrico dinamico (spot o a prezzo orario)**, in cui il prezzo che paghi segue il mercato del giorno prima. SweetSpot ti mostra quando questi prezzi sono più bassi, ma non può cambiare ciò che ti addebita il tuo fornitore: con una tariffa a prezzo fisso il prezzo è lo stesso tutto il giorno, quindi spostare quando usi l'energia non ridurrà la bolletta.
 {{< /faq >}}
 
 {{< faq question="SweetSpot può aiutarmi a ricaricare l'auto elettrica?" >}}
-Sì. Aggiungi il tuo veicolo — sceglilo da un database integrato di circa 1.600 auto elettriche e ibride plug-in, oppure inserisci manualmente la capacità della batteria e la potenza di ricarica. Poi indica la carica attuale e quella desiderata, e SweetSpot calcola quanto durerà la ricarica (in base alla capacità della batteria e al minore tra il limite AC dell'auto e quello del tuo caricatore domestico) e trova la fascia più conveniente per collegarla.
+Sì. Aggiungi il tuo veicolo — sceglilo da un database integrato di migliaia di auto elettriche e ibride plug-in, oppure inserisci manualmente la capacità della batteria e la potenza di ricarica. Poi indica la carica attuale e quella desiderata, e SweetSpot calcola quanto durerà la ricarica (in base alla capacità della batteria e al minore tra il limite AC dell'auto e quello del tuo caricatore domestico) e trova la fascia più economica per collegarla.
 {{< /faq >}}
 
 {{< faq question="Posso assicurarmi che sia pronto entro un certo orario?" >}}
-Sì. Attiva la scadenza opzionale **«Pronto entro»** e scegli un orario. SweetSpot considera allora solo le fasce che terminano entro quel momento — per qualsiasi elettrodomestico o per la ricarica dell'auto elettrica (ad esempio, completamente carica entro le 7:00 del mattino).
+Sì. Attiva la scadenza opzionale **«Pronto entro»** e scegli un orario. SweetSpot propone allora, come impostazione predefinita, la fascia più economica che termina entro quell'ora — per qualsiasi elettrodomestico o per la ricarica dell'auto elettrica (ad esempio, carica entro le 7:00 del mattino). Se preferisci, puoi comunque passare a una fascia più economica che termina un po' più tardi; SweetSpot segnala quando la fascia mostrata termina dopo la tua scadenza.
+{{< /faq >}}
+
+{{< faq question="Perché la fascia consigliata continua a cambiare?" >}}
+SweetSpot ricontrolla i prezzi mentre un risultato è aperto e, con il passare del tempo, gli intervalli ormai trascorsi vengono esclusi, quindi la fascia consigliata può spostarsi. Usa i pulsanti **Prima** e **Più economico** per passare tra un avvio più vicino nel tempo (leggermente più costoso) e quello più economico — ciascuno mostra quanto costa in più rispetto alla fascia consigliata.
 {{< /faq >}}
 
 {{< faq question="I costi rispecchiano quanta energia consuma il mio elettrodomestico?" >}}
@@ -43,17 +51,17 @@ SweetSpot memorizza i prezzi localmente sul dispositivo. Se hai recuperato i pre
 {{< /faq >}}
 
 {{< faq question="L'app Wear OS funziona in modo autonomo?" >}}
-L'app Wear OS sincronizza gli elettrodomestici e le impostazioni dal telefono tramite la Wearable Data Layer API. Una volta sincronizzata, l'app dell'orologio recupera i prezzi in modo indipendente — quindi funziona anche quando il telefono non è nelle vicinanze, purché l'orologio abbia accesso a internet (Wi-Fi o LTE).
+L'app Wear OS sincronizza gli elettrodomestici e le impostazioni dall'app del telefono. Una volta sincronizzata, l'app dell'orologio recupera i prezzi in modo indipendente — quindi funziona anche quando il telefono non è nelle vicinanze, purché l'orologio abbia accesso a internet (Wi-Fi o LTE).
 
 L'app per l'orologio richiede Wear OS 3 o versioni successive (Pixel Watch, Samsung Galaxy Watch 4+ e altri orologi compatibili).
 {{< /faq >}}
 
 {{< faq question="Posso vedere il prezzo completo che pago effettivamente?" >}}
-Per impostazione predefinita SweetSpot mostra il **prezzo spot** all'ingrosso. Nei paesi supportati (attualmente i Paesi Bassi) puoi attivare i **prezzi comprensivi di tutto** nelle impostazioni: aggiungono al prezzo spot l'accisa sull'energia, il sovrapprezzo del tuo fornitore e l'IVA per mostrare il prezzo approssimativo completo al consumatore. Combinato con la **potenza nominale** di un elettrodomestico, ti offre una stima realistica di quanto costerà davvero far funzionare quell'elettrodomestico. È solo a scopo informativo — non cambia mai quale fascia oraria risulta più conveniente.
+Per impostazione predefinita SweetSpot mostra il **prezzo di mercato** all'ingrosso. Nei paesi supportati (attualmente i Paesi Bassi) puoi attivare il **Prezzo totale** (il prezzo comprensivo di tutto) nelle impostazioni: aggiunge al prezzo di mercato l'accisa sull'energia, il sovrapprezzo del tuo fornitore e l'IVA per mostrare il prezzo approssimativo completo al consumatore. Combinato con la **potenza nominale** di un elettrodomestico, ti offre una stima realistica di quanto costerà davvero far funzionare quell'elettrodomestico. È solo a scopo informativo — non cambia mai quale fascia risulta più economica.
 {{< /faq >}}
 
 {{< faq question="Posso copiare i miei elettrodomestici su un altro dispositivo?" >}}
-Sì. Nelle impostazioni puoi condividere la tua configurazione — i tuoi elettrodomestici, il loro ordine e le impostazioni di ricarica dell'auto elettrica — come codice QR o come link. Scansionalo o aprilo su un altro dispositivo per importare tutto. Funziona completamente offline, senza account e senza server: i dati viaggiano all'interno del link o del codice QR stesso, e puoi scegliere se aggiungere a ciò che è già presente o sostituirlo.
+Sì. Nelle impostazioni puoi condividere la tua configurazione — i tuoi elettrodomestici, il loro ordine e le impostazioni di ricarica dell'auto elettrica — come codice QR o come link. Scansionalo o aprilo su un altro dispositivo per importare tutto. Funziona completamente offline, senza account e senza server: i dati viaggiano all'interno del link o del codice QR stesso, e puoi scegliere se aggiungere a ciò che è già presente, sostituirlo o selezionare singoli elementi.
 {{< /faq >}}
 
 {{< faq question="Come segnalo un problema o suggerisco una funzione?" >}}

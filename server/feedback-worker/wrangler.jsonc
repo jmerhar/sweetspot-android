@@ -24,6 +24,7 @@
     "BREVO_SENDER_NAME": "SweetSpot",
     "REPLY_TO_EMAIL": "hello@sweetspot.today",
     "RATE_LIMIT_PER_DAY": "5",
+    "GLOBAL_RATE_LIMIT_PER_DAY": "100",
     "REPLY_RATE_LIMIT_PER_DAY": "20",
     "MAX_SUBJECT": "120",
     "MAX_BODY": "4000"

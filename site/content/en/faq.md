@@ -21,9 +21,9 @@ You can configure the data source priority order in settings.
 {{< /faq >}}
 
 {{< faq question="Are the prices accurate?" >}}
-SweetSpot shows **day-ahead spot prices** — the wholesale electricity prices determined by the market the day before delivery. These prices do **not** include VAT, energy taxes, network fees, or supplier margins, which vary by country and provider.
+SweetSpot shows **day-ahead market prices** — the wholesale electricity prices set by the market the day before delivery (also called spot prices). These prices do **not** include VAT, energy taxes, network fees, or supplier margins, which vary by country and provider.
 
-The prices are useful for comparing time slots relative to each other (finding when electricity is cheapest), which is the app's primary purpose. Costs are shown per 1 kW of load by default; set an appliance's power rating, or charge an EV, and the estimate reflects the real load. Tomorrow's prices are typically available after 13:00 CET.
+The prices are still useful for finding when electricity is cheapest — the app's main purpose. Costs are shown per 1 kW of load by default; set an appliance's power rating, or charge an EV, and the estimate reflects the real load. Tomorrow's prices are typically available after 13:00 CET.
 {{< /faq >}}
 
 {{< faq question="Do I need a special electricity contract?" >}}
@@ -51,13 +51,13 @@ SweetSpot caches prices locally on your device. If you've fetched prices recentl
 {{< /faq >}}
 
 {{< faq question="Does the Wear OS app work standalone?" >}}
-The Wear OS app syncs appliances and settings from the phone app via the Wearable Data Layer API. Once synced, the watch app fetches prices independently — so it works even when the phone isn't nearby, as long as the watch has internet access (Wi-Fi or LTE).
+The Wear OS app syncs appliances and settings from the phone app. Once synced, the watch app fetches prices independently — so it works even when the phone isn't nearby, as long as the watch has internet access (Wi-Fi or LTE).
 
 The watch app requires Wear OS 3 or later (Pixel Watch, Samsung Galaxy Watch 4+, and other compatible watches).
 {{< /faq >}}
 
 {{< faq question="Can I see the full price I actually pay?" >}}
-By default SweetSpot shows the wholesale **spot price**. In supported countries (currently the Netherlands) you can turn on **all-in prices** in settings, which add energy tax, your supplier's surcharge, and VAT on top of the spot price to show the approximate full consumer price. Combined with an appliance's **power rating**, this gives you a realistic estimate of what actually running that appliance will cost. It's display-only — it never changes which time window comes out cheapest.
+By default SweetSpot shows the wholesale **market price**. In supported countries (currently the Netherlands) you can turn on **Total price** (the all-in price) in settings, which adds energy tax, your supplier's surcharge, and VAT on top of the market price to show the approximate full consumer price. Combined with an appliance's **power rating**, this gives you a realistic estimate of what actually running that appliance will cost. It's display-only — it never changes which time window comes out cheapest.
 {{< /faq >}}
 
 {{< faq question="Can I copy my appliances to another device?" >}}

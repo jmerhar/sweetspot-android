@@ -1,21 +1,21 @@
-SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken en je elektrische auto te laden. Kies hoe lang een apparaat moet draaien — of kies je auto en het gewenste laadniveau — en SweetSpot scant de dynamische stroomprijzen van de komende 24 uur om de goedkoopste periode te vinden.
+SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken en je elektrische auto te laden. Kies hoe lang een apparaat moet draaien — of kies je auto en het gewenste laadniveau — en SweetSpot scant de komende dynamische stroomprijzen om het goedkoopste moment te vinden.
 
 Of het nu gaat om een wasmachine, vaatwasser, droger, warmtepomp of laadpaal — start op het juiste moment en betaal minder voor dezelfde stroom.
 
 HOE HET WERKT
-1. Kies een apparaat of je auto, of stel een aangepaste duur in — en een optionele deadline "klaar om"
+1. Kies een apparaat of je auto, of stel een aangepaste duur in — en een optionele 'klaar om'-deadline
 2. SweetSpot haalt de nieuwste day-ahead stroomprijzen op voor jouw regio
 3. Zie precies wanneer je moet starten, met een kleurgecodeerde 24-uurs prijsgrafiek en een volledig kostenoverzicht per tijdslot
 
 ELEKTRISCH LADEN
-Voeg je auto toe vanuit een ingebouwde database van zo'n 1.600 elektrische auto's en plug-in hybrides — of voer zelf de accucapaciteit en het laadvermogen in. Stel je huidige en gewenste laadniveau in, en SweetSpot berekent hoe lang het laden duurt en wanneer je het goedkoopst kunt opladen.
+Voeg je auto toe vanuit een ingebouwde database van duizenden elektrische auto's en plug-in hybrides — of voer zelf de accucapaciteit en het laadvermogen in. Stel je huidige en gewenste laadniveau in, en SweetSpot berekent hoe lang het laden duurt en wanneer je het goedkoopst kunt opladen.
 
 FUNCTIES
 - 30 Europese landen, 43 biedingszones — van Portugal tot Finland, Noorwegen tot Griekenland
 - 5 gegevensbronnen met automatische terugval (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Totaalprijs (Nederland) — zie optioneel de volledige consumentenprijs (marktprijs + energiebelasting + leveranciersopslag + btw) in plaats van de kale marktprijs; kies je leverancier of voer je eigen opslag in. Meer landen volgen
-- Deadline "klaar om" — kiest alleen een periode die op tijd klaar is
-- Eerder of goedkoper — als de goedkoopste periode niet uitkomt, stap naar een eerdere periode en zie precies hoeveel duurder die is
+- 'Klaar om'-deadline — kiest standaard het goedkoopste moment dat op tijd klaar is
+- Eerder of goedkoper — als het goedkoopste moment niet uitkomt, stap naar een eerder moment en zie precies hoeveel duurder dat is
 - Vermogen — stel het vermogen van een apparaat in kW in voor een kostenraming die laat zien wat het echt verbruikt
 - Sla je apparaten op met eigen namen, iconen en duur voor snelle toegang
 - Sorteer en herschik je apparaten — sleep ze in je eigen volgorde of sorteer op meest gebruikt, recent gebruikt, naam, duur of type, en bepaal waar je auto's staan

@@ -5,7 +5,7 @@ description: "SweetSpot privacybeleid — privacy-eerst, geen accounts, geen ana
 
 ## Overzicht
 
-SweetSpot is ontworpen met privacy in gedachten. De app verzamelt en slaat geen persoonlijke gegevens op. Er zijn geen gebruikersaccounts, geen analytics en geen gebruiksregistratie. Een optionele functie laat je anonieme API-statistieken delen — zie hieronder voor details.
+SweetSpot is ontworpen met privacy in gedachten. De app heeft geen persoonlijke gegevens nodig en verzamelt die ook niet om te werken — er zijn geen gebruikersaccounts, geen analytics en geen gebruiksregistratie, en de app vraagt alleen de INTERNET-toestemming (geen locatie, contacten, opslag of apparaat-ID's). Met optionele functies kun je anonieme betrouwbaarheidsstatistieken delen of feedback sturen — zie hieronder voor details.
 
 ## Gegevensverwerking
 
@@ -21,17 +21,19 @@ Deze API-verzoeken bevatten alleen de biedingszone en het datumbereik. Er worden
 
 ## Lokale opslag
 
-Prijsgegevens worden lokaal op je apparaat opgeslagen om API-aanroepen te verminderen en snellere resultaten mogelijk te maken. Je apparaatconfiguratie (namen, duur, iconen en een optioneel vermogen), opgeslagen voertuigen (accucapaciteit en laadvermogen) en instellingen (land, zone, taal) worden ook lokaal op je apparaat opgeslagen.
+Prijsgegevens worden lokaal op je apparaat opgeslagen om API-aanroepen te verminderen en snellere resultaten mogelijk te maken. Je apparaatconfiguratie (namen, duur, iconen en een optioneel vermogen), opgeslagen voertuigen (accucapaciteit en laadvermogen) en instellingen (land, zone, taal) worden ook lokaal op je apparaat opgeslagen, samen met je abonnementsstatus (in de cache bewaard zodat de app offline blijft werken) en het aantal keren dat je op elk apparaat hebt getikt (alleen gebruikt om te sorteren op meest gebruikt en recent gebruikt).
 
 Op Wear OS worden apparaatgegevens en instellingen gesynchroniseerd tussen telefoon en horloge via de Wearable Data Layer API. Deze communicatie blijft op je lokale apparaten en verloopt niet via een externe server.
+
+Als je je configuratie deelt als QR-code of link, wordt je apparaat- en laadconfiguratie **in de link of QR-code zelf** gecodeerd — die wordt nooit naar een server geüpload. Alleen degene aan wie je de code of link geeft, kan die importeren.
 
 ## Geen analytics
 
 SweetSpot bevat geen analytics-SDK's, crashrapportage of gebruiksregistratie. De app doet geen netwerkverzoeken buiten het ophalen van stroomprijzen van de hierboven genoemde openbare API's (optionele statistiekrapportage als ingeschakeld, en het versturen van een melding als je Help & ondersteuning gebruikt — zie hieronder).
 
-## Optionele API-statistieken
+## Optionele betrouwbaarheidsstatistieken
 
-Je kunt ervoor kiezen om anonieme API-betrouwbaarheidsstatistieken te delen. Wanneer ingeschakeld, stuurt de app periodiek individuele verzoekrecords voor elke databron en biedingszone naar onze server. Deze gegevens bevatten:
+Je kunt ervoor kiezen om anonieme betrouwbaarheidsstatistieken te delen. Wanneer ingeschakeld, stuurt de app periodiek individuele verzoekrecords voor elke databron en biedingszone naar onze server. Deze gegevens bevatten:
 
 - Tijdstip van het API-verzoek
 - Biedingszone (bijv. "NL", "DE-LU")

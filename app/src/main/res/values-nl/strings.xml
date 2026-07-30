@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Instellingen</string>
     <string name="cd_back">Terug</string>
-    <string name="main_description">SweetSpot helpt je geld besparen door het goedkoopste moment te vinden om je apparaten te gebruiken. Kies hoe lang je apparaat moet draaien en het scant de komende 24 uur aan dynamische stroomprijzen om de beste periode te vinden. Je kunt ook je favoriete apparaten opslaan in de instellingen.</string>
-    <string name="main_find_button">Zoek goedkoopste periode</string>
+    <string name="main_description">SweetSpot helpt je geld besparen door het goedkoopste moment te vinden om je apparaten te gebruiken. Kies gewoon hoe lang je apparaat moet draaien en het scant de komende dynamische stroomprijzen om het beste moment te vinden. Je kunt ook je favoriete apparaten in de instellingen opslaan voor snelle toegang.</string>
+    <string name="main_find_button">Zoek goedkoopste moment</string>
     <string name="main_searching">Zoeken…</string>
     <string name="main_add_appliances">Voeg je apparaten toe</string>
     <string name="main_card_description">Vind het goedkoopste moment om je apparaat te gebruiken</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Aanbevolen tijd</string>
-    <string name="result_after_deadline">Dit tijdvak eindigt na je ‘Klaar om’-tijd.</string>
+    <string name="result_after_deadline">Dit eindigt na je ‘Klaar om’-tijd.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Einde</string>
     <string name="result_total_cost">Totale kosten</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Inklappen</string>
     <string name="cd_expand">Uitklappen</string>
     <string name="result_upcoming_prices">Komende prijzen</string>
-    <string name="result_disclaimer">Kosten zijn per 1 kW vermogen. Prijzen zijn exclusief btw, energiebelasting en leverancierskosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
+    <string name="result_disclaimer">Kosten zijn per 1 kW vermogen. Prijzen zijn exclusief btw, energiebelasting en leveranciersopslag. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
     <string name="result_data_source">\nGegevensbron: %s</string>
     <string name="result_price_zone">\nPrijszone: %s</string>
-    <string name="cd_cheapest_window">goedkoopste periode</string>
+    <string name="cd_cheapest_window">goedkoopste moment</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Duur</string>
@@ -78,9 +78,9 @@
 
     <!-- Household sharing: import preview -->
     <string name="import_title">Configuratie importeren</string>
-    <string name="import_mode_add">Aan die van mij toevoegen</string>
+    <string name="import_mode_add">Toevoegen aan de mijne</string>
     <string name="import_mode_add_desc">Behoud mijn apparaten en voeg de nieuwe toe</string>
-    <string name="import_mode_replace">Die van mij vervangen</string>
+    <string name="import_mode_replace">De mijne vervangen</string>
     <string name="import_mode_replace_desc">Gebruik de gedeelde apparaten, volgorde en voertuiginstellingen</string>
     <string name="import_mode_pick">Kiezen welke</string>
     <string name="import_mode_pick_desc">Kies de apparaten om toe te voegen</string>
@@ -149,10 +149,10 @@
     <string name="cd_refresh">Vernieuwen</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">API-statistieken delen</string>
-    <string name="settings_stats_description">Help de betrouwbaarheid van databronnen te verbeteren door anonieme API-succes/fout-statistieken te delen. Er worden geen persoonlijke gegevens verzameld.</string>
+    <string name="settings_stats_title">Betrouwbaarheidsstatistieken delen</string>
+    <string name="settings_stats_description">Help de betrouwbaarheid van gegevensbronnen te verbeteren door anonieme aantallen te delen van hoe vaak prijsgegevens laden of mislukken. Er worden geen persoonlijke gegevens verzameld.</string>
     <string name="stats_prompt_title">SweetSpot helpen verbeteren?</string>
-    <string name="stats_prompt_message">Deel anonieme API-statistieken om de betrouwbaarheid van databronnen te helpen verbeteren. Alleen aantallen geslaagde/mislukte verzoeken per bron worden gedeeld — geen persoonlijke gegevens. Je kunt dit op elk moment wijzigen in Instellingen.</string>
+    <string name="stats_prompt_message">Deel anonieme statistieken om de betrouwbaarheid van gegevensbronnen te helpen verbeteren. Alleen hoe vaak elke gegevensbron laadt of mislukt wordt gedeeld — geen persoonlijke gegevens. Je kunt dit op elk moment wijzigen in Instellingen.</string>
     <string name="stats_prompt_enable">Inschakelen</string>
     <string name="stats_prompt_dismiss">Nee, bedankt</string>
 
@@ -175,7 +175,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Je proefperiode is verlopen</string>
-    <string name="paywall_description">SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken op basis van realtime elektriciteitsprijzen in 30 Europese landen. Abonneer om het goedkoopste tijdstip voor je apparaten te blijven vinden.</string>
+    <string name="paywall_description">SweetSpot vindt het goedkoopste moment om je apparaten te gebruiken op basis van dynamische elektriciteitsprijzen in 30 Europese landen. Abonneer om het te blijven gebruiken.</string>
     <string name="paywall_unlock">Abonneer op SweetSpot</string>
     <string name="paywall_unlock_price">Abonneer voor %s/jaar</string>
     <string name="paywall_restore">Abonnement herstellen</string>
@@ -212,7 +212,7 @@
     <string name="ev_error_invalid_soc">Het streefniveau moet hoger zijn dan het huidige laadniveau.</string>
     <string name="ev_error_invalid_charger">Stel een laadvermogen groter dan nul in.</string>
     <string name="ev_error_deadline_unreachable">Het laden kan niet voor je deadline klaar zijn. Probeer een lager streefniveau of een later tijdstip.</string>
-    <string name="result_disclaimer_power">Kosten zijn voor een belasting van %s kW. Prijzen zijn exclusief btw, energiebelasting en leverancierskosten. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
+    <string name="result_disclaimer_power">Kosten zijn voor een belasting van %s kW. Prijzen zijn exclusief btw, energiebelasting en leveranciersopslag. De prijzen van morgen zijn meestal beschikbaar na 13:00 CET.</string>
     <string name="dialog_power">Vermogen (kW, optioneel)</string>
 
     <!-- All-in pricing -->
@@ -234,7 +234,7 @@
     <string name="chart_legend_energy_tax">Energiebelasting</string>
     <string name="chart_legend_surcharge">Opslag</string>
     <string name="chart_legend_spot">Marktprijs</string>
-    <string name="chart_legend_spot_negative">Negatieve marktprijs</string>
+    <string name="chart_legend_spot_negative">Negatieve prijs</string>
     <string name="chart_legend_vat_note">Alle prijzen zijn incl. btw.</string>
 
     <!-- Sorting & usage -->
@@ -342,7 +342,7 @@
     <string name="guide_ev_title">Plan het laden van je EV</string>
     <string name="guide_ev_body">Voeg je auto toe, voer het huidige en streefniveau in, en SweetSpot berekent de laadtijd.</string>
     <string name="guide_result_title">Lees het resultaat</string>
-    <string name="guide_result_body">Gebruik Eerder en Goedkoper om de periode te verschuiven, en houd de grafiek ingedrukt voor de prijs van elk moment.</string>
+    <string name="guide_result_body">Gebruik Eerder en Goedkoper om de aanbevolen tijd te verschuiven, en houd de grafiek ingedrukt voor de prijs op elk moment.</string>
     <string name="guide_allin_title">Totaalprijs</string>
     <string name="guide_allin_body">Toon optioneel de volledige consumentenprijs in plaats van alleen de marktprijs.</string>
     <string name="guide_wear_title">Op je horloge</string>

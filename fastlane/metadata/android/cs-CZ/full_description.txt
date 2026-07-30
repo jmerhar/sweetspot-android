@@ -1,4 +1,4 @@
-SweetSpot najde nejlevnější čas pro provoz vašich spotřebičů a nabíjení elektromobilu. Stačí zvolit, jak dlouho má spotřebič běžet — nebo vybrat elektromobil a požadované nabití — a SweetSpot prohledá následujících 24 hodin dynamických cen elektřiny a najde nejlevnější období.
+SweetSpot najde nejlevnější čas pro provoz vašich spotřebičů a nabíjení elektromobilu. Stačí zvolit, jak dlouho má spotřebič běžet — nebo vybrat elektromobil a požadované nabití — a SweetSpot prohledá nadcházející dynamické ceny elektřiny a najde nejlevnější čas.
 
 Ať už jde o pračku, myčku, sušičku, tepelné čerpadlo nebo nabíječku elektromobilu — spusťte je ve správný čas a plaťte méně za stejnou elektřinu.
 
@@ -8,14 +8,14 @@ JAK TO FUNGUJE
 3. Přesně uvidíte, kdy spustit, s barevně rozlišeným 24hodinovým grafem cen a podrobným rozpisem nákladů po časových úsecích
 
 NABÍJENÍ ELEKTROMOBILU
-Přidejte své auto z vestavěné databáze přibližně 1 600 elektromobilů a plug-in hybridů — nebo zadejte kapacitu baterie a nabíjecí výkon sami. Nastavte aktuální a cílové nabití a SweetSpot spočítá, jak dlouho bude nabíjení trvat a kdy je nejlevnější ho zapojit.
+Přidejte své auto z vestavěné databáze tisíců elektromobilů a plug-in hybridů — nebo zadejte kapacitu baterie a nabíjecí výkon sami. Nastavte aktuální a cílové nabití a SweetSpot spočítá, jak dlouho bude nabíjení trvat a kdy je nejlevnější ho zapojit.
 
 FUNKCE
-- 30 evropských zemí, 43 cenových zón — od Portugalska po Finsko, od Norska po Řecko
+- 30 evropských zemí, 43 obchodních zón — od Portugalska po Finsko, od Norska po Řecko
 - 5 zdrojů dat s automatickým přepínáním (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Konečná cena (Nizozemsko) — volitelně zobrazte plnou konečnou spotřebitelskou cenu (spotová + daň z energie + přirážka dodavatele + DPH) místo holé tržní ceny; vyberte svého dodavatele nebo zadejte vlastní přirážku. Další země budou následovat
-- Termín „Hotovo do“ — vybere pouze období, které stihne skončit včas
-- Dříve nebo levněji — když je nejlevnější období nevhodné, přejděte na dřívější a uvidíte přesně, o kolik je dražší
+- Konečná cena (Nizozemsko) — volitelně zobrazte plnou konečnou spotřebitelskou cenu (tržní cena + daň z energie + přirážka dodavatele + DPH) místo holé tržní ceny; vyberte svého dodavatele nebo zadejte vlastní přirážku. Další země budou následovat
+- Termín „Hotovo do“ — ve výchozím nastavení zvolí nejlevnější čas, který jej splní
+- Dříve nebo levněji — když je nejlevnější čas nevhodný, přejděte na dřívější a uvidíte přesně, o kolik je dražší
 - Výkon spotřebičů — zadejte výkon spotřebiče v kW pro odhad nákladů, který odpovídá jeho skutečné spotřebě
 - Uložte si spotřebiče s vlastními názvy, ikonami a dobami trvání pro rychlý přístup
 - Seřaďte a přeuspořádejte spotřebiče — přetáhněte je do vlastního pořadí nebo je seřaďte podle nejčastěji používaných, naposledy použitých, názvu, doby trvání či typu a zvolte, kde budou vaše elektromobily
@@ -30,6 +30,6 @@ PODPOROVANÉ ZEMĚ
 Belgie, Bulharsko, Česko, Černá Hora, Dánsko, Estonsko, Finsko, Francie, Chorvatsko, Irsko, Itálie, Litva, Lotyšsko, Lucembursko, Maďarsko, Německo, Nizozemsko, Norsko, Polsko, Portugalsko, Rakousko, Rumunsko, Řecko, Severní Makedonie, Slovensko, Slovinsko, Srbsko, Španělsko, Švédsko, Švýcarsko.
 
 POZNÁMKA
-Ve výchozím nastavení jsou zobrazené ceny velkoobchodní denní spotové ceny a nezahrnují DPH, daň z energie ani poplatky dodavatele. V Nizozemsku můžete volitelně zapnout Konečnou cenu, která přidává daň z energie, přirážku vašeho dodavatele a DPH pro realistické náklady na provoz. Zítřejší ceny jsou obvykle dostupné po 13:00 CET. K využití cenových rozdílů je potřeba smlouva s dynamickou cenou elektřiny.
+Ve výchozím nastavení jsou zobrazené ceny velkoobchodní tržní ceny na dni dopředu a nezahrnují DPH, daň z energie ani přirážku dodavatele. V Nizozemsku můžete volitelně zapnout Konečnou cenu, která přidává daň z energie, přirážku vašeho dodavatele a DPH pro realistické náklady na provoz. Zítřejší ceny jsou obvykle dostupné po 13:00 CET. K využití cenových rozdílů je potřeba smlouva s dynamickou cenou elektřiny.
 
 Zásady ochrany soukromí: https://sweetspot.today/cs/privacy/

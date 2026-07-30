@@ -5,7 +5,7 @@ description: "Zásady ochrany soukromí SweetSpot — soukromí na prvním míst
 
 ## Přehled
 
-SweetSpot je navržen s ohledem na soukromí. Aplikace neshromažďuje ani neuchovává žádné osobní údaje. Nejsou zde žádné uživatelské účty, analytika ani sledování používání. Volitelná funkce umožňuje sdílení anonymní API statistiky — podrobnosti níže.
+SweetSpot je navržen s ohledem na soukromí. Aplikace ke svému fungování nevyžaduje ani neshromažďuje žádné osobní údaje — nejsou zde žádné uživatelské účty, žádná analytika ani sledování používání a aplikace vyžaduje pouze oprávnění INTERNET (žádnou polohu, kontakty, úložiště ani identifikátory zařízení). Volitelné funkce umožňují sdílet anonymní statistiky spolehlivosti nebo odeslat zpětnou vazbu — podrobnosti níže.
 
 ## Zpracování dat
 
@@ -21,17 +21,19 @@ Tyto API požadavky obsahují pouze identifikátor obchodní zóny a časový ro
 
 ## Lokální úložiště
 
-Data o cenách se ukládají lokálně ve vašem zařízení pro snížení počtu API požadavků a rychlejší výsledky. Konfigurace vašich spotřebičů (názvy, doby běhu, ikony a volitelné příkony), uložená vozidla (kapacita baterie a nabíjecí výkon) a nastavení (země, zóna, jazyk) se rovněž uchovávají lokálně ve vašem zařízení.
+Data o cenách se ukládají lokálně ve vašem zařízení pro snížení počtu API požadavků a rychlejší výsledky. Konfigurace vašich spotřebičů (názvy, doby běhu, ikony a volitelné příkony), uložená vozidla (kapacita baterie a nabíjecí výkon) a nastavení (země, zóna, jazyk) se rovněž uchovávají lokálně ve vašem zařízení, spolu se stavem vašeho předplatného (uloženým do mezipaměti, aby aplikace fungovala i offline) a počty klepnutí na jednotlivé spotřebiče (používanými pouze k řazení podle nejčastěji a naposledy používaných).
 
 Na Wear OS se data o spotřebičích a nastavení synchronizují mezi telefonem a hodinkami prostřednictvím Wearable Data Layer API. Tato komunikace probíhá mezi vašimi lokálními zařízeními a neprochází žádným externím serverem.
+
+Pokud sdílíte svou konfiguraci jako QR kód nebo odkaz, je nastavení vašich spotřebičů a nabíjení elektromobilu zakódováno **přímo uvnitř odkazu nebo QR kódu** — nikdy se neodesílá na server. Naimportovat je může pouze ten, komu kód nebo odkaz předáte.
 
 ## Žádná analytika
 
 SweetSpot neobsahuje žádné SDK pro analytiku, hlášení chyb ani sledování používání. Aplikace nevykonává žádné síťové požadavky kromě stahování cen elektřiny z výše uvedených veřejných API (a volitelného odesílání statistik, pokud je aktivní, a odeslání hlášení, pokud použijete Nápovědu a podporu — viz níže).
 
-## Volitelná API statistika
+## Volitelné statistiky spolehlivosti
 
-Můžete se přihlásit ke sdílení anonymní statistiky spolehlivosti API. Po aktivaci aplikace pravidelně odesílá jednotlivé záznamy o každém požadavku na zdroj dat a obchodní zónu na náš server. Tato data obsahují:
+Můžete se přihlásit ke sdílení anonymních statistik spolehlivosti. Po aktivaci aplikace pravidelně odesílá jednotlivé záznamy o každém požadavku na zdroj dat a obchodní zónu na náš server. Tato data obsahují:
 
 - Časové razítko API požadavku
 - Identifikátor obchodní zóny (např. „NL“, „DE-LU“)

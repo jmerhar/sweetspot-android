@@ -504,85 +504,7 @@ class CheapestWindowFinderTest {
         assertEquals(now, earliest.startTime)
     }
 
-    // --- Optional "ready by" deadline ---
-
-    @Test
-    fun `deadline far in future does not change the result`() {
-        val prices = pricesAt(10, 0.30, 0.10, 0.20, 0.05, 0.40) // cheapest is 13:00
-        val deadline = ZonedDateTime.of(2025, 6, 15, 23, 0, 0, 0, timeZone)
-        val result = findCheapestWindow(prices, 1.0, earlyNow, deadline)
-
-        assertNotNull(result)
-        assertEquals(13, result!!.startTime.hour)
-        assertEquals(0.05, result.totalCost, 0.0001)
-    }
-
-    @Test
-    fun `deadline excludes the cheapest window and picks the cheapest that finishes in time`() {
-        // Cheapest overall is 13:00 (0.05), but a 12:00 deadline rules out any window ending
-        // after noon. Valid starts are 10:00 (ends 11:00) and 11:00 (ends 12:00) — cheapest 0.10.
-        val prices = pricesAt(10, 0.30, 0.10, 0.20, 0.05, 0.40)
-        val deadline = ZonedDateTime.of(2025, 6, 15, 12, 0, 0, 0, timeZone)
-        val result = findCheapestWindow(prices, 1.0, earlyNow, deadline)
-
-        assertNotNull(result)
-        assertEquals(11, result!!.startTime.hour)
-        assertEquals(0.10, result.totalCost, 0.0001)
-    }
-
-    @Test
-    fun `deadline allowing only the earliest window returns it`() {
-        val prices = pricesAt(10, 0.30, 0.10, 0.20)
-        val deadline = ZonedDateTime.of(2025, 6, 15, 11, 0, 0, 0, timeZone)
-        val result = findCheapestWindow(prices, 1.0, earlyNow, deadline)
-
-        assertNotNull(result)
-        assertEquals(10, result!!.startTime.hour)
-        assertEquals(0.30, result.totalCost, 0.0001)
-    }
-
-    @Test
-    fun `impossible deadline returns null`() {
-        // Earliest window (10:00–11:00) already overruns a 10:30 deadline.
-        val prices = pricesAt(10, 0.30, 0.10, 0.20)
-        val deadline = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
-        assertNull(findCheapestWindow(prices, 1.0, earlyNow, deadline))
-    }
-
-    @Test
-    fun `deadline respects clamped end time`() {
-        // now is mid-slot (10:30); the clamped window runs 10:30–11:30, exactly the deadline.
-        val now = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
-        val prices = pricesAt(10, 0.30, 0.10, 0.20)
-        val deadline = ZonedDateTime.of(2025, 6, 15, 11, 30, 0, 0, timeZone)
-        val result = findCheapestWindow(prices, 1.0, now, deadline)
-
-        assertNotNull(result)
-        assertEquals(now, result!!.startTime)
-        assertTrue(!result.endTime.isAfter(deadline))
-    }
-
-    @Test
-    fun `alternatives respect the deadline`() {
-        // Deadline 13:00 keeps starts 10:00–12:00; cheapest in range is 11:00, then earlier 10:00.
-        val prices = pricesAt(10, 0.30, 0.10, 0.20, 0.05, 0.40)
-        val deadline = ZonedDateTime.of(2025, 6, 15, 13, 0, 0, 0, timeZone)
-        val alts = findWindowAlternatives(prices, 1.0, earlyNow, deadline)
-
-        assertEquals(2, alts.size)
-        assertEquals(11, alts[0].startTime.hour)
-        assertEquals(10, alts[1].startTime.hour)
-        assertTrue(alts.all { !it.endTime.isAfter(deadline) })
-    }
-
-    @Test
-    fun `alternatives with impossible deadline returns empty`() {
-        val prices = pricesAt(10, 0.30, 0.10, 0.20)
-        val deadline = ZonedDateTime.of(2025, 6, 15, 10, 30, 0, 0, timeZone)
-        assertTrue(findWindowAlternatives(prices, 1.0, earlyNow, deadline).isEmpty())
-    }
-
-    // --- Branch coverage: minima, deadline cap, sub-slot, clamped breakdown ---
+    // --- Branch coverage: minima, sub-slot, clamped breakdown ---
 
     @Test
     fun `ascending prices pick the first window (later windows are not new minima)`() {
@@ -599,16 +521,6 @@ class CheapestWindowFinderTest {
         val alts = findWindowAlternatives(prices, 1.5, earlyNow)
         assertEquals(1, alts.size)
         assertEquals(prices[0].time, alts[0].startTime)
-    }
-
-    @Test
-    fun `a deadline caps the latest usable window mid-scan`() {
-        // 2h windows: 10→12 and 11→13 finish by 13:00; 12→14 overruns, so the scan breaks at index 2.
-        val prices = pricesAt(10, 0.40, 0.10, 0.20, 0.30) // 10:00..13:00
-        val deadline = ZonedDateTime.of(2025, 6, 15, 13, 0, 0, 0, timeZone)
-        val result = findCheapestWindow(prices, 2.0, earlyNow, deadline)
-        assertNotNull(result)
-        assertEquals(prices[1].time, result!!.startTime) // 11:00 (0.10+0.20) is the cheapest allowed
     }
 
     @Test

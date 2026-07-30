@@ -1233,7 +1233,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         val durationHours = state.durationHours + state.durationMinutes / 60.0
         // Full earlier-path (no deadline restriction); the deadline only picks the default offset.
         val alternatives = if (futurePrices.isNotEmpty()) {
-            findWindowAlternatives(futurePrices, durationHours, now, null)
+            findWindowAlternatives(futurePrices, durationHours, now)
         } else emptyList()
 
         // No window fits any more — every slot has elapsed. Keep the last result on screen (the
@@ -1705,7 +1705,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             // Build the full earlier-path (cheapest -> earliest) with no deadline restriction, so
             // "cheaper" can browse cheaper windows that finish after a "ready by" time. The default
             // still lands on the cheapest window that *meets* the deadline (deadlineDefaultOffset).
-            val alternatives = findWindowAlternatives(prices, durationHours, now, null)
+            val alternatives = findWindowAlternatives(prices, durationHours, now)
             val defaultOffset = deadlineDefaultOffset(alternatives, deadline)
 
             // No window fits at all, or a set deadline can't be met even by a window starting now.

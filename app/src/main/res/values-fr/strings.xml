@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Paramètres</string>
     <string name="cd_back">Retour</string>
-    <string name="main_description">SweetSpot vous aide à économiser de l\'argent en trouvant le meilleur moment pour faire fonctionner vos appareils. Choisissez simplement la durée de fonctionnement de votre appareil, et il analysera les 24 prochaines heures de prix d\'électricité dynamiques pour trouver la meilleure période. Vous pouvez aussi enregistrer vos appareils favoris dans les paramètres.</string>
-    <string name="main_find_button">Trouver la période la moins chère</string>
+    <string name="main_description">SweetSpot vous aide à économiser en trouvant le créneau le moins cher pour faire fonctionner vos appareils. Indiquez simplement la durée de fonctionnement de votre appareil, et il analysera les prochains prix de l\'électricité dynamiques pour trouver le meilleur créneau. Vous pouvez aussi enregistrer vos appareils favoris dans les paramètres pour un accès rapide.</string>
+    <string name="main_find_button">Trouver le créneau le moins cher</string>
     <string name="main_searching">Recherche…</string>
     <string name="main_add_appliances">Ajoutez vos appareils</string>
-    <string name="main_card_description">Trouvez le meilleur moment pour faire fonctionner votre appareil</string>
+    <string name="main_card_description">Trouvez le créneau le moins cher pour faire fonctionner votre appareil</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Heure recommandée</string>
+    <string name="result_cheapest_window">Créneau recommandé</string>
     <string name="result_after_deadline">Ce créneau se termine après votre heure « Prêt à ».</string>
     <string name="result_start">Début</string>
     <string name="result_end">Fin</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Réduire</string>
     <string name="cd_expand">Développer</string>
     <string name="result_upcoming_prices">Prochains prix</string>
-    <string name="result_disclaimer">Les coûts sont indiqués pour une charge de 1 kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
+    <string name="result_disclaimer">Les coûts sont indiqués pour une charge de 1 kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et la marge du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
     <string name="result_data_source">\nSource des données : %s</string>
     <string name="result_price_zone">\nZone tarifaire : %s</string>
-    <string name="cd_cheapest_window">période la moins chère</string>
+    <string name="cd_cheapest_window">créneau le moins cher</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Durée</string>
@@ -65,7 +65,7 @@
     <string name="settings_appearance_desc">Langue et thème</string>
     <string name="settings_appliances_menu_desc">Vos appareils enregistrés</string>
     <string name="settings_ev_menu_desc">Borne, charge cible et véhicules</string>
-    <string name="settings_all_in_menu_desc">Afficher le prix total au consommateur</string>
+    <string name="settings_all_in_menu_desc">Afficher le prix total pour le consommateur</string>
 
     <string name="settings_share_title">Partager ma configuration</string>
     <string name="settings_share_menu_desc">Copiez vos appareils et vos paramètres de recharge sur un autre appareil</string>
@@ -153,18 +153,18 @@
     <string name="cd_refresh">Actualiser</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Partager les statistiques API</string>
-    <string name="settings_stats_description">Aidez à améliorer la fiabilité des sources de données en partageant des statistiques anonymes de succès/échec API. Aucune donnée personnelle n\'est collectée.</string>
+    <string name="settings_stats_title">Partager les statistiques de fiabilité</string>
+    <string name="settings_stats_description">Aidez à améliorer la fiabilité des sources de données en partageant des décomptes anonymes indiquant quand les prix se chargent ou échouent. Aucune donnée personnelle n\'est collectée.</string>
     <string name="stats_prompt_title">Aider à améliorer SweetSpot ?</string>
-    <string name="stats_prompt_message">Partagez des statistiques API anonymes pour aider à améliorer la fiabilité des sources de données. Seuls les nombres de succès/échecs par source sont partagés — aucune donnée personnelle. Vous pouvez modifier ce choix à tout moment dans les Paramètres.</string>
+    <string name="stats_prompt_message">Partagez des statistiques anonymes pour aider à améliorer la fiabilité des sources de données. Seule la fréquence de chargement ou d\'échec de chaque source est partagée — aucune donnée personnelle. Vous pouvez modifier ce choix à tout moment dans les Paramètres.</string>
     <string name="stats_prompt_enable">Activer</string>
     <string name="stats_prompt_dismiss">Non merci</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Faites fonctionner vos appareils quand l\'électricité est la moins chère</string>
-    <string name="onboarding_body_1">SweetSpot analyse les prix de l\'électricité à venir pour trouver la période la moins chère où faire fonctionner un appareil.</string>
+    <string name="onboarding_body_1">SweetSpot analyse les prochains prix de l\'électricité pour trouver le créneau le moins cher où faire fonctionner un appareil.</string>
     <string name="onboarding_title_2">Vos appareils, à portée de main</string>
-    <string name="onboarding_body_2">Enregistrez un appareil et appuyez dessus pour voir sa période la moins chère. Ajoutez votre véhicule électrique pour planifier la recharge selon sa charge actuelle et cible.</string>
+    <string name="onboarding_body_2">Enregistrez un appareil et appuyez dessus pour voir son créneau le moins cher. Ajoutez votre véhicule électrique pour planifier la recharge selon sa charge actuelle et cible.</string>
     <string name="onboarding_title_3">Personnalisez l\'application</string>
     <string name="onboarding_body_3">Votre pays est détecté automatiquement. Changez de zone, ajoutez des appareils ou choisissez votre langue — tout est dans les Paramètres.</string>
     <string name="onboarding_skip">Passer</string>
@@ -184,7 +184,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Votre période d\'essai est terminée</string>
-    <string name="paywall_description">SweetSpot trouve le moment le moins cher pour faire fonctionner vos appareils en utilisant les prix de l\'électricité en temps réel dans 30 pays européens. Abonnez-vous pour continuer à trouver le meilleur créneau pour vos appareils.</string>
+    <string name="paywall_description">SweetSpot trouve le créneau le moins cher pour faire fonctionner vos appareils grâce aux prix de l\'électricité dynamiques dans 30 pays européens. Abonnez-vous pour continuer à l\'utiliser.</string>
     <string name="paywall_unlock">S\'abonner à SweetSpot</string>
     <string name="paywall_unlock_price">S\'abonner pour %s/an</string>
     <string name="paywall_restore">Restaurer l\'abonnement</string>
@@ -222,13 +222,13 @@
     <string name="ev_error_invalid_soc">La charge cible doit être supérieure à la charge actuelle.</string>
     <string name="ev_error_invalid_charger">Définissez une puissance de borne supérieure à zéro.</string>
     <string name="ev_error_deadline_unreachable">La recharge ne peut pas se terminer avant votre échéance. Essayez une charge cible plus basse ou une heure plus tardive.</string>
-    <string name="result_disclaimer_power">Les coûts sont indiqués pour une charge de %s kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et les frais du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
+    <string name="result_disclaimer_power">Les coûts sont indiqués pour une charge de %s kW. Les prix n\'incluent pas la TVA, la taxe sur l\'énergie et la marge du fournisseur. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
     <string name="dialog_power">Puissance (kW, facultatif)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Prix total</string>
     <string name="settings_all_in_toggle">Afficher le prix total</string>
-    <string name="settings_all_in_desc">Affiche le prix total estimé pour le consommateur (prix spot + taxe sur l\'énergie + marge du fournisseur + TVA) au lieu du seul prix du marché.</string>
+    <string name="settings_all_in_desc">Affiche le prix total estimé pour le consommateur (prix du marché + taxe sur l\'énergie + marge du fournisseur + TVA) au lieu du seul prix du marché.</string>
     <string name="all_in_supplier">Fournisseur</string>
     <string name="all_in_supplier_prompt">Sélectionnez votre fournisseur</string>
     <string name="all_in_supplier_custom">Marge personnalisée</string>
@@ -237,14 +237,14 @@
     <string name="all_in_incomplete">Veuillez sélectionner un fournisseur ou saisir une marge, ou désactiver le prix total.</string>
     <string name="picker_supplier_title">Fournisseur</string>
     <string name="picker_supplier_search">Rechercher des fournisseurs</string>
-    <string name="result_disclaimer_all_in">Les coûts sont indiqués pour une charge de 1 kW, au prix total estimé (prix spot + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Les coûts sont indiqués pour une charge de %s kW, au prix total estimé (prix spot + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
+    <string name="result_disclaimer_all_in">Les coûts sont indiqués pour une charge de 1 kW, au prix total estimé (prix du marché + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Les coûts sont indiqués pour une charge de %s kW, au prix total estimé (prix du marché + taxe sur l\'énergie + marge du fournisseur + TVA). Hors frais de réseau et abonnement mensuel fixe. Les prix de demain sont généralement disponibles après 13h00 CET.</string>
     <string name="result_all_in_supplier">\nFournisseur : %s</string>
     <string name="result_all_in_stale">Les données tarifaires datent de plus de 14 jours et peuvent être obsolètes.</string>
     <string name="chart_legend_energy_tax">Taxe sur l\'énergie</string>
     <string name="chart_legend_surcharge">Marge</string>
-    <string name="chart_legend_spot">Prix spot</string>
-    <string name="chart_legend_spot_negative">Prix spot négatif</string>
+    <string name="chart_legend_spot">Prix du marché</string>
+    <string name="chart_legend_spot_negative">Prix négatif</string>
     <string name="chart_legend_vat_note">Tous les prix incluent la TVA.</string>
 
     <!-- Sorting -->
@@ -340,16 +340,16 @@
     <string name="thread_load_error">Impossible de charger la conversation. Vérifiez votre connexion et réessayez.</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Trouvez le moment le moins cher</string>
+    <string name="guide_find_title">Trouvez le créneau le moins cher</string>
     <string name="guide_find_body">Choisissez la durée de fonctionnement de votre appareil, puis appuyez sur Trouver.</string>
     <string name="guide_appliances_title">Enregistrez vos appareils</string>
     <string name="guide_appliances_body">Ajoutez des appareils dans les Paramètres pour des recherches en un appui.</string>
     <string name="guide_ev_title">Planifiez la recharge électrique</string>
     <string name="guide_ev_body">Ajoutez votre voiture, saisissez sa charge actuelle et cible, et SweetSpot calcule le temps de recharge.</string>
     <string name="guide_result_title">Lisez le résultat</string>
-    <string name="guide_result_body">Utilisez Plus tôt et Moins cher pour décaler la période, et appuyez longuement sur le graphique pour voir le prix de chaque créneau.</string>
+    <string name="guide_result_body">Utilisez Plus tôt et Moins cher pour décaler le créneau, et appuyez longuement sur le graphique pour voir le prix de chaque créneau horaire.</string>
     <string name="guide_allin_title">Prix total</string>
-    <string name="guide_allin_body">Affichez si vous le souhaitez le prix total au consommateur au lieu du seul prix du marché.</string>
+    <string name="guide_allin_body">Affichez si vous le souhaitez le prix total pour le consommateur au lieu du seul prix du marché.</string>
     <string name="guide_wear_title">Sur votre montre</string>
     <string name="guide_wear_body">Vos appareils se synchronisent avec Wear OS pour consulter les prix sans votre téléphone.</string>
     <string name="reply_hint">Votre réponse</string>

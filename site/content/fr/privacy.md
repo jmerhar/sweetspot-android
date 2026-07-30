@@ -5,7 +5,7 @@ description: "Politique de confidentialité SweetSpot — respect de la vie priv
 
 ## Aperçu
 
-SweetSpot est conçu dans le respect de la vie privée. L'application ne collecte ni ne stocke aucune donnée personnelle. Il n'y a pas de comptes utilisateur, pas d'analyse d'utilisation et pas de suivi. Une fonctionnalité optionnelle permet de partager des statistiques API anonymes — voir les détails ci-dessous.
+SweetSpot est conçu dans le respect de la vie privée. L'application n'exige ni ne collecte de données personnelles pour fonctionner : pas de comptes utilisateur, pas d'analyse et pas de suivi d'utilisation, et elle ne demande que l'autorisation INTERNET (pas de localisation, de contacts, de stockage ni d'identifiants d'appareil). Des fonctionnalités optionnelles vous permettent de partager des statistiques de fiabilité anonymes ou d'envoyer des commentaires — voir les détails ci-dessous.
 
 ## Traitement des données
 
@@ -21,17 +21,19 @@ Ces requêtes API contiennent uniquement l'identifiant de la zone de prix et la 
 
 ## Stockage local
 
-Les données de prix sont mises en cache localement sur votre appareil pour réduire les appels API et accélérer les résultats. La configuration de vos appareils (noms, durées, icônes et puissances optionnelles), vos véhicules enregistrés (capacité de la batterie et puissance de recharge) et les paramètres (pays, zone, langue) sont également stockés localement sur votre appareil.
+Les données de prix sont mises en cache localement sur votre appareil pour réduire les appels API et accélérer les résultats. La configuration de vos appareils (noms, durées, icônes et puissances optionnelles), vos véhicules enregistrés (capacité de la batterie et puissance de recharge) et les paramètres (pays, zone, langue) sont également stockés localement sur votre appareil, ainsi que votre statut d'abonnement (mis en cache pour que l'application continue de fonctionner hors ligne) et le nombre d'appuis par appareil (utilisé uniquement pour le tri par les plus utilisés et récemment utilisés).
 
 Sur Wear OS, les données des appareils et les paramètres sont synchronisés entre le téléphone et la montre via l'API Wearable Data Layer. Cette communication reste sur vos appareils locaux et ne passe par aucun serveur externe.
 
+Si vous partagez votre configuration sous forme de QR code ou de lien, la configuration de vos appareils et de la recharge VE est encodée **à l'intérieur du lien ou du QR code lui-même** — elle n'est jamais téléversée sur un serveur. Seule la personne à qui vous donnez le code ou le lien peut l'importer.
+
 ## Pas d'analyse d'utilisation
 
-SweetSpot n'inclut aucun SDK d'analyse, rapport de plantage ou suivi d'utilisation. L'application ne fait aucune requête réseau en dehors de la récupération des prix d'électricité depuis les API publiques mentionnées ci-dessus (les rapports statistiques optionnels si activés, et l'envoi d'un rapport si vous utilisez Aide et assistance — voir ci-dessous).
+SweetSpot n'inclut aucun SDK d'analyse, rapport de plantage ou suivi d'utilisation. L'application ne fait aucune requête réseau en dehors de la récupération des prix d'électricité depuis les API publiques mentionnées ci-dessus (l'envoi facultatif de statistiques si activé, et l'envoi d'un signalement si vous utilisez Aide et assistance — voir ci-dessous).
 
-## Statistiques API optionnelles
+## Statistiques de fiabilité optionnelles
 
-Vous pouvez choisir de partager des statistiques anonymes sur la fiabilité des API. Lorsque cette option est activée, l'application envoie périodiquement des enregistrements individuels de requêtes pour chaque source de données et zone de prix à notre serveur. Ces données contiennent :
+Vous pouvez choisir de partager des statistiques de fiabilité anonymes. Lorsque cette option est activée, l'application envoie périodiquement des enregistrements individuels de requêtes pour chaque source de données et zone de prix à notre serveur. Ces données contiennent :
 
 - L'horodatage de la requête API
 - L'identifiant de la zone de prix (par ex. « NL », « DE-LU »)
@@ -52,9 +54,9 @@ Cette fonctionnalité est désactivée par défaut. Vous pouvez l'activer ou la 
 
 Si vous signalez un problème ou envoyez un commentaire depuis **Paramètres › Aide et assistance**, votre message est transmis à notre service de commentaires et enregistré sous forme d'issue dans notre dépôt GitHub public. **Le titre et la description que vous rédigez deviennent visibles publiquement** sur GitHub, alors n'y incluez pas d'informations personnelles.
 
-Si vous choisissez d'être informé par e-mail, l'adresse que vous fournissez est stockée uniquement par notre service de commentaires — elle n'est jamais affichée dans l'issue publique — et sert uniquement à vous envoyer des e-mails au sujet de votre propre rapport. Chaque e-mail de notification comporte un lien de désabonnement en un clic qui supprime l'adresse stockée, et vous pouvez également nous demander de la supprimer à tout moment.
+Si vous choisissez d'être informé par e-mail, l'adresse que vous fournissez est stockée uniquement par notre service de commentaires — elle n'est jamais affichée dans l'issue publique — et sert uniquement à vous envoyer des e-mails au sujet de votre propre signalement. Chaque e-mail de notification comporte un lien de désabonnement en un clic qui supprime l'adresse stockée, et vous pouvez également nous demander de la supprimer à tout moment.
 
-Les rapports de problème incluent également un court bloc de diagnostics non personnel : la version de l'application et d'Android, le modèle de votre appareil, la langue de l'application, la zone de prix sélectionnée et la source de données active. Il ne contient aucun nom, adresse e-mail, localisation ni autre information personnelle.
+Les signalements de problème incluent également un court bloc de diagnostics non personnel : la version de l'application et d'Android, le modèle de votre appareil, la langue de l'application, la zone de prix sélectionnée et la source de données active. Il ne contient aucun nom, adresse e-mail, localisation ni autre information personnelle.
 
 ## Open source
 

@@ -63,6 +63,7 @@ import today.sweetspot.model.SupplierTariffs
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.AllInPricing
 import today.sweetspot.util.CoachMarkPolicy
+import today.sweetspot.util.EvCharging
 import today.sweetspot.util.HomeChipLayout
 import today.sweetspot.util.UiText
 import today.sweetspot.util.combineUsage
@@ -914,7 +915,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
             _uiState.update { it.copy(error = AppError.Validation(UiText.Res(R.string.error_no_zone))) }
             return
         }
-        val effectivePowerKw = minOf(spec.acMaxPowerKw, _uiState.value.evHomeChargerKw)
+        val effectivePowerKw = EvCharging.effectivePowerKw(spec.acMaxPowerKw, _uiState.value.evHomeChargerKw)
         if (effectivePowerKw <= 0.0) {
             _uiState.update { it.copy(error = AppError.Validation(UiText.Res(R.string.ev_error_invalid_charger))) }
             return
@@ -923,9 +924,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
         // Tapping a vehicle and confirming its charge range is the EV-chip hint's target action.
         markCoachMarkSeen(CoachMark.EV_CHIP)
 
-        // Pure-linear AC charging model: energy needed / effective power.
-        val energyKwh = (targetSoc - currentSoc) / 100.0 * spec.batteryKwh
-        val totalMinutes = Math.round(energyKwh / effectivePowerKw * 60).toInt().coerceAtLeast(1)
+        val totalMinutes = EvCharging.chargeMinutes(currentSoc, targetSoc, spec.batteryKwh, effectivePowerKw)
         val roundedDurationHours = totalMinutes / 60.0
 
         val timeZoneId = _uiState.value.timeZoneId

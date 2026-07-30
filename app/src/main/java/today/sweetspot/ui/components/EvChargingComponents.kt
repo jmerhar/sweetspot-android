@@ -30,10 +30,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import today.sweetspot.R
+import today.sweetspot.util.EvCharging
 import today.sweetspot.util.formatDuration
 import today.sweetspot.util.formatHhMm
 import today.sweetspot.util.formatKw
-import kotlin.math.max
 import kotlin.math.roundToInt
 
 /**
@@ -117,7 +117,7 @@ fun SocDialog(
     var current by rememberSaveable { mutableIntStateOf(initialCurrentSoc) }
     var target by rememberSaveable { mutableIntStateOf(initialTargetSoc) }
 
-    val power = minOf(acMaxPowerKw, homeChargerKw)
+    val power = EvCharging.effectivePowerKw(acMaxPowerKw, homeChargerKw)
     val valid = target > current && power > 0.0
 
     AlertDialog(
@@ -147,7 +147,7 @@ fun SocDialog(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 if (valid) {
-                    val totalMinutes = max(1, ((target - current) / 100.0 * batteryKwh / power * 60).roundToInt())
+                    val totalMinutes = EvCharging.chargeMinutes(current, target, batteryKwh, power)
                     Text(
                         text = stringResource(
                             R.string.ev_charging_estimate,

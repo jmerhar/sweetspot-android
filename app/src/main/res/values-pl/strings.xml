@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Ustawienia</string>
     <string name="cd_back">Wstecz</string>
-    <string name="main_description">SweetSpot pomaga oszczędzać pieniądze, znajdując najtańszy czas na uruchomienie urządzeń. Wystarczy wybrać, jak długo ma działać urządzenie, a aplikacja przeskanuje ceny prądu z najbliższych 24 godzin, aby znaleźć najlepszy okres. Możesz też zapisać ulubione urządzenia w ustawieniach dla szybkiego dostępu.</string>
-    <string name="main_find_button">Znajdź najtańszy okres</string>
+    <string name="main_description">SweetSpot pomaga oszczędzać pieniądze, znajdując najtańszy czas na uruchomienie urządzeń. Wystarczy wybrać, jak długo ma działać urządzenie, a aplikacja przeskanuje nadchodzące dynamiczne ceny prądu, aby znaleźć najlepszy czas. Możesz też zapisać ulubione urządzenia w ustawieniach dla szybkiego dostępu.</string>
+    <string name="main_find_button">Znajdź najtańszy czas</string>
     <string name="main_searching">Wyszukiwanie…</string>
     <string name="main_add_appliances">Dodaj swoje urządzenia</string>
     <string name="main_card_description">Znajdź najtańszy czas na uruchomienie urządzenia</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Zalecana pora</string>
-    <string name="result_after_deadline">Ten przedział kończy się po Twoim czasie „Gotowe do”.</string>
+    <string name="result_cheapest_window">Zalecany czas</string>
+    <string name="result_after_deadline">Kończy się po Twoim czasie „Gotowe do”.</string>
     <string name="result_start">Początek</string>
     <string name="result_end">Koniec</string>
     <string name="result_total_cost">Koszt całkowity</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Zwiń</string>
     <string name="cd_expand">Rozwiń</string>
     <string name="result_upcoming_prices">Nadchodzące ceny</string>
-    <string name="result_disclaimer">Koszty są podane dla obciążenia 1 kW. Ceny nie zawierają VAT, podatku energetycznego i opłaty dostawcy. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
+    <string name="result_disclaimer">Koszty są podane dla obciążenia 1 kW. Ceny nie zawierają VAT, podatku energetycznego ani marży dostawcy. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
     <string name="result_data_source">\nŹródło danych: %s</string>
     <string name="result_price_zone">\nStrefa cenowa: %s</string>
-    <string name="cd_cheapest_window">najtańszy okres</string>
+    <string name="cd_cheapest_window">najtańszy czas</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Czas trwania</string>
@@ -161,10 +161,10 @@
     <string name="cd_refresh">Odśwież</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Udostępnij statystyki API</string>
-    <string name="settings_stats_description">Pomóż poprawić niezawodność źródeł danych, udostępniając anonimowe statystyki powodzeń/niepowodzeń API. Nie są zbierane żadne dane osobowe.</string>
+    <string name="settings_stats_title">Udostępnij statystyki niezawodności</string>
+    <string name="settings_stats_description">Pomóż poprawić niezawodność źródeł danych, udostępniając anonimowe informacje o tym, kiedy dane cenowe wczytują się poprawnie lub zawodzą. Nie są zbierane żadne dane osobowe.</string>
     <string name="stats_prompt_title">Pomóż ulepszyć SweetSpot?</string>
-    <string name="stats_prompt_message">Udostępniaj anonimowe statystyki API, aby pomóc poprawić niezawodność źródeł danych. Udostępniane są tylko liczby sukcesów/błędów na źródło — bez danych osobowych. Możesz to zmienić w dowolnym momencie w Ustawieniach.</string>
+    <string name="stats_prompt_message">Udostępniaj anonimowe statystyki, aby pomóc poprawić niezawodność źródeł danych. Udostępniane jest tylko to, jak często każde źródło danych wczytuje się poprawnie lub zawodzi — bez danych osobowych. Możesz to zmienić w dowolnym momencie w Ustawieniach.</string>
     <string name="stats_prompt_enable">Włącz</string>
     <string name="stats_prompt_dismiss">Nie, dziękuję</string>
 
@@ -172,7 +172,7 @@
     <string name="onboarding_title_1">Uruchamiaj urządzenia, gdy prąd jest najtańszy</string>
     <string name="onboarding_body_1">SweetSpot skanuje nadchodzące ceny prądu, aby znaleźć najtańszy czas na uruchomienie urządzenia.</string>
     <string name="onboarding_title_2">Twoje urządzenia w zasięgu jednego dotknięcia</string>
-    <string name="onboarding_body_2">Zapisz urządzenie i dotknij go, aby poznać jego najtańszy okres. Dodaj swój samochód elektryczny, aby zaplanować ładowanie na podstawie obecnego i docelowego poziomu naładowania.</string>
+    <string name="onboarding_body_2">Zapisz urządzenie i dotknij go, aby poznać jego najtańszy czas. Dodaj swój samochód elektryczny, aby zaplanować ładowanie na podstawie obecnego i docelowego poziomu naładowania.</string>
     <string name="onboarding_title_3">Dostosuj do siebie</string>
     <string name="onboarding_body_3">Twój kraj jest wykrywany automatycznie. Zmień strefę, dodaj urządzenia lub wybierz język — wszystko znajdziesz w Ustawieniach.</string>
     <string name="onboarding_skip">Pomiń</string>
@@ -187,7 +187,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Okres próbny dobiegł końca</string>
-    <string name="paywall_description">SweetSpot znajduje najtańszy czas na uruchomienie urządzeń, korzystając z cen energii elektrycznej w czasie rzeczywistym w 30 krajach europejskich. Subskrybuj, aby dalej znajdować najtańszy czas dla Twoich urządzeń.</string>
+    <string name="paywall_description">SweetSpot znajduje najtańszy czas na uruchomienie urządzeń, korzystając z dynamicznych cen energii elektrycznej w 30 krajach europejskich. Subskrybuj, aby dalej korzystać z aplikacji.</string>
     <string name="paywall_unlock">Subskrybuj SweetSpot</string>
     <string name="paywall_unlock_price">Subskrybuj za %s/rok</string>
     <string name="paywall_restore">Przywróć subskrypcję</string>
@@ -226,7 +226,7 @@
     <string name="ev_error_invalid_soc">Poziom docelowy musi być wyższy niż obecny.</string>
     <string name="ev_error_invalid_charger">Ustaw moc ładowarki większą od zera.</string>
     <string name="ev_error_deadline_unreachable">Ładowanie nie zakończy się przed wyznaczonym czasem. Spróbuj obniżyć poziom docelowy lub wybrać późniejszą godzinę.</string>
-    <string name="result_disclaimer_power">Koszty są podane dla obciążenia %s kW. Ceny nie zawierają VAT, podatku energetycznego i opłaty dostawcy. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
+    <string name="result_disclaimer_power">Koszty są podane dla obciążenia %s kW. Ceny nie zawierają VAT, podatku energetycznego ani marży dostawcy. Ceny na jutro są zwykle dostępne po godz. 13:00 CET.</string>
     <string name="dialog_power">Moc (kW, opcjonalnie)</string>
 
     <!-- All-in pricing -->
@@ -288,7 +288,7 @@
     <string name="ev_separate_section">Osobna sekcja</string>
     <string name="home_section_vehicles">Pojazdy</string>
     <string name="home_section_appliances">Urządzenia</string>
-    <string name="coach_earlier_cheaper">Nie ta pora? Dotknij Wcześniej, aby zacząć szybciej, albo Taniej, aby wrócić do najtańszego terminu.</string>
+    <string name="coach_earlier_cheaper">Nie pasuje Ci ten czas? Dotknij Wcześniej, aby zacząć szybciej, albo Taniej, aby wrócić do najtańszego.</string>
     <string name="coach_chart_press_hold">Przytrzymaj wykres, aby zobaczyć cenę o dowolnej porze.</string>
     <string name="coach_all_in_toggle">Przełączaj między pełną ceną całkowitą a samą ceną rynkową.</string>
     <string name="coach_ev_chip">Dotknij pojazd, aby zaplanować ładowanie według poziomu akumulatora.</string>
@@ -320,11 +320,11 @@
     <string name="help_whats_new_desc">Najnowsze zmiany</string>
     <string name="help_privacy_title">Polityka prywatności</string>
     <string name="help_privacy_desc">Jak przetwarzane są Twoje dane</string>
-    <string name="help_about_license">GPL v3 · Otwarty kod na GitHub</string>
+    <string name="help_about_license">GPL v3 · Otwarty kod na GitHubie</string>
     <string name="tips_reset_snackbar">Zresetowano wskazówki</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">Twoje zgłoszenie zostanie opublikowane jako publiczne zgłoszenie na GitHub — nie podawaj danych osobowych.</string>
+    <string name="report_public_notice">Twoje zgłoszenie zostanie opublikowane jako publiczny wątek na GitHubie — nie podawaj danych osobowych.</string>
     <string name="report_subject_label">Temat</string>
     <string name="report_body_label_bug">Co się stało?</string>
     <string name="report_body_label_feedback">Twoja opinia</string>
@@ -352,7 +352,7 @@
     <string name="guide_ev_title">Zaplanuj ładowanie auta elektrycznego</string>
     <string name="guide_ev_body">Dodaj swój samochód, wpisz jego obecny i docelowy poziom naładowania, a SweetSpot obliczy czas ładowania.</string>
     <string name="guide_result_title">Odczytaj wynik</string>
-    <string name="guide_result_body">Użyj Wcześniej i Taniej, aby przesunąć okres, a przytrzymaj wykres, aby poznać cenę dowolnego przedziału.</string>
+    <string name="guide_result_body">Użyj Wcześniej i Taniej, aby przesunąć zalecany czas, a przytrzymaj wykres, aby poznać cenę dowolnego przedziału.</string>
     <string name="guide_allin_title">Cena całkowita</string>
     <string name="guide_allin_body">Opcjonalnie pokaż pełną cenę dla konsumenta zamiast samej ceny rynkowej.</string>
     <string name="guide_wear_title">Na Twoim zegarku</string>
@@ -364,7 +364,7 @@
     <string name="thread_load_error">Nie udało się załadować rozmowy. Sprawdź połączenie i spróbuj ponownie.</string>
     <string name="reply_hint">Twoja odpowiedź</string>
     <string name="reply_send">Wyślij</string>
-    <string name="reply_public_note">Twoja odpowiedź jest publikowana publicznie w GitHub.</string>
+    <string name="reply_public_note">Twoja odpowiedź jest widoczna publicznie na GitHubie.</string>
     <string name="reply_error">Nie udało się wysłać odpowiedzi. Spróbuj ponownie.</string>
     <string name="reply_queued">Zapisano — wyślemy Twoją odpowiedź, gdy znów będziesz online.</string>
 </resources>

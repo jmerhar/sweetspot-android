@@ -21,17 +21,25 @@ Kolejność priorytetów źródeł danych możesz skonfigurować w ustawieniach.
 {{< /faq >}}
 
 {{< faq question="Czy ceny są dokładne?" >}}
-SweetSpot pokazuje **ceny spot dnia następnego** — hurtowe ceny energii elektrycznej ustalane przez rynek na dzień przed dostawą. Ceny te **nie** zawierają VAT, podatku energetycznego, opłat sieciowych ani marży dostawcy, które różnią się w zależności od kraju i dostawcy.
+SweetSpot pokazuje **rynkowe ceny dnia następnego** — hurtowe ceny energii elektrycznej ustalane przez rynek dzień przed dostawą (nazywane też cenami spot). Ceny te **nie** zawierają VAT, podatków energetycznych, opłat sieciowych ani marż dostawców, które różnią się w zależności od kraju i dostawcy.
 
-Ceny są przydatne do porównywania przedziałów czasowych między sobą (znajdowania, kiedy prąd jest najtańszy), co jest głównym celem aplikacji. Koszty są domyślnie pokazywane na 1 kW obciążenia; ustaw moc znamionową urządzenia lub ładuj auto elektryczne, a szacunek odzwierciedli rzeczywiste obciążenie. Ceny na jutro są zwykle dostępne po godzinie 13:00 CET.
+Ceny i tak są przydatne do znajdowania, kiedy prąd jest najtańszy — co jest głównym celem aplikacji. Koszty są domyślnie pokazywane na 1 kW obciążenia; ustaw moc znamionową urządzenia lub ładuj auto elektryczne, a szacunek odzwierciedli rzeczywiste obciążenie. Ceny na jutro są zwykle dostępne po godzinie 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Czy potrzebuję specjalnej umowy na prąd?" >}}
+Tak — aby faktycznie oszczędzać, potrzebujesz **umowy na dynamiczną (spotową lub godzinową) cenę prądu**, w której płacona przez Ciebie cena podąża za rynkiem dnia następnego. SweetSpot pokazuje, kiedy te ceny są najniższe, ale nie może zmienić tego, ile nalicza Twój dostawca: przy taryfie ze stałą stawką cena jest taka sama przez cały dzień, więc przesuwanie momentu zużycia prądu nie obniży Twojego rachunku.
 {{< /faq >}}
 
 {{< faq question="Czy SweetSpot pomoże mi naładować auto elektryczne?" >}}
-Tak. Dodaj swój pojazd — wybierz go z wbudowanej bazy około 1600 aut elektrycznych i hybryd typu plug-in albo wpisz ręcznie pojemność akumulatora i moc ładowania. Następnie podaj obecny i docelowy poziom naładowania, a SweetSpot obliczy, ile potrwa ładowanie (na podstawie pojemności akumulatora oraz niższej z wartości: limitu AC Twojego auta i mocy domowej ładowarki) i znajdzie najtańszy okres na podłączenie.
+Tak. Dodaj swój pojazd — wybierz go z wbudowanej bazy tysięcy aut elektrycznych i hybryd typu plug-in albo wpisz ręcznie pojemność akumulatora i moc ładowania. Następnie podaj obecny i docelowy poziom naładowania, a SweetSpot obliczy, ile potrwa ładowanie (na podstawie pojemności akumulatora oraz niższej z wartości: limitu AC Twojego auta i mocy domowej ładowarki) i znajdzie najtańszy czas na podłączenie.
 {{< /faq >}}
 
 {{< faq question="Czy mogę zadbać o to, by było gotowe na określoną godzinę?" >}}
-Tak. Włącz opcjonalny termin **„gotowe do”** i wybierz godzinę. SweetSpot uwzględni wtedy tylko te okresy, które zakończą się przed tym czasem — dla dowolnego urządzenia lub dla ładowania auta elektrycznego (na przykład w pełni naładowane do 7:00 rano).
+Tak. Włącz opcjonalny termin **„gotowe do”** i wybierz godzinę. SweetSpot domyślnie wybierze wtedy najtańszy czas, który zakończy się przed tą godziną — dla dowolnego urządzenia lub dla ładowania auta elektrycznego (na przykład naładowane do 7:00 rano). Jeśli wolisz, możesz i tak przejść do tańszego czasu, który kończy się nieco później; SweetSpot zaznaczy, gdy pokazany czas kończy się po Twoim terminie.
+{{< /faq >}}
+
+{{< faq question="Dlaczego zalecany czas ciągle się zmienia?" >}}
+SweetSpot ponownie sprawdza ceny, gdy wynik jest otwarty, a przedziały, które są już w przeszłości, znikają z upływem czasu — dlatego zalecany czas może się przesuwać. Użyj przycisków **Wcześniej** i **Taniej**, aby przechodzić między wcześniejszym (nieco droższym) startem a najtańszym — każdy pokazuje, o ile więcej kosztuje niż zalecany czas.
 {{< /faq >}}
 
 {{< faq question="Czy koszty odzwierciedlają, ile prądu zużywa moje urządzenie?" >}}
@@ -43,17 +51,17 @@ SweetSpot przechowuje ceny lokalnie na Twoim urządzeniu. Jeśli niedawno pobra�
 {{< /faq >}}
 
 {{< faq question="Czy aplikacja Wear OS działa samodzielnie?" >}}
-Aplikacja Wear OS synchronizuje urządzenia i ustawienia z aplikacji na telefonie za pomocą Wearable Data Layer API. Po synchronizacji aplikacja na zegarku pobiera ceny niezależnie — działa więc nawet wtedy, gdy telefon nie jest w pobliżu, pod warunkiem że zegarek ma dostęp do internetu (Wi-Fi lub LTE).
+Aplikacja Wear OS synchronizuje urządzenia i ustawienia z aplikacji na telefonie. Po synchronizacji aplikacja na zegarku pobiera ceny niezależnie — działa więc nawet wtedy, gdy telefon nie jest w pobliżu, pod warunkiem że zegarek ma dostęp do internetu (Wi-Fi lub LTE).
 
 Aplikacja na zegarek wymaga Wear OS 3 lub nowszego (Pixel Watch, Samsung Galaxy Watch 4+ i inne kompatybilne zegarki).
 {{< /faq >}}
 
 {{< faq question="Czy mogę zobaczyć pełną cenę, którą faktycznie płacę?" >}}
-Domyślnie SweetSpot pokazuje hurtową **cenę spot**. W obsługiwanych krajach (obecnie w Holandii) możesz włączyć w ustawieniach **ceny all-in**, które doliczają do ceny spot podatek energetyczny, dopłatę Twojego dostawcy oraz VAT, aby pokazać przybliżoną pełną cenę konsumencką. W połączeniu z **mocą znamionową** urządzenia daje to realistyczny szacunek tego, ile faktycznie będzie kosztować uruchomienie tego urządzenia. Jest to funkcja wyłącznie informacyjna — nigdy nie zmienia tego, który okres wypada najtaniej.
+Domyślnie SweetSpot pokazuje hurtową **cenę rynkową**. W obsługiwanych krajach (obecnie w Holandii) możesz włączyć w ustawieniach **cenę całkowitą** (cenę all-in), która dolicza do ceny rynkowej podatek energetyczny, marżę Twojego dostawcy oraz VAT, aby pokazać przybliżoną pełną cenę konsumencką. W połączeniu z **mocą znamionową** urządzenia daje to realistyczny szacunek tego, ile faktycznie będzie kosztować uruchomienie tego urządzenia. Jest to funkcja wyłącznie informacyjna — nigdy nie zmienia tego, który czas wypada najtaniej.
 {{< /faq >}}
 
 {{< faq question="Czy mogę skopiować swoje urządzenia na inne urządzenie?" >}}
-Tak. W ustawieniach możesz udostępnić swoją konfigurację — urządzenia, ich kolejność oraz ustawienia ładowania auta elektrycznego — w postaci kodu QR lub linku. Zeskanuj go lub otwórz na innym urządzeniu, aby zaimportować wszystko. Działa to całkowicie offline, bez konta i bez serwera: dane są zawarte w samym linku lub kodzie QR, a Ty decydujesz, czy dodać je do istniejących, czy je zastąpić.
+Tak. W ustawieniach możesz udostępnić swoją konfigurację — urządzenia, ich kolejność oraz ustawienia ładowania auta elektrycznego — w postaci kodu QR lub linku. Zeskanuj go lub otwórz na innym urządzeniu, aby zaimportować wszystko. Działa to całkowicie offline, bez konta i bez serwera: dane są zawarte w samym linku lub kodzie QR, a Ty decydujesz, czy dodać je do istniejących, zastąpić je, czy wybrać z nich pojedyncze elementy.
 {{< /faq >}}
 
 {{< faq question="Jak zgłosić problem lub zaproponować funkcję?" >}}

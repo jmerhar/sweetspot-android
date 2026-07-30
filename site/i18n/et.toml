@@ -26,7 +26,7 @@ other = "Vaheta keelt"
 other = "Leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks"
 
 [hero_subtitle]
-other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab soodsaima ajavahemiku oma seadmete kasutamiseks või elektriauto laadimiseks — vajadusel valmis sinu määratud tähtajaks. Avatud lähtekoodiga ja privaatne."
+other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab soodsaima aja oma seadmete kasutamiseks või elektriauto laadimiseks — vajadusel valmis sinu määratud tähtajaks. Avatud lähtekoodiga ja privaatne."
 
 [download]
 other = "Laadi alla Google Playst"
@@ -44,7 +44,7 @@ other = "30 Euroopa riiki"
 other = "Katab 43 pakkumistsooni üle Euroopa, Portugalist Soomeni ja Norrast Kreekani."
 
 [feature_prices_title]
-other = "Reaalajas hinnad"
+other = "Järgmise päeva hinnad"
 
 [feature_prices_desc]
 other = "Järgmise päeva elektrihinnad ENTSO-E Transparency Platformilt, igapäevase värskendusega."
@@ -53,13 +53,13 @@ other = "Järgmise päeva elektrihinnad ENTSO-E Transparency Platformilt, igapä
 other = "Nutikas algoritm"
 
 [feature_algorithm_desc]
-other = "Liuguv algoritm libiseb üle ajatelje ja leiab soodsaima järjestikuse ajavahemiku mis tahes valitud kestuse jaoks."
+other = "SweetSpot leiab soodsaima järjestikuse ajavahemiku mis tahes valitud kestuse jaoks."
 
 [feature_fallback_title]
 other = "Usaldusväärsed andmed"
 
 [feature_fallback_desc]
-other = "Viis andmeallikat automaatse varuallikaga tagavad, et hinnad on alati kättesaadavad."
+other = "Viis andmeallikat automaatse varuallikaga aitavad hoida hinnad kättesaadavana."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Lisa oma auto ning sisesta selle praegune ja soovitud laetuse tase. Swe
 other = "Valmis hiljemalt"
 
 [feature_deadline_desc]
-other = "Vajad seda valmis kindlaks ajaks? Lisa „valmis hiljemalt“ tähtaeg ja SweetSpot valib ainult ajavahemikud, mis õigeks ajaks lõpevad."
+other = "Vajad seda valmis kindlaks ajaks? Lisa „valmis hiljemalt“ tähtaeg ja SweetSpot valib odavaima aja, mis selleks ajaks jõuab."
 
 [feature_power_title]
 other = "Võimsus"
@@ -155,7 +155,7 @@ other = "Otsitavat lehte ei ole olemas."
 other = "Tagasi avalehele"
 
 [screenshot_1_alt]
-other = "Soodsaima ajavahemiku tulemus algusaja, kogukulu ja kulude jaotusega"
+other = "Soovitatud aeg koos algusaja, kogukulu ja kulude jaotusega"
 
 [screenshot_2_alt]
 other = "Avakuva seadmetega, kestuse valijaga ja Otsi nupuga"

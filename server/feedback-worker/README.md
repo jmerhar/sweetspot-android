@@ -79,7 +79,10 @@ curl -sX POST https://feedback.sweetspot.today/report \
 
 ## Notes
 
-- **Anti-abuse:** per-IP daily rate limit (`RATE_LIMIT_PER_DAY` in `vars`) + length caps. Add Play
+- **Anti-abuse:** a per-IP daily rate limit (`RATE_LIMIT_PER_DAY`) plus a global daily ceiling across
+  all IPs (`GLOBAL_RATE_LIMIT_PER_DAY`) that bounds the blast radius of IP-rotation abuse, plus length
+  caps. Both KV counters are eventually consistent, so authoritative per-IP enforcement should be a
+  Cloudflare rate-limiting rule on `POST /report` at the edge (atomic, ahead of the Worker). Add Play
   Integrity later if bots appear (Turnstile is web-only — not usable from a native app).
 - **Privacy:** the reporter's email is stored only in KV keyed by issue number for notifications —
   never written into the public issue. Every notification includes a one-click unsubscribe link

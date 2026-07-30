@@ -85,10 +85,20 @@ async function handleReport(request, env) {
 
   // Coarse per-IP daily rate limit (KV, eventually consistent — fine for abuse throttling).
   const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
+  const day = new Date().toISOString().slice(0, 10);
   const limit = intVar(env.RATE_LIMIT_PER_DAY, 5);
-  const rlKey = `rl:${ip}:${new Date().toISOString().slice(0, 10)}`;
+  const rlKey = `rl:${ip}:${day}`;
   const used = parseInt((await env.FEEDBACK_KV.get(rlKey)) ?? "0", 10) || 0;
   if (used >= limit) return json({ error: "rate_limited" }, 429);
+
+  // Global daily ceiling across all IPs — a coarse backstop that bounds the blast radius of
+  // IP-rotation abuse, which the per-IP cap alone cannot. Authoritative per-IP enforcement is a
+  // Cloudflare rate-limiting rule at the edge (atomic, ahead of this Worker); this KV counter is
+  // eventually consistent, so it caps a flood roughly rather than exactly.
+  const globalLimit = intVar(env.GLOBAL_RATE_LIMIT_PER_DAY, 100);
+  const glKey = `rl:global:${day}`;
+  const globalUsed = parseInt((await env.FEEDBACK_KV.get(glKey)) ?? "0", 10) || 0;
+  if (globalUsed >= globalLimit) return json({ error: "rate_limited" }, 429);
 
   // Compose the issue. The reporter's email is NEVER written into the (public) issue.
   const labels = ["from-app", CATEGORY_LABEL[category]];
@@ -113,8 +123,9 @@ async function handleReport(request, env) {
 
   const issue = await ghRes.json();
 
-  // Only now (success) spend the rate-limit slot, and store the opt-in email for notifications.
+  // Only now (success) spend the rate-limit slots, and store the opt-in email for notifications.
   await env.FEEDBACK_KV.put(rlKey, String(used + 1), { expirationTtl: 172800 });
+  await env.FEEDBACK_KV.put(glKey, String(globalUsed + 1), { expirationTtl: 172800 });
 
   // Always store a per-report token (400-day TTL). It's the single capability for this report: the app
   // holds it (returned below) to post in-app replies via /reply, and it also backs the emailed

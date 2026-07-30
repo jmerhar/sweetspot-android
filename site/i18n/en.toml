@@ -26,7 +26,7 @@ other = "Switch language"
 other = "Find the cheapest time to run your appliances and charge your EV"
 
 [hero_subtitle]
-other = "SweetSpot scans dynamic electricity prices across 30 European countries to find the cheapest window to run your appliances or charge your EV — finished by a deadline if you set one. Open source and private."
+other = "SweetSpot scans dynamic electricity prices across 30 European countries to find the cheapest time to run your appliances or charge your EV — finished by a deadline if you set one. Open source and private."
 
 [download]
 other = "Get it on Google Play"
@@ -86,7 +86,7 @@ other = "Add your car, then enter its current and target charge. SweetSpot works
 other = "Ready-By Deadline"
 
 [feature_deadline_desc]
-other = "Need it finished by a set time? Add a 'ready by' deadline and SweetSpot defaults to the cheapest window that finishes in time."
+other = "Need it finished by a set time? Add a 'ready by' deadline and SweetSpot picks the cheapest time that meets it."
 
 [feature_power_title]
 other = "Power Rating"
@@ -158,7 +158,7 @@ other = "The page you're looking for doesn't exist."
 other = "Back to home"
 
 [screenshot_1_alt]
-other = "Cheapest window result with start time, total cost, and cost breakdown"
+other = "Recommended time with its start time, total cost, and cost breakdown"
 
 [screenshot_2_alt]
 other = "Home screen with appliance chips, duration picker, and Find button"

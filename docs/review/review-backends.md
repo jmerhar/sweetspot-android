@@ -25,8 +25,8 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 | M3 build-suppliers orchestration untested | ⏳ | add a `build_country` test with a canned feed |
 | M4 deploy.sh writes changelogs before the 500-char gate; byte char-count | ⏳ | local-only; UTF-8 shell |
 | L1 duplicated locale table | ✅ | `11e3345` |
-| L2 dead `dokka` catalog entry | 📋 | Phase 3 |
-| L3 buildSrc hardcoded AGP/Kotlin versions | 📋 | Phase 3 (or accept — Gradle limitation) |
+| L2 dead `dokka` catalog entry | ✅ | removed from the version catalog (Phase 3) |
+| L3 buildSrc hardcoded AGP/Kotlin versions | ➖ | accept — Gradle can't read the catalog for buildSrc plugin deps; the "keep in sync" comment documents it |
 | L4 install.sh macOS-only + stale fallback APK names | ⏳ | local dev convenience |
 | L5 diagnostics can break the code fence | ⏳ | cosmetic, low |
 | L6 build-suppliers `usable:false` docstring | ✅ | `11098c7` |

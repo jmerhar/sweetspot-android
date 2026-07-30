@@ -5,7 +5,7 @@
     <!-- Main screen -->
     <string name="cd_settings">Settings</string>
     <string name="cd_back">Back</string>
-    <string name="main_description">SweetSpot helps you save money by finding the cheapest time to run your appliances. Just pick how long your appliance needs to run, and it will scan the next 24 hours of dynamic electricity prices to find the best window. You can also save your favourite appliances in settings for quick access.</string>
+    <string name="main_description">SweetSpot helps you save money by finding the cheapest time to run your appliances. Just pick how long your appliance needs to run, and it will scan upcoming dynamic electricity prices to find the best window. You can also save your favourite appliances in settings for quick access.</string>
     <string name="main_find_button">Find Cheapest Window</string>
     <string name="main_searching">Searching…</string>
     <string name="main_add_appliances">Add your appliances</string>
@@ -24,22 +24,22 @@
     <string name="result_cost_above_cheapest">%1$s more than cheapest</string>
     <string name="result_earlier">Earlier</string>
     <string name="result_cheaper">Cheaper</string>
-    <string name="result_cost_breakdown">Cost Breakdown</string>
+    <string name="result_cost_breakdown">Cost breakdown</string>
     <string name="cd_collapse">Collapse</string>
     <string name="cd_expand">Expand</string>
-    <string name="result_upcoming_prices">Upcoming Prices</string>
-    <string name="result_disclaimer">Costs shown are per 1 kW load. Prices do not include VAT, energy tax, and supplier fee. Tomorrow’s prices are usually available after 13:00 CET.</string>
-    <string name="result_disclaimer_power">Costs shown are for a load of %s kW. Prices do not include VAT, energy tax, and supplier fee. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_upcoming_prices">Upcoming prices</string>
+    <string name="result_disclaimer">Costs shown are per 1 kW load. Prices do not include VAT, energy tax, or supplier surcharge. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_disclaimer_power">Costs shown are for a load of %s kW. Prices do not include VAT, energy tax, or supplier surcharge. Tomorrow’s prices are usually available after 13:00 CET.</string>
     <string name="result_data_source">\nData source: %s</string>
     <string name="result_price_zone">\nPrice zone: %s</string>
-    <string name="result_disclaimer_all_in">Costs shown are per 1 kW load, at the estimated total price (spot + energy tax + supplier surcharge + VAT). Excludes grid fees and fixed monthly charges. Tomorrow’s prices are usually available after 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Costs shown are for a load of %s kW, at the estimated total price (spot + energy tax + supplier surcharge + VAT). Excludes grid fees and fixed monthly charges. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Costs shown are per 1 kW load, at the estimated total price (market price + energy tax + supplier surcharge + VAT). Excludes grid fees and fixed monthly charges. Tomorrow’s prices are usually available after 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Costs shown are for a load of %s kW, at the estimated total price (market price + energy tax + supplier surcharge + VAT). Excludes grid fees and fixed monthly charges. Tomorrow’s prices are usually available after 13:00 CET.</string>
     <string name="result_all_in_supplier">\nSupplier: %s</string>
     <string name="result_all_in_stale">Tariff data is more than 14 days old and may be out of date.</string>
     <string name="chart_legend_energy_tax">Energy tax</string>
     <string name="chart_legend_surcharge">Surcharge</string>
-    <string name="chart_legend_spot">Spot price</string>
-    <string name="chart_legend_spot_negative">Negative spot</string>
+    <string name="chart_legend_spot">Market price</string>
+    <string name="chart_legend_spot_negative">Negative price</string>
     <string name="chart_legend_vat_note">All prices include VAT.</string>
     <string name="cd_cheapest_window">cheapest window</string>
 
@@ -136,13 +136,13 @@
     <string name="picker_supplier_search">Search suppliers</string>
     <string name="settings_all_in_title">Total price</string>
     <string name="settings_all_in_toggle">Show total price</string>
-    <string name="settings_all_in_desc">Show the estimated full consumer price (spot + energy tax + supplier surcharge + VAT) instead of the bare market price.</string>
+    <string name="settings_all_in_desc">Show the estimated full consumer price (market price + energy tax + supplier surcharge + VAT) instead of just the market price.</string>
     <string name="all_in_supplier">Supplier</string>
     <string name="all_in_supplier_prompt">Select your supplier</string>
     <string name="all_in_supplier_custom">Custom surcharge</string>
     <string name="all_in_no_supplier">No supplier found. Enter a custom surcharge below instead.</string>
     <string name="all_in_surcharge_custom">Custom surcharge (excl. VAT)</string>
-    <string name="all_in_incomplete">Select a supplier or enter a surcharge, or turn off the total price.</string>
+    <string name="all_in_incomplete">Pick a supplier or enter a surcharge — or turn off the total price.</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d zone</item>
         <item quantity="other">%d zones</item>
@@ -175,10 +175,10 @@
     <string name="cd_refresh">Refresh</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Share API statistics</string>
-    <string name="settings_stats_description">Help improve data source reliability by sharing anonymous API success/failure counts. No personal data is collected.</string>
+    <string name="settings_stats_title">Share reliability statistics</string>
+    <string name="settings_stats_description">Help improve data source reliability by sharing anonymous counts of when price data loads or fails. No personal data is collected.</string>
     <string name="stats_prompt_title">Help improve SweetSpot?</string>
-    <string name="stats_prompt_message">Share anonymous API statistics to help improve data source reliability. Only success/failure counts per data source are shared — no personal data. You can change this at any time in Settings.</string>
+    <string name="stats_prompt_message">Share anonymous statistics to help improve data source reliability. Only how often each data source loads or fails is shared — no personal data. You can change this at any time in Settings.</string>
     <string name="stats_prompt_enable">Enable</string>
     <string name="stats_prompt_dismiss">No thanks</string>
 
@@ -196,7 +196,7 @@
     <string name="settings_how_it_works_desc">See the intro again</string>
     <string name="coach_earlier_cheaper">Not the right time? Tap Earlier for a sooner start, or Cheaper to head back to the cheapest.</string>
     <string name="coach_chart_press_hold">Press and hold the chart to see the price at any time.</string>
-    <string name="coach_all_in_toggle">Switch between the full all-in price and the bare market price.</string>
+    <string name="coach_all_in_toggle">Switch between the full total price and just the market price.</string>
     <string name="coach_ev_chip">Tap your vehicle to plan charging by battery percentage.</string>
     <string name="coach_got_it">Got it</string>
 
@@ -270,8 +270,8 @@
     <string name="guide_ev_body">Add your car, enter its current and target charge, and SweetSpot works out the charging time.</string>
     <string name="guide_result_title">Read the result</string>
     <string name="guide_result_body">Use Earlier and Cheaper to shift the window, and press and hold the chart for any slot\'s price.</string>
-    <string name="guide_allin_title">All-in price</string>
-    <string name="guide_allin_body">Optionally show the full consumer price instead of just the market rate.</string>
+    <string name="guide_allin_title">Total price</string>
+    <string name="guide_allin_body">Optionally show the full consumer price instead of just the market price.</string>
     <string name="guide_wear_title">On your watch</string>
     <string name="guide_wear_body">Your appliances sync to Wear OS, so you can check prices without your phone.</string>
 
@@ -281,7 +281,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Your trial has ended</string>
-    <string name="paywall_description">SweetSpot finds the cheapest time to run your appliances using real-time electricity prices across 30 European countries. Subscribe to keep finding the cheapest time for your appliances.</string>
+    <string name="paywall_description">SweetSpot finds the cheapest time to run your appliances using dynamic electricity prices across 30 European countries. Subscribe to keep using it.</string>
     <string name="paywall_unlock">Subscribe to SweetSpot</string>
     <string name="paywall_unlock_price">Subscribe for %s/year</string>
     <string name="paywall_restore">Restore subscription</string>
@@ -334,7 +334,7 @@
     <string name="sort_add_tiebreaker">Add tie-breaker</string>
     <string name="cd_sort_remove_level">Remove this sort level</string>
     <string name="settings_group_title">Group by type</string>
-    <string name="settings_group_description">Cluster home-screen buttons by appliance type, each under its own heading.</string>
+    <string name="settings_group_description">Group home-screen buttons by appliance type, each under its own heading.</string>
     <string name="group_off">Off</string>
     <string name="group_rows">Rows</string>
     <string name="group_columns">Columns</string>

@@ -42,7 +42,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - **Configurable appliances** — save your appliances with name, duration, icon, and an optional power rating (kW) so the cost reflects the real load; persisted across app restarts
 - **Sorting & reordering** — order appliances by a custom drag-to-reorder arrangement, or automatically by most used, recently used, name, duration, or type (with collision-gated tie-breakers); usage counts combine phone and watch taps. Choose where vehicles sit among the appliance buttons (mixed in, first, last, or their own section)
 - **Group by type** — optionally cluster the home-screen buttons by appliance type (their icon), each under its own heading — as stacked rows or side-by-side columns — so programmes for the same machine (e.g. dishwasher Eco/Quick/Auto) stay together. Vehicles still honour their separate-section setting, shown as a block above or below the grid
-- **EV charging** — add your car as a special appliance (picked from a bundled database of ~1,600 EVs/PHEVs, or entered manually); tapping it asks for current and target state of charge and computes the charging time from the battery size and the lower of the car's AC limit and your home charger
+- **EV charging** — add your car as a special appliance (picked from a bundled database of EVs/PHEVs, or entered manually); tapping it asks for current and target state of charge and computes the charging time from the battery size and the lower of the car's AC limit and your home charger
 - **"Ready by" deadline** — optionally set a time any search should be done by; the recommended window is the cheapest one that finishes in time, and you can still tap "Cheaper" to browse cheaper windows that finish later (they're clearly flagged as past your deadline)
 - **All-in price (Netherlands)** — optionally show the approximate full consumer price (spot + energy tax + your supplier's surcharge + VAT) instead of the bare market price; pick your supplier (or enter a custom surcharge) in Settings. Display-only — it never changes which window is cheapest, but it gives a realistic run cost and an honest "you're being paid" signal only when the all-in price is truly below zero. When it's on, the upcoming-prices chart splits each bar into its components (energy tax · surcharge · spot, all VAT-inclusive, with a legend) so you can see how little of the bill varies with time, and the results screen has a quick switch to flip between the total and bare-spot views
 - **Share your setup** — copy your appliances, their order, and your EV settings to another household device by scanning a QR code or opening a share link. Works offline via a verified App Link — no account, no server; the receiver reviews an import preview and chooses to add, replace, or pick what to import
@@ -57,7 +57,7 @@ Appliances are synced automatically from the phone via the Wearable Data Layer A
 - Material 3 with dynamic colour theming and dark mode
 - Configurable timezone (defaults to the selected zone's timezone)
 - Offline-capable with smart price caching (both phone and watch)
-- Optional anonymous API reliability stats (opt-in via Settings > Advanced)
+- Optional anonymous API reliability stats (opt-in from Settings)
 - **14-day free trial** with a yearly subscription to keep using the app
 
 ## Development workflow
@@ -133,8 +133,8 @@ The watch app must be installed separately (auto-install only works via Play Sto
 ## Releasing
 
 ```bash
-make release VERSION=3.0            # Bump version, build, tag, push, create GitHub Release
-make release VERSION=3.0 DRAFT=1    # Same but creates a draft release
+make release VERSION=X.Y            # Bump version, build, tag, push, create GitHub Release
+make release VERSION=X.Y DRAFT=1    # Same but creates a draft release
 ```
 
 The release script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs and AABs, commits the version bump, creates a git tag, pushes, and creates a GitHub Release with APKs attached. AABs are built locally for Play Store upload but not published to GitHub.
@@ -145,7 +145,7 @@ The release script auto-increments `versionCode`, sets `versionName`, builds sig
 make test
 ```
 
-726 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, the all-in price transform and tariff feed (fetch/cache/staleness), icon resolution, appliance sorting/reordering and cross-device usage, household setup sharing (encode/decode/merge), the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, the in-app Help & support flow (report encoding, response parsing, submit retry policy, diagnostics, public GitHub issue/thread parsing, and the report/outbox/reply-outbox stores), and ViewModel state management including EV charging, all-in pricing, and setup import (via Robolectric).
+The unit-test suite covers the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, the all-in price transform and tariff feed (fetch/cache/staleness), icon resolution, appliance sorting/reordering and cross-device usage, household setup sharing (encode/decode/merge), the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, the in-app Help & support flow (report encoding, response parsing, submit retry policy, diagnostics, public GitHub issue/thread parsing, and the report/outbox/reply-outbox stores), and ViewModel state management including EV charging, all-in pricing, and setup import (via Robolectric).
 
 Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) and uploaded to [Codecov](https://codecov.io/gh/jmerhar/sweetspot-android) (one flag per module) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug`. All three modules are high once Compose UI and thin SDK wrappers are excluded (`:shared` ~99.6%, `:app` ~99%, `:wear` ~95% line), and CI gates each module's line coverage (`:shared` ≥98, `:app` ≥97, `:wear` ≥93) via `bin/quality/coverage-report.py --gate`. The badge above shows the combined Codecov total across all three. The full per-module Kover HTML report is also published for every commit to the shared coverage site: **[jmerhar.github.io/coverage/sweetspot-android](https://jmerhar.github.io/coverage/sweetspot-android/)**.
 

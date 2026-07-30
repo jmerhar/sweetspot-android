@@ -26,7 +26,7 @@ other = "Sprache wechseln"
 other = "Finde den günstigsten Zeitpunkt, um deine Geräte zu betreiben und dein E-Auto zu laden"
 
 [hero_subtitle]
-other = "SweetSpot scannt dynamische Strompreise in 30 europäischen Ländern und findet das günstigste Zeitfenster, um deine Geräte zu betreiben oder dein E-Auto zu laden — bei Bedarf bis zu einem von dir festgelegten Zeitpunkt fertig. Open Source und datenschutzfreundlich."
+other = "SweetSpot scannt dynamische Strompreise in 30 europäischen Ländern und findet die günstigste Zeit, um deine Geräte zu betreiben oder dein E-Auto zu laden — bei Bedarf bis zu einem von dir festgelegten Zeitpunkt fertig. Open Source und datenschutzfreundlich."
 
 [download]
 other = "Jetzt bei Google Play"
@@ -44,7 +44,7 @@ other = "30 europäische Länder"
 other = "Deckt 43 Gebotszonen in Europa ab, von Portugal bis Finnland und von Norwegen bis Griechenland."
 
 [feature_prices_title]
-other = "Aktuelle Preise"
+other = "Day-Ahead-Preise"
 
 [feature_prices_desc]
 other = "Day-Ahead-Strompreise von der ENTSO-E Transparency Platform, täglich aktualisiert."
@@ -53,13 +53,13 @@ other = "Day-Ahead-Strompreise von der ENTSO-E Transparency Platform, täglich a
 other = "Cleverer Algorithmus"
 
 [feature_algorithm_desc]
-other = "Ein intelligenter Algorithmus findet die günstigste zusammenhängende Zeitspanne für jede gewählte Dauer."
+other = "SweetSpot findet die günstigste zusammenhängende Zeitspanne für jede von dir gewählte Dauer."
 
 [feature_fallback_title]
 other = "Zuverlässige Daten"
 
 [feature_fallback_desc]
-other = "Fünf Datenquellen mit automatischem Fallback stellen sicher, dass Preise immer verfügbar sind."
+other = "Fünf Datenquellen mit automatischem Fallback tragen dazu bei, dass Preise verfügbar bleiben."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Füge dein Auto hinzu und gib den aktuellen und den gewünschten Ladest
 other = "„Fertig bis“-Zeit"
 
 [feature_deadline_desc]
-other = "Soll es bis zu einem bestimmten Zeitpunkt fertig sein? Lege eine „Fertig bis“-Zeit fest, und SweetSpot wählt nur Zeitfenster, die rechtzeitig abschließen."
+other = "Soll es bis zu einem bestimmten Zeitpunkt fertig sein? Lege eine „Fertig bis“-Zeit fest, und SweetSpot wählt die günstigste Zeit, die sie einhält."
 
 [feature_power_title]
 other = "Leistung"
@@ -155,7 +155,7 @@ other = "Die Seite, die du suchst, existiert nicht."
 other = "Zurück zur Startseite"
 
 [screenshot_1_alt]
-other = "Ergebnis des günstigsten Zeitfensters mit Startzeit, Gesamtkosten und Kostenaufschlüsselung"
+other = "Empfohlene Zeit mit Startzeit, Gesamtkosten und Kostenaufschlüsselung"
 
 [screenshot_2_alt]
 other = "Startbildschirm mit Geräten, Dauerauswahl und Suchen-Taste"

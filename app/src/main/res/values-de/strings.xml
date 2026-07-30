@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Einstellungen</string>
     <string name="cd_back">Zurück</string>
-    <string name="main_description">SweetSpot hilft dir Geld zu sparen, indem es den günstigsten Zeitpunkt zum Betrieb deiner Geräte findet. Wähle einfach, wie lange dein Gerät laufen soll, und es durchsucht die nächsten 24 Stunden dynamischer Strompreise nach dem besten Zeitfenster. Du kannst auch deine Lieblingsgeräte in den Einstellungen speichern.</string>
-    <string name="main_find_button">Günstigstes Zeitfenster finden</string>
+    <string name="main_description">SweetSpot hilft dir, Geld zu sparen, indem es die günstigste Zeit für den Betrieb deiner Geräte findet. Wähle einfach, wie lange dein Gerät laufen soll, und es durchsucht die kommenden dynamischen Strompreise nach der besten Zeit. Du kannst deine Lieblingsgeräte auch in den Einstellungen speichern, für schnellen Zugriff.</string>
+    <string name="main_find_button">Günstigste Zeit finden</string>
     <string name="main_searching">Suche…</string>
     <string name="main_add_appliances">Geräte hinzufügen</string>
     <string name="main_card_description">Finde den günstigsten Zeitpunkt für dein Gerät</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Empfohlene Zeit</string>
-    <string name="result_after_deadline">Dieser Zeitraum endet nach deiner „Fertig bis“-Zeit.</string>
+    <string name="result_after_deadline">Läuft über deine „Fertig bis“-Zeit hinaus.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Ende</string>
     <string name="result_total_cost">Gesamtkosten</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Einklappen</string>
     <string name="cd_expand">Ausklappen</string>
     <string name="result_upcoming_prices">Kommende Preise</string>
-    <string name="result_disclaimer">Kosten gelten für 1 kW Leistung. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantengebühr. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="result_disclaimer">Kosten gelten für 1 kW Leistung. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantenaufschlag. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
     <string name="result_data_source">\nDatenquelle: %s</string>
     <string name="result_price_zone">\nPreiszone: %s</string>
-    <string name="cd_cheapest_window">günstigstes Zeitfenster</string>
+    <string name="cd_cheapest_window">günstigste Zeit</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Dauer</string>
@@ -49,7 +49,7 @@
     <string name="settings_data_sources_description">Preise werden in dieser Reihenfolge abgerufen. Wenn eine fehlschlägt, wird die nächste versucht.</string>
     <string name="settings_reset_defaults">Auf Standard zurücksetzen</string>
     <string name="settings_appliances">Geräte</string>
-    <string name="settings_appliances_description">Füge hier deine Haushaltsgeräte hinzu für schnellen Zugriff. Du kannst auch bestimmte Programme hinzufügen, z.B. Spülmaschine Eco, Spülmaschine Schnell, Waschmaschine Baumwolle.</string>
+    <string name="settings_appliances_description">Füge hier deine Haushaltsgeräte für schnellen Zugriff hinzu. Du kannst auch bestimmte Programme hinzufügen, z.B. Spülmaschine Eco, Spülmaschine Schnell, Waschmaschine Baumwolle.</string>
     <string name="settings_add_appliance">Gerät hinzufügen</string>
     <string name="settings_timezone">Zeitzone</string>
     <string name="settings_theme">Design</string>
@@ -151,10 +151,10 @@
     <string name="cd_refresh">Aktualisieren</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">API-Statistiken teilen</string>
-    <string name="settings_stats_description">Hilf, die Zuverlässigkeit der Datenquellen zu verbessern, indem du anonyme API-Erfolgs-/Fehlerstatistiken teilst. Es werden keine persönlichen Daten erfasst.</string>
+    <string name="settings_stats_title">Zuverlässigkeitsstatistiken teilen</string>
+    <string name="settings_stats_description">Hilf, die Zuverlässigkeit der Datenquellen zu verbessern, indem du anonym teilst, wie oft Preisdaten geladen werden oder fehlschlagen. Es werden keine persönlichen Daten erfasst.</string>
     <string name="stats_prompt_title">SweetSpot verbessern helfen?</string>
-    <string name="stats_prompt_message">Teile anonyme API-Statistiken, um die Zuverlässigkeit der Datenquellen zu verbessern. Es werden nur Erfolgs-/Fehleranzahlen pro Datenquelle geteilt — keine persönlichen Daten. Du kannst dies jederzeit in den Einstellungen ändern.</string>
+    <string name="stats_prompt_message">Teile anonyme Statistiken, um die Zuverlässigkeit der Datenquellen zu verbessern. Geteilt wird nur, wie oft jede Datenquelle lädt oder fehlschlägt — keine persönlichen Daten. Du kannst dies jederzeit in den Einstellungen ändern.</string>
     <string name="stats_prompt_enable">Aktivieren</string>
     <string name="stats_prompt_dismiss">Nein danke</string>
 
@@ -177,7 +177,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Dein Testzeitraum ist abgelaufen</string>
-    <string name="paywall_description">SweetSpot findet die günstigste Zeit für den Betrieb deiner Geräte anhand von Echtzeit-Strompreisen in 30 europäischen Ländern. Abonniere, um weiterhin die günstigste Zeit für deine Geräte zu finden.</string>
+    <string name="paywall_description">SweetSpot findet die günstigste Zeit für den Betrieb deiner Geräte anhand dynamischer Strompreise in 30 europäischen Ländern. Abonniere, um es weiter zu nutzen.</string>
     <string name="paywall_unlock">SweetSpot abonnieren</string>
     <string name="paywall_unlock_price">Abonnieren für %s/Jahr</string>
     <string name="paywall_restore">Abonnement wiederherstellen</string>
@@ -214,13 +214,13 @@
     <string name="ev_error_invalid_soc">Das Ladeziel muss höher sein als der aktuelle Ladestand.</string>
     <string name="ev_error_invalid_charger">Lege eine Ladeleistung größer als null fest.</string>
     <string name="ev_error_deadline_unreachable">Das Laden kann nicht bis zu deinem Zeitpunkt abgeschlossen werden. Versuche ein niedrigeres Ladeziel oder einen späteren Zeitpunkt.</string>
-    <string name="result_disclaimer_power">Kosten gelten für eine Last von %s kW. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantengebühr. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="result_disclaimer_power">Kosten gelten für eine Last von %s kW. Preise verstehen sich ohne MwSt., Energiesteuer und Lieferantenaufschlag. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
     <string name="dialog_power">Leistung (kW, optional)</string>
 
     <!-- Total price (all-in) -->
     <string name="settings_all_in_title">Gesamtpreis</string>
     <string name="settings_all_in_toggle">Gesamtpreis anzeigen</string>
-    <string name="settings_all_in_desc">Zeige den geschätzten vollen Verbraucherpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.) statt des reinen Marktpreises.</string>
+    <string name="settings_all_in_desc">Zeige den geschätzten vollen Verbraucherpreis (Marktpreis + Energiesteuer + Lieferantenaufschlag + MwSt.) statt des reinen Marktpreises.</string>
     <string name="all_in_supplier">Lieferant</string>
     <string name="all_in_supplier_prompt">Wähle deinen Lieferanten</string>
     <string name="all_in_supplier_custom">Eigener Aufschlag</string>
@@ -229,14 +229,14 @@
     <string name="all_in_incomplete">Wähle einen Lieferanten oder gib einen Aufschlag ein, oder schalte den Gesamtpreis aus.</string>
     <string name="picker_supplier_title">Lieferant</string>
     <string name="picker_supplier_search">Lieferanten suchen</string>
-    <string name="result_disclaimer_all_in">Die angezeigten Kosten gelten für 1 kW Leistung, zum geschätzten Gesamtpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
-    <string name="result_disclaimer_power_all_in">Die angezeigten Kosten gelten für eine Last von %s kW, zum geschätzten Gesamtpreis (Börsenpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="result_disclaimer_all_in">Die angezeigten Kosten gelten für 1 kW Leistung, zum geschätzten Gesamtpreis (Marktpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
+    <string name="result_disclaimer_power_all_in">Die angezeigten Kosten gelten für eine Last von %s kW, zum geschätzten Gesamtpreis (Marktpreis + Energiesteuer + Lieferantenaufschlag + MwSt.). Ohne Netzentgelte und feste monatliche Grundgebühren. Die Preise für morgen sind in der Regel nach 13:00 MEZ verfügbar.</string>
     <string name="result_all_in_supplier">\nLieferant: %s</string>
     <string name="result_all_in_stale">Die Tarifdaten sind über 14 Tage alt und möglicherweise veraltet.</string>
     <string name="chart_legend_energy_tax">Energiesteuer</string>
     <string name="chart_legend_surcharge">Aufschlag</string>
-    <string name="chart_legend_spot">Börsenpreis</string>
-    <string name="chart_legend_spot_negative">Negativer Börsenpreis</string>
+    <string name="chart_legend_spot">Marktpreis</string>
+    <string name="chart_legend_spot_negative">Negativer Preis</string>
     <string name="chart_legend_vat_note">Alle Preise inkl. MwSt.</string>
 
     <!-- Sorting & usage -->
@@ -342,7 +342,7 @@
     <string name="guide_ev_title">E-Auto-Ladung planen</string>
     <string name="guide_ev_body">Füge dein Auto hinzu, gib den aktuellen Ladestand und das Ladeziel ein, und SweetSpot berechnet die Ladezeit.</string>
     <string name="guide_result_title">Das Ergebnis verstehen</string>
-    <string name="guide_result_body">Nutze Früher und Günstiger, um das Zeitfenster zu verschieben, und halte das Diagramm gedrückt, um den Preis zu jedem Zeitpunkt zu sehen.</string>
+    <string name="guide_result_body">Nutze Früher und Günstiger, um die empfohlene Zeit zu verschieben, und halte das Diagramm gedrückt, um den Preis zu jedem Zeitpunkt zu sehen.</string>
     <string name="guide_allin_title">Gesamtpreis</string>
     <string name="guide_allin_body">Zeige optional den vollen Verbraucherpreis statt nur des reinen Marktpreises an.</string>
     <string name="guide_wear_title">Auf deiner Uhr</string>

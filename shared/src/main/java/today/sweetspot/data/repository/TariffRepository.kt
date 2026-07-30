@@ -1,6 +1,6 @@
 package today.sweetspot.data.repository
 
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import today.sweetspot.data.api.TariffApi
 import today.sweetspot.data.api.TariffFetcher
 import today.sweetspot.data.cache.TariffCache
@@ -38,7 +38,7 @@ class TariffRepository(
     private val clock: Clock = Clock.systemUTC()
 ) {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     /** Parses the cached feed for a country; returns it only when usable, else null. No network. */
     fun cached(countryCode: String): CachedTariff? {

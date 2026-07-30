@@ -1,6 +1,6 @@
 package today.sweetspot.data.api
 
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import today.sweetspot.model.SupplierTariffs
@@ -28,7 +28,7 @@ fun interface TariffFetcher {
  */
 class TariffApi(private val client: OkHttpClient = sharedHttpClient) : TariffFetcher {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     companion object {
         /** Base URL for the per-country tariff feeds; the lowercase country code + ".json" is appended. */

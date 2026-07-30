@@ -1,7 +1,7 @@
 package today.sweetspot.data.share
 
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -39,7 +39,7 @@ sealed interface DecodeResult {
  * not sent to the server). The same encoded string backs both the QR code and the shared link.
  *
  * Mirrors the structure of [today.sweetspot.data.usage.UsageSnapshot]: a stateless object with a
- * single lenient [Json] and pure functions, unit-testable without Android.
+ * shared lenient [sweetSpotJson] and pure functions, unit-testable without Android.
  */
 object SetupShare {
 
@@ -49,7 +49,7 @@ object SetupShare {
     /** Base URL whose fragment carries the encoded payload. */
     const val IMPORT_BASE = "https://sweetspot.today/import"
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     /** Encodes a setup to the URL-safe Base64 payload string (JSON → gzip → Base64). */
     fun encode(setup: SharedSetup): String {

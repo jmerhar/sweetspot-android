@@ -2,7 +2,7 @@ package today.sweetspot.data.usage
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import today.sweetspot.model.ApplianceUsage
 import java.io.File
 
@@ -26,7 +26,7 @@ internal data class UsageFile(
 class FileUsageStore(dir: File) : UsageStore {
 
     private val file = File(dir, "appliance_usage.json")
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
     private val lock = Any()
 
     private fun read(): UsageFile = synchronized(lock) {

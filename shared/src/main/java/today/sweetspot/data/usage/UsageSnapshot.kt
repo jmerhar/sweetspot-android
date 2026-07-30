@@ -1,7 +1,7 @@
 package today.sweetspot.data.usage
 
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import today.sweetspot.model.ApplianceUsage
 
 /**
@@ -12,7 +12,7 @@ import today.sweetspot.model.ApplianceUsage
  */
 object UsageSnapshot {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     /** Encodes a usage map to JSON bytes. */
     fun encodeToBytes(usage: Map<String, ApplianceUsage>): ByteArray =

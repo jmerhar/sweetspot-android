@@ -31,15 +31,15 @@ Yes — to actually save money you need a **dynamic (spot or hourly) electricity
 {{< /faq >}}
 
 {{< faq question="Can SweetSpot help me charge my electric car?" >}}
-Yes. Add your vehicle — pick it from a built-in database of thousands of EVs and plug-in hybrids, or enter the battery size and charging power manually. Then enter your current and target state of charge, and SweetSpot works out how long charging will take (from the battery size and the lower of your car's AC limit and your home charger) and finds the cheapest window to plug in.
+Yes. Add your vehicle — pick it from a built-in database of thousands of EVs and plug-in hybrids, or enter the battery size and charging power manually. Then enter your current and target state of charge, and SweetSpot works out how long charging will take (from the battery size and the lower of your car's AC limit and your home charger) and finds the cheapest time to plug in.
 {{< /faq >}}
 
 {{< faq question="Can I make sure it's ready by a certain time?" >}}
-Yes. Turn on the optional **"ready by"** deadline and pick a time. SweetSpot then defaults to the cheapest window that finishes by then — for any appliance or for charging your EV (for example, charged by 7:00 in the morning). You can still step to a cheaper window that finishes a little later if you prefer; SweetSpot flags when the shown window ends after your deadline.
+Yes. Turn on the optional **"ready by"** deadline and pick a time. SweetSpot then defaults to the cheapest time that finishes by then — for any appliance or for charging your EV (for example, charged by 7:00 in the morning). You can still step to a cheaper time that finishes a little later if you prefer; SweetSpot flags when the shown time ends after your deadline.
 {{< /faq >}}
 
 {{< faq question="Why does the recommended time keep changing?" >}}
-SweetSpot re-checks the prices while a result is open, and slots that are now in the past drop off as time passes, so the recommended window can shift. Use the **Earlier** and **Cheaper** buttons to step between a sooner (slightly costlier) start and the cheapest one — each shows how much more it costs than the recommended window.
+SweetSpot re-checks the prices while a result is open, and slots that are now in the past drop off as time passes, so the recommended time can shift. Use the **Earlier** and **Cheaper** buttons to step between a sooner (slightly costlier) start and the cheapest one — each shows how much more it costs than the recommended time.
 {{< /faq >}}
 
 {{< faq question="Do the costs reflect how much power my appliance uses?" >}}
@@ -57,7 +57,7 @@ The watch app requires Wear OS 3 or later (Pixel Watch, Samsung Galaxy Watch 4+,
 {{< /faq >}}
 
 {{< faq question="Can I see the full price I actually pay?" >}}
-By default SweetSpot shows the wholesale **market price**. In supported countries (currently the Netherlands) you can turn on **Total price** (the all-in price) in settings, which adds energy tax, your supplier's surcharge, and VAT on top of the market price to show the approximate full consumer price. Combined with an appliance's **power rating**, this gives you a realistic estimate of what actually running that appliance will cost. It's display-only — it never changes which time window comes out cheapest.
+By default SweetSpot shows the wholesale **market price**. In supported countries (currently the Netherlands) you can turn on **Total price** (the all-in price) in settings, which adds energy tax, your supplier's surcharge, and VAT on top of the market price to show the approximate full consumer price. Combined with an appliance's **power rating**, this gives you a realistic estimate of what actually running that appliance will cost. It's display-only — it never changes which time comes out cheapest.
 {{< /faq >}}
 
 {{< faq question="Can I copy my appliances to another device?" >}}

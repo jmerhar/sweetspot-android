@@ -1,4 +1,4 @@
-SweetSpot finds the cheapest time to run your appliances and charge your electric car. Pick how long a device needs to run — or choose your EV and the charge you want — and SweetSpot scans upcoming dynamic electricity prices to find the cheapest window.
+SweetSpot finds the cheapest time to run your appliances and charge your electric car. Pick how long a device needs to run — or choose your EV and the charge you want — and SweetSpot scans upcoming dynamic electricity prices to find the cheapest time.
 
 Whether it's a washing machine, dishwasher, dryer, heat pump, or EV charger — start it at the right time and pay less for the same electricity.
 
@@ -14,8 +14,8 @@ FEATURES
 - 30 European countries, 43 bidding zones — from Portugal to Finland, Norway to Greece
 - 5 data sources with automatic fallback (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Total price (Netherlands) — optionally see the full, all-in consumer price (spot + energy tax + your supplier's surcharge + VAT) instead of the bare market price; pick your supplier or enter your own surcharge. More countries to follow
-- "Ready by" deadline — defaults to the cheapest window that finishes in time
-- Earlier or cheaper — when the cheapest window is inconvenient, step to a sooner one and see exactly how much more it costs
+- "Ready by" deadline — defaults to the cheapest time that meets it
+- Earlier or cheaper — when the cheapest time is inconvenient, step to a sooner one and see exactly how much more it costs
 - Power ratings — set an appliance's power in kW for a cost estimate that reflects what it really uses
 - Save your appliances with custom names, icons, and durations for one-tap access
 - Sort and reorder your appliances — drag them into your own order, or sort by most used, recently used, name, duration, or type, and choose where your vehicles sit

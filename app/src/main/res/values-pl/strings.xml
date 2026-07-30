@@ -294,9 +294,9 @@
     <string name="coach_got_it">Rozumiem</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Pomoc i opinie</string>
+    <string name="settings_help_title">Pomoc i wsparcie</string>
     <string name="settings_help_desc">Poradniki, opinie i wsparcie</string>
-    <string name="help_section_learn">Poznaj</string>
+    <string name="help_section_learn">Pomoc</string>
     <string name="help_section_support">Wsparcie</string>
     <string name="help_section_about">O aplikacji</string>
     <string name="help_quick_guide_title">Krótki poradnik</string>
@@ -358,6 +358,7 @@
     <string name="guide_wear_body">Twoje urządzenia synchronizują się z Wear OS, więc możesz sprawdzać ceny bez telefonu.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Ty</string>
+    <string name="thread_support">Wsparcie SweetSpot</string>
     <string name="thread_open_github">Otwórz na GitHubie</string>
     <string name="thread_load_error">Nie udało się załadować rozmowy. Sprawdź połączenie i spróbuj ponownie.</string>
     <string name="reply_hint">Twoja odpowiedź</string>

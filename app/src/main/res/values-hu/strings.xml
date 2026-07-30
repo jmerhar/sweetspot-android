@@ -278,9 +278,9 @@
     <string name="home_section_appliances">Készülékek</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Súgó és visszajelzés</string>
+    <string name="settings_help_title">Súgó és támogatás</string>
     <string name="settings_help_desc">Útmutatók, visszajelzés és támogatás</string>
-    <string name="help_section_learn">Tudnivalók</string>
+    <string name="help_section_learn">Súgó</string>
     <string name="help_section_support">Támogatás</string>
     <string name="help_section_about">Névjegy</string>
     <string name="help_quick_guide_title">Gyors útmutató</string>
@@ -342,6 +342,7 @@
     <string name="guide_wear_body">Készülékeid szinkronizálódnak a Wear OS-re, így telefon nélkül is ellenőrizheted az árakat.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Te</string>
+    <string name="thread_support">SweetSpot támogatás</string>
     <string name="thread_open_github">Megnyitás a GitHubon</string>
     <string name="thread_load_error">Nem sikerült betölteni a beszélgetést. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
     <string name="reply_hint">A válaszod</string>

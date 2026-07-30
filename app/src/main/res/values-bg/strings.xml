@@ -284,9 +284,9 @@
     <string name="home_section_appliances">Уреди</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Помощ и обратна връзка</string>
+    <string name="settings_help_title">Помощ и поддръжка</string>
     <string name="settings_help_desc">Ръководства, обратна връзка и поддръжка</string>
-    <string name="help_section_learn">Научете</string>
+    <string name="help_section_learn">Помощ</string>
     <string name="help_section_support">Поддръжка</string>
     <string name="help_section_about">Относно</string>
     <string name="help_quick_guide_title">Кратко ръководство</string>
@@ -333,6 +333,7 @@
     <string name="my_reports_open">Отворен</string>
     <string name="my_reports_closed">Затворен</string>
     <string name="thread_you">Вие</string>
+    <string name="thread_support">Поддръжка на SweetSpot</string>
     <string name="thread_open_github">Отваряне в GitHub</string>
     <string name="thread_load_error">Разговорът не можа да бъде зареден. Проверете връзката си и опитайте отново.</string>
 

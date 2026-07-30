@@ -280,9 +280,9 @@
     <string name="home_section_appliances">Apparater</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Hjälp &amp; feedback</string>
+    <string name="settings_help_title">Hjälp &amp; support</string>
     <string name="settings_help_desc">Guider, feedback och support</string>
-    <string name="help_section_learn">Lär dig</string>
+    <string name="help_section_learn">Hjälp</string>
     <string name="help_section_support">Support</string>
     <string name="help_section_about">Om</string>
     <string name="help_quick_guide_title">Snabbguide</string>
@@ -344,6 +344,7 @@
     <string name="guide_wear_body">Dina apparater synkas till Wear OS, så att du kan kolla priser utan din telefon.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Du</string>
+    <string name="thread_support">SweetSpot Support</string>
     <string name="thread_open_github">Öppna på GitHub</string>
     <string name="thread_load_error">Det gick inte att läsa in konversationen. Kontrollera din anslutning och försök igen.</string>
     <string name="reply_hint">Ditt svar</string>

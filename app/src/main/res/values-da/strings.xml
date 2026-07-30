@@ -284,9 +284,9 @@
     <string name="home_section_appliances">Apparater</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Hjælp &amp; feedback</string>
+    <string name="settings_help_title">Hjælp &amp; support</string>
     <string name="settings_help_desc">Guides, feedback og support</string>
-    <string name="help_section_learn">Lær</string>
+    <string name="help_section_learn">Hjælp</string>
     <string name="help_section_support">Support</string>
     <string name="help_section_about">Om</string>
     <string name="help_quick_guide_title">Hurtig guide</string>
@@ -333,6 +333,7 @@
     <string name="my_reports_open">Åben</string>
     <string name="my_reports_closed">Lukket</string>
     <string name="thread_you">Dig</string>
+    <string name="thread_support">SweetSpot Support</string>
     <string name="thread_open_github">Åbn på GitHub</string>
     <string name="thread_load_error">Kunne ikke indlæse samtalen. Tjek din forbindelse, og prøv igen.</string>
 

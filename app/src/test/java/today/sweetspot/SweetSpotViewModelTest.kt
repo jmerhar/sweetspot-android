@@ -927,20 +927,30 @@ class SweetSpotViewModelTest {
     }
 
     @Test
-    fun `onSendReply posts the reply and reloads the thread on success`() = runTest {
+    fun `onSendReply posts the reply and appends it to the open thread on success`() = runTest {
         val submitter = FakeReportSubmitter(code = 201, body = """{"number":40,"url":"u","replyToken":"T40"}""")
         val viewModel = reportViewModel(submitter)
         viewModel.onSubmitReport(ReportCategory.BUG, "s", "b", null)
         runCurrent()
         viewModel.onOpenThread(40)
         runCurrent()
+        // The fake thread has only the head item (comments = 0).
+        assertEquals(1, (viewModel.uiState.value.thread as ThreadState.Loaded).thread.items.size)
+
         viewModel.onSendReply(40, "my reply")
         runCurrent()
 
         assertEquals(ReplyState.IDLE, viewModel.uiState.value.replySubmission)
-        assertTrue(viewModel.uiState.value.thread is ThreadState.Loaded)
         assertTrue(submitter.lastReplyJson!!.contains("my reply"))
         assertTrue(submitter.lastReplyJson!!.contains("T40"))
+        // The reply is appended optimistically (as the user's own), not fetched: a refetch would return
+        // only the head again (the fake API doesn't know about the reply). GitHub's public API is
+        // edge-cached, so an immediate refetch wouldn't see the just-posted comment.
+        val loaded = viewModel.uiState.value.thread as ThreadState.Loaded
+        assertEquals(2, loaded.thread.items.size)
+        val appended = loaded.thread.items.last()
+        assertEquals("my reply", appended.body)
+        assertTrue(appended.mine)
     }
 
     @Test
@@ -1016,6 +1026,47 @@ class SweetSpotViewModelTest {
         viewModel.flushReplyOutbox()
         runCurrent()
         assertTrue(prefs.getReplyOutbox().isEmpty())
+    }
+
+    @Test
+    fun `onSendReply marks the reply seen so it does not raise a false unread dot`() = runTest {
+        SettingsRepository(app).addMyReport(MyReport(70, "s", "bug", 0L, "T70"))
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 201, body = "{}"), FakeGithubIssueApi(comments = 2))
+        viewModel.loadMyReports()
+        runCurrent()
+        viewModel.onOpenThread(70)
+        runCurrent()
+        // Opened: the 2 existing comments (head excluded) are marked seen.
+        assertEquals(2, SettingsRepository(app).getSeenComments()[70])
+
+        viewModel.onSendReply(70, "my reply")
+        runCurrent()
+        // The optimistic reply is counted as seen (3), so a later fetch that reflects the reply
+        // (comments = 3) won't flag the report as having unread activity — it's the user's own.
+        assertEquals(3, SettingsRepository(app).getSeenComments()[70])
+        assertEquals("my reply", (viewModel.uiState.value.thread as ThreadState.Loaded).thread.items.last().body)
+    }
+
+    @Test
+    fun `flushReplyOutbox appends a delivered reply to the open thread optimistically`() = runTest {
+        SettingsRepository(app).addMyReport(MyReport(71, "s", "bug", 0L, "T71"))
+        val viewModel = reportViewModel(FakeReportSubmitter(code = 201, body = "{}"), FakeGithubIssueApi(comments = 0))
+        viewModel.onOpenThread(71)
+        runCurrent()
+        // Head only (the fake has no comments).
+        assertEquals(1, (viewModel.uiState.value.thread as ThreadState.Loaded).thread.items.size)
+
+        // A reply queued earlier (e.g. offline) is delivered by the flush while the thread is open.
+        SettingsRepository(app).setReplyOutbox(listOf(PendingReply(71, "T71", "queued reply", 0L)))
+        viewModel.flushReplyOutbox()
+        runCurrent()
+
+        // Appended (not refetched — the fake would return the head only): head + the delivered reply.
+        val loaded = viewModel.uiState.value.thread as ThreadState.Loaded
+        assertEquals(2, loaded.thread.items.size)
+        assertEquals("queued reply", loaded.thread.items.last().body)
+        assertTrue(loaded.thread.items.last().mine)
+        assertTrue(SettingsRepository(app).getReplyOutbox().isEmpty())
     }
 
     @Test

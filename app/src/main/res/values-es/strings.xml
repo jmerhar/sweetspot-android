@@ -287,9 +287,9 @@
     <string name="home_section_appliances">Electrodomésticos</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Ayuda y opiniones</string>
+    <string name="settings_help_title">Ayuda y soporte</string>
     <string name="settings_help_desc">Guías, opiniones y soporte</string>
-    <string name="help_section_learn">Aprender</string>
+    <string name="help_section_learn">Ayuda</string>
     <string name="help_section_support">Soporte</string>
     <string name="help_section_about">Acerca de</string>
     <string name="help_quick_guide_title">Guía rápida</string>
@@ -336,6 +336,7 @@
     <string name="my_reports_open">Abierto</string>
     <string name="my_reports_closed">Cerrado</string>
     <string name="thread_you">Tú</string>
+    <string name="thread_support">Soporte de SweetSpot</string>
     <string name="thread_open_github">Abrir en GitHub</string>
     <string name="thread_load_error">No se pudo cargar la conversación. Comprueba tu conexión e inténtalo de nuevo.</string>
 

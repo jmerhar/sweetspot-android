@@ -18,6 +18,14 @@ object HelpLinks {
     const val BOT_LOGIN = "sweetspot-support"
 
     /**
+     * Prefix the feedback Worker prepends to a reporter's in-app reply when it posts the comment as the
+     * bot (so a reader on GitHub can tell it's the reporter speaking, not the maintainer). In the app
+     * the entry is already labelled "You", so the prefix is stripped for display — keeping it here in
+     * sync with the Worker's `commentBody`. Must match `server/feedback-worker/src/index.js`.
+     */
+    const val REPLY_PREFIX = "💬 **Reporter (via app):**"
+
+    /**
      * Localized website URL for [path] (e.g. `"faq"`, `"privacy"`, `"changelog"`). English is served
      * at the root; every other language lives under `/<lang>/`. [languageTag] is a BCP-47 tag — its
      * region is dropped and, if it is a comma-joined list, only the first entry is used; a blank tag

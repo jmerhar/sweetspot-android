@@ -13,6 +13,7 @@ import com.google.android.gms.wearable.Wearable
 import today.sweetspot.data.api.GithubIssueApi
 import today.sweetspot.data.api.IssueStatus
 import today.sweetspot.data.api.IssueThread
+import today.sweetspot.data.api.ThreadItem
 import today.sweetspot.data.api.PriceFetcherFactory
 import today.sweetspot.data.api.defaultPriceFetcherFactory
 import today.sweetspot.data.billing.BillingRepository
@@ -39,6 +40,7 @@ import today.sweetspot.data.support.ReportSubmitter
 import today.sweetspot.data.support.SubmitOutcome
 import today.sweetspot.data.support.SubmitResult
 import today.sweetspot.util.Diagnostics
+import today.sweetspot.util.HelpLinks
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceGrouping
 import today.sweetspot.model.ApplianceSort
@@ -1944,8 +1946,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 ThreadState.Error(number)
             }
             // On a successful load, mark the conversation seen (its comments = items minus the issue
-            // body) and clear this report's unread dot in the list.
-            if (next is ThreadState.Loaded) {
+            // body) — but only if it's still the open thread, so a fetch that resolves after the user
+            // switched away doesn't clear another report's unread state.
+            if (next is ThreadState.Loaded && _uiState.value.thread?.number == number) {
                 settingsRepository.markThreadSeen(number, (next.thread.items.size - 1).coerceAtLeast(0))
             }
             // Ignore a stale result if the user has since closed the thread or opened another.
@@ -1969,8 +1972,9 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /**
      * Posts an in-app reply to report [number] via the Worker (which comments as the bot on the
      * reporter's behalf). Authorised by the report's stored reply token. Mirrors the report-submit
-     * retry policy: SENT reloads the thread; a transient failure queues the reply in the reply outbox
-     * for automatic retry (state QUEUED); a permanent failure surfaces an error. No-op without a token.
+     * retry policy: SENT appends the reply to the open thread optimistically; a transient failure queues
+     * the reply in the reply outbox for automatic retry (state QUEUED); a permanent failure surfaces an
+     * error. No-op without a token.
      */
     fun onSendReply(number: Int, body: String) {
         val text = body.trim()
@@ -1980,9 +1984,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
         viewModelScope.launch(ioDispatcher) {
             when (trySubmitReply(number, token, text)) {
                 SubmitOutcome.SENT -> {
+                    appendOwnReplies(number, listOf(text))
                     _uiState.update { it.copy(replySubmission = ReplyState.IDLE) }
-                    // Reload so the just-posted comment shows — only if this thread is still open.
-                    if (_uiState.value.thread?.number == number) onOpenThread(number)
                 }
                 SubmitOutcome.RETRYABLE -> {
                     reportStoreMutex.withLock {
@@ -2001,7 +2004,7 @@ class SweetSpotViewModel @JvmOverloads constructor(
     /**
      * Re-attempts delivery of every queued reply (on app start and when Help opens). Mirrors
      * [flushOutbox]: sent replies are dropped, permanent failures dropped, transient ones kept with
-     * attempts capped; the open thread is reloaded if any reply landed.
+     * attempts capped; any delivered reply for the currently-open thread is appended optimistically.
      */
     fun flushReplyOutbox() {
         if (replyFlushJob?.isActive == true) return
@@ -2009,10 +2012,10 @@ class SweetSpotViewModel @JvmOverloads constructor(
         if (pending.isEmpty()) return
         replyFlushJob = viewModelScope.launch(ioDispatcher) {
             val remaining = mutableListOf<PendingReply>()
-            var anyDelivered = false
+            val delivered = mutableListOf<PendingReply>()
             for (p in pending) {
                 when (trySubmitReply(p.issue, p.token, p.body)) {
-                    SubmitOutcome.SENT -> anyDelivered = true
+                    SubmitOutcome.SENT -> delivered.add(p)
                     SubmitOutcome.RETRYABLE -> {
                         val next = p.copy(attempts = p.attempts + 1)
                         if (next.attempts < maxOutboxAttempts) remaining.add(next)
@@ -2024,9 +2027,32 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 val newcomers = settingsRepository.getReplyOutbox().filterNot { it in pending }
                 settingsRepository.setReplyOutbox(newcomers + remaining)
             }
-            // If a reply landed and a thread is open, reload it so the new comment shows.
-            val open = _uiState.value.thread?.number
-            if (anyDelivered && open != null) onOpenThread(open)
+            // Append any delivered replies for the open thread optimistically — same reason as
+            // onSendReply: an immediate refetch would hit GitHub's edge cache and miss them.
+            val open = (_uiState.value.thread as? ThreadState.Loaded)?.number
+            if (open != null) appendOwnReplies(open, delivered.filter { it.issue == open }.map { it.body })
+        }
+    }
+
+    /**
+     * Appends the reporter's own just-sent [bodies] to the open thread for [issue] and marks the thread
+     * seen so their own reply never raises a false unread dot. Optimistic (no refetch): GitHub's public
+     * API is edge-cached for unauthenticated reads, so an immediate read wouldn't see the new comments;
+     * the next thread open reloads canonically. No-op unless that thread is currently open.
+     */
+    private fun appendOwnReplies(issue: Int, bodies: List<String>) {
+        if (bodies.isEmpty()) return
+        val current = _uiState.value.thread
+        if (current !is ThreadState.Loaded || current.number != issue) return
+        val items = current.thread.items + bodies.map { ThreadItem(HelpLinks.BOT_LOGIN, it, nowMs(), mine = true) }
+        settingsRepository.markThreadSeen(issue, (items.size - 1).coerceAtLeast(0))
+        _uiState.update { state ->
+            val t = state.thread
+            if (t is ThreadState.Loaded && t.number == issue) {
+                state.copy(thread = t.copy(thread = t.thread.copy(items = items)))
+            } else {
+                state
+            }
         }
     }
 

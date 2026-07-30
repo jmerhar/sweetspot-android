@@ -283,9 +283,9 @@
     <string name="coach_got_it">Selge</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Abi &amp; tagasiside</string>
+    <string name="settings_help_title">Abi &amp; tugi</string>
     <string name="settings_help_desc">Juhendid, tagasiside ja tugi</string>
-    <string name="help_section_learn">Õpi</string>
+    <string name="help_section_learn">Abi</string>
     <string name="help_section_support">Tugi</string>
     <string name="help_section_about">Teave</string>
     <string name="help_quick_guide_title">Kiirjuhend</string>
@@ -333,6 +333,7 @@
     <string name="my_reports_closed">Suletud</string>
 
     <string name="thread_you">Sina</string>
+    <string name="thread_support">SweetSpoti tugi</string>
     <string name="thread_open_github">Ava GitHubis</string>
     <string name="thread_load_error">Vestlust ei õnnestunud laadida. Kontrolli oma ühendust ja proovi uuesti.</string>
 

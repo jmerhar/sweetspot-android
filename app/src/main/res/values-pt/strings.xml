@@ -286,9 +286,9 @@
     <string name="home_section_appliances">Eletrodomésticos</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Ajuda e feedback</string>
+    <string name="settings_help_title">Ajuda e suporte</string>
     <string name="settings_help_desc">Guias, feedback e apoio</string>
-    <string name="help_section_learn">Aprender</string>
+    <string name="help_section_learn">Ajuda</string>
     <string name="help_section_support">Apoio</string>
     <string name="help_section_about">Acerca</string>
     <string name="help_quick_guide_title">Guia rápido</string>
@@ -350,6 +350,7 @@
     <string name="guide_wear_body">Os seus eletrodomésticos sincronizam com o Wear OS, para poder consultar os preços sem o telemóvel.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Tu</string>
+    <string name="thread_support">Suporte da SweetSpot</string>
     <string name="thread_open_github">Abrir no GitHub</string>
     <string name="thread_load_error">Não foi possível carregar a conversa. Verifica a tua ligação e tenta novamente.</string>
     <string name="reply_hint">A tua resposta</string>

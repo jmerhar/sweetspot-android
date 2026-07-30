@@ -283,9 +283,9 @@
     <string name="coach_got_it">Selvä</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Ohje &amp; palaute</string>
+    <string name="settings_help_title">Ohje &amp; tuki</string>
     <string name="settings_help_desc">Oppaat, palaute ja tuki</string>
-    <string name="help_section_learn">Opi</string>
+    <string name="help_section_learn">Ohje</string>
     <string name="help_section_support">Tuki</string>
     <string name="help_section_about">Tietoja</string>
     <string name="help_quick_guide_title">Pikaopas</string>
@@ -332,6 +332,7 @@
     <string name="my_reports_open">Avoin</string>
     <string name="my_reports_closed">Suljettu</string>
     <string name="thread_you">Sinä</string>
+    <string name="thread_support">SweetSpot-tuki</string>
     <string name="thread_open_github">Avaa GitHubissa</string>
     <string name="thread_load_error">Keskustelun lataaminen ei onnistunut. Tarkista yhteytesi ja yritä uudelleen.</string>
 

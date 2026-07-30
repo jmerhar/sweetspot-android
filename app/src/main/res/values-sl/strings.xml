@@ -296,9 +296,9 @@
     <string name="home_section_appliances">Aparati</string>
 
     <!-- Help &amp; feedback: menu -->
-    <string name="settings_help_title">Pomoč in povratne informacije</string>
+    <string name="settings_help_title">Pomoč in podpora</string>
     <string name="settings_help_desc">Vodiči, povratne informacije in podpora</string>
-    <string name="help_section_learn">Učenje</string>
+    <string name="help_section_learn">Pomoč</string>
     <string name="help_section_support">Podpora</string>
     <string name="help_section_about">O aplikaciji</string>
     <string name="help_quick_guide_title">Hitri vodič</string>
@@ -347,6 +347,7 @@
 
     <!-- Conversation thread -->
     <string name="thread_you">Vi</string>
+    <string name="thread_support">Podpora SweetSpot</string>
     <string name="thread_open_github">Odpri na GitHubu</string>
     <string name="thread_load_error">Pogovora ni bilo mogoče naložiti. Preverite povezavo in poskusite znova.</string>
 

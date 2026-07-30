@@ -122,6 +122,10 @@ internal fun HelpSettingsScreen(
             submission = reportSubmission,
             onSubmit = onSubmitReport,
             onDismiss = onDismissReportResult,
+            // After a submit completes, "Done" takes the user to "My reports". Flush the outbox and
+            // reload first so a queued (retryable) report gets a delivery attempt and the list reflects
+            // the latest state — the screen's initial LaunchedEffect doesn't re-run on a route change.
+            onDone = { onDismissReportResult(); onFlushOutbox(); onLoadMyReports(); route = HelpRoute.MyReports },
             onBack = { onDismissReportResult(); toMenu() }
         )
 
@@ -274,6 +278,7 @@ private fun ReportFormScreen(
     submission: ReportSubmission,
     onSubmit: (ReportCategory, String, String, String?) -> Unit,
     onDismiss: () -> Unit,
+    onDone: () -> Unit,
     onBack: () -> Unit
 ) {
     var subject by rememberSaveable { mutableStateOf("") }
@@ -333,7 +338,7 @@ private fun ReportFormScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Button(
-                        onClick = { subject = ""; body = ""; email = ""; onBack() },
+                        onClick = { subject = ""; body = ""; email = ""; onDone() },
                         modifier = Modifier.fillMaxWidth()
                     ) { Text(stringResource(R.string.report_done)) }
                 }
@@ -347,7 +352,7 @@ private fun ReportFormScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Button(
-                        onClick = { subject = ""; body = ""; email = ""; onBack() },
+                        onClick = { subject = ""; body = ""; email = ""; onDone() },
                         modifier = Modifier.fillMaxWidth()
                     ) { Text(stringResource(R.string.report_done)) }
                 } else {
@@ -462,8 +467,8 @@ private fun MyReportsScreen(
 
 /**
  * In-app conversation for one report: the issue body + comments, read from the public GitHub API.
- * Entries authored by the bot login are the reporter's own ("You"); anyone else is "SweetSpot"
- * (the maintainer). An "Open on GitHub" link is always available (and is the fallback on error).
+ * Entries authored by the bot login are the reporter's own ("You"); anyone else is "SweetSpot
+ * Support" (the maintainer). An "Open on GitHub" link is always available (and is the fallback on error).
  */
 @Composable
 private fun ThreadScreen(
@@ -505,7 +510,7 @@ private fun ThreadScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 state.thread.items.forEach { item ->
                     Text(
-                        text = if (item.mine) stringResource(R.string.thread_you) else "SweetSpot",
+                        text = if (item.mine) stringResource(R.string.thread_you) else stringResource(R.string.thread_support),
                         style = MaterialTheme.typography.labelLarge,
                         color = if (item.mine) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
                     )

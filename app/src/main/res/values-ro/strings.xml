@@ -287,9 +287,9 @@
     <string name="home_section_appliances">Aparate</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Ajutor &amp; feedback</string>
+    <string name="settings_help_title">Ajutor &amp; asistență</string>
     <string name="settings_help_desc">Ghiduri, feedback și asistență</string>
-    <string name="help_section_learn">Învață</string>
+    <string name="help_section_learn">Ajutor</string>
     <string name="help_section_support">Asistență</string>
     <string name="help_section_about">Despre</string>
     <string name="help_quick_guide_title">Ghid rapid</string>
@@ -351,6 +351,7 @@
     <string name="guide_wear_body">Aparatele tale se sincronizează cu Wear OS, ca să poți verifica prețurile fără telefon.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Tu</string>
+    <string name="thread_support">Asistență SweetSpot</string>
     <string name="thread_open_github">Deschide pe GitHub</string>
     <string name="thread_load_error">Conversația nu a putut fi încărcată. Verifică conexiunea și încearcă din nou.</string>
     <string name="reply_hint">Răspunsul tău</string>

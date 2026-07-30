@@ -81,6 +81,27 @@ class GithubIssueApiTest {
     }
 
     @Test
+    fun `parseThread strips the Worker reply prefix from a reporter's own comment`() {
+        // The Worker posts a reporter's in-app reply as the bot with a leading marker; the app labels
+        // it "You", so the marker is stripped for display (and to match the optimistic copy on send).
+        val issue = """{"number":9,"state":"open","title":"x","user":{"login":"sweetspot-support"}}"""
+        val comments = """
+            [
+              { "body": "💬 **Reporter (via app):**\n\nStill broken on 6.7.", "created_at": "2026-07-02T09:30:00Z", "user": { "login": "sweetspot-support" } },
+              { "body": "Thanks, on it.", "created_at": "2026-07-03T08:00:00Z", "user": { "login": "jmerhar" } }
+            ]
+        """.trimIndent()
+        val thread = api.parseThread(issue, comments)
+
+        // Bot-authored reply: prefix stripped, marked as the user's own.
+        assertEquals("Still broken on 6.7.", thread.items[1].body)
+        assertTrue(thread.items[1].mine)
+        // Maintainer reply without the prefix is left untouched.
+        assertEquals("Thanks, on it.", thread.items[2].body)
+        assertFalse(thread.items[2].mine)
+    }
+
+    @Test
     fun `parseThread tolerates no body and unparseable timestamps`() {
         // Issue with created_at absent (blank branch); comment with a bad timestamp (exception branch).
         val issue = """{"number":8,"state":"open","title":"x"}"""

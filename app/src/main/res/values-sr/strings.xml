@@ -289,9 +289,9 @@
     <string name="coach_got_it">Разумем</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Помоћ и повратне информације</string>
+    <string name="settings_help_title">Помоћ и подршка</string>
     <string name="settings_help_desc">Водичи, повратне информације и подршка</string>
-    <string name="help_section_learn">Упознавање</string>
+    <string name="help_section_learn">Помоћ</string>
     <string name="help_section_support">Подршка</string>
     <string name="help_section_about">О апликацији</string>
     <string name="help_quick_guide_title">Кратак водич</string>
@@ -340,6 +340,7 @@
 
     <!-- Report thread -->
     <string name="thread_you">Ви</string>
+    <string name="thread_support">SweetSpot подршка</string>
     <string name="thread_open_github">Отвори на GitHub-у</string>
     <string name="thread_load_error">Није могуће учитати разговор. Проверите везу и покушајте поново.</string>
 

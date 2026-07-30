@@ -282,9 +282,9 @@
     <string name="coach_got_it">Begrepen</string>
 
     <!-- Help & feedback: menu -->
-    <string name="settings_help_title">Help &amp; feedback</string>
+    <string name="settings_help_title">Help &amp; ondersteuning</string>
     <string name="settings_help_desc">Handleidingen, feedback en ondersteuning</string>
-    <string name="help_section_learn">Leren</string>
+    <string name="help_section_learn">Help</string>
     <string name="help_section_support">Ondersteuning</string>
     <string name="help_section_about">Over</string>
     <string name="help_quick_guide_title">Snelgids</string>
@@ -329,6 +329,7 @@
     <string name="my_reports_open">Open</string>
     <string name="my_reports_closed">Gesloten</string>
     <string name="thread_you">Jij</string>
+    <string name="thread_support">SweetSpot-ondersteuning</string>
     <string name="thread_open_github">Openen op GitHub</string>
     <string name="thread_load_error">Kon het gesprek niet laden. Controleer je verbinding en probeer het opnieuw.</string>
 

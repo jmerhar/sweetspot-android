@@ -278,9 +278,9 @@
     <string name="coach_got_it">Skjønner</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Hjelp &amp; tilbakemelding</string>
+    <string name="settings_help_title">Hjelp &amp; støtte</string>
     <string name="settings_help_desc">Veiledninger, tilbakemelding og støtte</string>
-    <string name="help_section_learn">Lær</string>
+    <string name="help_section_learn">Hjelp</string>
     <string name="help_section_support">Støtte</string>
     <string name="help_section_about">Om</string>
     <string name="help_quick_guide_title">Hurtigveiledning</string>
@@ -327,6 +327,7 @@
     <string name="my_reports_open">Åpen</string>
     <string name="my_reports_closed">Lukket</string>
     <string name="thread_you">Deg</string>
+    <string name="thread_support">SweetSpot Brukerstøtte</string>
     <string name="thread_open_github">Åpne på GitHub</string>
     <string name="thread_load_error">Kunne ikke laste samtalen. Sjekk tilkoblingen din, og prøv igjen.</string>
 

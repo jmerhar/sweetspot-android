@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -60,7 +61,11 @@ class MainActivity : AppCompatActivity() {
                             onCancel = vm::onDismissImport
                         )
                     }
-                    state.showOnboarding -> {
+                    // First-launch gate: the intro replaces the home screen (home isn't composed
+                    // underneath). When replayed from Settings › Help the settings screen stays
+                    // composed and the intro is overlaid on top instead (see the settings branch),
+                    // so finishing the slides returns to the exact Help screen it was launched from.
+                    state.showOnboarding && !state.showSettings -> {
                         OnboardingScreen(onFinish = vm::onOnboardingComplete)
                     }
                     state.showPaywall -> {
@@ -71,6 +76,9 @@ class MainActivity : AppCompatActivity() {
                         )
                     }
                     state.showSettings -> {
+                      // Keep the settings screen composed while the replayed intro is showing so its
+                      // navigation (the Help sub-route) survives; the intro is overlaid below.
+                      Box {
                         // System back is handled inside SettingsScreen so it can gate leaving (e.g. an
                         // incomplete all-in setup) and close its own picker sub-screens first.
                         SettingsScreen(
@@ -158,6 +166,10 @@ class MainActivity : AppCompatActivity() {
                             onDevUseProductionLogoChanged = vm::onDevUseProductionLogoChanged,
                             onBack = vm::onHideSettings
                         )
+                        if (state.showOnboarding) {
+                            OnboardingScreen(onFinish = vm::onOnboardingComplete)
+                        }
+                      }
                     }
                     else -> {
                         SweetSpotScreen(viewModel = vm)

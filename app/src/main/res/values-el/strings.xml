@@ -282,9 +282,9 @@
     <string name="coach_got_it">Κατάλαβα</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Βοήθεια &amp; σχόλια</string>
+    <string name="settings_help_title">Βοήθεια &amp; υποστήριξη</string>
     <string name="settings_help_desc">Οδηγοί, σχόλια και υποστήριξη</string>
-    <string name="help_section_learn">Μάθετε</string>
+    <string name="help_section_learn">Βοήθεια</string>
     <string name="help_section_support">Υποστήριξη</string>
     <string name="help_section_about">Σχετικά</string>
     <string name="help_quick_guide_title">Σύντομος οδηγός</string>
@@ -331,6 +331,7 @@
     <string name="my_reports_open">Ανοιχτή</string>
     <string name="my_reports_closed">Κλειστή</string>
     <string name="thread_you">Εσείς</string>
+    <string name="thread_support">Υποστήριξη SweetSpot</string>
     <string name="thread_open_github">Άνοιγμα στο GitHub</string>
     <string name="thread_load_error">Δεν ήταν δυνατή η φόρτωση της συνομιλίας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.</string>
 

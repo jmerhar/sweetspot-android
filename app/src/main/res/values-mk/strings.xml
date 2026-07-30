@@ -282,9 +282,9 @@
     <string name="home_section_appliances">Апарати</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Помош и повратни информации</string>
+    <string name="settings_help_title">Помош и поддршка</string>
     <string name="settings_help_desc">Водичи, повратни информации и поддршка</string>
-    <string name="help_section_learn">Научи повеќе</string>
+    <string name="help_section_learn">Помош</string>
     <string name="help_section_support">Поддршка</string>
     <string name="help_section_about">За апликацијата</string>
     <string name="help_quick_guide_title">Брз водич</string>
@@ -346,6 +346,7 @@
     <string name="guide_wear_body">Вашите апарати се синхронизираат со Wear OS, за да можете да ги проверувате цените без вашиот телефон.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Вие</string>
+    <string name="thread_support">SweetSpot Поддршка</string>
     <string name="thread_open_github">Отвори на GitHub</string>
     <string name="thread_load_error">Разговорот не можеше да се вчита. Проверете ја врската и обидете се повторно.</string>
     <string name="reply_hint">Вашиот одговор</string>

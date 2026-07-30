@@ -282,9 +282,9 @@
     <string name="coach_got_it">Verstanden</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Hilfe &amp; Feedback</string>
+    <string name="settings_help_title">Hilfe &amp; Support</string>
     <string name="settings_help_desc">Anleitungen, Feedback und Support</string>
-    <string name="help_section_learn">Lernen</string>
+    <string name="help_section_learn">Hilfe</string>
     <string name="help_section_support">Support</string>
     <string name="help_section_about">Über</string>
     <string name="help_quick_guide_title">Kurzanleitung</string>
@@ -329,6 +329,7 @@
     <string name="my_reports_open">Offen</string>
     <string name="my_reports_closed">Geschlossen</string>
     <string name="thread_you">Du</string>
+    <string name="thread_support">SweetSpot Support</string>
     <string name="thread_open_github">Auf GitHub öffnen</string>
     <string name="thread_load_error">Die Unterhaltung konnte nicht geladen werden. Überprüfe deine Verbindung und versuche es erneut.</string>
 

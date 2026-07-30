@@ -292,9 +292,9 @@
     <string name="coach_got_it">Supratau</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Pagalba ir atsiliepimai</string>
+    <string name="settings_help_title">Pagalba ir palaikymas</string>
     <string name="settings_help_desc">Vadovai, atsiliepimai ir pagalba</string>
-    <string name="help_section_learn">Sužinoti</string>
+    <string name="help_section_learn">Pagalba</string>
     <string name="help_section_support">Pagalba</string>
     <string name="help_section_about">Apie</string>
     <string name="help_quick_guide_title">Trumpas vadovas</string>
@@ -343,6 +343,7 @@
 
     <!-- Report thread -->
     <string name="thread_you">Jūs</string>
+    <string name="thread_support">SweetSpot palaikymas</string>
     <string name="thread_open_github">Atidaryti GitHub</string>
     <string name="thread_load_error">Nepavyko įkelti pokalbio. Patikrinkite ryšį ir bandykite dar kartą.</string>
 

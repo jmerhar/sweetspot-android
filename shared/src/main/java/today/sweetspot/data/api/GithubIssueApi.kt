@@ -136,7 +136,17 @@ open class GithubIssueApi(
 
     /** Builds a [ThreadItem], marking it [ThreadItem.mine] when authored by the feedback bot. */
     private fun toItem(author: String, body: String, createdAt: String): ThreadItem =
-        ThreadItem(author, body, parseIsoToMs(createdAt), mine = author.equals(HelpLinks.BOT_LOGIN, ignoreCase = true))
+        ThreadItem(author, stripReplyPrefix(body), parseIsoToMs(createdAt), mine = author.equals(HelpLinks.BOT_LOGIN, ignoreCase = true))
+
+    /**
+     * Strips the Worker's reporter-reply prefix from a comment body. The Worker posts a reporter's
+     * in-app reply as the bot with a leading marker so GitHub readers can tell it's the reporter; the
+     * app already labels it "You", so the marker is redundant here (and its removal makes the displayed
+     * body match the optimistic copy the app appends on send). A body without the marker is unchanged.
+     */
+    private fun stripReplyPrefix(body: String): String =
+        if (body.startsWith(HelpLinks.REPLY_PREFIX)) body.removePrefix(HelpLinks.REPLY_PREFIX).trimStart('\n', ' ')
+        else body
 
     /** Parses an ISO-8601 UTC timestamp (e.g. `2024-01-02T03:04:05Z`) to epoch millis; 0 on failure. */
     private fun parseIsoToMs(iso: String): Long =

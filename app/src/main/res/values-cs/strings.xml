@@ -298,9 +298,9 @@
     <string name="coach_got_it">Rozumím</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Nápověda a zpětná vazba</string>
+    <string name="settings_help_title">Nápověda a podpora</string>
     <string name="settings_help_desc">Návody, zpětná vazba a podpora</string>
-    <string name="help_section_learn">Naučte se</string>
+    <string name="help_section_learn">Nápověda</string>
     <string name="help_section_support">Podpora</string>
     <string name="help_section_about">O aplikaci</string>
     <string name="help_quick_guide_title">Rychlý průvodce</string>
@@ -347,6 +347,7 @@
     <string name="my_reports_open">Otevřené</string>
     <string name="my_reports_closed">Uzavřené</string>
     <string name="thread_you">Vy</string>
+    <string name="thread_support">Podpora SweetSpot</string>
     <string name="thread_open_github">Otevřít na GitHubu</string>
     <string name="thread_load_error">Nepodařilo se načíst konverzaci. Zkontrolujte připojení a zkuste to znovu.</string>
 

@@ -291,9 +291,9 @@
     <string name="coach_got_it">U redu</string>
 
     <!-- Help & feedback -->
-    <string name="settings_help_title">Pomoć i povratne informacije</string>
+    <string name="settings_help_title">Pomoć i podrška</string>
     <string name="settings_help_desc">Vodiči, povratne informacije i podrška</string>
-    <string name="help_section_learn">Naučite</string>
+    <string name="help_section_learn">Pomoć</string>
     <string name="help_section_support">Podrška</string>
     <string name="help_section_about">O aplikaciji</string>
     <string name="help_quick_guide_title">Kratki vodič</string>
@@ -355,6 +355,7 @@
     <string name="guide_wear_body">Vaši aparati se sinhronizuju sa Wear OS-om, pa možete provjeravati cijene bez telefona.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Vi</string>
+    <string name="thread_support">SweetSpot podrška</string>
     <string name="thread_open_github">Otvori na GitHubu</string>
     <string name="thread_load_error">Nije moguće učitati razgovor. Provjerite vezu i pokušajte ponovo.</string>
     <string name="reply_hint">Vaš odgovor</string>

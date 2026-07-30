@@ -1,4 +1,4 @@
-SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai un elektroauto uzlādei. Izvēlieties, cik ilgi ierīcei jādarbojas — vai izvēlieties savu elektroauto un vēlamo uzlādes līmeni — un SweetSpot analizē nākamo 24 stundu dinamiskās elektroenerģijas cenas, lai atrastu lētāko periodu.
+SweetSpot atrod lētāko laiku jūsu ierīču darbināšanai un elektroauto uzlādei. Izvēlieties, cik ilgi ierīcei jādarbojas — vai izvēlieties savu elektroauto un vēlamo uzlādes līmeni — un SweetSpot analizē gaidāmās dinamiskās elektroenerģijas cenas, lai atrastu lētāko laiku.
 
 Vai tā būtu veļas mašīna, trauku mazgājamā mašīna, žāvētājs, siltumsūknis vai elektroauto lādētājs — ieslēdziet īstajā laikā un maksājiet mazāk par to pašu elektrību.
 
@@ -8,14 +8,14 @@ KĀ TAS DARBOJAS
 3. Skatiet precīzi, kad sākt, ar krāsu kodētu 24 stundu cenu diagrammu un pilnīgu izmaksu sadalījumu pa laika intervāliem
 
 ELEKTROAUTO UZLĀDE
-Pievienojiet savu automašīnu no iebūvētas datubāzes ar aptuveni 1600 elektroauto un uzlādējamiem hibrīdiem — vai ievadiet akumulatora ietilpību un uzlādes jaudu paši. Iestatiet pašreizējo un mērķa uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde notiks un kurš ir lētākais laiks pieslēgties.
+Pievienojiet savu automašīnu no iebūvētas datubāzes ar tūkstošiem elektroauto un uzlādējamo hibrīdu — vai ievadiet akumulatora ietilpību un uzlādes jaudu paši. Iestatiet pašreizējo un mērķa uzlādes līmeni, un SweetSpot aprēķinās, cik ilgi uzlāde notiks un kurš ir lētākais laiks pieslēgties.
 
 FUNKCIJAS
 - 30 Eiropas valstis, 43 cenu zonas — no Portugāles līdz Somijai, no Norvēģijas līdz Grieķijai
 - 5 datu avoti ar automātisku pārslēgšanos (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Pilnā cena (Nīderlande) — tā vietā, lai redzētu tikai tirgus cenu, pēc izvēles varat redzēt pilno patērētāja cenu (biržas cena + enerģijas nodoklis + jūsu piegādātāja uzcenojums + PVN); izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Drīzumā vairāk valstu
-- Termiņš "gatavs līdz" — izvēlas tikai tādu periodu, kas beidzas laikā
-- Agrāk vai lētāk — ja lētākais periods nav ērts, pārejiet uz agrāku un redziet, cik tieši vairāk tas maksā
+- Pilnā cena (Nīderlande) — tā vietā, lai redzētu tikai biržas cenu, pēc izvēles varat redzēt pilno patērētāja cenu (biržas cena + enerģijas nodoklis + jūsu piegādātāja uzcenojums + PVN); izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Drīzumā vairāk valstu
+- Termiņš "gatavs līdz" — pēc noklusējuma iesaka lētāko laiku, kas paspēj pabeigt līdz tam
+- Agrāk vai lētāk — ja lētākais laiks nav ērts, pārejiet uz agrāku un redziet, cik tieši vairāk tas maksā
 - Jaudas norādīšana — iestatiet ierīces jaudu kW, lai izmaksu aprēķins atbilstu reālajam patēriņam
 - Saglabājiet savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei
 - Kārtojiet un pārkārtojiet savas ierīces — velciet tās vēlamajā secībā vai kārtojiet pēc biežāk lietotajām, nesen lietotajām, nosaukuma, ilguma vai veida un izvēlieties, kur atrodas jūsu elektroauto

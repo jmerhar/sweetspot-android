@@ -5,7 +5,7 @@ description: "SweetSpot privatumo politika — privatumas visų pirma, be paskyr
 
 ## Apžvalga
 
-SweetSpot sukurta atsižvelgiant į privatumą. Programėlė nerenka ir nesaugo jokių asmeninių duomenų. Nėra vartotojų paskyrų, analitikos ar naudojimo sekimo. Neprivaloma funkcija leidžia dalintis anonimine API statistika — žr. informaciją žemiau.
+SweetSpot sukurta atsižvelgiant į privatumą. Kad veiktų, programėlei nereikia asmeninių duomenų ir ji jų nerenka — nėra vartotojų paskyrų, analitikos ar naudojimo sekimo, o vienintelis prašomas leidimas yra INTERNET (jokios vietos, kontaktų, saugyklos ar įrenginio identifikatorių). Neprivalomos funkcijos leidžia dalytis anonimine patikimumo statistika arba siųsti atsiliepimą — daugiau informacijos žemiau.
 
 ## Duomenų apdorojimas
 
@@ -21,17 +21,19 @@ SweetSpot gauna kitos dienos elektros kainas iš viešų API:
 
 ## Vietinė saugykla
 
-Kainų duomenys saugomi vietiniame jūsų įrenginyje, kad sumažėtų API užklausų skaičius ir rezultatai būtų rodomi greičiau. Jūsų prietaisų konfigūracija (pavadinimai, trukmės, piktogramos ir neprivalomas galingumas), išsaugoti automobiliai (baterijos talpa ir įkrovimo galia) bei nustatymai (šalis, zona, kalba) taip pat saugomi vietiniame jūsų įrenginyje.
+Kainų duomenys saugomi vietiniame jūsų įrenginyje, kad sumažėtų API užklausų skaičius ir rezultatai būtų rodomi greičiau. Jūsų prietaisų konfigūracija (pavadinimai, trukmės, piktogramos ir neprivalomas galingumas), išsaugoti automobiliai (baterijos talpa ir įkrovimo galia) bei nustatymai (šalis, zona, kalba) taip pat saugomi vietiniame jūsų įrenginyje kartu su jūsų prenumeratos būsena (saugoma podėlyje, kad programėlė veiktų neprisijungus) ir kiekvieno prietaiso palietimų skaičiumi (naudojamu tik rikiuojant pagal dažniausiai ir neseniai naudotus).
 
 Wear OS įrenginiuose prietaisų duomenys ir nustatymai sinchronizuojami tarp telefono ir laikrodžio naudojant Wearable Data Layer API. Ši komunikacija lieka tarp jūsų vietinių įrenginių ir nepatenka į jokius išorinius serverius.
+
+Jei dalijatės savo sąranka kaip QR kodu ar nuoroda, jūsų prietaisų ir elektromobilio įkrovimo konfigūracija užkoduojama **pačioje nuorodoje ar QR kode** — ji niekada neįkeliama į serverį. Ją importuoti gali tik tas asmuo, kuriam duodate kodą ar nuorodą.
 
 ## Be analitikos
 
 SweetSpot nenaudoja jokių analitikos SDK, klaidų ataskaitų ar naudojimo sekimo. Programėlė nevykdo jokių tinklo užklausų, išskyrus elektros kainų gavimą iš aukščiau išvardytų viešų API (ir neprivalomą statistikos siuntimą, jei jis įjungtas, bei pranešimo pateikimą, jei naudojatės skiltimi Pagalba ir palaikymas — žr. žemiau).
 
-## Neprivaloma API statistika
+## Neprivaloma patikimumo statistika
 
-Galite pasirinkti dalintis anonimine API patikimumo statistika. Kai ši funkcija įjungta, programėlė periodiškai siunčia atskirų užklausų įrašus kiekvienam duomenų šaltiniui ir prekybos zonai į mūsų serverį. Šie duomenys apima:
+Galite pasirinkti dalytis anonimine patikimumo statistika. Kai ši funkcija įjungta, programėlė periodiškai siunčia atskirų užklausų įrašus kiekvienam duomenų šaltiniui ir prekybos zonai į mūsų serverį. Šie duomenys apima:
 
 - API užklausos laiko žymą
 - Prekybos zonos identifikatorių (pvz., "NL", "DE-LU")

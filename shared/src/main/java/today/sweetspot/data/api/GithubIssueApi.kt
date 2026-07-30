@@ -2,7 +2,7 @@ package today.sweetspot.data.api
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import today.sweetspot.util.HelpLinks
@@ -84,7 +84,7 @@ open class GithubIssueApi(
     private val client: OkHttpClient = sharedHttpClient
 ) {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     /** Fetches and parses the current status of issue [number]. `open` so tests can fake it. */
     open fun fetch(number: Int): IssueStatus = parse(fetchRaw(number))

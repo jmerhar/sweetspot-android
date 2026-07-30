@@ -2,7 +2,7 @@ package today.sweetspot.data.api
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import today.sweetspot.model.PriceSlot
@@ -46,7 +46,7 @@ class EnergyChartsApi(
     private val bzn = ZONE_TO_BZN[zoneId]
         ?: error("No Energy-Charts mapping for zone: $zoneId")
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     /**
      * Fetches and parses electricity prices from the Energy-Charts API.

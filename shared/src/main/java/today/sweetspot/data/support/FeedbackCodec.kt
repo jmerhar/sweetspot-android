@@ -1,7 +1,7 @@
 package today.sweetspot.data.support
 
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.intOrNull
@@ -36,12 +36,12 @@ enum class SubmitOutcome {
 
 /**
  * Pure encode/parse + retry policy for the feedback Worker. Android-free and unit-tested; mirrors
- * [today.sweetspot.data.share.SetupShare]'s lenient-[Json] + sealed-result style and
+ * [today.sweetspot.data.share.SetupShare]'s lenient-[sweetSpotJson] + sealed-result style and
  * `StatsReporter.reportOutcomeFor`'s status-code policy.
  */
 object FeedbackCodec {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = sweetSpotJson
 
     /** Serialises the request body sent to `POST /report`. */
     fun encodeRequest(report: FeedbackReport): String = json.encodeToString(report)

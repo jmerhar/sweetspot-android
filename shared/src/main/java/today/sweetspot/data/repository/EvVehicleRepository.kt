@@ -1,6 +1,6 @@
 package today.sweetspot.data.repository
 
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import today.sweetspot.model.EvVehicle
 
 /**
@@ -55,7 +55,7 @@ class EvVehicleRepository(json: String) {
 
     private companion object {
         /** Lenient parser that ignores unknown fields for forward compatibility. */
-        val parser = Json { ignoreUnknownKeys = true }
+        val parser = sweetSpotJson
 
         /**
          * Parses the bundled JSON array into [EvVehicle]s.

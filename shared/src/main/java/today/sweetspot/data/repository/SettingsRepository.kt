@@ -3,7 +3,7 @@ package today.sweetspot.data.repository
 import android.content.Context
 import androidx.core.content.edit
 
-import kotlinx.serialization.json.Json
+import today.sweetspot.util.sweetSpotJson
 import today.sweetspot.model.Appliance
 import today.sweetspot.model.ApplianceSort
 import today.sweetspot.model.CoachMark
@@ -84,7 +84,7 @@ class SettingsRepository(private val context: Context) {
         const val DEFAULT_TARGET_SOC = 80
 
         /** Lenient parser that ignores unknown fields for forward compatibility. */
-        val json = Json { ignoreUnknownKeys = true }
+        val json = sweetSpotJson
     }
 
     // --- Country & Price Zone ---

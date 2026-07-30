@@ -3,7 +3,11 @@ package today.sweetspot.wear.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -20,8 +24,8 @@ import today.sweetspot.util.resolve
 import today.sweetspot.util.shortTimeFormatter
 import today.sweetspot.wear.R
 import today.sweetspot.wear.WearUiState
-import java.time.ZoneId
 import java.time.ZonedDateTime
+import kotlinx.coroutines.delay
 
 /**
  * Result screen for the Wear OS app.
@@ -69,8 +73,18 @@ fun ResultScreen(
         return
     }
 
-    val timeZoneId = remember(state.priceZone) { ZoneId.of(state.priceZone!!.timeZoneId) }
-    val now = ZonedDateTime.now(timeZoneId)
+    // Derive the display timezone from the result itself, not state.priceZone: the phone can null
+    // the zone out (e.g. switching to a multi-zone country) while a result is still on screen.
+    val timeZoneId = result.startTime.zone
+    // Tick every minute so the relative "in Xh Ym" text stays current even when the periodic
+    // recalculation yields a value-equal result (which StateFlow would otherwise conflate away).
+    var now by remember { mutableStateOf(ZonedDateTime.now(timeZoneId)) }
+    LaunchedEffect(timeZoneId) {
+        while (true) {
+            delay(60_000)
+            now = ZonedDateTime.now(timeZoneId)
+        }
+    }
     // Centre on the label item (index 3: Start caption, time, relative, then label)
     val listState = rememberScalingLazyListState(initialCenterItemIndex = 3)
 

@@ -12,7 +12,8 @@
     <string name="main_card_description">Најдете го најевтиното време за користење на вашиот апарат</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Најевтин период</string>
+    <string name="result_cheapest_window">Препорачано време</string>
+    <string name="result_after_deadline">Овој период завршува по вашето време „Готово до“.</string>
     <string name="result_start">Почеток</string>
     <string name="result_end">Крај</string>
     <string name="result_total_cost">Вкупна цена</string>

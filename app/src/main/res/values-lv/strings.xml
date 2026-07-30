@@ -12,7 +12,8 @@
     <string name="main_card_description">Atrodiet lētāko laiku savai ierīcei</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Lētākais periods</string>
+    <string name="result_cheapest_window">Ieteicamais laiks</string>
+    <string name="result_after_deadline">Šis periods beidzas pēc tava “Gatavs līdz” laika.</string>
     <string name="result_start">Sākums</string>
     <string name="result_end">Beigas</string>
     <string name="result_total_cost">Kopējās izmaksas</string>

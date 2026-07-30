@@ -12,7 +12,8 @@
     <string name="main_card_description">Vind het goedkoopste moment om je apparaat te gebruiken</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Goedkoopste periode</string>
+    <string name="result_cheapest_window">Aanbevolen tijd</string>
+    <string name="result_after_deadline">Dit tijdvak eindigt na je ‘Klaar om’-tijd.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Einde</string>
     <string name="result_total_cost">Totale kosten</string>

@@ -12,7 +12,8 @@
     <string name="main_card_description">Raskite pigiausią laiką savo prietaisui</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Pigiausias laikotarpis</string>
+    <string name="result_cheapest_window">Rekomenduojamas laikas</string>
+    <string name="result_after_deadline">Šis laikotarpis baigiasi po tavo „Paruošti iki“ laiko.</string>
     <string name="result_start">Pradžia</string>
     <string name="result_end">Pabaiga</string>
     <string name="result_total_cost">Bendra kaina</string>

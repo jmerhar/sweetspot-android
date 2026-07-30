@@ -12,7 +12,8 @@
     <string name="main_card_description">Leidke odavaim aeg oma seadme kasutamiseks</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Odavaim ajavahemik</string>
+    <string name="result_cheapest_window">Soovitatud aeg</string>
+    <string name="result_after_deadline">See ajavahemik lõpeb pärast sinu „Valmis hiljemalt“ aega.</string>
     <string name="result_start">Algus</string>
     <string name="result_end">Lõpp</string>
     <string name="result_total_cost">Kogumaksumus</string>

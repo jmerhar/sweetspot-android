@@ -12,7 +12,8 @@
     <string name="main_card_description">Keresd meg a legolcsóbb időpontot a készüléked futtatásához</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Legolcsóbb időablak</string>
+    <string name="result_cheapest_window">Ajánlott időpont</string>
+    <string name="result_after_deadline">Ez az időszak a „Készen legyen ekkorra” időpont után ér véget.</string>
     <string name="result_start">Kezdés</string>
     <string name="result_end">Befejezés</string>
     <string name="result_total_cost">Összes költség</string>

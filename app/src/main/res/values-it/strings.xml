@@ -12,7 +12,8 @@
     <string name="main_card_description">Trova il momento più economico per il tuo elettrodomestico</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Fascia più economica</string>
+    <string name="result_cheapest_window">Orario consigliato</string>
+    <string name="result_after_deadline">Questo intervallo termina dopo l\'orario «Pronta entro».</string>
     <string name="result_start">Inizio</string>
     <string name="result_end">Fine</string>
     <string name="result_total_cost">Costo totale</string>

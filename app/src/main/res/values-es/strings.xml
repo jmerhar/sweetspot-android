@@ -12,7 +12,8 @@
     <string name="main_card_description">Encuentra el momento más barato para usar tu electrodoméstico</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Franja más barata</string>
+    <string name="result_cheapest_window">Hora recomendada</string>
+    <string name="result_after_deadline">Este periodo termina después de tu hora «Listo a las».</string>
     <string name="result_start">Inicio</string>
     <string name="result_end">Fin</string>
     <string name="result_total_cost">Coste total</string>

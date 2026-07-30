@@ -12,7 +12,8 @@
     <string name="main_card_description">Poiščite najcenejši čas za zagon aparata</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Najcenejši termin</string>
+    <string name="result_cheapest_window">Priporočeni termin</string>
+    <string name="result_after_deadline">Ta termin se konča po vašem času »Pripravljeno do«.</string>
     <string name="result_start">Začetek</string>
     <string name="result_end">Konec</string>
     <string name="result_total_cost">Skupni stroški</string>

@@ -12,7 +12,8 @@
     <string name="main_card_description">Pronađite najjeftinije vrijeme za pokretanje aparata</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Najjeftiniji period</string>
+    <string name="result_cheapest_window">Preporučeno vrijeme</string>
+    <string name="result_after_deadline">Ovaj period završava nakon tvog vremena „Spremno do“.</string>
     <string name="result_start">Početak</string>
     <string name="result_end">Kraj</string>
     <string name="result_total_cost">Ukupni troškovi</string>

@@ -12,7 +12,8 @@
     <string name="main_card_description">Trouvez le meilleur moment pour faire fonctionner votre appareil</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Période la moins chère</string>
+    <string name="result_cheapest_window">Heure recommandée</string>
+    <string name="result_after_deadline">Ce créneau se termine après votre heure « Prêt à ».</string>
     <string name="result_start">Début</string>
     <string name="result_end">Fin</string>
     <string name="result_total_cost">Coût total</string>

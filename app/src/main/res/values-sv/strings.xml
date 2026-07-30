@@ -12,7 +12,8 @@
     <string name="main_card_description">Hitta den billigaste tiden att köra din apparat</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Billigaste tidsperioden</string>
+    <string name="result_cheapest_window">Rekommenderad tid</string>
+    <string name="result_after_deadline">Den här perioden slutar efter din \'Klar senast\'-tid.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Slut</string>
     <string name="result_total_cost">Total kostnad</string>

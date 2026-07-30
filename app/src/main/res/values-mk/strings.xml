@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Поставки</string>
     <string name="cd_back">Назад</string>
-    <string name="main_description">SweetSpot ви помага да заштедите пари со наоѓање на најевтиното време за користење на вашите апарати. Само изберете колку долго треба да работи вашиот апарат и апликацијата ќе ги скенира следните 24 часа динамични цени на струја за да го најде најдоброто време. Можете и да ги зачувате вашите омилени апарати во поставките за брз пристап.</string>
-    <string name="main_find_button">Најди најевтин период</string>
+    <string name="main_description">SweetSpot ви помага да заштедите пари со наоѓање на најевтиното време за користење на вашите апарати. Само изберете колку долго треба да работи вашиот апарат и апликацијата ќе ги скенира претстојните динамични цени на струја за да го најде најдоброто време. Можете и да ги зачувате вашите омилени апарати во поставките за брз пристап.</string>
+    <string name="main_find_button">Најди најевтино време</string>
     <string name="main_searching">Пребарување…</string>
     <string name="main_add_appliances">Додајте ги вашите апарати</string>
     <string name="main_card_description">Најдете го најевтиното време за користење на вашиот апарат</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Препорачано време</string>
+    <string name="result_cheapest_window">Препорачан период</string>
     <string name="result_after_deadline">Овој период завршува по вашето време „Готово до“.</string>
     <string name="result_start">Почеток</string>
     <string name="result_end">Крај</string>
@@ -149,10 +149,10 @@
     <string name="cd_refresh">Освежи</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Сподели API статистики</string>
-    <string name="settings_stats_description">Помогнете да се подобри доверливоста на изворите на податоци со споделување анонимни API статистики за успех/неуспех. Не се собираат лични податоци.</string>
+    <string name="settings_stats_title">Сподели статистики за доверливост</string>
+    <string name="settings_stats_description">Помогнете да се подобри доверливоста на изворите на податоци со споделување анонимни бројки за тоа колку често цените се вчитуваат или не успеваат. Не се собираат лични податоци.</string>
     <string name="stats_prompt_title">Помогнете да го подобриме SweetSpot?</string>
-    <string name="stats_prompt_message">Споделете анонимна API статистика за да помогнете да се подобри доверливоста на изворите на податоци. Се споделуваат само бројот на успешни/неуспешни барања по извор — без лични податоци. Ова можете да го промените во секое време во Поставки.</string>
+    <string name="stats_prompt_message">Споделете анонимни статистики за да помогнете да се подобри доверливоста на изворите на податоци. Се споделува само колку често секој извор се вчитува или не успева — без лични податоци. Ова можете да го промените во секое време во Поставки.</string>
     <string name="stats_prompt_enable">Вклучи</string>
     <string name="stats_prompt_dismiss">Не, благодарам</string>
 
@@ -175,14 +175,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Вашиот пробен период заврши</string>
-    <string name="paywall_description">SweetSpot го наоѓа најевтиното време за работа на вашите уреди користејќи цени на електрична енергија во реално време во 30 европски земји. Претплатете се за да продолжите да го наоѓате најевтиното време за вашите уреди.</string>
+    <string name="paywall_description">SweetSpot го наоѓа најевтиното време за работа на вашите апарати користејќи динамични цени на струја во 30 европски земји. Претплатете се за да продолжите да го користите.</string>
     <string name="paywall_unlock">Претплати се на SweetSpot</string>
     <string name="paywall_unlock_price">Претплата за %s/год.</string>
     <string name="paywall_restore">Врати ја претплатата</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Ви благодариме!</string>
-    <string name="thank_you_message">Вашата претплата е сега активна. Уживајте во наоѓањето на најевтиното време за вашите уреди!</string>
+    <string name="thank_you_message">Вашата претплата е сега активна. Уживајте во наоѓањето на најевтиното време за вашите апарати!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Пробен период: уште %d ден</item>
@@ -218,23 +218,23 @@
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Крајна цена</string>
     <string name="settings_all_in_toggle">Прикажи ја крајната цена</string>
-    <string name="settings_all_in_desc">Прикажи ја проценетата крајна цена за потрошувачот (спот + данок на енергија + провизија на добавувачот + ДДВ) наместо само пазарната цена.</string>
+    <string name="settings_all_in_desc">Прикажи ја проценетата крајна цена за потрошувачот (пазарна цена + данок на енергија + провизија на добавувачот + ДДВ) наместо само пазарната цена.</string>
     <string name="all_in_supplier">Добавувач</string>
     <string name="all_in_supplier_prompt">Изберете го вашиот добавувач</string>
-    <string name="all_in_supplier_custom">Прилагоден надоместок</string>
-    <string name="all_in_no_supplier">Не е пронајден добавувач. Наместо тоа, внесете прилагоден надоместок подолу.</string>
-    <string name="all_in_surcharge_custom">Прилагоден надоместок (без ДДВ)</string>
-    <string name="all_in_incomplete">Изберете добавувач или внесете надоместок, или исклучете ја крајната цена.</string>
+    <string name="all_in_supplier_custom">Прилагодена провизија</string>
+    <string name="all_in_no_supplier">Не е пронајден добавувач. Наместо тоа, внесете прилагодена провизија подолу.</string>
+    <string name="all_in_surcharge_custom">Прилагодена провизија (без ДДВ)</string>
+    <string name="all_in_incomplete">Изберете добавувач или внесете провизија, или исклучете ја крајната цена.</string>
     <string name="picker_supplier_title">Добавувач</string>
     <string name="picker_supplier_search">Пребарај добавувачи</string>
-    <string name="result_disclaimer_all_in">Трошоците се прикажани за оптоварување од 1 kW, по проценетата крајна цена (спот + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Трошоците се прикажани за оптоварување од %s kW, по проценетата крајна цена (спот + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Трошоците се прикажани за оптоварување од 1 kW, по проценетата крајна цена (пазарна цена + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Трошоците се прикажани за оптоварување од %s kW, по проценетата крајна цена (пазарна цена + данок на енергија + провизија на добавувачот + ДДВ). Не вклучуваат мрежни надоместоци и фиксни месечни надоместоци. Цените за утре обично се достапни по 13:00 CET.</string>
     <string name="result_all_in_supplier">\nДобавувач: %s</string>
     <string name="result_all_in_stale">Податоците за тарифата се постари од 14 дена и можеби се застарени.</string>
     <string name="chart_legend_energy_tax">Данок на енергија</string>
     <string name="chart_legend_surcharge">Провизија</string>
-    <string name="chart_legend_spot">Спот цена</string>
-    <string name="chart_legend_spot_negative">Негативна спот цена</string>
+    <string name="chart_legend_spot">Пазарна цена</string>
+    <string name="chart_legend_spot_negative">Негативна цена</string>
     <string name="chart_legend_vat_note">Сите цени го вклучуваат ДДВ.</string>
 
     <!-- Coach hints -->
@@ -259,7 +259,7 @@
     <string name="sort_add_tiebreaker">Додај дополнителен критериум</string>
     <string name="cd_sort_remove_level">Отстрани го ова ниво на подредување</string>
     <string name="settings_group_title">Групирај по тип</string>
-    <string name="settings_group_description">Групирајте ги копчињата на почетниот екран според типот на уредот, секое под свој наслов.</string>
+    <string name="settings_group_description">Групирајте ги копчињата на почетниот екран според типот на апаратот, секое под свој наслов.</string>
     <string name="group_off">Исклучено</string>
     <string name="group_rows">Редови</string>
     <string name="group_columns">Колони</string>

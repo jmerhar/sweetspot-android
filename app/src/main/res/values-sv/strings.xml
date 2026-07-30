@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Inställningar</string>
     <string name="cd_back">Tillbaka</string>
-    <string name="main_description">SweetSpot hjälper dig att spara pengar genom att hitta den billigaste tiden att köra dina apparater. Välj hur länge din apparat behöver köras, så skannar den de kommande 24 timmarnas dynamiska elpriser för att hitta den bästa tidsperioden. Du kan också spara dina favoritapparater i inställningarna för snabb åtkomst.</string>
-    <string name="main_find_button">Hitta billigaste tidsperioden</string>
+    <string name="main_description">SweetSpot hjälper dig att spara pengar genom att hitta den billigaste tiden att köra dina apparater. Välj hur länge din apparat behöver köras, så söker den igenom kommande dynamiska elpriser för att hitta den bästa tiden. Du kan också spara dina favoritapparater i inställningarna för snabb åtkomst.</string>
+    <string name="main_find_button">Hitta billigaste tiden</string>
     <string name="main_searching">Söker…</string>
     <string name="main_add_appliances">Lägg till dina apparater</string>
     <string name="main_card_description">Hitta den billigaste tiden att köra din apparat</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Rekommenderad tid</string>
-    <string name="result_after_deadline">Den här perioden slutar efter din \'Klar senast\'-tid.</string>
+    <string name="result_after_deadline">Detta blir klart efter din \'Klar senast\'-tid.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Slut</string>
     <string name="result_total_cost">Total kostnad</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Fäll ihop</string>
     <string name="cd_expand">Expandera</string>
     <string name="result_upcoming_prices">Kommande priser</string>
-    <string name="result_disclaimer">Kostnader visas per 1 kW last. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="result_disclaimer">Kostnader visas per 1 kW last. Priserna inkluderar inte moms, energiskatt och leverantörspåslag. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="result_data_source">\nDatakälla: %s</string>
     <string name="result_price_zone">\nPrisområde: %s</string>
-    <string name="cd_cheapest_window">billigaste tidsperioden</string>
+    <string name="cd_cheapest_window">billigaste tiden</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Varaktighet</string>
@@ -149,10 +149,10 @@
     <string name="cd_refresh">Uppdatera</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Dela API-statistik</string>
-    <string name="settings_stats_description">Hjälp till att förbättra datakällornas tillförlitlighet genom att dela anonym statistik om lyckade och misslyckade API-anrop. Inga personuppgifter samlas in.</string>
+    <string name="settings_stats_title">Dela tillförlitlighetsstatistik</string>
+    <string name="settings_stats_description">Hjälp till att förbättra datakällornas tillförlitlighet genom att dela anonym statistik om när prisdata laddas eller misslyckas. Inga personuppgifter samlas in.</string>
     <string name="stats_prompt_title">Hjälp till att förbättra SweetSpot?</string>
-    <string name="stats_prompt_message">Dela anonym API-statistik för att förbättra datakällornas tillförlitlighet. Bara antal lyckade/misslyckade förfrågningar per datakälla delas — inga personuppgifter. Du kan ändra detta när som helst i Inställningar.</string>
+    <string name="stats_prompt_message">Dela anonym statistik för att förbättra datakällornas tillförlitlighet. Bara hur ofta varje datakälla laddas eller misslyckas delas — inga personuppgifter. Du kan ändra detta när som helst i Inställningar.</string>
     <string name="stats_prompt_enable">Aktivera</string>
     <string name="stats_prompt_dismiss">Nej tack</string>
 
@@ -175,7 +175,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Din provperiod har gått ut</string>
-    <string name="paywall_description">SweetSpot hittar den billigaste tiden att köra dina apparater med hjälp av elpriser i realtid i 30 europeiska länder. Prenumerera för att fortsätta hitta den billigaste tiden för dina apparater.</string>
+    <string name="paywall_description">SweetSpot hittar den billigaste tiden att köra dina apparater med hjälp av dynamiska elpriser i 30 europeiska länder. Prenumerera för att fortsätta använda den.</string>
     <string name="paywall_unlock">Prenumerera på SweetSpot</string>
     <string name="paywall_unlock_price">Prenumerera för %s/år</string>
     <string name="paywall_restore">Återställ prenumeration</string>
@@ -211,14 +211,14 @@
     <string name="ev_attribution">Fordonsdata: Open EV Data</string>
     <string name="ev_error_invalid_soc">Målladdningen måste vara högre än den nuvarande laddningen.</string>
     <string name="ev_error_invalid_charger">Ange en laddeffekt som är högre än noll.</string>
-    <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din deadline. Prova ett lägre laddningsmål eller en senare tidpunkt.</string>
-    <string name="result_disclaimer_power">Kostnader visas för en last på %s kW. Priserna inkluderar inte moms, energiskatt och leverantörsavgift. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="ev_error_deadline_unreachable">Laddningen hinner inte bli klar till din \'Klar senast\'-tid. Prova ett lägre laddningsmål eller en senare tidpunkt.</string>
+    <string name="result_disclaimer_power">Kostnader visas för en last på %s kW. Priserna inkluderar inte moms, energiskatt och leverantörspåslag. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="dialog_power">Effekt (kW, valfritt)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Totalpris</string>
     <string name="settings_all_in_toggle">Visa totalpris</string>
-    <string name="settings_all_in_desc">Visa det uppskattade totala konsumentpriset (spotpris + energiskatt + leverantörspåslag + moms) i stället för enbart marknadspriset.</string>
+    <string name="settings_all_in_desc">Visa det uppskattade totala konsumentpriset (marknadspris + energiskatt + leverantörspåslag + moms) i stället för enbart marknadspriset.</string>
     <string name="all_in_supplier">Leverantör</string>
     <string name="all_in_supplier_prompt">Välj din leverantör</string>
     <string name="all_in_supplier_custom">Anpassat påslag</string>
@@ -227,14 +227,14 @@
     <string name="all_in_incomplete">Välj en leverantör eller ange ett påslag, eller stäng av totalpriset.</string>
     <string name="picker_supplier_title">Leverantör</string>
     <string name="picker_supplier_search">Sök leverantörer</string>
-    <string name="result_disclaimer_all_in">Kostnader visas per 1 kW last, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Kostnader visas för en last på %s kW, till det uppskattade totalpriset (spotpris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Kostnader visas per 1 kW last, till det uppskattade totalpriset (marknadspris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Kostnader visas för en last på %s kW, till det uppskattade totalpriset (marknadspris + energiskatt + leverantörspåslag + moms). Exklusive nätavgifter och fasta månadsavgifter. Morgondagens priser är vanligtvis tillgängliga efter 13:00 CET.</string>
     <string name="result_all_in_supplier">\nLeverantör: %s</string>
     <string name="result_all_in_stale">Tariffuppgifterna är äldre än 14 dagar och kan vara inaktuella.</string>
     <string name="chart_legend_energy_tax">Energiskatt</string>
     <string name="chart_legend_surcharge">Påslag</string>
-    <string name="chart_legend_spot">Spotpris</string>
-    <string name="chart_legend_spot_negative">Negativt spotpris</string>
+    <string name="chart_legend_spot">Marknadspris</string>
+    <string name="chart_legend_spot_negative">Negativt pris</string>
     <string name="chart_legend_vat_note">Alla priser inkl. moms.</string>
 
     <!-- Coach hint bubbles -->
@@ -338,7 +338,7 @@
     <string name="guide_ev_title">Planera elbilsladdning</string>
     <string name="guide_ev_body">Lägg till din bil, ange nuvarande laddning och laddningsmål, så räknar SweetSpot ut laddtiden.</string>
     <string name="guide_result_title">Läs resultatet</string>
-    <string name="guide_result_body">Använd Tidigare och Billigare för att flytta tidsperioden, och tryck och håll på diagrammet för priset vid valfri tidpunkt.</string>
+    <string name="guide_result_body">Använd Tidigare och Billigare för att flytta den rekommenderade tiden, och tryck och håll på diagrammet för priset vid valfri tidpunkt.</string>
     <string name="guide_allin_title">Totalpris</string>
     <string name="guide_allin_body">Visa vid behov hela konsumentpriset i stället för enbart marknadspriset.</string>
     <string name="guide_wear_title">På din klocka</string>

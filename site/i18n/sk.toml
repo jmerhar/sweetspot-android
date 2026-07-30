@@ -44,22 +44,22 @@ other = "30 európskych krajín"
 other = "Pokrýva 43 cenových zón v celej Európe, od Portugalska po Fínsko a od Nórska po Grécko."
 
 [feature_prices_title]
-other = "Aktuálne ceny"
+other = "Ceny na deň vopred"
 
 [feature_prices_desc]
-other = "Denné ceny elektriny z platformy ENTSO-E Transparency Platform, aktualizované denne."
+other = "Ceny elektriny na deň vopred z platformy ENTSO-E Transparency Platform, aktualizované denne."
 
 [feature_algorithm_title]
 other = "Inteligentný algoritmus"
 
 [feature_algorithm_desc]
-other = "Inteligentný algoritmus prejde celý časový rozsah a nájde najlacnejšie súvislé obdobie pre ľubovoľné zvolené trvanie."
+other = "SweetSpot nájde najlacnejší súvislý časový úsek pre ľubovoľné trvanie, ktoré si zvolíte."
 
 [feature_fallback_title]
 other = "Spoľahlivé dáta"
 
 [feature_fallback_desc]
-other = "Päť zdrojov dát s automatickým prepnutím zaistí, že ceny sú vždy dostupné."
+other = "Päť zdrojov dát s automatickým prepnutím pomáha udržať ceny dostupné."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -80,10 +80,10 @@ other = "Nabíjanie elektromobilu"
 other = "Pridajte si auto a zadajte jeho aktuálne a cieľové nabitie. SweetSpot vypočíta čas nabíjania a najlacnejší čas na zapojenie."
 
 [feature_deadline_title]
-other = "Čas „Hotové do“"
+other = "Termín „Pripravené do“"
 
 [feature_deadline_desc]
-other = "Potrebujete to dokončiť do určitého času? Pridajte termín „hotové do“ a SweetSpot zvolí iba obdobia, ktoré sa dokončia včas."
+other = "Potrebujete to mať hotové do určitého času? Pridajte termín „Pripravené do“ a SweetSpot zvolí najlacnejší čas, ktorý sa stihne dokončiť včas."
 
 [feature_power_title]
 other = "Výkon spotrebiča"
@@ -116,7 +116,7 @@ other = "Ako to funguje"
 other = "Vyberte spotrebič alebo elektromobil"
 
 [step1_desc]
-other = "Zvoľte uložený spotrebič alebo svoj elektromobil, prípadne nastavte vlastné trvanie — a voliteľne aj termín „hotové do“."
+other = "Zvoľte uložený spotrebič alebo svoj elektromobil, prípadne nastavte vlastné trvanie — a voliteľne aj termín „Pripravené do“."
 
 [step2_title]
 other = "Prehľad cien"
@@ -155,7 +155,7 @@ other = "Stránka, ktorú hľadáte, neexistuje."
 other = "Späť na domovskú stránku"
 
 [screenshot_1_alt]
-other = "Výsledok najlacnejšieho obdobia so začiatočným časom, celkovými nákladmi a rozpisom nákladov"
+other = "Odporúčaný čas so začiatočným časom, celkovými nákladmi a rozpisom nákladov"
 
 [screenshot_2_alt]
 other = "Úvodná obrazovka so spotrebičmi, výberom trvania a tlačidlom Hľadať"

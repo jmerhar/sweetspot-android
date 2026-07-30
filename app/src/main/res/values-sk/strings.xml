@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Nastavenia</string>
     <string name="cd_back">Späť</string>
-    <string name="main_description">SweetSpot vám pomáha šetriť peniaze tým, že nájde najlacnejší čas na spustenie vašich spotrebičov. Stačí zvoliť, ako dlho má spotrebič bežať, a aplikácia prehľadá nasledujúcich 24 hodín dynamických cien elektriny a nájde najlepšie obdobie. Svoje obľúbené spotrebiče si môžete uložiť v nastaveniach pre rýchly prístup.</string>
-    <string name="main_find_button">Nájsť najlacnejšie obdobie</string>
+    <string name="main_description">SweetSpot vám pomáha šetriť peniaze tým, že nájde najlacnejší čas na spustenie vašich spotrebičov. Stačí zvoliť, ako dlho má spotrebič bežať, a aplikácia prehľadá nadchádzajúce dynamické ceny elektriny a nájde najlepší čas. Svoje obľúbené spotrebiče si môžete uložiť v nastaveniach pre rýchly prístup.</string>
+    <string name="main_find_button">Nájsť najlacnejší čas</string>
     <string name="main_searching">Hľadanie…</string>
     <string name="main_add_appliances">Pridajte svoje spotrebiče</string>
     <string name="main_card_description">Nájdite najlacnejší čas na spustenie spotrebiča</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Odporúčaný čas</string>
-    <string name="result_after_deadline">Toto obdobie sa končí po tvojom čase „Pripravené do“.</string>
+    <string name="result_after_deadline">Dokončí sa po vašom čase „Pripravené do“.</string>
     <string name="result_start">Začiatok</string>
     <string name="result_end">Koniec</string>
     <string name="result_total_cost">Celkové náklady</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Zbaliť</string>
     <string name="cd_expand">Rozbaliť</string>
     <string name="result_upcoming_prices">Nadchádzajúce ceny</string>
-    <string name="result_disclaimer">Náklady sú uvedené pre záťaž 1 kW. Ceny nezahŕňajú DPH, daň z energie a poplatok dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="result_disclaimer">Náklady sú uvedené pre záťaž 1 kW. Ceny nezahŕňajú DPH, daň z energie ani prirážku dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
     <string name="result_data_source">\nZdroj dát: %s</string>
     <string name="result_price_zone">\nCenové pásmo: %s</string>
-    <string name="cd_cheapest_window">najlacnejšie obdobie</string>
+    <string name="cd_cheapest_window">najlacnejší čas</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Trvanie</string>
@@ -161,10 +161,10 @@
     <string name="cd_refresh">Obnoviť</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Zdieľať štatistiky API</string>
-    <string name="settings_stats_description">Pomôžte zlepšiť spoľahlivosť zdrojov dát zdieľaním anonymných štatistík úspechov/zlyhaní API. Žiadne osobné údaje sa nezhromažďujú.</string>
+    <string name="settings_stats_title">Zdieľať štatistiky spoľahlivosti</string>
+    <string name="settings_stats_description">Pomôžte zlepšiť spoľahlivosť zdrojov dát zdieľaním anonymných počtov, kedy sa cenové údaje načítajú alebo zlyhajú. Žiadne osobné údaje sa nezhromažďujú.</string>
     <string name="stats_prompt_title">Pomôcť vylepšiť SweetSpot?</string>
-    <string name="stats_prompt_message">Zdieľajte anonymné štatistiky API na zlepšenie spoľahlivosti zdrojov dát. Zdieľajú sa len počty úspešných/neúspešných požiadaviek na zdroj — žiadne osobné údaje. Toto môžete kedykoľvek zmeniť v Nastaveniach.</string>
+    <string name="stats_prompt_message">Zdieľajte anonymné štatistiky a pomôžte zlepšiť spoľahlivosť zdrojov dát. Zdieľa sa len to, ako často sa každý zdroj dát načíta alebo zlyhá — žiadne osobné údaje. Toto môžete kedykoľvek zmeniť v Nastaveniach.</string>
     <string name="stats_prompt_enable">Povoliť</string>
     <string name="stats_prompt_dismiss">Nie, ďakujem</string>
 
@@ -187,7 +187,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Skúšobné obdobie sa skončilo</string>
-    <string name="paywall_description">SweetSpot nájde najlacnejší čas na spustenie vašich spotrebičov pomocou cien elektrickej energie v reálnom čase v 30 európskych krajinách. Predplaťte si a pokračujte v hľadaní najlacnejšieho času pre vaše spotrebiče.</string>
+    <string name="paywall_description">SweetSpot nájde najlacnejší čas na spustenie vašich spotrebičov pomocou dynamických cien elektriny v 30 európskych krajinách. Predplaťte si ho a pokračujte v jeho používaní.</string>
     <string name="paywall_unlock">Predplatiť SweetSpot</string>
     <string name="paywall_unlock_price">Predplatiť za %s/rok</string>
     <string name="paywall_restore">Obnoviť predplatné</string>
@@ -214,7 +214,7 @@
     <string name="ev_home_charger">Domáca nabíjačka</string>
     <string name="ev_home_charger_description">Výkon vašej nástennej nabíjačky alebo wallboxu. Nabíja sa nižšou hodnotou — touto alebo maximom vozidla.</string>
     <string name="ev_charger_custom">Vlastný</string>
-    <string name="ev_default_target">Predvolený cieľový stav nabitia: %d%%</string>
+    <string name="ev_default_target">Predvolené cieľové nabitie: %d%%</string>
     <string name="ev_current_soc">Aktuálne nabitie: %d%%</string>
     <string name="ev_target_soc">Cieľové nabitie: %d%%</string>
     <string name="ev_deadline_toggle">Pripravené do</string>
@@ -226,13 +226,13 @@
     <string name="ev_error_invalid_soc">Cieľové nabitie musí byť vyššie ako aktuálne nabitie.</string>
     <string name="ev_error_invalid_charger">Nastavte nabíjací výkon väčší ako nula.</string>
     <string name="ev_error_deadline_unreachable">Nabíjanie sa nestihne dokončiť do vášho termínu. Skúste nižšie cieľové nabitie alebo neskorší čas.</string>
-    <string name="result_disclaimer_power">Náklady sú uvedené pre záťaž %s kW. Ceny nezahŕňajú DPH, daň z energie a poplatok dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="result_disclaimer_power">Náklady sú uvedené pre záťaž %s kW. Ceny nezahŕňajú DPH, daň z energie ani prirážku dodávateľa. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
     <string name="dialog_power">Výkon (kW, voliteľné)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Celková cena</string>
     <string name="settings_all_in_toggle">Zobraziť celkovú cenu</string>
-    <string name="settings_all_in_desc">Zobrazí odhadovanú konečnú spotrebiteľskú cenu (spotová cena + daň z energie + prirážka dodávateľa + DPH) namiesto samotnej trhovej ceny.</string>
+    <string name="settings_all_in_desc">Zobrazí odhadovanú konečnú spotrebiteľskú cenu (trhová cena + daň z energie + prirážka dodávateľa + DPH) namiesto samotnej trhovej ceny.</string>
     <string name="all_in_supplier">Dodávateľ</string>
     <string name="all_in_supplier_prompt">Vyberte svojho dodávateľa</string>
     <string name="all_in_supplier_custom">Vlastná prirážka</string>
@@ -241,14 +241,14 @@
     <string name="all_in_incomplete">Vyberte dodávateľa alebo zadajte prirážku, prípadne vypnite celkovú cenu.</string>
     <string name="picker_supplier_title">Dodávateľ</string>
     <string name="picker_supplier_search">Hľadať dodávateľov</string>
-    <string name="result_disclaimer_all_in">Náklady sú uvedené pre záťaž 1 kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Náklady sú uvedené pre záťaž %s kW pri odhadovanej celkovej cene (spotová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Náklady sú uvedené pre záťaž 1 kW pri odhadovanej celkovej cene (trhová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Náklady sú uvedené pre záťaž %s kW pri odhadovanej celkovej cene (trhová cena + daň z energie + prirážka dodávateľa + DPH). Nezahŕňajú poplatky za distribúciu ani pevné mesačné poplatky. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDodávateľ: %s</string>
     <string name="result_all_in_stale">Údaje o tarifách sú staršie ako 14 dní a môžu byť neaktuálne.</string>
     <string name="chart_legend_energy_tax">Daň z energie</string>
     <string name="chart_legend_surcharge">Prirážka</string>
-    <string name="chart_legend_spot">Spotová cena</string>
-    <string name="chart_legend_spot_negative">Záporná spotová cena</string>
+    <string name="chart_legend_spot">Trhová cena</string>
+    <string name="chart_legend_spot_negative">Záporná cena</string>
     <string name="chart_legend_vat_note">Všetky ceny vrátane DPH.</string>
 
     <!-- Sorting -->
@@ -360,7 +360,7 @@
     <string name="guide_ev_title">Naplánujte nabíjanie elektromobilu</string>
     <string name="guide_ev_body">Pridajte auto, zadajte jeho aktuálne a cieľové nabitie a SweetSpot vypočíta čas nabíjania.</string>
     <string name="guide_result_title">Prečítajte si výsledok</string>
-    <string name="guide_result_body">Tlačidlami Skôr a Lacnejšie posuňte obdobie a podržaním prsta na grafe zobrazíte cenu ľubovoľného úseku.</string>
+    <string name="guide_result_body">Tlačidlami Skôr a Lacnejšie posuňte odporúčaný čas a podržaním prsta na grafe zobrazíte cenu ľubovoľného úseku.</string>
     <string name="guide_allin_title">Celková cena</string>
     <string name="guide_allin_body">Voliteľne zobrazte úplnú spotrebiteľskú cenu namiesto samotnej trhovej ceny.</string>
     <string name="guide_wear_title">Na hodinkách</string>

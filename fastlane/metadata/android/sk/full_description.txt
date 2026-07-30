@@ -1,4 +1,4 @@
-SweetSpot nájde najlacnejší čas na prevádzku vašich spotrebičov a nabíjanie elektromobilu. Zvoľte, ako dlho má spotrebič bežať — alebo vyberte svoj elektromobil a požadované nabitie — a SweetSpot prehľadá nasledujúcich 24 hodín dynamických cien elektriny, aby našiel najlacnejšie obdobie.
+SweetSpot nájde najlacnejší čas na prevádzku vašich spotrebičov a nabíjanie elektromobilu. Zvoľte, ako dlho má spotrebič bežať — alebo vyberte svoj elektromobil a požadované nabitie — a SweetSpot prehľadá nadchádzajúce dynamické ceny elektriny a nájde najlacnejší čas.
 
 Či už ide o práčku, umývačku, sušičku, tepelné čerpadlo alebo nabíjačku elektromobilu — spustite ich v správny čas a plaťte menej za rovnakú elektrinu.
 
@@ -8,14 +8,14 @@ AKO TO FUNGUJE
 3. Presne uvidíte, kedy spustiť, s farebne rozlíšeným 24-hodinovým grafom cien a podrobným rozpisom nákladov po jednotlivých časových úsekoch
 
 NABÍJANIE ELEKTROMOBILU
-Pridajte si auto z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov — alebo zadajte kapacitu batérie a nabíjací výkon sami. Nastavte aktuálne a cieľové nabitie a SweetSpot vypočíta, ako dlho bude nabíjanie trvať a kedy je najlacnejšie zapojiť vozidlo.
+Pridajte si auto zo vstavanej databázy tisícok elektromobilov a plug-in hybridov — alebo zadajte kapacitu batérie a nabíjací výkon sami. Nastavte aktuálne a cieľové nabitie a SweetSpot vypočíta, ako dlho bude nabíjanie trvať a kedy je najlacnejšie zapojiť vozidlo.
 
 FUNKCIE
 - 30 európskych krajín, 43 cenových zón — od Portugalska po Fínsko, od Nórska po Grécko
 - 5 zdrojov dát s automatickým prepínaním (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Celková cena (Holandsko) — voliteľne zobrazí úplnú konečnú spotrebiteľskú cenu (spotová cena + daň z energie + prirážka dodávateľa + DPH) namiesto samotnej trhovej ceny; vyberte si dodávateľa alebo zadajte vlastnú prirážku. Ďalšie krajiny pribudnú
-- Termín „Pripravené do“ — vyberie len obdobie, ktoré sa stihne dokončiť včas
-- Skôr alebo lacnejšie — keď najlacnejšie obdobie nevyhovuje, prejdite na skoršie a presne uvidíte, o koľko viac stojí
+- Celková cena (Holandsko) — voliteľne zobrazí úplnú konečnú spotrebiteľskú cenu (trhová cena + daň z energie + prirážka dodávateľa + DPH) namiesto samotnej trhovej ceny; vyberte si dodávateľa alebo zadajte vlastnú prirážku. Ďalšie krajiny pribudnú
+- Termín „Pripravené do“ — predvolene zvolí najlacnejší čas, ktorý sa stihne včas
+- Skôr alebo lacnejšie — keď najlacnejší čas nevyhovuje, prejdite na skorší a presne uvidíte, o koľko viac stojí
 - Výkon spotrebiča — zadajte výkon spotrebiča v kW pre odhad nákladov, ktorý zodpovedá jeho skutočnej spotrebe
 - Uložte si spotrebiče s vlastnými názvami, ikonami a dobami trvania pre rýchly prístup
 - Zoraďte a usporiadajte svoje spotrebiče — presuňte ich do vlastného poradia alebo zoraďte podľa najčastejšie používaných, nedávno použitých, názvu, doby trvania či typu a zvoľte, kam patria vaše vozidlá
@@ -30,6 +30,6 @@ PODPOROVANÉ KRAJINY
 Belgicko, Bulharsko, Česko, Čierna Hora, Dánsko, Estónsko, Fínsko, Francúzsko, Grécko, Holandsko, Chorvátsko, Írsko, Litva, Lotyšsko, Luxembursko, Maďarsko, Nemecko, Nórsko, Poľsko, Portugalsko, Rakúsko, Rumunsko, Severné Macedónsko, Slovensko, Slovinsko, Srbsko, Španielsko, Švajčiarsko, Švédsko, Taliansko.
 
 POZNÁMKA
-V predvolenom nastavení sú zobrazené ceny veľkoobchodné denné (day-ahead) spotové ceny a nezahŕňajú DPH, daň z energie ani poplatky dodávateľa. V Holandsku môžete voliteľne zapnúť Celkovú cenu, ktorá pridá daň z energie, prirážku dodávateľa a DPH pre realistický odhad nákladov na prevádzku. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET. Na využitie cenových rozdielov je potrebná zmluva s dynamickou cenou elektriny.
+V predvolenom nastavení sú zobrazené veľkoobchodné trhové ceny na deň vopred (day-ahead), ktoré nezahŕňajú DPH, daň z energie ani poplatky dodávateľa. V Holandsku môžete voliteľne zapnúť Celkovú cenu, ktorá pridá daň z energie, prirážku dodávateľa a DPH pre realistický odhad nákladov na prevádzku. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET. Na využitie cenových rozdielov je potrebná zmluva s dynamickou cenou elektriny.
 
 Zásady ochrany súkromia: https://sweetspot.today/sk/privacy/

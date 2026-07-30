@@ -185,10 +185,9 @@ class WearViewModel @JvmOverloads constructor(
         fetchJob = viewModelScope.launch(ioDispatcher) {
             try {
                 val state = _uiState.value
-                val enabledOrder = state.sourceOrder?.filter { it !in state.disabledSources }
                 val activeCollector = if (statsEnabled) statsCollector else null
                 val factory = priceFetcherFactory
-                    ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, enabledOrder, activeCollector, "watch")
+                    ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, state.sourceOrder, activeCollector, "watch", state.disabledSources)
                 val fetcher = factory.create(priceZone)
                 val repository = PriceRepository(priceCache, timeZoneId, fetcher, cacheKey = priceZone.id)
                 val prices = repository.getPrices().prices

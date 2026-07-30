@@ -1,4 +1,4 @@
-SweetSpot pronalazi najjeftinije vrijeme za korištenje vaših uređaja i punjenje električnog automobila. Odaberite koliko dugo uređaj treba raditi — ili odaberite svoje vozilo i željenu napunjenost — i SweetSpot pretražuje sljedeća 24 sata dinamičnih cijena električne energije kako bi pronašao najjeftiniji period.
+SweetSpot pronalazi najjeftinije vrijeme za korištenje vaših uređaja i punjenje električnog automobila. Odaberite koliko dugo uređaj treba raditi — ili odaberite svoje vozilo i željenu napunjenost — i SweetSpot pretražuje nadolazeće dinamične cijene električne energije kako bi pronašao najjeftinije vrijeme.
 
 Bilo da se radi o perilici rublja, perilici posuđa, sušilici, dizalici topline ili punjaču električnog automobila — pokrenite u pravo vrijeme i platite manje za istu struju.
 
@@ -8,14 +8,14 @@ KAKO FUNKCIONIRA
 3. Pogledajte točno kada pokrenuti, uz 24-satni grafikon cijena u bojama i potpuni pregled troškova po vremenskim intervalima
 
 PUNJENJE ELEKTRIČNOG VOZILA
-Dodajte svoj automobil iz ugrađene baze od oko 1.600 električnih i plug-in hibridnih vozila — ili sami unesite kapacitet baterije i snagu punjenja. Postavite trenutnu i ciljanu napunjenost, a SweetSpot izračunava koliko će punjenje trajati i najjeftinije vrijeme za priključivanje.
+Dodajte svoj automobil iz ugrađene baze od tisuća električnih i plug-in hibridnih vozila — ili sami unesite kapacitet baterije i snagu punjenja. Postavite trenutnu i ciljanu napunjenost, a SweetSpot izračunava koliko će punjenje trajati i najjeftinije vrijeme za priključivanje.
 
 ZNAČAJKE
 - 30 europskih država, 43 cjenovne zone — od Portugala do Finske, od Norveške do Grčke
 - 5 izvora podataka s automatskim prebacivanjem (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Ukupna cijena (Nizozemska) — po želji prikažite punu potrošačku cijenu (burzovna cijena + porez na energiju + marža vašeg dobavljača + PDV) umjesto puke tržišne cijene; odaberite svog dobavljača ili unesite vlastitu maržu. Slijede i druge države
-- Rok "spremno do" — bira samo period koji završava na vrijeme
-- Ranije ili jeftinije — kada vam najjeftiniji period ne odgovara, prijeđite na raniji i vidite točno koliko više košta
+- Ukupna cijena (Nizozemska) — po želji prikažite punu potrošačku cijenu (tržišna cijena + porez na energiju + marža vašeg dobavljača + PDV) umjesto puke tržišne cijene; odaberite svog dobavljača ili unesite vlastitu maržu. Slijede i druge države
+- Rok "spremno do" — prema zadanome bira najjeftinije vrijeme koje završava do tog roka
+- Ranije ili jeftinije — kada vam najjeftinije vrijeme ne odgovara, prijeđite na ranije i vidite točno koliko više košta
 - Snaga uređaja — postavite snagu uređaja u kW za procjenu troška koja odražava stvarnu potrošnju
 - Spremite svoje uređaje s prilagođenim imenima, ikonama i trajanjima za brzi pristup
 - Razvrstajte i presložite svoje uređaje — povucite ih u vlastiti redoslijed ili razvrstajte po najčešće korištenima, nedavno korištenima, nazivu, trajanju ili vrsti, te odaberite gdje se nalaze vaša vozila

@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Postavke</string>
     <string name="cd_back">Natrag</string>
-    <string name="main_description">SweetSpot vam pomaže uštedjeti novac pronalaženjem najjeftinijeg vremena za pokretanje vaših uređaja. Samo odaberite koliko dugo vaš uređaj treba raditi, a aplikacija će pregledati sljedećih 24 sata dinamičnih cijena struje i pronaći najbolji period. Svoje omiljene uređaje možete spremiti u postavkama za brzi pristup.</string>
-    <string name="main_find_button">Pronađi najjeftiniji period</string>
+    <string name="main_description">SweetSpot vam pomaže uštedjeti novac pronalaženjem najjeftinijeg vremena za pokretanje vaših uređaja. Samo odaberite koliko dugo vaš uređaj treba raditi, a aplikacija će pregledati nadolazeće dinamične cijene struje i pronaći najbolje vrijeme. Svoje omiljene uređaje možete spremiti u postavkama za brzi pristup.</string>
+    <string name="main_find_button">Pronađi najjeftinije vrijeme</string>
     <string name="main_searching">Traženje…</string>
     <string name="main_add_appliances">Dodajte svoje uređaje</string>
     <string name="main_card_description">Pronađite najjeftinije vrijeme za pokretanje uređaja</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Preporučeno vrijeme</string>
-    <string name="result_after_deadline">Ovo razdoblje završava nakon vašeg vremena „Spremno do”.</string>
+    <string name="result_after_deadline">Ovo vrijeme završava nakon vašeg roka „Spremno do”.</string>
     <string name="result_start">Početak</string>
     <string name="result_end">Kraj</string>
     <string name="result_total_cost">Ukupni trošak</string>
@@ -31,10 +31,10 @@
     <string name="cd_collapse">Sažmi</string>
     <string name="cd_expand">Proširi</string>
     <string name="result_upcoming_prices">Nadolazeće cijene</string>
-    <string name="result_disclaimer">Troškovi su prikazani za opterećenje od 1 kW. Cijene ne uključuju PDV, porez na energiju i naknadu dobavljača. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
+    <string name="result_disclaimer">Troškovi su prikazani za opterećenje od 1 kW. Cijene ne uključuju PDV, porez na energiju i maržu dobavljača. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="result_data_source">\nIzvor podataka: %s</string>
     <string name="result_price_zone">\nCjenovna zona: %s</string>
-    <string name="cd_cheapest_window">najjeftiniji period</string>
+    <string name="cd_cheapest_window">najjeftinije vrijeme</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Trajanje</string>
@@ -139,7 +139,7 @@
     <!-- Errors -->
     <string name="error_zero_duration">Odaberite trajanje veće od nule.</string>
     <string name="error_no_zone">Odaberite zonu u postavkama.</string>
-    <string name="error_no_data">Nema dostupnih podataka o cijenama za sljedećih 24 sata.</string>
+    <string name="error_no_data">Nema dostupnih podataka o cijenama za sljedeća 24 sata.</string>
     <string name="error_network">Nije moguće dohvatiti cijene: %s</string>
     <plurals name="error_not_enough_data">
         <item quantity="one">Nema dovoljno podataka za %1$s. Dostupan je samo %2$d sat podataka.</item>
@@ -161,18 +161,18 @@
     <string name="cd_refresh">Osvježi</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Dijeli API statistike</string>
-    <string name="settings_stats_description">Pomozite poboljšati pouzdanost izvora podataka dijeljenjem anonimnih statistika uspjeha/neuspjeha API-ja. Ne prikupljaju se osobni podaci.</string>
+    <string name="settings_stats_title">Dijeli statistike pouzdanosti</string>
+    <string name="settings_stats_description">Pomozite poboljšati pouzdanost izvora podataka dijeljenjem anonimnih brojki o tome kada se podaci o cijenama učitaju ili ne uspiju. Ne prikupljaju se osobni podaci.</string>
     <string name="stats_prompt_title">Pomozite poboljšati SweetSpot?</string>
-    <string name="stats_prompt_message">Podijelite anonimnu API statistiku kako biste pomogli poboljšati pouzdanost izvora podataka. Dijele se samo brojevi uspješnih/neuspješnih zahtjeva po izvoru — bez osobnih podataka. To možete promijeniti u bilo kojem trenutku u Postavkama.</string>
+    <string name="stats_prompt_message">Podijelite anonimne statistike kako biste pomogli poboljšati pouzdanost izvora podataka. Dijeli se samo koliko se često svaki izvor podataka učita ili ne uspije — bez osobnih podataka. To možete promijeniti u bilo kojem trenutku u Postavkama.</string>
     <string name="stats_prompt_enable">Uključi</string>
     <string name="stats_prompt_dismiss">Ne, hvala</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Pokrenite uređaje kada je struja najjeftinija</string>
-    <string name="onboarding_body_1">SweetSpot pregledava nadolazeće cijene struje i pronalazi najjeftiniji period za pokretanje uređaja.</string>
+    <string name="onboarding_body_1">SweetSpot pregledava nadolazeće cijene struje i pronalazi najjeftinije vrijeme za pokretanje uređaja.</string>
     <string name="onboarding_title_2">Vaši uređaji, na jedan dodir</string>
-    <string name="onboarding_body_2">Spremite uređaj i dodirnite ga da vidite njegov najjeftiniji period. Dodajte svoj električni automobil za planiranje punjenja prema trenutnoj i ciljanoj napunjenosti.</string>
+    <string name="onboarding_body_2">Spremite uređaj i dodirnite ga da vidite njegovo najjeftinije vrijeme. Dodajte svoj električni automobil za planiranje punjenja prema trenutnoj i ciljanoj napunjenosti.</string>
     <string name="onboarding_title_3">Prilagodite aplikaciju sebi</string>
     <string name="onboarding_body_3">Vaša država otkriva se automatski. Promijenite zonu, dodajte uređaje ili odaberite jezik — sve je u Postavkama.</string>
     <string name="onboarding_skip">Preskoči</string>
@@ -187,7 +187,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Probno razdoblje je završilo</string>
-    <string name="paywall_description">SweetSpot pronalazi najjeftinije vrijeme za pokretanje vaših uređaja koristeći cijene električne energije u stvarnom vremenu u 30 europskih zemalja. Pretplatite se za nastavak pronalaženja najjeftinijeg vremena za vaše uređaje.</string>
+    <string name="paywall_description">SweetSpot pronalazi najjeftinije vrijeme za pokretanje vaših uređaja koristeći dinamične cijene električne energije u 30 europskih zemalja. Pretplatite se za nastavak korištenja.</string>
     <string name="paywall_unlock">Pretplati se na SweetSpot</string>
     <string name="paywall_unlock_price">Pretplata za %s/god.</string>
     <string name="paywall_restore">Vrati pretplatu</string>
@@ -225,13 +225,13 @@
     <string name="ev_error_invalid_soc">Ciljana napunjenost mora biti veća od trenutne napunjenosti.</string>
     <string name="ev_error_invalid_charger">Postavite snagu punjača veću od nule.</string>
     <string name="ev_error_deadline_unreachable">Punjenje se ne može završiti do zadanog roka. Pokušajte s nižom ciljanom napunjenošću ili kasnijim vremenom.</string>
-    <string name="result_disclaimer_power">Troškovi su prikazani za opterećenje od %s kW. Cijene ne uključuju PDV, porez na energiju i naknadu dobavljača. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
+    <string name="result_disclaimer_power">Troškovi su prikazani za opterećenje od %s kW. Cijene ne uključuju PDV, porez na energiju i maržu dobavljača. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="dialog_power">Snaga (kW, neobavezno)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Ukupna cijena</string>
     <string name="settings_all_in_toggle">Prikaži ukupnu cijenu</string>
-    <string name="settings_all_in_desc">Prikaži procijenjenu punu potrošačku cijenu (burzovna cijena + porez na energiju + marža dobavljača + PDV) umjesto puke tržišne cijene.</string>
+    <string name="settings_all_in_desc">Prikaži procijenjenu punu potrošačku cijenu (tržišna cijena + porez na energiju + marža dobavljača + PDV) umjesto puke tržišne cijene.</string>
     <string name="all_in_supplier">Dobavljač</string>
     <string name="all_in_supplier_prompt">Odaberite svog dobavljača</string>
     <string name="all_in_supplier_custom">Prilagođena marža</string>
@@ -240,14 +240,14 @@
     <string name="all_in_incomplete">Odaberite dobavljača ili unesite maržu ili isključite ukupnu cijenu.</string>
     <string name="picker_supplier_title">Dobavljač</string>
     <string name="picker_supplier_search">Pretraži dobavljače</string>
-    <string name="result_disclaimer_all_in">Troškovi su prikazani za opterećenje od 1 kW, po procijenjenoj ukupnoj cijeni (burzovna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Troškovi su prikazani za opterećenje od %s kW, po procijenjenoj ukupnoj cijeni (burzovna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Troškovi su prikazani za opterećenje od 1 kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Troškovi su prikazani za opterećenje od %s kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavljač: %s</string>
     <string name="result_all_in_stale">Podaci o tarifama stariji su od 14 dana i možda su zastarjeli.</string>
     <string name="chart_legend_energy_tax">Porez na energiju</string>
     <string name="chart_legend_surcharge">Marža</string>
-    <string name="chart_legend_spot">Burzovna cijena</string>
-    <string name="chart_legend_spot_negative">Negativna burzovna cijena</string>
+    <string name="chart_legend_spot">Tržišna cijena</string>
+    <string name="chart_legend_spot_negative">Negativna cijena</string>
     <string name="chart_legend_vat_note">Sve cijene uključuju PDV.</string>
 
     <!-- Sorting & usage -->
@@ -348,7 +348,7 @@
     <string name="guide_ev_title">Isplanirajte punjenje električnog vozila</string>
     <string name="guide_ev_body">Dodajte svoj automobil, unesite trenutnu i ciljanu napunjenost, a SweetSpot izračunava vrijeme punjenja.</string>
     <string name="guide_result_title">Pročitajte rezultat</string>
-    <string name="guide_result_body">Upotrijebite Ranije i Jeftinije za pomicanje perioda te pritisnite i držite grafikon za cijenu u bilo kojem trenutku.</string>
+    <string name="guide_result_body">Upotrijebite Ranije i Jeftinije za pomicanje preporučenog vremena te pritisnite i držite grafikon za cijenu bilo kojeg intervala.</string>
     <string name="guide_allin_title">Ukupna cijena</string>
     <string name="guide_allin_body">Po želji prikažite punu potrošačku cijenu umjesto puke tržišne cijene.</string>
     <string name="guide_wear_title">Na vašem satu</string>

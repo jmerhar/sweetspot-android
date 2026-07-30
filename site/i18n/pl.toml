@@ -26,7 +26,7 @@ other = "Zmień język"
 other = "Znajdź najtańszy czas na uruchomienie urządzeń i ładowanie auta elektrycznego"
 
 [hero_subtitle]
-other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańszy okres na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, jeśli go ustawisz. Otwartoźródłowa i prywatna."
+other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańszy czas na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, jeśli go ustawisz. Otwartoźródłowa i prywatna."
 
 [download]
 other = "Pobierz z Google Play"
@@ -44,7 +44,7 @@ other = "30 krajów europejskich"
 other = "Obejmuje 43 obszary rynkowe w Europie, od Portugalii po Finlandię i od Norwegii po Grecję."
 
 [feature_prices_title]
-other = "Aktualne ceny"
+other = "Ceny dnia następnego"
 
 [feature_prices_desc]
 other = "Ceny dnia następnego z platformy ENTSO-E Transparency Platform, aktualizowane codziennie."
@@ -53,13 +53,13 @@ other = "Ceny dnia następnego z platformy ENTSO-E Transparency Platform, aktual
 other = "Inteligentny algorytm"
 
 [feature_algorithm_desc]
-other = "Algorytm przesuwający się po osi czasu znajduje najtańszy ciągły okres dla dowolnie wybranego czasu trwania."
+other = "SweetSpot znajduje najtańszy ciągły przedział czasu dla dowolnie wybranego czasu trwania."
 
 [feature_fallback_title]
 other = "Niezawodne dane"
 
 [feature_fallback_desc]
-other = "Pięć źródeł danych z automatycznym przełączaniem gwarantuje, że ceny są zawsze dostępne."
+other = "Pięć źródeł danych z automatycznym przełączaniem pomaga utrzymać dostępność cen."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -77,13 +77,13 @@ other = "Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania
 other = "Ładowanie auta elektrycznego"
 
 [feature_ev_desc]
-other = "Dodaj swój samochód, a następnie podaj obecny i docelowy poziom naładowania. SweetSpot obliczy czas ładowania i najtańszą porę na podłączenie."
+other = "Dodaj swój samochód, a następnie podaj obecny i docelowy poziom naładowania. SweetSpot obliczy czas ładowania i najtańszy czas na podłączenie."
 
 [feature_deadline_title]
 other = "Termin „Gotowe do”"
 
 [feature_deadline_desc]
-other = "Musi być gotowe na określoną godzinę? Dodaj termin „gotowe do”, a SweetSpot wybierze tylko te okresy, które zakończą się na czas."
+other = "Musi być gotowe na określoną godzinę? Dodaj termin „gotowe do”, a SweetSpot domyślnie wybierze najtańszy czas, który się w nim mieści."
 
 [feature_power_title]
 other = "Moc znamionowa"
@@ -155,7 +155,7 @@ other = "Strona, której szukasz, nie istnieje."
 other = "Wróć na stronę główną"
 
 [screenshot_1_alt]
-other = "Wynik najtańszego okresu z godziną rozpoczęcia, kosztem całkowitym i podziałem kosztów"
+other = "Zalecany czas z godziną rozpoczęcia, kosztem całkowitym i podziałem kosztów"
 
 [screenshot_2_alt]
 other = "Ekran główny z urządzeniami, wyborem czasu trwania i przyciskiem Szukaj"

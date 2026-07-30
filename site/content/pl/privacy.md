@@ -5,7 +5,7 @@ description: "Polityka prywatności SweetSpot — prywatność na pierwszym miej
 
 ## Przegląd
 
-SweetSpot został zaprojektowany z myślą o prywatności. Aplikacja nie zbiera ani nie przechowuje żadnych danych osobowych. Nie ma kont użytkowników, analityki ani śledzenia aktywności. Opcjonalna funkcja pozwala udostępniać anonimowe statystyki API — szczegóły poniżej.
+SweetSpot został zaprojektowany z myślą o prywatności. Aplikacja nie wymaga ani nie zbiera danych osobowych do działania — nie ma kont użytkowników, analityki ani śledzenia użytkowania, a jedynym wymaganym uprawnieniem jest dostęp do internetu (bez lokalizacji, kontaktów, pamięci ani identyfikatorów urządzenia). Opcjonalne funkcje pozwalają udostępniać anonimowe statystyki niezawodności lub wysyłać opinie — szczegóły poniżej.
 
 ## Przetwarzanie danych
 
@@ -21,17 +21,19 @@ Te zapytania API zawierają wyłącznie identyfikator obszaru rynkowego i zakres
 
 ## Lokalne przechowywanie
 
-Dane cenowe są przechowywane lokalnie na Twoim urządzeniu, aby ograniczyć liczbę zapytań API i przyspieszyć działanie. Konfiguracja urządzeń (nazwy, czasy trwania, ikony oraz opcjonalne moce znamionowe), zapisane pojazdy (pojemność akumulatora i moc ładowania) oraz ustawienia (kraj, strefa, język) są również przechowywane lokalnie na Twoim urządzeniu.
+Dane cenowe są przechowywane lokalnie na Twoim urządzeniu, aby ograniczyć liczbę zapytań API i przyspieszyć działanie. Konfiguracja urządzeń (nazwy, czasy trwania, ikony oraz opcjonalne moce znamionowe), zapisane pojazdy (pojemność akumulatora i moc ładowania) oraz ustawienia (kraj, strefa, język) są również przechowywane lokalnie na Twoim urządzeniu, wraz ze statusem subskrypcji (zapisanym w pamięci podręcznej, aby aplikacja działała offline) oraz liczbą dotknięć poszczególnych urządzeń (używaną wyłącznie do sortowania według najczęściej i ostatnio używanych).
 
 Na Wear OS dane urządzeń i ustawienia są synchronizowane między telefonem a zegarkiem za pomocą Wearable Data Layer API. Komunikacja ta odbywa się wyłącznie między Twoimi urządzeniami lokalnymi i nie przechodzi przez żaden zewnętrzny serwer.
+
+Jeśli udostępnisz swoją konfigurację w postaci kodu QR lub linku, konfiguracja urządzeń i ładowania auta elektrycznego jest zakodowana **wewnątrz samego linku lub kodu QR** — nigdy nie jest przesyłana na serwer. Zaimportować ją może wyłącznie osoba, której przekażesz kod lub link.
 
 ## Brak analityki
 
 SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone, i przesłaniem zgłoszenia, jeśli skorzystasz z Pomocy i wsparcia — patrz niżej).
 
-## Opcjonalne statystyki API
+## Opcjonalne statystyki niezawodności
 
-Możesz wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności API. Po włączeniu tej funkcji aplikacja okresowo wysyła na nasz serwer indywidualne rekordy zapytań dla każdego źródła danych i obszaru rynkowego. Dane te zawierają:
+Możesz wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności. Po włączeniu tej funkcji aplikacja okresowo wysyła na nasz serwer indywidualne rekordy zapytań dla każdego źródła danych i obszaru rynkowego. Dane te zawierają:
 
 - Znacznik czasu zapytania API
 - Identyfikator obszaru rynkowego (np. „NL”, „DE-LU”)

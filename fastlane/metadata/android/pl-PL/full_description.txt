@@ -1,21 +1,21 @@
-SweetSpot znajduje najtańszy czas na uruchomienie urządzeń i naładowanie auta elektrycznego. Wybierz, jak długo ma działać urządzenie — albo wskaż swoje auto elektryczne i poziom naładowania, jaki chcesz osiągnąć — a SweetSpot przeszuka kolejne 24 godziny dynamicznych cen prądu, aby znaleźć najtańszy okres.
+SweetSpot znajduje najtańszy czas na uruchomienie urządzeń i naładowanie auta elektrycznego. Wybierz, jak długo ma działać urządzenie — albo wskaż swoje auto elektryczne i poziom naładowania, jaki chcesz osiągnąć — a SweetSpot przeszuka nadchodzące dynamiczne ceny prądu, aby znaleźć najtańszy czas.
 
 Czy to pralka, zmywarka, suszarka, pompa ciepła czy ładowarka auta elektrycznego — uruchom we właściwym momencie i zapłać mniej za ten sam prąd.
 
 JAK TO DZIAŁA
 1. Wybierz urządzenie lub swoje auto elektryczne albo ustaw własny czas trwania — oraz opcjonalny termin „Gotowe do”
-2. SweetSpot pobiera najnowsze ceny prądu day-ahead dla Twojego regionu
+2. SweetSpot pobiera najnowsze ceny prądu dnia następnego dla Twojego regionu
 3. Zobacz dokładnie, kiedy uruchomić, dzięki kolorowemu 24-godzinnemu wykresowi cen i pełnemu rozbiciu kosztów na przedziały czasowe
 
 ŁADOWANIE AUTA ELEKTRYCZNEGO
-Dodaj swoje auto z wbudowanej bazy około 1600 aut elektrycznych i hybryd plug-in — albo samodzielnie wpisz pojemność akumulatora i moc ładowania. Ustaw obecny i docelowy poziom naładowania, a SweetSpot obliczy, jak długo potrwa ładowanie i kiedy najtaniej podłączyć auto.
+Dodaj swoje auto z wbudowanej bazy tysięcy aut elektrycznych i hybryd plug-in — albo samodzielnie wpisz pojemność akumulatora i moc ładowania. Ustaw obecny i docelowy poziom naładowania, a SweetSpot obliczy, jak długo potrwa ładowanie i kiedy najtaniej podłączyć auto.
 
 FUNKCJE
 - 30 krajów europejskich, 43 strefy cenowe — od Portugalii do Finlandii, od Norwegii do Grecji
 - 5 źródeł danych z automatycznym przełączaniem (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Cena całkowita (Holandia) — opcjonalnie zobacz pełną cenę dla konsumenta (cena rynkowa + podatek energetyczny + marża dostawcy + VAT) zamiast samej ceny rynkowej; wybierz swojego dostawcę lub wpisz własną marżę. Kolejne kraje wkrótce
-- Termin „Gotowe do” — wybiera tylko okres, który zakończy się na czas
-- Wcześniej lub taniej — gdy najtańszy okres jest niewygodny, przejdź do wcześniejszego i zobacz dokładnie, o ile jest droższy
+- Termin „Gotowe do” — domyślnie wybiera najtańszy czas, który się w nim mieści
+- Wcześniej lub taniej — gdy najtańszy czas jest niewygodny, przejdź do wcześniejszego i zobacz dokładnie, o ile jest droższy
 - Moc urządzeń — ustaw moc urządzenia w kW, aby szacunek kosztów odzwierciedlał jego rzeczywiste zużycie
 - Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania dla szybkiego dostępu
 - Sortuj i porządkuj swoje urządzenia — przeciągnij je we własnej kolejności albo posortuj według najczęściej używanych, ostatnio używanych, nazwy, czasu trwania lub typu, i wybierz, gdzie mają być Twoje auta elektryczne
@@ -30,6 +30,6 @@ OBSŁUGIWANE KRAJE
 Austria, Belgia, Bułgaria, Chorwacja, Czarnogóra, Czechy, Dania, Estonia, Finlandia, Francja, Grecja, Hiszpania, Holandia, Irlandia, Litwa, Luksemburg, Łotwa, Macedonia Północna, Niemcy, Norwegia, Polska, Portugalia, Rumunia, Serbia, Słowacja, Słowenia, Szwajcaria, Szwecja, Węgry, Włochy.
 
 UWAGA
-Domyślnie wyświetlane ceny to hurtowe ceny spot day-ahead i nie obejmują VAT, podatku energetycznego ani opłat dostawcy. W Holandii możesz opcjonalnie włączyć Cenę całkowitą, która dodaje podatek energetyczny, marżę Twojego dostawcy i VAT, aby uzyskać realistyczny koszt użycia. Ceny na jutro są zazwyczaj dostępne po godzinie 13:00 CET. Do korzystania z różnic cenowych wymagana jest umowa na dynamiczną cenę energii elektrycznej.
+Domyślnie wyświetlane ceny to hurtowe ceny rynkowe dnia następnego i nie obejmują VAT, podatku energetycznego ani opłat dostawcy. W Holandii możesz opcjonalnie włączyć Cenę całkowitą, która dodaje podatek energetyczny, marżę Twojego dostawcy i VAT, aby uzyskać realistyczny koszt użycia. Ceny na jutro są zazwyczaj dostępne po godzinie 13:00 CET. Do korzystania z różnic cenowych wymagana jest umowa na dynamiczną cenę energii elektrycznej.
 
 Polityka prywatności: https://sweetspot.today/pl/privacy/

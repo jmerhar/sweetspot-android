@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Ρυθμίσεις</string>
     <string name="cd_back">Πίσω</string>
-    <string name="main_description">Το SweetSpot σας βοηθά να εξοικονομήσετε χρήματα βρίσκοντας την πιο φθηνή ώρα για να λειτουργήσετε τις συσκευές σας. Απλά επιλέξτε πόση ώρα χρειάζεται η συσκευή σας και θα σαρώσει τις επόμενες 24 ώρες δυναμικών τιμών ρεύματος για να βρει την καλύτερη χρονική περίοδο. Μπορείτε επίσης να αποθηκεύσετε τις αγαπημένες σας συσκευές στις ρυθμίσεις για γρήγορη πρόσβαση.</string>
-    <string name="main_find_button">Εύρεση φθηνότερης περιόδου</string>
+    <string name="main_description">Το SweetSpot σας βοηθά να εξοικονομήσετε χρήματα βρίσκοντας την πιο φθηνή ώρα για να λειτουργήσετε τις συσκευές σας. Απλά επιλέξτε πόση ώρα χρειάζεται η συσκευή σας και θα σαρώσει τις επερχόμενες δυναμικές τιμές ρεύματος για να βρει την καλύτερη ώρα. Μπορείτε επίσης να αποθηκεύσετε τις αγαπημένες σας συσκευές στις ρυθμίσεις για γρήγορη πρόσβαση.</string>
+    <string name="main_find_button">Εύρεση φθηνότερης ώρας</string>
     <string name="main_searching">Αναζήτηση…</string>
     <string name="main_add_appliances">Προσθέστε τις συσκευές σας</string>
     <string name="main_card_description">Βρείτε την πιο φθηνή ώρα για τη λειτουργία της συσκευής σας</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Προτεινόμενη ώρα</string>
-    <string name="result_after_deadline">Αυτό το διάστημα τελειώνει μετά την ώρα «Έτοιμο έως».</string>
+    <string name="result_after_deadline">Αυτό ολοκληρώνεται μετά την ώρα «Έτοιμο έως».</string>
     <string name="result_start">Έναρξη</string>
     <string name="result_end">Λήξη</string>
     <string name="result_total_cost">Συνολικό κόστος</string>
@@ -26,10 +26,10 @@
     <string name="cd_collapse">Σύμπτυξη</string>
     <string name="cd_expand">Ανάπτυξη</string>
     <string name="result_upcoming_prices">Επερχόμενες τιμές</string>
-    <string name="result_disclaimer">Το κόστος υπολογίζεται για φορτίο 1 kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο και τέλη προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
+    <string name="result_disclaimer">Το κόστος υπολογίζεται για φορτίο 1 kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο ή προσαύξηση προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
     <string name="result_data_source">\nΠηγή δεδομένων: %s</string>
     <string name="result_price_zone">\nΖώνη τιμών: %s</string>
-    <string name="cd_cheapest_window">φθηνότερη περίοδος</string>
+    <string name="cd_cheapest_window">φθηνότερη ώρα</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Διάρκεια</string>
@@ -151,18 +151,18 @@
     <string name="cd_refresh">Ανανέωση</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Κοινοποίηση στατιστικών API</string>
-    <string name="settings_stats_description">Βοηθήστε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων μοιράζοντας ανώνυμα στατιστικά επιτυχίας/αποτυχίας API. Δεν συλλέγονται προσωπικά δεδομένα.</string>
+    <string name="settings_stats_title">Κοινοποίηση στατιστικών αξιοπιστίας</string>
+    <string name="settings_stats_description">Βοηθήστε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων μοιράζοντας ανώνυμα δεδομένα για το πόσο συχνά φορτώνονται ή αποτυγχάνουν οι τιμές. Δεν συλλέγονται προσωπικά δεδομένα.</string>
     <string name="stats_prompt_title">Βοηθήστε να βελτιωθεί το SweetSpot;</string>
-    <string name="stats_prompt_message">Μοιραστείτε ανώνυμα στατιστικά API για να βοηθήσετε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων. Μοιράζονται μόνο τα πλήθη επιτυχιών/αποτυχιών ανά πηγή — χωρίς προσωπικά δεδομένα. Μπορείτε να το αλλάξετε ανά πάσα στιγμή στις Ρυθμίσεις.</string>
+    <string name="stats_prompt_message">Μοιραστείτε ανώνυμα στατιστικά για να βοηθήσετε στη βελτίωση της αξιοπιστίας των πηγών δεδομένων. Μοιράζεται μόνο το πόσο συχνά φορτώνεται ή αποτυγχάνει κάθε πηγή δεδομένων — χωρίς προσωπικά δεδομένα. Μπορείτε να το αλλάξετε ανά πάσα στιγμή στις Ρυθμίσεις.</string>
     <string name="stats_prompt_enable">Ενεργοποίηση</string>
     <string name="stats_prompt_dismiss">Όχι, ευχαριστώ</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Λειτουργήστε τις συσκευές όταν το ρεύμα είναι φθηνότερο</string>
-    <string name="onboarding_body_1">Το SweetSpot εξετάζει τις επερχόμενες τιμές ρεύματος και βρίσκει τη φθηνότερη περίοδο για να λειτουργήσετε μια συσκευή.</string>
+    <string name="onboarding_body_1">Το SweetSpot εξετάζει τις επερχόμενες τιμές ρεύματος και βρίσκει τη φθηνότερη ώρα για να λειτουργήσετε μια συσκευή.</string>
     <string name="onboarding_title_2">Οι συσκευές σας, με ένα άγγιγμα</string>
-    <string name="onboarding_body_2">Αποθηκεύστε μια συσκευή και πατήστε την για να δείτε τη φθηνότερη περίοδό της. Προσθέστε το ηλεκτρικό σας όχημα για να προγραμματίσετε τη φόρτιση με βάση την τρέχουσα και την επιθυμητή φόρτιση.</string>
+    <string name="onboarding_body_2">Αποθηκεύστε μια συσκευή και πατήστε την για να δείτε τη φθηνότερη ώρα της. Προσθέστε το ηλεκτρικό σας όχημα για να προγραμματίσετε τη φόρτιση με βάση την τρέχουσα και την επιθυμητή φόρτιση.</string>
     <string name="onboarding_title_3">Προσαρμόστε το στα μέτρα σας</string>
     <string name="onboarding_body_3">Η χώρα σας εντοπίζεται αυτόματα. Αλλάξτε τη ζώνη, προσθέστε συσκευές ή επιλέξτε τη γλώσσα σας — όλα βρίσκονται στις Ρυθμίσεις.</string>
     <string name="onboarding_skip">Παράλειψη</string>
@@ -177,7 +177,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Η δοκιμαστική σας περίοδος έληξε</string>
-    <string name="paywall_description">Το SweetSpot βρίσκει τη φθηνότερη ώρα για τη λειτουργία των συσκευών σας χρησιμοποιώντας τιμές ηλεκτρικής ενέργειας σε πραγματικό χρόνο σε 30 ευρωπαϊκές χώρες. Εγγραφείτε για να συνεχίσετε να βρίσκετε τη φθηνότερη ώρα για τις συσκευές σας.</string>
+    <string name="paywall_description">Το SweetSpot βρίσκει τη φθηνότερη ώρα για τη λειτουργία των συσκευών σας χρησιμοποιώντας δυναμικές τιμές ηλεκτρικής ενέργειας σε 30 ευρωπαϊκές χώρες. Εγγραφείτε για να συνεχίσετε να το χρησιμοποιείτε.</string>
     <string name="paywall_unlock">Συνδρομή στο SweetSpot</string>
     <string name="paywall_unlock_price">Συνδρομή για %s/έτος</string>
     <string name="paywall_restore">Επαναφορά συνδρομής</string>
@@ -214,13 +214,13 @@
     <string name="ev_error_invalid_soc">Η επιθυμητή φόρτιση πρέπει να είναι υψηλότερη από την τρέχουσα φόρτιση.</string>
     <string name="ev_error_invalid_charger">Ορίστε ισχύ φορτιστή μεγαλύτερη από μηδέν.</string>
     <string name="ev_error_deadline_unreachable">Η φόρτιση δεν μπορεί να ολοκληρωθεί έως την προθεσμία σας. Δοκιμάστε χαμηλότερη επιθυμητή φόρτιση ή μεταγενέστερη ώρα.</string>
-    <string name="result_disclaimer_power">Το κόστος υπολογίζεται για φορτίο %s kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο και τέλη προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
+    <string name="result_disclaimer_power">Το κόστος υπολογίζεται για φορτίο %s kW. Οι τιμές δεν περιλαμβάνουν ΦΠΑ, ενεργειακό φόρο ή προσαύξηση προμηθευτή. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
     <string name="dialog_power">Ισχύς (kW, προαιρετικό)</string>
 
     <!-- Total price (all-in) -->
     <string name="settings_all_in_title">Τελική τιμή</string>
     <string name="settings_all_in_toggle">Εμφάνιση τελικής τιμής</string>
-    <string name="settings_all_in_desc">Εμφάνιση της εκτιμώμενης πλήρους τιμής καταναλωτή (χονδρική + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ) αντί της καθαρής τιμής αγοράς.</string>
+    <string name="settings_all_in_desc">Εμφάνιση της εκτιμώμενης πλήρους τιμής καταναλωτή (χονδρική τιμή + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ) αντί μόνο της χονδρικής τιμής.</string>
     <string name="all_in_supplier">Προμηθευτής</string>
     <string name="all_in_supplier_prompt">Επιλέξτε τον προμηθευτή σας</string>
     <string name="all_in_supplier_custom">Προσαρμοσμένη προσαύξηση</string>
@@ -229,14 +229,14 @@
     <string name="all_in_incomplete">Επιλέξτε έναν προμηθευτή ή εισαγάγετε μια προσαύξηση, ή απενεργοποιήστε την τελική τιμή.</string>
     <string name="picker_supplier_title">Προμηθευτής</string>
     <string name="picker_supplier_search">Αναζήτηση προμηθευτών</string>
-    <string name="result_disclaimer_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο 1 kW, στην εκτιμώμενη τελική τιμή (χονδρική + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο %s kW, στην εκτιμώμενη τελική τιμή (χονδρική + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο 1 kW, στην εκτιμώμενη τελική τιμή (χονδρική τιμή + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Το εμφανιζόμενο κόστος είναι για φορτίο %s kW, στην εκτιμώμενη τελική τιμή (χονδρική τιμή + ενεργειακός φόρος + προσαύξηση προμηθευτή + ΦΠΑ). Δεν περιλαμβάνει χρεώσεις δικτύου και πάγιες μηνιαίες χρεώσεις. Οι τιμές του αύριο είναι συνήθως διαθέσιμες μετά τις 13:00 CET.</string>
     <string name="result_all_in_supplier">\nΠρομηθευτής: %s</string>
     <string name="result_all_in_stale">Τα δεδομένα τιμολογίου είναι παλαιότερα των 14 ημερών και ενδέχεται να είναι παρωχημένα.</string>
     <string name="chart_legend_energy_tax">Ενεργειακός φόρος</string>
     <string name="chart_legend_surcharge">Προσαύξηση</string>
     <string name="chart_legend_spot">Χονδρική τιμή</string>
-    <string name="chart_legend_spot_negative">Αρνητική χονδρική τιμή</string>
+    <string name="chart_legend_spot_negative">Αρνητική τιμή</string>
     <string name="chart_legend_vat_note">Όλες οι τιμές περιλαμβάνουν ΦΠΑ.</string>
 
     <!-- Sorting & usage -->
@@ -278,7 +278,7 @@
     <!-- Contextual coach hints -->
     <string name="coach_earlier_cheaper">Δεν είναι η κατάλληλη ώρα; Πατήστε «Νωρίτερα» για πιο σύντομη έναρξη ή «Φθηνότερα» για να επιστρέψετε στη φθηνότερη.</string>
     <string name="coach_chart_press_hold">Πατήστε παρατεταμένα το γράφημα για να δείτε την τιμή σε οποιαδήποτε ώρα.</string>
-    <string name="coach_all_in_toggle">Εναλλαγή μεταξύ της πλήρους τελικής τιμής και της καθαρής τιμής αγοράς.</string>
+    <string name="coach_all_in_toggle">Εναλλαγή μεταξύ της πλήρους τελικής τιμής και μόνο της χονδρικής τιμής.</string>
     <string name="coach_ev_chip">Πατήστε το όχημά σας για να προγραμματίσετε τη φόρτιση με βάση το ποσοστό μπαταρίας.</string>
     <string name="coach_got_it">Κατάλαβα</string>
 
@@ -344,9 +344,9 @@
     <string name="guide_ev_title">Προγραμματίστε τη φόρτιση ηλεκτρικού οχήματος</string>
     <string name="guide_ev_body">Προσθέστε το αυτοκίνητό σας, εισαγάγετε την τρέχουσα και την επιθυμητή φόρτιση, και το SweetSpot υπολογίζει τον χρόνο φόρτισης.</string>
     <string name="guide_result_title">Διαβάστε το αποτέλεσμα</string>
-    <string name="guide_result_body">Χρησιμοποιήστε τα «Νωρίτερα» και «Φθηνότερα» για να μετακινήσετε την περίοδο και πατήστε παρατεταμένα το γράφημα για την τιμή οποιουδήποτε διαστήματος.</string>
+    <string name="guide_result_body">Χρησιμοποιήστε τα «Νωρίτερα» και «Φθηνότερα» για να μετακινήσετε την προτεινόμενη ώρα και πατήστε παρατεταμένα το γράφημα για την τιμή οποιουδήποτε διαστήματος.</string>
     <string name="guide_allin_title">Τελική τιμή</string>
-    <string name="guide_allin_body">Προαιρετικά, εμφανίστε την πλήρη τιμή καταναλωτή αντί μόνο της τιμής αγοράς.</string>
+    <string name="guide_allin_body">Προαιρετικά, εμφανίστε την πλήρη τιμή καταναλωτή αντί μόνο της χονδρικής τιμής.</string>
     <string name="guide_wear_title">Στο ρολόι σας</string>
     <string name="guide_wear_body">Οι συσκευές σας συγχρονίζονται με το Wear OS, ώστε να μπορείτε να ελέγχετε τιμές χωρίς το τηλέφωνό σας.</string>
     <string name="reply_hint">Η απάντησή σας</string>

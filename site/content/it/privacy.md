@@ -5,7 +5,7 @@ description: "Informativa sulla privacy di SweetSpot — la privacy prima di tut
 
 ## Panoramica
 
-SweetSpot è progettato con la privacy come priorità. L'app non raccoglie né conserva alcun dato personale. Non ci sono account utente, strumenti di analisi né tracciamento dell'utilizzo. Una funzione opzionale consente di condividere statistiche anonime sulle API — vedi i dettagli qui sotto.
+SweetSpot è progettato con la privacy come priorità. Per funzionare, l'app non richiede né raccoglie dati personali — non ci sono account utente, strumenti di analisi né tracciamento dell'utilizzo, e richiede solo l'autorizzazione INTERNET (nessun accesso a posizione, contatti, archiviazione o identificativi del dispositivo). Funzioni opzionali consentono di condividere statistiche anonime sull'affidabilità o di inviare feedback — vedi i dettagli qui sotto.
 
 ## Trattamento dei dati
 
@@ -21,17 +21,19 @@ Queste richieste API contengono solo l'identificativo della zona di offerta e l'
 
 ## Archiviazione locale
 
-I dati sui prezzi vengono memorizzati localmente sul dispositivo per ridurre le chiamate API e velocizzare i risultati. Anche la configurazione degli elettrodomestici (nomi, durate, icone e potenze nominali opzionali), i veicoli salvati (capacità della batteria e potenza di ricarica) e le impostazioni (paese, zona, lingua) vengono salvati localmente sul dispositivo.
+I dati sui prezzi vengono memorizzati localmente sul dispositivo per ridurre le chiamate API e velocizzare i risultati. Anche la configurazione degli elettrodomestici (nomi, durate, icone e potenze nominali opzionali), i veicoli salvati (capacità della batteria e potenza di ricarica) e le impostazioni (paese, zona, lingua) vengono salvati localmente sul dispositivo, insieme allo stato del tuo abbonamento (memorizzato nella cache affinché l'app continui a funzionare offline) e al numero di tocchi per ciascun elettrodomestico (usato solo per l'ordinamento per più usati e usati di recente).
 
 Su Wear OS, i dati degli elettrodomestici e le impostazioni vengono sincronizzati tra telefono e orologio tramite la Wearable Data Layer API. Questa comunicazione resta tra i dispositivi locali e non transita attraverso alcun server esterno.
+
+Se condividi la tua configurazione come codice QR o come link, la configurazione dei tuoi elettrodomestici e della ricarica dell'auto elettrica è codificata **all'interno del link o del codice QR stesso** — non viene mai caricata su un server. Solo la persona a cui dai il codice o il link può importarla.
 
 ## Nessuna analisi dei dati
 
 SweetSpot non include SDK di analisi, segnalazione di errori né tracciamento dell'utilizzo. L'app non effettua richieste di rete diverse dal recupero dei prezzi dell'energia elettrica dalle API pubbliche sopra elencate (e dall'invio opzionale di statistiche, se abilitato, e dall'invio di una segnalazione se usi Aiuto e assistenza — vedi sotto).
 
-## Statistiche API opzionali
+## Statistiche di affidabilità opzionali
 
-Puoi scegliere di condividere statistiche anonime sull'affidabilità delle API. Quando abilitata, l'app invia periodicamente i dati delle singole richieste per ciascuna fonte di dati e zona di offerta al nostro server. Questi dati contengono:
+Puoi scegliere di condividere statistiche anonime sull'affidabilità. Quando abilitata, l'app invia periodicamente i dati delle singole richieste per ciascuna fonte di dati e zona di offerta al nostro server. Questi dati contengono:
 
 - Data e ora della richiesta API
 - Identificativo della zona di offerta (es. "NL", "DE-LU")

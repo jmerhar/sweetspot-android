@@ -1,1 +1,1 @@
-Trova l'ora più economica per elettrodomestici e ricarica auto elettrica.
+Trova la fascia più economica per elettrodomestici e auto con prezzi dinamici.

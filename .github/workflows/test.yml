@@ -27,6 +27,10 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
+      # Validate the repo's Python tooling — the data builders and the coverage-gate script itself
+      # (pure logic, no network). Fast, so run before the Android tests.
+      - name: Run script unit tests
+        run: make test-scripts
       # Run the debug unit tests and generate a separate Kover coverage report per module.
       # The unprefixed task names run in all three modules; the Debug variant matches the unit
       # tests (the "all code" variant would also pull in release and skew the numbers).

@@ -21,17 +21,25 @@ Poradie priority zdrojov údajov môžete nastaviť v nastaveniach.
 {{< /faq >}}
 
 {{< faq question="Sú ceny presné?" >}}
-SweetSpot zobrazuje **denné spotové ceny** — veľkoobchodné ceny elektriny určené trhom deň vopred. Tieto ceny **nezahŕňajú** DPH, dane z energie, sieťové poplatky ani marže dodávateľov, ktoré sa líšia podľa krajiny a dodávateľa.
+SweetSpot zobrazuje **denné trhové ceny** — veľkoobchodné ceny elektriny, ktoré trh určuje deň pred dodaním (nazývané aj spotové ceny). Tieto ceny **nezahŕňajú** DPH, dane z energie, sieťové poplatky ani marže dodávateľov, ktoré sa líšia podľa krajiny a dodávateľa.
 
-Ceny sú užitočné na vzájomné porovnanie časových úsekov (zistenie, kedy je elektrina najlacnejšia), čo je hlavný účel aplikácie. Náklady sú predvolene uvedené pre záťaž 1 kW; nastavte spotrebiču výkon alebo nabíjajte elektromobil a odhad zohľadní skutočnú záťaž. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.
+Ceny sú aj tak užitočné na zistenie, kedy je elektrina najlacnejšia, čo je hlavný účel aplikácie. Náklady sú predvolene uvedené pre záťaž 1 kW; nastavte spotrebiču výkon alebo nabíjajte elektromobil a odhad zohľadní skutočnú záťaž. Zajtrajšie ceny sú zvyčajne dostupné po 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Potrebujem osobitnú zmluvu na dodávku elektriny?" >}}
+Áno — aby ste skutočne ušetrili, potrebujete **zmluvu s dynamickou (spotovou alebo hodinovou) cenou elektriny**, pri ktorej cena, ktorú platíte, kopíruje denný trh. SweetSpot vám ukáže, kedy sú tieto ceny najnižšie, ale nedokáže zmeniť, koľko si účtuje váš dodávateľ: pri tarife s pevnou cenou je cena rovnaká po celý deň, takže presunutie času spotreby váš účet nezníži.
 {{< /faq >}}
 
 {{< faq question="Pomôže mi SweetSpot nabíjať elektromobil?" >}}
-Áno. Pridajte si vozidlo — vyberte ho z vstavanej databázy približne 1 600 elektromobilov a plug-in hybridov alebo ručne zadajte kapacitu batérie a nabíjací výkon. Potom zadajte aktuálnu a cieľovú úroveň nabitia a SweetSpot vypočíta, ako dlho bude nabíjanie trvať (z kapacity batérie a nižšej z hodnôt AC limitu vášho auta a vašej domácej nabíjačky), a nájde najlacnejšie obdobie na zapojenie.
+Áno. Pridajte si vozidlo — vyberte ho zo vstavanej databázy tisícok elektromobilov a plug-in hybridov alebo ručne zadajte kapacitu batérie a nabíjací výkon. Potom zadajte aktuálnu a cieľovú úroveň nabitia a SweetSpot vypočíta, ako dlho bude nabíjanie trvať (z kapacity batérie a nižšej z hodnôt AC limitu vášho auta a vašej domácej nabíjačky), a nájde najlacnejšie obdobie na zapojenie.
 {{< /faq >}}
 
-{{< faq question="Môžem zaistiť, aby to bolo hotové do určitého času?" >}}
-Áno. Zapnite voliteľný termín **„hotové do“** a vyberte čas. SweetSpot potom zohľadní iba obdobia, ktoré sa dovtedy dokončia — pre ľubovoľný spotrebič alebo pri nabíjaní elektromobilu (napríklad plne nabité do 7:00 ráno).
+{{< faq question="Môžem zaistiť, aby to bolo pripravené do určitého času?" >}}
+Áno. Zapnite voliteľný termín **„Pripravené do“** a vyberte čas. SweetSpot potom predvolene ponúkne najlacnejší čas, ktorý sa dovtedy stihne dokončiť — pre ľubovoľný spotrebič alebo pri nabíjaní elektromobilu (napríklad nabité do 7:00 ráno). Ak chcete, môžete aj tak prejsť na lacnejší čas, ktorý sa dokončí o niečo neskôr; SweetSpot upozorní, keď zobrazený čas skončí po vašom termíne.
+{{< /faq >}}
+
+{{< faq question="Prečo sa odporúčaný čas stále mení?" >}}
+SweetSpot počas otvoreného výsledku priebežne kontroluje ceny a časové úseky, ktoré už uplynuli, postupne vypadávajú, takže sa odporúčaný čas môže posunúť. Tlačidlami **Skôr** a **Lacnejšie** môžete prepínať medzi skorším (o niečo drahším) začiatkom a tým najlacnejším — pri každom sa zobrazí, o koľko je drahší než odporúčaný čas.
 {{< /faq >}}
 
 {{< faq question="Zohľadňujú náklady, koľko energie môj spotrebič spotrebuje?" >}}
@@ -43,17 +51,17 @@ SweetSpot ukladá ceny lokálne na vašom zariadení. Ak ste nedávno načítali
 {{< /faq >}}
 
 {{< faq question="Funguje aplikácia Wear OS samostatne?" >}}
-Aplikácia Wear OS synchronizuje spotrebiče a nastavenia z telefónnej aplikácie cez Wearable Data Layer API. Po synchronizácii hodinky získavajú ceny nezávisle — funguje teda aj vtedy, keď telefón nie je nablízku, pokiaľ majú hodinky prístup na internet (Wi-Fi alebo LTE).
+Aplikácia Wear OS synchronizuje spotrebiče a nastavenia z aplikácie v telefóne. Po synchronizácii hodinky získavajú ceny nezávisle — funguje teda aj vtedy, keď telefón nie je nablízku, pokiaľ majú hodinky prístup na internet (Wi-Fi alebo LTE).
 
 Aplikácia pre hodinky vyžaduje Wear OS 3 alebo novší (Pixel Watch, Samsung Galaxy Watch 4+ a ďalšie kompatibilné hodinky).
 {{< /faq >}}
 
 {{< faq question="Môžem vidieť plnú cenu, ktorú skutočne platím?" >}}
-SweetSpot predvolene zobrazuje veľkoobchodnú **spotovú cenu**. V podporovaných krajinách (momentálne Holandsko) môžete v nastaveniach zapnúť **plné ceny**, ktoré k spotovej cene pripočítajú daň z energie, prirážku vášho dodávateľa a DPH, aby zobrazili približnú plnú spotrebiteľskú cenu. V kombinácii s **výkonom** spotrebiča vám to poskytne realistický odhad toho, koľko bude skutočné používanie daného spotrebiča stáť. Slúži iba na zobrazenie — nikdy nemení, ktoré časové obdobie vyjde ako najlacnejšie.
+SweetSpot predvolene zobrazuje veľkoobchodnú **trhovú cenu**. V podporovaných krajinách (momentálne Holandsko) môžete v nastaveniach zapnúť **Celkovú cenu** (konečnú cenu vrátane všetkého), ktorá k trhovej cene pripočíta daň z energie, prirážku vášho dodávateľa a DPH, aby zobrazila približnú plnú spotrebiteľskú cenu. V kombinácii s **výkonom** spotrebiča vám to poskytne realistický odhad toho, koľko bude skutočné používanie daného spotrebiča stáť. Slúži iba na zobrazenie — nikdy nemení, ktorý čas vyjde ako najlacnejší.
 {{< /faq >}}
 
 {{< faq question="Môžem skopírovať svoje spotrebiče do iného zariadenia?" >}}
-Áno. V nastaveniach môžete zdieľať svoje nastavenie — svoje spotrebiče, ich poradie a nastavenia nabíjania elektromobilu — ako QR kód alebo odkaz. Naskenujte ho alebo otvorte na inom zariadení a importujte všetko. Funguje to úplne offline, bez účtu a bez servera: údaje putujú vnútri samotného odkazu alebo QR kódu a vy si vyberiete, či ich chcete pridať k existujúcim alebo ich nahradiť.
+Áno. V nastaveniach môžete zdieľať svoje nastavenie — svoje spotrebiče, ich poradie a nastavenia nabíjania elektromobilu — ako QR kód alebo odkaz. Naskenujte ho alebo otvorte na inom zariadení a importujte všetko. Funguje to úplne offline, bez účtu a bez servera: údaje putujú vnútri samotného odkazu alebo QR kódu a vy si vyberiete, či ich chcete pridať k existujúcim, nahradiť ich, alebo z nich vybrať jednotlivé položky.
 {{< /faq >}}
 
 {{< faq question="Ako nahlásim problém alebo navrhnem funkciu?" >}}

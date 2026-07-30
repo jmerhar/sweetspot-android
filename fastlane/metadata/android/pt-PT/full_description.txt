@@ -1,20 +1,20 @@
-O SweetSpot encontra o momento mais barato para utilizar os seus aparelhos e carregar o seu carro elétrico. Escolha durante quanto tempo um aparelho precisa de funcionar — ou selecione o seu VE e a carga que pretende — e o SweetSpot analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar o período mais barato.
+O SweetSpot encontra o período mais barato para utilizar os seus aparelhos e carregar o seu carro elétrico. Escolha durante quanto tempo um aparelho precisa de funcionar — ou selecione o seu VE e a carga que pretende — e o SweetSpot analisa os próximos preços dinâmicos de eletricidade para encontrar o período mais barato.
 
 Seja uma máquina de lavar, máquina de lavar louça, secador, bomba de calor ou carregador de VE — ligue no momento certo e pague menos pela mesma eletricidade.
 
 COMO FUNCIONA
-1. Escolha um aparelho ou o seu VE, ou defina uma duração personalizada — e um prazo opcional de "pronto até"
-2. O SweetSpot obtém os preços de eletricidade day-ahead mais recentes para a sua região
+1. Escolha um aparelho ou o seu VE, ou defina uma duração personalizada — e um prazo opcional «pronto até»
+2. O SweetSpot obtém os preços de eletricidade do dia seguinte mais recentes para a sua região
 3. Veja exatamente quando ligar, com um gráfico de preços de 24 horas com código de cores e uma discriminação completa de custos por intervalo de tempo
 
 CARREGAMENTO DE VE
-Adicione o seu carro a partir de uma base de dados integrada de cerca de 1600 VE e híbridos plug-in — ou introduza você mesmo a capacidade da bateria e a potência de carregamento. Defina a carga atual e a carga-alvo, e o SweetSpot calcula quanto tempo demorará o carregamento e o momento mais barato para ligar à tomada.
+Adicione o seu carro a partir de uma base de dados integrada de milhares de VE e híbridos plug-in — ou introduza você mesmo a capacidade da bateria e a potência de carregamento. Defina a carga atual e a carga-alvo, e o SweetSpot calcula quanto tempo demorará o carregamento e o momento mais barato para ligar à tomada.
 
 FUNCIONALIDADES
 - 30 países europeus, 43 zonas de preços — de Portugal à Finlândia, da Noruega à Grécia
 - 5 fontes de dados com alternância automática (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Preço total (Países Baixos) — veja opcionalmente o preço total para o consumidor (preço de mercado + imposto sobre energia + margem do fornecedor + IVA) em vez do preço de mercado simples; escolha o seu fornecedor ou introduza a sua própria margem. Mais países em breve
-- Prazo "pronto até" — escolhe apenas um período que termina a tempo
+- Prazo «pronto até» — assume por predefinição o período mais barato que o cumpre
 - Mais cedo ou mais barato — quando o período mais barato não é conveniente, avance para um mais cedo e veja exatamente quanto fica mais caro
 - Potência dos aparelhos — defina a potência de um aparelho em kW para uma estimativa de custo que reflete o consumo real
 - Guarde os seus aparelhos com nomes, ícones e durações personalizados para acesso rápido
@@ -30,6 +30,6 @@ PAÍSES SUPORTADOS
 Alemanha, Áustria, Bélgica, Bulgária, Chéquia, Croácia, Dinamarca, Eslováquia, Eslovénia, Espanha, Estónia, Finlândia, França, Grécia, Hungria, Irlanda, Itália, Letónia, Lituânia, Luxemburgo, Macedónia do Norte, Montenegro, Noruega, Países Baixos, Polónia, Portugal, Roménia, Sérvia, Suécia, Suíça.
 
 NOTA
-Por predefinição, os preços apresentados são preços spot day-ahead por grosso e não incluem IVA, impostos sobre energia ou taxas do fornecedor. Nos Países Baixos, pode opcionalmente ativar o Preço total, que adiciona o imposto sobre energia, a margem do seu fornecedor e o IVA para um custo de utilização realista. Os preços de amanhã estão geralmente disponíveis após as 13:00 CET. É necessário um contrato de eletricidade com preço dinâmico para beneficiar das diferenças de preços.
+Por predefinição, os preços apresentados são preços de mercado grossistas do dia seguinte e não incluem IVA, impostos sobre energia ou margem do fornecedor. Nos Países Baixos, pode opcionalmente ativar o Preço total, que adiciona o imposto sobre energia, a margem do seu fornecedor e o IVA para um custo de utilização realista. Os preços de amanhã estão geralmente disponíveis após as 13:00 CET. É necessário um contrato de eletricidade com preço dinâmico para beneficiar das diferenças de preços.
 
 Política de privacidade: https://sweetspot.today/pt/privacy/

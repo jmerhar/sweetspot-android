@@ -5,7 +5,7 @@ description: "Política de privacidade do SweetSpot — privacidade em primeiro 
 
 ## Resumo
 
-O SweetSpot foi concebido com a privacidade em mente. A aplicação não recolhe nem armazena quaisquer dados pessoais. Não existem contas de utilizador, análises nem rastreamento de utilização. Uma funcionalidade opcional permite partilhar estatísticas anónimas de API — consulte os detalhes abaixo.
+O SweetSpot foi concebido com a privacidade em mente. A aplicação não requer nem recolhe dados pessoais para funcionar — não existem contas de utilizador, análises nem rastreamento de utilização, e requer apenas a permissão INTERNET (sem localização, contactos, armazenamento ou identificadores do dispositivo). Funcionalidades opcionais permitem-lhe partilhar estatísticas de fiabilidade anónimas ou enviar feedback — consulte os detalhes abaixo.
 
 ## Processamento de dados
 
@@ -21,17 +21,19 @@ Estes pedidos à API contêm apenas o identificador da zona de licitação e o i
 
 ## Armazenamento local
 
-Os dados de preços são guardados localmente no seu dispositivo para reduzir os pedidos à API e proporcionar resultados mais rápidos. A configuração dos seus eletrodomésticos (nomes, durações, ícones e potências opcionais), os veículos guardados (tamanho da bateria e potência de carregamento) e as definições (país, zona, idioma) são também armazenados localmente no seu dispositivo.
+Os dados de preços são guardados localmente no seu dispositivo para reduzir os pedidos à API e proporcionar resultados mais rápidos. A configuração dos seus eletrodomésticos (nomes, durações, ícones e potências opcionais), os veículos guardados (tamanho da bateria e potência de carregamento) e as definições (país, zona, idioma) são também armazenados localmente no seu dispositivo, juntamente com o estado da sua subscrição (guardado em cache para que a aplicação continue a funcionar offline) e as contagens de toques por eletrodoméstico (usadas apenas para a ordenação por mais usados e usados recentemente).
 
 No Wear OS, os dados dos eletrodomésticos e definições são sincronizados entre o telemóvel e o relógio através da Wearable Data Layer API. Esta comunicação permanece nos seus dispositivos locais e não passa por nenhum servidor externo.
 
+Se partilhar a sua configuração como um código QR ou uma ligação, a configuração dos seus eletrodomésticos e do carregamento de VE é codificada **dentro da própria ligação ou código QR** — nunca é enviada para um servidor. Apenas a pessoa a quem der o código ou a ligação a pode importar.
+
 ## Sem análises
 
-O SweetSpot não inclui quaisquer SDKs de análise, relatórios de erros ou rastreamento de utilização. A aplicação não efetua quaisquer pedidos de rede para além da obtenção de preços de eletricidade das APIs públicas acima indicadas (e do envio opcional de estatísticas, se ativado, e do envio de um relatório se utilizar a Ajuda e suporte — consulte abaixo).
+O SweetSpot não inclui quaisquer SDKs de análise, relatórios de erros ou rastreamento de utilização. A aplicação não efetua quaisquer pedidos de rede para além da obtenção de preços de eletricidade das APIs públicas acima indicadas (e do envio opcional de estatísticas, se ativado, e do envio de uma comunicação se utilizar a Ajuda e suporte — consulte abaixo).
 
-## Estatísticas de API opcionais
+## Estatísticas de fiabilidade opcionais
 
-Pode optar por partilhar estatísticas anónimas de fiabilidade da API. Quando ativada, a aplicação envia periodicamente registos individuais de pedidos para cada fonte de dados e zona de licitação para o nosso servidor. Estes dados contêm:
+Pode optar por partilhar estatísticas de fiabilidade anónimas. Quando ativada, a aplicação envia periodicamente registos individuais de pedidos para cada fonte de dados e zona de licitação para o nosso servidor. Estes dados contêm:
 
 - Marca temporal do pedido à API
 - Identificador da zona de licitação (ex.: "NL", "DE-LU")
@@ -50,11 +52,11 @@ Esta funcionalidade está desativada por predefinição. Pode ativá-la ou desat
 
 ## Ajuda e suporte
 
-Se comunicar um problema ou enviar comentários a partir de **Definições › Ajuda e suporte**, a sua mensagem é enviada ao nosso serviço de comentários e registada como um pedido no nosso repositório público do GitHub. **O assunto e a descrição que escrever tornam-se publicamente visíveis** no GitHub, por isso não inclua dados pessoais.
+Se comunicar um problema ou enviar feedback a partir de **Definições › Ajuda e suporte**, a sua mensagem é enviada ao nosso serviço de feedback e registada como um problema no nosso repositório público do GitHub. **O assunto e a descrição que escrever tornam-se publicamente visíveis** no GitHub, por isso não inclua dados pessoais.
 
-Se optar por ser notificado por e-mail, o endereço que fornecer é armazenado apenas pelo nosso serviço de comentários — nunca é mostrado no pedido público — e é utilizado exclusivamente para lhe enviar informações sobre o seu próprio relatório. Todos os e-mails de notificação incluem uma ligação de cancelamento de subscrição com um clique que remove o endereço armazenado, e também pode pedir-nos que o eliminemos a qualquer momento.
+Se optar por ser notificado por e-mail, o endereço que fornecer é armazenado apenas pelo nosso serviço de feedback — nunca é mostrado no problema público — e é utilizado exclusivamente para lhe enviar informações sobre a sua própria comunicação. Todos os e-mails de notificação incluem uma ligação de cancelamento de subscrição com um clique que remove o endereço armazenado, e também pode pedir-nos que o eliminemos a qualquer momento.
 
-Os relatórios de problemas incluem também um pequeno bloco de diagnóstico não pessoal: a versão da aplicação e do Android, o modelo do seu dispositivo, o idioma da aplicação, a zona de preços selecionada e a fonte de dados ativa. Não contém nome, endereço de e-mail, localização ou qualquer outra informação pessoal.
+As comunicações de problemas incluem também um pequeno bloco de diagnóstico não pessoal: a versão da aplicação e do Android, o modelo do seu dispositivo, o idioma da aplicação, a zona de preços selecionada e a fonte de dados ativa. Não contém nome, endereço de e-mail, localização ou qualquer outra informação pessoal.
 
 ## Código aberto
 
@@ -62,6 +64,6 @@ O SweetSpot é de código aberto e licenciado sob GPL v3. Pode consultar o códi
 
 ## Contacto
 
-Se tiver questões sobre esta política de privacidade, pode abrir um pedido no [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
+Se tiver questões sobre esta política de privacidade, pode abrir um problema no [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
 *Última atualização: julho de 2026*

@@ -12,6 +12,24 @@ advertised per-minute relative-time countdown, plus a latent NPE in `ResultScree
 
 ---
 
+## Remediation status (audit follow-up)
+
+Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fix · ❓ needs decision.
+
+| Finding | Status | Where / note |
+|---|---|---|
+| H1 frozen relative-time countdown | ✅ | `b7ae213` (per-minute ticker) |
+| M1 `priceZone!!` NPE | ✅ | `b7ae213` (timezone from the result) |
+| M2 disabled sources ignored when order is default | ❓ | shared phone+wear behaviour — decide if disabling should be independent of a custom order (fix would live in `:shared`) |
+| M3 usage recorded for no-fetch taps | ⏳ | minor data-quality |
+| L1 `resolveZone` silent NL fallback | ⏳ | low likelihood |
+| L2 no `TimeText` on result screen | ➖ | minor UX; the ticker now drives recomposition |
+| L3 state default calls the registry | ➖ | cosmetic |
+| C1–C4 coverage gaps | ⏳ | H1's fix is a composable ticker (not unit-testable); the others are test hardening |
+| ResultScreen "every 60s" / WindowResult "hourly" KDoc | ✅ | now accurate (`b7ae213`, `11098c7`) |
+
+---
+
 ## HIGH
 
 ### H1. The "updates every 60 seconds" relative-time countdown is defeated by `StateFlow` conflation — the countdown freezes

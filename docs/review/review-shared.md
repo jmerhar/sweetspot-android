@@ -10,6 +10,25 @@ clamping, monotonicity, and negative-price cases). The findings below are the ex
 
 ---
 
+## Remediation status (audit follow-up)
+
+Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fix · ❓ needs decision.
+
+| Finding | Status | Where / note |
+|---|---|---|
+| H1 empty-fetch short-circuits fallback | ✅ | `a591c2d` + tests |
+| M2 EnergyCharts single-slot → 60 min | ➖ | resolution is unknowable from one slot; low frequency |
+| M3 unknown tax `type` dropped | ➖ | display-only, fail-safe; the feed is our own build |
+| M4 duplicated lenient `Json` | ✅ | `acfd039` (shared `sweetSpotJson`) |
+| L5 A03 trailing gap-fill | ⏳ | suspected, low; day-ahead A44 is normally A01 |
+| L6 unclamped-cost KDoc note | ⏳ | behaviour correct; doc-only clarification |
+| L7 `formatKw` large values | ➖ | unreachable from real data |
+| L8 cold-start double-fetch test | ⏳ | behaviour correct; test hardening only |
+| C9 broken `@link` | ✅ | `11098c7` |
+| C10 `ApplianceGrouping` doc drift | 📋 | Phase 3 (CLAUDE.md) |
+
+---
+
 ## High
 
 ### H1. Empty-but-successful fetch short-circuits the fallback chain (confirmed behaviour; medium user impact)

@@ -1681,7 +1681,11 @@ class SweetSpotViewModelTest {
      * deadline), with time pinned via the dev override so the "ready by" resolves deterministically.
      */
     private fun deadlineScenario(): Pair<SweetSpotViewModel, ZonedDateTime> {
-        val zone = ZoneId.systemDefault()
+        // Build the fixture in the ViewModel's own price-zone timezone (not the JVM default), so the
+        // wall-clock deadline — resolved in that zone — lines up with the price times on any runner,
+        // including a UTC CI machine. (A JVM-default base misaligns on UTC and fails an assertion,
+        // which would leave the periodic-refresh loop running and hang runTest.)
+        val zone = SettingsRepository(app).getTimeZoneId()
         val base = ZonedDateTime.now(zone).plusDays(2).withHour(8).withMinute(0).withSecond(0).withNano(0)
         val prices = (0 until 14).map { i -> PriceSlot(base.plusHours(i.toLong()), 1.0 - i * 0.05, 60) }
         val viewModel = testViewModel(FakeFetcher(prices))

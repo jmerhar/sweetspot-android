@@ -1,1 +1,1 @@
-Találd meg a legolcsóbb időt a készülékek és az elektromos autó töltéséhez.
+Legolcsóbb időpont készülékekhez és autótöltéshez, dinamikus árak alapján.

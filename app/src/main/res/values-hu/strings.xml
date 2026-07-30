@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Beállítások</string>
     <string name="cd_back">Vissza</string>
-    <string name="main_description">A SweetSpot segít pénzt megtakarítani azzal, hogy megkeresi a legolcsóbb időpontot háztartási készülékeid futtatásához. Csak válaszd ki, mennyi ideig kell működnie a készülékednek, és az alkalmazás átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legjobb időablakot. Kedvenc készülékeidet a beállításokban is elmentheted a gyors elérés érdekében.</string>
-    <string name="main_find_button">Legolcsóbb időablak keresése</string>
+    <string name="main_description">A SweetSpot segít pénzt megtakarítani azzal, hogy megkeresi a legolcsóbb időpontot háztartási készülékeid futtatásához. Csak válaszd ki, mennyi ideig kell működnie a készülékednek, és az alkalmazás átvizsgálja a közelgő dinamikus villamosenergia-árakat, hogy megtalálja a legjobb időpontot. Kedvenc készülékeidet a beállításokban is elmentheted a gyors elérés érdekében.</string>
+    <string name="main_find_button">Legolcsóbb időpont keresése</string>
     <string name="main_searching">Keresés…</string>
     <string name="main_add_appliances">Add hozzá készülékeidet</string>
     <string name="main_card_description">Keresd meg a legolcsóbb időpontot a készüléked futtatásához</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Ajánlott időpont</string>
-    <string name="result_after_deadline">Ez az időszak a „Készen legyen ekkorra” időpont után ér véget.</string>
+    <string name="result_after_deadline">Ez a „Készen legyen ekkorra” időpont után fejeződik be.</string>
     <string name="result_start">Kezdés</string>
     <string name="result_end">Befejezés</string>
     <string name="result_total_cost">Összes költség</string>
@@ -31,10 +31,10 @@
     <string name="cd_collapse">Összecsukás</string>
     <string name="cd_expand">Kibontás</string>
     <string name="result_upcoming_prices">Közelgő árak</string>
-    <string name="result_disclaimer">A költségek 1 kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói díjat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
+    <string name="result_disclaimer">A költségek 1 kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói felárat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
     <string name="result_data_source">\nAdatforrás: %s</string>
     <string name="result_price_zone">\nÁrzóna: %s</string>
-    <string name="cd_cheapest_window">legolcsóbb időablak</string>
+    <string name="cd_cheapest_window">legolcsóbb időpont</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Időtartam</string>
@@ -154,10 +154,10 @@
     <string name="cd_refresh">Frissítés</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">API statisztikák megosztása</string>
-    <string name="settings_stats_description">Segíts javítani az adatforrások megbízhatóságát anonim API sikerességi/hibaszámok megosztásával. Személyes adatokat nem gyűjtünk.</string>
+    <string name="settings_stats_title">Megbízhatósági statisztikák megosztása</string>
+    <string name="settings_stats_description">Segíts javítani az adatforrások megbízhatóságát azzal, hogy névtelenül megosztod, milyen gyakran töltődnek be sikeresen vagy hibáznak az áradatok. Személyes adatokat nem gyűjtünk.</string>
     <string name="stats_prompt_title">Segíts javítani a SweetSpotot?</string>
-    <string name="stats_prompt_message">Ossz meg névtelen API-statisztikákat az adatforrások megbízhatóságának javítása érdekében. Csak a sikeres/sikertelen kérések száma kerül megosztásra forrásonként — személyes adatok nélkül. Ezt bármikor megváltoztathatod a Beállításokban.</string>
+    <string name="stats_prompt_message">Ossz meg névtelen statisztikákat az adatforrások megbízhatóságának javítása érdekében. Csak az kerül megosztásra, milyen gyakran töltődnek be sikeresen vagy hibáznak az adatforrások — személyes adatok nélkül. Ezt bármikor megváltoztathatod a Beállításokban.</string>
     <string name="stats_prompt_enable">Engedélyezés</string>
     <string name="stats_prompt_dismiss">Nem, köszönöm</string>
 
@@ -180,7 +180,7 @@
 
     <!-- Paywall -->
     <string name="paywall_title">A próbaidőszak lejárt</string>
-    <string name="paywall_description">A SweetSpot megtalálja a legolcsóbb időpontot a készülékeid futtatásához valós idejű villamosenergia-árak alapján 30 európai országban. Fizess elő, hogy továbbra is megtaláld a legolcsóbb időpontot a készülékeidhez.</string>
+    <string name="paywall_description">A SweetSpot dinamikus villamosenergia-árak alapján megtalálja a legolcsóbb időpontot a készülékeid futtatásához 30 európai országban. Fizess elő, hogy továbbra is használhasd.</string>
     <string name="paywall_unlock">Előfizetés a SweetSpotra</string>
     <string name="paywall_unlock_price">Előfizetés: %s/év</string>
     <string name="paywall_restore">Előfizetés visszaállítása</string>
@@ -217,13 +217,13 @@
     <string name="ev_error_invalid_soc">A céltöltöttségnek magasabbnak kell lennie a jelenlegi töltöttségnél.</string>
     <string name="ev_error_invalid_charger">Adj meg nullánál nagyobb töltési teljesítményt.</string>
     <string name="ev_error_deadline_unreachable">A töltés nem fejeződik be a megadott határidőre. Próbálj alacsonyabb céltöltöttséget vagy későbbi időpontot.</string>
-    <string name="result_disclaimer_power">A költségek %s kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói díjat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
+    <string name="result_disclaimer_power">A költségek %s kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói felárat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
     <string name="dialog_power">Teljesítmény (kW, opcionális)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Teljes ár</string>
     <string name="settings_all_in_toggle">Teljes ár megjelenítése</string>
-    <string name="settings_all_in_desc">A puszta piaci ár helyett a becsült teljes fogyasztói árat mutatja (tőzsdei ár + energiaadó + szolgáltatói díj + ÁFA).</string>
+    <string name="settings_all_in_desc">A puszta piaci ár helyett a becsült teljes fogyasztói árat mutatja (piaci ár + energiaadó + szolgáltatói felár + ÁFA).</string>
     <string name="all_in_supplier">Szolgáltató</string>
     <string name="all_in_supplier_prompt">Válaszd ki a szolgáltatódat</string>
     <string name="all_in_supplier_custom">Egyéni felár</string>
@@ -232,14 +232,14 @@
     <string name="all_in_incomplete">Válassz szolgáltatót vagy adj meg egy felárat, vagy kapcsold ki a teljes árat.</string>
     <string name="picker_supplier_title">Szolgáltató</string>
     <string name="picker_supplier_search">Szolgáltatók keresése</string>
-    <string name="result_disclaimer_all_in">A költségek 1 kW terhelésre vonatkoznak, a becsült teljes áron (tőzsdei ár + energiaadó + szolgáltatói díj + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
-    <string name="result_disclaimer_power_all_in">A költségek %s kW terhelésre vonatkoznak, a becsült teljes áron (tőzsdei ár + energiaadó + szolgáltatói díj + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
+    <string name="result_disclaimer_all_in">A költségek 1 kW terhelésre vonatkoznak, a becsült teljes áron (piaci ár + energiaadó + szolgáltatói felár + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
+    <string name="result_disclaimer_power_all_in">A költségek %s kW terhelésre vonatkoznak, a becsült teljes áron (piaci ár + energiaadó + szolgáltatói felár + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
     <string name="result_all_in_supplier">\nSzolgáltató: %s</string>
     <string name="result_all_in_stale">A tarifaadatok több mint 14 naposak, és elavultak lehetnek.</string>
     <string name="chart_legend_energy_tax">Energiaadó</string>
     <string name="chart_legend_surcharge">Felár</string>
-    <string name="chart_legend_spot">Tőzsdei ár</string>
-    <string name="chart_legend_spot_negative">Negatív tőzsdei ár</string>
+    <string name="chart_legend_spot">Piaci ár</string>
+    <string name="chart_legend_spot_negative">Negatív ár</string>
     <string name="chart_legend_vat_note">Minden ár tartalmazza az ÁFA-t.</string>
 
     <!-- Sorting & usage -->
@@ -308,7 +308,7 @@
     <string name="tips_reset_snackbar">Tippek visszaállítva</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">A bejelentésed nyilvános hibajegyként kerül közzétételre a GitHubon — kérjük, ne adj meg személyes adatokat.</string>
+    <string name="report_public_notice">A bejelentésed nyilvános bejegyzésként kerül közzétételre a GitHubon — kérjük, ne adj meg személyes adatokat.</string>
     <string name="report_subject_label">Tárgy</string>
     <string name="report_body_label_bug">Mi történt?</string>
     <string name="report_body_label_feedback">Visszajelzésed</string>
@@ -336,7 +336,7 @@
     <string name="guide_ev_title">Tervezd az elektromos autó töltését</string>
     <string name="guide_ev_body">Add hozzá az autódat, add meg a jelenlegi és a céltöltöttségét, a SweetSpot pedig kiszámolja a töltési időt.</string>
     <string name="guide_result_title">Értelmezd az eredményt</string>
-    <string name="guide_result_body">Használd a Korábban és Olcsóbban gombokat az időablak eltolásához, és tartsd nyomva a diagramot bármely időpont árához.</string>
+    <string name="guide_result_body">Használd a Korábban és Olcsóbban gombokat az ajánlott időpont eltolásához, és tartsd nyomva a diagramot bármely idősáv árához.</string>
     <string name="guide_allin_title">Teljes ár</string>
     <string name="guide_allin_body">Kívánság szerint a puszta piaci ár helyett a teljes fogyasztói árat is megjelenítheted.</string>
     <string name="guide_wear_title">Az órádon</string>

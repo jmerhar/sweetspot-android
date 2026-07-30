@@ -1,21 +1,21 @@
-A SweetSpot megtalálja a legolcsóbb időpontot a készülékeid használatához és az elektromos autód töltéséhez. Add meg, mennyi ideig kell működnie egy készüléknek — vagy válaszd ki az autódat és a kívánt töltöttséget —, és a SweetSpot átvizsgálja a következő 24 óra dinamikus villamosenergia-árait, hogy megtalálja a legolcsóbb időablakot.
+A SweetSpot megtalálja a legolcsóbb időpontot a készülékeid használatához és az elektromos autód töltéséhez. Add meg, mennyi ideig kell működnie egy készüléknek — vagy válaszd ki az autódat és a kívánt töltöttséget —, és a SweetSpot átvizsgálja a közelgő dinamikus villamosenergia-árakat, hogy megtalálja a legolcsóbb időpontot.
 
 Legyen szó mosógépről, mosogatógépről, szárítógépről, hőszivattyúról vagy autótöltőről — indítsd a megfelelő időpontban, és fizess kevesebbet ugyanazért az áramért.
 
 HOGYAN MŰKÖDIK
 1. Válassz egy készüléket vagy az elektromos autódat, vagy állíts be egyéni időtartamot — és egy opcionális „készen legyen ekkorra” határidőt
-2. A SweetSpot lekéri a legfrissebb day-ahead villamosenergia-árakat a régiódhoz
-3. Pontosan láthatod, mikor érdemes indítani, egy színkódolt, 24 órás árdiagrammal és részletes költségbontással időszakonként
+2. A SweetSpot lekéri a legfrissebb másnapi villamosenergia-árakat a régiódhoz
+3. Pontosan láthatod, mikor érdemes indítani, egy színkódolt, 24 órás árdiagrammal és részletes költségbontással idősávonként
 
 ELEKTROMOS AUTÓ TÖLTÉSE
-Add hozzá az autódat egy beépített adatbázisból, amely körülbelül 1600 elektromos és plug-in hibrid járművet tartalmaz — vagy add meg magad az akkumulátor kapacitását és a töltési teljesítményt. Állítsd be a jelenlegi és a céltöltöttséget, és a SweetSpot kiszámítja, mennyi ideig tart a töltés, és mikor a legolcsóbb csatlakoztatni.
+Add hozzá az autódat egy beépített adatbázisból, amely több ezer elektromos és plug-in hibrid járművet tartalmaz — vagy add meg magad az akkumulátor kapacitását és a töltési teljesítményt. Állítsd be a jelenlegi és a céltöltöttséget, és a SweetSpot kiszámítja, mennyi ideig tart a töltés, és mikor a legolcsóbb csatlakoztatni.
 
 FUNKCIÓK
-- 30 európai ország, 43 árazási zóna — Portugáliától Finnországig, Norvégiától Görögországig
-- 5 adatforrás automatikus váltással (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Teljes ár (Hollandia) — a puszta piaci ár helyett tetszés szerint láthatod a teljes, mindent tartalmazó fogyasztói árat (tőzsdei ár + energiaadó + a szolgáltatód díja + ÁFA); válaszd ki a szolgáltatódat, vagy add meg saját díjadat. További országok hamarosan
-- „Készen legyen ekkorra” határidő — csak olyan időablakot választ, amely időben befejeződik
-- Korábban vagy olcsóbban — ha a legolcsóbb időablak nem alkalmas, lépj egy korábbira, és nézd meg pontosan, mennyivel kerül többe
+- 30 európai ország, 43 ajánlattételi zóna — Portugáliától Finnországig, Norvégiától Görögországig
+- 5 adatforrás automatikus tartalékváltással (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
+- Teljes ár (Hollandia) — a puszta piaci ár helyett tetszés szerint láthatod a teljes, mindent tartalmazó fogyasztói árat (piaci ár + energiaadó + a szolgáltatód felára + ÁFA); válaszd ki a szolgáltatódat, vagy add meg saját felárad. További országok hamarosan
+- „Készen legyen ekkorra” határidő — alapértelmezetten a legolcsóbb olyan időpontot ajánlja, amely időben befejeződik
+- Korábban vagy olcsóbban — ha a legolcsóbb időpont nem alkalmas, lépj egy korábbira, és nézd meg pontosan, mennyivel kerül többe
 - Teljesítmény megadása — add meg a készülék teljesítményét kW-ban, hogy a költségbecslés a tényleges fogyasztást tükrözze
 - Mentsd el készülékeidet egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
 - Készülékek rendezése és átrendezése — húzd őket a saját sorrendedbe, vagy rendezz gyakoriság, legutóbbi használat, név, időtartam vagy típus szerint, és válaszd ki, hol legyenek a járműveid
@@ -30,6 +30,6 @@ TÁMOGATOTT ORSZÁGOK
 Ausztria, Belgium, Bulgária, Csehország, Dánia, Észak-Macedónia, Észtország, Finnország, Franciaország, Görögország, Hollandia, Horvátország, Írország, Lengyelország, Lettország, Litvánia, Luxemburg, Magyarország, Montenegró, Németország, Norvégia, Olaszország, Portugália, Románia, Spanyolország, Svájc, Svédország, Szerbia, Szlovákia, Szlovénia.
 
 MEGJEGYZÉS
-Alapértelmezés szerint a megjelenített árak nagykereskedelmi day-ahead tőzsdei árak, és nem tartalmazzák az ÁFÁ-t, az energiaadót vagy a szolgáltatói díjakat. Hollandiában opcionálisan bekapcsolhatod a Teljes árat, amely hozzáadja az energiaadót, a szolgáltatód díját és az ÁFÁ-t a valósághű üzemeltetési költséghez. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
+Alapértelmezés szerint a megjelenített árak nagykereskedelmi másnapi piaci árak, és nem tartalmazzák az ÁFÁ-t, az energiaadót vagy a szolgáltatói díjakat. Hollandiában opcionálisan bekapcsolhatod a Teljes árat, amely hozzáadja az energiaadót, a szolgáltatód felárát és az ÁFÁ-t a valósághű üzemeltetési költséghez. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
 
 Adatvédelmi irányelvek: https://sweetspot.today/hu/privacy/

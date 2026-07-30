@@ -5,7 +5,7 @@ description: "Politica de confidențialitate SweetSpot — confidențialitate pe
 
 ## Prezentare generală
 
-SweetSpot este conceput cu accent pe confidențialitate. Aplicația nu colectează și nu stochează date personale. Nu există conturi de utilizator, analize sau urmărire a utilizării. O funcție opțională îți permite să partajezi statistici API anonime — vezi detaliile mai jos.
+SweetSpot este conceput cu accent pe confidențialitate. Aplicația nu are nevoie de date personale și nu le colectează pentru a funcționa — nu există conturi de utilizator, analize sau urmărire a utilizării, iar aplicația solicită doar permisiunea INTERNET (fără locație, contacte, stocare sau identificatori de dispozitiv). Funcții opționale îți permit să partajezi statistici de fiabilitate anonime sau să trimiți feedback — vezi detaliile mai jos.
 
 ## Procesarea datelor
 
@@ -21,17 +21,19 @@ Aceste cereri API conțin doar identificatorul zonei de licitație și intervalu
 
 ## Stocare locală
 
-Datele privind prețurile sunt stocate local pe dispozitivul tău pentru a reduce cererile API și a oferi rezultate mai rapide. Configurația electrocasnicelor (nume, durate, pictograme și puteri opționale), mașinile salvate (capacitatea bateriei și puterea de încărcare) și setările (țară, zonă, limbă) sunt, de asemenea, stocate local pe dispozitivul tău.
+Datele privind prețurile sunt stocate local pe dispozitivul tău pentru a reduce cererile API și a oferi rezultate mai rapide. Configurația electrocasnicelor (nume, durate, pictograme și puteri opționale), mașinile salvate (capacitatea bateriei și puterea de încărcare) și setările (țară, zonă, limbă) sunt, de asemenea, stocate local pe dispozitivul tău, împreună cu starea abonamentului tău (stocată în cache pentru ca aplicația să funcționeze offline) și numărul de atingeri per electrocasnic (folosit doar pentru sortarea după cele mai folosite și folosite recent).
 
 Pe Wear OS, datele despre electrocasnice și setările sunt sincronizate între telefon și ceas prin Wearable Data Layer API. Această comunicare rămâne pe dispozitivele tale locale și nu trece prin niciun server extern.
+
+Dacă îți partajezi configurația sub formă de cod QR sau link, configurația electrocasnicelor și a încărcării mașinii electrice este codificată **în interiorul linkului sau al codului QR în sine** — nu este niciodată încărcată pe un server. Doar persoana căreia îi dai codul sau linkul o poate importa.
 
 ## Fără analize
 
 SweetSpot nu include niciun SDK de analiză, raportare a erorilor sau urmărire a utilizării. Aplicația nu efectuează alte cereri de rețea în afara obținerii prețurilor de electricitate de la API-urile publice menționate mai sus (raportarea opțională de statistici, dacă este activată, și trimiterea unui raport dacă folosești Ajutor & asistență — vezi mai jos).
 
-## Statistici API opționale
+## Statistici de fiabilitate opționale
 
-Poți opta pentru partajarea statisticilor anonime de fiabilitate API. Când este activată, aplicația trimite periodic înregistrări individuale ale cererilor pentru fiecare sursă de date și zonă de licitație către serverul nostru. Aceste date conțin:
+Poți opta pentru partajarea statisticilor anonime de fiabilitate. Când este activată, aplicația trimite periodic înregistrări individuale ale cererilor pentru fiecare sursă de date și zonă de licitație către serverul nostru. Aceste date conțin:
 
 - Marca temporală a cererii API
 - Identificatorul zonei de licitație (de ex. „NL”, „DE-LU”)

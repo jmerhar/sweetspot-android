@@ -5,14 +5,14 @@
     <!-- Main screen -->
     <string name="cd_settings">Setări</string>
     <string name="cd_back">Înapoi</string>
-    <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin moment pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul și aplicația va analiza prețurile dinamice ale electricității din următoarele 24 de ore pentru a găsi cea mai bună perioadă. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
-    <string name="main_find_button">Găsește cea mai ieftină perioadă</string>
+    <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin interval pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul, iar aplicația va analiza prețurile dinamice viitoare ale electricității pentru a găsi cel mai bun interval. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
+    <string name="main_find_button">Găsește cel mai ieftin interval</string>
     <string name="main_searching">Se caută…</string>
     <string name="main_add_appliances">Adaugă aparatele tale</string>
-    <string name="main_card_description">Găsește cel mai ieftin moment pentru a porni aparatul</string>
+    <string name="main_card_description">Găsește cel mai ieftin interval pentru a porni aparatul</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Ora recomandată</string>
+    <string name="result_cheapest_window">Intervalul recomandat</string>
     <string name="result_after_deadline">Acest interval se termină după ora ta „Gata până la”.</string>
     <string name="result_start">Început</string>
     <string name="result_end">Sfârșit</string>
@@ -24,17 +24,17 @@
     <string name="result_cheaper">Mai ieftin</string>
     <string name="coach_earlier_cheaper">Nu e momentul potrivit? Apasă Mai devreme pentru un start mai rapid sau Mai ieftin pentru a reveni la cel mai ieftin.</string>
     <string name="coach_chart_press_hold">Apasă lung pe grafic pentru a vedea prețul la orice oră.</string>
-    <string name="coach_all_in_toggle">Comută între prețul total complet și prețul de piață simplu.</string>
+    <string name="coach_all_in_toggle">Comută între prețul total complet și doar prețul de piață.</string>
     <string name="coach_ev_chip">Apasă pe vehicul pentru a planifica încărcarea după procentul bateriei.</string>
     <string name="coach_got_it">Am înțeles</string>
     <string name="result_cost_breakdown">Detalii costuri</string>
     <string name="cd_collapse">Restrânge</string>
     <string name="cd_expand">Extinde</string>
     <string name="result_upcoming_prices">Prețuri următoare</string>
-    <string name="result_disclaimer">Costurile sunt calculate pentru o sarcină de 1 kW. Prețurile nu includ TVA, taxa pe energie și taxa furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
+    <string name="result_disclaimer">Costurile sunt calculate pentru o sarcină de 1 kW. Prețurile nu includ TVA, taxa pe energie și adaosul furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="result_data_source">\nSursă de date: %s</string>
     <string name="result_price_zone">\nZonă de preț: %s</string>
-    <string name="cd_cheapest_window">cea mai ieftină perioadă</string>
+    <string name="cd_cheapest_window">cel mai ieftin interval</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Durată</string>
@@ -160,18 +160,18 @@
     <string name="cd_refresh">Actualizează</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Partajează statistici API</string>
-    <string name="settings_stats_description">Ajută la îmbunătățirea fiabilității surselor de date prin partajarea statisticilor anonime de succes/eșec API. Nu se colectează date personale.</string>
+    <string name="settings_stats_title">Partajează statistici de fiabilitate</string>
+    <string name="settings_stats_description">Ajută la îmbunătățirea fiabilității surselor de date partajând un număr anonim al cazurilor în care datele de preț se încarcă sau eșuează. Nu se colectează date personale.</string>
     <string name="stats_prompt_title">Ajută la îmbunătățirea SweetSpot?</string>
-    <string name="stats_prompt_message">Partajează statistici API anonime pentru a ajuta la îmbunătățirea fiabilității surselor de date. Se partajează doar numărul de reușite/eșecuri per sursă — fără date personale. Poți modifica această opțiune oricând din Setări.</string>
+    <string name="stats_prompt_message">Partajează statistici anonime pentru a ajuta la îmbunătățirea fiabilității surselor de date. Se partajează doar cât de des se încarcă sau eșuează fiecare sursă de date — fără date personale. Poți modifica această opțiune oricând din Setări.</string>
     <string name="stats_prompt_enable">Activează</string>
     <string name="stats_prompt_dismiss">Nu, mulțumesc</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Pornește aparatele când energia e cea mai ieftină</string>
-    <string name="onboarding_body_1">SweetSpot analizează prețurile la energie din următoarele ore și găsește cea mai ieftină perioadă pentru a porni un aparat.</string>
+    <string name="onboarding_body_1">SweetSpot analizează prețurile viitoare la energie electrică și găsește cel mai ieftin interval pentru a porni un aparat.</string>
     <string name="onboarding_title_2">Aparatele tale, la o atingere distanță</string>
-    <string name="onboarding_body_2">Salvează un aparat și atinge-l ca să vezi cea mai ieftină perioadă. Adaugă mașina electrică pentru a planifica încărcarea în funcție de nivelul actual și cel dorit.</string>
+    <string name="onboarding_body_2">Salvează un aparat și atinge-l ca să vezi cel mai ieftin interval al lui. Adaugă mașina electrică pentru a planifica încărcarea în funcție de nivelul actual și cel dorit.</string>
     <string name="onboarding_title_3">Personalizează după preferințe</string>
     <string name="onboarding_body_3">Țara ta este detectată automat. Schimbă zona, adaugă aparate sau alege-ți limba — totul în Setări.</string>
     <string name="onboarding_skip">Omite</string>
@@ -186,14 +186,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Perioada de probă s-a încheiat</string>
-    <string name="paywall_description">SweetSpot găsește cel mai ieftin moment pentru a folosi aparatele tale folosind prețurile energiei electrice în timp real din 30 de țări europene. Abonează-te pentru a continua să găsești cel mai ieftin moment pentru aparatele tale.</string>
+    <string name="paywall_description">SweetSpot găsește cel mai ieftin interval pentru a porni aparatele tale folosind prețuri dinamice ale electricității din 30 de țări europene. Abonează-te pentru a continua să folosești SweetSpot.</string>
     <string name="paywall_unlock">Abonează-te la SweetSpot</string>
     <string name="paywall_unlock_price">Abonament pentru %s/an</string>
     <string name="paywall_restore">Restaurează abonamentul</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Mulțumim!</string>
-    <string name="thank_you_message">Abonamentul tău este acum activ. Bucură-te de găsirea celui mai ieftin moment pentru aparatele tale!</string>
+    <string name="thank_you_message">Abonamentul tău este acum activ. Bucură-te de găsirea celui mai ieftin interval pentru aparatele tale!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Perioadă de probă: %d zi rămasă</item>
@@ -224,19 +224,19 @@
     <string name="ev_error_invalid_soc">Nivelul dorit trebuie să fie mai mare decât nivelul actual.</string>
     <string name="ev_error_invalid_charger">Setează o putere a încărcătorului mai mare decât zero.</string>
     <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încearcă un nivel dorit mai mic sau o oră mai târzie.</string>
-    <string name="result_disclaimer_power">Costurile sunt calculate pentru o sarcină de %s kW. Prețurile nu includ TVA, taxa pe energie și taxa furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
+    <string name="result_disclaimer_power">Costurile sunt calculate pentru o sarcină de %s kW. Prețurile nu includ TVA, taxa pe energie și adaosul furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="dialog_power">Putere (kW, opțional)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Preț total</string>
     <string name="settings_all_in_toggle">Afișează prețul total</string>
-    <string name="settings_all_in_desc">Afișează prețul total estimat pentru consumator (preț de piață + taxa pe energie + adaosul furnizorului + TVA) în locul prețului de piață simplu.</string>
+    <string name="settings_all_in_desc">Afișează prețul total estimat pentru consumator (preț de piață + taxa pe energie + adaosul furnizorului + TVA) în loc de doar prețul de piață.</string>
     <string name="all_in_supplier">Furnizor</string>
     <string name="all_in_supplier_prompt">Selectează furnizorul tău</string>
     <string name="all_in_supplier_custom">Adaos personalizat</string>
     <string name="all_in_no_supplier">Nu s-a găsit niciun furnizor. Introdu în schimb un adaos personalizat mai jos.</string>
     <string name="all_in_surcharge_custom">Adaos personalizat (fără TVA)</string>
-    <string name="all_in_incomplete">Selectează un furnizor sau introdu un adaos ori dezactivează prețul total.</string>
+    <string name="all_in_incomplete">Alege un furnizor sau introdu un adaos — ori dezactivează prețul total.</string>
     <string name="picker_supplier_title">Furnizor</string>
     <string name="picker_supplier_search">Caută furnizori</string>
     <string name="result_disclaimer_all_in">Costurile sunt calculate pentru o sarcină de 1 kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
@@ -338,16 +338,16 @@
     <string name="my_reports_closed">Închis</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Găsește cel mai ieftin moment</string>
+    <string name="guide_find_title">Găsește cel mai ieftin interval</string>
     <string name="guide_find_body">Alege cât timp trebuie să funcționeze aparatul, apoi apasă Găsește.</string>
     <string name="guide_appliances_title">Salvează-ți aparatele</string>
     <string name="guide_appliances_body">Adaugă aparate în Setări pentru căutări cu o singură atingere.</string>
     <string name="guide_ev_title">Planifică încărcarea mașinii electrice</string>
     <string name="guide_ev_body">Adaugă mașina, introdu nivelul actual și cel dorit, iar SweetSpot calculează timpul de încărcare.</string>
     <string name="guide_result_title">Citește rezultatul</string>
-    <string name="guide_result_body">Folosește Mai devreme și Mai ieftin pentru a muta perioada și apasă lung pe grafic pentru prețul oricărui interval.</string>
+    <string name="guide_result_body">Folosește Mai devreme și Mai ieftin pentru a schimba intervalul recomandat și apasă lung pe grafic pentru prețul oricărui interval.</string>
     <string name="guide_allin_title">Preț total</string>
-    <string name="guide_allin_body">Poți afișa prețul total pentru consumator în locul prețului de piață simplu.</string>
+    <string name="guide_allin_body">Poți afișa prețul total pentru consumator în loc de doar prețul de piață.</string>
     <string name="guide_wear_title">Pe ceasul tău</string>
     <string name="guide_wear_body">Aparatele tale se sincronizează cu Wear OS, ca să poți verifica prețurile fără telefon.</string>
     <!-- Report conversation (in-app thread) -->

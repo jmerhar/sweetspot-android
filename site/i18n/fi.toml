@@ -26,7 +26,7 @@ other = "Vaihda kieltä"
 other = "Löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen"
 
 [hero_subtitle]
-other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajanjakson laitteidesi käyttöön tai sähköauton lataukseen — valmiina takarajaan mennessä, jos sellaisen asetat. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
+other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajankohdan laitteidesi käyttöön tai sähköauton lataukseen — valmiina takarajaan mennessä, jos sellaisen asetat. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
 
 [download]
 other = "Lataa Google Playsta"
@@ -44,7 +44,7 @@ other = "30 Euroopan maata"
 other = "Kattaa 43 tarjousaluetta ympäri Eurooppaa Portugalista Suomeen ja Norjasta Kreikkaan."
 
 [feature_prices_title]
-other = "Reaaliaikaiset hinnat"
+other = "Seuraavan päivän hinnat"
 
 [feature_prices_desc]
 other = "Seuraavan päivän sähköhinnat ENTSO-E Transparency Platformilta, päivitetään päivittäin."
@@ -59,7 +59,7 @@ other = "Aikajanaa läpikäyvä algoritmi löytää edullisimman yhtenäisen aja
 other = "Luotettavaa dataa"
 
 [feature_fallback_desc]
-other = "Viisi tietolähdettä automaattisella varayhteydellä takaa, että hinnat ovat aina saatavilla."
+other = "Viisi tietolähdettä automaattisella varayhteydellä auttaa pitämään hinnat saatavilla."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -77,13 +77,13 @@ other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla nopeaa kä
 other = "Sähköauton lataus"
 
 [feature_ev_desc]
-other = "Lisää autosi ja syötä sitten sen nykyinen ja tavoitevaraus. SweetSpot laskee latausajan ja edullisimman hetken kytkeä lataus."
+other = "Lisää autosi ja syötä sitten sen nykyinen lataus ja lataustavoite. SweetSpot laskee latausajan ja edullisimman hetken kytkeä lataus."
 
 [feature_deadline_title]
 other = "Valmis viimeistään -takaraja"
 
 [feature_deadline_desc]
-other = "Pitääkö sen olla valmis tiettyyn aikaan mennessä? Aseta ”valmis viimeistään” -takaraja, niin SweetSpot valitsee vain ajanjaksot, jotka valmistuvat ajoissa."
+other = "Pitääkö sen olla valmis tiettyyn aikaan mennessä? Aseta ”valmis viimeistään” -takaraja, niin SweetSpot valitsee halvimman ajankohdan, joka ehtii valmistua ajoissa."
 
 [feature_power_title]
 other = "Teholuokitus"
@@ -128,7 +128,7 @@ other = "SweetSpot hakee uusimmat seuraavan päivän sähköhinnat alueellesi."
 other = "Selvitä paras ajankohta"
 
 [step3_desc]
-other = "Näe tarkalleen milloin aloittaa, yksityiskohtaisella kustannuserittelyllä aikajaksoittain."
+other = "Näe tarkalleen milloin aloittaa, yksityiskohtaisella kustannuserittelyllä aikaväleittäin."
 
 [cta_title]
 other = "Ala säästää sähkössä"
@@ -155,7 +155,7 @@ other = "Etsimääsi sivua ei löydy."
 other = "Takaisin etusivulle"
 
 [screenshot_1_alt]
-other = "Halvimman ajanjakson tulos alkamisajan, kokonaiskustannuksen ja kustannuserittelyn kanssa"
+other = "Suositeltu ajankohta, sen alkamisaika, kokonaiskustannus ja kustannuserittely"
 
 [screenshot_2_alt]
 other = "Aloitusnäyttö laitteilla, keston valitsimella ja Etsi-painikkeella"
@@ -167,7 +167,7 @@ other = "Tulevat sähkön hinnat vaakapalkkikaaviossa"
 other = "Asetukset tallennetuilla laitteilla, sähköauton latauksella, kielellä, maalla ja aikavyöhykkeellä"
 
 [screenshot_5_alt]
-other = "Sähköauton lataus: nykyinen ja tavoitevaraus sekä laskettu latausaika"
+other = "Sähköauton lataus: nykyinen lataus ja lataustavoite sekä laskettu latausaika"
 
 [screenshot_6_alt]
 other = "Kielen valinta 25 eurooppalaisesta kielestä"

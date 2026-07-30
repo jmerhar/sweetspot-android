@@ -5,7 +5,7 @@ description: "SweetSpotin tietosuojakäytäntö — yksityisyys ensin, ei tilej�
 
 ## Yleiskatsaus
 
-SweetSpot on suunniteltu yksityisyys huomioiden. Sovellus ei kerää eikä tallenna henkilötietoja. Käyttäjätilejä, analytiikkaa tai käytön seurantaa ei ole. Valinnaisen toiminnon avulla voit jakaa nimettömiä API-tilastoja — katso lisätiedot alta.
+SweetSpot on suunniteltu yksityisyys huomioiden. Sovellus ei kerää eikä tallenna henkilötietoja — käyttäjätilejä, analytiikkaa tai käytön seurantaa ei ole, ja se pyytää vain INTERNET-käyttöoikeuden (ei sijaintia, yhteystietoja, tallennustilaa eikä laitetunnisteita). Valinnaisten toimintojen avulla voit jakaa nimettömiä luotettavuustilastoja tai lähettää palautetta — katso lisätiedot alta.
 
 ## Tietojenkäsittely
 
@@ -21,19 +21,21 @@ Nämä rajapintakyselyt sisältävät vain tarjousaluetunnisteen ja päivämää
 
 ## Paikallinen tallennus
 
-Hintatiedot tallennetaan paikallisesti laitteeseesi rajapintakyselyjen vähentämiseksi ja nopeampien tulosten mahdollistamiseksi. Laitekokoonpanosi (nimet, kestot, kuvakkeet ja valinnaiset tehot), tallennetut ajoneuvosi (akun koko ja latausteho) sekä asetuksesi (maa, alue, kieli) tallennetaan myös paikallisesti laitteeseesi.
+Hintatiedot tallennetaan paikallisesti laitteeseesi rajapintakyselyjen vähentämiseksi ja nopeampien tulosten mahdollistamiseksi. Laitekokoonpanosi (nimet, kestot, kuvakkeet ja valinnaiset tehot), tallennetut ajoneuvosi (akun koko ja latausteho) sekä asetuksesi (maa, alue, kieli) tallennetaan myös paikallisesti laitteeseesi, samoin kuin tilaustilasi (tallennettu välimuistiin, jotta sovellus toimii myös ilman verkkoyhteyttä) ja laitekohtaiset napautusmäärät (käytetään vain Käytetyin- ja Viimeksi käytetty -järjestyksiin).
 
 Wear OS:ssä laitetiedot ja asetukset synkronoidaan puhelimen ja kellon välillä Wearable Data Layer API:n kautta. Tämä tiedonsiirto pysyy paikallisissa laitteissasi eikä kulje ulkoisen palvelimen kautta.
+
+Jos jaat kokoonpanosi QR-koodina tai linkkinä, laitteidesi ja sähköauton latauksen asetukset koodataan **itse linkin tai QR-koodin sisään** — niitä ei koskaan ladata palvelimelle. Vain se, jolle annat koodin tai linkin, voi tuoda ne.
 
 ## Ei analytiikkaa
 
 SweetSpot ei sisällä analytiikka-SDK:ita, kaatumisraportointia eikä käytön seurantaa. Sovellus ei tee verkkokyselyjä sähkön hintojen haun lisäksi yllä mainituista julkisista rajapinnoista (ja valinnaisen tilastoraportoinnin, jos se on käytössä, sekä ilmoituksen lähettämisen, jos käytät Ohje & tuki -toimintoa — katso alta).
 
-## Valinnainen API-tilastointi
+## Valinnaiset luotettavuustilastot
 
-Voit osallistua nimettömien API-luotettavuustilastojen jakamiseen. Kun toiminto on käytössä, sovellus lähettää ajoittain yksittäisiä pyyntötietueita jokaisesta tietolähteestä ja tarjousalueesta palvelimeemme. Tiedot sisältävät:
+Voit osallistua nimettömien luotettavuustilastojen jakamiseen. Kun toiminto on käytössä, sovellus lähettää ajoittain yksittäisiä pyyntötietueita jokaisesta tietolähteestä ja tarjousalueesta palvelimeemme. Tiedot sisältävät:
 
-- API-pyynnön aikaleiman
+- Pyynnön aikaleiman
 - Tarjousaluetunnisteen (esim. "NL", "DE-LU")
 - Tietolähteen nimen (esim. "ENTSO-E", "EnergyZero")
 - Laitetyypin (puhelin tai kello)
@@ -62,6 +64,6 @@ SweetSpot on avointa lähdekoodia ja lisensoitu GPL v3 -lisenssillä. Voit tarka
 
 ## Yhteystiedot
 
-Jos sinulla on kysyttävää tästä tietosuojakäytännöstä, voit avata keskusteluaiheen [GitHubissa](https://github.com/jmerhar/sweetspot-android/issues).
+Jos sinulla on kysyttävää tästä tietosuojakäytännöstä, voit avata issuen [GitHubissa](https://github.com/jmerhar/sweetspot-android/issues).
 
 *Päivitetty viimeksi: heinäkuu 2026*

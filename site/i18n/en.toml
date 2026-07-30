@@ -56,13 +56,13 @@ other = "Day-ahead electricity prices from the ENTSO-E Transparency Platform, up
 other = "Smart Algorithm"
 
 [feature_algorithm_desc]
-other = "A sliding window algorithm finds the cheapest contiguous period for any duration you choose."
+other = "SweetSpot finds the cheapest continuous block of time for any duration you choose."
 
 [feature_fallback_title]
 other = "Reliable Data"
 
 [feature_fallback_desc]
-other = "Five data sources with automatic fallback ensure prices are always available."
+other = "Five data sources with automatic fallback help keep prices available."
 
 [feature_wear_title]
 other = "Wear OS"

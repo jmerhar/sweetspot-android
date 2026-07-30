@@ -5,7 +5,7 @@ description: "SweetSpot privacy policy — privacy-first, no accounts, no analyt
 
 ## Overview
 
-SweetSpot is designed with privacy in mind. The app does not require or collect personal data to work — there are no user accounts, no analytics, and no usage tracking, and it requests only the INTERNET permission (no location, contacts, storage, or device identifiers). Optional features let you share anonymous API statistics or send feedback — see details below.
+SweetSpot is designed with privacy in mind. The app does not require or collect personal data to work — there are no user accounts, no analytics, and no usage tracking, and it requests only the INTERNET permission (no location, contacts, storage, or device identifiers). Optional features let you share anonymous reliability statistics or send feedback — see details below.
 
 ## Data Processing
 
@@ -31,9 +31,9 @@ If you share your setup as a QR code or link, your appliance and EV-charging con
 
 SweetSpot does not include any analytics SDKs, crash reporting, or usage tracking. The app makes no network requests beyond fetching electricity prices from the public APIs listed above (optional stats reporting if enabled, and submitting a report if you use Help & support — see below).
 
-## Optional API Statistics
+## Optional Reliability Statistics
 
-You can opt in to sharing anonymous API reliability statistics. When enabled, the app periodically sends individual request records for each data source and bidding zone to our server. This data contains:
+You can opt in to sharing anonymous reliability statistics. When enabled, the app periodically sends individual request records for each data source and bidding zone to our server. This data contains:
 
 - Timestamp of the API request
 - Bidding zone identifier (e.g. "NL", "DE-LU")

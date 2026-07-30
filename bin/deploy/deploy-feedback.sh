@@ -16,28 +16,28 @@
 #   ./bin/deploy/deploy-feedback.sh --dry-run  # extra args are forwarded to `wrangler deploy`
 #
 set -euo pipefail
+source "$(dirname "$0")/../lib/log.sh"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 WORKER_DIR="$ROOT/server/feedback-worker"
 HEALTH_URL="https://feedback.sweetspot.today/"
 
 if [[ ! -f "$WORKER_DIR/wrangler.jsonc" ]]; then
-    echo "Error: $WORKER_DIR/wrangler.jsonc not found" >&2
-    exit 1
+    die "$WORKER_DIR/wrangler.jsonc not found"
 fi
 
-echo "Deploying feedback Worker from $WORKER_DIR …"
+log_info "Deploying feedback Worker from $WORKER_DIR …"
 ( cd "$WORKER_DIR" && npx --yes wrangler deploy "$@" )
 
 # A --dry-run doesn't publish anything, so skip the live health check for it.
 for arg in "$@"; do
-    [[ "$arg" == "--dry-run" ]] && { echo "Dry run — skipping health check."; exit 0; }
+    [[ "$arg" == "--dry-run" ]] && { log_info "Dry run — skipping health check."; exit 0; }
 done
 
-echo "Verifying $HEALTH_URL …"
+log_info "Verifying $HEALTH_URL …"
 if body="$(curl -fsS --max-time 15 "$HEALTH_URL")" && [[ "$body" == "ok" ]]; then
-    echo "Health check OK."
+    log_success "Health check OK."
 else
-    echo "Warning: health check did not return 'ok' (got: ${body:-<none>}). DNS/propagation may lag; retry shortly." >&2
+    log_warn "health check did not return 'ok' (got: ${body:-<none>}). DNS/propagation may lag; retry shortly."
     exit 1
 fi

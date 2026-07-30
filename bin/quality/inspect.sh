@@ -10,6 +10,7 @@
 #   4. Run: make inspect
 
 set -euo pipefail
+source "$(dirname "$0")/../lib/log.sh"
 
 PROJECT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 XML_DIR="$PROJECT_DIR/inspect/xml"
@@ -24,14 +25,13 @@ rm -f "$XML_DIR/.descriptions.xml"
 # --- Check for exported results ---
 ISSUE_FILES=("$XML_DIR"/*.xml)
 if [[ ! -e "${ISSUE_FILES[0]}" ]]; then
-    echo "No inspection XML files found in inspect/xml/."
-    echo ""
-    echo "To export from Android Studio:"
-    echo "  1. Code → Inspect Code (whole project, default profile)"
-    echo "  2. In the results panel, click the export button (↑)"
-    echo "  3. Choose inspect/xml/ as the destination"
-    echo "  4. Run: make inspect"
-    exit 1
+    die "No inspection XML files found in inspect/xml/.
+
+To export from Android Studio:
+  1. Code → Inspect Code (whole project, default profile)
+  2. In the results panel, click the export button (↑)
+  3. Choose inspect/xml/ as the destination
+  4. Run: make inspect"
 fi
 
 TOTAL=0
@@ -40,7 +40,7 @@ for f in "${ISSUE_FILES[@]}"; do
     TOTAL=$((TOTAL + count))
 done
 
-echo "Found ${#ISSUE_FILES[@]} inspection(s) with $TOTAL total issue(s):"
+log_info "Found ${#ISSUE_FILES[@]} inspection(s) with $TOTAL total issue(s):"
 echo ""
 for f in "${ISSUE_FILES[@]}"; do
     count=$(grep -c '<problem>' "$f" || true)

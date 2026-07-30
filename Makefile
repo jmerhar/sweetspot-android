@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test test-suppliers test-ev-db test-feedback inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers test-ev-db test-coverage-report test-scripts test-feedback inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -31,6 +31,11 @@ test: ## Run all unit tests
 
 test-feedback: ## Run unit tests for the feedback Worker (server/feedback-worker)
 	cd server/feedback-worker && npm test
+
+test-coverage-report: ## Run unit tests for the coverage gate script (bin/quality/coverage-report.py)
+	python3 bin/quality/test_coverage_report.py
+
+test-scripts: test-suppliers test-ev-db test-coverage-report ## Run all bin/ Python script unit tests
 
 inspect: ## Summarise Android Studio inspection XML files
 	./bin/quality/inspect.sh

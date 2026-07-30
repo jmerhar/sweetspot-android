@@ -26,6 +26,15 @@ object HelpLinks {
     const val REPLY_PREFIX = "💬 **Reporter (via app):**"
 
     /**
+     * Footer the feedback Worker appends to every issue body (followed, for bug reports, by a
+     * collapsible diagnostics block). The in-app thread strips from this marker onward so it shows only
+     * the reporter's own text — the auto-appended footer and the diagnostics code block are noise in the
+     * app (and the code block renders with a non-theme-aware background); the full body stays on GitHub.
+     * Must match `server/feedback-worker/src/index.js` (buildIssueBody).
+     */
+    const val ISSUE_BODY_FOOTER = "<sub>Submitted from the SweetSpot app.</sub>"
+
+    /**
      * Localized website URL for [path] (e.g. `"faq"`, `"privacy"`, `"changelog"`). English is served
      * at the root; every other language lives under `/<lang>/`. [languageTag] is a BCP-47 tag — its
      * region is dropped and, if it is a comma-joined list, only the first entry is used; a blank tag

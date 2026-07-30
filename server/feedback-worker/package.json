@@ -6,8 +6,12 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "tail": "wrangler tail",
+    "test": "vitest run",
     "secret:github": "wrangler secret put GITHUB_TOKEN",
     "secret:webhook": "wrangler secret put WEBHOOK_SECRET",
     "secret:brevo": "wrangler secret put BREVO_API_KEY"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.9"
   }
 }

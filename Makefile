@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test test-suppliers inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers test-feedback inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -31,6 +31,9 @@ test: ## Run all unit tests
 
 test-suppliers: ## Run unit tests for the supplier tariff build script (bin/build-suppliers.py)
 	python3 bin/test_build_suppliers.py
+
+test-feedback: ## Run unit tests for the feedback Worker (server/feedback-worker)
+	cd server/feedback-worker && npm test
 
 inspect: ## Summarise Android Studio inspection XML files
 	./bin/inspect.sh

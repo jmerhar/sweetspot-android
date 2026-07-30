@@ -127,7 +127,7 @@ async function handleReport(request, env) {
 }
 
 /** Assembles the issue body, appending diagnostics (bug reports) in a collapsible block. */
-function buildIssueBody(body, diagnostics) {
+export function buildIssueBody(body, diagnostics) {
   let out = `${body}\n\n<sub>Submitted from the SweetSpot app.</sub>`;
   if (diagnostics && diagnostics.trim().length > 0) {
     out += `\n\n<details><summary>Diagnostics</summary>\n\n\`\`\`\n${diagnostics.trim()}\n\`\`\`\n</details>`;
@@ -233,7 +233,7 @@ async function handleWebhook(request, env, ctx) {
  * Decides whether a webhook event warrants notifying the reporter, and what to say.
  * Returns `{ number, title, url, kind, text }` or null when nothing should be sent.
  */
-function notificationFor(event, data, botLogin) {
+export function notificationFor(event, data, botLogin) {
   if (event === "issue_comment" && data.action === "created") {
     // Skip the bot's own automated comments (avoids notification loops).
     if (data.comment?.user?.login === botLogin) return null;
@@ -320,13 +320,19 @@ async function sendEmail(env, to, notice, unsubscribeUrl) {
  * Reads a stored subscription for an issue. New entries are `{email, token}` JSON; older entries
  * may be a bare email string (no token) — those get a null token and fall back to "reply to stop".
  */
-async function readSubscription(env, number) {
+export async function readSubscription(env, number) {
   const raw = await env.FEEDBACK_KV.get(`issue:${number}`);
   if (!raw) return null;
   try {
     const obj = JSON.parse(raw);
-    if (obj && typeof obj === "object" && typeof obj.email === "string") {
-      return { email: obj.email, token: typeof obj.token === "string" ? obj.token : null };
+    if (obj && typeof obj === "object") {
+      // Structured entry `{email, token}`. The email is null when the reporter didn't opt into
+      // notifications, but the token is still present — it authorises in-app replies and backs the
+      // unsubscribe link, so it must be returned regardless of the email being absent.
+      return {
+        email: typeof obj.email === "string" ? obj.email : null,
+        token: typeof obj.token === "string" ? obj.token : null,
+      };
     }
   } catch {
     // Not JSON — treat the whole value as a legacy plain-email entry.
@@ -335,7 +341,7 @@ async function readSubscription(env, number) {
 }
 
 /** Unsubscribe confirmation page (GET is non-mutating, so link prefetchers can't unsubscribe). */
-function handleUnsubscribeGet(url) {
+export function handleUnsubscribeGet(url) {
   const issue = url.searchParams.get("issue") ?? "";
   const token = url.searchParams.get("token") ?? "";
   if (!/^\d+$/.test(issue) || token.length === 0) {
@@ -427,16 +433,16 @@ function hexToBytes(hex) {
   return out;
 }
 
-function intVar(v, fallback) {
+export function intVar(v, fallback) {
   const n = parseInt(v ?? "", 10);
   return Number.isFinite(n) && n > 0 ? n : fallback;
 }
 
-function truncate(s, n) {
+export function truncate(s, n) {
   return s.length > n ? `${s.slice(0, n)}…` : s;
 }
 
-function escapeHtml(s) {
+export function escapeHtml(s) {
   return s.replace(/[&<>"']/g, (c) => (
     { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
   ));

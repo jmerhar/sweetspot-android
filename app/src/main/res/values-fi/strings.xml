@@ -12,7 +12,8 @@
     <string name="main_card_description">Etsi halvin ajankohta laitteesi käyttöön</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Halvin ajanjakso</string>
+    <string name="result_cheapest_window">Suositeltu ajankohta</string>
+    <string name="result_after_deadline">Tämä jakso päättyy Valmis viimeistään -ajan jälkeen.</string>
     <string name="result_start">Alku</string>
     <string name="result_end">Loppu</string>
     <string name="result_total_cost">Kokonaiskustannus</string>

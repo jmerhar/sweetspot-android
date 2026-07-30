@@ -12,7 +12,8 @@
     <string name="main_card_description">Finn det billigste tidspunktet for å kjøre apparatet ditt</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Billigste periode</string>
+    <string name="result_cheapest_window">Anbefalt tidspunkt</string>
+    <string name="result_after_deadline">Denne perioden slutter etter «Klar innen»-tidspunktet ditt.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Slutt</string>
     <string name="result_total_cost">Totalkostnad</string>

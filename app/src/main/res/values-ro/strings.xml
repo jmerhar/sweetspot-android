@@ -12,7 +12,8 @@
     <string name="main_card_description">Găsește cel mai ieftin moment pentru a porni aparatul</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Cea mai ieftină perioadă</string>
+    <string name="result_cheapest_window">Ora recomandată</string>
+    <string name="result_after_deadline">Acest interval se termină după ora ta „Gata până la”.</string>
     <string name="result_start">Început</string>
     <string name="result_end">Sfârșit</string>
     <string name="result_total_cost">Cost total</string>

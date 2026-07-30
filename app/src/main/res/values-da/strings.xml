@@ -12,7 +12,8 @@
     <string name="main_card_description">Find det billigste tidspunkt til at køre dit apparat</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Billigste tidsrum</string>
+    <string name="result_cheapest_window">Anbefalet tidspunkt</string>
+    <string name="result_after_deadline">Denne periode slutter efter dit \'Klar senest\'-tidspunkt.</string>
     <string name="result_start">Start</string>
     <string name="result_end">Slut</string>
     <string name="result_total_cost">Samlet pris</string>

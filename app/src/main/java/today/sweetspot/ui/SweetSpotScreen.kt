@@ -115,8 +115,8 @@ fun SweetSpotScreen(viewModel: SweetSpotViewModel, modifier: Modifier = Modifier
             isLoading = state.isLoading,
             canGoEarlier = state.windowOffset < state.windowAlternatives.size - 1,
             canGoCheaper = state.windowOffset > 0,
-            costDelta = state.windowAlternatives.firstOrNull()
-                ?.let { state.result!!.totalCost - it.totalCost },
+            missesDeadline = state.resultMissesDeadline,
+            costDelta = state.recommendedCost?.let { state.result!!.totalCost - it },
             powerKw = state.searchPowerKw,
             allInApplied = state.allInApplied,
             allInSupplierName = state.allInSupplierName,
@@ -319,6 +319,7 @@ private fun ResultScreen(
     isLoading: Boolean,
     canGoEarlier: Boolean,
     canGoCheaper: Boolean,
+    missesDeadline: Boolean,
     costDelta: Double?,
     powerKw: Double?,
     allInApplied: Boolean,
@@ -439,6 +440,17 @@ private fun ResultScreen(
                     ) {
                         Text(stringResource(R.string.result_cheaper))
                     }
+                }
+
+                // Shown when the user has stepped to a cheaper window that finishes after their
+                // "ready by" time (the default always meets the deadline).
+                if (missesDeadline) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = stringResource(R.string.result_after_deadline),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.error
+                    )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))

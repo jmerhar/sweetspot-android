@@ -12,7 +12,8 @@
     <string name="main_card_description">Βρείτε την πιο φθηνή ώρα για τη λειτουργία της συσκευής σας</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Φθηνότερη περίοδος</string>
+    <string name="result_cheapest_window">Προτεινόμενη ώρα</string>
+    <string name="result_after_deadline">Αυτό το διάστημα τελειώνει μετά την ώρα «Έτοιμο έως».</string>
     <string name="result_start">Έναρξη</string>
     <string name="result_end">Λήξη</string>
     <string name="result_total_cost">Συνολικό κόστος</string>

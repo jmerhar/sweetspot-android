@@ -12,7 +12,8 @@
     <string name="main_card_description">Znajdź najtańszy czas na uruchomienie urządzenia</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Najtańszy okres</string>
+    <string name="result_cheapest_window">Zalecana pora</string>
+    <string name="result_after_deadline">Ten przedział kończy się po Twoim czasie „Gotowe do”.</string>
     <string name="result_start">Początek</string>
     <string name="result_end">Koniec</string>
     <string name="result_total_cost">Koszt całkowity</string>

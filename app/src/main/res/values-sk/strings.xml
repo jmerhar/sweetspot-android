@@ -12,7 +12,8 @@
     <string name="main_card_description">Nájdite najlacnejší čas na spustenie spotrebiča</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Najlacnejšie obdobie</string>
+    <string name="result_cheapest_window">Odporúčaný čas</string>
+    <string name="result_after_deadline">Toto obdobie sa končí po tvojom čase „Pripravené do“.</string>
     <string name="result_start">Začiatok</string>
     <string name="result_end">Koniec</string>
     <string name="result_total_cost">Celkové náklady</string>

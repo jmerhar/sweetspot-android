@@ -1676,6 +1676,88 @@ class SweetSpotViewModelTest {
         viewModel.onClearResult()
     }
 
+    /**
+     * Hourly descending prices two days out (cheapest is the latest, finishing well past the
+     * deadline), with time pinned via the dev override so the "ready by" resolves deterministically.
+     */
+    private fun deadlineScenario(): Pair<SweetSpotViewModel, ZonedDateTime> {
+        val zone = ZoneId.systemDefault()
+        val base = ZonedDateTime.now(zone).plusDays(2).withHour(8).withMinute(0).withSecond(0).withNano(0)
+        val prices = (0 until 14).map { i -> PriceSlot(base.plusHours(i.toLong()), 1.0 - i * 0.05, 60) }
+        val viewModel = testViewModel(FakeFetcher(prices))
+        viewModel.onDevTimeOverrideChanged(base.toInstant().toEpochMilli())
+        return viewModel to base
+    }
+
+    @Test
+    fun `a ready-by deadline lands on the cheapest window that meets it and lets Cheaper browse past`() = runTest {
+        val (viewModel, base) = deadlineScenario()
+        viewModel.onDeadlineEnabledChanged(true)
+        viewModel.onDeadlineChanged(11, 0) // base + 3h
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+
+        val s = viewModel.uiState.value
+        assertNotNull(s.searchDeadline)
+        // Default = the cheapest 1h window finishing by 11:00 -> the 10:00-11:00 slot.
+        assertEquals(base.plusHours(2), s.result!!.startTime)
+        assertFalse(s.resultMissesDeadline)
+        // Cheaper windows exist (later, past the deadline), so we're not at offset 0.
+        assertTrue("expected to be able to go cheaper", s.windowOffset > 0)
+
+        // Stepping Earlier stays within the deadline-meeting windows (they finish even sooner).
+        viewModel.onEarlierWindow()
+        assertFalse("earlier windows still meet the deadline", viewModel.uiState.value.resultMissesDeadline)
+        viewModel.onCheaperWindow() // back to the default before checking Cheaper
+
+        // Cheaper walks toward the global cheapest: a later-starting, cheaper window past the deadline.
+        viewModel.onCheaperWindow()
+        val after = viewModel.uiState.value
+        assertTrue(after.result!!.startTime.isAfter(s.result!!.startTime))
+        assertTrue(after.result!!.totalCost < s.result!!.totalCost)
+        assertTrue("stepping past the deadline flags it", after.resultMissesDeadline)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `a ready-by deadline no window can meet shows an unreachable error`() = runTest {
+        val (viewModel, _) = deadlineScenario()
+        viewModel.onDeadlineEnabledChanged(true)
+        viewModel.onDeadlineChanged(11, 0) // base + 3h
+        viewModel.onDurationChanged(5, 0)  // even the earliest window (08:00->13:00) finishes too late
+        viewModel.onFindClicked()
+        runCurrent()
+
+        val s = viewModel.uiState.value
+        assertNull(s.result)
+        assertTrue(s.error is AppError.Validation)
+        viewModel.onClearResult()
+    }
+
+    @Test
+    fun `refresh past a ready-by deadline keeps a result and flags it as missing the deadline`() = runTest {
+        val (viewModel, base) = deadlineScenario()
+        viewModel.onDeadlineEnabledChanged(true)
+        viewModel.onDeadlineChanged(11, 0) // base + 3h
+        viewModel.onDurationChanged(1, 0)
+        viewModel.onFindClicked()
+        runCurrent()
+        assertFalse(viewModel.uiState.value.resultMissesDeadline) // default meets the deadline
+
+        // Time advances past the deadline; the selected window elapses out of the list.
+        viewModel.onDevTimeOverrideChanged(base.plusHours(4).toInstant().toEpochMilli()) // 12:00, past 11:00
+        viewModel.recalculateResult()
+        runCurrent()
+
+        val s = viewModel.uiState.value
+        // A result is still shown (the search already happened), now flagged as past the deadline
+        // since nothing remaining can finish by it.
+        assertNotNull(s.result)
+        assertTrue(s.resultMissesDeadline)
+        viewModel.onClearResult()
+    }
+
     @Test
     fun `EV settings persist across ViewModel instances`() {
         val viewModel = evViewModel()
@@ -1909,16 +1991,14 @@ class SweetSpotViewModelTest {
         assertEquals(UiText.Res(R.string.error_no_zone), state.error!!.message)
     }
 
-    // --- Deadline unreachable ---
+    // --- Deadline / not-enough-data ---
 
     @Test
-    fun `an unreachable deadline yields the deadline error`() = runTest {
-        // Only 5h of data but 10h needed, so no window ever fits — deterministically forcing the
-        // "no window + deadline set" branch (ev_error_deadline_unreachable). This deliberately avoids
-        // a wall-clock-relative deadline: the "ready by" time resolves to its next occurrence (always
-        // <24h out) in the *price zone*, so a duration-vs-deadline setup would be timezone-dependent
-        // and could take the success path on a UTC CI runner — leaking the periodic-refresh loop and
-        // hanging runTest's virtual-time drain.
+    fun `duration exceeding available data yields the not-enough-data error even with a deadline`() = runTest {
+        // Only 5h of data but 10h needed, so no window ever fits regardless of the deadline: the
+        // blocker is the data, not the "ready by" time, so the error is "not enough data" (not
+        // "unreachable"). The genuine unreachable case — windows exist but none finish in time — is
+        // covered by `a ready-by deadline no window can meet shows an unreachable error`.
         val viewModel = testViewModel(FakeFetcher(fakePrices(5)))
         viewModel.onDeadlineEnabledChanged(true)
         viewModel.onDeadlineChanged(7, 0)
@@ -1928,7 +2008,10 @@ class SweetSpotViewModelTest {
 
         val err = viewModel.uiState.value.error
         assertTrue(err is AppError.Validation)
-        assertEquals(UiText.Res(R.string.ev_error_deadline_unreachable), (err as AppError.Validation).message)
+        assertTrue(
+            "expected not-enough-data, not the deadline-unreachable message",
+            (err as AppError.Validation).message != UiText.Res(R.string.ev_error_deadline_unreachable)
+        )
         viewModel.onClearResult()
     }
 

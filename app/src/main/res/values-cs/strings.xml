@@ -12,7 +12,8 @@
     <string name="main_card_description">Najděte nejlevnější čas pro spuštění vašeho spotřebiče</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Nejlevnější období</string>
+    <string name="result_cheapest_window">Doporučený čas</string>
+    <string name="result_after_deadline">Toto období končí po tvém čase „Hotovo do“.</string>
     <string name="result_start">Začátek</string>
     <string name="result_end">Konec</string>
     <string name="result_total_cost">Celková cena</string>

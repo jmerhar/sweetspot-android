@@ -12,7 +12,8 @@
     <string name="main_card_description">Encontre o horário mais barato para utilizar o seu eletrodoméstico</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Período mais barato</string>
+    <string name="result_cheapest_window">Hora recomendada</string>
+    <string name="result_after_deadline">Este período termina depois da tua hora \'Pronto até\'.</string>
     <string name="result_start">Início</string>
     <string name="result_end">Fim</string>
     <string name="result_total_cost">Custo total</string>

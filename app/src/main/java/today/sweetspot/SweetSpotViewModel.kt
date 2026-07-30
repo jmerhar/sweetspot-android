@@ -209,6 +209,14 @@ enum class ReplyState {
  *           [result] is `windowAlternatives[windowOffset]`. Empty when there is no result.
  * @property windowOffset Index into [windowAlternatives] of the currently-displayed window
  *           (0 = cheapest). Advanced by "earlier", reduced by "cheaper".
+ * @property resultMissesDeadline True when a "ready by" deadline is set and the currently-displayed
+ *           window finishes after it — the default lands on the cheapest window that meets the
+ *           deadline, but "cheaper" can walk to cheaper windows that finish later. Drives a warning
+ *           note on the results screen.
+ * @property recommendedCost Total cost of the recommended (default) window — the global cheapest, or
+ *           the cheapest window meeting a "ready by" deadline. The results screen shows how much more
+ *           the displayed window costs than this, so with a deadline the comparison is against a
+ *           window the user can actually pick, not the (unreachable) global cheapest.
  * @property allPrices All price slots for the next 24h, used by the bar chart.
  * @property priceSource Name of the data source (e.g. "ENTSO-E", "EnergyZero"), or `null` if no result.
  * @property showSettings Whether the settings screen is currently visible.
@@ -262,6 +270,8 @@ data class UiState(
     val resultLabel: UiText? = null,
     val windowAlternatives: List<WindowResult> = emptyList(),
     val windowOffset: Int = 0,
+    val resultMissesDeadline: Boolean = false,
+    val recommendedCost: Double? = null,
     val allPrices: List<PriceSlot> = emptyList(),
     val priceSource: String? = null,
     val showSettings: Boolean = false,
@@ -1106,6 +1116,8 @@ class SweetSpotViewModel @JvmOverloads constructor(
                 resultLabel = null,
                 windowAlternatives = emptyList(),
                 windowOffset = 0,
+                resultMissesDeadline = false,
+                recommendedCost = null,
                 allPrices = emptyList(),
                 priceSource = null,
                 error = null,
@@ -1130,7 +1142,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
         _uiState.update { state ->
             val next = state.windowOffset + 1
             if (next >= state.windowAlternatives.size) return@update state
-            state.copy(windowOffset = next, result = state.windowAlternatives[next])
+            val window = state.windowAlternatives[next]
+            state.copy(
+                windowOffset = next,
+                result = window,
+                resultMissesDeadline = missesDeadline(window, state.searchDeadline)
+            )
         }
     }
 
@@ -1145,9 +1162,29 @@ class SweetSpotViewModel @JvmOverloads constructor(
         _uiState.update { state ->
             val prev = state.windowOffset - 1
             if (prev < 0) return@update state
-            state.copy(windowOffset = prev, result = state.windowAlternatives[prev])
+            val window = state.windowAlternatives[prev]
+            state.copy(
+                windowOffset = prev,
+                result = window,
+                resultMissesDeadline = missesDeadline(window, state.searchDeadline)
+            )
         }
     }
+
+    /**
+     * Offset of the default window for a "ready by" [deadline] in a cheapest-first [alternatives] list:
+     * the cheapest window that still finishes by the deadline. The list runs cheapest -> earliest with
+     * finish times decreasing, so the deadline-meeting windows are a suffix and the first one found is
+     * the cheapest among them. Returns 0 when there is no deadline, or -1 when even the earliest window
+     * finishes too late (deadline unreachable).
+     */
+    private fun deadlineDefaultOffset(alternatives: List<WindowResult>, deadline: ZonedDateTime?): Int =
+        if (deadline == null) 0
+        else alternatives.indexOfFirst { !it.endTime.isAfter(deadline) }
+
+    /** True when [window] finishes after the "ready by" [deadline] (both non-null). */
+    private fun missesDeadline(window: WindowResult?, deadline: ZonedDateTime?): Boolean =
+        window != null && deadline != null && window.endTime.isAfter(deadline)
 
     /**
      * Starts a periodic refresh that recalculates the cheapest window every 60 seconds.
@@ -1194,30 +1231,36 @@ class SweetSpotViewModel @JvmOverloads constructor(
         }
 
         val durationHours = state.durationHours + state.durationMinutes / 60.0
+        // Full earlier-path (no deadline restriction); the deadline only picks the default offset.
         val alternatives = if (futurePrices.isNotEmpty()) {
-            findWindowAlternatives(futurePrices, durationHours, now, state.searchDeadline)
+            findWindowAlternatives(futurePrices, durationHours, now, null)
         } else emptyList()
 
-        // No window fits any more — every slot has elapsed, or a "ready by" deadline has now
-        // passed. Keep the last result on screen (the search already happened) and stop refreshing
-        // rather than nulling the result and flipping the UI back to the form.
+        // No window fits any more — every slot has elapsed. Keep the last result on screen (the
+        // search already happened) and stop refreshing rather than nulling the result and flipping
+        // the UI back to the form.
         if (alternatives.isEmpty()) {
             stopResultRefresh()
             _uiState.update { it.copy(now = now) }
             return
         }
 
-        // Keep showing the window the user navigated to, matched by start time. If it has
-        // elapsed out of the list, fall back to the cheapest window.
+        // Keep showing the window the user navigated to, matched by start time. If it has elapsed
+        // out of the list, fall back to the deadline default (cheapest window meeting the deadline,
+        // or the cheapest overall when there's no deadline / it can no longer be met).
         val selectedStart = state.result.startTime.toEpochSecond()
+        val defaultOffset = deadlineDefaultOffset(alternatives, state.searchDeadline).coerceAtLeast(0)
         val offset = alternatives.indexOfFirst { it.startTime.toEpochSecond() == selectedStart }
-            .let { if (it >= 0) it else 0 }
+            .let { if (it >= 0) it else defaultOffset }
+        val window = alternatives.getOrNull(offset)
 
         _uiState.update {
             it.copy(
-                result = alternatives.getOrNull(offset),
+                result = window,
                 windowAlternatives = alternatives,
                 windowOffset = offset,
+                resultMissesDeadline = missesDeadline(window, state.searchDeadline),
+                recommendedCost = alternatives.getOrNull(defaultOffset)?.totalCost,
                 allPrices = futurePrices,
                 now = now
             )
@@ -1659,10 +1702,15 @@ class SweetSpotViewModel @JvmOverloads constructor(
 
             val now = currentNow(timeZoneId)
             val deadline = _uiState.value.searchDeadline
-            val alternatives = findWindowAlternatives(prices, durationHours, now, deadline)
+            // Build the full earlier-path (cheapest -> earliest) with no deadline restriction, so
+            // "cheaper" can browse cheaper windows that finish after a "ready by" time. The default
+            // still lands on the cheapest window that *meets* the deadline (deadlineDefaultOffset).
+            val alternatives = findWindowAlternatives(prices, durationHours, now, null)
+            val defaultOffset = deadlineDefaultOffset(alternatives, deadline)
 
-            if (alternatives.isEmpty()) {
-                val message = if (deadline != null) {
+            // No window fits at all, or a set deadline can't be met even by a window starting now.
+            if (alternatives.isEmpty() || (deadline != null && defaultOffset < 0)) {
+                val message = if (deadline != null && alternatives.isNotEmpty()) {
                     UiText.Res(R.string.ev_error_deadline_unreachable)
                 } else {
                     val coverageHours = prices.sumOf { it.durationMinutes.toLong() } / 60
@@ -1686,12 +1734,18 @@ class SweetSpotViewModel @JvmOverloads constructor(
             val allInStale = allInApplied && state.tariffFetchedAtMs?.let {
                 now.toInstant().toEpochMilli() - it > TARIFF_STALENESS_MS
             } == true
+            val offset = defaultOffset.coerceAtLeast(0)
             _uiState.update {
                 it.copy(
                     isLoading = false,
-                    result = alternatives.first(),
+                    result = alternatives[offset],
                     windowAlternatives = alternatives,
-                    windowOffset = 0,
+                    windowOffset = offset,
+                    // The default window meets the deadline by construction, so it never misses.
+                    resultMissesDeadline = false,
+                    // Cost comparisons anchor on the recommended window (the default), so with a
+                    // deadline the "how much more" is vs the cheapest window that actually fits.
+                    recommendedCost = alternatives[offset].totalCost,
                     allPrices = prices,
                     priceSource = priceResult.source,
                     error = null,

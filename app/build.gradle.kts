@@ -40,7 +40,7 @@ kover {
                 )
             }
         }
-        // NB: the CI coverage gate is `bin/coverage-report.py --gate` (reads these filtered XML
+        // NB: the CI coverage gate is `bin/quality/coverage-report.py --gate` (reads these filtered XML
         // reports), not `koverVerifyDebug` — Kover 0.9.8's verification does not reliably apply the
         // wildcard `classes(...)` excludes above (and differs by JDK). See the script's docstring.
     }

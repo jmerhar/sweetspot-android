@@ -38,7 +38,7 @@ Sources (per country; see COUNTRIES):
 Output: site/static/data/suppliers/<cc>.json (served at https://sweetspot.today/data/suppliers/<cc>.json),
 plus site/static/data/enever-suppliers.json (the committed enever code->{id,name} registry / fallback).
 
-Usage: ./bin/build-suppliers.py   (or: make suppliers)
+Usage: ./bin/data/build-suppliers.py   (or: make suppliers)
 """
 
 import html
@@ -57,7 +57,7 @@ except ImportError:  # pragma: no cover - stdlib on 3.9+
 
 SCHEMA_VERSION = 1
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OUTPUT_DIR = os.path.join(PROJECT_DIR, "site", "static", "data", "suppliers")
 
 FRANK_URL = "https://graphql.frankenergie.nl/"

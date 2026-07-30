@@ -5,19 +5,19 @@ on:
     branches: [main]
     paths:
       - 'site/**'
-      - 'bin/site-validate.sh'
-      - 'bin/install-hugo.sh'
+      - 'bin/site/site-validate.sh'
+      - 'bin/site/install-hugo.sh'
   pull_request:
     branches: [main]
     paths:
       - 'site/**'
-      - 'bin/site-validate.sh'
-      - 'bin/install-hugo.sh'
+      - 'bin/site/site-validate.sh'
+      - 'bin/site/install-hugo.sh'
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: ./bin/install-hugo.sh
-      - run: ./bin/site-validate.sh
+      - run: ./bin/site/install-hugo.sh
+      - run: ./bin/site/site-validate.sh

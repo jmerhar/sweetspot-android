@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-"""Unit tests for bin/build-suppliers.py (stdlib unittest, no network).
+"""Unit tests for bin/data/build-suppliers.py (stdlib unittest, no network).
 
 Covers the pure logic extracted from the network/IO paths: legend parsing, Frank tax derivation,
 registry merge, surcharge differencing, normalisation, slugging, float coercion, and the
-"unchanged except timestamp" write guard. Run: python3 bin/test_build_suppliers.py  (or: make test-suppliers)
+"unchanged except timestamp" write guard. Run: python3 bin/data/test_build_suppliers.py  (or: make test-suppliers)
 """
 
 import importlib.util

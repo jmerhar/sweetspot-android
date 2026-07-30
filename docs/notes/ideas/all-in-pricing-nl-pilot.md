@@ -168,7 +168,7 @@ The daily data pipeline is built and live. It is **country-agnostic** — one sc
 builds every country (NL only for now), so future markets are a data-file (+ maybe a source adapter),
 not new code. Details:
 
-- **Script** `bin/build-suppliers.py` (stdlib Python, mirrors `bin/build-ev-db.py`). A `COUNTRIES`
+- **Script** `bin/data/build-suppliers.py` (stdlib Python, mirrors `bin/data/build-ev-db.py`). A `COUNTRIES`
   registry maps each country to its `currency`, a `tax_source`, and `supplier_sources`. For NL:
   - **Frank GraphQL** (`marketPrices(date){ electricityPrices{ marketPrice marketPriceTax
     sourcingMarkupPrice energyTaxPrice allInPrice } }`, no auth) is the **essentials** source:

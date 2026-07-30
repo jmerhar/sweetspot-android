@@ -16,7 +16,7 @@
 
 Produces `app/build/outputs/bundle/release/sweetspot-release.aab`.
 
-The release script (`bin/release.sh`) currently builds APKs. Either update it to also
+The release script (`bin/deploy/release.sh`) currently builds APKs. Either update it to also
 build AABs, or add a separate `make bundle` target.
 
 ### Monochrome icon layer
@@ -130,7 +130,7 @@ crashes or UI issues on devices you don't own.
 
 ## Subsequent releases
 
-1. Bump `versionCode` and `versionName` (via `bin/release.sh`)
+1. Bump `versionCode` and `versionName` (via `bin/deploy/release.sh`)
 2. Run `./gradlew bundleRelease`
 3. Upload the new `.aab` to Play Console
 4. Use **staged rollout** for production releases (e.g. 10% → 50% → 100%) to catch

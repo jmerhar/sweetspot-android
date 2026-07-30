@@ -10,12 +10,12 @@
 #   4. Every HTML page is at least 500 bytes (catches empty/broken renders)
 #   5. All i18n TOML files have the same keys as en.toml
 #
-# Usage: ./bin/site-validate.sh
+# Usage: ./bin/site/site-validate.sh
 #   Or:  make site-validate
 
 set -euo pipefail
 
-PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+PROJECT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 SITE_DIR="$PROJECT_DIR/site"
 PUBLIC_DIR="$SITE_DIR/public"
 I18N_DIR="$SITE_DIR/i18n"

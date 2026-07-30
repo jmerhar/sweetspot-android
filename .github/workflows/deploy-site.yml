@@ -6,7 +6,7 @@ on:
     paths:
       - 'site/**'
       - 'fastlane/metadata/android/**'
-      - 'bin/site-screenshots.sh'
+      - 'bin/site/site-screenshots.sh'
       - '.github/workflows/deploy-site.yml'
 
 permissions:
@@ -24,8 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: sudo apt-get update && sudo apt-get install -y webp
-      - run: ./bin/site-screenshots.sh
-      - run: ./bin/install-hugo.sh
+      - run: ./bin/site/site-screenshots.sh
+      - run: ./bin/site/install-hugo.sh
       - run: hugo --source site --minify
       # Build the Pages tarball ourselves. actions/upload-pages-artifact tars with
       # --exclude=".[^/]*", which drops every top-level dotfile/dir — including

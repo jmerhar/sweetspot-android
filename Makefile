@@ -29,14 +29,11 @@ clean: ## Remove all build outputs
 test: ## Run all unit tests
 	./gradlew test
 
-test-suppliers: ## Run unit tests for the supplier tariff build script (bin/build-suppliers.py)
-	python3 bin/test_build_suppliers.py
-
 test-feedback: ## Run unit tests for the feedback Worker (server/feedback-worker)
 	cd server/feedback-worker && npm test
 
 inspect: ## Summarise Android Studio inspection XML files
-	./bin/inspect.sh
+	./bin/quality/inspect.sh
 
 ##@ Device
 
@@ -44,33 +41,33 @@ debug: debug-phone debug-watch ## Build and install debug app on phone and watch
 
 debug-phone: ## Build and install debug phone app on connected phone
 	./gradlew app:assembleDebug
-	./bin/install.sh phone --debug
+	./bin/device/install.sh phone --debug
 
 debug-watch: ## Build and install debug watch app on connected watch
 	./gradlew wear:assembleDebug
-	./bin/install.sh watch --debug
+	./bin/device/install.sh watch --debug
 
 install: install-phone install-watch ## Install release APKs on phone and watch
 
 install-phone: ## Install release phone APK on connected phone via ADB
-	./bin/install.sh phone
+	./bin/device/install.sh phone
 
 install-watch: ## Install release watch APK on connected watch via ADB
-	./bin/install.sh watch
+	./bin/device/install.sh watch
 
 ##@ Release & Deploy
 
 release: ## Bump version, build, tag, push, and create GitHub Release
-	./bin/release.sh $(VERSION) -n docs/notes/release.md $(if $(DRAFT),--draft)
+	./bin/deploy/release.sh $(VERSION) -n docs/notes/release.md $(if $(DRAFT),--draft)
 
 deploy: ## Deploy AABs with release notes to Play Store (TRACK=alpha|production APP=phone|wear|both)
-	TRACK=$(or $(TRACK),alpha) APP=$(or $(APP),both) ./bin/deploy.sh
+	TRACK=$(or $(TRACK),alpha) APP=$(or $(APP),both) ./bin/deploy/deploy.sh
 
 deploy-stats: ## Deploy stats.php to the stats server
-	./bin/deploy-stats.sh
+	./bin/deploy/deploy-stats.sh
 
 deploy-feedback: ## Deploy the feedback Worker to Cloudflare (feedback.sweetspot.today)
-	./bin/deploy-feedback.sh
+	./bin/deploy/deploy-feedback.sh
 
 ##@ Website
 
@@ -78,16 +75,21 @@ site: site-screenshots ## Start local Hugo server and open website in browser
 	open http://localhost:1313/ && hugo server --source site --baseURL http://localhost:1313/
 
 site-screenshots: ## Generate per-language website screenshots (WebP) from the framed Play Store images
-	./bin/site-screenshots.sh
+	./bin/site/site-screenshots.sh
 
 site-validate: site-screenshots ## Validate Hugo site: build, check pages, links, and assets
-	./bin/site-validate.sh
+	./bin/site/site-validate.sh
+
+##@ Data
 
 ev-db: ## Rebuild the bundled EV vehicle database from upstream open data sources
-	./bin/build-ev-db.py
+	./bin/data/build-ev-db.py
 
 suppliers: ## Rebuild all-in tariff feeds (site/static/data/suppliers/*.json) — needs ENEVER_TOKEN
-	./bin/build-suppliers.py
+	./bin/data/build-suppliers.py
+
+test-suppliers: ## Run unit tests for the supplier tariff build script (bin/data/build-suppliers.py)
+	python3 bin/data/test_build_suppliers.py
 
 ##@ Play Store
 
@@ -95,10 +97,10 @@ screenshots: ## Capture localized screenshots via Fastlane Screengrab (LOCALE=xx
 	bundle exec fastlane screenshots$(if $(LOCALE), locale:$(LOCALE))
 
 frames: ## Frame screenshots with marketing text and coloured backgrounds (LOCALE=xx-XX for one)
-	LOCALE=$(LOCALE) ./bin/frame-screenshots.sh
+	LOCALE=$(LOCALE) ./bin/playstore/frame-screenshots.sh
 
 feature-graphic: ## Generate localised Play Store feature graphics (LOCALE=xx-XX for one)
-	LOCALE=$(LOCALE) ./bin/feature-graphic.sh
+	LOCALE=$(LOCALE) ./bin/playstore/feature-graphic.sh
 
 publish: ## Upload metadata, screenshots, and images to the Play Store
 	bundle exec fastlane publish

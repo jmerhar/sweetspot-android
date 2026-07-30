@@ -147,12 +147,12 @@ make test
 
 726 unit tests cover the sliding window algorithm (including 15-minute slot support, earlier-window alternatives, and the optional "ready by" deadline), duration and time formatting, locale-aware price formatting, API parsing (JSON and XML), fallback fetcher chain, the all-in price transform and tariff feed (fetch/cache/staleness), icon resolution, appliance sorting/reordering and cross-device usage, household setup sharing (encode/decode/merge), the EV vehicle database (parsing/search), API stats instrumentation, trial/subscription logic, the in-app Help & support flow (report encoding, response parsing, submit retry policy, diagnostics, public GitHub issue/thread parsing, and the report/outbox/reply-outbox stores), and ViewModel state management including EV charging, all-in pricing, and setup import (via Robolectric).
 
-Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) and uploaded to [Codecov](https://codecov.io/gh/jmerhar/sweetspot-android) (one flag per module) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug`. All three modules are high once Compose UI and thin SDK wrappers are excluded (`:shared` ~99.6%, `:app` ~99%, `:wear` ~95% line), and CI gates each module's line coverage (`:shared` ≥98, `:app` ≥97, `:wear` ≥93) via `bin/coverage-report.py --gate`. The badge above shows the combined Codecov total across all three. The full per-module Kover HTML report is also published for every commit to the shared coverage site: **[jmerhar.github.io/coverage/sweetspot-android](https://jmerhar.github.io/coverage/sweetspot-android/)**.
+Code coverage is reported per module via [Kover](https://github.com/Kotlin/kotlinx-kover) and uploaded to [Codecov](https://codecov.io/gh/jmerhar/sweetspot-android) (one flag per module) — CI runs `./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug`. All three modules are high once Compose UI and thin SDK wrappers are excluded (`:shared` ~99.6%, `:app` ~99%, `:wear` ~95% line), and CI gates each module's line coverage (`:shared` ≥98, `:app` ≥97, `:wear` ≥93) via `bin/quality/coverage-report.py --gate`. The badge above shows the combined Codecov total across all three. The full per-module Kover HTML report is also published for every commit to the shared coverage site: **[jmerhar.github.io/coverage/sweetspot-android](https://jmerhar.github.io/coverage/sweetspot-android/)**.
 
 ## Data attribution
 
 The bundled EV database is built from two open datasets, merged into a normalised schema by
-`bin/build-ev-db.py` (run `make ev-db` to refresh):
+`bin/data/build-ev-db.py` (run `make ev-db` to refresh):
 
 - [Open EV Data](https://github.com/KilowattApp/open-ev-data) (MIT) — broad coverage of EVs/PHEVs back to 2010.
 - [open-ev-data-dataset](https://github.com/open-ev-data/open-ev-data-dataset) (CDLA-Permissive-2.0) — recent models, preferred on overlap.

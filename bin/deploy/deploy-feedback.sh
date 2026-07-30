@@ -12,12 +12,12 @@
 #   - the KV namespace id filled into wrangler.jsonc
 #
 # Usage:
-#   ./bin/deploy-feedback.sh            # deploy
-#   ./bin/deploy-feedback.sh --dry-run  # extra args are forwarded to `wrangler deploy`
+#   ./bin/deploy/deploy-feedback.sh            # deploy
+#   ./bin/deploy/deploy-feedback.sh --dry-run  # extra args are forwarded to `wrangler deploy`
 #
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 WORKER_DIR="$ROOT/server/feedback-worker"
 HEALTH_URL="https://feedback.sweetspot.today/"
 

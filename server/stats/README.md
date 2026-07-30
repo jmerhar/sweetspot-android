@@ -2,7 +2,7 @@
 
 Step-by-step guide for deploying the SweetSpot API-reliability stats endpoint (`stats.php` →
 InfluxDB 3 Core, behind Apache + Cloudflare) on a home server. Deploy updates with
-`make deploy-stats` (`bin/deploy-stats.sh`). Architecture overview: `CLAUDE.md` → "Stats Backend &
+`make deploy-stats` (`bin/deploy/deploy-stats.sh`). Architecture overview: `CLAUDE.md` → "Stats Backend &
 Monitoring". (The report/feedback Cloudflare Worker is separate — see `../feedback-worker/`.)
 
 ## Current deployment (aurora)

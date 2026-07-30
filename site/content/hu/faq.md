@@ -21,17 +21,25 @@ Az adatforrások prioritási sorrendjét a beállításokban konfigurálhatja.
 {{< /faq >}}
 
 {{< faq question="Pontosak az árak?" >}}
-A SweetSpot **másnapi spot-árakat** mutat — azokat a nagykereskedelmi villamosenergia-árakat, amelyeket a piac a szállítás előtti napon határoz meg. Ezek az árak **nem tartalmazzák** az áfát, az energiaadókat, a hálózati díjakat vagy a beszállítói árréseket, amelyek országonként és szolgáltatónként eltérőek.
+A SweetSpot **másnapi piaci árakat** mutat — azokat a nagykereskedelmi villamosenergia-árakat, amelyeket a piac a szállítás előtti napon határoz meg (más néven spot-árak). Ezek az árak **nem tartalmazzák** az áfát, az energiaadókat, a hálózati díjakat vagy a szolgáltatói árréseket, amelyek országonként és szolgáltatónként eltérőek.
 
-Az árak az idősávok egymáshoz viszonyított összehasonlítására hasznosak (a legolcsóbb időpont megtalálásához), ami az alkalmazás elsődleges célja. A költségek alapértelmezetten 1 kW terhelésre vetítve jelennek meg; ha beállítja egy készülék teljesítményét, vagy elektromos autót tölt, a becslés a valós terhelést tükrözi. A holnapi árak jellemzően 13:00 CET után válnak elérhetővé.
+Az árak így is hasznosak annak megtalálásához, mikor a legolcsóbb az áram — ez az alkalmazás elsődleges célja. A költségek alapértelmezetten 1 kW terhelésre vetítve jelennek meg; ha beállítja egy készülék teljesítményét, vagy elektromos autót tölt, a becslés a valós terhelést tükrözi. A holnapi árak jellemzően 13:00 CET után válnak elérhetővé.
+{{< /faq >}}
+
+{{< faq question="Szükségem van speciális villamosenergia-szerződésre?" >}}
+Igen — a tényleges megtakarításhoz **dinamikus (spot- vagy órás elszámolású) villamosenergia-szerződésre** van szüksége, ahol a fizetett ár a másnapi piacot követi. A SweetSpot megmutatja, mikor a legalacsonyabbak ezek az árak, de nem tudja megváltoztatni, mennyit számít fel a szolgáltatója: fix díjas tarifánál az ár egész nap ugyanannyi, így a fogyasztás időzítése nem csökkenti a számláját.
 {{< /faq >}}
 
 {{< faq question="Segít a SweetSpot az elektromos autóm töltésében?" >}}
-Igen. Adja hozzá a járművét — válassza ki egy beépített, körülbelül 1600 elektromos és tölthető hibrid autót tartalmazó adatbázisból, vagy adja meg manuálisan az akkumulátor méretét és a töltési teljesítményt. Ezután adja meg az aktuális és a kívánt töltöttséget, a SweetSpot pedig kiszámítja, mennyi ideig tart a töltés (az akkumulátor méretéből, valamint az autó AC-korlátja és az otthoni töltője közül az alacsonyabból), és megkeresi a legolcsóbb időpontot a csatlakoztatásra.
+Igen. Adja hozzá a járművét — válassza ki egy beépített, több ezer elektromos és tölthető hibrid autót tartalmazó adatbázisból, vagy adja meg manuálisan az akkumulátor méretét és a töltési teljesítményt. Ezután adja meg az aktuális és a kívánt töltöttséget, a SweetSpot pedig kiszámítja, mennyi ideig tart a töltés (az akkumulátor méretéből, valamint az autó AC-korlátja és az otthoni töltője közül az alacsonyabból), és megkeresi a legolcsóbb időpontot a csatlakoztatásra.
 {{< /faq >}}
 
 {{< faq question="Biztosíthatom, hogy egy adott időpontra elkészüljön?" >}}
-Igen. Kapcsolja be az opcionális **„készen ekkorra”** határidőt, és válasszon egy időpontot. A SweetSpot ezután csak olyan időszakokat vesz figyelembe, amelyek addigra befejeződnek — bármely készülék vagy az elektromos autó töltése esetén (például reggel 7:00-ra teljesen feltöltve).
+Igen. Kapcsolja be az opcionális **„készen ekkorra”** határidőt, és válasszon egy időpontot. A SweetSpot ezután alapértelmezetten a legolcsóbb olyan időpontot ajánlja, amely addigra befejeződik — bármely készülék vagy az elektromos autó töltése esetén (például reggel 7:00-ra feltöltve). Ha szeretné, továbbra is átléphet egy olcsóbb időpontra, amely kicsit később fejeződik be; a SweetSpot jelzi, ha a megjelenített időpont a határidő után ér véget.
+{{< /faq >}}
+
+{{< faq question="Miért változik folyamatosan az ajánlott időpont?" >}}
+A SweetSpot újraellenőrzi az árakat, amíg egy eredmény nyitva van, és az idő múlásával a már elmúlt idősávok kiesnek, így az ajánlott időpont eltolódhat. A **Korábban** és **Olcsóbban** gombokkal válthat egy hamarabbi (kicsit drágább) kezdés és a legolcsóbb között — mindegyik megmutatja, mennyivel kerül többe az ajánlott időpontnál.
 {{< /faq >}}
 
 {{< faq question="A költségek tükrözik, mennyi energiát fogyaszt a készülékem?" >}}
@@ -43,21 +51,21 @@ A SweetSpot helyben tárolja az árakat a készülékén. Ha nemrég lekérte az
 {{< /faq >}}
 
 {{< faq question="Önállóan működik a Wear OS alkalmazás?" >}}
-A Wear OS alkalmazás a Wearable Data Layer API segítségével szinkronizálja a készülékeket és beállításokat a telefonalkalmazásból. A szinkronizálás után az óra alkalmazás önállóan kéri le az árakat — tehát akkor is működik, ha a telefon nincs a közelben, amennyiben az órának van internetkapcsolata (Wi-Fi vagy LTE).
+A Wear OS alkalmazás a telefonalkalmazásból szinkronizálja a készülékeket és a beállításokat. A szinkronizálás után az óra alkalmazás önállóan kéri le az árakat — tehát akkor is működik, ha a telefon nincs a közelben, amennyiben az órának van internetkapcsolata (Wi-Fi vagy LTE).
 
 Az óra alkalmazás Wear OS 3 vagy újabb verziót igényel (Pixel Watch, Samsung Galaxy Watch 4+ és más kompatibilis órák).
 {{< /faq >}}
 
 {{< faq question="Láthatom a teljes árat, amit valójában fizetek?" >}}
-Alapértelmezetten a SweetSpot a nagykereskedelmi **spot-árat** mutatja. A támogatott országokban (jelenleg Hollandia) a beállításokban bekapcsolhatja a **teljes árakat**, amelyek az energiaadót, a szolgáltatója felárát és az áfát is hozzáadják a spot-árhoz, hogy a hozzávetőleges teljes fogyasztói árat mutassák. Egy készülék **teljesítményértékével** kombinálva ez reális becslést ad arról, mennyibe kerül a készülék tényleges működtetése. Ez csak megjelenítési célú — soha nem befolyásolja, hogy melyik időszak lesz a legolcsóbb.
+Alapértelmezetten a SweetSpot a nagykereskedelmi **piaci árat** mutatja. A támogatott országokban (jelenleg Hollandia) a beállításokban bekapcsolhatja a **Teljes ár** (a mindent tartalmazó ár) funkciót, amely a piaci árra rávetíti az energiaadót, a szolgáltatója felárát és az áfát, hogy a hozzávetőleges teljes fogyasztói árat mutassa. Egy készülék **teljesítményértékével** kombinálva ez reális becslést ad arról, mennyibe kerül a készülék tényleges működtetése. Ez csak megjelenítési célú — soha nem befolyásolja, hogy melyik időpont lesz a legolcsóbb.
 {{< /faq >}}
 
 {{< faq question="Átmásolhatom a készülékeimet egy másik eszközre?" >}}
-Igen. A beállításokban megoszthatja a konfigurációját — a készülékeit, azok sorrendjét és az elektromos autó töltési beállításait — QR-kód vagy hivatkozás formájában. Olvassa be vagy nyissa meg egy másik eszközön az összes adat importálásához. Teljesen internetkapcsolat nélkül, fiók és szerver nélkül működik: az adatok magában a hivatkozásban vagy QR-kódban utaznak, és Ön dönti el, hogy hozzáadja a meglévőkhöz vagy lecseréli azokat.
+Igen. A beállításokban megoszthatja a konfigurációját — a készülékeit, azok sorrendjét és az elektromos autó töltési beállításait — QR-kód vagy hivatkozás formájában. Olvassa be vagy nyissa meg egy másik eszközön az összes adat importálásához. Teljesen internetkapcsolat nélkül, fiók és szerver nélkül működik: az adatok magában a hivatkozásban vagy QR-kódban utaznak, és Ön dönti el, hogy hozzáadja a meglévőkhöz, lecseréli azokat, vagy egyesével kiválasztja, mely elemeket importálja.
 {{< /faq >}}
 
 {{< faq question="Hogyan jelenthetek egy problémát vagy javasolhatok egy funkciót?" >}}
-Nyissa meg a **Beállítások › Súgó és támogatás** menüpontot, és válassza a *Probléma jelentése* vagy a *Visszajelzés küldése* lehetőséget. Az üzenete közvetlenül az alkalmazásból kerül elküldésre — böngésző vagy GitHub-fiók nélkül —, és nyilvános témává válik, amelyet nyomon követhetünk. Opcionálisan megadhat egy e-mail-címet, hogy értesítést kapjon a válaszokról (ez soha nem jelenik meg nyilvánosan, és minden értesítés tartalmaz egy egykattintásos leiratkozási hivatkozást), és a *Jelentéseim* menüpontban követheti mindannak az állapotát, amit elküldött.
+Nyissa meg a **Beállítások › Súgó és támogatás** menüpontot, és válassza a *Probléma jelentése* vagy a *Visszajelzés küldése* lehetőséget. Az üzenete közvetlenül az alkalmazásból kerül elküldésre — böngésző vagy GitHub-fiók nélkül —, és nyilvános bejegyzéssé válik, amelyet nyomon követhetünk. Opcionálisan megadhat egy e-mail-címet, hogy értesítést kapjon a válaszokról (ez soha nem jelenik meg nyilvánosan, és minden értesítés tartalmaz egy egykattintásos leiratkozási hivatkozást), és a *Bejelentéseim* menüpontban követheti mindannak az állapotát, amit elküldött.
 {{< /faq >}}
 
 {{< faq question="Mennyibe kerül a SweetSpot?" >}}

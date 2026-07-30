@@ -26,7 +26,7 @@ other = "Nyelvváltás"
 other = "Találja meg a legolcsóbb időpontot készülékei használatához és elektromos autója töltéséhez"
 
 [hero_subtitle]
-other = "A SweetSpot összeveti a dinamikus villamosenergia-árakat 30 európai országban, és megkeresi a legolcsóbb időszakot készülékei használatához vagy elektromos autója töltéséhez — ha beállít egy határidőt, akkorra befejezve. Nyílt forráskódú és az adatvédelmet szem előtt tartó."
+other = "A SweetSpot átvizsgálja a dinamikus villamosenergia-árakat 30 európai országban, és megkeresi a legolcsóbb időpontot készülékei használatához vagy elektromos autója töltéséhez — ha beállít egy határidőt, akkorra befejezve. Nyílt forráskódú és az adatvédelmet szem előtt tartó."
 
 [download]
 other = "Letöltés a Google Playről"
@@ -44,7 +44,7 @@ other = "30 európai ország"
 other = "43 ajánlattételi zóna Európa-szerte, Portugáliától Finnországig és Norvégiától Görögországig."
 
 [feature_prices_title]
-other = "Valós idejű árak"
+other = "Másnapi árak"
 
 [feature_prices_desc]
 other = "Másnapi villamosenergia-árak az ENTSO-E Transparency Platformról, naponta frissítve."
@@ -53,13 +53,13 @@ other = "Másnapi villamosenergia-árak az ENTSO-E Transparency Platformról, na
 other = "Okos algoritmus"
 
 [feature_algorithm_desc]
-other = "Egy mozgó időablakos algoritmus végigpásztázza az árakat, és megtalálja a legolcsóbb összefüggő időszakot bármelyik választott időtartamhoz."
+other = "A SweetSpot megtalálja a legolcsóbb összefüggő időszakot bármely választott időtartamhoz."
 
 [feature_fallback_title]
 other = "Megbízható adatok"
 
 [feature_fallback_desc]
-other = "Öt adatforrás automatikus tartalékkal biztosítja, hogy az árak mindig elérhetők legyenek."
+other = "Öt adatforrás automatikus tartalékkal segít, hogy az árak elérhetők maradjanak."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -83,7 +83,7 @@ other = "Adja hozzá autóját, majd adja meg az aktuális és a kívánt tölt�
 other = "„Készen ekkorra” határidő"
 
 [feature_deadline_desc]
-other = "Egy adott időpontra van rá szüksége? Adjon meg egy „készen ekkorra” határidőt, és a SweetSpot csak olyan időszakokat választ, amelyek időben befejeződnek."
+other = "Egy adott időpontra van rá szüksége? Adjon meg egy „készen ekkorra” határidőt, és a SweetSpot a legolcsóbb olyan időpontot választja, amelyik időben befejeződik."
 
 [feature_power_title]
 other = "Teljesítmény"
@@ -155,7 +155,7 @@ other = "A keresett oldal nem létezik."
 other = "Vissza a főoldalra"
 
 [screenshot_1_alt]
-other = "A legolcsóbb időablak eredménye kezdési idővel, összköltséggel és költségbontással"
+other = "Az ajánlott időpont a kezdési idejével, összköltségével és költségbontásával"
 
 [screenshot_2_alt]
 other = "Kezdőképernyő készülékekkel, időtartam-választóval és Keresés gombbal"

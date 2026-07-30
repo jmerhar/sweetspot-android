@@ -5,11 +5,11 @@ description: "Politika zasebnosti SweetSpot — zasebnost na prvem mestu, brez r
 
 ## Pregled
 
-SweetSpot je zasnovan z mislijo na zasebnost. Aplikacija ne zbira in ne shranjuje nikakršnih osebnih podatkov. Ni uporabniških računov, ni analitike in ni sledenja uporabi. Neobvezna funkcija omogoča deljenje anonimnih API-statistik — podrobnosti spodaj.
+SweetSpot je zasnovan z mislijo na zasebnost. Za delovanje aplikacija ne potrebuje in ne zbira osebnih podatkov — ni uporabniških računov, ni analitike in ni sledenja uporabi, zahteva pa le dovoljenje INTERNET (brez dostopa do lokacije, stikov, shrambe ali identifikatorjev naprave). Neobvezne funkcije omogočajo deljenje anonimne statistike zanesljivosti ali pošiljanje povratnih informacij — podrobnosti spodaj.
 
 ## Obdelava podatkov
 
-SweetSpot pridobiva dnevne cene električne energije iz javnih API-jev:
+SweetSpot pridobiva cene električne energije za dan vnaprej iz javnih API-jev:
 
 - **ENTSO-E Transparency Platform** — primarni vir za vseh 43 evropskih cenovnih območij
 - **Spot-Hinta.fi** — rezervni vir za skandinavska in baltska območja
@@ -21,19 +21,21 @@ Te zahteve API vsebujejo le identifikator cenovnega območja in datumski obseg. 
 
 ## Lokalna shramba
 
-Podatki o cenah se shranjujejo lokalno na vaši napravi za zmanjšanje klicev API in hitrejše rezultate. Konfiguracija vaših aparatov (imena, trajanja, ikone in neobvezna moč), shranjena vozila (velikost baterije in moč polnjenja) ter nastavitve (država, območje, jezik) se prav tako shranjujejo lokalno na vaši napravi.
+Podatki o cenah se shranjujejo lokalno na vaši napravi za zmanjšanje klicev API in hitrejše rezultate. Konfiguracija vaših aparatov (imena, trajanja, ikone in neobvezna moč), shranjena vozila (velikost baterije in moč polnjenja) ter nastavitve (država, območje, jezik) se prav tako shranjujejo lokalno na vaši napravi, skupaj s statusom vaše naročnine (shranjenim, da aplikacija deluje tudi brez povezave) in številom dotikov posameznega aparata (uporablja se le za razvrščanje po najpogosteje in nedavno uporabljenih).
 
 Na Wear OS se podatki o aparatih in nastavitve sinhronizirajo med telefonom in uro prek Wearable Data Layer API. Ta komunikacija ostane na vaših lokalnih napravah in ne poteka prek nobenega zunanjega strežnika.
+
+Če svojo konfiguracijo delite kot kodo QR ali povezavo, so nastavitve vaših aparatov in polnjenja električnega vozila kodirane **znotraj same povezave ali kode QR** — nikoli se ne naložijo na strežnik. Uvozi jih lahko le oseba, ki ji daste kodo ali povezavo.
 
 ## Brez analitike
 
 SweetSpot ne vključuje nikakršnih analitičnih SDK-jev, poročanja o napakah ali sledenja uporabi. Aplikacija ne izvaja nikakršnih omrežnih zahtevkov razen pridobivanja cen električne energije iz zgoraj navedenih javnih API-jev (in neobveznega poročanja statistik, če je omogočeno, ter pošiljanja prijave, če uporabite Pomoč in podpora — glejte spodaj).
 
-## Neobvezne API statistike
+## Neobvezne statistike zanesljivosti
 
-Lahko se odločite za deljenje anonimnih statistik zanesljivosti API-jev. Ko je omogočeno, aplikacija občasno pošlje posamezne zapise zahtevkov za vsak podatkovni vir in cenovno območje na naš strežnik. Ti podatki vsebujejo:
+Lahko se odločite za deljenje anonimnih statistik zanesljivosti. Ko je omogočeno, aplikacija občasno pošlje posamezne zapise zahtevkov za vsak podatkovni vir in cenovno območje na naš strežnik. Ti podatki vsebujejo:
 
-- Časovni žig zahtevka API
+- Časovni žig zahtevka
 - Identifikator cenovnega območja (npr. »NL«, »DE-LU«)
 - Ime podatkovnega vira (npr. »ENTSO-E«, »EnergyZero«)
 - Tip naprave (telefon ali ura)

@@ -5,11 +5,11 @@
     <!-- Main screen -->
     <string name="cd_settings">Nastavitve</string>
     <string name="cd_back">Nazaj</string>
-    <string name="main_description">SweetSpot vam pomaga prihraniti denar tako, da poišče najcenejši čas za zagon vaših aparatov. Izberite, koliko časa mora aparat delovati, in aplikacija bo pregledala dinamične cene električne energije za naslednjih 24 ur ter poiskala najugodnejši termin. Svoje najljubše aparate lahko shranite v nastavitvah za hiter dostop.</string>
+    <string name="main_description">SweetSpot vam pomaga prihraniti denar tako, da poišče najcenejši termin za zagon vaših aparatov. Preprosto izberite, koliko časa mora aparat delovati, in pregledal bo prihajajoče dinamične cene električne energije ter poiskal najboljši termin. Svoje najljubše aparate lahko shranite v nastavitvah za hiter dostop.</string>
     <string name="main_find_button">Poišči najcenejši termin</string>
     <string name="main_searching">Iskanje…</string>
     <string name="main_add_appliances">Dodajte svoje aparate</string>
-    <string name="main_card_description">Poiščite najcenejši čas za zagon aparata</string>
+    <string name="main_card_description">Poiščite najcenejši termin za zagon aparata</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Priporočeni termin</string>
@@ -26,7 +26,7 @@
     <string name="cd_collapse">Strni</string>
     <string name="cd_expand">Razširi</string>
     <string name="result_upcoming_prices">Prihajajoče cene</string>
-    <string name="result_disclaimer">Stroški so prikazani za 1 kW obremenitev. Cene ne vključujejo DDV, davka na energijo in dobaviteljske pristojbine. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_disclaimer">Stroški so prikazani za obremenitev 1 kW. Cene ne vključujejo DDV, davka na energijo in pribitka dobavitelja. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="result_data_source">\nVir podatkov: %s</string>
     <string name="result_price_zone">\nCenovno območje: %s</string>
     <string name="cd_cheapest_window">najcenejši termin</string>
@@ -42,7 +42,7 @@
     <!-- Settings -->
     <string name="settings_title">Nastavitve</string>
     <string name="settings_language">Jezik</string>
-    <string name="settings_language_system_default">Sistemski privzet</string>
+    <string name="settings_language_system_default">Sistemsko privzeto</string>
     <string name="settings_country">Država</string>
     <string name="settings_select_zone">Izberite cono</string>
     <string name="settings_data_sources">Viri podatkov</string>
@@ -161,10 +161,10 @@
     <string name="cd_refresh">Osveži</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Deljenje statistike API-jev</string>
-    <string name="settings_stats_description">Pomagajte izboljšati zanesljivost virov podatkov z deljenjem anonimne statistike uspehov in napak API-jev. Osebni podatki se ne zbirajo.</string>
+    <string name="settings_stats_title">Deljenje statistike zanesljivosti</string>
+    <string name="settings_stats_description">Pomagajte izboljšati zanesljivost virov podatkov z deljenjem anonimnih podatkov o tem, kako pogosto se cene naložijo ali spodletijo. Osebni podatki se ne zbirajo.</string>
     <string name="stats_prompt_title">Pomagajte izboljšati SweetSpot?</string>
-    <string name="stats_prompt_message">Delite anonimno statistiko API-jev za izboljšanje zanesljivosti virov podatkov. Deljeni so samo števci uspešnih in neuspešnih zahtevkov po viru — brez osebnih podatkov. To lahko kadar koli spremenite v nastavitvah.</string>
+    <string name="stats_prompt_message">Delite anonimno statistiko za izboljšanje zanesljivosti virov podatkov. Deljeno je le, kako pogosto se posamezen vir podatkov naloži ali spodleti — brez osebnih podatkov. To lahko kadar koli spremenite v nastavitvah.</string>
     <string name="stats_prompt_enable">Vklopi</string>
     <string name="stats_prompt_dismiss">Ne, hvala</string>
 
@@ -187,14 +187,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Preizkusno obdobje se je končalo</string>
-    <string name="paywall_description">SweetSpot najde najcenejši čas za uporabo vaših aparatov z uporabo cen električne energije v realnem času v 30 evropskih državah. Naročite se, da boste še naprej iskali najugodnejši čas za svoje aparate.</string>
+    <string name="paywall_description">SweetSpot z dinamičnimi cenami električne energije v 30 evropskih državah poišče najcenejši termin za zagon vaših aparatov. Naročite se za nadaljnjo uporabo.</string>
     <string name="paywall_unlock">Naroči se na SweetSpot</string>
     <string name="paywall_unlock_price">Naročnina za %s/leto</string>
     <string name="paywall_restore">Obnovi naročnino</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Hvala!</string>
-    <string name="thank_you_message">Vaša naročnina je zdaj aktivna. Uživajte v iskanju najugodnejšega časa za svoje aparate!</string>
+    <string name="thank_you_message">Vaša naročnina je zdaj aktivna. Uživajte v iskanju najugodnejšega termina za svoje aparate!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Preizkusno obdobje: še %d dan</item>
@@ -226,28 +226,28 @@
     <string name="ev_error_invalid_soc">Ciljna napolnjenost mora biti višja od trenutne.</string>
     <string name="ev_error_invalid_charger">Nastavite moč polnilnika, večjo od nič.</string>
     <string name="ev_error_deadline_unreachable">Polnjenje se ne more končati do vašega roka. Poskusite z nižjo ciljno napolnjenostjo ali poznejšim časom.</string>
-    <string name="result_disclaimer_power">Stroški so prikazani za %s kW obremenitev. Cene ne vključujejo DDV, davka na energijo in dobaviteljske pristojbine. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_disclaimer_power">Stroški so prikazani za obremenitev %s kW. Cene ne vključujejo DDV, davka na energijo in pribitka dobavitelja. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="dialog_power">Moč (kW, izbirno)</string>
 
     <!-- All-in pricing -->
-    <string name="settings_all_in_title">Skupna cena</string>
-    <string name="settings_all_in_toggle">Prikaži skupno ceno</string>
+    <string name="settings_all_in_title">Končna cena</string>
+    <string name="settings_all_in_toggle">Prikaži končno ceno</string>
     <string name="settings_all_in_desc">Prikaže ocenjeno končno ceno za potrošnika (tržna cena + davek na energijo + pribitek dobavitelja + DDV) namesto same tržne cene.</string>
     <string name="all_in_supplier">Dobavitelj</string>
     <string name="all_in_supplier_prompt">Izberite svojega dobavitelja</string>
     <string name="all_in_supplier_custom">Pribitek po meri</string>
     <string name="all_in_no_supplier">Dobavitelja ni bilo mogoče najti. Namesto tega spodaj vnesite pribitek po meri.</string>
     <string name="all_in_surcharge_custom">Pribitek po meri (brez DDV)</string>
-    <string name="all_in_incomplete">Izberite dobavitelja ali vnesite pribitek, sicer pa izklopite skupno ceno.</string>
+    <string name="all_in_incomplete">Izberite dobavitelja ali vnesite pribitek, sicer pa izklopite končno ceno.</string>
     <string name="picker_supplier_title">Dobavitelj</string>
     <string name="picker_supplier_search">Išči dobavitelje</string>
-    <string name="result_disclaimer_all_in">Stroški so prikazani za 1 kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
-    <string name="result_disclaimer_power_all_in">Stroški so prikazani za %s kW obremenitev pri ocenjeni skupni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_disclaimer_all_in">Stroški so prikazani za obremenitev 1 kW pri ocenjeni končni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
+    <string name="result_disclaimer_power_all_in">Stroški so prikazani za obremenitev %s kW pri ocenjeni končni ceni (tržna cena + davek na energijo + pribitek dobavitelja + DDV). Ne vključujejo omrežnine in fiksnih mesečnih stroškov. Jutrišnje cene so običajno na voljo po 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavitelj: %s</string>
     <string name="result_all_in_stale">Podatki o tarifah so starejši od 14 dni in morda niso več aktualni.</string>
     <string name="coach_earlier_cheaper">Ni pravi čas? Pritisnite Prej za zgodnejši začetek ali Ceneje za vrnitev na najcenejši termin.</string>
     <string name="coach_chart_press_hold">Pridržite graf, da vidite ceno ob poljubnem času.</string>
-    <string name="coach_all_in_toggle">Preklopite med celotno skupno ceno in golo tržno ceno.</string>
+    <string name="coach_all_in_toggle">Preklopite med celotno končno ceno in zgolj tržno ceno.</string>
     <string name="coach_ev_chip">Pritisnite vozilo za načrtovanje polnjenja po odstotku napolnjenosti.</string>
     <string name="coach_got_it">Razumem</string>
     <string name="chart_legend_energy_tax">Davek na energijo</string>
@@ -353,7 +353,7 @@
     <string name="thread_load_error">Pogovora ni bilo mogoče naložiti. Preverite povezavo in poskusite znova.</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Poiščite najcenejši čas</string>
+    <string name="guide_find_title">Poiščite najcenejši termin</string>
     <string name="guide_find_body">Izberite, koliko časa mora aparat delovati, nato pritisnite Poišči.</string>
     <string name="guide_appliances_title">Shranite svoje aparate</string>
     <string name="guide_appliances_body">Dodajte aparate v nastavitvah za iskanje z enim dotikom.</string>
@@ -361,7 +361,7 @@
     <string name="guide_ev_body">Dodajte svoj avto, vnesite njegovo trenutno in ciljno napolnjenost, SweetSpot pa izračuna čas polnjenja.</string>
     <string name="guide_result_title">Preberite rezultat</string>
     <string name="guide_result_body">S pritiskom na Prej in Ceneje premaknite termin, graf pa pridržite za ceno poljubnega časovnega intervala.</string>
-    <string name="guide_allin_title">Skupna cena</string>
+    <string name="guide_allin_title">Končna cena</string>
     <string name="guide_allin_body">Po želji prikažite celotno ceno za potrošnika namesto samo tržne cene.</string>
     <string name="guide_wear_title">Na vaši uri</string>
     <string name="guide_wear_body">Vaši aparati se sinhronizirajo z Wear OS, tako da lahko cene preverite brez telefona.</string>

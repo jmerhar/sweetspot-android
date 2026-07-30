@@ -10,7 +10,7 @@ Avstrija, Belgija, Bolgarija, Hrvaška, Češka, Danska (DK1, DK2), Estonija, Fi
 {{< /faq >}}
 
 {{< faq question="Od kje prihajajo cene?" >}}
-Cene prihajajo s platforme **ENTSO-E Transparency Platform**, ki objavlja dnevne cene električne energije za vsa evropska cenovna območja. SweetSpot podpira tudi štiri rezervne vire za večjo zanesljivost:
+Cene prihajajo s platforme **ENTSO-E Transparency Platform**, ki objavlja cene električne energije za dan vnaprej za vsa evropska cenovna območja. SweetSpot podpira tudi štiri rezervne vire za večjo zanesljivost:
 
 - **Spot-Hinta.fi** za skandinavska in baltska območja (15 območij)
 - **Energy-Charts** za 15 evropskih območij
@@ -21,17 +21,25 @@ Prednostni vrstni red virov podatkov lahko nastavite v nastavitvah.
 {{< /faq >}}
 
 {{< faq question="Ali so cene točne?" >}}
-SweetSpot prikazuje **dnevne spotne cene** — veleprodajne cene električne energije, ki jih trg določi dan prej. Te cene **ne vključujejo** DDV, davka na energijo, omrežnin ali marž dobaviteljev, ki se razlikujejo glede na državo in ponudnika.
+SweetSpot prikazuje **tržne cene za dan vnaprej** — veleprodajne cene električne energije, ki jih trg določi dan pred dobavo (imenovane tudi spotne cene). Te cene **ne vključujejo** DDV, davka na energijo, omrežnin ali marž dobaviteljev, ki se razlikujejo glede na državo in ponudnika.
 
-Cene so uporabne za primerjavo časovnih intervalov med seboj (ugotavljanje, kdaj je elektrika najcenejša), kar je primarni namen aplikacije. Stroški so privzeto prikazani na 1 kW obremenitve; nastavite moč aparata ali polnite električno vozilo in ocena upošteva dejansko obremenitev. Jutrišnje cene so običajno na voljo po 13:00 CET.
+Cene so kljub temu uporabne za ugotavljanje, kdaj je elektrika najcenejša — kar je glavni namen aplikacije. Stroški so privzeto prikazani na 1 kW obremenitve; nastavite moč aparata ali polnite električno vozilo in ocena upošteva dejansko obremenitev. Jutrišnje cene so običajno na voljo po 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Ali potrebujem posebno pogodbo za električno energijo?" >}}
+Da — da bi dejansko prihranili, potrebujete **pogodbo z dinamično ceno električne energije** (spotno ali urno), pri kateri cena, ki jo plačate, sledi trgu za dan vnaprej. SweetSpot vam pokaže, kdaj so te cene najnižje, ne more pa spremeniti tega, kar vam zaračuna dobavitelj: pri tarifi s fiksno ceno je cena ves dan enaka, zato prestavljanje porabe ne bo znižalo vašega računa.
 {{< /faq >}}
 
 {{< faq question="Ali mi lahko SweetSpot pomaga napolniti električni avto?" >}}
-Da. Dodajte svoje vozilo — izberite ga iz vgrajene zbirke približno 1.600 električnih in priključnih hibridnih vozil ali ročno vnesite velikost baterije in moč polnjenja. Nato vnesite trenutno in želeno napolnjenost, SweetSpot pa izračuna, kako dolgo bo trajalo polnjenje (iz velikosti baterije ter nižje vrednosti med AC-omejitvijo vašega avta in vašim domačim polnilnikom), in poišče najcenejši čas za priklop.
+Da. Dodajte svoje vozilo — izberite ga iz vgrajene zbirke tisočev električnih in priključnih hibridnih vozil ali ročno vnesite velikost baterije in moč polnjenja. Nato vnesite trenutno in ciljno napolnjenost, SweetSpot pa izračuna, kako dolgo bo trajalo polnjenje (iz velikosti baterije ter nižje vrednosti med AC-omejitvijo vašega avta in vašim domačim polnilnikom), in poišče najcenejši termin za priklop.
 {{< /faq >}}
 
 {{< faq question="Ali lahko poskrbim, da je pripravljeno do določenega časa?" >}}
-Da. Vklopite neobvezni rok **»pripravljeno do«** in izberite čas. SweetSpot nato upošteva le termine, ki se končajo do takrat — za kateri koli aparat ali za polnjenje vašega električnega vozila (na primer popolnoma napolnjeno do 7:00 zjutraj).
+Da. Vklopite neobvezni rok **»pripravljeno do«** in izberite čas. SweetSpot nato privzeto izbere najcenejši termin, ki se konča do takrat — za kateri koli aparat ali za polnjenje vašega električnega vozila (na primer napolnjeno do 7:00 zjutraj). Če želite, se lahko še vedno pomaknete na cenejši termin, ki se konča nekoliko pozneje; SweetSpot opozori, kadar se prikazani termin konča po vašem roku.
+{{< /faq >}}
+
+{{< faq question="Zakaj se priporočeni termin nenehno spreminja?" >}}
+SweetSpot med odprtim rezultatom znova preverja cene, s časom pa odpadejo intervali, ki so že v preteklosti, zato se priporočeni termin lahko premakne. Z gumboma **Prej** in **Ceneje** se pomikate med zgodnejšim (nekoliko dražjim) začetkom in najcenejšim — vsak pokaže, koliko več stane od priporočenega termina.
 {{< /faq >}}
 
 {{< faq question="Ali stroški upoštevajo, koliko energije porabi moj aparat?" >}}
@@ -43,13 +51,13 @@ SweetSpot shranjuje cene lokalno na vaši napravi. Če ste nedavno pridobili cen
 {{< /faq >}}
 
 {{< faq question="Ali aplikacija Wear OS deluje samostojno?" >}}
-Aplikacija Wear OS sinhronizira aparate in nastavitve iz telefonske aplikacije prek Wearable Data Layer API. Po sinhronizaciji ura neodvisno pridobiva cene — torej deluje tudi, ko telefon ni v bližini, dokler ima ura dostop do interneta (Wi-Fi ali LTE).
+Aplikacija Wear OS sinhronizira aparate in nastavitve iz telefonske aplikacije. Po sinhronizaciji ura neodvisno pridobiva cene — torej deluje tudi, ko telefon ni v bližini, dokler ima ura dostop do interneta (Wi-Fi ali LTE).
 
 Aplikacija za uro zahteva Wear OS 3 ali novejši (Pixel Watch, Samsung Galaxy Watch 4+ in druge združljive ure).
 {{< /faq >}}
 
 {{< faq question="Ali lahko vidim polno ceno, ki jo dejansko plačam?" >}}
-SweetSpot privzeto prikazuje veleprodajno **spotno ceno**. V podprtih državah (trenutno Nizozemska) lahko v nastavitvah vklopite **vse-vključujoče cene**, ki spotni ceni prištejejo davek na energijo, pribitek vašega dobavitelja in DDV ter tako prikažejo približno polno ceno za potrošnika. V kombinaciji z **močjo** aparata to daje realno oceno, koliko bo dejansko stalo delovanje tega aparata. Namenjeno je le prikazu — nikoli ne spremeni, kateri termin je najcenejši.
+SweetSpot privzeto prikazuje veleprodajno **tržno ceno**. V podprtih državah (trenutno Nizozemska) lahko v nastavitvah vklopite **Končno ceno** (vse-vključujočo ceno), ki tržni ceni prišteje davek na energijo, pribitek vašega dobavitelja in DDV ter tako prikaže približno polno ceno za potrošnika. V kombinaciji z **močjo** aparata to daje realno oceno, koliko bo dejansko stalo delovanje tega aparata. Namenjeno je le prikazu — nikoli ne spremeni, kateri termin je najcenejši.
 {{< /faq >}}
 
 {{< faq question="Ali lahko svoje aparate kopiram v drugo napravo?" >}}

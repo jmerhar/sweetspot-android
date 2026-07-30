@@ -21,17 +21,25 @@ Du kan konfigurere prioritetsrekkefølgen for datakildene i innstillingene.
 {{< /faq >}}
 
 {{< faq question="Er prisene nøyaktige?" >}}
-SweetSpot viser **day-ahead spotpriser** — engrosstrømpriser som fastsettes av markedet dagen før levering. Disse prisene inkluderer **ikke** mva., energiskatter, nettleie eller leverandørmarginer, som varierer etter land og leverandør.
+SweetSpot viser **day-ahead-markedspriser** — engrosprisene på strøm som fastsettes av markedet dagen før levering (også kalt spotpriser). Disse prisene inkluderer **ikke** mva., energiavgifter, nettleie eller leverandørmarginer, som varierer etter land og leverandør.
 
-Prisene er nyttige for å sammenligne tidsluker innbyrdes (finne når strøm er billigst), som er appens hovedformål. Kostnadene vises per 1 kW last som standard; angir du et apparats effekt, eller lader en elbil, gjenspeiler estimatet den reelle lasten. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.
+Prisene er likevel nyttige for å finne når strømmen er billigst — appens hovedformål. Kostnadene vises per 1 kW last som standard; angir du et apparats effekt, eller lader en elbil, gjenspeiler estimatet den reelle lasten. Morgendagens priser er vanligvis tilgjengelige etter kl. 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Trenger jeg en spesiell strømavtale?" >}}
+Ja — for å faktisk spare penger trenger du en **dynamisk strømavtale (spot- eller timesbasert)**, der prisen du betaler følger day-ahead-markedet. SweetSpot viser deg når disse prisene er lavest, men kan ikke endre hva leverandøren din tar betalt: med en fastprisavtale er prisen den samme hele dagen, så det å flytte når du bruker strøm, senker ikke regningen din.
 {{< /faq >}}
 
 {{< faq question="Kan SweetSpot hjelpe meg med å lade elbilen min?" >}}
-Ja. Legg til bilen din — velg den fra en innebygd database med rundt 1 600 elbiler og ladbare hybrider, eller oppgi batteristørrelse og ladeeffekt manuelt. Oppgi deretter nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta (ut fra batteristørrelsen og den laveste av bilens AC-grense og din egen lader) og finner den billigste perioden å koble til.
+Ja. Legg til bilen din — velg den fra en innebygd database med tusenvis av elbiler og ladbare hybrider, eller oppgi batteristørrelse og ladeeffekt manuelt. Oppgi deretter nåværende og ønsket ladenivå, så regner SweetSpot ut hvor lang tid ladingen vil ta (ut fra batteristørrelsen og den laveste av bilens AC-grense og din egen lader) og finner det billigste tidspunktet å koble til.
 {{< /faq >}}
 
 {{< faq question="Kan jeg sørge for at det er ferdig innen et bestemt tidspunkt?" >}}
-Ja. Slå på den valgfrie **«ferdig innen»**-fristen og velg et tidspunkt. SweetSpot vurderer da bare perioder som blir ferdige innen den fristen — for et hvilket som helst apparat eller for lading av elbilen din (for eksempel fulladet innen kl. 7:00 om morgenen).
+Ja. Slå på den valgfrie **«ferdig innen»**-fristen og velg et tidspunkt. SweetSpot velger da som standard det billigste tidspunktet som blir ferdig innen fristen — for et hvilket som helst apparat eller for lading av elbilen din (for eksempel fulladet innen kl. 7:00 om morgenen). Du kan fortsatt gå videre til et billigere tidspunkt som blir ferdig litt senere hvis du foretrekker det; SweetSpot varsler når det viste tidspunktet blir ferdig etter fristen din.
+{{< /faq >}}
+
+{{< faq question="Hvorfor endrer det anbefalte tidspunktet seg?" >}}
+SweetSpot sjekker prisene på nytt mens et resultat er åpent, og tidsluker som nå har passert, faller bort etter hvert som tiden går, så det anbefalte tidspunktet kan endre seg. Bruk knappene **Tidligere** og **Billigere** for å veksle mellom en tidligere (litt dyrere) start og den billigste — hver viser hvor mye mer den koster enn det anbefalte tidspunktet.
 {{< /faq >}}
 
 {{< faq question="Gjenspeiler kostnadene hvor mye strøm apparatet mitt bruker?" >}}
@@ -49,15 +57,15 @@ Klokkeappen krever Wear OS 3 eller nyere (Pixel Watch, Samsung Galaxy Watch 4+ o
 {{< /faq >}}
 
 {{< faq question="Kan jeg se den fulle prisen jeg faktisk betaler?" >}}
-Som standard viser SweetSpot **spotprisen** for engros. I land som støttes (foreløpig Nederland) kan du slå på **totalpriser** i innstillingene, som legger energiskatt, leverandørens påslag og mva. oppå spotprisen for å vise den omtrentlige fulle forbrukerprisen. Kombinert med et apparats **effekt** gir dette deg et realistisk estimat av hva det faktisk koster å bruke apparatet. Det er kun visning — det endrer aldri hvilken periode som blir billigst.
+Som standard viser SweetSpot engros**markedsprisen**. I land som støttes (foreløpig Nederland) kan du slå på **Totalpris** i innstillingene, som legger energiavgift, leverandørens påslag og mva. oppå markedsprisen for å vise den omtrentlige fulle forbrukerprisen. Kombinert med et apparats **effekt** gir dette deg et realistisk estimat av hva det faktisk koster å bruke apparatet. Det er kun visning — det endrer aldri hvilket tidspunkt som blir billigst.
 {{< /faq >}}
 
 {{< faq question="Kan jeg kopiere apparatene mine til en annen enhet?" >}}
-Ja. I innstillingene kan du dele oppsettet ditt — apparatene dine, rekkefølgen deres og elbil-ladeinnstillingene dine — som en QR-kode eller en lenke. Skann eller åpne den på en annen enhet for å importere alt. Det fungerer helt uten nett, uten konto og uten server: dataene ligger inne i lenken eller QR-koden selv, og du velger om du vil legge til eller erstatte det som allerede finnes.
+Ja. I innstillingene kan du dele oppsettet ditt — apparatene dine, rekkefølgen deres og elbil-ladeinnstillingene dine — som en QR-kode eller en lenke. Skann eller åpne den på en annen enhet for å importere alt. Det fungerer helt uten nett, uten konto og uten server: dataene ligger inne i lenken eller QR-koden selv, og du velger om du vil legge til, erstatte eller plukke enkeltelementer fra det som allerede finnes.
 {{< /faq >}}
 
 {{< faq question="Hvordan melder jeg fra om et problem eller foreslår en funksjon?" >}}
-Åpne **Innstillinger › Hjelp & støtte** og velg *Meld fra om et problem* eller *Send tilbakemelding*. Meldingen din sendes direkte fra appen — ingen nettleser eller GitHub-konto er nødvendig — og blir en offentlig sak vi kan følge opp. Du kan eventuelt oppgi en e-postadresse for å bli varslet om svar (den vises aldri offentlig, og hver varsling har en avmeldingslenke med ett klikk), og følge statusen til alt du har sendt inn under *Mine meldinger*.
+Åpne **Innstillinger › Hjelp & støtte** og velg *Rapporter et problem* eller *Send tilbakemelding*. Meldingen din sendes direkte fra appen — ingen nettleser eller GitHub-konto er nødvendig — og blir en offentlig sak vi kan følge opp. Du kan eventuelt oppgi en e-postadresse for å bli varslet om svar (den vises aldri offentlig, og hver varsling har en avmeldingslenke med ett klikk), og følge statusen til alt du har sendt inn under *Rapportene mine*.
 {{< /faq >}}
 
 {{< faq question="Hva koster SweetSpot?" >}}

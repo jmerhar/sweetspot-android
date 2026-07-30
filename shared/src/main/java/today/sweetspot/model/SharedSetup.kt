@@ -18,7 +18,7 @@ import kotlinx.serialization.Serializable
  * @property evHomeChargerKw Home charger output in kW.
  * @property evDefaultTargetSoc Default target state of charge (0–100).
  * @property evPosition Vehicle placement, stored as [EvPosition.key] (resolved via
- *           [EvPosition.fromKey]) to match how [today.sweetspot.data.SettingsRepository] persists it.
+ *           [EvPosition.fromKey]) to match how [today.sweetspot.data.repository.SettingsRepository] persists it.
  * @property evSeparate Whether vehicles are shown in their own section.
  * @property grouping Home-screen chip grouping, stored as [ApplianceGrouping.key] (resolved via
  *           [ApplianceGrouping.fromKey]). Defaulted so payloads from older senders decode unchanged.

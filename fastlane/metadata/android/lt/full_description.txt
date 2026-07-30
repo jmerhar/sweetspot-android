@@ -1,4 +1,4 @@
-SweetSpot randa pigiausią laiką jūsų buitinei technikai naudoti ir elektromobiliui įkrauti. Pasirinkite, kiek laiko turi veikti prietaisas – arba pasirinkite savo elektromobilį ir norimą įkrovimo lygį – ir SweetSpot peržiūri artimiausių 24 valandų dinamines elektros kainas, kad rastų pigiausią laikotarpį.
+SweetSpot randa pigiausią laiką jūsų buitinei technikai naudoti ir elektromobiliui įkrauti. Pasirinkite, kiek laiko turi veikti prietaisas – arba pasirinkite savo elektromobilį ir norimą įkrovimo lygį – ir SweetSpot peržiūri būsimas dinamines elektros kainas, kad rastų pigiausią laiką.
 
 Nesvarbu, ar tai skalbyklė, indaplovė, džiovyklė, šilumos siurblys ar elektromobilio įkroviklis – paleiskite tinkamu metu ir mokėkite mažiau už tą pačią elektros energiją.
 
@@ -8,16 +8,16 @@ KAIP TAI VEIKIA
 3. Tiksliai matysite, kada pradėti, su spalvomis pažymėta 24 valandų kainų diagrama ir pilnu išlaidų suskirstymu pagal laiko intervalus
 
 ELEKTROMOBILIO ĮKROVIMAS
-Pridėkite savo automobilį iš integruotos maždaug 1 600 elektromobilių ir prijungiamųjų hibridų duomenų bazės – arba patys įveskite baterijos talpą ir įkrovimo galią. Nurodykite dabartinį ir norimą įkrovimo lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas ir koks pigiausias laikas prijungti automobilį.
+Pridėkite savo automobilį iš integruotos tūkstančių elektromobilių ir prijungiamųjų hibridų duomenų bazės – arba patys įveskite baterijos talpą ir įkrovimo galią. Nurodykite dabartinį ir norimą įkrovimo lygį, o SweetSpot apskaičiuos, kiek truks įkrovimas ir koks pigiausias laikas prijungti automobilį.
 
 FUNKCIJOS
 - 30 Europos šalių, 43 kainų zonos – nuo Portugalijos iki Suomijos, nuo Norvegijos iki Graikijos
 - 5 duomenų šaltiniai su automatiniu perjungimu (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
 - Galutinė kaina (Nyderlandai) – vietoj vien biržos kainos galite matyti visą galutinę vartotojo kainą (biržos kaina + energijos mokestis + jūsų tiekėjo antkainis + PVM); pasirinkite savo tiekėją arba įveskite savo antkainį. Netrukus – daugiau šalių
-- Terminas „Paruošti iki“ – parenkamas tik toks laikotarpis, kuris baigiasi laiku
-- Anksčiau arba pigiau – kai pigiausias laikotarpis nepatogus, pereikite prie ankstesnio ir pamatykite, kiek tiksliai daugiau jis kainuoja
+- Terminas „Paruošti iki“ – pagal numatymą parenkamas pigiausias laikas, kuris jį atitinka
+- Anksčiau arba pigiau – kai pigiausias laikas nepatogus, pereikite prie ankstesnio ir pamatykite, kiek tiksliai daugiau jis kainuoja
 - Galios nustatymas – nurodykite prietaiso galią kilovatais (kW), kad išlaidų sąmata atspindėtų realų suvartojimą
-- Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai
+- Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis, kad juos pasiektumėte vienu palietimu
 - Rūšiuokite ir pertvarkykite savo prietaisus – nuvilkite juos į norimą tvarką arba rūšiuokite pagal dažniausiai naudojamus, neseniai naudotus, pavadinimą, trukmę ar tipą ir pasirinkite, kur bus jūsų elektromobiliai
 - Bendrinkite savo sąranką – nukopijuokite savo prietaisus ir elektromobilio įkrovimo nustatymus į kitą namų telefoną nuskaitydami QR kodą arba išsiųsdami nuorodą; veikia neprisijungus, be paskyros
 - Wear OS programėlė skirta Pixel Watch ir kitiems Wear OS 3+ įrenginiams

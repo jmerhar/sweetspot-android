@@ -44,7 +44,7 @@ other = "30 Europos šalių"
 other = "Apima 43 prekybos zonas visoje Europoje — nuo Portugalijos iki Suomijos ir nuo Norvegijos iki Graikijos."
 
 [feature_prices_title]
-other = "Kainos realiuoju laiku"
+other = "Kitos dienos kainos"
 
 [feature_prices_desc]
 other = "Elektros kainos kitai dienai iš ENTSO-E Transparency Platform, atnaujinamos kasdien."
@@ -53,13 +53,13 @@ other = "Elektros kainos kitai dienai iš ENTSO-E Transparency Platform, atnauji
 other = "Išmanusis algoritmas"
 
 [feature_algorithm_desc]
-other = "Slankiojantis paieškos algoritmas suranda pigiausią nepertraukiamą laikotarpį bet kokiai pasirinktai trukmei."
+other = "SweetSpot suranda pigiausią nepertraukiamą laiko tarpą bet kokiai pasirinktai trukmei."
 
 [feature_fallback_title]
 other = "Patikimi duomenys"
 
 [feature_fallback_desc]
-other = "Penki duomenų šaltiniai su automatiniu perjungimu užtikrina, kad kainos visada būtų prieinamos."
+other = "Penki duomenų šaltiniai su automatiniu perjungimu padeda užtikrinti, kad kainos būtų prieinamos."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -71,7 +71,7 @@ other = "Papildoma programėlė Pixel Watch ir kitiems Wear OS 3+ įrenginiams. 
 other = "Tinkinami prietaisai"
 
 [feature_appliances_desc]
-other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis greitai prieigai vienu palietimu."
+other = "Išsaugokite savo prietaisus su pasirinktais pavadinimais, piktogramomis ir trukmėmis, kad pasiektumėte juos vienu palietimu."
 
 [feature_ev_title]
 other = "Elektromobilio įkrovimas"
@@ -80,10 +80,10 @@ other = "Elektromobilio įkrovimas"
 other = "Pridėkite automobilį, tada įveskite dabartinį ir norimą įkrovos lygį. SweetSpot apskaičiuoja įkrovimo laiką ir suranda pigiausią laiką prijungti."
 
 [feature_deadline_title]
-other = "Terminas „Baigti iki“"
+other = "„Paruošti iki“ terminas"
 
 [feature_deadline_desc]
-other = "Reikia, kad būtų baigta iki tam tikro laiko? Nustatykite terminą „baigti iki“, ir SweetSpot parinks tik tuos laikotarpius, kurie suspės laiku."
+other = "Reikia, kad būtų baigta iki tam tikro laiko? Nustatykite „Paruošti iki“ terminą, ir SweetSpot pagal numatymą parinks pigiausią laiką, kuris jį atitinka."
 
 [feature_power_title]
 other = "Galios vertė"
@@ -116,7 +116,7 @@ other = "Kaip tai veikia"
 other = "Pasirinkite prietaisą arba elektromobilį"
 
 [step1_desc]
-other = "Pasirinkite išsaugotą prietaisą ar savo elektromobilį arba nustatykite norimą trukmę — ir, jei reikia, terminą „baigti iki“."
+other = "Pasirinkite išsaugotą prietaisą ar savo elektromobilį arba nustatykite norimą trukmę — ir, jei reikia, „Paruošti iki“ terminą."
 
 [step2_title]
 other = "Nuskaitykite kainas"
@@ -155,7 +155,7 @@ other = "Puslapis, kurio ieškote, neegzistuoja."
 other = "Grįžti į pradžią"
 
 [screenshot_1_alt]
-other = "Pigiausio laikotarpio rezultatas su pradžios laiku, bendra kaina ir kainų suskirstymu"
+other = "Rekomenduojamas laikas su jo pradžia, bendra kaina ir kainų suskirstymu"
 
 [screenshot_2_alt]
 other = "Pradinis ekranas su prietaisais, trukmės pasirinkimu ir paieškos mygtuku"

@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Definições</string>
     <string name="cd_back">Voltar</string>
-    <string name="main_description">O SweetSpot ajuda-o a poupar dinheiro ao encontrar o horário mais barato para utilizar os seus eletrodomésticos. Basta escolher a duração de funcionamento do aparelho e ele analisa as próximas 24 horas de preços dinâmicos de eletricidade para encontrar o melhor período. Também pode guardar os seus eletrodomésticos favoritos nas definições para acesso rápido.</string>
+    <string name="main_description">O SweetSpot ajuda-o a poupar dinheiro ao encontrar o período mais barato para utilizar os seus eletrodomésticos. Basta escolher a duração de funcionamento do aparelho e ele analisa os próximos preços dinâmicos de eletricidade para encontrar o melhor período. Também pode guardar os seus eletrodomésticos favoritos nas definições para acesso rápido.</string>
     <string name="main_find_button">Encontrar período mais barato</string>
     <string name="main_searching">A procurar…</string>
     <string name="main_add_appliances">Adicione os seus eletrodomésticos</string>
-    <string name="main_card_description">Encontre o horário mais barato para utilizar o seu eletrodoméstico</string>
+    <string name="main_card_description">Encontre o período mais barato para utilizar o seu eletrodoméstico</string>
 
     <!-- Result screen -->
-    <string name="result_cheapest_window">Hora recomendada</string>
-    <string name="result_after_deadline">Este período termina depois da tua hora \'Pronto até\'.</string>
+    <string name="result_cheapest_window">Período recomendado</string>
+    <string name="result_after_deadline">Este período termina depois da sua hora «Pronto até».</string>
     <string name="result_start">Início</string>
     <string name="result_end">Fim</string>
     <string name="result_total_cost">Custo total</string>
@@ -26,7 +26,7 @@
     <string name="cd_collapse">Recolher</string>
     <string name="cd_expand">Expandir</string>
     <string name="result_upcoming_prices">Próximos preços</string>
-    <string name="result_disclaimer">Os custos apresentados referem-se a uma carga de 1 kW. IVA, imposto sobre energia e taxa do fornecedor não estão incluídos. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
+    <string name="result_disclaimer">Os custos apresentados referem-se a uma carga de 1 kW. IVA, imposto sobre energia e margem do fornecedor não estão incluídos. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
     <string name="result_data_source">\nFonte de dados: %s</string>
     <string name="result_price_zone">\nZona de preços: %s</string>
     <string name="cd_cheapest_window">período mais barato</string>
@@ -152,10 +152,10 @@
     <string name="cd_refresh">Atualizar</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Partilhar estatísticas API</string>
-    <string name="settings_stats_description">Ajude a melhorar a fiabilidade das fontes de dados partilhando estatísticas anónimas de sucesso/falha API. Não são recolhidos dados pessoais.</string>
+    <string name="settings_stats_title">Partilhar estatísticas de fiabilidade</string>
+    <string name="settings_stats_description">Ajude a melhorar a fiabilidade das fontes de dados partilhando contagens anónimas de quando os preços carregam ou falham. Não são recolhidos dados pessoais.</string>
     <string name="stats_prompt_title">Ajudar a melhorar o SweetSpot?</string>
-    <string name="stats_prompt_message">Partilhe estatísticas de API anónimas para ajudar a melhorar a fiabilidade das fontes de dados. Apenas contagens de sucesso/falha por fonte são partilhadas — sem dados pessoais. Pode alterar isto a qualquer momento nas Definições.</string>
+    <string name="stats_prompt_message">Partilhe estatísticas anónimas para ajudar a melhorar a fiabilidade das fontes de dados. Apenas a frequência com que cada fonte carrega ou falha é partilhada — sem dados pessoais. Pode alterar isto a qualquer momento nas Definições.</string>
     <string name="stats_prompt_enable">Ativar</string>
     <string name="stats_prompt_dismiss">Não, obrigado</string>
 
@@ -178,14 +178,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">O seu período de teste terminou</string>
-    <string name="paywall_description">O SweetSpot encontra o momento mais barato para utilizar os seus eletrodomésticos usando preços de eletricidade em tempo real em 30 países europeus. Subscreva para continuar a encontrar a hora mais barata para os seus eletrodomésticos.</string>
+    <string name="paywall_description">O SweetSpot encontra o período mais barato para utilizar os seus eletrodomésticos usando preços dinâmicos de eletricidade em 30 países europeus. Subscreva para continuar a usá-lo.</string>
     <string name="paywall_unlock">Subscrever SweetSpot</string>
     <string name="paywall_unlock_price">Subscrever por %s/ano</string>
     <string name="paywall_restore">Restaurar subscrição</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Obrigado!</string>
-    <string name="thank_you_message">A sua subscrição está agora ativa. Aproveite para encontrar a hora mais barata para os seus eletrodomésticos!</string>
+    <string name="thank_you_message">A sua subscrição está agora ativa. Aproveite para encontrar o período mais barato para os seus eletrodomésticos!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Teste: %d dia restante</item>
@@ -216,7 +216,7 @@
     <string name="ev_error_invalid_soc">A carga-alvo tem de ser superior à carga atual.</string>
     <string name="ev_error_invalid_charger">Defina uma potência de carregador superior a zero.</string>
     <string name="ev_error_deadline_unreachable">O carregamento não consegue terminar até ao prazo definido. Experimente uma carga-alvo mais baixa ou uma hora mais tardia.</string>
-    <string name="result_disclaimer_power">Os custos apresentados referem-se a uma carga de %s kW. IVA, imposto sobre energia e taxa do fornecedor não estão incluídos. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
+    <string name="result_disclaimer_power">Os custos apresentados referem-se a uma carga de %s kW. IVA, imposto sobre energia e margem do fornecedor não estão incluídos. Os preços de amanhã ficam habitualmente disponíveis após as 13:00 CET.</string>
     <string name="dialog_power">Potência (kW, opcional)</string>
 
     <!-- All-in pricing -->
@@ -337,7 +337,7 @@
     <string name="my_reports_closed">Fechada</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Encontre o horário mais barato</string>
+    <string name="guide_find_title">Encontre o período mais barato</string>
     <string name="guide_find_body">Escolha a duração de funcionamento do aparelho e toque em Encontrar.</string>
     <string name="guide_appliances_title">Guarde os seus eletrodomésticos</string>
     <string name="guide_appliances_body">Adicione eletrodomésticos nas Definições para pesquisas com um só toque.</string>
@@ -350,13 +350,13 @@
     <string name="guide_wear_title">No seu relógio</string>
     <string name="guide_wear_body">Os seus eletrodomésticos sincronizam com o Wear OS, para poder consultar os preços sem o telemóvel.</string>
     <!-- Report conversation (in-app thread) -->
-    <string name="thread_you">Tu</string>
+    <string name="thread_you">Você</string>
     <string name="thread_support">Suporte da SweetSpot</string>
     <string name="thread_open_github">Abrir no GitHub</string>
-    <string name="thread_load_error">Não foi possível carregar a conversa. Verifica a tua ligação e tenta novamente.</string>
-    <string name="reply_hint">A tua resposta</string>
+    <string name="thread_load_error">Não foi possível carregar a conversa. Verifique a sua ligação e tente novamente.</string>
+    <string name="reply_hint">A sua resposta</string>
     <string name="reply_send">Enviar</string>
-    <string name="reply_public_note">A tua resposta é publicada publicamente no GitHub.</string>
-    <string name="reply_error">Não foi possível enviar a tua resposta. Tenta novamente.</string>
-    <string name="reply_queued">Guardado — enviaremos a tua resposta quando voltares a estar online.</string>
+    <string name="reply_public_note">A sua resposta é publicada publicamente no GitHub.</string>
+    <string name="reply_error">Não foi possível enviar a sua resposta. Tente novamente.</string>
+    <string name="reply_queued">Guardado — enviaremos a sua resposta quando voltar a estar online.</string>
 </resources>

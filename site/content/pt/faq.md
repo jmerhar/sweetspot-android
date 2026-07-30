@@ -21,9 +21,13 @@ Pode configurar a ordem de prioridade das fontes de dados nas definições.
 {{< /faq >}}
 
 {{< faq question="Os preços são exatos?" >}}
-O SweetSpot apresenta os **preços spot do dia seguinte** — os preços grossistas da eletricidade determinados pelo mercado no dia anterior à entrega. Estes preços **não** incluem IVA, impostos sobre energia, taxas de rede ou margens do fornecedor, que variam consoante o país e o fornecedor.
+O SweetSpot apresenta os **preços de mercado do dia seguinte** — os preços grossistas da eletricidade definidos pelo mercado no dia anterior à entrega (também designados preços spot). Estes preços **não** incluem IVA, impostos sobre energia, taxas de rede ou a margem do fornecedor, que variam consoante o país e o fornecedor.
 
-Os preços são úteis para comparar intervalos de tempo entre si (encontrar quando a eletricidade é mais barata), que é o objetivo principal da aplicação. Os custos são apresentados por 1 kW de carga por predefinição; defina a potência de um eletrodoméstico, ou carregue um VE, e a estimativa reflete a carga real. Os preços de amanhã ficam normalmente disponíveis após as 13:00 CET.
+Ainda assim, os preços são úteis para encontrar quando a eletricidade é mais barata — o objetivo principal da aplicação. Os custos são apresentados por 1 kW de carga por predefinição; defina a potência de um eletrodoméstico, ou carregue um VE, e a estimativa reflete a carga real. Os preços de amanhã ficam normalmente disponíveis após as 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Preciso de um contrato de eletricidade especial?" >}}
+Sim — para poupar dinheiro é necessário um **contrato de eletricidade dinâmico** (indexado ao mercado ou horário), em que o preço que paga acompanha o mercado do dia seguinte. O SweetSpot mostra-lhe quando esses preços são mais baixos, mas não pode alterar o que o seu fornecedor cobra: numa tarifa de preço fixo, o preço é o mesmo durante todo o dia, pelo que mudar a hora a que consome energia não reduz a sua fatura.
 {{< /faq >}}
 
 {{< faq question="O SweetSpot pode ajudar-me a carregar o meu carro elétrico?" >}}
@@ -31,7 +35,11 @@ Sim. Adicione o seu veículo — escolha-o numa base de dados integrada com cerc
 {{< /faq >}}
 
 {{< faq question="Posso garantir que está pronto a uma determinada hora?" >}}
-Sim. Ative o prazo opcional **«pronto até»** e escolha uma hora. O SweetSpot considera então apenas os períodos que terminam até essa hora — para qualquer eletrodoméstico ou para carregar o seu VE (por exemplo, totalmente carregado às 7:00 da manhã).
+Sim. Ative o prazo opcional **«pronto até»** e escolha uma hora. O SweetSpot assume então, por predefinição, o período mais barato que termina até essa hora — para qualquer eletrodoméstico ou para carregar o seu VE (por exemplo, carregado às 7:00 da manhã). Se preferir, pode mesmo assim avançar para um período mais barato que termine um pouco mais tarde; o SweetSpot assinala quando o período apresentado termina após o seu prazo.
+{{< /faq >}}
+
+{{< faq question="Porque é que o período recomendado muda?" >}}
+O SweetSpot volta a verificar os preços enquanto um resultado está aberto e os intervalos que já passaram vão desaparecendo com o tempo, pelo que o período recomendado pode mudar. Use os botões **Mais cedo** e **Mais barato** para alternar entre um início mais próximo (ligeiramente mais caro) e o mais barato — cada um mostra quanto custa a mais do que o período recomendado.
 {{< /faq >}}
 
 {{< faq question="Os custos refletem a quantidade de energia que o meu eletrodoméstico consome?" >}}
@@ -43,21 +51,21 @@ O SweetSpot guarda os preços localmente no seu dispositivo. Se obteve preços r
 {{< /faq >}}
 
 {{< faq question="A aplicação Wear OS funciona de forma autónoma?" >}}
-A aplicação Wear OS sincroniza eletrodomésticos e definições da aplicação do telemóvel através da Wearable Data Layer API. Após a sincronização, a aplicação do relógio obtém preços de forma independente — funciona mesmo quando o telemóvel não está por perto, desde que o relógio tenha acesso à internet (Wi-Fi ou LTE).
+A aplicação Wear OS sincroniza eletrodomésticos e definições a partir da aplicação do telemóvel. Após a sincronização, a aplicação do relógio obtém preços de forma independente — funciona mesmo quando o telemóvel não está por perto, desde que o relógio tenha acesso à internet (Wi-Fi ou LTE).
 
 A aplicação do relógio requer Wear OS 3 ou posterior (Pixel Watch, Samsung Galaxy Watch 4+ e outros relógios compatíveis).
 {{< /faq >}}
 
 {{< faq question="Posso ver o preço total que realmente pago?" >}}
-Por predefinição, o SweetSpot apresenta o **preço spot** grossista. Nos países suportados (atualmente os Países Baixos), pode ativar os **preços tudo incluído** nas definições, que adicionam o imposto sobre energia, a sobretaxa do seu fornecedor e o IVA ao preço spot para mostrar o preço total aproximado para o consumidor. Combinado com a **potência** de um eletrodoméstico, isto dá-lhe uma estimativa realista do que custará realmente utilizar esse eletrodoméstico. É apenas para visualização — nunca altera qual o período que resulta mais barato.
+Por predefinição, o SweetSpot apresenta o **preço de mercado** grossista. Nos países suportados (atualmente os Países Baixos), pode ativar o **Preço total** (o preço tudo incluído) nas definições, que adiciona o imposto sobre energia, a margem do seu fornecedor e o IVA ao preço de mercado para mostrar o preço total aproximado para o consumidor. Combinado com a **potência** de um eletrodoméstico, isto dá-lhe uma estimativa realista do que custará realmente utilizar esse eletrodoméstico. É apenas para visualização — nunca altera qual o período que resulta mais barato.
 {{< /faq >}}
 
 {{< faq question="Posso copiar os meus eletrodomésticos para outro dispositivo?" >}}
-Sim. Nas definições, pode partilhar a sua configuração — os seus eletrodomésticos, a sua ordem e as suas definições de carregamento de VE — como um código QR ou uma ligação. Leia-o ou abra-o noutro dispositivo para importar tudo. Funciona totalmente sem ligação à internet, sem conta e sem servidor: os dados viajam dentro da própria ligação ou código QR, e você escolhe se pretende adicionar ao que já existe ou substituí-lo.
+Sim. Nas definições, pode partilhar a sua configuração — os seus eletrodomésticos, a sua ordem e as suas definições de carregamento de VE — como um código QR ou uma ligação. Leia-o ou abra-o noutro dispositivo para importar tudo. Funciona totalmente sem ligação à internet, sem conta e sem servidor: os dados viajam dentro da própria ligação ou código QR, e pode escolher se quer adicionar aos existentes, substituí-los ou selecionar itens individuais.
 {{< /faq >}}
 
 {{< faq question="Como comunico um problema ou sugiro uma funcionalidade?" >}}
-Abra **Definições › Ajuda e suporte** e escolha *Comunicar um problema* ou *Enviar comentários*. A sua mensagem é enviada diretamente a partir da aplicação — sem necessidade de navegador ou de conta GitHub — e torna-se um pedido público que podemos acompanhar. Pode, opcionalmente, deixar um endereço de e-mail para ser notificado de respostas (nunca é mostrado publicamente e todas as notificações têm uma ligação de cancelamento de subscrição com um clique) e acompanhar o estado de tudo o que enviou em *Os meus relatórios*.
+Abra **Definições › Ajuda e suporte** e escolha *Comunicar um problema* ou *Enviar feedback*. A sua mensagem é enviada diretamente a partir da aplicação — sem necessidade de navegador ou de conta GitHub — e torna-se um problema público que podemos acompanhar. Pode, opcionalmente, deixar um endereço de e-mail para ser notificado de respostas (nunca é mostrado publicamente e todas as notificações têm uma ligação de cancelamento de subscrição com um clique) e acompanhar o estado de tudo o que enviou em *As minhas comunicações*.
 {{< /faq >}}
 
 {{< faq question="Quanto custa o SweetSpot?" >}}

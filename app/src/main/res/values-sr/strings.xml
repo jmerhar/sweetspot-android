@@ -5,15 +5,15 @@
     <!-- Main screen -->
     <string name="cd_settings">Подешавања</string>
     <string name="cd_back">Назад</string>
-    <string name="main_description">SweetSpot вам помаже да уштедите новац тако што проналази најјефтиније време за покретање ваших апарата. Изаберите колико дуго ваш апарат треба да ради, а апликација ће прегледати динамичне цене електричне енергије за наредних 24 сата и пронаћи најбољи временски период. Омиљене апарате можете сачувати у подешавањима за брз приступ.</string>
-    <string name="main_find_button">Пронађи најјефтинији период</string>
+    <string name="main_description">SweetSpot вам помаже да уштедите новац тако што проналази најјефтиније време за покретање ваших апарата. Изаберите колико дуго ваш апарат треба да ради, а апликација ће прегледати предстојеће динамичке цене електричне енергије и пронаћи најбоље време. Омиљене апарате можете сачувати у подешавањима за брз приступ.</string>
+    <string name="main_find_button">Пронађи најјефтиније време</string>
     <string name="main_searching">Претрага…</string>
     <string name="main_add_appliances">Додајте своје апарате</string>
     <string name="main_card_description">Пронађите најјефтиније време за покретање апарата</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Препоручено време</string>
-    <string name="result_after_deadline">Овај период се завршава након твог времена „Спремно до“.</string>
+    <string name="result_after_deadline">Завршава се након вашег рока „Спремно до“.</string>
     <string name="result_start">Почетак</string>
     <string name="result_end">Крај</string>
     <string name="result_total_cost">Укупни трошкови</string>
@@ -29,7 +29,7 @@
     <string name="result_disclaimer">Трошкови су приказани за оптерећење од 1 kW. Цене не укључују ПДВ, порез на енергију и накнаду добављача. Сутрашње цене су обично доступне након 13:00 CET.</string>
     <string name="result_data_source">\nИзвор података: %s</string>
     <string name="result_price_zone">\nЦеновна зона: %s</string>
-    <string name="cd_cheapest_window">најјефтинији период</string>
+    <string name="cd_cheapest_window">најјефтиније време</string>
 
     <!-- Duration picker -->
     <string name="picker_duration">Трајање</string>
@@ -83,7 +83,7 @@
     <string name="import_mode_replace">Замени моје</string>
     <string name="import_mode_replace_desc">Користи дељене апарате, редослед и подешавања електричног возила</string>
     <string name="import_mode_pick">Изабери које</string>
-    <string name="import_mode_pick_desc">Изабери апарате које желиш да додаш</string>
+    <string name="import_mode_pick_desc">Изабери апарате за додавање</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d апарат</item>
         <item quantity="few">%d апарата</item>
@@ -155,10 +155,10 @@
     <string name="cd_refresh">Освежи</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Дели API статистике</string>
-    <string name="settings_stats_description">Помозите побољшању поузданости извора података дељењем анонимних статистика успеха/неуспеха API-ја. Не прикупљају се лични подаци.</string>
+    <string name="settings_stats_title">Дели статистику поузданости</string>
+    <string name="settings_stats_description">Помозите побољшању поузданости извора података дељењем анонимних бројева успешних и неуспешних учитавања цена. Не прикупљају се лични подаци.</string>
     <string name="stats_prompt_title">Помозите да побољшамо SweetSpot?</string>
-    <string name="stats_prompt_message">Поделите анонимне API статистике да бисте помогли побољшању поузданости извора података. Деле се само бројеви успешних/неуспешних захтева по извору — без личних података. Ово можете да промените у било ком тренутку у Подешавањима.</string>
+    <string name="stats_prompt_message">Поделите анонимне статистике да бисте помогли побољшању поузданости извора података. Дели се само колико често сваки извор података успе или не успе — без личних података. Ово можете да промените у било ком тренутку у Подешавањима.</string>
     <string name="stats_prompt_enable">Укључи</string>
     <string name="stats_prompt_dismiss">Не, хвала</string>
 
@@ -181,14 +181,14 @@
 
     <!-- Paywall -->
     <string name="paywall_title">Ваш пробни период је завршен</string>
-    <string name="paywall_description">SweetSpot проналази најјефтиније време за покретање ваших уређаја користећи цене електричне енергије у реалном времену у 30 европских земаља. Претплатите се да бисте наставили да проналазите најјефтиније време за ваше уређаје.</string>
+    <string name="paywall_description">SweetSpot проналази најјефтиније време за покретање ваших апарата користећи динамичке цене електричне енергије у 30 европских земаља. Претплатите се да бисте наставили да га користите.</string>
     <string name="paywall_unlock">Претплати се на SweetSpot</string>
     <string name="paywall_unlock_price">Претплата за %s/год.</string>
     <string name="paywall_restore">Врати претплату</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Хвала!</string>
-    <string name="thank_you_message">Ваша претплата је сада активна. Уживајте у проналажењу најјефтинијег времена за ваше уређаје!</string>
+    <string name="thank_you_message">Ваша претплата је сада активна. Уживајте у проналажењу најјефтинијег времена за ваше апарате!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Пробни период: још %d дан</item>

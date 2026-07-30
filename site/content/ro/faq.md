@@ -21,17 +21,25 @@ Poți configura ordinea de prioritate a surselor de date din setări.
 {{< /faq >}}
 
 {{< faq question="Sunt prețurile exacte?" >}}
-SweetSpot afișează **prețuri spot pentru ziua următoare** — prețuri angro ale electricității stabilite de piață cu o zi înainte de livrare. Aceste prețuri **nu** includ TVA, taxe pe energie, tarife de rețea sau marja furnizorului, care variază în funcție de țară și furnizor.
+SweetSpot afișează **prețuri de piață pentru ziua următoare** — prețurile angro ale electricității stabilite de piață cu o zi înainte de livrare (numite și prețuri spot). Aceste prețuri **nu** includ TVA, taxe pe energie, tarife de rețea sau adaosul furnizorului, care variază în funcție de țară și furnizor.
 
-Prețurile sunt utile pentru compararea intervalelor orare între ele (pentru a afla când electricitatea este cea mai ieftină), ceea ce este scopul principal al aplicației. Costurile sunt afișate în mod implicit pentru o sarcină de 1 kW; setează puterea unui electrocasnic sau încarcă o mașină electrică, iar estimarea va reflecta sarcina reală. Prețurile pentru ziua de mâine sunt de obicei disponibile după ora 13:00 CET.
+Prețurile sunt totuși utile pentru a afla când electricitatea este cea mai ieftină — scopul principal al aplicației. Costurile sunt afișate în mod implicit pentru o sarcină de 1 kW; setează puterea unui electrocasnic sau încarcă o mașină electrică, iar estimarea va reflecta sarcina reală. Prețurile pentru ziua de mâine sunt de obicei disponibile după ora 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="Am nevoie de un contract special de electricitate?" >}}
+Da — ca să economisești efectiv, ai nevoie de un **contract de electricitate dinamic (spot sau orar)**, în care prețul plătit urmează piața pentru ziua următoare. SweetSpot îți arată când sunt cele mai mici acele prețuri, dar nu poate schimba ceea ce îți facturează furnizorul: cu un tarif fix, prețul este același toată ziua, așa că mutarea momentului în care consumi energie nu îți va reduce factura.
 {{< /faq >}}
 
 {{< faq question="Mă poate ajuta SweetSpot să-mi încarc mașina electrică?" >}}
-Da. Adaugă-ți mașina — alege-o dintr-o bază de date integrată cu aproximativ 1.600 de mașini electrice și hibride plug-in, sau introdu manual capacitatea bateriei și puterea de încărcare. Apoi introdu nivelul actual și cel dorit al bateriei, iar SweetSpot calculează cât va dura încărcarea (pe baza capacității bateriei și a valorii mai mici dintre limita AC a mașinii și cea a încărcătorului tău de domiciliu) și găsește cel mai ieftin interval pentru a o conecta.
+Da. Adaugă-ți mașina — alege-o dintr-o bază de date integrată cu mii de mașini electrice și hibride plug-in, sau introdu manual capacitatea bateriei și puterea de încărcare. Apoi introdu nivelul actual și cel dorit al bateriei, iar SweetSpot calculează cât va dura încărcarea (pe baza capacității bateriei și a valorii mai mici dintre limita AC a mașinii și cea a încărcătorului tău de domiciliu) și găsește cel mai ieftin interval în care să o conectezi.
 {{< /faq >}}
 
 {{< faq question="Mă pot asigura că este gata până la o anumită oră?" >}}
-Da. Activează termenul opțional **„gata până la”** și alege o oră. SweetSpot ia atunci în considerare doar intervalele care se termină până atunci — pentru orice electrocasnic sau pentru încărcarea mașinii tale electrice (de exemplu, complet încărcată până la ora 7:00 dimineața).
+Da. Activează termenul opțional **„gata până la”** și alege o oră. SweetSpot alege atunci în mod implicit cel mai ieftin interval care se termină până la acea oră — pentru orice electrocasnic sau pentru încărcarea mașinii tale electrice (de exemplu, încărcată complet până la ora 7:00 dimineața). Dacă preferi, poți trece la un interval mai ieftin care se termină ceva mai târziu; SweetSpot semnalează când intervalul afișat se termină după termenul tău.
+{{< /faq >}}
+
+{{< faq question="De ce se schimbă mereu intervalul recomandat?" >}}
+SweetSpot verifică din nou prețurile cât timp un rezultat este deschis, iar intervalele care au trecut deja dispar pe măsură ce trece timpul, așa că intervalul recomandat se poate modifica. Folosește butoanele **Mai devreme** și **Mai ieftin** pentru a alterna între un start mai apropiat (puțin mai scump) și cel mai ieftin — fiecare arată cu cât costă mai mult decât intervalul recomandat.
 {{< /faq >}}
 
 {{< faq question="Costurile reflectă cât de multă energie consumă electrocasnicul meu?" >}}
@@ -43,17 +51,17 @@ SweetSpot stochează prețurile local pe dispozitivul tău. Dacă ai obținut pr
 {{< /faq >}}
 
 {{< faq question="Aplicația Wear OS funcționează independent?" >}}
-Aplicația Wear OS sincronizează electrocasnicele și setările din aplicația de pe telefon prin Wearable Data Layer API. Odată sincronizat, ceasul obține prețurile independent — funcționează chiar și când telefonul nu este în apropiere, atâta timp cât ceasul are acces la internet (Wi-Fi sau LTE).
+Aplicația Wear OS sincronizează electrocasnicele și setările din aplicația de pe telefon. Odată sincronizat, ceasul obține prețurile independent — funcționează chiar și când telefonul nu este în apropiere, atâta timp cât ceasul are acces la internet (Wi-Fi sau LTE).
 
 Aplicația de pe ceas necesită Wear OS 3 sau mai recent (Pixel Watch, Samsung Galaxy Watch 4+ și alte ceasuri compatibile).
 {{< /faq >}}
 
 {{< faq question="Pot vedea prețul complet pe care îl plătesc de fapt?" >}}
-În mod implicit, SweetSpot afișează **prețul spot** angro. În țările disponibile (momentan Țările de Jos) poți activa din setări **prețurile all-in**, care adaugă taxa pe energie, suprataxa furnizorului tău și TVA peste prețul spot, pentru a afișa prețul aproximativ complet pentru consumator. Combinat cu **puterea** unui electrocasnic, acest lucru îți oferă o estimare realistă a costului real de utilizare a acelui electrocasnic. Este doar informativ — nu schimbă niciodată care interval de timp iese cel mai ieftin.
+În mod implicit, SweetSpot afișează **prețul de piață** angro. În țările disponibile (momentan Țările de Jos) poți activa din setări **Prețul total** (prețul all-in), care adaugă taxa pe energie, adaosul furnizorului tău și TVA peste prețul de piață, pentru a afișa prețul aproximativ complet pentru consumator. Combinat cu **puterea** unui electrocasnic, acest lucru îți oferă o estimare realistă a costului real de utilizare a acelui electrocasnic. Este doar informativ — nu schimbă niciodată care interval iese cel mai ieftin.
 {{< /faq >}}
 
 {{< faq question="Pot copia electrocasnicele pe alt dispozitiv?" >}}
-Da. Din setări poți partaja configurația ta — electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice — sub formă de cod QR sau link. Scanează-l sau deschide-l pe alt dispozitiv pentru a importa totul. Funcționează complet offline, fără cont și fără server: datele călătoresc în interiorul linkului sau al codului QR în sine, iar tu alegi dacă adaugi la ceea ce există deja sau înlocuiești.
+Da. Din setări poți partaja configurația ta — electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice — sub formă de cod QR sau link. Scanează-l sau deschide-l pe alt dispozitiv pentru a importa totul. Funcționează complet offline, fără cont și fără server: datele călătoresc în interiorul linkului sau al codului QR în sine, iar tu alegi dacă adaugi la ceea ce există deja, înlocuiești sau selectezi elemente individuale.
 {{< /faq >}}
 
 {{< faq question="Cum raportez o problemă sau sugerez o funcție?" >}}

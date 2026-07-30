@@ -23,7 +23,7 @@ other = "Confidențialitate"
 other = "Schimbă limba"
 
 [hero_title]
-other = "Găsește cel mai ieftin moment pentru a porni electrocasnicele și a-ți încărca mașina electrică"
+other = "Găsește cel mai ieftin interval pentru a porni electrocasnicele și a-ți încărca mașina electrică"
 
 [hero_subtitle]
 other = "SweetSpot analizează prețurile dinamice ale electricității din 30 de țări europene pentru a găsi cel mai ieftin interval în care să pornești electrocasnicele sau să-ți încarci mașina electrică — gata până la un termen, dacă stabilești unul. Cu cod deschis și fără colectare de date."
@@ -44,7 +44,7 @@ other = "30 de țări europene"
 other = "Acoperă 43 de zone de licitație din Europa, din Portugalia până în Finlanda și din Norvegia până în Grecia."
 
 [feature_prices_title]
-other = "Prețuri actualizate"
+other = "Prețuri pentru ziua următoare"
 
 [feature_prices_desc]
 other = "Prețuri de electricitate pentru ziua următoare de pe platforma ENTSO-E Transparency Platform, actualizate zilnic."
@@ -53,13 +53,13 @@ other = "Prețuri de electricitate pentru ziua următoare de pe platforma ENTSO-
 other = "Algoritm inteligent"
 
 [feature_algorithm_desc]
-other = "Un algoritm care parcurge glisant intervalul de timp găsește cea mai ieftină perioadă continuă pentru orice durată alegi."
+other = "SweetSpot găsește cel mai ieftin interval continuu de timp pentru orice durată alegi."
 
 [feature_fallback_title]
 other = "Date fiabile"
 
 [feature_fallback_desc]
-other = "Cinci surse de date cu comutare automată asigură disponibilitatea permanentă a prețurilor."
+other = "Cinci surse de date cu comutare automată ajută la menținerea disponibilității prețurilor."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -77,13 +77,13 @@ other = "Salvează electrocasnicele cu nume, pictograme și durate personalizate
 other = "Încărcare mașină electrică"
 
 [feature_ev_desc]
-other = "Adaugă-ți mașina, apoi introdu nivelul actual și cel dorit al bateriei. SweetSpot calculează timpul de încărcare și cel mai ieftin moment pentru a o conecta."
+other = "Adaugă-ți mașina, apoi introdu nivelul actual și cel dorit al bateriei. SweetSpot calculează timpul de încărcare și cel mai ieftin interval în care să o conectezi."
 
 [feature_deadline_title]
 other = "Termen „Gata până la”"
 
 [feature_deadline_desc]
-other = "Ai nevoie să fie gata la o anumită oră? Adaugă un termen „gata până la” și SweetSpot alege doar intervalele care se termină la timp."
+other = "Ai nevoie să fie gata la o anumită oră? Adaugă un termen „gata până la” și SweetSpot alege cel mai ieftin interval care respectă termenul."
 
 [feature_power_title]
 other = "Putere nominală"
@@ -125,7 +125,7 @@ other = "Analizează prețurile"
 other = "SweetSpot obține cele mai recente prețuri de electricitate pentru regiunea ta."
 
 [step3_title]
-other = "Află cel mai bun moment"
+other = "Află cel mai bun interval"
 
 [step3_desc]
 other = "Vezi exact când să pornești, cu o defalcare completă a costurilor pentru fiecare interval orar."
@@ -134,10 +134,10 @@ other = "Vezi exact când să pornești, cu o defalcare completă a costurilor p
 other = "Începe să economisești la electricitate"
 
 [cta_desc]
-other = "Descarcă SweetSpot de pe Google Play și găsește cel mai ieftin moment pentru a porni electrocasnicele și a-ți încărca mașina electrică."
+other = "Descarcă SweetSpot de pe Google Play și găsește cel mai ieftin interval pentru a porni electrocasnicele și a-ți încărca mașina electrică."
 
 [footer_tagline]
-other = "Găsește cel mai ieftin moment pentru a porni electrocasnicele și a-ți încărca mașina electrică."
+other = "Găsește cel mai ieftin interval pentru a porni electrocasnicele și a-ți încărca mașina electrică."
 
 [footer_app]
 other = "Aplicație"
@@ -155,7 +155,7 @@ other = "Pagina pe care o cauți nu există."
 other = "Înapoi la pagina principală"
 
 [screenshot_1_alt]
-other = "Rezultatul celei mai ieftine perioade cu ora de start, costul total și detalii costuri"
+other = "Intervalul recomandat cu ora de start, costul total și detalii costuri"
 
 [screenshot_2_alt]
 other = "Ecran principal cu aparate electrocasnice, selector de durată și butonul Caută"

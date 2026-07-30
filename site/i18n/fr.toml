@@ -23,7 +23,7 @@ other = "Confidentialité"
 other = "Changer de langue"
 
 [hero_title]
-other = "Trouvez le moment le moins cher pour faire fonctionner vos appareils et recharger votre VE"
+other = "Trouvez le créneau le moins cher pour faire fonctionner vos appareils et recharger votre VE"
 
 [hero_subtitle]
 other = "SweetSpot analyse les prix dynamiques de l'électricité dans 30 pays européens pour trouver le créneau le moins cher où faire fonctionner vos appareils ou recharger votre VE — terminé avant une échéance si vous en définissez une. Open source et respectueux de la vie privée."
@@ -44,7 +44,7 @@ other = "30 pays européens"
 other = "Couvre 43 zones de prix en Europe, du Portugal à la Finlande et de la Norvège à la Grèce."
 
 [feature_prices_title]
-other = "Prix en temps réel"
+other = "Prix day-ahead"
 
 [feature_prices_desc]
 other = "Prix de l'électricité day-ahead de la plateforme de transparence ENTSO-E, mis à jour quotidiennement."
@@ -53,13 +53,13 @@ other = "Prix de l'électricité day-ahead de la plateforme de transparence ENTS
 other = "Algorithme intelligent"
 
 [feature_algorithm_desc]
-other = "Un algorithme intelligent trouve la période contiguë la moins chère pour toute durée choisie."
+other = "SweetSpot trouve le créneau continu le moins cher pour la durée de votre choix."
 
 [feature_fallback_title]
 other = "Données fiables"
 
 [feature_fallback_desc]
-other = "Cinq sources de données avec basculement automatique garantissent que les prix sont toujours disponibles."
+other = "Cinq sources de données avec basculement automatique aident à maintenir la disponibilité des prix."
 
 [feature_wear_title]
 other = "Wear OS"
@@ -77,13 +77,13 @@ other = "Enregistrez vos appareils avec des noms, icônes et durées personnalis
 other = "Recharge de VE"
 
 [feature_ev_desc]
-other = "Ajoutez votre voiture, puis indiquez sa charge actuelle et cible. SweetSpot calcule la durée de recharge et le moment le moins cher pour la brancher."
+other = "Ajoutez votre voiture, puis indiquez sa charge actuelle et cible. SweetSpot calcule la durée de recharge et le créneau le moins cher pour la brancher."
 
 [feature_deadline_title]
 other = "Heure « Prêt à »"
 
 [feature_deadline_desc]
-other = "Vous en avez besoin avant une heure précise ? Ajoutez une échéance « Prêt à » et SweetSpot ne retient que les créneaux qui se terminent à temps."
+other = "Vous en avez besoin avant une heure précise ? Ajoutez une échéance « Prêt à » et SweetSpot choisit par défaut le créneau le moins cher qui la respecte."
 
 [feature_power_title]
 other = "Puissance nominale"
@@ -134,10 +134,10 @@ other = "Voyez exactement quand démarrer, avec un détail complet des coûts pa
 other = "Commencez à économiser sur l'électricité"
 
 [cta_desc]
-other = "Téléchargez SweetSpot sur Google Play et trouvez le moment le moins cher pour faire fonctionner vos appareils et recharger votre VE."
+other = "Téléchargez SweetSpot sur Google Play et trouvez le créneau le moins cher pour faire fonctionner vos appareils et recharger votre VE."
 
 [footer_tagline]
-other = "Trouvez le moment le moins cher pour faire fonctionner vos appareils et recharger votre VE."
+other = "Trouvez le créneau le moins cher pour faire fonctionner vos appareils et recharger votre VE."
 
 [footer_app]
 other = "Application"
@@ -155,7 +155,7 @@ other = "La page que vous recherchez n'existe pas."
 other = "Retour à l'accueil"
 
 [screenshot_1_alt]
-other = "Résultat de la période la moins chère avec heure de début, coût total et détail des coûts"
+other = "Créneau recommandé avec heure de début, coût total et détail des coûts"
 
 [screenshot_2_alt]
 other = "Écran d'accueil avec appareils, sélecteur de durée et bouton Rechercher"

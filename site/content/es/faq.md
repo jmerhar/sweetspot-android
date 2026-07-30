@@ -21,17 +21,25 @@ Puedes configurar el orden de prioridad de las fuentes de datos en los ajustes.
 {{< /faq >}}
 
 {{< faq question="¿Son exactos los precios?" >}}
-SweetSpot muestra los **precios spot del día anterior** — los precios mayoristas de electricidad determinados por el mercado el día antes de la entrega. Estos precios **no incluyen** IVA, impuestos sobre la energía, tarifas de red ni márgenes del proveedor, que varían según el país y el proveedor.
+SweetSpot muestra los **precios del mercado diario** — los precios de mercado mayoristas que fija el mercado el día antes de la entrega (también llamados precios spot). Estos precios **no incluyen** IVA, impuestos sobre la energía, tarifas de red ni márgenes del proveedor, que varían según el país y el proveedor.
 
-Los precios son útiles para comparar franjas horarias entre sí (encontrar cuándo la electricidad es más barata), que es el propósito principal de la aplicación. Los costes se muestran por 1 kW de carga de forma predeterminada; indica la potencia de un electrodoméstico, o carga un VE, y la estimación reflejará la carga real. Los precios de mañana suelen estar disponibles después de las 13:00 CET.
+Aun así, los precios son útiles para encontrar cuándo la electricidad es más barata, que es el propósito principal de la aplicación. Los costes se muestran por 1 kW de carga de forma predeterminada; indica la potencia de un electrodoméstico, o carga un VE, y la estimación reflejará la carga real. Los precios de mañana suelen estar disponibles después de las 13:00 CET.
+{{< /faq >}}
+
+{{< faq question="¿Necesito un contrato de electricidad especial?" >}}
+Sí — para ahorrar dinero de verdad necesitas un **contrato de electricidad con precio dinámico (spot u horario)**, en el que el precio que pagas sigue al mercado diario. SweetSpot te muestra cuándo esos precios son más bajos, pero no puede cambiar lo que te cobra tu proveedor: con una tarifa de precio fijo el precio es el mismo todo el día, así que cambiar cuándo consumes no reducirá tu factura.
 {{< /faq >}}
 
 {{< faq question="¿Puede SweetSpot ayudarme a cargar mi coche eléctrico?" >}}
-Sí. Añade tu vehículo — elígelo de una base de datos integrada de unos 1.600 VE e híbridos enchufables, o introduce manualmente la capacidad de la batería y la potencia de carga. Después indica tu carga actual y la deseada, y SweetSpot calcula cuánto tardará la carga (a partir de la capacidad de la batería y el menor entre el límite de CA de tu coche y el de tu cargador doméstico) y encuentra la franja más barata para enchufarlo.
+Sí. Añade tu vehículo — elígelo de una base de datos integrada de miles de VE e híbridos enchufables, o introduce manualmente la capacidad de la batería y la potencia de carga. Después indica tu carga actual y la deseada, y SweetSpot calcula cuánto tardará la carga (a partir de la capacidad de la batería y el menor entre el límite de CA de tu coche y el de tu cargador doméstico) y encuentra la franja más barata para enchufarlo.
 {{< /faq >}}
 
 {{< faq question="¿Puedo asegurarme de que esté listo a una hora determinada?" >}}
-Sí. Activa la hora límite opcional **«Listo a las»** y elige una hora. SweetSpot solo tendrá en cuenta las franjas que terminen antes de ese momento — para cualquier electrodoméstico o para cargar tu VE (por ejemplo, completamente cargado a las 7:00 de la mañana).
+Sí. Activa la hora límite opcional **«Listo a las»** y elige una hora. SweetSpot elegirá por defecto la franja más barata que termine antes de ese momento — para cualquier electrodoméstico o para cargar tu VE (por ejemplo, cargado a las 7:00 de la mañana). Si lo prefieres, aún puedes pasar a una franja más barata que termine un poco más tarde; SweetSpot avisa cuando la franja mostrada acaba después de tu hora límite.
+{{< /faq >}}
+
+{{< faq question="¿Por qué cambia la hora recomendada?" >}}
+SweetSpot vuelve a comprobar los precios mientras un resultado está abierto, y las franjas que ya han pasado desaparecen con el tiempo, por lo que la hora recomendada puede cambiar. Usa los botones **Antes** y **Más barato** para moverte entre un inicio más temprano (algo más caro) y el más barato — cada uno muestra cuánto más cuesta que la hora recomendada.
 {{< /faq >}}
 
 {{< faq question="¿Los costes reflejan cuánta energía consume mi electrodoméstico?" >}}
@@ -43,13 +51,13 @@ SweetSpot almacena los precios localmente en tu dispositivo. Si has consultado p
 {{< /faq >}}
 
 {{< faq question="¿La app de Wear OS funciona de forma independiente?" >}}
-La app de Wear OS sincroniza los electrodomésticos y ajustes desde la app del teléfono a través de la Wearable Data Layer API. Una vez sincronizado, el reloj obtiene los precios de forma independiente — por lo que funciona incluso cuando el teléfono no está cerca, siempre que el reloj tenga acceso a internet (Wi-Fi o LTE).
+La app de Wear OS sincroniza los electrodomésticos y ajustes desde la app del teléfono. Una vez sincronizado, el reloj obtiene los precios de forma independiente — por lo que funciona incluso cuando el teléfono no está cerca, siempre que el reloj tenga acceso a internet (Wi-Fi o LTE).
 
 La app del reloj requiere Wear OS 3 o posterior (Pixel Watch, Samsung Galaxy Watch 4+ y otros relojes compatibles).
 {{< /faq >}}
 
 {{< faq question="¿Puedo ver el precio total que realmente pago?" >}}
-De forma predeterminada, SweetSpot muestra el **precio spot** mayorista. En los países compatibles (actualmente los Países Bajos) puedes activar los **precios todo incluido** en los ajustes, que añaden el impuesto sobre la energía, el recargo de tu proveedor y el IVA sobre el precio spot para mostrar el precio aproximado total al consumidor. Combinado con la **potencia** de un electrodoméstico, esto te da una estimación realista de lo que costará realmente hacerlo funcionar. Es solo informativo — nunca cambia qué franja horaria resulta más barata.
+De forma predeterminada, SweetSpot muestra el **precio de mercado** mayorista. En los países compatibles (actualmente los Países Bajos) puedes activar el **Precio total** (el precio con todo incluido) en los ajustes, que añade el impuesto sobre la energía, el recargo de tu proveedor y el IVA sobre el precio de mercado para mostrar el precio aproximado total al consumidor. Combinado con la **potencia** de un electrodoméstico, esto te da una estimación realista de lo que costará realmente hacerlo funcionar. Es solo informativo — nunca cambia qué franja resulta más barata.
 {{< /faq >}}
 
 {{< faq question="¿Puedo copiar mis electrodomésticos a otro dispositivo?" >}}
@@ -65,7 +73,7 @@ SweetSpot incluye una prueba gratuita de 14 días, tras la cual una suscripción
 {{< /faq >}}
 
 {{< faq question="¿Qué idiomas están disponibles?" >}}
-SweetSpot está disponible en 25 idiomas europeos: alemán, búlgaro, checo, croata, danés, eslovaco, esloveno, español, estonio, finlandés, francés, griego, húngaro, inglés, italiano, letón, lituano, macedonio, neerlandés, noruego (bokmål), polaco, portugués, rumano, serbio, y sueco.
+SweetSpot está disponible en 25 idiomas europeos: alemán, búlgaro, checo, croata, danés, eslovaco, esloveno, español, estonio, finlandés, francés, griego, húngaro, inglés, italiano, letón, lituano, macedonio, neerlandés, noruego (bokmål), polaco, portugués, rumano, serbio y sueco.
 
 La aplicación utiliza por defecto el idioma de tu sistema. También puedes establecer el idioma manualmente en Ajustes.
 {{< /faq >}}

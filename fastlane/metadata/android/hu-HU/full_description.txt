@@ -1,25 +1,25 @@
-A SweetSpot megtalálja a legolcsóbb időpontot a készülékeid használatához és az elektromos autód töltéséhez. Add meg, mennyi ideig kell működnie egy készüléknek — vagy válaszd ki az autódat és a kívánt töltöttséget —, és a SweetSpot átvizsgálja a közelgő dinamikus villamosenergia-árakat, hogy megtalálja a legolcsóbb időpontot.
+A SweetSpot megtalálja a legolcsóbb időpontot a készülékei használatához és az elektromos autója töltéséhez. Adja meg, mennyi ideig kell működnie egy készüléknek — vagy válassza ki az autóját és a kívánt töltöttséget —, és a SweetSpot átvizsgálja a közelgő dinamikus villamosenergia-árakat, hogy megtalálja a legolcsóbb időpontot.
 
-Legyen szó mosógépről, mosogatógépről, szárítógépről, hőszivattyúról vagy autótöltőről — indítsd a megfelelő időpontban, és fizess kevesebbet ugyanazért az áramért.
+Legyen szó mosógépről, mosogatógépről, szárítógépről, hőszivattyúról vagy autótöltőről — indítsa a megfelelő időpontban, és fizessen kevesebbet ugyanazért az áramért.
 
 HOGYAN MŰKÖDIK
-1. Válassz egy készüléket vagy az elektromos autódat, vagy állíts be egyéni időtartamot — és egy opcionális „készen legyen ekkorra” határidőt
-2. A SweetSpot lekéri a legfrissebb másnapi villamosenergia-árakat a régiódhoz
-3. Pontosan láthatod, mikor érdemes indítani, egy színkódolt, 24 órás árdiagrammal és részletes költségbontással idősávonként
+1. Válasszon egy készüléket vagy az elektromos autóját, vagy állítson be egyéni időtartamot — és egy opcionális „készen legyen ekkorra” határidőt
+2. A SweetSpot lekéri a legfrissebb másnapi villamosenergia-árakat a régiójához
+3. Pontosan láthatja, mikor érdemes indítani, egy színkódolt, 24 órás árdiagrammal és részletes költségbontással idősávonként
 
 ELEKTROMOS AUTÓ TÖLTÉSE
-Add hozzá az autódat egy beépített adatbázisból, amely több ezer elektromos és plug-in hibrid járművet tartalmaz — vagy add meg magad az akkumulátor kapacitását és a töltési teljesítményt. Állítsd be a jelenlegi és a céltöltöttséget, és a SweetSpot kiszámítja, mennyi ideig tart a töltés, és mikor a legolcsóbb csatlakoztatni.
+Adja hozzá az autóját egy beépített adatbázisból, amely több ezer elektromos és plug-in hibrid járművet tartalmaz — vagy adja meg maga az akkumulátor kapacitását és a töltési teljesítményt. Állítsa be a jelenlegi és a céltöltöttséget, és a SweetSpot kiszámítja, mennyi ideig tart a töltés, és mikor a legolcsóbb csatlakoztatni.
 
 FUNKCIÓK
 - 30 európai ország, 43 ajánlattételi zóna — Portugáliától Finnországig, Norvégiától Görögországig
 - 5 adatforrás automatikus tartalékváltással (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Teljes ár (Hollandia) — a puszta piaci ár helyett tetszés szerint láthatod a teljes, mindent tartalmazó fogyasztói árat (piaci ár + energiaadó + a szolgáltatód felára + ÁFA); válaszd ki a szolgáltatódat, vagy add meg saját felárad. További országok hamarosan
+- Teljes ár (Hollandia) — a puszta piaci ár helyett tetszés szerint láthatja a teljes, mindent tartalmazó fogyasztói árat (piaci ár + energiaadó + a szolgáltatója felára + ÁFA); válassza ki a szolgáltatóját, vagy adja meg saját felárát. További országok hamarosan
 - „Készen legyen ekkorra” határidő — alapértelmezetten a legolcsóbb olyan időpontot ajánlja, amely időben befejeződik
-- Korábban vagy olcsóbban — ha a legolcsóbb időpont nem alkalmas, lépj egy korábbira, és nézd meg pontosan, mennyivel kerül többe
-- Teljesítmény megadása — add meg a készülék teljesítményét kW-ban, hogy a költségbecslés a tényleges fogyasztást tükrözze
-- Mentsd el készülékeidet egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
-- Készülékek rendezése és átrendezése — húzd őket a saját sorrendedbe, vagy rendezz gyakoriság, legutóbbi használat, név, időtartam vagy típus szerint, és válaszd ki, hol legyenek a járműveid
-- Oszd meg a beállításaidat — másold át a készülékeidet és az elektromos autó töltési beállításaidat egy másik telefonra a háztartásodban QR-kód beolvasásával vagy link küldésével; internet nélkül is működik, fiók nélkül
+- Korábban vagy olcsóbban — ha a legolcsóbb időpont nem alkalmas, lépjen egy korábbira, és nézze meg pontosan, mennyivel kerül többe
+- Teljesítmény megadása — adja meg a készülék teljesítményét kW-ban, hogy a költségbecslés a tényleges fogyasztást tükrözze
+- Mentse el készülékeit egyéni nevekkel, ikonokkal és időtartamokkal a gyors elérés érdekében
+- Készülékek rendezése és átrendezése — húzza őket a saját sorrendjébe, vagy rendezzen gyakoriság, legutóbbi használat, név, időtartam vagy típus szerint, és válassza ki, hol legyenek a járművei
+- Ossza meg a beállításait — másolja át a készülékeit és az elektromos autó töltési beállításait egy másik telefonra a háztartásában QR-kód beolvasásával vagy link küldésével; internet nélkül is működik, fiók nélkül
 - Wear OS alkalmazás Pixel Watchhoz és más Wear OS 3+ eszközökhöz
 - 25 európai nyelven elérhető
 - Nincs fiók, nincsenek hirdetések, nincs harmadik féltől származó követés — az árak helyileg tárolódnak; a Beállításokban bekapcsolható egy opcionális, névtelen megbízhatósági statisztika
@@ -30,6 +30,6 @@ TÁMOGATOTT ORSZÁGOK
 Ausztria, Belgium, Bulgária, Csehország, Dánia, Észak-Macedónia, Észtország, Finnország, Franciaország, Görögország, Hollandia, Horvátország, Írország, Lengyelország, Lettország, Litvánia, Luxemburg, Magyarország, Montenegró, Németország, Norvégia, Olaszország, Portugália, Románia, Spanyolország, Svájc, Svédország, Szerbia, Szlovákia, Szlovénia.
 
 MEGJEGYZÉS
-Alapértelmezés szerint a megjelenített árak nagykereskedelmi másnapi piaci árak, és nem tartalmazzák az ÁFÁ-t, az energiaadót vagy a szolgáltatói díjakat. Hollandiában opcionálisan bekapcsolhatod a Teljes árat, amely hozzáadja az energiaadót, a szolgáltatód felárát és az ÁFÁ-t a valósághű üzemeltetési költséghez. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
+Alapértelmezés szerint a megjelenített árak nagykereskedelmi másnapi piaci árak, és nem tartalmazzák az ÁFÁ-t, az energiaadót vagy a szolgáltatói díjakat. Hollandiában opcionálisan bekapcsolhatja a Teljes árat, amely hozzáadja az energiaadót, a szolgáltatója felárát és az ÁFÁ-t a valósághű üzemeltetési költséghez. A holnapi árak általában 13:00 CET után érhetők el. Az árkülönbségek kihasználásához dinamikus villamosenergia-szerződés szükséges.
 
 Adatvédelmi irányelvek: https://sweetspot.today/hu/privacy/

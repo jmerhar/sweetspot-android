@@ -65,4 +65,14 @@ class TimeUtilsTest {
         // 15 seconds in the future rounds to 0 minutes → "now"
         assertEquals("now", formatRelative(time(10, 0, 15), time(10, 0, 0)))
     }
+
+    @Test
+    fun `dateTimeOverrideMillis combines a UTC-midnight date with a local wall-clock time`() {
+        // The date picker reports the selection as 00:00 UTC of the chosen day.
+        val pickedMs = ZonedDateTime.of(2026, 3, 15, 0, 0, 0, 0, ZoneId.of("UTC")).toInstant().toEpochMilli()
+        val result = dateTimeOverrideMillis(pickedMs, hour = 14, minute = 30, timeZoneId = timeZone)
+        // 14:30 in Amsterdam (CET, UTC+1 on 15 March) is the intended instant.
+        val expected = ZonedDateTime.of(2026, 3, 15, 14, 30, 0, 0, timeZone).toInstant().toEpochMilli()
+        assertEquals(expected, result)
+    }
 }

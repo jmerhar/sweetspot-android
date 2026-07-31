@@ -33,6 +33,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import today.sweetspot.BuildConfig
+import today.sweetspot.util.dateTimeOverrideMillis
 
 /**
  * Hidden developer options section with reset buttons and toggles for testing.
@@ -214,12 +215,10 @@ internal fun DeveloperSection(
             onDismissRequest = { showTimePicker = false },
             confirmButton = {
                 TextButton(onClick = {
-                    // Combine the picked date (UTC midnight) with the picked time in the user's timezone
-                    val dateAtUtcMidnight = Instant.ofEpochMilli(pickedDateMs).atZone(ZoneId.of("UTC")).toLocalDate()
-                    val combined = dateAtUtcMidnight
-                        .atTime(timePickerState.hour, timePickerState.minute)
-                        .atZone(timeZoneId)
-                    onTimeOverrideChanged(combined.toInstant().toEpochMilli())
+                    // Combine the picked date (UTC midnight) with the picked time in the user's timezone.
+                    onTimeOverrideChanged(
+                        dateTimeOverrideMillis(pickedDateMs, timePickerState.hour, timePickerState.minute, timeZoneId)
+                    )
                     showTimePicker = false
                 }) { Text("Set") }
             },

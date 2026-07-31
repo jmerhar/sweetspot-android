@@ -5,11 +5,11 @@
     <!-- Main screen -->
     <string name="cd_settings">Beállítások</string>
     <string name="cd_back">Vissza</string>
-    <string name="main_description">A SweetSpot segít pénzt megtakarítani azzal, hogy megkeresi a legolcsóbb időpontot háztartási készülékeid futtatásához. Csak válaszd ki, mennyi ideig kell működnie a készülékednek, és az alkalmazás átvizsgálja a közelgő dinamikus villamosenergia-árakat, hogy megtalálja a legjobb időpontot. Kedvenc készülékeidet a beállításokban is elmentheted a gyors elérés érdekében.</string>
+    <string name="main_description">A SweetSpot segít pénzt megtakarítani azzal, hogy megkeresi a legolcsóbb időpontot háztartási készülékei futtatásához. Csak válassza ki, mennyi ideig kell működnie a készülékének, és az alkalmazás átvizsgálja a közelgő dinamikus villamosenergia-árakat, hogy megtalálja a legjobb időpontot. Kedvenc készülékeit a beállításokban is elmentheti a gyors elérés érdekében.</string>
     <string name="main_find_button">Legolcsóbb időpont keresése</string>
     <string name="main_searching">Keresés…</string>
-    <string name="main_add_appliances">Add hozzá készülékeidet</string>
-    <string name="main_card_description">Keresd meg a legolcsóbb időpontot a készüléked futtatásához</string>
+    <string name="main_add_appliances">Adja hozzá készülékeit</string>
+    <string name="main_card_description">Keresse meg a legolcsóbb időpontot a készüléke futtatásához</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Ajánlott időpont</string>
@@ -19,13 +19,13 @@
     <string name="result_total_cost">Összes költség</string>
     <string name="result_avg_price">Átl. ár</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s több, mint a legolcsóbb</string>
+    <string name="result_cost_above_cheapest">%1$s több, mint az ajánlott időpont</string>
     <string name="result_earlier">Korábban</string>
     <string name="result_cheaper">Olcsóbban</string>
-    <string name="coach_earlier_cheaper">Nem jó az időpont? Koppints a Korábban gombra a hamarabbi kezdéshez, vagy az Olcsóbban gombra a legolcsóbbhoz.</string>
-    <string name="coach_chart_press_hold">Tartsd nyomva a diagramot, hogy bármely időpont árát lásd.</string>
-    <string name="coach_all_in_toggle">Válts a teljes ár és a puszta piaci ár között.</string>
-    <string name="coach_ev_chip">Koppints a járművedre, hogy töltöttség szerint tervezd a töltést.</string>
+    <string name="coach_earlier_cheaper">Nem jó az időpont? Koppintson a Korábban gombra a hamarabbi kezdéshez, vagy az Olcsóbban gombra a legolcsóbbhoz.</string>
+    <string name="coach_chart_press_hold">Tartsa nyomva a diagramot, hogy bármely időpont árát lássa.</string>
+    <string name="coach_all_in_toggle">Váltson a teljes ár és a puszta piaci ár között.</string>
+    <string name="coach_ev_chip">Koppintson a járművére, hogy töltöttség szerint tervezze a töltést.</string>
     <string name="coach_got_it">Értem</string>
     <string name="result_cost_breakdown">Költségbontás</string>
     <string name="cd_collapse">Összecsukás</string>
@@ -49,12 +49,12 @@
     <string name="settings_language">Nyelv</string>
     <string name="settings_language_system_default">Rendszer alapértelmezett</string>
     <string name="settings_country">Ország</string>
-    <string name="settings_select_zone">Válassz zónát</string>
+    <string name="settings_select_zone">Válasszon zónát</string>
     <string name="settings_data_sources">Adatforrások</string>
     <string name="settings_data_sources_description">Az árak ebben a sorrendben kerülnek lekérésre. Ha az egyik nem sikerül, a következő kerül sorra.</string>
     <string name="settings_reset_defaults">Alapértékek visszaállítása</string>
     <string name="settings_appliances">Készülékek</string>
-    <string name="settings_appliances_description">Add hozzá háztartási készülékeidet a gyors elérés érdekében. Konkrét programokat is hozzáadhatsz, pl. Mosogatógép Eco, Mosogatógép Gyors, Mosógép Pamut.</string>
+    <string name="settings_appliances_description">Adja hozzá háztartási készülékeit a gyors elérés érdekében. Konkrét programokat is hozzáadhat, pl. Mosogatógép Eco, Mosogatógép Gyors, Mosógép Pamut.</string>
     <string name="settings_add_appliance">Készülék hozzáadása</string>
     <string name="settings_timezone">Időzóna</string>
     <string name="settings_theme">Téma</string>
@@ -68,18 +68,18 @@
     <string name="settings_region_desc">Ország, árzóna és időzóna</string>
     <string name="settings_appearance_title">Megjelenés</string>
     <string name="settings_appearance_desc">Nyelv és téma</string>
-    <string name="settings_appliances_menu_desc">Mentett készülékeid</string>
+    <string name="settings_appliances_menu_desc">Mentett készülékei</string>
     <string name="settings_ev_menu_desc">Töltő, céltöltöttség és járművek</string>
     <string name="settings_all_in_menu_desc">A teljes fogyasztói ár megjelenítése</string>
     <string name="settings_share_title">Beállításaim megosztása</string>
-    <string name="settings_share_menu_desc">Másold át készülékeidet és elektromos autó beállításaidat egy másik eszközre</string>
+    <string name="settings_share_menu_desc">Másolja át készülékeit és elektromos autó beállításait egy másik eszközre</string>
 
     <!-- Household sharing: share screen -->
-    <string name="share_setup_description">Olvasd be ezt a kódot egy másik telefon kamerájával, vagy küldd el a linket. Készülékeid, azok sorrendje és az elektromos autó beállításaid átmásolódnak az adott eszközre.</string>
+    <string name="share_setup_description">Olvassa be ezt a kódot egy másik telefon kamerájával, vagy küldje el a linket. Készülékei, azok sorrendje és az elektromos autó beállításai átmásolódnak az adott eszközre.</string>
     <string name="share_setup_button">Link megosztása</string>
-    <string name="share_setup_chooser_title">Beállításaid megosztása</string>
-    <string name="share_setup_qr_unavailable">A beállításaid túl nagyok egy QR-kódhoz. Használd helyette a megosztási linket.</string>
-    <string name="cd_qr_code">QR-kód a beállításaidhoz</string>
+    <string name="share_setup_chooser_title">Beállításai megosztása</string>
+    <string name="share_setup_qr_unavailable">A beállításai túl nagyok egy QR-kódhoz. Használja helyette a megosztási linket.</string>
+    <string name="cd_qr_code">QR-kód a beállításaihoz</string>
 
     <!-- Household sharing: import preview -->
     <string name="import_title">Beállítások importálása</string>
@@ -87,8 +87,8 @@
     <string name="import_mode_add_desc">Megtartja a készülékeimet, és hozzáadja az újakat</string>
     <string name="import_mode_replace">A sajátjaim cseréje</string>
     <string name="import_mode_replace_desc">A megosztott készülékek, sorrend és elektromos autó beállítások használata</string>
-    <string name="import_mode_pick">Válaszd ki, melyiket</string>
-    <string name="import_mode_pick_desc">Válaszd ki a hozzáadandó készülékeket</string>
+    <string name="import_mode_pick">Válassza ki, melyiket</string>
+    <string name="import_mode_pick_desc">Válassza ki a hozzáadandó készülékeket</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d készülék</item>
         <item quantity="other">%d készülék</item>
@@ -104,8 +104,8 @@
 
     <!-- Household sharing: import errors -->
     <string name="import_error_title">Nem sikerült importálni</string>
-    <string name="import_error_too_new">Ezt a beállítást a SweetSpot egy újabb verziójából osztották meg. Frissítsd az alkalmazást az importáláshoz.</string>
-    <string name="import_error_malformed">Ezt a linket nem sikerült beolvasni. Kérj egy újat.</string>
+    <string name="import_error_too_new">Ezt a beállítást a SweetSpot egy újabb verziójából osztották meg. Frissítse az alkalmazást az importáláshoz.</string>
+    <string name="import_error_malformed">Ezt a linket nem sikerült beolvasni. Kérjen egy újat.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Készülék hozzáadása</string>
@@ -132,8 +132,8 @@
     <string name="cd_selected">Kiválasztva</string>
 
     <!-- Errors -->
-    <string name="error_zero_duration">Kérjük, válassz nullánál nagyobb időtartamot.</string>
-    <string name="error_no_zone">Kérjük, válassz zónát a beállításokban.</string>
+    <string name="error_zero_duration">Kérjük, válasszon nullánál nagyobb időtartamot.</string>
+    <string name="error_no_zone">Kérjük, válasszon zónát a beállításokban.</string>
     <string name="error_no_data">Nem állnak rendelkezésre áradatok a következő 24 órára.</string>
     <string name="error_network">Az árak lekérése nem sikerült: %s</string>
     <plurals name="error_not_enough_data">
@@ -141,8 +141,8 @@
         <item quantity="other">Nincs elég áradat a(z) %1$s lefedéséhez. Csak %2$d órányi adat áll rendelkezésre.</item>
     </plurals>
     <plurals name="error_cooldown">
-        <item quantity="one">Az árak nemrég lettek lekérve. Próbáld újra %d perc múlva.</item>
-        <item quantity="other">Az árak nemrég lettek lekérve. Próbáld újra %d perc múlva.</item>
+        <item quantity="one">Az árak nemrég lettek lekérve. Próbálja újra %d perc múlva.</item>
+        <item quantity="other">Az árak nemrég lettek lekérve. Próbálja újra %d perc múlva.</item>
     </plurals>
 
     <!-- Cache management -->
@@ -155,39 +155,39 @@
 
     <!-- Stats -->
     <string name="settings_stats_title">Megbízhatósági statisztikák megosztása</string>
-    <string name="settings_stats_description">Segíts javítani az adatforrások megbízhatóságát azzal, hogy névtelenül megosztod, milyen gyakran töltődnek be sikeresen vagy hibáznak az áradatok. Személyes adatokat nem gyűjtünk.</string>
-    <string name="stats_prompt_title">Segíts javítani a SweetSpotot?</string>
-    <string name="stats_prompt_message">Ossz meg névtelen statisztikákat az adatforrások megbízhatóságának javítása érdekében. Csak az kerül megosztásra, milyen gyakran töltődnek be sikeresen vagy hibáznak az adatforrások — személyes adatok nélkül. Ezt bármikor megváltoztathatod a Beállításokban.</string>
+    <string name="settings_stats_description">Segítsen javítani az adatforrások megbízhatóságát azzal, hogy névtelenül megosztja, milyen gyakran töltődnek be sikeresen vagy hibáznak az áradatok. Személyes adatokat nem gyűjtünk.</string>
+    <string name="stats_prompt_title">Segítsen javítani a SweetSpotot?</string>
+    <string name="stats_prompt_message">Osszon meg névtelen statisztikákat az adatforrások megbízhatóságának javítása érdekében. Csak az kerül megosztásra, milyen gyakran töltődnek be sikeresen vagy hibáznak az adatforrások — személyes adatok nélkül. Ezt bármikor megváltoztathatja a Beállításokban.</string>
     <string name="stats_prompt_enable">Engedélyezés</string>
     <string name="stats_prompt_dismiss">Nem, köszönöm</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_title_1">Használd a készülékeket, amikor az áram a legolcsóbb</string>
+    <string name="onboarding_title_1">Használja a készülékeket, amikor az áram a legolcsóbb</string>
     <string name="onboarding_body_1">A SweetSpot átvizsgálja az elkövetkező villamosenergia-árakat, és megkeresi a legolcsóbb időpontot egy készülék futtatásához.</string>
-    <string name="onboarding_title_2">Készülékeid egyetlen koppintásra</string>
-    <string name="onboarding_body_2">Ments el egy készüléket, és koppints rá a legolcsóbb időpontjáért. Add hozzá az elektromos autódat, hogy a jelenlegi és a céltöltöttség alapján tervezhesd a töltést.</string>
-    <string name="onboarding_title_3">Alakítsd a magadévá</string>
-    <string name="onboarding_body_3">Az országodat automatikusan felismeri az alkalmazás. Módosítsd a zónát, adj hozzá készülékeket, vagy válaszd ki a nyelvet — mindezt a Beállításokban teheted meg.</string>
+    <string name="onboarding_title_2">Készülékei egyetlen koppintásra</string>
+    <string name="onboarding_body_2">Mentsen el egy készüléket, és koppintson rá a legolcsóbb időpontjáért. Adja hozzá az elektromos autóját, hogy a jelenlegi és a céltöltöttség alapján tervezhesse a töltést.</string>
+    <string name="onboarding_title_3">Alakítsa a magáévá</string>
+    <string name="onboarding_body_3">Az országát automatikusan felismeri az alkalmazás. Módosítsa a zónát, adjon hozzá készülékeket, vagy válassza ki a nyelvet — mindezt a Beállításokban teheti meg.</string>
     <string name="onboarding_skip">Kihagyás</string>
     <string name="onboarding_next">Tovább</string>
     <string name="onboarding_get_started">Kezdés</string>
     <string name="settings_how_it_works">Hogyan működik</string>
-    <string name="settings_how_it_works_desc">Nézd meg újra a bevezetőt</string>
+    <string name="settings_how_it_works_desc">Nézze meg újra a bevezetőt</string>
 
     <!-- Unlock -->
     <string name="settings_unlock">Előfizetés a SweetSpotra</string>
-    <string name="settings_unlock_description">Fizess elő egy évre, hogy tovább használhasd a SweetSpotot.</string>
+    <string name="settings_unlock_description">Fizessen elő egy évre, hogy tovább használhassa a SweetSpotot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">A próbaidőszak lejárt</string>
-    <string name="paywall_description">A SweetSpot dinamikus villamosenergia-árak alapján megtalálja a legolcsóbb időpontot a készülékeid futtatásához 30 európai országban. Fizess elő, hogy továbbra is használhasd.</string>
+    <string name="paywall_description">A SweetSpot dinamikus villamosenergia-árak alapján megtalálja a legolcsóbb időpontot a készülékei futtatásához 30 európai országban. Fizessen elő, hogy továbbra is használhassa.</string>
     <string name="paywall_unlock">Előfizetés a SweetSpotra</string>
     <string name="paywall_unlock_price">Előfizetés: %s/év</string>
     <string name="paywall_restore">Előfizetés visszaállítása</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Köszönjük!</string>
-    <string name="thank_you_message">Az előfizetésed most aktív. Élvezd a legolcsóbb időpont megtalálását a készülékeidhez!</string>
+    <string name="thank_you_message">Az előfizetése most aktív. Élvezze a legolcsóbb időpont megtalálását a készülékeihez!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Próbaidőszak: %d nap van hátra</item>
@@ -197,13 +197,13 @@
     <!-- EV charging -->
     <string name="settings_ev_title">Elektromos autó töltése</string>
     <string name="ev_add_vehicle">Jármű hozzáadása</string>
-    <string name="ev_search_hint">Keress gyártóra vagy modellre</string>
-    <string name="ev_custom_hint">Nem találod a listában? Add meg az adatokat alább egyéni jármű hozzáadásához.</string>
+    <string name="ev_search_hint">Keressen gyártóra vagy modellre</string>
+    <string name="ev_custom_hint">Nem találja a listában? Adja meg az adatokat alább egyéni jármű hozzáadásához.</string>
     <string name="ev_vehicle_specs">%1$s kWh akkumulátor · max. %2$s kW AC</string>
     <string name="ev_battery_label">Akkumulátor kapacitása</string>
     <string name="ev_power_label">Max. AC töltési teljesítmény</string>
     <string name="ev_home_charger">Otthoni töltő</string>
-    <string name="ev_home_charger_description">A fali töltőd vagy töltőd teljesítménye. A töltés mindig az alacsonyabb értékkel történik — ezzel vagy az autó maximumával.</string>
+    <string name="ev_home_charger_description">A fali töltőjének vagy töltőjének teljesítménye. A töltés mindig az alacsonyabb értékkel történik — ezzel vagy az autó maximumával.</string>
     <string name="ev_charger_custom">Egyéni</string>
     <string name="ev_default_target">Alapértelmezett céltöltöttség: %d%%</string>
     <string name="ev_current_soc">Jelenlegi töltöttség: %d%%</string>
@@ -215,8 +215,8 @@
     <string name="dialog_edit_vehicle">Jármű szerkesztése</string>
     <string name="ev_attribution">Járműadatok: Open EV Data</string>
     <string name="ev_error_invalid_soc">A céltöltöttségnek magasabbnak kell lennie a jelenlegi töltöttségnél.</string>
-    <string name="ev_error_invalid_charger">Adj meg nullánál nagyobb töltési teljesítményt.</string>
-    <string name="ev_error_deadline_unreachable">A töltés nem fejeződik be a megadott határidőre. Próbálj alacsonyabb céltöltöttséget vagy későbbi időpontot.</string>
+    <string name="ev_error_invalid_charger">Adjon meg nullánál nagyobb töltési teljesítményt.</string>
+    <string name="ev_error_deadline_unreachable">A töltés nem fejeződik be a megadott határidőre. Próbáljon alacsonyabb céltöltöttséget vagy későbbi időpontot.</string>
     <string name="result_disclaimer_power">A költségek %s kW terhelésre vonatkoznak. Az árak nem tartalmazzák az ÁFÁ-t, az energiaadót és a szolgáltatói felárat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
     <string name="dialog_power">Teljesítmény (kW, opcionális)</string>
 
@@ -225,11 +225,11 @@
     <string name="settings_all_in_toggle">Teljes ár megjelenítése</string>
     <string name="settings_all_in_desc">A puszta piaci ár helyett a becsült teljes fogyasztói árat mutatja (piaci ár + energiaadó + szolgáltatói felár + ÁFA).</string>
     <string name="all_in_supplier">Szolgáltató</string>
-    <string name="all_in_supplier_prompt">Válaszd ki a szolgáltatódat</string>
+    <string name="all_in_supplier_prompt">Válassza ki a szolgáltatóját</string>
     <string name="all_in_supplier_custom">Egyéni felár</string>
-    <string name="all_in_no_supplier">Nem található szolgáltató. Add meg alább az egyéni felárat.</string>
+    <string name="all_in_no_supplier">Nem található szolgáltató. Adja meg alább az egyéni felárat.</string>
     <string name="all_in_surcharge_custom">Egyéni felár (ÁFA nélkül)</string>
-    <string name="all_in_incomplete">Válassz szolgáltatót vagy adj meg egy felárat, vagy kapcsold ki a teljes árat.</string>
+    <string name="all_in_incomplete">Válasszon szolgáltatót vagy adjon meg egy felárat, vagy kapcsolja ki a teljes árat.</string>
     <string name="picker_supplier_title">Szolgáltató</string>
     <string name="picker_supplier_search">Szolgáltatók keresése</string>
     <string name="result_disclaimer_all_in">A költségek 1 kW terhelésre vonatkoznak, a becsült teljes áron (piaci ár + energiaadó + szolgáltatói felár + ÁFA). Nem tartalmazzák a hálózati díjakat és a fix havi díjakat. A holnapi árak általában 13:00 CET után válnak elérhetővé.</string>
@@ -266,11 +266,11 @@
     <string name="usage_never">Sosem használt</string>
     <string name="settings_reset_usage">Használati adatok visszaállítása</string>
     <string name="settings_reset_usage_description">Törli a Leggyakrabban használt és Legutóbb használt rendezéshez használt koppintási előzményeket.</string>
-    <string name="reset_usage_confirm_title">Visszaállítod a használati adatokat?</string>
+    <string name="reset_usage_confirm_title">Visszaállítja a használati adatokat?</string>
     <string name="reset_usage_confirm_message">Ez törli a készülékek Leggyakrabban használt és Legutóbb használt szerinti rendezéséhez használt koppintási előzményeket. A művelet nem vonható vissza.</string>
     <string name="action_reset">Visszaállítás</string>
     <string name="ev_placement_title">Elhelyezés a főképernyőn</string>
-    <string name="ev_placement_description">Hol jelenjenek meg a járműveid a készülékgombok között.</string>
+    <string name="ev_placement_description">Hol jelenjenek meg a járművei a készülékgombok között.</string>
     <string name="ev_position_interleaved">Vegyesen</string>
     <string name="ev_position_first">Elöl</string>
     <string name="ev_position_last">Hátul</string>
@@ -295,60 +295,60 @@
     <string name="help_feedback_title">Visszajelzés küldése</string>
     <string name="help_feedback_desc">Ötletek és javaslatok</string>
     <string name="help_my_reports_title">Bejelentéseim</string>
-    <string name="help_my_reports_desc">Kövesd nyomon, mit küldtél be</string>
+    <string name="help_my_reports_desc">Kövesse nyomon, mit küldött be</string>
     <string name="help_contact_title">Kapcsolatfelvétel</string>
-    <string name="help_contact_desc">Írj nekünk közvetlenül e-mailt</string>
+    <string name="help_contact_desc">Írjon nekünk közvetlenül e-mailt</string>
     <string name="help_rate_title">SweetSpot értékelése</string>
-    <string name="help_rate_desc">Értékelj minket a Google Playen</string>
+    <string name="help_rate_desc">Értékeljen minket a Google Playen</string>
     <string name="help_whats_new_title">Újdonságok</string>
     <string name="help_whats_new_desc">Legújabb változások</string>
     <string name="help_privacy_title">Adatvédelmi irányelvek</string>
-    <string name="help_privacy_desc">Hogyan kezeljük az adataidat</string>
+    <string name="help_privacy_desc">Hogyan kezeljük az adatait</string>
     <string name="help_about_license">GPL v3 · Nyílt forráskód a GitHubon</string>
     <string name="tips_reset_snackbar">Tippek visszaállítva</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">A bejelentésed nyilvános bejegyzésként kerül közzétételre a GitHubon — kérjük, ne adj meg személyes adatokat.</string>
+    <string name="report_public_notice">A bejelentése nyilvános bejegyzésként kerül közzétételre a GitHubon — kérjük, ne adjon meg személyes adatokat.</string>
     <string name="report_subject_label">Tárgy</string>
     <string name="report_body_label_bug">Mi történt?</string>
-    <string name="report_body_label_feedback">Visszajelzésed</string>
-    <string name="report_email_label">Értesíts e-mailben (opcionális)</string>
-    <string name="report_email_note">Az e-mail-címedet csak értesítésre használjuk — soha nem jelenik meg a nyilvános hibajegyben.</string>
+    <string name="report_body_label_feedback">Visszajelzése</string>
+    <string name="report_email_label">Értesítés e-mailben (opcionális)</string>
+    <string name="report_email_note">Az e-mail-címét csak értesítésre használjuk — soha nem jelenik meg a nyilvános hibajegyben.</string>
     <string name="report_submit">Küldés</string>
     <string name="report_submitting">Küldés…</string>
     <string name="report_filed">#%1$d bejelentés rögzítve — köszönjük!</string>
-    <string name="report_sent">Köszönjük — a bejelentésed elküldve.</string>
+    <string name="report_sent">Köszönjük — a bejelentése elküldve.</string>
     <string name="report_error_retry">Most nem sikerült elküldeni — elmentve, automatikusan újrapróbáljuk.</string>
-    <string name="report_error_permanent">Nem sikerült elküldeni. Ellenőrizd a bevitt adatokat, és próbáld újra.</string>
+    <string name="report_error_permanent">Nem sikerült elküldeni. Ellenőrizze a bevitt adatokat, és próbálja újra.</string>
     <string name="report_retry">Újra</string>
     <string name="report_done">Kész</string>
 
     <!-- My reports -->
-    <string name="my_reports_empty">Még nem küldtél be bejelentést.</string>
+    <string name="my_reports_empty">Még nem küldött be bejelentést.</string>
     <string name="my_reports_open">Nyitott</string>
     <string name="my_reports_closed">Lezárt</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Találd meg a legolcsóbb időpontot</string>
-    <string name="guide_find_body">Válaszd ki, mennyi ideig kell működnie a készülékednek, majd koppints a Keresés gombra.</string>
-    <string name="guide_appliances_title">Mentsd el készülékeidet</string>
-    <string name="guide_appliances_body">Adj hozzá készülékeket a Beállításokban az egykoppintásos kereséshez.</string>
-    <string name="guide_ev_title">Tervezd az elektromos autó töltését</string>
-    <string name="guide_ev_body">Add hozzá az autódat, add meg a jelenlegi és a céltöltöttségét, a SweetSpot pedig kiszámolja a töltési időt.</string>
-    <string name="guide_result_title">Értelmezd az eredményt</string>
-    <string name="guide_result_body">Használd a Korábban és Olcsóbban gombokat az ajánlott időpont eltolásához, és tartsd nyomva a diagramot bármely idősáv árához.</string>
+    <string name="guide_find_title">Találja meg a legolcsóbb időpontot</string>
+    <string name="guide_find_body">Válassza ki, mennyi ideig kell működnie a készülékének, majd koppintson a Keresés gombra.</string>
+    <string name="guide_appliances_title">Mentse el készülékeit</string>
+    <string name="guide_appliances_body">Adjon hozzá készülékeket a Beállításokban az egykoppintásos kereséshez.</string>
+    <string name="guide_ev_title">Tervezze az elektromos autó töltését</string>
+    <string name="guide_ev_body">Adja hozzá az autóját, adja meg a jelenlegi és a céltöltöttségét, a SweetSpot pedig kiszámolja a töltési időt.</string>
+    <string name="guide_result_title">Értelmezze az eredményt</string>
+    <string name="guide_result_body">Használja a Korábban és Olcsóbban gombokat az ajánlott időpont eltolásához, és tartsa nyomva a diagramot bármely idősáv árához.</string>
     <string name="guide_allin_title">Teljes ár</string>
-    <string name="guide_allin_body">Kívánság szerint a puszta piaci ár helyett a teljes fogyasztói árat is megjelenítheted.</string>
+    <string name="guide_allin_body">Kívánság szerint a puszta piaci ár helyett a teljes fogyasztói árat is megjelenítheti.</string>
     <string name="guide_wear_title">Az órádon</string>
-    <string name="guide_wear_body">Készülékeid szinkronizálódnak a Wear OS-re, így telefon nélkül is ellenőrizheted az árakat.</string>
+    <string name="guide_wear_body">Készülékei szinkronizálódnak a Wear OS-re, így telefon nélkül is ellenőrizheti az árakat.</string>
     <!-- Report conversation (in-app thread) -->
-    <string name="thread_you">Te</string>
+    <string name="thread_you">Ön</string>
     <string name="thread_support">SweetSpot támogatás</string>
     <string name="thread_open_github">Megnyitás a GitHubon</string>
-    <string name="thread_load_error">Nem sikerült betölteni a beszélgetést. Ellenőrizd a kapcsolatot, és próbáld újra.</string>
-    <string name="reply_hint">A válaszod</string>
+    <string name="thread_load_error">Nem sikerült betölteni a beszélgetést. Ellenőrizze a kapcsolatot, és próbálja újra.</string>
+    <string name="reply_hint">A válasza</string>
     <string name="reply_send">Küldés</string>
-    <string name="reply_public_note">A válaszod nyilvánosan megjelenik a GitHubon.</string>
-    <string name="reply_error">Nem sikerült elküldeni a választ. Próbáld újra.</string>
-    <string name="reply_queued">Mentve — elküldjük a válaszod, amint újra online leszel.</string>
+    <string name="reply_public_note">A válasza nyilvánosan megjelenik a GitHubon.</string>
+    <string name="reply_error">Nem sikerült elküldeni a választ. Próbálja újra.</string>
+    <string name="reply_queued">Mentve — elküldjük a válaszát, amint újra online lesz.</string>
 </resources>

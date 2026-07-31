@@ -19,7 +19,7 @@
     <string name="result_total_cost">Celkové náklady</string>
     <string name="result_avg_price">Priem. cena</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s viac než najlacnejšie</string>
+    <string name="result_cost_above_cheapest">%1$s viac než odporúčaný čas</string>
     <string name="result_earlier">Skôr</string>
     <string name="result_cheaper">Lacnejšie</string>
     <string name="result_cost_breakdown">Rozpis nákladov</string>

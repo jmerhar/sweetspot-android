@@ -20,19 +20,19 @@ other = "Jurnal de modificări"
 other = "Confidențialitate"
 
 [lang_switch]
-other = "Schimbă limba"
+other = "Schimbați limba"
 
 [hero_title]
-other = "Găsește cel mai ieftin interval pentru a porni electrocasnicele și a-ți încărca mașina electrică"
+other = "Găsiți cel mai ieftin interval pentru a porni electrocasnicele și a vă încărca mașina electrică"
 
 [hero_subtitle]
-other = "SweetSpot analizează prețurile dinamice ale electricității din 30 de țări europene pentru a găsi cel mai ieftin interval în care să pornești electrocasnicele sau să-ți încarci mașina electrică — gata până la un termen, dacă stabilești unul. Cu cod deschis și fără colectare de date."
+other = "SweetSpot analizează prețurile dinamice ale electricității din 30 de țări europene pentru a găsi cel mai ieftin interval în care să porniți electrocasnicele sau să vă încărcați mașina electrică — gata până la un termen, dacă stabiliți unul. Cu cod deschis și fără colectare de date."
 
 [download]
 other = "Disponibil pe Google Play"
 
 [learn_more]
-other = "Află mai multe"
+other = "Aflați mai multe"
 
 [features_title]
 other = "Funcționalități"
@@ -53,7 +53,7 @@ other = "Prețuri de electricitate pentru ziua următoare de pe platforma ENTSO-
 other = "Algoritm inteligent"
 
 [feature_algorithm_desc]
-other = "SweetSpot găsește cel mai ieftin interval continuu de timp pentru orice durată alegi."
+other = "SweetSpot găsește cel mai ieftin interval continuu de timp pentru orice durată alegeți."
 
 [feature_fallback_title]
 other = "Date fiabile"
@@ -65,31 +65,31 @@ other = "Cinci surse de date cu comutare automată ajută la menținerea disponi
 other = "Wear OS"
 
 [feature_wear_desc]
-other = "Aplicație complementară pentru Pixel Watch și alte dispozitive Wear OS 3+. Verifică prețurile direct de la încheietură."
+other = "Aplicație complementară pentru Pixel Watch și alte dispozitive Wear OS 3+. Verificați prețurile direct de la încheietură."
 
 [feature_appliances_title]
 other = "Electrocasnice personalizate"
 
 [feature_appliances_desc]
-other = "Salvează electrocasnicele cu nume, pictograme și durate personalizate pentru acces rapid dintr-o singură atingere."
+other = "Salvați electrocasnicele cu nume, pictograme și durate personalizate pentru acces rapid dintr-o singură atingere."
 
 [feature_ev_title]
 other = "Încărcare mașină electrică"
 
 [feature_ev_desc]
-other = "Adaugă-ți mașina, apoi introdu nivelul actual și cel dorit al bateriei. SweetSpot calculează timpul de încărcare și cel mai ieftin interval în care să o conectezi."
+other = "Adăugați-vă mașina, apoi introduceți nivelul actual și cel dorit al bateriei. SweetSpot calculează timpul de încărcare și cel mai ieftin interval în care să o conectați."
 
 [feature_deadline_title]
 other = "Termen „Gata până la”"
 
 [feature_deadline_desc]
-other = "Ai nevoie să fie gata la o anumită oră? Adaugă un termen „gata până la” și SweetSpot alege cel mai ieftin interval care respectă termenul."
+other = "Aveți nevoie să fie gata la o anumită oră? Adăugați un termen „gata până la” și SweetSpot alege cel mai ieftin interval care respectă termenul."
 
 [feature_power_title]
 other = "Putere nominală"
 
 [feature_power_desc]
-other = "Indică puterea unui electrocasnic în kW, iar estimarea costului reflectă consumul real, în loc de o valoare fixă de 1 kW."
+other = "Indicați puterea unui electrocasnic în kW, iar estimarea costului reflectă consumul real, în loc de o valoare fixă de 1 kW."
 
 [feature_languages_title]
 other = "25 de limbi"
@@ -101,7 +101,7 @@ other = "Disponibilă în 25 de limbi europene, de la bulgară la suedeză."
 other = "Confidențialitate pe primul loc"
 
 [feature_privacy_desc]
-other = "Fără conturi, fără analize, fără urmărire. Prețurile sunt stocate local pe dispozitivul tău."
+other = "Fără conturi, fără analize, fără urmărire. Prețurile sunt stocate local pe dispozitivul dvs."
 
 [feature_opensource_title]
 other = "Cod deschis"
@@ -113,31 +113,31 @@ other = "Codul sursă complet este disponibil pe GitHub sub licența GPL v3."
 other = "Cum funcționează"
 
 [step1_title]
-other = "Alege electrocasnicul sau mașina electrică"
+other = "Alegeți electrocasnicul sau mașina electrică"
 
 [step1_desc]
-other = "Alege un electrocasnic salvat sau mașina ta electrică, ori setează o durată personalizată — și, opțional, un termen „gata până la”."
+other = "Alegeți un electrocasnic salvat sau mașina dvs. electrică, ori setați o durată personalizată — și, opțional, un termen „gata până la”."
 
 [step2_title]
 other = "Analizează prețurile"
 
 [step2_desc]
-other = "SweetSpot obține cele mai recente prețuri de electricitate pentru regiunea ta."
+other = "SweetSpot obține cele mai recente prețuri de electricitate pentru regiunea dvs."
 
 [step3_title]
-other = "Află cel mai bun interval"
+other = "Aflați cel mai bun interval"
 
 [step3_desc]
-other = "Vezi exact când să pornești, cu o defalcare completă a costurilor pentru fiecare interval orar."
+other = "Vedeți exact când să porniți, cu o defalcare completă a costurilor pentru fiecare interval orar."
 
 [cta_title]
-other = "Începe să economisești la electricitate"
+other = "Începeți să economisiți la electricitate"
 
 [cta_desc]
-other = "Descarcă SweetSpot de pe Google Play și găsește cel mai ieftin interval pentru a porni electrocasnicele și a-ți încărca mașina electrică."
+other = "Descărcați SweetSpot de pe Google Play și găsiți cel mai ieftin interval pentru a porni electrocasnicele și a vă încărca mașina electrică."
 
 [footer_tagline]
-other = "Găsește cel mai ieftin interval pentru a porni electrocasnicele și a-ți încărca mașina electrică."
+other = "Găsiți cel mai ieftin interval pentru a porni electrocasnicele și a vă încărca mașina electrică."
 
 [footer_app]
 other = "Aplicație"
@@ -149,7 +149,7 @@ other = "Juridic"
 other = "Licențiat sub GPL v3."
 
 [error_404]
-other = "Pagina pe care o cauți nu există."
+other = "Pagina pe care o căutați nu există."
 
 [back_home]
 other = "Înapoi la pagina principală"

@@ -34,6 +34,7 @@ import today.sweetspot.model.PriceZone
 import today.sweetspot.model.WindowResult
 import today.sweetspot.util.UiText
 import today.sweetspot.util.findCheapestWindow
+import java.time.Clock
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -78,6 +79,7 @@ data class WearUiState(
  * @param wearSyncOverride Optional [WearSync] override for testing. When `null` (production), a
  *   real [WearableSync] backed by Google Play Services is used.
  * @param usageStore Local cumulative tap store reported back to the phone (injectable for tests).
+ * @param clock Clock for the current time, used when filtering elapsed slots (injectable for tests).
  */
 class WearViewModel @JvmOverloads constructor(
     application: Application,
@@ -86,7 +88,8 @@ class WearViewModel @JvmOverloads constructor(
     private val statsCollector: StatsCollector = FileStatsCollector(application.cacheDir),
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
     wearSyncOverride: WearSync? = null,
-    private val usageStore: UsageStore = FileUsageStore(application.cacheDir)
+    private val usageStore: UsageStore = FileUsageStore(application.cacheDir),
+    private val clock: Clock = Clock.systemDefaultZone()
 ) : AndroidViewModel(application) {
 
     private val wearSync: WearSync =
@@ -176,7 +179,7 @@ class WearViewModel @JvmOverloads constructor(
 
         // Record the tap only once it's known to trigger a fetch, so a tap with no
         // configured zone (which does nothing) doesn't inflate the usage counters.
-        usageStore.record(appliance.id, System.currentTimeMillis())
+        usageStore.record(appliance.id, clock.millis())
 
         stopResultRefresh()
         fetchJob?.cancel()
@@ -205,7 +208,7 @@ class WearViewModel @JvmOverloads constructor(
                     return@launch
                 }
 
-                val now = ZonedDateTime.now(timeZoneId)
+                val now = ZonedDateTime.ofInstant(clock.instant(), timeZoneId)
                 val result = findCheapestWindow(prices, durationHours, now)
 
                 if (result == null) {
@@ -287,7 +290,7 @@ class WearViewModel @JvmOverloads constructor(
         if (prices.isEmpty() || _uiState.value.result == null) return
         val timeZoneId = lastTimeZoneId ?: return
 
-        val now = ZonedDateTime.now(timeZoneId)
+        val now = ZonedDateTime.ofInstant(clock.instant(), timeZoneId)
         val futurePrices = prices.filter {
             it.time.plusMinutes(it.durationMinutes.toLong()).isAfter(now)
         }

@@ -33,6 +33,8 @@ import today.sweetspot.model.ApplianceUsage
 import today.sweetspot.model.Countries
 import today.sweetspot.model.PriceSlot
 import today.sweetspot.util.UiText
+import java.time.Clock
+import java.time.Duration
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -82,6 +84,13 @@ class WearViewModelTest {
         override suspend fun pushUsage(bytes: ByteArray, token: Long) { pushedUsage.add(bytes to token) }
     }
 
+    /** A [Clock] whose instant can be advanced, to drive time-dependent recalculation. */
+    private class MutableClock(var current: Instant) : Clock() {
+        override fun getZone(): ZoneId = ZoneId.of("UTC")
+        override fun withZone(zone: ZoneId): Clock = this
+        override fun instant(): Instant = current
+    }
+
     /** In-memory [UsageStore] for asserting record/reset behaviour. */
     private class FakeUsageStore(private var tokenValue: Long = 0) : UsageStore {
         val map = mutableMapOf<String, ApplianceUsage>()
@@ -124,7 +133,8 @@ class WearViewModelTest {
         collector: StatsCollector = FakeStatsCollector(),
         sync: WearSync = FakeWearSync(),
         usageStore: UsageStore = FakeUsageStore(),
-    ) = WearViewModel(app, { _ -> fetcher }, FakeCache(), collector, testDispatcher, sync, usageStore).also {
+        clock: Clock = Clock.systemDefaultZone(),
+    ) = WearViewModel(app, { _ -> fetcher }, FakeCache(), collector, testDispatcher, sync, usageStore, clock).also {
         testDispatcher.scheduler.advanceUntilIdle()
     }
 
@@ -264,6 +274,20 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.recalculateResult()
         assertNull(viewModel.uiState.value.result)
+    }
+
+    @Test
+    fun `recalculateResult clears the result once every slot has elapsed`() = runTest {
+        val clock = MutableClock(Instant.now())
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), clock = clock)
+        viewModel.onSettingsReceived(settings(country = "NL"))
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry"))
+        runCurrent()
+        assertNotNull(viewModel.uiState.value.result)
+        clock.current = Instant.now().plus(Duration.ofDays(2)) // jump past every cached slot
+        viewModel.recalculateResult()
+        assertNull(viewModel.uiState.value.result)
+        viewModel.onClearResult()
     }
 
     // --- onAppliancesReceived (real JSON parsing) ---

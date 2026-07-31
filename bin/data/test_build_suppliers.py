@@ -183,5 +183,51 @@ class RegistryFileRoundTripTest(unittest.TestCase):
             self.assertEqual(os.path.getmtime(bs.ENEVER_REGISTRY_PATH), mtime)
 
 
+class BuildCountryTest(unittest.TestCase):
+    """Orchestration in build_country: tax sourcing, multi-source supplier merge, shape."""
+
+    @staticmethod
+    def _cfg(tax_source, supplier_sources, currency="EUR"):
+        return {"currency": currency, "tax_source": tax_source, "supplier_sources": supplier_sources}
+
+    def test_merges_later_source_wins_sorts_and_collects_warnings(self):
+        taxes = [{"type": "perKwh", "amount": 0.1, "source": "test"}]
+        def tax_source(ctx):
+            return taxes
+        def src_a(ctx, warnings):
+            warnings.append("a-warn")
+            return [{"id": "zeta", "surchargePerKwh": 0.02}, {"id": "alpha", "surchargePerKwh": 0.01}]
+        def src_b(ctx, warnings):  # 'alpha' collides — later source must win
+            return [{"id": "alpha", "surchargePerKwh": 0.09}]
+
+        obj = bs.build_country("NL", self._cfg(tax_source, [src_a, src_b]), NOW)
+
+        self.assertEqual(obj["country"], "NL")
+        self.assertEqual(obj["currency"], "EUR")
+        self.assertTrue(obj["usable"])
+        self.assertEqual(obj["errors"], [])
+        self.assertEqual(obj["warnings"], ["a-warn"])
+        self.assertEqual(obj["taxes"], taxes)
+        self.assertEqual(obj["schemaVersion"], bs.SCHEMA_VERSION)
+        self.assertEqual(obj["generated"], "2026-07-11T12:00:00Z")
+        self.assertEqual([s["id"] for s in obj["suppliers"]], ["alpha", "zeta"])  # sorted by id
+        alpha = next(s for s in obj["suppliers"] if s["id"] == "alpha")
+        self.assertEqual(alpha["surchargePerKwh"], 0.09)  # src_b won the collision
+
+    def test_tax_source_error_propagates(self):
+        def tax_source(ctx):
+            raise bs.TariffError("no essentials")
+        with self.assertRaises(bs.TariffError):
+            bs.build_country("NL", self._cfg(tax_source, [lambda ctx, w: []]), NOW)
+
+    def test_nl_ctx_date_is_amsterdam_local(self):
+        seen = {}
+        def tax_source(ctx):
+            seen["date"] = ctx["date"]
+            return []
+        bs.build_country("NL", self._cfg(tax_source, [lambda ctx, w: []]), NOW)
+        self.assertEqual(seen["date"], "2026-07-11")  # 12:00 UTC → 14:00 CEST, same day
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

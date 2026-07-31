@@ -57,13 +57,13 @@ import today.sweetspot.ui.theme.LocalBarSurchargeColor
 import today.sweetspot.ui.theme.LocalBarTaxColor
 import today.sweetspot.util.AllInBarSegments
 import today.sweetspot.util.AllInPricing
+import today.sweetspot.util.BarFractions
 import today.sweetspot.util.ChartGeometry
 import today.sweetspot.util.formatPrice
 import today.sweetspot.util.shortTimeFormatter
 import androidx.compose.ui.tooling.preview.Preview
 import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
-import kotlin.math.abs
 
 /**
  * Horizontal bar chart showing electricity prices grouped by hour.
@@ -131,11 +131,7 @@ fun PriceBarChart(
     val hasNegativeSpot = stackComponents != null &&
         prices.any { it.price < stackComponents.fixedTotal - 1e-9 }
     // Where zero falls within the min–max range (0 = left edge, 1 = right edge)
-    val zeroFraction = remember(minPrice, maxPrice) {
-        if (minPrice < 0 && maxPrice > minPrice) {
-            ((0.0 - minPrice) / (maxPrice - minPrice)).toFloat().coerceIn(0.01f, 0.99f)
-        } else 0f
-    }
+    val zeroFraction = remember(minPrice, maxPrice) { BarFractions.zeroFraction(minPrice, maxPrice) }
 
     // Group slots by hour (using epoch second of truncated hour for correct DST handling)
     val slotsPerHour = remember(prices) {
@@ -298,7 +294,7 @@ fun PriceBarChart(
                                         contentAlignment = Alignment.CenterEnd
                                     ) {
                                         if (slot.price < 0) {
-                                            val negFraction = (abs(slot.price) / abs(minPrice)).toFloat().coerceIn(0f, 1f)
+                                            val negFraction = BarFractions.negativeFraction(slot.price, minPrice)
                                             val barColor = if (isOptimal) barNegativeColor else BarColors.dim(barNegativeColor, darkTheme)
                                             Box(
                                                 modifier = Modifier
@@ -316,9 +312,7 @@ fun PriceBarChart(
                                         contentAlignment = Alignment.CenterStart
                                     ) {
                                         if (slot.price >= 0) {
-                                            val posFraction = if (maxPrice > 0) {
-                                                (slot.price / maxPrice).toFloat().coerceIn(0f, 1f)
-                                            } else 0f
+                                            val posFraction = BarFractions.positiveFraction(slot.price, maxPrice)
                                             val barColor = if (isOptimal) barNormalColor else BarColors.dim(barNormalColor, darkTheme)
                                             Box(
                                                 modifier = Modifier
@@ -338,9 +332,7 @@ fun PriceBarChart(
                                         .clip(barShape)
                                         .background(trackColor)
                                 ) {
-                                    val barFraction = if (maxPrice > 0) {
-                                        (slot.price / maxPrice).toFloat().coerceIn(0f, 1f)
-                                    } else 0f
+                                    val barFraction = BarFractions.positiveFraction(slot.price, maxPrice)
                                     val barColor = if (isOptimal) barNormalColor else BarColors.dim(barNormalColor, darkTheme)
                                     Box(
                                         modifier = Modifier

@@ -15,7 +15,7 @@ set -euo pipefail
 # Requires ImageMagick 7 (magick) and fonts in fastlane/screenshots/fonts/.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+PROJECT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 source "$SCRIPT_DIR/../lib/common.sh"
 SCREENSHOTS_DIR="$PROJECT_DIR/fastlane/screenshots"
 METADATA_DIR="$PROJECT_DIR/fastlane/metadata/android"

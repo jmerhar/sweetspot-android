@@ -3,6 +3,13 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="7.0" date="July 31, 2026" >}}
+- Help & support, built in: report a problem or send feedback from the app, follow replies in a conversation, and track your reports — no account needed.
+- "Ready by" is now a smart default: the cheapest time that's still ready in time; step Earlier or Cheaper around it.
+- A quick first-launch intro and one-time tips for the less obvious controls.
+- More reliable prices and clearer wording across all 25 languages.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="July 21, 2026" >}}
 - Total price chart: each bar now splits into market price, energy tax and supplier surcharge, with a legend.
 - Quickly switch the results between the total and the bare market price.

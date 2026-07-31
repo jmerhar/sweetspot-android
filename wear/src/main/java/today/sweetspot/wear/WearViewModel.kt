@@ -161,7 +161,6 @@ class WearViewModel @JvmOverloads constructor(
      * @param appliance The tapped appliance.
      */
     fun onApplianceTapped(appliance: Appliance) {
-        usageStore.record(appliance.id, System.currentTimeMillis())
         val h = appliance.durationHours
         val m = appliance.durationMinutes
         val durationHours = h + m / 60.0
@@ -174,6 +173,10 @@ class WearViewModel @JvmOverloads constructor(
             }
             return
         }
+
+        // Record the tap only once it's known to trigger a fetch, so a tap with no
+        // configured zone (which does nothing) doesn't inflate the usage counters.
+        usageStore.record(appliance.id, System.currentTimeMillis())
 
         stopResultRefresh()
         fetchJob?.cancel()
@@ -314,11 +317,16 @@ class WearViewModel @JvmOverloads constructor(
      *
      * @param countryCode ISO country code from the phone, or `null`.
      * @param priceZoneId Zone ID from the phone, or `null`.
-     * @return The resolved [PriceZone], or `null` for multi-zone countries without a selection.
+     * @return The resolved [PriceZone], or `null` for a multi-zone country without a selection or a
+     *         zone ID that no longer resolves. Only a completely empty sync falls back to the default.
      */
     private fun resolveZone(countryCode: String?, priceZoneId: String?): PriceZone? {
+        // A stored zone id that no longer resolves (e.g. a zone removed in a newer app version)
+        // surfaces as "no zone" rather than silently pricing a different country; fall back to the
+        // country's own zone only when that country is unambiguously single-zone.
         if (priceZoneId != null) {
             Countries.findPriceZoneById(priceZoneId)?.let { return it }
+            return countryCode?.let { Countries.findByCode(it) }?.takeIf { it.zones.size == 1 }?.zones?.first()
         }
         if (countryCode != null) {
             val country = Countries.findByCode(countryCode) ?: return null

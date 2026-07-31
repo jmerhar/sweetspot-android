@@ -209,6 +209,17 @@ class WearViewModelTest {
     }
 
     @Test
+    fun `a tap with no resolved zone does not record usage`() {
+        val store = FakeUsageStore()
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), usageStore = store)
+        val multi = Countries.all.first { it.zones.size > 1 }
+        viewModel.onSettingsReceived(settings(country = multi.code)) // multi-zone, no selection → null zone
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 1, 0, "laundry"))
+        assertEquals(UiText.Res(R.string.wear_error_no_zone), viewModel.uiState.value.error)
+        assertTrue(store.snapshot().isEmpty()) // nothing fetched, so nothing recorded
+    }
+
+    @Test
     fun `rapid taps cancel previous fetch and keep last result`() = runTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)))
         viewModel.onApplianceTapped(Appliance("1", "First", 1, 0, "electricity"))
@@ -383,6 +394,22 @@ class WearViewModelTest {
     }
 
     @Test
+    fun `stats and usage are still pushed on the network error path`() = runTest {
+        val collector = FakeStatsCollector().apply {
+            record(StatsRecord(1000L, "NL", "entsoe", "watch", true, "", 5))
+        }
+        val sync = FakeWearSync()
+        val store = FakeUsageStore()
+        val viewModel = testViewModel(FakeFetcher(prices = null), collector, sync, store)
+        viewModel.onSettingsReceived(settings(country = "NL", stats = true))
+        viewModel.onApplianceTapped(Appliance("1", "Washer", 2, 0, "laundry"))
+        runCurrent()
+        assertNotNull(viewModel.uiState.value.error)
+        assertEquals(1, sync.pushed.size)      // stats flushed despite the fetch failing
+        assertEquals(1, sync.pushedUsage.size) // usage snapshot flushed too
+    }
+
+    @Test
     fun `stats are not pushed when disabled`() = runTest {
         val collector = FakeStatsCollector().apply {
             record(StatsRecord(1000L, "NL", "entsoe", "watch", true, "", 5))
@@ -419,6 +446,19 @@ class WearViewModelTest {
         val viewModel = testViewModel(FakeFetcher(fakePrices(24)), usageStore = store)
         viewModel.onSettingsReceived(settings(country = "NL", resetToken = 5))
         assertTrue(store.snapshot().isEmpty())
+        assertEquals(5L, store.token())
+    }
+
+    @Test
+    fun `an older or equal reset token leaves the usage store intact`() {
+        val store = FakeUsageStore()
+        store.reset(5)         // store already at token 5
+        store.record("1", 100) // with one recorded tap
+        val viewModel = testViewModel(FakeFetcher(fakePrices(24)), usageStore = store)
+        viewModel.onSettingsReceived(settings(country = "NL", resetToken = 5)) // equal → no reset
+        assertEquals(1, store.snapshot()["1"]?.count)
+        viewModel.onSettingsReceived(settings(country = "NL", resetToken = 3)) // older → no reset
+        assertEquals(1, store.snapshot()["1"]?.count)
         assertEquals(5L, store.token())
     }
 }

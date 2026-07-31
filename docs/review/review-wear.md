@@ -21,11 +21,11 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 | H1 frozen relative-time countdown | ✅ | `b7ae213` (per-minute ticker) |
 | M1 `priceZone!!` NPE | ✅ | `b7ae213` (timezone from the result) |
 | M2 disabled sources ignored when order is default | ✅ | `7160586` — confirmed a real bug (disabling only worked if you also reordered); fixed in `:shared` for phone + watch |
-| M3 usage recorded for no-fetch taps | ⏳ | minor data-quality |
-| L1 `resolveZone` silent NL fallback | ⏳ | low likelihood |
+| M3 usage recorded for no-fetch taps | ✅ | `0ddd479` (record moved below the no-zone guard) + test |
+| L1 `resolveZone` silent NL fallback | ✅ | `0ddd479` (unknown zone id → "no zone", not NL) |
 | L2 no `TimeText` on result screen | ➖ | minor UX; the ticker now drives recomposition |
 | L3 state default calls the registry | ➖ | cosmetic |
-| C1–C4 coverage gaps | ⏳ | H1's fix is a composable ticker (not unit-testable); the others are test hardening |
+| C1–C4 coverage gaps | ✅ | C2 `e9fbe8a` (Clock seam), C3/C4 `0ddd479`; C1 remains ➖ — its fix is a composable ticker, not unit-testable |
 | ResultScreen "every 60s" / WindowResult "hourly" KDoc | ✅ | now accurate (`b7ae213`, `11098c7`) |
 
 ---

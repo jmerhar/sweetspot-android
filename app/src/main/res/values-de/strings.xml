@@ -19,7 +19,7 @@
     <string name="result_total_cost">Gesamtkosten</string>
     <string name="result_avg_price">Durchschn.</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s teurer als das Günstigste</string>
+    <string name="result_cost_above_cheapest">%1$s teurer als die empfohlene Zeit</string>
     <string name="result_earlier">Früher</string>
     <string name="result_cheaper">Günstiger</string>
     <string name="result_cost_breakdown">Kostenaufschlüsselung</string>

@@ -23,16 +23,16 @@ other = "Privacy"
 other = "Cambia lingua"
 
 [hero_title]
-other = "Trova la fascia più economica per usare i tuoi elettrodomestici e ricaricare l'auto elettrica"
+other = "Trovi la fascia più economica per usare i Suoi elettrodomestici e ricaricare l'auto elettrica"
 
 [hero_subtitle]
-other = "SweetSpot analizza i prezzi dinamici dell'energia elettrica in 30 paesi europei e trova la fascia più economica per usare i tuoi elettrodomestici o ricaricare l'auto elettrica — completata entro una scadenza, se ne imposti una. Open source e rispettoso della privacy."
+other = "SweetSpot analizza i prezzi dinamici dell'energia elettrica in 30 paesi europei e trova la fascia più economica per usare i Suoi elettrodomestici o ricaricare l'auto elettrica — completata entro una scadenza, se ne imposta una. Open source e rispettoso della privacy."
 
 [download]
 other = "Disponibile su Google Play"
 
 [learn_more]
-other = "Scopri di più"
+other = "Scopra di più"
 
 [features_title]
 other = "Funzionalità"
@@ -53,7 +53,7 @@ other = "Prezzi dell'energia elettrica del giorno prima dalla ENTSO-E Transparen
 other = "Algoritmo intelligente"
 
 [feature_algorithm_desc]
-other = "SweetSpot trova la fascia continua più economica per qualsiasi durata tu scelga."
+other = "SweetSpot trova la fascia continua più economica per qualsiasi durata Lei scelga."
 
 [feature_fallback_title]
 other = "Dati affidabili"
@@ -71,25 +71,25 @@ other = "App companion per Pixel Watch e altri dispositivi Wear OS 3+. Controlla
 other = "Elettrodomestici personalizzati"
 
 [feature_appliances_desc]
-other = "Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido."
+other = "Salvi i Suoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido."
 
 [feature_ev_title]
 other = "Ricarica auto elettrica"
 
 [feature_ev_desc]
-other = "Aggiungi la tua auto, poi indica la carica attuale e quella desiderata. SweetSpot calcola il tempo di ricarica e la fascia più economica per collegarla."
+other = "Aggiunga la Sua auto, poi indichi la carica attuale e quella desiderata. SweetSpot calcola il tempo di ricarica e la fascia più economica per collegarla."
 
 [feature_deadline_title]
 other = "Scadenza «Pronto entro»"
 
 [feature_deadline_desc]
-other = "Ti serve pronto entro un certo orario? Imposta una scadenza «Pronto entro» e SweetSpot sceglie la fascia più economica che la rispetta."
+other = "Le serve pronto entro un certo orario? Imposti una scadenza «Pronto entro» e SweetSpot sceglie la fascia più economica che la rispetta."
 
 [feature_power_title]
 other = "Potenza nominale"
 
 [feature_power_desc]
-other = "Indica la potenza in kW di un elettrodomestico e la stima dei costi rifletterà il consumo reale, invece di un valore fisso di 1 kW."
+other = "Indichi la potenza in kW di un elettrodomestico e la stima dei costi rifletterà il consumo reale, invece di un valore fisso di 1 kW."
 
 [feature_languages_title]
 other = "25 lingue"
@@ -113,31 +113,31 @@ other = "Il codice sorgente completo è disponibile su GitHub con licenza GPL v3
 other = "Come funziona"
 
 [step1_title]
-other = "Scegli elettrodomestico o auto elettrica"
+other = "Scelga elettrodomestico o auto elettrica"
 
 [step1_desc]
-other = "Seleziona un elettrodomestico salvato o la tua auto elettrica, oppure imposta una durata personalizzata — e facoltativamente una scadenza «Pronto entro»."
+other = "Selezioni un elettrodomestico salvato o la Sua auto elettrica, oppure imposti una durata personalizzata — e facoltativamente una scadenza «Pronto entro»."
 
 [step2_title]
-other = "Analizza i prezzi"
+other = "Analizzi i prezzi"
 
 [step2_desc]
-other = "SweetSpot recupera gli ultimi prezzi dell'energia elettrica del giorno prima per la tua zona."
+other = "SweetSpot recupera gli ultimi prezzi dell'energia elettrica del giorno prima per la Sua zona."
 
 [step3_title]
-other = "Scopri la fascia migliore"
+other = "Scopra la fascia migliore"
 
 [step3_desc]
-other = "Scopri esattamente quando avviare, con un dettaglio completo dei costi per fascia oraria."
+other = "Scopra esattamente quando avviare, con un dettaglio completo dei costi per fascia oraria."
 
 [cta_title]
 other = "Inizia a risparmiare sull'energia elettrica"
 
 [cta_desc]
-other = "Scarica SweetSpot da Google Play e trova la fascia più economica per usare i tuoi elettrodomestici e ricaricare l'auto elettrica."
+other = "Scarichi SweetSpot da Google Play e trovi la fascia più economica per usare i Suoi elettrodomestici e ricaricare l'auto elettrica."
 
 [footer_tagline]
-other = "Trova la fascia più economica per usare i tuoi elettrodomestici e ricaricare l'auto elettrica."
+other = "Trovi la fascia più economica per usare i Suoi elettrodomestici e ricaricare l'auto elettrica."
 
 [footer_app]
 other = "App"
@@ -149,10 +149,10 @@ other = "Note legali"
 other = "Distribuito con licenza GPL v3."
 
 [error_404]
-other = "La pagina che stai cercando non esiste."
+other = "La pagina che sta cercando non esiste."
 
 [back_home]
-other = "Torna alla home"
+other = "Torni alla home"
 
 [screenshot_1_alt]
 other = "Fascia consigliata con orario di inizio, costo totale e dettaglio costi"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.core.os.LocaleListCompat
 import androidx.test.platform.app.InstrumentationRegistry
+import today.sweetspot.model.CoachMark
 import java.io.DataOutputStream
 import java.io.File
 import java.time.LocalDate
@@ -139,6 +140,9 @@ object ScreenshotTestData {
             // The first-launch intro would otherwise cover the home form on the fresh state Screengrab
             // launches into, timing out every capture — mark it already seen.
             putBoolean("onboarding_shown", true)
+            // Contextual coach marks render in their own Popup (a second composition root), which
+            // both clutters the marketing shots and breaks onRoot() touch input — mark them all seen.
+            CoachMark.entries.forEach { putBoolean(it.prefKey, true) }
             putBoolean("dev_options", true)
             putBoolean("use_production_logo", true)
             putLong("first_launch_ms", System.currentTimeMillis())

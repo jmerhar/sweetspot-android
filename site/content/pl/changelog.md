@@ -3,6 +3,13 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31 lipca 2026" >}}
+- Wbudowana Pomoc i wsparcie: zgłoszenie problemu lub opinii w aplikacji, śledzenie odpowiedzi w rozmowie i przeglądanie swoich zgłoszeń — bez konta.
+- Termin „Gotowe do” jest teraz inteligentnym ustawieniem domyślnym: najtańsza pora, która zdąży na czas; wokół niej działają „Wcześniej” i „Taniej”.
+- Krótkie wprowadzenie przy pierwszym uruchomieniu oraz jednorazowe wskazówki dotyczące mniej oczywistych funkcji.
+- Bardziej niezawodne ceny i jaśniejsze sformułowania we wszystkich 25 językach.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21 lipca 2026" >}}
 - Wykres ceny całkowitej: każdy słupek dzieli się teraz na cenę rynkową, podatek energetyczny i marżę dostawcy, wraz z legendą.
 - Szybko przełączaj wyniki między ceną całkowitą a samą ceną rynkową.

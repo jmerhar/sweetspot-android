@@ -3,6 +3,13 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31. julij 2026" >}}
+- Pomoč in podpora, vgrajena v aplikacijo: prijavite težavo ali pošljite povratne informacije iz aplikacije, spremljajte odgovore v pogovoru in sledite svojim prijavam — brez računa.
+- »Pripravljeno do« je zdaj pameten privzeti izbor: najcenejši termin, ki je še pravočasno pripravljen; okrog njega se premikajte z gumboma Prej in Ceneje.
+- Kratek uvod ob prvem zagonu in enkratni namigi za manj očitne gumbe.
+- Zanesljivejše cene in jasnejše besedilo v vseh 25 jezikih.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. julij 2026" >}}
 - Graf skupne cene: vsak stolpec je zdaj razčlenjen na tržno ceno, davek na energijo in pribitek dobavitelja, z legendo.
 - Med rezultati hitro preklopite med skupno in golo tržno ceno.

@@ -3,6 +3,13 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="7.0" date="31. heinäkuuta 2026" >}}
+- Ohje & tuki nyt sovelluksessa: ilmoittakaa ongelmasta tai lähettäkää palautetta, seuratkaa vastauksia keskusteluna ja pitäkää kirjaa ilmoituksistanne — ei tiliä tarvita.
+- Valmis viimeistään on nyt älykäs oletus: halvin ajankohta, joka silti ehtii ajoissa; liikkukaa sen ympärillä painikkeilla Aiemmin ja Halvemmalla.
+- Lyhyt esittely ensimmäisellä käynnistyksellä ja kertaluonteiset vinkit vähemmän ilmeisistä toiminnoista.
+- Luotettavammat hinnat ja selkeämmät sanamuodot kaikilla 25 kielellä.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. heinäkuuta 2026" >}}
 - Kokonaishinnan kaavio: jokainen palkki jakautuu nyt pörssihintaan, sähköveroon ja myyjän marginaaliin, ja mukana on selite.
 - Vaihda tulokset nopeasti kokonaishinnan ja pelkän pörssihinnan välillä.

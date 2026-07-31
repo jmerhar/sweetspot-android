@@ -3,6 +3,13 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31 iulie 2026" >}}
+- „Ajutor și asistență”, integrat: raportați o problemă sau trimiteți feedback, urmăriți răspunsurile în conversație și rapoartele în „Rapoartele mele” — fără cont.
+- „Gata până la” este acum o valoare implicită inteligentă: cea mai ieftină oră care se termină la timp; ajustați-o cu „Mai devreme” și „Mai ieftin”.
+- O prezentare rapidă la prima pornire și sfaturi unice pentru comenzile mai puțin evidente.
+- Prețuri mai fiabile și formulări mai clare în cele 25 de limbi.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21 iulie 2026" >}}
 - Graficul prețului total: fiecare bară se împarte acum în preț de piață, taxa pe energie și adaosul furnizorului, cu legendă.
 - Comută rapid rezultatele între prețul total și prețul de piață simplu.

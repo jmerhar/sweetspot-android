@@ -3,6 +3,13 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="7.0" date="31. Juli 2026" >}}
+- Hilfe & Support, direkt eingebaut: Melde ein Problem oder sende Feedback, verfolge Antworten im Gespräch und behalte deine Meldungen im Blick — ohne Konto.
+- „Fertig bis“ ist jetzt eine smarte Voreinstellung: der günstigste Zeitpunkt, der noch rechtzeitig fertig wird; mit Früher und Günstiger wechselst du drum herum.
+- Eine kurze Einführung beim ersten Start und einmalige Tipps zu den weniger offensichtlichen Funktionen.
+- Zuverlässigere Preise und klarere Formulierungen in allen 25 Sprachen.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. Juli 2026" >}}
 - Gesamtpreis-Diagramm: Jeder Balken zeigt jetzt Marktpreis, Energiesteuer und Lieferantenaufschlag getrennt, mit Legende.
 - Wechsle die Ergebnisse schnell zwischen Gesamtpreis und reinem Marktpreis.

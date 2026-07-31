@@ -3,6 +3,13 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31 luglio 2026" >}}
+- Aiuto e assistenza integrati: segnali un problema o invii feedback dall'app, segua le risposte in una conversazione e tenga traccia delle sue segnalazioni — senza account.
+- «Pronto entro» ora è un valore predefinito intelligente: la fascia più economica ancora pronta in tempo; da lì si sposti con «Prima» o «Più economico».
+- Una breve introduzione al primo avvio e suggerimenti una tantum per i comandi meno evidenti.
+- Prezzi più affidabili e testi più chiari in tutte le 25 lingue.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21 luglio 2026" >}}
 - Grafico del prezzo totale: ogni barra ora si divide in prezzo di mercato, accise sull'energia e sovrapprezzo del fornitore, con una legenda.
 - Passa al volo nei risultati dal prezzo totale al solo prezzo di mercato.

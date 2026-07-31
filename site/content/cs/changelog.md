@@ -3,6 +3,13 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31. července 2026" >}}
+- Nápověda a podpora přímo v aplikaci: nahlaste problém nebo pošlete zpětnou vazbu, sledujte odpovědi v konverzaci a mějte přehled o svých hlášeních — bez účtu.
+- „Hotovo do“ je nyní chytrá výchozí volba: nejlevnější čas, který termín ještě stihne; kolem něj se posouvejte tlačítky „Dříve“ a „Levněji“.
+- Krátký úvod při prvním spuštění a jednorázové tipy k méně zřejmým ovládacím prvkům.
+- Spolehlivější ceny a srozumitelnější formulace ve všech 25 jazycích.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. července 2026" >}}
 - Graf konečné ceny: každý sloupec se nyní dělí na tržní cenu, daň z energie a přirážku dodavatele, včetně legendy.
 - Rychle přepínejte výsledky mezi konečnou a holou tržní cenou.

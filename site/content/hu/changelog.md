@@ -3,6 +3,13 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="7.0" date="2026. július 31." >}}
+- Beépített Súgó és támogatás: jelentsen problémát vagy küldjön visszajelzést az alkalmazásból, kövesse a válaszokat beszélgetésben, és tartsa nyomon a bejelentéseit — fiók nélkül.
+- A „Készen legyen ekkorra” mostantól okos alapértelmezés: a legolcsóbb időpont, amely még időben elkészül; a Korábban és az Olcsóbban gombokkal léphet körülötte.
+- Gyors bevezető az első indításkor, és egyszeri tippek a kevésbé kézenfekvő vezérlőkhöz.
+- Megbízhatóbb árak és érthetőbb megfogalmazás mind a 25 nyelven.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="2026. július 21." >}}
 - A teljes ár diagramján minden oszlop mostantól tőzsdei árra, energiaadóra és felárra bomlik, jelmagyarázattal.
 - Az eredményekben gyorsan válthatsz a teljes ár és a puszta tőzsdei ár között.

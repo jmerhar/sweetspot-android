@@ -65,6 +65,10 @@ fun findCheapestWindow(
  * price for an earlier start. This lets the UI step "earlier" (advance the list) and "cheaper"
  * (retreat toward index 0) by simply moving an offset.
  *
+ * Ranking and the monotonic-cost property use each window's full (unclamped) cost. Clamping to
+ * [now] applies only to the *displayed* start of the earliest window (in [buildWindowAt]) and
+ * never reorders the list.
+ *
  * @param prices Price data sorted chronologically (all slots share the same [PriceSlot.durationMinutes]).
  * @param durationHours Desired window length in decimal hours.
  * @param now The current time, used to clamp the earliest window's start.

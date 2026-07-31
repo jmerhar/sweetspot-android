@@ -38,6 +38,7 @@ import today.sweetspot.R
 import today.sweetspot.model.SupplierTariff
 import today.sweetspot.util.currencySymbol
 import today.sweetspot.util.formatPrice
+import today.sweetspot.util.parseDecimalInput
 
 /**
  * All-in price settings section: a toggle to show the approximate all-in consumer price, plus (when
@@ -136,7 +137,8 @@ internal fun AllInSection(
                     if (text.isBlank()) {
                         onManualSurchargeChange(null)
                     } else {
-                        text.replace(',', '.').toDoubleOrNull()?.let { onManualSurchargeChange(it) }
+                        // A null parse (partial input like "-" or "0.") leaves the stored value as-is.
+                        parseDecimalInput(text)?.let { onManualSurchargeChange(it) }
                     }
                 },
                 label = { Text(stringResource(R.string.all_in_surcharge_custom)) },

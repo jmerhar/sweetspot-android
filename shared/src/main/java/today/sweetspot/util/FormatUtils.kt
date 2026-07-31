@@ -33,6 +33,16 @@ fun formatHhMm(hour: Int, minute: Int): String =
     String.format(Locale.getDefault(), "%02d:%02d", hour, minute)
 
 /**
+ * Parses separator-tolerant decimal input (accepting a comma or a dot) into a [Double], or `null`
+ * when it isn't a complete number. Used by numeric text fields such as the all-in surcharge, where a
+ * `null` result means "leave the stored value unchanged" so partial input (e.g. `"-"`) isn't lost.
+ *
+ * @param text Raw field text.
+ * @return The parsed value, or `null` if [text] is not a valid number.
+ */
+fun parseDecimalInput(text: String): Double? = text.replace(',', '.').toDoubleOrNull()
+
+/**
  * Formats a price using the device locale's currency conventions.
  *
  * Handles symbol placement (before/after), decimal separator, thousands separator,

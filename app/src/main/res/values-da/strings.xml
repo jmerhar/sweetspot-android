@@ -19,7 +19,7 @@
     <string name="result_total_cost">Samlet pris</string>
     <string name="result_avg_price">Gns. pris</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s mere end det billigste</string>
+    <string name="result_cost_above_cheapest">%1$s mere end det anbefalede tidspunkt</string>
     <string name="result_earlier">Tidligere</string>
     <string name="result_cheaper">Billigere</string>
     <string name="result_cost_breakdown">Prisfordeling</string>

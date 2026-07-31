@@ -6,7 +6,7 @@
     <string name="cd_settings">Postavke</string>
     <string name="cd_back">Natrag</string>
     <string name="main_description">SweetSpot vam pomaže uštedjeti novac pronalaženjem najjeftinijeg vremena za pokretanje vaših uređaja. Samo odaberite koliko dugo vaš uređaj treba raditi, a aplikacija će pregledati nadolazeće dinamične cijene struje i pronaći najbolje vrijeme. Svoje omiljene uređaje možete spremiti u postavkama za brzi pristup.</string>
-    <string name="main_find_button">Pronađi najjeftinije vrijeme</string>
+    <string name="main_find_button">Pronađite najjeftinije vrijeme</string>
     <string name="main_searching">Traženje…</string>
     <string name="main_add_appliances">Dodajte svoje uređaje</string>
     <string name="main_card_description">Pronađite najjeftinije vrijeme za pokretanje uređaja</string>
@@ -19,7 +19,7 @@
     <string name="result_total_cost">Ukupni trošak</string>
     <string name="result_avg_price">Prosj. cijena</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s više od najjeftinijeg</string>
+    <string name="result_cost_above_cheapest">%1$s više od preporučenog vremena</string>
     <string name="result_earlier">Ranije</string>
     <string name="result_cheaper">Jeftinije</string>
     <string name="coach_earlier_cheaper">Nije pravo vrijeme? Dodirnite Ranije za raniji početak ili Jeftinije za povratak na najjeftinije.</string>
@@ -28,8 +28,8 @@
     <string name="coach_ev_chip">Dodirnite vozilo za planiranje punjenja prema postotku baterije.</string>
     <string name="coach_got_it">Razumijem</string>
     <string name="result_cost_breakdown">Pregled troškova</string>
-    <string name="cd_collapse">Sažmi</string>
-    <string name="cd_expand">Proširi</string>
+    <string name="cd_collapse">Sažmite</string>
+    <string name="cd_expand">Proširite</string>
     <string name="result_upcoming_prices">Nadolazeće cijene</string>
     <string name="result_disclaimer">Troškovi su prikazani za opterećenje od 1 kW. Cijene ne uključuju PDV, porez na energiju i maržu dobavljača. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="result_data_source">\nIzvor podataka: %s</string>
@@ -52,10 +52,10 @@
     <string name="settings_select_zone">Odaberite zonu</string>
     <string name="settings_data_sources">Izvori podataka</string>
     <string name="settings_data_sources_description">Cijene se dohvaćaju ovim redoslijedom. Ako jedan izvor ne uspije, pokušava se sljedeći.</string>
-    <string name="settings_reset_defaults">Vrati na zadano</string>
+    <string name="settings_reset_defaults">Vratite na zadano</string>
     <string name="settings_appliances">Uređaji</string>
     <string name="settings_appliances_description">Ovdje dodajte svoje kućanske uređaje za brzi pristup. Možete dodati i određene programe, npr. Perilica posuđa Eco, Perilica posuđa Brzi, Perilica rublja Pamuk.</string>
-    <string name="settings_add_appliance">Dodaj uređaj</string>
+    <string name="settings_add_appliance">Dodajte uređaj</string>
     <string name="settings_timezone">Vremenska zona</string>
     <string name="settings_theme">Tema</string>
     <string name="settings_theme_system">Zadano sustava</string>
@@ -70,26 +70,26 @@
     <string name="settings_appearance_desc">Jezik i tema</string>
     <string name="settings_appliances_menu_desc">Vaši spremljeni uređaji</string>
     <string name="settings_ev_menu_desc">Punjač, ciljana napunjenost i vozila</string>
-    <string name="settings_all_in_menu_desc">Prikaži punu potrošačku cijenu</string>
+    <string name="settings_all_in_menu_desc">Prikažite punu potrošačku cijenu</string>
 
-    <string name="settings_share_title">Podijeli moju postavu</string>
-    <string name="settings_share_menu_desc">Kopiraj svoje uređaje i postavke punjenja na drugi uređaj</string>
+    <string name="settings_share_title">Podijelite moju postavu</string>
+    <string name="settings_share_menu_desc">Kopirajte svoje uređaje i postavke punjenja na drugi uređaj</string>
 
     <!-- Household sharing: share screen -->
     <string name="share_setup_description">Skenirajte ovaj kod kamerom drugog telefona ili pošaljite poveznicu. Vaši uređaji, njihov redoslijed i postavke punjenja kopirat će se na taj uređaj.</string>
-    <string name="share_setup_button">Podijeli poveznicu</string>
-    <string name="share_setup_chooser_title">Podijeli svoju postavu</string>
+    <string name="share_setup_button">Podijelite poveznicu</string>
+    <string name="share_setup_chooser_title">Podijelite svoju postavu</string>
     <string name="share_setup_qr_unavailable">Vaša postava prevelika je za QR kod. Umjesto toga upotrijebite poveznicu za dijeljenje.</string>
     <string name="cd_qr_code">QR kod vaše postave</string>
 
     <!-- Household sharing: import preview -->
-    <string name="import_title">Uvezi postavu</string>
-    <string name="import_mode_add">Dodaj mojima</string>
-    <string name="import_mode_add_desc">Zadrži moje uređaje i dodaj nove</string>
-    <string name="import_mode_replace">Zamijeni moje</string>
-    <string name="import_mode_replace_desc">Upotrijebi zajedničke uređaje, redoslijed i postavke punjenja</string>
-    <string name="import_mode_pick">Odaberi koje</string>
-    <string name="import_mode_pick_desc">Odaberi uređaje za dodavanje</string>
+    <string name="import_title">Uvezite postavu</string>
+    <string name="import_mode_add">Dodajte mojima</string>
+    <string name="import_mode_add_desc">Zadržite moje uređaje i dodajte nove</string>
+    <string name="import_mode_replace">Zamijenite moje</string>
+    <string name="import_mode_replace_desc">Upotrijebite zajedničke uređaje, redoslijed i postavke punjenja</string>
+    <string name="import_mode_pick">Odaberite koje</string>
+    <string name="import_mode_pick_desc">Odaberite uređaje za dodavanje</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d uređaj</item>
         <item quantity="few">%d uređaja</item>
@@ -101,9 +101,9 @@
         <item quantity="other">Uključuje %d vozila</item>
     </plurals>
     <plurals name="import_button">
-        <item quantity="one">Uvezi %d uređaj</item>
-        <item quantity="few">Uvezi %d uređaja</item>
-        <item quantity="other">Uvezi %d uređaja</item>
+        <item quantity="one">Uvezite %d uređaj</item>
+        <item quantity="few">Uvezite %d uređaja</item>
+        <item quantity="other">Uvezite %d uređaja</item>
     </plurals>
 
     <!-- Household sharing: import errors -->
@@ -112,20 +112,20 @@
     <string name="import_error_malformed">Ovu poveznicu nije bilo moguće pročitati. Zatražite novu.</string>
 
     <!-- Appliance dialog -->
-    <string name="dialog_add_appliance">Dodaj uređaj</string>
-    <string name="dialog_edit_appliance">Uredi uređaj</string>
+    <string name="dialog_add_appliance">Dodajte uređaj</string>
+    <string name="dialog_edit_appliance">Uredite uređaj</string>
     <string name="dialog_name">Naziv</string>
     <string name="dialog_name_placeholder">npr. Perilica rublja</string>
     <string name="dialog_icon">Ikona</string>
-    <string name="action_delete">Obriši</string>
-    <string name="action_save">Spremi</string>
-    <string name="action_cancel">Odustani</string>
+    <string name="action_delete">Obrišite</string>
+    <string name="action_save">Spremite</string>
+    <string name="action_cancel">Odustanite</string>
 
     <!-- Picker screens -->
     <string name="picker_timezone_title">Vremenska zona</string>
-    <string name="picker_timezone_search">Pretraži vremenske zone</string>
+    <string name="picker_timezone_search">Pretražite vremenske zone</string>
     <string name="picker_country_title">Država</string>
-    <string name="picker_country_search">Pretraži države</string>
+    <string name="picker_country_search">Pretražite države</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d zona</item>
         <item quantity="few">%d zone</item>
@@ -133,7 +133,7 @@
     </plurals>
     <string name="picker_zone_title">Zona</string>
     <string name="picker_language_title">Jezik</string>
-    <string name="picker_language_search">Pretraži jezike</string>
+    <string name="picker_language_search">Pretražite jezike</string>
     <string name="cd_selected">Odabrano</string>
 
     <!-- Errors -->
@@ -155,17 +155,17 @@
     <!-- Cache management -->
     <string name="settings_advanced">Napredno</string>
     <string name="settings_advanced_description">Izvori podataka, predmemorija</string>
-    <string name="settings_clear_cache">Obriši predmemoriju cijena</string>
+    <string name="settings_clear_cache">Obrišite predmemoriju cijena</string>
     <string name="settings_clear_cache_description">Cijene će se ponovno učitati pri sljedećem pretraživanju.</string>
     <string name="snackbar_cache_cleared">Predmemorija obrisana</string>
-    <string name="cd_refresh">Osvježi</string>
+    <string name="cd_refresh">Osvježite</string>
 
     <!-- Stats -->
     <string name="settings_stats_title">Dijeli statistike pouzdanosti</string>
     <string name="settings_stats_description">Pomozite poboljšati pouzdanost izvora podataka dijeljenjem anonimnih brojki o tome kada se podaci o cijenama učitaju ili ne uspiju. Ne prikupljaju se osobni podaci.</string>
     <string name="stats_prompt_title">Pomozite poboljšati SweetSpot?</string>
     <string name="stats_prompt_message">Podijelite anonimne statistike kako biste pomogli poboljšati pouzdanost izvora podataka. Dijeli se samo koliko se često svaki izvor podataka učita ili ne uspije — bez osobnih podataka. To možete promijeniti u bilo kojem trenutku u Postavkama.</string>
-    <string name="stats_prompt_enable">Uključi</string>
+    <string name="stats_prompt_enable">Uključite</string>
     <string name="stats_prompt_dismiss">Ne, hvala</string>
 
     <!-- Onboarding -->
@@ -175,22 +175,22 @@
     <string name="onboarding_body_2">Spremite uređaj i dodirnite ga da vidite njegovo najjeftinije vrijeme. Dodajte svoj električni automobil za planiranje punjenja prema trenutnoj i ciljanoj napunjenosti.</string>
     <string name="onboarding_title_3">Prilagodite aplikaciju sebi</string>
     <string name="onboarding_body_3">Vaša država otkriva se automatski. Promijenite zonu, dodajte uređaje ili odaberite jezik — sve je u Postavkama.</string>
-    <string name="onboarding_skip">Preskoči</string>
+    <string name="onboarding_skip">Preskočite</string>
     <string name="onboarding_next">Dalje</string>
-    <string name="onboarding_get_started">Započni</string>
+    <string name="onboarding_get_started">Započnite</string>
     <string name="settings_how_it_works">Kako funkcionira</string>
     <string name="settings_how_it_works_desc">Ponovno pogledajte uvod</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Pretplati se na SweetSpot</string>
+    <string name="settings_unlock">Pretplatite se na SweetSpot</string>
     <string name="settings_unlock_description">Pretplatite se na godinu dana za nastavak korištenja SweetSpota.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Probno razdoblje je završilo</string>
     <string name="paywall_description">SweetSpot pronalazi najjeftinije vrijeme za pokretanje vaših uređaja koristeći dinamične cijene električne energije u 30 europskih zemalja. Pretplatite se za nastavak korištenja.</string>
-    <string name="paywall_unlock">Pretplati se na SweetSpot</string>
+    <string name="paywall_unlock">Pretplatite se na SweetSpot</string>
     <string name="paywall_unlock_price">Pretplata za %s/god.</string>
-    <string name="paywall_restore">Vrati pretplatu</string>
+    <string name="paywall_restore">Vratite pretplatu</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Hvala!</string>
@@ -204,8 +204,8 @@
 
     <!-- EV charging -->
     <string name="settings_ev_title">Punjenje električnog vozila</string>
-    <string name="ev_add_vehicle">Dodaj vozilo</string>
-    <string name="ev_search_hint">Pretraži marku ili model</string>
+    <string name="ev_add_vehicle">Dodajte vozilo</string>
+    <string name="ev_search_hint">Pretražite marku ili model</string>
     <string name="ev_custom_hint">Nije na popisu? Unesite podatke u nastavku da biste dodali prilagođeno vozilo.</string>
     <string name="ev_vehicle_specs">Baterija %1$s kWh · najveća AC snaga %2$s kW</string>
     <string name="ev_battery_label">Kapacitet baterije</string>
@@ -219,8 +219,8 @@
     <string name="ev_deadline_toggle">Spremno do</string>
     <string name="ev_deadline_hint">Spremno do %s</string>
     <string name="ev_charging_estimate">Vrijeme punjenja: %1$s pri %2$s kW</string>
-    <string name="dialog_add_vehicle">Dodaj vozilo</string>
-    <string name="dialog_edit_vehicle">Uredi vozilo</string>
+    <string name="dialog_add_vehicle">Dodajte vozilo</string>
+    <string name="dialog_edit_vehicle">Uredite vozilo</string>
     <string name="ev_attribution">Podaci o vozilima: Open EV Data</string>
     <string name="ev_error_invalid_soc">Ciljana napunjenost mora biti veća od trenutne napunjenosti.</string>
     <string name="ev_error_invalid_charger">Postavite snagu punjača veću od nule.</string>
@@ -230,8 +230,8 @@
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Ukupna cijena</string>
-    <string name="settings_all_in_toggle">Prikaži ukupnu cijenu</string>
-    <string name="settings_all_in_desc">Prikaži procijenjenu punu potrošačku cijenu (tržišna cijena + porez na energiju + marža dobavljača + PDV) umjesto puke tržišne cijene.</string>
+    <string name="settings_all_in_toggle">Prikažite ukupnu cijenu</string>
+    <string name="settings_all_in_desc">Prikažite procijenjenu punu potrošačku cijenu (tržišna cijena + porez na energiju + marža dobavljača + PDV) umjesto puke tržišne cijene.</string>
     <string name="all_in_supplier">Dobavljač</string>
     <string name="all_in_supplier_prompt">Odaberite svog dobavljača</string>
     <string name="all_in_supplier_custom">Prilagođena marža</string>
@@ -239,7 +239,7 @@
     <string name="all_in_surcharge_custom">Prilagođena marža (bez PDV-a)</string>
     <string name="all_in_incomplete">Odaberite dobavljača ili unesite maržu ili isključite ukupnu cijenu.</string>
     <string name="picker_supplier_title">Dobavljač</string>
-    <string name="picker_supplier_search">Pretraži dobavljače</string>
+    <string name="picker_supplier_search">Pretražite dobavljače</string>
     <string name="result_disclaimer_all_in">Troškovi su prikazani za opterećenje od 1 kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="result_disclaimer_power_all_in">Troškovi su prikazani za opterećenje od %s kW, po procijenjenoj ukupnoj cijeni (tržišna cijena + porez na energiju + marža dobavljača + PDV). Ne uključuje mrežne naknade ni fiksne mjesečne naknade. Sutrašnje cijene obično su dostupne nakon 13:00 CET.</string>
     <string name="result_all_in_supplier">\nDobavljač: %s</string>
@@ -252,7 +252,7 @@
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Redoslijed</string>
-    <string name="sort_by">Poredaj po</string>
+    <string name="sort_by">Poredajte po</string>
     <string name="sort_then_by">zatim po</string>
     <string name="sort_key_custom">Prilagođeni redoslijed</string>
     <string name="sort_key_frequency">Najčešće korišteni</string>
@@ -262,9 +262,9 @@
     <string name="sort_key_type">Vrsta</string>
     <string name="sort_direction_ascending">Uzlazno</string>
     <string name="sort_direction_descending">Silazno</string>
-    <string name="sort_add_tiebreaker">Dodaj sljedeći kriterij</string>
-    <string name="cd_sort_remove_level">Ukloni ovu razinu sortiranja</string>
-    <string name="settings_group_title">Grupiraj po vrsti</string>
+    <string name="sort_add_tiebreaker">Dodajte sljedeći kriterij</string>
+    <string name="cd_sort_remove_level">Uklonite ovu razinu sortiranja</string>
+    <string name="settings_group_title">Grupirajte po vrsti</string>
     <string name="settings_group_description">Grupirajte gumbe na početnom zaslonu prema vrsti uređaja, svaki pod vlastitim naslovom.</string>
     <string name="group_off">Isključeno</string>
     <string name="group_rows">Redovi</string>
@@ -272,11 +272,11 @@
     <string name="cd_drag_handle">Povucite za promjenu redoslijeda</string>
     <string name="usage_count_format">Korišteno %d×</string>
     <string name="usage_never">Nikad korišteno</string>
-    <string name="settings_reset_usage">Poništi podatke o korištenju</string>
+    <string name="settings_reset_usage">Poništite podatke o korištenju</string>
     <string name="settings_reset_usage_description">Izbrišite povijest dodira koja se koristi za razvrstavanje po Najčešće korištenima i Nedavno korištenima.</string>
     <string name="reset_usage_confirm_title">Poništiti podatke o korištenju?</string>
     <string name="reset_usage_confirm_message">Time se briše povijest dodira koja se koristi za razvrstavanje uređaja po Najčešće korištenima i Nedavno korištenima. To se ne može poništiti.</string>
-    <string name="action_reset">Poništi</string>
+    <string name="action_reset">Poništite</string>
     <string name="ev_placement_title">Položaj na početnom zaslonu</string>
     <string name="ev_placement_description">Gdje se vaša vozila pojavljuju među gumbima uređaja.</string>
     <string name="ev_position_interleaved">Izmiješano</string>
@@ -294,19 +294,19 @@
     <string name="help_section_about">O aplikaciji</string>
     <string name="help_quick_guide_title">Brzi vodič</string>
     <string name="help_quick_guide_desc">Kako koristiti SweetSpot</string>
-    <string name="help_reset_tips_title">Poništi savjete</string>
-    <string name="help_reset_tips_desc">Ponovno prikaži jednokratne savjete</string>
+    <string name="help_reset_tips_title">Poništite savjete</string>
+    <string name="help_reset_tips_desc">Ponovno prikažite jednokratne savjete</string>
     <string name="help_faq_title">FAQ</string>
     <string name="help_faq_desc">Česta pitanja</string>
-    <string name="help_report_title">Prijavi problem</string>
+    <string name="help_report_title">Prijavite problem</string>
     <string name="help_report_desc">Nešto ne radi</string>
-    <string name="help_feedback_title">Pošalji povratne informacije</string>
+    <string name="help_feedback_title">Pošaljite povratne informacije</string>
     <string name="help_feedback_desc">Ideje i prijedlozi</string>
     <string name="help_my_reports_title">Moje prijave</string>
     <string name="help_my_reports_desc">Pratite što ste poslali</string>
     <string name="help_contact_title">Kontaktirajte nas</string>
     <string name="help_contact_desc">Pišite nam izravno e-poštom</string>
-    <string name="help_rate_title">Ocijeni SweetSpot</string>
+    <string name="help_rate_title">Ocijenite SweetSpot</string>
     <string name="help_rate_desc">Ocijenite nas na Google Playu</string>
     <string name="help_whats_new_title">Novosti</string>
     <string name="help_whats_new_desc">Najnovije promjene</string>
@@ -322,13 +322,13 @@
     <string name="report_body_label_feedback">Vaše povratne informacije</string>
     <string name="report_email_label">Obavijesti me e-poštom (neobavezno)</string>
     <string name="report_email_note">Vaša se e-pošta koristi samo kako bismo vas obavijestili — nikada se ne prikazuje u javnom problemu.</string>
-    <string name="report_submit">Pošalji</string>
+    <string name="report_submit">Pošaljite</string>
     <string name="report_submitting">Slanje…</string>
     <string name="report_filed">Prijava #%1$d evidentirana — hvala!</string>
     <string name="report_sent">Hvala — vaša je prijava poslana.</string>
     <string name="report_error_retry">Trenutačno nije bilo moguće poslati — spremljeno, pokušat ćemo automatski ponovno.</string>
     <string name="report_error_permanent">Slanje nije uspjelo. Provjerite unos i pokušajte ponovno.</string>
-    <string name="report_retry">Pokušaj ponovno</string>
+    <string name="report_retry">Pokušajte ponovno</string>
     <string name="report_done">Gotovo</string>
 
     <!-- My reports -->
@@ -337,7 +337,7 @@
     <string name="my_reports_closed">Zatvoreno</string>
     <string name="thread_you">Vi</string>
     <string name="thread_support">SweetSpot podrška</string>
-    <string name="thread_open_github">Otvori na GitHubu</string>
+    <string name="thread_open_github">Otvorite na GitHubu</string>
     <string name="thread_load_error">Nije bilo moguće učitati razgovor. Provjerite vezu i pokušajte ponovno.</string>
 
     <!-- Quick guide -->
@@ -354,7 +354,7 @@
     <string name="guide_wear_title">Na vašem satu</string>
     <string name="guide_wear_body">Vaši se uređaji sinkroniziraju s Wear OS-om pa cijene možete provjeriti i bez telefona.</string>
     <string name="reply_hint">Vaš odgovor</string>
-    <string name="reply_send">Pošalji</string>
+    <string name="reply_send">Pošaljite</string>
     <string name="reply_public_note">Vaš se odgovor javno objavljuje na GitHubu.</string>
     <string name="reply_error">Nije bilo moguće poslati vaš odgovor. Pokušajte ponovno.</string>
     <string name="reply_queued">Spremljeno — poslat ćemo vaš odgovor kada ponovno budete na mreži.</string>

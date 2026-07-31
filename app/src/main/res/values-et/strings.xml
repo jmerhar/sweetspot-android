@@ -5,26 +5,26 @@
     <!-- Main screen -->
     <string name="cd_settings">Seaded</string>
     <string name="cd_back">Tagasi</string>
-    <string name="main_description">SweetSpot aitab sul raha säästa, leides odavaima aja oma seadmete kasutamiseks. Vali lihtsalt, kui kaua seade peab töötama, ja rakendus otsib eelseisvatest dünaamilistest elektrihindadest parima aja. Samuti saad salvestada oma lemmikseadmed seadetesse kiireks ligipääsuks.</string>
-    <string name="main_find_button">Otsi odavaimat aega</string>
+    <string name="main_description">SweetSpot aitab teil raha säästa, leides odavaima aja oma seadmete kasutamiseks. Valige lihtsalt, kui kaua seade peab töötama, ja rakendus otsib eelseisvatest dünaamilistest elektrihindadest parima aja. Samuti saate salvestada oma lemmikseadmed seadetesse kiireks ligipääsuks.</string>
+    <string name="main_find_button">Otsige odavaimat aega</string>
     <string name="main_searching">Otsimine…</string>
-    <string name="main_add_appliances">Lisa oma seadmed</string>
+    <string name="main_add_appliances">Lisage oma seadmed</string>
     <string name="main_card_description">Leidke odavaim aeg oma seadme kasutamiseks</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Soovitatud aeg</string>
-    <string name="result_after_deadline">See lõpeb pärast sinu „Valmis hiljemalt“ aega.</string>
+    <string name="result_after_deadline">See lõpeb pärast teie „Valmis hiljemalt“ aega.</string>
     <string name="result_start">Algus</string>
     <string name="result_end">Lõpp</string>
     <string name="result_total_cost">Kogumaksumus</string>
     <string name="result_avg_price">Keskmine hind</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s rohkem kui odavaim</string>
+    <string name="result_cost_above_cheapest">%1$s rohkem kui soovitatud aeg</string>
     <string name="result_earlier">Varem</string>
     <string name="result_cheaper">Odavam</string>
     <string name="result_cost_breakdown">Kulude jaotus</string>
-    <string name="cd_collapse">Ahenda</string>
-    <string name="cd_expand">Laienda</string>
+    <string name="cd_collapse">Ahendage</string>
+    <string name="cd_expand">Laiendage</string>
     <string name="result_upcoming_prices">Tulevased hinnad</string>
     <string name="result_disclaimer">Kulud on arvutatud 1 kW koormuse kohta. Hinnad ei sisalda käibemaksu, energiamaksu ega tarnija juurdehindlust. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="result_data_source">\nAndmeallikas: %s</string>
@@ -44,13 +44,13 @@
     <string name="settings_language">Keel</string>
     <string name="settings_language_system_default">Süsteemi vaikeväärtus</string>
     <string name="settings_country">Riik</string>
-    <string name="settings_select_zone">Vali tsoon</string>
+    <string name="settings_select_zone">Valige tsoon</string>
     <string name="settings_data_sources">Andmeallikad</string>
     <string name="settings_data_sources_description">Hinnad tuuakse selles järjekorras. Kui üks ebaõnnestub, proovitakse järgmist.</string>
-    <string name="settings_reset_defaults">Taasta vaikeväärtused</string>
+    <string name="settings_reset_defaults">Taastage vaikeväärtused</string>
     <string name="settings_appliances">Seadmed</string>
-    <string name="settings_appliances_description">Lisa siia oma koduseadmed kiireks ligipääsuks. Saad lisada ka konkreetseid programme, nt nõudepesumasin Eco, nõudepesumasin kiire, pesumasin puuvillane.</string>
-    <string name="settings_add_appliance">Lisa seade</string>
+    <string name="settings_appliances_description">Lisage siia oma koduseadmed kiireks ligipääsuks. Saate lisada ka konkreetseid programme, nt nõudepesumasin Eco, nõudepesumasin kiire, pesumasin puuvillane.</string>
+    <string name="settings_add_appliance">Lisage seade</string>
     <string name="settings_timezone">Ajavöönd</string>
     <string name="settings_theme">Teema</string>
     <string name="settings_theme_system">Süsteemi vaikimisi</string>
@@ -63,28 +63,28 @@
     <string name="settings_region_desc">Riik, hinnatsoon ja ajavöönd</string>
     <string name="settings_appearance_title">Välimus</string>
     <string name="settings_appearance_desc">Keel ja teema</string>
-    <string name="settings_appliances_menu_desc">Sinu salvestatud seadmed</string>
+    <string name="settings_appliances_menu_desc">Teie salvestatud seadmed</string>
     <string name="settings_ev_menu_desc">Laadija, laetuse eesmärk ja sõidukid</string>
-    <string name="settings_all_in_menu_desc">Näita täielikku tarbijahinda</string>
+    <string name="settings_all_in_menu_desc">Näidake täielikku tarbijahinda</string>
 
-    <string name="settings_share_title">Jaga oma seadistust</string>
-    <string name="settings_share_menu_desc">Kopeeri oma seadmed ja laadimisseaded teise seadmesse</string>
+    <string name="settings_share_title">Jagage oma seadistust</string>
+    <string name="settings_share_menu_desc">Kopeerige oma seadmed ja laadimisseaded teise seadmesse</string>
 
     <!-- Household sharing: share screen -->
-    <string name="share_setup_description">Skaneeri see kood teise telefoni kaameraga või saada link. Sinu seadmed, nende järjekord ja laadimisseaded kopeeritakse sellesse seadmesse.</string>
-    <string name="share_setup_button">Jaga linki</string>
-    <string name="share_setup_chooser_title">Jaga oma seadistust</string>
-    <string name="share_setup_qr_unavailable">Sinu seadistus on QR-koodi jaoks liiga suur. Kasuta selle asemel jagamislinki.</string>
-    <string name="cd_qr_code">Sinu seadistuse QR-kood</string>
+    <string name="share_setup_description">Skaneerige see kood teise telefoni kaameraga või saatke link. Teie seadmed, nende järjekord ja laadimisseaded kopeeritakse sellesse seadmesse.</string>
+    <string name="share_setup_button">Jagage linki</string>
+    <string name="share_setup_chooser_title">Jagage oma seadistust</string>
+    <string name="share_setup_qr_unavailable">Teie seadistus on QR-koodi jaoks liiga suur. Kasutage selle asemel jagamislinki.</string>
+    <string name="cd_qr_code">Teie seadistuse QR-kood</string>
 
     <!-- Household sharing: import preview -->
-    <string name="import_title">Impordi seadistus</string>
-    <string name="import_mode_add">Lisa minu omadele</string>
-    <string name="import_mode_add_desc">Säilita minu seadmed ja lisa uued</string>
-    <string name="import_mode_replace">Asenda minu omad</string>
-    <string name="import_mode_replace_desc">Kasuta jagatud seadmeid, järjekorda ja laadimisseadeid</string>
-    <string name="import_mode_pick">Vali, millised</string>
-    <string name="import_mode_pick_desc">Vali lisatavad seadmed</string>
+    <string name="import_title">Importige seadistus</string>
+    <string name="import_mode_add">Lisage minu omadele</string>
+    <string name="import_mode_add_desc">Säilitage minu seadmed ja lisage uued</string>
+    <string name="import_mode_replace">Asendage minu omad</string>
+    <string name="import_mode_replace_desc">Kasutage jagatud seadmeid, järjekorda ja laadimisseadeid</string>
+    <string name="import_mode_pick">Valige, millised</string>
+    <string name="import_mode_pick_desc">Valige lisatavad seadmed</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d seade</item>
         <item quantity="other">%d seadet</item>
@@ -94,42 +94,42 @@
         <item quantity="other">Sisaldab %d sõidukit</item>
     </plurals>
     <plurals name="import_button">
-        <item quantity="one">Impordi %d seade</item>
-        <item quantity="other">Impordi %d seadet</item>
+        <item quantity="one">Importige %d seade</item>
+        <item quantity="other">Importige %d seadet</item>
     </plurals>
 
     <!-- Household sharing: import errors -->
     <string name="import_error_title">Importimine ebaõnnestus</string>
-    <string name="import_error_too_new">See seadistus jagati SweetSpoti uuemast versioonist. Selle importimiseks uuenda rakendust.</string>
-    <string name="import_error_malformed">Seda linki ei õnnestunud lugeda. Küsi uus.</string>
+    <string name="import_error_too_new">See seadistus jagati SweetSpoti uuemast versioonist. Selle importimiseks uuendage rakendust.</string>
+    <string name="import_error_malformed">Seda linki ei õnnestunud lugeda. Küsige uus.</string>
 
     <!-- Appliance dialog -->
-    <string name="dialog_add_appliance">Lisa seade</string>
-    <string name="dialog_edit_appliance">Muuda seadet</string>
+    <string name="dialog_add_appliance">Lisage seade</string>
+    <string name="dialog_edit_appliance">Muutke seadet</string>
     <string name="dialog_name">Nimi</string>
     <string name="dialog_name_placeholder">nt Pesumasin</string>
     <string name="dialog_icon">Ikoon</string>
-    <string name="action_delete">Kustuta</string>
-    <string name="action_save">Salvesta</string>
-    <string name="action_cancel">Tühista</string>
+    <string name="action_delete">Kustutage</string>
+    <string name="action_save">Salvestage</string>
+    <string name="action_cancel">Tühistage</string>
 
     <!-- Picker screens -->
     <string name="picker_timezone_title">Ajavöönd</string>
-    <string name="picker_timezone_search">Otsi ajavööndeid</string>
+    <string name="picker_timezone_search">Otsige ajavööndeid</string>
     <string name="picker_country_title">Riik</string>
-    <string name="picker_country_search">Otsi riike</string>
+    <string name="picker_country_search">Otsige riike</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d tsoon</item>
         <item quantity="other">%d tsooni</item>
     </plurals>
     <string name="picker_zone_title">Tsoon</string>
     <string name="picker_language_title">Keel</string>
-    <string name="picker_language_search">Otsi keeli</string>
+    <string name="picker_language_search">Otsige keeli</string>
     <string name="cd_selected">Valitud</string>
 
     <!-- Errors -->
-    <string name="error_zero_duration">Vali kestus, mis on suurem kui null.</string>
-    <string name="error_no_zone">Vali tsoon seadetes.</string>
+    <string name="error_zero_duration">Valige kestus, mis on suurem kui null.</string>
+    <string name="error_no_zone">Valige tsoon seadetes.</string>
     <string name="error_no_data">Järgmise 24 tunni hinnaandmed pole saadaval.</string>
     <string name="error_network">Hindade toomine ebaõnnestus: %s</string>
     <plurals name="error_not_enough_data">
@@ -137,53 +137,53 @@
         <item quantity="other">Ebapiisavad hinnaandmed %1$s jaoks. Saadaval on ainult %2$d tundi andmeid.</item>
     </plurals>
     <plurals name="error_cooldown">
-        <item quantity="one">Hinnad laaditi hiljuti. Proovi uuesti %d minuti pärast.</item>
-        <item quantity="other">Hinnad laaditi hiljuti. Proovi uuesti %d minuti pärast.</item>
+        <item quantity="one">Hinnad laaditi hiljuti. Proovige uuesti %d minuti pärast.</item>
+        <item quantity="other">Hinnad laaditi hiljuti. Proovige uuesti %d minuti pärast.</item>
     </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Täpsemalt</string>
     <string name="settings_advanced_description">Andmeallikad, puhver</string>
-    <string name="settings_clear_cache">Tühjenda hinnapuhver</string>
+    <string name="settings_clear_cache">Tühjendage hinnapuhver</string>
     <string name="settings_clear_cache_description">Hinnad laetakse järgmisel otsingul uuesti.</string>
     <string name="snackbar_cache_cleared">Puhver tühjendatud</string>
-    <string name="cd_refresh">Värskenda</string>
+    <string name="cd_refresh">Värskendage</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Jaga töökindluse statistikat</string>
-    <string name="settings_stats_description">Aita parandada andmeallikate töökindlust, jagades anonüümselt seda, kui sageli hinnaandmed laadivad või ebaõnnestuvad. Isikuandmeid ei koguta.</string>
-    <string name="stats_prompt_title">Aita SweetSpoti parandada?</string>
-    <string name="stats_prompt_message">Jaga anonüümset statistikat, et aidata parandada andmeallikate töökindlust. Jagatakse ainult seda, kui sageli iga andmeallikas laadib või ebaõnnestub — isikuandmeid ei jagata. Saad seda igal ajal seadetes muuta.</string>
-    <string name="stats_prompt_enable">Luba</string>
+    <string name="settings_stats_title">Jagage töökindluse statistikat</string>
+    <string name="settings_stats_description">Aidake parandada andmeallikate töökindlust, jagades anonüümselt seda, kui sageli hinnaandmed laadivad või ebaõnnestuvad. Isikuandmeid ei koguta.</string>
+    <string name="stats_prompt_title">Aidake SweetSpoti parandada?</string>
+    <string name="stats_prompt_message">Jagage anonüümset statistikat, et aidata parandada andmeallikate töökindlust. Jagatakse ainult seda, kui sageli iga andmeallikas laadib või ebaõnnestub — isikuandmeid ei jagata. Saate seda igal ajal seadetes muuta.</string>
+    <string name="stats_prompt_enable">Lubage</string>
     <string name="stats_prompt_dismiss">Ei, aitäh</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_title_1">Kasuta seadmeid siis, kui elekter on odavaim</string>
+    <string name="onboarding_title_1">Kasutage seadmeid siis, kui elekter on odavaim</string>
     <string name="onboarding_body_1">SweetSpot uurib tulevasi elektrihindu ja leiab odavaima aja seadme kasutamiseks.</string>
-    <string name="onboarding_title_2">Sinu seadmed ühe puudutuse kaugusel</string>
-    <string name="onboarding_body_2">Salvesta seade ja puuduta seda, et näha selle odavaimat aega. Lisa oma elektriauto, et planeerida laadimist praeguse ja soovitud laetuse järgi.</string>
-    <string name="onboarding_title_3">Kohanda enda järgi</string>
-    <string name="onboarding_body_3">Sinu riik tuvastatakse automaatselt. Muuda tsooni, lisa seadmeid või vali keel — kõik on seadetes.</string>
-    <string name="onboarding_skip">Jäta vahele</string>
+    <string name="onboarding_title_2">Teie seadmed ühe puudutuse kaugusel</string>
+    <string name="onboarding_body_2">Salvestage seade ja puudutage seda, et näha selle odavaimat aega. Lisage oma elektriauto, et planeerida laadimist praeguse ja soovitud laetuse järgi.</string>
+    <string name="onboarding_title_3">Kohandage enda järgi</string>
+    <string name="onboarding_body_3">Teie riik tuvastatakse automaatselt. Muutke tsooni, lisage seadmeid või valige keel — kõik on seadetes.</string>
+    <string name="onboarding_skip">Jätke vahele</string>
     <string name="onboarding_next">Edasi</string>
-    <string name="onboarding_get_started">Alusta</string>
+    <string name="onboarding_get_started">Alustage</string>
     <string name="settings_how_it_works">Kuidas see töötab</string>
-    <string name="settings_how_it_works_desc">Vaata sissejuhatust uuesti</string>
+    <string name="settings_how_it_works_desc">Vaadake sissejuhatust uuesti</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Telli SweetSpot</string>
-    <string name="settings_unlock_description">Telli aastaks, et jätkata SweetSpoti kasutamist.</string>
+    <string name="settings_unlock">Tellige SweetSpot</string>
+    <string name="settings_unlock_description">Tellige aastaks, et jätkata SweetSpoti kasutamist.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Proovperiood on lõppenud</string>
-    <string name="paywall_description">SweetSpot leiab odavaima aja sinu seadmete kasutamiseks, kasutades dünaamilisi elektrihindu 30 Euroopa riigis. Telli, et selle kasutamist jätkata.</string>
-    <string name="paywall_unlock">Telli SweetSpot</string>
-    <string name="paywall_unlock_price">Telli hinnaga %s/aastas</string>
-    <string name="paywall_restore">Taasta tellimus</string>
+    <string name="paywall_description">SweetSpot leiab odavaima aja teie seadmete kasutamiseks, kasutades dünaamilisi elektrihindu 30 Euroopa riigis. Tellige, et selle kasutamist jätkata.</string>
+    <string name="paywall_unlock">Tellige SweetSpot</string>
+    <string name="paywall_unlock_price">Tellige hinnaga %s/aastas</string>
+    <string name="paywall_restore">Taastage tellimus</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Täname!</string>
-    <string name="thank_you_message">Sinu tellimus on nüüd aktiivne. Naudi oma seadmetele odavaima aja leidmist!</string>
+    <string name="thank_you_message">Teie tellimus on nüüd aktiivne. Nautige oma seadmetele odavaima aja leidmist!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Proovperiood: %d päev jäänud</item>
@@ -192,14 +192,14 @@
 
     <!-- EV charging -->
     <string name="settings_ev_title">Elektriauto laadimine</string>
-    <string name="ev_add_vehicle">Lisa sõiduk</string>
-    <string name="ev_search_hint">Otsi marki või mudelit</string>
-    <string name="ev_custom_hint">Ei leidnud nimekirjast? Sisesta andmed allpool, et lisada oma sõiduk.</string>
+    <string name="ev_add_vehicle">Lisage sõiduk</string>
+    <string name="ev_search_hint">Otsige marki või mudelit</string>
+    <string name="ev_custom_hint">Ei leidnud nimekirjast? Sisestage andmed allpool, et lisada oma sõiduk.</string>
     <string name="ev_vehicle_specs">%1$s kWh aku · %2$s kW maks AC</string>
     <string name="ev_battery_label">Aku mahtuvus</string>
     <string name="ev_power_label">Maksimaalne AC-laadimisvõimsus</string>
     <string name="ev_home_charger">Kodulaadija</string>
-    <string name="ev_home_charger_description">Sinu seinalaadija või laadija väljundvõimsus. Laadimisel kasutatakse väiksemat väärtust — kas seda või auto maksimumi.</string>
+    <string name="ev_home_charger_description">Teie seinalaadija või laadija väljundvõimsus. Laadimisel kasutatakse väiksemat väärtust — kas seda või auto maksimumi.</string>
     <string name="ev_charger_custom">Kohandatud</string>
     <string name="ev_default_target">Vaikimisi laetuse eesmärk: %d%%</string>
     <string name="ev_current_soc">Praegune laetus: %d%%</string>
@@ -207,27 +207,27 @@
     <string name="ev_deadline_toggle">Valmis hiljemalt</string>
     <string name="ev_deadline_hint">Valmis hiljemalt %s</string>
     <string name="ev_charging_estimate">Laadimisaeg: %1$s võimsusel %2$s kW</string>
-    <string name="dialog_add_vehicle">Lisa sõiduk</string>
-    <string name="dialog_edit_vehicle">Muuda sõidukit</string>
+    <string name="dialog_add_vehicle">Lisage sõiduk</string>
+    <string name="dialog_edit_vehicle">Muutke sõidukit</string>
     <string name="ev_attribution">Sõidukiandmed: Open EV Data</string>
     <string name="ev_error_invalid_soc">Laetuse eesmärk peab olema suurem kui praegune laetus.</string>
-    <string name="ev_error_invalid_charger">Määra laadija võimsus, mis on suurem kui null.</string>
-    <string name="ev_error_deadline_unreachable">Laadimine ei jõua sinu tähtajaks valmis. Proovi madalamat laetuse eesmärki või hilisemat aega.</string>
+    <string name="ev_error_invalid_charger">Määrake laadija võimsus, mis on suurem kui null.</string>
+    <string name="ev_error_deadline_unreachable">Laadimine ei jõua teie tähtajaks valmis. Proovige madalamat laetuse eesmärki või hilisemat aega.</string>
     <string name="result_disclaimer_power">Kulud on arvutatud %s kW koormuse kohta. Hinnad ei sisalda käibemaksu, energiamaksu ega tarnija juurdehindlust. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="dialog_power">Võimsus (kW, valikuline)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Koguhind</string>
-    <string name="settings_all_in_toggle">Näita koguhinda</string>
-    <string name="settings_all_in_desc">Näita hinnangulist täielikku tarbijahinda (börsihind + energiamaks + tarnija juurdehindlus + käibemaks) pelga börsihinna asemel.</string>
+    <string name="settings_all_in_toggle">Näidake koguhinda</string>
+    <string name="settings_all_in_desc">Näidake hinnangulist täielikku tarbijahinda (börsihind + energiamaks + tarnija juurdehindlus + käibemaks) pelga börsihinna asemel.</string>
     <string name="all_in_supplier">Tarnija</string>
-    <string name="all_in_supplier_prompt">Vali oma tarnija</string>
+    <string name="all_in_supplier_prompt">Valige oma tarnija</string>
     <string name="all_in_supplier_custom">Kohandatud juurdehindlus</string>
-    <string name="all_in_no_supplier">Tarnijat ei leitud. Sisesta selle asemel allpool kohandatud juurdehindlus.</string>
+    <string name="all_in_no_supplier">Tarnijat ei leitud. Sisestage selle asemel allpool kohandatud juurdehindlus.</string>
     <string name="all_in_surcharge_custom">Kohandatud juurdehindlus (ilma käibemaksuta)</string>
-    <string name="all_in_incomplete">Vali tarnija või sisesta juurdehindlus — või lülita koguhind välja.</string>
+    <string name="all_in_incomplete">Valige tarnija või sisestage juurdehindlus — või lülitage koguhind välja.</string>
     <string name="picker_supplier_title">Tarnija</string>
-    <string name="picker_supplier_search">Otsi tarnijaid</string>
+    <string name="picker_supplier_search">Otsige tarnijaid</string>
     <string name="result_disclaimer_all_in">Kulud on arvutatud 1 kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="result_disclaimer_power_all_in">Kulud on arvutatud %s kW koormuse kohta hinnangulise koguhinnaga (börsihind + energiamaks + tarnija juurdehindlus + käibemaks). Ei sisalda võrgutasusid ega igakuiseid püsitasusid. Homsed hinnad on tavaliselt saadaval pärast kella 13:00 CET.</string>
     <string name="result_all_in_supplier">\nTarnija: %s</string>
@@ -240,7 +240,7 @@
 
     <!-- Sorting & usage -->
     <string name="settings_sort_title">Järjestus</string>
-    <string name="sort_by">Sorteeri</string>
+    <string name="sort_by">Sorteerige</string>
     <string name="sort_then_by">seejärel</string>
     <string name="sort_key_custom">Kohandatud järjestus</string>
     <string name="sort_key_frequency">Enim kasutatud</string>
@@ -250,25 +250,25 @@
     <string name="sort_key_type">Tüüp</string>
     <string name="sort_direction_ascending">Kasvav</string>
     <string name="sort_direction_descending">Kahanev</string>
-    <string name="sort_add_tiebreaker">Lisa lisakriteerium</string>
-    <string name="cd_sort_remove_level">Eemalda see sorteerimistasand</string>
-    <string name="settings_group_title">Rühmita tüübi järgi</string>
-    <string name="settings_group_description">Rühmita avakuva nupud seadme tüübi järgi, igaüks oma pealkirja alla.</string>
+    <string name="sort_add_tiebreaker">Lisage lisakriteerium</string>
+    <string name="cd_sort_remove_level">Eemaldage see sorteerimistasand</string>
+    <string name="settings_group_title">Rühmitage tüübi järgi</string>
+    <string name="settings_group_description">Rühmitage avakuva nupud seadme tüübi järgi, igaüks oma pealkirja alla.</string>
     <string name="group_off">Väljas</string>
     <string name="group_rows">Read</string>
     <string name="group_columns">Veerud</string>
-    <string name="cd_drag_handle">Lohista ümberjärjestamiseks</string>
+    <string name="cd_drag_handle">Lohistage ümberjärjestamiseks</string>
     <string name="usage_count_format">Kasutatud %d×</string>
     <string name="usage_never">Pole kasutatud</string>
-    <string name="settings_reset_usage">Lähtesta kasutusandmed</string>
-    <string name="settings_reset_usage_description">Kustuta puudutuste ajalugu, mille alusel sorteeritakse Enim kasutatud ja Hiljuti kasutatud järgi.</string>
+    <string name="settings_reset_usage">Lähtestage kasutusandmed</string>
+    <string name="settings_reset_usage_description">Kustutage puudutuste ajalugu, mille alusel sorteeritakse Enim kasutatud ja Hiljuti kasutatud järgi.</string>
     <string name="reset_usage_confirm_title">Lähtestada kasutusandmed?</string>
     <string name="reset_usage_confirm_message">See kustutab puudutuste ajaloo, mille alusel seadmeid sorteeritakse Enim kasutatud ja Hiljuti kasutatud järgi. Seda ei saa tagasi võtta.</string>
-    <string name="action_reset">Lähtesta</string>
+    <string name="action_reset">Lähtestage</string>
 
     <!-- EV placement -->
     <string name="ev_placement_title">Paigutus avakuval</string>
-    <string name="ev_placement_description">Kus sinu sõidukid seadmenuppude seas kuvatakse.</string>
+    <string name="ev_placement_description">Kus teie sõidukid seadmenuppude seas kuvatakse.</string>
     <string name="ev_position_interleaved">Segamini</string>
     <string name="ev_position_first">Esimesena</string>
     <string name="ev_position_last">Viimasena</string>
@@ -277,10 +277,10 @@
     <string name="home_section_appliances">Seadmed</string>
 
     <!-- Coach hints -->
-    <string name="coach_earlier_cheaper">Vale aeg? Puuduta Varem varasemaks alguseks või Odavam, et pöörduda tagasi kõige odavama juurde.</string>
-    <string name="coach_chart_press_hold">Hoia graafikut all, et näha hinda igal ajahetkel.</string>
-    <string name="coach_all_in_toggle">Vaheta täieliku koguhinna ja pelga börsihinna vahel.</string>
-    <string name="coach_ev_chip">Puuduta oma sõidukit, et planeerida laadimist aku laetuse järgi.</string>
+    <string name="coach_earlier_cheaper">Vale aeg? Puudutage Varem varasemaks alguseks või Odavam, et pöörduda tagasi kõige odavama juurde.</string>
+    <string name="coach_chart_press_hold">Hoidke graafikut all, et näha hinda igal ajahetkel.</string>
+    <string name="coach_all_in_toggle">Vahetage täieliku koguhinna ja pelga börsihinna vahel.</string>
+    <string name="coach_ev_chip">Puudutage oma sõidukit, et planeerida laadimist aku laetuse järgi.</string>
     <string name="coach_got_it">Selge</string>
 
     <!-- Help & feedback -->
@@ -291,69 +291,69 @@
     <string name="help_section_about">Teave</string>
     <string name="help_quick_guide_title">Kiirjuhend</string>
     <string name="help_quick_guide_desc">Kuidas SweetSpoti kasutada</string>
-    <string name="help_reset_tips_title">Lähtesta näpunäited</string>
-    <string name="help_reset_tips_desc">Näita ühekordseid vihjeid uuesti</string>
+    <string name="help_reset_tips_title">Lähtestage näpunäited</string>
+    <string name="help_reset_tips_desc">Näidake ühekordseid vihjeid uuesti</string>
     <string name="help_faq_title">KKK</string>
     <string name="help_faq_desc">Levinud küsimused</string>
-    <string name="help_report_title">Teata probleemist</string>
+    <string name="help_report_title">Teatage probleemist</string>
     <string name="help_report_desc">Midagi ei tööta</string>
-    <string name="help_feedback_title">Saada tagasisidet</string>
+    <string name="help_feedback_title">Saatke tagasisidet</string>
     <string name="help_feedback_desc">Ideed ja ettepanekud</string>
     <string name="help_my_reports_title">Minu teated</string>
-    <string name="help_my_reports_desc">Jälgi, mida oled esitanud</string>
-    <string name="help_contact_title">Võta ühendust</string>
-    <string name="help_contact_desc">Kirjuta meile otse</string>
-    <string name="help_rate_title">Hinda SweetSpoti</string>
-    <string name="help_rate_desc">Hinda meid Google Plays</string>
+    <string name="help_my_reports_desc">Jälgige, mida olete esitanud</string>
+    <string name="help_contact_title">Võtke ühendust</string>
+    <string name="help_contact_desc">Kirjutage meile otse</string>
+    <string name="help_rate_title">Hinnake SweetSpoti</string>
+    <string name="help_rate_desc">Hinnake meid Google Plays</string>
     <string name="help_whats_new_title">Mis on uut</string>
     <string name="help_whats_new_desc">Viimased muudatused</string>
     <string name="help_privacy_title">Privaatsuspoliitika</string>
-    <string name="help_privacy_desc">Kuidas sinu andmeid käideldakse</string>
+    <string name="help_privacy_desc">Kuidas teie andmeid käideldakse</string>
     <string name="help_about_license">GPL v3 · Avatud lähtekood GitHubis</string>
     <string name="tips_reset_snackbar">Näpunäited lähtestatud</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">Sinu teade avaldatakse avaliku probleemina GitHubis — palun ära lisa isiklikke andmeid.</string>
+    <string name="report_public_notice">Teie teade avaldatakse avaliku probleemina GitHubis — palun ärge lisage isiklikke andmeid.</string>
     <string name="report_subject_label">Teema</string>
     <string name="report_body_label_bug">Mis juhtus?</string>
-    <string name="report_body_label_feedback">Sinu tagasiside</string>
-    <string name="report_email_label">Teavita mind e-postiga (valikuline)</string>
-    <string name="report_email_note">Sinu e-posti kasutatakse ainult sinu teavitamiseks — seda ei näidata kunagi avalikus probleemis.</string>
-    <string name="report_submit">Esita</string>
+    <string name="report_body_label_feedback">Teie tagasiside</string>
+    <string name="report_email_label">Teavitage mind e-postiga (valikuline)</string>
+    <string name="report_email_note">Teie e-posti kasutatakse ainult teie teavitamiseks — seda ei näidata kunagi avalikus probleemis.</string>
+    <string name="report_submit">Esitage</string>
     <string name="report_submitting">Saatmine…</string>
     <string name="report_filed">Teade #%1$d esitatud — aitäh!</string>
-    <string name="report_sent">Aitäh — sinu teade saadeti.</string>
+    <string name="report_sent">Aitäh — teie teade saadeti.</string>
     <string name="report_error_retry">Praegu ei õnnestunud saata — salvestatud, proovime automaatselt uuesti.</string>
-    <string name="report_error_permanent">Saatmine ebaõnnestus. Kontrolli oma sisestust ja proovi uuesti.</string>
-    <string name="report_retry">Proovi uuesti</string>
+    <string name="report_error_permanent">Saatmine ebaõnnestus. Kontrollige oma sisestust ja proovige uuesti.</string>
+    <string name="report_retry">Proovige uuesti</string>
     <string name="report_done">Valmis</string>
 
     <!-- My reports -->
-    <string name="my_reports_empty">Sa pole veel ühtegi teadet esitanud.</string>
+    <string name="my_reports_empty">Te pole veel ühtegi teadet esitanud.</string>
     <string name="my_reports_open">Avatud</string>
     <string name="my_reports_closed">Suletud</string>
 
-    <string name="thread_you">Sina</string>
+    <string name="thread_you">Teie</string>
     <string name="thread_support">SweetSpoti tugi</string>
-    <string name="thread_open_github">Ava GitHubis</string>
-    <string name="thread_load_error">Vestlust ei õnnestunud laadida. Kontrolli oma ühendust ja proovi uuesti.</string>
+    <string name="thread_open_github">Avage GitHubis</string>
+    <string name="thread_load_error">Vestlust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Leia odavaim aeg</string>
-    <string name="guide_find_body">Vali, kui kaua su seade peab töötama, ja puuduta Otsi.</string>
-    <string name="guide_appliances_title">Salvesta oma seadmed</string>
-    <string name="guide_appliances_body">Lisa seadmed seadetesse, et otsida ühe puudutusega.</string>
-    <string name="guide_ev_title">Planeeri elektriauto laadimine</string>
-    <string name="guide_ev_body">Lisa oma auto, sisesta selle praegune ja soovitud laetus ning SweetSpot arvutab laadimisaja.</string>
-    <string name="guide_result_title">Loe tulemust</string>
-    <string name="guide_result_body">Kasuta nuppe Varem ja Odavam soovitatud aja nihutamiseks ning hoia graafikut all, et näha mis tahes ajapilu hinda.</string>
+    <string name="guide_find_title">Leidke odavaim aeg</string>
+    <string name="guide_find_body">Valige, kui kaua teie seade peab töötama, ja puudutage Otsi.</string>
+    <string name="guide_appliances_title">Salvestage oma seadmed</string>
+    <string name="guide_appliances_body">Lisage seadmed seadetesse, et otsida ühe puudutusega.</string>
+    <string name="guide_ev_title">Planeerige elektriauto laadimine</string>
+    <string name="guide_ev_body">Lisage oma auto, sisestage selle praegune ja soovitud laetus ning SweetSpot arvutab laadimisaja.</string>
+    <string name="guide_result_title">Lugege tulemust</string>
+    <string name="guide_result_body">Kasutage nuppe Varem ja Odavam soovitatud aja nihutamiseks ning hoidke graafikut all, et näha mis tahes ajapilu hinda.</string>
     <string name="guide_allin_title">Koguhind</string>
-    <string name="guide_allin_body">Soovi korral näita täielikku tarbijahinda pelga börsihinna asemel.</string>
-    <string name="guide_wear_title">Sinu kellal</string>
-    <string name="guide_wear_body">Sinu seadmed sünkroonitakse Wear OS-iga, nii saad hindu vaadata ka ilma telefonita.</string>
-    <string name="reply_hint">Sinu vastus</string>
-    <string name="reply_send">Saada</string>
-    <string name="reply_public_note">Sinu vastus avaldatakse avalikult GitHubis.</string>
-    <string name="reply_error">Vastust ei õnnestunud saata. Proovi uuesti.</string>
-    <string name="reply_queued">Salvestatud — saadame su vastuse, kui oled taas võrgus.</string>
+    <string name="guide_allin_body">Soovi korral näidake täielikku tarbijahinda pelga börsihinna asemel.</string>
+    <string name="guide_wear_title">Teie kellal</string>
+    <string name="guide_wear_body">Teie seadmed sünkroonitakse Wear OS-iga, nii saate hindu vaadata ka ilma telefonita.</string>
+    <string name="reply_hint">Teie vastus</string>
+    <string name="reply_send">Saatke</string>
+    <string name="reply_public_note">Teie vastus avaldatakse avalikult GitHubis.</string>
+    <string name="reply_error">Vastust ei õnnestunud saata. Proovige uuesti.</string>
+    <string name="reply_queued">Salvestatud — saadame teie vastuse, kui olete taas võrgus.</string>
 </resources>

@@ -1,16 +1,16 @@
 ---
-title: "Impordi seadistus"
-description: "Ava rakenduses jagatud SweetSpoti seadistus."
+title: "Importige seadistus"
+description: "Avage rakenduses jagatud SweetSpoti seadistus."
 ---
 
-## Ava rakenduses
+## Avage rakenduses
 
-See link sisaldab jagatud SweetSpoti seadistust — kellegi sinu leibkonnast seadmete loendit ja elektriauto laadimisseadeid.
+See link sisaldab jagatud SweetSpoti seadistust — kellegi teie leibkonnast seadmete loendit ja elektriauto laadimisseadeid.
 
-Kui SweetSpot on paigaldatud, peaks see avanema automaatselt eelvaates, kus saad seadistuse üle vaadata ja importida.
+Kui SweetSpot on paigaldatud, peaks see avanema automaatselt eelvaates, kus saate seadistuse üle vaadata ja importida.
 
-**Midagi ei juhtunud?** Veendu, et SweetSpot on paigaldatud ja ajakohane, seejärel ava link uuesti oma telefonist.
+**Midagi ei juhtunud?** Veenduge, et SweetSpot on paigaldatud ja ajakohane, seejärel avage link uuesti oma telefonist.
 
-## Sul pole veel SweetSpoti?
+## Teil pole veel SweetSpoti?
 
-[Laadi SweetSpot alla Google Playst](https://play.google.com/store/apps/details?id=today.sweetspot) ja ava link uuesti oma telefonis.
+[Laadige SweetSpot alla Google Playst](https://play.google.com/store/apps/details?id=today.sweetspot) ja avage link uuesti oma telefonis.

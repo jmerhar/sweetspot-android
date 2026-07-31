@@ -20,19 +20,19 @@ other = "Muudatused"
 other = "Privaatsus"
 
 [lang_switch]
-other = "Vaheta keelt"
+other = "Vahetage keelt"
 
 [hero_title]
-other = "Leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks"
+other = "Leidke soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks"
 
 [hero_subtitle]
-other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab soodsaima aja oma seadmete kasutamiseks või elektriauto laadimiseks — vajadusel valmis sinu määratud tähtajaks. Avatud lähtekoodiga ja privaatne."
+other = "SweetSpot otsib dünaamilisi elektrihindu 30 Euroopa riigis ja leiab soodsaima aja oma seadmete kasutamiseks või elektriauto laadimiseks — vajadusel valmis teie määratud tähtajaks. Avatud lähtekoodiga ja privaatne."
 
 [download]
-other = "Laadi alla Google Playst"
+other = "Laadige alla Google Playst"
 
 [learn_more]
-other = "Loe lähemalt"
+other = "Lugege lähemalt"
 
 [features_title]
 other = "Funktsioonid"
@@ -65,31 +65,31 @@ other = "Viis andmeallikat automaatse varuallikaga aitavad hoida hinnad kättesa
 other = "Wear OS"
 
 [feature_wear_desc]
-other = "Kaasrakendus Pixel Watchile ja teistele Wear OS 3+ seadmetele. Vaata hindu otse randmelt."
+other = "Kaasrakendus Pixel Watchile ja teistele Wear OS 3+ seadmetele. Vaadake hindu otse randmelt."
 
 [feature_appliances_title]
 other = "Kohandatud seadmed"
 
 [feature_appliances_desc]
-other = "Salvesta oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks ühe puutega ligipääsuks."
+other = "Salvestage oma seadmed kohandatud nimede, ikoonide ja kestustega kiireks ühe puutega ligipääsuks."
 
 [feature_ev_title]
 other = "Elektriauto laadimine"
 
 [feature_ev_desc]
-other = "Lisa oma auto ning sisesta selle praegune ja soovitud laetuse tase. SweetSpot arvutab laadimisaja ja leiab soodsaima aja laadima panemiseks."
+other = "Lisage oma auto ning sisestage selle praegune ja soovitud laetuse tase. SweetSpot arvutab laadimisaja ja leiab soodsaima aja laadima panemiseks."
 
 [feature_deadline_title]
 other = "Valmis hiljemalt"
 
 [feature_deadline_desc]
-other = "Vajad seda valmis kindlaks ajaks? Lisa „valmis hiljemalt“ tähtaeg ja SweetSpot valib odavaima aja, mis selleks ajaks jõuab."
+other = "Vajate seda valmis kindlaks ajaks? Lisage „valmis hiljemalt“ tähtaeg ja SweetSpot valib odavaima aja, mis selleks ajaks jõuab."
 
 [feature_power_title]
 other = "Võimsus"
 
 [feature_power_desc]
-other = "Määra seadmele selle võimsus kilovattides ja kuluhinnang kajastab tegelikku tarbimist, mitte ühtlast 1 kW."
+other = "Määrake seadmele selle võimsus kilovattides ja kuluhinnang kajastab tegelikku tarbimist, mitte ühtlast 1 kW."
 
 [feature_languages_title]
 other = "25 keelt"
@@ -101,7 +101,7 @@ other = "Saadaval 25 Euroopa keeles, bulgaaria keelest rootsi keeleni."
 other = "Privaatsus ennekõike"
 
 [feature_privacy_desc]
-other = "Kontosid, analüütikat ega jälgimist ei ole. Hinnad salvestatakse kohalikult sinu seadmesse."
+other = "Kontosid, analüütikat ega jälgimist ei ole. Hinnad salvestatakse kohalikult teie seadmesse."
 
 [feature_opensource_title]
 other = "Avatud lähtekood"
@@ -113,31 +113,31 @@ other = "Kogu lähtekood on saadaval GitHubis GPL v3 litsentsi all."
 other = "Kuidas see töötab"
 
 [step1_title]
-other = "Vali seade või elektriauto"
+other = "Valige seade või elektriauto"
 
 [step1_desc]
-other = "Vali salvestatud seade või oma elektriauto, või määra kohandatud kestus — ja soovi korral „valmis hiljemalt“ tähtaeg."
+other = "Valige salvestatud seade või oma elektriauto, või määrake kohandatud kestus — ja soovi korral „valmis hiljemalt“ tähtaeg."
 
 [step2_title]
-other = "Otsi hindu"
+other = "Otsige hindu"
 
 [step2_desc]
-other = "SweetSpot laeb alla värskeimad järgmise päeva elektrihinnad sinu piirkonna jaoks."
+other = "SweetSpot laeb alla värskeimad järgmise päeva elektrihinnad teie piirkonna jaoks."
 
 [step3_title]
-other = "Saa parim aeg"
+other = "Saage parim aeg"
 
 [step3_desc]
-other = "Vaata täpselt, millal alustada, koos täieliku kulujaotusega ajavahemike kaupa."
+other = "Vaadake täpselt, millal alustada, koos täieliku kulujaotusega ajavahemike kaupa."
 
 [cta_title]
-other = "Hakka elektri pealt säästma"
+other = "Hakake elektri pealt säästma"
 
 [cta_desc]
-other = "Laadi SweetSpot alla Google Playst ja leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks."
+other = "Laadige SweetSpot alla Google Playst ja leidke soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks."
 
 [footer_tagline]
-other = "Leia soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks."
+other = "Leidke soodsaim aeg oma seadmete kasutamiseks ja elektriauto laadimiseks."
 
 [footer_app]
 other = "Rakendus"

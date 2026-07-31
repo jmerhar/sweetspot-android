@@ -1,28 +1,28 @@
-SweetSpot trova la fascia più economica per usare i tuoi elettrodomestici e ricaricare la tua auto elettrica. Scegli per quanto tempo deve funzionare un apparecchio — oppure scegli la tua auto elettrica e la carica che desideri — e SweetSpot analizza i prossimi prezzi dinamici dell'energia per trovare la fascia più economica.
+SweetSpot trova la fascia più economica per usare i Suoi elettrodomestici e ricaricare la Sua auto elettrica. Scelga per quanto tempo deve funzionare un apparecchio — oppure scelga la Sua auto elettrica e la carica che desidera — e SweetSpot analizza i prossimi prezzi dinamici dell'energia per trovare la fascia più economica.
 
-Che si tratti di lavatrice, lavastoviglie, asciugatrice, pompa di calore o caricatore per auto elettrica — avviala al momento giusto e paga meno per la stessa elettricità.
+Che si tratti di lavatrice, lavastoviglie, asciugatrice, pompa di calore o caricatore per auto elettrica — la avvii al momento giusto e paghi meno per la stessa elettricità.
 
 COME FUNZIONA
-1. Scegli un elettrodomestico o la tua auto elettrica, oppure imposta una durata personalizzata — e una scadenza opzionale "pronto entro"
-2. SweetSpot recupera gli ultimi prezzi dell'energia elettrica del giorno prima per la tua zona
-3. Vedi esattamente quando avviare, grazie a un grafico dei prezzi delle 24 ore con codice colore e a un dettaglio completo dei costi per fascia oraria
+1. Scelga un elettrodomestico o la Sua auto elettrica, oppure imposti una durata personalizzata — e una scadenza opzionale "pronto entro"
+2. SweetSpot recupera gli ultimi prezzi dell'energia elettrica del giorno prima per la Sua zona
+3. Veda esattamente quando avviare, grazie a un grafico dei prezzi delle 24 ore con codice colore e a un dettaglio completo dei costi per fascia oraria
 
 RICARICA AUTO ELETTRICA
-Aggiungi la tua auto da un database integrato di migliaia di auto elettriche e ibride plug-in — oppure inserisci tu stesso la capacità della batteria e la potenza di ricarica. Imposta la carica attuale e quella obiettivo, e SweetSpot calcola quanto durerà la ricarica e la fascia più economica per collegare l'auto.
+Aggiunga la Sua auto da un database integrato di migliaia di auto elettriche e ibride plug-in — oppure inserisca Lei stesso la capacità della batteria e la potenza di ricarica. Imposti la carica attuale e quella obiettivo, e SweetSpot calcola quanto durerà la ricarica e la fascia più economica per collegare l'auto.
 
 FUNZIONALITÀ
 - 30 paesi europei, 43 zone di prezzo — dal Portogallo alla Finlandia, dalla Norvegia alla Grecia
 - 5 fonti di dati con fallback automatico (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Prezzo totale (Paesi Bassi) — se vuoi, vedi il prezzo finale completo per il consumatore (spot + accise sull'energia + sovrapprezzo del tuo fornitore + IVA) invece del solo prezzo di mercato; scegli il tuo fornitore o inserisci il tuo sovrapprezzo. Altri paesi in arrivo
+- Prezzo totale (Paesi Bassi) — se vuole, veda il prezzo finale completo per il consumatore (spot + accise sull'energia + sovrapprezzo del Suo fornitore + IVA) invece del solo prezzo di mercato; scelga il Suo fornitore o inserisca il Suo sovrapprezzo. Altri paesi in arrivo
 - Scadenza "pronto entro" — usa come impostazione predefinita la fascia più economica che la rispetta
-- Prima o più economica — quando la fascia più economica non è comoda, passa a una più vicina nel tempo e vedi esattamente quanto costa in più
-- Potenza nominale — imposta la potenza in kW di un elettrodomestico per una stima dei costi che riflette il consumo reale
-- Salva i tuoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido
-- Ordina e riordina i tuoi elettrodomestici — trascinali nell'ordine che preferisci, oppure ordinali per più usati, usati di recente, nome, durata o tipo, e scegli dove collocare le tue auto elettriche
-- Condividi la tua configurazione — copia i tuoi elettrodomestici e le impostazioni di ricarica dell'auto elettrica su un altro telefono in casa scansionando un codice QR o inviando un link; funziona offline, senza account
+- Prima o più economica — quando la fascia più economica non è comoda, passi a una più vicina nel tempo e veda esattamente quanto costa in più
+- Potenza nominale — imposti la potenza in kW di un elettrodomestico per una stima dei costi che riflette il consumo reale
+- Salvi i Suoi elettrodomestici con nomi, icone e durate personalizzati per un accesso rapido
+- Ordini e riordini i Suoi elettrodomestici — li trascini nell'ordine che preferisce, oppure li ordini per più usati, usati di recente, nome, durata o tipo, e scelga dove collocare le Sue auto elettriche
+- Condivida la Sua configurazione — copi i Suoi elettrodomestici e le impostazioni di ricarica dell'auto elettrica su un altro telefono in casa scansionando un codice QR o inviando un link; funziona offline, senza account
 - App Wear OS per Pixel Watch e altri dispositivi Wear OS 3+
 - Disponibile in 25 lingue europee
-- Nessun account, nessuna pubblicità, nessun tracciamento di terze parti — i prezzi vengono memorizzati localmente; nelle Impostazioni puoi attivare statistiche anonime e facoltative sull'affidabilità
+- Nessun account, nessuna pubblicità, nessun tracciamento di terze parti — i prezzi vengono memorizzati localmente; nelle Impostazioni può attivare statistiche anonime e facoltative sull'affidabilità
 - Open source (GPL v3) — codice sorgente completo su GitHub
 - 14 giorni di prova gratuita, poi un abbonamento annuale per continuare a usare l'app
 
@@ -30,6 +30,6 @@ PAESI SUPPORTATI
 Austria, Belgio, Bulgaria, Cechia, Croazia, Danimarca, Estonia, Finlandia, Francia, Germania, Grecia, Irlanda, Italia, Lettonia, Lituania, Lussemburgo, Macedonia del Nord, Montenegro, Norvegia, Paesi Bassi, Polonia, Portogallo, Romania, Serbia, Slovacchia, Slovenia, Spagna, Svezia, Svizzera, Ungheria.
 
 NOTA
-Per impostazione predefinita, i prezzi mostrati sono prezzi all'ingrosso del giorno prima (spot) e non includono IVA, accise sull'energia o tariffe del fornitore. Nei Paesi Bassi puoi attivare, se vuoi, il Prezzo totale, che aggiunge le accise sull'energia, il sovrapprezzo del tuo fornitore e l'IVA per un costo di esercizio realistico. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET. È necessario un contratto di energia elettrica a prezzo dinamico per beneficiare delle differenze di prezzo.
+Per impostazione predefinita, i prezzi mostrati sono prezzi all'ingrosso del giorno prima (spot) e non includono IVA, accise sull'energia o tariffe del fornitore. Nei Paesi Bassi può attivare, se vuole, il Prezzo totale, che aggiunge le accise sull'energia, il sovrapprezzo del Suo fornitore e l'IVA per un costo di esercizio realistico. I prezzi di domani sono generalmente disponibili dopo le 13:00 CET. È necessario un contratto di energia elettrica a prezzo dinamico per beneficiare delle differenze di prezzo.
 
 Informativa sulla privacy: https://sweetspot.today/it/privacy/

@@ -19,7 +19,7 @@
     <string name="result_total_cost">Укупни трошкови</string>
     <string name="result_avg_price">Просечна цена</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s више од најјефтинијег</string>
+    <string name="result_cost_above_cheapest">%1$s више од препорученог времена</string>
     <string name="result_earlier">Раније</string>
     <string name="result_cheaper">Јефтиније</string>
     <string name="result_cost_breakdown">Преглед трошкова</string>
@@ -79,11 +79,11 @@
     <!-- Household sharing: import preview -->
     <string name="import_title">Увези поставке</string>
     <string name="import_mode_add">Додај мојима</string>
-    <string name="import_mode_add_desc">Задржи моје апарате и додај нове</string>
+    <string name="import_mode_add_desc">Задржите моје апарате и додајте нове</string>
     <string name="import_mode_replace">Замени моје</string>
-    <string name="import_mode_replace_desc">Користи дељене апарате, редослед и подешавања електричног возила</string>
+    <string name="import_mode_replace_desc">Користите дељене апарате, редослед и подешавања електричног возила</string>
     <string name="import_mode_pick">Изабери које</string>
-    <string name="import_mode_pick_desc">Изабери апарате за додавање</string>
+    <string name="import_mode_pick_desc">Изаберите апарате за додавање</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d апарат</item>
         <item quantity="few">%d апарата</item>
@@ -267,7 +267,7 @@
     <string name="usage_count_format">Коришћено %d×</string>
     <string name="usage_never">Никад коришћено</string>
     <string name="settings_reset_usage">Ресетуј податке о коришћењу</string>
-    <string name="settings_reset_usage_description">Обриши историју додира која се користи за сортирање по критеријумима Најчешће коришћено и Недавно коришћено.</string>
+    <string name="settings_reset_usage_description">Обришите историју додира која се користи за сортирање по критеријумима Најчешће коришћено и Недавно коришћено.</string>
     <string name="reset_usage_confirm_title">Ресетовати податке о коришћењу?</string>
     <string name="reset_usage_confirm_message">Ово брише историју додира која се користи за сортирање апарата по критеријумима Најчешће коришћено и Недавно коришћено. Не може се опозвати.</string>
     <string name="action_reset">Ресетуј</string>

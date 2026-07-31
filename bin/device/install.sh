@@ -27,11 +27,9 @@ fi
 case "$TARGET" in
     phone)
         if [[ "$VARIANT" == "--debug" ]]; then
-            APK_PATTERN="app/build/outputs/apk/debug/sweetspot-*.apk"
-            APK_FALLBACK="app/build/outputs/apk/debug/app-debug.apk"
+            APK_GLOB="app/build/outputs/apk/debug/sweetspot-*.apk"
         else
-            APK_PATTERN="app/build/outputs/apk/release/sweetspot-*.apk"
-            APK_FALLBACK="app/build/outputs/apk/release/app-release.apk"
+            APK_GLOB="app/build/outputs/apk/release/sweetspot-*.apk"
         fi
         # Match any device that is NOT a watch
         LINE=$("$ADB" devices -l | grep -v -i 'watch\|wrist' | grep 'device ' | head -1 || true)
@@ -39,11 +37,9 @@ case "$TARGET" in
         ;;
     watch)
         if [[ "$VARIANT" == "--debug" ]]; then
-            APK_PATTERN="wear/build/outputs/apk/debug/sweetspot-wear-*.apk"
-            APK_FALLBACK="wear/build/outputs/apk/debug/wear-debug.apk"
+            APK_GLOB="wear/build/outputs/apk/debug/sweetspot-wear-*.apk"
         else
-            APK_PATTERN="wear/build/outputs/apk/release/sweetspot-wear-*.apk"
-            APK_FALLBACK="wear/build/outputs/apk/release/wear-release.apk"
+            APK_GLOB="wear/build/outputs/apk/release/sweetspot-wear-*.apk"
         fi
         LINE=$("$ADB" devices -l | grep -i 'watch\|wrist' | head -1 || true)
         DEVICE_LABEL="watch"
@@ -61,15 +57,13 @@ if [[ -z "$SERIAL" ]]; then
     die "No $DEVICE_LABEL found. Connect it via USB or Wi-Fi debugging first."
 fi
 
-# Find the APK (newest by modification time, with fallback to default name)
-APK_DIR=$(dirname "$APK_PATTERN")
-APK_NAME=$(basename "$APK_PATTERN")
-APK=$(find "$APK_DIR" -maxdepth 1 -name "$APK_NAME" -exec stat -f '%m %N' {} + 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
-if [[ -z "$APK" && -n "${APK_FALLBACK:-}" && -f "$APK_FALLBACK" ]]; then
-    APK="$APK_FALLBACK"
-fi
+# Find the newest matching APK. `ls -t` is portable across macOS and Linux
+# (BSD `stat -f` / GNU `find -printf` are not), and archivesName names every
+# variant sweetspot-*.apk, so the glob always matches a real build output.
+# shellcheck disable=SC2086
+APK=$(ls -t $APK_GLOB 2>/dev/null | head -1)
 if [[ -z "$APK" ]]; then
-    die "No APK found matching $APK_PATTERN. Build first."
+    die "No APK found matching $APK_GLOB. Build first."
 fi
 
 log_info "Installing $APK on $MODEL..."

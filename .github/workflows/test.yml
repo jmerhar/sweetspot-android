@@ -31,6 +31,10 @@ jobs:
       # (pure logic, no network). Fast, so run before the Android tests.
       - name: Run script unit tests
         run: make test-scripts
+      # Guard the Play Store listing fields against exceeding Google's per-field length limits,
+      # so a translation can't silently overflow and be rejected at upload time.
+      - name: Check listing lengths
+        run: make check-listing
       # Run the debug unit tests and generate a separate Kover coverage report per module.
       # The unprefixed task names run in all three modules; the Debug variant matches the unit
       # tests (the "all code" variant would also pull in release and skew the numbers).

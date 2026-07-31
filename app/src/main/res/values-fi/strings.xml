@@ -5,26 +5,26 @@
     <!-- Main screen -->
     <string name="cd_settings">Asetukset</string>
     <string name="cd_back">Takaisin</string>
-    <string name="main_description">SweetSpot auttaa sinua säästämään rahaa etsimällä halvimman ajankohdan kodinkoneidesi käyttöön. Valitse vain, kuinka kauan laitteesi tarvitsee toimia, niin se käy läpi tulevat dynaamiset sähköhinnat ja löytää parhaan ajankohdan. Voit myös tallentaa suosikkilaitteesi asetuksiin nopeaa käyttöä varten.</string>
-    <string name="main_find_button">Etsi halvin ajankohta</string>
+    <string name="main_description">SweetSpot auttaa teitä säästämään rahaa etsimällä halvimman ajankohdan kodinkoneidenne käyttöön. Valitkaa vain, kuinka kauan laitteenne tarvitsee toimia, niin se käy läpi tulevat dynaamiset sähköhinnat ja löytää parhaan ajankohdan. Voitte myös tallentaa suosikkilaitteenne asetuksiin nopeaa käyttöä varten.</string>
+    <string name="main_find_button">Etsikää halvin ajankohta</string>
     <string name="main_searching">Etsitään…</string>
-    <string name="main_add_appliances">Lisää laitteesi</string>
-    <string name="main_card_description">Etsi halvin ajankohta laitteesi käyttöön</string>
+    <string name="main_add_appliances">Lisätkää laitteenne</string>
+    <string name="main_card_description">Etsikää halvin ajankohta laitteenne käyttöön</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Suositeltu ajankohta</string>
-    <string name="result_after_deadline">Tämä jakso päättyy Valmis viimeistään -aikasi jälkeen.</string>
+    <string name="result_after_deadline">Tämä jakso päättyy Valmis viimeistään -aikanne jälkeen.</string>
     <string name="result_start">Alku</string>
     <string name="result_end">Loppu</string>
     <string name="result_total_cost">Kokonaiskustannus</string>
     <string name="result_avg_price">Keskim. hinta</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s enemmän kuin halvin</string>
+    <string name="result_cost_above_cheapest">%1$s enemmän kuin suositeltu ajankohta</string>
     <string name="result_earlier">Aiemmin</string>
     <string name="result_cheaper">Halvemmalla</string>
     <string name="result_cost_breakdown">Kustannuserittely</string>
-    <string name="cd_collapse">Pienennä</string>
-    <string name="cd_expand">Laajenna</string>
+    <string name="cd_collapse">Pienentäkää</string>
+    <string name="cd_expand">Laajentakaa</string>
     <string name="result_upcoming_prices">Tulevat hinnat</string>
     <string name="result_disclaimer">Kustannukset on laskettu 1 kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä myyjän marginaalia. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="result_data_source">\nTietolähde: %s</string>
@@ -44,13 +44,13 @@
     <string name="settings_language">Kieli</string>
     <string name="settings_language_system_default">Järjestelmän oletus</string>
     <string name="settings_country">Maa</string>
-    <string name="settings_select_zone">Valitse alue</string>
+    <string name="settings_select_zone">Valitkaa alue</string>
     <string name="settings_data_sources">Tietolähteet</string>
     <string name="settings_data_sources_description">Hinnat haetaan tässä järjestyksessä. Jos yksi epäonnistuu, seuraavaa kokeillaan.</string>
-    <string name="settings_reset_defaults">Palauta oletukset</string>
+    <string name="settings_reset_defaults">Palauttakaa oletukset</string>
     <string name="settings_appliances">Laitteet</string>
-    <string name="settings_appliances_description">Lisää kodinkoneet tänne nopeaa käyttöä varten. Voit myös lisätä tiettyjä ohjelmia, esim. Astianpesukone Eco, Astianpesukone Pika, Pyykinpesukone Puuvilla.</string>
-    <string name="settings_add_appliance">Lisää laite</string>
+    <string name="settings_appliances_description">Lisätkää kodinkoneet tänne nopeaa käyttöä varten. Voitte myös lisätä tiettyjä ohjelmia, esim. Astianpesukone Eco, Astianpesukone Pika, Pyykinpesukone Puuvilla.</string>
+    <string name="settings_add_appliance">Lisätkää laite</string>
     <string name="settings_timezone">Aikavyöhyke</string>
     <string name="settings_theme">Teema</string>
     <string name="settings_theme_system">Järjestelmän oletus</string>
@@ -63,28 +63,28 @@
     <string name="settings_region_desc">Maa, hinta-alue ja aikavyöhyke</string>
     <string name="settings_appearance_title">Ulkoasu</string>
     <string name="settings_appearance_desc">Kieli ja teema</string>
-    <string name="settings_appliances_menu_desc">Tallennetut laitteesi</string>
+    <string name="settings_appliances_menu_desc">Tallennetut laitteenne</string>
     <string name="settings_ev_menu_desc">Latauslaite, lataustavoite ja ajoneuvot</string>
-    <string name="settings_all_in_menu_desc">Näytä kuluttajan kokonaishinta</string>
+    <string name="settings_all_in_menu_desc">Näyttäkää kuluttajan kokonaishinta</string>
 
-    <string name="settings_share_title">Jaa kokoonpanoni</string>
-    <string name="settings_share_menu_desc">Kopioi laitteesi ja latausasetuksesi toiseen laitteeseen</string>
+    <string name="settings_share_title">Jakakaa kokoonpanoni</string>
+    <string name="settings_share_menu_desc">Kopioikaa laitteenne ja latausasetuksenne toiseen laitteeseen</string>
 
     <!-- Household sharing: share screen -->
-    <string name="share_setup_description">Skannaa tämä koodi toisen puhelimen kameralla tai lähetä linkki. Laitteesi, niiden järjestys ja latausasetuksesi kopioidaan kyseiseen laitteeseen.</string>
-    <string name="share_setup_button">Jaa linkki</string>
-    <string name="share_setup_chooser_title">Jaa kokoonpanosi</string>
-    <string name="share_setup_qr_unavailable">Kokoonpanosi on liian suuri QR-koodiksi. Käytä sen sijaan jakolinkkiä.</string>
-    <string name="cd_qr_code">Kokoonpanosi QR-koodi</string>
+    <string name="share_setup_description">Skannatkaa tämä koodi toisen puhelimen kameralla tai lähettäkää linkki. Laitteenne, niiden järjestys ja latausasetuksenne kopioidaan kyseiseen laitteeseen.</string>
+    <string name="share_setup_button">Jakakaa linkki</string>
+    <string name="share_setup_chooser_title">Jakakaa kokoonpanonne</string>
+    <string name="share_setup_qr_unavailable">Kokoonpanonne on liian suuri QR-koodiksi. Käyttäkää sen sijaan jakolinkkiä.</string>
+    <string name="cd_qr_code">Kokoonpanonne QR-koodi</string>
 
     <!-- Household sharing: import preview -->
-    <string name="import_title">Tuo kokoonpano</string>
-    <string name="import_mode_add">Lisää omiini</string>
-    <string name="import_mode_add_desc">Säilytä laitteeni ja lisää uudet</string>
-    <string name="import_mode_replace">Korvaa omani</string>
-    <string name="import_mode_replace_desc">Käytä jaettuja laitteita, järjestystä ja latausasetuksia</string>
-    <string name="import_mode_pick">Valitse mitkä</string>
-    <string name="import_mode_pick_desc">Valitse lisättävät laitteet</string>
+    <string name="import_title">Tuokaa kokoonpano</string>
+    <string name="import_mode_add">Lisätkää omiini</string>
+    <string name="import_mode_add_desc">Säilyttäkää laitteeni ja lisätkää uudet</string>
+    <string name="import_mode_replace">Korvatkaa omani</string>
+    <string name="import_mode_replace_desc">Käyttäkää jaettuja laitteita, järjestystä ja latausasetuksia</string>
+    <string name="import_mode_pick">Valitkaa mitkä</string>
+    <string name="import_mode_pick_desc">Valitkaa lisättävät laitteet</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d laite</item>
         <item quantity="other">%d laitetta</item>
@@ -94,42 +94,42 @@
         <item quantity="other">Sisältää %d ajoneuvoa</item>
     </plurals>
     <plurals name="import_button">
-        <item quantity="one">Tuo %d laite</item>
-        <item quantity="other">Tuo %d laitetta</item>
+        <item quantity="one">Tuokaa %d laite</item>
+        <item quantity="other">Tuokaa %d laitetta</item>
     </plurals>
 
     <!-- Household sharing: import errors -->
     <string name="import_error_title">Tuonti epäonnistui</string>
-    <string name="import_error_too_new">Tämä kokoonpano jaettiin SweetSpotin uudemmasta versiosta. Päivitä sovellus tuodaksesi sen.</string>
-    <string name="import_error_malformed">Tätä linkkiä ei voitu lukea. Pyydä uusi.</string>
+    <string name="import_error_too_new">Tämä kokoonpano jaettiin SweetSpotin uudemmasta versiosta. Päivittäkää sovellus tuodaksenne sen.</string>
+    <string name="import_error_malformed">Tätä linkkiä ei voitu lukea. Pyytäkää uusi.</string>
 
     <!-- Appliance dialog -->
-    <string name="dialog_add_appliance">Lisää laite</string>
-    <string name="dialog_edit_appliance">Muokkaa laitetta</string>
+    <string name="dialog_add_appliance">Lisätkää laite</string>
+    <string name="dialog_edit_appliance">Muokatkaa laitetta</string>
     <string name="dialog_name">Nimi</string>
     <string name="dialog_name_placeholder">esim. Pyykinpesukone</string>
     <string name="dialog_icon">Kuvake</string>
-    <string name="action_delete">Poista</string>
-    <string name="action_save">Tallenna</string>
-    <string name="action_cancel">Peruuta</string>
+    <string name="action_delete">Poistakaa</string>
+    <string name="action_save">Tallentakaa</string>
+    <string name="action_cancel">Peruuttakaa</string>
 
     <!-- Picker screens -->
     <string name="picker_timezone_title">Aikavyöhyke</string>
-    <string name="picker_timezone_search">Hae aikavyöhykkeitä</string>
+    <string name="picker_timezone_search">Hakekaa aikavyöhykkeitä</string>
     <string name="picker_country_title">Maa</string>
-    <string name="picker_country_search">Hae maita</string>
+    <string name="picker_country_search">Hakekaa maita</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d alue</item>
         <item quantity="other">%d aluetta</item>
     </plurals>
     <string name="picker_zone_title">Alue</string>
     <string name="picker_language_title">Kieli</string>
-    <string name="picker_language_search">Hae kieliä</string>
+    <string name="picker_language_search">Hakekaa kieliä</string>
     <string name="cd_selected">Valittu</string>
 
     <!-- Errors -->
-    <string name="error_zero_duration">Valitse kesto, joka on suurempi kuin nolla.</string>
-    <string name="error_no_zone">Valitse alue asetuksissa.</string>
+    <string name="error_zero_duration">Valitkaa kesto, joka on suurempi kuin nolla.</string>
+    <string name="error_no_zone">Valitkaa alue asetuksissa.</string>
     <string name="error_no_data">Hintatietoja ei ole saatavilla seuraaville 24 tunnille.</string>
     <string name="error_network">Hintoja ei voitu hakea: %s</string>
     <plurals name="error_not_enough_data">
@@ -137,53 +137,53 @@
         <item quantity="other">Hintatiedot eivät riitä jaksolle %1$s. Vain %2$d tuntia tietoja saatavilla.</item>
     </plurals>
     <plurals name="error_cooldown">
-        <item quantity="one">Hinnat haettiin äskettäin. Yritä uudelleen %d minuutin kuluttua.</item>
-        <item quantity="other">Hinnat haettiin äskettäin. Yritä uudelleen %d minuutin kuluttua.</item>
+        <item quantity="one">Hinnat haettiin äskettäin. Yrittäkää uudelleen %d minuutin kuluttua.</item>
+        <item quantity="other">Hinnat haettiin äskettäin. Yrittäkää uudelleen %d minuutin kuluttua.</item>
     </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Lisäasetukset</string>
     <string name="settings_advanced_description">Tietolähteet, välimuisti</string>
-    <string name="settings_clear_cache">Tyhjennä hintavälimuisti</string>
+    <string name="settings_clear_cache">Tyhjentäkää hintavälimuisti</string>
     <string name="settings_clear_cache_description">Hinnat ladataan uudelleen seuraavalla haulla.</string>
     <string name="snackbar_cache_cleared">Välimuisti tyhjennetty</string>
-    <string name="cd_refresh">Päivitä</string>
+    <string name="cd_refresh">Päivittäkää</string>
 
     <!-- Stats -->
-    <string name="settings_stats_title">Jaa luotettavuustilastoja</string>
-    <string name="settings_stats_description">Auta parantamaan tietolähteiden luotettavuutta jakamalla nimettömiä tilastoja siitä, milloin hintatiedot latautuvat tai epäonnistuvat. Henkilötietoja ei kerätä.</string>
+    <string name="settings_stats_title">Jakakaa luotettavuustilastoja</string>
+    <string name="settings_stats_description">Auttakaa parantamaan tietolähteiden luotettavuutta jakamalla nimettömiä tilastoja siitä, milloin hintatiedot latautuvat tai epäonnistuvat. Henkilötietoja ei kerätä.</string>
     <string name="stats_prompt_title">Auta parantamaan SweetSpotia?</string>
-    <string name="stats_prompt_message">Jaa nimettömiä tilastoja tietolähteiden luotettavuuden parantamiseksi. Vain se, kuinka usein kukin tietolähde latautuu tai epäonnistuu, jaetaan — ei henkilötietoja. Voit muuttaa tämän milloin tahansa asetuksissa.</string>
-    <string name="stats_prompt_enable">Ota käyttöön</string>
+    <string name="stats_prompt_message">Jakakaa nimettömiä tilastoja tietolähteiden luotettavuuden parantamiseksi. Vain se, kuinka usein kukin tietolähde latautuu tai epäonnistuu, jaetaan — ei henkilötietoja. Voitte muuttaa tämän milloin tahansa asetuksissa.</string>
+    <string name="stats_prompt_enable">Ottakaa käyttöön</string>
     <string name="stats_prompt_dismiss">Ei kiitos</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_title_1">Käytä laitteita, kun sähkö on halvinta</string>
+    <string name="onboarding_title_1">Käyttäkää laitteita, kun sähkö on halvinta</string>
     <string name="onboarding_body_1">SweetSpot käy läpi tulevat sähköhinnat ja löytää halvimman ajankohdan laitteen käyttöön.</string>
-    <string name="onboarding_title_2">Laitteesi yhden napautuksen päässä</string>
-    <string name="onboarding_body_2">Tallenna laite ja napauta sitä nähdäksesi sen halvimman ajankohdan. Lisää sähköautosi ja suunnittele lataus nykyisen latauksen ja lataustavoitteen mukaan.</string>
-    <string name="onboarding_title_3">Tee siitä omasi</string>
-    <string name="onboarding_body_3">Maasi tunnistetaan automaattisesti. Vaihda alue, lisää laitteita tai valitse kieli — kaikki löytyy asetuksista.</string>
-    <string name="onboarding_skip">Ohita</string>
+    <string name="onboarding_title_2">Laitteenne yhden napautuksen päässä</string>
+    <string name="onboarding_body_2">Tallentakaa laite ja napauttakaa sitä nähdäksenne sen halvimman ajankohdan. Lisätkää sähköautonne ja suunnitelkaa lataus nykyisen latauksen ja lataustavoitteen mukaan.</string>
+    <string name="onboarding_title_3">Tehkää siitä omanne</string>
+    <string name="onboarding_body_3">Maanne tunnistetaan automaattisesti. Vaihtakaa alue, lisätkää laitteita tai valitkaa kieli — kaikki löytyy asetuksista.</string>
+    <string name="onboarding_skip">Ohittakaa</string>
     <string name="onboarding_next">Seuraava</string>
-    <string name="onboarding_get_started">Aloita</string>
+    <string name="onboarding_get_started">Aloittakaa</string>
     <string name="settings_how_it_works">Näin se toimii</string>
-    <string name="settings_how_it_works_desc">Katso esittely uudelleen</string>
+    <string name="settings_how_it_works_desc">Katsokaa esittely uudelleen</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Tilaa SweetSpot</string>
-    <string name="settings_unlock_description">Tilaa vuodeksi jatkaaksesi SweetSpotin käyttöä.</string>
+    <string name="settings_unlock">Tilatkaa SweetSpot</string>
+    <string name="settings_unlock_description">Tilatkaa vuodeksi jatkaaksenne SweetSpotin käyttöä.</string>
 
     <!-- Paywall -->
-    <string name="paywall_title">Kokeilujaksosi on päättynyt</string>
-    <string name="paywall_description">SweetSpot löytää halvimman ajan laitteidesi käytölle dynaamisten sähköhintojen perusteella 30 Euroopan maassa. Tilaa jatkaaksesi edullisimman käyttöajan löytämistä laitteillesi.</string>
-    <string name="paywall_unlock">Tilaa SweetSpot</string>
-    <string name="paywall_unlock_price">Tilaa hintaan %s/vuosi</string>
-    <string name="paywall_restore">Palauta tilaus</string>
+    <string name="paywall_title">Kokeilujaksonne on päättynyt</string>
+    <string name="paywall_description">SweetSpot löytää halvimman ajan laitteidenne käytölle dynaamisten sähköhintojen perusteella 30 Euroopan maassa. Tilatkaa jatkaaksenne edullisimman käyttöajan löytämistä laitteillenne.</string>
+    <string name="paywall_unlock">Tilatkaa SweetSpot</string>
+    <string name="paywall_unlock_price">Tilatkaa hintaan %s/vuosi</string>
+    <string name="paywall_restore">Palauttakaa tilaus</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Kiitos!</string>
-    <string name="thank_you_message">Tilauksesi on nyt aktiivinen. Nauti edullisimman käyttöajan löytämisestä laitteillesi!</string>
+    <string name="thank_you_message">Tilauksenne on nyt aktiivinen. Nauttikaa edullisimman käyttöajan löytämisestä laitteillenne!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Kokeilujakso: %d päivä jäljellä</item>
@@ -192,14 +192,14 @@
 
     <!-- EV charging -->
     <string name="settings_ev_title">Sähköauton lataus</string>
-    <string name="ev_add_vehicle">Lisää ajoneuvo</string>
-    <string name="ev_search_hint">Hae merkkiä tai mallia</string>
-    <string name="ev_custom_hint">Eikö löytynyt? Lisää mukautettu ajoneuvo syöttämällä tiedot alle.</string>
+    <string name="ev_add_vehicle">Lisätkää ajoneuvo</string>
+    <string name="ev_search_hint">Hakekaa merkkiä tai mallia</string>
+    <string name="ev_custom_hint">Eikö löytynyt? Lisätkää mukautettu ajoneuvo syöttämällä tiedot alle.</string>
     <string name="ev_vehicle_specs">%1$s kWh:n akku · %2$s kW maks. AC</string>
     <string name="ev_battery_label">Akun kapasiteetti</string>
     <string name="ev_power_label">Suurin AC-latausteho</string>
     <string name="ev_home_charger">Kotilatauslaite</string>
-    <string name="ev_home_charger_description">Seinälatauslaitteesi tai latausasemasi teho. Latauksessa käytetään pienempää arvoa — tätä tai auton enimmäistehoa.</string>
+    <string name="ev_home_charger_description">Seinälatauslaitteenne tai latausasemanne teho. Latauksessa käytetään pienempää arvoa — tätä tai auton enimmäistehoa.</string>
     <string name="ev_charger_custom">Mukautettu</string>
     <string name="ev_default_target">Oletuslataustavoite: %d%%</string>
     <string name="ev_current_soc">Nykyinen lataus: %d%%</string>
@@ -207,27 +207,27 @@
     <string name="ev_deadline_toggle">Valmis viimeistään</string>
     <string name="ev_deadline_hint">Valmis viimeistään %s</string>
     <string name="ev_charging_estimate">Latausaika: %1$s teholla %2$s kW</string>
-    <string name="dialog_add_vehicle">Lisää ajoneuvo</string>
-    <string name="dialog_edit_vehicle">Muokkaa ajoneuvoa</string>
+    <string name="dialog_add_vehicle">Lisätkää ajoneuvo</string>
+    <string name="dialog_edit_vehicle">Muokatkaa ajoneuvoa</string>
     <string name="ev_attribution">Ajoneuvon tiedot: Open EV Data</string>
     <string name="ev_error_invalid_soc">Lataustavoitteen on oltava suurempi kuin nykyinen lataus.</string>
-    <string name="ev_error_invalid_charger">Aseta latausteho, joka on suurempi kuin nolla.</string>
-    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua takarajaasi mennessä. Kokeile alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
+    <string name="ev_error_invalid_charger">Asettakaa latausteho, joka on suurempi kuin nolla.</string>
+    <string name="ev_error_deadline_unreachable">Lataus ei ehdi valmistua takarajaanne mennessä. Kokeilkaa alhaisempaa lataustavoitetta tai myöhempää ajankohtaa.</string>
     <string name="result_disclaimer_power">Kustannukset on laskettu %s kW:n kuormalle. Hinnat eivät sisällä ALV:a, sähköveroa eivätkä myyjän marginaalia. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="dialog_power">Teho (kW, valinnainen)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Kokonaishinta</string>
-    <string name="settings_all_in_toggle">Näytä kokonaishinta</string>
-    <string name="settings_all_in_desc">Näytä arvioitu kuluttajan kokonaishinta (pörssihinta + sähkövero + myyjän marginaali + ALV) pelkän pörssihinnan sijaan.</string>
+    <string name="settings_all_in_toggle">Näyttäkää kokonaishinta</string>
+    <string name="settings_all_in_desc">Näyttäkää arvioitu kuluttajan kokonaishinta (pörssihinta + sähkövero + myyjän marginaali + ALV) pelkän pörssihinnan sijaan.</string>
     <string name="all_in_supplier">Sähkönmyyjä</string>
-    <string name="all_in_supplier_prompt">Valitse sähkönmyyjäsi</string>
+    <string name="all_in_supplier_prompt">Valitkaa sähkönmyyjänne</string>
     <string name="all_in_supplier_custom">Mukautettu marginaali</string>
-    <string name="all_in_no_supplier">Sähkönmyyjää ei löytynyt. Syötä sen sijaan mukautettu marginaali alle.</string>
+    <string name="all_in_no_supplier">Sähkönmyyjää ei löytynyt. Syöttäkää sen sijaan mukautettu marginaali alle.</string>
     <string name="all_in_surcharge_custom">Mukautettu marginaali (ilman ALV:a)</string>
-    <string name="all_in_incomplete">Valitse sähkönmyyjä tai syötä marginaali tai poista kokonaishinta käytöstä.</string>
+    <string name="all_in_incomplete">Valitkaa sähkönmyyjä tai syöttäkää marginaali tai poistakaa kokonaishinta käytöstä.</string>
     <string name="picker_supplier_title">Sähkönmyyjä</string>
-    <string name="picker_supplier_search">Hae sähkönmyyjiä</string>
+    <string name="picker_supplier_search">Hakekaa sähkönmyyjiä</string>
     <string name="result_disclaimer_all_in">Kustannukset on laskettu 1 kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="result_disclaimer_power_all_in">Kustannukset on laskettu %s kW:n kuormalle arvioidulla kokonaishinnalla (pörssihinta + sähkövero + myyjän marginaali + ALV). Ei sisällä siirtomaksuja eikä kiinteitä kuukausimaksuja. Huomisen hinnat ovat yleensä saatavilla klo 13:00 CET jälkeen.</string>
     <string name="result_all_in_supplier">\nSähkönmyyjä: %s</string>
@@ -250,25 +250,25 @@
     <string name="sort_key_type">Tyyppi</string>
     <string name="sort_direction_ascending">Nouseva</string>
     <string name="sort_direction_descending">Laskeva</string>
-    <string name="sort_add_tiebreaker">Lisää lajitteluperuste</string>
-    <string name="cd_sort_remove_level">Poista tämä lajittelutaso</string>
-    <string name="settings_group_title">Ryhmittele tyypin mukaan</string>
-    <string name="settings_group_description">Ryhmittele aloitusnäytön painikkeet laitetyypin mukaan, kukin oman otsikkonsa alle.</string>
+    <string name="sort_add_tiebreaker">Lisätkää lajitteluperuste</string>
+    <string name="cd_sort_remove_level">Poistakaa tämä lajittelutaso</string>
+    <string name="settings_group_title">Ryhmitelkää tyypin mukaan</string>
+    <string name="settings_group_description">Ryhmitelkää aloitusnäytön painikkeet laitetyypin mukaan, kukin oman otsikkonsa alle.</string>
     <string name="group_off">Pois</string>
     <string name="group_rows">Rivit</string>
     <string name="group_columns">Sarakkeet</string>
-    <string name="cd_drag_handle">Vedä järjestääksesi uudelleen</string>
+    <string name="cd_drag_handle">Vetäkää järjestääksenne uudelleen</string>
     <string name="usage_count_format">Käytetty %d×</string>
     <string name="usage_never">Ei koskaan käytetty</string>
-    <string name="settings_reset_usage">Nollaa käyttötiedot</string>
-    <string name="settings_reset_usage_description">Tyhjennä napautushistoria, jota käytetään Käytetyin- ja Viimeksi käytetty -järjestyksissä.</string>
+    <string name="settings_reset_usage">Nollatkaa käyttötiedot</string>
+    <string name="settings_reset_usage_description">Tyhjentäkää napautushistoria, jota käytetään Käytetyin- ja Viimeksi käytetty -järjestyksissä.</string>
     <string name="reset_usage_confirm_title">Nollataanko käyttötiedot?</string>
     <string name="reset_usage_confirm_message">Tämä tyhjentää napautushistorian, jota käytetään laitteiden järjestämiseen Käytetyin- ja Viimeksi käytetty -perusteilla. Toimintoa ei voi kumota.</string>
-    <string name="action_reset">Nollaa</string>
+    <string name="action_reset">Nollatkaa</string>
 
     <!-- EV placement -->
     <string name="ev_placement_title">Sijainti aloitusnäytöllä</string>
-    <string name="ev_placement_description">Missä ajoneuvosi näkyvät laitepainikkeiden joukossa.</string>
+    <string name="ev_placement_description">Missä ajoneuvonne näkyvät laitepainikkeiden joukossa.</string>
     <string name="ev_position_interleaved">Sekoitettuna</string>
     <string name="ev_position_first">Ensimmäisenä</string>
     <string name="ev_position_last">Viimeisenä</string>
@@ -277,10 +277,10 @@
     <string name="home_section_appliances">Laitteet</string>
 
     <!-- Coach hint bubbles -->
-    <string name="coach_earlier_cheaper">Väärä hetki? Napauta Aiemmin aikaisempaa aloitusta varten tai Halvemmalla palataksesi halvimpaan.</string>
-    <string name="coach_chart_press_hold">Näet minkä tahansa ajankohdan hinnan painamalla kaaviota pitkään.</string>
-    <string name="coach_all_in_toggle">Vaihda kokonaishinnan ja pelkän pörssihinnan välillä.</string>
-    <string name="coach_ev_chip">Napauta ajoneuvoasi suunnitellaksesi latauksen akkuprosentin mukaan.</string>
+    <string name="coach_earlier_cheaper">Väärä hetki? Napauttakaa Aiemmin aikaisempaa aloitusta varten tai Halvemmalla palataksenne halvimpaan.</string>
+    <string name="coach_chart_press_hold">Näette minkä tahansa ajankohdan hinnan painamalla kaaviota pitkään.</string>
+    <string name="coach_all_in_toggle">Vaihtakaa kokonaishinnan ja pelkän pörssihinnan välillä.</string>
+    <string name="coach_ev_chip">Napauttakaa ajoneuvoanne suunnitellaksenne latauksen akkuprosentin mukaan.</string>
     <string name="coach_got_it">Selvä</string>
 
     <!-- Help & feedback -->
@@ -290,69 +290,69 @@
     <string name="help_section_support">Tuki</string>
     <string name="help_section_about">Tietoja</string>
     <string name="help_quick_guide_title">Pikaopas</string>
-    <string name="help_quick_guide_desc">Näin käytät SweetSpotia</string>
-    <string name="help_reset_tips_title">Nollaa vinkit</string>
-    <string name="help_reset_tips_desc">Näytä kertaluontoiset vinkit uudelleen</string>
+    <string name="help_quick_guide_desc">Näin käytätte SweetSpotia</string>
+    <string name="help_reset_tips_title">Nollatkaa vinkit</string>
+    <string name="help_reset_tips_desc">Näyttäkää kertaluontoiset vinkit uudelleen</string>
     <string name="help_faq_title">FAQ</string>
     <string name="help_faq_desc">Yleisiä kysymyksiä</string>
-    <string name="help_report_title">Ilmoita ongelmasta</string>
+    <string name="help_report_title">Ilmoittakaa ongelmasta</string>
     <string name="help_report_desc">Jokin ei toimi</string>
-    <string name="help_feedback_title">Lähetä palautetta</string>
+    <string name="help_feedback_title">Lähettäkää palautetta</string>
     <string name="help_feedback_desc">Ideoita ja ehdotuksia</string>
     <string name="help_my_reports_title">Ilmoitukseni</string>
-    <string name="help_my_reports_desc">Seuraa lähettämiäsi ilmoituksia</string>
-    <string name="help_contact_title">Ota yhteyttä</string>
-    <string name="help_contact_desc">Lähetä meille sähköpostia suoraan</string>
-    <string name="help_rate_title">Arvioi SweetSpot</string>
-    <string name="help_rate_desc">Arvioi meidät Google Playssä</string>
+    <string name="help_my_reports_desc">Seuratkaa lähettämiänne ilmoituksia</string>
+    <string name="help_contact_title">Ottakaa yhteyttä</string>
+    <string name="help_contact_desc">Lähettäkää meille sähköpostia suoraan</string>
+    <string name="help_rate_title">Arvioikaa SweetSpot</string>
+    <string name="help_rate_desc">Arvioikaa meidät Google Playssä</string>
     <string name="help_whats_new_title">Uutta</string>
     <string name="help_whats_new_desc">Uusimmat muutokset</string>
     <string name="help_privacy_title">Tietosuojakäytäntö</string>
-    <string name="help_privacy_desc">Miten tietojasi käsitellään</string>
+    <string name="help_privacy_desc">Miten tietojanne käsitellään</string>
     <string name="help_about_license">GPL v3 · Avoin lähdekoodi GitHubissa</string>
     <string name="tips_reset_snackbar">Vinkit nollattu</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">Ilmoituksesi julkaistaan julkisena issuena GitHubissa — älä sisällytä henkilötietoja.</string>
+    <string name="report_public_notice">Ilmoituksenne julkaistaan julkisena issuena GitHubissa — älkää sisällyttäkö henkilötietoja.</string>
     <string name="report_subject_label">Aihe</string>
     <string name="report_body_label_bug">Mitä tapahtui?</string>
-    <string name="report_body_label_feedback">Palautteesi</string>
-    <string name="report_email_label">Ilmoita minulle sähköpostitse (valinnainen)</string>
-    <string name="report_email_note">Sähköpostiosoitettasi käytetään vain sinulle ilmoittamiseen — sitä ei koskaan näytetä julkisessa issuessa.</string>
-    <string name="report_submit">Lähetä</string>
+    <string name="report_body_label_feedback">Palautteenne</string>
+    <string name="report_email_label">Ilmoittakaa minulle sähköpostitse (valinnainen)</string>
+    <string name="report_email_note">Sähköpostiosoitettanne käytetään vain teille ilmoittamiseen — sitä ei koskaan näytetä julkisessa issuessa.</string>
+    <string name="report_submit">Lähettäkää</string>
     <string name="report_submitting">Lähetetään…</string>
     <string name="report_filed">Ilmoitus #%1$d kirjattu — kiitos!</string>
-    <string name="report_sent">Kiitos — ilmoituksesi lähetettiin.</string>
+    <string name="report_sent">Kiitos — ilmoituksenne lähetettiin.</string>
     <string name="report_error_retry">Lähetys ei onnistunut juuri nyt — tallennettu, yritämme automaattisesti uudelleen.</string>
-    <string name="report_error_permanent">Lähetys ei onnistunut. Tarkista syötteesi ja yritä uudelleen.</string>
-    <string name="report_retry">Yritä uudelleen</string>
+    <string name="report_error_permanent">Lähetys ei onnistunut. Tarkistakaa syötteenne ja yrittäkää uudelleen.</string>
+    <string name="report_retry">Yrittäkää uudelleen</string>
     <string name="report_done">Valmis</string>
 
     <!-- My reports -->
-    <string name="my_reports_empty">Et ole vielä lähettänyt yhtään ilmoitusta.</string>
+    <string name="my_reports_empty">Ette ole vielä lähettäneet yhtään ilmoitusta.</string>
     <string name="my_reports_open">Avoin</string>
     <string name="my_reports_closed">Suljettu</string>
-    <string name="thread_you">Sinä</string>
+    <string name="thread_you">Te</string>
     <string name="thread_support">SweetSpot-tuki</string>
-    <string name="thread_open_github">Avaa GitHubissa</string>
-    <string name="thread_load_error">Keskustelun lataaminen ei onnistunut. Tarkista yhteytesi ja yritä uudelleen.</string>
+    <string name="thread_open_github">Avatkaa GitHubissa</string>
+    <string name="thread_load_error">Keskustelun lataaminen ei onnistunut. Tarkistakaa yhteytenne ja yrittäkää uudelleen.</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Etsi halvin ajankohta</string>
-    <string name="guide_find_body">Valitse kuinka kauan laitteesi tarvitsee toimia ja napauta Etsi.</string>
-    <string name="guide_appliances_title">Tallenna laitteesi</string>
-    <string name="guide_appliances_body">Lisää laitteita asetuksissa yhden napautuksen hakuja varten.</string>
-    <string name="guide_ev_title">Suunnittele sähköauton lataus</string>
-    <string name="guide_ev_body">Lisää autosi, syötä sen nykyinen lataus ja lataustavoite, niin SweetSpot laskee latausajan.</string>
-    <string name="guide_result_title">Lue tulos</string>
-    <string name="guide_result_body">Siirrä ajankohtaa Aiemmin- ja Halvemmalla-painikkeilla ja näe minkä tahansa ajankohdan hinta painamalla kaaviota pitkään.</string>
+    <string name="guide_find_title">Etsikää halvin ajankohta</string>
+    <string name="guide_find_body">Valitkaa kuinka kauan laitteenne tarvitsee toimia ja napauttakaa Etsi.</string>
+    <string name="guide_appliances_title">Tallentakaa laitteenne</string>
+    <string name="guide_appliances_body">Lisätkää laitteita asetuksissa yhden napautuksen hakuja varten.</string>
+    <string name="guide_ev_title">Suunnitelkaa sähköauton lataus</string>
+    <string name="guide_ev_body">Lisätkää autonne, syöttäkää sen nykyinen lataus ja lataustavoite, niin SweetSpot laskee latausajan.</string>
+    <string name="guide_result_title">Lukekaa tulos</string>
+    <string name="guide_result_body">Siirtäkää ajankohtaa Aiemmin- ja Halvemmalla-painikkeilla ja nähkää minkä tahansa ajankohdan hinta painamalla kaaviota pitkään.</string>
     <string name="guide_allin_title">Kokonaishinta</string>
-    <string name="guide_allin_body">Näytä halutessasi koko kuluttajahinta pelkän pörssihinnan sijaan.</string>
-    <string name="guide_wear_title">Kellossasi</string>
-    <string name="guide_wear_body">Laitteesi synkronoituvat Wear OS -kelloon, joten voit tarkistaa hinnat ilman puhelintasi.</string>
-    <string name="reply_hint">Vastauksesi</string>
-    <string name="reply_send">Lähetä</string>
-    <string name="reply_public_note">Vastauksesi julkaistaan julkisesti GitHubissa.</string>
-    <string name="reply_error">Vastauksen lähettäminen ei onnistunut. Yritä uudelleen.</string>
-    <string name="reply_queued">Tallennettu — lähetämme vastauksesi, kun olet taas verkossa.</string>
+    <string name="guide_allin_body">Näyttäkää halutessanne koko kuluttajahinta pelkän pörssihinnan sijaan.</string>
+    <string name="guide_wear_title">Kellossanne</string>
+    <string name="guide_wear_body">Laitteenne synkronoituvat Wear OS -kelloon, joten voitte tarkistaa hinnat ilman puhelintanne.</string>
+    <string name="reply_hint">Vastauksenne</string>
+    <string name="reply_send">Lähettäkää</string>
+    <string name="reply_public_note">Vastauksenne julkaistaan julkisesti GitHubissa.</string>
+    <string name="reply_error">Vastauksen lähettäminen ei onnistunut. Yrittäkää uudelleen.</string>
+    <string name="reply_queued">Tallennettu — lähetämme vastauksenne, kun olette taas verkossa.</string>
 </resources>

@@ -22,15 +22,15 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 | H2 `CF-Connecting-IP` trust | ✅ | `5930d3b`, deployed to aurora |
 | M1 EV variant collapse | ✅ | `b25605e` (regenerated asset) |
 | M2 no tests (build-ev-db, coverage-report) | ✅ | `b25605e`, `8dfaaa8` |
-| M3 build-suppliers orchestration untested | ⏳ | add a `build_country` test with a canned feed |
-| M4 deploy.sh writes changelogs before the 500-char gate; byte char-count | ⏳ | local-only; UTF-8 shell |
+| M3 build-suppliers orchestration untested | ✅ | `5c83b50` (`build_country` test with a canned feed) |
+| M4 deploy.sh writes changelogs before the 500-char gate; byte char-count | ✅ | `f5e6a83` (gate before writing, code-point count) |
 | L1 duplicated locale table | ✅ | `11e3345` |
 | L2 dead `dokka` catalog entry | ✅ | removed from the version catalog (Phase 3) |
 | L3 buildSrc hardcoded AGP/Kotlin versions | ➖ | accept — Gradle can't read the catalog for buildSrc plugin deps; the "keep in sync" comment documents it |
-| L4 install.sh macOS-only + stale fallback APK names | ⏳ | local dev convenience |
-| L5 diagnostics can break the code fence | ⏳ | cosmetic, low |
+| L4 install.sh macOS-only + stale fallback APK names | ✅ | `e524477` (`ls -t`; dropped dead fallbacks) |
+| L5 diagnostics can break the code fence | ✅ | `5447f12` (fence sized to the longest backtick run) + test |
 | L6 build-suppliers `usable:false` docstring | ✅ | `11098c7` |
-| L7 release.sh version not validated | ⏳ | trusted local input |
+| L7 release.sh version not validated | ✅ | `d453190` (dotted-numeric guard) |
 | L8 per-IP limit vs NAT | ➖ | documented tradeoff |
 | L9 coverage gate rounds to 1 dp | ➖ | intended tolerance |
 | L10 credentials.json in working tree | ✅ | verified gitignored/untracked |

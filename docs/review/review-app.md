@@ -22,8 +22,8 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 | M1 `fetchAndFind` cancellation race | ✅ | `dc32ece` |
 | M2 EV formula duplicated in excluded dialog | ✅ | `3a4c821` (shared `EvCharging` + tests) |
 | L1 `StatsReporter` "unlocked" KDoc | ✅ | `11098c7` (→ "subscribed") |
-| L2 "above cheapest" cost wording | 📋 | Phase 5 (user-facing copy) |
-| L3 minor logic in excluded composables | ⏳ | altitude; candidate for later extraction |
+| L2 "above cheapest" cost wording | ✅ | `6cbd592` (EN → "more than the recommended time"), retranslated in the register pass |
+| L3 minor logic in excluded composables | ✅ | `9708763` (UiState nav/cost props), `1edfb88` (BarFractions), `8c3cb34` (dateTimeOverrideMillis), `106030c` (parseDecimalInput) |
 
 ---
 

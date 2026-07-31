@@ -20,10 +20,10 @@ Legend: ✅ fixed · ⏳ not fixed (tracked) · 📋 later phase · ➖ won't fi
 | M2 EnergyCharts single-slot → 60 min | ➖ | resolution is unknowable from one slot; low frequency |
 | M3 unknown tax `type` dropped | ➖ | display-only, fail-safe; the feed is our own build |
 | M4 duplicated lenient `Json` | ✅ | `acfd039` (shared `sweetSpotJson`) |
-| L5 A03 trailing gap-fill | ⏳ | suspected, low; day-ahead A44 is normally A01 |
-| L6 unclamped-cost KDoc note | ⏳ | behaviour correct; doc-only clarification |
+| L5 A03 trailing gap-fill | ✅ | `180c179` (fill to the declared period end, gated to curveType A03) + test |
+| L6 unclamped-cost KDoc note | ✅ | `87f8b15` |
 | L7 `formatKw` large values | ➖ | unreachable from real data |
-| L8 cold-start double-fetch test | ⏳ | behaviour correct; test hardening only |
+| L8 cold-start double-fetch test | ➖ | already covered by existing `PriceRepositoryTest` (good-coverage and empty cold starts); no new test needed |
 | C9 broken `@link` | ✅ | `11098c7` |
 | C10 `ApplianceGrouping` doc drift | ✅ | CLAUDE.md updated (Phase 3) |
 

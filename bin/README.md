@@ -34,6 +34,7 @@ ssh). Most scripts assume the repo root as the working directory — invoke them
 ## `playstore/` — marketing images
 - `frame-screenshots.sh` — frame raw screenshots with marketing text.
 - `feature-graphic.sh` — generate localised Play Store feature graphics.
+- `check-listing-lengths.sh` — CI guardrail: fail if any locale's title/short/full description exceeds the Play Store limit.
 
 ## `quality/` — tests & coverage
 - `coverage-report.py` — per-module Kover summary and the CI coverage gate.

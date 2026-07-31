@@ -82,6 +82,13 @@ describe("buildIssueBody", () => {
     expect(out).toContain("<details><summary>Diagnostics</summary>");
     expect(out).toContain("App: 6.6");
   });
+
+  it("fences with extra backticks when the diagnostics contain a code fence", () => {
+    const out = buildIssueBody("It crashed", "```\nleak\n```");
+    // A 4-backtick fence wraps content that itself contains ```, so the
+    // block can't be terminated early.
+    expect(out).toContain("````\n```\nleak\n```\n````");
+  });
 });
 
 describe("intVar", () => {

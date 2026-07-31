@@ -23,10 +23,10 @@ other = "Privātums"
 other = "Mainīt valodu"
 
 [hero_title]
-other = "Atrodi lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei"
+other = "Atrodiet lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei"
 
 [hero_subtitle]
-other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod lētāko laiku tavu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestati. Atvērtā koda un privātumu respektējoša lietotne."
+other = "SweetSpot analizē dinamiskās elektrības cenas 30 Eiropas valstīs un atrod lētāko laiku jūsu ierīču darbināšanai vai elektromobiļa uzlādei — pabeigtu līdz termiņam, ja tādu iestatāt. Atvērtā koda un privātumu respektējoša lietotne."
 
 [download]
 other = "Iegūt pakalpojumā Google Play"
@@ -65,31 +65,31 @@ other = "Pieci datu avoti ar automātisku pārslēgšanos palīdz nodrošināt c
 other = "Wear OS"
 
 [feature_wear_desc]
-other = "Pavadošā lietotne Pixel Watch un citām Wear OS 3+ ierīcēm. Pārbaudi cenas tieši no rokas."
+other = "Pavadošā lietotne Pixel Watch un citām Wear OS 3+ ierīcēm. Pārbaudiet cenas tieši no rokas."
 
 [feature_appliances_title]
 other = "Pielāgotas ierīces"
 
 [feature_appliances_desc]
-other = "Saglabā savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei ar vienu pieskārienu."
+other = "Saglabājiet savas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem ātrai piekļuvei ar vienu pieskārienu."
 
 [feature_ev_title]
 other = "Elektromobiļa uzlāde"
 
 [feature_ev_desc]
-other = "Pievieno savu automašīnu un ievadi tās pašreizējo un vēlamo uzlādes līmeni. SweetSpot aprēķinās uzlādes laiku un lētāko laiku, kad to pieslēgt."
+other = "Pievienojiet savu automašīnu un ievadiet tās pašreizējo un vēlamo uzlādes līmeni. SweetSpot aprēķinās uzlādes laiku un lētāko laiku, kad to pieslēgt."
 
 [feature_deadline_title]
 other = "Termiņš „Gatavs līdz“"
 
 [feature_deadline_desc]
-other = "Vajag pabeigt līdz noteiktam laikam? Pievieno termiņu „Gatavs līdz“, un SweetSpot pēc noklusējuma izvēlēsies lētāko laiku, kas to paspēj."
+other = "Vajag pabeigt līdz noteiktam laikam? Pievienojiet termiņu „Gatavs līdz“, un SweetSpot pēc noklusējuma izvēlēsies lētāko laiku, kas to paspēj."
 
 [feature_power_title]
 other = "Jaudas norāde"
 
 [feature_power_desc]
-other = "Norādi ierīces jaudu kilovatos, un izmaksu aprēķins atspoguļos tās patieso patēriņu, nevis nemainīgu 1 kW."
+other = "Norādiet ierīces jaudu kilovatos, un izmaksu aprēķins atspoguļos tās patieso patēriņu, nevis nemainīgu 1 kW."
 
 [feature_languages_title]
 other = "25 valodas"
@@ -101,7 +101,7 @@ other = "Pieejama 25 Eiropas valodās — no bulgāru līdz zviedru valodai."
 other = "Privātums pirmajā vietā"
 
 [feature_privacy_desc]
-other = "Bez kontiem, bez analītikas, bez izsekošanas. Cenas tiek saglabātas lokāli tavā ierīcē."
+other = "Bez kontiem, bez analītikas, bez izsekošanas. Cenas tiek saglabātas lokāli jūsu ierīcē."
 
 [feature_opensource_title]
 other = "Atvērtā koda"
@@ -113,31 +113,31 @@ other = "Pilns pirmkods ir pieejams GitHub ar GPL v3 licenci."
 other = "Kā tas darbojas"
 
 [step1_title]
-other = "Izvēlies ierīci vai elektromobili"
+other = "Izvēlieties ierīci vai elektromobili"
 
 [step1_desc]
-other = "Izvēlies saglabātu ierīci vai savu elektromobili, vai iestati pielāgotu ilgumu — un pēc izvēles arī termiņu „Gatavs līdz“."
+other = "Izvēlieties saglabātu ierīci vai savu elektromobili, vai iestatiet pielāgotu ilgumu — un pēc izvēles arī termiņu „Gatavs līdz“."
 
 [step2_title]
 other = "Analizē cenas"
 
 [step2_desc]
-other = "SweetSpot iegūst jaunākās nākamās dienas elektrības cenas tavam reģionam."
+other = "SweetSpot iegūst jaunākās nākamās dienas elektrības cenas jūsu reģionam."
 
 [step3_title]
-other = "Uzzini labāko laiku"
+other = "Uzziniet labāko laiku"
 
 [step3_desc]
-other = "Redzi precīzi, kad sākt, ar pilnu izmaksu sadalījumu pa laika intervāliem."
+other = "Redziet precīzi, kad sākt, ar pilnu izmaksu sadalījumu pa laika intervāliem."
 
 [cta_title]
-other = "Sāc taupīt elektrību"
+other = "Sāciet taupīt elektrību"
 
 [cta_desc]
-other = "Iegūsti SweetSpot no Google Play un atrodi lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
+other = "Iegūstiet SweetSpot no Google Play un atrodiet lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
 
 [footer_tagline]
-other = "Atrodi lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
+other = "Atrodiet lētāko laiku savu ierīču darbināšanai un elektromobiļa uzlādei."
 
 [footer_app]
 other = "Lietotne"

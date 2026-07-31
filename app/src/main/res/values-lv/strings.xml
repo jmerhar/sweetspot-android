@@ -13,13 +13,13 @@
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Ieteicamais laiks</string>
-    <string name="result_after_deadline">Tas beidzas pēc tava “Gatavs līdz” laika.</string>
+    <string name="result_after_deadline">Tas beidzas pēc jūsu “Gatavs līdz” laika.</string>
     <string name="result_start">Sākums</string>
     <string name="result_end">Beigas</string>
     <string name="result_total_cost">Kopējās izmaksas</string>
     <string name="result_avg_price">Vid. cena</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s dārgāk par lētāko</string>
+    <string name="result_cost_above_cheapest">%1$s dārgāk par ieteicamo laiku</string>
     <string name="result_earlier">Agrāk</string>
     <string name="result_cheaper">Lētāk</string>
     <string name="result_cost_breakdown">Izmaksu sadalījums</string>
@@ -351,13 +351,13 @@
     <string name="guide_wear_title">Jūsu pulkstenī</string>
     <string name="guide_wear_body">Jūsu ierīces sinhronizējas ar Wear OS, tāpēc varat pārbaudīt cenas bez tālruņa.</string>
     <!-- Report conversation (in-app thread) -->
-    <string name="thread_you">Tu</string>
+    <string name="thread_you">Jūs</string>
     <string name="thread_support">SweetSpot atbalsts</string>
     <string name="thread_open_github">Atvērt vietnē GitHub</string>
-    <string name="thread_load_error">Neizdevās ielādēt sarunu. Pārbaudi savienojumu un mēģini vēlreiz.</string>
-    <string name="reply_hint">Tava atbilde</string>
+    <string name="thread_load_error">Neizdevās ielādēt sarunu. Pārbaudiet savienojumu un mēģiniet vēlreiz.</string>
+    <string name="reply_hint">Jūsu atbilde</string>
     <string name="reply_send">Sūtīt</string>
-    <string name="reply_public_note">Tava atbilde tiek publiski publicēta vietnē GitHub.</string>
-    <string name="reply_error">Neizdevās nosūtīt atbildi. Mēģini vēlreiz.</string>
-    <string name="reply_queued">Saglabāts — nosūtīsim tavu atbildi, kad atkal būsi tiešsaistē.</string>
+    <string name="reply_public_note">Jūsu atbilde tiek publiski publicēta vietnē GitHub.</string>
+    <string name="reply_error">Neizdevās nosūtīt atbildi. Mēģiniet vēlreiz.</string>
+    <string name="reply_queued">Saglabāts — nosūtīsim jūsu atbildi, kad atkal būsiet tiešsaistē.</string>
 </resources>

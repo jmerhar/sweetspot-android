@@ -140,8 +140,13 @@ async function handleReport(request, env) {
 /** Assembles the issue body, appending diagnostics (bug reports) in a collapsible block. */
 export function buildIssueBody(body, diagnostics) {
   let out = `${body}\n\n<sub>Submitted from the SweetSpot app.</sub>`;
-  if (diagnostics && diagnostics.trim().length > 0) {
-    out += `\n\n<details><summary>Diagnostics</summary>\n\n\`\`\`\n${diagnostics.trim()}\n\`\`\`\n</details>`;
+  const diag = diagnostics && diagnostics.trim();
+  if (diag) {
+    // Fence with one more backtick than the longest run inside the diagnostics,
+    // so content that itself contains ``` can't terminate the code block early.
+    const longestRun = Math.max(0, ...(diag.match(/`+/g) || []).map((r) => r.length));
+    const fence = "`".repeat(Math.max(3, longestRun + 1));
+    out += `\n\n<details><summary>Diagnostics</summary>\n\n${fence}\n${diag}\n${fence}\n</details>`;
   }
   return out;
 }

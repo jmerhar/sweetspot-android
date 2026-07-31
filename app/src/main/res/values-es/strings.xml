@@ -5,21 +5,21 @@
     <!-- Main screen -->
     <string name="cd_settings">Ajustes</string>
     <string name="cd_back">Atrás</string>
-    <string name="main_description">SweetSpot te ayuda a ahorrar dinero encontrando el momento más barato para usar tus electrodomésticos. Solo elige cuánto tiempo necesita funcionar tu aparato y analizará los próximos precios dinámicos de electricidad para encontrar la mejor franja. También puedes guardar tus electrodomésticos favoritos en los ajustes para un acceso rápido.</string>
+    <string name="main_description">SweetSpot le ayuda a ahorrar dinero encontrando el momento más barato para usar sus electrodomésticos. Solo elija cuánto tiempo necesita funcionar su aparato y analizará los próximos precios dinámicos de electricidad para encontrar la mejor franja. También puede guardar sus electrodomésticos favoritos en los ajustes para un acceso rápido.</string>
     <string name="main_find_button">Buscar franja más barata</string>
     <string name="main_searching">Buscando…</string>
-    <string name="main_add_appliances">Añade tus electrodomésticos</string>
-    <string name="main_card_description">Encuentra el momento más barato para usar tu electrodoméstico</string>
+    <string name="main_add_appliances">Añada sus electrodomésticos</string>
+    <string name="main_card_description">Encuentre el momento más barato para usar su electrodoméstico</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Hora recomendada</string>
-    <string name="result_after_deadline">Esta franja termina después de tu hora «Listo a las».</string>
+    <string name="result_after_deadline">Esta franja termina después de su hora «Listo a las».</string>
     <string name="result_start">Inicio</string>
     <string name="result_end">Fin</string>
     <string name="result_total_cost">Coste total</string>
     <string name="result_avg_price">Precio medio</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s más que el mínimo</string>
+    <string name="result_cost_above_cheapest">%1$s más que la hora recomendada</string>
     <string name="result_earlier">Antes</string>
     <string name="result_cheaper">Más barato</string>
     <string name="result_cost_breakdown">Desglose de costes</string>
@@ -44,12 +44,12 @@
     <string name="settings_language">Idioma</string>
     <string name="settings_language_system_default">Predeterminado del sistema</string>
     <string name="settings_country">País</string>
-    <string name="settings_select_zone">Selecciona una zona</string>
+    <string name="settings_select_zone">Seleccione una zona</string>
     <string name="settings_data_sources">Fuentes de datos</string>
     <string name="settings_data_sources_description">Los precios se obtienen en este orden. Si una fuente falla, se intenta la siguiente.</string>
     <string name="settings_reset_defaults">Restablecer valores predeterminados</string>
     <string name="settings_appliances">Electrodomésticos</string>
-    <string name="settings_appliances_description">Añade aquí tus electrodomésticos para un acceso rápido. También puedes añadir programas específicos, p. ej. Lavavajillas Eco, Lavavajillas Rápido, Lavadora Algodón.</string>
+    <string name="settings_appliances_description">Añada aquí sus electrodomésticos para un acceso rápido. También puede añadir programas específicos, p. ej. Lavavajillas Eco, Lavavajillas Rápido, Lavadora Algodón.</string>
     <string name="settings_add_appliance">Añadir electrodoméstico</string>
     <string name="settings_timezone">Zona horaria</string>
     <string name="settings_theme">Tema</string>
@@ -63,28 +63,28 @@
     <string name="settings_region_desc">País, zona de precios y zona horaria</string>
     <string name="settings_appearance_title">Apariencia</string>
     <string name="settings_appearance_desc">Idioma y tema</string>
-    <string name="settings_appliances_menu_desc">Tus electrodomésticos guardados</string>
+    <string name="settings_appliances_menu_desc">Sus electrodomésticos guardados</string>
     <string name="settings_ev_menu_desc">Cargador, carga objetivo y vehículos</string>
-    <string name="settings_all_in_menu_desc">Muestra el precio total al consumidor</string>
+    <string name="settings_all_in_menu_desc">Muestre el precio total al consumidor</string>
 
     <string name="settings_share_title">Compartir mi configuración</string>
-    <string name="settings_share_menu_desc">Copia tus electrodomésticos y ajustes de carga a otro dispositivo</string>
+    <string name="settings_share_menu_desc">Copie sus electrodomésticos y ajustes de carga a otro dispositivo</string>
 
     <!-- Household sharing: share screen -->
-    <string name="share_setup_description">Escanea este código con la cámara de otro teléfono, o envía el enlace. Tus electrodomésticos, su orden y tus ajustes de carga se copiarán a ese dispositivo.</string>
+    <string name="share_setup_description">Escanee este código con la cámara de otro teléfono, o envíe el enlace. Sus electrodomésticos, su orden y sus ajustes de carga se copiarán a ese dispositivo.</string>
     <string name="share_setup_button">Compartir enlace</string>
-    <string name="share_setup_chooser_title">Compartir tu configuración</string>
-    <string name="share_setup_qr_unavailable">Tu configuración es demasiado grande para un código QR. Usa el enlace para compartir en su lugar.</string>
-    <string name="cd_qr_code">Código QR de tu configuración</string>
+    <string name="share_setup_chooser_title">Compartir su configuración</string>
+    <string name="share_setup_qr_unavailable">Su configuración es demasiado grande para un código QR. Use el enlace para compartir en su lugar.</string>
+    <string name="cd_qr_code">Código QR de su configuración</string>
 
     <!-- Household sharing: import preview -->
     <string name="import_title">Importar configuración</string>
     <string name="import_mode_add">Añadir a la mía</string>
-    <string name="import_mode_add_desc">Conserva mis electrodomésticos y añade los nuevos</string>
+    <string name="import_mode_add_desc">Conserve mis electrodomésticos y añada los nuevos</string>
     <string name="import_mode_replace">Reemplazar la mía</string>
-    <string name="import_mode_replace_desc">Usa los electrodomésticos, el orden y los ajustes de carga compartidos</string>
+    <string name="import_mode_replace_desc">Use los electrodomésticos, el orden y los ajustes de carga compartidos</string>
     <string name="import_mode_pick">Elegir cuáles</string>
-    <string name="import_mode_pick_desc">Elige qué electrodomésticos añadir</string>
+    <string name="import_mode_pick_desc">Elija qué electrodomésticos añadir</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d electrodoméstico</item>
         <item quantity="other">%d electrodomésticos</item>
@@ -100,8 +100,8 @@
 
     <!-- Household sharing: import errors -->
     <string name="import_error_title">No se pudo importar</string>
-    <string name="import_error_too_new">Esta configuración se compartió desde una versión más reciente de SweetSpot. Actualiza la aplicación para importarla.</string>
-    <string name="import_error_malformed">No se pudo leer este enlace. Pide uno nuevo.</string>
+    <string name="import_error_too_new">Esta configuración se compartió desde una versión más reciente de SweetSpot. Actualice la aplicación para importarla.</string>
+    <string name="import_error_malformed">No se pudo leer este enlace. Pida uno nuevo.</string>
 
     <!-- Appliance dialog -->
     <string name="dialog_add_appliance">Añadir electrodoméstico</string>
@@ -129,8 +129,8 @@
     <string name="cd_selected">Seleccionado</string>
 
     <!-- Errors -->
-    <string name="error_zero_duration">Selecciona una duración mayor que cero.</string>
-    <string name="error_no_zone">Selecciona una zona en Ajustes.</string>
+    <string name="error_zero_duration">Seleccione una duración mayor que cero.</string>
+    <string name="error_no_zone">Seleccione una zona en Ajustes.</string>
     <string name="error_no_data">No hay datos de precios disponibles para las próximas 24 horas.</string>
     <string name="error_network">No se pudieron obtener los precios: %s</string>
     <plurals name="error_not_enough_data">
@@ -139,9 +139,9 @@
         <item quantity="other">No hay suficientes datos de precios para %1$s. Solo %2$d horas de datos disponibles.</item>
     </plurals>
     <plurals name="error_cooldown">
-        <item quantity="one">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minuto.</item>
-        <item quantity="many">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minutos.</item>
-        <item quantity="other">Los precios se obtuvieron recientemente. Inténtalo de nuevo en %d minutos.</item>
+        <item quantity="one">Los precios se obtuvieron recientemente. Inténtelo de nuevo en %d minuto.</item>
+        <item quantity="many">Los precios se obtuvieron recientemente. Inténtelo de nuevo en %d minutos.</item>
+        <item quantity="other">Los precios se obtuvieron recientemente. Inténtelo de nuevo en %d minutos.</item>
     </plurals>
 
     <!-- Cache management -->
@@ -154,19 +154,19 @@
 
     <!-- Stats -->
     <string name="settings_stats_title">Compartir estadísticas de fiabilidad</string>
-    <string name="settings_stats_description">Ayuda a mejorar la fiabilidad de las fuentes de datos compartiendo recuentos anónimos de cuándo los precios se cargan o fallan. No se recopilan datos personales.</string>
+    <string name="settings_stats_description">Ayude a mejorar la fiabilidad de las fuentes de datos compartiendo recuentos anónimos de cuándo los precios se cargan o fallan. No se recopilan datos personales.</string>
     <string name="stats_prompt_title">¿Ayudar a mejorar SweetSpot?</string>
-    <string name="stats_prompt_message">Comparte estadísticas anónimas para ayudar a mejorar la fiabilidad de las fuentes de datos. Solo se comparte con qué frecuencia cada fuente de datos se carga o falla — sin datos personales. Puedes cambiar esto en cualquier momento en Ajustes.</string>
+    <string name="stats_prompt_message">Comparta estadísticas anónimas para ayudar a mejorar la fiabilidad de las fuentes de datos. Solo se comparte con qué frecuencia cada fuente de datos se carga o falla — sin datos personales. Puede cambiar esto en cualquier momento en Ajustes.</string>
     <string name="stats_prompt_enable">Activar</string>
     <string name="stats_prompt_dismiss">No, gracias</string>
 
     <!-- Onboarding -->
-    <string name="onboarding_title_1">Usa los electrodomésticos cuando la luz es más barata</string>
+    <string name="onboarding_title_1">Use los electrodomésticos cuando la luz es más barata</string>
     <string name="onboarding_body_1">SweetSpot analiza los próximos precios de la electricidad para encontrar la franja más barata para usar un electrodoméstico.</string>
-    <string name="onboarding_title_2">Tus electrodomésticos, a un toque</string>
-    <string name="onboarding_body_2">Guarda un electrodoméstico y tócalo para ver su franja más barata. Añade tu coche eléctrico para planificar la carga según su carga actual y objetivo.</string>
-    <string name="onboarding_title_3">Personalízalo a tu gusto</string>
-    <string name="onboarding_body_3">Tu país se detecta automáticamente. Cambia la zona, añade electrodomésticos o elige tu idioma — todo está en Ajustes.</string>
+    <string name="onboarding_title_2">Sus electrodomésticos, a un toque</string>
+    <string name="onboarding_body_2">Guarde un electrodoméstico y tóquelo para ver su franja más barata. Añada su coche eléctrico para planificar la carga según su carga actual y objetivo.</string>
+    <string name="onboarding_title_3">Personalícelo a su gusto</string>
+    <string name="onboarding_body_3">Su país se detecta automáticamente. Cambie la zona, añada electrodomésticos o elija su idioma — todo está en Ajustes.</string>
     <string name="onboarding_skip">Omitir</string>
     <string name="onboarding_next">Siguiente</string>
     <string name="onboarding_get_started">Empezar</string>
@@ -175,18 +175,18 @@
 
     <!-- Unlock -->
     <string name="settings_unlock">Suscribirse a SweetSpot</string>
-    <string name="settings_unlock_description">Suscríbete por un año para seguir usando SweetSpot.</string>
+    <string name="settings_unlock_description">Suscríbase por un año para seguir usando SweetSpot.</string>
 
     <!-- Paywall -->
-    <string name="paywall_title">Tu período de prueba ha finalizado</string>
-    <string name="paywall_description">SweetSpot encuentra el momento más barato para usar tus electrodomésticos con precios dinámicos de electricidad en 30 países europeos. Suscríbete para seguir usándolo.</string>
+    <string name="paywall_title">Su período de prueba ha finalizado</string>
+    <string name="paywall_description">SweetSpot encuentra el momento más barato para usar sus electrodomésticos con precios dinámicos de electricidad en 30 países europeos. Suscríbase para seguir usándolo.</string>
     <string name="paywall_unlock">Suscribirse a SweetSpot</string>
     <string name="paywall_unlock_price">Suscribirse por %s/año</string>
     <string name="paywall_restore">Restaurar suscripción</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">¡Gracias!</string>
-    <string name="thank_you_message">Tu suscripción ya está activa. ¡Disfruta encontrando el momento más barato para tus electrodomésticos!</string>
+    <string name="thank_you_message">Su suscripción ya está activa. ¡Disfrute encontrando el momento más barato para sus electrodomésticos!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Prueba: %d día restante</item>
@@ -198,12 +198,12 @@
     <string name="settings_ev_title">Carga de vehículo eléctrico</string>
     <string name="ev_add_vehicle">Añadir un vehículo</string>
     <string name="ev_search_hint">Buscar marca o modelo</string>
-    <string name="ev_custom_hint">¿No aparece? Introduce los datos a continuación para añadir un vehículo personalizado.</string>
+    <string name="ev_custom_hint">¿No aparece? Introduzca los datos a continuación para añadir un vehículo personalizado.</string>
     <string name="ev_vehicle_specs">Batería de %1$s kWh · %2$s kW máx. en CA</string>
     <string name="ev_battery_label">Capacidad de la batería</string>
     <string name="ev_power_label">Potencia máxima de carga en CA</string>
     <string name="ev_home_charger">Cargador doméstico</string>
-    <string name="ev_home_charger_description">La potencia de tu wallbox o cargador. La carga usa la menor de las dos: esta o el máximo del coche.</string>
+    <string name="ev_home_charger_description">La potencia de su wallbox o cargador. La carga usa la menor de las dos: esta o el máximo del coche.</string>
     <string name="ev_charger_custom">Personalizada</string>
     <string name="ev_default_target">Carga objetivo predeterminada: %d%%</string>
     <string name="ev_current_soc">Carga actual: %d%%</string>
@@ -215,21 +215,21 @@
     <string name="dialog_edit_vehicle">Editar vehículo</string>
     <string name="ev_attribution">Datos del vehículo: Open EV Data</string>
     <string name="ev_error_invalid_soc">La carga objetivo debe ser mayor que la carga actual.</string>
-    <string name="ev_error_invalid_charger">Establece una potencia de carga mayor que cero.</string>
-    <string name="ev_error_deadline_unreachable">La carga no puede terminar antes de tu hora límite. Prueba con una carga objetivo más baja o una hora más tarde.</string>
+    <string name="ev_error_invalid_charger">Establezca una potencia de carga mayor que cero.</string>
+    <string name="ev_error_deadline_unreachable">La carga no puede terminar antes de su hora límite. Pruebe con una carga objetivo más baja o una hora más tarde.</string>
     <string name="result_disclaimer_power">Los costes se calculan para una carga de %s kW. Los precios no incluyen IVA, impuesto energético ni tarifa del proveedor. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
     <string name="dialog_power">Potencia (kW, opcional)</string>
 
     <!-- All-in pricing -->
     <string name="settings_all_in_title">Precio total</string>
     <string name="settings_all_in_toggle">Mostrar precio total</string>
-    <string name="settings_all_in_desc">Muestra el precio total estimado para el consumidor (precio de mercado + impuesto energético + recargo del proveedor + IVA) en lugar de solo el precio de mercado.</string>
+    <string name="settings_all_in_desc">Muestre el precio total estimado para el consumidor (precio de mercado + impuesto energético + recargo del proveedor + IVA) en lugar de solo el precio de mercado.</string>
     <string name="all_in_supplier">Proveedor</string>
-    <string name="all_in_supplier_prompt">Selecciona tu proveedor</string>
+    <string name="all_in_supplier_prompt">Seleccione su proveedor</string>
     <string name="all_in_supplier_custom">Recargo personalizado</string>
-    <string name="all_in_no_supplier">No se encontró ningún proveedor. Introduce un recargo personalizado a continuación.</string>
+    <string name="all_in_no_supplier">No se encontró ningún proveedor. Introduzca un recargo personalizado a continuación.</string>
     <string name="all_in_surcharge_custom">Recargo personalizado (sin IVA)</string>
-    <string name="all_in_incomplete">Selecciona un proveedor o introduce un recargo, o desactiva el precio total.</string>
+    <string name="all_in_incomplete">Seleccione un proveedor o introduzca un recargo, o desactive el precio total.</string>
     <string name="picker_supplier_title">Proveedor</string>
     <string name="picker_supplier_search">Buscar proveedores</string>
     <string name="result_disclaimer_all_in">Los costes se muestran para una carga de 1 kW, al precio total estimado (precio de mercado + impuesto energético + recargo del proveedor + IVA). No incluye peajes de red ni cuotas fijas mensuales. Los precios de mañana suelen estar disponibles después de las 13:00 CET.</string>
@@ -243,10 +243,10 @@
     <string name="chart_legend_vat_note">Todos los precios incluyen IVA.</string>
 
     <!-- Coach hints -->
-    <string name="coach_earlier_cheaper">¿No es buen momento? Toca «Antes» para empezar antes, o «Más barato» para volver al más barato.</string>
-    <string name="coach_chart_press_hold">Mantén pulsado el gráfico para ver el precio en cualquier momento.</string>
-    <string name="coach_all_in_toggle">Cambia entre el precio total y solo el precio de mercado.</string>
-    <string name="coach_ev_chip">Toca tu vehículo para planificar la carga por porcentaje de batería.</string>
+    <string name="coach_earlier_cheaper">¿No es buen momento? Toque «Antes» para empezar antes, o «Más barato» para volver al más barato.</string>
+    <string name="coach_chart_press_hold">Mantenga pulsado el gráfico para ver el precio en cualquier momento.</string>
+    <string name="coach_all_in_toggle">Cambie entre el precio total y solo el precio de mercado.</string>
+    <string name="coach_ev_chip">Toque su vehículo para planificar la carga por porcentaje de batería.</string>
     <string name="coach_got_it">Entendido</string>
 
     <!-- Sorting -->
@@ -264,7 +264,7 @@
     <string name="sort_add_tiebreaker">Añadir desempate</string>
     <string name="cd_sort_remove_level">Quitar este nivel de orden</string>
     <string name="settings_group_title">Agrupar por tipo</string>
-    <string name="settings_group_description">Agrupa los botones de la pantalla de inicio por tipo de electrodoméstico, cada uno bajo su propio encabezado.</string>
+    <string name="settings_group_description">Agrupe los botones de la pantalla de inicio por tipo de electrodoméstico, cada uno bajo su propio encabezado.</string>
     <string name="group_off">Desactivado</string>
     <string name="group_rows">Filas</string>
     <string name="group_columns">Columnas</string>
@@ -272,14 +272,14 @@
     <string name="usage_count_format">Usado %d×</string>
     <string name="usage_never">Nunca usado</string>
     <string name="settings_reset_usage">Restablecer datos de uso</string>
-    <string name="settings_reset_usage_description">Borra el historial de uso empleado para ordenar por Más usados y Usados recientemente.</string>
+    <string name="settings_reset_usage_description">Borre el historial de uso empleado para ordenar por Más usados y Usados recientemente.</string>
     <string name="reset_usage_confirm_title">¿Restablecer datos de uso?</string>
     <string name="reset_usage_confirm_message">Esto borra el historial de uso empleado para ordenar los electrodomésticos por Más usados y Usados recientemente. No se puede deshacer.</string>
     <string name="action_reset">Restablecer</string>
 
     <!-- EV placement -->
     <string name="ev_placement_title">Ubicación en la pantalla de inicio</string>
-    <string name="ev_placement_description">Dónde aparecen tus vehículos entre los botones de electrodomésticos.</string>
+    <string name="ev_placement_description">Dónde aparecen sus vehículos entre los botones de electrodomésticos.</string>
     <string name="ev_position_interleaved">Mezclados</string>
     <string name="ev_position_first">Primero</string>
     <string name="ev_position_last">Último</string>
@@ -304,59 +304,59 @@
     <string name="help_feedback_title">Enviar opinión</string>
     <string name="help_feedback_desc">Ideas y sugerencias</string>
     <string name="help_my_reports_title">Mis informes</string>
-    <string name="help_my_reports_desc">Sigue lo que has enviado</string>
-    <string name="help_contact_title">Contáctanos</string>
-    <string name="help_contact_desc">Escríbenos directamente</string>
+    <string name="help_my_reports_desc">Siga lo que ha enviado</string>
+    <string name="help_contact_title">Contáctenos</string>
+    <string name="help_contact_desc">Escríbanos directamente</string>
     <string name="help_rate_title">Valora SweetSpot</string>
-    <string name="help_rate_desc">Valóranos en Google Play</string>
+    <string name="help_rate_desc">Valórenos en Google Play</string>
     <string name="help_whats_new_title">Novedades</string>
     <string name="help_whats_new_desc">Últimos cambios</string>
     <string name="help_privacy_title">Política de privacidad</string>
-    <string name="help_privacy_desc">Cómo se tratan tus datos</string>
+    <string name="help_privacy_desc">Cómo se tratan sus datos</string>
     <string name="help_about_license">GPL v3 · Código abierto en GitHub</string>
     <string name="tips_reset_snackbar">Consejos restablecidos</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">Tu informe se publica como una incidencia pública en GitHub — no incluyas datos personales.</string>
+    <string name="report_public_notice">Su informe se publica como una incidencia pública en GitHub — no incluya datos personales.</string>
     <string name="report_subject_label">Asunto</string>
     <string name="report_body_label_bug">¿Qué ha pasado?</string>
-    <string name="report_body_label_feedback">Tu opinión</string>
-    <string name="report_email_label">Avísame por correo (opcional)</string>
-    <string name="report_email_note">Tu correo solo se usa para avisarte — nunca se muestra en la incidencia pública.</string>
+    <string name="report_body_label_feedback">Su opinión</string>
+    <string name="report_email_label">Avíseme por correo (opcional)</string>
+    <string name="report_email_note">Su correo solo se usa para avisarle — nunca se muestra en la incidencia pública.</string>
     <string name="report_submit">Enviar</string>
     <string name="report_submitting">Enviando…</string>
     <string name="report_filed">Informe n.º %1$d registrado — ¡gracias!</string>
-    <string name="report_sent">Gracias — tu informe se ha enviado.</string>
+    <string name="report_sent">Gracias — su informe se ha enviado.</string>
     <string name="report_error_retry">No se pudo enviar ahora mismo — guardado, lo reintentaremos automáticamente.</string>
-    <string name="report_error_permanent">No se pudo enviar. Revisa los datos e inténtalo de nuevo.</string>
+    <string name="report_error_permanent">No se pudo enviar. Revise los datos e inténtelo de nuevo.</string>
     <string name="report_retry">Reintentar</string>
     <string name="report_done">Hecho</string>
 
     <!-- My reports -->
-    <string name="my_reports_empty">Aún no has enviado ningún informe.</string>
+    <string name="my_reports_empty">Aún no ha enviado ningún informe.</string>
     <string name="my_reports_open">Abierto</string>
     <string name="my_reports_closed">Cerrado</string>
-    <string name="thread_you">Tú</string>
+    <string name="thread_you">Usted</string>
     <string name="thread_support">Soporte de SweetSpot</string>
     <string name="thread_open_github">Abrir en GitHub</string>
-    <string name="thread_load_error">No se pudo cargar la conversación. Comprueba tu conexión e inténtalo de nuevo.</string>
+    <string name="thread_load_error">No se pudo cargar la conversación. Compruebe su conexión e inténtelo de nuevo.</string>
 
     <!-- Quick guide -->
-    <string name="guide_find_title">Encuentra el momento más barato</string>
-    <string name="guide_find_body">Elige cuánto tiempo necesita funcionar tu electrodoméstico y toca Buscar.</string>
-    <string name="guide_appliances_title">Guarda tus electrodomésticos</string>
-    <string name="guide_appliances_body">Añade electrodomésticos en Ajustes para buscar con un solo toque.</string>
-    <string name="guide_ev_title">Planifica la carga del coche eléctrico</string>
-    <string name="guide_ev_body">Añade tu coche, introduce su carga actual y objetivo, y SweetSpot calcula el tiempo de carga.</string>
-    <string name="guide_result_title">Interpreta el resultado</string>
-    <string name="guide_result_body">Usa Antes y Más barato para mover la franja, y mantén pulsado el gráfico para ver el precio de cada franja horaria.</string>
+    <string name="guide_find_title">Encuentre el momento más barato</string>
+    <string name="guide_find_body">Elija cuánto tiempo necesita funcionar su electrodoméstico y toque Buscar.</string>
+    <string name="guide_appliances_title">Guarde sus electrodomésticos</string>
+    <string name="guide_appliances_body">Añada electrodomésticos en Ajustes para buscar con un solo toque.</string>
+    <string name="guide_ev_title">Planifique la carga del coche eléctrico</string>
+    <string name="guide_ev_body">Añada su coche, introduzca su carga actual y objetivo, y SweetSpot calcula el tiempo de carga.</string>
+    <string name="guide_result_title">Interprete el resultado</string>
+    <string name="guide_result_body">Use Antes y Más barato para mover la franja, y mantenga pulsado el gráfico para ver el precio de cada franja horaria.</string>
     <string name="guide_allin_title">Precio total</string>
-    <string name="guide_allin_body">Muestra opcionalmente el precio total al consumidor en lugar de solo el precio de mercado.</string>
-    <string name="guide_wear_title">En tu reloj</string>
-    <string name="guide_wear_body">Tus electrodomésticos se sincronizan con Wear OS, para que puedas consultar los precios sin tu teléfono.</string>
-    <string name="reply_hint">Tu respuesta</string>
+    <string name="guide_allin_body">Muestre opcionalmente el precio total al consumidor en lugar de solo el precio de mercado.</string>
+    <string name="guide_wear_title">En su reloj</string>
+    <string name="guide_wear_body">Sus electrodomésticos se sincronizan con Wear OS, para que pueda consultar los precios sin su teléfono.</string>
+    <string name="reply_hint">Su respuesta</string>
     <string name="reply_send">Enviar</string>
-    <string name="reply_public_note">Tu respuesta se publica públicamente en GitHub.</string>
-    <string name="reply_error">No se pudo enviar tu respuesta. Inténtalo de nuevo.</string>
-    <string name="reply_queued">Guardado: enviaremos tu respuesta cuando vuelvas a tener conexión.</string>
+    <string name="reply_public_note">Su respuesta se publica públicamente en GitHub.</string>
+    <string name="reply_error">No se pudo enviar su respuesta. Inténtelo de nuevo.</string>
+    <string name="reply_queued">Guardado: enviaremos su respuesta cuando vuelva a tener conexión.</string>
 </resources>

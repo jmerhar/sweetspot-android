@@ -5,7 +5,7 @@ description: "Política de privacidad de SweetSpot — privacidad ante todo, sin
 
 ## Resumen
 
-SweetSpot está diseñado con la privacidad como prioridad. La aplicación no necesita ni recopila datos personales para funcionar — no hay cuentas de usuario, ni analítica, ni seguimiento del uso, y solo solicita el permiso de INTERNET (sin ubicación, contactos, almacenamiento ni identificadores del dispositivo). Algunas funciones opcionales te permiten compartir estadísticas anónimas de fiabilidad o enviar comentarios — más detalles a continuación.
+SweetSpot está diseñado con la privacidad como prioridad. La aplicación no necesita ni recopila datos personales para funcionar — no hay cuentas de usuario, ni analítica, ni seguimiento del uso, y solo solicita el permiso de INTERNET (sin ubicación, contactos, almacenamiento ni identificadores del dispositivo). Algunas funciones opcionales le permiten compartir estadísticas anónimas de fiabilidad o enviar comentarios — más detalles a continuación.
 
 ## Procesamiento de datos
 
@@ -21,19 +21,19 @@ Estas solicitudes de API contienen únicamente el identificador de zona de ofert
 
 ## Almacenamiento local
 
-Los datos de precios se almacenan en la caché local de tu dispositivo para reducir las llamadas a la API y obtener resultados más rápidos. La configuración de tus electrodomésticos (nombres, duraciones, iconos y potencias opcionales), los vehículos guardados (capacidad de la batería y potencia de carga) y los ajustes (país, zona, idioma) también se almacenan localmente en tu dispositivo, junto con tu estado de suscripción (guardado en caché para que la app siga funcionando sin conexión) y el número de pulsaciones por electrodoméstico (usado únicamente para ordenar por más usados y usados recientemente).
+Los datos de precios se almacenan en la caché local de su dispositivo para reducir las llamadas a la API y obtener resultados más rápidos. La configuración de sus electrodomésticos (nombres, duraciones, iconos y potencias opcionales), los vehículos guardados (capacidad de la batería y potencia de carga) y los ajustes (país, zona, idioma) también se almacenan localmente en su dispositivo, junto con su estado de suscripción (guardado en caché para que la app siga funcionando sin conexión) y el número de pulsaciones por electrodoméstico (usado únicamente para ordenar por más usados y usados recientemente).
 
-En Wear OS, los datos de electrodomésticos y ajustes se sincronizan entre el teléfono y el reloj mediante la Wearable Data Layer API. Esta comunicación permanece en tus dispositivos locales y no pasa por ningún servidor externo.
+En Wear OS, los datos de electrodomésticos y ajustes se sincronizan entre el teléfono y el reloj mediante la Wearable Data Layer API. Esta comunicación permanece en sus dispositivos locales y no pasa por ningún servidor externo.
 
-Si compartes tu configuración como código QR o enlace, la configuración de tus electrodomésticos y de carga del VE se codifica **dentro del propio enlace o código QR** — nunca se sube a un servidor. Solo la persona a la que le des el código o el enlace puede importarla.
+Si comparte su configuración como código QR o enlace, la configuración de sus electrodomésticos y de carga del VE se codifica **dentro del propio enlace o código QR** — nunca se sube a un servidor. Solo la persona a la que le dé el código o el enlace puede importarla.
 
 ## Sin analítica
 
-SweetSpot no incluye ningún SDK de analítica, informes de errores ni seguimiento del uso. La aplicación no realiza ninguna solicitud de red más allá de obtener precios de electricidad de las APIs públicas mencionadas anteriormente (y el envío opcional de estadísticas, si está activado, y el envío de un informe si usas Ayuda y soporte — véase más abajo).
+SweetSpot no incluye ningún SDK de analítica, informes de errores ni seguimiento del uso. La aplicación no realiza ninguna solicitud de red más allá de obtener precios de electricidad de las APIs públicas mencionadas anteriormente (y el envío opcional de estadísticas, si está activado, y el envío de un informe si usa Ayuda y soporte — véase más abajo).
 
 ## Estadísticas de fiabilidad opcionales
 
-Puedes optar por compartir estadísticas anónimas de fiabilidad. Cuando está activado, la aplicación envía periódicamente registros individuales de solicitudes para cada fuente de datos y zona de oferta a nuestro servidor. Estos datos contienen:
+Puede optar por compartir estadísticas anónimas de fiabilidad. Cuando está activado, la aplicación envía periódicamente registros individuales de solicitudes para cada fuente de datos y zona de oferta a nuestro servidor. Estos datos contienen:
 
 - Marca de tiempo de la solicitud de API
 - Identificador de zona de oferta (p. ej., "NL", "DE-LU")
@@ -48,22 +48,22 @@ Puedes optar por compartir estadísticas anónimas de fiabilidad. Cuando está a
 
 Estos datos **no** contienen identificadores de dispositivo, ubicación, datos de precios ni ninguna otra información personal. Se utilizan exclusivamente para mejorar la fiabilidad de las fuentes de datos y el orden predeterminado.
 
-Esta función está desactivada por defecto. Puedes activarla o desactivarla en cualquier momento en Ajustes.
+Esta función está desactivada por defecto. Puede activarla o desactivarla en cualquier momento en Ajustes.
 
 ## Ayuda y soporte
 
-Si informas de un problema o envías comentarios desde **Ajustes › Ayuda y soporte**, tu mensaje se envía a nuestro servicio de comentarios y se registra como un issue en nuestro repositorio público de GitHub. **El asunto y la descripción que escribas se hacen públicamente visibles** en GitHub, así que no incluyas datos personales.
+Si informa de un problema o envía comentarios desde **Ajustes › Ayuda y soporte**, su mensaje se envía a nuestro servicio de comentarios y se registra como un issue en nuestro repositorio público de GitHub. **El asunto y la descripción que escriba se hacen públicamente visibles** en GitHub, así que no incluya datos personales.
 
-Si eliges recibir notificaciones por correo electrónico, la dirección que proporciones se almacena únicamente en nuestro servicio de comentarios — nunca se muestra en el issue público — y se utiliza exclusivamente para enviarte correos sobre tu propio informe. Cada correo de notificación incluye un enlace de cancelación de suscripción con un solo clic que elimina la dirección almacenada, y también puedes pedirnos que la eliminemos en cualquier momento.
+Si elige recibir notificaciones por correo electrónico, la dirección que proporcione se almacena únicamente en nuestro servicio de comentarios — nunca se muestra en el issue público — y se utiliza exclusivamente para enviarle correos sobre su propio informe. Cada correo de notificación incluye un enlace de cancelación de suscripción con un solo clic que elimina la dirección almacenada, y también puede pedirnos que la eliminemos en cualquier momento.
 
-Los informes de problemas también incluyen un breve bloque de diagnóstico no personal: la versión de la aplicación y de Android, el modelo de tu dispositivo, el idioma de la aplicación, la zona de oferta seleccionada y la fuente de datos activa. No contiene ningún nombre, dirección de correo electrónico, ubicación ni otra información personal.
+Los informes de problemas también incluyen un breve bloque de diagnóstico no personal: la versión de la aplicación y de Android, el modelo de su dispositivo, el idioma de la aplicación, la zona de oferta seleccionada y la fuente de datos activa. No contiene ningún nombre, dirección de correo electrónico, ubicación ni otra información personal.
 
 ## Código abierto
 
-SweetSpot es de código abierto y está licenciado bajo GPL v3. Puedes revisar el código fuente completo en [GitHub](https://github.com/jmerhar/sweetspot-android).
+SweetSpot es de código abierto y está licenciado bajo GPL v3. Puede revisar el código fuente completo en [GitHub](https://github.com/jmerhar/sweetspot-android).
 
 ## Contacto
 
-Si tienes preguntas sobre esta política de privacidad, puedes abrir un issue en [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
+Si tiene preguntas sobre esta política de privacidad, puede abrir un issue en [GitHub](https://github.com/jmerhar/sweetspot-android/issues).
 
 *Última actualización: julio de 2026*

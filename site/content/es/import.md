@@ -1,16 +1,16 @@
 ---
 title: "Importar configuración"
-description: "Abre en la aplicación una configuración de SweetSpot compartida."
+description: "Abra en la aplicación una configuración de SweetSpot compartida."
 ---
 
 ## Abrir en la aplicación
 
-Este enlace contiene una configuración de SweetSpot compartida: una lista de electrodomésticos y ajustes de carga del vehículo eléctrico de alguien de tu hogar.
+Este enlace contiene una configuración de SweetSpot compartida: una lista de electrodomésticos y ajustes de carga del vehículo eléctrico de alguien de su hogar.
 
-Si tienes SweetSpot instalado, debería abrirse automáticamente en una vista previa donde puedes revisar e importar la configuración.
+Si tiene SweetSpot instalado, debería abrirse automáticamente en una vista previa donde puede revisar e importar la configuración.
 
-**¿No ha pasado nada?** Asegúrate de que SweetSpot está instalado y actualizado, y abre el enlace de nuevo desde tu teléfono.
+**¿No ha pasado nada?** Asegúrese de que SweetSpot está instalado y actualizado, y abra el enlace de nuevo desde su teléfono.
 
-## ¿Aún no tienes SweetSpot?
+## ¿Aún no tiene SweetSpot?
 
-[Descarga SweetSpot en Google Play](https://play.google.com/store/apps/details?id=today.sweetspot) y vuelve a abrir el enlace en tu teléfono.
+[Descargue SweetSpot en Google Play](https://play.google.com/store/apps/details?id=today.sweetspot) y vuelva a abrir el enlace en su teléfono.

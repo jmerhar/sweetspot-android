@@ -23,10 +23,10 @@ other = "Privacidad"
 other = "Cambiar idioma"
 
 [hero_title]
-other = "Encuentra el momento más barato para usar tus electrodomésticos y cargar tu VE"
+other = "Encuentre el momento más barato para usar sus electrodomésticos y cargar su VE"
 
 [hero_subtitle]
-other = "SweetSpot analiza los precios dinámicos de la electricidad en 30 países europeos para encontrar la franja más barata para usar tus electrodomésticos o cargar tu VE — terminando antes de una hora límite si la estableces. Código abierto y privado."
+other = "SweetSpot analiza los precios dinámicos de la electricidad en 30 países europeos para encontrar la franja más barata para usar sus electrodomésticos o cargar su VE — terminando antes de una hora límite si la establece. Código abierto y privado."
 
 [download]
 other = "Disponible en Google Play"
@@ -53,7 +53,7 @@ other = "Precios de electricidad del mercado diario de la plataforma ENTSO-E Tra
 other = "Algoritmo inteligente"
 
 [feature_algorithm_desc]
-other = "SweetSpot encuentra el bloque continuo de tiempo más barato para cualquier duración que elijas."
+other = "SweetSpot encuentra el bloque continuo de tiempo más barato para cualquier duración que elija."
 
 [feature_fallback_title]
 other = "Datos fiables"
@@ -65,31 +65,31 @@ other = "Cinco fuentes de datos con respaldo automático ayudan a mantener los p
 other = "Wear OS"
 
 [feature_wear_desc]
-other = "App complementaria para Pixel Watch y otros dispositivos Wear OS 3+. Consulta los precios desde tu muñeca."
+other = "App complementaria para Pixel Watch y otros dispositivos Wear OS 3+. Consulte los precios desde su muñeca."
 
 [feature_appliances_title]
 other = "Electrodomésticos personalizados"
 
 [feature_appliances_desc]
-other = "Guarda tus electrodomésticos con nombres, iconos y duraciones personalizados para acceso con un solo toque."
+other = "Guarde sus electrodomésticos con nombres, iconos y duraciones personalizados para acceso con un solo toque."
 
 [feature_ev_title]
 other = "Carga de VE"
 
 [feature_ev_desc]
-other = "Añade tu coche e indica la carga actual y la deseada. SweetSpot calcula el tiempo de carga y el momento más barato para enchufarlo."
+other = "Añada su coche e indique la carga actual y la deseada. SweetSpot calcula el tiempo de carga y el momento más barato para enchufarlo."
 
 [feature_deadline_title]
 other = "Hora límite «Listo a las»"
 
 [feature_deadline_desc]
-other = "¿Necesitas que termine a una hora concreta? Añade una hora límite «Listo a las» y SweetSpot elige la franja más barata que la cumple."
+other = "¿Necesita que termine a una hora concreta? Añada una hora límite «Listo a las» y SweetSpot elige la franja más barata que la cumple."
 
 [feature_power_title]
 other = "Potencia nominal"
 
 [feature_power_desc]
-other = "Indica la potencia de un electrodoméstico en kW y la estimación de coste reflejará lo que consume realmente, en lugar de un valor fijo de 1 kW."
+other = "Indique la potencia de un electrodoméstico en kW y la estimación de coste reflejará lo que consume realmente, en lugar de un valor fijo de 1 kW."
 
 [feature_languages_title]
 other = "25 idiomas"
@@ -101,7 +101,7 @@ other = "Disponible en 25 idiomas europeos, desde búlgaro hasta sueco."
 other = "Privacidad ante todo"
 
 [feature_privacy_desc]
-other = "Sin cuentas, sin analítica, sin rastreo. Los precios se almacenan localmente en tu dispositivo."
+other = "Sin cuentas, sin analítica, sin rastreo. Los precios se almacenan localmente en su dispositivo."
 
 [feature_opensource_title]
 other = "Código abierto"
@@ -113,31 +113,31 @@ other = "El código fuente completo está disponible en GitHub bajo la licencia 
 other = "Cómo funciona"
 
 [step1_title]
-other = "Elige electrodoméstico o VE"
+other = "Elija electrodoméstico o VE"
 
 [step1_desc]
-other = "Selecciona un electrodoméstico guardado o tu VE, o establece una duración personalizada — y, opcionalmente, una hora límite «Listo a las»."
+other = "Seleccione un electrodoméstico guardado o su VE, o establezca una duración personalizada — y, opcionalmente, una hora límite «Listo a las»."
 
 [step2_title]
-other = "Consulta los precios"
+other = "Consulte los precios"
 
 [step2_desc]
-other = "SweetSpot obtiene los últimos precios de electricidad del mercado diario para tu región."
+other = "SweetSpot obtiene los últimos precios de electricidad del mercado diario para su región."
 
 [step3_title]
-other = "Obtén el mejor momento"
+other = "Obtenga el mejor momento"
 
 [step3_desc]
-other = "Mira exactamente cuándo empezar, con un desglose completo de costes por franja horaria."
+other = "Mire exactamente cuándo empezar, con un desglose completo de costes por franja horaria."
 
 [cta_title]
 other = "Empieza a ahorrar en electricidad"
 
 [cta_desc]
-other = "Descarga SweetSpot en Google Play y encuentra el momento más barato para usar tus electrodomésticos y cargar tu VE."
+other = "Descargue SweetSpot en Google Play y encuentre el momento más barato para usar sus electrodomésticos y cargar su VE."
 
 [footer_tagline]
-other = "Encuentra el momento más barato para usar tus electrodomésticos y cargar tu VE."
+other = "Encuentre el momento más barato para usar sus electrodomésticos y cargar su VE."
 
 [footer_app]
 other = "App"
@@ -149,7 +149,7 @@ other = "Legal"
 other = "Licenciado bajo GPL v3."
 
 [error_404]
-other = "La página que buscas no existe."
+other = "La página que busca no existe."
 
 [back_home]
 other = "Volver al inicio"

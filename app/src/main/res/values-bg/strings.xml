@@ -6,7 +6,7 @@
     <string name="cd_settings">Настройки</string>
     <string name="cd_back">Назад</string>
     <string name="main_description">SweetSpot ви помага да спестите пари, като намира най-евтиното време за работа на вашите уреди. Просто изберете колко дълго трябва да работи уредът ви и приложението ще сканира предстоящите динамични цени на електричеството, за да намери най-доброто време. Можете също да запазите любимите си уреди в настройките за бърз достъп.</string>
-    <string name="main_find_button">Намери най-евтиното време</string>
+    <string name="main_find_button">Намерете най-евтиното време</string>
     <string name="main_searching">Търсене…</string>
     <string name="main_add_appliances">Добавете вашите уреди</string>
     <string name="main_card_description">Намерете най-евтиното време за работа на вашия уред</string>
@@ -19,7 +19,7 @@
     <string name="result_total_cost">Обща цена</string>
     <string name="result_avg_price">Средна цена</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s повече от най-евтиното</string>
+    <string name="result_cost_above_cheapest">%1$s повече от препоръчаното време</string>
     <string name="result_earlier">По-рано</string>
     <string name="result_cheaper">По-евтино</string>
     <string name="result_cost_breakdown">Разбивка на разходите</string>
@@ -145,17 +145,17 @@
     <!-- Cache management -->
     <string name="settings_advanced">Разширени</string>
     <string name="settings_advanced_description">Източници на данни, кеш</string>
-    <string name="settings_clear_cache">Изчисти кеша с цени</string>
+    <string name="settings_clear_cache">Изчистете кеша с цени</string>
     <string name="settings_clear_cache_description">Цените ще бъдат заредени отново при следващото търсене.</string>
     <string name="snackbar_cache_cleared">Кешът е изчистен</string>
-    <string name="cd_refresh">Обнови</string>
+    <string name="cd_refresh">Обновете</string>
 
     <!-- Stats -->
     <string name="settings_stats_title">Споделяне на статистики за надеждност</string>
     <string name="settings_stats_description">Помогнете за подобряване на надеждността на източниците на данни, като споделяте анонимни данни за това колко често ценовите данни се зареждат или се провалят. Не се събират лични данни.</string>
     <string name="stats_prompt_title">Помогнете да подобрим SweetSpot?</string>
     <string name="stats_prompt_message">Споделяйте анонимни статистики, за да помогнете за подобряване на надеждността на източниците на данни. Споделя се само колко често всеки източник се зарежда или дава грешка — без лични данни. Можете да промените това по всяко време в Настройки.</string>
-    <string name="stats_prompt_enable">Включи</string>
+    <string name="stats_prompt_enable">Включете</string>
     <string name="stats_prompt_dismiss">Не, благодаря</string>
 
     <!-- Onboarding -->
@@ -165,9 +165,9 @@
     <string name="onboarding_body_2">Запазете уред и го докоснете, за да видите най-евтиния му период. Добавете електромобила си, за да планирате зареждането според текущото и целевото ниво.</string>
     <string name="onboarding_title_3">Настройте го по свой вкус</string>
     <string name="onboarding_body_3">Вашата държава се разпознава автоматично. Сменете зоната, добавете уреди или изберете езика — всичко е в Настройки.</string>
-    <string name="onboarding_skip">Пропусни</string>
+    <string name="onboarding_skip">Пропуснете</string>
     <string name="onboarding_next">Напред</string>
-    <string name="onboarding_get_started">Започни</string>
+    <string name="onboarding_get_started">Започнете</string>
     <string name="settings_how_it_works">Как работи</string>
     <string name="settings_how_it_works_desc">Вижте въведението отново</string>
 
@@ -179,15 +179,15 @@
     <string name="coach_got_it">Разбрах</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Абонирай се за SweetSpot</string>
+    <string name="settings_unlock">Абонирайте се за SweetSpot</string>
     <string name="settings_unlock_description">Абонирайте се за една година, за да продължите да използвате SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Пробният период приключи</string>
     <string name="paywall_description">SweetSpot намира най-евтиното време за работа на вашите уреди, като използва динамични цени на електроенергията в 30 европейски държави. Абонирайте се, за да продължите да го използвате.</string>
-    <string name="paywall_unlock">Абонирай се за SweetSpot</string>
-    <string name="paywall_unlock_price">Абонирай се за %s/год.</string>
-    <string name="paywall_restore">Възстанови абонамент</string>
+    <string name="paywall_unlock">Абонирайте се за SweetSpot</string>
+    <string name="paywall_unlock_price">Абонирайте се за %s/год.</string>
+    <string name="paywall_restore">Възстановете абонамент</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Благодарим ви!</string>
@@ -320,7 +320,7 @@
     <string name="report_body_label_feedback">Вашата обратна връзка</string>
     <string name="report_email_label">Уведомете ме по имейл (по избор)</string>
     <string name="report_email_note">Вашият имейл се използва само за да ви уведомим — той никога не се показва в публичния проблем.</string>
-    <string name="report_submit">Изпрати</string>
+    <string name="report_submit">Изпратете</string>
     <string name="report_submitting">Изпращане…</string>
     <string name="report_filed">Сигнал №%1$d е подаден — благодарим!</string>
     <string name="report_sent">Благодарим — вашият сигнал е изпратен.</string>
@@ -340,7 +340,7 @@
 
     <!-- Quick guide -->
     <string name="guide_find_title">Намерете най-евтиното време</string>
-    <string name="guide_find_body">Изберете колко дълго трябва да работи уредът ви, след което докоснете „Намери“.</string>
+    <string name="guide_find_body">Изберете колко дълго трябва да работи уредът ви, след което докоснете „Намерете“.</string>
     <string name="guide_appliances_title">Запазете вашите уреди</string>
     <string name="guide_appliances_body">Добавете уреди в Настройки за търсения с едно докосване.</string>
     <string name="guide_ev_title">Планирайте зареждането на електромобил</string>

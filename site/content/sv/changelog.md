@@ -11,8 +11,8 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="6.6" date="21 juli 2026" >}}
-- Totalprisdiagrammet: varje stapel delas nu upp i spotpris, energiskatt och leverantörens påslag, med en förklaring.
-- Växla snabbt resultaten mellan totalpriset och enbart spotpriset.
+- Totalprisdiagrammet: varje stapel delas nu upp i marknadspris, energiskatt och leverantörens påslag, med en förklaring.
+- Växla snabbt resultaten mellan totalpriset och enbart marknadspriset.
 - Tryck och håll på diagrammet för att se exakt pris vid vilken tidpunkt som helst (fullständig uppdelning när totalpriset är på).
 - Elbilsladdning visar nu den totala laddningstiden i resultatrubriken.
 {{< /changelog >}}
@@ -41,7 +41,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12 juli 2026" >}}
-- Totalpris (Nederländerna): visa valfritt hela konsumentpriset — spotpriset plus energiskatt, din leverantörs påslag och moms — i stället för enbart marknadspriset. Välj din leverantör eller ange ett eget påslag under ”Totalpris” i inställningarna. Det ändrar aldrig vilken tidsperiod som är billigast — det visar bara en realistisk körkostnad.
+- Totalpris (Nederländerna): visa valfritt hela konsumentpriset — marknadspriset plus energiskatt, din leverantörs påslag och moms — i stället för enbart marknadspriset. Välj din leverantör eller ange ett eget påslag under ”Totalpris” i inställningarna. Det ändrar aldrig vilken tid som är billigast — det visar bara en realistisk körkostnad.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25 juni 2026" >}}
@@ -55,7 +55,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 juni 2026" >}}
-- Nya knappar ”Tidigare” och ”Billigare” låter dig välja en tidigare tid när den billigaste tidsperioden inte passar, och visar hur mycket mer det kostar.
+- Nya knappar ”Tidigare” och ”Billigare” låter dig välja en tidigare tid när den billigaste tiden inte passar, och visar hur mycket mer det kostar.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9 april 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 mars 2026" >}}
-- Valfri anonym API-tillförlitlighetsstatistik för att förbättra datakällornas kvalitet
+- Valfri anonym tillförlitlighetsstatistik för att förbättra datakällornas kvalitet
 - Förbättrad felhantering för alla fem datakällor
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 mars 2026" >}}
-- Åtgärdat ett tidsproblem när den billigaste tidsperioden börjar omedelbart
-- Lagt till ansvarsfriskrivning om spotpriser
+- Åtgärdat ett tidsproblem när den billigaste tiden börjar omedelbart
+- Lagt till ansvarsfriskrivning om marknadspriser
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 mars 2026" >}}
@@ -197,5 +197,5 @@ description: "SweetSpots versionshistorik och versionskommentarer."
 - Rullhjulsväljare för körtid med snabbknappar (1–6 timmar)
 - Konfigurerbara apparater med egna namn, ikoner och körtider
 - Resultatskärm med kostnadsuppdelning per tidslucka
-- Stapeldiagram med kommande priser och den billigaste tidsperioden markerad
+- Stapeldiagram med kommande priser och den billigaste tiden markerad
 {{< /changelog >}}

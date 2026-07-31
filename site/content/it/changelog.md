@@ -12,36 +12,36 @@ description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 
 {{< changelog version="6.6" date="21 luglio 2026" >}}
 - Grafico del prezzo totale: ogni barra ora si divide in prezzo di mercato, accise sull'energia e sovrapprezzo del fornitore, con una legenda.
-- Passa al volo nei risultati dal prezzo totale al solo prezzo di mercato.
-- Tieni premuto il grafico per vedere il prezzo esatto in un dato momento (dettaglio completo con il prezzo totale attivo).
+- Passi al volo nei risultati dal prezzo totale al solo prezzo di mercato.
+- Tenga premuto il grafico per vedere il prezzo esatto in un dato momento (dettaglio completo con il prezzo totale attivo).
 - La ricarica dell'auto elettrica ora mostra il tempo totale di ricarica nell'intestazione dei risultati.
 {{< /changelog >}}
 
 {{< changelog version="6.5" date="15 luglio 2026" >}}
-- Raggruppa i pulsanti degli elettrodomestici per tipo — in righe o colonne — così i programmi dello stesso apparecchio restano insieme. I veicoli possono avere una sezione a parte sopra o sotto.
+- Raggruppi i pulsanti degli elettrodomestici per tipo — in righe o colonne — così i programmi dello stesso apparecchio restano insieme. I veicoli possono avere una sezione a parte sopra o sotto.
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="14 luglio 2026" >}}
-- Condividi la tua configurazione: copia i tuoi elettrodomestici, il loro ordine e le impostazioni di ricarica dell'auto elettrica su un altro telefono scansionando un codice QR o inviando un link — senza account, funziona offline. L'altro telefono mostra un'anteprima dove puoi aggiungere, sostituire o scegliere cosa importare.
+- Condivida la Sua configurazione: copi i Suoi elettrodomestici, il loro ordine e le impostazioni di ricarica dell'auto elettrica su un altro telefono scansionando un codice QR o inviando un link — senza account, funziona offline. L'altro telefono mostra un'anteprima dove può aggiungere, sostituire o scegliere cosa importare.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="13 luglio 2026" >}}
-- Ordina e riordina gli elettrodomestici: trascinali nel tuo ordine, oppure ordina per Più usati, Usati di recente, Nome, Durata o Tipo.
+- Ordini e riordini gli elettrodomestici: li trascini nel Suo ordine, oppure ordini per Più usati, Usati di recente, Nome, Durata o Tipo.
 - «Più usati» e «Usati di recente» contano i tocchi sia sul telefono che sull'orologio.
-- Scegli dove appaiono i veicoli tra gli elettrodomestici: Mescolati, Per primi, Per ultimi o in una Sezione separata.
+- Scelga dove appaiono i veicoli tra gli elettrodomestici: Mescolati, Per primi, Per ultimi o in una Sezione separata.
 - I veicoli ora mostrano l'icona di un'auto e anche le fonti dati si riordinano trascinando.
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12 luglio 2026" >}}
-- Impostazioni ridisegnate: un menu ordinato di categorie, ciascuna con la propria icona e la propria schermata — Elettrodomestici, Ricarica auto elettrica, Prezzo totale, Regione (paese, zona di prezzo, fuso orario), Aspetto (lingua, tema) e Avanzate. Tutto è più facile da trovare rispetto al precedente unico lungo elenco, e tornando da un selettore mantieni la tua posizione.
+- Impostazioni ridisegnate: un menu ordinato di categorie, ciascuna con la propria icona e la propria schermata — Elettrodomestici, Ricarica auto elettrica, Prezzo totale, Regione (paese, zona di prezzo, fuso orario), Aspetto (lingua, tema) e Avanzate. Tutto è più facile da trovare rispetto al precedente unico lungo elenco, e tornando da un selettore mantiene la Sua posizione.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12 luglio 2026" >}}
-- Prezzo totale, rifiniture: il campo del sovrapprezzo ora mostra la tua valuta (es. €/kWh), le Impostazioni mantengono la posizione di scorrimento quando torni da un selettore e, se il Prezzo totale è attivo, ti ricorda di scegliere un fornitore o inserire un sovrapprezzo prima di uscire.
+- Prezzo totale, rifiniture: il campo del sovrapprezzo ora mostra la Sua valuta (es. €/kWh), le Impostazioni mantengono la posizione di scorrimento quando torna da un selettore e, se il Prezzo totale è attivo, Le ricorda di scegliere un fornitore o inserire un sovrapprezzo prima di uscire.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12 luglio 2026" >}}
-- Prezzo totale (Paesi Bassi): puoi scegliere di mostrare il prezzo finale al consumatore — il prezzo spot più le accise sull'energia, il sovrapprezzo del tuo fornitore e l'IVA — anziché il solo prezzo di mercato. Scegli il tuo fornitore o inserisci il tuo sovrapprezzo in «Prezzo totale» nelle Impostazioni. Non cambia mai quale orario è il più economico; mostra solo un costo di utilizzo realistico.
+- Prezzo totale (Paesi Bassi): può scegliere di mostrare il prezzo finale al consumatore — il prezzo di mercato più le accise sull'energia, il sovrapprezzo del Suo fornitore e l'IVA — anziché il solo prezzo di mercato. Scelga il Suo fornitore o inserisca il Suo sovrapprezzo in «Prezzo totale» nelle Impostazioni. Non cambia mai quale orario è il più economico; mostra solo un costo di utilizzo realistico.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25 giugno 2026" >}}
@@ -49,9 +49,9 @@ description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.0" date="23 giugno 2026" >}}
-- Ricarica auto elettrica: aggiungi la tua auto, indica la carica attuale e quella desiderata e SweetSpot trova l'orario più economico per collegarla e quanto tempo ci vorrà.
-- Orario «Pronto entro»: fai terminare qualsiasi elettrodomestico o ricarica entro una scadenza che imposti tu.
-- Potenza nominale: imposta la potenza di un elettrodomestico in kW così la stima dei costi rispecchia il consumo reale.
+- Ricarica auto elettrica: aggiunga la Sua auto, indichi la carica attuale e quella desiderata e SweetSpot trova l'orario più economico per collegarla e quanto tempo ci vorrà.
+- Orario «Pronto entro»: faccia terminare qualsiasi elettrodomestico o ricarica entro una scadenza che imposta Lei.
+- Potenza nominale: imposti la potenza di un elettrodomestico in kW così la stima dei costi rispecchia il consumo reale.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 giugno 2026" >}}
@@ -110,7 +110,7 @@ description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 marzo 2026" >}}
-- Statistiche anonime opzionali sull'affidabilità delle API per migliorare la qualità delle fonti dati
+- Statistiche anonime opzionali sull'affidabilità per migliorare la qualità delle fonti dati
 - Migliorata la gestione degli errori su tutte e cinque le fonti di dati
 {{< /changelog >}}
 
@@ -184,7 +184,7 @@ description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 
 {{< changelog version="1.2" date="2 marzo 2026" >}}
 - Corretto un problema di temporizzazione quando la fascia più economica inizia immediatamente
-- Aggiunta nota informativa sui prezzi spot
+- Aggiunta nota informativa sui prezzi di mercato
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 marzo 2026" >}}

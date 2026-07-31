@@ -22,7 +22,7 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="14 lipca 2026" >}}
-- Udostępnij swoją konfigurację: skopiuj urządzenia, ich kolejność i ustawienia ładowania auta elektrycznego na inny telefon, skanując kod QR lub wysyłając link — bez konta, działa offline. Drugi telefon pokazuje podgląd, w którym możesz dodać, zastąpić lub wybrać, co zaimportować.
+- Udostępnij swoją konfigurację: skopiuj urządzenia, ich kolejność i ustawienia ładowania auta elektrycznego na inny telefon, skanując kod QR lub wysyłając link — bez konta, działa offline. Drugi telefon pokazuje podgląd, w którym można dodać, zastąpić lub wybrać, co zaimportować.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="13 lipca 2026" >}}
@@ -33,15 +33,15 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12 lipca 2026" >}}
-- Odświeżone ustawienia: przejrzyste menu kategorii, każda z własną ikoną i ekranem — Urządzenia, Ładowanie auta elektrycznego, Cena całkowita, Region (kraj, strefa cenowa, strefa czasowa), Wygląd (język, motyw) i Zaawansowane. Wszystko łatwiej znaleźć niż na dawnej długiej liście, a po powrocie z listy wyboru zachowujesz swoje miejsce.
+- Odświeżone ustawienia: przejrzyste menu kategorii, każda z własną ikoną i ekranem — Urządzenia, Ładowanie auta elektrycznego, Cena całkowita, Region (kraj, strefa cenowa, strefa czasowa), Wygląd (język, motyw) i Zaawansowane. Wszystko łatwiej znaleźć niż na dawnej długiej liście, a po powrocie z listy wyboru pozycja zostaje zachowana.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12 lipca 2026" >}}
-- Cena całkowita dopracowana: pole marży pokazuje teraz Twoją walutę (np. €/kWh), ustawienia zachowują pozycję przewijania po powrocie z listy wyboru, a gdy cena całkowita jest włączona, aplikacja przypomina o wybraniu dostawcy lub wpisaniu marży przed opuszczeniem ustawień.
+- Cena całkowita dopracowana: pole marży pokazuje teraz właściwą walutę (np. €/kWh), ustawienia zachowują pozycję przewijania po powrocie z listy wyboru, a gdy cena całkowita jest włączona, aplikacja przypomina o wybraniu dostawcy lub wpisaniu marży przed opuszczeniem ustawień.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12 lipca 2026" >}}
-- Cena całkowita (Holandia): opcjonalnie pokazuj pełną cenę dla konsumenta — cenę rynkową powiększoną o podatek energetyczny, marżę dostawcy i VAT — zamiast samej ceny rynkowej. Wybierz swojego dostawcę lub wpisz własną marżę w sekcji „Cena całkowita” w ustawieniach. Nigdy nie zmienia to, który okres jest najtańszy; pokazuje tylko realny koszt zużycia.
+- Cena całkowita (Holandia): opcjonalnie pokazuj pełną cenę dla konsumenta — cenę rynkową powiększoną o podatek energetyczny, marżę dostawcy i VAT — zamiast samej ceny rynkowej. Wybierz swojego dostawcę lub wpisz własną marżę w sekcji „Cena całkowita” w ustawieniach. Nigdy nie zmienia to, który czas jest najtańszy; pokazuje tylko realny koszt zużycia.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25 czerwca 2026" >}}
@@ -55,7 +55,7 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 czerwca 2026" >}}
-- Nowe przyciski „Wcześniej” i „Taniej” pozwalają wybrać wcześniejszą porę, gdy najtańszy okres jest niewygodny, i pokazują, o ile więcej kosztuje.
+- Nowe przyciski „Wcześniej” i „Taniej” pozwalają wybrać wcześniejszą porę, gdy najtańszy czas jest niewygodny, i pokazują, o ile więcej kosztuje.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9 kwietnia 2026" >}}
@@ -110,7 +110,7 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 marca 2026" >}}
-- Opcjonalne anonimowe statystyki niezawodności API pomagające poprawić jakość źródeł danych
+- Opcjonalne anonimowe statystyki niezawodności pomagające poprawić jakość źródeł danych
 - Ulepszona obsługa błędów we wszystkich pięciu źródłach danych
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 marca 2026" >}}
-- Naprawiono problem z czasem, gdy najtańszy okres zaczyna się natychmiast
-- Dodano zastrzeżenie dotyczące cen spot
+- Naprawiono błąd czasowy, gdy najtańszy czas zaczyna się natychmiast
+- Dodano zastrzeżenie dotyczące cen rynkowych
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 marca 2026" >}}
@@ -197,5 +197,5 @@ description: "Historia wersji i notatki do wydań SweetSpot."
 - Kółko przewijania do wyboru czasu trwania z przyciskami szybkiego wyboru (1–6 godzin)
 - Konfigurowalne urządzenia z własnymi nazwami, ikonami i czasami trwania
 - Ekran wyników z podziałem kosztów na przedziały czasowe
-- Wykres słupkowy pokazujący nadchodzące ceny z wyróżnionym najtańszym okresem
+- Wykres słupkowy pokazujący nadchodzące ceny z wyróżnionym najtańszym czasem
 {{< /changelog >}}

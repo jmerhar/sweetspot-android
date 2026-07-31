@@ -12,36 +12,36 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 
 {{< changelog version="6.6" date="21 iulie 2026" >}}
 - Graficul prețului total: fiecare bară se împarte acum în preț de piață, taxa pe energie și adaosul furnizorului, cu legendă.
-- Comută rapid rezultatele între prețul total și prețul de piață simplu.
-- Apasă lung pe grafic pentru a vedea prețul exact în orice moment (defalcare completă când prețul total este activat).
+- Comutați rapid rezultatele între prețul total și prețul de piață simplu.
+- Apăsați lung pe grafic pentru a vedea prețul exact în orice moment (defalcare completă când prețul total este activat).
 - Încărcarea mașinii electrice afișează acum durata totală de încărcare în antetul rezultatelor.
 {{< /changelog >}}
 
 {{< changelog version="6.5" date="15 iulie 2026" >}}
-- Grupează butoanele aparatelor după tip — pe rânduri sau coloane — astfel încât programele aceluiași aparat să rămână împreună. Vehiculele pot avea propria secțiune deasupra sau dedesubt.
+- Grupați butoanele aparatelor după tip — pe rânduri sau coloane — astfel încât programele aceluiași aparat să rămână împreună. Vehiculele pot avea propria secțiune deasupra sau dedesubt.
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="14 iulie 2026" >}}
-- Partajează-ți configurația: copiază electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice pe alt telefon scanând un cod QR sau trimițând un link — fără cont, funcționează offline. Celălalt telefon afișează o previzualizare unde poți adăuga, înlocui sau alege ce să imporți.
+- Partajați-vă configurația: copiați electrocasnicele, ordinea lor și setările de încărcare a mașinii electrice pe alt telefon scanând un cod QR sau trimițând un link — fără cont, funcționează offline. Celălalt telefon afișează o previzualizare unde puteți adăuga, înlocui sau alege ce să importați.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="13 iulie 2026" >}}
-- Sortează și reordonează electrocasnicele: trage-le în ordinea dorită sau sortează-le după cele mai folosite, folosite recent, nume, durată sau tip.
+- Sortați și reordonați electrocasnicele: trageți-le în ordinea dorită sau sortați-le după cele mai folosite, folosite recent, nume, durată sau tip.
 - „Cele mai folosite” și „Folosite recent” numără atingerile atât pe telefon, cât și pe ceas.
-- Alege unde apar mașinile printre electrocasnice: amestecate, primele, ultimele sau într-o secțiune separată.
+- Alegeți unde apar mașinile printre electrocasnice: amestecate, primele, ultimele sau într-o secțiune separată.
 - Mașinile afișează acum o pictogramă de mașină, iar sursele de date pot fi reordonate tot prin tragere.
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12 iulie 2026" >}}
-- Setări reproiectate: un meniu ordonat de categorii, fiecare cu propria pictogramă și propriul ecran — Aparate electrocasnice, Încărcare mașină electrică, Preț total, Regiune (țară, zonă de preț, fus orar), Aspect (limbă, temă) și Avansat. Totul se găsește mai ușor decât în vechea listă lungă, iar la revenirea dintr-un selector îți păstrezi locul.
+- Setări reproiectate: un meniu ordonat de categorii, fiecare cu propria pictogramă și propriul ecran — Aparate electrocasnice, Încărcare mașină electrică, Preț total, Regiune (țară, zonă de preț, fus orar), Aspect (limbă, temă) și Avansat. Totul se găsește mai ușor decât în vechea listă lungă, iar la revenirea dintr-un selector vă păstrați locul.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12 iulie 2026" >}}
-- Preț total îmbunătățit: câmpul de adaos afișează acum moneda ta (de ex. €/kWh), setările păstrează poziția de derulare când revii dintr-un selector, iar dacă prețul total este activat, aplicația îți amintește să alegi un furnizor sau să introduci un adaos înainte de a ieși.
+- Preț total îmbunătățit: câmpul de adaos afișează acum moneda dumneavoastră (de ex. €/kWh), setările păstrează poziția de derulare când reveniți dintr-un selector, iar dacă prețul total este activat, aplicația vă amintește să alegeți un furnizor sau să introduceți un adaos înainte de a ieși.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12 iulie 2026" >}}
-- Preț total (Țările de Jos): afișează opțional prețul total pentru consumator — prețul de piață plus taxa pe energie, adaosul furnizorului și TVA — în locul prețului de piață simplu. Alege-ți furnizorul sau introdu propriul adaos la „Preț total” în setări. Nu schimbă niciodată care perioadă este cea mai ieftină; arată doar un cost real de utilizare.
+- Preț total (Țările de Jos): afișează opțional prețul total pentru consumator — prețul de piață plus taxa pe energie, adaosul furnizorului și TVA — în locul prețului de piață simplu. Alegeți-vă furnizorul sau introduceți propriul adaos la „Preț total” în setări. Nu schimbă niciodată care perioadă este cea mai ieftină; arată doar un cost real de utilizare.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25 iunie 2026" >}}
@@ -49,9 +49,9 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.0" date="23 iunie 2026" >}}
-- Încărcarea mașinilor electrice: adaugă-ți mașina, introdu nivelul actual și cel dorit al bateriei, iar SweetSpot găsește cea mai ieftină oră pentru a o conecta și cât va dura.
-- Ora „Gata până la”: orice electrocasnic sau încărcare se termină până la termenul limită stabilit de tine.
-- Puterea: setează puterea unui electrocasnic în kW pentru ca estimarea costului să reflecte consumul real.
+- Încărcarea mașinilor electrice: adăugați-vă mașina, introduceți nivelul actual și cel dorit al bateriei, iar SweetSpot găsește cea mai ieftină oră pentru a o conecta și cât va dura.
+- Ora „Gata până la”: orice electrocasnic sau încărcare se termină până la termenul limită stabilit de dumneavoastră.
+- Puterea: setați puterea unui electrocasnic în kW pentru ca estimarea costului să reflecte consumul real.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 iunie 2026" >}}
@@ -110,7 +110,7 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 martie 2026" >}}
-- Statistici anonime opționale de fiabilitate API pentru a ajuta la îmbunătățirea calității surselor de date
+- Statistici anonime opționale de fiabilitate pentru a ajuta la îmbunătățirea calității surselor de date
 - Gestionarea erorilor îmbunătățită pentru toate cele cinci surse de date
 {{< /changelog >}}
 
@@ -184,7 +184,7 @@ description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 
 {{< changelog version="1.2" date="2 martie 2026" >}}
 - Corectat o problemă de temporizare când intervalul cel mai ieftin începe imediat
-- Adăugată mențiune privind prețurile spot
+- Adăugată mențiune privind prețurile de piață
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 martie 2026" >}}

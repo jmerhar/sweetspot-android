@@ -41,7 +41,7 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. srpnja 2026." >}}
-- Ukupna cijena (Nizozemska): po želji prikažite punu potrošačku cijenu — burzovnu cijenu uvećanu za porez na energiju, maržu vašeg dobavljača i PDV — umjesto gole tržišne cijene. Odaberite dobavljača ili unesite vlastitu maržu pod „Ukupna cijena“ u Postavkama. Nikada ne mijenja koji je termin najjeftiniji; samo prikazuje realan trošak korištenja.
+- Ukupna cijena (Nizozemska): po želji prikažite punu potrošačku cijenu — tržišnu cijenu uvećanu za porez na energiju, maržu vašeg dobavljača i PDV — umjesto gole tržišne cijene. Odaberite dobavljača ili unesite vlastitu maržu pod „Ukupna cijena“ u Postavkama. Nikada ne mijenja koji je termin najjeftiniji; samo prikazuje realan trošak korištenja.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. lipnja 2026." >}}
@@ -110,7 +110,7 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. ožujka 2026." >}}
-- Neobvezna anonimna statistika pouzdanosti API-ja za poboljšanje kvalitete izvora podataka
+- Neobvezna anonimna statistika pouzdanosti za poboljšanje kvalitete izvora podataka
 - Poboljšano upravljanje greškama za svih pet izvora podataka
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. ožujka 2026." >}}
-- Ispravljen problem s vremenom kada najjeftiniji period počinje odmah
-- Dodano upozorenje o spot cijenama
+- Ispravljen problem s vremenom kada najjeftiniji termin počinje odmah
+- Dodano upozorenje o tržišnim cijenama
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. ožujka 2026." >}}
@@ -197,5 +197,5 @@ description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 - Birač trajanja s rotirajućim kotačićem i gumbima za brzi odabir (1–6 sati)
 - Prilagodljivi uređaji s vlastitim imenima, ikonama i trajanjima
 - Zaslon s rezultatima s raščlambom troškova po vremenskim intervalima
-- Stupčasti grafikon nadolazećih cijena s istaknutim najjeftinijim periodom
+- Stupčasti grafikon nadolazećih cijena s istaknutim najjeftinijim terminom
 {{< /changelog >}}

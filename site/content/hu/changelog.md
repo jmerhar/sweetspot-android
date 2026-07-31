@@ -11,37 +11,37 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="6.6" date="2026. július 21." >}}
-- A teljes ár diagramján minden oszlop mostantól tőzsdei árra, energiaadóra és felárra bomlik, jelmagyarázattal.
-- Az eredményekben gyorsan válthatsz a teljes ár és a puszta tőzsdei ár között.
-- Tartsd lenyomva a diagramot bármely pillanat pontos árához (teljes bontással, ha a teljes ár be van kapcsolva).
+- A teljes ár diagramján minden oszlop mostantól piaci árra, energiaadóra és felárra bomlik, jelmagyarázattal.
+- Az eredményekben gyorsan válthat a teljes ár és a puszta piaci ár között.
+- Tartsa lenyomva a diagramot bármely pillanat pontos árához (teljes bontással, ha a teljes ár be van kapcsolva).
 - Az elektromos autó töltése mostantól a teljes töltési időt is mutatja az eredmények fejlécében.
 {{< /changelog >}}
 
 {{< changelog version="6.5" date="2026. július 15." >}}
-- Csoportosítsd a készülékgombokat típus szerint — sorokba vagy oszlopokba —, hogy egy készülék programjai együtt maradjanak. A járművek külön szakaszba kerülhetnek fölé vagy alá.
+- Csoportosítsa a készülékgombokat típus szerint — sorokba vagy oszlopokba —, hogy egy készülék programjai együtt maradjanak. A járművek külön szakaszba kerülhetnek fölé vagy alá.
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="2026. július 14." >}}
-- Oszd meg a beállításaidat: másold át a készülékeidet, azok sorrendjét és az elektromos autó töltési beállításait egy másik telefonra QR-kód beolvasásával vagy egy link elküldésével — fiók nélkül, offline is működik. A másik telefon egy előnézetet mutat, ahol hozzáadhatod, lecserélheted vagy kiválaszthatod, mit importálsz.
+- Ossza meg a beállításait: másolja át a készülékeit, azok sorrendjét és az elektromos autó töltési beállításait egy másik telefonra QR-kód beolvasásával vagy egy link elküldésével — fiók nélkül, offline is működik. A másik telefon egy előnézetet mutat, ahol hozzáadhatja, lecserélheti vagy kiválaszthatja, mit importál.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="2026. július 13." >}}
-- Rendezd át a készülékeidet: húzd őket saját sorrendbe, vagy rendezd Leggyakrabban használt, Legutóbb használt, név, időtartam vagy típus szerint.
+- Rendezze át a készülékeit: húzza őket saját sorrendbe, vagy rendezze Leggyakrabban használt, Legutóbb használt, név, időtartam vagy típus szerint.
 - A „Leggyakrabban használt” és a „Legutóbb használt” a telefonon és az órán történő koppintásokat is számolja.
-- Válaszd ki, hol jelenjenek meg az autók a készülékek között: Vegyesen, Elöl, Hátul vagy Külön szakaszban.
+- Válassza ki, hol jelenjenek meg az autók a készülékek között: Vegyesen, Elöl, Hátul vagy Külön szakaszban.
 - Az autók mostantól autó ikont mutatnak, és az adatforrások is átrendezhetők húzással.
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="2026. július 12." >}}
-- Újratervezett Beállítások: kategóriák letisztult menüje, mindegyik saját ikonnal és külön képernyővel — Készülékek, Elektromos autó töltése, Teljes ár, Régió (ország, árzóna, időzóna), Megjelenés (nyelv, téma) és Haladó. Minden könnyebben megtalálható, mint a korábbi egyetlen hosszú listában, és egy választóból visszatérve megőrzi a helyed.
+- Újratervezett Beállítások: kategóriák letisztult menüje, mindegyik saját ikonnal és külön képernyővel — Készülékek, Elektromos autó töltése, Teljes ár, Régió (ország, árzóna, időzóna), Megjelenés (nyelv, téma) és Haladó. Minden könnyebben megtalálható, mint a korábbi egyetlen hosszú listában, és egy választóból visszatérve megőrzi a helyét.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="2026. július 12." >}}
-- Teljes ár – finomítások: a felár mezője mostantól a pénznemedet mutatja (pl. €/kWh), a Beállítások megőrzi a görgetési pozíciót, amikor visszatérsz egy választóból, és ha a Teljes ár be van kapcsolva, kilépés előtt emlékeztet, hogy válassz szolgáltatót vagy adj meg felárat.
+- Teljes ár – finomítások: a felár mezője mostantól a pénznemét mutatja (pl. €/kWh), a Beállítások megőrzi a görgetési pozíciót, amikor visszatér egy választóból, és ha a Teljes ár be van kapcsolva, kilépés előtt emlékeztet, hogy válasszon szolgáltatót vagy adjon meg felárat.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="2026. július 12." >}}
-- Teljes ár (Hollandia): tetszés szerint megjelenítheted a teljes fogyasztói árat — a tőzsdei ár plusz az energiaadó, a szolgáltatói díj és az ÁFA — a puszta piaci ár helyett. Válaszd ki a szolgáltatódat, vagy add meg a saját díjadat a Beállítások „Teljes ár” pontjában. Ez soha nem változtatja meg, melyik időszak a legolcsóbb; csak reálisabb futási költséget mutat.
+- Teljes ár (Hollandia): tetszés szerint megjelenítheti a teljes fogyasztói árat — a piaci ár plusz az energiaadó, a szolgáltatói díj és az ÁFA — a puszta piaci ár helyett. Válassza ki a szolgáltatóját, vagy adja meg a saját díját a Beállítások „Teljes ár” pontjában. Ez soha nem változtatja meg, melyik időpont a legolcsóbb; csak reálisabb futási költséget mutat.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="2026. június 25." >}}
@@ -49,13 +49,13 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="6.0" date="2026. június 23." >}}
-- Elektromos autó töltése: add hozzá az autódat, add meg az aktuális és a kívánt töltöttséget, a SweetSpot pedig megkeresi a legolcsóbb időpontot a csatlakoztatásra, és megmutatja, mennyi ideig tart majd.
-- „Készen ekkorra” időpont: bármely készülék vagy töltés befejeződjön egy általad megadott határidőre.
-- Teljesítmény: állítsd be a készülék teljesítményét kW-ban, hogy a költségbecslés a valós fogyasztását tükrözze.
+- Elektromos autó töltése: adja hozzá az autóját, adja meg az aktuális és a kívánt töltöttséget, a SweetSpot pedig megkeresi a legolcsóbb időpontot a csatlakoztatásra, és megmutatja, mennyi ideig tart majd.
+- „Készen legyen ekkorra” időpont: bármely készülék vagy töltés befejeződjön egy Ön által megadott határidőre.
+- Teljesítmény: állítsa be a készülék teljesítményét kW-ban, hogy a költségbecslés a valós fogyasztását tükrözze.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="2026. június 22." >}}
-- Új „Korábban” és „Olcsóbban” gombok: válassz korábbi időpontot, ha a legolcsóbb nem alkalmas, és lásd, mennyivel kerül többe.
+- Új „Korábban” és „Olcsóbban” gombok: válasszon korábbi időpontot, ha a legolcsóbb nem alkalmas, és lássa, mennyivel kerül többe.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="2026. április 9." >}}
@@ -110,7 +110,7 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="2026. március 30." >}}
-- Opcionális névtelen API-megbízhatósági statisztikák az adatforrások minőségének javításához
+- Opcionális névtelen megbízhatósági statisztikák az adatforrások minőségének javításához
 - Javított hibakezelés mind az öt adatforrásnál
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2026. március 2." >}}
-- Javítva az időzítési probléma, amikor a legolcsóbb időszak azonnal kezdődik
-- Spot-ár felelősségkizáró nyilatkozat hozzáadva
+- Javítva az időzítési probléma, amikor a legolcsóbb időpont azonnal kezdődik
+- Piaci árra vonatkozó felelősségkizáró nyilatkozat hozzáadva
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2026. március 2." >}}
@@ -197,5 +197,5 @@ description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 - Görgős időtartam-választó gyorsválasztó gombokkal (1–6 óra)
 - Konfigurálható készülékek egyéni nevekkel, ikonokkal és időtartamokkal
 - Eredményképernyő költségbontással idősávonként
-- Oszlopdiagram a közelgő árakkal a legolcsóbb időszak kiemelésével
+- Oszlopdiagram a közelgő árakkal a legolcsóbb időpont kiemelésével
 {{< /changelog >}}

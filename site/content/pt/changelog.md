@@ -110,7 +110,7 @@ description: "Histórico de versões e notas de lançamento do SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 de março de 2026" >}}
-- Estatísticas anónimas opcionais de fiabilidade da API para ajudar a melhorar a qualidade das fontes de dados
+- Estatísticas anónimas opcionais de fiabilidade para ajudar a melhorar a qualidade das fontes de dados
 - Melhoria do tratamento de erros em todas as cinco fontes de dados
 {{< /changelog >}}
 
@@ -184,7 +184,7 @@ description: "Histórico de versões e notas de lançamento do SweetSpot."
 
 {{< changelog version="1.2" date="2 de março de 2026" >}}
 - Corrigido um problema de temporização quando o período mais barato começa imediatamente
-- Adicionado aviso sobre preços spot
+- Adicionado aviso sobre o preço de mercado
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 de março de 2026" >}}
@@ -196,6 +196,6 @@ description: "Histórico de versões e notas de lançamento do SweetSpot."
 - Lançamento inicial
 - Seletor de duração com roda de deslocamento e botões de duração rápida (1–6 horas)
 - Eletrodomésticos configuráveis com nomes, ícones e durações personalizados
-- Ecrã de resultados com discriminação de custos por intervalo de tempo
+- Ecrã de resultados com discriminação de custos por período
 - Gráfico de barras com os próximos preços e o período mais barato destacado
 {{< /changelog >}}

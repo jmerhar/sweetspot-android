@@ -12,36 +12,36 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 
 {{< changelog version="6.6" date="21. juuli 2026" >}}
 - Koguhinna diagramm: iga tulp jaguneb nüüd börsihinnaks, energiamaksuks ja tarnija juurdehindluseks koos legendiga.
-- Vaheta tulemustes kiiresti koguhinna ja palja börsihinna vahel.
-- Hoia diagrammil sõrme, et näha täpset hinda igal hetkel (koguhinna korral kogu jaotus).
+- Vahetage tulemustes kiiresti koguhinna ja palja börsihinna vahel.
+- Hoidke diagrammil sõrme, et näha täpset hinda igal hetkel (koguhinna korral kogu jaotus).
 - Elektriauto laadimine näitab nüüd tulemuste päises kogu laadimisaega.
 {{< /changelog >}}
 
 {{< changelog version="6.5" date="15. juuli 2026" >}}
-- Rühmita seadmenupud tüübi järgi — ridade või veergudena — nii et sama seadme programmid püsivad koos. Sõidukid võivad olla eraldi jaotises üleval või all.
+- Rühmitage seadmenupud tüübi järgi — ridade või veergudena — nii et sama seadme programmid püsivad koos. Sõidukid võivad olla eraldi jaotises üleval või all.
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="14. juuli 2026" >}}
-- Jaga oma seadistust: kopeeri oma seadmed, nende järjekord ja elektriauto laadimise sätted teise telefoni QR-koodi skannides või linki saates — kontot pole vaja, töötab võrguühenduseta. Teine telefon näitab eelvaadet, kus saad lisada, asendada või valida, mida importida.
+- Jagage oma seadistust: kopeerige oma seadmed, nende järjekord ja elektriauto laadimise sätted teise telefoni QR-koodi skannides või linki saates — kontot pole vaja, töötab võrguühenduseta. Teine telefon näitab eelvaadet, kus saate lisada, asendada või valida, mida importida.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="13. juuli 2026" >}}
-- Sorteeri ja korrasta seadmeid: lohista need oma järjekorda või sorteeri Enim kasutatud, Hiljuti kasutatud, Nimi, Kestus või Tüüp järgi.
+- Sorteerige ja korrastage seadmeid: lohistage need oma järjekorda või sorteerige Enim kasutatud, Hiljuti kasutatud, Nimi, Kestus või Tüüp järgi.
 - „Enim kasutatud“ ja „Hiljuti kasutatud“ arvestavad nii telefonis kui kellas tehtud puudutusi.
-- Vali, kus autod seadmete seas kuvatakse: Segamini, Esimesena, Viimasena või Eraldi jaotis.
+- Valige, kus autod seadmete seas kuvatakse: Segamini, Esimesena, Viimasena või Eraldi jaotis.
 - Autodel on nüüd autoikoon ning ka andmeallikaid saab lohistades ümber järjestada.
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12. juuli 2026" >}}
-- Ümberkujundatud Seaded: korrastatud kategooriate menüü, igaühel oma ikoon ja eraldi ekraan — Seadmed, Elektriauto laadimine, Koguhind, Piirkond (riik, hinnatsoon, ajavöönd), Välimus (keel, teema) ja Täpsemalt. Kõike on lihtsam leida kui varasemast ühest pikast loendist ning valijast naastes säilib sinu koht.
+- Ümberkujundatud Seaded: korrastatud kategooriate menüü, igaühel oma ikoon ja eraldi ekraan — Seadmed, Elektriauto laadimine, Koguhind, Piirkond (riik, hinnatsoon, ajavöönd), Välimus (keel, teema) ja Täpsemalt. Kõike on lihtsam leida kui varasemast ühest pikast loendist ning valijast naastes säilib teie koht.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12. juuli 2026" >}}
-- Koguhinna täiustused: juurdehindluse väli näitab nüüd sinu vääringut (nt €/kWh), Seaded säilitavad kerimiskoha, kui valijast tagasi tuled, ning tuletavad meelde valida tarnija või sisestada juurdehindlus enne lahkumist, kui koguhind on sisse lülitatud.
+- Koguhinna täiustused: juurdehindluse väli näitab nüüd teie vääringut (nt €/kWh), Seaded säilitavad kerimiskoha, kui valijast tagasi tulete, ning tuletavad meelde valida tarnija või sisestada juurdehindlus enne lahkumist, kui koguhind on sisse lülitatud.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. juuli 2026" >}}
-- Koguhind (Holland): soovi korral kuva paljas turuhinna asemel täielik tarbijahind — börsihind pluss energiamaks, sinu tarnija juurdehindlus ja käibemaks. Vali oma tarnija või sisesta oma juurdehindlus Seadetes jaotises „Koguhind“. See ei muuda kunagi seda, milline ajavahemik on soodsaim; see näitab lihtsalt realistlikku kasutuskulu.
+- Koguhind (Holland): soovi korral kuvage palja börsihinna asemel täielik tarbijahind — börsihind pluss energiamaks, teie tarnija juurdehindlus ja käibemaks. Valige oma tarnija või sisestage oma juurdehindlus Seadetes jaotises „Koguhind“. See ei muuda kunagi seda, milline aeg on soodsaim; see näitab lihtsalt realistlikku kasutuskulu.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. juuni 2026" >}}
@@ -49,13 +49,13 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="6.0" date="23. juuni 2026" >}}
-- Elektriauto laadimine: lisa oma auto, sisesta praegune ja soovitud laetuse tase ning SweetSpot leiab soodsaima aja laadima panemiseks ja arvutab, kui kaua see kestab.
-- „Valmis hiljemalt“ aeg: lase mis tahes seadmel või laadimisel valmis saada sinu määratud tähtajaks.
-- Võimsus: määra seadme võimsus kW-des, et kuluhinnang kajastaks selle tegelikku tarbimist.
+- Elektriauto laadimine: lisage oma auto, sisestage praegune ja soovitud laetuse tase ning SweetSpot leiab soodsaima aja laadima panemiseks ja arvutab, kui kaua see kestab.
+- „Valmis hiljemalt“ aeg: laske mis tahes seadmel või laadimisel valmis saada teie määratud tähtajaks.
+- Võimsus: määrake seadme võimsus kW-des, et kuluhinnang kajastaks selle tegelikku tarbimist.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. juuni 2026" >}}
-- Uued nupud „Varem“ ja „Odavam“ võimaldavad valida varasema aja, kui soodsaim ajavahemik ei sobi, ja näitavad, kui palju rohkem see maksab.
+- Uued nupud „Varem“ ja „Odavam“ võimaldavad valida varasema aja, kui soodsaim aeg ei sobi, ja näitavad, kui palju rohkem see maksab.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. aprill 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. märts 2026" >}}
-- Valikuline anonüümne API usaldusväärsuse statistika andmeallikate kvaliteedi parandamiseks
+- Valikuline anonüümne töökindluse statistika andmeallikate kvaliteedi parandamiseks
 - Täiustatud veakäsitlus kõigi viie andmeallika ulatuses
 {{< /changelog >}}
 
@@ -135,7 +135,7 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="26. märts 2026" >}}
-- Seadetes kuvatakse nüüd sinu süsteemikeele nimi
+- Seadetes kuvatakse nüüd teie süsteemikeele nimi
 - Toetatud on nüüd 25 keelt
 {{< /changelog >}}
 
@@ -179,11 +179,11 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 
 {{< changelog version="2.0" date="2. märts 2026" >}}
 - Wear OS kaasrakendus automaatse sünkroniseerimisega
-- Vaata hindu otse randmelt salvestatud seadmetega
+- Vaadake hindu otse randmelt salvestatud seadmetega
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. märts 2026" >}}
-- Parandatud ajastuse probleem, kui soodsaim ajavahemik algab kohe
+- Parandatud ajastuse probleem, kui soodsaim aeg algab kohe
 - Lisatud börsihinna vastutusest loobumise märge
 {{< /changelog >}}
 
@@ -197,5 +197,5 @@ description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 - Kerimisrattaga kestuse valija kiirvaliku nuppudega (1–6 tundi)
 - Kohandatavad seadmed kohandatud nimede, ikoonide ja kestustega
 - Tulemuste ekraan kulujaotusega ajavahemike kaupa
-- Tulpdiagramm tulevaste hindadega, kus soodsaim ajavahemik on esile tõstetud
+- Tulpdiagramm tulevaste hindadega, kus soodsaim aeg on esile tõstetud
 {{< /changelog >}}

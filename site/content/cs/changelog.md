@@ -41,7 +41,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. července 2026" >}}
-- Konečná cena (Nizozemsko): volitelně zobrazte plnou spotřebitelskou cenu — spotovou cenu plus daň z energie, přirážku vašeho dodavatele a DPH — místo holé tržní ceny. Vyberte svého dodavatele nebo zadejte vlastní přirážku v části „Konečná cena“ v nastavení. Nikdy nemění, které období je nejlevnější; jen ukazuje reálnou cenu provozu.
+- Konečná cena (Nizozemsko): volitelně zobrazte plnou spotřebitelskou cenu — tržní cenu plus daň z energie, přirážku vašeho dodavatele a DPH — místo holé tržní ceny. Vyberte svého dodavatele nebo zadejte vlastní přirážku v části „Konečná cena“ v nastavení. Nikdy nemění, který čas vyjde nejlevněji; jen ukazuje reálnou cenu provozu.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. června 2026" >}}
@@ -55,7 +55,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. června 2026" >}}
-- Nová tlačítka „Dříve“ a „Levněji“ umožňují zvolit dřívější čas, když nejlevnější období nevyhovuje, a ukážou, o kolik je to dražší.
+- Nová tlačítka „Dříve“ a „Levněji“ umožňují zvolit dřívější čas, když vám nejlevnější čas nevyhovuje, a ukážou, o kolik je to dražší.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. dubna 2026" >}}
@@ -110,7 +110,7 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. března 2026" >}}
-- Volitelná anonymní statistika spolehlivosti API pro zlepšení kvality zdrojů dat
+- Volitelná anonymní statistika spolehlivosti pro zlepšení kvality zdrojů dat
 - Vylepšené zpracování chyb pro všech pět zdrojů dat
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. března 2026" >}}
-- Opraven problém s načasováním, když nejlevnější období začíná okamžitě
-- Přidáno upozornění o spotových cenách
+- Opraven problém s načasováním, když nejlevnější čas začíná okamžitě
+- Přidáno upozornění o tržních cenách
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. března 2026" >}}
@@ -197,5 +197,5 @@ description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 - Výběr doby běhu otočným kolečkem a tlačítky pro rychlý výběr (1–6 hodin)
 - Nastavitelné spotřebiče s vlastními názvy, ikonami a dobami běhu
 - Obrazovka výsledků s rozpisem nákladů po časových úsecích
-- Sloupcový graf nadcházejících cen s vyznačeným nejlevnějším obdobím
+- Sloupcový graf nadcházejících cen s vyznačeným nejlevnějším časem
 {{< /changelog >}}

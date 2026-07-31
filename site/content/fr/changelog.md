@@ -41,7 +41,7 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12 juillet 2026" >}}
-- Prix total (Pays-Bas) : affichez si vous le souhaitez le prix total pour le consommateur — le prix spot plus la taxe sur l'énergie, la marge de votre fournisseur et la TVA — au lieu du seul prix du marché. Choisissez votre fournisseur ou saisissez votre propre marge sous « Prix total », dans les Paramètres. Cela ne change jamais quel créneau est le moins cher ; cela montre simplement un coût d'utilisation réaliste.
+- Prix total (Pays-Bas) : affichez si vous le souhaitez le prix total pour le consommateur — le prix du marché plus la taxe sur l'énergie, la marge de votre fournisseur et la TVA — au lieu du seul prix du marché. Choisissez votre fournisseur ou saisissez votre propre marge sous « Prix total », dans les Paramètres. Cela ne change jamais quel créneau est le moins cher ; cela montre simplement un coût d'utilisation réaliste.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25 juin 2026" >}}
@@ -110,7 +110,7 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 mars 2026" >}}
-- Statistiques anonymes optionnelles de fiabilité des API pour améliorer la qualité des sources de données
+- Statistiques anonymes optionnelles de fiabilité pour améliorer la qualité des sources de données
 - Amélioration de la gestion des erreurs pour les cinq sources de données
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 mars 2026" >}}
-- Correction d'un problème lorsque la période la moins chère commence immédiatement
-- Ajout d'un avertissement sur les prix spot
+- Correction d'un problème lorsque le créneau le moins cher commence immédiatement
+- Ajout d'un avertissement sur les prix du marché
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 mars 2026" >}}
@@ -197,5 +197,5 @@ description: "Historique des versions et notes de mise à jour de SweetSpot."
 - Sélecteur de durée à défilement avec raccourcis (1 à 6 heures)
 - Appareils configurables avec noms, icônes et durées personnalisés
 - Écran de résultats avec détail des coûts par créneau
-- Graphique en barres des prix à venir avec la période la moins chère mise en évidence
+- Graphique en barres des prix à venir avec le créneau le moins cher mis en évidence
 {{< /changelog >}}

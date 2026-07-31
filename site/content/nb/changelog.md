@@ -11,8 +11,8 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 {{< /changelog >}}
 
 {{< changelog version="6.6" date="21. juli 2026" >}}
-- Totalpris-diagrammet: hver stolpe deles nå i spotpris, energiavgift og leverandørpåslag, med en fargeforklaring.
-- Bytt raskt resultatene mellom totalprisen og ren spotpris.
+- Totalpris-diagrammet: hver stolpe deles nå i markedspris, energiavgift og leverandørpåslag, med en fargeforklaring.
+- Bytt raskt resultatene mellom totalprisen og ren markedspris.
 - Trykk og hold på diagrammet for å se den nøyaktige prisen i ethvert øyeblikk (full oppdeling når totalprisen er på).
 - Elbillading viser nå den totale ladetiden øverst i resultatene.
 {{< /changelog >}}
@@ -41,7 +41,7 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. juli 2026" >}}
-- Totalpris (Nederland): vis om ønskelig hele forbrukerprisen — spotprisen pluss energiavgift, leverandørpåslag og MVA — i stedet for bare spotprisen. Velg leverandøren din eller angi ditt eget påslag under «Totalpris» i innstillingene. Det endrer aldri hvilken periode som er billigst; det viser bare en mer realistisk kostnad.
+- Totalpris (Nederland): vis om ønskelig hele forbrukerprisen — markedsprisen pluss energiavgift, leverandørpåslag og MVA — i stedet for bare markedsprisen. Velg leverandøren din eller angi ditt eget påslag under «Totalpris» i innstillingene. Det endrer aldri hvilken periode som er billigst; det viser bare en mer realistisk kostnad.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. juni 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. mars 2026" >}}
-- Valgfri anonym API-pålitelighetsstatistikk for å forbedre datakildekvaliteten
+- Valgfri anonym pålitelighetsstatistikk for å forbedre datakildekvaliteten
 - Forbedret feilhåndtering på tvers av alle fem datakilder
 {{< /changelog >}}
 
@@ -184,7 +184,7 @@ description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 
 {{< changelog version="1.2" date="2. mars 2026" >}}
 - Fikset et tidsproblem når den billigste perioden starter umiddelbart
-- Lagt til ansvarsfraskrivelse for spotpriser
+- Lagt til ansvarsfraskrivelse for markedspriser
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. mars 2026" >}}

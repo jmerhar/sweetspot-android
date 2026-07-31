@@ -3,6 +3,13 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="7.0" date="2026. gada 31. jūlijs" >}}
+- Iebūvēta „Palīdzība un atbalsts“: ziņojiet par problēmu vai sūtiet atsauksmi tieši lietotnē, sekojiet atbildēm sarunā un pārraugiet savus ziņojumus — bez konta.
+- „Gatavs līdz“ tagad ir gudrs sākotnējais iestatījums: lētākais laiks, kas vēl paspēj laikā; pārvietojieties ap to ar „Agrāk“ vai „Lētāk“.
+- Ātrs ievads pirmajā palaišanā un vienreizēji padomi mazāk acīmredzamajām vadīklām.
+- Uzticamākas cenas un skaidrāki formulējumi visās 25 valodās.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="2026. gada 21. jūlijs" >}}
 - Pilnās cenas diagramma: katra josla tagad sadalīta biržas cenā, enerģijas nodoklī un piegādātāja uzcenojumā, ar apzīmējumiem.
 - Rezultātos ātri pārslēdzieties starp pilno un tikai tirgus cenu.

@@ -3,6 +3,13 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="7.0" date="31 juli 2026" >}}
+- Help & ondersteuning, ingebouwd: meld een probleem of stuur feedback vanuit de app, volg de reacties in een gesprek en houd je meldingen bij — geen account nodig.
+- 'Klaar om' is nu een slimme standaardkeuze: het goedkoopste moment dat toch op tijd klaar is; stap er met 'Eerder' of 'Goedkoper' omheen.
+- Een korte introductie bij de eerste start en eenmalige tips voor de minder voor de hand liggende knoppen.
+- Betrouwbaardere prijzen en duidelijkere formuleringen in alle 25 talen.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21 juli 2026" >}}
 - Totaalprijs-grafiek: elke balk splitst nu op in marktprijs, energiebelasting en leveranciersopslag, met een legenda.
 - Wissel de resultaten snel tussen de totaalprijs en de kale marktprijs.

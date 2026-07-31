@@ -3,6 +3,13 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="7.0" date="2026 m. liepos 31 d." >}}
+- „Pagalba ir palaikymas" programėlėje: praneškite apie problemą ar atsiųskite atsiliepimą, sekite atsakymus pokalbyje ir stebėkite savo pranešimus — be paskyros.
+- Laikas „Baigti iki" dabar yra išmanusis numatytasis pasirinkimas: pigiausias laikas, kuris vis dar baigiamas laiku; aplink jį galite rinktis „Anksčiau" arba „Pigiau".
+- Trumpa įžanga paleidus pirmą kartą ir vienkartiniai patarimai apie mažiau akivaizdžius valdiklius.
+- Patikimesnės kainos ir aiškesnės formuluotės visomis 25 kalbomis.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="2026 m. liepos 21 d." >}}
 - Galutinės kainos grafikas: kiekvienas stulpelis dabar skaidomas į biržos kainą, energijos mokestį ir tiekėjo antkainį, su paaiškinimais.
 - Greitai perjunkite rezultatus tarp galutinės ir vien biržos kainos.

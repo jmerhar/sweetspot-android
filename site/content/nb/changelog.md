@@ -3,6 +3,13 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="7.0" date="31. juli 2026" >}}
+- Hjelp & støtte er nå innebygd: rapporter et problem eller send tilbakemelding fra appen, følg svarene i en samtale og hold oversikt over rapportene dine — uten konto.
+- «Ferdig innen» er nå et smart standardvalg: det billigste tidspunktet som fortsatt blir ferdig i tide — bruk «Tidligere» eller «Billigere» for å justere rundt det.
+- En kort introduksjon ved første oppstart og engangstips for de mindre åpenbare funksjonene.
+- Mer pålitelige priser og klarere ordlyd på alle 25 språk.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. juli 2026" >}}
 - Totalpris-diagrammet: hver stolpe deles nå i spotpris, energiavgift og leverandørpåslag, med en fargeforklaring.
 - Bytt raskt resultatene mellom totalprisen og ren spotpris.

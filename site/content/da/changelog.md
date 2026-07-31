@@ -3,6 +3,13 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="7.0" date="31. juli 2026" >}}
+- Hjælp & support, indbygget: rapportér et problem eller send feedback direkte fra appen, følg svarene i en samtale, og hold styr på dine rapporter — ingen konto nødvendig.
+- „Klar senest“ er nu et smart standardvalg: det billigste tidspunkt, der stadig når at være klart i tide; gå Tidligere eller Billigere ud fra det.
+- En hurtig introduktion ved første start og engangstips til de mindre oplagte funktioner.
+- Mere pålidelige priser og tydeligere formuleringer på tværs af alle 25 sprog.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. juli 2026" >}}
 - Totalpris-diagram: hver søjle opdeles nu i markedspris, energiafgift og leverandørtillæg, med en signaturforklaring.
 - Skift hurtigt resultaterne mellem totalprisen og den rene markedspris.

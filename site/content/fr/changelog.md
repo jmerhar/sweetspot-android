@@ -3,6 +3,13 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31 juillet 2026" >}}
+- Aide et assistance intégrée : signalez un problème ou envoyez un commentaire, suivez les réponses dans une conversation et retrouvez vos signalements — sans compte.
+- « Prêt à » devient un choix intelligent par défaut : le créneau le moins cher encore prêt à temps ; naviguez avec « Plus tôt » et « Moins cher ».
+- Une intro rapide au premier lancement et des astuces ponctuelles pour les commandes les moins évidentes.
+- Prix plus fiables et formulation plus claire dans les 25 langues.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21 juillet 2026" >}}
 - Graphique du prix total : chaque barre se décompose désormais en prix du marché, taxe sur l'énergie et marge du fournisseur, avec une légende.
 - Basculez rapidement les résultats entre le prix total et le seul prix du marché.

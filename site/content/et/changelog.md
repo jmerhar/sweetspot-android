@@ -3,6 +3,13 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="7.0" date="31. juuli 2026" >}}
+- Sisseehitatud Abi ja tugi: teata probleemist või saada tagasisidet otse rakendusest, jälgi vastuseid vestluses ja hoia oma raportidel silma peal — kontot pole vaja.
+- „Valmis hiljemalt“ on nüüd nutikas vaikevalik: soodsaim aeg, mis siiski õigeks ajaks valmis saab; liigu selle ümber nuppudega „Varem“ ja „Odavam“.
+- Kiire tutvustus esmakäivitusel ja ühekordsed vihjed vähem ilmsete juhtnuppude kohta.
+- Usaldusväärsemad hinnad ja selgem sõnastus kõigis 25 keeles.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21. juuli 2026" >}}
 - Koguhinna diagramm: iga tulp jaguneb nüüd börsihinnaks, energiamaksuks ja tarnija juurdehindluseks koos legendiga.
 - Vaheta tulemustes kiiresti koguhinna ja palja börsihinna vahel.

@@ -3,6 +3,13 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="7.0" date="31 de julio de 2026" >}}
+- Ayuda y soporte en la app: informe de un problema o envíe comentarios, siga las respuestas en una conversación y consulte sus informes en «Mis informes» — sin cuenta.
+- «Listo a las» ahora es un valor predeterminado inteligente: el momento más barato que aún llega a tiempo; muévase con «Antes» o «Más barato».
+- Una breve introducción al abrir la app por primera vez y consejos puntuales para los controles menos evidentes.
+- Precios más fiables y textos más claros en los 25 idiomas.
+{{< /changelog >}}
+
 {{< changelog version="6.6" date="21 de julio de 2026" >}}
 - Gráfico del precio total: cada barra se divide ahora en precio de mercado, impuesto energético y recargo del proveedor, con leyenda.
 - Cambia al instante entre el precio total y el precio de mercado sin más en los resultados.

@@ -137,6 +137,38 @@ class EntsoeApiParseTest {
     }
 
     @Test
+    fun `A03 fills a trailing gap up to the period end`() {
+        // Only positions 1-2 are given for a 4-slot period (23:00 → 03:00); A03's last value
+        // carries forward to the period end, so positions 3 and 4 must be filled from position 2.
+        val xml = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Publication_MarketDocument xmlns="urn:iec62325.351:tc57wg16:451-3:publicationdocument:7:3">
+          <TimeSeries>
+            <mRID>1</mRID>
+            <curveType>A03</curveType>
+            <Period>
+              <timeInterval>
+                <start>2026-03-02T23:00Z</start>
+                <end>2026-03-03T03:00Z</end>
+              </timeInterval>
+              <resolution>PT60M</resolution>
+              <Point><position>1</position><price.amount>50.00</price.amount></Point>
+              <Point><position>2</position><price.amount>60.00</price.amount></Point>
+            </Period>
+          </TimeSeries>
+        </Publication_MarketDocument>
+        """.trimIndent()
+
+        val prices = api.parse(xml, timeZone)
+
+        assertEquals(4, prices.size) // positions 3 and 4 filled to the period end
+        assertEquals(0.050, prices[0].price, 0.0001)
+        assertEquals(0.060, prices[1].price, 0.0001)
+        assertEquals(0.060, prices[2].price, 0.0001)
+        assertEquals(0.060, prices[3].price, 0.0001)
+    }
+
+    @Test
     fun `handles multiple TimeSeries for multi-day response`() {
         val xml = """
         <?xml version="1.0" encoding="UTF-8"?>

@@ -116,7 +116,9 @@ class EntsoeApi(
         parser.setInput(StringReader(raw))
 
         var periodStart: Instant? = null
+        var periodEnd: Instant? = null
         var resolution: Duration? = null
+        var curveType: String? = null
         var currentPosition: Int? = null
         var currentPrice: Double? = null
         var inTimeSeries = false
@@ -131,7 +133,7 @@ class EntsoeApi(
                 XmlPullParser.START_TAG -> {
                     currentTag = parser.name
                     when (currentTag) {
-                        "TimeSeries" -> inTimeSeries = true
+                        "TimeSeries" -> { inTimeSeries = true; curveType = null }
                         "Period" -> if (inTimeSeries) inPeriod = true
                         "timeInterval" -> if (inPeriod) inTimeInterval = true
                         "Point" -> if (inPeriod) {
@@ -149,8 +151,14 @@ class EntsoeApi(
                         continue
                     }
                     when {
+                        inTimeSeries && !inPeriod && currentTag == "curveType" ->
+                            curveType = text
+
                         inTimeInterval && currentTag == "start" ->
                             periodStart = OffsetDateTime.parse(text, timestampParser).toInstant()
+
+                        inTimeInterval && currentTag == "end" ->
+                            periodEnd = OffsetDateTime.parse(text, timestampParser).toInstant()
 
                         inPeriod && !inTimeInterval && currentTag == "resolution" ->
                             resolution = Duration.parse(text)
@@ -182,10 +190,15 @@ class EntsoeApi(
 
                         "Period" -> {
                             if (inPeriod && periodStart != null && resolution != null) {
-                                fillA03Gaps(rawPrices, periodStart, resolution)
+                                // Trailing fill (to the declared end) only for A03; a non-A03 period
+                                // that happens to be missing trailing points is a partial response,
+                                // not a carry-forward, so we must not fabricate prices for it.
+                                val a03End = if (curveType == "A03") periodEnd else null
+                                fillA03Gaps(rawPrices, periodStart, a03End, resolution)
                             }
                             inPeriod = false
                             periodStart = null
+                            periodEnd = null
                             resolution = null
                         }
                     }
@@ -207,11 +220,15 @@ class EntsoeApi(
      *
      * @param prices Mutable list of (timestamp, price, resolutionMinutes) triples to fill in-place.
      * @param periodStart Start instant of the current period.
+     * @param periodEnd End instant of the current period (from the `timeInterval`), or `null` if it
+     *   wasn't present. When known, a trailing gap is filled too — A03's last value carries forward
+     *   to the period end, not merely to the last given position.
      * @param resolution Duration of each position slot.
      */
     private fun fillA03Gaps(
         prices: MutableList<Triple<Instant, Double, Int>>,
         periodStart: Instant,
+        periodEnd: Instant?,
         resolution: Duration
     ) {
         if (prices.isEmpty()) return
@@ -229,10 +246,16 @@ class EntsoeApi(
             positionMap[pos] = price
         }
 
-        val maxPos = positionMap.keys.max()
+        // Fill up to the declared period end when known (so a trailing gap carries the last price
+        // forward), otherwise only up to the last given position. Instants are DST-safe.
+        val lastGivenPos = positionMap.keys.max()
+        val endPos = periodEnd?.let {
+            (Duration.between(periodStart, it).toMinutes() / resolution.toMinutes()).toInt()
+        } ?: lastGivenPos
+        val fillTo = maxOf(lastGivenPos, endPos)
         var lastPrice = positionMap[1] ?: return
 
-        for (pos in 1..maxPos) {
+        for (pos in 1..fillTo) {
             if (positionMap.containsKey(pos)) {
                 lastPrice = positionMap[pos]!!
             } else {

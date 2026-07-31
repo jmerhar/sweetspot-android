@@ -23,16 +23,16 @@ other = "Tietosuoja"
 other = "Vaihda kieltä"
 
 [hero_title]
-other = "Löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen"
+other = "Löytäkää edullisin aika laitteidenne käyttöön ja sähköauton lataukseen"
 
 [hero_subtitle]
-other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajankohdan laitteidesi käyttöön tai sähköauton lataukseen — valmiina takarajaan mennessä, jos sellaisen asetat. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
+other = "SweetSpot vertailee dynaamisia sähkön hintoja 30 Euroopan maassa ja löytää edullisimman ajankohdan laitteidenne käyttöön tai sähköauton lataukseen — valmiina takarajaan mennessä, jos sellaisen asetatte. Avointa lähdekoodia ja yksityisyyttä kunnioittava."
 
 [download]
-other = "Lataa Google Playsta"
+other = "Ladatkaa Google Playsta"
 
 [learn_more]
-other = "Lue lisää"
+other = "Lukekaa lisää"
 
 [features_title]
 other = "Ominaisuudet"
@@ -53,7 +53,7 @@ other = "Seuraavan päivän sähköhinnat ENTSO-E Transparency Platformilta, pä
 other = "Älykäs algoritmi"
 
 [feature_algorithm_desc]
-other = "Aikajanaa läpikäyvä algoritmi löytää edullisimman yhtenäisen ajanjakson mille tahansa valitsemallesi kestolle."
+other = "Aikajanaa läpikäyvä algoritmi löytää edullisimman yhtenäisen ajanjakson mille tahansa valitsemallenne kestolle."
 
 [feature_fallback_title]
 other = "Luotettavaa dataa"
@@ -65,31 +65,31 @@ other = "Viisi tietolähdettä automaattisella varayhteydellä auttaa pitämää
 other = "Wear OS"
 
 [feature_wear_desc]
-other = "Kumppanisovellus Pixel Watchille ja muille Wear OS 3+ -laitteille. Tarkista hinnat ranteestasi."
+other = "Kumppanisovellus Pixel Watchille ja muille Wear OS 3+ -laitteille. Tarkistakaa hinnat ranteestanne."
 
 [feature_appliances_title]
 other = "Omat laitteet"
 
 [feature_appliances_desc]
-other = "Tallenna laitteesi omilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten."
+other = "Tallentakaa laitteenne omilla nimillä, kuvakkeilla ja kestoilla nopeaa käyttöä varten."
 
 [feature_ev_title]
 other = "Sähköauton lataus"
 
 [feature_ev_desc]
-other = "Lisää autosi ja syötä sitten sen nykyinen lataus ja lataustavoite. SweetSpot laskee latausajan ja edullisimman hetken kytkeä lataus."
+other = "Lisätkää autonne ja syöttäkää sitten sen nykyinen lataus ja lataustavoite. SweetSpot laskee latausajan ja edullisimman hetken kytkeä lataus."
 
 [feature_deadline_title]
 other = "Valmis viimeistään -takaraja"
 
 [feature_deadline_desc]
-other = "Pitääkö sen olla valmis tiettyyn aikaan mennessä? Aseta ”valmis viimeistään” -takaraja, niin SweetSpot valitsee halvimman ajankohdan, joka ehtii valmistua ajoissa."
+other = "Pitääkö sen olla valmis tiettyyn aikaan mennessä? Asettakaa ”valmis viimeistään” -takaraja, niin SweetSpot valitsee halvimman ajankohdan, joka ehtii valmistua ajoissa."
 
 [feature_power_title]
 other = "Teholuokitus"
 
 [feature_power_desc]
-other = "Anna laitteelle sen teho kilowatteina, niin kustannusarvio vastaa sen todellista kulutusta tasaisen 1 kW:n sijaan."
+other = "Antakaa laitteelle sen teho kilowatteina, niin kustannusarvio vastaa sen todellista kulutusta tasaisen 1 kW:n sijaan."
 
 [feature_languages_title]
 other = "25 kieltä"
@@ -101,7 +101,7 @@ other = "Saatavilla 25 eurooppalaisella kielellä bulgariasta ruotsiin."
 other = "Yksityisyys ensin"
 
 [feature_privacy_desc]
-other = "Ei tilejä, ei analytiikkaa, ei seurantaa. Hinnat tallennetaan paikallisesti laitteeseesi."
+other = "Ei tilejä, ei analytiikkaa, ei seurantaa. Hinnat tallennetaan paikallisesti laitteeseenne."
 
 [feature_opensource_title]
 other = "Avoin lähdekoodi"
@@ -113,31 +113,31 @@ other = "Koko lähdekoodi on saatavilla GitHubissa GPL v3 -lisenssillä."
 other = "Näin se toimii"
 
 [step1_title]
-other = "Valitse laite tai sähköauto"
+other = "Valitkaa laite tai sähköauto"
 
 [step1_desc]
-other = "Valitse tallennettu laite tai sähköautosi, tai aseta mukautettu kesto — ja halutessasi ”valmis viimeistään” -takaraja."
+other = "Valitkaa tallennettu laite tai sähköautonne, tai asettakaa mukautettu kesto — ja halutessanne ”valmis viimeistään” -takaraja."
 
 [step2_title]
-other = "Hae hinnat"
+other = "Hakekaa hinnat"
 
 [step2_desc]
-other = "SweetSpot hakee uusimmat seuraavan päivän sähköhinnat alueellesi."
+other = "SweetSpot hakee uusimmat seuraavan päivän sähköhinnat alueellenne."
 
 [step3_title]
-other = "Selvitä paras ajankohta"
+other = "Selvittäkää paras ajankohta"
 
 [step3_desc]
-other = "Näe tarkalleen milloin aloittaa, yksityiskohtaisella kustannuserittelyllä aikaväleittäin."
+other = "Nähkää tarkalleen milloin aloittaa, yksityiskohtaisella kustannuserittelyllä aikaväleittäin."
 
 [cta_title]
 other = "Ala säästää sähkössä"
 
 [cta_desc]
-other = "Lataa SweetSpot Google Playsta ja löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen."
+other = "Ladatkaa SweetSpot Google Playsta ja löytäkää edullisin aika laitteidenne käyttöön ja sähköauton lataukseen."
 
 [footer_tagline]
-other = "Löydä edullisin aika laitteidesi käyttöön ja sähköauton lataukseen."
+other = "Löytäkää edullisin aika laitteidenne käyttöön ja sähköauton lataukseen."
 
 [footer_app]
 other = "Sovellus"
@@ -149,7 +149,7 @@ other = "Oikeudelliset tiedot"
 other = "Lisensoitu GPL v3 -lisenssillä."
 
 [error_404]
-other = "Etsimääsi sivua ei löydy."
+other = "Etsimäänne sivua ei löydy."
 
 [back_home]
 other = "Takaisin etusivulle"

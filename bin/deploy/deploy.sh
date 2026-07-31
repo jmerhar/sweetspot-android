@@ -103,11 +103,13 @@ for changelog in "$ROOT_DIR"/site/content/*/changelog.md; do
     # Write changelog for relevant version codes
     dir="$ROOT_DIR/fastlane/metadata/android/$locale/changelogs"
     mkdir -p "$dir"
+    # Write without a trailing newline: Play counts it against the 500-char release-notes
+    # limit, so `echo` (which appends one) would push a 500-char entry to 501 and be rejected.
     if [[ "$APP" != "wear" ]]; then
-        echo "$text" > "$dir/${PHONE_CODE}.txt"
+        printf '%s' "$text" > "$dir/${PHONE_CODE}.txt"
     fi
     if [[ "$APP" != "phone" ]]; then
-        echo "$text" > "$dir/${WEAR_CODE}.txt"
+        printf '%s' "$text" > "$dir/${WEAR_CODE}.txt"
     fi
 
     (( LOCALE_COUNT++ )) || true

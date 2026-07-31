@@ -380,6 +380,21 @@ data class UiState(
 
     /** Currency of the loaded tariff (for labelling the surcharge field); falls back to the spot currency. */
     val allInCurrency: String get() = allInTariff?.currency ?: SPOT_CURRENCY
+
+    /** Whether a strictly-earlier (and costlier) alternative exists to step to from the shown window. */
+    val canGoEarlier: Boolean get() = windowOffset < windowAlternatives.size - 1
+
+    /** Whether a cheaper (later) window exists to step back toward from the shown window. */
+    val canGoCheaper: Boolean get() = windowOffset > 0
+
+    /**
+     * How much more the shown window costs than the recommended one (per kW), or `null` when there is
+     * no result or recommended cost. The recommended window is the default the ViewModel landed on —
+     * the global cheapest, or the cheapest meeting a "ready by" deadline — so this is the delta versus
+     * *that*, which with a deadline is not necessarily the global cheapest.
+     */
+    val extraCostVsRecommended: Double? get() =
+        if (result != null && recommendedCost != null) result.totalCost - recommendedCost else null
 }
 
 /**

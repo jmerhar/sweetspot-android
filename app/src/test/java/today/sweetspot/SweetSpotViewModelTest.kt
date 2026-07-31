@@ -1474,6 +1474,26 @@ class SweetSpotViewModelTest {
     }
 
     @Test
+    fun `UiState derives navigation flags and the extra-cost-vs-recommended delta`() = runTest {
+        val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
+        viewModel.onQuickDuration(1, 0)
+        runCurrent()
+
+        // At the cheapest window (offset 0): earlier available, cheaper not, zero delta.
+        var state = viewModel.uiState.value
+        assertTrue(state.canGoEarlier)
+        assertFalse(state.canGoCheaper)
+        assertEquals(0.0, state.extraCostVsRecommended!!, 1e-9)
+
+        // Step to an earlier window: cheaper becomes available and it costs more than recommended.
+        viewModel.onEarlierWindow()
+        state = viewModel.uiState.value
+        assertTrue(state.canGoCheaper)
+        assertTrue(state.extraCostVsRecommended!! > 0.0)
+        viewModel.onClearResult()
+    }
+
+    @Test
     fun `onEarlierWindow advances to an earlier costlier window`() = runTest {
         val viewModel = testViewModel(FakeFetcher(descendingPrices(6)))
         viewModel.onQuickDuration(1, 0)

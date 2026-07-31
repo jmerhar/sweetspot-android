@@ -419,17 +419,19 @@ private fun ResultScreen(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .coachMarkAnchor(
-                            active = activeCoachMark == CoachMark.EARLIER_CHEAPER
-                        ) { coachTarget = it },
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     OutlinedButton(
                         onClick = onEarlier,
                         enabled = canGoEarlier,
-                        modifier = Modifier.weight(1f)
+                        // Anchor the Earlier/Cheaper hint to the Earlier button so its tail points at
+                        // that button's centre, not the gap between the two.
+                        modifier = Modifier
+                            .weight(1f)
+                            .coachMarkAnchor(
+                                active = activeCoachMark == CoachMark.EARLIER_CHEAPER
+                            ) { coachTarget = it }
                     ) {
                         Text(stringResource(R.string.result_earlier))
                     }

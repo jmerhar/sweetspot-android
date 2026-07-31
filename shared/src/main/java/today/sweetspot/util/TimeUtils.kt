@@ -2,6 +2,8 @@ package today.sweetspot.util
 
 import android.content.res.Resources
 import today.sweetspot.shared.R
+import java.time.Instant
+import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.Duration
 
@@ -41,4 +43,20 @@ fun formatRelative(target: ZonedDateTime, now: ZonedDateTime, resources: Resourc
             else -> "in ${m}m"
         }
     }
+}
+
+/**
+ * Combines a date picked as UTC-midnight epoch millis (as Material's date picker reports it) with a
+ * wall-clock [hour]/[minute] interpreted in [timeZoneId], returning the resulting instant as epoch
+ * millis. Used by the developer time-override so the chosen local date and time map to one instant.
+ *
+ * @param pickedDateUtcMidnightMs Selected date at 00:00 UTC, in epoch millis.
+ * @param hour Wall-clock hour (0–23) in [timeZoneId].
+ * @param minute Wall-clock minute (0–59) in [timeZoneId].
+ * @param timeZoneId Timezone the wall-clock time is expressed in.
+ * @return The combined instant as epoch millis.
+ */
+fun dateTimeOverrideMillis(pickedDateUtcMidnightMs: Long, hour: Int, minute: Int, timeZoneId: ZoneId): Long {
+    val date = Instant.ofEpochMilli(pickedDateUtcMidnightMs).atZone(ZoneId.of("UTC")).toLocalDate()
+    return date.atTime(hour, minute).atZone(timeZoneId).toInstant().toEpochMilli()
 }

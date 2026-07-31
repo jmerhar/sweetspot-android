@@ -1,6 +1,7 @@
 package today.sweetspot.util
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -133,5 +134,15 @@ class FormatUtilsTest {
         assertEquals("07:05", formatHhMm(7, 5))
         assertEquals("00:00", formatHhMm(0, 0))
         assertEquals("23:59", formatHhMm(23, 59))
+    }
+
+    @Test
+    fun `parseDecimalInput accepts comma or dot and rejects partial input`() {
+        assertEquals(0.15, parseDecimalInput("0,15")!!, 1e-9)
+        assertEquals(0.15, parseDecimalInput("0.15")!!, 1e-9)
+        assertEquals(1.0, parseDecimalInput("1")!!, 1e-9)
+        assertNull(parseDecimalInput(""))
+        assertNull(parseDecimalInput("abc"))
+        assertNull(parseDecimalInput("-"))
     }
 }

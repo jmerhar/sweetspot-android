@@ -90,6 +90,16 @@ for changelog in "$ROOT_DIR"/site/content/*/changelog.md; do
         continue
     fi
 
+    # Check the Play Store 500-character limit BEFORE writing, so a too-long
+    # entry aborts without leaving a stray changelog file behind. Count Unicode
+    # code points via python3 (shell ${#var} counts bytes under a C locale, which
+    # would over-count accented languages and false-reject a valid entry).
+    char_count=$(printf '%s' "$text" | python3 -c 'import sys; print(len(sys.stdin.read()))')
+    if (( char_count > 500 )); then
+        die "$locale changelog is $char_count chars (limit: 500).
+  Shorten site/content/$lang/changelog.md before deploying."
+    fi
+
     # Write changelog for relevant version codes
     dir="$ROOT_DIR/fastlane/metadata/android/$locale/changelogs"
     mkdir -p "$dir"
@@ -98,13 +108,6 @@ for changelog in "$ROOT_DIR"/site/content/*/changelog.md; do
     fi
     if [[ "$APP" != "phone" ]]; then
         echo "$text" > "$dir/${WEAR_CODE}.txt"
-    fi
-
-    # Check Play Store 500-character limit
-    char_count=${#text}
-    if (( char_count > 500 )); then
-        die "$locale changelog is $char_count chars (limit: 500).
-  Shorten site/content/$lang/changelog.md before deploying."
     fi
 
     (( LOCALE_COUNT++ )) || true

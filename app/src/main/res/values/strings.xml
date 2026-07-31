@@ -21,7 +21,7 @@
     <string name="result_total_cost">Total cost</string>
     <string name="result_avg_price">Avg price</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s more than cheapest</string>
+    <string name="result_cost_above_cheapest">%1$s more than the recommended time</string>
     <string name="result_earlier">Earlier</string>
     <string name="result_cheaper">Cheaper</string>
     <string name="result_cost_breakdown">Cost breakdown</string>

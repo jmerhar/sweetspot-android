@@ -26,7 +26,7 @@ other = "Zmień język"
 other = "Znajdź najtańszy czas na uruchomienie urządzeń i ładowanie auta elektrycznego"
 
 [hero_subtitle]
-other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańszy czas na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, jeśli go ustawisz. Otwartoźródłowa i prywatna."
+other = "SweetSpot skanuje dynamiczne ceny prądu w 30 krajach europejskich, aby znaleźć najtańszy czas na uruchomienie urządzeń lub ładowanie auta elektrycznego — zakończone przed terminem, o ile zostanie on ustawiony. Otwartoźródłowa i prywatna."
 
 [download]
 other = "Pobierz z Google Play"
@@ -71,13 +71,13 @@ other = "Aplikacja towarzysząca na Pixel Watch i inne urządzenia Wear OS 3+. S
 other = "Własne urządzenia"
 
 [feature_appliances_desc]
-other = "Zapisz swoje urządzenia z własnymi nazwami, ikonami i czasami trwania, aby mieć do nich szybki dostęp."
+other = "Zapisz urządzenia z własnymi nazwami, ikonami i czasami trwania, aby mieć do nich szybki dostęp."
 
 [feature_ev_title]
 other = "Ładowanie auta elektrycznego"
 
 [feature_ev_desc]
-other = "Dodaj swój samochód, a następnie podaj obecny i docelowy poziom naładowania. SweetSpot obliczy czas ładowania i najtańszy czas na podłączenie."
+other = "Dodaj samochód, a następnie podaj obecny i docelowy poziom naładowania. SweetSpot obliczy czas ładowania i najtańszy czas na podłączenie."
 
 [feature_deadline_title]
 other = "Termin „Gotowe do”"
@@ -101,7 +101,7 @@ other = "Dostępna w 25 językach europejskich, od bułgarskiego po szwedzki."
 other = "Prywatność przede wszystkim"
 
 [feature_privacy_desc]
-other = "Bez kont, bez analityki, bez śledzenia. Ceny są przechowywane lokalnie na Twoim urządzeniu."
+other = "Bez kont, bez analityki, bez śledzenia. Ceny są przechowywane lokalnie na urządzeniu."
 
 [feature_opensource_title]
 other = "Otwarte źródło"
@@ -116,13 +116,13 @@ other = "Jak to działa"
 other = "Wybierz urządzenie lub auto elektryczne"
 
 [step1_desc]
-other = "Wybierz zapisane urządzenie lub swoje auto elektryczne, albo ustaw własny czas trwania — i opcjonalnie termin „gotowe do”."
+other = "Wybierz zapisane urządzenie lub auto elektryczne, albo ustaw własny czas trwania — i opcjonalnie termin „gotowe do”."
 
 [step2_title]
 other = "Skanuj ceny"
 
 [step2_desc]
-other = "SweetSpot pobiera najnowsze ceny dnia następnego dla Twojego regionu."
+other = "SweetSpot pobiera najnowsze ceny dnia następnego dla wybranego regionu."
 
 [step3_title]
 other = "Sprawdź najlepszy czas"

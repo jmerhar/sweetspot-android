@@ -5,21 +5,21 @@
     <!-- Main screen -->
     <string name="cd_settings">Ustawienia</string>
     <string name="cd_back">Wstecz</string>
-    <string name="main_description">SweetSpot pomaga oszczędzać pieniądze, znajdując najtańszy czas na uruchomienie urządzeń. Wystarczy wybrać, jak długo ma działać urządzenie, a aplikacja przeskanuje nadchodzące dynamiczne ceny prądu, aby znaleźć najlepszy czas. Możesz też zapisać ulubione urządzenia w ustawieniach dla szybkiego dostępu.</string>
+    <string name="main_description">SweetSpot pomaga oszczędzać pieniądze, znajdując najtańszy czas na uruchomienie urządzeń. Wystarczy wybrać, jak długo ma działać urządzenie, a aplikacja przeskanuje nadchodzące dynamiczne ceny prądu, aby znaleźć najlepszy czas. Ulubione urządzenia można też zapisać w ustawieniach dla szybkiego dostępu.</string>
     <string name="main_find_button">Znajdź najtańszy czas</string>
     <string name="main_searching">Wyszukiwanie…</string>
-    <string name="main_add_appliances">Dodaj swoje urządzenia</string>
+    <string name="main_add_appliances">Dodaj urządzenia</string>
     <string name="main_card_description">Znajdź najtańszy czas na uruchomienie urządzenia</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Zalecany czas</string>
-    <string name="result_after_deadline">Kończy się po Twoim czasie „Gotowe do”.</string>
+    <string name="result_after_deadline">Kończy się po ustawionym czasie „Gotowe do”.</string>
     <string name="result_start">Początek</string>
     <string name="result_end">Koniec</string>
     <string name="result_total_cost">Koszt całkowity</string>
     <string name="result_avg_price">Śr. cena</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">o %1$s więcej niż najtańsza opcja</string>
+    <string name="result_cost_above_cheapest">o %1$s więcej niż zalecany czas</string>
     <string name="result_earlier">Wcześniej</string>
     <string name="result_cheaper">Taniej</string>
     <string name="result_cost_breakdown">Podział kosztów</string>
@@ -49,7 +49,7 @@
     <string name="settings_data_sources_description">Ceny są pobierane w tej kolejności. Jeśli jedno źródło zawiedzie, próbowane jest następne.</string>
     <string name="settings_reset_defaults">Przywróć domyślne</string>
     <string name="settings_appliances">Urządzenia</string>
-    <string name="settings_appliances_description">Dodaj tutaj swoje urządzenia domowe dla szybkiego dostępu. Możesz też dodać konkretne programy, np. Zmywarka Eco, Zmywarka Szybka, Pralka Bawełna.</string>
+    <string name="settings_appliances_description">Dodaj tutaj urządzenia domowe dla szybkiego dostępu. Można też dodać konkretne programy, np. Zmywarka Eco, Zmywarka Szybka, Pralka Bawełna.</string>
     <string name="settings_add_appliance">Dodaj urządzenie</string>
     <string name="settings_timezone">Strefa czasowa</string>
     <string name="settings_theme">Motyw</string>
@@ -63,18 +63,18 @@
     <string name="settings_region_desc">Kraj, strefa cenowa i strefa czasowa</string>
     <string name="settings_appearance_title">Wygląd</string>
     <string name="settings_appearance_desc">Język i motyw</string>
-    <string name="settings_appliances_menu_desc">Twoje zapisane urządzenia</string>
+    <string name="settings_appliances_menu_desc">Zapisane urządzenia</string>
     <string name="settings_ev_menu_desc">Ładowarka, poziom docelowy i pojazdy</string>
     <string name="settings_all_in_menu_desc">Pokaż pełną cenę dla konsumenta</string>
     <string name="settings_share_title">Udostępnij moją konfigurację</string>
-    <string name="settings_share_menu_desc">Skopiuj swoje urządzenia i ustawienia pojazdu elektrycznego na inne urządzenie</string>
+    <string name="settings_share_menu_desc">Skopiuj urządzenia i ustawienia pojazdu elektrycznego na inne urządzenie</string>
 
     <!-- Household sharing: share screen -->
-    <string name="share_setup_description">Zeskanuj ten kod aparatem innego telefonu lub wyślij link. Twoje urządzenia, ich kolejność oraz ustawienia pojazdu elektrycznego zostaną skopiowane na to urządzenie.</string>
+    <string name="share_setup_description">Zeskanuj ten kod aparatem innego telefonu lub wyślij link. Urządzenia, ich kolejność oraz ustawienia pojazdu elektrycznego zostaną skopiowane na to urządzenie.</string>
     <string name="share_setup_button">Udostępnij link</string>
-    <string name="share_setup_chooser_title">Udostępnij swoją konfigurację</string>
-    <string name="share_setup_qr_unavailable">Twoja konfiguracja jest za duża na kod QR. Użyj zamiast tego linku do udostępniania.</string>
-    <string name="cd_qr_code">Kod QR z twoją konfiguracją</string>
+    <string name="share_setup_chooser_title">Udostępnij konfigurację</string>
+    <string name="share_setup_qr_unavailable">Ta konfiguracja jest za duża na kod QR. Użyj zamiast tego linku do udostępniania.</string>
+    <string name="cd_qr_code">Kod QR z konfiguracją</string>
 
     <!-- Household sharing: import preview -->
     <string name="import_title">Importuj konfigurację</string>
@@ -164,17 +164,17 @@
     <string name="settings_stats_title">Udostępnij statystyki niezawodności</string>
     <string name="settings_stats_description">Pomóż poprawić niezawodność źródeł danych, udostępniając anonimowe informacje o tym, kiedy dane cenowe wczytują się poprawnie lub zawodzą. Nie są zbierane żadne dane osobowe.</string>
     <string name="stats_prompt_title">Pomóż ulepszyć SweetSpot?</string>
-    <string name="stats_prompt_message">Udostępniaj anonimowe statystyki, aby pomóc poprawić niezawodność źródeł danych. Udostępniane jest tylko to, jak często każde źródło danych wczytuje się poprawnie lub zawodzi — bez danych osobowych. Możesz to zmienić w dowolnym momencie w Ustawieniach.</string>
+    <string name="stats_prompt_message">Udostępniaj anonimowe statystyki, aby pomóc poprawić niezawodność źródeł danych. Udostępniane jest tylko to, jak często każde źródło danych wczytuje się poprawnie lub zawodzi — bez danych osobowych. Można to zmienić w dowolnym momencie w Ustawieniach.</string>
     <string name="stats_prompt_enable">Włącz</string>
     <string name="stats_prompt_dismiss">Nie, dziękuję</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Uruchamiaj urządzenia, gdy prąd jest najtańszy</string>
     <string name="onboarding_body_1">SweetSpot skanuje nadchodzące ceny prądu, aby znaleźć najtańszy czas na uruchomienie urządzenia.</string>
-    <string name="onboarding_title_2">Twoje urządzenia w zasięgu jednego dotknięcia</string>
-    <string name="onboarding_body_2">Zapisz urządzenie i dotknij go, aby poznać jego najtańszy czas. Dodaj swój samochód elektryczny, aby zaplanować ładowanie na podstawie obecnego i docelowego poziomu naładowania.</string>
+    <string name="onboarding_title_2">Urządzenia w zasięgu jednego dotknięcia</string>
+    <string name="onboarding_body_2">Zapisz urządzenie i dotknij go, aby poznać jego najtańszy czas. Dodaj samochód elektryczny, aby zaplanować ładowanie na podstawie obecnego i docelowego poziomu naładowania.</string>
     <string name="onboarding_title_3">Dostosuj do siebie</string>
-    <string name="onboarding_body_3">Twój kraj jest wykrywany automatycznie. Zmień strefę, dodaj urządzenia lub wybierz język — wszystko znajdziesz w Ustawieniach.</string>
+    <string name="onboarding_body_3">Kraj jest wykrywany automatycznie. Zmień strefę, dodaj urządzenia lub wybierz język — wszystko można znaleźć w Ustawieniach.</string>
     <string name="onboarding_skip">Pomiń</string>
     <string name="onboarding_next">Dalej</string>
     <string name="onboarding_get_started">Zaczynajmy</string>
@@ -194,7 +194,7 @@
 
     <!-- Thank you -->
     <string name="thank_you_title">Dziękujemy!</string>
-    <string name="thank_you_message">Twoja subskrypcja jest teraz aktywna. Ciesz się znajdowaniem najtańszego czasu dla Twoich urządzeń!</string>
+    <string name="thank_you_message">Subskrypcja jest teraz aktywna. Ciesz się znajdowaniem najtańszego czasu dla urządzeń!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Okres próbny: %d dzień pozostał</item>
@@ -212,7 +212,7 @@
     <string name="ev_battery_label">Pojemność akumulatora</string>
     <string name="ev_power_label">Maks. moc ładowania AC</string>
     <string name="ev_home_charger">Ładowarka domowa</string>
-    <string name="ev_home_charger_description">Moc Twojej ładowarki ściennej (wallboxa). Ładowanie odbywa się z niższej z dwóch wartości — tej lub maksymalnej mocy auta.</string>
+    <string name="ev_home_charger_description">Moc ładowarki ściennej (wallboxa). Ładowanie odbywa się z niższej z dwóch wartości — tej lub maksymalnej mocy auta.</string>
     <string name="ev_charger_custom">Własna</string>
     <string name="ev_default_target">Domyślny poziom docelowy: %d%%</string>
     <string name="ev_current_soc">Obecny poziom: %d%%</string>
@@ -234,7 +234,7 @@
     <string name="settings_all_in_toggle">Pokaż cenę całkowitą</string>
     <string name="settings_all_in_desc">Pokazuj szacunkową pełną cenę dla konsumenta (cena rynkowa + podatek energetyczny + marża dostawcy + VAT) zamiast samej ceny rynkowej.</string>
     <string name="all_in_supplier">Dostawca</string>
-    <string name="all_in_supplier_prompt">Wybierz swojego dostawcę</string>
+    <string name="all_in_supplier_prompt">Wybierz dostawcę</string>
     <string name="all_in_supplier_custom">Własna marża</string>
     <string name="all_in_no_supplier">Nie znaleziono dostawcy. Zamiast tego wpisz własną marżę poniżej.</string>
     <string name="all_in_surcharge_custom">Własna marża (bez VAT)</string>
@@ -288,7 +288,7 @@
     <string name="ev_separate_section">Osobna sekcja</string>
     <string name="home_section_vehicles">Pojazdy</string>
     <string name="home_section_appliances">Urządzenia</string>
-    <string name="coach_earlier_cheaper">Nie pasuje Ci ten czas? Dotknij Wcześniej, aby zacząć szybciej, albo Taniej, aby wrócić do najtańszego.</string>
+    <string name="coach_earlier_cheaper">Ten czas nie pasuje? Dotknij Wcześniej, aby zacząć szybciej, albo Taniej, aby wrócić do najtańszego.</string>
     <string name="coach_chart_press_hold">Przytrzymaj wykres, aby zobaczyć cenę o dowolnej porze.</string>
     <string name="coach_all_in_toggle">Przełączaj między pełną ceną całkowitą a samą ceną rynkową.</string>
     <string name="coach_ev_chip">Dotknij pojazd, aby zaplanować ładowanie według poziomu akumulatora.</string>
@@ -311,7 +311,7 @@
     <string name="help_feedback_title">Wyślij opinię</string>
     <string name="help_feedback_desc">Pomysły i sugestie</string>
     <string name="help_my_reports_title">Moje zgłoszenia</string>
-    <string name="help_my_reports_desc">Śledź swoje zgłoszenia</string>
+    <string name="help_my_reports_desc">Śledź zgłoszenia</string>
     <string name="help_contact_title">Skontaktuj się z nami</string>
     <string name="help_contact_desc">Napisz do nas bezpośrednio</string>
     <string name="help_rate_title">Oceń SweetSpot</string>
@@ -319,52 +319,52 @@
     <string name="help_whats_new_title">Co nowego</string>
     <string name="help_whats_new_desc">Najnowsze zmiany</string>
     <string name="help_privacy_title">Polityka prywatności</string>
-    <string name="help_privacy_desc">Jak przetwarzane są Twoje dane</string>
+    <string name="help_privacy_desc">Jak przetwarzane są dane</string>
     <string name="help_about_license">GPL v3 · Otwarty kod na GitHubie</string>
     <string name="tips_reset_snackbar">Zresetowano wskazówki</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">Twoje zgłoszenie zostanie opublikowane jako publiczny wątek na GitHubie — nie podawaj danych osobowych.</string>
+    <string name="report_public_notice">Zgłoszenie zostanie opublikowane jako publiczny wątek na GitHubie — prosimy nie podawać danych osobowych.</string>
     <string name="report_subject_label">Temat</string>
     <string name="report_body_label_bug">Co się stało?</string>
-    <string name="report_body_label_feedback">Twoja opinia</string>
+    <string name="report_body_label_feedback">Opinia</string>
     <string name="report_email_label">Powiadom mnie e-mailem (opcjonalnie)</string>
-    <string name="report_email_note">Twój e-mail służy tylko do powiadomienia Cię — nigdy nie jest pokazywany w publicznym zgłoszeniu.</string>
+    <string name="report_email_note">Adres e-mail służy tylko do wysłania powiadomienia — nigdy nie jest pokazywany w publicznym zgłoszeniu.</string>
     <string name="report_submit">Wyślij</string>
     <string name="report_submitting">Wysyłanie…</string>
     <string name="report_filed">Zgłoszenie #%1$d przyjęte — dziękujemy!</string>
-    <string name="report_sent">Dziękujemy — Twoje zgłoszenie zostało wysłane.</string>
+    <string name="report_sent">Dziękujemy — zgłoszenie zostało wysłane.</string>
     <string name="report_error_retry">Nie udało się teraz wysłać — zapisano, spróbujemy ponownie automatycznie.</string>
     <string name="report_error_permanent">Nie udało się wysłać. Sprawdź dane i spróbuj ponownie.</string>
     <string name="report_retry">Ponów</string>
     <string name="report_done">Gotowe</string>
 
     <!-- My reports -->
-    <string name="my_reports_empty">Nie wysłałeś jeszcze żadnych zgłoszeń.</string>
+    <string name="my_reports_empty">Nie wysłano jeszcze żadnych zgłoszeń.</string>
     <string name="my_reports_open">Otwarte</string>
     <string name="my_reports_closed">Zamknięte</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Znajdź najtańszy czas</string>
     <string name="guide_find_body">Wybierz, jak długo ma działać urządzenie, a następnie dotknij Znajdź.</string>
-    <string name="guide_appliances_title">Zapisz swoje urządzenia</string>
+    <string name="guide_appliances_title">Zapisz urządzenia</string>
     <string name="guide_appliances_body">Dodaj urządzenia w Ustawieniach, aby wyszukiwać jednym dotknięciem.</string>
     <string name="guide_ev_title">Zaplanuj ładowanie auta elektrycznego</string>
-    <string name="guide_ev_body">Dodaj swój samochód, wpisz jego obecny i docelowy poziom naładowania, a SweetSpot obliczy czas ładowania.</string>
+    <string name="guide_ev_body">Dodaj samochód, wpisz jego obecny i docelowy poziom naładowania, a SweetSpot obliczy czas ładowania.</string>
     <string name="guide_result_title">Odczytaj wynik</string>
     <string name="guide_result_body">Użyj Wcześniej i Taniej, aby przesunąć zalecany czas, a przytrzymaj wykres, aby poznać cenę dowolnego przedziału.</string>
     <string name="guide_allin_title">Cena całkowita</string>
     <string name="guide_allin_body">Opcjonalnie pokaż pełną cenę dla konsumenta zamiast samej ceny rynkowej.</string>
-    <string name="guide_wear_title">Na Twoim zegarku</string>
-    <string name="guide_wear_body">Twoje urządzenia synchronizują się z Wear OS, więc możesz sprawdzać ceny bez telefonu.</string>
+    <string name="guide_wear_title">Na zegarku</string>
+    <string name="guide_wear_body">Urządzenia synchronizują się z Wear OS, więc ceny można sprawdzać bez telefonu.</string>
     <!-- Report conversation (in-app thread) -->
     <string name="thread_you">Ty</string>
     <string name="thread_support">Wsparcie SweetSpot</string>
     <string name="thread_open_github">Otwórz na GitHubie</string>
     <string name="thread_load_error">Nie udało się załadować rozmowy. Sprawdź połączenie i spróbuj ponownie.</string>
-    <string name="reply_hint">Twoja odpowiedź</string>
+    <string name="reply_hint">Odpowiedź</string>
     <string name="reply_send">Wyślij</string>
-    <string name="reply_public_note">Twoja odpowiedź jest widoczna publicznie na GitHubie.</string>
+    <string name="reply_public_note">Odpowiedź jest widoczna publicznie na GitHubie.</string>
     <string name="reply_error">Nie udało się wysłać odpowiedzi. Spróbuj ponownie.</string>
-    <string name="reply_queued">Zapisano — wyślemy Twoją odpowiedź, gdy znów będziesz online.</string>
+    <string name="reply_queued">Zapisano — odpowiedź zostanie wysłana po ponownym połączeniu z internetem.</string>
 </resources>

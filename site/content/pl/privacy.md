@@ -21,19 +21,19 @@ Te zapytania API zawierają wyłącznie identyfikator obszaru rynkowego i zakres
 
 ## Lokalne przechowywanie
 
-Dane cenowe są przechowywane lokalnie na Twoim urządzeniu, aby ograniczyć liczbę zapytań API i przyspieszyć działanie. Konfiguracja urządzeń (nazwy, czasy trwania, ikony oraz opcjonalne moce znamionowe), zapisane pojazdy (pojemność akumulatora i moc ładowania) oraz ustawienia (kraj, strefa, język) są również przechowywane lokalnie na Twoim urządzeniu, wraz ze statusem subskrypcji (zapisanym w pamięci podręcznej, aby aplikacja działała offline) oraz liczbą dotknięć poszczególnych urządzeń (używaną wyłącznie do sortowania według najczęściej i ostatnio używanych).
+Dane cenowe są przechowywane lokalnie na urządzeniu, aby ograniczyć liczbę zapytań API i przyspieszyć działanie. Konfiguracja urządzeń (nazwy, czasy trwania, ikony oraz opcjonalne moce znamionowe), zapisane pojazdy (pojemność akumulatora i moc ładowania) oraz ustawienia (kraj, strefa, język) są również przechowywane lokalnie na urządzeniu, wraz ze statusem subskrypcji (zapisanym w pamięci podręcznej, aby aplikacja działała offline) oraz liczbą dotknięć poszczególnych urządzeń (używaną wyłącznie do sortowania według najczęściej i ostatnio używanych).
 
-Na Wear OS dane urządzeń i ustawienia są synchronizowane między telefonem a zegarkiem za pomocą Wearable Data Layer API. Komunikacja ta odbywa się wyłącznie między Twoimi urządzeniami lokalnymi i nie przechodzi przez żaden zewnętrzny serwer.
+Na Wear OS dane urządzeń i ustawienia są synchronizowane między telefonem a zegarkiem za pomocą Wearable Data Layer API. Komunikacja ta odbywa się wyłącznie między urządzeniami lokalnymi i nie przechodzi przez żaden zewnętrzny serwer.
 
-Jeśli udostępnisz swoją konfigurację w postaci kodu QR lub linku, konfiguracja urządzeń i ładowania auta elektrycznego jest zakodowana **wewnątrz samego linku lub kodu QR** — nigdy nie jest przesyłana na serwer. Zaimportować ją może wyłącznie osoba, której przekażesz kod lub link.
+W przypadku udostępnienia konfiguracji w postaci kodu QR lub linku konfiguracja urządzeń i ładowania auta elektrycznego jest zakodowana **wewnątrz samego linku lub kodu QR** — nigdy nie jest przesyłana na serwer. Zaimportować ją może wyłącznie osoba, której przekazano kod lub link.
 
 ## Brak analityki
 
-SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone, i przesłaniem zgłoszenia, jeśli skorzystasz z Pomocy i wsparcia — patrz niżej).
+SweetSpot nie zawiera żadnych pakietów analitycznych, raportowania błędów ani śledzenia użytkowania. Aplikacja nie wykonuje żadnych zapytań sieciowych poza pobieraniem cen energii elektrycznej z wymienionych wyżej publicznych API (oraz opcjonalnym raportowaniem statystyk, jeśli jest włączone, i przesłaniem zgłoszenia w przypadku skorzystania z Pomocy i wsparcia — patrz niżej).
 
 ## Opcjonalne statystyki niezawodności
 
-Możesz wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności. Po włączeniu tej funkcji aplikacja okresowo wysyła na nasz serwer indywidualne rekordy zapytań dla każdego źródła danych i obszaru rynkowego. Dane te zawierają:
+Można wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności. Po włączeniu tej funkcji aplikacja okresowo wysyła na nasz serwer indywidualne rekordy zapytań dla każdego źródła danych i obszaru rynkowego. Dane te zawierają:
 
 - Znacznik czasu zapytania API
 - Identyfikator obszaru rynkowego (np. „NL”, „DE-LU”)
@@ -48,22 +48,22 @@ Możesz wyrazić zgodę na udostępnianie anonimowych statystyk niezawodności. 
 
 Dane te **nie** zawierają identyfikatorów urządzenia, lokalizacji, danych cenowych ani żadnych innych danych osobowych. Są wykorzystywane wyłącznie do poprawy niezawodności źródeł danych i domyślnej kolejności.
 
-Funkcja ta jest domyślnie wyłączona. Możesz ją włączyć lub wyłączyć w dowolnym momencie w Ustawieniach.
+Funkcja ta jest domyślnie wyłączona. Można ją włączyć lub wyłączyć w dowolnym momencie w Ustawieniach.
 
 ## Pomoc i wsparcie
 
-Jeśli zgłosisz problem lub wyślesz opinię z poziomu **Ustawienia › Pomoc i wsparcie**, Twoja wiadomość jest wysyłana do naszego serwisu opinii i zapisywana jako zgłoszenie w naszym publicznym repozytorium GitHub. **Wpisany przez Ciebie temat i opis stają się publicznie widoczne** na GitHubie, dlatego prosimy nie zamieszczać w nich danych osobowych.
+W przypadku zgłoszenia problemu lub wysłania opinii z poziomu **Ustawienia › Pomoc i wsparcie** wiadomość jest wysyłana do naszego serwisu opinii i zapisywana jako zgłoszenie w naszym publicznym repozytorium GitHub. **Wpisany temat i opis stają się publicznie widoczne** na GitHubie, dlatego prosimy nie zamieszczać w nich danych osobowych.
 
-Jeśli zdecydujesz się na powiadomienia e-mail, podany adres jest przechowywany wyłącznie przez nasz serwis opinii — nigdy nie jest pokazywany w publicznym zgłoszeniu — i służy jedynie do wysyłania Ci wiadomości dotyczących Twojego zgłoszenia. Każde powiadomienie e-mail zawiera link do wypisania się jednym kliknięciem, który usuwa zapisany adres, a w dowolnym momencie możesz też poprosić nas o jego usunięcie.
+W przypadku wybrania powiadomień e-mail podany adres jest przechowywany wyłącznie przez nasz serwis opinii — nigdy nie jest pokazywany w publicznym zgłoszeniu — i służy jedynie do wysyłania wiadomości dotyczących zgłoszenia. Każde powiadomienie e-mail zawiera link do wypisania się jednym kliknięciem, który usuwa zapisany adres, a o jego usunięcie można też poprosić nas w dowolnym momencie.
 
-Zgłoszenia problemów zawierają również krótki, nieosobowy blok diagnostyczny: wersję aplikacji i Androida, model Twojego urządzenia, język aplikacji, wybraną strefę cenową oraz aktywne źródło danych. Nie zawiera on imienia, adresu e-mail, lokalizacji ani innych danych osobowych.
+Zgłoszenia problemów zawierają również krótki, nieosobowy blok diagnostyczny: wersję aplikacji i Androida, model urządzenia, język aplikacji, wybraną strefę cenową oraz aktywne źródło danych. Nie zawiera on imienia, adresu e-mail, lokalizacji ani innych danych osobowych.
 
 ## Otwarte źródło
 
-SweetSpot jest oprogramowaniem o otwartym kodzie źródłowym, licencjonowanym na warunkach GPL v3. Pełny kod źródłowy możesz przejrzeć na [GitHubie](https://github.com/jmerhar/sweetspot-android).
+SweetSpot jest oprogramowaniem o otwartym kodzie źródłowym, licencjonowanym na warunkach GPL v3. Pełny kod źródłowy można przejrzeć na [GitHubie](https://github.com/jmerhar/sweetspot-android).
 
 ## Kontakt
 
-Jeśli masz pytania dotyczące tej polityki prywatności, możesz zgłosić je na [GitHubie](https://github.com/jmerhar/sweetspot-android/issues).
+W razie pytań dotyczących tej polityki prywatności można je zgłosić na [GitHubie](https://github.com/jmerhar/sweetspot-android/issues).
 
 *Ostatnia aktualizacja: lipiec 2026*

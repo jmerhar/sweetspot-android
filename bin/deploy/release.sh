@@ -32,6 +32,12 @@ sedi() {
 VERSION="${1:?Usage: ./release.sh <version> -n <notes-file> [--draft]}"
 shift
 
+# versionName feeds a sed replacement and the git tag; reject anything that
+# isn't a dotted numeric version so a typo can't corrupt the gradle file or tag.
+if [[ ! "$VERSION" =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+    die "Version must be dotted numeric (e.g. 1.1 or 2.0.3), got '$VERSION'."
+fi
+
 NOTES_FILE=""
 DRAFT_FLAG=""
 while [[ $# -gt 0 ]]; do

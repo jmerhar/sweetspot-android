@@ -22,26 +22,26 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="14. heinäkuuta 2026" >}}
-- Jaa asetuksesi: kopioi laitteesi, niiden järjestys ja sähköauton latausasetukset toiseen puhelimeen skannaamalla QR-koodi tai lähettämällä linkki — ei tiliä, toimii offline-tilassa. Toinen puhelin näyttää esikatselun, jossa voit lisätä, korvata tai valita, mitä tuodaan.
+- Jakakaa asetuksenne: kopioikaa laitteenne, niiden järjestys ja sähköauton latausasetukset toiseen puhelimeen skannaamalla QR-koodi tai lähettämällä linkki — ei tiliä, toimii offline-tilassa. Toinen puhelin näyttää esikatselun, jossa voitte lisätä, korvata tai valita, mitä tuodaan.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="13. heinäkuuta 2026" >}}
-- Järjestä ja lajittele laitteesi: vedä ne haluamaasi järjestykseen tai lajittele käytetyimmän, viimeksi käytetyn, nimen, keston tai tyypin mukaan.
+- Järjestäkää ja lajitelkaa laitteenne: vetäkää ne haluamaanne järjestykseen tai lajitelkaa käytetyimmän, viimeksi käytetyn, nimen, keston tai tyypin mukaan.
 - ”Käytetyin” ja ”Viimeksi käytetty” laskevat napautukset sekä puhelimessa että kellossa.
-- Valitse, missä autot näkyvät laitteiden joukossa: sekoitettuna, ensimmäisenä, viimeisenä tai erillisessä osiossa.
+- Valitkaa, missä autot näkyvät laitteiden joukossa: sekoitettuna, ensimmäisenä, viimeisenä tai erillisessä osiossa.
 - Autot näkyvät nyt auton kuvakkeella, ja myös tietolähteet voi järjestää vetämällä.
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12. heinäkuuta 2026" >}}
-- Uudistetut Asetukset: siisti luokkavalikko, jossa jokaisella on oma kuvake ja oma näyttö — Laitteet, Sähköauton lataus, Kokonaishinta, Alue (maa, hinta-alue, aikavyöhyke), Ulkoasu (kieli, teema) ja Lisäasetukset. Kaikki löytyy helpommin kuin aiemmasta yhdestä pitkästä luettelosta, ja valitsimesta palatessa vierityskohtasi säilyy.
+- Uudistetut Asetukset: siisti luokkavalikko, jossa jokaisella on oma kuvake ja oma näyttö — Laitteet, Sähköauton lataus, Kokonaishinta, Alue (maa, hinta-alue, aikavyöhyke), Ulkoasu (kieli, teema) ja Lisäasetukset. Kaikki löytyy helpommin kuin aiemmasta yhdestä pitkästä luettelosta, ja valitsimesta palatessa vierityskohtanne säilyy.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12. heinäkuuta 2026" >}}
-- Kokonaishinnan hienosäätöä: marginaalikenttä näyttää nyt valuuttasi (esim. €/kWh), Asetukset säilyttää vierityskohdan, kun palaat valitsimesta, ja muistuttaa valitsemaan sähkönmyyjän tai syöttämään marginaalin ennen poistumista, jos kokonaishinta on käytössä.
+- Kokonaishinnan hienosäätöä: marginaalikenttä näyttää nyt valuuttanne (esim. €/kWh), Asetukset säilyttää vierityskohdan, kun palaatte valitsimesta, ja muistuttaa valitsemaan sähkönmyyjän tai syöttämään marginaalin ennen poistumista, jos kokonaishinta on käytössä.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. heinäkuuta 2026" >}}
-- Kokonaishinta (Alankomaat): näytä halutessasi pelkän markkinahinnan sijaan täysi kuluttajahinta — pörssihinta plus sähkövero, myyjäsi marginaali ja ALV. Valitse myyjäsi tai syötä oma marginaalisi Asetusten kohdassa ”Kokonaishinta”. Se ei koskaan muuta sitä, mikä ajankohta on halvin; se vain näyttää realistisen käyttökustannuksen.
+- Kokonaishinta (Alankomaat): näyttäkää halutessanne pelkän pörssihinnan sijaan täysi kuluttajahinta — pörssihinta plus sähkövero, myyjänne marginaali ja ALV. Valitkaa myyjänne tai syöttäkää oma marginaalinne Asetusten kohdassa ”Kokonaishinta”. Se ei koskaan muuta sitä, mikä ajankohta on halvin; se vain näyttää realistisen käyttökustannuksen.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. kesäkuuta 2026" >}}
@@ -49,13 +49,13 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="6.0" date="23. kesäkuuta 2026" >}}
-- Sähköauton lataus: lisää autosi, syötä nykyinen ja tavoitevaraus, niin SweetSpot löytää halvimman hetken kytkeä lataus ja kertoo, kuinka kauan se kestää.
-- ”Valmis viimeistään” -aika: saa mikä tahansa laite tai lataus valmiiksi asettamaasi takarajaan mennessä.
-- Teho: aseta laitteen teho kilowatteina (kW), jolloin kustannusarvio vastaa sen todellista kulutusta.
+- Sähköauton lataus: lisätkää autonne, syöttäkää nykyinen ja tavoitevaraus, niin SweetSpot löytää halvimman hetken kytkeä lataus ja kertoo, kuinka kauan se kestää.
+- ”Valmis viimeistään” -aika: saakaa mikä tahansa laite tai lataus valmiiksi asettamaanne takarajaan mennessä.
+- Teho: asettakaa laitteen teho kilowatteina (kW), jolloin kustannusarvio vastaa sen todellista kulutusta.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. kesäkuuta 2026" >}}
-- Uudet painikkeet ”Aiemmin” ja ”Halvemmalla”: valitse aikaisempi ajankohta, kun halvin hetki ei sovi, ja näe kuinka paljon enemmän se maksaa.
+- Uudet painikkeet ”Aiemmin” ja ”Halvemmalla”: valitkaa aikaisempi ajankohta, kun halvin hetki ei sovi, ja nähkää kuinka paljon enemmän se maksaa.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. huhtikuuta 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. maaliskuuta 2026" >}}
-- Valinnainen nimetön API-luotettavuustilastointi tietolähteiden laadun parantamiseksi
+- Valinnainen nimetön luotettavuustilastointi tietolähteiden laadun parantamiseksi
 - Parannettu virheenkäsittely kaikissa viidessä tietolähteessä
 {{< /changelog >}}
 
@@ -135,7 +135,7 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 {{< /changelog >}}
 
 {{< changelog version="3.3" date="26. maaliskuuta 2026" >}}
-- Asetuksissa näkyy nyt järjestelmäkielesi nimi
+- Asetuksissa näkyy nyt järjestelmäkielenne nimi
 - 25 kieltä nyt tuettuna
 {{< /changelog >}}
 
@@ -179,12 +179,12 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 
 {{< changelog version="2.0" date="2. maaliskuuta 2026" >}}
 - Wear OS -kumppanisovellus automaattisella synkronoinnilla
-- Tarkista hinnat ranteestasi tallennetuilla laitteilla
+- Tarkistakaa hinnat ranteestanne tallennetuilla laitteilla
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. maaliskuuta 2026" >}}
-- Korjattu ajoitusongelma, kun edullisin jakso alkaa heti
-- Lisätty spot-hinnan vastuuvapauslauseke
+- Korjattu ajoitusongelma, kun edullisin ajankohta alkaa heti
+- Lisätty pörssihinnan vastuuvapauslauseke
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. maaliskuuta 2026" >}}
@@ -197,5 +197,5 @@ description: "SweetSpotin versiohistoria ja julkaisutiedot."
 - Rullaava keston valitsin pikavalintapainikkeilla (1–6 tuntia)
 - Mukautettavat laitteet omilla nimillä, kuvakkeilla ja kestoilla
 - Tulosnäkymä kustannuserittelyllä aikajaksoittain
-- Palkkikaavio tulevista hinnoista edullisimman jakson korostuksella
+- Palkkikaavio tulevista hinnoista edullisimman ajankohdan korostuksella
 {{< /changelog >}}

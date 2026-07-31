@@ -41,7 +41,7 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. juli 2026" >}}
-- Totalpris (Holland): vis eventuelt den fulde forbrugerpris — spotprisen plus energiafgift, din leverandørs tillæg og moms — i stedet for den rene markedspris. Vælg din leverandør eller indtast dit eget tillæg under „Totalpris“ i indstillingerne. Det ændrer aldrig, hvilket tidsrum der er billigst; det viser blot en realistisk driftsomkostning.
+- Totalpris (Holland): vis eventuelt den fulde forbrugerpris — markedsprisen plus energiafgift, din leverandørs tillæg og moms — i stedet for den rene markedspris. Vælg din leverandør eller indtast dit eget tillæg under „Totalpris“ i indstillingerne. Det ændrer aldrig, hvilket tidspunkt der er billigst; det viser blot en realistisk driftsomkostning.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. juni 2026" >}}
@@ -55,7 +55,7 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22. juni 2026" >}}
-- Nye knapper „Tidligere“ og „Billigere“ lader dig vælge et tidligere tidspunkt, når det billigste tidsrum ikke passer, og viser hvor meget mere det koster.
+- Nye knapper „Tidligere“ og „Billigere“ lader dig vælge et tidligere tidspunkt, når det billigste tidspunkt ikke passer, og viser hvor meget mere det koster.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9. april 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. marts 2026" >}}
-- Valgfri anonym API-pålidelighedsstatistik til forbedring af datakildernes kvalitet
+- Valgfri anonym pålidelighedsstatistik til forbedring af datakildernes kvalitet
 - Forbedret fejlhåndtering for alle fem datakilder
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. marts 2026" >}}
-- Rettet et tidsproblem, når det billigste tidsrum starter med det samme
-- Tilføjet bemærkning om spotpriser
+- Rettet et tidsproblem, når det billigste tidspunkt starter med det samme
+- Tilføjet bemærkning om markedspriser
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. marts 2026" >}}
@@ -197,5 +197,5 @@ description: "SweetSpots versionshistorik og udgivelsesnoter."
 - Rullehjuls-varighedsvælger med hurtigknapper (1–6 timer)
 - Brugerdefinerede apparater med egne navne, ikoner og varigheder
 - Resultatskærm med omkostningsopdeling pr. tidsinterval
-- Søjlediagram over kommende priser med det billigste tidsrum fremhævet
+- Søjlediagram over kommende priser med det billigste tidspunkt fremhævet
 {{< /changelog >}}

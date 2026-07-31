@@ -41,7 +41,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="2026 m. liepos 12 d." >}}
-- Galutinė kaina (Nyderlandai): pasirinktinai rodykite visą vartotojo kainą — biržos kainą su energijos mokesčiu, tiekėjo antkainiu ir PVM — vietoj vien rinkos kainos. Nustatymuose ties „Galutinė kaina“ pasirinkite savo tiekėją arba įveskite savo antkainį. Tai niekada nepakeičia, kuris laikotarpis pigiausias; tik parodo realias naudojimo išlaidas.
+- Galutinė kaina (Nyderlandai): pasirinktinai rodykite visą vartotojo kainą — biržos kainą su energijos mokesčiu, tiekėjo antkainiu ir PVM — vietoj vien biržos kainos. Nustatymuose ties „Galutinė kaina“ pasirinkite savo tiekėją arba įveskite savo antkainį. Tai niekada nepakeičia, kuris laikas pigiausias; tik parodo realias naudojimo išlaidas.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="2026 m. birželio 25 d." >}}
@@ -55,7 +55,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="2026 m. birželio 22 d." >}}
-- Nauji mygtukai „Anksčiau“ ir „Pigiau“ leidžia pasirinkti ankstesnį laiką, kai pigiausias laikotarpis nepatogus, ir parodo, kiek brangiau.
+- Nauji mygtukai „Anksčiau“ ir „Pigiau“ leidžia pasirinkti ankstesnį laiką, kai pigiausias laikas nepatogus, ir parodo, kiek brangiau.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="2026 m. balandžio 9 d." >}}
@@ -110,7 +110,7 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="2026 m. kovo 30 d." >}}
-- Neprivaloma anoniminė API patikimumo statistika duomenų šaltinių kokybei gerinti
+- Neprivaloma anoniminė patikimumo statistika duomenų šaltinių kokybei gerinti
 - Pagerintas klaidų apdorojimas visuose penkiuose duomenų šaltiniuose
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2026 m. kovo 2 d." >}}
-- Ištaisyta laiko problema, kai pigiausias laikotarpis prasideda iš karto
-- Pridėta spot kainų pastaba
+- Ištaisyta laiko problema, kai pigiausias laikas prasideda iš karto
+- Pridėta biržos kainų pastaba
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2026 m. kovo 2 d." >}}
@@ -197,5 +197,5 @@ description: "SweetSpot versijų istorija ir leidimų pastabos."
 - Slenkamo rato trukmės parinkiklis su greito pasirinkimo mygtukais (1–6 valandos)
 - Konfigūruojami prietaisai su pasirinktais pavadinimais, piktogramomis ir trukmėmis
 - Rezultatų ekranas su išlaidų pasiskirstymu pagal laiko intervalus
-- Stulpelinė diagrama su artėjančiomis kainomis ir paryškintu pigiausiu langu
+- Stulpelinė diagrama su artėjančiomis kainomis ir paryškintu pigiausiu laiku
 {{< /changelog >}}

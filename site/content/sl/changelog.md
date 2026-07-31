@@ -11,9 +11,9 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.6" date="21. julij 2026" >}}
-- Graf skupne cene: vsak stolpec je zdaj razčlenjen na tržno ceno, davek na energijo in pribitek dobavitelja, z legendo.
-- Med rezultati hitro preklopite med skupno in golo tržno ceno.
-- Pridržite graf, da vidite točno ceno v poljubnem trenutku (celotna razčlenitev, ko je vklopljena skupna cena).
+- Graf končne cene: vsak stolpec je zdaj razčlenjen na tržno ceno, davek na energijo in pribitek dobavitelja, z legendo.
+- Med rezultati hitro preklopite med končno in golo tržno ceno.
+- Pridržite graf, da vidite točno ceno v poljubnem trenutku (celotna razčlenitev, ko je vklopljena končna cena).
 - Polnjenje električnega vozila zdaj v glavi rezultatov prikaže skupni čas polnjenja.
 {{< /changelog >}}
 
@@ -33,15 +33,15 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12. julij 2026" >}}
-- Prenovljene nastavitve: pregleden meni kategorij, vsaka s svojo ikono in ločenim zaslonom — Aparati, Polnjenje električnega vozila, Skupna cena, Regija (država, cenovno območje, časovni pas), Videz (jezik, tema) in Napredno. Vse je lažje najti kot v prejšnjem enem samem dolgem seznamu, ob vrnitvi z izbirnika pa ohranite svoje mesto.
+- Prenovljene nastavitve: pregleden meni kategorij, vsaka s svojo ikono in ločenim zaslonom — Aparati, Polnjenje električnega vozila, Končna cena, Regija (država, cenovno območje, časovni pas), Videz (jezik, tema) in Napredno. Vse je lažje najti kot v prejšnjem enem samem dolgem seznamu, ob vrnitvi z izbirnika pa ohranite svoje mesto.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12. julij 2026" >}}
-- Izboljšave skupne cene: polje pribitka zdaj prikazuje vašo valuto (npr. €/kWh), nastavitve ob vrnitvi z izbirnika ohranijo mesto drsenja, in če je skupna cena vklopljena, vas opomnijo, da pred izhodom izberete dobavitelja ali vnesete pribitek.
+- Izboljšave končne cene: polje pribitka zdaj prikazuje vašo valuto (npr. €/kWh), nastavitve ob vrnitvi z izbirnika ohranijo mesto drsenja, in če je končna cena vklopljena, vas opomnijo, da pred izhodom izberete dobavitelja ali vnesete pribitek.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. julij 2026" >}}
-- Skupna cena (Nizozemska): izbirno prikažite končno ceno za potrošnika — tržno ceno ter davek na energijo, pribitek vašega dobavitelja in DDV — namesto same tržne cene. V nastavitvah v razdelku »Skupna cena« izberite svojega dobavitelja ali vnesite lasten pribitek. Nikoli ne spremeni, kateri termin je najcenejši — le pokaže realne stroške delovanja.
+- Končna cena (Nizozemska): izbirno prikažite končno ceno za potrošnika — tržno ceno ter davek na energijo, pribitek vašega dobavitelja in DDV — namesto same tržne cene. V nastavitvah v razdelku »Končna cena« izberite svojega dobavitelja ali vnesite lasten pribitek. Nikoli ne spremeni, kateri termin je najcenejši — le pokaže realne stroške delovanja.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. junij 2026" >}}
@@ -110,7 +110,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. marec 2026" >}}
-- Neobvezna anonimna statistika zanesljivosti API-jev za izboljšanje kakovosti virov podatkov
+- Neobvezna anonimna statistika zanesljivosti za izboljšanje kakovosti virov podatkov
 - Izboljšano upravljanje napak za vseh pet virov podatkov
 {{< /changelog >}}
 
@@ -184,7 +184,7 @@ description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 
 {{< changelog version="1.2" date="2. marec 2026" >}}
 - Odpravljene napake pri izračunu, ko se najcenejši termin začne takoj
-- Dodano opozorilo o spotnih cenah
+- Dodano opozorilo o tržnih cenah
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. marec 2026" >}}

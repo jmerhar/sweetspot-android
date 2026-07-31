@@ -12,36 +12,36 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 
 {{< changelog version="6.6" date="21 de julio de 2026" >}}
 - Gráfico del precio total: cada barra se divide ahora en precio de mercado, impuesto energético y recargo del proveedor, con leyenda.
-- Cambia al instante entre el precio total y el precio de mercado sin más en los resultados.
-- Mantén pulsado el gráfico para ver el precio exacto en cualquier momento (con desglose completo si el precio total está activado).
+- Cambie al instante entre el precio total y solo el precio de mercado en los resultados.
+- Mantenga pulsado el gráfico para ver el precio exacto en cualquier momento (con desglose completo si el precio total está activado).
 - La carga de vehículos eléctricos ahora muestra el tiempo total de carga en la cabecera de los resultados.
 {{< /changelog >}}
 
 {{< changelog version="6.5" date="15 de julio de 2026" >}}
-- Agrupa los botones de los electrodomésticos por tipo —en filas o columnas— para que los programas del mismo aparato queden juntos. Los vehículos pueden tener su propia sección arriba o abajo.
+- Agrupe los botones de los electrodomésticos por tipo —en filas o columnas— para que los programas del mismo aparato queden juntos. Los vehículos pueden tener su propia sección arriba o abajo.
 {{< /changelog >}}
 
 {{< changelog version="6.4" date="14 de julio de 2026" >}}
-- Comparte tu configuración: copia tus electrodomésticos, su orden y los ajustes de carga de vehículo eléctrico a otro móvil escaneando un código QR o enviando un enlace — sin cuenta y sin conexión. El otro móvil muestra una vista previa donde puedes añadir, reemplazar o elegir qué importar.
+- Comparta su configuración: copie sus electrodomésticos, su orden y los ajustes de carga de vehículo eléctrico a otro móvil escaneando un código QR o enviando un enlace — sin cuenta y sin conexión. El otro móvil muestra una vista previa donde puede añadir, reemplazar o elegir qué importar.
 {{< /changelog >}}
 
 {{< changelog version="6.3" date="13 de julio de 2026" >}}
-- Ordena y reorganiza tus electrodomésticos: arrástralos a tu gusto u ordénalos por «Más usados», «Usados recientemente», nombre, duración o tipo.
+- Ordene y reorganice sus electrodomésticos: arrástrelos a su gusto u ordénelos por «Más usados», «Usados recientemente», nombre, duración o tipo.
 - «Más usados» y «Usados recientemente» cuentan los toques en el móvil y en el reloj.
-- Elige dónde aparecen los vehículos entre los electrodomésticos: Mezclados, Primero, Último o Sección aparte.
+- Elija dónde aparecen los vehículos entre los electrodomésticos: Mezclados, Primero, Último o Sección aparte.
 - Los vehículos ahora muestran un icono de coche, y las fuentes de datos también se reordenan arrastrando.
 {{< /changelog >}}
 
 {{< changelog version="6.2" date="12 de julio de 2026" >}}
-- Ajustes rediseñados: un menú ordenado de categorías, cada una con su icono y su propia pantalla — Electrodomésticos, Carga de vehículo eléctrico, Precio total, Región (país, zona de precios, zona horaria), Apariencia (idioma, tema) y Avanzado. Todo se encuentra más fácilmente que en la antigua lista única y larga, y al volver de un selector se conserva tu posición.
+- Ajustes rediseñados: un menú ordenado de categorías, cada una con su icono y su propia pantalla — Electrodomésticos, Carga de vehículo eléctrico, Precio total, Región (país, zona de precios, zona horaria), Apariencia (idioma, tema) y Avanzado. Todo se encuentra más fácilmente que en la antigua lista única y larga, y al volver de un selector se conserva su posición.
 {{< /changelog >}}
 
 {{< changelog version="6.1.1" date="12 de julio de 2026" >}}
-- Mejoras en el precio total: el campo de recargo ahora muestra tu moneda (p. ej. €/kWh), Ajustes conserva la posición de desplazamiento al volver de un selector y te recuerda elegir un proveedor o introducir un recargo antes de salir si el precio total está activado.
+- Mejoras en el precio total: el campo de recargo ahora muestra su moneda (p. ej. €/kWh), Ajustes conserva la posición de desplazamiento al volver de un selector y le recuerda elegir un proveedor o introducir un recargo antes de salir si el precio total está activado.
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12 de julio de 2026" >}}
-- Precio total (Países Bajos): muestra opcionalmente el precio final al consumidor —el precio spot más el impuesto energético, el recargo de tu proveedor y el IVA— en lugar del precio de mercado sin más. Elige tu proveedor o introduce tu propio recargo en «Precio total», dentro de Ajustes. Nunca cambia qué momento es el más barato; solo muestra un coste de uso realista.
+- Precio total (Países Bajos): muestra opcionalmente el precio final al consumidor —el precio de mercado más el impuesto energético, el recargo de su proveedor y el IVA— en lugar de solo el precio de mercado. Elija su proveedor o introduzca su propio recargo en «Precio total», dentro de Ajustes. Nunca cambia qué momento es el más barato; solo muestra un coste de uso realista.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25 de junio de 2026" >}}
@@ -49,13 +49,13 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="6.0" date="23 de junio de 2026" >}}
-- Carga de vehículos eléctricos: añade tu coche, indica la carga actual y la deseada, y SweetSpot encuentra el momento más barato para enchufarlo y cuánto tardará.
-- Hora límite «Listo a las»: consigue que cualquier electrodoméstico o carga termine antes de la fecha límite que establezcas.
-- Potencia: indica la potencia de un electrodoméstico en kW para que la estimación de coste refleje su consumo real.
+- Carga de vehículos eléctricos: añada su coche, indique la carga actual y la deseada, y SweetSpot encuentra el momento más barato para enchufarlo y cuánto tardará.
+- Hora límite «Listo a las»: consiga que cualquier electrodoméstico o carga termine antes de la fecha límite que establezca.
+- Potencia: indique la potencia de un electrodoméstico en kW para que la estimación de coste refleje su consumo real.
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="22 de junio de 2026" >}}
-- Nuevos botones «Antes» y «Más barato» para elegir una hora más temprana cuando la más barata no te conviene, y ver cuánto más cuesta.
+- Nuevos botones «Antes» y «Más barato» para elegir una hora más temprana cuando la más barata no le conviene, y ver cuánto más cuesta.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="9 de abril de 2026" >}}
@@ -110,7 +110,7 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 de marzo de 2026" >}}
-- Estadísticas anónimas opcionales de fiabilidad de API para mejorar la calidad de las fuentes de datos
+- Estadísticas anónimas opcionales de fiabilidad para mejorar la calidad de las fuentes de datos
 - Mejora del manejo de errores en las cinco fuentes de datos
 {{< /changelog >}}
 
@@ -179,12 +179,12 @@ description: "Historial de versiones y notas de cada versión de SweetSpot."
 
 {{< changelog version="2.0" date="2 de marzo de 2026" >}}
 - App complementaria de Wear OS con sincronización automática
-- Consulta los precios desde tu muñeca con los electrodomésticos guardados
+- Consulte los precios desde su muñeca con los electrodomésticos guardados
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2 de marzo de 2026" >}}
 - Corregido un problema de sincronización cuando la franja más barata comienza de inmediato
-- Añadido aviso sobre precios spot
+- Añadido aviso sobre los precios de mercado
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 de marzo de 2026" >}}

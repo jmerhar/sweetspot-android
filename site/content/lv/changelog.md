@@ -12,7 +12,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 
 {{< changelog version="6.6" date="2026. gada 21. jūlijs" >}}
 - Pilnās cenas diagramma: katra josla tagad sadalīta biržas cenā, enerģijas nodoklī un piegādātāja uzcenojumā, ar apzīmējumiem.
-- Rezultātos ātri pārslēdzieties starp pilno un tikai tirgus cenu.
+- Rezultātos ātri pārslēdzieties starp pilno un tikai biržas cenu.
 - Turiet diagrammu, lai redzētu precīzu cenu jebkurā brīdī (pilns sadalījums, kad ieslēgta pilnā cena).
 - Elektroauto uzlāde tagad rāda kopējo uzlādes laiku rezultātu virsrakstā.
 {{< /changelog >}}
@@ -41,7 +41,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="2026. gada 12. jūlijs" >}}
-- Pilnā cena (Nīderlande): pēc izvēles rādiet pilno patērētāja cenu — biržas cenu plus enerģijas nodoklis, piegādātāja uzcenojums un PVN — nevis tikai tirgus cenu. Iestatījumos sadaļā „Pilnā cena“ izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Tas nekad nemaina, kurš periods ir lētākais; tas tikai parāda reālas lietošanas izmaksas.
+- Pilnā cena (Nīderlande): pēc izvēles rādiet pilno patērētāja cenu — biržas cenu plus enerģijas nodoklis, piegādātāja uzcenojums un PVN — nevis tikai biržas cenu. Iestatījumos sadaļā „Pilnā cena“ izvēlieties savu piegādātāju vai ievadiet savu uzcenojumu. Tas nekad nemaina, kurš laiks ir lētākais; tas tikai parāda reālas lietošanas izmaksas.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="2026. gada 25. jūnijs" >}}
@@ -55,7 +55,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="2026. gada 22. jūnijs" >}}
-- Jaunas pogas „Agrāk“ un „Lētāk“ ļauj izvēlēties agrāku laiku, kad lētākais periods neder, un parāda, cik daudz dārgāk tas izmaksā.
+- Jaunas pogas „Agrāk“ un „Lētāk“ ļauj izvēlēties agrāku laiku, kad lētākais laiks neder, un parāda, cik daudz dārgāk tas izmaksā.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="2026. gada 9. aprīlis" >}}
@@ -110,7 +110,7 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="2026. gada 30. marts" >}}
-- Neobligāta anonīma API uzticamības statistika datu avotu kvalitātes uzlabošanai
+- Neobligāta anonīma uzticamības statistika datu avotu kvalitātes uzlabošanai
 - Uzlabota kļūdu apstrāde visos piecos datu avotos
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2026. gada 2. marts" >}}
-- Novērsta laika problēma, kad lētākais periods sākas nekavējoties
-- Pievienota spot cenu atruna
+- Novērsta laika problēma, kad lētākais laiks sākas nekavējoties
+- Pievienota biržas cenu atruna
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2026. gada 2. marts" >}}
@@ -197,5 +197,5 @@ description: "SweetSpot versiju vēsture un laidienu piezīmes."
 - Ritināmais ilguma izvēlētājs ar ātrās izvēles pogām (1–6 stundas)
 - Konfigurējamas ierīces ar pielāgotiem nosaukumiem, ikonām un ilgumiem
 - Rezultātu ekrāns ar izmaksu sadalījumu pa laika intervāliem
-- Joslu diagramma ar gaidāmajām cenām un izceltu lētāko periodu
+- Joslu diagramma ar gaidāmajām cenām un izceltu lētāko laiku
 {{< /changelog >}}

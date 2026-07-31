@@ -41,7 +41,7 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="12. Juli 2026" >}}
-- Gesamtpreis (Niederlande): Zeige optional den vollen Verbraucherpreis — den Börsenpreis plus Energiesteuer, den Aufschlag deines Lieferanten und MwSt. — statt des reinen Marktpreises. Wähle deinen Lieferanten oder gib deinen eigenen Aufschlag unter „Gesamtpreis“ in den Einstellungen ein. Er ändert nie, welcher Zeitraum am günstigsten ist; er zeigt nur realistische Betriebskosten.
+- Gesamtpreis (Niederlande): Zeige optional den vollen Verbraucherpreis — den Marktpreis plus Energiesteuer, den Aufschlag deines Lieferanten und MwSt. — statt des reinen Marktpreises. Wähle deinen Lieferanten oder gib deinen eigenen Aufschlag unter „Gesamtpreis“ in den Einstellungen ein. Er ändert nie, welcher Zeitraum am günstigsten ist; er zeigt nur realistische Betriebskosten.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="25. Juni 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30. März 2026" >}}
-- Optionale anonyme API-Zuverlässigkeitsstatistiken zur Verbesserung der Datenquellenqualität
+- Optionale anonyme Zuverlässigkeitsstatistiken zur Verbesserung der Datenquellenqualität
 - Verbesserte Fehlerbehandlung für alle fünf Datenquellen
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="2. März 2026" >}}
-- Timing-Problem behoben, wenn das günstigste Zeitfenster sofort beginnt
-- Spotpreis-Hinweis hinzugefügt
+- Timing-Problem behoben, wenn der günstigste Zeitraum sofort beginnt
+- Marktpreis-Hinweis hinzugefügt
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2. März 2026" >}}
@@ -197,5 +197,5 @@ description: "SweetSpot Versionshistorie und Release-Hinweise."
 - Auswahl der Laufzeit per Scrollrad mit Schnelltasten (1–6 Stunden)
 - Konfigurierbare Geräte mit eigenen Namen, Symbolen und Laufzeiten
 - Ergebnisbildschirm mit Kostenaufschlüsselung pro Zeitslot
-- Balkendiagramm mit kommenden Preisen und hervorgehobener günstigster Periode
+- Balkendiagramm mit kommenden Preisen und hervorgehobenem günstigstem Zeitraum
 {{< /changelog >}}

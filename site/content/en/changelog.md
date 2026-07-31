@@ -41,7 +41,7 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="6.1" date="July 12, 2026" >}}
-- All-in price (Netherlands): optionally show the full consumer price — the spot price plus energy tax, your supplier's surcharge, and VAT — instead of the bare market price. Pick your supplier or enter your own surcharge under "Total price" in Settings. It never changes which window is cheapest; it just shows a realistic run cost.
+- All-in price (Netherlands): optionally show the full consumer price — the market price plus energy tax, your supplier's surcharge, and VAT — instead of the bare market price. Pick your supplier or enter your own surcharge under "Total price" in Settings. It never changes which time is cheapest; it just shows a realistic run cost.
 {{< /changelog >}}
 
 {{< changelog version="6.0.1" date="June 25, 2026" >}}
@@ -55,7 +55,7 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="5.4" date="June 22, 2026" >}}
-- New Earlier and Cheaper buttons let you choose a sooner run time when the cheapest window isn't convenient, and show exactly how much more it costs.
+- New Earlier and Cheaper buttons let you choose a sooner start when the cheapest time isn't convenient, and show exactly how much more it costs.
 {{< /changelog >}}
 
 {{< changelog version="5.3.2" date="April 9, 2026" >}}
@@ -110,7 +110,7 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="March 30, 2026" >}}
-- Opt-in anonymous API reliability statistics to help improve data source quality
+- Opt-in anonymous reliability statistics to help improve data source quality
 - Improved error handling across all five data sources
 {{< /changelog >}}
 
@@ -183,8 +183,8 @@ description: "SweetSpot version history and release notes."
 {{< /changelog >}}
 
 {{< changelog version="1.2" date="March 2, 2026" >}}
-- Fixed a timing issue when the cheapest window starts immediately
-- Added spot price disclaimer
+- Fixed a timing issue when the cheapest time starts immediately
+- Added market price disclaimer
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="March 2, 2026" >}}
@@ -197,5 +197,5 @@ description: "SweetSpot version history and release notes."
 - Scroll wheel duration picker with quick-duration buttons (1–6 hours)
 - Configurable appliances with custom names, icons, and durations
 - Results screen with cost breakdown per time slot
-- Bar chart showing upcoming prices with cheapest window highlighted
+- Bar chart showing upcoming prices with cheapest time highlighted
 {{< /changelog >}}

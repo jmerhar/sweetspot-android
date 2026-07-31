@@ -110,7 +110,7 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 {{< /changelog >}}
 
 {{< changelog version="4.1" date="30 maart 2026" >}}
-- Optionele anonieme API-betrouwbaarheidsstatistieken om de kwaliteit van databronnen te verbeteren
+- Optionele anonieme betrouwbaarheidsstatistieken om de kwaliteit van databronnen te verbeteren
 - Verbeterde foutafhandeling voor alle vijf databronnen
 {{< /changelog >}}
 
@@ -184,7 +184,7 @@ description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 
 {{< changelog version="1.2" date="2 maart 2026" >}}
 - Timingprobleem opgelost wanneer goedkoopste periode direct begint
-- Spotprijsdisclaimer toegevoegd
+- Marktprijsdisclaimer toegevoegd
 {{< /changelog >}}
 
 {{< changelog version="1.1" date="2 maart 2026" >}}

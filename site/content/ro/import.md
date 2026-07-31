@@ -1,16 +1,16 @@
 ---
-title: "Importă configurația"
-description: "Deschide o configurație SweetSpot partajată în aplicație."
+title: "Importați configurația"
+description: "Deschideți o configurație SweetSpot partajată în aplicație."
 ---
 
-## Deschide în aplicație
+## Deschideți în aplicație
 
-Acest link conține o configurație SweetSpot partajată — o listă de aparate și setări de încărcare pentru vehicule electrice de la cineva din gospodăria ta.
+Acest link conține o configurație SweetSpot partajată — o listă de aparate și setări de încărcare pentru vehicule electrice de la cineva din gospodăria dvs.
 
-Dacă ai SweetSpot instalat, ar trebui să se deschidă automat cu o previzualizare în care poți verifica și importa configurația.
+Dacă aveți SweetSpot instalat, ar trebui să se deschidă automat cu o previzualizare în care puteți verifica și importa configurația.
 
-**Nu s-a întâmplat nimic?** Asigură-te că SweetSpot este instalat și actualizat, apoi deschide din nou linkul de pe telefonul tău.
+**Nu s-a întâmplat nimic?** Asigurați-vă că SweetSpot este instalat și actualizat, apoi deschideți din nou linkul de pe telefonul dvs.
 
-## Nu ai încă SweetSpot?
+## Nu aveți încă SweetSpot?
 
-[Descarcă SweetSpot din Google Play](https://play.google.com/store/apps/details?id=today.sweetspot), apoi redeschide linkul pe telefonul tău.
+[Descărcați SweetSpot din Google Play](https://play.google.com/store/apps/details?id=today.sweetspot), apoi redeschideți linkul pe telefonul dvs.

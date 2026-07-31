@@ -1,25 +1,25 @@
-SweetSpot găsește cel mai ieftin interval pentru a porni aparatele și pentru a-ți încărca mașina electrică. Alege cât timp trebuie să funcționeze un aparat — sau alege vehiculul tău și nivelul de încărcare dorit — și SweetSpot analizează prețurile dinamice viitoare ale energiei electrice pentru a găsi cel mai ieftin interval.
+SweetSpot găsește cel mai ieftin interval pentru a porni aparatele și pentru a vă încărca mașina electrică. Alegeți cât timp trebuie să funcționeze un aparat — sau alegeți vehiculul dvs. și nivelul de încărcare dorit — și SweetSpot analizează prețurile dinamice viitoare ale energiei electrice pentru a găsi cel mai ieftin interval.
 
-Fie că este vorba de o mașină de spălat, mașină de spălat vase, uscător, pompă de căldură sau un încărcător pentru mașina electrică — pornește la momentul potrivit și plătește mai puțin pentru aceeași electricitate.
+Fie că este vorba de o mașină de spălat, mașină de spălat vase, uscător, pompă de căldură sau un încărcător pentru mașina electrică — porniți la momentul potrivit și plătiți mai puțin pentru aceeași electricitate.
 
 CUM FUNCȚIONEAZĂ
-1. Alege un aparat sau vehiculul tău, ori setează o durată personalizată — și un termen opțional „Gata până la”
-2. SweetSpot obține cele mai recente prețuri de electricitate pentru ziua următoare din regiunea ta
-3. Vezi exact când să pornești, cu un grafic al prețurilor pe 24 de ore codificat pe culori și o defalcare completă a costurilor pe intervale de timp
+1. Alegeți un aparat sau vehiculul dvs., ori setați o durată personalizată — și un termen opțional „Gata până la”
+2. SweetSpot obține cele mai recente prețuri de electricitate pentru ziua următoare din regiunea dvs.
+3. Vedeți exact când să porniți, cu un grafic al prețurilor pe 24 de ore codificat pe culori și o defalcare completă a costurilor pe intervale de timp
 
 ÎNCĂRCARE MAȘINĂ ELECTRICĂ
-Adaugă-ți mașina dintr-o bază de date integrată cu mii de vehicule electrice și hibride plug-in — sau introdu chiar tu capacitatea bateriei și puterea de încărcare. Setează nivelul actual și pe cel dorit, iar SweetSpot calculează cât va dura încărcarea și cel mai ieftin interval în care să o conectezi.
+Adăugați-vă mașina dintr-o bază de date integrată cu mii de vehicule electrice și hibride plug-in — sau introduceți chiar dvs. capacitatea bateriei și puterea de încărcare. Setați nivelul actual și pe cel dorit, iar SweetSpot calculează cât va dura încărcarea și cel mai ieftin interval în care să o conectați.
 
 FUNCȚIONALITĂȚI
 - 30 de țări europene, 43 de zone de licitație — din Portugalia până în Finlanda, din Norvegia până în Grecia
 - 5 surse de date cu comutare automată (ENTSO-E, Spot-Hinta.fi, Energy-Charts, EnergyZero, aWATTar)
-- Preț total (Țările de Jos) — vezi opțional prețul total pentru consumator (preț de piață + taxa pe energie + adaosul furnizorului + TVA) în locul prețului de piață simplu; alege-ți furnizorul sau introdu propriul adaos. Vor urma mai multe țări
+- Preț total (Țările de Jos) — vedeți opțional prețul total pentru consumator (preț de piață + taxa pe energie + adaosul furnizorului + TVA) în locul prețului de piață simplu; alegeți-vă furnizorul sau introduceți propriul adaos. Vor urma mai multe țări
 - Termen „Gata până la” — alege în mod implicit cel mai ieftin interval care se încheie la timp
-- Mai devreme sau mai ieftin — când cel mai ieftin interval nu îți convine, treci la unul mai devreme și vezi exact cu cât costă mai mult
-- Putere nominală — setează puterea unui aparat în kW pentru o estimare a costurilor care reflectă consumul real
-- Salvează aparatele cu nume, pictograme și durate personalizate pentru acces rapid
-- Sortează și rearanjează aparatele — trage-le în ordinea dorită sau sortează după cele mai folosite, folosite recent, nume, durată sau tip, și alege unde stau vehiculele tale
-- Partajează-ți configurația — copiază aparatele și setările de încărcare pe alt telefon din casă, scanând un cod QR sau trimițând un link; funcționează offline, fără cont
+- Mai devreme sau mai ieftin — când cel mai ieftin interval nu vă convine, treceți la unul mai devreme și vedeți exact cu cât costă mai mult
+- Putere nominală — setați puterea unui aparat în kW pentru o estimare a costurilor care reflectă consumul real
+- Salvați aparatele cu nume, pictograme și durate personalizate pentru acces rapid
+- Sortați și rearanjați aparatele — trageți-le în ordinea dorită sau sortați după cele mai folosite, folosite recent, nume, durată sau tip, și alegeți unde stau vehiculele dvs.
+- Partajați-vă configurația — copiați aparatele și setările de încărcare pe alt telefon din casă, scanând un cod QR sau trimițând un link; funcționează offline, fără cont
 - Aplicație Wear OS pentru Pixel Watch și alte dispozitive Wear OS 3+
 - Disponibilă în 25 de limbi europene
 - Fără conturi, fără reclame, fără urmărire de la terți — prețurile sunt stocate local; statisticile anonime opționale privind fiabilitatea pot fi activate în Setări
@@ -30,6 +30,6 @@ FUNCȚIONALITĂȚI
 Austria, Belgia, Bulgaria, Cehia, Croația, Danemarca, Elveția, Estonia, Finlanda, Franța, Germania, Grecia, Irlanda, Italia, Letonia, Lituania, Luxemburg, Macedonia de Nord, Muntenegru, Norvegia, Polonia, Portugalia, România, Serbia, Slovacia, Slovenia, Spania, Suedia, Ungaria, Țările de Jos.
 
 NOTĂ
-În mod implicit, prețurile afișate sunt prețuri de piață angro pentru ziua următoare și nu includ TVA, taxe pe energie sau adaosul furnizorului. În Țările de Jos poți activa opțional Prețul total, care adaugă taxa pe energie, adaosul furnizorului tău și TVA pentru un cost de utilizare realist. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET. Este necesar un contract cu preț dinamic al energiei electrice pentru a beneficia de diferențele de preț.
+În mod implicit, prețurile afișate sunt prețuri de piață angro pentru ziua următoare și nu includ TVA, taxe pe energie sau adaosul furnizorului. În Țările de Jos puteți activa opțional Prețul total, care adaugă taxa pe energie, adaosul furnizorului dvs. și TVA pentru un cost de utilizare realist. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET. Este necesar un contract cu preț dinamic al energiei electrice pentru a beneficia de diferențele de preț.
 
 Politica de confidențialitate: https://sweetspot.today/ro/privacy/

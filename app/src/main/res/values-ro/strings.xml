@@ -5,27 +5,27 @@
     <!-- Main screen -->
     <string name="cd_settings">Setări</string>
     <string name="cd_back">Înapoi</string>
-    <string name="main_description">SweetSpot te ajută să economisești bani găsind cel mai ieftin interval pentru a porni aparatele electrocasnice. Alege cât timp trebuie să funcționeze aparatul, iar aplicația va analiza prețurile dinamice viitoare ale electricității pentru a găsi cel mai bun interval. Poți salva și aparatele favorite în setări pentru acces rapid.</string>
-    <string name="main_find_button">Găsește cel mai ieftin interval</string>
+    <string name="main_description">SweetSpot vă ajută să economisiți bani găsind cel mai ieftin interval pentru a porni aparatele electrocasnice. Alegeți cât timp trebuie să funcționeze aparatul, iar aplicația va analiza prețurile dinamice viitoare ale electricității pentru a găsi cel mai bun interval. Puteți salva și aparatele favorite în setări pentru acces rapid.</string>
+    <string name="main_find_button">Găsiți cel mai ieftin interval</string>
     <string name="main_searching">Se caută…</string>
-    <string name="main_add_appliances">Adaugă aparatele tale</string>
-    <string name="main_card_description">Găsește cel mai ieftin interval pentru a porni aparatul</string>
+    <string name="main_add_appliances">Adăugați aparatele dvs.</string>
+    <string name="main_card_description">Găsiți cel mai ieftin interval pentru a porni aparatul</string>
 
     <!-- Result screen -->
     <string name="result_cheapest_window">Intervalul recomandat</string>
-    <string name="result_after_deadline">Acest interval se termină după ora ta „Gata până la”.</string>
+    <string name="result_after_deadline">Acest interval se termină după ora dvs. „Gata până la”.</string>
     <string name="result_start">Început</string>
     <string name="result_end">Sfârșit</string>
     <string name="result_total_cost">Cost total</string>
     <string name="result_avg_price">Preț mediu</string>
     <string name="result_per_kwh">/kWh</string>
-    <string name="result_cost_above_cheapest">%1$s peste minim</string>
+    <string name="result_cost_above_cheapest">%1$s mai mult decât intervalul recomandat</string>
     <string name="result_earlier">Mai devreme</string>
     <string name="result_cheaper">Mai ieftin</string>
-    <string name="coach_earlier_cheaper">Nu e momentul potrivit? Apasă Mai devreme pentru un start mai rapid sau Mai ieftin pentru a reveni la cel mai ieftin.</string>
-    <string name="coach_chart_press_hold">Apasă lung pe grafic pentru a vedea prețul la orice oră.</string>
-    <string name="coach_all_in_toggle">Comută între prețul total complet și doar prețul de piață.</string>
-    <string name="coach_ev_chip">Apasă pe vehicul pentru a planifica încărcarea după procentul bateriei.</string>
+    <string name="coach_earlier_cheaper">Nu e momentul potrivit? Apăsați Mai devreme pentru un start mai rapid sau Mai ieftin pentru a reveni la cel mai ieftin.</string>
+    <string name="coach_chart_press_hold">Apăsați lung pe grafic pentru a vedea prețul la orice oră.</string>
+    <string name="coach_all_in_toggle">Comutați între prețul total complet și doar prețul de piață.</string>
+    <string name="coach_ev_chip">Apăsați pe vehicul pentru a planifica încărcarea după procentul bateriei.</string>
     <string name="coach_got_it">Am înțeles</string>
     <string name="result_cost_breakdown">Detalii costuri</string>
     <string name="cd_collapse">Restrânge</string>
@@ -49,13 +49,13 @@
     <string name="settings_language">Limbă</string>
     <string name="settings_language_system_default">Implicit sistem</string>
     <string name="settings_country">Țară</string>
-    <string name="settings_select_zone">Selectează o zonă</string>
+    <string name="settings_select_zone">Selectați o zonă</string>
     <string name="settings_data_sources">Surse de date</string>
     <string name="settings_data_sources_description">Prețurile sunt preluate în această ordine. Dacă una eșuează, se încearcă următoarea.</string>
-    <string name="settings_reset_defaults">Resetează la valorile implicite</string>
+    <string name="settings_reset_defaults">Resetați la valorile implicite</string>
     <string name="settings_appliances">Aparate electrocasnice</string>
-    <string name="settings_appliances_description">Adaugă aici aparatele electrocasnice pentru acces rapid. Poți adăuga și programe specifice, de ex. Mașină de spălat vase Eco, Mașină de spălat vase Rapid, Mașină de spălat rufe Bumbac.</string>
-    <string name="settings_add_appliance">Adaugă aparat</string>
+    <string name="settings_appliances_description">Adăugați aici aparatele electrocasnice pentru acces rapid. Puteți adăuga și programe specifice, de ex. Mașină de spălat vase Eco, Mașină de spălat vase Rapid, Mașină de spălat rufe Bumbac.</string>
+    <string name="settings_add_appliance">Adăugați aparat</string>
     <string name="settings_timezone">Fus orar</string>
     <string name="settings_theme">Temă</string>
     <string name="settings_theme_system">Implicit sistem</string>
@@ -68,27 +68,27 @@
     <string name="settings_region_desc">Țară, zonă de preț și fus orar</string>
     <string name="settings_appearance_title">Aspect</string>
     <string name="settings_appearance_desc">Limbă și temă</string>
-    <string name="settings_appliances_menu_desc">Aparatele tale salvate</string>
+    <string name="settings_appliances_menu_desc">Aparatele dvs. salvate</string>
     <string name="settings_ev_menu_desc">Încărcător, nivel dorit și vehicule</string>
     <string name="settings_all_in_menu_desc">Afișează prețul total pentru consumator</string>
-    <string name="settings_share_title">Partajează configurația mea</string>
-    <string name="settings_share_menu_desc">Copiază aparatele și setările vehiculului electric pe alt dispozitiv</string>
+    <string name="settings_share_title">Partajați configurația mea</string>
+    <string name="settings_share_menu_desc">Copiați aparatele și setările vehiculului electric pe alt dispozitiv</string>
 
     <!-- Household sharing: share screen -->
-    <string name="share_setup_description">Scanează acest cod cu camera altui telefon sau trimite linkul. Aparatele tale, ordinea lor și setările vehiculului electric vor fi copiate pe acel dispozitiv.</string>
-    <string name="share_setup_button">Partajează linkul</string>
-    <string name="share_setup_chooser_title">Partajează configurația ta</string>
-    <string name="share_setup_qr_unavailable">Configurația ta este prea mare pentru un cod QR. Folosește în schimb linkul de partajare.</string>
-    <string name="cd_qr_code">Cod QR pentru configurația ta</string>
+    <string name="share_setup_description">Scanați acest cod cu camera altui telefon sau trimiteți linkul. Aparatele dvs., ordinea lor și setările vehiculului electric vor fi copiate pe acel dispozitiv.</string>
+    <string name="share_setup_button">Partajați linkul</string>
+    <string name="share_setup_chooser_title">Partajați configurația dvs.</string>
+    <string name="share_setup_qr_unavailable">Configurația dvs. este prea mare pentru un cod QR. Folosiți în schimb linkul de partajare.</string>
+    <string name="cd_qr_code">Cod QR pentru configurația dvs.</string>
 
     <!-- Household sharing: import preview -->
-    <string name="import_title">Importă configurația</string>
-    <string name="import_mode_add">Adaugă la ale mele</string>
-    <string name="import_mode_add_desc">Păstrează aparatele mele și adaugă-le pe cele noi</string>
-    <string name="import_mode_replace">Înlocuiește-le pe ale mele</string>
-    <string name="import_mode_replace_desc">Folosește aparatele, ordinea și setările vehiculului electric partajate</string>
-    <string name="import_mode_pick">Alege care</string>
-    <string name="import_mode_pick_desc">Alege aparatele de adăugat</string>
+    <string name="import_title">Importați configurația</string>
+    <string name="import_mode_add">Adăugați la ale mele</string>
+    <string name="import_mode_add_desc">Păstrați aparatele mele și adăugați-le pe cele noi</string>
+    <string name="import_mode_replace">Înlocuiți-le pe ale mele</string>
+    <string name="import_mode_replace_desc">Folosiți aparatele, ordinea și setările vehiculului electric partajate</string>
+    <string name="import_mode_pick">Alegeți care</string>
+    <string name="import_mode_pick_desc">Alegeți aparatele de adăugat</string>
     <plurals name="import_appliance_count">
         <item quantity="one">%d aparat</item>
         <item quantity="few">%d aparate</item>
@@ -100,31 +100,31 @@
         <item quantity="other">Include %d de vehicule</item>
     </plurals>
     <plurals name="import_button">
-        <item quantity="one">Importă %d aparat</item>
-        <item quantity="few">Importă %d aparate</item>
-        <item quantity="other">Importă %d de aparate</item>
+        <item quantity="one">Importați %d aparat</item>
+        <item quantity="few">Importați %d aparate</item>
+        <item quantity="other">Importați %d de aparate</item>
     </plurals>
 
     <!-- Household sharing: import errors -->
     <string name="import_error_title">Importul nu a reușit</string>
-    <string name="import_error_too_new">Această configurație a fost partajată dintr-o versiune mai nouă a SweetSpot. Actualizează aplicația pentru a o importa.</string>
-    <string name="import_error_malformed">Acest link nu a putut fi citit. Cere unul nou.</string>
+    <string name="import_error_too_new">Această configurație a fost partajată dintr-o versiune mai nouă a SweetSpot. Actualizați aplicația pentru a o importa.</string>
+    <string name="import_error_malformed">Acest link nu a putut fi citit. Cereți unul nou.</string>
 
     <!-- Appliance dialog -->
-    <string name="dialog_add_appliance">Adaugă aparat</string>
-    <string name="dialog_edit_appliance">Editează aparat</string>
+    <string name="dialog_add_appliance">Adăugați aparat</string>
+    <string name="dialog_edit_appliance">Editați aparat</string>
     <string name="dialog_name">Nume</string>
     <string name="dialog_name_placeholder">de ex. Mașină de spălat</string>
     <string name="dialog_icon">Pictogramă</string>
-    <string name="action_delete">Șterge</string>
-    <string name="action_save">Salvează</string>
-    <string name="action_cancel">Anulează</string>
+    <string name="action_delete">Ștergeți</string>
+    <string name="action_save">Salvați</string>
+    <string name="action_cancel">Anulați</string>
 
     <!-- Picker screens -->
     <string name="picker_timezone_title">Fus orar</string>
-    <string name="picker_timezone_search">Caută fusuri orare</string>
+    <string name="picker_timezone_search">Căutați fusuri orare</string>
     <string name="picker_country_title">Țară</string>
-    <string name="picker_country_search">Caută țări</string>
+    <string name="picker_country_search">Căutați țări</string>
     <plurals name="picker_zones_count">
         <item quantity="one">%d zonă</item>
         <item quantity="few">%d zone</item>
@@ -132,12 +132,12 @@
     </plurals>
     <string name="picker_zone_title">Zonă</string>
     <string name="picker_language_title">Limbă</string>
-    <string name="picker_language_search">Caută limbi</string>
+    <string name="picker_language_search">Căutați limbi</string>
     <string name="cd_selected">Selectat</string>
 
     <!-- Errors -->
-    <string name="error_zero_duration">Selectează o durată mai mare decât zero.</string>
-    <string name="error_no_zone">Selectează o zonă în Setări.</string>
+    <string name="error_zero_duration">Selectați o durată mai mare decât zero.</string>
+    <string name="error_no_zone">Selectați o zonă în Setări.</string>
     <string name="error_no_data">Nu sunt disponibile date de preț pentru următoarele 24 de ore.</string>
     <string name="error_network">Nu s-au putut prelua prețurile: %s</string>
     <plurals name="error_not_enough_data">
@@ -146,15 +146,15 @@
         <item quantity="other">Date de preț insuficiente pentru %1$s. Doar %2$d de ore de date disponibile.</item>
     </plurals>
     <plurals name="error_cooldown">
-        <item quantity="one">Prețurile au fost obținute recent. Încearcă din nou în %d minut.</item>
-        <item quantity="few">Prețurile au fost obținute recent. Încearcă din nou în %d minute.</item>
-        <item quantity="other">Prețurile au fost obținute recent. Încearcă din nou în %d de minute.</item>
+        <item quantity="one">Prețurile au fost obținute recent. Încercați din nou în %d minut.</item>
+        <item quantity="few">Prețurile au fost obținute recent. Încercați din nou în %d minute.</item>
+        <item quantity="other">Prețurile au fost obținute recent. Încercați din nou în %d de minute.</item>
     </plurals>
 
     <!-- Cache management -->
     <string name="settings_advanced">Avansat</string>
     <string name="settings_advanced_description">Surse de date, cache</string>
-    <string name="settings_clear_cache">Șterge cache-ul de prețuri</string>
+    <string name="settings_clear_cache">Ștergeți cache-ul de prețuri</string>
     <string name="settings_clear_cache_description">Prețurile vor fi încărcate din nou la următoarea căutare.</string>
     <string name="snackbar_cache_cleared">Cache-ul a fost șters</string>
     <string name="cd_refresh">Actualizează</string>
@@ -163,37 +163,37 @@
     <string name="settings_stats_title">Partajează statistici de fiabilitate</string>
     <string name="settings_stats_description">Ajută la îmbunătățirea fiabilității surselor de date partajând un număr anonim al cazurilor în care datele de preț se încarcă sau eșuează. Nu se colectează date personale.</string>
     <string name="stats_prompt_title">Ajută la îmbunătățirea SweetSpot?</string>
-    <string name="stats_prompt_message">Partajează statistici anonime pentru a ajuta la îmbunătățirea fiabilității surselor de date. Se partajează doar cât de des se încarcă sau eșuează fiecare sursă de date — fără date personale. Poți modifica această opțiune oricând din Setări.</string>
-    <string name="stats_prompt_enable">Activează</string>
+    <string name="stats_prompt_message">Partajați statistici anonime pentru a ajuta la îmbunătățirea fiabilității surselor de date. Se partajează doar cât de des se încarcă sau eșuează fiecare sursă de date — fără date personale. Puteți modifica această opțiune oricând din Setări.</string>
+    <string name="stats_prompt_enable">Activați</string>
     <string name="stats_prompt_dismiss">Nu, mulțumesc</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Pornește aparatele când energia e cea mai ieftină</string>
     <string name="onboarding_body_1">SweetSpot analizează prețurile viitoare la energie electrică și găsește cel mai ieftin interval pentru a porni un aparat.</string>
-    <string name="onboarding_title_2">Aparatele tale, la o atingere distanță</string>
-    <string name="onboarding_body_2">Salvează un aparat și atinge-l ca să vezi cel mai ieftin interval al lui. Adaugă mașina electrică pentru a planifica încărcarea în funcție de nivelul actual și cel dorit.</string>
+    <string name="onboarding_title_2">Aparatele dvs., la o atingere distanță</string>
+    <string name="onboarding_body_2">Salvați un aparat și atingeți-l ca să vedeți cel mai ieftin interval al lui. Adăugați mașina electrică pentru a planifica încărcarea în funcție de nivelul actual și cel dorit.</string>
     <string name="onboarding_title_3">Personalizează după preferințe</string>
-    <string name="onboarding_body_3">Țara ta este detectată automat. Schimbă zona, adaugă aparate sau alege-ți limba — totul în Setări.</string>
-    <string name="onboarding_skip">Omite</string>
+    <string name="onboarding_body_3">Țara dvs. este detectată automat. Schimbați zona, adăugați aparate sau alegeți-vă limba — totul în Setări.</string>
+    <string name="onboarding_skip">Omiteți</string>
     <string name="onboarding_next">Următorul</string>
-    <string name="onboarding_get_started">Începe</string>
+    <string name="onboarding_get_started">Începeți</string>
     <string name="settings_how_it_works">Cum funcționează</string>
-    <string name="settings_how_it_works_desc">Vezi din nou introducerea</string>
+    <string name="settings_how_it_works_desc">Vedeți din nou introducerea</string>
 
     <!-- Unlock -->
-    <string name="settings_unlock">Abonează-te la SweetSpot</string>
-    <string name="settings_unlock_description">Abonează-te pentru un an ca să continui să folosești SweetSpot.</string>
+    <string name="settings_unlock">Abonați-vă la SweetSpot</string>
+    <string name="settings_unlock_description">Abonați-vă pentru un an ca să continuați să folosiți SweetSpot.</string>
 
     <!-- Paywall -->
     <string name="paywall_title">Perioada de probă s-a încheiat</string>
-    <string name="paywall_description">SweetSpot găsește cel mai ieftin interval pentru a porni aparatele tale folosind prețuri dinamice ale electricității din 30 de țări europene. Abonează-te pentru a continua să folosești SweetSpot.</string>
-    <string name="paywall_unlock">Abonează-te la SweetSpot</string>
+    <string name="paywall_description">SweetSpot găsește cel mai ieftin interval pentru a porni aparatele dvs. folosind prețuri dinamice ale electricității din 30 de țări europene. Abonați-vă pentru a continua să folosiți SweetSpot.</string>
+    <string name="paywall_unlock">Abonați-vă la SweetSpot</string>
     <string name="paywall_unlock_price">Abonament pentru %s/an</string>
-    <string name="paywall_restore">Restaurează abonamentul</string>
+    <string name="paywall_restore">Restaurați abonamentul</string>
 
     <!-- Thank you -->
     <string name="thank_you_title">Mulțumim!</string>
-    <string name="thank_you_message">Abonamentul tău este acum activ. Bucură-te de găsirea celui mai ieftin interval pentru aparatele tale!</string>
+    <string name="thank_you_message">Abonamentul dvs. este acum activ. Bucurați-vă de găsirea celui mai ieftin interval pentru aparatele dvs.!</string>
 
     <plurals name="trial_days_remaining">
         <item quantity="one">Perioadă de probă: %d zi rămasă</item>
@@ -203,14 +203,14 @@
 
     <!-- EV charging -->
     <string name="settings_ev_title">Încărcare mașină electrică</string>
-    <string name="ev_add_vehicle">Adaugă un vehicul</string>
+    <string name="ev_add_vehicle">Adăugați un vehicul</string>
     <string name="ev_search_hint">Caută marca sau modelul</string>
-    <string name="ev_custom_hint">Nu apare în listă? Introdu detaliile mai jos pentru a adăuga un vehicul personalizat.</string>
+    <string name="ev_custom_hint">Nu apare în listă? Introduceți detaliile mai jos pentru a adăuga un vehicul personalizat.</string>
     <string name="ev_vehicle_specs">Baterie de %1$s kWh · %2$s kW AC max.</string>
     <string name="ev_battery_label">Capacitatea bateriei</string>
     <string name="ev_power_label">Putere maximă de încărcare AC</string>
     <string name="ev_home_charger">Stație de încărcare la domiciliu</string>
-    <string name="ev_home_charger_description">Puterea stației sau a încărcătorului tău de perete. Încărcarea folosește valoarea mai mică dintre aceasta și maximul mașinii.</string>
+    <string name="ev_home_charger_description">Puterea stației sau a încărcătorului dvs. de perete. Încărcarea folosește valoarea mai mică dintre aceasta și maximul mașinii.</string>
     <string name="ev_charger_custom">Personalizat</string>
     <string name="ev_default_target">Nivel de încărcare implicit: %d%%</string>
     <string name="ev_current_soc">Nivel actual: %d%%</string>
@@ -218,12 +218,12 @@
     <string name="ev_deadline_toggle">Gata până la</string>
     <string name="ev_deadline_hint">Gata până la %s</string>
     <string name="ev_charging_estimate">Timp de încărcare: %1$s la %2$s kW</string>
-    <string name="dialog_add_vehicle">Adaugă vehicul</string>
-    <string name="dialog_edit_vehicle">Editează vehicul</string>
+    <string name="dialog_add_vehicle">Adăugați vehicul</string>
+    <string name="dialog_edit_vehicle">Editați vehicul</string>
     <string name="ev_attribution">Date despre vehicule: Open EV Data</string>
     <string name="ev_error_invalid_soc">Nivelul dorit trebuie să fie mai mare decât nivelul actual.</string>
-    <string name="ev_error_invalid_charger">Setează o putere a încărcătorului mai mare decât zero.</string>
-    <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încearcă un nivel dorit mai mic sau o oră mai târzie.</string>
+    <string name="ev_error_invalid_charger">Setați o putere a încărcătorului mai mare decât zero.</string>
+    <string name="ev_error_deadline_unreachable">Încărcarea nu se poate finaliza până la termenul stabilit. Încercați un nivel dorit mai mic sau o oră mai târzie.</string>
     <string name="result_disclaimer_power">Costurile sunt calculate pentru o sarcină de %s kW. Prețurile nu includ TVA, taxa pe energie și adaosul furnizorului. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="dialog_power">Putere (kW, opțional)</string>
 
@@ -232,13 +232,13 @@
     <string name="settings_all_in_toggle">Afișează prețul total</string>
     <string name="settings_all_in_desc">Afișează prețul total estimat pentru consumator (preț de piață + taxa pe energie + adaosul furnizorului + TVA) în loc de doar prețul de piață.</string>
     <string name="all_in_supplier">Furnizor</string>
-    <string name="all_in_supplier_prompt">Selectează furnizorul tău</string>
+    <string name="all_in_supplier_prompt">Selectați furnizorul dvs.</string>
     <string name="all_in_supplier_custom">Adaos personalizat</string>
-    <string name="all_in_no_supplier">Nu s-a găsit niciun furnizor. Introdu în schimb un adaos personalizat mai jos.</string>
+    <string name="all_in_no_supplier">Nu s-a găsit niciun furnizor. Introduceți în schimb un adaos personalizat mai jos.</string>
     <string name="all_in_surcharge_custom">Adaos personalizat (fără TVA)</string>
-    <string name="all_in_incomplete">Alege un furnizor sau introdu un adaos — ori dezactivează prețul total.</string>
+    <string name="all_in_incomplete">Alegeți un furnizor sau introduceți un adaos — ori dezactivați prețul total.</string>
     <string name="picker_supplier_title">Furnizor</string>
-    <string name="picker_supplier_search">Caută furnizori</string>
+    <string name="picker_supplier_search">Căutați furnizori</string>
     <string name="result_disclaimer_all_in">Costurile sunt calculate pentru o sarcină de 1 kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="result_disclaimer_power_all_in">Costurile sunt calculate pentru o sarcină de %s kW, la prețul total estimat (preț de piață + taxa pe energie + adaosul furnizorului + TVA). Nu includ tarifele de rețea și costurile fixe lunare. Prețurile de mâine sunt de obicei disponibile după ora 13:00 CET.</string>
     <string name="result_all_in_supplier">\nFurnizor: %s</string>
@@ -261,25 +261,25 @@
     <string name="sort_key_type">Tip</string>
     <string name="sort_direction_ascending">Crescător</string>
     <string name="sort_direction_descending">Descrescător</string>
-    <string name="sort_add_tiebreaker">Adaugă criteriu suplimentar</string>
-    <string name="cd_sort_remove_level">Elimină acest nivel de sortare</string>
+    <string name="sort_add_tiebreaker">Adăugați criteriu suplimentar</string>
+    <string name="cd_sort_remove_level">Eliminați acest nivel de sortare</string>
     <string name="settings_group_title">Grupează după tip</string>
     <string name="settings_group_description">Grupează butoanele de pe ecranul principal după tipul aparatului, fiecare sub propriul titlu.</string>
     <string name="group_off">Dezactivat</string>
     <string name="group_rows">Rânduri</string>
     <string name="group_columns">Coloane</string>
-    <string name="cd_drag_handle">Trage pentru reordonare</string>
+    <string name="cd_drag_handle">Trageți pentru reordonare</string>
     <string name="usage_count_format">Folosit %d×</string>
     <string name="usage_never">Niciodată folosit</string>
-    <string name="settings_reset_usage">Resetează datele de utilizare</string>
+    <string name="settings_reset_usage">Resetați datele de utilizare</string>
     <string name="settings_reset_usage_description">Șterge istoricul de atingeri folosit pentru sortarea după Cele mai folosite și Folosite recent.</string>
-    <string name="reset_usage_confirm_title">Resetezi datele de utilizare?</string>
+    <string name="reset_usage_confirm_title">Resetați datele de utilizare?</string>
     <string name="reset_usage_confirm_message">Aceasta șterge istoricul de atingeri folosit pentru a sorta aparatele după Cele mai folosite și Folosite recent. Nu poate fi anulată.</string>
-    <string name="action_reset">Resetează</string>
+    <string name="action_reset">Resetați</string>
 
     <!-- EV placement -->
     <string name="ev_placement_title">Poziționare pe ecranul principal</string>
-    <string name="ev_placement_description">Unde apar vehiculele tale printre butoanele aparatelor.</string>
+    <string name="ev_placement_description">Unde apar vehiculele dvs. printre butoanele aparatelor.</string>
     <string name="ev_position_interleaved">Amestecate</string>
     <string name="ev_position_first">Primele</string>
     <string name="ev_position_last">Ultimele</string>
@@ -295,69 +295,69 @@
     <string name="help_section_about">Despre</string>
     <string name="help_quick_guide_title">Ghid rapid</string>
     <string name="help_quick_guide_desc">Cum se folosește SweetSpot</string>
-    <string name="help_reset_tips_title">Resetează sfaturile</string>
-    <string name="help_reset_tips_desc">Afișează din nou sfaturile unice</string>
+    <string name="help_reset_tips_title">Resetați sfaturile</string>
+    <string name="help_reset_tips_desc">Afișați din nou sfaturile unice</string>
     <string name="help_faq_title">FAQ</string>
     <string name="help_faq_desc">Întrebări frecvente</string>
-    <string name="help_report_title">Raportează o problemă</string>
+    <string name="help_report_title">Raportați o problemă</string>
     <string name="help_report_desc">Ceva nu funcționează</string>
-    <string name="help_feedback_title">Trimite feedback</string>
+    <string name="help_feedback_title">Trimiteți feedback</string>
     <string name="help_feedback_desc">Idei și sugestii</string>
     <string name="help_my_reports_title">Rapoartele mele</string>
-    <string name="help_my_reports_desc">Urmărește ce ai trimis</string>
-    <string name="help_contact_title">Contactează-ne</string>
-    <string name="help_contact_desc">Scrie-ne direct pe e-mail</string>
-    <string name="help_rate_title">Evaluează SweetSpot</string>
-    <string name="help_rate_desc">Evaluează-ne pe Google Play</string>
+    <string name="help_my_reports_desc">Urmăriți ce ați trimis</string>
+    <string name="help_contact_title">Contactați-ne</string>
+    <string name="help_contact_desc">Scrieți-ne direct pe e-mail</string>
+    <string name="help_rate_title">Evaluați SweetSpot</string>
+    <string name="help_rate_desc">Evaluați-ne pe Google Play</string>
     <string name="help_whats_new_title">Noutăți</string>
     <string name="help_whats_new_desc">Ultimele modificări</string>
     <string name="help_privacy_title">Politica de confidențialitate</string>
-    <string name="help_privacy_desc">Cum sunt gestionate datele tale</string>
+    <string name="help_privacy_desc">Cum sunt gestionate datele dvs.</string>
     <string name="help_about_license">GPL v3 · Open source pe GitHub</string>
     <string name="tips_reset_snackbar">Sfaturile au fost resetate</string>
 
     <!-- Report / feedback form -->
-    <string name="report_public_notice">Raportul tău este publicat ca problemă publică pe GitHub — te rugăm să nu incluzi date personale.</string>
+    <string name="report_public_notice">Raportul dvs. este publicat ca problemă publică pe GitHub — vă rugăm să nu includeți date personale.</string>
     <string name="report_subject_label">Subiect</string>
     <string name="report_body_label_bug">Ce s-a întâmplat?</string>
-    <string name="report_body_label_feedback">Feedbackul tău</string>
-    <string name="report_email_label">Anunță-mă prin e-mail (opțional)</string>
-    <string name="report_email_note">E-mailul tău este folosit doar pentru a te anunța — nu este afișat niciodată în problema publică.</string>
-    <string name="report_submit">Trimite</string>
+    <string name="report_body_label_feedback">Feedbackul dvs.</string>
+    <string name="report_email_label">Anunțați-mă prin e-mail (opțional)</string>
+    <string name="report_email_note">E-mailul dvs. este folosit doar pentru a vă anunța — nu este afișat niciodată în problema publică.</string>
+    <string name="report_submit">Trimiteți</string>
     <string name="report_submitting">Se trimite…</string>
     <string name="report_filed">Raportul #%1$d a fost înregistrat — mulțumim!</string>
-    <string name="report_sent">Mulțumim — raportul tău a fost trimis.</string>
+    <string name="report_sent">Mulțumim — raportul dvs. a fost trimis.</string>
     <string name="report_error_retry">Nu s-a putut trimite acum — a fost salvat, vom reîncerca automat.</string>
-    <string name="report_error_permanent">Nu s-a putut trimite. Verifică datele introduse și încearcă din nou.</string>
-    <string name="report_retry">Reîncearcă</string>
+    <string name="report_error_permanent">Nu s-a putut trimite. Verificați datele introduse și încercați din nou.</string>
+    <string name="report_retry">Reîncercați</string>
     <string name="report_done">Gata</string>
 
     <!-- My reports -->
-    <string name="my_reports_empty">Nu ai trimis încă niciun raport.</string>
+    <string name="my_reports_empty">Nu ați trimis încă niciun raport.</string>
     <string name="my_reports_open">Deschis</string>
     <string name="my_reports_closed">Închis</string>
 
     <!-- Quick guide -->
     <string name="guide_find_title">Găsește cel mai ieftin interval</string>
-    <string name="guide_find_body">Alege cât timp trebuie să funcționeze aparatul, apoi apasă Găsește.</string>
+    <string name="guide_find_body">Alegeți cât timp trebuie să funcționeze aparatul, apoi apăsați Găsiți.</string>
     <string name="guide_appliances_title">Salvează-ți aparatele</string>
-    <string name="guide_appliances_body">Adaugă aparate în Setări pentru căutări cu o singură atingere.</string>
+    <string name="guide_appliances_body">Adăugați aparate în Setări pentru căutări cu o singură atingere.</string>
     <string name="guide_ev_title">Planifică încărcarea mașinii electrice</string>
-    <string name="guide_ev_body">Adaugă mașina, introdu nivelul actual și cel dorit, iar SweetSpot calculează timpul de încărcare.</string>
+    <string name="guide_ev_body">Adăugați mașina, introduceți nivelul actual și cel dorit, iar SweetSpot calculează timpul de încărcare.</string>
     <string name="guide_result_title">Citește rezultatul</string>
-    <string name="guide_result_body">Folosește Mai devreme și Mai ieftin pentru a schimba intervalul recomandat și apasă lung pe grafic pentru prețul oricărui interval.</string>
+    <string name="guide_result_body">Folosiți Mai devreme și Mai ieftin pentru a schimba intervalul recomandat și apăsați lung pe grafic pentru prețul oricărui interval.</string>
     <string name="guide_allin_title">Preț total</string>
-    <string name="guide_allin_body">Poți afișa prețul total pentru consumator în loc de doar prețul de piață.</string>
-    <string name="guide_wear_title">Pe ceasul tău</string>
-    <string name="guide_wear_body">Aparatele tale se sincronizează cu Wear OS, ca să poți verifica prețurile fără telefon.</string>
+    <string name="guide_allin_body">Puteți afișa prețul total pentru consumator în loc de doar prețul de piață.</string>
+    <string name="guide_wear_title">Pe ceasul dvs.</string>
+    <string name="guide_wear_body">Aparatele dvs. se sincronizează cu Wear OS, ca să puteți verifica prețurile fără telefon.</string>
     <!-- Report conversation (in-app thread) -->
-    <string name="thread_you">Tu</string>
+    <string name="thread_you">Dumneavoastră</string>
     <string name="thread_support">Asistență SweetSpot</string>
     <string name="thread_open_github">Deschide pe GitHub</string>
-    <string name="thread_load_error">Conversația nu a putut fi încărcată. Verifică conexiunea și încearcă din nou.</string>
-    <string name="reply_hint">Răspunsul tău</string>
-    <string name="reply_send">Trimite</string>
-    <string name="reply_public_note">Răspunsul tău este publicat public pe GitHub.</string>
-    <string name="reply_error">Nu s-a putut trimite răspunsul. Încearcă din nou.</string>
-    <string name="reply_queued">Salvat — vom trimite răspunsul tău când revii online.</string>
+    <string name="thread_load_error">Conversația nu a putut fi încărcată. Verificați conexiunea și încercați din nou.</string>
+    <string name="reply_hint">Răspunsul dvs.</string>
+    <string name="reply_send">Trimiteți</string>
+    <string name="reply_public_note">Răspunsul dvs. este publicat public pe GitHub.</string>
+    <string name="reply_error">Nu s-a putut trimite răspunsul. Încercați din nou.</string>
+    <string name="reply_queued">Salvat — vom trimite răspunsul dvs. când reveniți online.</string>
 </resources>

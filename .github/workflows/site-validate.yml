@@ -18,6 +18,6 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - run: ./bin/site/install-hugo.sh
       - run: ./bin/site/site-validate.sh

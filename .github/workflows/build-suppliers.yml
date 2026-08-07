@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # Push with a PAT so the commit triggers the Deploy Site workflow — a push made with the
           # default GITHUB_TOKEN does not fire other workflows, so the feed would never reach the CDN.

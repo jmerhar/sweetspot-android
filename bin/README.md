@@ -37,7 +37,7 @@ ssh). Most scripts assume the repo root as the working directory — invoke them
 - `check-listing-lengths.sh` — CI guardrail: fail if any locale's title/short/full description exceeds the Play Store limit.
 
 ## `quality/` — tests & coverage
-- `coverage-report.py` — per-module Kover summary and the CI coverage gate.
-- `collect-coverage.sh` — assemble the Kover HTML reports for the coverage site.
-- `test_coverage_report.py` — tests for the coverage-gate script.
 - `inspect.sh` — summarise Android Studio inspection XML exports.
+
+The coverage summary, gate and publishing are shared tooling from `jmerhar/coverage`, driven by
+`coverage.toml` in the repo root — see the coverage section of `CLAUDE.md`.

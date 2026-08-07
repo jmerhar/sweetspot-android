@@ -21,8 +21,8 @@ kover {
                 )
             }
         }
-        // NB: the CI coverage gate is `bin/quality/coverage-report.py --gate` (reads this filtered XML
-        // report), not `koverVerifyDebug` — see the script's docstring and app/build.gradle.kts.
+        // NB: the CI coverage gate reads this filtered XML report (see coverage.toml), not
+        // `koverVerifyDebug` — see app/build.gradle.kts.
     }
 }
 

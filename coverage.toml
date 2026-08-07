@@ -1,0 +1,38 @@
+# Coverage configuration for the shared tooling in jmerhar/coverage, which renders the CI summary
+# table, enforces the gates, and publishes the HTML reports to https://jmerhar.github.io/coverage/.
+#
+# One suite per Gradle module. Reports come from the Kover XML rather than `koverVerifyDebug`, whose
+# verification task does not reliably apply wildcard `classes(...)` excludes (e.g. today.sweetspot.ui.*)
+# — behaviour that also differs by JDK — whereas the XML reports apply them correctly and consistently.
+#
+# The Debug variant matches the unit tests; the "all code" variant would also pull in release and
+# skew the numbers. Produce the reports with:
+#   ./gradlew testDebugUnitTest koverHtmlReportDebug koverXmlReportDebug
+
+heading = "Coverage (debug unit tests)"
+column = "Module"
+
+# Each module's gate sits ~2 points under its actual line coverage — tight enough to catch a real
+# regression while tolerating the defensive, DI and edge lines that survive the presentation
+# exclusions. Raise them as coverage climbs; never lower one to make a red build pass.
+
+[suites.shared]
+label = "shared"
+format = "kover"
+report = "shared/build/reports/kover/reportDebug.xml"
+html = "shared/build/reports/kover/htmlDebug"
+gate = 98.0
+
+[suites.app]
+label = "app"
+format = "kover"
+report = "app/build/reports/kover/reportDebug.xml"
+html = "app/build/reports/kover/htmlDebug"
+gate = 97.0
+
+[suites.wear]
+label = "wear"
+format = "kover"
+report = "wear/build/reports/kover/reportDebug.xml"
+html = "wear/build/reports/kover/htmlDebug"
+gate = 93.0

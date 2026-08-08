@@ -41,46 +41,17 @@ jobs:
       # The modules, their labels and their gates are declared in coverage.toml; the tooling behind
       # these steps is shared by every project that publishes to the coverage site.
       - uses: jmerhar/coverage/.github/actions/summary@v1
-      # Upload each module's XML to Codecov under its own flag, so coverage is browsable per
-      # module in the web UI. fail_ci_if_error stays false so a Codecov hiccup never fails the build.
-      - uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: shared/build/reports/kover/reportDebug.xml
-          flags: shared
-          name: shared
-          disable_search: true
-          fail_ci_if_error: false
-      - uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: app/build/reports/kover/reportDebug.xml
-          flags: app
-          name: app
-          disable_search: true
-          fail_ci_if_error: false
-      - uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: wear/build/reports/kover/reportDebug.xml
-          flags: wear
-          name: wear
-          disable_search: true
-          fail_ci_if_error: false
-      # Codecov Test Analytics — flaky-test detection, failure history, and slowest tests.
-      # Uses the unified codecov-action with report_type: test_results (the standalone
-      # test-results-action is deprecated). `if: !cancelled()` so results upload even when the
-      # test step failed (the point is to capture failures). Gradle writes JUnit XML as TEST-*.xml,
-      # so the paths are given explicitly rather than relying on the default `*junit.xml` search.
-      - name: Upload test results to Codecov
+      # Codecov is informational (see codecov.yml) — the gate below is the actual check — so this never
+      # fails the build, and runs before the gate so the data lands even when the gate fails. Each
+      # module's XML is derived from coverage.toml and uploaded under its own flag, so coverage stays
+      # browsable per module. The JUnit reports Gradle writes give Codecov flake detection, failure
+      # history and slowest tests; `!cancelled()` so a failed suite still reports its failures.
+      - uses: jmerhar/coverage/.github/actions/codecov@v1
         if: ${{ !cancelled() }}
-        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          report_type: test_results
-          files: shared/build/test-results/testDebugUnitTest/*.xml,app/build/test-results/testDebugUnitTest/*.xml,wear/build/test-results/testDebugUnitTest/*.xml
-          disable_search: true
-          fail_ci_if_error: false
+          junit: shared/build/test-results/testDebugUnitTest/*.xml,app/build/test-results/testDebugUnitTest/*.xml,wear/build/test-results/testDebugUnitTest/*.xml
+
       # Coverage gates: fail the build if any module's line coverage regresses below the bound in
       # coverage.toml. Runs after the uploads above so coverage and test-analytics data still lands
       # when the gate fails, and before publishing so a regression never reaches the site.

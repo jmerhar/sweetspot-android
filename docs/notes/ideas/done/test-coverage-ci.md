@@ -2,10 +2,10 @@
 
 ## Status: Implemented (Kover, per-module HTML artifacts)
 
-> **This note records the original design.** The summarising, gating and publishing described below
-> are no longer local scripts: that logic is shared by every project on the coverage site and lives in
-> `jmerhar/coverage`, invoked from `test.yml` as composite actions and configured by `coverage.toml` in
-> this repo's root. The Kover setup, the exclusions and the reasoning behind them are unchanged.
+> **Scope:** the Kover setup, the exclusions and the reasoning for them below describe this repo. The
+> summarising, gating and publishing are not implemented here — that logic is shared by every project
+> on the coverage site, lives in `jmerhar/coverage`, is invoked from `test.yml` as composite actions,
+> and is configured by `coverage.toml` in this repo's root.
 
 Code coverage is reported in CI via **Kover** (`org.jetbrains.kotlinx.kover` 0.9.8), applied to each module so every module gets its **own** report. Verified working on AGP 9.0.1 / Kotlin 2.3.20.
 

@@ -29,30 +29,52 @@ assert_code() {
         ((PASS++)) || true
     else
         echo -e "  ${RED}FAIL${RESET}  $name — expected HTTP $expected, got $actual"
-        [ -n "$LAST_BODY" ] && echo "        body: $LAST_BODY"
-        local server
-        server=$(echo "$LAST_HEADERS" | grep -i '^server:' | tr -d '\r')
+        local body server
+        # `|| true` on both: under `set -e` with `pipefail`, a grep that matches
+        # nothing would otherwise abort the whole run from inside the branch that
+        # reports a failure, hiding every later test.
+        body=$(last_body)
+        [ -n "$body" ] && echo "        body: $body"
+        server=$(grep -i '^server:' "$HDR_FILE" 2>/dev/null | tr -d '\r' || true)
         [ -n "$server" ] && echo "        $server"
         ((FAIL++)) || true
     fi
 }
 
-LAST_BODY=""
-LAST_HEADERS=""
+assert_contains() {
+    local name="$1" needle="$2" haystack="$3"
+    if [[ "$haystack" == *"$needle"* ]]; then
+        echo -e "  ${GREEN}PASS${RESET}  $name"
+        ((PASS++)) || true
+    else
+        echo -e "  ${RED}FAIL${RESET}  $name — expected body to contain '$needle'"
+        echo "        body: $haystack"
+        ((FAIL++)) || true
+    fi
+}
+
+# The request helpers below are called as `CODE=$(post ...)`, which runs them in a
+# subshell — so they record the response to these files rather than to variables,
+# which would be discarded along with the subshell.
+BODY_FILE=$(mktemp)
+HDR_FILE=$(mktemp)
+trap 'rm -f "$BODY_FILE" "$HDR_FILE"' EXIT
+
+last_body() { cat "$BODY_FILE" 2>/dev/null || true; }
+
+# Marks every request from this suite as synthetic, so the rejections it provokes
+# on purpose are tagged as such in the endpoint_reject measurement and excluded
+# from the rejection alert. Without it, a single test run looks like the endpoint
+# turning away a dozen real reports.
+SYNTHETIC_HEADER="X-SweetSpot-Synthetic: 1"
 
 post() {
-    local ua="${2:-SweetSpot/4.0}"
-    local tmpfile hdrfile code
-    tmpfile=$(mktemp)
-    hdrfile=$(mktemp)
-    code=$(curl -s -o "$tmpfile" -D "$hdrfile" -w '%{http_code}' -X POST "$URL" \
+    local ua="${2:-SweetSpot/0.0.0}"
+    curl -s -o "$BODY_FILE" -D "$HDR_FILE" -w '%{http_code}' -X POST "$URL" \
         -H "Content-Type: application/json" \
         -H "User-Agent: $ua" \
-        -d "$1")
-    LAST_BODY=$(cat "$tmpfile")
-    LAST_HEADERS=$(cat "$hdrfile")
-    rm -f "$tmpfile" "$hdrfile"
-    echo "$code"
+        -H "$SYNTHETIC_HEADER" \
+        -d "$1"
 }
 
 echo "Testing $URL"
@@ -97,12 +119,61 @@ assert_code "multiple groups with success and failure records" 200 "$CODE"
 
 echo
 
+# --- Health probe ---
+#
+# The route an uptime monitor polls. It must answer with an ordinary GET, with a
+# monitor's own User-Agent, and — because it is polled far more often than once
+# per rate-limit window — without being rate-limited.
+
+echo "Health probe:"
+
+HEALTH_URL="${URL%/report}/health"
+KUMA_UA="Uptime-Kuma/1.23"
+
+health_get() {
+    curl -s -o "$BODY_FILE" -D "$HDR_FILE" -w '%{http_code}' -X GET "$HEALTH_URL" \
+        -H "User-Agent: $KUMA_UA"
+}
+
+CODE=$(health_get)
+assert_code "health probe returns 200" 200 "$CODE"
+assert_contains "health probe reports ok" '"ok":true' "$(last_body)"
+
+CODE=$(health_get)
+assert_code "health probe is not rate-limited" 200 "$CODE"
+
+echo
+
+# --- Rejection probe ---
+#
+# The second monitored route. Reports whether the endpoint has been turning
+# requests away; must also answer a plain GET and be exempt from rate limiting.
+
+echo "Rejection probe:"
+
+REJECTS_URL="${URL%/report}/rejects"
+
+rejects_get() {
+    curl -s -o "$BODY_FILE" -D "$HDR_FILE" -w '%{http_code}' -X GET "$REJECTS_URL" \
+        -H "User-Agent: $KUMA_UA"
+}
+
+CODE=$(rejects_get)
+assert_code "rejection probe returns 200" 200 "$CODE"
+assert_contains "rejection probe reports a count" '"rejects":' "$(last_body)"
+assert_contains "rejection probe links to the details" 'grafana' "$(last_body)"
+
+CODE=$(rejects_get)
+assert_code "rejection probe is not rate-limited" 200 "$CODE"
+
+echo
+
 # --- Rejected payloads ---
 
 echo "Rejected payloads:"
 
 CODE=$(curl -s -o /dev/null -w '%{http_code}' -X GET "$URL" \
-    -H "User-Agent: SweetSpot/4.0")
+    -H "User-Agent: SweetSpot/0.0.0" -H "$SYNTHETIC_HEADER")
 assert_code "GET method rejected" 405 "$CODE"
 
 CODE=$(post '{"v":1,"app":"4.0","records":[]}' "Mozilla/5.0")

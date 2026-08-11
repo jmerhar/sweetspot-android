@@ -1131,6 +1131,69 @@
           "version": "13.1.0"
         }
       }
+    },
+    "panel-12": {
+      "kind": "Panel",
+      "spec": {
+        "data": {
+          "kind": "QueryGroup",
+          "spec": {
+            "queries": [
+              {
+                "kind": "PanelQuery",
+                "spec": {
+                  "hidden": false,
+                  "query": {
+                    "datasource": {
+                      "name": "sweetspot"
+                    },
+                    "group": "grafana-influxdb3-flightsql",
+                    "kind": "DataQuery",
+                    "spec": {
+                      "format": "table",
+                      "rawSql": "SELECT time, code, reason FROM endpoint_reject WHERE synthetic = 'false' AND code != '429' AND time >= $__timeFrom AND time <= $__timeTo ORDER BY time DESC"
+                    },
+                    "version": "v0"
+                  },
+                  "refId": "A"
+                }
+              }
+            ],
+            "queryOptions": {},
+            "transformations": []
+          }
+        },
+        "description": "Requests the endpoint turned away. Excludes synthetic='true' (smoke-test traffic) and code 429 (rate limiting is expected), so this matches exactly what the Kuma rejection monitor alerts on.",
+        "id": 12,
+        "links": [],
+        "title": "Endpoint rejections",
+        "vizConfig": {
+          "group": "table",
+          "kind": "VizConfig",
+          "spec": {
+            "fieldConfig": {
+              "defaults": {
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "footer": {
+                    "reducers": []
+                  },
+                  "inspect": false
+                }
+              },
+              "overrides": []
+            },
+            "options": {
+              "cellHeight": "sm",
+              "showHeader": true
+            }
+          },
+          "version": "13.1.0"
+        }
+      }
     }
   },
   "layout": {
@@ -1278,6 +1341,19 @@
             "width": 12,
             "x": 12,
             "y": 32
+          }
+        },
+        {
+          "kind": "GridLayoutItem",
+          "spec": {
+            "element": {
+              "kind": "ElementReference",
+              "name": "panel-12"
+            },
+            "height": 8,
+            "width": 24,
+            "x": 0,
+            "y": 40
           }
         }
       ]

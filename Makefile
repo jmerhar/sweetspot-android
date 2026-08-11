@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test test-suppliers test-ev-db test-scripts test-feedback check-listing inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers test-ev-db test-scripts test-feedback check-listing inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-stats-check deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -68,8 +68,11 @@ release: ## Bump version, build, tag, push, and create GitHub Release
 deploy: ## Deploy AABs with release notes to Play Store (TRACK=alpha|production APP=phone|wear|both)
 	TRACK=$(or $(TRACK),alpha) APP=$(or $(APP),both) ./bin/deploy/deploy.sh
 
-deploy-stats: ## Deploy stats.php to the stats server
+deploy-stats: ## Deploy stats.php and the Apache vhost to the stats server
 	./bin/deploy/deploy-stats.sh
+
+deploy-stats-check: ## Report drift between the repo and the live stats server, changing nothing
+	./bin/deploy/deploy-stats.sh --check
 
 deploy-feedback: ## Deploy the feedback Worker to Cloudflare (feedback.sweetspot.today)
 	./bin/deploy/deploy-feedback.sh

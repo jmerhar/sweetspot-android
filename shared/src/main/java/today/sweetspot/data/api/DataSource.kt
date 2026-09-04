@@ -25,7 +25,7 @@ object DataSources {
     /** Spot-Hinta.fi API — fallback for 15 Nordic/Baltic zones. */
     val SPOT_HINTA = DataSource("spothinta", "Spot-Hinta.fi")
 
-    /** Energy-Charts API — fallback for 15 European zones (CC BY 4.0). */
+    /** Energy-Charts API — fallback for 30 European zones (CC BY 4.0). */
     val ENERGY_CHARTS = DataSource("energycharts", "Energy-Charts")
 
     /** aWATTar API — fallback for AT and DE-LU zones. */
@@ -47,7 +47,7 @@ object DataSources {
      *
      * List order defines the default fallback priority: ENTSO-E first (covers all
      * zones), then higher-resolution fallbacks (Spot-Hinta for Nordic/Baltic,
-     * Energy-Charts for 15 European zones), then hourly sources (EnergyZero for NL,
+     * Energy-Charts for 30 European zones), then hourly sources (EnergyZero for NL,
      * aWATTar for AT/DE-LU). Adding a new source is a single line — no intersection
      * logic required.
      */

@@ -29,7 +29,7 @@ internal data class EnergyChartsResponse(
 /**
  * Client for the Energy-Charts day-ahead price API.
  *
- * Covers 15 European bidding zones with 15-minute or 60-minute resolution
+ * Covers 30 European bidding zones with 15-minute or 60-minute resolution
  * (zone-dependent). Prices are returned in EUR/MWh and converted to EUR/kWh
  * during parsing. No authentication required. Licensed under CC BY 4.0.
  *
@@ -125,25 +125,46 @@ class EnergyChartsApi(
         /**
          * Maps SweetSpot zone IDs to Energy-Charts `bzn` parameter values.
          *
-         * Most zone IDs map directly; exceptions are `DE_LU` → `"DE-LU"`
-         * and `IT_NORD` → `"IT-North"`.
+         * Most zone IDs map directly. The exceptions are `DE_LU` → `"DE-LU"`
+         * and the Italian zones, which Energy-Charts spells out in full
+         * (`IT_NORD` → `"IT-North"`, `IT_CSUD` → `"IT-Centre-South"`, …).
+         *
+         * Zones absent here fall back to ENTSO-E alone, so a zone is added only
+         * once Energy-Charts has been confirmed to serve real prices for it —
+         * an unrecognised `bzn` is answered with HTTP 400, which would present
+         * as a dead fallback rather than a missing one.
          */
         val ZONE_TO_BZN: Map<String, String> = mapOf(
             "AT" to "AT",
             "BE" to "BE",
+            "BG" to "BG",
             "CH" to "CH",
             "CZ" to "CZ",
             "DE_LU" to "DE-LU",
             "DK1" to "DK1",
             "DK2" to "DK2",
+            "ES" to "ES",
             "FR" to "FR",
+            "GR" to "GR",
+            "HR" to "HR",
             "HU" to "HU",
+            "IT_CALA" to "IT-Calabria",
+            "IT_CNOR" to "IT-Centre-North",
+            "IT_CSUD" to "IT-Centre-South",
             "IT_NORD" to "IT-North",
+            "IT_SARD" to "IT-Sardinia",
+            "IT_SICI" to "IT-Sicily",
+            "IT_SUD" to "IT-South",
+            "ME" to "ME",
             "NL" to "NL",
             "NO2" to "NO2",
             "PL" to "PL",
+            "PT" to "PT",
+            "RO" to "RO",
+            "RS" to "RS",
             "SE4" to "SE4",
-            "SI" to "SI"
+            "SI" to "SI",
+            "SK" to "SK"
         )
     }
 }

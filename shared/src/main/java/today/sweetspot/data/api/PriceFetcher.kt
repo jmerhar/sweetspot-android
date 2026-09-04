@@ -11,10 +11,17 @@ import java.util.concurrent.TimeUnit
  *
  * A single client shares one connection pool and thread pool across all APIs,
  * which is more efficient than creating separate clients per API.
+ *
+ * The read timeout is generous because ENTSO-E is slow and highly variable:
+ * a successful day-ahead response for a two-day window ranges from under a
+ * second to roughly nine, so a ten-second budget turns ordinary latency into a
+ * fetch failure. [FallbackPriceFetcher] tries sources in sequence, so a long
+ * timeout also delays every source behind a hanging one — the value trades that
+ * worst case against discarding responses that were merely slow.
  */
 internal val sharedHttpClient: OkHttpClient = OkHttpClient.Builder()
     .connectTimeout(10, TimeUnit.SECONDS)
-    .readTimeout(10, TimeUnit.SECONDS)
+    .readTimeout(20, TimeUnit.SECONDS)
     .build()
 
 /**

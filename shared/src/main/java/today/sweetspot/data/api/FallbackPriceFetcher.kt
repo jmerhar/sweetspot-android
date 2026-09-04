@@ -17,7 +17,8 @@ import java.time.ZoneId
  *
  * @param fetchers Ordered list of fetchers to try. Must not be empty.
  * @param budgetMillis Total time to spend on the chain before giving up on the remaining
- *   sources. Must be positive.
+ *   sources. Must be positive: zero or less would leave every fetcher after the first
+ *   unreachable, silently turning a multi-source zone into a single-source one.
  * @param nanoTime Monotonic time source in nanoseconds (injectable for testing).
  * @throws IllegalArgumentException if [fetchers] is empty or [budgetMillis] is not positive.
  */
@@ -41,11 +42,13 @@ class FallbackPriceFetcher(
      * responded (the caller treats an empty list as "not enough data"); the last exception is
      * thrown only when every fetcher failed outright.
      *
-     * The first fetcher always runs, so the outcome is always drawn from a real attempt; the
-     * budget only decides whether to start each *subsequent* source. It is checked between
-     * fetchers rather than enforced on them, since a fetcher in progress cannot be interrupted
-     * here — one source may therefore overrun the budget, bounding the total at roughly the
-     * budget plus a single source's timeout.
+     * The budget is checked after each attempt, so it only ever decides whether to start the
+     * *next* source and the first fetcher always runs. The outcome is therefore always drawn
+     * from a real attempt, which is what lets this return a result or throw rather than finish
+     * with nothing to report. Checking after an attempt also matches what the budget can
+     * actually control: a fetcher already in progress cannot be interrupted here, so one source
+     * may overrun the budget, bounding the total at roughly the budget plus a single source's
+     * timeout.
      *
      * @param from Start of the requested period (inclusive).
      * @param to End of the requested period (exclusive).
@@ -57,8 +60,7 @@ class FallbackPriceFetcher(
         val startNanos = nanoTime()
         var lastException: Exception? = null
         var lastEmpty: FetchResult? = null
-        for ((index, fetcher) in fetchers.withIndex()) {
-            if (index > 0 && elapsedMillis(startNanos) >= budgetMillis) break
+        for (fetcher in fetchers) {
             try {
                 val result = fetcher.fetchPrices(from, to, timeZoneId)
                 if (result.prices.isNotEmpty()) return result
@@ -66,8 +68,9 @@ class FallbackPriceFetcher(
             } catch (e: Exception) {
                 lastException = e
             }
+            if (elapsedMillis(startNanos) >= budgetMillis) break
         }
-        // Safe: the first fetcher always runs, so it has either recorded an empty result or thrown.
+        // Safe: the loop body runs at least once, so it recorded an empty result or an exception.
         return lastEmpty ?: throw lastException!!
     }
 

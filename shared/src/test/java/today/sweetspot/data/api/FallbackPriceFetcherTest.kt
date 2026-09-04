@@ -187,23 +187,43 @@ class FallbackPriceFetcherTest {
         assertEquals(listOf("Third"), ran)
     }
 
+    /** A fetcher that records that it ran and then throws, for asserting an attempt happened. */
+    private fun trackingFailFetcher(message: String, ran: MutableList<String>): PriceFetcher =
+        object : PriceFetcher {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
+                ran.add(message)
+                throw RuntimeException(message)
+            }
+        }
+
     @Test
-    fun `the first source runs even when the time source reads past the budget`() {
-        // A time source whose every reading after the first is already beyond the budget.
-        // The primary is exempt from the elapsed check, so it still runs; were it not, the
-        // chain would end having made no attempt at all and have no outcome to report.
+    fun `the chain still makes one attempt when the time source reads past the budget`() {
+        // A time source whose every reading after the first is already beyond the budget, paired
+        // with a primary that fails, so the elapsed check is reached rather than short-circuited
+        // by an early return. Testing the budget only after an attempt is what keeps the primary
+        // unconditional: were the check consulted first, this chain would end having run nothing
+        // and would have neither a result nor an exception to hand back.
         var reads = 0
         val jumpingNanos = { if (reads++ == 0) 0L else 60_000L * 1_000_000 }
         val ran = mutableListOf<String>()
         val fetcher = FallbackPriceFetcher(
-            listOf(trackingFetcher("Primary", ran), trackingFetcher("Secondary", ran)),
+            listOf(trackingFailFetcher("Primary", ran), trackingFetcher("NeverReached", ran)),
             budgetMillis = 30_000,
             nanoTime = jumpingNanos
         )
-        val result = fetcher.fetchPrices(from, to, timeZone)
 
-        assertEquals("Primary", result.source)
+        var thrown: RuntimeException? = null
+        try {
+            fetcher.fetchPrices(from, to, timeZone)
+            fail("Expected the primary's exception, which requires that it actually ran")
+        } catch (e: RuntimeException) {
+            thrown = e
+        }
+
+        // Asserted before the exception itself: if the primary is ever skipped, this says so
+        // directly, where the exception would only show up as a missing message.
         assertEquals(listOf("Primary"), ran)
+        assertEquals("Primary", thrown?.message)
     }
 
     @Test

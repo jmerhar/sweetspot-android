@@ -3,6 +3,11 @@ title: "Pakeitimų žurnalas"
 description: "SweetSpot versijų istorija ir leidimų pastabos."
 ---
 
+{{< changelog version="7.1" date="2026 m. rugsėjo 4 d." >}}
+- Dar 15 zonų turi atsarginį duomenų šaltinį: Portugalija, Ispanija, Italija, Graikija, Kroatija, Slovakija, Rumunija, Bulgarija, Serbija ir Juodkalnija. Jei vienas šaltinis nepasiekiamas, SweetSpot bando kitą, todėl vis tiek pamatysite kainas.
+- Mažiau nepavykusių kainų įkėlimų — kiekvienam šaltiniui dabar skiriama daugiau laiko atsakyti, o bendras laukimas ribojamas, todėl neatsakantys šaltiniai jus užlaiko trumpiau.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="2026 m. liepos 31 d." >}}
 - „Pagalba ir palaikymas" programėlėje: praneškite apie problemą ar atsiliepimą, sekite atsakymus pokalbyje ir stebėkite savo pranešimus — be paskyros.
 - Laikas „Baigti iki" dabar yra išmanusis numatytasis pasirinkimas: pigiausias laikas, kuris dar baigiamas laiku; aplink jį rinkitės „Anksčiau" arba „Pigiau".

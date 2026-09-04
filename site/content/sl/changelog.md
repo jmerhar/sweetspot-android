@@ -3,6 +3,11 @@ title: "Zgodovina različic"
 description: "Zgodovina verzij in opombe ob izdaji SweetSpot."
 ---
 
+{{< changelog version="7.1" date="4. september 2026" >}}
+- Dodan rezervni vir podatkov še za 15 cenovnih območij: Portugalska, Španija, Italija, Grčija, Hrvaška, Slovaška, Romunija, Bolgarija, Srbija in Črna gora. Če en vir ni dosegljiv, SweetSpot poskusi z naslednjim, tako da cene še vedno dobite.
+- Manj neuspelih nalaganj cen — SweetSpot posameznemu viru pusti več časa za odziv, skupno čakanje pa je omejeno, tako da vas neodzivni viri manj zadržijo.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31. julij 2026" >}}
 - Pomoč in podpora, vgrajena v aplikacijo: prijavite težavo ali pošljite povratne informacije iz aplikacije, spremljajte odgovore v pogovoru in sledite svojim prijavam — brez računa.
 - »Pripravljeno do« je zdaj pameten privzeti izbor: najcenejši termin, ki je še pravočasno pripravljen; okrog njega se premikajte z gumboma Prej in Ceneje.

@@ -3,6 +3,11 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="7.1" date="4 september 2026" >}}
+- Een terugvalbron voor prijzen in 15 extra zones: Portugal, Spanje, Italië, Griekenland, Kroatië, Slowakije, Roemenië, Bulgarije, Servië en Montenegro. Valt de ene bron uit, dan probeert SweetSpot de volgende, zodat je toch prijzen ziet.
+- Minder mislukte prijsopvragingen — SweetSpot wacht nu langer op een langzaam antwoord, maar begrenst de totale wachttijd, zodat bronnen die helemaal niet reageren je minder ophouden.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31 juli 2026" >}}
 - Help & ondersteuning, ingebouwd: meld een probleem of stuur feedback vanuit de app, volg de reacties in een gesprek en houd je meldingen bij — geen account nodig.
 - 'Klaar om' is nu een slimme standaardkeuze: het goedkoopste moment dat toch op tijd klaar is; stap er met 'Eerder' of 'Goedkoper' omheen.

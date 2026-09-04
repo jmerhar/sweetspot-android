@@ -3,6 +3,11 @@ title: "Historie verzí"
 description: "Historie verzí a poznámky k vydáním aplikace SweetSpot."
 ---
 
+{{< changelog version="7.1" date="4. září 2026" >}}
+- V dalších 15 zónách je nyní k dispozici záložní zdroj dat: Portugalsko, Španělsko, Itálie, Řecko, Chorvatsko, Slovensko, Rumunsko, Bulharsko, Srbsko a Černá Hora. Pokud jeden zdroj není dostupný, SweetSpot zkusí další, takže ceny uvidíte i tak.
+- Méně neúspěšných načtení cen — každý zdroj má nyní na odpověď více času, takže se využije i pomalejší odpověď. Celkové čekání je přitom omezené, takže u nereagujících zdrojů strávíte méně času.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31. července 2026" >}}
 - Nápověda a podpora přímo v aplikaci: nahlaste problém nebo pošlete zpětnou vazbu, sledujte odpovědi v konverzaci a mějte přehled o svých hlášeních — bez účtu.
 - „Hotovo do“ je nyní chytrá výchozí volba: nejlevnější čas, který termín ještě stihne; kolem něj se posouvejte tlačítky „Dříve“ a „Levněji“.

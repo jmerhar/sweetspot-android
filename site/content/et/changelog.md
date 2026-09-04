@@ -3,6 +3,11 @@ title: "Muudatused"
 description: "SweetSpoti versiooniajalugu ja väljalaskemärkmed."
 ---
 
+{{< changelog version="7.1" date="4. september 2026" >}}
+- Veel 15 tsoonis on hindadel nüüd varuallikas: Portugal, Hispaania, Itaalia, Kreeka, Horvaatia, Slovakkia, Rumeenia, Bulgaaria, Serbia ja Montenegro. Kui üks allikas pole saadaval, proovib SweetSpot järgmist, nii et hinnad jäävad ikkagi nähtavale.
+- Hindade laadimine ebaõnnestub harvemini — aeglasele vastusele antakse nüüd rohkem aega, kuid kogu ootamisele on piir, nii et vastuseta allikad ei hoia teid enam nii kaua kinni.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31. juuli 2026" >}}
 - Sisseehitatud Abi ja tugi: teata probleemist või saada tagasisidet otse rakendusest, jälgi vastuseid vestluses ja hoia oma raportidel silma peal — kontot pole vaja.
 - „Valmis hiljemalt“ on nüüd nutikas vaikevalik: soodsaim aeg, mis siiski õigeks ajaks valmis saab; liigu selle ümber nuppudega „Varem“ ja „Odavam“.

@@ -106,6 +106,16 @@ Worth pairing with the reverse view for tuning rather than alerting: zones where
 the primary failed but a fallback carried the request. That is the number that
 says whether the fallback chains are doing their job.
 
+One subtlety when reading these rows: `InstrumentedPriceFetcher` wraps each source
+*inside* the chain, and [`FallbackPriceFetcher`]'s time budget stops the chain once
+it is spent, so a stalling zone records only the sources actually attempted. A
+zone-level blackout therefore means "nothing that was tried worked", not "every
+source is down" — the missing rows are sources that were never reached. The alert
+is unaffected (no `ok` row is still no `ok` row), but a per-source availability
+figure derived from `api_fetch` is biased toward whichever sources sit early in the
+chain, which is another reason availability belongs to the probe in Component 1
+rather than to app traffic.
+
 ## Component 5 — dashboard panels
 
 Add to the committed `server/stats/grafana-dashboard.json`:

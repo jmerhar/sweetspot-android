@@ -22,8 +22,8 @@ android {
     defaultConfig {
         applicationId = "today.sweetspot"
         targetSdk = 36
-        versionCode = 38
-        versionName = "7.0"
+        versionCode = 39
+        versionName = "7.1"
 
         // Ship only the translated locales; keeps stray transitive-dependency locales
         // out of the bundle.

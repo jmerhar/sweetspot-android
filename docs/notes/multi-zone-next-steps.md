@@ -180,13 +180,6 @@ redundancy via Energy-Charts + aWATTar).
 every `bzn` spelling tried for either, and no other free public API is known to cover
 them, so both are ENTSO-E only.
 
-**Pending at next release:** the website still describes Energy-Charts as covering 15
-zones, in `site/content/<lang>/privacy.md` and `faq.md` across all 25 languages. Those
-pages describe what is live on the Play Store, so the number changes when the release
-carrying the wider coverage ships, not when the code lands. Historical `changelog.md`
-entries keep their original figure — they record what a past release did. The Play
-listing needs nothing: it counts sources, not zones per source.
-
 ### Implementation Plan
 
 Each phase adds one `PriceFetcher` implementation in `data/api/` and wires it into `PriceFetcherFactory`.

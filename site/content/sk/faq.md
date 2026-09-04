@@ -13,7 +13,7 @@ Belgicko, Bulharsko, Česko, Čierna Hora, Dánsko (DK1, DK2), Estónsko, Fínsk
 Ceny pochádzajú z platformy **ENTSO-E Transparency Platform**, ktorá zverejňuje denné ceny elektriny pre všetky európske cenové zóny. SweetSpot tiež podporuje štyri záložné zdroje pre vyššiu spoľahlivosť:
 
 - **Spot-Hinta.fi** pre severské a baltské zóny (15 zón)
-- **Energy-Charts** pre 15 európskych zón
+- **Energy-Charts** pre 30 európskych zón
 - **EnergyZero** pre Holandsko
 - **aWATTar** pre Rakúsko a Nemecko
 

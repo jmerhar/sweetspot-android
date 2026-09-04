@@ -13,7 +13,7 @@ Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark (DK1, DK2), Estonia
 Prices come from the **ENTSO-E Transparency Platform**, which publishes day-ahead electricity prices for all European bidding zones. SweetSpot also supports four fallback sources for increased reliability:
 
 - **Spot-Hinta.fi** for Nordic and Baltic zones (15 zones)
-- **Energy-Charts** for 15 European zones
+- **Energy-Charts** for 30 European zones
 - **EnergyZero** for the Netherlands
 - **aWATTar** for Austria and Germany
 

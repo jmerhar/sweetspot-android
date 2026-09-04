@@ -13,7 +13,7 @@ SweetSpot obține prețurile de electricitate pentru ziua următoare de la API-u
 
 - **ENTSO-E Transparency Platform** — sursa principală pentru toate cele 43 de zone de licitație europene
 - **Spot-Hinta.fi** — sursă de rezervă pentru zonele nordice și baltice
-- **Energy-Charts** — sursă de rezervă pentru 15 zone europene
+- **Energy-Charts** — sursă de rezervă pentru 30 de zone europene
 - **EnergyZero** — sursă de rezervă pentru Țările de Jos
 - **aWATTar** — sursă de rezervă pentru Austria și Germania
 

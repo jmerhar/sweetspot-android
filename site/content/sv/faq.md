@@ -13,7 +13,7 @@ Belgien, Bulgarien, Danmark (DK1, DK2), Estland, Finland, Frankrike, Grekland, I
 Priserna kommer från **ENTSO-E Transparency Platform**, som publicerar day-ahead-elpriser för alla europeiska elområden. SweetSpot stöder även fyra reservkällor för ökad tillförlitlighet:
 
 - **Spot-Hinta.fi** för nordiska och baltiska zoner (15 zoner)
-- **Energy-Charts** för 15 europeiska zoner
+- **Energy-Charts** för 30 europeiska zoner
 - **EnergyZero** för Nederländerna
 - **aWATTar** för Österrike och Tyskland
 

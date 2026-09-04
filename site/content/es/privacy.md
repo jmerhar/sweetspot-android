@@ -13,7 +13,7 @@ SweetSpot obtiene los precios de electricidad del mercado diario de APIs públic
 
 - **ENTSO-E Transparency Platform** — fuente principal para las 43 zonas de oferta europeas
 - **Spot-Hinta.fi** — respaldo para zonas nórdicas y bálticas
-- **Energy-Charts** — respaldo para 15 zonas europeas
+- **Energy-Charts** — respaldo para 30 zonas europeas
 - **EnergyZero** — respaldo para los Países Bajos
 - **aWATTar** — respaldo para Austria y Alemania
 

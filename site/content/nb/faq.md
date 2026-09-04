@@ -13,7 +13,7 @@ Belgia, Bulgaria, Danmark (DK1, DK2), Estland, Finland, Frankrike, Hellas, Irlan
 Prisene kommer fra **ENTSO-E Transparency Platform**, som publiserer day-ahead-strømpriser for alle europeiske budområder. SweetSpot har også fire reservekilder for økt pålitelighet:
 
 - **Spot-Hinta.fi** for nordiske og baltiske soner (15 soner)
-- **Energy-Charts** for 15 europeiske soner
+- **Energy-Charts** for 30 europeiske soner
 - **EnergyZero** for Nederland
 - **aWATTar** for Østerrike og Tyskland
 

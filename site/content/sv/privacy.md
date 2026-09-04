@@ -13,7 +13,7 @@ SweetSpot hämtar day-ahead-elpriser från offentliga API:er:
 
 - **ENTSO-E Transparency Platform** — primär källa för alla 43 europeiska elområden
 - **Spot-Hinta.fi** — reservkälla för nordiska och baltiska zoner
-- **Energy-Charts** — reservkälla för 15 europeiska zoner
+- **Energy-Charts** — reservkälla för 30 europeiska zoner
 - **EnergyZero** — reservkälla för Nederländerna
 - **aWATTar** — reservkälla för Österrike och Tyskland
 

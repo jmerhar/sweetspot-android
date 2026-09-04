@@ -3,6 +3,11 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="7.1" date="4. september 2026" >}}
+- Prisene har nå en reservedatakilde i ytterligere 15 soner: Portugal, Spania, Italia, Hellas, Kroatia, Slovakia, Romania, Bulgaria, Serbia og Montenegro. Er én kilde utilgjengelig, prøver SweetSpot den neste, slik at du fortsatt får priser.
+- Færre mislykkede prishentinger — hver kilde får nå mer tid til å svare, samtidig som den samlede ventetiden er begrenset, slik at kilder som ikke svarer, sinker deg mindre.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31. juli 2026" >}}
 - Hjelp & støtte er nå innebygd: rapporter et problem eller send tilbakemelding fra appen, følg svarene i en samtale og hold oversikt over rapportene dine — uten konto.
 - «Ferdig innen» er nå et smart standardvalg: det billigste tidspunktet som fortsatt blir ferdig i tide — bruk «Tidligere» eller «Billigere» for å justere rundt det.

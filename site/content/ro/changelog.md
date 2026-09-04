@@ -3,6 +3,11 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="7.1" date="4 septembrie 2026" >}}
+- O sursă de date de rezervă în încă 15 zone: Portugalia, Spania, Italia, Grecia, Croația, Slovacia, România, Bulgaria, Serbia și Muntenegru. Dacă o sursă nu este disponibilă, SweetSpot încearcă următoarea, așa că veți vedea în continuare prețurile.
+- Mai puține erori la încărcarea prețurilor: fiecare sursă are acum mai mult timp să răspundă, iar așteptarea totală este limitată, așa că SweetSpot renunță mai repede la sursele care nu răspund.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31 iulie 2026" >}}
 - „Ajutor și asistență”, integrat: raportați o problemă sau trimiteți feedback, urmăriți răspunsurile în conversație și rapoartele în „Rapoartele mele” — fără cont.
 - „Gata până la” este acum o valoare implicită inteligentă: cea mai ieftină oră care se termină la timp; ajustați-o cu „Mai devreme” și „Mai ieftin”.

@@ -3,6 +3,11 @@ title: "Változásnapló"
 description: "A SweetSpot verziótörténete és kiadási jegyzékei."
 ---
 
+{{< changelog version="7.1" date="2026. szeptember 4." >}}
+- Mostantól 15 további zónában van tartalék adatforrás: Portugália, Spanyolország, Olaszország, Görögország, Horvátország, Szlovákia, Románia, Bulgária, Szerbia és Montenegró. Ha az egyik forrás nem érhető el, a SweetSpot a következőt próbálja, így Ön nem marad árak nélkül.
+- Kevesebb sikertelen árbetöltés — a lassabb válaszokra is jut már elég idő, a teljes várakozás viszont korlátozott, így a nem válaszoló források kevésbé tartják fel Önt.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="2026. július 31." >}}
 - Beépített Súgó és támogatás: jelentsen problémát vagy küldjön visszajelzést az alkalmazásból, kövesse a válaszokat beszélgetésben, és tartsa nyomon a bejelentéseit — fiók nélkül.
 - A „Készen legyen ekkorra” mostantól okos alapértelmezés: a legolcsóbb időpont, amely még időben elkészül; a Korábban és az Olcsóbban gombokkal léphet körülötte.

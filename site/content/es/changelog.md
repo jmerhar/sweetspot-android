@@ -3,6 +3,11 @@ title: "Historial de cambios"
 description: "Historial de versiones y notas de cada versión de SweetSpot."
 ---
 
+{{< changelog version="7.1" date="4 de septiembre de 2026" >}}
+- Nueva fuente de datos de respaldo en 15 zonas más: Portugal, España, Italia, Grecia, Croacia, Eslovaquia, Rumanía, Bulgaria, Serbia y Montenegro. Si una fuente no está disponible, SweetSpot prueba la siguiente, así que seguirá viendo los precios.
+- Menos fallos al cargar los precios: ahora cada fuente tiene más tiempo para responder, pero la espera total está limitada, así que las fuentes que no responden le retrasan menos.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31 de julio de 2026" >}}
 - Ayuda y soporte en la app: informe de un problema o envíe comentarios, siga las respuestas en una conversación y consulte sus informes en «Mis informes» — sin cuenta.
 - «Listo a las» ahora es un valor predeterminado inteligente: el momento más barato que aún llega a tiempo; muévase con «Antes» o «Más barato».

@@ -3,6 +3,11 @@ title: "Historique des versions"
 description: "Historique des versions et notes de mise à jour de SweetSpot."
 ---
 
+{{< changelog version="7.1" date="4 septembre 2026" >}}
+- Les prix disposent désormais d'une source de repli dans 15 zones de plus : Portugal, Espagne, Italie, Grèce, Croatie, Slovaquie, Roumanie, Bulgarie, Serbie et Monténégro. Si une source est indisponible, SweetSpot passe à la suivante et vous obtenez quand même vos prix.
+- Moins d'échecs de chargement des prix : chaque source bénéficie désormais d'un délai plus long, tandis que l'attente totale reste limitée pour que les sources injoignables vous retardent moins.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31 juillet 2026" >}}
 - Aide et assistance intégrée : signalez un problème ou envoyez un commentaire, suivez les réponses dans une conversation et retrouvez vos signalements — sans compte.
 - « Prêt à » devient un choix intelligent par défaut : le créneau le moins cher encore prêt à temps ; naviguez avec « Plus tôt » et « Moins cher ».

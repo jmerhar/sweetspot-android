@@ -3,6 +3,11 @@ title: "Versionshistorik"
 description: "SweetSpots versionshistorik og udgivelsesnoter."
 ---
 
+{{< changelog version="7.1" date="4. september 2026" >}}
+- Priserne har nu en reservedatakilde i yderligere 15 zoner: Portugal, Spanien, Italien, Grækenland, Kroatien, Slovakiet, Rumænien, Bulgarien, Serbien og Montenegro. Hvis én kilde er utilgængelig, prøver SweetSpot den næste, så du stadig får priser.
+- Færre fejl, når priserne hentes — hver kilde får nu mere tid til at svare, mens den samlede ventetid er begrænset, så du kommer hurtigere videre, når en kilde ikke svarer.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31. juli 2026" >}}
 - Hjælp & support, indbygget: rapportér et problem eller send feedback direkte fra appen, følg svarene i en samtale, og hold styr på dine rapporter — ingen konto nødvendig.
 - „Klar senest“ er nu et smart standardvalg: det billigste tidspunkt, der stadig når at være klart i tide; gå Tidligere eller Billigere ud fra det.

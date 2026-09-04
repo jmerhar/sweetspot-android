@@ -3,6 +3,11 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="7.1" date="4 września 2026" >}}
+- Zapasowe źródło danych w kolejnych 15 strefach: Portugalii, Hiszpanii, Włoszech, Grecji, Chorwacji, Słowacji, Rumunii, Bułgarii, Serbii i Czarnogórze. Gdy jedno źródło jest niedostępne, SweetSpot sięga po następne, więc wciąż zobaczysz ceny.
+- Mniej nieudanych pobrań cen — wolniejsze odpowiedzi nie są już przerywane zbyt wcześnie, a łączny czas oczekiwania jest ograniczony, więc przy niedziałających źródłach czekasz krócej.
+{{< /changelog >}}
+
 {{< changelog version="7.0" date="31 lipca 2026" >}}
 - Wbudowana Pomoc i wsparcie: zgłoszenie problemu lub opinii w aplikacji, śledzenie odpowiedzi w rozmowie i przeglądanie swoich zgłoszeń — bez konta.
 - Termin „Gotowe do” jest teraz inteligentnym ustawieniem domyślnym: najtańsza pora, która zdąży na czas; wokół niej działają „Wcześniej” i „Taniej”.

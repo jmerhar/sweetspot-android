@@ -88,7 +88,7 @@ RELEASE_KEY_PASSWORD=...
 
 - **`release.md`** — Current release notes (used by the release script)
 - **`multi-zone-next-steps.md`** — Implementation tracker for multi-zone support (mix of done/pending items)
-- **`ideas/`** — Feature ideas (mix of done and pending): website, low price alerts, all-in pricing, widget, API reliability stats
+- **`ideas/`** — Feature ideas (mix of done and pending): website, low price alerts, all-in pricing, widget, API reliability stats, upstream source monitoring (`upstream-source-monitoring.md` — planned probes/alerts for whether the price APIs are serving prices, as opposed to whether our own ingestion works)
 - **`ideas/done/`** — Implemented features: localisation, cache management, data source preferences, car charging, appliance power rating, ViewModel locale bug, test coverage CI
 - **`reference/`** — Research and reference: multi-zone API comparison, Play Store publishing guide, country & language coverage audit, Help & support system (`help-support-system.md` — the shipped in-app support + Worker + email architecture)
 

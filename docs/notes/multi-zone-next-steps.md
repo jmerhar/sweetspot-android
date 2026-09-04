@@ -128,30 +128,30 @@ Current state and target after implementing all viable fallback APIs:
 |------|---------|-----------------|------------------------------|
 | **AT** | ENTSO-E | Energy-Charts ✅ | aWATTar ✅ |
 | **BE** | ENTSO-E | Energy-Charts ✅ | |
-| **BG** | ENTSO-E | _(none)_ | _(none known)_ |
+| **BG** | ENTSO-E | Energy-Charts ✅ | |
 | **CH** | ENTSO-E | Energy-Charts ✅ | |
 | **CZ** | ENTSO-E | Energy-Charts ✅ | OTE |
 | **DE_LU** | ENTSO-E | Energy-Charts ✅ | aWATTar ✅ |
 | **DK1** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
 | **DK2** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
 | **EE** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
-| **ES** | ENTSO-E | _(none)_ | OMIE |
+| **ES** | ENTSO-E | Energy-Charts ✅ | OMIE |
 | **FI** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
 | **FR** | ENTSO-E | Energy-Charts ✅ | |
-| **GR** | ENTSO-E | _(none)_ | _(none known)_ |
-| **HR** | ENTSO-E | _(none)_ | _(none known)_ |
+| **GR** | ENTSO-E | Energy-Charts ✅ | |
+| **HR** | ENTSO-E | Energy-Charts ✅ | |
 | **HU** | ENTSO-E | Energy-Charts ✅ | |
 | **IE_SEM** | ENTSO-E | _(none)_ | _(none known)_ |
 | **IT_NORD** | ENTSO-E | Energy-Charts ✅ | |
-| **IT_CNOR** | ENTSO-E | _(none)_ | _(none known)_ |
-| **IT_CSUD** | ENTSO-E | _(none)_ | _(none known)_ |
-| **IT_SUD** | ENTSO-E | _(none)_ | _(none known)_ |
-| **IT_CALA** | ENTSO-E | _(none)_ | _(none known)_ |
-| **IT_SICI** | ENTSO-E | _(none)_ | _(none known)_ |
-| **IT_SARD** | ENTSO-E | _(none)_ | _(none known)_ |
+| **IT_CNOR** | ENTSO-E | Energy-Charts ✅ | |
+| **IT_CSUD** | ENTSO-E | Energy-Charts ✅ | |
+| **IT_SUD** | ENTSO-E | Energy-Charts ✅ | |
+| **IT_CALA** | ENTSO-E | Energy-Charts ✅ | |
+| **IT_SICI** | ENTSO-E | Energy-Charts ✅ | |
+| **IT_SARD** | ENTSO-E | Energy-Charts ✅ | |
 | **LT** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
 | **LV** | ENTSO-E | Spot-Hinta.fi ✅ | Elering |
-| **ME** | ENTSO-E | _(none)_ | _(none known)_ |
+| **ME** | ENTSO-E | Energy-Charts ✅ | |
 | **MK** | ENTSO-E | _(none)_ | _(none known)_ |
 | **NL** | ENTSO-E | EnergyZero ✅ | Energy-Charts ✅ |
 | **NO1** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
@@ -160,25 +160,32 @@ Current state and target after implementing all viable fallback APIs:
 | **NO4** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
 | **NO5** | ENTSO-E | Spot-Hinta.fi ✅ | HvaKosterStrommen |
 | **PL** | ENTSO-E | Energy-Charts ✅ | |
-| **PT** | ENTSO-E | _(none)_ | OMIE |
-| **RO** | ENTSO-E | _(none)_ | _(none known)_ |
-| **RS** | ENTSO-E | _(none)_ | _(none known)_ |
+| **PT** | ENTSO-E | Energy-Charts ✅ | OMIE |
+| **RO** | ENTSO-E | Energy-Charts ✅ | |
+| **RS** | ENTSO-E | Energy-Charts ✅ | |
 | **SE1** | ENTSO-E | Spot-Hinta.fi ✅ | |
 | **SE2** | ENTSO-E | Spot-Hinta.fi ✅ | |
 | **SE3** | ENTSO-E | Spot-Hinta.fi ✅ | |
 | **SE4** | ENTSO-E | Spot-Hinta.fi ✅ | Energy-Charts ✅ |
 | **SI** | ENTSO-E | Energy-Charts ✅ | |
-| **SK** | ENTSO-E | _(none)_ | _(none known)_ |
+| **SK** | ENTSO-E | Energy-Charts ✅ | |
 
 ¹ Energy-Charts CC BY 4.0 zones only (licensed for app distribution).
 
-**Current:** 26/43 zones have at least one fallback (NL + 15 Nordic/Baltic + 15 via Energy-Charts,
+**Current:** 41/43 zones have at least one fallback (NL + 15 Nordic/Baltic + 30 via Energy-Charts,
 with 4 zones having both Spot-Hinta.fi and Energy-Charts, and AT + DE_LU having triple
 redundancy via Energy-Charts + aWATTar).
 
-**After all phases:** 28/43 zones get at least one fallback. 15 zones remain ENTSO-E
-only (BG, GR, HR, IE_SEM, IT_CNOR–IT_SARD, ME, MK, RO, RS, SK) — no free public
-APIs are known for these zones.
+**Remaining:** IE_SEM and MK have no fallback. Energy-Charts answers HTTP 400 for
+every `bzn` spelling tried for either, and no other free public API is known to cover
+them, so both are ENTSO-E only.
+
+**Pending at next release:** the website still describes Energy-Charts as covering 15
+zones, in `site/content/<lang>/privacy.md` and `faq.md` across all 25 languages. Those
+pages describe what is live on the Play Store, so the number changes when the release
+carrying the wider coverage ships, not when the code lands. Historical `changelog.md`
+entries keep their original figure — they record what a past release did. The Play
+listing needs nothing: it counts sources, not zones per source.
 
 ### Implementation Plan
 
@@ -252,10 +259,10 @@ The real risk is burst traffic around **13:00–14:00 CET** when next-day prices
 and caches expire simultaneously across all users.
 
 - ✅ **Fallback APIs** absorb ENTSO-E failures. `FallbackPriceFetcher` automatically
-  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 26/43
+  tries the next source when ENTSO-E returns 409 or 5xx. Currently covers 41/43
   zones (NL via EnergyZero + Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi,
-  15 European via Energy-Charts, AT + DE_LU with aWATTar as additional depth).
-  Expanding fallback coverage (Phases 4–5) covers ES/PT and adds depth to
+  30 European via Energy-Charts, AT + DE_LU with aWATTar as additional depth).
+  Expanding fallback coverage (Phases 4–5) adds depth to
   already-covered zones.
 - **Cache cooldown** (5 min) is per-user, starting from each user's tap — naturally
   staggered, no artificial jitter needed.

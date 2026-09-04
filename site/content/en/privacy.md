@@ -13,7 +13,7 @@ SweetSpot fetches day-ahead electricity prices from public APIs:
 
 - **ENTSO-E Transparency Platform** — the primary source for all 43 European bidding zones
 - **Spot-Hinta.fi** — fallback for Nordic and Baltic zones
-- **Energy-Charts** — fallback for 15 European zones
+- **Energy-Charts** — fallback for 30 European zones
 - **EnergyZero** — fallback for the Netherlands
 - **aWATTar** — fallback for Austria and Germany
 

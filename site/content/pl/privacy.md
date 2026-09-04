@@ -13,7 +13,7 @@ SweetSpot pobiera ceny energii elektrycznej dnia następnego z publicznych API:
 
 - **ENTSO-E Transparency Platform** — główne źródło dla wszystkich 43 europejskich obszarów rynkowych
 - **Spot-Hinta.fi** — źródło zapasowe dla stref nordyckich i bałtyckich
-- **Energy-Charts** — źródło zapasowe dla 15 stref europejskich
+- **Energy-Charts** — źródło zapasowe dla 30 stref europejskich
 - **EnergyZero** — źródło zapasowe dla Holandii
 - **aWATTar** — źródło zapasowe dla Austrii i Niemiec
 

@@ -13,7 +13,7 @@ SweetSpot pärib järgmise päeva elektrihindu avalikest API-dest:
 
 - **ENTSO-E Transparency Platform** — peamine allikas kõigi 43 Euroopa pakkumistsooni jaoks
 - **Spot-Hinta.fi** — varuallikas Põhja- ja Baltimaade tsoonidele
-- **Energy-Charts** — varuallikas 15 Euroopa tsoonile
+- **Energy-Charts** — varuallikas 30 Euroopa tsoonile
 - **EnergyZero** — varuallikas Madalmaadele
 - **aWATTar** — varuallikas Austriale ja Saksamaale
 

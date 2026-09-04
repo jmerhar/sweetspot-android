@@ -74,6 +74,28 @@ The release notes file is always `docs/notes/release.md`. The script appends a "
 
 The script auto-increments `versionCode`, sets `versionName`, builds signed phone and wear APKs and AABs, commits, tags, pushes, and creates a GitHub Release with APKs attached. AABs are built but not uploaded to GitHub — use them for Play Store submission.
 
+### Play Store tracks — the app ships on alpha only
+
+**`alpha` (closed testing) is the only track with builds. `production` and `beta` are
+empty, and always have been; `internal` holds an old build.** So "released" for this app
+means a GitHub Release plus an alpha deploy — there is no production rollout to promote
+from, and nothing user-facing is gated on one. Confirm rather than assume when it matters:
+
+```bash
+bundle exec fastlane run google_play_track_version_codes \
+  track:production package_name:today.sweetspot json_key:fastlane/credentials.json
+```
+
+Two consequences worth keeping in mind:
+
+- **Website copy describes the alpha build**, because that is the only build anyone can
+  install. When a change alters what the site claims (data sources, zone counts, feature
+  lists), update `site/content/<lang>/` in the same release — there is no later production
+  ship to wait for. Historical `changelog.md` entries still keep their original figures.
+- **Wear OS has never shipped through these tracks.** `deploy.sh` skips it on alpha because
+  Play has no closed testing for Wear, so a Wear deploy would require the production track
+  — a decision about opening production, not a routine pending deploy.
+
 Release signing is configured via `local.properties` (gitignored):
 ```
 RELEASE_STORE_FILE=release.jks

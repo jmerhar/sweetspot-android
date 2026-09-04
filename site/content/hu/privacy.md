@@ -13,7 +13,7 @@ A SweetSpot másnapi villamosenergia-árakat kér le nyilvános API-kból:
 
 - **ENTSO-E Transparency Platform** — elsődleges forrás mind a 43 európai ajánlattételi zónához
 - **Spot-Hinta.fi** — tartalék forrás az északi és balti zónákhoz
-- **Energy-Charts** — tartalék forrás 15 európai zónához
+- **Energy-Charts** — tartalék forrás 30 európai zónához
 - **EnergyZero** — tartalék forrás Hollandiához
 - **aWATTar** — tartalék forrás Ausztriához és Németországhoz
 

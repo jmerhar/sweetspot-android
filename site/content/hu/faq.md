@@ -13,7 +13,7 @@ Ausztria, Belgium, Bulgária, Csehország, Dánia (DK1, DK2), Észtország, Finn
 Az árak az **ENTSO-E Transparency Platformról** származnak, amely közzéteszi a másnapi villamosenergia-árakat az összes európai ajánlattételi zónára. A SweetSpot négy tartalék forrást is támogat a nagyobb megbízhatóság érdekében:
 
 - **Spot-Hinta.fi** az északi és balti zónákhoz (15 zóna)
-- **Energy-Charts** 15 európai zónához
+- **Energy-Charts** 30 európai zónához
 - **EnergyZero** Hollandiához
 - **aWATTar** Ausztriához és Németországhoz
 

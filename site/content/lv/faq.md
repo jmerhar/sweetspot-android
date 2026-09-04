@@ -13,7 +13,7 @@ Austrija, Beļģija, Bulgārija, Čehija, Dānija (DK1, DK2), Francija, Grieķij
 Cenas nāk no **ENTSO-E Transparency Platform**, kas publicē nākamās dienas elektrības cenas visām Eiropas tirdzniecības zonām. SweetSpot atbalsta arī četrus rezerves avotus lielākai uzticamībai:
 
 - **Spot-Hinta.fi** Ziemeļvalstu un Baltijas zonām (15 zonas)
-- **Energy-Charts** 15 Eiropas zonām
+- **Energy-Charts** 30 Eiropas zonām
 - **EnergyZero** Nīderlandei
 - **aWATTar** Austrijai un Vācijai
 

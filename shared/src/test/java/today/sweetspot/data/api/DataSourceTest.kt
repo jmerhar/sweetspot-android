@@ -61,9 +61,45 @@ class DataSourceTest {
 
     @Test
     fun `defaultsForZone single-source country returns ENTSOE only`() {
-        val sources = DataSources.defaultsForZone("BG")
+        val sources = DataSources.defaultsForZone("MK")
         assertEquals(1, sources.size)
         assertEquals(DataSources.ENTSOE, sources[0])
+    }
+
+    @Test
+    fun `defaultsForZone Energy-Charts-only zones return ENTSOE and ENERGY_CHARTS`() {
+        val zones = listOf(
+            "BG", "ES", "GR", "HR", "PT", "RO", "RS", "SK",
+            "IT_CALA", "IT_CNOR", "IT_CSUD", "IT_NORD", "IT_SARD", "IT_SICI", "IT_SUD",
+            "ME", "BE", "CH", "CZ", "FR", "HU", "PL", "SI",
+        )
+        for (zone in zones) {
+            val sources = DataSources.defaultsForZone(zone)
+            assertEquals("Expected 2 sources for $zone", 2, sources.size)
+            assertEquals("Expected ENTSOE first for $zone", DataSources.ENTSOE, sources[0])
+            assertEquals(
+                "Expected ENERGY_CHARTS second for $zone",
+                DataSources.ENERGY_CHARTS,
+                sources[1]
+            )
+        }
+    }
+
+    /**
+     * Pins the set of zones with no fallback source.
+     *
+     * A zone served only by ENTSO-E has no path to prices while ENTSO-E is
+     * unavailable, so the app is fully broken there for the duration of any
+     * outage. Asserting the exact set means adding a country, or extending a
+     * fallback's coverage, forces a deliberate decision about that rather than
+     * silently growing the list.
+     */
+    @Test
+    fun `only MK and IE_SEM lack a fallback source`() {
+        val withoutFallback = allZoneIds
+            .filter { DataSources.defaultsForZone(it).size == 1 }
+            .toSet()
+        assertEquals(setOf("MK", "IE_SEM"), withoutFallback)
     }
 
     @Test
@@ -115,7 +151,7 @@ class DataSourceTest {
     @Test
     fun `source zone counts match expected values`() {
         assertEquals(15, SpotHintaApi.ZONES.size)
-        assertEquals(15, EnergyChartsApi.ZONE_TO_BZN.size)
+        assertEquals(30, EnergyChartsApi.ZONE_TO_BZN.size)
         assertEquals(2, AwattarApi.ZONE_TO_BASE_URL.size)
     }
 }

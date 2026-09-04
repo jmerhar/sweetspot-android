@@ -14,12 +14,13 @@ All core multi-zone infrastructure is complete:
 - ✅ Wearable Data Layer sync for zone settings and source order
 - ✅ Phase 1 fallback: Spot-Hinta.fi (15 Nordic/Baltic zones, 19 unit tests)
 - ✅ EnergyZero fallback for NL
-- ✅ Phase 2 fallback: Energy-Charts (15 CC BY 4.0 zones, 22 unit tests)
+- ✅ Phase 2 fallback: Energy-Charts (30 CC BY 4.0 zones, 22 unit tests)
 
-**Current fallback coverage:** 26/43 zones have at least one fallback (NL via EnergyZero +
-Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi, 15 European via Energy-Charts — with
+**Current fallback coverage:** 41/43 zones have at least one fallback (NL via EnergyZero +
+Energy-Charts, 15 Nordic/Baltic via Spot-Hinta.fi, 30 European via Energy-Charts — with
 overlap on DK1, DK2, NO2, SE4, NL). AT and DE_LU have triple redundancy (ENTSO-E,
-Energy-Charts, aWATTar). The remaining 17 zones are ENTSO-E only.
+Energy-Charts, aWATTar). Only MK and IE_SEM are ENTSO-E only: Energy-Charts answers
+HTTP 400 for every `bzn` spelling tried for them, so neither has a usable second source.
 
 ## Remaining Work
 

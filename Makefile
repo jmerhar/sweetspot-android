@@ -1,4 +1,4 @@
-.PHONY: help build build-release bundle test test-suppliers test-ev-db test-scripts test-feedback check-listing inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-stats-check deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
+.PHONY: help build build-release bundle test test-suppliers test-ev-db test-scripts test-check-lockfile test-feedback check-listing check-lockfile lockfile feedback-install inspect debug debug-phone debug-watch install install-phone install-watch release deploy deploy-stats deploy-stats-check deploy-feedback clean site site-validate site-screenshots ev-db suppliers screenshots frames feature-graphic publish
 
 help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*##|^##@' $(MAKEFILE_LIST) | \
@@ -32,7 +32,16 @@ test: ## Run all unit tests
 test-feedback: ## Run unit tests for the feedback Worker (server/feedback-worker)
 	cd server/feedback-worker && npm test
 
-test-scripts: test-suppliers test-ev-db ## Run all bin/ Python script unit tests
+feedback-install: ## Install the feedback Worker's node_modules from its lockfile (never rewrites it)
+	cd server/feedback-worker && npm ci --registry="$$(cd / && npm config get registry)"
+
+lockfile: ## Regenerate the feedback Worker's package-lock.json (Linux container, public registry URLs)
+	./bin/quality/lockfile.sh
+
+check-lockfile: ## Verify every committed package-lock.json resolves only to the public npm registry
+	./bin/quality/check-lockfile.sh
+
+test-scripts: test-suppliers test-ev-db test-check-lockfile ## Run all bin/ Python script unit tests
 
 check-listing: ## Verify Play Store listing text is within per-field length limits
 	./bin/playstore/check-listing-lengths.sh
@@ -101,6 +110,9 @@ test-suppliers: ## Run unit tests for the supplier tariff build script (bin/data
 
 test-ev-db: ## Run unit tests for the EV database build script (bin/data/build-ev-db.py)
 	python3 bin/data/test_build_ev_db.py
+
+test-check-lockfile: ## Run unit tests for the lockfile registry check (bin/quality/check-lockfile.sh)
+	python3 bin/quality/test_check_lockfile.py
 
 ##@ Play Store
 

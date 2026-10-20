@@ -38,6 +38,9 @@ ssh). Most scripts assume the repo root as the working directory — invoke them
 
 ## `quality/` — tests & coverage
 - `inspect.sh` — summarise Android Studio inspection XML exports.
+- `check-lockfile.sh` — CI guardrail: fail if a committed `package-lock.json` resolves anywhere but the public npm registry.
+- `lockfile.sh` — regenerate the feedback Worker's lockfile in a Linux container with public registry URLs.
+- `test_check_lockfile.py` — unit tests for `check-lockfile.sh`.
 
 The coverage summary, gate and publishing are shared tooling from `jmerhar/coverage`, driven by
 `coverage.toml` in the repo root — see the coverage section of `CLAUDE.md`.

@@ -77,6 +77,14 @@ curl -sX POST https://feedback.sweetspot.today/report \
 
 `wrangler tail` streams live logs. Local dev: copy `.dev.vars.example` → `.dev.vars`, then `wrangler dev`.
 
+## Dependencies
+
+The repo is public, so `package-lock.json` must resolve only to `https://registry.npmjs.org/`. CI
+checks this (`make check-lockfile`). The committed `.npmrc` pins that registry. To change
+dependencies, edit `package.json` and run `make lockfile` from the repo root. For a local
+`node_modules`, run `make feedback-install`. Don't run `npm install` here directly: behind an npm
+proxy it writes the proxy's hostname into the lockfile.
+
 ## Notes
 
 - **Anti-abuse:** a per-IP daily rate limit (`RATE_LIMIT_PER_DAY`) plus a global daily ceiling across

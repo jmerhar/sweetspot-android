@@ -3,3 +3,4 @@
 GITHUB_TOKEN=ghp_your_sweetspot_support_classic_public_repo_token
 WEBHOOK_SECRET=generate_with_openssl_rand_hex_32
 BREVO_API_KEY=xkeysib-your_brevo_transactional_api_key
+KUMA_PUSH_URL=https://uptime.example.com/api/push/your_push_token

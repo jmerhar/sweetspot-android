@@ -12,13 +12,18 @@
  *   POST /unsubscribe   — clears the reporter's stored email (form submit, or RFC 8058 one-click).
  *   GET  /              — health check.
  *
+ * Scheduled (cron in wrangler.jsonc): a daily Brevo keepalive — one read-only account lookup with
+ * BREVO_API_KEY, so the key never goes idle long enough for Brevo to deactivate it between
+ * notifications, reported to an Uptime Kuma push monitor (KUMA_PUSH_URL) as up or down.
+ *
  * The app never holds a GitHub token — it only POSTs here (submit) and reads *public* issue state
  * directly from GitHub (tracking). Secrets live only in this Worker: GITHUB_TOKEN, WEBHOOK_SECRET,
- * BREVO_API_KEY (set via `wrangler secret put`). See README.md.
+ * BREVO_API_KEY, and optionally KUMA_PUSH_URL (set via `wrangler secret put`). See README.md.
  */
 
 const GITHUB_API = "https://api.github.com";
 const BREVO_API = "https://api.brevo.com/v3/smtp/email";
+const BREVO_ACCOUNT_API = "https://api.brevo.com/v3/account";
 const USER_AGENT = "sweetspot-feedback-worker";
 const CATEGORY_LABEL = { bug: "bug", feedback: "enhancement" };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,7 +56,51 @@ export default {
       return json({ error: "server_error" }, 500);
     }
   },
+
+  async scheduled(controller, env, ctx) {
+    await runBrevoKeepalive(env);
+  },
 };
+
+/**
+ * Exercises BREVO_API_KEY with a read-only account lookup and reports the result to Uptime Kuma.
+ * Throws when the lookup fails, so the run also shows as failed in the Cloudflare dashboard.
+ */
+async function runBrevoKeepalive(env) {
+  let status = null;
+  try {
+    const res = await fetch(BREVO_ACCOUNT_API, {
+      headers: { "api-key": env.BREVO_API_KEY, "Accept": "application/json", "User-Agent": USER_AGENT },
+    });
+    status = res.status;
+  } catch (err) {
+    console.error(JSON.stringify({ at: "brevo_keepalive", error: String(err?.message ?? err) }));
+  }
+
+  const beat = keepaliveHeartbeat(status);
+  if (env.KUMA_PUSH_URL) {
+    try {
+      const url = new URL(env.KUMA_PUSH_URL);
+      url.searchParams.set("status", beat.ok ? "up" : "down");
+      url.searchParams.set("msg", beat.msg);
+      const res = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
+      if (!res.ok) console.error(JSON.stringify({ at: "kuma_push", status: res.status }));
+    } catch (err) {
+      console.error(JSON.stringify({ at: "kuma_push", error: String(err?.message ?? err) }));
+    }
+  }
+  if (!beat.ok) throw new Error(`brevo_keepalive: ${beat.msg}`);
+}
+
+/**
+ * Maps the Brevo account lookup's HTTP status (null when the request itself failed) to the
+ * heartbeat reported to Kuma: `{ ok, msg }`.
+ */
+export function keepaliveHeartbeat(status) {
+  if (status == null) return { ok: false, msg: "Brevo unreachable" };
+  if (status >= 200 && status < 300) return { ok: true, msg: "Brevo key OK" };
+  return { ok: false, msg: `Brevo HTTP ${status}` };
+}
 
 /** Creates a GitHub issue from an app submission. */
 async function handleReport(request, env) {

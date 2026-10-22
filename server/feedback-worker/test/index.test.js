@@ -7,6 +7,7 @@ import {
   truncate,
   escapeHtml,
   handleUnsubscribeGet,
+  keepaliveHeartbeat,
 } from "../src/index.js";
 
 /** A minimal Workers-KV stub: `get(key)` resolves the pre-seeded string (or null). */
@@ -125,5 +126,23 @@ describe("handleUnsubscribeGet", () => {
     expect(html).toContain("Unsubscribe");
     expect(html).toContain("issue=5");
     expect(html).toContain("token=T5");
+  });
+});
+
+describe("keepaliveHeartbeat", () => {
+  it("reports up on a 2xx account lookup", () => {
+    expect(keepaliveHeartbeat(200)).toEqual({ ok: true, msg: "Brevo key OK" });
+  });
+
+  it("reports down with the status when Brevo rejects the key", () => {
+    expect(keepaliveHeartbeat(401)).toEqual({ ok: false, msg: "Brevo HTTP 401" });
+  });
+
+  it("treats a non-2xx status as down even when it is not an error code", () => {
+    expect(keepaliveHeartbeat(300)).toEqual({ ok: false, msg: "Brevo HTTP 300" });
+  });
+
+  it("reports down when the request never got a response", () => {
+    expect(keepaliveHeartbeat(null)).toEqual({ ok: false, msg: "Brevo unreachable" });
   });
 });

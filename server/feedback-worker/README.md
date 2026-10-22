@@ -21,6 +21,11 @@ comment or is closed (with a one-click unsubscribe link). Architecture:
   clears the stored **email** when the token matches (constant-time), keeping the token so in-app
   replies still work.
 - `GET /` — health check.
+- **Daily cron** (`triggers.crons` in `wrangler.jsonc`) — a Brevo keepalive: one read-only
+  `GET /v3/account` with `BREVO_API_KEY`, because Brevo deactivates keys unused for 3 months and
+  reporter notifications can be rarer than that. The result is pushed to the Uptime Kuma push monitor
+  in `KUMA_PUSH_URL` (`status=up`, or `status=down` with the Brevo status in `msg`); a failed lookup
+  also fails the cron run. Kuma alerts when the key is rejected, or when no push arrives for 36 h.
 
 The app never holds a token: it POSTs here to submit, and reads **public** issue state directly from
 GitHub for the in-app "My reports" list.
@@ -28,7 +33,9 @@ GitHub for the in-app "My reports" list.
 ## Secrets (set by you — never committed)
 
 Run from this directory. `GITHUB_TOKEN` is the `sweetspot-support` **classic `public_repo`** token;
-`BREVO_API_KEY` is a Brevo **transactional (v3)** key; `WEBHOOK_SECRET` is a random string you generate.
+`BREVO_API_KEY` is a Brevo **transactional (v3)** key; `WEBHOOK_SECRET` is a random string you generate;
+`KUMA_PUSH_URL` (optional) is the push URL of the Kuma monitor "SweetSpot feedback Worker: Brevo key
+keepalive" (id 150 on aurora), `https://uptime.aurora.merhar.si/api/push/<token>`.
 
 ```bash
 cd server/feedback-worker
@@ -39,6 +46,7 @@ openssl rand -hex 32
 wrangler secret put GITHUB_TOKEN     # paste the bot's classic public_repo PAT
 wrangler secret put WEBHOOK_SECRET   # paste the string from openssl above
 wrangler secret put BREVO_API_KEY    # paste the Brevo transactional API key
+wrangler secret put KUMA_PUSH_URL    # paste the Kuma push URL (keepalive heartbeat)
 ```
 
 Non-secret settings (repo, sender address, rate limit) live in `wrangler.jsonc` → `vars`.
@@ -54,7 +62,7 @@ wrangler kv namespace create FEEDBACK_KV
 # 2. Deploy (creates the Worker + the feedback.sweetspot.today custom domain)
 wrangler deploy          # first time; afterwards just `make deploy-feedback` from the repo root
 
-# 3. Set the three secrets (see above)
+# 3. Set the secrets (see above)
 
 # 4. Add the GitHub webhook (enables reporter notifications):
 #    repo Settings → Webhooks → Add webhook
@@ -74,6 +82,10 @@ curl -sX POST https://feedback.sweetspot.today/report \
   -d '{"category":"feedback","subject":"Worker test","body":"ignore — setup test"}'
 # -> {"number":N,"url":"https://github.com/jmerhar/sweetspot-android/issues/N"}
 ```
+
+Keepalive: `wrangler dev --test-scheduled`, then `curl "http://localhost:8787/__scheduled?cron=17+4+*+*+*"`
+runs the cron handler locally (with `.dev.vars`). In production, the Worker's **Cron Events** tab and
+the Kuma monitor show each run.
 
 `wrangler tail` streams live logs. Local dev: copy `.dev.vars.example` → `.dev.vars`, then `wrangler dev`.
 

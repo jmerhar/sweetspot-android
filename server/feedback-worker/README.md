@@ -107,6 +107,19 @@ proxy it writes the proxy's hostname into the lockfile.
 - **Privacy:** the reporter's email is stored only in KV keyed by issue number for notifications —
   never written into the public issue. Every notification includes a one-click unsubscribe link
   (tokenized `GET`/`POST /unsubscribe`) that clears the KV entry; disclosed in the privacy policy.
+- **Brevo IP allowlist:** the Brevo account blocks API calls from unrecognised IPs. The Worker's
+  calls go out from Cloudflare's Workers egress address `2a06:98c0:3600::103`, which is on the list
+  (Brevo → Security → Authorised IPs). Cloudflare does not guarantee that address. If it changes,
+  every Brevo call returns `401` (`"unrecognised IP address <ip>"`) and reporter notifications stop.
+  The daily keepalive surfaces it: Kuma monitor 150 goes down with `Brevo HTTP 401`, and Brevo
+  emails a "Verify a new IP" notice naming the address and the key. To recover:
+  1. In Authorised IPs, check the new entry's ASN is `Cloudflare, Inc.`, then authorise it (from the
+     email's "Yes" link or the list).
+  2. If the address keeps changing, choose "Stop the review of IP addresses" instead; the key is
+     then protected only by being secret.
+  3. If the IP is not Cloudflare's or yours, treat the key as leaked: create a new key in Brevo,
+     `wrangler secret put BREVO_API_KEY`, and delete the old one.
+  Monitor 150 returns to up after the next run at 04:17 UTC.
 - **Auth migration:** the classic `public_repo` PAT can later be swapped for a **GitHub App**
   installation token (least privilege, same bot authorship) — a change confined to the GitHub auth
   header in `src/index.js` plus setting the app key as a secret.

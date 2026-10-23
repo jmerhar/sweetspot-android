@@ -22,8 +22,9 @@ object DayAheadSchedule {
      * Market time from which a source is expected to have the next delivery day.
      *
      * The auction results are out shortly before 13:00. The extra hour lets every source carry
-     * them before one that has only the current day is passed over for another, because the
-     * prices chosen then stay cached until about midday the next day.
+     * them before one that has only the current day is passed over for another, because a
+     * fallback's prices, once chosen, stay cached until about midday the next day: the primary is
+     * not asked again in the meantime, even for the rest of the current day.
      */
     val NEXT_DAY_DUE: LocalTime = LocalTime.of(14, 0)
 
@@ -34,7 +35,7 @@ object DayAheadSchedule {
      * @param now The moment the prices are fetched.
      * @param to End of the requested period (exclusive).
      * @return The next delivery day's start, or `null` when it is not required: before
-     *   [NEXT_DAY_DUE], or when the period ends before that day begins.
+     *   [NEXT_DAY_DUE], or when the period ends at or before the start of that day.
      */
     fun dueNextDayStart(now: Instant, to: Instant): Instant? {
         val marketNow = now.atZone(MARKET_TIME_ZONE)

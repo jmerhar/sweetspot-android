@@ -3,6 +3,7 @@ package today.sweetspot.data.api
 import today.sweetspot.data.stats.InstrumentedPriceFetcher
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.model.PriceZone
+import java.time.Clock
 
 /**
  * Factory for creating a [PriceFetcher] appropriate for a given [PriceZone].
@@ -43,6 +44,9 @@ fun interface PriceFetcherFactory {
  * @param statsCollector Optional collector for API reliability stats.
  * @param device Device type for stats: "phone" or "watch". Ignored when [statsCollector] is `null`.
  * @param disabledSources Source IDs the user turned off; removed from the chain in every case.
+ * @param clock Clock the chain decides by whether the next delivery day is due. Pass the same
+ *   clock as the [PriceRepository][today.sweetspot.data.repository.PriceRepository] that uses the
+ *   chain, so a time override moves both together.
  * @return A [PriceFetcherFactory] that routes to the correct API(s) per zone.
  */
 fun defaultPriceFetcherFactory(
@@ -50,7 +54,8 @@ fun defaultPriceFetcherFactory(
     sourceOrder: List<String>? = null,
     statsCollector: StatsCollector? = null,
     device: String = "phone",
-    disabledSources: Set<String> = emptySet()
+    disabledSources: Set<String> = emptySet(),
+    clock: Clock = Clock.systemUTC()
 ): PriceFetcherFactory =
     PriceFetcherFactory { zone ->
         val available = DataSources.defaultsForZone(zone.id)
@@ -81,5 +86,5 @@ fun defaultPriceFetcherFactory(
             }
         }
 
-        FallbackPriceFetcher(fetchers)
+        FallbackPriceFetcher(fetchers, clock = clock)
     }

@@ -1,12 +1,16 @@
 package today.sweetspot.data.api
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import today.sweetspot.data.stats.InstrumentedPriceFetcher
 import today.sweetspot.data.stats.StatsCollector
 import today.sweetspot.data.stats.StatsRecord
 import today.sweetspot.model.Countries
+import java.time.Clock
+import java.time.Instant
+import java.time.ZoneOffset
 
 /**
  * Tests for [defaultPriceFetcherFactory] — the chain composition logic that maps a zone and the
@@ -20,6 +24,15 @@ class PriceFetcherFactoryTest {
 
     /** Unwraps the fallback chain the factory always produces. */
     private fun chain(f: PriceFetcher): List<PriceFetcher> = (f as FallbackPriceFetcher).fetchers
+
+    @Test
+    fun `the chain decides the next day by the clock it is given`() {
+        // The phone passes its time override here, so the chain must not fall back to the system clock.
+        val clock = Clock.fixed(Instant.parse("2026-10-23T09:00:00Z"), ZoneOffset.UTC)
+        val fetcher = defaultPriceFetcherFactory(token, clock = clock).create(nl) as FallbackPriceFetcher
+
+        assertSame(clock, fetcher.clock)
+    }
 
     @Test
     fun `null source order uses zone defaults in priority order`() {

@@ -35,7 +35,7 @@ class FallbackPriceFetcher(
     internal val fetchers: List<PriceFetcher>,
     private val budgetMillis: Long = DEFAULT_BUDGET_MILLIS,
     private val nanoTime: () -> Long = System::nanoTime,
-    private val clock: Clock = Clock.systemUTC()
+    internal val clock: Clock = Clock.systemUTC()
 ) : PriceFetcher {
 
     init {
@@ -50,8 +50,9 @@ class FallbackPriceFetcher(
      * empty day-ahead document) is not useful, so the chain keeps going — a later source may still
      * have data. One that responds with prices but lacks a next delivery day that is already due
      * is kept in reserve while the chain keeps going. If no source is complete, the reserve that
-     * reaches furthest is returned, an earlier source winning a tie, so that when no source has
-     * the next day yet the primary's prices are kept. If no fetcher yields prices, an empty result
+     * reaches furthest is returned. An earlier source wins a tie, so a fallback that reaches no
+     * further, such as one with the same day in hourly slots, never replaces an earlier source's
+     * finer prices. If no fetcher yields prices, an empty result
      * is returned when at least one responded (the caller treats an empty list as "not enough
      * data"); the last exception is thrown only when every fetcher failed outright.
      *

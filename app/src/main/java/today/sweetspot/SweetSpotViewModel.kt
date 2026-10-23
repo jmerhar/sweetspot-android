@@ -1658,11 +1658,12 @@ class SweetSpotViewModel @JvmOverloads constructor(
         try {
             val state = _uiState.value
             val activeCollector = if (settingsRepository.isStatsEnabled()) statsCollector else null
+            val clock = settingsRepository.devClock(timeZoneId)
             val factory = priceFetcherFactory
-                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, state.sourceOrder, activeCollector, "phone", state.disabledSources)
+                ?: defaultPriceFetcherFactory(BuildConfig.ENTSOE_API_TOKEN, state.sourceOrder, activeCollector, "phone", state.disabledSources, clock)
             val fetcher = factory.create(priceZone)
             if (settingsRepository.isCooldownDisabled()) priceCache.resetCooldown()
-            val repository = PriceRepository(priceCache, timeZoneId, fetcher, clock = settingsRepository.devClock(timeZoneId), cacheKey = priceZone.id)
+            val repository = PriceRepository(priceCache, timeZoneId, fetcher, clock = clock, cacheKey = priceZone.id)
             val priceResult = repository.getPrices()
             // getPrices() blocks on network I/O and does not observe cancellation, so a fetch that a
             // newer tap superseded can resume here after its job was cancelled. Bail before touching

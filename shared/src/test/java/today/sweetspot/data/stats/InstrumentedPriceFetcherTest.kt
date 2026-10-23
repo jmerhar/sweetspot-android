@@ -102,6 +102,19 @@ class InstrumentedPriceFetcherTest {
     }
 
     @Test
+    fun `an empty result once the next day is due still records EMPTY`() {
+        // An empty list lacks the next day too, so the emptiness check has to come first.
+        val collector = FakeStatsCollector()
+        val instrumented = InstrumentedPriceFetcher(
+            emptyFetcher(), "entsoe", "NL", "phone", collector, eveningClock
+        )
+
+        instrumented.fetchPrices(from, to, timeZone)
+
+        assertEquals("EMPTY", collector.records.single().errorCategory)
+    }
+
+    @Test
     fun `prices that include the next day record ok once it is due`() {
         val withNextDay = fakePrices + PriceSlot(ZonedDateTime.of(2025, 6, 16, 0, 0, 0, 0, timeZone), 0.09, 60)
         val collector = FakeStatsCollector()

@@ -429,6 +429,16 @@ class FallbackPriceFetcherTest {
     }
 
     @Test
+    fun `once the next day is due an empty response still falls through to a current-day result`() {
+        val fetcher = FallbackPriceFetcher(
+            listOf(emptyFetcher("Empty"), pricesFetcher("Partial", hours(24), mutableListOf())),
+            clock = evening
+        )
+
+        assertEquals("Partial", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+    }
+
+    @Test
     fun `a period that ends before the next day does not ask for it`() {
         val ran = mutableListOf<String>()
         val fetcher = FallbackPriceFetcher(

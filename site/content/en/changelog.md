@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot version history and release notes."
 ---
 
+{{< changelog version="7.2" date="October 23, 2026" >}}
+- Tomorrow's prices sooner: if the main data source still hasn't published them by 14:00 CET, SweetSpot now tries the other sources and uses one that already has them.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="September 4, 2026" >}}
 - A fallback data source in 15 more zones: Portugal, Spain, Italy, Greece, Croatia, Slovakia, Romania, Bulgaria, Serbia and Montenegro. If one source is unavailable, SweetSpot tries the next, so you still get prices.
 - Fewer failed price loads — a slow answer is now given more time, while the total wait is capped so unresponsive sources hold you up less.

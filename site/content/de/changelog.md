@@ -3,6 +3,10 @@ title: "Änderungsprotokoll"
 description: "SweetSpot Versionshistorie und Release-Hinweise."
 ---
 
+{{< changelog version="7.2" date="23. Oktober 2026" >}}
+- Preise für morgen früher verfügbar: Hat die Hauptdatenquelle sie um 14:00 MEZ noch nicht veröffentlicht, fragt SweetSpot jetzt die anderen Quellen ab und nimmt eine, die sie schon hat.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4. September 2026" >}}
 - Es gibt jetzt eine zweite Datenquelle für 15 weitere Zonen: Portugal, Spanien, Italien, Griechenland, Kroatien, Slowakei, Rumänien, Bulgarien, Serbien und Montenegro. Fällt eine Quelle aus, nimmt SweetSpot die nächste, damit du trotzdem Preise bekommst.
 - Weniger fehlgeschlagene Preisabrufe — langsame Antworten bekommen jetzt mehr Zeit, und die Gesamtwartezeit ist begrenzt: Quellen, die gar nicht antworten, halten dich nur kurz auf.

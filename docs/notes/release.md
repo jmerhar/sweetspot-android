@@ -1,20 +1,22 @@
 ### What's new
 
-This is a reliability release. When SweetSpot could not reach the electricity market, it had no
-second option in 12 of the 30 countries it supports — and a recent multi-day outage at the main
-data provider left users in one of them with no prices for days. That gap is now closed.
+A small reliability release about tomorrow's prices.
 
-- **A fallback data source in 15 more zones** — Portugal, Spain, all six Italian zones, Greece,
-  Croatia, Slovakia, Romania, Bulgaria, Serbia and Montenegro were each served by a single
-  provider, so an outage there meant no prices at all. Each of them now has a second source to
-  fall back on. Only two zones (Ireland and North Macedonia) are still served by one provider, as
-  no free public alternative is known for them.
-- **Fewer failed price loads** — two changes working together. Each source now gets noticeably
-  longer to answer, because the old limit was tight enough that a slow but perfectly good response
-  was sometimes thrown away; that removes a class of "couldn't load prices" errors which were never
-  really failures. At the same time the attempt as a whole is now capped, so in a zone with several
-  sources a run of unresponsive providers can no longer keep you waiting through one timeout after
-  another. Sources that fail quickly are all still tried.
+The day-ahead auction sets tomorrow's prices shortly before 13:00 CET, but the data sources do not
+all publish them at the same moment: on some days the main source is hours late for a country while
+another source already has them. SweetSpot waited for the main source, so on those days you could
+still see only today's prices in the evening.
+
+- **Tomorrow's prices from whichever source has them** — from 14:00 CET, if the main data source
+  still has only today's prices, SweetSpot tries the other sources for your country in order and
+  uses the first one that has tomorrow's. If none has them yet, you keep the main source's prices,
+  and SweetSpot looks again on your next search a few minutes later. Once it has switched, it keeps
+  that source's prices until about midday the next day, even if the main source publishes in the
+  meantime.
+- **Where it helps** — wherever a country has another source with its own data, such as EnergyZero
+  in the Netherlands. Where every source depends on the same upstream data, there is nothing to
+  switch to until it is published. The other source may publish hourly rather than quarter-hourly
+  prices; the results screen always names the source it used.
 
 Nothing changed in how prices are calculated or displayed — the cheapest time you are shown is
 worked out exactly as before.

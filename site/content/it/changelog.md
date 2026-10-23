@@ -3,6 +3,10 @@ title: "Registro delle modifiche"
 description: "Cronologia delle versioni e note di rilascio di SweetSpot."
 ---
 
+{{< changelog version="7.2" date="23 ottobre 2026" >}}
+- I prezzi di domani arrivano prima: se alle 14:00 CET la fonte dati principale non li ha ancora pubblicati, SweetSpot ora prova le altre fonti e usa la prima che li ha già.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4 settembre 2026" >}}
 - Una fonte dati di fallback in altre 15 zone: Portogallo, Spagna, Italia, Grecia, Croazia, Slovacchia, Romania, Bulgaria, Serbia e Montenegro. Se una fonte non è disponibile, SweetSpot prova la successiva invece di lasciarLa senza prezzi.
 - Meno errori nel caricamento dei prezzi: SweetSpot ora concede più tempo a ogni fonte, ma limita l'attesa complessiva, così le fonti che non rispondono La fanno attendere meno.

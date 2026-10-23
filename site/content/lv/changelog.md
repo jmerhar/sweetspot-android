@@ -3,6 +3,10 @@ title: "Izmaiņu žurnāls"
 description: "SweetSpot versiju vēsture un laidienu piezīmes."
 ---
 
+{{< changelog version="7.2" date="2026. gada 23. oktobris" >}}
+- Nākamās dienas cenas agrāk: ja galvenais datu avots līdz 14:00 CET tās joprojām nav publicējis, SweetSpot tagad izmēģina citus avotus un izmanto to, kurā tās jau ir pieejamas.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="2026. gada 4. septembris" >}}
 - Rezerves datu avots pievienots vēl 15 zonās: Portugāle, Spānija, Itālija, Grieķija, Horvātija, Slovākija, Rumānija, Bulgārija, Serbija un Melnkalne. Ja viens avots nedarbojas, SweetSpot izmanto nākamo, tāpēc cenas paliek pieejamas.
 - Retāk neizdodas ielādēt cenas — lēna atbilde vairs netiek atmesta pārāk agri, savukārt kopējais gaidīšanas laiks ir ierobežots, tāpēc avoti, kas neatbild, jūs aizkavē mazāk.

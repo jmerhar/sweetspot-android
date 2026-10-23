@@ -3,6 +3,10 @@ title: "Endringslogg"
 description: "SweetSpot versjonshistorikk og utgivelsesnotater."
 ---
 
+{{< changelog version="7.2" date="23. oktober 2026" >}}
+- Morgendagens priser tidligere: Har hoveddatakilden fortsatt ikke publisert dem kl. 14:00 CET, prøver SweetSpot nå de andre kildene og bruker en som allerede har dem.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4. september 2026" >}}
 - Prisene har nå en reservedatakilde i ytterligere 15 soner: Portugal, Spania, Italia, Hellas, Kroatia, Slovakia, Romania, Bulgaria, Serbia og Montenegro. Er én kilde utilgjengelig, prøver SweetSpot den neste, slik at du fortsatt får priser.
 - Færre mislykkede prishentinger — hver kilde får nå mer tid til å svare, samtidig som den samlede ventetiden er begrenset, slik at kilder som ikke svarer, sinker deg mindre.

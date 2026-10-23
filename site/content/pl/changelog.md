@@ -3,6 +3,10 @@ title: "Historia zmian"
 description: "Historia wersji i notatki do wydań SweetSpot."
 ---
 
+{{< changelog version="7.2" date="23 października 2026" >}}
+- Ceny na jutro wcześniej: jeśli główne źródło danych do godziny 14:00 CET nadal ich nie opublikowało, SweetSpot sprawdza teraz pozostałe źródła i korzysta z tego, które już je ma.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4 września 2026" >}}
 - Zapasowe źródło danych w kolejnych 15 strefach: Portugalii, Hiszpanii, Włoszech, Grecji, Chorwacji, Słowacji, Rumunii, Bułgarii, Serbii i Czarnogórze. Gdy jedno źródło jest niedostępne, SweetSpot sięga po następne, więc wciąż zobaczysz ceny.
 - Mniej nieudanych pobrań cen — wolniejsze odpowiedzi nie są już przerywane zbyt wcześnie, a łączny czas oczekiwania jest ograniczony, więc przy niedziałających źródłach czekasz krócej.

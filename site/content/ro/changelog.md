@@ -3,6 +3,10 @@ title: "Jurnal de modificări"
 description: "Istoricul versiunilor și notele de lansare ale SweetSpot."
 ---
 
+{{< changelog version="7.2" date="23 octombrie 2026" >}}
+- Prețurile pentru ziua de mâine, mai devreme: dacă sursa de date principală încă nu le-a publicat până la ora 14:00 CET, SweetSpot încearcă acum celelalte surse și o folosește pe cea care le are deja.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4 septembrie 2026" >}}
 - O sursă de date de rezervă în încă 15 zone: Portugalia, Spania, Italia, Grecia, Croația, Slovacia, România, Bulgaria, Serbia și Muntenegru. Dacă o sursă nu este disponibilă, SweetSpot încearcă următoarea, așa că veți vedea în continuare prețurile.
 - Mai puține erori la încărcarea prețurilor: fiecare sursă are acum mai mult timp să răspundă, iar așteptarea totală este limitată, așa că SweetSpot renunță mai repede la sursele care nu răspund.

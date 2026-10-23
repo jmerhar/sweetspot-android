@@ -3,6 +3,10 @@ title: "Changelog"
 description: "SweetSpot versiegeschiedenis en releaseopmerkingen."
 ---
 
+{{< changelog version="7.2" date="23 oktober 2026" >}}
+- Prijzen van morgen eerder beschikbaar: heeft de primaire bron ze om 14:00 CET nog niet gepubliceerd, dan probeert SweetSpot nu de andere bronnen en gebruikt het een bron die ze al wel heeft.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4 september 2026" >}}
 - Een terugvalbron voor prijzen in 15 extra zones: Portugal, Spanje, Italië, Griekenland, Kroatië, Slowakije, Roemenië, Bulgarije, Servië en Montenegro. Valt de ene bron uit, dan probeert SweetSpot de volgende, zodat je toch prijzen ziet.
 - Minder mislukte prijsopvragingen — SweetSpot wacht nu langer op een langzaam antwoord, maar begrenst de totale wachttijd, zodat bronnen die helemaal niet reageren je minder ophouden.

@@ -3,6 +3,10 @@ title: "Muutosloki"
 description: "SweetSpotin versiohistoria ja julkaisutiedot."
 ---
 
+{{< changelog version="7.2" date="23. lokakuuta 2026" >}}
+- Huomisen hinnat nopeammin: jos päätietolähde ei ole julkaissut niitä vielä kello 14:00 CET mennessä, SweetSpot kokeilee nyt muita lähteitä ja käyttää sitä, josta ne jo löytyvät.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4. syyskuuta 2026" >}}
 - Hinnoille on nyt varatietolähde 15 uudella alueella: Portugali, Espanja, Italia, Kreikka, Kroatia, Slovakia, Romania, Bulgaria, Serbia ja Montenegro. Jos jokin lähde ei ole käytettävissä, SweetSpot kokeilee seuraavaa, joten saatte hinnat silti.
 - Vähemmän epäonnistuneita hintahakuja — yksittäiselle hitaalle vastaukselle annetaan nyt enemmän aikaa, ja samalla koko odotukselle on yläraja, joten ette jää odottamaan turhaan.

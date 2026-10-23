@@ -3,6 +3,10 @@ title: "Povijest verzija"
 description: "Povijest verzija i bilješke uz izdanja aplikacije SweetSpot."
 ---
 
+{{< changelog version="7.2" date="23. listopada 2026." >}}
+- Sutrašnje cijene ranije: ako ih glavni izvor podataka do 14:00 CET još nije objavio, SweetSpot sada pokušava s ostalim izvorima i koristi onaj koji ih već ima.
+{{< /changelog >}}
+
 {{< changelog version="7.1" date="4. rujna 2026." >}}
 - Rezervni izvor podataka za još 15 zona: Portugal, Španjolska, Italija, Grčka, Hrvatska, Slovačka, Rumunjska, Bugarska, Srbija i Crna Gora. Ako jedan izvor nije dostupan, SweetSpot pokušava sa sljedećim, pa i dalje dobivate cijene.
 - Manje neuspjelih učitavanja cijena — svaki izvor sada ima više vremena za odgovor, a ukupno čekanje je ograničeno, pa vas izvori koji ne odgovaraju manje zadržavaju.

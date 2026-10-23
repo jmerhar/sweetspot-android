@@ -1,5 +1,6 @@
 package today.sweetspot.data.stats
 
+import today.sweetspot.data.api.DayAheadSchedule
 import today.sweetspot.data.api.FetchResult
 import today.sweetspot.data.api.PriceFetcher
 import java.time.Clock
@@ -14,7 +15,9 @@ import java.time.ZoneId
  * This provides full visibility into per-source reliability.
  *
  * On success with an empty price list, records an "EMPTY" error category since the API
- * technically responded but provided no usable data.
+ * technically responded but provided no usable data. A response that lacks a next delivery
+ * day that is already due (see [DayAheadSchedule]) likewise records "NO_TOMORROW": the source
+ * answered, but without the prices the fallback chain needed from it.
  *
  * @param delegate The underlying fetcher to wrap.
  * @param sourceId Data source identifier (e.g. "entsoe", "energyzero").
@@ -42,16 +45,20 @@ class InstrumentedPriceFetcher(
      * @throws Exception if the delegate throws, after recording the failure.
      */
     override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
-        val timestamp = Instant.now(clock).epochSecond
+        val now = Instant.now(clock)
+        val timestamp = now.epochSecond
         val startNanos = System.nanoTime()
         return try {
             val result = delegate.fetchPrices(from, to, timeZoneId)
             val durationMs = (System.nanoTime() - startNanos) / 1_000_000
-            if (result.prices.isEmpty()) {
-                collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, false, "EMPTY", durationMs))
-            } else {
-                collector.record(StatsRecord(timestamp, priceZoneId, sourceId, device, true, "", durationMs))
+            val error = when {
+                result.prices.isEmpty() -> "EMPTY"
+                DayAheadSchedule.lacksDueNextDay(result.prices, now, to) -> "NO_TOMORROW"
+                else -> ""
             }
+            collector.record(
+                StatsRecord(timestamp, priceZoneId, sourceId, device, error.isEmpty(), error, durationMs)
+            )
             result
         } catch (e: Exception) {
             val durationMs = (System.nanoTime() - startNanos) / 1_000_000

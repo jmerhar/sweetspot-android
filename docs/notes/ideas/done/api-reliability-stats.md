@@ -32,11 +32,11 @@ Watch App                    Phone App                       Home Server
 
 - **`HttpException`** — Typed exception for non-200 HTTP responses (replaces ad-hoc `RuntimeException`). All 5 API classes (`EntsoeApi`, `EnergyZeroApi`, `SpotHintaApi`, `EnergyChartsApi`, `AwattarApi`) throw `HttpException(code, "HTTP $code")`.
 - **`EntsoeException`** — Typed exception for ENTSO-E Acknowledgement_MarketDocument errors (HTTP 200 but error response body). Carries the reason text. Replaces bare `RuntimeException` thrown for ENTSO-E API-level errors.
-- **`ErrorCategory.categorise()`** — Maps exceptions to stable category strings: `HTTP_503`, `ENTSOE_ERROR`, `TIMEOUT`, `DNS`, `CONNECTION`, `IO`, `PARSE`, `UNKNOWN`, `EMPTY`.
+- **`ErrorCategory.categorise()`** — Maps exceptions to stable category strings: `HTTP_503`, `ENTSOE_ERROR`, `TIMEOUT`, `DNS`, `CONNECTION`, `IO`, `PARSE`, `UNKNOWN`. `InstrumentedPriceFetcher` adds two for responses that succeed without the prices needed: `EMPTY` (no prices at all) and `NO_TOMORROW` (only the current day after the next one is due at 14:00 CET).
 - **`StatsRecord`** — Data class: timestamp, zone, source, device (phone/watch), success, errorCategory.
 - **`StatsCollector`** — Interface: `record()`, `readAll()`, `clear()`.
 - **`FileStatsCollector`** — Append-only binary file (`cacheDir/api_stats.bin`). Thread-safe via synchronized block. Resilient to partial corruption (preserves records before the corrupted point).
-- **`InstrumentedPriceFetcher`** — Decorator that wraps a `PriceFetcher` and records every outcome. Captures successes, empty results, and failures with categorised errors.
+- **`InstrumentedPriceFetcher`** — Decorator that wraps a `PriceFetcher` and records every outcome. Captures successes, empty results, results missing a next day that is already due, and failures with categorised errors.
 
 ### Phone app (`:app`)
 

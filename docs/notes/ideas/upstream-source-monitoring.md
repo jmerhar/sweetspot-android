@@ -98,6 +98,12 @@ user; every source in a zone's chain failing is a total outage for whoever lives
 there. `api_fetch` can already tell these apart: group by zone over a window and
 check whether *any* row for that zone has `outcome='ok'`.
 
+`NO_TOMORROW` rows are `outcome='fail'` too: a source that answers after 14:00 CET
+with only the current day is recorded that way. A zone where no source has the
+next day yet would therefore read as down to this check while it still serves
+today's prices, so leave that category out here and, if it is worth alerting on,
+give it a rule of its own — it means a late next day, not a missing service.
+
 This one is safe to build on traffic-driven data, because it only ever fires on
 the *presence* of all-failed attempts. No traffic means no alert, which is the
 correct answer — nobody was affected.

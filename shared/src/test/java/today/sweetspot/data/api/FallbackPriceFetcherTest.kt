@@ -5,8 +5,10 @@ import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Test
 import today.sweetspot.model.PriceSlot
+import java.time.Clock
 import java.time.Instant
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.ZonedDateTime
 
 class FallbackPriceFetcherTest {
@@ -290,5 +292,173 @@ class FallbackPriceFetcherTest {
     @Test(expected = IllegalArgumentException::class)
     fun `empty list throws IllegalArgumentException`() {
         FallbackPriceFetcher(emptyList())
+    }
+
+    /** Start of 23 Oct 2026 in Amsterdam, the day the next-day tests fetch on. */
+    private val dayFrom = Instant.parse("2026-10-22T22:00:00Z")
+
+    /** End of that day's request: the start of 25 Oct in Amsterdam. */
+    private val dayTo = Instant.parse("2026-10-24T22:00:00Z")
+
+    /** 18:00 CEST on 23 Oct, after the 24 Oct prices are due. */
+    private val evening = Clock.fixed(Instant.parse("2026-10-23T16:00:00Z"), ZoneOffset.UTC)
+
+    /** 11:00 CEST on 23 Oct, before the 24 Oct prices are due. */
+    private val morning = Clock.fixed(Instant.parse("2026-10-23T09:00:00Z"), ZoneOffset.UTC)
+
+    /** [hours] of [minutes]-long slots from the start of 23 Oct in Amsterdam. */
+    private fun hours(hours: Int, minutes: Int = 15): List<PriceSlot> =
+        (0 until hours * 60 / minutes).map { i ->
+            PriceSlot(dayFrom.plusSeconds(i * minutes * 60L).atZone(timeZone), 0.10, minutes)
+        }
+
+    /** A fetcher that returns [prices] as [source] and records each call in [ran]. */
+    private fun pricesFetcher(source: String, prices: List<PriceSlot>, ran: MutableList<String>): PriceFetcher =
+        object : PriceFetcher {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
+                ran.add(source)
+                return FetchResult(prices, source)
+            }
+        }
+
+    @Test
+    fun `before the next day is due a current-day result ends the chain`() {
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Primary", hours(24), ran), pricesFetcher("Fallback", hours(48), ran)),
+            clock = morning
+        )
+
+        assertEquals("Primary", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+        assertEquals(listOf("Primary"), ran)
+    }
+
+    @Test
+    fun `once the next day is due a fallback that has it replaces a current-day result`() {
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Primary", hours(24), ran), pricesFetcher("Fallback", hours(48), ran)),
+            clock = evening
+        )
+        val result = fetcher.fetchPrices(dayFrom, dayTo, timeZone)
+
+        assertEquals("Fallback", result.source)
+        assertEquals(192, result.prices.size)
+    }
+
+    @Test
+    fun `the chain continues past a fallback that shares the primary's gap`() {
+        // A source that takes its prices from the same upstream as the primary misses the same day.
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(
+                pricesFetcher("ENTSO-E", hours(24), ran),
+                pricesFetcher("Energy-Charts", hours(24), ran),
+                pricesFetcher("EnergyZero", hours(48, minutes = 60), ran)
+            ),
+            clock = evening
+        )
+
+        assertEquals("EnergyZero", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+        assertEquals(listOf("ENTSO-E", "Energy-Charts", "EnergyZero"), ran)
+    }
+
+    @Test
+    fun `a result with the next day ends the chain once it is due`() {
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Primary", hours(48), ran), pricesFetcher("Fallback", hours(48), ran)),
+            clock = evening
+        )
+
+        assertEquals("Primary", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+        assertEquals(listOf("Primary"), ran)
+    }
+
+    @Test
+    fun `when no source has the next day the furthest-reaching result is returned`() {
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Short", hours(20), ran), pricesFetcher("Longer", hours(24), ran)),
+            clock = evening
+        )
+
+        assertEquals("Longer", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+    }
+
+    @Test
+    fun `a later source that reaches less far does not displace an earlier one`() {
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Longer", hours(24), ran), pricesFetcher("Short", hours(20), ran)),
+            clock = evening
+        )
+
+        assertEquals("Longer", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+        assertEquals(listOf("Longer", "Short"), ran)
+    }
+
+    @Test
+    fun `an equal reach keeps the earlier source`() {
+        // Both end at midnight, so the primary's quarter-hours are kept over hourly prices.
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Primary", hours(24), ran), pricesFetcher("Hourly", hours(24, minutes = 60), ran)),
+            clock = evening
+        )
+        val result = fetcher.fetchPrices(dayFrom, dayTo, timeZone)
+
+        assertEquals("Primary", result.source)
+        assertEquals(96, result.prices.size)
+        assertEquals(listOf("Primary", "Hourly"), ran)
+    }
+
+    @Test
+    fun `a current-day result is preferred over failures and empty responses around it`() {
+        val fetcher = FallbackPriceFetcher(
+            listOf(
+                failFetcher("First"),
+                pricesFetcher("Partial", hours(24), mutableListOf()),
+                emptyFetcher("Empty"),
+                failFetcher("Last")
+            ),
+            clock = evening
+        )
+
+        assertEquals("Partial", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+    }
+
+    @Test
+    fun `a period that ends before the next day does not ask for it`() {
+        val ran = mutableListOf<String>()
+        val fetcher = FallbackPriceFetcher(
+            listOf(pricesFetcher("Primary", hours(24), ran), pricesFetcher("Fallback", hours(48), ran)),
+            clock = evening
+        )
+        val endOfDay = Instant.parse("2026-10-23T22:00:00Z")
+
+        assertEquals("Primary", fetcher.fetchPrices(dayFrom, endOfDay, timeZone).source)
+        assertEquals(listOf("Primary"), ran)
+    }
+
+    @Test
+    fun `the budget still stops the chain after a current-day result`() {
+        val nanos = FakeNanos()
+        val ran = mutableListOf<String>()
+        val slowPartial = object : PriceFetcher {
+            override fun fetchPrices(from: Instant, to: Instant, timeZoneId: ZoneId): FetchResult {
+                nanos.advanceMillis(31_000)
+                return FetchResult(hours(24), "SlowPartial")
+            }
+        }
+        val fetcher = FallbackPriceFetcher(
+            listOf(slowPartial, pricesFetcher("NeverReached", hours(48), ran)),
+            budgetMillis = 30_000,
+            nanoTime = nanos::read,
+            clock = evening
+        )
+
+        assertEquals("SlowPartial", fetcher.fetchPrices(dayFrom, dayTo, timeZone).source)
+        assertEquals(emptyList<String>(), ran)
     }
 }

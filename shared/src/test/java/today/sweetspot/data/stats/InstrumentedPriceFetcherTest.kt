@@ -18,7 +18,11 @@ class InstrumentedPriceFetcherTest {
     private val timeZone = ZoneId.of("Europe/Amsterdam")
     private val from = Instant.parse("2025-06-15T00:00:00Z")
     private val to = Instant.parse("2025-06-17T00:00:00Z")
-    private val fixedClock = Clock.fixed(Instant.parse("2025-06-15T12:00:00Z"), ZoneOffset.UTC)
+    /** 10:00 CEST on the day of [fakePrices], before the next delivery day is due. */
+    private val fixedClock = Clock.fixed(Instant.parse("2025-06-15T08:00:00Z"), ZoneOffset.UTC)
+
+    /** 18:00 CEST on the day of [fakePrices], after the next delivery day is due. */
+    private val eveningClock = Clock.fixed(Instant.parse("2025-06-15T16:00:00Z"), ZoneOffset.UTC)
 
     private val fakePrices = listOf(
         PriceSlot(ZonedDateTime.of(2025, 6, 15, 14, 0, 0, 0, timeZone), 0.10, 60),
@@ -80,6 +84,36 @@ class InstrumentedPriceFetcherTest {
         assertEquals(false, record.success)
         assertEquals("EMPTY", record.errorCategory)
         assertEquals("watch", record.device)
+    }
+
+    @Test
+    fun `current-day prices once the next day is due record NO_TOMORROW and are still returned`() {
+        val collector = FakeStatsCollector()
+        val instrumented = InstrumentedPriceFetcher(
+            successFetcher(), "entsoe", "NL", "phone", collector, eveningClock
+        )
+
+        val result = instrumented.fetchPrices(from, to, timeZone)
+        assertEquals(fakePrices, result.prices)
+
+        val record = collector.records.single()
+        assertEquals(false, record.success)
+        assertEquals("NO_TOMORROW", record.errorCategory)
+    }
+
+    @Test
+    fun `prices that include the next day record ok once it is due`() {
+        val withNextDay = fakePrices + PriceSlot(ZonedDateTime.of(2025, 6, 16, 0, 0, 0, 0, timeZone), 0.09, 60)
+        val collector = FakeStatsCollector()
+        val instrumented = InstrumentedPriceFetcher(
+            successFetcher(withNextDay), "entsoe", "NL", "phone", collector, eveningClock
+        )
+
+        instrumented.fetchPrices(from, to, timeZone)
+
+        val record = collector.records.single()
+        assertTrue(record.success)
+        assertEquals("", record.errorCategory)
     }
 
     @Test
